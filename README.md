@@ -1,0 +1,2 @@
+# lex
+THE Wordle Solver
