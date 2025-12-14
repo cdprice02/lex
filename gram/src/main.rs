@@ -1,9 +1,9 @@
 use std::io::{BufRead, Write};
 
-fn main() {
-    const DAT_FILE_PATH: &str = "../words.dat";
-    const OUT_FILE_PATH: &str = "../words_with_frequencies.csv";
+static DAT_FILE_PATH: &str = "../data/words.dat";
+static OUT_FILE_PATH: &str = "../data/words_with_frequencies.csv";
 
+fn main() {
     let input = std::fs::File::open(DAT_FILE_PATH).expect("file valid");
     let input = std::io::BufReader::new(input);
     let output = std::fs::File::create(OUT_FILE_PATH).expect("file valid");
