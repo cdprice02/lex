@@ -1,19 +1,93 @@
+use std::{fmt::Display, ops::Deref};
+
 static WORDLE_WORDS_FILE_PATH: &str = "../data/wordle.txt";
 static WORD_FREQUENCY_FILE_PATH: &str = "../data/words_with_frequencies.csv";
+
+#[derive(Debug, Clone, Copy)]
+struct Word<const N: usize>([char; N]);
+
+impl<const N: usize> From<&str> for Word<N> {
+    fn from(s: &str) -> Self {
+        let chars: Vec<char> = s.chars().collect();
+        assert!(
+            chars.len() == N,
+            "input string must have exactly {} characters",
+            N
+        );
+        let array: [char; N] = chars.try_into().expect("length checked above");
+        Word(array)
+    }
+}
+
+impl<const N: usize> Deref for Word<N> {
+    type Target = [char; N];
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl<const N: usize> Display for Word<N> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for ch in &self.0 {
+            write!(f, "{}", ch)?;
+        }
+        Ok(())
+    }
+}
+
+impl<const N: usize> IntoIterator for Word<N> {
+    type Item = char;
+    type IntoIter = std::array::IntoIter<char, N>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        IntoIterator::into_iter(*self)
+    }
+}
+
+struct GameResult<const N: usize> {
+    word: Word<N>,
+    guesses: Vec<Word<N>>,
+    correctness: Vec<WordCorrectness<N>>,
+}
+
+impl<const N: usize> GameResult<N> {
+    fn new(word: Word<N>) -> Self {
+        Self {
+            word,
+            guesses: Vec::new(),
+            correctness: Vec::new(),
+        }
+    }
+
+    fn add_guess(&mut self, guess: Word<N>, correctness: WordCorrectness<N>) {
+        self.guesses.push(guess);
+        self.correctness.push(correctness);
+    }
+
+    pub fn word(&self) -> Word<N> {
+        self.word
+    }
+
+    pub fn num_guesses(&self) -> usize {
+        self.guesses.len()
+    }
+}
 
 fn main() {
     let wordle_words = load_wordle_words();
     let word_frequencies = load_word_frequencies();
 
-    let word = wordle_words[0].clone();
-    println!("word: {}", word);
-
-    let guess = "crate".to_string();
-
-    assert!(word.len() == 5);
-    assert!(guess.len() == word.len());
-    let correctness = WordCorrectness::<5>::correct(&word, &guess);
-    println!("guessed: {}, correctness: {}", guess, correctness);
+    for word in wordle_words {
+        let word = Word::<5>(
+            word.chars()
+                .collect::<Vec<_>>()
+                .try_into()
+                .expect("wordle words are all 5 letters"),
+        );
+        let result = play(word);
+        println!("Guessed word {} in {}", result.word(), result.num_guesses());
+    }
 }
 
 fn load_wordle_words() -> Vec<String> {
@@ -35,6 +109,27 @@ fn load_word_frequencies() -> Vec<(String, usize)> {
             Some((word, freq))
         })
         .collect()
+}
+
+fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
+    println!("Playing with word: {}", word);
+
+    let mut result = GameResult::new(word);
+
+    let guess = get_guess();
+    let mut correctness = WordCorrectness::<N>::correct(word, guess);
+    while !correctness.is_correct() {
+        println!("guessed: {}, correctness: {}", guess, correctness);
+        result.add_guess(guess, correctness);
+        let guess = get_guess();
+        correctness = WordCorrectness::<N>::correct(word, guess);
+    }
+
+    result
+}
+
+fn get_guess<const N: usize>() -> Word<N> {
+    todo!()
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -63,29 +158,29 @@ impl<const N: usize> WordCorrectness<N> {
         Self([Correctness::Absent; N])
     }
 
-    fn correct(word: &str, guess: &str) -> Self {
-        assert!(word.len() == N);
-        assert!(guess.len() == N);
-
+    fn correct(word: Word<N>, guess: Word<N>) -> Self {
         let mut result = Self::absent();
         let mut used = [false; N];
 
-        for (i, (w_ch, g_ch)) in word.chars().zip(guess.chars()).enumerate() {
-            if w_ch == g_ch {
-                result.0[i] = Correctness::Correct;
-                used[i] = true;
-            } else if word.contains(g_ch) {
-                result.0[i] = Correctness::Misplaced;
-            } else {
-                result.0[i] = Correctness::Absent;
-                used[i] = true;
-            }
-        }
+        word.iter()
+            .zip(guess)
+            .enumerate()
+            .for_each(|(i, (w_ch, g_ch))| {
+                if *w_ch == g_ch {
+                    result.0[i] = Correctness::Correct;
+                    used[i] = true;
+                } else if word.contains(&g_ch) {
+                    result.0[i] = Correctness::Misplaced;
+                } else {
+                    result.0[i] = Correctness::Absent;
+                    used[i] = true;
+                }
+            });
 
-        for (i, g_ch) in guess.chars().enumerate() {
+        for (i, g_ch) in guess.iter().enumerate() {
             if result.0[i] == Correctness::Misplaced {
                 let mut found = false;
-                for (j, w_ch) in word.chars().enumerate() {
+                for (j, w_ch) in word.iter().enumerate() {
                     if !used[j] && w_ch == g_ch {
                         used[j] = true;
                         found = true;
@@ -99,6 +194,10 @@ impl<const N: usize> WordCorrectness<N> {
         }
 
         result
+    }
+
+    fn is_correct(&self) -> bool {
+        self.0.iter().all(|&c| c == Correctness::Correct)
     }
 }
 
@@ -117,8 +216,8 @@ mod tests {
 
     #[test]
     fn test_correct() {
-        let word = "crate";
-        let guess = "crate";
+        let word = Word::from("crate");
+        let guess = Word::from("crate");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -134,8 +233,8 @@ mod tests {
 
     #[test]
     fn test_correct_short() {
-        let word = "ace";
-        let guess = "ace";
+        let word = Word::from("ace");
+        let guess = Word::from("ace");
         let correctness = WordCorrectness::<3>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -149,8 +248,8 @@ mod tests {
 
     #[test]
     fn test_incorrect() {
-        let word = "crate";
-        let guess = "fling";
+        let word = Word::from("crate");
+        let guess = Word::from("fling");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -165,8 +264,8 @@ mod tests {
     }
     #[test]
     fn test_incorrect_short() {
-        let word = "ace";
-        let guess = "bug";
+        let word = Word::from("ace");
+        let guess = Word::from("bug");
         let correctness = WordCorrectness::<3>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -180,8 +279,8 @@ mod tests {
 
     #[test]
     fn test_partial_1() {
-        let word = "crate";
-        let guess = "trace";
+        let word = Word::from("crate");
+        let guess = Word::from("trace");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -197,8 +296,8 @@ mod tests {
 
     #[test]
     fn test_partial_2() {
-        let word = "train";
-        let guess = "trina";
+        let word = Word::from("train");
+        let guess = Word::from("trina");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -214,8 +313,8 @@ mod tests {
 
     #[test]
     fn test_mixed_1() {
-        let word = "apple";
-        let guess = "allee";
+        let word = Word::from("apple");
+        let guess = Word::from("allee");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -231,8 +330,8 @@ mod tests {
 
     #[test]
     fn test_mixed_2() {
-        let word = "stats";
-        let guess = "state";
+        let word = Word::from("stats");
+        let guess = Word::from("state");
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
