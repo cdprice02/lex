@@ -1,6 +1,7 @@
 use std::{collections::HashMap, fmt::Display, ops::Deref};
 
-static WORDLE_WORDS_FILE_PATH: &str = "../data/wordle.txt";
+static WORDLE_WORDS_FILE_PATH: &str = "../data/wordle_words.txt";
+static WORDLE_DICTIONARY_FILE_PATH: &str = "../data/wordle_dictionary.txt";
 static WORD_FREQUENCY_FILE_PATH: &str = "../data/words_with_frequencies.csv";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -92,8 +93,9 @@ impl<const N: usize> GameResult<N> {
 
 fn main() {
     let wordle_words = load_wordle_words();
+    let num_words = wordle_words.len();
 
-    for word in wordle_words {
+    let results = wordle_words.into_iter().map(|word| {
         let word = Word::<5>(
             word.chars()
                 .collect::<Vec<_>>()
@@ -101,13 +103,25 @@ fn main() {
                 .expect("wordle words are all 5 letters"),
         );
         let result = play(word);
-        println!("Guessed word {} in {}", result.word(), result.num_guesses());
-    }
+        println!("{}: {}", result.word(), result.num_guesses());
+        result
+    });
+    let avg_guesses = results
+        .map(|result| result.num_guesses() as f64)
+        .sum::<f64>()
+        / (num_words as f64);
+    println!("Average number of guesses: {:.2}", avg_guesses);
 }
 
 fn load_wordle_words() -> Vec<String> {
     let contents =
         std::fs::read_to_string(WORDLE_WORDS_FILE_PATH).expect("Failed to read Wordle words file");
+    contents.lines().map(|line| line.to_string()).collect()
+}
+
+fn load_wordle_dictionary() -> Vec<String> {
+    let contents = std::fs::read_to_string(WORDLE_DICTIONARY_FILE_PATH)
+        .expect("Failed to read Wordle dictionary file");
     contents.lines().map(|line| line.to_string()).collect()
 }
 
@@ -127,8 +141,6 @@ fn load_word_frequencies() -> Vec<(String, usize)> {
 }
 
 fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
-    println!("Playing with word: {}", word);
-
     let mut result = GameResult::new(word);
 
     let mut guesser = Guesser::<N>::new();
@@ -247,7 +259,7 @@ struct Guesser<const N: usize> {
 
 impl<const N: usize> Guesser<N> {
     pub fn new() -> Self {
-        let dictionary = load_wordle_words()
+        let dictionary = load_wordle_dictionary()
             .into_iter()
             .map(|word| Word::from(word.as_str()))
             .collect();
