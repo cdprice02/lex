@@ -147,6 +147,10 @@ fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
     let first_word = Word::from("trace"); // TODO: use guesser to get the first guess; right now it is too complex of a problem
     let guess = Guess::<N>::new(first_word, WordCorrectness::correct(word, first_word));
     result.add_guess(guess);
+    eprintln!(
+        "Guess 1: {} -> {}",
+        result.guesses[0].word, result.guesses[0].correctness
+    );
     let mut is_correct = result
         .guesses
         .last()
@@ -215,7 +219,6 @@ impl<const N: usize> WordCorrectness<N> {
                     result.0[i] = Correctness::Misplaced;
                 } else {
                     result.0[i] = Correctness::Absent;
-                    used[i] = true;
                 }
             });
 
@@ -423,6 +426,23 @@ mod tests {
                 Correctness::Correct,
                 Correctness::Correct,
                 Correctness::Absent
+            ])
+        );
+    }
+
+    #[test]
+    fn test_mixed_3() {
+        let word = Word::from("zesty");
+        let guess = Word::from("trace");
+        let correctness = WordCorrectness::<5>::correct(word, guess);
+        assert_eq!(
+            correctness,
+            WordCorrectness([
+                Correctness::Misplaced,
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Misplaced
             ])
         );
     }
