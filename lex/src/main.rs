@@ -1,10 +1,17 @@
-use std::{fmt::Display, ops::Deref};
+use std::{collections::HashMap, fmt::Display, ops::Deref};
 
 static WORDLE_WORDS_FILE_PATH: &str = "../data/wordle.txt";
 static WORD_FREQUENCY_FILE_PATH: &str = "../data/words_with_frequencies.csv";
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct Word<const N: usize>([char; N]);
+
+impl<const N: usize> Word<N> {
+    fn matches(&self, guess: &Guess<N>) -> bool {
+        let correctness = WordCorrectness::correct(*self, guess.word);
+        correctness == guess.correctness
+    }
+}
 
 impl<const N: usize> From<&str> for Word<N> {
     fn from(s: &str) -> Self {
@@ -45,24 +52,33 @@ impl<const N: usize> IntoIterator for Word<N> {
     }
 }
 
+#[derive(Debug, Clone)]
+struct Guess<const N: usize> {
+    word: Word<N>,
+    correctness: WordCorrectness<N>,
+}
+
+impl<const N: usize> Guess<N> {
+    pub fn new(word: Word<N>, correctness: WordCorrectness<N>) -> Self {
+        Self { word, correctness }
+    }
+}
+
 struct GameResult<const N: usize> {
     word: Word<N>,
-    guesses: Vec<Word<N>>,
-    correctness: Vec<WordCorrectness<N>>,
+    guesses: Vec<Guess<N>>,
 }
 
 impl<const N: usize> GameResult<N> {
-    fn new(word: Word<N>) -> Self {
+    pub fn new(word: Word<N>) -> Self {
         Self {
             word,
             guesses: Vec::new(),
-            correctness: Vec::new(),
         }
     }
 
-    fn add_guess(&mut self, guess: Word<N>, correctness: WordCorrectness<N>) {
+    pub fn add_guess(&mut self, guess: Guess<N>) {
         self.guesses.push(guess);
-        self.correctness.push(correctness);
     }
 
     pub fn word(&self) -> Word<N> {
@@ -76,7 +92,6 @@ impl<const N: usize> GameResult<N> {
 
 fn main() {
     let wordle_words = load_wordle_words();
-    let word_frequencies = load_word_frequencies();
 
     for word in wordle_words {
         let word = Word::<5>(
@@ -116,20 +131,35 @@ fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
 
     let mut result = GameResult::new(word);
 
-    let guess = get_guess();
-    let mut correctness = WordCorrectness::<N>::correct(word, guess);
-    while !correctness.is_correct() {
-        println!("guessed: {}, correctness: {}", guess, correctness);
-        result.add_guess(guess, correctness);
-        let guess = get_guess();
-        correctness = WordCorrectness::<N>::correct(word, guess);
+    let mut guesser = Guesser::<N>::new();
+    let first_word = Word::from("trace"); // TODO: use guesser to get the first guess; right now it is too complex of a problem
+    let guess = Guess::<N>::new(first_word, WordCorrectness::correct(word, first_word));
+    result.add_guess(guess);
+    let mut is_correct = result
+        .guesses
+        .last()
+        .expect("just added guess")
+        .correctness
+        .is_correct();
+    while !is_correct {
+        let word = guesser.next_guess(result.guesses.clone());
+        let guess = Guess::<N>::new(word, WordCorrectness::correct(result.word(), word));
+        result.add_guess(guess);
+        eprintln!(
+            "Guess {}: {} -> {}",
+            result.num_guesses(),
+            result.guesses.last().unwrap().word,
+            result.guesses.last().unwrap().correctness
+        );
+        is_correct = result
+            .guesses
+            .last()
+            .expect("just added guess")
+            .correctness
+            .is_correct();
     }
 
     result
-}
-
-fn get_guess<const N: usize>() -> Word<N> {
-    todo!()
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -207,6 +237,46 @@ impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
             write!(f, "{}", state)?;
         }
         Ok(())
+    }
+}
+
+struct Guesser<const N: usize> {
+    dictionary: Vec<Word<N>>,
+    word_probabilities: HashMap<Word<N>, f64>,
+}
+
+impl<const N: usize> Guesser<N> {
+    pub fn new() -> Self {
+        let dictionary = load_wordle_words()
+            .into_iter()
+            .map(|word| Word::from(word.as_str()))
+            .collect();
+
+        let word_frequencies: HashMap<Word<N>, usize> = load_word_frequencies()
+            .into_iter()
+            .map(|(word, freq)| (Word::from(word.as_str()), freq))
+            .collect();
+
+        let total_frequency: usize = word_frequencies.values().sum();
+
+        let word_probabilities: HashMap<Word<N>, f64> = word_frequencies
+            .iter()
+            .map(|(word, freq)| (*word, *freq as f64 / total_frequency as f64))
+            .collect();
+
+        Self {
+            dictionary,
+            word_probabilities,
+        }
+    }
+
+    pub fn next_guess(&mut self, history: Vec<Guess<N>>) -> Word<N> {
+        let last_guess = history
+            .last()
+            .expect("history should have at least one guess"); // TODO: allow guessing the first word
+
+        self.dictionary.retain(|w| w.matches(last_guess));
+        return self.dictionary[20.min(self.dictionary.len() - 1)]; // TODO: use probabilities to pick the best guess, not just the first one
     }
 }
 
