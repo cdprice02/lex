@@ -291,7 +291,23 @@ impl<const N: usize> Guesser<N> {
             .expect("history should have at least one guess"); // TODO: allow guessing the first word
 
         self.dictionary.retain(|w| w.matches(last_guess));
-        return self.dictionary[20.min(self.dictionary.len() - 1)]; // TODO: use probabilities to pick the best guess, not just the first one
+
+        // TODO: use entropy to pick best guess
+        let mut best_i = 0;
+        let get_score = |word: &Word<N>| self.word_probabilities.get(word).unwrap_or(&0.0);
+        let mut best_score = get_score(&self.dictionary[0]);
+        for i in 1..self.dictionary.len() {
+            let score = get_score(&self.dictionary[i]);
+            if score > best_score {
+                eprintln!(
+                    "{} > {}; {} > {}",
+                    self.dictionary[i], self.dictionary[best_i], score, best_score
+                );
+                best_score = score;
+                best_i = i;
+            }
+        }
+        self.dictionary[best_i]
     }
 }
 
