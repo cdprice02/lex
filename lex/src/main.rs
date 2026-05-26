@@ -1,8 +1,9 @@
+use std::hash::Hash;
 use std::{collections::HashMap, fmt::Display, ops::Deref};
 
 static WORDLE_WORDS_FILE_PATH: &str = "../data/wordle_words.txt";
 static WORDLE_DICTIONARY_FILE_PATH: &str = "../data/wordle_dictionary.txt";
-static WORD_FREQUENCY_FILE_PATH: &str = "../data/words_with_frequencies.csv";
+static WORD_FREQUENCY_FILE_PATH: &str = "../data/word_frequency.csv";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct Word<const N: usize>([char; N]);
@@ -178,7 +179,7 @@ fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
     result
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Correctness {
     Absent,
     Misplaced,
@@ -196,7 +197,7 @@ impl std::fmt::Display for Correctness {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct WordCorrectness<const N: usize>([Correctness; N]);
 
 impl<const N: usize> WordCorrectness<N> {
@@ -260,6 +261,26 @@ struct Guesser<const N: usize> {
     word_probabilities: HashMap<Word<N>, f64>,
 }
 
+fn expected_information<const N: usize>(guesser: &Guesser<N>, guess: Word<N>) -> f64 {
+    let mut pattern_counts: HashMap<WordCorrectness<N>, usize> = HashMap::new();
+
+    for word in &guesser.dictionary {
+        let pattern = WordCorrectness::correct(*word, guess);
+        *pattern_counts.entry(pattern).or_insert(0) += 1;
+    }
+
+    let total_words = guesser.dictionary.len() as f64;
+    let mut expected_info = 0.0;
+
+    for count in pattern_counts.values() {
+        let probability = *count as f64 / total_words;
+        expected_info += probability * probability.log2();
+    }
+
+    // negative to avoid reciprocal of probability in log2
+    -expected_info
+}
+
 impl<const N: usize> Guesser<N> {
     pub fn new() -> Self {
         let dictionary = load_wordle_dictionary()
@@ -292,9 +313,14 @@ impl<const N: usize> Guesser<N> {
 
         self.dictionary.retain(|w| w.matches(last_guess));
 
-        // TODO: use entropy to pick best guess
         let mut best_i = 0;
-        let get_score = |word: &Word<N>| self.word_probabilities.get(word).unwrap_or(&0.0);
+        let get_score = |word: &Word<N>| {
+            let info_score = expected_information(self, *word);
+            // TODO: sigmoid probability score
+            let probability_score = self.word_probabilities.get(word).unwrap_or(&0.0);
+            // TODO: tune the balance between information score and probability score
+            info_score * probability_score
+        };
         let mut best_score = get_score(&self.dictionary[0]);
         for i in 1..self.dictionary.len() {
             let score = get_score(&self.dictionary[i]);

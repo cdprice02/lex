@@ -1,16 +1,17 @@
-use std::io::{BufRead, Write};
+use polars::prelude::*;
+use std::io::BufRead;
 
 static DAT_FILE_PATH: &str = "../data/words.dat";
-static OUT_FILE_PATH: &str = "../data/words_with_frequencies.csv";
+static FREQ_FILE_PATH: &str = "../data/word_frequency.csv";
 
-fn main() {
-    let input = std::fs::File::open(DAT_FILE_PATH).expect("file valid");
+fn main() -> anyhow::Result<()> {
+    let input = std::fs::File::open(DAT_FILE_PATH)?;
     let input = std::io::BufReader::new(input);
-    let output = std::fs::File::create(OUT_FILE_PATH).expect("file valid");
-    let mut output = std::io::BufWriter::new(output);
 
+    let mut words = Vec::new();
+    let mut freqs = Vec::new();
     for line in input.lines() {
-        let line = line.expect("failed to read line");
+        let line = line?;
         if line.starts_with('*') {
             continue;
         }
@@ -19,11 +20,12 @@ fn main() {
             line.len() >= 5,
             "all lines at least have a five letter word"
         );
-        let word = &line[0..5];
-        let freq = if line.len() == 5 {
+        words.push(String::from(&line[0..5]));
+
+        freqs.push(if line.len() == 5 {
             0
         } else {
-            // skip the commonness delimiter at index 5
+            // skip the "commonness" delimiter at index 5
             let rest = if line.len() >= 6 { &line[6..] } else { "" };
 
             if rest.is_empty() {
@@ -34,9 +36,14 @@ fn main() {
                     .map(|p| p.parse::<u64>().expect("frequency is a number"))
                     .sum()
             }
-        };
-
-        let output_line = format!("{},{}\n", word, freq);
-        output.write_all(output_line.as_bytes()).unwrap();
+        });
     }
+
+    CsvWriter::new(std::fs::File::create(FREQ_FILE_PATH)?)
+        .include_header(false)
+        .finish(
+            &mut df!("word" => words.clone(), "freq" => freqs.clone()).expect("valid dataframe"),
+        )?;
+
+    Ok(())
 }
