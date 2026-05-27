@@ -35,11 +35,11 @@ impl<const N: usize> Guesser<N> {
     pub fn new() -> Self {
         let dictionary = load_wordle_dictionary();
         let word_frequencies = load_word_frequencies();
-        let total_frequency: f64 = word_frequencies.values().map(|&v| v as f64).sum();
+        let total_frequency: f64 = word_frequencies.values().sum();
 
         let word_probabilities: HashMap<Word<N>, f64> = word_frequencies
             .iter()
-            .map(|(word, freq)| (*word, *freq as f64 / total_frequency as f64))
+            .map(|(&word, &freq)| (word, freq / total_frequency))
             .collect();
 
         Self {
