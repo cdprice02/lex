@@ -215,6 +215,17 @@ impl<const N: usize> WordCorrectness<N> {
             .map(|pattern| Self(*pattern.as_array::<N>().expect("length checked above")))
     }
 
+    pub fn all_possible_from(prev: Self) -> impl Iterator<Item = Self> {
+        Self::all_possible().filter(move |pattern| {
+            for (p, prev_p) in pattern.0.iter().zip(prev.0.iter()) {
+                if *prev_p == Correctness::Correct && *p != Correctness::Correct {
+                    return false;
+                }
+            }
+            true
+        })
+    }
+
     fn absent() -> Self {
         Self([Correctness::Absent; N])
     }
@@ -275,9 +286,12 @@ struct Guesser<const N: usize> {
     word_probabilities: HashMap<Word<N>, f64>,
 }
 
-fn expected_information<const N: usize>(guesser: &Guesser<N>, guess: Word<N>) -> f64 {
-    let probabilities = &guesser.word_probabilities;
-    let dictionary = guesser.dictionary.clone();
+fn expected_information<const N: usize>(
+    guess: &Word<N>,
+    probabilities: HashMap<Word<N>, f64>,
+    dictionary: Vec<Word<N>>,
+    previous_guess: Option<&Guess<N>>,
+) -> f64 {
     let probabilities: HashMap<Word<N>, f64> = probabilities
         .iter()
         .filter(|(word, _)| dictionary.contains(word))
@@ -290,10 +304,14 @@ fn expected_information<const N: usize>(guesser: &Guesser<N>, guess: Word<N>) ->
         .collect();
 
     let mut entropy = 0.0;
-    for pattern in WordCorrectness::<N>::all_possible() {
+    let patterns: Vec<_> = match previous_guess {
+        None => WordCorrectness::<N>::all_possible().collect(),
+        Some(prev) => WordCorrectness::<N>::all_possible_from(prev.correctness).collect(),
+    };
+    for pattern in patterns {
         let mut pattern_probability = 0.0;
         for (word, &prob) in &probabilities {
-            if word.matches(&Guess::new(guess, pattern)) {
+            if word.matches(&Guess::new(*guess, pattern)) {
                 pattern_probability += prob;
             }
         }
@@ -338,7 +356,14 @@ impl<const N: usize> Guesser<N> {
         self.dictionary.retain(|w| w.matches(last_guess));
 
         let mut best_i = 0;
-        let get_score = |word: &Word<N>| expected_information(self, *word);
+        let get_score = |word: &Word<N>| {
+            expected_information(
+                word,
+                self.word_probabilities.clone(),
+                self.dictionary.clone(),
+                Some(last_guess),
+            )
+        };
         let mut best_score = get_score(&self.dictionary[0]);
         for i in 1..self.dictionary.len() {
             let score = get_score(&self.dictionary[i]);
