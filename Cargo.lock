@@ -571,6 +571,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "exhaust"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "36968b35411c99472189a1ab43e2dae5469a2a2064470ab35ce3e9c180fe0ed3"
+dependencies = [
+ "exhaust-macros",
+ "itertools",
+ "mutants",
+]
+
+[[package]]
+name = "exhaust-macros"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "de248793548b04e7d29117107315b9cb6410c0b37dbb85038452eccfb489cda3"
+dependencies = [
+ "itertools",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "fallible-streaming-iterator"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1177,6 +1200,8 @@ name = "lex"
 version = "0.1.0"
 dependencies = [
  "bytes",
+ "exhaust",
+ "itertools",
 ]
 
 [[package]]
@@ -1284,6 +1309,12 @@ dependencies = [
  "wasi",
  "windows-sys 0.61.2",
 ]
+
+[[package]]
+name = "mutants"
+version = "0.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "add0ac067452ff1aca8c5002111bd6b1c895baee6e45fcbc44e0193aea17be56"
 
 [[package]]
 name = "now"

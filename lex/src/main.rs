@@ -1,3 +1,5 @@
+use exhaust::Exhaust;
+use itertools::Itertools;
 use std::hash::Hash;
 use std::{collections::HashMap, fmt::Display, ops::Deref};
 
@@ -179,7 +181,7 @@ fn play<const N: usize>(word: Word<N>) -> GameResult<N> {
     result
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Exhaust)]
 enum Correctness {
     Absent,
     Misplaced,
@@ -201,6 +203,18 @@ impl std::fmt::Display for Correctness {
 struct WordCorrectness<const N: usize>([Correctness; N]);
 
 impl<const N: usize> WordCorrectness<N> {
+    pub fn all_possible() -> impl Iterator<Item = Self> {
+        let mut all_pattern_options = Vec::new();
+        for _ in 0..N {
+            all_pattern_options.push(Correctness::exhaust());
+        }
+
+        all_pattern_options
+            .into_iter()
+            .multi_cartesian_product()
+            .map(|pattern| Self(*pattern.as_array::<N>().expect("length checked above")))
+    }
+
     fn absent() -> Self {
         Self([Correctness::Absent; N])
     }
@@ -262,23 +276,33 @@ struct Guesser<const N: usize> {
 }
 
 fn expected_information<const N: usize>(guesser: &Guesser<N>, guess: Word<N>) -> f64 {
-    let mut pattern_counts: HashMap<WordCorrectness<N>, usize> = HashMap::new();
+    let probabilities = &guesser.word_probabilities;
+    let dictionary = guesser.dictionary.clone();
+    let probabilities: HashMap<Word<N>, f64> = probabilities
+        .iter()
+        .filter(|(word, _)| dictionary.contains(word))
+        .map(|(word, &prob)| (*word, prob.exp()))
+        .collect();
+    let sum: f64 = probabilities.values().sum();
+    let probabilities: HashMap<Word<N>, f64> = probabilities
+        .iter()
+        .map(|(word, &prob)| (*word, prob / sum))
+        .collect();
 
-    for word in &guesser.dictionary {
-        let pattern = WordCorrectness::correct(*word, guess);
-        *pattern_counts.entry(pattern).or_insert(0) += 1;
+    let mut entropy = 0.0;
+    for pattern in WordCorrectness::<N>::all_possible() {
+        let mut pattern_probability = 0.0;
+        for (word, &prob) in &probabilities {
+            if word.matches(&Guess::new(guess, pattern)) {
+                pattern_probability += prob;
+            }
+        }
+        if pattern_probability > 0.0 {
+            entropy += pattern_probability * pattern_probability.log2();
+        }
     }
 
-    let total_words = guesser.dictionary.len() as f64;
-    let mut expected_info = 0.0;
-
-    for count in pattern_counts.values() {
-        let probability = *count as f64 / total_words;
-        expected_info += probability * probability.log2();
-    }
-
-    // negative to avoid reciprocal of probability in log2
-    -expected_info
+    -entropy
 }
 
 impl<const N: usize> Guesser<N> {
@@ -314,13 +338,7 @@ impl<const N: usize> Guesser<N> {
         self.dictionary.retain(|w| w.matches(last_guess));
 
         let mut best_i = 0;
-        let get_score = |word: &Word<N>| {
-            let info_score = expected_information(self, *word);
-            // TODO: sigmoid probability score
-            let probability_score = self.word_probabilities.get(word).unwrap_or(&0.0);
-            // TODO: tune the balance between information score and probability score
-            info_score * probability_score
-        };
+        let get_score = |word: &Word<N>| expected_information(self, *word);
         let mut best_score = get_score(&self.dictionary[0]);
         for i in 1..self.dictionary.len() {
             let score = get_score(&self.dictionary[i]);
