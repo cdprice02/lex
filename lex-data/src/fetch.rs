@@ -1,0 +1,64 @@
+use std::collections::HashMap;
+use std::sync::Arc;
+
+use async_compression::tokio::bufread::GzipDecoder;
+use futures::{StreamExt, TryStreamExt};
+use tokio::io::{AsyncBufReadExt, BufReader};
+use tokio_util::io::StreamReader;
+
+use crate::language::Language;
+use crate::parse::parse_ngram_line;
+
+const SHARD_CONCURRENCY: usize = 4;
+
+/// Downloads all V3 shards for `lang` with up to SHARD_CONCURRENCY in flight at once.
+/// Returns every word found, grouped by char count. On a cache miss, callers write all
+/// length buckets so future requests for any length of this language are served from disk
+/// without another fetch.
+pub(crate) async fn fetch_all(
+    lang: Language,
+) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
+    let n = lang.shard_count();
+    let client = Arc::new(reqwest::Client::new());
+
+    let shard_maps: Vec<HashMap<String, u64>> = futures::stream::iter(0..n)
+        .map(|shard| {
+            let client = Arc::clone(&client);
+            async move {
+                let url = format!(
+                    "https://storage.googleapis.com/books/ngrams/books/20200217/{}/1-{shard:05}-of-{n:05}.gz",
+                    lang.lang_code()
+                );
+                eprintln!("  [{}/{}] {url}", shard + 1, n);
+                fetch_shard(&client, &url).await
+                // TODO: retry with exponential backoff on transient failures
+            }
+        })
+        .buffer_unordered(SHARD_CONCURRENCY)
+        .try_collect()
+        .await?;
+
+    let mut by_length: HashMap<usize, HashMap<String, u64>> = HashMap::new();
+    for shard_map in shard_maps {
+        for (word, count) in shard_map {
+            let len = word.chars().count();
+            *by_length.entry(len).or_default().entry(word).or_insert(0) += count;
+        }
+    }
+    Ok(by_length)
+}
+
+async fn fetch_shard(client: &reqwest::Client, url: &str) -> anyhow::Result<HashMap<String, u64>> {
+    let response = client.get(url).send().await?.error_for_status()?;
+    let stream = response.bytes_stream().map_err(std::io::Error::other);
+    let reader = StreamReader::new(stream);
+    let decoder = GzipDecoder::new(BufReader::new(reader));
+    let mut lines = BufReader::new(decoder).lines();
+    let mut acc: HashMap<String, u64> = HashMap::new();
+    while let Some(line) = lines.next_line().await? {
+        if let Some((word, count)) = parse_ngram_line(&line) {
+            *acc.entry(word).or_insert(0) += count;
+        }
+    }
+    Ok(acc)
+}

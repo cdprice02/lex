@@ -1,4 +1,4 @@
-use crate::word::Word;
+use lex_data::Word;
 
 use exhaust::Exhaust;
 use itertools::Itertools;
@@ -111,8 +111,8 @@ mod tests {
 
     #[test]
     fn test_correct() {
-        let word = Word::from("crate");
-        let guess = Word::from("crate");
+        let word = Word::try_from("crate").unwrap();
+        let guess = Word::try_from("crate").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -128,8 +128,8 @@ mod tests {
 
     #[test]
     fn test_correct_short() {
-        let word = Word::from("ace");
-        let guess = Word::from("ace");
+        let word = Word::try_from("ace").unwrap();
+        let guess = Word::try_from("ace").unwrap();
         let correctness = WordCorrectness::<3>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -143,8 +143,8 @@ mod tests {
 
     #[test]
     fn test_incorrect() {
-        let word = Word::from("crate");
-        let guess = Word::from("fling");
+        let word = Word::try_from("crate").unwrap();
+        let guess = Word::try_from("fling").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -157,10 +157,11 @@ mod tests {
             ])
         );
     }
+
     #[test]
     fn test_incorrect_short() {
-        let word = Word::from("ace");
-        let guess = Word::from("bug");
+        let word = Word::try_from("ace").unwrap();
+        let guess = Word::try_from("bug").unwrap();
         let correctness = WordCorrectness::<3>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -174,8 +175,8 @@ mod tests {
 
     #[test]
     fn test_partial_1() {
-        let word = Word::from("crate");
-        let guess = Word::from("trace");
+        let word = Word::try_from("crate").unwrap();
+        let guess = Word::try_from("trace").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -191,8 +192,8 @@ mod tests {
 
     #[test]
     fn test_partial_2() {
-        let word = Word::from("train");
-        let guess = Word::from("trina");
+        let word = Word::try_from("train").unwrap();
+        let guess = Word::try_from("trina").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -208,8 +209,8 @@ mod tests {
 
     #[test]
     fn test_mixed_1() {
-        let word = Word::from("apple");
-        let guess = Word::from("allee");
+        let word = Word::try_from("apple").unwrap();
+        let guess = Word::try_from("allee").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -225,8 +226,8 @@ mod tests {
 
     #[test]
     fn test_mixed_2() {
-        let word = Word::from("stats");
-        let guess = Word::from("state");
+        let word = Word::try_from("stats").unwrap();
+        let guess = Word::try_from("state").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,
@@ -242,8 +243,8 @@ mod tests {
 
     #[test]
     fn test_mixed_3() {
-        let word = Word::from("zesty");
-        let guess = Word::from("trace");
+        let word = Word::try_from("zesty").unwrap();
+        let guess = Word::try_from("trace").unwrap();
         let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
             correctness,

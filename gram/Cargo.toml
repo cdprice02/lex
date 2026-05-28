@@ -1,8 +1,0 @@
-[package]
-name = "gram"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-polars = "0.53"
-anyhow = "1"

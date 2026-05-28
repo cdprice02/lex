@@ -1,6 +1,8 @@
-use crate::data::{load_word_frequencies, load_wordle_dictionary};
-use crate::word::Word;
 use std::collections::HashMap;
+use std::path::Path;
+
+use lex_data::Language;
+use lex_data::Word;
 
 pub mod correctness;
 
@@ -35,19 +37,13 @@ pub struct Guesser<const N: usize> {
 }
 
 impl<const N: usize> Guesser<N> {
-    pub fn new() -> Self {
-        let dictionary = load_wordle_dictionary();
-        let word_frequencies = load_word_frequencies();
-        let total_frequency: f64 = word_frequencies.values().sum();
-
-        let word_probabilities: HashMap<Word<N>, f64> = word_frequencies
-            .iter()
-            .map(|(&word, &freq)| (word, freq / total_frequency))
-            .collect();
+    pub fn new(data_dir: &Path, lang: Language) -> Self {
+        let word_set =
+            lex_data::blocking::get::<N>(data_dir, lang).expect("failed to load word data");
 
         Self {
-            dictionary,
-            word_probabilities,
+            dictionary: word_set.words(),
+            word_probabilities: word_set.probabilities(),
         }
     }
 
@@ -56,7 +52,10 @@ impl<const N: usize> Guesser<N> {
             .last()
             .expect("history should have at least one guess"); // TODO: allow guessing the first word
 
-        self.dictionary.retain(|w| w.matches(last_guess));
+        self.dictionary.retain(|w| {
+            let correctness = WordCorrectness::correct(*w, last_guess.word());
+            correctness == last_guess.correctness()
+        });
 
         let mut best_i = 0;
         let get_score = |word: &Word<N>| {
@@ -108,7 +107,7 @@ fn expected_information<const N: usize>(
     for pattern in patterns {
         let mut pattern_probability = 0.0;
         for (word, &prob) in &probabilities {
-            if word.matches(&Guess::new(*guess, pattern)) {
+            if WordCorrectness::correct(*word, *guess) == pattern {
                 pattern_probability += prob;
             }
         }
