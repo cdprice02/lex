@@ -1,7 +1,9 @@
 [workspace]
 resolver = "3"
 
-members = [
-    "gram",
-    "lex",
-]
+members = ["gram", "lex"]
+
+[profile.release]
+debug = true
+lto = "fat"
+opt-level = 3
