@@ -26,9 +26,12 @@ impl<const N: usize> Guess<N> {
     }
 }
 
+// TODO: guess strategy or heuristic that takes into account the frequency of words in the dictionary; this would allow us to prioritize more common words and potentially solve the puzzle faster
+// TODO: some sort of Trait for Guesser implementations or GuessStrategy
 pub struct Guesser<const N: usize> {
     dictionary: Vec<Word<N>>,
     word_probabilities: HashMap<Word<N>, f64>,
+    // TODO: Guesser holds guess history
 }
 
 impl<const N: usize> Guesser<N> {
