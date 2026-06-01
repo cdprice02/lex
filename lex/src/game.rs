@@ -36,10 +36,11 @@ pub fn play<const N: usize>(
     word: Word<N>,
     data_dir: &Path,
     lang: Language,
+    dictionary_length: Option<usize>,
 ) -> anyhow::Result<GameResult<N>> {
     let mut result = GameResult::new(word);
 
-    let mut guesser = Guesser::<N>::try_new(data_dir, lang)?;
+    let mut guesser = Guesser::<N>::try_new(data_dir, lang, dictionary_length)?;
     // TODO: use guesser to get the first guess; right now it is too complex of a problem
     let first_word = if N == 5 && lang == Language::English {
         Word::<N>::try_from("trace").expect("trace is 5 letters")

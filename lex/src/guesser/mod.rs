@@ -38,8 +38,13 @@ pub struct Guesser<const N: usize> {
 }
 
 impl<const N: usize> Guesser<N> {
-    pub fn try_new(data_dir: &Path, lang: Language) -> anyhow::Result<Self> {
-        let word_set = lex_data::blocking::get::<N>(data_dir, lang).context("loading wordset")?;
+    pub fn try_new(
+        data_dir: &Path,
+        lang: Language,
+        dictionary_length: Option<usize>,
+    ) -> anyhow::Result<Self> {
+        let word_set = lex_data::blocking::get::<N>(data_dir, lang, dictionary_length)
+            .context("loading wordset")?;
 
         Ok(Self {
             dictionary: word_set.words(),
@@ -57,18 +62,26 @@ impl<const N: usize> Guesser<N> {
             correctness == last_guess.correctness()
         });
 
+        // softmax the probabilities of the remaining words for the next guess
+        let probabilities: HashMap<Word<N>, f64> = self
+            .word_probabilities
+            .iter()
+            .filter(|(word, _)| self.dictionary.contains(word))
+            .map(|(word, &prob)| (*word, prob.exp()))
+            .collect();
+        let sum: f64 = probabilities.values().sum();
+        let probabilities: HashMap<Word<N>, f64> = probabilities
+            .iter()
+            .map(|(word, &prob)| (*word, prob / sum))
+            .collect();
+
         let mut best_i = 0;
-        let get_score = |word: &Word<N>| {
-            expected_information(
-                word,
-                self.word_probabilities.clone(),
-                self.dictionary.clone(),
-                Some(last_guess),
-            )
-        };
+        let get_score =
+            |word: &Word<N>| expected_information(word, Some(last_guess), probabilities.clone());
         let mut best_score = get_score(&self.dictionary[0]);
         for i in 1..self.dictionary.len() {
             let score = get_score(&self.dictionary[i]);
+            log::trace!("{}: {}", self.dictionary[i], score);
             if score > best_score {
                 log::debug!(
                     "{} > {}; {} > {}",
@@ -87,21 +100,9 @@ impl<const N: usize> Guesser<N> {
 
 fn expected_information<const N: usize>(
     guess: &Word<N>,
-    probabilities: HashMap<Word<N>, f64>,
-    dictionary: Vec<Word<N>>,
     previous_guess: Option<&Guess<N>>,
+    probabilities: HashMap<Word<N>, f64>,
 ) -> f64 {
-    let probabilities: HashMap<Word<N>, f64> = probabilities
-        .iter()
-        .filter(|(word, _)| dictionary.contains(word))
-        .map(|(word, &prob)| (*word, prob.exp()))
-        .collect();
-    let sum: f64 = probabilities.values().sum();
-    let probabilities: HashMap<Word<N>, f64> = probabilities
-        .iter()
-        .map(|(word, &prob)| (*word, prob / sum))
-        .collect();
-
     let mut entropy = 0.0;
     let patterns: Vec<_> = match previous_guess {
         None => WordCorrectness::<N>::all_possible().collect(),

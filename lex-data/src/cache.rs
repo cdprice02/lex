@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::io::Write;
+use std::io::{BufRead, BufReader, Write};
 use std::path::{Path, PathBuf};
 
 use anyhow::Context;
@@ -17,9 +17,13 @@ pub fn cache_path(data_dir: &Path, lang: Language, n: usize) -> PathBuf {
 /// Fast path: disk hit → single CSV parse into WordSet<N>.
 /// Slow path (cache miss): fetches the full corpus, writes all length buckets,
 /// then reads N. Subsequent requests for any length of this language are fast-path.
-pub async fn get<const N: usize>(data_dir: &Path, lang: Language) -> anyhow::Result<WordSet<N>> {
+pub async fn get<const N: usize>(
+    data_dir: &Path,
+    lang: Language,
+    max: Option<usize>,
+) -> anyhow::Result<WordSet<N>> {
     ensure(data_dir, lang, N).await?;
-    read(data_dir, lang).with_context(|| format!("reading wordset for {lang}"))
+    read(data_dir, lang, max).with_context(|| format!("reading wordset for {lang}"))
 }
 
 /// Writes every length bucket returned by fetch_all to disk.
@@ -64,13 +68,20 @@ async fn ensure(data_dir: &Path, lang: Language, n: usize) -> anyhow::Result<()>
     Ok(())
 }
 
-fn read<const N: usize>(data_dir: &Path, lang: Language) -> anyhow::Result<WordSet<N>> {
+fn read<const N: usize>(
+    data_dir: &Path,
+    lang: Language,
+    max: Option<usize>,
+) -> anyhow::Result<WordSet<N>> {
     // TODO: memmap2 zero-allocation path: mmap the CSV, scan for '\n'/',' boundaries,
     // use Word::try_from_ascii_bytes() to fill [char; N] directly.
     let path = cache_path(data_dir, lang, N);
-    let contents = std::fs::read_to_string(&path)?;
+
+    let f = std::fs::File::open(&path).with_context(|| format!("opening cache file: {path:?}"))?;
+    let reader = BufReader::new(f);
     let mut frequencies = HashMap::new();
-    for line in contents.lines() {
+    for line in reader.lines().take(max.unwrap_or(usize::MAX)) {
+        let line = line?;
         let Some((word_str, freq_str)) = line.split_once(',') else {
             continue;
         };

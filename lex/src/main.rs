@@ -51,12 +51,12 @@ struct Args {
     )]
     word_length: usize,
     #[arg(
-        short = 'n',
         long,
-        default_value = "0",
-        help = "Number of games to simulate (0 for all)"
+        help = format!("Number of the words to allow in the guesser's dictionary (default: all words in the corpus)")
     )]
-    num_games: usize,
+    dictionary_length: Option<usize>,
+    #[arg(short = 'n', long, help = "Number of games to simulate")]
+    num_games: Option<usize>,
     #[arg(
         long,
         default_value = "english",
@@ -95,14 +95,8 @@ fn parse_word_length(s: &str) -> anyhow::Result<usize> {
 }
 
 fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
-    let words = lex_data::blocking::get::<N>(&args.data_dir, args.lang)?.words();
-    // TODO: add MAX_WORDS limit to prevent OOM errors and make simulations more manageable and faster to execute
-    let words = if args.num_games == 0 {
-        words
-    } else {
-        // TODO: add word selection strategies (e.g. random, most/least frequent, etc.) instead of just taking the first n words
-        words.into_iter().take(args.num_games).collect()
-    };
+    // TODO: add word selection strategies (e.g. random, most/least frequent, etc.) instead of just taking the first n words
+    let words = lex_data::blocking::get::<N>(&args.data_dir, args.lang, args.num_games)?.words();
     let num_words = words.len();
 
     log::info!(
@@ -114,7 +108,7 @@ fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
 
     let mut results = Vec::new();
     for word in words {
-        let result = play(word, &args.data_dir, args.lang)?;
+        let result = play(word, &args.data_dir, args.lang, args.dictionary_length)?;
         log::debug!("{}: {}", result.word(), result.num_guesses());
         results.push(result);
     }

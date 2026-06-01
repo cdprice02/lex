@@ -91,4 +91,10 @@ impl<const N: usize> WordSet<N> {
     pub fn is_empty(&self) -> bool {
         self.frequencies.is_empty()
     }
+
+    pub fn limit(&mut self, n: usize) {
+        let mut words = self.words();
+        words.truncate(n);
+        self.frequencies.retain(|word, _| words.contains(word));
+    }
 }

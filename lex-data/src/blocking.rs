@@ -15,8 +15,12 @@ fn runtime() -> anyhow::Result<tokio::runtime::Runtime> {
         .build()?)
 }
 
-pub fn get<const N: usize>(data_dir: &Path, lang: Language) -> anyhow::Result<WordSet<N>> {
-    runtime()?.block_on(crate::cache::get(data_dir, lang))
+pub fn get<const N: usize>(
+    data_dir: &Path,
+    lang: Language,
+    max: Option<usize>,
+) -> anyhow::Result<WordSet<N>> {
+    runtime()?.block_on(crate::cache::get(data_dir, lang, max))
 }
 
 pub fn invalidate(data_dir: &Path, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
