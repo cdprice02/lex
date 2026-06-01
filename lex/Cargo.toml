@@ -11,4 +11,5 @@ exhaust = "0.2"
 itertools = "0.14"
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
+seq-macro = { workspace = true }
 thiserror = { workspace = true }

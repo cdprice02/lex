@@ -13,8 +13,28 @@ mod guesser;
 use error::LexError;
 use game::play;
 
-const MIN_WORD_LENGTH: usize = 3;
-const MAX_WORD_LENGTH: usize = 10;
+macro_rules! configure_word_length_bounds {
+    ($min:literal, $max:literal) => {
+        const MIN_WORD_LENGTH: usize = $min;
+        const MAX_WORD_LENGTH: usize = $max;
+
+
+    macro_rules! match_word_length_run {
+                        ($args:expr; MIN_WORD_LENGTH..=MAX_WORD_LENGTH) => {
+                            seq_macro::seq!(N in $min..=$max {
+                                match $args.word_length {
+                                    #(
+                                        N => run::<N>($args),
+                                    )*
+                                    _ => unreachable!("parser enforces {MIN_WORD_LENGTH}..={MAX_WORD_LENGTH}"),
+                                }
+                            })
+                        };
+                    }
+    };
+}
+
+configure_word_length_bounds!(3, 10);
 
 // TODO: implement subcommands for different modes (e.g. interactive mode, simulation mode, etc.)
 // TODO: implement subcommands for listing words, frequencies, etc. for debugging and exploration purposes
@@ -56,18 +76,7 @@ fn main() -> anyhow::Result<()> {
 
     let args = Args::parse();
 
-    match args.word_length {
-        // TODO: use a macro to generate these match arms
-        3 => run::<3>(&args),
-        4 => run::<4>(&args),
-        5 => run::<5>(&args),
-        6 => run::<6>(&args),
-        7 => run::<7>(&args),
-        8 => run::<8>(&args),
-        9 => run::<9>(&args),
-        10 => run::<10>(&args),
-        _ => unreachable!("parser enforces {MIN_WORD_LENGTH}..={MAX_WORD_LENGTH}"),
-    }?;
+    match_word_length_run!(&args; MIN_WORD_LENGTH..=MAX_WORD_LENGTH)?;
 
     Ok(())
 }
