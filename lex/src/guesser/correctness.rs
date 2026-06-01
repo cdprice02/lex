@@ -105,6 +105,7 @@ impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
     }
 }
 
+// TODO: more comprehensive tests
 #[cfg(test)]
 mod tests {
     use super::*;

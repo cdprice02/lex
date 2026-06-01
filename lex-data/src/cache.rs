@@ -2,6 +2,8 @@ use std::collections::HashMap;
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
+use anyhow::Context;
+
 use crate::fetch::fetch_all;
 use crate::language::Language;
 use crate::word::{Word, WordSet};
@@ -17,7 +19,7 @@ pub fn cache_path(data_dir: &Path, lang: Language, n: usize) -> PathBuf {
 /// then reads N. Subsequent requests for any length of this language are fast-path.
 pub async fn get<const N: usize>(data_dir: &Path, lang: Language) -> anyhow::Result<WordSet<N>> {
     ensure(data_dir, lang, N).await?;
-    read(data_dir, lang)
+    read(data_dir, lang).with_context(|| format!("reading wordset for {lang}"))
 }
 
 /// Writes every length bucket returned by fetch_all to disk.
@@ -27,7 +29,8 @@ pub fn put(
     by_length: &HashMap<usize, HashMap<String, u64>>,
 ) -> anyhow::Result<()> {
     for (&n, words) in by_length {
-        write_length(n, data_dir, lang, words)?;
+        write_length(n, data_dir, lang, words)
+            .with_context(|| format!("writing file for {lang} words of length {n}"))?;
     }
     Ok(())
 }
@@ -36,10 +39,12 @@ pub fn put(
 pub fn invalidate(data_dir: &Path, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
     match n {
         Some(n) => {
-            std::fs::remove_file(cache_path(data_dir, lang, n)).ok();
+            std::fs::remove_file(cache_path(data_dir, lang, n))
+                .with_context(|| "removing file for {lang} length {n}")?;
         }
         None => {
-            std::fs::remove_dir_all(data_dir.join(lang.cache_dir())).ok();
+            std::fs::remove_dir_all(data_dir.join(lang.cache_dir()))
+                .with_context(|| "removing files for {lang}")?;
         }
     }
     Ok(())
@@ -47,10 +52,10 @@ pub fn invalidate(data_dir: &Path, lang: Language, n: Option<usize>) -> anyhow::
 
 async fn ensure(data_dir: &Path, lang: Language, n: usize) -> anyhow::Result<()> {
     if !cache_path(data_dir, lang, n).exists() {
-        eprintln!("Cache miss — fetching full {} corpus...", lang);
+        log::warn!("Cache miss — fetching full {} corpus...", lang);
         let by_length = fetch_all(lang).await?;
         put(data_dir, lang, &by_length)?;
-        eprintln!(
+        log::info!(
             "Cached {} corpus ({} length buckets)",
             lang,
             by_length.len()

@@ -32,10 +32,14 @@ impl<const N: usize> GameResult<N> {
     }
 }
 
-pub fn play<const N: usize>(word: Word<N>, data_dir: &Path, lang: Language) -> GameResult<N> {
+pub fn play<const N: usize>(
+    word: Word<N>,
+    data_dir: &Path,
+    lang: Language,
+) -> anyhow::Result<GameResult<N>> {
     let mut result = GameResult::new(word);
 
-    let mut guesser = Guesser::<N>::new(data_dir, lang);
+    let mut guesser = Guesser::<N>::try_new(data_dir, lang)?;
     // TODO: use guesser to get the first guess; right now it is too complex of a problem
     let first_word = if N == 5 && lang == Language::English {
         Word::<N>::try_from("trace").expect("trace is 5 letters")
@@ -43,35 +47,21 @@ pub fn play<const N: usize>(word: Word<N>, data_dir: &Path, lang: Language) -> G
         todo!("use guesser to get the first guess; right now it is too complex of a problem")
     };
     let guess = Guess::<N>::new(first_word, WordCorrectness::correct(word, first_word));
-    result.add_guess(guess);
-    eprintln!(
-        "Guess 1: {} -> {}",
-        result.guesses[0].word(),
-        result.guesses[0].correctness()
-    );
-    let mut is_correct = result
-        .guesses
-        .last()
-        .expect("just added guess")
-        .correctness()
-        .is_correct();
+    result.add_guess(guess.clone());
+    log::info!("Guess 1: {} -> {}", guess.word(), guess.correctness());
+    let mut is_correct = guess.correctness().is_correct();
     while !is_correct {
         let word = guesser.next_guess(result.guesses.clone());
         let guess = Guess::<N>::new(word, WordCorrectness::correct(result.word(), word));
-        result.add_guess(guess);
-        eprintln!(
+        result.add_guess(guess.clone());
+        log::info!(
             "Guess {}: {} -> {}",
             result.num_guesses(),
-            result.guesses.last().unwrap().word(),
-            result.guesses.last().unwrap().correctness()
+            guess.word(),
+            guess.correctness()
         );
-        is_correct = result
-            .guesses
-            .last()
-            .expect("just added guess")
-            .correctness()
-            .is_correct();
+        is_correct = guess.correctness().is_correct();
     }
 
-    result
+    Ok(result)
 }

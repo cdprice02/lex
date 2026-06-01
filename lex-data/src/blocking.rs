@@ -9,15 +9,14 @@ use std::path::Path;
 use crate::language::Language;
 use crate::word::WordSet;
 
-fn runtime() -> tokio::runtime::Runtime {
-    tokio::runtime::Builder::new_multi_thread()
+fn runtime() -> anyhow::Result<tokio::runtime::Runtime> {
+    Ok(tokio::runtime::Builder::new_multi_thread()
         .enable_all()
-        .build()
-        .expect("failed to build tokio runtime")
+        .build()?)
 }
 
 pub fn get<const N: usize>(data_dir: &Path, lang: Language) -> anyhow::Result<WordSet<N>> {
-    runtime().block_on(crate::cache::get(data_dir, lang))
+    runtime()?.block_on(crate::cache::get(data_dir, lang))
 }
 
 pub fn invalidate(data_dir: &Path, lang: Language, n: Option<usize>) -> anyhow::Result<()> {

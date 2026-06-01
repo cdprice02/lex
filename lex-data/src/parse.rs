@@ -1,12 +1,16 @@
 use unicode_normalization::UnicodeNormalization;
 
+use crate::error::LexDataError;
+
 /// V3 (2020) line format: `ngram\tyear,match_count,vol[\tyear,match_count,vol]*`
 /// All years are on one line; we sum match_count across all year groups.
 /// Returns None for multi-word tokens, POS-tagged tokens, and tokens with non-alphabetic chars.
-pub fn parse_ngram_line(line: &str) -> Option<(String, u64)> {
-    let (ngram, rest) = line.split_once('\t')?;
+pub fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
+    let (ngram, rest) = line
+        .split_once('\t')
+        .ok_or_else(|| LexDataError::InvalidParseLine(line.to_string()))?;
     if !is_valid_word(ngram) {
-        return None;
+        return Err(LexDataError::InvalidNgram(ngram.to_string()).into());
     }
     let total: u64 = rest
         .split('\t')
@@ -15,7 +19,7 @@ pub fn parse_ngram_line(line: &str) -> Option<(String, u64)> {
             group.split(',').nth(1)?.parse::<u64>().ok()
         })
         .sum();
-    Some((normalize(ngram), total))
+    Ok((normalize(ngram), total))
 }
 
 /// Rejects multi-word ngrams, POS-tagged tokens (contain `_`),
@@ -51,17 +55,17 @@ mod tests {
 
     #[test]
     fn rejects_pos_tagged() {
-        assert!(parse_ngram_line("word_NOUN\t2000,5,3").is_none());
+        assert!(parse_ngram_line("word_NOUN\t2000,5,3").is_err());
     }
 
     #[test]
     fn rejects_multi_word() {
-        assert!(parse_ngram_line("hello world\t2000,5,3").is_none());
+        assert!(parse_ngram_line("hello world\t2000,5,3").is_err());
     }
 
     #[test]
     fn rejects_nonalphabetic() {
-        assert!(parse_ngram_line("www.example\t2000,5,3").is_none());
+        assert!(parse_ngram_line("www.example\t2000,5,3").is_err());
     }
 
     #[test]

@@ -1,3 +1,4 @@
+use anyhow::Context;
 use std::collections::HashMap;
 use std::path::Path;
 
@@ -37,14 +38,13 @@ pub struct Guesser<const N: usize> {
 }
 
 impl<const N: usize> Guesser<N> {
-    pub fn new(data_dir: &Path, lang: Language) -> Self {
-        let word_set =
-            lex_data::blocking::get::<N>(data_dir, lang).expect("failed to load word data");
+    pub fn try_new(data_dir: &Path, lang: Language) -> anyhow::Result<Self> {
+        let word_set = lex_data::blocking::get::<N>(data_dir, lang).context("loading wordset")?;
 
-        Self {
+        Ok(Self {
             dictionary: word_set.words(),
             word_probabilities: word_set.probabilities(),
-        }
+        })
     }
 
     pub fn next_guess(&mut self, history: Vec<Guess<N>>) -> Word<N> {
@@ -70,9 +70,12 @@ impl<const N: usize> Guesser<N> {
         for i in 1..self.dictionary.len() {
             let score = get_score(&self.dictionary[i]);
             if score > best_score {
-                eprintln!(
+                log::debug!(
                     "{} > {}; {} > {}",
-                    self.dictionary[i], self.dictionary[best_i], score, best_score
+                    self.dictionary[i],
+                    self.dictionary[best_i],
+                    score,
+                    best_score
                 );
                 best_score = score;
                 best_i = i;

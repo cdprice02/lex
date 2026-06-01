@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use anyhow::Context;
 use async_compression::tokio::bufread::GzipDecoder;
 use futures::{StreamExt, TryStreamExt};
 use tokio::io::{AsyncBufReadExt, BufReader};
@@ -29,14 +30,14 @@ pub(crate) async fn fetch_all(
                     "https://storage.googleapis.com/books/ngrams/books/20200217/{}/1-{shard:05}-of-{n:05}.gz",
                     lang.lang_code()
                 );
-                eprintln!("  [{}/{}] {url}", shard + 1, n);
-                fetch_shard(&client, &url).await
+                log::debug!("  [{}/{}] {url}", shard + 1, n);
+                fetch_shard(&client, &url).await.with_context(|| format!("fetching shard {shard} for {lang}"))
                 // TODO: retry with exponential backoff on transient failures
             }
         })
         .buffer_unordered(SHARD_CONCURRENCY)
         .try_collect()
-        .await?;
+        .await.with_context(|| format!("fetching wordset for {lang}"))?;
 
     let mut by_length: HashMap<usize, HashMap<String, u64>> = HashMap::new();
     for shard_map in shard_maps {
@@ -56,7 +57,7 @@ async fn fetch_shard(client: &reqwest::Client, url: &str) -> anyhow::Result<Hash
     let mut lines = BufReader::new(decoder).lines();
     let mut acc: HashMap<String, u64> = HashMap::new();
     while let Some(line) = lines.next_line().await? {
-        if let Some((word, count)) = parse_ngram_line(&line) {
+        if let Ok((word, count)) = parse_ngram_line(&line) {
             *acc.entry(word).or_insert(0) += count;
         }
     }

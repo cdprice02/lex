@@ -6,7 +6,9 @@ members = ["lex", "lex-data"]
 [workspace.dependencies]
 anyhow = "1"
 clap = { version = "4.6", features = ["derive"] }
+log = "0.4"
 strum = { version = "0.26", features = ["derive"] }
+thiserror = "2.0"
 
 [profile.release]
 lto = "fat"

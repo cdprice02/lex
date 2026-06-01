@@ -4,7 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+anyhow = { workspace = true }
 clap = { workspace = true }
+env_logger = "0.11"
 exhaust = "0.2"
 itertools = "0.14"
 lex-data = { path = "../lex-data" }
+log = { workspace = true }
+thiserror = { workspace = true }

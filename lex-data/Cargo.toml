@@ -4,11 +4,16 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-anyhow      = { workspace = true }
-strum       = { workspace = true }
+anyhow = { workspace = true }
+strum = { workspace = true }
 async-compression = { version = "0.4", features = ["tokio", "gzip"] }
-futures     = "0.3"
-reqwest     = { version = "0.12", default-features = false, features = ["rustls-tls", "stream"] }
-tokio       = { version = "1", features = ["full"] }
-tokio-util  = { version = "0.7", features = ["io"] }
+futures = "0.3"
+log = { workspace = true }
+reqwest = { version = "0.12", default-features = false, features = [
+    "rustls-tls",
+    "stream",
+] }
+thiserror = { workspace = true }
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["io"] }
 unicode-normalization = "0.1"

@@ -1,6 +1,4 @@
-// TODO: introduce log crate to replace eprintln! for better log management (e.g. log levels, output to file, etc.)
 // TODO: add benches for important functions like cache read/write, word parsing, guesser next_guess, etc.
-// TODO: add more error handling and propagate errors instead of panicking (e.g. when loading cache, parsing words, etc.)
 // TODO: add more comments and documentation for functions, structs, etc. to improve code readability and maintainability
 // TODO: add more tests for edge cases, error handling, etc. (unit, integration, prop, etc.)
 use std::path::PathBuf;
@@ -8,9 +6,11 @@ use std::path::PathBuf;
 use clap::Parser;
 use lex_data::Language;
 
+mod error;
 mod game;
 mod guesser;
 
+use error::LexError;
 use game::play;
 
 const MIN_WORD_LENGTH: usize = 3;
@@ -51,9 +51,13 @@ struct Args {
     data_dir: PathBuf,
 }
 
-fn main() {
+fn main() -> anyhow::Result<()> {
+    env_logger::init();
+
     let args = Args::parse();
+
     match args.word_length {
+        // TODO: use a macro to generate these match arms
         3 => run::<3>(&args),
         4 => run::<4>(&args),
         5 => run::<5>(&args),
@@ -63,26 +67,27 @@ fn main() {
         9 => run::<9>(&args),
         10 => run::<10>(&args),
         _ => unreachable!("parser enforces {MIN_WORD_LENGTH}..={MAX_WORD_LENGTH}"),
-    }
+    }?;
+
+    Ok(())
 }
 
-fn parse_word_length(s: &str) -> Result<usize, String> {
-    let n: usize = s
-        .parse()
-        .map_err(|_| format!("'{s}' is not a valid number"))?;
+fn parse_word_length(s: &str) -> anyhow::Result<usize> {
+    let n: usize = s.parse()?;
     if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&n) {
         Ok(n)
     } else {
-        Err(format!(
-            "word length must be in [{MIN_WORD_LENGTH}, {MAX_WORD_LENGTH}], got {n}"
-        ))
+        Err(LexError::UnexpectedWordLength {
+            range: MIN_WORD_LENGTH..=MAX_WORD_LENGTH,
+            got: n,
+        }
+        .into())
     }
 }
 
-fn run<const N: usize>(args: &Args) {
-    let words = lex_data::blocking::get::<N>(&args.data_dir, args.lang)
-        .expect("failed to load word data")
-        .words();
+fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
+    let words = lex_data::blocking::get::<N>(&args.data_dir, args.lang)?.words();
+    // TODO: add MAX_WORDS limit to prevent OOM errors and make simulations more manageable and faster to execute
     let words = if args.num_games == 0 {
         words
     } else {
@@ -91,16 +96,25 @@ fn run<const N: usize>(args: &Args) {
     };
     let num_words = words.len();
 
-    let results: Vec<_> = words
-        .into_iter()
-        .map(|word| {
-            let result = play(word, &args.data_dir, args.lang);
-            println!("{}: {}", result.word(), result.num_guesses());
-            result
-        })
-        .collect();
+    log::info!(
+        "Simulating {} games with {}-letter words in {}...",
+        num_words,
+        N,
+        args.lang
+    );
+
+    let mut results = Vec::new();
+    for word in words {
+        let result = play(word, &args.data_dir, args.lang)?;
+        log::debug!("{}: {}", result.word(), result.num_guesses());
+        results.push(result);
+    }
+
+    log::info!("Completed {} games", num_words);
 
     let avg_guesses =
         results.iter().map(|r| r.num_guesses() as f64).sum::<f64>() / num_words as f64;
-    println!("Average number of guesses: {avg_guesses:.2}");
+    log::info!("Average number of guesses: {avg_guesses:.2}");
+
+    Ok(())
 }

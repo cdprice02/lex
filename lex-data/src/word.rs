@@ -1,26 +1,13 @@
 use std::collections::HashMap;
 use std::{fmt::Display, ops::Deref};
 
+use crate::error::LexDataError;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Word<const N: usize>([char; N]);
 
-// TODO: replace with thiserror crate errors
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct WordLengthError {
-    pub expected: usize,
-    pub got: usize,
-}
-
-impl Display for WordLengthError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "expected {} chars, got {}", self.expected, self.got)
-    }
-}
-
-impl std::error::Error for WordLengthError {}
-
 impl<const N: usize> TryFrom<&str> for Word<N> {
-    type Error = WordLengthError;
+    type Error = LexDataError;
 
     /// Zero heap allocation: chars are written directly into a stack-allocated [char; N].
     ///
@@ -31,7 +18,7 @@ impl<const N: usize> TryFrom<&str> for Word<N> {
         let mut i = 0;
         for ch in s.chars() {
             if i >= N {
-                return Err(WordLengthError {
+                return Err(LexDataError::WordLengthError {
                     expected: N,
                     got: i + 1,
                 });
@@ -40,7 +27,7 @@ impl<const N: usize> TryFrom<&str> for Word<N> {
             i += 1;
         }
         if i != N {
-            return Err(WordLengthError {
+            return Err(LexDataError::WordLengthError {
                 expected: N,
                 got: i,
             });
