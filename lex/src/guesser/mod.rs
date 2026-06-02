@@ -98,6 +98,7 @@ impl<const N: usize> Guesser<N> {
     }
 }
 
+#[optimize(speed)]
 fn expected_information<const N: usize>(
     guess: &Word<N>,
     previous_guess: Option<&Guess<N>>,

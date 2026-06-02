@@ -1,3 +1,6 @@
+[build]
+rustflags = ["-Z", "threads=8", "-Z", "share-generics=yes"]
+
 # Uncomment to rebuild std with full debug info for complete call stacks. Slows all builds;
 # opt in explicitly or pass -Z build-std on the command line.
 [unstable]

@@ -54,6 +54,7 @@ impl<const N: usize> WordCorrectness<N> {
         Self([Correctness::Absent; N])
     }
 
+    #[optimize(speed)]
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
         let mut result = Self::absent();
         let mut used = [false; N];
@@ -102,6 +103,36 @@ impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
             write!(f, "{}", state)?;
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod benches {
+    extern crate test;
+    use std::hint::black_box;
+    use test::Bencher;
+
+    use super::*;
+
+    #[bench]
+    fn correctness_incorrect(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("fling").unwrap();
+        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+    }
+
+    #[bench]
+    fn correctness_sorta_correct(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("track").unwrap();
+        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+    }
+
+    #[bench]
+    fn correctness_correct(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("crate").unwrap();
+        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 }
 

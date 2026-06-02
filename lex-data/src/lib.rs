@@ -1,3 +1,9 @@
+#![feature(optimize_attribute)]
+#![feature(non_exhaustive_omitted_patterns_lint)]
+#![feature(must_not_suspend)]
+#![warn(non_exhaustive_omitted_patterns)]
+#![warn(must_not_suspend)]
+
 pub mod blocking;
 pub mod language;
 pub mod word;
