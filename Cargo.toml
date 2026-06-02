@@ -1,3 +1,5 @@
+cargo-features = ["profile-rustflags"]
+
 [workspace]
 resolver = "3"
 
@@ -19,3 +21,5 @@ opt-level = 3
 inherits = "release"
 debug = true
 lto = false
+opt-level = 2
+rustflags = ["-C", "force-frame-pointers=yes"]

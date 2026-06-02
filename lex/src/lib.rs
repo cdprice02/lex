@@ -1,3 +1,6 @@
+#![allow(unused_features)]
+#![cfg_attr(test, feature(test))]
+
 pub mod cli;
 pub mod error;
 pub mod game;
