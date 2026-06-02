@@ -1,4 +1,5 @@
 #![cfg_attr(test, feature(test))]
+#![feature(gen_blocks)]
 #![feature(optimize_attribute)]
 #![feature(non_exhaustive_omitted_patterns_lint)]
 #![warn(non_exhaustive_omitted_patterns)]

@@ -7,8 +7,6 @@ edition = "2024"
 anyhow = { workspace = true }
 clap = { workspace = true }
 env_logger = "0.11"
-exhaust = "0.2"
-itertools = "0.14"
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
 seq-macro = { workspace = true }

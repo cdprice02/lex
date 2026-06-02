@@ -1,11 +1,6 @@
 use lex_data::Word;
 
-use exhaust::Exhaust;
-use itertools::Itertools;
-use std::hash::Hash;
-use std::iter::Iterator;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Exhaust)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Correctness {
     Absent,
     Misplaced,
@@ -28,25 +23,39 @@ pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
 impl<const N: usize> WordCorrectness<N> {
     pub fn all_possible() -> impl Iterator<Item = Self> {
-        let mut all_pattern_options = Vec::new();
-        for _ in 0..N {
-            all_pattern_options.push(Correctness::exhaust());
+        gen {
+            const VARIANTS: [Correctness; 3] = [
+                Correctness::Absent,
+                Correctness::Misplaced,
+                Correctness::Correct,
+            ];
+            let mut indices = [0usize; N];
+            loop {
+                yield Self(indices.map(|i| VARIANTS[i]));
+                // increment mixed-radix counter (base 3, N digits, rightmost first)
+                let mut pos = N;
+                loop {
+                    if pos == 0 {
+                        return;
+                    }
+                    pos -= 1;
+                    indices[pos] += 1;
+                    if indices[pos] < 3 {
+                        break;
+                    }
+                    indices[pos] = 0;
+                }
+            }
         }
-
-        all_pattern_options
-            .into_iter()
-            .multi_cartesian_product()
-            .map(|pattern| Self(*pattern.as_array::<N>().expect("length checked above")))
     }
 
     pub fn all_possible_from(prev: Self) -> impl Iterator<Item = Self> {
         Self::all_possible().filter(move |pattern| {
-            for (p, prev_p) in pattern.0.iter().zip(prev.0.iter()) {
-                if *prev_p == Correctness::Correct && *p != Correctness::Correct {
-                    return false;
-                }
-            }
-            true
+            pattern
+                .0
+                .iter()
+                .zip(prev.0.iter())
+                .all(|(p, prev_p)| *prev_p != Correctness::Correct || *p == Correctness::Correct)
         })
     }
 
