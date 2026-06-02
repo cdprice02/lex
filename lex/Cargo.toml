@@ -13,3 +13,9 @@ lex-data = { path = "../lex-data" }
 log = { workspace = true }
 seq-macro = { workspace = true }
 thiserror = { workspace = true }
+
+[lib]
+name = "lex_core"
+
+[[bin]]
+name = "lex"
