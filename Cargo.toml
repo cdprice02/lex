@@ -23,4 +23,4 @@ inherits = "release"
 debug = true
 lto = false
 opt-level = 2
-rustflags = ["-C", "force-frame-pointers=yes"]
+rustflags = ["-C", "target-cpu=native", "-C", "force-frame-pointers=yes"]

@@ -1,3 +1,5 @@
+use std::cell::RefCell;
+
 use lex_data::Word;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -20,6 +22,20 @@ impl std::fmt::Display for Correctness {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
+
+impl<const N: usize> std::ops::Deref for WordCorrectness<N> {
+    type Target = [Correctness; N];
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
 
 impl<const N: usize> WordCorrectness<N> {
     pub fn all_possible() -> impl Iterator<Item = Self> {
@@ -49,6 +65,7 @@ impl<const N: usize> WordCorrectness<N> {
         }
     }
 
+    // TODO: re-explore options for this generation
     pub fn all_possible_from(prev: Self) -> impl Iterator<Item = Self> {
         Self::all_possible().filter(move |pattern| {
             pattern
@@ -65,40 +82,45 @@ impl<const N: usize> WordCorrectness<N> {
 
     #[optimize(speed)]
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
-        let mut result = Self::absent();
-        let mut used = [false; N];
-
-        word.iter()
-            .zip(guess)
-            .enumerate()
-            .for_each(|(i, (w_ch, g_ch))| {
-                if *w_ch == g_ch {
-                    result.0[i] = Correctness::Correct;
-                    used[i] = true;
-                } else if word.contains(&g_ch) {
-                    result.0[i] = Correctness::Misplaced;
-                } else {
-                    result.0[i] = Correctness::Absent;
-                }
-            });
-
-        for (i, g_ch) in guess.iter().enumerate() {
-            if result.0[i] == Correctness::Misplaced {
-                let mut found = false;
-                for (j, w_ch) in word.iter().enumerate() {
-                    if !used[j] && w_ch == g_ch {
-                        used[j] = true;
-                        found = true;
-                        break;
-                    }
-                }
-                if !found {
-                    result.0[i] = Correctness::Absent;
-                }
-            }
+        thread_local! {
+            /// Thread-local buffer sized for the full BMP (U+0000–U+FFFF), initialized once per thread
+            static CHAR_COUNTS: RefCell<Box<[u8; 0x10000]>> = RefCell::new(Box::new([0; 0x10000]));
         }
 
-        result
+        CHAR_COUNTS.with(|counts| {
+            let mut counts = counts.borrow_mut();
+            let mut result = Self::absent();
+
+            // first pass for correct: if the guess char matches the word char at the same position, it's correct; otherwise, add the word char to the pool of unmatched chars
+            for i in 0..N {
+                let w_ch = word[i];
+                if w_ch == guess[i] {
+                    result[i] = Correctness::Correct;
+                } else {
+                    debug_assert!((w_ch as usize) < counts.len(), "char above U+FFFF");
+                    counts[w_ch as usize] += 1;
+                }
+            }
+
+            // second pass for misplaced: if the guess char exists in the pool of unmatched word chars, it's misplaced
+            for i in 0..N {
+                if result[i] == Correctness::Correct {
+                    continue;
+                }
+                let idx = guess[i] as usize;
+                if counts[idx] > 0 {
+                    result[i] = Correctness::Misplaced;
+                    counts[idx] -= 1;
+                }
+            }
+
+            // reset counts for next call
+            for i in 0..N {
+                counts[word[i] as usize] = 0;
+            }
+
+            result
+        })
     }
 
     pub fn is_correct(&self) -> bool {
