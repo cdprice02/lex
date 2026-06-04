@@ -64,56 +64,94 @@ impl<const N: usize> IntoIterator for Word<N> {
 
 #[derive(Debug, Clone)]
 pub struct WordSet<const N: usize> {
-    // TODO: use Vec or other data structure here (this could also allow "caching" the result of words and other values by performing the necessary computations once in the constructor and storing them as fields, instead of recomputing on every call to words(), probabilities(), etc.) — the current HashMap is simple and efficient for lookups, but it requires cloning the keys into a new Vec for sorting in words() and creating a new HashMap in probabilities() on every call
-    /// Raw frequency counts, for probability normalization.
-    frequencies: HashMap<Word<N>, u64>,
+    // INVARIANT: words, frequencies, and scaled_probs are parallel and sorted descending
+    // by frequency. Elements are only ever removed (via retain/limit) — never reordered
+    // after construction. scaled_probs is recomputed eagerly after any mutation.
+    words: Vec<Word<N>>,
+    frequencies: Vec<u64>,
+    scaled_probs: Vec<f64>,
 }
 
 impl<const N: usize> WordSet<N> {
     pub fn new(frequencies: HashMap<Word<N>, u64>) -> Self {
-        Self { frequencies }
+        let mut pairs: Vec<(Word<N>, u64)> = frequencies.into_iter().collect();
+        pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
+        let (words, frequencies): (Vec<_>, Vec<_>) = pairs.into_iter().unzip();
+        let scaled_probs = Self::compute_softmax(&frequencies);
+        Self {
+            words,
+            frequencies,
+            scaled_probs,
+        }
     }
 
-    /// Words sorted descending by frequency (same order as the on-disk CSV).
-    pub fn words(&self) -> Vec<Word<N>> {
-        let mut words: Vec<Word<N>> = self.frequencies.keys().copied().collect();
-        words.sort_by_key(|w| std::cmp::Reverse(self.frequencies[w]));
-        words
-    }
-
-    /// Probabilities normalized to sum to 1.0, for use in the Guesser.
-    pub fn probabilities(&self) -> HashMap<Word<N>, f64> {
-        let total: f64 = self.frequencies.values().copied().map(|f| f as f64).sum();
-        self.frequencies
+    /// Softmax directly from raw frequency values; max-subtraction for numerical stability.
+    fn compute_softmax(frequencies: &[u64]) -> Vec<f64> {
+        if frequencies.is_empty() {
+            return Vec::new();
+        }
+        let max_f = *frequencies.iter().max().unwrap() as f64;
+        let exp: Vec<f64> = frequencies
             .iter()
-            .map(|(&word, &freq)| (word, freq as f64 / total))
-            .collect()
+            .map(|&f| (f as f64 - max_f).exp())
+            .collect();
+        let sum: f64 = exp.iter().sum();
+        exp.into_iter().map(|e| e / sum).collect()
+    }
+
+    /// Words sorted descending by frequency. Elements are only ever removed, never reordered.
+    pub fn words(&self) -> &[Word<N>] {
+        &self.words
+    }
+
+    /// Softmax-scaled probabilities, parallel-indexed with `words()`.
+    pub fn probabilities(&self) -> &[f64] {
+        &self.scaled_probs
+    }
+
+    /// Iterator of (word, softmax_probability) pairs in frequency-descending order.
+    pub fn word_probs(&self) -> impl Iterator<Item = (Word<N>, f64)> + '_ {
+        self.words
+            .iter()
+            .copied()
+            .zip(self.scaled_probs.iter().copied())
     }
 
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
-        self.frequencies.get(word).copied()
+        self.words
+            .iter()
+            .position(|w| w == word)
+            .map(|i| self.frequencies[i])
     }
 
     pub fn len(&self) -> usize {
-        self.frequencies.len()
+        self.words.len()
     }
 
     pub fn is_empty(&self) -> bool {
-        self.frequencies.is_empty()
+        self.words.is_empty()
     }
 
     pub fn contains(&self, word: &Word<N>) -> bool {
-        self.frequencies.contains_key(word)
+        self.words.contains(word)
     }
 
     pub fn limit(&mut self, n: usize) {
-        let mut words = self.words();
-        words.truncate(n);
-        self.retain(|word| words.contains(word));
+        self.words.truncate(n);
+        self.frequencies.truncate(n);
+        self.scaled_probs = Self::compute_softmax(&self.frequencies);
     }
 
     pub fn retain<F: Fn(&Word<N>) -> bool>(&mut self, predicate: F) {
-        self.frequencies.retain(|word, _| predicate(word));
+        // INVARIANT preserved: zip-collect maintains relative order.
+        (self.words, self.frequencies) = self
+            .words
+            .iter()
+            .zip(self.frequencies.iter())
+            .filter(|(w, _)| predicate(w))
+            .map(|(&w, &f)| (w, f))
+            .unzip();
+        self.scaled_probs = Self::compute_softmax(&self.frequencies);
     }
 }
 
@@ -252,7 +290,7 @@ mod tests {
         let ws = ws(&[("crane", 100), ("stare", 200), ("light", 300)]);
         let probs = ws.probabilities();
         assert_eq!(probs.len(), 3);
-        let sum: f64 = probs.values().sum();
+        let sum: f64 = probs.iter().copied().sum();
         assert!((sum - 1.0).abs() < 1e-10, "probabilities sum to {sum}");
     }
 
@@ -267,14 +305,8 @@ mod tests {
         ]);
         ws.limit(2);
         assert_eq!(ws.len(), 2);
-        assert!(
-            ws.frequencies
-                .contains_key(&Word::try_from("light").unwrap())
-        );
-        assert!(
-            ws.frequencies
-                .contains_key(&Word::try_from("crane").unwrap())
-        );
+        assert!(ws.contains(&Word::try_from("light").unwrap()));
+        assert!(ws.contains(&Word::try_from("crane").unwrap()));
     }
 
     #[test]

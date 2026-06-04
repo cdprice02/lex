@@ -49,7 +49,7 @@ pub fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
     );
 
     let mut results = Vec::new();
-    for word in words {
+    for &word in words {
         let result = play(word, &word_set)?;
         log::debug!("{}: {}", result.word(), result.num_guesses());
         results.push(result);

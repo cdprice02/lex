@@ -69,13 +69,12 @@ impl<const N: usize> Guesser<N> {
             return None;
         }
 
-        let probabilities = self.word_set.probabilities();
         let candidates = self.word_set.words();
 
         let mut best_i = 0;
-        let mut best_score = guess_entropy(&candidates[0], &probabilities);
+        let mut best_score = guess_entropy(&candidates[0], &self.word_set);
         for i in 1..candidates.len() {
-            let score = guess_entropy(&candidates[i], &probabilities);
+            let score = guess_entropy(&candidates[i], &self.word_set);
             log::trace!("{}: {}", candidates[i], score);
             if score > best_score {
                 log::debug!(
@@ -94,13 +93,13 @@ impl<const N: usize> Guesser<N> {
 }
 
 #[optimize(speed)]
-fn guess_entropy<const N: usize>(guess: &Word<N>, probabilities: &HashMap<Word<N>, f64>) -> f64 {
+fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 {
     let mut pattern_probs: HashMap<WordCorrectness<N>, f64> = WordCorrectness::<N>::all_possible()
         .map(|p| (p, 0.0))
         .collect();
-    for (word, &prob) in probabilities {
+    for (word, prob) in word_set.word_probs() {
         *pattern_probs
-            .get_mut(&WordCorrectness::correct(*word, *guess))
+            .get_mut(&WordCorrectness::correct(word, *guess))
             .expect("pattern not in pre-allocated map") += prob;
     }
     -pattern_probs
@@ -150,8 +149,8 @@ mod benches {
         let pairs = make_wordset(10);
         let guess = pairs[0].0;
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        let probabilities = WordSet::new(frequencies).probabilities();
-        b.iter(|| black_box(guess_entropy(&guess, &probabilities)));
+        let ws = WordSet::new(frequencies);
+        b.iter(|| black_box(guess_entropy(&guess, &ws)));
     }
 
     #[bench]
