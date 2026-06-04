@@ -98,6 +98,7 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 
         .map(|p| (p, 0.0))
         .collect();
     for (word, prob) in word_set.word_probs() {
+        log::trace!("{}: {}", word, prob);
         *pattern_probs
             .get_mut(&WordCorrectness::correct(word, *guess))
             .expect("pattern not in pre-allocated map") += prob;
