@@ -1,3 +1,4 @@
+#![cfg_attr(test, feature(test))]
 #![feature(optimize_attribute)]
 #![feature(non_exhaustive_omitted_patterns_lint)]
 #![feature(must_not_suspend)]

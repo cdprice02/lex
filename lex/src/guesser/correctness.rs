@@ -146,103 +146,62 @@ mod benches {
     use super::*;
 
     #[bench]
-    fn correctness_incorrect(b: &mut Bencher) {
+    fn correct_no_overlap(b: &mut Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("fling").unwrap();
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
     #[bench]
-    fn correctness_sorta_correct(b: &mut Bencher) {
+    fn correct_partial_match(b: &mut Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("track").unwrap();
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
     #[bench]
-    fn correctness_correct(b: &mut Bencher) {
+    fn correct_perfect_match(b: &mut Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("crate").unwrap();
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
+
+    #[bench]
+    fn all_possible_5_collect(b: &mut Bencher) {
+        b.iter(|| black_box(WordCorrectness::<5>::all_possible().collect::<Vec<_>>()));
+    }
 }
 
-// TODO: more comprehensive tests
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_correct() {
+    fn all_positions_correct() {
         let word = Word::try_from("crate").unwrap();
         let guess = Word::try_from("crate").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
-            WordCorrectness([
-                Correctness::Correct,
-                Correctness::Correct,
-                Correctness::Correct,
-                Correctness::Correct,
-                Correctness::Correct
-            ])
+            WordCorrectness::<5>::correct(word, guess),
+            WordCorrectness([Correctness::Correct; 5])
         );
     }
 
     #[test]
-    fn test_correct_short() {
-        let word = Word::try_from("ace").unwrap();
-        let guess = Word::try_from("ace").unwrap();
-        let correctness = WordCorrectness::<3>::correct(word, guess);
-        assert_eq!(
-            correctness,
-            WordCorrectness([
-                Correctness::Correct,
-                Correctness::Correct,
-                Correctness::Correct
-            ])
-        );
-    }
-
-    #[test]
-    fn test_incorrect() {
+    fn all_positions_absent() {
         let word = Word::try_from("crate").unwrap();
         let guess = Word::try_from("fling").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
-            WordCorrectness([
-                Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Absent
-            ])
+            WordCorrectness::<5>::correct(word, guess),
+            WordCorrectness([Correctness::Absent; 5])
         );
     }
 
     #[test]
-    fn test_incorrect_short() {
-        let word = Word::try_from("ace").unwrap();
-        let guess = Word::try_from("bug").unwrap();
-        let correctness = WordCorrectness::<3>::correct(word, guess);
-        assert_eq!(
-            correctness,
-            WordCorrectness([
-                Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Absent,
-            ])
-        );
-    }
-
-    #[test]
-    fn test_partial_1() {
+    fn misplaced_and_correct_mix() {
         let word = Word::try_from("crate").unwrap();
         let guess = Word::try_from("trace").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
+            WordCorrectness::<5>::correct(word, guess),
             WordCorrectness([
                 Correctness::Misplaced,
                 Correctness::Correct,
@@ -254,12 +213,11 @@ mod tests {
     }
 
     #[test]
-    fn test_partial_2() {
+    fn correct_prefix_all_misplaced() {
         let word = Word::try_from("train").unwrap();
         let guess = Word::try_from("trina").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
+            WordCorrectness::<5>::correct(word, guess),
             WordCorrectness([
                 Correctness::Correct,
                 Correctness::Correct,
@@ -271,12 +229,12 @@ mod tests {
     }
 
     #[test]
-    fn test_mixed_1() {
+    fn duplicate_pool_exhausted() {
+        // word has one unmatched 'l'; guess has two — second 'l' is Absent once the pool is used up
         let word = Word::try_from("apple").unwrap();
         let guess = Word::try_from("allee").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
+            WordCorrectness::<5>::correct(word, guess),
             WordCorrectness([
                 Correctness::Correct,
                 Correctness::Misplaced,
@@ -288,12 +246,11 @@ mod tests {
     }
 
     #[test]
-    fn test_mixed_2() {
+    fn mostly_correct_trailing_absent() {
         let word = Word::try_from("stats").unwrap();
         let guess = Word::try_from("state").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
         assert_eq!(
-            correctness,
+            WordCorrectness::<5>::correct(word, guess),
             WordCorrectness([
                 Correctness::Correct,
                 Correctness::Correct,
@@ -305,19 +262,112 @@ mod tests {
     }
 
     #[test]
-    fn test_mixed_3() {
-        let word = Word::try_from("zesty").unwrap();
-        let guess = Word::try_from("trace").unwrap();
-        let correctness = WordCorrectness::<5>::correct(word, guess);
+    fn unicode_bmp_chars() {
+        let word = Word::try_from("cœurs").unwrap();
+        let guess = Word::try_from("sœurs").unwrap();
         assert_eq!(
-            correctness,
+            WordCorrectness::<5>::correct(word, guess),
             WordCorrectness([
-                Correctness::Misplaced,
                 Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Absent,
-                Correctness::Misplaced
+                Correctness::Correct,
+                Correctness::Correct,
+                Correctness::Correct,
+                Correctness::Correct,
             ])
         );
+    }
+
+    #[test]
+    fn all_possible_count() {
+        assert_eq!(WordCorrectness::<5>::all_possible().count(), 243); // 3^5
+    }
+
+    #[test]
+    fn all_possible_from_preserves_correct() {
+        // pos 0 is Correct in prev; every pattern from all_possible_from must have pos 0 Correct.
+        let prev = WordCorrectness([
+            Correctness::Correct,
+            Correctness::Absent,
+            Correctness::Absent,
+            Correctness::Absent,
+            Correctness::Absent,
+        ]);
+        let patterns: Vec<_> = WordCorrectness::<5>::all_possible_from(prev).collect();
+        assert_eq!(patterns.len(), 81); // 3^4 — pos 0 fixed
+        assert!(patterns.iter().all(|p| p[0] == Correctness::Correct));
+    }
+
+    #[test]
+    fn duplicate_in_word_extra_absent() {
+        // both 'a's in the word are exactly matched, leaving no pool for the third 'a' in guess
+        let word = Word::try_from("aabcd").unwrap();
+        let guess = Word::try_from("aaaef").unwrap();
+        assert_eq!(
+            WordCorrectness::<5>::correct(word, guess),
+            WordCorrectness([
+                Correctness::Correct,
+                Correctness::Correct,
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Absent,
+            ])
+        );
+    }
+
+    #[test]
+    fn duplicate_in_guess_capped() {
+        // word has one 'e' (exactly matched); the other two 'e's in guess get no credit
+        let word = Word::try_from("crane").unwrap();
+        let guess = Word::try_from("eerie").unwrap();
+        assert_eq!(
+            WordCorrectness::<5>::correct(word, guess),
+            WordCorrectness([
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Misplaced,
+                Correctness::Absent,
+                Correctness::Correct,
+            ])
+        );
+    }
+}
+
+#[cfg(test)]
+mod prop_tests {
+    use proptest::prelude::*;
+
+    use super::*;
+
+    proptest! {
+        #[test]
+        fn self_guess_all_correct(word_str in "[a-z]{5}") {
+            let word = Word::<5>::try_from(word_str.as_str()).unwrap();
+            prop_assert_eq!(
+                WordCorrectness::<5>::correct(word, word),
+                WordCorrectness([Correctness::Correct; 5])
+            );
+        }
+
+        #[test]
+        fn all_possible_from_maintains_correct_positions(
+            vals in proptest::collection::vec(0usize..3, 5)
+        ) {
+            let variants = [Correctness::Absent, Correctness::Misplaced, Correctness::Correct];
+            let prev = WordCorrectness([
+                variants[vals[0]],
+                variants[vals[1]],
+                variants[vals[2]],
+                variants[vals[3]],
+                variants[vals[4]],
+            ]);
+            for pattern in WordCorrectness::<5>::all_possible_from(prev) {
+                for (i, (&p, &prev_p)) in pattern.iter().zip(prev.iter()).enumerate() {
+                    prop_assert!(
+                        prev_p != Correctness::Correct || p == Correctness::Correct,
+                        "position {i}: prev was Correct but pattern has {p:?}"
+                    );
+                }
+            }
+        }
     }
 }

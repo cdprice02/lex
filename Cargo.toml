@@ -9,6 +9,7 @@ members = ["lex", "lex-data"]
 anyhow = "1"
 clap = { version = "4.6", features = ["derive"] }
 log = "0.4"
+proptest = "1"
 seq-macro = "0.3"
 strum = { version = "0.26", features = ["derive"] }
 thiserror = "2.0"
@@ -22,5 +23,5 @@ rustflags = ["-C", "target-cpu=native"]
 inherits = "release"
 debug = true
 lto = false
-opt-level = 2
+# opt-level = 0
 rustflags = ["-C", "target-cpu=native", "-C", "force-frame-pointers=yes"]

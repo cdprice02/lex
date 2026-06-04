@@ -12,6 +12,9 @@ log = { workspace = true }
 seq-macro = { workspace = true }
 thiserror = { workspace = true }
 
+[dev-dependencies]
+proptest = { workspace = true }
+
 [lib]
 name = "lex_core"
 
