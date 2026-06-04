@@ -77,7 +77,7 @@ impl<const N: usize> WordSet<N> {
         let mut pairs: Vec<(Word<N>, u64)> = frequencies.into_iter().collect();
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
         let (words, frequencies): (Vec<_>, Vec<_>) = pairs.into_iter().unzip();
-        let scaled_probs = Self::compute_softmax(&frequencies);
+        let scaled_probs = Self::compute_probs(&frequencies);
         Self {
             words,
             frequencies,
@@ -85,15 +85,21 @@ impl<const N: usize> WordSet<N> {
         }
     }
 
-    /// Softmax directly from raw frequency values; max-subtraction for numerical stability.
-    fn compute_softmax(frequencies: &[u64]) -> Vec<f64> {
+    /// Temperature-scaled softmax over log-frequencies: p_i ∝ f_i^(1/T).
+    /// Raw-frequency softmax collapses to one-hot on the top word because Ngrams
+    /// counts span many orders of magnitude; log-space input + temperature > 1
+    /// flattens the distribution toward uniform without discarding rank information.
+    fn compute_probs(frequencies: &[u64]) -> Vec<f64> {
+        // T=1 → linear normalization; T→∞ → uniform; tuned empirically
+        const TEMPERATURE: f64 = 5.0;
         if frequencies.is_empty() {
             return Vec::new();
         }
-        let max_f = *frequencies.iter().max().unwrap() as f64;
-        let exp: Vec<f64> = frequencies
+        let log_freqs: Vec<f64> = frequencies.iter().map(|&f| (f as f64).ln()).collect();
+        let max_lf = log_freqs.iter().cloned().fold(f64::NEG_INFINITY, f64::max);
+        let exp: Vec<f64> = log_freqs
             .iter()
-            .map(|&f| (f as f64 - max_f).exp())
+            .map(|&lf| ((lf - max_lf) / TEMPERATURE).exp())
             .collect();
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
@@ -104,12 +110,12 @@ impl<const N: usize> WordSet<N> {
         &self.words
     }
 
-    /// Softmax-scaled probabilities, parallel-indexed with `words()`.
+    /// Temperature-scaled probabilities (p_i ∝ f_i^(1/T)), parallel-indexed with `words()`.
     pub fn probabilities(&self) -> &[f64] {
         &self.scaled_probs
     }
 
-    /// Iterator of (word, softmax_probability) pairs in frequency-descending order.
+    /// Iterator of `(word, probability)` pairs in frequency-descending order.
     pub fn word_probs(&self) -> impl Iterator<Item = (Word<N>, f64)> + '_ {
         self.words
             .iter()
@@ -139,7 +145,7 @@ impl<const N: usize> WordSet<N> {
     pub fn limit(&mut self, n: usize) {
         self.words.truncate(n);
         self.frequencies.truncate(n);
-        self.scaled_probs = Self::compute_softmax(&self.frequencies);
+        self.scaled_probs = Self::compute_probs(&self.frequencies);
     }
 
     pub fn retain<F: Fn(&Word<N>) -> bool>(&mut self, predicate: F) {
@@ -151,7 +157,7 @@ impl<const N: usize> WordSet<N> {
             .filter(|(w, _)| predicate(w))
             .map(|(&w, &f)| (w, f))
             .unzip();
-        self.scaled_probs = Self::compute_softmax(&self.frequencies);
+        self.scaled_probs = Self::compute_probs(&self.frequencies);
     }
 }
 
