@@ -62,12 +62,18 @@ impl<const N: usize> IntoIterator for Word<N> {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct WordSet<const N: usize> {
+    // TODO: use Vec or other data structure here (this could also allow "caching" the result of words and other values by performing the necessary computations once in the constructor and storing them as fields, instead of recomputing on every call to words(), probabilities(), etc.) — the current HashMap is simple and efficient for lookups, but it requires cloning the keys into a new Vec for sorting in words() and creating a new HashMap in probabilities() on every call
     /// Raw frequency counts, for probability normalization.
-    pub frequencies: HashMap<Word<N>, u64>,
+    frequencies: HashMap<Word<N>, u64>,
 }
 
 impl<const N: usize> WordSet<N> {
+    pub fn new(frequencies: HashMap<Word<N>, u64>) -> Self {
+        Self { frequencies }
+    }
+
     /// Words sorted descending by frequency (same order as the on-disk CSV).
     pub fn words(&self) -> Vec<Word<N>> {
         let mut words: Vec<Word<N>> = self.frequencies.keys().copied().collect();
@@ -84,6 +90,10 @@ impl<const N: usize> WordSet<N> {
             .collect()
     }
 
+    pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
+        self.frequencies.get(word).copied()
+    }
+
     pub fn len(&self) -> usize {
         self.frequencies.len()
     }
@@ -92,10 +102,18 @@ impl<const N: usize> WordSet<N> {
         self.frequencies.is_empty()
     }
 
+    pub fn contains(&self, word: &Word<N>) -> bool {
+        self.frequencies.contains_key(word)
+    }
+
     pub fn limit(&mut self, n: usize) {
         let mut words = self.words();
         words.truncate(n);
-        self.frequencies.retain(|word, _| words.contains(word));
+        self.retain(|word| words.contains(word));
+    }
+
+    pub fn retain<F: Fn(&Word<N>) -> bool>(&mut self, predicate: F) {
+        self.frequencies.retain(|word, _| predicate(word));
     }
 }
 
@@ -122,7 +140,7 @@ mod benches {
                 (Word::<5>::try_from(s.as_str()).unwrap(), (n - i) as u64)
             })
             .collect();
-        WordSet { frequencies }
+        WordSet::new(frequencies)
     }
 
     #[bench]
@@ -150,7 +168,7 @@ mod tests {
             .iter()
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
-        WordSet { frequencies }
+        WordSet::new(frequencies)
     }
 
     #[test]

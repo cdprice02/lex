@@ -30,8 +30,14 @@ fn put_read_roundtrip() {
 
     let ws: WordSet<5> = lex_data::blocking::get(dir.path(), lang, None).unwrap();
     assert_eq!(ws.len(), 5);
-    assert_eq!(ws.frequencies[&Word::<5>::try_from("crane").unwrap()], 300);
-    assert_eq!(ws.frequencies[&Word::<5>::try_from("swipe").unwrap()], 25);
+    assert_eq!(
+        ws.frequency(&Word::<5>::try_from("crane").unwrap()),
+        Some(300)
+    );
+    assert_eq!(
+        ws.frequency(&Word::<5>::try_from("swipe").unwrap()),
+        Some(25)
+    );
 }
 
 #[test]
@@ -44,14 +50,8 @@ fn read_respects_max() {
     let ws: WordSet<5> = lex_data::blocking::get(dir.path(), lang, Some(2)).unwrap();
     assert_eq!(ws.len(), 2);
     // put() writes sorted descending by freq: crane (300) and stare (200) are top-2
-    assert!(
-        ws.frequencies
-            .contains_key(&Word::<5>::try_from("crane").unwrap())
-    );
-    assert!(
-        ws.frequencies
-            .contains_key(&Word::<5>::try_from("stare").unwrap())
-    );
+    assert!(ws.contains(&Word::<5>::try_from("crane").unwrap()));
+    assert!(ws.contains(&Word::<5>::try_from("stare").unwrap()));
 }
 
 #[test]

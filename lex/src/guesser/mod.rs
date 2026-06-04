@@ -1,9 +1,8 @@
-use anyhow::Context;
 use std::collections::HashMap;
-use std::path::Path;
+use std::hint::cold_path;
 
-use lex_data::Language;
 use lex_data::Word;
+use lex_data::WordSet;
 
 pub mod correctness;
 
@@ -29,72 +28,60 @@ impl<const N: usize> Guess<N> {
     }
 }
 
-// TODO: guess strategy or heuristic that takes into account the frequency of words in the dictionary; this would allow us to prioritize more common words and potentially solve the puzzle faster
-// TODO: some sort of Trait for Guesser implementations or GuessStrategy
+// TODO: when a second strategy is needed, extract a GuesserStrategy trait from this API —
+// the current method signatures are trait-compatible (push_guess + suggest).
 pub struct Guesser<const N: usize> {
-    dictionary: Vec<Word<N>>,
-    word_probabilities: HashMap<Word<N>, f64>,
-    // TODO: Guesser holds guess history
+    word_set: WordSet<N>,
+    history: Vec<Guess<N>>,
 }
 
 impl<const N: usize> Guesser<N> {
-    #[cfg(test)]
-    fn from_word_set(word_set: lex_data::WordSet<N>) -> Self {
+    pub fn new(word_set: WordSet<N>) -> Self {
         Self {
-            dictionary: word_set.words(),
-            word_probabilities: word_set.probabilities(),
+            word_set,
+            history: Vec::new(),
         }
     }
 
-    pub fn try_new(
-        data_dir: &Path,
-        lang: Language,
-        dictionary_length: Option<usize>,
-    ) -> anyhow::Result<Self> {
-        let word_set = lex_data::blocking::get::<N>(data_dir, lang, dictionary_length)
-            .context("loading wordset")?;
-
-        Ok(Self {
-            dictionary: word_set.words(),
-            word_probabilities: word_set.probabilities(),
-        })
+    pub fn history(&self) -> &[Guess<N>] {
+        &self.history
     }
 
-    pub fn next_guess(&mut self, history: Vec<Guess<N>>) -> Word<N> {
-        let last_guess = history
-            .last()
-            .expect("history should have at least one guess"); // TODO: allow guessing the first word
+    pub fn push_guess(&mut self, guess: Guess<N>) {
+        self.history.push(guess);
+    }
 
-        self.dictionary.retain(|w| {
-            let correctness = WordCorrectness::correct(*w, last_guess.word());
-            correctness == last_guess.correctness()
-        });
+    pub fn suggest(&mut self) -> Option<Word<N>> {
+        if self.word_set.is_empty() {
+            cold_path();
+            return None;
+        }
 
-        // softmax the probabilities of the remaining words for the next guess
-        let probabilities: HashMap<Word<N>, f64> = self
-            .word_probabilities
-            .iter()
-            .filter(|(word, _)| self.dictionary.contains(word))
-            .map(|(word, &prob)| (*word, prob.exp()))
-            .collect();
-        let sum: f64 = probabilities.values().sum();
-        let probabilities: HashMap<Word<N>, f64> = probabilities
-            .iter()
-            .map(|(word, &prob)| (*word, prob / sum))
-            .collect();
+        if let Some(last) = self.history.last() {
+            let last_word = last.word();
+            let last_correctness = last.correctness();
+            self.word_set
+                .retain(|w| WordCorrectness::correct(*w, last_word) == last_correctness);
+        }
+
+        if self.word_set.is_empty() {
+            cold_path();
+            return None;
+        }
+
+        let probabilities = self.word_set.probabilities();
+        let candidates = self.word_set.words();
 
         let mut best_i = 0;
-        let get_score =
-            |word: &Word<N>| expected_information(word, Some(last_guess), probabilities.clone());
-        let mut best_score = get_score(&self.dictionary[0]);
-        for i in 1..self.dictionary.len() {
-            let score = get_score(&self.dictionary[i]);
-            log::trace!("{}: {}", self.dictionary[i], score);
+        let mut best_score = guess_entropy(&candidates[0], self.history.last(), &probabilities);
+        for i in 1..candidates.len() {
+            let score = guess_entropy(&candidates[i], self.history.last(), &probabilities);
+            log::trace!("{}: {}", candidates[i], score);
             if score > best_score {
                 log::debug!(
                     "{} > {}; {} > {}",
-                    self.dictionary[i],
-                    self.dictionary[best_i],
+                    candidates[i],
+                    candidates[best_i],
                     score,
                     best_score
                 );
@@ -102,15 +89,15 @@ impl<const N: usize> Guesser<N> {
                 best_i = i;
             }
         }
-        self.dictionary[best_i]
+        Some(candidates[best_i])
     }
 }
 
 #[optimize(speed)]
-fn expected_information<const N: usize>(
+fn guess_entropy<const N: usize>(
     guess: &Word<N>,
     previous_guess: Option<&Guess<N>>,
-    probabilities: HashMap<Word<N>, f64>,
+    probabilities: &HashMap<Word<N>, f64>,
 ) -> f64 {
     let mut entropy = 0.0;
     let patterns: Vec<_> = match previous_guess {
@@ -118,14 +105,14 @@ fn expected_information<const N: usize>(
         Some(prev) => WordCorrectness::<N>::all_possible_from(prev.correctness()).collect(),
     };
     for pattern in patterns {
-        let mut pattern_probability = 0.0;
-        for (word, &prob) in &probabilities {
+        let mut p = 0.0;
+        for (word, &prob) in probabilities {
             if WordCorrectness::correct(*word, *guess) == pattern {
-                pattern_probability += prob;
+                p += prob;
             }
         }
-        if pattern_probability > 0.0 {
-            entropy += pattern_probability * pattern_probability.log2();
+        if p > 0.0 {
+            entropy += p * p.log2();
         }
     }
 
@@ -163,56 +150,44 @@ mod benches {
 
     fn build_guesser(pairs: &[(Word<5>, u64)]) -> Guesser<5> {
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        Guesser::<5>::from_word_set(WordSet { frequencies })
+        let ws = WordSet::new(frequencies);
+        Guesser::<5>::new(ws)
     }
 
     #[bench]
-    fn expected_information_10_words(b: &mut Bencher) {
+    fn guess_entropy_10_words(b: &mut Bencher) {
         let pairs = make_wordset(10);
         let guess = pairs[0].0;
         let first_correctness = WordCorrectness::absent();
         let last_guess = Guess::new(guess, first_correctness);
-        let probabilities: HashMap<Word<5>, f64> = pairs
-            .iter()
-            .enumerate()
-            .map(|(i, &(w, _))| (w, 1.0 / (10.0 + i as f64)))
-            .collect();
-        b.iter(|| {
-            black_box(expected_information(
-                &guess,
-                Some(&last_guess),
-                probabilities.clone(),
-            ))
-        });
+        let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
+        let probabilities = WordSet::new(frequencies).probabilities();
+        b.iter(|| black_box(guess_entropy(&guess, Some(&last_guess), &probabilities)));
     }
 
     #[bench]
-    fn next_guess_50_word_dict(b: &mut Bencher) {
+    fn suggest_50_word_dict(b: &mut Bencher) {
         let pairs = make_wordset(50);
         let first_guess = pairs[0].0;
         let target = pairs[1].0;
-        let history = vec![Guess::new(
-            first_guess,
-            WordCorrectness::correct(target, first_guess),
-        )];
+        let initial_guess = Guess::new(first_guess, WordCorrectness::correct(target, first_guess));
         b.iter(|| {
             let mut g = build_guesser(&pairs);
-            black_box(g.next_guess(history.clone()))
+            g.push_guess(initial_guess.clone());
+            black_box(g.suggest())
         });
     }
 
     #[bench]
-    fn next_guess_200_word_dict(b: &mut Bencher) {
+    fn suggest_200_word_dict(b: &mut Bencher) {
         let pairs = make_wordset(200);
         let first_guess = pairs[0].0;
         let target = pairs[1].0;
-        let history = vec![Guess::new(
-            first_guess,
-            WordCorrectness::correct(target, first_guess),
-        )];
+        let initial_guess = Guess::new(first_guess, WordCorrectness::correct(target, first_guess));
         b.iter(|| {
             let mut g = build_guesser(&pairs);
-            black_box(g.next_guess(history.clone()))
+            g.push_guess(initial_guess.clone());
+            black_box(g.suggest())
         });
     }
 }
@@ -229,22 +204,25 @@ mod tests {
             .iter()
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
-        Guesser::<5>::from_word_set(WordSet { frequencies })
+        let ws = WordSet::new(frequencies);
+        Guesser::<5>::new(ws)
     }
 
     fn word(s: &str) -> Word<5> {
         Word::<5>::try_from(s).unwrap()
     }
 
-    fn history_of(guess_str: &str, target_str: &str) -> Vec<Guess<5>> {
+    fn make_guess(guess_str: &str, target_str: &str) -> Guess<5> {
         let guess_word = word(guess_str);
         let target_word = word(target_str);
-        let correctness = WordCorrectness::correct(target_word, guess_word);
-        vec![Guess::new(guess_word, correctness)]
+        Guess::new(
+            guess_word,
+            WordCorrectness::correct(target_word, guess_word),
+        )
     }
 
     #[test]
-    fn next_guess_returns_dictionary_member() {
+    fn suggest_no_prior_guesses_returns_word() {
         let all_words = ["crane", "stare", "light", "mount", "swipe"];
         let mut g = make_guesser(&[
             ("crane", 300),
@@ -253,15 +231,34 @@ mod tests {
             ("mount", 75),
             ("swipe", 25),
         ]);
-        let next = g.next_guess(history_of("crane", "stare"));
+        let next = g.suggest().unwrap();
         assert!(
             all_words.iter().any(|&w| word(w) == next),
-            "next_guess returned {next}, which is not in the dictionary"
+            "suggest returned {next}, which is not in the dictionary"
         );
     }
 
     #[test]
-    fn next_guess_filters_impossible_words() {
+    fn suggest_returns_dictionary_member() {
+        let all_words = ["crane", "stare", "light", "mount", "swipe"];
+        let mut g = make_guesser(&[
+            ("crane", 300),
+            ("stare", 200),
+            ("light", 100),
+            ("mount", 75),
+            ("swipe", 25),
+        ]);
+        g.push_guess(make_guess("crane", "stare"));
+        let next = g.suggest().unwrap();
+        assert!(
+            all_words.iter().any(|&w| word(w) == next),
+            "suggest returned {next}, which is not in the dictionary"
+        );
+    }
+
+    //? this test might fail if we allow "impossible" words in the future for valuable information gain
+    #[test]
+    fn suggest_filters_impossible_words() {
         // words inconsistent with the last guess's correctness pattern are removed from the dictionary
         let mut g = make_guesser(&[
             ("crane", 100),
@@ -269,7 +266,8 @@ mod tests {
             ("craze", 100),
             ("graze", 100),
         ]);
-        let next = g.next_guess(history_of("crane", "crave"));
+        g.push_guess(make_guess("crane", "crave"));
+        let next = g.suggest().unwrap();
         let valid = [word("crave"), word("craze")];
         assert!(
             valid.contains(&next),
@@ -278,9 +276,19 @@ mod tests {
     }
 
     #[test]
-    fn next_guess_single_word() {
+    fn suggest_single_word() {
         let mut g = make_guesser(&[("crane", 100), ("crave", 200), ("graze", 100)]);
-        let next = g.next_guess(history_of("crane", "crave"));
+        g.push_guess(make_guess("crane", "crave"));
+        let next = g.suggest().unwrap();
         assert_eq!(next, word("crave"));
+    }
+
+    #[test]
+    fn suggest_exhausted_dictionary_returns_none() {
+        let mut g = make_guesser(&[("crane", 100), ("stare", 100)]);
+        // push a guess where the target matches neither word's pattern
+        let impossible = Guess::new(word("crane"), WordCorrectness::absent());
+        g.push_guess(impossible);
+        assert_eq!(g.suggest(), None);
     }
 }

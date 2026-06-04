@@ -93,7 +93,7 @@ fn read<const N: usize>(
         };
         frequencies.insert(word, freq);
     }
-    Ok(WordSet { frequencies })
+    Ok(WordSet::new(frequencies))
 }
 
 fn write_length(

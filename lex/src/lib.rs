@@ -37,7 +37,8 @@ configure_word_length_bounds!(3, 10);
 
 pub fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
     // TODO: add word selection strategies (e.g. random, most/least frequent, etc.) instead of just taking the first n words
-    let words = lex_data::blocking::get::<N>(&args.data_dir, args.lang, args.num_games)?.words();
+    let word_set = lex_data::blocking::get::<N>(&args.data_dir, args.lang, args.num_games)?;
+    let words = word_set.words();
     let num_words = words.len();
 
     log::info!(
@@ -49,7 +50,7 @@ pub fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
 
     let mut results = Vec::new();
     for word in words {
-        let result = play(word, &args.data_dir, args.lang, args.dictionary_length)?;
+        let result = play(word, &word_set)?;
         log::debug!("{}: {}", result.word(), result.num_guesses());
         results.push(result);
     }
