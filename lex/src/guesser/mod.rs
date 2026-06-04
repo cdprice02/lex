@@ -73,9 +73,9 @@ impl<const N: usize> Guesser<N> {
         let candidates = self.word_set.words();
 
         let mut best_i = 0;
-        let mut best_score = guess_entropy(&candidates[0], self.history.last(), &probabilities);
+        let mut best_score = guess_entropy(&candidates[0], &probabilities);
         for i in 1..candidates.len() {
-            let score = guess_entropy(&candidates[i], self.history.last(), &probabilities);
+            let score = guess_entropy(&candidates[i], &probabilities);
             log::trace!("{}: {}", candidates[i], score);
             if score > best_score {
                 log::debug!(
@@ -94,29 +94,20 @@ impl<const N: usize> Guesser<N> {
 }
 
 #[optimize(speed)]
-fn guess_entropy<const N: usize>(
-    guess: &Word<N>,
-    previous_guess: Option<&Guess<N>>,
-    probabilities: &HashMap<Word<N>, f64>,
-) -> f64 {
-    let mut entropy = 0.0;
-    let patterns: Vec<_> = match previous_guess {
-        None => WordCorrectness::<N>::all_possible().collect(),
-        Some(prev) => WordCorrectness::<N>::all_possible_from(prev.correctness()).collect(),
-    };
-    for pattern in patterns {
-        let mut p = 0.0;
-        for (word, &prob) in probabilities {
-            if WordCorrectness::correct(*word, *guess) == pattern {
-                p += prob;
-            }
-        }
-        if p > 0.0 {
-            entropy += p * p.log2();
-        }
+fn guess_entropy<const N: usize>(guess: &Word<N>, probabilities: &HashMap<Word<N>, f64>) -> f64 {
+    let mut pattern_probs: HashMap<WordCorrectness<N>, f64> = WordCorrectness::<N>::all_possible()
+        .map(|p| (p, 0.0))
+        .collect();
+    for (word, &prob) in probabilities {
+        *pattern_probs
+            .get_mut(&WordCorrectness::correct(*word, *guess))
+            .expect("pattern not in pre-allocated map") += prob;
     }
-
-    -entropy
+    -pattern_probs
+        .values()
+        .filter(|&&p| p > 0.0)
+        .map(|&p| p * p.log2())
+        .sum::<f64>()
 }
 
 #[cfg(test)]
@@ -158,11 +149,9 @@ mod benches {
     fn guess_entropy_10_words(b: &mut Bencher) {
         let pairs = make_wordset(10);
         let guess = pairs[0].0;
-        let first_correctness = WordCorrectness::absent();
-        let last_guess = Guess::new(guess, first_correctness);
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
         let probabilities = WordSet::new(frequencies).probabilities();
-        b.iter(|| black_box(guess_entropy(&guess, Some(&last_guess), &probabilities)));
+        b.iter(|| black_box(guess_entropy(&guess, &probabilities)));
     }
 
     #[bench]

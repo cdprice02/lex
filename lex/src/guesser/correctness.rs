@@ -65,17 +65,6 @@ impl<const N: usize> WordCorrectness<N> {
         }
     }
 
-    // TODO: re-explore options for this generation
-    pub fn all_possible_from(prev: Self) -> impl Iterator<Item = Self> {
-        Self::all_possible().filter(move |pattern| {
-            pattern
-                .0
-                .iter()
-                .zip(prev.0.iter())
-                .all(|(p, prev_p)| *prev_p != Correctness::Correct || *p == Correctness::Correct)
-        })
-    }
-
     pub fn absent() -> Self {
         Self([Correctness::Absent; N])
     }
@@ -283,21 +272,6 @@ mod tests {
     }
 
     #[test]
-    fn all_possible_from_preserves_correct() {
-        // pos 0 is Correct in prev; every pattern from all_possible_from must have pos 0 Correct.
-        let prev = WordCorrectness([
-            Correctness::Correct,
-            Correctness::Absent,
-            Correctness::Absent,
-            Correctness::Absent,
-            Correctness::Absent,
-        ]);
-        let patterns: Vec<_> = WordCorrectness::<5>::all_possible_from(prev).collect();
-        assert_eq!(patterns.len(), 81); // 3^4 — pos 0 fixed
-        assert!(patterns.iter().all(|p| p[0] == Correctness::Correct));
-    }
-
-    #[test]
     fn duplicate_in_word_extra_absent() {
         // both 'a's in the word are exactly matched, leaving no pool for the third 'a' in guess
         let word = Word::try_from("aabcd").unwrap();
@@ -348,26 +322,5 @@ mod prop_tests {
             );
         }
 
-        #[test]
-        fn all_possible_from_maintains_correct_positions(
-            vals in proptest::collection::vec(0usize..3, 5)
-        ) {
-            let variants = [Correctness::Absent, Correctness::Misplaced, Correctness::Correct];
-            let prev = WordCorrectness([
-                variants[vals[0]],
-                variants[vals[1]],
-                variants[vals[2]],
-                variants[vals[3]],
-                variants[vals[4]],
-            ]);
-            for pattern in WordCorrectness::<5>::all_possible_from(prev) {
-                for (i, (&p, &prev_p)) in pattern.iter().zip(prev.iter()).enumerate() {
-                    prop_assert!(
-                        prev_p != Correctness::Correct || p == Correctness::Correct,
-                        "position {i}: prev was Correct but pattern has {p:?}"
-                    );
-                }
-            }
-        }
     }
 }
