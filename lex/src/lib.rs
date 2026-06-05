@@ -11,6 +11,8 @@ pub mod guesser;
 
 use cli::Args;
 use game::play;
+use guesser::correctness::WordCorrectness;
+use guesser::{Guess, Guesser};
 
 macro_rules! configure_word_length_bounds {
     ($min:literal, $max:literal) => {
@@ -52,9 +54,20 @@ pub fn run<const N: usize>(args: &Args) -> anyhow::Result<()> {
         args.lang
     );
 
+    //* IMPORTANT: this relies on Guesser being deterministic — the same word_set always
+    //* produces the same first suggestion. If Guesser ever introduces randomness or
+    //* word-dependent state, this cache must be removed.
+    let first_guess = Guesser::new(word_set.clone())
+        .suggest()
+        .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
+
     let mut results = Vec::new();
     for &word in word_set.words().iter().cycle().take(num_games) {
-        let result = play(word, &word_set)?;
+        let history = vec![Guess::new(
+            first_guess,
+            WordCorrectness::correct(word, first_guess),
+        )];
+        let result = play(word, &word_set, history)?;
         log::debug!("{}: {}", result.word(), result.num_guesses());
         results.push(result);
     }

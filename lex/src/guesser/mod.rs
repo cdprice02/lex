@@ -43,6 +43,14 @@ impl<const N: usize> Guesser<N> {
         }
     }
 
+    pub fn with_history(word_set: WordSet<N>, history: Vec<Guess<N>>) -> Self {
+        let mut guesser = Self::new(word_set);
+        for guess in history {
+            guesser.push_guess(guess);
+        }
+        guesser
+    }
+
     pub fn history(&self) -> &[Guess<N>] {
         &self.history
     }

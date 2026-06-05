@@ -19,10 +19,25 @@ impl<const N: usize> GameResult<N> {
     }
 }
 
-pub fn play<const N: usize>(word: Word<N>, word_set: &WordSet<N>) -> anyhow::Result<GameResult<N>> {
-    let mut guesser = Guesser::new(word_set.clone());
+pub fn play<const N: usize>(
+    word: Word<N>,
+    word_set: &WordSet<N>,
+    history: Vec<Guess<N>>,
+) -> anyhow::Result<GameResult<N>> {
+    let mut guesser = Guesser::with_history(word_set.clone(), history);
 
-    let mut guess_num = 1;
+    if guesser
+        .history()
+        .last()
+        .is_some_and(|g| g.correctness().is_correct())
+    {
+        return Ok(GameResult {
+            word,
+            guesses: guesser.history().to_vec(),
+        });
+    }
+
+    let mut guess_num = guesser.history().len() + 1;
     loop {
         let suggestion = guesser
             .suggest()
