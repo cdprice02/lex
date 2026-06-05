@@ -9,6 +9,10 @@ pub enum Correctness {
     Correct,
 }
 
+impl Correctness {
+    pub const COUNT: usize = std::mem::variant_count::<Self>();
+}
+
 impl std::fmt::Display for Correctness {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let symbol = match self {
@@ -20,7 +24,7 @@ impl std::fmt::Display for Correctness {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
 impl<const N: usize> std::ops::Deref for WordCorrectness<N> {
@@ -38,31 +42,11 @@ impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
 }
 
 impl<const N: usize> WordCorrectness<N> {
-    pub fn all_possible() -> impl Iterator<Item = Self> {
-        gen {
-            const VARIANTS: [Correctness; 3] = [
-                Correctness::Absent,
-                Correctness::Misplaced,
-                Correctness::Correct,
-            ];
-            let mut indices = [0usize; N];
-            loop {
-                yield Self(indices.map(|i| VARIANTS[i]));
-                // increment mixed-radix counter (base 3, N digits, rightmost first)
-                let mut pos = N;
-                loop {
-                    if pos == 0 {
-                        return;
-                    }
-                    pos -= 1;
-                    indices[pos] += 1;
-                    if indices[pos] < 3 {
-                        break;
-                    }
-                    indices[pos] = 0;
-                }
-            }
-        }
+    pub const COUNT: usize = Correctness::COUNT.pow(N as u32);
+
+    pub fn ordinal(&self) -> usize {
+        self.iter()
+            .fold(0, |acc, &c| acc * Correctness::COUNT + c as usize)
     }
 
     pub fn absent() -> Self {
@@ -153,11 +137,6 @@ mod benches {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("crate").unwrap();
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
-    }
-
-    #[bench]
-    fn all_possible_5_collect(b: &mut Bencher) {
-        b.iter(|| black_box(WordCorrectness::<5>::all_possible().collect::<Vec<_>>()));
     }
 }
 
@@ -267,8 +246,8 @@ mod tests {
     }
 
     #[test]
-    fn all_possible_count() {
-        assert_eq!(WordCorrectness::<5>::all_possible().count(), 243); // 3^5
+    fn count_is_base_to_the_n() {
+        assert_eq!(WordCorrectness::<5>::COUNT, 243); // 3^5
     }
 
     #[test]
@@ -302,6 +281,28 @@ mod tests {
                 Correctness::Absent,
                 Correctness::Correct,
             ])
+        );
+    }
+
+    #[test]
+    fn ordinal_boundary_values() {
+        // all-absent = 0; all-correct = COUNT-1 (both digits at extreme of base-B)
+        assert_eq!(WordCorrectness::<5>::absent().ordinal(), 0);
+        assert_eq!(
+            WordCorrectness([Correctness::Correct; 5]).ordinal(),
+            WordCorrectness::<5>::COUNT - 1
+        );
+        // [Correct, Absent×4] = 2 * 3^4 = 162 (big-endian, position 0 is MSB)
+        assert_eq!(
+            WordCorrectness([
+                Correctness::Correct,
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Absent,
+                Correctness::Absent,
+            ])
+            .ordinal(),
+            162
         );
     }
 }

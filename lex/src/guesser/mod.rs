@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::cell::RefCell;
 use std::hint::cold_path;
 
 use lex_data::Word;
@@ -48,22 +48,14 @@ impl<const N: usize> Guesser<N> {
     }
 
     pub fn push_guess(&mut self, guess: Guess<N>) {
+        let word = guess.word();
+        let target_ordinal = guess.correctness().ordinal();
+        self.word_set
+            .retain(|w| WordCorrectness::correct(*w, word).ordinal() == target_ordinal);
         self.history.push(guess);
     }
 
-    pub fn suggest(&mut self) -> Option<Word<N>> {
-        if self.word_set.is_empty() {
-            cold_path();
-            return None;
-        }
-
-        if let Some(last) = self.history.last() {
-            let last_word = last.word();
-            let last_correctness = last.correctness();
-            self.word_set
-                .retain(|w| WordCorrectness::correct(*w, last_word) == last_correctness);
-        }
-
+    pub fn suggest(&self) -> Option<Word<N>> {
         if self.word_set.is_empty() {
             cold_path();
             return None;
@@ -94,20 +86,25 @@ impl<const N: usize> Guesser<N> {
 
 #[optimize(speed)]
 fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 {
-    let mut pattern_probs: HashMap<WordCorrectness<N>, f64> = WordCorrectness::<N>::all_possible()
-        .map(|p| (p, 0.0))
-        .collect();
-    for (word, prob) in word_set.word_probs() {
-        log::trace!("{}: {}", word, prob);
-        *pattern_probs
-            .get_mut(&WordCorrectness::correct(word, *guess))
-            .expect("pattern not in pre-allocated map") += prob;
+    thread_local! {
+        static PATTERN_PROBS: RefCell<Vec<f64>> = const { RefCell::new(Vec::new()) };
     }
-    -pattern_probs
-        .values()
-        .filter(|&&p| p > 0.0)
-        .map(|&p| p * p.log2())
-        .sum::<f64>()
+    PATTERN_PROBS.with(|probs| {
+        let mut probs = probs.borrow_mut();
+        if probs.is_empty() {
+            *probs = vec![0.0; WordCorrectness::<N>::COUNT];
+        } else {
+            probs.fill(0.0);
+        }
+        for (word, prob) in word_set.word_probs() {
+            log::trace!("{}: {}", word, prob);
+            probs[WordCorrectness::correct(word, *guess).ordinal()] += prob;
+        }
+        -probs.iter().fold(
+            0.0_f64,
+            |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
+        )
+    })
 }
 
 #[cfg(test)]
@@ -213,7 +210,7 @@ mod tests {
     #[test]
     fn suggest_no_prior_guesses_returns_word() {
         let all_words = ["crane", "stare", "light", "mount", "swipe"];
-        let mut g = make_guesser(&[
+        let g = make_guesser(&[
             ("crane", 300),
             ("stare", 200),
             ("light", 100),
@@ -279,5 +276,36 @@ mod tests {
         let impossible = Guess::new(word("crane"), WordCorrectness::absent());
         g.push_guess(impossible);
         assert_eq!(g.suggest(), None);
+    }
+
+    #[test]
+    fn cumulative_filter_across_two_guesses() {
+        // Verifies that push_guess applies each constraint immediately, so two pushes without
+        // an intervening suggest() correctly narrow the candidate set by both constraints.
+        let mut g = make_guesser(&[
+            ("crane", 100),
+            ("crave", 100),
+            ("craze", 100),
+            ("graze", 100),
+            ("trace", 100),
+        ]);
+        g.push_guess(make_guess("crane", "crave"));
+        g.push_guess(make_guess("craze", "crave"));
+        assert_eq!(g.suggest().unwrap(), word("crave"));
+    }
+
+    proptest::proptest! {
+        #[test]
+        fn target_always_survives_filter(target in "[a-z]{5}", guess_str in "[a-z]{5}") {
+            let target_word = Word::<5>::try_from(target.as_str()).unwrap();
+            let guess_word = Word::<5>::try_from(guess_str.as_str()).unwrap();
+            let feedback = WordCorrectness::correct(target_word, guess_word);
+
+            let mut g = make_guesser(&[(target.as_str(), 100)]);
+            g.push_guess(Guess::new(guess_word, feedback));
+
+            // correct(target, guess) == feedback by construction -> target always passes its own filter
+            proptest::prop_assert_eq!(g.suggest(), Some(target_word));
+        }
     }
 }
