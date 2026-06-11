@@ -26,6 +26,15 @@ pub fn play<const N: usize>(
 ) -> anyhow::Result<GameResult<N>> {
     let mut guesser = Guesser::with_history(word_set.clone(), history);
 
+    for (i, guess) in guesser.history().iter().enumerate() {
+        log::info!(
+            "Guess {}: {} -> {}",
+            i + 1,
+            guess.word(),
+            guess.correctness()
+        );
+    }
+
     if guesser
         .history()
         .last()

@@ -3,14 +3,13 @@ cargo-features = ["profile-rustflags"]
 [workspace]
 resolver = "3"
 
-members = ["lex", "lex-data"]
+members = ["lex-core", "lex-cli", "lex-data"]
 
 [workspace.dependencies]
 anyhow = "1"
 clap = { version = "4.6", features = ["derive"] }
 log = "0.4"
 proptest = "1"
-seq-macro = "0.3"
 strum = { version = "0.26", features = ["derive"] }
 thiserror = "2.0"
 

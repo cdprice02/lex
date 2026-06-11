@@ -1,15 +1,12 @@
 [package]
-name = "lex"
+name = "lex-core"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 anyhow = { workspace = true }
-clap = { workspace = true }
-env_logger = "0.11"
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
-seq-macro = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
@@ -17,6 +14,3 @@ proptest = { workspace = true }
 
 [lib]
 name = "lex_core"
-
-[[bin]]
-name = "lex"

@@ -18,3 +18,6 @@ pub use cache::{cache_path, get, invalidate, put};
 pub use error::LexDataError;
 pub use language::Language;
 pub use word::{Word, WordSet};
+
+pub const MIN_WORD_LENGTH: usize = 3;
+pub const MAX_WORD_LENGTH: usize = 10;

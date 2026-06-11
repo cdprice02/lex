@@ -1,10 +1,9 @@
 use std::path::PathBuf;
 
-use crate::MAX_WORD_LENGTH;
-use crate::MIN_WORD_LENGTH;
-use crate::error::LexError;
 use clap::Parser;
+use lex_core::error::LexError;
 use lex_data::Language;
+use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
 // TODO: implement subcommands for different modes (e.g. interactive mode, simulation mode, etc.)
 // TODO: implement subcommands for listing words, frequencies, etc. for debugging and exploration purposes

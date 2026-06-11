@@ -688,16 +688,26 @@ dependencies = [
 ]
 
 [[package]]
-name = "lex"
+name = "lex-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
  "env_logger",
+ "lex-core",
+ "lex-data",
+ "log",
+ "seq-macro",
+]
+
+[[package]]
+name = "lex-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
  "lex-data",
  "log",
  "proptest",
- "seq-macro",
  "thiserror",
 ]
 
