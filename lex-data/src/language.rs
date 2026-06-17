@@ -1,6 +1,6 @@
 use strum::{Display, EnumString, VariantNames};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Display, EnumString, VariantNames)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantNames)]
 #[strum(ascii_case_insensitive)]
 pub enum Language {
     #[strum(to_string = "english", serialize = "english", serialize = "eng")]
@@ -18,7 +18,7 @@ pub enum Language {
 }
 
 impl Language {
-    /// Google Books Ngrams V3 URL slug and cache directory name (e.g. "eng", "fre").
+    /// Google Books Ngrams V3 URL slug and ngrams subdirectory name (e.g. "eng", "fre").
     pub fn lang_code(self) -> &'static str {
         match self {
             Language::English => "eng",
@@ -32,6 +32,8 @@ impl Language {
 
     /// ISO 639-1 two-character code used by KAIKKI.org Wiktionary extract URLs
     /// and the `lang_code` field in KAIKKI JSONL records (e.g. "en", "de").
+    /// Not systematically derivable from lang_code — German is "de" not "ge",
+    /// Spanish is "es" not "sp".
     pub fn iso_code(self) -> &'static str {
         match self {
             Language::English => "en",
@@ -43,7 +45,7 @@ impl Language {
         }
     }
 
-    /// Number of V3 shards for this language (confirmed against GCS).
+    /// Number of Google Books Ngrams V3 shards for this language (confirmed against GCS).
     pub fn shard_count(self) -> u32 {
         match self {
             Language::English => 24,
@@ -53,16 +55,5 @@ impl Language {
             Language::Italian => 2,
             Language::Russian => 2,
         }
-    }
-
-    /// Minimum corpus frequency for a word to be included in the cache.
-    /// Wiktionary cross-referencing is the primary validity filter; this floor
-    /// exists as a secondary gate. Returns 1 (keep all validated words).
-    pub fn min_frequency(self) -> u64 {
-        1
-    }
-
-    pub fn cache_dir(self) -> &'static str {
-        self.lang_code()
     }
 }

@@ -9,16 +9,17 @@ pub mod blocking;
 pub mod language;
 pub mod word;
 
-mod cache;
+mod data_dir;
 mod error;
-mod fetch;
+mod ngrams;
 mod parse;
+mod store;
 mod wiktionary;
 
-pub use cache::{cache_path, get, invalidate, put};
+pub use data_dir::DataDir;
 pub use error::LexDataError;
 pub use language::Language;
-pub use wiktionary::{DictMetadata, fetch_dict, load_metadata, load_valid_words};
+pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
 
 pub const MIN_WORD_LENGTH: usize = 3;

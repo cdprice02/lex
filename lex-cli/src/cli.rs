@@ -34,7 +34,7 @@ pub struct Args {
     pub lang: Language,
     #[arg(
         long,
-        default_value = "data/ngrams",
+        default_value = "data",
         help = "Directory containing cached word-frequency files"
     )]
     pub data_dir: PathBuf,

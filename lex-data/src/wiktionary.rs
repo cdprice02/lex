@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 use std::io::{BufWriter, Write};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 use anyhow::Context;
 use async_compression::tokio::bufread::GzipDecoder;
@@ -15,28 +15,45 @@ use crate::parse::{is_valid_word, normalize};
 // TODO: consider tracking data/dicts/ and data/ngrams/ with git-lfs once
 // the generated files are stable enough to commit to the repository.
 
+/// Metadata computed from a language's Wiktionary word list when it is first fetched.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictMetadata {
-    pub min_word_length: usize,
-    pub max_word_length: usize,
+    min_word_length: usize,
+    max_word_length: usize,
     pub word_count: usize,
 }
 
-pub(crate) fn dict_txt_path(data_dir: &Path, lang: Language) -> PathBuf {
+impl DictMetadata {
+    pub(crate) fn new(min: usize, max: usize, count: usize) -> Self {
+        Self {
+            min_word_length: min,
+            max_word_length: max,
+            word_count: count,
+        }
+    }
+
+    /// The range of word lengths attested in this language's Wiktionary word list.
+    pub fn word_length_range(&self) -> std::ops::RangeInclusive<usize> {
+        self.min_word_length..=self.max_word_length
+    }
+}
+
+pub(crate) fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     data_dir
         .join("dicts")
         .join(format!("{}.txt", lang.lang_code()))
 }
 
-fn dict_meta_path(data_dir: &Path, lang: Language) -> PathBuf {
+fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     data_dir
         .join("dicts")
         .join(format!("{}.meta.json", lang.lang_code()))
 }
 
 /// Downloads the KAIKKI Wiktionary extract for `lang`, extracts all valid headwords
-/// and inflected forms, and writes the sorted word list and metadata to `data_dir/dicts/`.
-pub async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
+/// and inflected forms (excluding proper nouns), and writes the sorted word list and
+/// metadata to `data_dir/dicts/`.
+pub(crate) async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
     let url = format!("https://kaikki.org/dictionary/downloads/{iso}/{iso}-extract.jsonl.gz");
     log::info!("Fetching Wiktionary dict for {} from {url}...", lang);
@@ -85,11 +102,7 @@ pub async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
         writeln!(writer, "{word}")?;
     }
 
-    let meta = DictMetadata {
-        min_word_length: min_len,
-        max_word_length: max_len,
-        word_count,
-    };
+    let meta = DictMetadata::new(min_len, max_len, word_count);
     std::fs::write(
         dict_meta_path(data_dir, lang),
         serde_json::to_string_pretty(&meta)?,
@@ -102,16 +115,16 @@ pub async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// Reads the cached word list for `lang` into a HashSet. Returns an error if the
-/// dict file does not exist — call `fetch_dict` first to populate it.
-pub fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
+/// Reads the cached Wiktionary word list for `lang` into a `HashSet`.
+/// Returns an error if the dict file does not exist — call `fetch_dict` first.
+pub(crate) fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
     let path = dict_txt_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
         .with_context(|| format!("reading dict for {lang} at {path:?}"))?;
     Ok(content.lines().map(str::to_owned).collect())
 }
 
-/// Reads the per-language metadata computed when the dict was last fetched.
+/// Reads the per-language metadata written when the dict was last fetched.
 pub fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
     let path = dict_meta_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
@@ -129,8 +142,6 @@ fn insert_word(set: &mut HashSet<String>, raw: &str) {
 #[derive(Deserialize)]
 struct WiktionaryEntry {
     word: String,
-    #[allow(dead_code)]
-    lang: String,
     lang_code: String,
     pos: Option<String>,
     #[serde(default)]

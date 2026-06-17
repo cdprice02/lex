@@ -12,13 +12,11 @@ use crate::parse::parse_ngram_line;
 
 const SHARD_CONCURRENCY: usize = 4;
 
-/// Downloads all V3 shards for `lang` with up to SHARD_CONCURRENCY in flight at once.
-/// Returns every word found, grouped by char count. On a cache miss, callers write all
-/// length buckets so future requests for any length of this language are served from disk
-/// without another fetch.
-pub(crate) async fn fetch_all(
-    lang: Language,
-) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
+/// Downloads all Google Books Ngrams V3 shards for `lang` with up to
+/// SHARD_CONCURRENCY requests in flight at once. Returns every word grouped by
+/// char count. Callers write all length buckets on a cache miss so future requests
+/// for any length of this language are served from disk.
+pub(crate) async fn fetch(lang: Language) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
     let n = lang.shard_count();
     let client = Arc::new(reqwest::Client::new());
 
@@ -31,13 +29,16 @@ pub(crate) async fn fetch_all(
                     lang.lang_code()
                 );
                 log::debug!("  [{}/{}] {url}", shard + 1, n);
-                fetch_shard(&client, &url).await.with_context(|| format!("fetching shard {shard} for {lang}"))
+                fetch_shard(&client, &url)
+                    .await
+                    .with_context(|| format!("fetching shard {shard} for {lang}"))
                 // TODO: retry with exponential backoff on transient failures
             }
         })
         .buffer_unordered(SHARD_CONCURRENCY)
         .try_collect()
-        .await.with_context(|| format!("fetching wordset for {lang}"))?;
+        .await
+        .with_context(|| format!("fetching ngrams for {lang}"))?;
 
     let mut by_length: HashMap<usize, HashMap<String, u64>> = HashMap::new();
     for shard_map in shard_maps {

@@ -33,7 +33,8 @@ macro_rules! configure_word_length_bounds {
 }
 
 pub fn simulate<const N: usize>(args: &Args) -> anyhow::Result<()> {
-    let word_set = lex_data::blocking::get::<N>(&args.data_dir, args.lang, args.dictionary_length)?;
+    let word_set = lex_data::blocking::DataDir::new(&args.data_dir)
+        .load::<N>(args.lang, args.dictionary_length)?;
     let num_games = args.num_games.unwrap_or(word_set.len());
     let dictionary_length = word_set.len();
     if dictionary_length < num_games {
