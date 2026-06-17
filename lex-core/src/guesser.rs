@@ -4,9 +4,7 @@ use std::hint::cold_path;
 use lex_data::Word;
 use lex_data::WordSet;
 
-pub mod correctness;
-
-pub use correctness::WordCorrectness;
+use crate::correctness::WordCorrectness;
 
 #[derive(Debug, Clone)]
 pub struct Guess<const N: usize> {
@@ -125,7 +123,6 @@ mod benches {
     use lex_data::{Word, WordSet};
 
     use super::*;
-    use crate::guesser::correctness::WordCorrectness;
 
     fn make_wordset(n: usize) -> Vec<(Word<5>, u64)> {
         (0..n)
@@ -191,7 +188,6 @@ mod tests {
     use lex_data::{Word, WordSet};
 
     use super::*;
-    use crate::guesser::correctness::WordCorrectness;
 
     fn make_guesser(pairs: &[(&str, u64)]) -> Guesser<5> {
         let frequencies = pairs

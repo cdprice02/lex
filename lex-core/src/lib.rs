@@ -4,6 +4,10 @@
 #![feature(non_exhaustive_omitted_patterns_lint)]
 #![warn(non_exhaustive_omitted_patterns)]
 
-pub mod error;
-pub mod game;
-pub mod guesser;
+mod correctness;
+mod game;
+mod guesser;
+
+pub use correctness::{Correctness, WordCorrectness};
+pub use game::{GameResult, play};
+pub use guesser::{Guess, Guesser};

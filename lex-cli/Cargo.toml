@@ -12,6 +12,7 @@ lex-core = { path = "../lex-core" }
 lex-data = { path = "../lex-data" }
 anyhow = { workspace = true }
 clap = { version = "4.6", features = ["derive"] }
+thiserror = { workspace = true }
 env_logger = "0.11"
 log = { workspace = true }
 seq-macro = "0.3"

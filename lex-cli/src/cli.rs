@@ -1,8 +1,9 @@
 use std::path::PathBuf;
 
 use clap::Parser;
-use lex_core::error::LexError;
 use lex_data::Language;
+
+use crate::error::CliError;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
 // TODO: implement subcommands for different modes (e.g. interactive mode, simulation mode, etc.)
@@ -45,7 +46,7 @@ fn parse_word_length(s: &str) -> anyhow::Result<usize> {
     if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&n) {
         Ok(n)
     } else {
-        Err(LexError::UnexpectedWordLength {
+        Err(CliError::InvalidWordLength {
             range: MIN_WORD_LENGTH..=MAX_WORD_LENGTH,
             got: n,
         }

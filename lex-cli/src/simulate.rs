@@ -4,8 +4,7 @@
 // A TUI is a separate crate rather than a feature flag here: it is an event loop with render
 // state and would share lex-core but nothing from lex-cli.
 
-use lex_core::game::play;
-use lex_core::guesser::{Guess, Guesser, WordCorrectness};
+use lex_core::{Guess, Guesser, WordCorrectness, play};
 
 use crate::cli::Args;
 

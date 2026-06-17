@@ -6,6 +6,7 @@ use clap::Parser;
 use cli::Args;
 
 mod cli;
+mod error;
 #[macro_use]
 mod simulate;
 

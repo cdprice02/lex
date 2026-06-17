@@ -7,7 +7,6 @@ edition = "2024"
 anyhow = { workspace = true }
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
-thiserror = { workspace = true }
 
 [dev-dependencies]
 proptest = { workspace = true }

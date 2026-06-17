@@ -698,6 +698,7 @@ dependencies = [
  "lex-data",
  "log",
  "seq-macro",
+ "thiserror",
 ]
 
 [[package]]
@@ -708,7 +709,6 @@ dependencies = [
  "lex-data",
  "log",
  "proptest",
- "thiserror",
 ]
 
 [[package]]

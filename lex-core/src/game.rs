@@ -1,7 +1,7 @@
 use lex_data::Word;
 use lex_data::WordSet;
 
-use crate::guesser::correctness::WordCorrectness;
+use crate::correctness::WordCorrectness;
 use crate::guesser::{Guess, Guesser};
 
 pub struct GameResult<const N: usize> {
@@ -12,6 +12,10 @@ pub struct GameResult<const N: usize> {
 impl<const N: usize> GameResult<N> {
     pub fn word(&self) -> Word<N> {
         self.word
+    }
+
+    pub fn guesses(&self) -> &[Guess<N>] {
+        &self.guesses
     }
 
     pub fn num_guesses(&self) -> usize {
@@ -26,13 +30,8 @@ pub fn play<const N: usize>(
 ) -> anyhow::Result<GameResult<N>> {
     let mut guesser = Guesser::with_history(word_set.clone(), history);
 
-    for (i, guess) in guesser.history().iter().enumerate() {
-        log::info!(
-            "Guess {}: {} -> {}",
-            i + 1,
-            guess.word(),
-            guess.correctness()
-        );
+    for (guess_num, guess) in guesser.history().iter().enumerate() {
+        log_guess(guess_num + 1, guess);
     }
 
     if guesser
@@ -54,7 +53,7 @@ pub fn play<const N: usize>(
 
         let correctness = WordCorrectness::correct(word, suggestion);
         let guess = Guess::new(suggestion, correctness);
-        log::info!("Guess {}: {} -> {}", guess_num, suggestion, correctness);
+        log_guess(guess_num, &guess);
 
         guesser.push_guess(guess);
 
@@ -69,4 +68,13 @@ pub fn play<const N: usize>(
         word,
         guesses: guesser.history().to_vec(),
     })
+}
+
+#[inline(always)]
+fn log_guess<const N: usize>(guess_num: usize, guess: &Guess<N>) {
+    log::info!(
+        "Guess {guess_num}: {} -> {}",
+        guess.word(),
+        guess.correctness()
+    );
 }
