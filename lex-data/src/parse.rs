@@ -26,7 +26,7 @@ pub fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
 
 /// Rejects multi-word ngrams, POS-tagged tokens (contain `_`),
 /// and any token with non-alphabetic characters.
-fn is_valid_word(s: &str) -> bool {
+pub(crate) fn is_valid_word(s: &str) -> bool {
     !s.contains([' ', '_']) && s.chars().all(|c| c.is_alphabetic())
 }
 
@@ -36,7 +36,7 @@ fn is_valid_word(s: &str) -> bool {
 ///  - Latin with diacritics: precomposed in NFC (combining class 0) → kept (e.g. é stays é)
 ///  - Cyrillic: single codepoints, unaffected
 ///  - Combining vowel marks (if any): stripped
-fn normalize(s: &str) -> String {
+pub(crate) fn normalize(s: &str) -> String {
     s.nfc()
         .filter(|&c| unicode_normalization::char::canonical_combining_class(c) == 0)
         .flat_map(|c| c.to_lowercase())

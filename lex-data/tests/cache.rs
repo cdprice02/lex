@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use lex_data::{Language, Word, WordSet};
 
@@ -14,6 +14,14 @@ fn toy_english_5() -> HashMap<usize, HashMap<String, u64>> {
     by_length
 }
 
+/// Returns a valid_words set that accepts every word in the toy corpus.
+fn all_valid() -> HashSet<String> {
+    ["crane", "stare", "light", "mount", "swipe", "ace"]
+        .iter()
+        .map(|s| s.to_string())
+        .collect()
+}
+
 #[test]
 fn cache_path_structure() {
     let base = std::path::Path::new("/tmp/lex_test");
@@ -26,7 +34,7 @@ fn put_read_roundtrip() {
     let dir = tempfile::tempdir().unwrap();
     let lang = Language::English;
 
-    lex_data::put(dir.path(), lang, &toy_english_5()).unwrap();
+    lex_data::put(dir.path(), lang, &toy_english_5(), &all_valid()).unwrap();
 
     let ws: WordSet<5> = lex_data::blocking::get(dir.path(), lang, None).unwrap();
     assert_eq!(ws.len(), 5);
@@ -41,11 +49,29 @@ fn put_read_roundtrip() {
 }
 
 #[test]
+fn put_filters_invalid_words() {
+    let dir = tempfile::tempdir().unwrap();
+    let lang = Language::English;
+
+    // valid_words excludes "swipe" — it should not appear in the cache
+    let valid: HashSet<String> = ["crane", "stare", "light", "mount"]
+        .iter()
+        .map(|s| s.to_string())
+        .collect();
+    lex_data::put(dir.path(), lang, &toy_english_5(), &valid).unwrap();
+
+    let ws: WordSet<5> = lex_data::blocking::get(dir.path(), lang, None).unwrap();
+    assert_eq!(ws.len(), 4);
+    assert!(!ws.contains(&Word::<5>::try_from("swipe").unwrap()));
+    assert!(ws.contains(&Word::<5>::try_from("crane").unwrap()));
+}
+
+#[test]
 fn read_respects_max() {
     let dir = tempfile::tempdir().unwrap();
     let lang = Language::English;
 
-    lex_data::put(dir.path(), lang, &toy_english_5()).unwrap();
+    lex_data::put(dir.path(), lang, &toy_english_5(), &all_valid()).unwrap();
 
     let ws: WordSet<5> = lex_data::blocking::get(dir.path(), lang, Some(2)).unwrap();
     assert_eq!(ws.len(), 2);
@@ -64,7 +90,7 @@ fn invalidate_file() {
     three.insert("ace".to_string(), 100u64);
     by_length.insert(3, three);
 
-    lex_data::put(dir.path(), lang, &by_length).unwrap();
+    lex_data::put(dir.path(), lang, &by_length, &all_valid()).unwrap();
 
     let five_path = lex_data::cache_path(dir.path(), lang, 5);
     let three_path = lex_data::cache_path(dir.path(), lang, 3);
@@ -81,7 +107,7 @@ fn invalidate_dir() {
     let dir = tempfile::tempdir().unwrap();
     let lang = Language::English;
 
-    lex_data::put(dir.path(), lang, &toy_english_5()).unwrap();
+    lex_data::put(dir.path(), lang, &toy_english_5(), &all_valid()).unwrap();
     let lang_dir = dir.path().join("eng");
     assert!(lang_dir.exists());
 

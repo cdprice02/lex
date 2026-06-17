@@ -13,10 +13,12 @@ mod cache;
 mod error;
 mod fetch;
 mod parse;
+mod wiktionary;
 
 pub use cache::{cache_path, get, invalidate, put};
 pub use error::LexDataError;
 pub use language::Language;
+pub use wiktionary::{DictMetadata, fetch_dict, load_metadata, load_valid_words};
 pub use word::{Word, WordSet};
 
 pub const MIN_WORD_LENGTH: usize = 3;

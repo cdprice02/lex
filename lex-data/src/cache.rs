@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::io::{BufRead, BufReader, Write};
 use std::path::{Path, PathBuf};
 
@@ -6,9 +6,8 @@ use anyhow::Context;
 
 use crate::fetch::fetch_all;
 use crate::language::Language;
+use crate::wiktionary;
 use crate::word::{Word, WordSet};
-
-const MIN_FREQUENCY: u64 = 1;
 
 pub fn cache_path(data_dir: &Path, lang: Language, n: usize) -> PathBuf {
     data_dir.join(lang.cache_dir()).join(format!("{n}.csv"))
@@ -26,14 +25,16 @@ pub async fn get<const N: usize>(
     read(data_dir, lang, max).with_context(|| format!("reading wordset for {lang}"))
 }
 
-/// Writes every length bucket returned by fetch_all to disk.
+/// Writes every length bucket returned by fetch_all to disk, filtering each word
+/// against `valid_words` (the Wiktionary-derived set for this language).
 pub fn put(
     data_dir: &Path,
     lang: Language,
     by_length: &HashMap<usize, HashMap<String, u64>>,
+    valid_words: &HashSet<String>,
 ) -> anyhow::Result<()> {
     for (&n, words) in by_length {
-        write_length(n, data_dir, lang, words)
+        write_length(n, data_dir, lang, words, valid_words)
             .with_context(|| format!("writing file for {lang} words of length {n}"))?;
     }
     Ok(())
@@ -56,9 +57,13 @@ pub fn invalidate(data_dir: &Path, lang: Language, n: Option<usize>) -> anyhow::
 
 async fn ensure(data_dir: &Path, lang: Language, n: usize) -> anyhow::Result<()> {
     if !cache_path(data_dir, lang, n).exists() {
+        if !wiktionary::dict_txt_path(data_dir, lang).exists() {
+            wiktionary::fetch_dict(lang, data_dir).await?;
+        }
+        let valid_words = wiktionary::load_valid_words(lang, data_dir)?;
         log::warn!("Cache miss — fetching full {} corpus...", lang);
         let by_length = fetch_all(lang).await?;
-        put(data_dir, lang, &by_length)?;
+        put(data_dir, lang, &by_length, &valid_words)?;
         log::info!(
             "Cached {} corpus ({} length buckets)",
             lang,
@@ -101,14 +106,16 @@ fn write_length(
     data_dir: &Path,
     lang: Language,
     words: &HashMap<String, u64>,
+    valid_words: &HashSet<String>,
 ) -> anyhow::Result<()> {
     // TODO: fixed-width binary format ([u32; N] chars + u64 freq = N*4+8 bytes/record)
     // once memmap2 is adopted for zero-parse, zero-allocation loading.
     let path = cache_path(data_dir, lang, n);
     std::fs::create_dir_all(path.parent().unwrap())?;
+    let min_freq = lang.min_frequency();
     let mut entries: Vec<(&str, u64)> = words
         .iter()
-        .filter(|(_, freq)| **freq >= MIN_FREQUENCY)
+        .filter(|(w, freq)| valid_words.contains(w.as_str()) && **freq >= min_freq)
         .map(|(w, f)| (w.as_str(), *f))
         .collect();
     entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));

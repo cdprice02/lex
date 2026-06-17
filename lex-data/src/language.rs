@@ -18,7 +18,7 @@ pub enum Language {
 }
 
 impl Language {
-    /// V3 URL slug and cache directory name (e.g. "eng", "fre").
+    /// Google Books Ngrams V3 URL slug and cache directory name (e.g. "eng", "fre").
     pub fn lang_code(self) -> &'static str {
         match self {
             Language::English => "eng",
@@ -27,6 +27,19 @@ impl Language {
             Language::Spanish => "spa",
             Language::Italian => "ita",
             Language::Russian => "rus",
+        }
+    }
+
+    /// ISO 639-1 two-character code used by KAIKKI.org Wiktionary extract URLs
+    /// and the `lang_code` field in KAIKKI JSONL records (e.g. "en", "de").
+    pub fn iso_code(self) -> &'static str {
+        match self {
+            Language::English => "en",
+            Language::French => "fr",
+            Language::German => "de",
+            Language::Spanish => "es",
+            Language::Italian => "it",
+            Language::Russian => "ru",
         }
     }
 
@@ -40,6 +53,13 @@ impl Language {
             Language::Italian => 2,
             Language::Russian => 2,
         }
+    }
+
+    /// Minimum corpus frequency for a word to be included in the cache.
+    /// Wiktionary cross-referencing is the primary validity filter; this floor
+    /// exists as a secondary gate. Returns 1 (keep all validated words).
+    pub fn min_frequency(self) -> u64 {
+        1
     }
 
     pub fn cache_dir(self) -> &'static str {
