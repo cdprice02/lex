@@ -32,7 +32,8 @@ pub(crate) async fn fetch(lang: Language) -> anyhow::Result<HashMap<usize, HashM
                 fetch_shard(&client, &url)
                     .await
                     .with_context(|| format!("fetching shard {shard} for {lang}"))
-                // TODO: retry with exponential backoff on transient failures
+                // TODO(.tasks/07-pipeline-sync.md): retry with exponential backoff + jitter;
+                // lands with the sync rewrite
             }
         })
         .buffer_unordered(SHARD_CONCURRENCY)

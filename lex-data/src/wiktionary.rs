@@ -12,9 +12,6 @@ use tokio_util::io::StreamReader;
 use crate::language::Language;
 use crate::parse::{is_valid_word, normalize};
 
-// TODO: consider tracking data/dicts/ and data/ngrams/ with git-lfs once
-// the generated files are stable enough to commit to the repository.
-
 /// Metadata computed from a language's Wiktionary word list when it is first fetched.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictMetadata {

@@ -35,4 +35,4 @@ Buffer reset is selective: only positions written in pass 1 are zeroed, avoiding
 
 ## TODO
 
-- `guesser.rs`: when a second strategy is needed, extract a `GuesserStrategy` trait — current `push_guess` + `suggest` signatures are already trait-compatible.
+- `guesser.rs`: the strategy abstraction lands with unconstrained guessing (`.tasks/05-strategy.md`) — immutable guess pool + shrinking candidate set weighted by an answer prior. The prior (temperature softmax) moves here from `lex-data` in the same change.

@@ -26,8 +26,9 @@ impl<const N: usize> Guess<N> {
     }
 }
 
-// TODO: when a second strategy is needed, extract a GuesserStrategy trait from this API —
-// the current method signatures are trait-compatible (push_guess + suggest).
+// TODO(.tasks/05-strategy.md): extract the strategy abstraction together with unconstrained
+// guessing — immutable guess pool + shrinking candidate set weighted by an answer prior;
+// tie-break equal scores in favor of words still in the candidate set.
 pub struct Guesser<const N: usize> {
     word_set: WordSet<N>,
     history: Vec<Guess<N>>,

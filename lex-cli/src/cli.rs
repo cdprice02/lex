@@ -6,9 +6,8 @@ use lex_data::Language;
 use crate::error::CliError;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
-// TODO: implement subcommands for different modes (e.g. interactive mode, simulation mode, etc.)
-// TODO: implement subcommands for listing words, frequencies, etc. for debugging and exploration purposes
-// TODO: implement subcommands for listing options of parameters like language, word length, etc.
+// TODO(.tasks/01-assist-mode.md): split into subcommands — simulate (default) | assist,
+// with a dict inspection subcommand later (ROADMAP.md "Unscheduled").
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 pub struct Args {

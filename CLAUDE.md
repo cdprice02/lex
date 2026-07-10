@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`lex` is a Wordle solver CLI that runs simulations against the Google Books Ngrams V3 corpus. It picks guesses by maximizing Shannon entropy over the remaining candidate word set. Words are filtered against Wiktionary extracts so every candidate is a real dictionary word.
+`lex` is a Wordle solver CLI that runs simulations against the Google Books Ngrams V3 corpus. It picks guesses by maximizing Shannon entropy over the remaining candidate word set. Words are filtered against Wiktionary extracts so every candidate is a real dictionary word. It is a generic solver: any supported (language, word length) pair, with no English-only or 5-letter-only assumptions.
+
+The ordered implementation path, standing decisions, and per-phase task briefs live in `ROADMAP.md` and `.tasks/`.
 
 ## Commands
 
@@ -46,9 +48,8 @@ Toolchain options:
 lex-data/     — corpus acquisition, Wiktionary validation, word types (crate: lex-data)
 lex-core/     — entropy-based solver library and types (crate: lex_core)
 lex-cli/      — simulation CLI, binary: lex (crate: lex_cli)
-viz/          — Python/Jupyter notebook for exploratory analysis (uv-managed)
 data/         — on-disk cache (created at runtime, not committed)
-  ngrams/     —   Google Books Ngrams CSVs: data/ngrams/{lang_code}/{N}.csv
+  ngrams/     —   binary ngrams caches: data/ngrams/{lang_code}/{N}.bin
   dicts/      —   Wiktionary word lists: data/dicts/{lang_code}.txt + .meta.json
 ```
 
