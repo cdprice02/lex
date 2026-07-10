@@ -1,5 +1,11 @@
 # lex
 
+[![lint](https://github.com/cdprice02/lex/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/cdprice02/lex/actions/workflows/lint.yml)
+[![test](https://github.com/cdprice02/lex/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/cdprice02/lex/actions/workflows/test.yml)
+[![docs](https://github.com/cdprice02/lex/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/cdprice02/lex/actions/workflows/docs.yml)
+[![rustc: nightly](https://img.shields.io/badge/rustc-nightly-orange.svg)](rust-toolchain.toml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 An entropy-based Wordle solver. Simulates games against the [Google Books Ngrams V3](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html) corpus, cross-referenced with [Wiktionary](https://kaikki.org) to keep only real dictionary words. Picks each guess by maximizing Shannon entropy over the remaining candidate set.
 
 ## Quick start
