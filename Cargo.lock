@@ -697,7 +697,6 @@ dependencies = [
  "lex-core",
  "lex-data",
  "log",
- "seq-macro",
  "thiserror",
 ]
 
@@ -722,6 +721,7 @@ dependencies = [
  "memmap2",
  "proptest",
  "reqwest",
+ "seq-macro",
  "serde",
  "serde_json",
  "strum",

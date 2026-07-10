@@ -24,20 +24,26 @@ direnv allow
 Then build and run:
 
 ```bash
-cargo run --release -- -l 5 --lang english -n 100
+cargo run --release -- simulate -l 5 --lang english -n 100   # batch simulation
+cargo run --release -- assist -l 5                           # assist a live game
 ```
 
 The first run for a language downloads its Wiktionary word list and all Google Books Ngrams shards, then caches everything to `data/`. Subsequent runs are fully offline.
 
-## CLI flags
+## CLI
+
+Two subcommands: `simulate` (batch games, average guess count) and `assist`
+(interactive helper for a live Wordle — suggests guesses, you enter the
+feedback as letters `gyx`, digits `210`, or pasted emoji).
 
 | Flag | Default | Description |
 |---|---|---|
 | `-l` / `--word-length` | `5` | Word length (3–10) |
 | `--dictionary-length` | all | Cap the candidate dictionary size |
-| `-n` / `--num-games` | all | Number of games to simulate |
 | `--lang` | `english` | Language corpus (see below) |
 | `--data-dir` | `data` | Directory for cached word-frequency files |
+| `-n` / `--num-games` | all | (simulate) Number of games |
+| `-s` / `--suggestions` | `5` | (assist) Suggestions shown per turn |
 
 ## Languages
 

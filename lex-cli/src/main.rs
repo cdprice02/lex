@@ -1,18 +1,23 @@
 use clap::Parser;
 
-use cli::Args;
+use assist::assist;
+use cli::{Cli, Command};
+use simulate::simulate;
 
+mod assist;
 mod cli;
 mod error;
-#[macro_use]
 mod simulate;
-
-configure_word_length_bounds!(3, 10);
 
 fn main() -> anyhow::Result<()> {
     env_logger::init();
 
-    let args = Args::parse();
-
-    match_word_length_run!(&args)
+    match Cli::parse().command {
+        Command::Simulate(args) => {
+            lex_data::match_word_length!(simulate, args.common.word_length, &args)
+        }
+        Command::Assist(args) => {
+            lex_data::match_word_length!(assist, args.common.word_length, &args)
+        }
+    }
 }

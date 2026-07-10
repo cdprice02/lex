@@ -17,6 +17,7 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `word.rs` | `Word<N>`, `WordSet<N>`, `RawRecord<'a, N>` (zero-copy binary record view) |
 | `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
 | `error.rs` | `LexDataError` |
+| `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=10; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
 
 ## Data layout
 

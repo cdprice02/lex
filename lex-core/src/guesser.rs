@@ -62,6 +62,26 @@ impl<const N: usize> Guesser<N> {
         self.history.push(guess);
     }
 
+    /// Number of candidate words still consistent with the pushed guesses.
+    pub fn num_candidates(&self) -> usize {
+        self.word_set.len()
+    }
+
+    /// The `k` most informative candidates with their entropy scores (bits),
+    /// sorted descending. Ties keep frequency-descending order, so the first
+    /// element always agrees with [`suggest`](Self::suggest).
+    pub fn suggest_top_k(&self, k: usize) -> Vec<(Word<N>, f64)> {
+        let mut scored: Vec<(Word<N>, f64)> = self
+            .word_set
+            .words()
+            .map(|candidate| (candidate, guess_entropy(&candidate, &self.word_set)))
+            .collect();
+        // stable sort: equal scores keep frequency-descending iteration order
+        scored.sort_by(|a, b| b.1.partial_cmp(&a.1).expect("entropy scores are finite"));
+        scored.truncate(k);
+        scored
+    }
+
     pub fn suggest(&self) -> Option<Word<N>> {
         if self.word_set.is_empty() {
             cold_path();
@@ -101,7 +121,8 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 
             log::trace!("{}: {}", word, prob);
             probs[WordCorrectness::correct(word, *guess).ordinal()] += prob;
         }
-        -probs.iter().fold(
+        // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
+        0.0 - probs.iter().fold(
             0.0_f64,
             |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
         )
@@ -291,6 +312,44 @@ mod tests {
         g.push_guess(make_guess("crane", "crave"));
         g.push_guess(make_guess("craze", "crave"));
         assert_eq!(g.suggest().unwrap(), word("crave"));
+    }
+
+    #[test]
+    fn top_k_first_matches_suggest() {
+        let mut g = make_guesser(&[
+            ("crane", 300),
+            ("stare", 200),
+            ("light", 100),
+            ("mount", 75),
+            ("swipe", 25),
+        ]);
+        g.push_guess(make_guess("crane", "stare"));
+        let top = g.suggest_top_k(3);
+        assert_eq!(top[0].0, g.suggest().unwrap());
+    }
+
+    #[test]
+    fn top_k_sorted_descending_and_clamped() {
+        let g = make_guesser(&[
+            ("crane", 300),
+            ("stare", 200),
+            ("light", 100),
+            ("mount", 75),
+            ("swipe", 25),
+        ]);
+        let top = g.suggest_top_k(10);
+        assert_eq!(top.len(), 5, "k larger than candidate count clamps");
+        assert!(
+            top.windows(2).all(|w| w[0].1 >= w[1].1),
+            "scores must be sorted descending"
+        );
+    }
+
+    #[test]
+    fn top_k_empty_set_returns_empty() {
+        let mut g = make_guesser(&[("crane", 100), ("stare", 100)]);
+        g.push_guess(Guess::new(word("crane"), WordCorrectness::absent()));
+        assert!(g.suggest_top_k(3).is_empty());
     }
 
     proptest::proptest! {

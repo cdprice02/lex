@@ -1,16 +1,29 @@
 use std::path::PathBuf;
 
-use clap::Parser;
+use clap::{Parser, Subcommand};
 use lex_data::Language;
 
 use crate::error::CliError;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
-// TODO(.tasks/01-assist-mode.md): split into subcommands — simulate (default) | assist,
-// with a dict inspection subcommand later (ROADMAP.md "Unscheduled").
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
-pub struct Args {
+pub struct Cli {
+    #[command(subcommand)]
+    pub command: Command,
+}
+
+#[derive(Subcommand, Debug)]
+pub enum Command {
+    /// Simulate batch games against the corpus
+    Simulate(SimulateArgs),
+    /// Interactively assist a live Wordle game
+    Assist(AssistArgs),
+}
+
+/// Arguments shared by every subcommand.
+#[derive(clap::Args, Debug)]
+pub struct CommonArgs {
     #[arg(
         short = 'l',
         long,
@@ -21,11 +34,9 @@ pub struct Args {
     pub word_length: usize,
     #[arg(
         long,
-        help = format!("Number of the words to allow in the guesser's dictionary (default: all words in the corpus)")
+        help = "Number of the words to allow in the guesser's dictionary (default: all words in the corpus)"
     )]
     pub dictionary_length: Option<usize>,
-    #[arg(short = 'n', long, help = "Number of games to simulate")]
-    pub num_games: Option<usize>,
     #[arg(
         long,
         default_value = "english",
@@ -38,6 +49,27 @@ pub struct Args {
         help = "Directory containing cached word-frequency files"
     )]
     pub data_dir: PathBuf,
+}
+
+#[derive(clap::Args, Debug)]
+pub struct SimulateArgs {
+    #[command(flatten)]
+    pub common: CommonArgs,
+    #[arg(short = 'n', long, help = "Number of games to simulate")]
+    pub num_games: Option<usize>,
+}
+
+#[derive(clap::Args, Debug)]
+pub struct AssistArgs {
+    #[command(flatten)]
+    pub common: CommonArgs,
+    #[arg(
+        short = 's',
+        long,
+        default_value_t = 5,
+        help = "Number of suggestions to show per turn"
+    )]
+    pub suggestions: usize,
 }
 
 fn parse_word_length(s: &str) -> anyhow::Result<usize> {
