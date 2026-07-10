@@ -45,12 +45,12 @@ impl DataDir {
         store::clear(self, lang, n)
     }
 
-    /// Path to the cached ngrams CSV for `lang` at word length `n`.
+    /// Path to the cached ngrams binary file for `lang` at word length `n`.
     pub fn ngrams_path(&self, lang: Language, n: usize) -> PathBuf {
         self.path
             .join("ngrams")
             .join(lang.lang_code())
-            .join(format!("{n}.csv"))
+            .join(format!("{n}.bin"))
     }
 
     /// Path to the cached Wiktionary word list for `lang`.

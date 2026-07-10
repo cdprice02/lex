@@ -1,38 +1,38 @@
 use std::collections::HashMap;
-use std::{fmt::Display, ops::Deref};
+use std::fmt::Display;
+use std::ops::Deref;
+use std::sync::Arc;
+
+use memmap2::{Mmap, MmapMut};
 
 use crate::error::LexDataError;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(transparent)]
 pub struct Word<const N: usize>([char; N]);
+
+impl<const N: usize> From<[char; N]> for Word<N> {
+    fn from(chars: [char; N]) -> Self {
+        Self(chars)
+    }
+}
 
 impl<const N: usize> TryFrom<&str> for Word<N> {
     type Error = LexDataError;
 
     /// Zero heap allocation: chars are written directly into a stack-allocated [char; N].
-    ///
-    /// TODO: add TryFrom<&[u8]> ASCII fast path for use with memmap2 in load.rs:
-    /// widen each byte directly to char into the stack array — zero heap allocations.
     fn try_from(s: &str) -> Result<Self, Self::Error> {
-        let mut array = ['\0'; N];
-        let mut i = 0;
-        for ch in s.chars() {
-            if i >= N {
-                return Err(LexDataError::WordLengthError {
-                    expected: N,
-                    got: i + 1,
-                });
-            }
-            array[i] = ch;
-            i += 1;
-        }
-        if i != N {
+        let chars_count = s.chars().count();
+        if chars_count != N {
             return Err(LexDataError::WordLengthError {
                 expected: N,
-                got: i,
+                got: chars_count,
             });
         }
-        Ok(Word(array))
+        let mut chars = s.chars();
+        Ok(Word::from(std::array::from_fn(|_| {
+            chars.next().expect("N chars as checked above")
+        })))
     }
 }
 
@@ -58,31 +58,137 @@ impl<const N: usize> IntoIterator for Word<N> {
     type IntoIter = std::array::IntoIter<char, N>;
 
     fn into_iter(self) -> Self::IntoIter {
-        IntoIterator::into_iter(*self)
+        self.0.into_iter()
+    }
+}
+
+/// Zero-copy view of one binary ngram record: `N` char scalars stored as `u32` (LE),
+/// followed by a `u64` frequency (LE). Total: `N * 4 + 8` bytes.
+pub(crate) struct RawRecord<'a, const N: usize>(&'a [u8]);
+
+impl<const N: usize> RawRecord<'_, N> {
+    pub(crate) const CHAR_BYTES: usize = std::mem::size_of::<u32>();
+    pub(crate) const FREQ_BYTES: usize = std::mem::size_of::<u64>();
+    pub(crate) const SIZE: usize = Self::CHAR_BYTES * N + Self::FREQ_BYTES;
+
+    /// Returns `None` if any stored scalar is not a valid Unicode scalar value.
+    pub(crate) fn word(&self) -> Option<Word<N>> {
+        let mut chars = ['\0'; N];
+        for (i, char_slot) in chars.iter_mut().enumerate() {
+            let off = i * Self::CHAR_BYTES;
+            let scalar =
+                u32::from_le_bytes(self.0[off..off + Self::CHAR_BYTES].try_into().unwrap());
+            *char_slot = char::from_u32(scalar)?;
+        }
+        Some(Word::from(chars))
+    }
+
+    pub(crate) fn freq(&self) -> u64 {
+        let off = Self::CHAR_BYTES * N;
+        u64::from_le_bytes(self.0[off..off + Self::FREQ_BYTES].try_into().unwrap())
+    }
+}
+
+impl<'a, const N: usize> From<&'a [u8]> for RawRecord<'a, N> {
+    fn from(bytes: &'a [u8]) -> Self {
+        debug_assert_eq!(bytes.len(), Self::SIZE);
+        RawRecord(bytes)
+    }
+}
+
+/// Iterator over the active words in a [`WordSet`], reading lazily from the mmap backing store.
+///
+/// Implements [`Clone`] to support `.cycle()`.
+pub struct WordIter<'a, const N: usize> {
+    mmap: &'a Mmap,
+    offsets: &'a [u32],
+    index: usize,
+}
+
+impl<const N: usize> Iterator for WordIter<'_, N> {
+    type Item = Word<N>;
+
+    fn next(&mut self) -> Option<Word<N>> {
+        loop {
+            let &off = self.offsets.get(self.index)?;
+            self.index += 1;
+            if let Some(word) =
+                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE])
+                    .word()
+            {
+                return Some(word);
+            }
+        }
+    }
+
+    fn size_hint(&self) -> (usize, Option<usize>) {
+        let remaining = self.offsets.len() - self.index;
+        (remaining, Some(remaining))
+    }
+}
+
+impl<const N: usize> Clone for WordIter<'_, N> {
+    fn clone(&self) -> Self {
+        Self {
+            mmap: self.mmap,
+            offsets: self.offsets,
+            index: self.index,
+        }
     }
 }
 
 #[derive(Debug, Clone)]
 pub struct WordSet<const N: usize> {
-    // INVARIANT: words, frequencies, and scaled_probs are parallel and sorted descending
-    // by frequency. Elements are only ever removed (via retain/limit) — never reordered
-    // after construction. scaled_probs is recomputed eagerly after any mutation.
-    words: Vec<Word<N>>,
-    frequencies: Vec<u64>,
+    mmap: Arc<Mmap>,
+    // Byte offsets of active records within the mmap, sorted descending by frequency.
+    // Elements are only ever removed (via retain/limit) — never reordered after construction.
+    offsets: Vec<u32>,
+    // Temperature-scaled probabilities, parallel to offsets. Recomputed after every mutation.
     scaled_probs: Vec<f64>,
 }
 
 impl<const N: usize> WordSet<N> {
-    pub fn new(frequencies: HashMap<Word<N>, u64>) -> Self {
-        let mut pairs: Vec<(Word<N>, u64)> = frequencies.into_iter().collect();
-        pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
-        let (words, frequencies): (Vec<_>, Vec<_>) = pairs.into_iter().unzip();
-        let scaled_probs = Self::compute_probs(&frequencies);
+    /// Constructs a `WordSet` from a memory-mapped binary ngrams file.
+    ///
+    /// Records must be sorted descending by frequency. `num_records` selects how many
+    /// records to expose (use `mmap.len() / RawRecord::<N>::SIZE` for all of them).
+    pub(crate) fn from_mmap(mmap: Mmap, num_records: usize) -> Self {
+        let mmap = Arc::new(mmap);
+        let offsets: Vec<u32> = (0..num_records)
+            .map(|i| (i * RawRecord::<N>::SIZE) as u32)
+            .collect();
+        let freqs = Self::read_freqs(&mmap, &offsets);
+        let scaled_probs = Self::compute_probs(&freqs);
         Self {
-            words,
-            frequencies,
+            mmap,
+            offsets,
             scaled_probs,
         }
+    }
+
+    /// Constructs a `WordSet` from a word-to-frequency map.
+    ///
+    /// Sorts by frequency descending and writes records into an anonymous memory map.
+    pub fn from_frequency_map(frequencies: HashMap<Word<N>, u64>) -> Self {
+        let mut pairs: Vec<(Word<N>, u64)> = frequencies.into_iter().collect();
+        pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
+        let record_size = RawRecord::<N>::SIZE;
+        let total = pairs.len() * record_size;
+        // map_anon(0) fails on many platforms; allocate at least 1 byte.
+        let mut buf = MmapMut::map_anon(total.max(1)).expect("anonymous mmap allocation failed");
+        for (i, (word, freq)) in pairs.iter().enumerate() {
+            let off = i * record_size;
+            for (j, &ch) in word.iter().enumerate() {
+                let char_off = off + j * RawRecord::<N>::CHAR_BYTES;
+                buf[char_off..char_off + RawRecord::<N>::CHAR_BYTES]
+                    .copy_from_slice(&(ch as u32).to_le_bytes());
+            }
+            let freq_off = off + RawRecord::<N>::CHAR_BYTES * N;
+            buf[freq_off..freq_off + RawRecord::<N>::FREQ_BYTES]
+                .copy_from_slice(&freq.to_le_bytes());
+        }
+        let mmap = buf.make_read_only().expect("failed to make mmap read-only");
+        Self::from_mmap(mmap, pairs.len())
     }
 
     /// Temperature-scaled softmax over log-frequencies: p_i ∝ f_i^(1/T).
@@ -105,9 +211,23 @@ impl<const N: usize> WordSet<N> {
         exp.into_iter().map(|e| e / sum).collect()
     }
 
-    /// Words sorted descending by frequency. Elements are only ever removed, never reordered.
-    pub fn words(&self) -> &[Word<N>] {
-        &self.words
+    fn read_freqs(mmap: &Mmap, offsets: &[u32]) -> Vec<u64> {
+        offsets
+            .iter()
+            .map(|&off| {
+                RawRecord::<N>::from(&mmap[off as usize..off as usize + RawRecord::<N>::SIZE])
+                    .freq()
+            })
+            .collect()
+    }
+
+    /// Words sorted descending by frequency, read lazily from the mmap backing store.
+    pub fn words(&self) -> WordIter<'_, N> {
+        WordIter {
+            mmap: &self.mmap,
+            offsets: &self.offsets,
+            index: 0,
+        }
     }
 
     /// Temperature-scaled probabilities (p_i ∝ f_i^(1/T)), parallel-indexed with `words()`.
@@ -117,53 +237,60 @@ impl<const N: usize> WordSet<N> {
 
     /// Iterator of `(word, probability)` pairs in frequency-descending order.
     pub fn word_probs(&self) -> impl Iterator<Item = (Word<N>, f64)> + '_ {
-        self.words
-            .iter()
-            .copied()
-            .zip(self.scaled_probs.iter().copied())
+        self.words().zip(self.scaled_probs.iter().copied())
     }
 
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
-        self.words
-            .iter()
-            .position(|w| w == word)
-            .map(|i| self.frequencies[i])
+        for &off in &self.offsets {
+            let record =
+                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+            if record.word().as_ref() == Some(word) {
+                return Some(record.freq());
+            }
+        }
+        None
     }
 
     pub fn len(&self) -> usize {
-        self.words.len()
+        self.offsets.len()
     }
 
     pub fn is_empty(&self) -> bool {
-        self.words.is_empty()
+        self.offsets.is_empty()
     }
 
     pub fn contains(&self, word: &Word<N>) -> bool {
-        self.words.contains(word)
+        self.frequency(word).is_some()
     }
 
     pub fn limit(&mut self, n: usize) {
-        self.words.truncate(n);
-        self.frequencies.truncate(n);
-        self.scaled_probs = Self::compute_probs(&self.frequencies);
+        if n < self.offsets.len() {
+            self.offsets.truncate(n);
+            let freqs = Self::read_freqs(&self.mmap, &self.offsets);
+            self.scaled_probs = Self::compute_probs(&freqs);
+        }
     }
 
     pub fn retain<F: Fn(&Word<N>) -> bool>(&mut self, predicate: F) {
-        // INVARIANT preserved: zip-collect maintains relative order.
-        (self.words, self.frequencies) = self
-            .words
-            .iter()
-            .zip(self.frequencies.iter())
-            .filter(|(w, _)| predicate(w))
-            .map(|(&w, &f)| (w, f))
-            .unzip();
-        self.scaled_probs = Self::compute_probs(&self.frequencies);
+        let mut new_offsets = Vec::new();
+        let mut new_freqs = Vec::new();
+        for &off in &self.offsets {
+            let record =
+                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+            if record.word().is_some_and(|w| predicate(&w)) {
+                new_offsets.push(off);
+                new_freqs.push(record.freq());
+            }
+        }
+        self.offsets = new_offsets;
+        self.scaled_probs = Self::compute_probs(&new_freqs);
     }
 }
 
 #[cfg(test)]
 mod benches {
     extern crate test;
+    use std::collections::HashMap;
     use std::hint::black_box;
     use test::Bencher;
 
@@ -183,8 +310,8 @@ mod benches {
                 .collect();
                 (Word::<5>::try_from(s.as_str()).unwrap(), (n - i) as u64)
             })
-            .collect();
-        WordSet::new(frequencies)
+            .collect::<HashMap<Word<5>, u64>>();
+        WordSet::from_frequency_map(frequencies)
     }
 
     #[bench]
@@ -205,14 +332,16 @@ mod benches {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use super::*;
 
     fn ws(pairs: &[(&str, u64)]) -> WordSet<5> {
-        let frequencies = pairs
+        let frequencies: HashMap<Word<5>, u64> = pairs
             .iter()
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
-        WordSet::new(frequencies)
+        WordSet::from_frequency_map(frequencies)
     }
 
     #[test]
@@ -285,7 +414,7 @@ mod tests {
     #[test]
     fn words_sorted_descending() {
         let ws = ws(&[("crane", 100), ("stare", 50), ("light", 200)]);
-        let words = ws.words();
+        let words: Vec<_> = ws.words().collect();
         assert_eq!(words[0], Word::try_from("light").unwrap()); // 200
         assert_eq!(words[1], Word::try_from("crane").unwrap()); // 100
         assert_eq!(words[2], Word::try_from("stare").unwrap()); // 50

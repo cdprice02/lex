@@ -14,7 +14,7 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `ngrams.rs` | `fetch(lang)` — streams V3 shards concurrently (`SHARD_CONCURRENCY = 4`) |
 | `wiktionary.rs` | `fetch_dict`, `load_valid_words`, `load_metadata`, `DictMetadata` |
 | `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
-| `word.rs` | `Word<N>`, `WordSet<N>` |
+| `word.rs` | `Word<N>`, `WordSet<N>`, `RawRecord<'a, N>` (zero-copy binary record view) |
 | `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
 | `error.rs` | `LexDataError` |
 
@@ -22,7 +22,7 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 
 ```
 data/
-  ngrams/{lang_code}/{N}.csv      — frequency-descending CSV: word,freq
+  ngrams/{lang_code}/{N}.bin      — frequency-descending binary: N×u32 (char LE) + u64 (freq LE) per record
   dicts/{lang_code}.txt           — sorted Wiktionary word list (one per line)
   dicts/{lang_code}.meta.json     — DictMetadata: word_count, min/max word length
 ```
@@ -31,7 +31,7 @@ data/
 
 ## Build-if-missing pipeline
 
-`store::build_if_missing::<N>` checks whether the ngrams CSV exists. On a miss:
+`store::build_if_missing::<N>` checks whether the ngrams binary exists. On a miss:
 
 1. If `dicts/{lang}.txt` is absent → `wiktionary::fetch_dict` downloads and caches it
 2. `wiktionary::load_valid_words` reads the word list into a `HashSet`

@@ -67,26 +67,20 @@ impl<const N: usize> Guesser<N> {
             return None;
         }
 
-        let candidates = self.word_set.words();
-
-        let mut best_i = 0;
-        let mut best_score = guess_entropy(&candidates[0], &self.word_set);
-        for i in 1..candidates.len() {
-            let score = guess_entropy(&candidates[i], &self.word_set);
-            log::trace!("{}: {}", candidates[i], score);
-            if score > best_score {
-                log::debug!(
-                    "{} > {}; {} > {}",
-                    candidates[i],
-                    candidates[best_i],
-                    score,
-                    best_score
-                );
-                best_score = score;
-                best_i = i;
+        let mut best: Option<(Word<N>, f64)> = None;
+        for candidate in self.word_set.words() {
+            let score = guess_entropy(&candidate, &self.word_set);
+            log::trace!("{}: {}", candidate, score);
+            match best {
+                Some((best_word, best_score)) if score > best_score => {
+                    log::debug!("{} > {}; {} > {}", candidate, best_word, score, best_score);
+                    best = Some((candidate, score));
+                }
+                None => best = Some((candidate, score)),
+                _ => {}
             }
         }
-        Some(candidates[best_i])
+        best.map(|(word, _)| word)
     }
 }
 
@@ -143,7 +137,7 @@ mod benches {
 
     fn build_guesser(pairs: &[(Word<5>, u64)]) -> Guesser<5> {
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        let ws = WordSet::new(frequencies);
+        let ws = WordSet::from_frequency_map(frequencies);
         Guesser::<5>::new(ws)
     }
 
@@ -152,7 +146,7 @@ mod benches {
         let pairs = make_wordset(10);
         let guess = pairs[0].0;
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        let ws = WordSet::new(frequencies);
+        let ws = WordSet::from_frequency_map(frequencies);
         b.iter(|| black_box(guess_entropy(&guess, &ws)));
     }
 
@@ -194,7 +188,7 @@ mod tests {
             .iter()
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
-        let ws = WordSet::new(frequencies);
+        let ws = WordSet::from_frequency_map(frequencies);
         Guesser::<5>::new(ws)
     }
 

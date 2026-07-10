@@ -1,13 +1,14 @@
 use std::collections::{HashMap, HashSet};
-use std::io::{BufRead, BufReader, Write};
+use std::io::{BufWriter, Write};
 
 use anyhow::Context;
+use memmap2::Mmap;
 
 use crate::data_dir::DataDir;
 use crate::language::Language;
 use crate::ngrams;
 use crate::wiktionary;
-use crate::word::{Word, WordSet};
+use crate::word::{RawRecord, WordSet};
 
 pub(crate) const MIN_FREQUENCY: u64 = 1;
 
@@ -33,32 +34,19 @@ pub(crate) async fn build_if_missing<const N: usize>(
     Ok(())
 }
 
-/// Reads the cached ngrams CSV for `lang` at word length `N` into a `WordSet`.
+/// Reads the cached ngrams binary file for `lang` at word length `N` into a `WordSet`.
 pub(crate) fn read<const N: usize>(
     dir: &DataDir,
     lang: Language,
     limit: Option<usize>,
 ) -> anyhow::Result<WordSet<N>> {
-    // TODO: memmap2 zero-allocation path: mmap the CSV, scan for '\n'/',' boundaries,
-    // use Word::try_from_ascii_bytes() to fill [char; N] directly.
     let path = dir.ngrams_path(lang, N);
     let f = std::fs::File::open(&path).with_context(|| format!("opening ngrams file: {path:?}"))?;
-    let reader = BufReader::new(f);
-    let mut frequencies = HashMap::new();
-    for line in reader.lines().take(limit.unwrap_or(usize::MAX)) {
-        let line = line?;
-        let Some((word_str, freq_str)) = line.split_once(',') else {
-            continue;
-        };
-        let Ok(word) = Word::<N>::try_from(word_str) else {
-            continue;
-        };
-        let Ok(freq) = freq_str.parse::<u64>() else {
-            continue;
-        };
-        frequencies.insert(word, freq);
-    }
-    Ok(WordSet::new(frequencies))
+    let mmap =
+        unsafe { Mmap::map(&f) }.with_context(|| format!("mmapping ngrams file: {path:?}"))?;
+    let num_records = mmap.len() / <RawRecord<'_, N>>::SIZE;
+    let take = limit.map_or(num_records, |l| l.min(num_records));
+    Ok(WordSet::from_mmap(mmap, take))
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
@@ -116,15 +104,16 @@ fn write_bucket(
     n: usize,
     words: &HashMap<String, u64>,
 ) -> anyhow::Result<()> {
-    // TODO: fixed-width binary format ([u32; N] chars + u64 freq = N*4+8 bytes/record)
-    // once memmap2 is adopted for zero-parse, zero-allocation loading.
     let path = dir.ngrams_path(lang, n);
     std::fs::create_dir_all(path.parent().unwrap())?;
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
     entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));
-    let mut writer = std::io::BufWriter::new(std::fs::File::create(&path)?);
+    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
     for (word, freq) in entries {
-        writeln!(writer, "{word},{freq}")?;
+        for ch in word.chars() {
+            writer.write_all(&(ch as u32).to_le_bytes())?;
+        }
+        writer.write_all(&freq.to_le_bytes())?;
     }
     Ok(())
 }

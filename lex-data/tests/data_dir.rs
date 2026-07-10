@@ -1,23 +1,29 @@
 use std::fs;
+use std::io::Write;
 
 use lex_data::blocking::DataDir;
 use lex_data::{Language, Word, WordSet};
 
-fn seed_csv(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
+fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
     let path = dir.ngrams_path(lang, n);
     fs::create_dir_all(path.parent().unwrap()).unwrap();
-    let content: String = entries.iter().map(|(w, f)| format!("{w},{f}\n")).collect();
-    fs::write(path, content).unwrap();
+    let mut f = fs::File::create(path).unwrap();
+    for &(word, freq) in entries {
+        for ch in word.chars() {
+            f.write_all(&(ch as u32).to_le_bytes()).unwrap();
+        }
+        f.write_all(&freq.to_le_bytes()).unwrap();
+    }
 }
 
 // build_if_missing only downloads when the ngrams file is absent.
-// Pre-seeding the CSV lets load() skip the network path entirely.
+// Pre-seeding the binary file lets load() skip the network path entirely.
 
 #[test]
 fn load_from_seeded_cache() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_csv(
+    seed_bin(
         &dir,
         Language::English,
         5,
@@ -40,7 +46,8 @@ fn load_from_seeded_cache() {
 fn load_respects_limit() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_csv(
+    // entries written in freq-desc order so the top-2 are crane and stare
+    seed_bin(
         &dir,
         Language::English,
         5,
@@ -49,7 +56,6 @@ fn load_respects_limit() {
 
     let ws: WordSet<5> = dir.load(Language::English, Some(2)).unwrap();
     assert_eq!(ws.len(), 2);
-    // CSV is sorted freq-desc, so crane and stare are the top-2
     assert!(ws.contains(&Word::<5>::try_from("crane").unwrap()));
     assert!(ws.contains(&Word::<5>::try_from("stare").unwrap()));
 }
@@ -58,7 +64,7 @@ fn load_respects_limit() {
 fn clear_removes_file() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_csv(&dir, Language::English, 5, &[("crane", 300)]);
+    seed_bin(&dir, Language::English, 5, &[("crane", 300)]);
 
     assert!(dir.ngrams_path(Language::English, 5).exists());
     dir.clear(Language::English, Some(5)).unwrap();
@@ -69,8 +75,8 @@ fn clear_removes_file() {
 fn clear_removes_language_dir() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_csv(&dir, Language::English, 5, &[("crane", 300)]);
-    seed_csv(&dir, Language::English, 3, &[("ace", 100)]);
+    seed_bin(&dir, Language::English, 5, &[("crane", 300)]);
+    seed_bin(&dir, Language::English, 3, &[("ace", 100)]);
 
     let lang_dir = tmp.path().join("ngrams").join("eng");
     assert!(lang_dir.exists());
@@ -83,7 +89,7 @@ fn path_helpers_return_expected_paths() {
     let dir = DataDir::new("/data");
     assert_eq!(
         dir.ngrams_path(Language::English, 5),
-        std::path::Path::new("/data/ngrams/eng/5.csv")
+        std::path::Path::new("/data/ngrams/eng/5.bin")
     );
     assert_eq!(
         dir.dict_path(Language::English),

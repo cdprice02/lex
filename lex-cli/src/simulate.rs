@@ -57,7 +57,7 @@ pub fn simulate<const N: usize>(args: &Args) -> anyhow::Result<()> {
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
 
     let mut results = Vec::new();
-    for &word in word_set.words().iter().cycle().take(num_games) {
+    for word in word_set.words().cycle().take(num_games) {
         let history = vec![Guess::new(
             first_guess,
             WordCorrectness::correct(word, first_guess),
