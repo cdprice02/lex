@@ -45,6 +45,26 @@ impl Language {
         }
     }
 
+    /// URL of the KAIKKI Wiktionary extract for this language.
+    ///
+    /// English Wiktionary is KAIKKI's primary dataset, published under the
+    /// language-name path; other Wiktionary editions are published as
+    /// per-ISO-code extracts under `downloads/`. KAIKKI reorganizes these
+    /// URLs occasionally (the `downloads/en/` extract was removed in 2026) —
+    /// see <https://kaikki.org/dictionary/rawdata.html> for the current layout.
+    pub fn wiktionary_url(self) -> String {
+        match self {
+            Language::English => {
+                "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz"
+                    .to_string()
+            }
+            _ => {
+                let iso = self.iso_code();
+                format!("https://kaikki.org/dictionary/downloads/{iso}/{iso}-extract.jsonl.gz")
+            }
+        }
+    }
+
     /// Number of Google Books Ngrams V3 shards for this language (confirmed against GCS).
     pub fn shard_count(self) -> u32 {
         match self {
@@ -55,5 +75,30 @@ impl Language {
             Language::Italian => 2,
             Language::Russian => 2,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn english_uses_primary_dataset_url() {
+        assert_eq!(
+            Language::English.wiktionary_url(),
+            "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz"
+        );
+    }
+
+    #[test]
+    fn other_editions_use_extract_urls() {
+        assert_eq!(
+            Language::French.wiktionary_url(),
+            "https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz"
+        );
+        assert_eq!(
+            Language::German.wiktionary_url(),
+            "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz"
+        );
     }
 }

@@ -52,7 +52,7 @@ fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
 /// metadata to `data_dir/dicts/`.
 pub(crate) async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
-    let url = format!("https://kaikki.org/dictionary/downloads/{iso}/{iso}-extract.jsonl.gz");
+    let url = lang.wiktionary_url();
     log::info!("Fetching Wiktionary dict for {} from {url}...", lang);
 
     let client = reqwest::Client::new();

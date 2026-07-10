@@ -13,8 +13,8 @@ storage formats, strategy code, or benchmarks.
 
 | # | Task | One-liner |
 |---|------|-----------|
-| [00](.tasks/00-ci.md) | CI | GitHub Actions on the pinned nightly: fmt, clippy, tests |
-| [01](.tasks/01-assist-mode.md) | Assist mode | Interactive helper + subcommand split; dogfood the daily Wordle |
+| [00](.tasks/00-ci.md) | CI ✅ | GitHub Actions on the pinned nightly: fmt, clippy, tests |
+| [01](.tasks/01-assist-mode.md) | Assist mode ✅ | Interactive helper + subcommand split; dogfood the daily Wordle |
 | [02](.tasks/02-measurement.md) | Measurement & provenance | The yardstick: seeded targets, JSON output, histogram + failure rate, corpus stamping, baselines, golden test |
 | [03](.tasks/03-data-integrity.md) | Data integrity | Loud load-time validation; versioned cache header |
 | [04](.tasks/04-memoization.md) | Decision-tree memoization | Simulation as one pattern-keyed tree; full-dictionary eval becomes cheap |
