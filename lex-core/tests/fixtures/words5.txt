@@ -1,0 +1,27 @@
+# word frequency; file order breaks frequency ties
+bound 900
+found 900
+hound 400
+mound 400
+pound 800
+round 1000
+sound 1000
+wound 600
+batch 500
+catch 700
+hatch 400
+latch 300
+match 900
+patch 600
+watch 1000
+light 800
+might 800
+night 900
+right 1000
+sight 700
+tight 500
+fight 600
+about 1200
+other 1100
+which 1100
+their 1000
