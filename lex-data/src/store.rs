@@ -49,6 +49,30 @@ pub(crate) fn read<const N: usize>(
     Ok(WordSet::from_mmap(mmap, take))
 }
 
+/// Hex SHA-256 of the file at `path`.
+pub(crate) fn file_sha256(path: &std::path::Path) -> anyhow::Result<String> {
+    use sha2::{Digest, Sha256};
+    use std::io::Read;
+    let mut file =
+        std::fs::File::open(path).with_context(|| format!("opening {path:?} to checksum it"))?;
+    let mut hasher = Sha256::new();
+    let mut buf = vec![0u8; 1 << 16];
+    loop {
+        let n = file
+            .read(&mut buf)
+            .with_context(|| format!("checksumming {path:?}"))?;
+        if n == 0 {
+            break;
+        }
+        hasher.update(&buf[..n]);
+    }
+    Ok(hex(&hasher.finalize()))
+}
+
+pub(crate) fn hex(bytes: &[u8]) -> String {
+    bytes.iter().map(|b| format!("{b:02x}")).collect()
+}
+
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
 /// language ngrams directory (None).
 pub(crate) fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {

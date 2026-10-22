@@ -170,7 +170,15 @@ impl<const N: usize> WordSet<N> {
     ///
     /// Sorts by frequency descending and writes records into an anonymous memory map.
     pub fn from_frequency_map(frequencies: HashMap<Word<N>, u64>) -> Self {
-        let mut pairs: Vec<(Word<N>, u64)> = frequencies.into_iter().collect();
+        Self::from_pairs(frequencies.into_iter().collect())
+    }
+
+    /// Constructs a `WordSet` from `(word, frequency)` pairs.
+    ///
+    /// The sort by frequency descending is stable, so equal frequencies keep the input
+    /// order. Unlike [`from_frequency_map`](Self::from_frequency_map), whose tie order
+    /// inherits `HashMap` iteration order, this is deterministic for fixtures and tests.
+    pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
         let record_size = RawRecord::<N>::SIZE;
         let total = pairs.len() * record_size;
