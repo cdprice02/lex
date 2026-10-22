@@ -2,12 +2,16 @@ use clap::Parser;
 
 use assist::assist;
 use cli::{Cli, Command};
+use compare::compare_reports;
 use simulate::simulate;
 
 mod assist;
 mod cli;
+mod compare;
 mod error;
+mod report;
 mod simulate;
+mod targets;
 
 fn main() -> anyhow::Result<()> {
     env_logger::init();
@@ -19,5 +23,6 @@ fn main() -> anyhow::Result<()> {
         Command::Assist(args) => {
             lex_data::match_word_length!(assist, args.common.word_length, &args)
         }
+        Command::Compare(args) => compare_reports(&args),
     }
 }

@@ -19,6 +19,8 @@ pub enum Command {
     Simulate(SimulateArgs),
     /// Interactively assist a live Wordle game
     Assist(AssistArgs),
+    /// Paired comparison of two simulation reports (JSON from `simulate --output`)
+    Compare(CompareArgs),
 }
 
 /// Arguments shared by every subcommand.
@@ -55,8 +57,37 @@ pub struct CommonArgs {
 pub struct SimulateArgs {
     #[command(flatten)]
     pub common: CommonArgs,
-    #[arg(short = 'n', long, help = "Number of games to simulate")]
+    #[arg(
+        short = 'n',
+        long,
+        help = "Number of target words to sample (default: every word in the dictionary)"
+    )]
     pub num_games: Option<usize>,
+    #[arg(
+        long,
+        default_value_t = 0,
+        help = "Seed for sampling targets; the same seed and corpus give the same targets"
+    )]
+    pub seed: u64,
+    #[arg(
+        long,
+        help = "File of target words (one per line) to play instead of sampling"
+    )]
+    pub targets: Option<PathBuf>,
+    #[arg(
+        short = 'o',
+        long,
+        help = "Write the full JSON report here ('-' for stdout, which moves the summary to stderr)"
+    )]
+    pub output: Option<PathBuf>,
+}
+
+#[derive(clap::Args, Debug)]
+pub struct CompareArgs {
+    /// Baseline report
+    pub baseline: PathBuf,
+    /// Candidate report, played against the same targets
+    pub candidate: PathBuf,
 }
 
 #[derive(clap::Args, Debug)]
