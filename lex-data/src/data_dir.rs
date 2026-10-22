@@ -39,6 +39,12 @@ impl DataDir {
         wiktionary::load_metadata(lang, &self.path)
     }
 
+    /// Hex SHA-256 of the cached ngrams binary for `lang` at word length `n`: the identity of
+    /// the exact word list and frequencies a run was measured against.
+    pub fn ngrams_sha256(&self, lang: Language, n: usize) -> anyhow::Result<String> {
+        store::file_sha256(&self.ngrams_path(lang, n))
+    }
+
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
     /// language ngrams directory (None). Does not remove the Wiktionary dict.
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {

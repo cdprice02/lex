@@ -19,6 +19,7 @@ mod wiktionary;
 pub use data_dir::DataDir;
 pub use error::LexDataError;
 pub use language::Language;
+pub use ngrams::SNAPSHOT as NGRAMS_SNAPSHOT;
 pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
 

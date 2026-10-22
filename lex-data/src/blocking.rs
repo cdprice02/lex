@@ -41,6 +41,10 @@ impl DataDir {
         runtime()?.block_on(self.0.dict_metadata(lang))
     }
 
+    pub fn ngrams_sha256(&self, lang: Language, n: usize) -> anyhow::Result<String> {
+        self.0.ngrams_sha256(lang, n)
+    }
+
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
         self.0.clear(lang, n)
     }

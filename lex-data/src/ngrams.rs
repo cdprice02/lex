@@ -12,6 +12,10 @@ use crate::parse::parse_ngram_line;
 
 const SHARD_CONCURRENCY: usize = 4;
 
+/// Google Books Ngrams V3 snapshot the corpus is built from. The snapshot is frozen, but
+/// recording it keeps run provenance complete.
+pub const SNAPSHOT: &str = "20200217";
+
 /// Downloads all Google Books Ngrams V3 shards for `lang` with up to
 /// SHARD_CONCURRENCY requests in flight at once. Returns every word grouped by
 /// char count. Callers write all length buckets on a cache miss so future requests
@@ -25,7 +29,7 @@ pub(crate) async fn fetch(lang: Language) -> anyhow::Result<HashMap<usize, HashM
             let client = Arc::clone(&client);
             async move {
                 let url = format!(
-                    "https://storage.googleapis.com/books/ngrams/books/20200217/{}/1-{shard:05}-of-{n:05}.gz",
+                    "https://storage.googleapis.com/books/ngrams/books/{SNAPSHOT}/{}/1-{shard:05}-of-{n:05}.gz",
                     lang.lang_code()
                 );
                 log::debug!("  [{}/{}] {url}", shard + 1, n);
