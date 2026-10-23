@@ -224,4 +224,51 @@ mod benches {
         let probs = vec![0.1; words.len()];
         b.iter(|| black_box(guess_entropy(&guess, &words, &probs)));
     }
+
+    /// A reproducible pool of `count` distinct words over a..z, frequency-descending, so every
+    /// bench scores against letter overlap like a real corpus rather than disjoint words.
+    fn synthetic_pool<const N: usize>(count: usize) -> Arc<Pool<N>> {
+        let mut state = 0x2545_f491_4f6c_dd1d_u64;
+        let mut seen = std::collections::HashSet::new();
+        let mut pairs = Vec::with_capacity(count);
+        while pairs.len() < count {
+            let chars: [char; N] = std::array::from_fn(|_| {
+                state = state
+                    .wrapping_mul(6364136223846793005)
+                    .wrapping_add(1442695040888963407);
+                char::from(b'a' + ((state >> 33) % 26) as u8)
+            });
+            if seen.insert(chars) {
+                pairs.push((Word::<N>::from(chars), (count - pairs.len()) as u64 * 10));
+            }
+        }
+        Pool::new(&lex_data::WordSet::from_pairs(pairs))
+    }
+
+    fn bench_suggest<const N: usize>(b: &mut Bencher, count: usize) {
+        let candidates = Candidates::new(synthetic_pool::<N>(count));
+        let strategy = Strategy::default();
+        b.iter(|| black_box(candidates.suggest(&strategy)));
+    }
+
+    #[bench]
+    fn root_suggest_all_1000_n5(b: &mut Bencher) {
+        bench_suggest::<5>(b, 1000);
+    }
+
+    #[bench]
+    fn root_suggest_all_300_n10(b: &mut Bencher) {
+        bench_suggest::<10>(b, 300);
+    }
+
+    #[bench]
+    fn filtered_1000_n5(b: &mut Bencher) {
+        let candidates = Candidates::new(synthetic_pool::<5>(1000));
+        let target = candidates.pool.word(0);
+        let guess = Guess::new(
+            candidates.pool.word(1),
+            WordCorrectness::correct(target, candidates.pool.word(1)),
+        );
+        b.iter(|| black_box(candidates.filtered(&guess)));
+    }
 }

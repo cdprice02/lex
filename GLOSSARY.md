@@ -40,6 +40,10 @@ _Avoid_: Guess list, allowed words
 The probability that each word is the answer, derived from corpus frequency and a temperature, and renormalized over the Candidate set as it shrinks.
 _Avoid_: Weights, frequency (that is the raw count)
 
+**Alphabet index**:
+The small integer each distinct letter of a Guess pool is mapped to, so the solver compares letters as bytes; a letter outside the pool has no index and never matches.
+_Avoid_: Encoding, character table
+
 **Strategy**:
 The solver's tunable choices: which Guess pool it draws from (hard mode restricts it to the Candidate set), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.
 _Avoid_: Policy, config
