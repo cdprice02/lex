@@ -2,9 +2,9 @@
 
 ## Purpose
 
-CLI frontend with three subcommands: `simulate` (batch games via `lex-core`),
+CLI frontend with four subcommands: `simulate` (batch games via `lex-core`),
 `assist` (interactive helper for live games), and `compare` (paired diff of two
-simulation reports). Loads corpora via `lex-data` and
+simulation reports), and `clear` (delete cached corpora so they rebuild). Loads corpora via `lex-data` and
 monomorphizes the call chain over word lengths 3–10 at compile time.
 
 ## Module map

@@ -24,5 +24,8 @@ fn main() -> anyhow::Result<()> {
             lex_data::match_word_length!(assist, args.common.word_length, &args)
         }
         Command::Compare(args) => compare_reports(&args),
+        Command::Clear(args) => {
+            lex_data::blocking::DataDir::new(&args.data_dir).clear(args.lang, args.word_length)
+        }
     }
 }
