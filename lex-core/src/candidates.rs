@@ -164,25 +164,41 @@ impl<const N: usize> Candidates<N> {
 
 #[optimize(speed)]
 fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
-    thread_local! {
-        static PATTERN_PROBS: RefCell<Vec<f64>> = const { RefCell::new(Vec::new()) };
+    /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
+    /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
+    struct Patterns {
+        buckets: Vec<f64>,
+        touched: Vec<u32>,
     }
-    PATTERN_PROBS.with(|pattern_probs| {
-        let mut pattern_probs = pattern_probs.borrow_mut();
+    thread_local! {
+        static PATTERNS: RefCell<Patterns> = const {
+            RefCell::new(Patterns { buckets: Vec::new(), touched: Vec::new() })
+        };
+    }
+    PATTERNS.with(|patterns| {
+        let Patterns { buckets, touched } = &mut *patterns.borrow_mut();
         // one static serves every monomorphization, so it grows to the largest N seen
-        if pattern_probs.len() < WordCorrectness::<N>::COUNT {
-            pattern_probs.resize(WordCorrectness::<N>::COUNT, 0.0);
+        if buckets.len() < WordCorrectness::<N>::COUNT {
+            buckets.resize(WordCorrectness::<N>::COUNT, 0.0);
         }
-        let buckets = &mut pattern_probs[..WordCorrectness::<N>::COUNT];
-        buckets.fill(0.0);
-        for (word, prob) in words.iter().zip(probs) {
-            buckets[pattern_ordinal(word, guess)] += prob;
+        for (word, &prob) in words.iter().zip(probs) {
+            debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
+            let ordinal = pattern_ordinal(word, guess);
+            if buckets[ordinal] == 0.0 {
+                touched.push(ordinal as u32);
+            }
+            buckets[ordinal] += prob;
         }
+        // ascending ordinal order keeps the floating-point sum independent of word order
+        touched.sort_unstable();
         // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
-        0.0 - buckets.iter().fold(
-            0.0_f64,
-            |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
-        )
+        let mut acc = 0.0_f64;
+        for &ordinal in touched.iter() {
+            let p = std::mem::take(&mut buckets[ordinal as usize]);
+            acc += p * p.log2();
+        }
+        touched.clear();
+        0.0 - acc
     })
 }
 
@@ -257,6 +273,39 @@ mod benches {
     #[bench]
     fn root_suggest_all_300_n10(b: &mut Bencher) {
         bench_suggest::<10>(b, 300);
+    }
+
+    /// Narrows a 3000-word pool with its most frequent words as guesses, as a game would, until at
+    /// most `limit` candidates remain, then times a full-pool `suggest`. Most nodes of a full run
+    /// are deep ones like this: few candidates scored against a large pool.
+    fn bench_deep_suggest(b: &mut Bencher, limit: usize) {
+        let mut candidates = Candidates::new(synthetic_pool::<5>(3000));
+        let target = candidates.pool.word(1);
+        for i in 2..400 {
+            if candidates.len() <= limit {
+                break;
+            }
+            let word = candidates.pool.word(i);
+            let feedback = WordCorrectness::correct(target, word);
+            candidates = candidates.filtered(&Guess::new(word, feedback));
+        }
+        assert!(
+            (2..=limit).contains(&candidates.len()),
+            "{}",
+            candidates.len()
+        );
+        let strategy = Strategy::default();
+        b.iter(|| black_box(candidates.suggest(&strategy)));
+    }
+
+    #[bench]
+    fn deep_suggest_all_60_of_3000_n5(b: &mut Bencher) {
+        bench_deep_suggest(b, 60);
+    }
+
+    #[bench]
+    fn deep_suggest_all_8_of_3000_n5(b: &mut Bencher) {
+        bench_deep_suggest(b, 8);
     }
 
     #[bench]
