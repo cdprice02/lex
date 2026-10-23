@@ -7,7 +7,7 @@
 use std::collections::HashMap;
 use std::io::Write;
 
-use lex_core::{Guess, Guesser, WordCorrectness, play};
+use lex_core::{Guesser, play};
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
@@ -33,20 +33,15 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
 
     log::info!("Simulating {num_games} games with {N}-letter words in {lang}...");
 
-    //* IMPORTANT: this relies on Guesser being deterministic — the same word_set always
-    //* produces the same first suggestion. If Guesser ever introduces randomness or
-    //* word-dependent state, this cache must be removed.
-    let first_guess = Guesser::new(word_set.clone())
+    // One guesser for every game: they share its decision tree, so each position is scored once.
+    let mut guesser = Guesser::new(word_set);
+    let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
 
     let mut games = Vec::with_capacity(num_games);
     for word in targets {
-        let history = vec![Guess::new(
-            first_guess,
-            WordCorrectness::correct(word, first_guess),
-        )];
-        let result = play(word, &word_set, history)?;
+        let result = play(word, &mut guesser, Vec::new())?;
         let label = match result.num_guesses() {
             0 => unreachable!("game must have at least one guess to complete"),
             1 => "Genius",

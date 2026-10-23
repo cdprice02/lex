@@ -27,6 +27,9 @@ impl std::fmt::Display for Correctness {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
+// Ordinals are stored as u16 (see `ordinal_u16`); 3^11 = 177,147 would overflow it.
+const _: () = assert!(WordCorrectness::<{ lex_data::MAX_WORD_LENGTH }>::COUNT <= 1 << 16);
+
 impl<const N: usize> std::ops::Deref for WordCorrectness<N> {
     type Target = [Correctness; N];
 
@@ -47,6 +50,11 @@ impl<const N: usize> WordCorrectness<N> {
     pub fn ordinal(&self) -> usize {
         self.iter()
             .fold(0, |acc, &c| acc * Correctness::COUNT + c as usize)
+    }
+
+    /// [`ordinal`](Self::ordinal) as a `u16`, the compact key for sparse tree edges.
+    pub fn ordinal_u16(&self) -> u16 {
+        u16::try_from(self.ordinal()).expect("pattern ordinals fit u16 up to MAX_WORD_LENGTH")
     }
 
     pub fn absent() -> Self {

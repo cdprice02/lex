@@ -2,7 +2,7 @@
 //! tie-breaking, filtering) shows up here as a diff; update the table only when the change is
 //! intended and its effect has been measured against the committed baselines.
 
-use lex_core::play;
+use lex_core::{Guesser, play};
 use lex_data::{Word, WordSet};
 
 const FIXTURE: &str = include_str!("fixtures/words5.txt");
@@ -23,7 +23,13 @@ fn fixture() -> WordSet<5> {
 }
 
 fn sequence(target: &str) -> Vec<String> {
-    let result = play(Word::<5>::try_from(target).unwrap(), &fixture(), Vec::new()).unwrap();
+    let mut guesser = Guesser::new(fixture());
+    let result = play(
+        Word::<5>::try_from(target).unwrap(),
+        &mut guesser,
+        Vec::new(),
+    )
+    .unwrap();
     result
         .guesses()
         .iter()
