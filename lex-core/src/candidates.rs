@@ -162,7 +162,6 @@ impl<const N: usize> Candidates<N> {
     }
 }
 
-#[optimize(speed)]
 fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
     /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
     /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
