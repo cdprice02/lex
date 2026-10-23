@@ -24,7 +24,7 @@ the corpus checksums differ.
 
 ## Provenance
 
-KAIKKI Wiktionary extracts are rolling. A report's `corpus.ngrams_sha256` identifies the exact
-word list and frequencies it ran against; `corpus.dict` records the Wiktionary download.
+KAIKKI Wiktionary extracts are rolling. A report's `corpus.ngrams_sha256` is the corpus checksum from the
+cache header (SHA-256 of the records), identifying the exact word list and frequencies it ran against; `corpus.dict` records the Wiktionary download.
 A rebuilt corpus will usually have a different checksum, so baselines must be regenerated
 (and the change noted) when the corpus is rebuilt, not mixed with reports from an older one.
