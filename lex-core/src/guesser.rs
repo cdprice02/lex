@@ -1,10 +1,12 @@
 use std::cell::RefCell;
-use std::hint::cold_path;
+use std::rc::Rc;
 
 use lex_data::Word;
 use lex_data::WordSet;
 
+use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
+use crate::tree::{DecisionTree, NodeId};
 
 #[derive(Debug, Clone)]
 pub struct Guess<const N: usize> {
@@ -29,15 +31,19 @@ impl<const N: usize> Guess<N> {
 // TODO(.tasks/05-strategy.md): extract the strategy abstraction together with unconstrained
 // guessing — immutable guess pool + shrinking candidate set weighted by an answer prior;
 // tie-break equal scores in favor of words still in the candidate set.
+/// One game's solver state: the guesses played and a cursor into a shared decision tree that can be
+/// reused across games with [`reset`](Self::reset), so repeated positions are scored once.
 pub struct Guesser<const N: usize> {
-    word_set: WordSet<N>,
+    tree: Rc<RefCell<DecisionTree<N>>>,
+    node: NodeId,
     history: Vec<Guess<N>>,
 }
 
 impl<const N: usize> Guesser<N> {
     pub fn new(word_set: WordSet<N>) -> Self {
         Self {
-            word_set,
+            tree: Rc::new(RefCell::new(DecisionTree::new(Candidates::new(word_set)))),
+            node: DecisionTree::<N>::ROOT,
             history: Vec::new(),
         }
     }
@@ -50,83 +56,37 @@ impl<const N: usize> Guesser<N> {
         guesser
     }
 
+    /// Forgets the guesses played and returns to the starting position. The decision tree, and
+    /// every suggestion already computed in it, is kept.
+    pub fn reset(&mut self) {
+        self.node = DecisionTree::<N>::ROOT;
+        self.history.clear();
+    }
+
     pub fn history(&self) -> &[Guess<N>] {
         &self.history
     }
 
     pub fn push_guess(&mut self, guess: Guess<N>) {
-        let word = guess.word();
-        let target_ordinal = guess.correctness().ordinal();
-        self.word_set
-            .retain(|w| WordCorrectness::correct(*w, word).ordinal() == target_ordinal);
+        self.node = self.tree.borrow_mut().child(self.node, &guess);
         self.history.push(guess);
     }
 
     /// Number of candidate words still consistent with the pushed guesses.
     pub fn num_candidates(&self) -> usize {
-        self.word_set.len()
+        self.tree.borrow().candidates(self.node).len()
     }
 
     /// The `k` most informative candidates with their entropy scores (bits),
     /// sorted descending. Ties keep frequency-descending order, so the first
     /// element always agrees with [`suggest`](Self::suggest).
     pub fn suggest_top_k(&self, k: usize) -> Vec<(Word<N>, f64)> {
-        let mut scored: Vec<(Word<N>, f64)> = self
-            .word_set
-            .words()
-            .map(|candidate| (candidate, guess_entropy(&candidate, &self.word_set)))
-            .collect();
-        // stable sort: equal scores keep frequency-descending iteration order
-        scored.sort_by(|a, b| b.1.partial_cmp(&a.1).expect("entropy scores are finite"));
-        scored.truncate(k);
-        scored
+        self.tree.borrow().candidates(self.node).suggest_top_k(k)
     }
 
     pub fn suggest(&self) -> Option<Word<N>> {
-        if self.word_set.is_empty() {
-            cold_path();
-            return None;
-        }
-
-        let mut best: Option<(Word<N>, f64)> = None;
-        for candidate in self.word_set.words() {
-            let score = guess_entropy(&candidate, &self.word_set);
-            log::trace!("{}: {}", candidate, score);
-            match best {
-                Some((best_word, best_score)) if score > best_score => {
-                    log::debug!("{} > {}; {} > {}", candidate, best_word, score, best_score);
-                    best = Some((candidate, score));
-                }
-                None => best = Some((candidate, score)),
-                _ => {}
-            }
-        }
-        best.map(|(word, _)| word)
+        self.tree.borrow_mut().suggest(self.node)
     }
-}
-
-#[optimize(speed)]
-fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 {
-    thread_local! {
-        static PATTERN_PROBS: RefCell<Vec<f64>> = const { RefCell::new(Vec::new()) };
-    }
-    PATTERN_PROBS.with(|probs| {
-        let mut probs = probs.borrow_mut();
-        if probs.is_empty() {
-            *probs = vec![0.0; WordCorrectness::<N>::COUNT];
-        } else {
-            probs.fill(0.0);
-        }
-        for (word, prob) in word_set.word_probs() {
-            log::trace!("{}: {}", word, prob);
-            probs[WordCorrectness::correct(word, *guess).ordinal()] += prob;
-        }
-        // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
-        0.0 - probs.iter().fold(
-            0.0_f64,
-            |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
-        )
-    })
 }
 
 #[cfg(test)]
@@ -161,15 +121,6 @@ mod benches {
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
         let ws = WordSet::from_frequency_map(frequencies);
         Guesser::<5>::new(ws)
-    }
-
-    #[bench]
-    fn guess_entropy_10_words(b: &mut Bencher) {
-        let pairs = make_wordset(10);
-        let guess = pairs[0].0;
-        let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        let ws = WordSet::from_frequency_map(frequencies);
-        b.iter(|| black_box(guess_entropy(&guess, &ws)));
     }
 
     #[bench]
@@ -352,7 +303,132 @@ mod tests {
         assert!(g.suggest_top_k(3).is_empty());
     }
 
+    const DICT: &[(&str, u64)] = &[
+        ("crane", 300),
+        ("crave", 250),
+        ("craze", 200),
+        ("graze", 150),
+        ("trace", 120),
+        ("stare", 100),
+        ("light", 80),
+        ("mount", 60),
+        ("swipe", 25),
+        ("brace", 20),
+    ];
+
+    fn dict_set(pairs: &[(&str, u64)]) -> WordSet<5> {
+        WordSet::from_frequency_map(
+            pairs
+                .iter()
+                .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
+                .collect(),
+        )
+    }
+
+    /// The unmemoized solver: refilter and rescore from scratch after every guess.
+    fn reference_sequence(word_set: &WordSet<5>, target: Word<5>) -> Vec<Word<5>> {
+        let mut candidates = Candidates::new(word_set.clone());
+        let mut played = Vec::new();
+        loop {
+            let guess = candidates.suggest().expect("target stays a candidate");
+            played.push(guess);
+            let correctness = WordCorrectness::correct(target, guess);
+            if correctness.is_correct() {
+                return played;
+            }
+            candidates = candidates.filtered(&Guess::new(guess, correctness));
+        }
+    }
+
+    fn memoized_sequence(guesser: &mut Guesser<5>, target: Word<5>) -> Vec<Word<5>> {
+        crate::play(target, guesser, Vec::new())
+            .unwrap()
+            .guesses()
+            .iter()
+            .map(Guess::word)
+            .collect()
+    }
+
+    #[test]
+    fn shared_tree_matches_unmemoized_solver_for_every_target() {
+        let ws = dict_set(DICT);
+        let mut guesser = Guesser::new(ws.clone());
+        // two passes: the second replays every game entirely from cached nodes
+        for _ in 0..2 {
+            for &(target, _) in DICT {
+                let target = word(target);
+                assert_eq!(
+                    memoized_sequence(&mut guesser, target),
+                    reference_sequence(&ws, target),
+                    "target {target}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn non_suggested_guess_leaves_other_paths_untouched() {
+        let ws = dict_set(DICT);
+        let mut shared = Guesser::new(ws.clone());
+        // populate the tree along the solver's own path first
+        memoized_sequence(&mut shared, word("brace"));
+
+        shared.reset();
+        shared.push_guess(make_guess("light", "crave"));
+        let mut fresh = Guesser::new(ws);
+        fresh.push_guess(make_guess("light", "crave"));
+        assert_eq!(shared.suggest(), fresh.suggest());
+        assert_eq!(shared.num_candidates(), fresh.num_candidates());
+    }
+
+    #[test]
+    fn same_feedback_from_different_guesses_stays_distinct() {
+        // "crane" and "stare" both score all-absent against "light"; the edge key must carry
+        // the guess word or the two paths would share a node
+        let ws = dict_set(DICT);
+        let mut shared = Guesser::new(ws.clone());
+        shared.push_guess(make_guess("crane", "light"));
+        let after_crane = shared.num_candidates();
+        shared.reset();
+        shared.push_guess(make_guess("stare", "light"));
+
+        let mut fresh = Guesser::new(ws);
+        fresh.push_guess(make_guess("stare", "light"));
+        assert_eq!(shared.num_candidates(), fresh.num_candidates());
+        assert_ne!(after_crane, shared.num_candidates());
+    }
+
+    #[test]
+    fn reset_clears_history() {
+        let mut g = make_guesser(DICT);
+        g.push_guess(make_guess("crane", "stare"));
+        g.reset();
+        assert!(g.history().is_empty());
+        assert_eq!(g.num_candidates(), DICT.len());
+    }
+
     proptest::proptest! {
+        #[test]
+        fn shared_tree_matches_unmemoized_solver(
+            words in proptest::collection::hash_set("[a-d]{5}", 1..40),
+        ) {
+            let pairs: Vec<(String, u64)> = words
+                .into_iter()
+                .enumerate()
+                .map(|(i, w)| (w, 1 + i as u64 * 7))
+                .collect();
+            let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
+            let ws = dict_set(&borrowed);
+            let mut guesser = Guesser::new(ws.clone());
+            for (target, _) in &borrowed {
+                let target = word(target);
+                proptest::prop_assert_eq!(
+                    memoized_sequence(&mut guesser, target),
+                    reference_sequence(&ws, target)
+                );
+            }
+        }
+
         #[test]
         fn target_always_survives_filter(target in "[a-z]{5}", guess_str in "[a-z]{5}") {
             let target_word = Word::<5>::try_from(target.as_str()).unwrap();

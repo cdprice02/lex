@@ -1,5 +1,4 @@
 use lex_data::Word;
-use lex_data::WordSet;
 
 use crate::correctness::WordCorrectness;
 use crate::guesser::{Guess, Guesser};
@@ -23,12 +22,17 @@ impl<const N: usize> GameResult<N> {
     }
 }
 
+/// Plays one game to completion from `history`, resetting `guesser` first. Reusing one
+/// `guesser` across games shares its decision tree, so no position is scored twice.
 pub fn play<const N: usize>(
     word: Word<N>,
-    word_set: &WordSet<N>,
+    guesser: &mut Guesser<N>,
     history: Vec<Guess<N>>,
 ) -> anyhow::Result<GameResult<N>> {
-    let mut guesser = Guesser::with_history(word_set.clone(), history);
+    guesser.reset();
+    for guess in history {
+        guesser.push_guess(guess);
+    }
 
     for (guess_num, guess) in guesser.history().iter().enumerate() {
         log_guess(guess_num + 1, guess);
