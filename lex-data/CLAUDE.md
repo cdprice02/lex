@@ -33,7 +33,7 @@ data/
 
 ## Cache format
 
-Header (little-endian, `header_len` bytes, 64 in v1): magic `LEXC`, version `u16`, `N` `u16`, `header_len` `u32`, record count `u64`, SHA-256 of the records region (32 bytes), zero padding. Records start at `header_len`, so later versions can grow the header (phase 06's alphabet table) with a version bump.
+Header (little-endian, `header_len` bytes, 64 in v1): magic `LEXC`, version `u16`, `N` `u16`, `header_len` `u32`, record count `u64`, SHA-256 of the records region (32 bytes), zero padding. Records start at `header_len`, so a later version can grow the header with a version bump.
 
 `store::read` checks magic/version/`N`, that the file length equals `header_len + count × record size`, the records checksum, and then every record (valid `char`s, frequency positive and non-increasing) before building the `WordSet`; all of it runs even when `limit` is set. Failures are typed `LexDataError`s naming the file (and record index) and are never auto-rebuilt. A file without the magic is a legacy cache: rejected, rebuilt with `lex clear`. See `docs/adr/0001-versioned-cache-header.md`. `WordSet` offsets are absolute, so `WordIter` assumes validity and is exact-size; `from_pairs` builds a headerless in-memory buffer.
 

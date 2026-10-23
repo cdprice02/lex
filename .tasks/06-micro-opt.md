@@ -2,7 +2,7 @@
 
 Depends on: 03 (header room for the alphabet table), 05 (hot loop is stable
 after the strategy refactor), benches as the arbiter throughout
-Unblocks: 09 (SIMD needs the alphabet-indexed representation)
+Unblocks: 09
 
 ## Why
 
@@ -58,7 +58,15 @@ known to be decorative (`#[optimize(speed)]` does nothing under
 - `generic_const_exprs` stack buffers — listed in ROADMAP as
   experiment-grade; only attempt with user sign-off.
 
-## Done when
+## Outcome
 
-Each adopted item has committed bench numbers showing a win; rejected items
-are noted with their numbers so they aren't re-proposed later.
+Done. Numbers: `benchmarks/micro-opt.md`.
+
+- 1 selective reset: adopted (touched-ordinal list).
+- 2 `correct()` alternative: adopted (generic O(N^2) `pattern_ordinal`).
+- 3 alphabet-indexed words: rejected (no hot-bench win, `suggest` slower to set up).
+  Task 09 therefore cannot assume `[u8; N]` words: it either re-measures the
+  representation under SIMD or builds the byte lanes itself.
+- 4 bounds-check elimination: rejected (safe form under 10%, mixed sign).
+- 5 cached log-frequencies: already done by phase 05 (`Pool.ln_freqs`).
+- `#[optimize(speed)]`: removed, measured as a no-op.
