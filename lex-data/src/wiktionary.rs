@@ -206,3 +206,41 @@ struct WiktionaryEntry {
 struct WiktionaryForm {
     form: String,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const FIXTURE: &str = concat!(
+        r#"{"word":"Crane","lang_code":"en","pos":"noun","forms":[{"form":"cranes"},{"form":"two words"}]}"#,
+        "\n",
+        r#"{"word":"Paris","lang_code":"en","pos":"name"}"#,
+        "\n",
+        r#"{"word":"gru","lang_code":"it","pos":"noun"}"#,
+        "\n",
+        "not json\n",
+    );
+
+    #[test]
+    fn read_dict_keeps_normalized_words_and_forms_of_one_language() {
+        let mut words: Vec<_> = read_dict(FIXTURE.as_bytes(), "en")
+            .unwrap()
+            .into_iter()
+            .collect();
+        words.sort();
+        assert_eq!(words, ["crane", "cranes"]);
+    }
+
+    #[test]
+    fn hashing_reader_digests_the_bytes_it_passes_through() {
+        let mut reader = HashingReader {
+            inner: FIXTURE.as_bytes(),
+            hasher: Sha256::new(),
+        };
+        std::io::copy(&mut reader, &mut std::io::sink()).unwrap();
+        assert_eq!(
+            crate::store::hex(&reader.hasher.finalize()),
+            crate::store::hex(&Sha256::digest(FIXTURE.as_bytes()))
+        );
+    }
+}
