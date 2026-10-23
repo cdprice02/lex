@@ -56,3 +56,23 @@ async surface.
 cold build of one small language (e.g. Italian, 2 shards) succeeds with
 retry logic exercised at least in tests; dict/ngrams outputs are identical
 to the async pipeline's for the same inputs.
+
+## Outcome
+
+Shipped as specified: `ureq` 3 (rustls) with `flate2::MultiGzDecoder`, `blocking.rs` deleted,
+`DataDir` plain sync, and tokio, tokio-util, futures, async-compression and reqwest gone from
+`cargo tree`. A shared `http::get` wraps every download in `retry::with_retry` (3 attempts), so
+the Wiktionary fetch is retried as well as the shards. Shard and dict line loops take `impl BufRead`
+and are tested against in-memory fixtures; the retry policy is tested with an injected closure and
+sleep. ureq's `timeout_per_read` bounds a stalled transfer without capping the total, so it was
+used in place of "no body timeout".
+
+Evidence, Italian cold build (2 shards) against the pre-change binary: `dicts/ita.txt` byte
+identical, `ita.meta.json` identical apart from `fetched_at`, and for every length 3 to 10 the same
+words with the same frequencies. The new build writes only lengths 3 to 10. Peak RSS fell from
+540 MB to 106 MB; wall time was unchanged (68 s against 69 s, bound by the download).
+
+The `.bin` files are not byte-identical between any two builds, old or new: equal-frequency words
+are ordered by `HashMap` iteration order (`write_bucket` uses `sort_unstable_by_key`), so the
+corpus checksum changes on every rebuild. Out of scope here; a word tiebreak in `write_bucket`
+would make it reproducible, at the cost of changing the order of ties in existing caches.

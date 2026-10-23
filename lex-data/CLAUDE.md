@@ -8,12 +8,13 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 
 | Module | Responsibility |
 |---|---|
-| `data_dir.rs` | `DataDir` — async entry point; `load`, `dict_metadata`, `clear`, path helpers |
-| `blocking.rs` | `blocking::DataDir` — sync wrapper; one tokio runtime per call |
-| `store.rs` | `build_if_missing`, `read` (validates), `populate`, `filter_by_dict`, `clear`, `corpus_checksum` — all `pub(crate)` |
+| `data_dir.rs` | `DataDir`: sync entry point; `load`, `dict_metadata`, `clear`, path helpers |
+| `store.rs` | `build_if_missing`, `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub(crate)` |
+| `http.rs` | `agent()` (ureq, rustls, timeouts) and `get(agent, url, consume)`: one retried GET whose body is handed to `consume`; classifies errors transient or permanent |
+| `retry.rs` | `with_retry(op, sleep)`: 3 attempts, 1 s then 2 s backoff plus jitter; `sleep` is injected so tests do not wait |
 | `header.rs` | 64-byte cache header: encode, parse, `read_file` |
-| `ngrams.rs` | `fetch(lang)` — streams V3 shards concurrently (`SHARD_CONCURRENCY = 4`) |
-| `wiktionary.rs` | `fetch_dict`, `load_valid_words`, `load_metadata`, `DictMetadata` |
+| `ngrams.rs` | `fetch(lang, valid)`: 4 scoped worker threads (`SHARD_CONCURRENCY`) pull shard indices from a shared counter and filter as they stream; `read_shard` takes any `BufRead` |
+| `wiktionary.rs` | `fetch_dict`, `read_dict` (any `BufRead`), `load_valid_words`, `load_metadata`, `DictMetadata` |
 | `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
 | `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view); exposes raw frequencies only (`word_frequencies`), the answer prior lives in `lex-core` |
 | `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
@@ -41,11 +42,12 @@ Header (little-endian, `header_len` bytes, 64 in v1): magic `LEXC`, version `u16
 
 `store::build_if_missing::<N>` checks whether the ngrams binary exists. On a miss:
 
-1. If `dicts/{lang}.txt` is absent → `wiktionary::fetch_dict` downloads and caches it
+1. If `dicts/{lang}.txt` is absent, `wiktionary::fetch_dict` downloads and caches it
 2. `wiktionary::load_valid_words` reads the word list into a `HashSet`
-3. `ngrams::fetch(lang)` downloads all shards and returns a `HashMap<usize, HashMap<String, u64>>`
-4. `store::filter_by_dict` removes any word not in the valid set; drops empty length buckets
-5. `store::populate` writes all length buckets to disk
+3. `ngrams::fetch(lang, &valid)` downloads all shards; each worker keeps only words in the set with a supported length (`MIN_WORD_LENGTH..=MAX_WORD_LENGTH`), and the merged totals below `MIN_FREQUENCY` are dropped
+4. `store::populate` writes every length bucket to disk
+
+Every download goes through `http::get`, which retries transient failures (connect, timeout, 5xx, 429, a dropped body) and fails at once on other 4xx. The sources are `.gz` files decoded with `MultiGzDecoder`; ureq is built without its `gzip` feature so it never decodes `Content-Encoding` itself.
 
 A single miss triggers a full language download — all length buckets are written at once, so subsequent requests for other lengths of the same language hit disk directly.
 
@@ -57,7 +59,8 @@ A single miss triggers a full language download — all length buckets are writt
 ## Key invariants
 
 - `Word<N>` chars must be NFC-normalized before construction; `try_from` counts Unicode scalars, not bytes
-- `store::MIN_FREQUENCY = 1` — all Wiktionary-valid words are kept regardless of corpus frequency
+- `store::MIN_FREQUENCY = 1`: all Wiktionary-valid words are kept regardless of corpus frequency
+- A rebuilt `{N}.bin` is not byte-reproducible: `write_bucket` sorts by frequency with `sort_unstable`, so equal-frequency words land in `HashMap` order, which changes per process. The word set and frequency sequence are stable; the checksum is not
 - `parse::is_valid_word` rejects multi-word tokens, POS-tagged entries (`_NOUN`), and non-alphabetic strings
 - `wiktionary.rs` takes `&Path` (not `&DataDir`) to avoid a circular import with `data_dir.rs`
 

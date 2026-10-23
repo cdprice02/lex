@@ -20,7 +20,7 @@ storage formats, strategy code, or benchmarks.
 | [04](.tasks/04-memoization.md) | Decision-tree memoization ✅ | Simulation as one pattern-keyed tree; full-dictionary eval becomes cheap |
 | [05](.tasks/05-strategy.md) | Strategy generalization ✅ | Unconstrained guessing; strategy abstraction; prior moves to lex-core |
 | [06](.tasks/06-micro-opt.md) | Micro-optimization ✅ | Selective resets; O(N²) feedback ordinals; rejected items recorded in `benchmarks/micro-opt.md` |
-| [07](.tasks/07-pipeline-sync.md) | Pipeline simplification | Drop tokio for sync HTTP; retry; stream-time filtering |
+| [07](.tasks/07-pipeline-sync.md) | Pipeline simplification ✅ | Drop tokio for sync HTTP; retry; stream-time filtering |
 | [08](.tasks/08-endgame.md) | Endgame exact search | Expectimax when few candidates remain |
 | [09](.tasks/09-simd.md) | SIMD | `portable_simd` over the phase-06 representation |
 | [10](.tasks/10-multithreading.md) | Multithreading | Parallel games/candidates |
