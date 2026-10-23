@@ -1,6 +1,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
+use lex_core::{GuessPool, Strategy};
 use lex_data::Language;
 
 use crate::error::CliError;
@@ -72,6 +73,39 @@ pub struct CommonArgs {
         help = "Directory containing cached word-frequency files"
     )]
     pub data_dir: PathBuf,
+    #[arg(
+        long,
+        help = "Only guess words that are still possible answers (the original solver)"
+    )]
+    pub hard_mode: bool,
+    #[arg(
+        long,
+        default_value_t = Strategy::default().temperature,
+        value_parser = parse_temperature,
+        help = "Answer prior temperature: higher flattens the frequency-based prior"
+    )]
+    pub temperature: f64,
+    #[arg(
+        long,
+        default_value_t = Strategy::default().win_weight,
+        value_parser = parse_win_weight,
+        help = "Score bonus, in bits, per unit of probability that a guess is the answer"
+    )]
+    pub win_weight: f64,
+}
+
+impl CommonArgs {
+    pub fn strategy(&self) -> Strategy {
+        Strategy {
+            pool: if self.hard_mode {
+                GuessPool::Candidates
+            } else {
+                GuessPool::All
+            },
+            temperature: self.temperature,
+            win_weight: self.win_weight,
+        }
+    }
 }
 
 #[derive(clap::Args, Debug)]
@@ -134,5 +168,23 @@ fn parse_word_length(s: &str) -> anyhow::Result<usize> {
             got: n,
         }
         .into())
+    }
+}
+
+fn parse_temperature(s: &str) -> anyhow::Result<f64> {
+    let t: f64 = s.parse()?;
+    if t.is_finite() && t > 0.0 {
+        Ok(t)
+    } else {
+        Err(CliError::InvalidTemperature(t).into())
+    }
+}
+
+fn parse_win_weight(s: &str) -> anyhow::Result<f64> {
+    let w: f64 = s.parse()?;
+    if w.is_finite() && w >= 0.0 {
+        Ok(w)
+    } else {
+        Err(CliError::InvalidWinWeight(w).into())
     }
 }

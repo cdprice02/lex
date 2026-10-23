@@ -38,6 +38,14 @@ pub fn compare(baseline: &Report, candidate: &Report) -> String {
         );
     }
 
+    if baseline.run.strategy != candidate.run.strategy {
+        let _ = writeln!(
+            out,
+            "strategy: {} -> {}",
+            baseline.run.strategy, candidate.run.strategy
+        );
+    }
+
     let candidate_by_word: HashMap<&str, _> = candidate
         .games
         .iter()

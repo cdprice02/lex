@@ -139,10 +139,8 @@ impl<const N: usize> Clone for WordIter<'_, N> {
 pub struct WordSet<const N: usize> {
     mmap: Arc<Mmap>,
     // Absolute byte offsets of active records within the mmap (past any header), sorted descending by frequency.
-    // Elements are only ever removed (via retain/limit) — never reordered after construction.
+    // Elements are only ever removed (via limit) — never reordered after construction.
     offsets: Vec<u32>,
-    // Temperature-scaled probabilities, parallel to offsets. Recomputed after every mutation.
-    scaled_probs: Vec<f64>,
 }
 
 impl<const N: usize> WordSet<N> {
@@ -191,13 +189,9 @@ impl<const N: usize> WordSet<N> {
     }
 
     fn from_offsets(mmap: Mmap, offsets: Vec<u32>) -> Self {
-        let mmap = Arc::new(mmap);
-        let freqs = Self::read_freqs(&mmap, &offsets);
-        let scaled_probs = Self::compute_probs(&freqs);
         Self {
-            mmap,
+            mmap: Arc::new(mmap),
             offsets,
-            scaled_probs,
         }
     }
 
@@ -235,36 +229,6 @@ impl<const N: usize> WordSet<N> {
         Self::from_offsets(mmap, offsets)
     }
 
-    /// Temperature-scaled softmax over log-frequencies: p_i ∝ f_i^(1/T).
-    /// Raw-frequency softmax collapses to one-hot on the top word because Ngrams
-    /// counts span many orders of magnitude; log-space input + temperature > 1
-    /// flattens the distribution toward uniform without discarding rank information.
-    fn compute_probs(frequencies: &[u64]) -> Vec<f64> {
-        // T=1 → linear normalization; T→∞ → uniform; tuned empirically
-        const TEMPERATURE: f64 = 5.0;
-        if frequencies.is_empty() {
-            return Vec::new();
-        }
-        let log_freqs: Vec<f64> = frequencies.iter().map(|&f| (f as f64).ln()).collect();
-        let max_lf = log_freqs.iter().cloned().fold(f64::NEG_INFINITY, f64::max);
-        let exp: Vec<f64> = log_freqs
-            .iter()
-            .map(|&lf| ((lf - max_lf) / TEMPERATURE).exp())
-            .collect();
-        let sum: f64 = exp.iter().sum();
-        exp.into_iter().map(|e| e / sum).collect()
-    }
-
-    fn read_freqs(mmap: &Mmap, offsets: &[u32]) -> Vec<u64> {
-        offsets
-            .iter()
-            .map(|&off| {
-                RawRecord::<N>::from(&mmap[off as usize..off as usize + RawRecord::<N>::SIZE])
-                    .freq()
-            })
-            .collect()
-    }
-
     /// Words sorted descending by frequency, read lazily from the mmap backing store.
     pub fn words(&self) -> WordIter<'_, N> {
         WordIter {
@@ -274,14 +238,17 @@ impl<const N: usize> WordSet<N> {
         }
     }
 
-    /// Temperature-scaled probabilities (p_i ∝ f_i^(1/T)), parallel-indexed with `words()`.
-    pub fn probabilities(&self) -> &[f64] {
-        &self.scaled_probs
-    }
-
-    /// Iterator of `(word, probability)` pairs in frequency-descending order.
-    pub fn word_probs(&self) -> impl Iterator<Item = (Word<N>, f64)> + '_ {
-        self.words().zip(self.scaled_probs.iter().copied())
+    /// `(word, raw frequency)` pairs in frequency-descending order. The answer prior built on
+    /// these frequencies is a solver modeling choice and lives in `lex-core`.
+    pub fn word_frequencies(&self) -> impl Iterator<Item = (Word<N>, u64)> + '_ {
+        self.offsets.iter().map(|&off| {
+            let record =
+                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+            (
+                record.word().expect("records are validated at load"),
+                record.freq(),
+            )
+        })
     }
 
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
@@ -308,26 +275,7 @@ impl<const N: usize> WordSet<N> {
     }
 
     pub fn limit(&mut self, n: usize) {
-        if n < self.offsets.len() {
-            self.offsets.truncate(n);
-            let freqs = Self::read_freqs(&self.mmap, &self.offsets);
-            self.scaled_probs = Self::compute_probs(&freqs);
-        }
-    }
-
-    pub fn retain<F: Fn(&Word<N>) -> bool>(&mut self, predicate: F) {
-        let mut new_offsets = Vec::new();
-        let mut new_freqs = Vec::new();
-        for &off in &self.offsets {
-            let record =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
-            if record.word().is_some_and(|w| predicate(&w)) {
-                new_offsets.push(off);
-                new_freqs.push(record.freq());
-            }
-        }
-        self.offsets = new_offsets;
-        self.scaled_probs = Self::compute_probs(&new_freqs);
+        self.offsets.truncate(n);
     }
 }
 
@@ -356,12 +304,6 @@ mod benches {
             })
             .collect::<HashMap<Word<5>, u64>>();
         WordSet::from_frequency_map(frequencies)
-    }
-
-    #[bench]
-    fn wordset_probabilities_1000(b: &mut Bencher) {
-        let ws = make_wordset(1000);
-        b.iter(|| black_box(ws.probabilities()));
     }
 
     #[bench]
@@ -465,12 +407,17 @@ mod tests {
     }
 
     #[test]
-    fn probabilities_normalized() {
+    fn word_frequencies_follow_word_order() {
         let ws = ws(&[("crane", 100), ("stare", 200), ("light", 300)]);
-        let probs = ws.probabilities();
-        assert_eq!(probs.len(), 3);
-        let sum: f64 = probs.iter().copied().sum();
-        assert!((sum - 1.0).abs() < 1e-10, "probabilities sum to {sum}");
+        let pairs: Vec<_> = ws.word_frequencies().collect();
+        assert_eq!(
+            pairs,
+            vec![
+                (Word::try_from("light").unwrap(), 300),
+                (Word::try_from("stare").unwrap(), 200),
+                (Word::try_from("crane").unwrap(), 100),
+            ]
+        );
     }
 
     #[test]

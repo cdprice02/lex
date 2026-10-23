@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
 
+use lex_core::{GuessPool, Strategy};
 use serde::{Deserialize, Serialize};
 
 /// Real Wordle allows six guesses; a game needing more counts as a failure. The solver itself
@@ -26,6 +27,50 @@ pub struct Run {
     pub num_games: usize,
     pub targets_file: Option<String>,
     pub first_guess: String,
+    /// Reports from before the strategy was configurable played hard mode at the defaults.
+    #[serde(default = "StrategyReport::legacy")]
+    pub strategy: StrategyReport,
+}
+
+/// The solver [`Strategy`] a run played. Two reports are a like-for-like solver comparison only
+/// when this matches.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct StrategyReport {
+    pub hard_mode: bool,
+    pub temperature: f64,
+    pub win_weight: f64,
+}
+
+impl StrategyReport {
+    fn legacy() -> Self {
+        Strategy::hard_mode().into()
+    }
+}
+
+impl From<Strategy> for StrategyReport {
+    fn from(s: Strategy) -> Self {
+        Self {
+            hard_mode: s.pool == GuessPool::Candidates,
+            temperature: s.temperature,
+            win_weight: s.win_weight,
+        }
+    }
+}
+
+impl std::fmt::Display for StrategyReport {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}, temperature {}, win weight {}",
+            if self.hard_mode {
+                "hard mode"
+            } else {
+                "unconstrained"
+            },
+            self.temperature,
+            self.win_weight
+        )
+    }
 }
 
 /// Identity of the data a run was measured against. Two reports are only comparable when
@@ -118,6 +163,7 @@ impl Report {
             "{} games, {}-letter {} words (dictionary: {}), seed {}",
             self.run.num_games, c.word_length, c.language, c.dictionary_length, self.run.seed
         );
+        let _ = writeln!(out, "strategy: {}", self.run.strategy);
         let _ = writeln!(out, "first guess: {}", self.run.first_guess);
         let _ = writeln!(out, "ngrams sha256: {}", short(&c.ngrams_sha256));
         if let Some(dict) = &c.dict {
