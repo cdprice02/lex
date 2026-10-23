@@ -19,7 +19,7 @@ storage formats, strategy code, or benchmarks.
 | [03](.tasks/03-data-integrity.md) | Data integrity ✅ | Loud load-time validation; versioned cache header |
 | [04](.tasks/04-memoization.md) | Decision-tree memoization ✅ | Simulation as one pattern-keyed tree; full-dictionary eval becomes cheap |
 | [05](.tasks/05-strategy.md) | Strategy generalization ✅ | Unconstrained guessing; strategy abstraction; prior moves to lex-core |
-| [06](.tasks/06-micro-opt.md) | Micro-optimization | Selective resets; `correct()` alternatives; alphabet-indexed words |
+| [06](.tasks/06-micro-opt.md) | Micro-optimization ✅ | Selective resets; O(N²) feedback ordinals; rejected items recorded in `benchmarks/micro-opt.md` |
 | [07](.tasks/07-pipeline-sync.md) | Pipeline simplification | Drop tokio for sync HTTP; retry; stream-time filtering |
 | [08](.tasks/08-endgame.md) | Endgame exact search | Expectimax when few candidates remain |
 | [09](.tasks/09-simd.md) | SIMD | `portable_simd` over the phase-06 representation |
@@ -57,7 +57,7 @@ Ordering rationale:
   `#[bench]` experimentation; phase 09 (`portable_simd`) makes it
   load-bearing. Pinned in `rust-toolchain.toml`, reproducible via the flake.
   Exit path if ever needed: `variant_count` → hardcoded const, `#[bench]` →
-  criterion/divan, `optimize_attribute` → drop.
+  criterion/divan.
 - **No git-lfs; no committed corpus data.** Everything is reproducible from
   public sources; integrity comes from header checksums + provenance stamps.
 - **Generic answer model.** The frequency-derived prior is canonical for
@@ -71,7 +71,7 @@ Ordering rationale:
 
 ## Nightly feature candidates (audited 2026-07)
 
-In use: `optimize_attribute`, `variant_count`,
+In use: `variant_count`,
 `non_exhaustive_omitted_patterns_lint`, `must_not_suspend`, `test`
 (`#[bench]`), `-Z threads`, `-Z share-generics`, `profile-rustflags`.
 
@@ -91,8 +91,3 @@ Experiment-grade (adopt narrowly or wait):
 - `TrustedLen` for `WordIter` (`WordIter` is exact-size since phase 03)
 - `iter_array_chunks` for record parsing (stable `slice::as_chunks` may
   already suffice — check first)
-
-Note: `#[optimize(speed)]` is currently decorative — it only counteracts
-size-optimization, and the release profile is already `opt-level = 3`. Kept
-as insurance for other profiles; drop if it causes friction (revisit in
-phase 06).

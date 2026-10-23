@@ -8,7 +8,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 
 | Module | Responsibility |
 |---|---|
-| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()` |
+| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies and the renormalized prior) |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
@@ -43,18 +43,15 @@ single candidate is returned without scanning the pool. `answer_prior` exposes t
 for reports; the CLI fixes the report prior at `CANONICAL_TEMPERATURE`. Cost is O(pool x candidates)
 per node, the reason memoization matters.
 
-`guess_entropy`: for one guess, iterates the candidate words and accumulates probability mass per `WordCorrectness` pattern (indexed by `ordinal()`). Returns entropy in bits.
+`guess_entropy`: for one guess, iterates the candidate words and accumulates probability mass per feedback ordinal (`pattern_ordinal`, no `WordCorrectness` built). Returns entropy in bits.
 
-Uses a thread-local `PATTERN_PROBS: Vec<f64>` of length `WordCorrectness::<N>::COUNT` (= 3^N). The vec is allocated once per thread and `.fill(0.0)` reset between calls. Marked `#[optimize(speed)]`.
+Uses one thread-local `Patterns { buckets, touched }`, shared by every word length: `buckets` grows to the largest `WordCorrectness::<N>::COUNT` (= 3^N) seen and is all zero between calls; `touched` lists the ordinals a call wrote (a bucket is listed when it is 0.0 before the add, so every prior must be positive). The call sorts `touched` ascending, sums `p * log2(p)` in that order while zeroing each bucket, and clears the list. The ascending order makes the floating-point result independent of word order, which keeps guess sequences bit-identical.
 
-## Correctness algorithm (`correct()` in `correctness.rs`)
+## Correctness algorithm (`pattern_ordinal` in `correctness.rs`)
 
-Two-pass algorithm with a thread-local `CHAR_COUNTS: Box<[u8; 0x10000]>` BMP buffer:
+One generic O(N^2) comparison over `[T; N]` with two `u16` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
 
-1. **Pass 1** — mark exact matches (`Correct`); for non-matching positions, increment `counts[word_char]`
-2. **Pass 2** — for non-Correct positions, if `counts[guess_char] > 0` mark `Misplaced` and decrement
-
-Buffer reset is selective: only positions written in pass 1 are zeroed, avoiding a full 65 KB memset per call. The `debug_assert` guards against chars above U+FFFF.
+Measured and rejected (numbers in `benchmarks/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
 
 ## `ordinal()` encoding
 

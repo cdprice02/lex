@@ -37,7 +37,7 @@ The `RUST_LOG` env var controls verbosity (`info` shows per-game progress, `debu
 
 ## Toolchain
 
-Pinned to nightly in `rust-toolchain.toml`. The codebase uses several nightly features: `optimize_attribute`, `variant_count`, `non_exhaustive_omitted_patterns_lint`, and `extern crate test` for `#[bench]`. `.cargo/config.toml` enables parallel codegen (`-Z threads=8`, `-Z share-generics=yes`).
+Pinned to nightly in `rust-toolchain.toml`. The codebase uses several nightly features: `variant_count`, `non_exhaustive_omitted_patterns_lint`, and `extern crate test` for `#[bench]`. `.cargo/config.toml` enables parallel codegen (`-Z threads=8`, `-Z share-generics=yes`).
 
 Toolchain options:
 - **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically

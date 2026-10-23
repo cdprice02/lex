@@ -1,6 +1,7 @@
 # 09 — SIMD
 
-Depends on: 06 (alphabet-indexed `[u8; N]` representation), and completion of
+Depends on: 06 (its alphabet-indexed representation was rejected on the
+scalar benches; see `benchmarks/micro-opt.md`), and completion of
 phases 00–08 per the optimization order (single-threaded first)
 
 ## Why
