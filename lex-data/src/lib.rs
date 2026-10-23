@@ -11,6 +11,7 @@ pub mod word;
 
 mod data_dir;
 mod error;
+mod header;
 mod ngrams;
 mod parse;
 mod store;

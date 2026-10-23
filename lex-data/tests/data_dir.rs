@@ -4,16 +4,29 @@ use std::io::Write;
 use lex_data::blocking::DataDir;
 use lex_data::{Language, Word, WordSet};
 
+/// Writes a cache file in the documented on-disk format: a 64-byte header (magic, version,
+/// word length, header length, record count, records SHA-256) followed by the records.
 fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
+    use sha2::{Digest, Sha256};
     let path = dir.ngrams_path(lang, n);
     fs::create_dir_all(path.parent().unwrap()).unwrap();
-    let mut f = fs::File::create(path).unwrap();
+    let mut records = Vec::new();
     for &(word, freq) in entries {
         for ch in word.chars() {
-            f.write_all(&(ch as u32).to_le_bytes()).unwrap();
+            records.extend_from_slice(&(ch as u32).to_le_bytes());
         }
-        f.write_all(&freq.to_le_bytes()).unwrap();
+        records.extend_from_slice(&freq.to_le_bytes());
     }
+    let mut header = [0u8; 64];
+    header[0..4].copy_from_slice(b"LEXC");
+    header[4..6].copy_from_slice(&1u16.to_le_bytes());
+    header[6..8].copy_from_slice(&(n as u16).to_le_bytes());
+    header[8..12].copy_from_slice(&64u32.to_le_bytes());
+    header[12..20].copy_from_slice(&(entries.len() as u64).to_le_bytes());
+    header[20..52].copy_from_slice(&Sha256::digest(&records));
+    let mut f = fs::File::create(path).unwrap();
+    f.write_all(&header).unwrap();
+    f.write_all(&records).unwrap();
 }
 
 // build_if_missing only downloads when the ngrams file is absent.

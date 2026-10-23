@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::fmt::Display;
 use std::ops::Deref;
+use std::path::Path;
 use std::sync::Arc;
 
 use memmap2::{Mmap, MmapMut};
@@ -109,16 +110,11 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
     type Item = Word<N>;
 
     fn next(&mut self) -> Option<Word<N>> {
-        loop {
-            let &off = self.offsets.get(self.index)?;
-            self.index += 1;
-            if let Some(word) =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE])
-                    .word()
-            {
-                return Some(word);
-            }
-        }
+        let &off = self.offsets.get(self.index)?;
+        self.index += 1;
+        let record =
+            RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+        Some(record.word().expect("records are validated at load"))
     }
 
     fn size_hint(&self) -> (usize, Option<usize>) {
@@ -126,6 +122,8 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
         (remaining, Some(remaining))
     }
 }
+
+impl<const N: usize> ExactSizeIterator for WordIter<'_, N> {}
 
 impl<const N: usize> Clone for WordIter<'_, N> {
     fn clone(&self) -> Self {
@@ -140,7 +138,7 @@ impl<const N: usize> Clone for WordIter<'_, N> {
 #[derive(Debug, Clone)]
 pub struct WordSet<const N: usize> {
     mmap: Arc<Mmap>,
-    // Byte offsets of active records within the mmap, sorted descending by frequency.
+    // Absolute byte offsets of active records within the mmap (past any header), sorted descending by frequency.
     // Elements are only ever removed (via retain/limit) — never reordered after construction.
     offsets: Vec<u32>,
     // Temperature-scaled probabilities, parallel to offsets. Recomputed after every mutation.
@@ -148,15 +146,52 @@ pub struct WordSet<const N: usize> {
 }
 
 impl<const N: usize> WordSet<N> {
-    /// Constructs a `WordSet` from a memory-mapped binary ngrams file.
+    /// Constructs a `WordSet` from a memory-mapped ngrams cache whose records start at byte
+    /// `records_start` and number `record_count`.
     ///
-    /// Records must be sorted descending by frequency. `num_records` selects how many
-    /// records to expose (use `mmap.len() / RawRecord::<N>::SIZE` for all of them).
-    pub(crate) fn from_mmap(mmap: Mmap, num_records: usize) -> Self {
+    /// Every record is checked once, here: each scalar must be a valid `char`, and
+    /// frequencies must be positive and non-increasing (the solver and [`limit`](Self::limit)
+    /// rely on the sort). After this, iteration can assume validity. All records are
+    /// validated even when `limit` keeps only a prefix.
+    pub(crate) fn from_cache(
+        mmap: Mmap,
+        path: &Path,
+        records_start: usize,
+        record_count: usize,
+        limit: Option<usize>,
+    ) -> Result<Self, LexDataError> {
+        let bad = |index: usize, reason: &str| LexDataError::CorruptRecord {
+            path: path.to_path_buf(),
+            index,
+            reason: reason.to_string(),
+        };
+        let size = RawRecord::<N>::SIZE;
+        let mut prev_freq = u64::MAX;
+        for index in 0..record_count {
+            let off = records_start + index * size;
+            let record = RawRecord::<N>::from(&mmap[off..off + size]);
+            if record.word().is_none() {
+                return Err(bad(index, "stored scalar is not a valid char"));
+            }
+            let freq = record.freq();
+            if freq == 0 {
+                return Err(bad(index, "frequency is zero"));
+            }
+            if freq > prev_freq {
+                return Err(bad(index, "frequency exceeds the previous record's"));
+            }
+            prev_freq = freq;
+        }
+        let take = limit.map_or(record_count, |l| l.min(record_count));
+        let offsets: Vec<u32> = (0..take)
+            .map(|i| u32::try_from(records_start + i * size))
+            .collect::<Result<_, _>>()
+            .map_err(|_| bad(take, "record offset exceeds 4 GiB"))?;
+        Ok(Self::from_offsets(mmap, offsets))
+    }
+
+    fn from_offsets(mmap: Mmap, offsets: Vec<u32>) -> Self {
         let mmap = Arc::new(mmap);
-        let offsets: Vec<u32> = (0..num_records)
-            .map(|i| (i * RawRecord::<N>::SIZE) as u32)
-            .collect();
         let freqs = Self::read_freqs(&mmap, &offsets);
         let scaled_probs = Self::compute_probs(&freqs);
         Self {
@@ -196,7 +231,8 @@ impl<const N: usize> WordSet<N> {
                 .copy_from_slice(&freq.to_le_bytes());
         }
         let mmap = buf.make_read_only().expect("failed to make mmap read-only");
-        Self::from_mmap(mmap, pairs.len())
+        let offsets = (0..pairs.len()).map(|i| (i * record_size) as u32).collect();
+        Self::from_offsets(mmap, offsets)
     }
 
     /// Temperature-scaled softmax over log-frequencies: p_i ∝ f_i^(1/T).
