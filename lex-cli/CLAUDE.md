@@ -29,9 +29,9 @@ in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 
 ## Simulate loop (`simulate.rs`)
 
-1. Load `WordSet<N>` via `blocking::DataDir` with the shared args; capture the answer prior of every word over the full dictionary
+1. Load `WordSet<N>` via `blocking::DataDir` with the shared args; capture the evaluation prior of every word over the full dictionary (`answer_prior` at `CANONICAL_TEMPERATURE`, whatever the solver's `--temperature`)
 2. Select targets (`--seed`, `--targets`, `-n`; default is the whole dictionary)
-3. Build one `Guesser` and read `first_guess` from its root suggestion (reported, not replayed)
+3. Build one `Guesser` from `CommonArgs::strategy()` (`--hard-mode`, `--temperature`, `--win-weight`) and read `first_guess` from its root suggestion (reported, not replayed)
 4. For each game: call `play(word, &mut guesser, Vec::new())`; games share the guesser's decision tree, so each position is scored once
 5. Emit the report: summary to stdout (stderr when `-o -` sends JSON to stdout), JSON to `-o PATH`
 
@@ -39,7 +39,7 @@ Sharing the tree is only valid while `Candidates::suggest` is deterministic (see
 
 ## Assist loop (`assist.rs`)
 
-Per turn: show `suggest_top_k(--suggestions)` with entropy bits → prompt for
+Per turn: show `suggest_top_k(--suggestions)` with entropy bits (non-candidate probes are marked) → prompt for
 the word actually played (empty input = top suggestion; may be any `Word<N>`,
 not necessarily suggested or in the corpus) → prompt for feedback →
 `push_guess`. Exits on all-correct feedback, candidate exhaustion (target not
@@ -56,4 +56,4 @@ CLI argument validation errors use `CliError` (defined in `error.rs`, derived wi
 
 ## Reports
 
-`simulate -o report.json` writes schema v1: `run` (seed, timestamp, first guess), `corpus` (ngrams sha256, dict provenance), `summary` (histogram, mean, failure rate under `uniform` and `prior` weighting), and per-target `games` with the full guess sequence and prior. Failure means more than 6 guesses; the solver still plays to completion so the true count is recorded. The prior weighting renormalizes over the targets played: exact for a full-dictionary run, a self-normalized estimate for a sample. `lex compare baseline.json candidate.json` pairs targets by word and warns when corpus checksums differ.
+`simulate -o report.json` writes schema v1: `run` (seed, timestamp, first guess, `strategy`; reports without it read as hard mode, T=5, win weight 0), `corpus` (ngrams sha256, dict provenance), `summary` (histogram, mean, failure rate under `uniform` and `prior` weighting), and per-target `games` with the full guess sequence and prior. Failure means more than 6 guesses; the solver still plays to completion so the true count is recorded. The prior weighting renormalizes over the targets played: exact for a full-dictionary run, a self-normalized estimate for a sample. `lex compare baseline.json candidate.json` pairs targets by word and warns when corpus checksums differ; it prints the strategies when they differ.

@@ -15,7 +15,7 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `ngrams.rs` | `fetch(lang)` — streams V3 shards concurrently (`SHARD_CONCURRENCY = 4`) |
 | `wiktionary.rs` | `fetch_dict`, `load_valid_words`, `load_metadata`, `DictMetadata` |
 | `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
-| `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view) |
+| `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view); exposes raw frequencies only (`word_frequencies`), the answer prior lives in `lex-core` |
 | `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
 | `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`) |
 | `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=10; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
