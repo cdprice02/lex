@@ -18,17 +18,17 @@ pub(crate) const MIN_FREQUENCY: u64 = 1;
 /// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
 /// Ensures the Wiktionary dict is present first, then downloads all ngrams shards,
 /// filters to Wiktionary-valid words, and writes all length buckets to disk.
-pub(crate) async fn build_if_missing<const N: usize>(
+pub(crate) fn build_if_missing<const N: usize>(
     dir: &DataDir,
     lang: Language,
 ) -> anyhow::Result<()> {
     if !dir.ngrams_path(lang, N).exists() {
         if !dir.dict_path(lang).exists() {
-            wiktionary::fetch_dict(lang, dir.as_ref()).await?;
+            wiktionary::fetch_dict(lang, dir.as_ref())?;
         }
         let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
         log::warn!("Building {} corpus...", lang);
-        let by_length = ngrams::fetch(lang).await?;
+        let by_length = ngrams::fetch(lang)?;
         let n_buckets = by_length.len();
         let filtered = filter_by_dict(by_length, &valid_words);
         populate(dir, lang, &filtered)?;

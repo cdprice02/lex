@@ -1,17 +1,15 @@
 use std::collections::HashSet;
-use std::io::{BufWriter, Write};
+use std::io::{BufRead, BufReader, BufWriter, Read, Write};
 use std::path::Path;
 
 use anyhow::Context;
-use async_compression::tokio::bufread::GzipDecoder;
-use futures::TryStreamExt;
+use flate2::read::MultiGzDecoder;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
-use tokio::io::{AsyncBufReadExt, BufReader};
-use tokio_util::io::StreamReader;
 
+use crate::http;
 use crate::language::Language;
 use crate::parse::{is_valid_word, normalize};
 
@@ -88,50 +86,24 @@ fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
 /// Downloads the KAIKKI Wiktionary extract for `lang`, extracts all valid headwords
 /// and inflected forms (excluding proper nouns), and writes the sorted word list and
 /// metadata to `data_dir/dicts/`.
-pub(crate) async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
+pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
     let url = lang.wiktionary_url();
     log::info!("Fetching Wiktionary dict for {} from {url}...", lang);
 
-    let client = reqwest::Client::new();
-    let response = client
-        .get(&url)
-        .send()
-        .await?
-        .error_for_status()
-        .with_context(|| format!("fetching Wiktionary for {lang}"))?;
-
-    let mut hasher = Sha256::new();
-    let mut words: HashSet<String> = HashSet::new();
-    {
-        let stream = response
-            .bytes_stream()
-            .inspect_ok(|chunk| hasher.update(chunk))
-            .map_err(std::io::Error::other);
-        let reader = StreamReader::new(stream);
-        let decoder = GzipDecoder::new(BufReader::new(reader));
-        let mut lines = BufReader::new(decoder).lines();
-
-        while let Some(line) = lines.next_line().await? {
-            let Ok(entry) = serde_json::from_str::<WiktionaryEntry>(&line) else {
-                continue;
-            };
-            if entry.lang_code != iso {
-                continue;
-            }
-            if entry.pos.as_deref() == Some("name") {
-                continue;
-            }
-            insert_word(&mut words, &entry.word);
-            for form in &entry.forms {
-                insert_word(&mut words, &form.form);
-            }
-        }
-    }
+    let (words, source_sha256) = http::get(&http::agent(), &url, |body| {
+        let mut hashing = HashingReader {
+            inner: body,
+            hasher: Sha256::new(),
+        };
+        let words = read_dict(BufReader::new(MultiGzDecoder::new(&mut hashing)), iso)?;
+        Ok((words, crate::store::hex(&hashing.hasher.finalize())))
+    })
+    .with_context(|| format!("fetching Wiktionary for {lang}"))?;
     let provenance = Provenance {
         source_url: url,
         fetched_at: OffsetDateTime::now_utc().format(&Rfc3339)?,
-        source_sha256: crate::store::hex(&hasher.finalize()),
+        source_sha256,
     };
 
     let min_len = words.iter().map(|w| w.chars().count()).min().unwrap_or(0);
@@ -158,6 +130,43 @@ pub(crate) async fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Resul
         lang
     );
     Ok(())
+}
+
+/// Hashes the compressed bytes as they stream past, so the provenance checksum identifies the
+/// download rather than the decoded text.
+struct HashingReader<R> {
+    inner: R,
+    hasher: Sha256,
+}
+
+impl<R: Read> Read for HashingReader<R> {
+    fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
+        let n = self.inner.read(buf)?;
+        self.hasher.update(&buf[..n]);
+        Ok(n)
+    }
+}
+
+/// Collects the normalized headwords and inflected forms of every non-proper-noun entry in
+/// language `iso` from a decompressed KAIKKI JSONL stream.
+fn read_dict(reader: impl BufRead, iso: &str) -> std::io::Result<HashSet<String>> {
+    let mut words = HashSet::new();
+    for line in reader.lines() {
+        let Ok(entry) = serde_json::from_str::<WiktionaryEntry>(&line?) else {
+            continue;
+        };
+        if entry.lang_code != iso {
+            continue;
+        }
+        if entry.pos.as_deref() == Some("name") {
+            continue;
+        }
+        insert_word(&mut words, &entry.word);
+        for form in &entry.forms {
+            insert_word(&mut words, &form.form);
+        }
+    }
+    Ok(words)
 }
 
 /// Reads the cached Wiktionary word list for `lang` into a `HashSet`.

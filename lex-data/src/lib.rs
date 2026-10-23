@@ -4,15 +4,16 @@
 #![warn(non_exhaustive_omitted_patterns)]
 #![warn(must_not_suspend)]
 
-pub mod blocking;
 pub mod language;
 pub mod word;
 
 mod data_dir;
 mod error;
 mod header;
+mod http;
 mod ngrams;
 mod parse;
+mod retry;
 mod store;
 mod wiktionary;
 

@@ -21,20 +21,20 @@ impl DataDir {
     /// Google Books Ngrams shards for that language, filters to valid words, and writes
     /// every length bucket to disk before returning. Subsequent calls for any length in the
     /// same language are served from disk without any network access.
-    pub async fn load<const N: usize>(
+    pub fn load<const N: usize>(
         &self,
         lang: Language,
         limit: Option<usize>,
     ) -> anyhow::Result<WordSet<N>> {
-        store::build_if_missing::<N>(self, lang).await?;
+        store::build_if_missing::<N>(self, lang)?;
         store::read::<N>(self, lang, limit)
     }
 
     /// Returns Wiktionary-derived metadata for `lang` (word count, length range).
     /// Downloads the dictionary if not already cached.
-    pub async fn dict_metadata(&self, lang: Language) -> anyhow::Result<DictMetadata> {
+    pub fn dict_metadata(&self, lang: Language) -> anyhow::Result<DictMetadata> {
         if !self.dict_path(lang).exists() {
-            wiktionary::fetch_dict(lang, &self.path).await?;
+            wiktionary::fetch_dict(lang, &self.path)?;
         }
         wiktionary::load_metadata(lang, &self.path)
     }

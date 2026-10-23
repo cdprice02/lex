@@ -6,20 +6,14 @@ edition = "2024"
 [dependencies]
 anyhow = { workspace = true }
 strum = { workspace = true }
-async-compression = { version = "0.4", features = ["tokio", "gzip"] }
 seq-macro = "0.3"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-futures = "0.3"
+flate2 = "1"
 log = { workspace = true }
 memmap2 = "0.9"
-reqwest = { version = "0.12", default-features = false, features = [
-    "rustls-tls",
-    "stream",
-] }
 thiserror = { workspace = true }
-tokio = { version = "1", features = ["full"] }
-tokio-util = { version = "0.7", features = ["io"] }
+ureq = { version = "3", default-features = false, features = ["rustls"] }
 unicode-normalization = "0.1"
 sha2 = "0.11.1"
 time = { version = "0.3.55", features = ["formatting"] }
