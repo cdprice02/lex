@@ -10,7 +10,7 @@ use crate::cli::AssistArgs;
 /// candidate set until solved (or until the candidates are exhausted, e.g.
 /// when the day's target is missing from our corpus).
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
-    let word_set = lex_data::blocking::DataDir::new(&args.common.data_dir)
+    let word_set = lex_data::DataDir::new(&args.common.data_dir)
         .load::<N>(args.common.lang, args.common.dictionary_length)?;
     let mut guesser = Guesser::new(word_set, args.common.strategy());
 

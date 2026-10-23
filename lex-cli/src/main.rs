@@ -25,7 +25,7 @@ fn main() -> anyhow::Result<()> {
         }
         Command::Compare(args) => compare_reports(&args),
         Command::Clear(args) => {
-            lex_data::blocking::DataDir::new(&args.data_dir).clear(args.lang, args.word_length)
+            lex_data::DataDir::new(&args.data_dir).clear(args.lang, args.word_length)
         }
     }
 }

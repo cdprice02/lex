@@ -16,7 +16,7 @@ use crate::report::{Corpus, DictProvenance, Game, Report, Run, SCHEMA_VERSION, S
 use crate::targets;
 
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
-    let data_dir = lex_data::blocking::DataDir::new(&args.common.data_dir);
+    let data_dir = lex_data::DataDir::new(&args.common.data_dir);
     let lang = args.common.lang;
     let word_set = data_dir.load::<N>(lang, args.common.dictionary_length)?;
     let dictionary_length = word_set.len();

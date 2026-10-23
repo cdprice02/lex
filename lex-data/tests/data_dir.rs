@@ -1,7 +1,7 @@
 use std::fs;
 use std::io::Write;
 
-use lex_data::blocking::DataDir;
+use lex_data::DataDir;
 use lex_data::{Language, Word, WordSet};
 
 /// Writes a cache file in the documented on-disk format: a 64-byte header (magic, version,
