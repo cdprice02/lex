@@ -17,7 +17,7 @@ storage formats, strategy code, or benchmarks.
 | [01](.tasks/01-assist-mode.md) | Assist mode ✅ | Interactive helper + subcommand split; dogfood the daily Wordle |
 | [02](.tasks/02-measurement.md) | Measurement & provenance ✅ | The yardstick: seeded targets, JSON output, histogram + failure rate, corpus stamping, baselines, golden test |
 | [03](.tasks/03-data-integrity.md) | Data integrity ✅ | Loud load-time validation; versioned cache header |
-| [04](.tasks/04-memoization.md) | Decision-tree memoization | Simulation as one pattern-keyed tree; full-dictionary eval becomes cheap |
+| [04](.tasks/04-memoization.md) | Decision-tree memoization ✅ | Simulation as one pattern-keyed tree; full-dictionary eval becomes cheap |
 | [05](.tasks/05-strategy.md) | Strategy generalization | Unconstrained guessing; strategy abstraction; prior moves to lex-core |
 | [06](.tasks/06-micro-opt.md) | Micro-optimization | Selective resets; `correct()` alternatives; alphabet-indexed words |
 | [07](.tasks/07-pipeline-sync.md) | Pipeline simplification | Drop tokio for sync HTTP; retry; stream-time filtering |

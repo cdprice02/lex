@@ -27,3 +27,15 @@ _Avoid_: Metadata, source info
 **Baseline**:
 A committed benchmark report that solver changes are compared against, per target word.
 _Avoid_: Golden file, reference run
+
+**Candidate set**:
+The words still consistent with every guess played so far in one game.
+_Avoid_: Remaining words, dictionary (mid-game)
+
+**Decision tree**:
+The shared record of every game position reached so far, where each position is identified by the sequence of (guess, feedback) steps that led to it and remembers the guess the solver chose there.
+_Avoid_: Cache (reserved for the on-disk Corpus form), memo table
+
+**Guess path**:
+The sequence of (guess, feedback) steps from the start of a game to one position in the Decision tree; two games with the same Guess path have the same Candidate set.
+_Avoid_: History (that is the list of guesses a single game played)

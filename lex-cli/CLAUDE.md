@@ -31,11 +31,11 @@ in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 
 1. Load `WordSet<N>` via `blocking::DataDir` with the shared args; capture the answer prior of every word over the full dictionary
 2. Select targets (`--seed`, `--targets`, `-n`; default is the whole dictionary)
-3. Pre-compute `first_guess` once — `Guesser` is deterministic, so the same word set always produces the same first suggestion
-4. For each game: construct a one-element history (`Guess::new(first_guess, WordCorrectness::correct(word, first_guess))`) and call `play(word, &word_set, history)`
+3. Build one `Guesser` and read `first_guess` from its root suggestion (reported, not replayed)
+4. For each game: call `play(word, &mut guesser, Vec::new())`; games share the guesser's decision tree, so each position is scored once
 5. Emit the report: summary to stdout (stderr when `-o -` sends JSON to stdout), JSON to `-o PATH`
 
-The first-guess cache is only valid as long as `Guesser::suggest()` is deterministic. The comment in the code flags this assumption explicitly.
+Sharing the tree is only valid while `Candidates::suggest` is deterministic (see `lex-core/CLAUDE.md`).
 
 ## Assist loop (`assist.rs`)
 
