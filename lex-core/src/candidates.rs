@@ -171,20 +171,36 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f6
     }
     PATTERN_PROBS.with(|pattern_probs| {
         let mut pattern_probs = pattern_probs.borrow_mut();
-        if pattern_probs.is_empty() {
-            *pattern_probs = vec![0.0; WordCorrectness::<N>::COUNT];
-        } else {
-            pattern_probs.fill(0.0);
+        // one static serves every monomorphization, so it grows to the largest N seen
+        if pattern_probs.len() < WordCorrectness::<N>::COUNT {
+            pattern_probs.resize(WordCorrectness::<N>::COUNT, 0.0);
         }
+        let buckets = &mut pattern_probs[..WordCorrectness::<N>::COUNT];
+        buckets.fill(0.0);
         for (word, prob) in words.iter().zip(probs) {
-            pattern_probs[WordCorrectness::correct(*word, *guess).ordinal()] += prob;
+            buckets[WordCorrectness::correct(*word, *guess).ordinal()] += prob;
         }
         // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
-        0.0 - pattern_probs.iter().fold(
+        0.0 - buckets.iter().fold(
             0.0_f64,
             |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
         )
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn entropy_buffer_serves_every_word_length_on_one_thread() {
+        let five = Word::<5>::try_from("crane").unwrap();
+        let ten = Word::<10>::try_from("abcdefghij").unwrap();
+        // N=5 sizes the shared buffer first; N=10 must grow it rather than index past the end
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&ten, &[ten], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
+    }
 }
 
 #[cfg(test)]
