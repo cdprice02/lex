@@ -4,7 +4,7 @@ use std::sync::Arc;
 
 use lex_data::Word;
 
-use crate::correctness::WordCorrectness;
+use crate::correctness::{WordCorrectness, pattern_ordinal};
 use crate::guesser::Guess;
 use crate::strategy::{GuessPool, Pool, Strategy};
 
@@ -53,9 +53,7 @@ impl<const N: usize> Candidates<N> {
             .indices
             .iter()
             .copied()
-            .filter(|&i| {
-                WordCorrectness::correct(self.pool.word(i), word).ordinal() == target_ordinal
-            })
+            .filter(|&i| pattern_ordinal(&self.pool.word(i), &word) == target_ordinal)
             .collect();
         Self {
             pool: Arc::clone(&self.pool),
@@ -178,7 +176,7 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f6
         let buckets = &mut pattern_probs[..WordCorrectness::<N>::COUNT];
         buckets.fill(0.0);
         for (word, prob) in words.iter().zip(probs) {
-            buckets[WordCorrectness::correct(*word, *guess).ordinal()] += prob;
+            buckets[pattern_ordinal(word, guess)] += prob;
         }
         // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
         0.0 - buckets.iter().fold(

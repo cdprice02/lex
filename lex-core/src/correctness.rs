@@ -1,5 +1,3 @@
-use std::cell::RefCell;
-
 use lex_data::Word;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -61,52 +59,71 @@ impl<const N: usize> WordCorrectness<N> {
         Self([Correctness::Absent; N])
     }
 
-    #[optimize(speed)]
+    /// The feedback for playing `guess` against `word`.
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
-        thread_local! {
-            /// Thread-local buffer sized for the full BMP (U+0000–U+FFFF), initialized once per thread
-            static CHAR_COUNTS: RefCell<Box<[u8; 0x10000]>> = RefCell::new(Box::new([0; 0x10000]));
+        Self::from_ordinal(pattern_ordinal(&word, &guess))
+    }
+
+    /// Inverse of [`ordinal`](Self::ordinal). The ordinal must be below [`COUNT`](Self::COUNT).
+    fn from_ordinal(mut ordinal: usize) -> Self {
+        debug_assert!(ordinal < Self::COUNT);
+        let mut result = Self::absent();
+        for slot in result.0.iter_mut().rev() {
+            *slot = match ordinal % Correctness::COUNT {
+                0 => Correctness::Absent,
+                1 => Correctness::Misplaced,
+                _ => Correctness::Correct,
+            };
+            ordinal /= Correctness::COUNT;
         }
-
-        CHAR_COUNTS.with(|counts| {
-            let mut counts = counts.borrow_mut();
-            let mut result = Self::absent();
-
-            // first pass for correct: if the guess char matches the word char at the same position, it's correct; otherwise, add the word char to the pool of unmatched chars
-            for i in 0..N {
-                let w_ch = word[i];
-                if w_ch == guess[i] {
-                    result[i] = Correctness::Correct;
-                } else {
-                    debug_assert!((w_ch as usize) < counts.len(), "char above U+FFFF");
-                    counts[w_ch as usize] += 1;
-                }
-            }
-
-            // second pass for misplaced: if the guess char exists in the pool of unmatched word chars, it's misplaced
-            for i in 0..N {
-                if result[i] == Correctness::Correct {
-                    continue;
-                }
-                let idx = guess[i] as usize;
-                if counts[idx] > 0 {
-                    result[i] = Correctness::Misplaced;
-                    counts[idx] -= 1;
-                }
-            }
-
-            // reset counts for next call
-            for i in 0..N {
-                counts[word[i] as usize] = 0;
-            }
-
-            result
-        })
+        result
     }
 
     pub fn is_correct(&self) -> bool {
         self.0.iter().all(|&c| c == Correctness::Correct)
     }
+}
+
+/// The [`ordinal`](WordCorrectness::ordinal) of the feedback for guessing `guess` against `word`,
+/// over any letter type, so the solver can compare alphabet indices instead of chars.
+///
+/// A guess letter is `Correct` when it equals the word's letter at its position; otherwise it is
+/// `Misplaced` if an unmatched word letter equal to it is still unclaimed (each word letter is
+/// claimed at most once, left to right), else `Absent`. O(N^2) with two position bitmasks and no
+/// shared state: for N up to 10 that beats a count table, whose scattered cache lines cost more
+/// than the extra compares.
+pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(
+    word: &[T; N],
+    guess: &[T; N],
+) -> usize {
+    let mut green = 0u16;
+    for (i, (w, g)) in word.iter().zip(guess).enumerate() {
+        if w == g {
+            green |= 1 << i;
+        }
+    }
+    // word positions no longer available to a misplaced match: the green ones, then each claimed
+    let mut claimed = green;
+    let mut ordinal = 0;
+    for (i, &letter) in guess.iter().enumerate() {
+        let digit = if green >> i & 1 == 1 {
+            Correctness::Correct as usize
+        } else {
+            let unclaimed = word
+                .iter()
+                .enumerate()
+                .position(|(j, &w)| claimed >> j & 1 == 0 && w == letter);
+            match unclaimed {
+                Some(j) => {
+                    claimed |= 1 << j;
+                    Correctness::Misplaced as usize
+                }
+                None => Correctness::Absent as usize,
+            }
+        };
+        ordinal = ordinal * Correctness::COUNT + digit;
+    }
+    ordinal
 }
 
 impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
@@ -138,6 +155,34 @@ mod benches {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("track").unwrap();
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+    }
+
+    #[bench]
+    fn ordinal_no_overlap(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("fling").unwrap();
+        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    }
+
+    #[bench]
+    fn ordinal_partial_match(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("track").unwrap();
+        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    }
+
+    #[bench]
+    fn ordinal_perfect_match(b: &mut Bencher) {
+        let word = Word::<5>::try_from("crate").unwrap();
+        let guess = Word::<5>::try_from("crate").unwrap();
+        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    }
+
+    #[bench]
+    fn ordinal_partial_match_n10(b: &mut Bencher) {
+        let word = Word::<10>::try_from("cartridges").unwrap();
+        let guess = Word::<10>::try_from("registrant").unwrap();
+        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
     }
 
     #[bench]
@@ -322,6 +367,46 @@ mod prop_tests {
     use super::*;
 
     proptest! {
+        /// The pattern ordinal agrees with a literal reading of the Wordle rules (count the
+        /// unmatched word letters, spend them left to right) on tiny alphabets, where repeated
+        /// letters are the norm.
+        #[test]
+        fn pattern_ordinal_matches_the_count_rule(
+            word in proptest::array::uniform10(0u8..4),
+            guess in proptest::array::uniform10(0u8..4),
+        ) {
+            fn reference<const N: usize>(word: &[u8; N], guess: &[u8; N]) -> usize {
+                let mut counts = [0usize; 4];
+                for i in 0..N {
+                    if word[i] != guess[i] {
+                        counts[word[i] as usize] += 1;
+                    }
+                }
+                let mut ordinal = 0;
+                for i in 0..N {
+                    let digit = if word[i] == guess[i] {
+                        2
+                    } else if counts[guess[i] as usize] > 0 {
+                        counts[guess[i] as usize] -= 1;
+                        1
+                    } else {
+                        0
+                    };
+                    ordinal = ordinal * 3 + digit;
+                }
+                ordinal
+            }
+            prop_assert_eq!(pattern_ordinal(&word, &guess), reference(&word, &guess));
+            let (w5, g5): ([u8; 5], [u8; 5]) =
+                (word[..5].try_into().unwrap(), guess[..5].try_into().unwrap());
+            prop_assert_eq!(pattern_ordinal(&w5, &g5), reference(&w5, &g5));
+        }
+
+        #[test]
+        fn ordinal_round_trips_through_correctness(ordinal in 0usize..243) {
+            prop_assert_eq!(WordCorrectness::<5>::from_ordinal(ordinal).ordinal(), ordinal);
+        }
+
         #[test]
         fn self_guess_all_correct(word_str in "[a-z]{5}") {
             let word = Word::<5>::try_from(word_str.as_str()).unwrap();
