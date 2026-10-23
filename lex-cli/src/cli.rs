@@ -21,6 +21,27 @@ pub enum Command {
     Assist(AssistArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
+    /// Delete cached corpora so they are rebuilt on next use (the Wiktionary dictionary is kept)
+    Clear(ClearArgs),
+}
+
+#[derive(clap::Args, Debug)]
+pub struct ClearArgs {
+    #[arg(long, help = "Language whose corpus cache to delete")]
+    pub lang: Language,
+    #[arg(
+        short = 'l',
+        long,
+        value_parser = parse_word_length,
+        help = "Delete only this word length (default: every length for the language)"
+    )]
+    pub word_length: Option<usize>,
+    #[arg(
+        long,
+        default_value = "data",
+        help = "Directory containing cached word-frequency files"
+    )]
+    pub data_dir: PathBuf,
 }
 
 /// Arguments shared by every subcommand.
