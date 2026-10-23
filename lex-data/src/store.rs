@@ -3,8 +3,11 @@ use std::io::{BufWriter, Write};
 
 use anyhow::Context;
 use memmap2::Mmap;
+use sha2::{Digest, Sha256};
 
 use crate::data_dir::DataDir;
+use crate::error::LexDataError;
+use crate::header::Header;
 use crate::language::Language;
 use crate::ngrams;
 use crate::wiktionary;
@@ -35,6 +38,10 @@ pub(crate) async fn build_if_missing<const N: usize>(
 }
 
 /// Reads the cached ngrams binary file for `lang` at word length `N` into a `WordSet`.
+///
+/// Checks the header, the file length it implies, the records checksum, and every record
+/// before returning; a failure names the file (and record index) and never falls back to a
+/// partial read.
 pub(crate) fn read<const N: usize>(
     dir: &DataDir,
     lang: Language,
@@ -44,29 +51,40 @@ pub(crate) fn read<const N: usize>(
     let f = std::fs::File::open(&path).with_context(|| format!("opening ngrams file: {path:?}"))?;
     let mmap =
         unsafe { Mmap::map(&f) }.with_context(|| format!("mmapping ngrams file: {path:?}"))?;
-    let num_records = mmap.len() / <RawRecord<'_, N>>::SIZE;
-    let take = limit.map_or(num_records, |l| l.min(num_records));
-    Ok(WordSet::from_mmap(mmap, take))
+    let header = Header::parse(&mmap, &path)?;
+    let corrupt = |reason: String| LexDataError::CorruptCache {
+        path: path.clone(),
+        reason,
+    };
+    if usize::from(header.word_len) != N {
+        return Err(corrupt(format!(
+            "header says word length {}, expected {N}",
+            header.word_len
+        ))
+        .into());
+    }
+    let start = header.header_len as usize;
+    let size = <RawRecord<'_, N>>::SIZE;
+    let count = usize::try_from(header.record_count)
+        .map_err(|_| corrupt(format!("record count {} is too large", header.record_count)))?;
+    let expected_len = count.checked_mul(size).and_then(|b| b.checked_add(start));
+    if expected_len != Some(mmap.len()) {
+        return Err(corrupt(format!(
+            "file is {} bytes, header implies {} records of {size} bytes after a {start}-byte header",
+            mmap.len(),
+            count
+        ))
+        .into());
+    }
+    if <[u8; 32]>::from(Sha256::digest(&mmap[start..])) != header.checksum {
+        return Err(corrupt("records checksum mismatch".to_string()).into());
+    }
+    Ok(WordSet::from_cache(mmap, &path, start, count, limit)?)
 }
 
-/// Hex SHA-256 of the file at `path`.
-pub(crate) fn file_sha256(path: &std::path::Path) -> anyhow::Result<String> {
-    use sha2::{Digest, Sha256};
-    use std::io::Read;
-    let mut file =
-        std::fs::File::open(path).with_context(|| format!("opening {path:?} to checksum it"))?;
-    let mut hasher = Sha256::new();
-    let mut buf = vec![0u8; 1 << 16];
-    loop {
-        let n = file
-            .read(&mut buf)
-            .with_context(|| format!("checksumming {path:?}"))?;
-        if n == 0 {
-            break;
-        }
-        hasher.update(&buf[..n]);
-    }
-    Ok(hex(&hasher.finalize()))
+/// Hex SHA-256 of the records in the cached ngrams file, as recorded in its header.
+pub(crate) fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
+    Ok(Header::read_file(path)?.checksum_hex())
 }
 
 pub(crate) fn hex(bytes: &[u8]) -> String {
@@ -132,13 +150,19 @@ fn write_bucket(
     std::fs::create_dir_all(path.parent().unwrap())?;
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
     entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));
-    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
+    let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
+    let mut records = Vec::with_capacity(entries.len() * record_size);
     for (word, freq) in entries {
         for ch in word.chars() {
-            writer.write_all(&(ch as u32).to_le_bytes())?;
+            records.extend_from_slice(&(ch as u32).to_le_bytes());
         }
-        writer.write_all(&freq.to_le_bytes())?;
+        records.extend_from_slice(&freq.to_le_bytes());
     }
+    let header = Header::for_records(n, record_size, &records);
+    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
+    writer.write_all(&header.encode())?;
+    writer.write_all(&records)?;
+    writer.flush()?;
     Ok(())
 }
 
@@ -147,6 +171,7 @@ mod tests {
     use std::collections::{HashMap, HashSet};
 
     use crate::data_dir::DataDir;
+    use crate::error::LexDataError;
     use crate::language::Language;
     use crate::word::{Word, WordSet};
 
@@ -258,5 +283,125 @@ mod tests {
         assert!(lang_dir.exists());
         clear(&dir, Language::English, None).unwrap();
         assert!(!lang_dir.exists());
+    }
+
+    fn cache_bytes() -> (tempfile::TempDir, DataDir, std::path::PathBuf, Vec<u8>) {
+        let valid = all_words_valid();
+        let (tmp, dir) = make_dir_with_dict(&valid);
+        let filtered = filter_by_dict(toy_corpus(), &valid);
+        populate(&dir, Language::English, &filtered).unwrap();
+        let path = dir.ngrams_path(Language::English, 5);
+        let bytes = std::fs::read(&path).unwrap();
+        (tmp, dir, path, bytes)
+    }
+
+    fn load_err(dir: &DataDir) -> LexDataError {
+        match read::<5>(dir, Language::English, None) {
+            Err(e) => e.downcast::<LexDataError>().expect("typed error"),
+            Ok(_) => panic!("expected the load to fail"),
+        }
+    }
+
+    /// Rewrites the header checksum so a record-level fault is reached past the checksum.
+    fn refresh_checksum(bytes: &mut [u8]) {
+        use sha2::{Digest, Sha256};
+        let sum = Sha256::digest(&bytes[64..]);
+        bytes[20..52].copy_from_slice(&sum);
+    }
+
+    #[test]
+    fn legacy_file_is_rejected() {
+        let (_tmp, dir, path, bytes) = cache_bytes();
+        std::fs::write(&path, &bytes[64..]).unwrap();
+        assert!(matches!(load_err(&dir), LexDataError::LegacyCache { .. }));
+    }
+
+    #[test]
+    fn wrong_word_length_is_rejected() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        bytes[6] = 6;
+        std::fs::write(&path, &bytes).unwrap();
+        assert!(load_err(&dir).to_string().contains("word length 6"));
+    }
+
+    #[test]
+    fn trailing_bytes_are_rejected() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        bytes.push(0);
+        std::fs::write(&path, &bytes).unwrap();
+        assert!(load_err(&dir).to_string().contains("file is"));
+    }
+
+    #[test]
+    fn truncated_records_are_rejected() {
+        let (_tmp, dir, path, bytes) = cache_bytes();
+        std::fs::write(&path, &bytes[..bytes.len() - 5]).unwrap();
+        assert!(load_err(&dir).to_string().contains("file is"));
+    }
+
+    #[test]
+    fn flipped_frequency_bit_fails_checksum() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        let last = bytes.len() - 1;
+        bytes[last] ^= 1;
+        std::fs::write(&path, &bytes).unwrap();
+        assert!(load_err(&dir).to_string().contains("checksum"));
+    }
+
+    #[test]
+    fn invalid_scalar_names_file_and_record() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        // Record 2, first char: a surrogate is not a valid `char`.
+        let off = 64 + 2 * 28;
+        bytes[off..off + 4].copy_from_slice(&0xD800u32.to_le_bytes());
+        refresh_checksum(&mut bytes);
+        std::fs::write(&path, &bytes).unwrap();
+        let err = load_err(&dir);
+        assert!(
+            matches!(err, LexDataError::CorruptRecord { index: 2, .. }),
+            "{err}"
+        );
+        assert!(err.to_string().contains("5.bin"), "{err}");
+    }
+
+    #[test]
+    fn out_of_order_frequency_names_record() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        // Record 1's frequency raised above record 0's.
+        let off = 64 + 28 + 20;
+        bytes[off..off + 8].copy_from_slice(&1000u64.to_le_bytes());
+        refresh_checksum(&mut bytes);
+        std::fs::write(&path, &bytes).unwrap();
+        assert!(matches!(
+            load_err(&dir),
+            LexDataError::CorruptRecord { index: 1, .. }
+        ));
+    }
+
+    #[test]
+    fn invalid_record_beyond_limit_still_fails() {
+        let (_tmp, dir, path, mut bytes) = cache_bytes();
+        let off = 64 + 4 * 28;
+        bytes[off..off + 4].copy_from_slice(&0xD800u32.to_le_bytes());
+        refresh_checksum(&mut bytes);
+        std::fs::write(&path, &bytes).unwrap();
+        assert!(read::<5>(&dir, Language::English, Some(2)).is_err());
+    }
+
+    #[test]
+    fn corpus_checksum_is_the_records_sha256() {
+        use sha2::{Digest, Sha256};
+        let (_tmp, dir, _path, bytes) = cache_bytes();
+        assert_eq!(
+            dir.ngrams_sha256(Language::English, 5).unwrap(),
+            super::hex(&Sha256::digest(&bytes[64..]))
+        );
+    }
+
+    #[test]
+    fn word_iter_is_exact_size() {
+        let (_tmp, dir, _path, _bytes) = cache_bytes();
+        let ws: WordSet<5> = read::<5>(&dir, Language::English, Some(3)).unwrap();
+        assert_eq!(ws.words().len(), 3);
     }
 }

@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -8,4 +10,21 @@ pub enum LexDataError {
     InvalidParseLine(String),
     #[error("invalid word length: expected {expected}, got {got}")]
     WordLengthError { expected: usize, got: usize },
+    #[error(
+        "{path:?} is a legacy or unrecognized cache file (no header); \
+         delete it and rebuild with `lex clear --lang <lang>`"
+    )]
+    LegacyCache { path: PathBuf },
+    #[error(
+        "corrupt cache {path:?}: {reason}; delete it and rebuild with `lex clear --lang <lang>`"
+    )]
+    CorruptCache { path: PathBuf, reason: String },
+    #[error(
+        "corrupt cache {path:?}: record {index}: {reason}; delete it and rebuild with `lex clear --lang <lang>`"
+    )]
+    CorruptRecord {
+        path: PathBuf,
+        index: usize,
+        reason: String,
+    },
 }
