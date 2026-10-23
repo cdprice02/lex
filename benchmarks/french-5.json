@@ -2,11 +2,16 @@
   "schema_version": 1,
   "run": {
     "lex_version": "0.1.0",
-    "timestamp": "2026-10-22T23:49:10.062139323Z",
+    "timestamp": "2026-10-23T02:27:16.269759572Z",
     "seed": 0,
     "num_games": 500,
     "targets_file": null,
-    "first_guess": "raies"
+    "first_guess": "raies",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0
+    }
   },
   "corpus": {
     "language": "french",
@@ -24,33 +29,25 @@
   "summary": {
     "max_guesses": 6,
     "uniform": {
-      "mean": 4.673999999999977,
-      "failure_rate": 0.09600000000000007,
+      "mean": 4.225999999999978,
+      "failure_rate": 0.0,
       "histogram": {
-        "2": 0.016,
-        "3": 0.1460000000000001,
-        "4": 0.3700000000000003,
-        "5": 0.2480000000000002,
-        "6": 0.1240000000000001,
-        "7": 0.056000000000000036,
-        "8": 0.024000000000000007,
-        "9": 0.004,
-        "10": 0.012
+        "2": 0.004,
+        "3": 0.1380000000000001,
+        "4": 0.5180000000000003,
+        "5": 0.3080000000000002,
+        "6": 0.032000000000000015
       }
     },
     "prior": {
-      "mean": 4.43115899103585,
-      "failure_rate": 0.06993083494515086,
+      "mean": 4.087208386064096,
+      "failure_rate": 0.0,
       "histogram": {
-        "2": 0.02476943472555399,
-        "3": 0.1908958781394694,
-        "4": 0.4028444472735637,
-        "5": 0.21159128254887485,
-        "6": 0.09996812236738786,
-        "7": 0.040282819402452895,
-        "8": 0.01713943778935824,
-        "9": 0.0043914645420538734,
-        "10": 0.008117113211285876
+        "2": 0.007019363706130677,
+        "3": 0.18217232197355174,
+        "4": 0.5443816420262384,
+        "5": 0.24943390913825003,
+        "6": 0.01699276315582938
       }
     }
   },
@@ -61,19 +58,20 @@
       "prior": 0.000036315628017254276,
       "guesses": [
         "raies",
-        "cotir",
-        "véoir",
+        "cotin",
+        "obéir",
         "ovoir"
       ]
     },
     {
       "word": "ergol",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003347713425634494,
       "guesses": [
         "raies",
-        "toure",
-        "evron",
+        "turco",
+        "brodé",
+        "ergon",
         "ergol"
       ]
     },
@@ -83,20 +81,19 @@
       "prior": 0.00003244115604675276,
       "guesses": [
         "raies",
-        "latin",
-        "mahia",
+        "tchin",
+        "lamba",
         "zamia",
         "kamia"
       ]
     },
     {
       "word": "selin",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00004784764121672807,
       "guesses": [
         "raies",
-        "liste",
-        "seuil",
+        "silts",
         "selin"
       ]
     },
@@ -106,9 +103,9 @@
       "prior": 0.00004502929328931062,
       "guesses": [
         "raies",
-        "loute",
-        "dénue",
-        "buque",
+        "coult",
+        "dégun",
+        "bègue",
         "pègue"
       ]
     },
@@ -118,8 +115,8 @@
       "prior": 0.00003394525286155364,
       "guesses": [
         "raies",
-        "tarba",
-        "tarot",
+        "bérot",
+        "pfutt",
         "tarté"
       ]
     },
@@ -130,7 +127,7 @@
       "guesses": [
         "raies",
         "linge",
-        "envoi",
+        "verni",
         "netti"
       ]
     },
@@ -150,8 +147,8 @@
       "prior": 0.00008082503840171159,
       "guesses": [
         "raies",
-        "soute",
-        "meuse",
+        "souté",
+        "chyme",
         "cluse"
       ]
     },
@@ -162,21 +159,19 @@
       "guesses": [
         "raies",
         "coulé",
-        "tondu",
-        "ponzu",
+        "typon",
+        "fondu",
         "konbu"
       ]
     },
     {
       "word": "hulla",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00004052480541547235,
       "guesses": [
         "raies",
-        "coula",
-        "bulla",
-        "mulla",
-        "pulla",
+        "coult",
+        "khobz",
         "hulla"
       ]
     },
@@ -186,35 +181,29 @@
       "prior": 0.00004232986762419,
       "guesses": [
         "raies",
-        "toura",
-        "ourga",
+        "aouat",
+        "vulga",
         "ourla"
       ]
     },
     {
       "word": "cutés",
-      "num_guesses": 7,
+      "num_guesses": 3,
       "prior": 0.000052128184674242335,
       "guesses": [
         "raies",
-        "tolus",
-        "punts",
-        "mutés",
-        "futés",
-        "butés",
+        "clout",
         "cutés"
       ]
     },
     {
       "word": "talua",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000027148058171144678,
       "guesses": [
         "raies",
-        "canta",
-        "talma",
-        "talpa",
-        "talla",
+        "conta",
+        "mulga",
         "talua"
       ]
     },
@@ -224,8 +213,8 @@
       "prior": 0.000027512036576935156,
       "guesses": [
         "raies",
-        "tidal",
-        "dinga",
+        "tilin",
+        "punka",
         "niaud"
       ]
     },
@@ -236,51 +225,45 @@
       "guesses": [
         "raies",
         "sinto",
-        "sushi",
+        "mugho",
         "splif"
       ]
     },
     {
       "word": "haria",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00004584458276059844,
       "guesses": [
         "raies",
-        "parmi",
-        "tarin",
-        "varia",
-        "caria",
+        "dormi",
+        "avant",
+        "haccp",
         "haria"
       ]
     },
     {
       "word": "zazas",
-      "num_guesses": 10,
+      "num_guesses": 6,
       "prior": 0.00002856433000180346,
       "guesses": [
         "raies",
-        "talas",
-        "macas",
-        "bakas",
-        "panas",
-        "gavas",
-        "fadas",
-        "jasas",
-        "hayas",
+        "mélac",
+        "dntps",
+        "khobz",
+        "gazas",
         "zazas"
       ]
     },
     {
       "word": "goses",
-      "num_guesses": 7,
+      "num_guesses": 6,
       "prior": 0.000023368992438878454,
       "guesses": [
         "raies",
-        "oules",
-        "notes",
-        "doses",
-        "poses",
-        "hoses",
+        "mulot",
+        "ponch",
+        "sgbdr",
+        "cygne",
         "goses"
       ]
     },
@@ -290,20 +273,19 @@
       "prior": 0.00009019813325578048,
       "guesses": [
         "raies",
-        "toile",
-        "boite",
+        "ponté",
+        "cedma",
         "moite"
       ]
     },
     {
       "word": "bédos",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00004571427766869865,
       "guesses": [
         "raies",
-        "tolus",
-        "scons",
-        "démos",
+        "clout",
+        "démon",
         "bédos"
       ]
     },
@@ -313,7 +295,7 @@
       "prior": 0.000024506334337982398,
       "guesses": [
         "raies",
-        "tréou",
+        "couté",
         "byrrh",
         "dürüm"
       ]
@@ -324,8 +306,8 @@
       "prior": 0.000022393220924630194,
       "guesses": [
         "raies",
-        "parmi",
-        "panir",
+        "dormi",
+        "punch",
         "pavir"
       ]
     },
@@ -341,38 +323,34 @@
     },
     {
       "word": "cayon",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00004610390007651978,
       "guesses": [
         "raies",
-        "canta",
-        "capon",
-        "calon",
-        "cañon",
+        "conta",
+        "ployé",
         "cayon"
       ]
     },
     {
       "word": "fatre",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004387974565702627,
       "guesses": [
         "raies",
-        "carme",
-        "labre",
-        "navre",
-        "pagre",
-        "taure",
+        "cmdre",
+        "blunt",
         "fatre"
       ]
     },
     {
       "word": "topez",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00003891870181887532,
       "guesses": [
         "raies",
-        "nolet",
+        "mulot",
+        "copin",
         "topez"
       ]
     },
@@ -382,8 +360,8 @@
       "prior": 0.00005803945239444443,
       "guesses": [
         "raies",
-        "alute",
-        "benga",
+        "aluna",
+        "tendu",
         "venda"
       ]
     },
@@ -393,33 +371,31 @@
       "prior": 0.00014362615833561035,
       "guesses": [
         "raies",
-        "tirai",
-        "clair",
+        "cirit",
+        "braai",
         "infra"
       ]
     },
     {
       "word": "djats",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000030570692120006625,
       "guesses": [
         "raies",
-        "altos",
-        "états",
-        "khats",
-        "scats",
+        "tonal",
+        "butté",
+        "cdaph",
         "djats"
       ]
     },
     {
       "word": "hydne",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00004063374463679225,
       "guesses": [
         "raies",
-        "loute",
-        "phène",
-        "hymne",
+        "coult",
+        "mendé",
         "hydne"
       ]
     },
@@ -429,8 +405,8 @@
       "prior": 0.00003693872085769334,
       "guesses": [
         "raies",
-        "altos",
-        "lumas",
+        "tonal",
+        "vélum",
         "hélas",
         "célas"
       ]
@@ -441,19 +417,18 @@
       "prior": 0.0001444996415975299,
       "guesses": [
         "raies",
-        "oules",
-        "notes",
+        "mulot",
+        "ponch",
         "noces"
       ]
     },
     {
       "word": "fumet",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00008175936803387917,
       "guesses": [
         "raies",
-        "nolet",
-        "défet",
+        "mulot",
         "fumet"
       ]
     },
@@ -463,34 +438,32 @@
       "prior": 0.000016858114599573243,
       "guesses": [
         "raies",
-        "tarba",
-        "cardé",
+        "bérot",
+        "macla",
         "daruk",
         "darug"
       ]
     },
     {
       "word": "schwa",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.0000505665808274793,
       "guesses": [
         "raies",
         "souta",
-        "smala",
-        "sécha",
+        "plamé",
         "schwa"
       ]
     },
     {
       "word": "hippe",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00003624369421501436,
       "guesses": [
         "raies",
         "linge",
-        "picte",
-        "zippe",
-        "dippe",
+        "copté",
+        "dahir",
         "hippe"
       ]
     },
@@ -500,19 +473,20 @@
       "prior": 0.00003924513056162938,
       "guesses": [
         "raies",
-        "canta",
-        "malot",
+        "conta",
+        "mulat",
         "mahut"
       ]
     },
     {
       "word": "abayé",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00004115519905982048,
       "guesses": [
         "raies",
-        "coula",
-        "étang",
+        "coult",
+        "ndama",
+        "agapè",
         "abayé"
       ]
     },
@@ -522,33 +496,34 @@
       "prior": 0.000024068676422443408,
       "guesses": [
         "raies",
-        "lians",
-        "nidas",
+        "liant",
+        "dompé",
+        "nivkh",
         "ninas",
-        "nipas",
         "nifas"
       ]
     },
     {
       "word": "pareu",
-      "num_guesses": 4,
+      "num_guesses": 6,
       "prior": 0.00004025248790411003,
       "guesses": [
         "raies",
-        "taper",
+        "dhtml",
+        "gyrin",
+        "coper",
         "parez",
         "pareu"
       ]
     },
     {
       "word": "bréha",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000026799331691679242,
       "guesses": [
         "raies",
-        "toura",
-        "braga",
-        "bréla",
+        "aouat",
+        "bragé",
         "bréda",
         "bréha"
       ]
@@ -559,9 +534,9 @@
       "prior": 0.000025530432440824985,
       "guesses": [
         "raies",
-        "tolus",
-        "sodos",
-        "congs",
+        "clout",
+        "démon",
+        "gongs",
         "gonys"
       ]
     },
@@ -571,9 +546,9 @@
       "prior": 0.00003063908361392794,
       "guesses": [
         "raies",
-        "tréou",
+        "couté",
         "brodé",
-        "cropé",
+        "ligne",
         "progé"
       ]
     },
@@ -584,7 +559,7 @@
       "guesses": [
         "raies",
         "linot",
-        "gobin",
+        "bogué",
         "inouï"
       ]
     },
@@ -594,9 +569,9 @@
       "prior": 0.00004429270656823085,
       "guesses": [
         "raies",
-        "tolus",
-        "dénés",
-        "sénés",
+        "clout",
+        "démon",
+        "ognon",
         "génés"
       ]
     },
@@ -606,22 +581,19 @@
       "prior": 0.000029438230486574903,
       "guesses": [
         "raies",
-        "cotir",
-        "bigor",
+        "cotin",
+        "vibro",
         "vibor"
       ]
     },
     {
       "word": "dambe",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00003122387453554909,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
-        "cambe",
-        "jambe",
-        "ïambe",
+        "blunt",
+        "gadjé",
         "dambe"
       ]
     },
@@ -631,8 +603,8 @@
       "prior": 0.00014764258159702978,
       "guesses": [
         "raies",
-        "tidal",
-        "pinga",
+        "tilin",
+        "bumpa",
         "aiguë"
       ]
     },
@@ -643,20 +615,18 @@
       "guesses": [
         "raies",
         "sorte",
-        "druse",
+        "bourg",
         "vesre"
       ]
     },
     {
       "word": "groie",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000042641514829004556,
       "guesses": [
         "raies",
-        "vitre",
-        "croie",
-        "proie",
-        "broie",
+        "votre",
+        "cégep",
         "groie"
       ]
     },
@@ -666,8 +636,8 @@
       "prior": 0.000019620619176910402,
       "guesses": [
         "raies",
-        "talas",
-        "calés",
+        "mélac",
+        "court",
         "palcs"
       ]
     },
@@ -677,8 +647,8 @@
       "prior": 0.00001668307894378651,
       "guesses": [
         "raies",
-        "loute",
-        "penné",
+        "coult",
+        "hymne",
         "chevé",
         "chebé"
       ]
@@ -689,8 +659,8 @@
       "prior": 0.000018845429701653593,
       "guesses": [
         "raies",
-        "relut",
-        "ronce",
+        "donut",
+        "renée",
         "rênée"
       ]
     },
@@ -701,18 +671,19 @@
       "guesses": [
         "raies",
         "sinto",
-        "sélin",
+        "supin",
         "sulin"
       ]
     },
     {
       "word": "kacha",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00004475197302299622,
       "guesses": [
         "raies",
-        "canta",
-        "hacka",
+        "conta",
+        "humph",
+        "gbaka",
         "kacha"
       ]
     },
@@ -729,162 +700,149 @@
     },
     {
       "word": "trakt",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003495105482364449,
       "guesses": [
         "raies",
-        "toura",
-        "tracé",
-        "trapp",
+        "aouat",
+        "fucké",
         "trakt"
       ]
     },
     {
       "word": "saami",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000035911327027983316,
       "guesses": [
         "raies",
-        "sanai",
+        "satan",
+        "sakia",
         "saami"
       ]
     },
     {
       "word": "orrai",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003519506494593564,
       "guesses": [
         "raies",
-        "tirai",
-        "dorai",
+        "cirit",
+        "amlou",
+        "bride",
         "orrai"
       ]
     },
     {
       "word": "acare",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005242238117326224,
       "guesses": [
         "raies",
-        "trabe",
-        "aware",
-        "avare",
+        "trada",
+        "voici",
         "acare"
       ]
     },
     {
       "word": "rises",
-      "num_guesses": 9,
+      "num_guesses": 5,
       "prior": 0.00006209289538303688,
       "guesses": [
         "raies",
-        "rives",
-        "rites",
-        "rires",
-        "rimes",
-        "rides",
-        "rixes",
-        "ribes",
+        "vertu",
+        "demux",
+        "posez",
         "rises"
       ]
     },
     {
       "word": "dorie",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005250402213331186,
       "guesses": [
         "raies",
-        "vitre",
-        "croie",
-        "borie",
+        "votre",
+        "abord",
         "dorie"
       ]
     },
     {
       "word": "shona",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00005867379663251775,
       "guesses": [
         "raies",
         "souta",
+        "plonk",
         "shona"
       ]
     },
     {
       "word": "doulu",
-      "num_guesses": 7,
+      "num_guesses": 6,
       "prior": 0.000027265987779286104,
       "guesses": [
         "raies",
         "coulé",
-        "moulu",
+        "limbu",
         "voulu",
         "goulu",
-        "boulu",
         "doulu"
       ]
     },
     {
       "word": "catti",
-      "num_guesses": 5,
+      "num_guesses": 3,
       "prior": 0.00005311695557032744,
       "guesses": [
         "raies",
-        "latin",
-        "patai",
-        "hatti",
+        "tchin",
         "catti"
       ]
     },
     {
       "word": "dirks",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005327144501732197,
       "guesses": [
         "raies",
-        "urois",
-        "tirés",
-        "girls",
+        "bouic",
+        "mikvé",
         "dirks"
       ]
     },
     {
       "word": "payée",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00013979191756755205,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
-        "capée",
+        "blunt",
+        "campé",
         "payée"
       ]
     },
     {
       "word": "boobs",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000028981799248248265,
       "guesses": [
         "raies",
-        "tolus",
-        "sodos",
-        "booms",
+        "clout",
+        "ombon",
         "books",
         "boobs"
       ]
     },
     {
       "word": "taffs",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.000021118004450327287,
       "guesses": [
         "raies",
-        "talas",
-        "taons",
-        "taxés",
-        "tacts",
-        "tabès",
-        "tauds",
+        "mélac",
+        "donut",
+        "baths",
         "taffs"
       ]
     },
@@ -894,9 +852,9 @@
       "prior": 0.00012526338341269482,
       "guesses": [
         "raies",
-        "loute",
-        "monde",
-        "comme",
+        "coult",
+        "damné",
+        "pygme",
         "bombe"
       ]
     },
@@ -906,31 +864,29 @@
       "prior": 0.00008862629831444272,
       "guesses": [
         "raies",
-        "tenus",
-        "clebs",
+        "pleut",
+        "bacon",
         "bleds"
       ]
     },
     {
       "word": "baies",
-      "num_guesses": 2,
+      "num_guesses": 3,
       "prior": 0.0001294158237317209,
       "guesses": [
         "raies",
+        "bhang",
         "baies"
       ]
     },
     {
       "word": "doite",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004087797953246565,
       "guesses": [
         "raies",
-        "toile",
-        "boite",
-        "moite",
-        "coite",
-        "poite",
+        "ponté",
+        "cedma",
         "doite"
       ]
     },
@@ -940,9 +896,9 @@
       "prior": 0.0000499754611024507,
       "guesses": [
         "raies",
-        "gales",
-        "cases",
-        "mates",
+        "dhtml",
+        "cygne",
+        "plfss",
         "napes"
       ]
     },
@@ -952,8 +908,8 @@
       "prior": 0.00004957240480600826,
       "guesses": [
         "raies",
-        "septa",
-        "phase",
+        "spalt",
+        "pensa",
         "escap"
       ]
     },
@@ -963,8 +919,8 @@
       "prior": 0.000034198680450160105,
       "guesses": [
         "raies",
-        "toura",
-        "aural",
+        "aouat",
+        "mulud",
         "furax",
         "burak"
       ]
@@ -975,21 +931,19 @@
       "prior": 0.00021919107128113075,
       "guesses": [
         "raies",
-        "liste",
-        "signe",
+        "silts",
+        "guené",
         "siège"
       ]
     },
     {
       "word": "bokit",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000024416092885503625,
       "guesses": [
         "raies",
         "linot",
-        "cotit",
-        "jouit",
-        "vomit",
+        "buché",
         "bokit"
       ]
     },
@@ -999,7 +953,7 @@
       "prior": 0.00005007128496186735,
       "guesses": [
         "raies",
-        "tinel",
+        "bintz",
         "nivet",
         "nicet"
       ]
@@ -1010,20 +964,18 @@
       "prior": 0.00005372113771801449,
       "guesses": [
         "raies",
-        "trima",
+        "bruta",
         "adiré"
       ]
     },
     {
       "word": "cadie",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000046074236111983534,
       "guesses": [
         "raies",
-        "matie",
-        "palie",
-        "fazie",
-        "babie",
+        "lampt",
+        "bécif",
         "cadie"
       ]
     },
@@ -1033,8 +985,8 @@
       "prior": 0.00002290187969040732,
       "guesses": [
         "raies",
-        "coula",
-        "obang",
+        "coult",
+        "abyma",
         "andon",
         "ankoù"
       ]
@@ -1045,8 +997,8 @@
       "prior": 0.00005472013571731799,
       "guesses": [
         "raies",
-        "alina",
-        "cliva",
+        "cloné",
+        "temps",
         "clima"
       ]
     },
@@ -1057,8 +1009,8 @@
       "guesses": [
         "raies",
         "lisez",
-        "visez",
-        "misez",
+        "vomit",
+        "grand",
         "disez"
       ]
     },
@@ -1068,8 +1020,8 @@
       "prior": 0.00004385980767331348,
       "guesses": [
         "raies",
-        "alute",
-        "melpa",
+        "aluna",
+        "pelte",
         "épela"
       ]
     },
@@ -1089,7 +1041,7 @@
       "guesses": [
         "raies",
         "sarua",
-        "sargé",
+        "congé",
         "saron"
       ]
     },
@@ -1099,8 +1051,8 @@
       "prior": 0.000041268800785961133,
       "guesses": [
         "raies",
-        "tidal",
-        "outai",
+        "tilin",
+        "bouté",
         "butai"
       ]
     },
@@ -1116,13 +1068,12 @@
     },
     {
       "word": "konpa",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000025475879736074677,
       "guesses": [
         "raies",
-        "coula",
-        "monta",
-        "gonda",
+        "coult",
+        "damna",
         "ponça",
         "konpa"
       ]
@@ -1133,21 +1084,20 @@
       "prior": 0.000019557932210839245,
       "guesses": [
         "raies",
-        "salta",
+        "pulsa",
         "valsé",
         "walsé"
       ]
     },
     {
       "word": "putte",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00006468025361315646,
       "guesses": [
         "raies",
-        "loute",
-        "gutte",
-        "butte",
-        "hutte",
+        "coult",
+        "tetun",
+        "bhang",
         "putte"
       ]
     },
@@ -1157,59 +1107,51 @@
       "prior": 0.00006990520238730847,
       "guesses": [
         "raies",
-        "rouan",
+        "noual",
         "ronda"
       ]
     },
     {
       "word": "bards",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.000049399231948002986,
       "guesses": [
         "raies",
-        "darts",
-        "yards",
-        "fards",
-        "lards",
-        "cards",
+        "ducat",
+        "bliny",
         "bards"
       ]
     },
     {
       "word": "rouas",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00003648650171216516,
       "guesses": [
         "raies",
-        "rosas",
-        "roxas",
-        "rotas",
-        "rodas",
-        "royas",
+        "désox",
+        "début",
         "rouas"
       ]
     },
     {
       "word": "carvi",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005960236144099148,
       "guesses": [
         "raies",
-        "parmi",
-        "bardi",
-        "carai",
+        "dormi",
+        "tchan",
         "carvi"
       ]
     },
     {
       "word": "pègre",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00007221315931874482,
       "guesses": [
         "raies",
-        "toure",
-        "cerre",
-        "lèvre",
+        "turco",
+        "glèbe",
         "nègre",
         "pègre"
       ]
@@ -1220,7 +1162,7 @@
       "prior": 0.000043789737728449134,
       "guesses": [
         "raies",
-        "beras",
+        "bercy",
         "abers"
       ]
     },
@@ -1230,41 +1172,40 @@
       "prior": 0.0000829940832980023,
       "guesses": [
         "raies",
-        "parmi",
+        "dormi",
         "nadir"
       ]
     },
     {
       "word": "avois",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.0001169677454904577,
       "guesses": [
         "raies",
-        "lians",
-        "isbas",
-        "amois",
+        "liant",
+        "dosas",
         "avois"
       ]
     },
     {
       "word": "rifts",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00005006393989994614,
       "guesses": [
         "raies",
-        "réois",
+        "vogué",
+        "rôtis",
         "rifts"
       ]
     },
     {
       "word": "muxée",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00001603947562190787,
       "guesses": [
         "raies",
-        "loute",
-        "dénue",
-        "cuvée",
+        "coult",
+        "dégun",
         "fumée",
         "muxée"
       ]
@@ -1275,32 +1216,29 @@
       "prior": 0.00009662310487045402,
       "guesses": [
         "raies",
-        "réois",
+        "vogué",
         "rivés"
       ]
     },
     {
       "word": "cicla",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.00003289105536125347,
       "guesses": [
         "raies",
-        "tidal",
-        "gilla",
-        "bifla",
-        "piala",
-        "viéla",
+        "tilin",
+        "buclé",
+        "gicla",
         "cicla"
       ]
     },
     {
       "word": "belet",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00005729494990115051,
       "guesses": [
         "raies",
-        "nolet",
-        "melet",
+        "mulot",
         "belet"
       ]
     },
@@ -1310,8 +1248,8 @@
       "prior": 0.00003648910565893106,
       "guesses": [
         "raies",
-        "canta",
-        "maché",
+        "conta",
+        "hémal",
         "mazuc"
       ]
     },
@@ -1321,88 +1259,86 @@
       "prior": 0.00003719784529000231,
       "guesses": [
         "raies",
-        "soute",
+        "souté",
         "scute"
       ]
     },
     {
       "word": "ridai",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00003225142866830724,
       "guesses": [
         "raies",
-        "rital",
-        "rirai",
-        "rivai",
-        "rimai",
+        "litai",
+        "morve",
         "ridai"
       ]
     },
     {
       "word": "sinue",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000049448737251414586,
       "guesses": [
         "raies",
-        "liste",
-        "signe",
-        "since",
+        "silts",
+        "guené",
         "sinue"
       ]
     },
     {
       "word": "lugea",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000022538172972540266,
       "guesses": [
         "raies",
-        "autel",
+        "blunt",
+        "auvel",
         "lugea"
       ]
     },
     {
       "word": "manta",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00006035760861567507,
       "guesses": [
         "raies",
-        "canta",
-        "vanta",
-        "fanta",
+        "conta",
+        "vehme",
         "manta"
       ]
     },
     {
       "word": "lolas",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00004008584925416805,
       "guesses": [
         "raies",
-        "altos",
-        "lobas",
+        "tonal",
+        "lucky",
+        "pelve",
         "lolas"
       ]
     },
     {
       "word": "lèque",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000035717761496578926,
       "guesses": [
         "raies",
-        "loute",
-        "lunée",
-        "lègue",
+        "coult",
+        "bulge",
         "lèque"
       ]
     },
     {
       "word": "balux",
-      "num_guesses": 5,
+      "num_guesses": 6,
       "prior": 0.000024096120822641728,
       "guesses": [
         "raies",
-        "canta",
-        "gaulé",
+        "conta",
+        "glumé",
+        "fallu",
         "palud",
         "balux"
       ]
@@ -1420,12 +1356,11 @@
     },
     {
       "word": "sensé",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00010567609895219213,
       "guesses": [
         "raies",
-        "soute",
-        "shelf",
+        "souté",
         "sensé"
       ]
     },
@@ -1441,47 +1376,46 @@
     },
     {
       "word": "adobe",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.0000693678048462939,
       "guesses": [
         "raies",
-        "alute",
-        "amane",
-        "apode",
+        "aluna",
+        "tombé",
         "adobe"
       ]
     },
     {
       "word": "élita",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000017916641212481172,
       "guesses": [
         "raies",
-        "alina",
-        "cliva",
-        "élima",
-        "élida",
+        "cloné",
+        "monde",
         "élita"
       ]
     },
     {
       "word": "crado",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000039651082804222447,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
+        "cropé",
         "craon",
         "crado"
       ]
     },
     {
       "word": "lebou",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00004938837616584283,
       "guesses": [
         "raies",
-        "loute",
+        "coult",
+        "debye",
         "lebou"
       ]
     },
@@ -1498,14 +1432,12 @@
     },
     {
       "word": "corah",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00004063374463679225,
       "guesses": [
         "raies",
-        "toura",
-        "loran",
-        "borax",
-        "moraï",
+        "aouat",
+        "colin",
         "corah"
       ]
     },
@@ -1515,21 +1447,19 @@
       "prior": 0.000056430633401438883,
       "guesses": [
         "raies",
-        "coula",
-        "ancap",
+        "coult",
+        "anaïa",
         "tchan"
       ]
     },
     {
       "word": "suble",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00003489520235538168,
       "guesses": [
         "raies",
-        "soute",
-        "sucée",
-        "suède",
-        "susse",
+        "souté",
+        "dussè",
         "suble"
       ]
     },
@@ -1546,12 +1476,11 @@
     },
     {
       "word": "redan",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00006659935575158314,
       "guesses": [
         "raies",
-        "recta",
-        "rebab",
+        "huant",
         "redan"
       ]
     },
@@ -1561,8 +1490,8 @@
       "prior": 0.00010130802646023384,
       "guesses": [
         "raies",
-        "coula",
-        "noyat",
+        "coult",
+        "goyat",
         "donat"
       ]
     },
@@ -1572,7 +1501,7 @@
       "prior": 0.0000537239082769626,
       "guesses": [
         "raies",
-        "sanai",
+        "satan",
         "salai"
       ]
     },
@@ -1582,30 +1511,30 @@
       "prior": 0.00008200292474375833,
       "guesses": [
         "raies",
-        "oules",
-        "lèges",
+        "mulot",
+        "élève",
         "elfes"
       ]
     },
     {
       "word": "tends",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00009222732959393265,
       "guesses": [
         "raies",
-        "tenus",
+        "pleut",
+        "condé",
         "tends"
       ]
     },
     {
       "word": "saute",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00012619950429200606,
       "guesses": [
         "raies",
-        "salse",
-        "saune",
-        "sauve",
+        "pulsé",
+        "vécut",
         "saute"
       ]
     },
@@ -1615,7 +1544,7 @@
       "prior": 0.00003502804027209427,
       "guesses": [
         "raies",
-        "gaina",
+        "tonga",
         "gaida"
       ]
     },
@@ -1636,8 +1565,8 @@
       "prior": 0.00007574022091292301,
       "guesses": [
         "raies",
-        "tidal",
-        "divan",
+        "tilin",
+        "bumpa",
         "jihad"
       ]
     },
@@ -1647,20 +1576,21 @@
       "prior": 0.000028194348236433157,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
+        "badgé",
         "céara",
-        "égara",
         "épara"
       ]
     },
     {
       "word": "atapi",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000023034556953309664,
       "guesses": [
         "raies",
-        "tidal",
-        "attié",
+        "tilin",
+        "bouté",
+        "gâtai",
         "atapi"
       ]
     },
@@ -1670,35 +1600,32 @@
       "prior": 0.00005732105297971013,
       "guesses": [
         "raies",
-        "tolus",
+        "clout",
         "domus",
         "dodus"
       ]
     },
     {
       "word": "guais",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.00004117127531435836,
       "guesses": [
         "raies",
-        "lians",
-        "tuais",
-        "quais",
-        "ouais",
-        "suais",
+        "liant",
+        "oumph",
+        "sgbdr",
         "guais"
       ]
     },
     {
       "word": "boxes",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.0000714261267077869,
       "guesses": [
         "raies",
-        "oules",
-        "notes",
-        "doses",
-        "cobes",
+        "mulot",
+        "ponch",
+        "sgbdr",
         "boxes"
       ]
     },
@@ -1708,8 +1635,8 @@
       "prior": 0.00002769488331342112,
       "guesses": [
         "raies",
-        "coula",
-        "abyma",
+        "coult",
+        "ndama",
         "ôméga"
       ]
     },
@@ -1719,9 +1646,9 @@
       "prior": 0.000034048904418478636,
       "guesses": [
         "raies",
-        "canta",
-        "katal",
-        "tabaâ",
+        "conta",
+        "mulat",
+        "batak",
         "tawaf"
       ]
     },
@@ -1738,27 +1665,23 @@
     },
     {
       "word": "smock",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003739345844714629,
       "guesses": [
         "raies",
         "souté",
-        "scoop",
-        "shock",
+        "cholo",
         "smock"
       ]
     },
     {
       "word": "damet",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00003921590128597119,
       "guesses": [
         "raies",
-        "lanet",
-        "caget",
-        "pamet",
-        "zamet",
-        "mamet",
+        "lampt",
+        "mazda",
         "damet"
       ]
     },
@@ -1774,13 +1697,12 @@
     },
     {
       "word": "bader",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00006800138189758475,
       "guesses": [
         "raies",
-        "taper",
-        "lager",
-        "macer",
+        "dhtml",
+        "buvez",
         "bader"
       ]
     },
@@ -1790,9 +1712,9 @@
       "prior": 0.000046168080670351335,
       "guesses": [
         "raies",
-        "talas",
-        "capos",
-        "pagés",
+        "mélac",
+        "donut",
+        "janus",
         "panus"
       ]
     },
@@ -1802,35 +1724,31 @@
       "prior": 0.000033257458814230244,
       "guesses": [
         "raies",
-        "vitre",
-        "derri",
+        "votre",
+        "mardi",
         "deuri"
       ]
     },
     {
       "word": "guipe",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00003268741699985604,
       "guesses": [
         "raies",
-        "toile",
-        "peine",
-        "épice",
-        "œdipe",
+        "ponté",
+        "lundi",
         "guipe"
       ]
     },
     {
       "word": "frole",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.000029295500467344863,
       "guesses": [
         "raies",
-        "toure",
-        "brode",
-        "proye",
-        "grole",
-        "crole",
+        "turco",
+        "brodé",
+        "gelez",
         "frole"
       ]
     },
@@ -1840,7 +1758,7 @@
       "prior": 0.00012634954274948432,
       "guesses": [
         "raies",
-        "salse",
+        "pulsé",
         "lasse"
       ]
     },
@@ -1850,8 +1768,8 @@
       "prior": 0.0000518450926614031,
       "guesses": [
         "raies",
-        "nolet",
-        "tcheu",
+        "mulot",
+        "tenge",
         "tâtez"
       ]
     },
@@ -1861,8 +1779,8 @@
       "prior": 0.00004587484461520133,
       "guesses": [
         "raies",
-        "nolet",
-        "codez",
+        "mulot",
+        "modez",
         "mobed"
       ]
     },
@@ -1872,8 +1790,8 @@
       "prior": 0.0000557923326436736,
       "guesses": [
         "raies",
-        "talas",
-        "taons",
+        "mélac",
+        "tondu",
         "tacos"
       ]
     },
@@ -1889,59 +1807,53 @@
     },
     {
       "word": "mache",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005523790889580548,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
-        "macée",
+        "blunt",
+        "campé",
         "mache"
       ]
     },
     {
       "word": "poile",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00005088171392894283,
       "guesses": [
         "raies",
-        "toile",
-        "voile",
+        "ponté",
         "poile"
       ]
     },
     {
       "word": "aviso",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00007874363071637252,
       "guesses": [
         "raies",
-        "spina",
-        "avisé",
+        "shona",
         "aviso"
       ]
     },
     {
       "word": "caute",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00005410195597819454,
       "guesses": [
         "raies",
-        "lante",
-        "patte",
-        "faute",
-        "haute",
+        "blunt",
+        "tchip",
         "caute"
       ]
     },
     {
       "word": "coule",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.0001451771311510989,
       "guesses": [
         "raies",
-        "loute",
-        "foule",
+        "coult",
         "coule"
       ]
     },
@@ -1951,32 +1863,32 @@
       "prior": 0.000041985023108746984,
       "guesses": [
         "raies",
-        "alute",
-        "texan",
+        "aluna",
+        "botch",
         "fetva",
         "fetfa"
       ]
     },
     {
       "word": "avaro",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.0000459682557060933,
       "guesses": [
         "raies",
-        "toura",
-        "acoré",
+        "aouat",
+        "dzong",
+        "amaro",
         "avaro"
       ]
     },
     {
       "word": "farts",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005268737723146538,
       "guesses": [
         "raies",
-        "darts",
-        "parts",
-        "sarts",
+        "ducat",
+        "spath",
         "farts"
       ]
     },
@@ -1987,42 +1899,41 @@
       "guesses": [
         "raies",
         "coulé",
-        "médoc",
+        "matin",
         "démoc"
       ]
     },
     {
       "word": "sushi",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00005963049662987672,
       "guesses": [
         "raies",
         "sinto",
+        "mugho",
         "sushi"
       ]
     },
     {
       "word": "voyée",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00005303669878355878,
       "guesses": [
         "raies",
-        "loute",
-        "monde",
-        "copée",
-        "boxée",
+        "coult",
+        "damné",
+        "gypse",
         "voyée"
       ]
     },
     {
       "word": "gobis",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000030011595987288897,
       "guesses": [
         "raies",
-        "linos",
-        "cobis",
-        "bobis",
+        "linot",
+        "bougé",
         "gobis"
       ]
     },
@@ -2033,8 +1944,8 @@
       "guesses": [
         "raies",
         "linot",
-        "colpi",
-        "kovil",
+        "coufi",
+        "douil",
         "ioulé"
       ]
     },
@@ -2044,19 +1955,20 @@
       "prior": 0.000038115715443594386,
       "guesses": [
         "raies",
-        "tolus",
-        "dénés",
+        "clout",
+        "décès",
         "échés"
       ]
     },
     {
       "word": "saoch",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000025858667664500627,
       "guesses": [
         "raies",
-        "salta",
-        "sagou",
+        "pulsa",
+        "séton",
+        "sambo",
         "saoch"
       ]
     },
@@ -2067,19 +1979,18 @@
       "guesses": [
         "raies",
         "linge",
-        "jolie",
+        "poljé",
         "idole"
       ]
     },
     {
       "word": "datai",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00004141102863008645,
       "guesses": [
         "raies",
-        "latin",
-        "patai",
-        "matai",
+        "tchin",
+        "lampa",
         "datai"
       ]
     },
@@ -2089,19 +2000,20 @@
       "prior": 0.00006969578983783434,
       "guesses": [
         "raies",
-        "toure",
-        "mucre",
+        "turco",
+        "belge",
         "umbre"
       ]
     },
     {
       "word": "minât",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003576866184622625,
       "guesses": [
         "raies",
         "linot",
-        "vinât",
+        "vînâs",
+        "monde",
         "minât"
       ]
     },
@@ -2111,19 +2023,20 @@
       "prior": 0.000019397599655717054,
       "guesses": [
         "raies",
-        "toura",
-        "prêta",
-        "fréta",
+        "aouat",
+        "trapé",
+        "frêta",
         "crèta"
       ]
     },
     {
       "word": "isbas",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000052747733589955304,
       "guesses": [
         "raies",
-        "lians",
+        "liant",
+        "dosas",
         "isbas"
       ]
     },
@@ -2134,7 +2047,7 @@
       "guesses": [
         "raies",
         "tisai",
-        "hissa",
+        "blush",
         "fisha"
       ]
     },
@@ -2145,19 +2058,18 @@
       "guesses": [
         "raies",
         "linge",
-        "figue",
+        "débuf",
         "giffe"
       ]
     },
     {
       "word": "calée",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000077856632185622,
       "guesses": [
         "raies",
-        "lante",
-        "bacle",
-        "calme",
+        "blunt",
+        "campé",
         "calée"
       ]
     },
@@ -2167,8 +2079,8 @@
       "prior": 0.00006099002917756827,
       "guesses": [
         "raies",
-        "soute",
-        "scone",
+        "souté",
+        "clonk",
         "smoke"
       ]
     },
@@ -2178,21 +2090,18 @@
       "prior": 0.000054470771702085574,
       "guesses": [
         "raies",
-        "oules",
+        "mulot",
         "loues"
       ]
     },
     {
       "word": "majat",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.000019397599655717054,
       "guesses": [
         "raies",
-        "canta",
-        "katal",
-        "tabaâ",
-        "papat",
-        "gagat",
+        "conta",
+        "mulat",
         "majat"
       ]
     },
@@ -2202,7 +2111,7 @@
       "prior": 0.00014331198523754918,
       "guesses": [
         "raies",
-        "corés",
+        "couté",
         "curés"
       ]
     },
@@ -2212,34 +2121,31 @@
       "prior": 0.00014178752971579826,
       "guesses": [
         "raies",
-        "toure",
-        "brège",
-        "crône",
+        "turco",
+        "glèbe",
+        "frêle",
         "drôle"
       ]
     },
     {
       "word": "srons",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00002644089824729858,
       "guesses": [
         "raies",
-        "corés",
-        "prots",
-        "grous",
+        "couté",
         "dross",
         "srons"
       ]
     },
     {
       "word": "buisa",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00002050305279270761,
       "guesses": [
         "raies",
-        "spina",
-        "toisa",
-        "avisa",
+        "shona",
+        "puisa",
         "buisa"
       ]
     },
@@ -2249,7 +2155,7 @@
       "prior": 0.00002068270649899485,
       "guesses": [
         "raies",
-        "srait",
+        "tissa",
         "kisra",
         "cisra"
       ]
@@ -2260,19 +2166,18 @@
       "prior": 0.00005471447179980567,
       "guesses": [
         "raies",
-        "tréou",
-        "durol",
+        "couté",
+        "bloom",
         "murol"
       ]
     },
     {
       "word": "raché",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.000038518239557981985,
       "guesses": [
         "raies",
-        "raban",
-        "raclé",
+        "éclot",
         "raché"
       ]
     },
@@ -2293,42 +2198,42 @@
       "prior": 0.00007688187597529925,
       "guesses": [
         "raies",
-        "toile",
+        "ponté",
         "doive",
         "boive"
       ]
     },
     {
       "word": "conin",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000049155797011627966,
       "guesses": [
         "raies",
         "linot",
+        "ogoni",
         "conin"
       ]
     },
     {
       "word": "cover",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.0000779049338839794,
       "guesses": [
         "raies",
-        "touer",
-        "yoler",
-        "doper",
-        "gober",
-        "nover",
+        "lotur",
+        "bandy",
+        "opcvm",
         "cover"
       ]
     },
     {
       "word": "surfa",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000044250654553421635,
       "guesses": [
         "raies",
-        "stora",
+        "court",
+        "naval",
         "surfa"
       ]
     },
@@ -2338,7 +2243,7 @@
       "prior": 0.0000413211785718403,
       "guesses": [
         "raies",
-        "rassi",
+        "essai",
         "rasai"
       ]
     },
@@ -2348,40 +2253,41 @@
       "prior": 0.0001342665439012921,
       "guesses": [
         "raies",
-        "toure",
-        "trève",
+        "turco",
+        "évène",
         "trêve"
       ]
     },
     {
       "word": "vient",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00026484565587962447,
       "guesses": [
         "raies",
         "linge",
+        "novez",
         "vient"
       ]
     },
     {
       "word": "dauba",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.0000414000363567079,
       "guesses": [
         "raies",
-        "canta",
-        "palma",
+        "conta",
+        "plumé",
+        "debug",
         "dauba"
       ]
     },
     {
       "word": "belus",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000054281769999874894,
       "guesses": [
         "raies",
-        "tenus",
-        "pecus",
+        "pleut",
         "velus",
         "belus"
       ]
@@ -2392,22 +2298,21 @@
       "prior": 0.00004721747837088682,
       "guesses": [
         "raies",
-        "canta",
-        "manon",
-        "bandy",
+        "conta",
+        "dumpé",
+        "bandé",
         "zandé"
       ]
     },
     {
       "word": "fulûs",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00002485461062605566,
       "guesses": [
         "raies",
-        "tolus",
-        "bulls",
-        "culés",
-        "mulks",
+        "clout",
+        "balmé",
+        "pulls",
         "fulûs"
       ]
     },
@@ -2417,9 +2322,9 @@
       "prior": 0.000022244415574852917,
       "guesses": [
         "raies",
-        "coula",
+        "coult",
+        "genba",
         "vogua",
-        "gogua",
         "dogua"
       ]
     },
@@ -2436,13 +2341,12 @@
     },
     {
       "word": "négos",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000027663429645278955,
       "guesses": [
         "raies",
-        "tolus",
-        "scons",
-        "ménos",
+        "clout",
+        "démon",
         "négos"
       ]
     },
@@ -2452,8 +2356,8 @@
       "prior": 0.000045184270505137766,
       "guesses": [
         "raies",
-        "salta",
-        "pansa",
+        "pulsa",
+        "nimby",
         "dansa",
         "kansa"
       ]
@@ -2465,7 +2369,7 @@
       "guesses": [
         "raies",
         "coulé",
-        "pétou",
+        "embut",
         "époux"
       ]
     },
@@ -2486,9 +2390,9 @@
       "prior": 0.000028916080205992857,
       "guesses": [
         "raies",
-        "loute",
-        "coble",
-        "volée",
+        "coult",
+        "badgé",
+        "fimpi",
         "molve"
       ]
     },
@@ -2498,59 +2402,52 @@
       "prior": 0.00008877371087611212,
       "guesses": [
         "raies",
-        "linos",
-        "mutis",
+        "linot",
+        "bécue",
         "étuis"
       ]
     },
     {
       "word": "exéat",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00003492317325176637,
       "guesses": [
         "raies",
-        "alute",
-        "texan",
-        "exeat",
-        "expat",
+        "aluna",
+        "étape",
         "exéat"
       ]
     },
     {
       "word": "dikes",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.000044048998836707066,
       "guesses": [
         "raies",
-        "lides",
-        "dites",
-        "dises",
-        "dimes",
-        "dives",
-        "dines",
+        "tildé",
+        "divin",
+        "smoks",
         "dikes"
       ]
     },
     {
       "word": "quena",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000038568431809407574,
       "guesses": [
         "raies",
-        "alute",
-        "beauf",
-        "cueva",
+        "aluna",
+        "guena",
         "quena"
       ]
     },
     {
       "word": "tours",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00019698452102507203,
       "guesses": [
         "raies",
-        "corés",
-        "jours",
+        "couté",
         "tours"
       ]
     },
@@ -2567,26 +2464,23 @@
     },
     {
       "word": "farés",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000037759222959244616,
       "guesses": [
         "raies",
-        "darts",
-        "parcs",
-        "maras",
-        "faros",
+        "ducat",
+        "formé",
         "farés"
       ]
     },
     {
       "word": "pimpa",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.0000253764909581696,
       "guesses": [
         "raies",
-        "tidal",
-        "pinga",
-        "picéa",
+        "tilin",
+        "bumpa",
         "pimpa"
       ]
     },
@@ -2596,8 +2490,8 @@
       "prior": 0.00010866886339159712,
       "guesses": [
         "raies",
-        "loute",
-        "énope",
+        "coult",
+        "pende",
         "ozone"
       ]
     },
@@ -2613,123 +2507,115 @@
     },
     {
       "word": "iceve",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00001656217432269984,
       "guesses": [
         "raies",
         "linge",
-        "tomie",
-        "ièque",
-        "idéée",
+        "pombé",
+        "tutie",
         "iceve"
       ]
     },
     {
       "word": "moyée",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.000024218098423109904,
       "guesses": [
         "raies",
-        "loute",
-        "monde",
-        "moche",
-        "momme",
-        "moppe",
+        "coult",
+        "damné",
+        "poéme",
         "moyée"
       ]
     },
     {
       "word": "barns",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004992430069107856,
       "guesses": [
         "raies",
-        "darts",
-        "parcs",
-        "maras",
-        "faros",
-        "garus",
+        "ducat",
+        "formé",
         "barns"
       ]
     },
     {
       "word": "adulé",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00006857297561996098,
       "guesses": [
         "raies",
-        "coula",
+        "coult",
+        "glama",
         "adulé"
       ]
     },
     {
       "word": "mayen",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00006879550738327265,
       "guesses": [
         "raies",
-        "lanet",
-        "payen",
+        "lampt",
         "mayen"
       ]
     },
     {
       "word": "pifre",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000042116399549936764,
       "guesses": [
         "raies",
-        "vitre",
-        "fibre",
+        "votre",
+        "blème",
+        "perdu",
         "pifre"
       ]
     },
     {
       "word": "plinn",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.000025627468132528917,
       "guesses": [
         "raies",
-        "coint",
+        "coult",
+        "blind",
         "plinn"
       ]
     },
     {
       "word": "varna",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00008298649387962308,
       "guesses": [
         "raies",
-        "tarba",
-        "marla",
-        "darka",
-        "carna",
+        "bérot",
+        "macla",
+        "drink",
         "varna"
       ]
     },
     {
       "word": "focal",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00008253163356017713,
       "guesses": [
         "raies",
-        "coula",
-        "local",
-        "vocal",
+        "coult",
+        "levai",
         "bocal",
         "focal"
       ]
     },
     {
       "word": "pager",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00005512890746897934,
       "guesses": [
         "raies",
-        "taper",
-        "payer",
-        "parer",
-        "paver",
+        "dhtml",
+        "gyrin",
         "pager"
       ]
     },
@@ -2739,9 +2625,9 @@
       "prior": 0.00004349327509566159,
       "guesses": [
         "raies",
-        "vitre",
-        "fibre",
-        "ligre",
+        "votre",
+        "blème",
+        "perdu",
         "cipre"
       ]
     },
@@ -2751,19 +2637,18 @@
       "prior": 0.00008711114562781071,
       "guesses": [
         "raies",
-        "toure",
+        "turco",
         "petro"
       ]
     },
     {
       "word": "avivé",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00006351478202133989,
       "guesses": [
         "raies",
-        "alina",
-        "agité",
-        "amidé",
+        "cloné",
+        "dgtpe",
         "avivé"
       ]
     },
@@ -2784,9 +2669,9 @@
       "prior": 0.00004808134897142856,
       "guesses": [
         "raies",
-        "alute",
-        "goale",
-        "écale",
+        "aluna",
+        "géode",
+        "chale",
         "hyale"
       ]
     },
@@ -2796,7 +2681,7 @@
       "prior": 0.00003775013639268632,
       "guesses": [
         "raies",
-        "rital",
+        "litai",
         "rival",
         "riyal"
       ]
@@ -2807,47 +2692,44 @@
       "prior": 0.00005232422846305281,
       "guesses": [
         "raies",
-        "latin",
-        "mahia",
+        "tchin",
+        "lamba",
         "zamia"
       ]
     },
     {
       "word": "grapa",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.00003257752031895415,
       "guesses": [
         "raies",
-        "toura",
-        "braga",
-        "grava",
-        "grana",
-        "grada",
+        "aouat",
+        "badgé",
+        "payen",
         "grapa"
       ]
     },
     {
       "word": "barra",
-      "num_guesses": 3,
+      "num_guesses": 5,
       "prior": 0.00008456328699304456,
       "guesses": [
         "raies",
-        "tarba",
+        "bérot",
+        "kamba",
+        "cadre",
         "barra"
       ]
     },
     {
       "word": "rakis",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.00003414112368707147,
       "guesses": [
         "raies",
+        "adnmt",
         "ravis",
-        "radis",
-        "ramis",
-        "ratis",
         "rasis",
-        "ranis",
         "rakis"
       ]
     },
@@ -2857,7 +2739,7 @@
       "prior": 0.00005603786333593999,
       "guesses": [
         "raies",
-        "tidal",
+        "tilin",
         "délia",
         "dolia"
       ]
@@ -2868,10 +2750,10 @@
       "prior": 0.000027903545820219663,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
+        "trapé",
         "tracé",
         "tramé",
-        "trapé",
         "tradé"
       ]
     },
@@ -2882,8 +2764,8 @@
       "guesses": [
         "raies",
         "linge",
-        "minte",
-        "pinée",
+        "comté",
+        "devra",
         "dinée"
       ]
     },
@@ -2893,19 +2775,20 @@
       "prior": 0.00007658150379346241,
       "guesses": [
         "raies",
-        "touer",
-        "tâter",
+        "lotur",
+        "temné",
         "téter"
       ]
     },
     {
       "word": "jaque",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00007237755600828977,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
+        "blunt",
+        "gâché",
+        "jumpa",
         "jaque"
       ]
     },
@@ -2916,22 +2799,19 @@
       "guesses": [
         "raies",
         "coulé",
-        "foulé",
-        "moulé",
+        "faham",
+        "privé",
         "boulé"
       ]
     },
     {
       "word": "nages",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00007773566675025836,
       "guesses": [
         "raies",
-        "gales",
-        "pages",
-        "sages",
-        "mages",
-        "cages",
+        "dhtml",
+        "cygne",
         "nages"
       ]
     },
@@ -2948,50 +2828,46 @@
     },
     {
       "word": "palot",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00004306441400983166,
       "guesses": [
         "raies",
-        "canta",
-        "malot",
-        "falot",
-        "halot",
+        "conta",
+        "gumbo",
+        "phyla",
         "palot"
       ]
     },
     {
       "word": "vidai",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00005708830444521506,
       "guesses": [
         "raies",
-        "tidal",
+        "tilin",
+        "madak",
         "vidai"
       ]
     },
     {
       "word": "puter",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.000051952609821720146,
       "guesses": [
         "raies",
-        "touer",
-        "buter",
-        "cuter",
-        "muter",
-        "luter",
+        "lotur",
+        "bumpa",
         "puter"
       ]
     },
     {
       "word": "luzin",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003397994404574611,
       "guesses": [
         "raies",
         "linot",
-        "lupin",
-        "lubin",
+        "plomb",
         "luzin"
       ]
     },
@@ -3001,28 +2877,31 @@
       "prior": 0.00004910271629595452,
       "guesses": [
         "raies",
-        "raina",
+        "démon",
         "raion"
       ]
     },
     {
       "word": "simas",
-      "num_guesses": 3,
+      "num_guesses": 5,
       "prior": 0.000043253311939971176,
       "guesses": [
         "raies",
-        "lians",
+        "liant",
+        "dumpé",
+        "massa",
         "simas"
       ]
     },
     {
       "word": "alefs",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000019129481345201734,
       "guesses": [
         "raies",
-        "menas",
-        "adels",
+        "metal",
+        "dînez",
+        "axels",
         "alefs"
       ]
     },
@@ -3043,107 +2922,101 @@
       "prior": 0.00008489499763289271,
       "guesses": [
         "raies",
-        "canta",
-        "galon",
+        "conta",
+        "gymel",
         "lagon"
       ]
     },
     {
       "word": "prêta",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00011395497425890451,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
+        "trapé",
         "prêta"
       ]
     },
     {
       "word": "tradi",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00007434439148278081,
       "guesses": [
         "raies",
-        "tirai",
+        "cirit",
+        "intra",
         "trahi",
         "tradi"
       ]
     },
     {
       "word": "pâmes",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.00003927815214962381,
       "guesses": [
         "raies",
-        "oules",
-        "mènes",
-        "dûmes",
-        "fîmes",
-        "bâmes",
-        "sâmes",
+        "mulot",
+        "défît",
+        "peûte",
         "pâmes"
       ]
     },
     {
       "word": "relit",
-      "num_guesses": 2,
+      "num_guesses": 3,
       "prior": 0.00008753384631477509,
       "guesses": [
         "raies",
+        "litée",
         "relit"
       ]
     },
     {
       "word": "nanaï",
-      "num_guesses": 5,
+      "num_guesses": 6,
       "prior": 0.00003209201625680126,
       "guesses": [
         "raies",
-        "canta",
-        "panal",
-        "nanan",
+        "conta",
+        "dumpé",
+        "bilan",
+        "kanak",
         "nanaï"
       ]
     },
     {
       "word": "cerve",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004193588982176108,
       "guesses": [
         "raies",
-        "toure",
-        "brège",
-        "merde",
-        "verne",
-        "herve",
+        "turco",
+        "entre",
         "cerve"
       ]
     },
     {
       "word": "hours",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00008598407852605367,
       "guesses": [
         "raies",
-        "corés",
-        "jours",
-        "tours",
-        "fours",
+        "couté",
+        "sfenj",
+        "rhumb",
         "hours"
       ]
     },
     {
       "word": "nayas",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.00003037803806680977,
       "guesses": [
         "raies",
-        "talas",
-        "macas",
-        "bakas",
-        "panas",
-        "najas",
-        "nafas",
+        "mélac",
+        "dntps",
+        "fanny",
         "nayas"
       ]
     },
@@ -3153,66 +3026,67 @@
       "prior": 0.00007937241308081112,
       "guesses": [
         "raies",
-        "coula",
-        "glama",
+        "coult",
+        "panga",
         "blâma"
       ]
     },
     {
       "word": "forro",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000039988853186676227,
       "guesses": [
         "raies",
-        "tréou",
-        "cypro",
+        "couté",
+        "dogon",
+        "zorro",
         "forro"
       ]
     },
     {
       "word": "tondu",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00007732046002125627,
       "guesses": [
         "raies",
         "coulé",
+        "typon",
         "tondu"
       ]
     },
     {
       "word": "hôles",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00003818326601497526,
       "guesses": [
         "raies",
-        "oules",
-        "mlles",
-        "pôles",
-        "tôles",
+        "mulot",
+        "plèbe",
+        "fâché",
         "hôles"
       ]
     },
     {
       "word": "fixie",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000026663746326986213,
       "guesses": [
         "raies",
         "linge",
-        "picte",
-        "mixée",
-        "dixie",
+        "copté",
+        "demux",
         "fixie"
       ]
     },
     {
       "word": "xaaso",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000025475879736074677,
       "guesses": [
         "raies",
-        "salta",
-        "masaï",
+        "pulsa",
+        "conté",
+        "kasso",
         "xaaso"
       ]
     },
@@ -3222,35 +3096,32 @@
       "prior": 0.00004726011524312426,
       "guesses": [
         "raies",
-        "canta",
-        "ganda",
-        "kanza",
+        "conta",
+        "gland",
+        "khobz",
         "kanya"
       ]
     },
     {
       "word": "evres",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.00003744759750967458,
       "guesses": [
         "raies",
-        "pores",
-        "mures",
+        "promu",
+        "gelât",
         "sères",
-        "âtres",
-        "erres",
         "evres"
       ]
     },
     {
       "word": "dogué",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000030737954995241924,
       "guesses": [
         "raies",
         "coulé",
-        "vogué",
-        "gogué",
+        "gavot",
         "bogué",
         "dogué"
       ]
@@ -3261,7 +3132,7 @@
       "prior": 0.000058340163933900716,
       "guesses": [
         "raies",
-        "acres",
+        "crème",
         "arces"
       ]
     },
@@ -3271,8 +3142,8 @@
       "prior": 0.00017690160715690663,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
+        "blunt",
+        "gâché",
         "vague"
       ]
     },
@@ -3282,30 +3153,32 @@
       "prior": 0.00005474071203738906,
       "guesses": [
         "raies",
-        "coula",
-        "abyma",
+        "coult",
+        "ndama",
         "bwana"
       ]
     },
     {
       "word": "amter",
-      "num_guesses": 2,
+      "num_guesses": 5,
       "prior": 0.00003374831279103389,
       "guesses": [
         "raies",
+        "blunt",
+        "after",
+        "acter",
         "amter"
       ]
     },
     {
       "word": "keske",
-      "num_guesses": 7,
+      "num_guesses": 6,
       "prior": 0.00002402727363748952,
       "guesses": [
         "raies",
-        "soute",
+        "souté",
         "messe",
         "vesce",
-        "pesée",
         "fesle",
         "keske"
       ]
@@ -3316,21 +3189,19 @@
       "prior": 0.0000698653414501125,
       "guesses": [
         "raies",
-        "corés",
-        "xérès",
+        "couté",
+        "jurés",
         "férus"
       ]
     },
     {
       "word": "coyez",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000028431369236724254,
       "guesses": [
         "raies",
-        "nolet",
-        "codez",
-        "cogez",
-        "copez",
+        "mulot",
+        "candy",
         "coyez"
       ]
     },
@@ -3350,8 +3221,8 @@
       "prior": 0.00003850774983977064,
       "guesses": [
         "raies",
-        "tidal",
-        "omani",
+        "tilin",
+        "fœdus",
         "amain"
       ]
     },
@@ -3361,22 +3232,21 @@
       "prior": 0.00009475310241840597,
       "guesses": [
         "raies",
-        "alute",
-        "agent",
-        "ayent",
+        "aluna",
+        "dogme",
+        "vieux",
         "avent"
       ]
     },
     {
       "word": "goète",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000026599517699001053,
       "guesses": [
         "raies",
-        "loute",
-        "conte",
-        "botte",
-        "poète",
+        "coult",
+        "tenté",
+        "plèbe",
         "goète"
       ]
     },
@@ -3393,13 +3263,12 @@
     },
     {
       "word": "torde",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005184253704786651,
       "guesses": [
         "raies",
-        "toure",
-        "torte",
-        "torve",
+        "turco",
+        "vanté",
         "torde"
       ]
     },
@@ -3409,19 +3278,18 @@
       "prior": 0.00009976282610496018,
       "guesses": [
         "raies",
-        "raban",
-        "rayon",
+        "éclot",
+        "mardy",
         "ramon"
       ]
     },
     {
       "word": "lémur",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00003922175411464134,
       "guesses": [
         "raies",
-        "tréou",
-        "burlé",
+        "couté",
         "lémur"
       ]
     },
@@ -3431,31 +3299,30 @@
       "prior": 0.00023273428792537913,
       "guesses": [
         "raies",
-        "poins",
+        "ponch",
         "poids"
       ]
     },
     {
       "word": "rîtes",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00003270760689604713,
       "guesses": [
         "raies",
-        "roues",
-        "rêles",
-        "râces",
-        "rîmes",
+        "pound",
+        "mêlât",
         "rîtes"
       ]
     },
     {
       "word": "carat",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00007342761693384331,
       "guesses": [
         "raies",
-        "tarba",
-        "garat",
+        "bérot",
+        "tagua",
+        "jacky",
         "carat"
       ]
     },
@@ -3467,7 +3334,7 @@
         "raies",
         "coulé",
         "dévot",
-        "mégot",
+        "gamba",
         "bézot"
       ]
     },
@@ -3477,25 +3344,19 @@
       "prior": 0.00009103816237844585,
       "guesses": [
         "raies",
-        "tréou",
-        "burot",
+        "couté",
+        "turbo",
         "butor"
       ]
     },
     {
       "word": "brage",
-      "num_guesses": 10,
+      "num_guesses": 4,
       "prior": 0.00004723696212832196,
       "guesses": [
         "raies",
-        "trabe",
-        "brave",
-        "brame",
-        "braye",
-        "brace",
-        "brane",
-        "brake",
-        "brade",
+        "trada",
+        "gumbo",
         "brage"
       ]
     },
@@ -3506,18 +3367,17 @@
       "guesses": [
         "raies",
         "linge",
-        "tomie",
+        "pombé",
         "iodée"
       ]
     },
     {
       "word": "couta",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00005449486756482533,
       "guesses": [
         "raies",
-        "coula",
-        "coupa",
+        "coult",
         "couta"
       ]
     },
@@ -3527,33 +3387,31 @@
       "prior": 0.00002063201298109285,
       "guesses": [
         "raies",
-        "tolus",
-        "plocs",
+        "clout",
+        "plfss",
         "plons",
         "plops"
       ]
     },
     {
       "word": "pilet",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00006937537805553293,
       "guesses": [
         "raies",
-        "tinel",
-        "filet",
-        "gilet",
+        "bintz",
+        "palco",
         "pilet"
       ]
     },
     {
       "word": "staff",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00008728431098205895,
       "guesses": [
         "raies",
         "souta",
-        "smalt",
-        "stand",
+        "flint",
         "staff"
       ]
     },
@@ -3563,8 +3421,8 @@
       "prior": 0.00005822656820443438,
       "guesses": [
         "raies",
-        "lante",
-        "talue",
+        "blunt",
+        "chott",
         "talle"
       ]
     },
@@ -3575,19 +3433,18 @@
       "guesses": [
         "raies",
         "linge",
-        "deuil",
-        "empli",
+        "demux",
+        "éveil",
         "hoeli"
       ]
     },
     {
       "word": "rando",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.000060620656010675346,
       "guesses": [
         "raies",
-        "raban",
-        "rancé",
+        "éclot",
         "rando"
       ]
     },
@@ -3598,49 +3455,51 @@
       "guesses": [
         "raies",
         "coulé",
-        "bonté",
+        "bintz",
         "fondé",
         "donné"
       ]
     },
     {
       "word": "toura",
-      "num_guesses": 2,
+      "num_guesses": 3,
       "prior": 0.00005939649715948871,
       "guesses": [
         "raies",
+        "aouat",
         "toura"
       ]
     },
     {
       "word": "diags",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.0000225202570731229,
       "guesses": [
         "raies",
-        "lians",
-        "fiais",
-        "diams",
+        "liant",
+        "modif",
         "diags"
       ]
     },
     {
       "word": "levée",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.0001673273694439177,
       "guesses": [
         "raies",
-        "loute",
-        "lycée",
+        "coult",
+        "belge",
+        "lemme",
         "levée"
       ]
     },
     {
       "word": "ravis",
-      "num_guesses": 2,
+      "num_guesses": 3,
       "prior": 0.00010456407726136308,
       "guesses": [
         "raies",
+        "adnmt",
         "ravis"
       ]
     },
@@ -3656,27 +3515,25 @@
     },
     {
       "word": "pavée",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.0000968864357825756,
       "guesses": [
         "raies",
-        "lante",
-        "mauge",
-        "capée",
+        "blunt",
+        "campé",
         "payée",
         "pavée"
       ]
     },
     {
       "word": "farma",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00004125606300791404,
       "guesses": [
         "raies",
-        "tarba",
-        "marla",
-        "karma",
-        "zarma",
+        "bérot",
+        "macla",
+        "ferez",
         "farma"
       ]
     },
@@ -3686,8 +3543,8 @@
       "prior": 0.00008834107972736107,
       "guesses": [
         "raies",
-        "alute",
-        "goale",
+        "aluna",
+        "géode",
         "ovale",
         "opale"
       ]
@@ -3698,8 +3555,8 @@
       "prior": 0.00009497525666382197,
       "guesses": [
         "raies",
-        "coula",
-        "éplan",
+        "coult",
+        "ponté",
         "allât"
       ]
     },
@@ -3709,33 +3566,30 @@
       "prior": 0.00005681497837558615,
       "guesses": [
         "raies",
-        "alina",
-        "omiai",
+        "cloné",
+        "gouma",
         "opiat"
       ]
     },
     {
       "word": "damel",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00006591614461550914,
       "guesses": [
         "raies",
-        "lanet",
-        "valez",
-        "bagel",
+        "lampt",
+        "acide",
         "damel"
       ]
     },
     {
       "word": "livés",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000025595286195724225,
       "guesses": [
         "raies",
-        "linos",
-        "lités",
-        "lisés",
-        "limés",
+        "linot",
+        "musée",
         "livés"
       ]
     },
@@ -3745,40 +3599,41 @@
       "prior": 0.000029827285157098974,
       "guesses": [
         "raies",
-        "soute",
+        "souté",
         "messe",
         "depse"
       ]
     },
     {
       "word": "zamel",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003345137125970122,
       "guesses": [
         "raies",
-        "lanet",
-        "valez",
-        "gazel",
+        "lampt",
+        "acide",
         "zamel"
       ]
     },
     {
       "word": "skunk",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00004167905849242363,
       "guesses": [
         "raies",
         "souté",
+        "fille",
         "skunk"
       ]
     },
     {
       "word": "capon",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00006393405977146405,
       "guesses": [
         "raies",
-        "canta",
+        "conta",
+        "ployé",
         "capon"
       ]
     },
@@ -3789,29 +3644,29 @@
       "guesses": [
         "raies",
         "linge",
-        "tomie",
-        "tutie",
+        "pombé",
+        "expie",
         "tupie"
       ]
     },
     {
       "word": "saiwe",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00002630735152671089,
       "guesses": [
         "raies",
-        "saine",
+        "blunt",
+        "paise",
         "saiwe"
       ]
     },
     {
       "word": "archi",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00009702911890771836,
       "guesses": [
         "raies",
-        "tirai",
-        "arabi",
+        "cirit",
         "archi"
       ]
     },
@@ -3821,19 +3676,18 @@
       "prior": 0.000035228092278808335,
       "guesses": [
         "raies",
-        "tidal",
-        "podia",
+        "tilin",
+        "dompé",
         "kodia"
       ]
     },
     {
       "word": "criés",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.000056179434871899015,
       "guesses": [
         "raies",
-        "crins",
-        "crics",
+        "conté",
         "criés"
       ]
     },
@@ -3843,9 +3697,9 @@
       "prior": 0.00003025234660293902,
       "guesses": [
         "raies",
-        "trima",
-        "brifa",
-        "priva",
+        "bruta",
+        "gompa",
+        "frira",
         "driva"
       ]
     },
@@ -3855,8 +3709,8 @@
       "prior": 0.00004878664541725557,
       "guesses": [
         "raies",
-        "loute",
-        "bello",
+        "coult",
+        "bélon",
         "melon",
         "pelon"
       ]
@@ -3867,7 +3721,7 @@
       "prior": 0.000024150637490577786,
       "guesses": [
         "raies",
-        "alute",
+        "aluna",
         "acute",
         "aoute",
         "abute"
@@ -3875,14 +3729,12 @@
     },
     {
       "word": "mallé",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00004017660253891322,
       "guesses": [
         "raies",
-        "canta",
-        "gaulé",
-        "dallé",
-        "ballé",
+        "conta",
+        "glumé",
         "mallé"
       ]
     },
@@ -3892,58 +3744,53 @@
       "prior": 0.00005515137544579459,
       "guesses": [
         "raies",
-        "coula",
-        "glama",
+        "coult",
+        "panga",
         "llama"
       ]
     },
     {
       "word": "biali",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003326500104401473,
       "guesses": [
         "raies",
-        "tidal",
-        "gilla",
-        "pialé",
+        "tilin",
+        "limai",
         "biali"
       ]
     },
     {
       "word": "marks",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00012108018592944491,
       "guesses": [
         "raies",
-        "darts",
-        "parcs",
-        "maras",
+        "ducat",
+        "formé",
         "marks"
       ]
     },
     {
       "word": "kovil",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003529675190697789,
       "guesses": [
         "raies",
         "linot",
-        "colpi",
+        "coufi",
+        "pékin",
         "kovil"
       ]
     },
     {
       "word": "cayes",
-      "num_guesses": 8,
+      "num_guesses": 4,
       "prior": 0.00007286967788307968,
       "guesses": [
         "raies",
-        "gales",
-        "cases",
-        "caves",
-        "cames",
-        "capes",
-        "canes",
+        "dhtml",
+        "cygne",
         "cayes"
       ]
     },
@@ -3953,19 +3800,18 @@
       "prior": 0.00007270689410258317,
       "guesses": [
         "raies",
-        "salta",
-        "pansu",
+        "pulsa",
+        "passé",
         "pansé"
       ]
     },
     {
       "word": "cirfa",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000025207299261107155,
       "guesses": [
         "raies",
-        "tirai",
-        "mirga",
+        "cirit",
         "circa",
         "cirfa"
       ]
@@ -3976,8 +3822,8 @@
       "prior": 0.00003650991052209215,
       "guesses": [
         "raies",
-        "menas",
-        "adels",
+        "metal",
+        "dînez",
         "azels"
       ]
     },
@@ -3987,26 +3833,21 @@
       "prior": 0.00004712612630481478,
       "guesses": [
         "raies",
-        "altos",
-        "punas",
-        "swaps",
+        "tonal",
+        "buché",
+        "kwass",
         "spams"
       ]
     },
     {
       "word": "fures",
-      "num_guesses": 10,
+      "num_guesses": 5,
       "prior": 0.00005299404687859607,
       "guesses": [
         "raies",
-        "pores",
-        "mures",
-        "dures",
-        "cures",
-        "sures",
-        "bures",
-        "jures",
-        "hures",
+        "promu",
+        "sudoc",
+        "hijab",
         "fures"
       ]
     },
@@ -4032,12 +3873,13 @@
     },
     {
       "word": "bakas",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000034004143847304614,
       "guesses": [
         "raies",
-        "talas",
-        "macas",
+        "mélac",
+        "dntps",
+        "khobz",
         "bakas"
       ]
     },
@@ -4047,8 +3889,8 @@
       "prior": 0.0000546928243325389,
       "guesses": [
         "raies",
-        "talas",
-        "hauts",
+        "mélac",
+        "tondu",
         "cants"
       ]
     },
@@ -4058,32 +3900,32 @@
       "prior": 0.00002132285103741076,
       "guesses": [
         "raies",
-        "altos",
-        "aunas",
-        "angés",
+        "tonal",
+        "anché",
+        "mayas",
         "amîns"
       ]
     },
     {
       "word": "hissa",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00007999225355744079,
       "guesses": [
         "raies",
         "tisai",
+        "blush",
         "hissa"
       ]
     },
     {
       "word": "kafka",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00009952663387591345,
       "guesses": [
         "raies",
-        "canta",
-        "palma",
-        "dauba",
-        "jaffa",
+        "conta",
+        "plumé",
+        "khobz",
         "kafka"
       ]
     },
@@ -4100,11 +3942,12 @@
     },
     {
       "word": "morin",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00012971480820823125,
       "guesses": [
         "raies",
-        "cotir",
+        "cotin",
+        "hebdo",
         "morin"
       ]
     },
@@ -4114,7 +3957,7 @@
       "prior": 0.000016970887966494637,
       "guesses": [
         "raies",
-        "recta",
+        "huant",
         "réale",
         "réage",
         "réaxe"
@@ -4126,19 +3969,18 @@
       "prior": 0.00011750692982379379,
       "guesses": [
         "raies",
-        "tolus",
-        "logos",
+        "clout",
+        "pégon",
         "logés"
       ]
     },
     {
       "word": "sucet",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.0000382265946553088,
       "guesses": [
         "raies",
-        "pesez",
-        "solen",
+        "solut",
         "sujet",
         "sudet",
         "sucet"
@@ -4150,7 +3992,7 @@
       "prior": 0.000018953951828082836,
       "guesses": [
         "raies",
-        "rouan",
+        "noual",
         "réact",
         "réaxé"
       ]
@@ -4169,24 +4011,22 @@
     },
     {
       "word": "crémé",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000036712855760596456,
       "guesses": [
         "raies",
-        "tréou",
-        "grévé",
-        "brélé",
+        "couté",
+        "préma",
         "crémé"
       ]
     },
     {
       "word": "ossec",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00002385874309786026,
       "guesses": [
         "raies",
-        "pesez",
-        "luset",
+        "solut",
         "onsen",
         "ossec"
       ]
@@ -4197,21 +4037,20 @@
       "prior": 0.00006002354755799494,
       "guesses": [
         "raies",
-        "alute",
-        "melpa",
-        "cella",
+        "aluna",
+        "pelte",
+        "melba",
         "belga"
       ]
     },
     {
       "word": "mitez",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000035925192409347324,
       "guesses": [
         "raies",
-        "tinel",
-        "bizet",
-        "citez",
+        "bintz",
+        "glock",
         "mitez"
       ]
     },
@@ -4221,29 +4060,31 @@
       "prior": 0.000025115173271585667,
       "guesses": [
         "raies",
-        "tréou",
-        "gourd",
+        "couté",
+        "bloom",
         "ourdo"
       ]
     },
     {
       "word": "pétou",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00003854545947612749,
       "guesses": [
         "raies",
         "coulé",
+        "embut",
         "pétou"
       ]
     },
     {
       "word": "taute",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00005290538338912477,
       "guesses": [
         "raies",
-        "lante",
-        "patte",
+        "blunt",
+        "tchip",
+        "doute",
         "taute"
       ]
     },
@@ -4254,20 +4095,19 @@
       "guesses": [
         "raies",
         "linot",
-        "piché",
+        "puché",
         "ciguë"
       ]
     },
     {
       "word": "komse",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000018177673130855948,
       "guesses": [
         "raies",
-        "soute",
-        "posse",
-        "bonse",
-        "moïse",
+        "souté",
+        "plfss",
+        "mange",
         "komse"
       ]
     },
@@ -4277,7 +4117,7 @@
       "prior": 0.00005170894531484164,
       "guesses": [
         "raies",
-        "rogué",
+        "técou",
         "réglo"
       ]
     },
@@ -4287,8 +4127,8 @@
       "prior": 0.00014151815804804038,
       "guesses": [
         "raies",
-        "talas",
-        "macas",
+        "mélac",
+        "défit",
         "damas"
       ]
     },
@@ -4298,20 +4138,19 @@
       "prior": 0.00009005718322856323,
       "guesses": [
         "raies",
-        "coula",
-        "comac",
+        "coult",
+        "émana",
         "coach"
       ]
     },
     {
       "word": "chêma",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00002149855224984923,
       "guesses": [
         "raies",
-        "coula",
-        "chéma",
-        "chôma",
+        "coult",
+        "ôméga",
         "chêma"
       ]
     },
@@ -4321,8 +4160,8 @@
       "prior": 0.00002498625049846656,
       "guesses": [
         "raies",
-        "tidal",
-        "pinga",
+        "tilin",
+        "punka",
         "nippa"
       ]
     },
@@ -4332,8 +4171,8 @@
       "prior": 0.000020782627608323024,
       "guesses": [
         "raies",
-        "coula",
-        "huaca",
+        "coult",
+        "hanja",
         "ducka",
         "bucka"
       ]
@@ -4344,7 +4183,7 @@
       "prior": 0.00007152992028896084,
       "guesses": [
         "raies",
-        "soute",
+        "souté",
         "usent",
         "guest"
       ]
@@ -4355,7 +4194,7 @@
       "prior": 0.000023670627648861716,
       "guesses": [
         "raies",
-        "cotir",
+        "cotin",
         "ortié",
         "ortif"
       ]
@@ -4372,14 +4211,13 @@
     },
     {
       "word": "silys",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000022985161451461278,
       "guesses": [
         "raies",
-        "linos",
-        "fills",
-        "pilés",
-        "silts",
+        "linot",
+        "biflé",
+        "aussi",
         "silys"
       ]
     },
@@ -4390,34 +4228,29 @@
       "guesses": [
         "raies",
         "linge",
-        "ménie",
+        "sébum",
         "innée"
       ]
     },
     {
       "word": "padel",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.000040383492479645764,
       "guesses": [
         "raies",
-        "lanet",
-        "valez",
-        "bagel",
-        "damel",
+        "lampt",
+        "ganja",
         "padel"
       ]
     },
     {
       "word": "yassa",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004878501582792007,
       "guesses": [
         "raies",
-        "salta",
-        "pansa",
-        "cassa",
-        "massa",
-        "bassa",
+        "pulsa",
+        "nimby",
         "yassa"
       ]
     },
@@ -4427,9 +4260,9 @@
       "prior": 0.00004802161179931709,
       "guesses": [
         "raies",
-        "altos",
-        "punas",
-        "musas",
+        "tonal",
+        "dumpé",
+        "backa",
         "cubas"
       ]
     },
@@ -4439,9 +4272,9 @@
       "prior": 0.0000646292761734331,
       "guesses": [
         "raies",
-        "trabe",
-        "acère",
-        "amère",
+        "trada",
+        "mécru",
+        "vapos",
         "avère"
       ]
     },
@@ -4451,9 +4284,9 @@
       "prior": 0.0000580618065318995,
       "guesses": [
         "raies",
-        "coula",
-        "foula",
-        "boula",
+        "coult",
+        "débuf",
+        "khmer",
         "moula"
       ]
     },
@@ -4463,34 +4296,31 @@
       "prior": 0.00004876462756610428,
       "guesses": [
         "raies",
-        "alute",
-        "benga",
+        "aluna",
+        "pegon",
         "vegan"
       ]
     },
     {
       "word": "ricil",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00002513833160810925,
       "guesses": [
         "raies",
-        "rouit",
+        "conit",
         "récif",
-        "ricin",
         "ricil"
       ]
     },
     {
       "word": "potai",
-      "num_guesses": 8,
+      "num_guesses": 6,
       "prior": 0.000025606031491784646,
       "guesses": [
         "raies",
-        "tidal",
-        "outai",
-        "notai",
-        "cotai",
-        "votai",
+        "tilin",
+        "bouté",
+        "codev",
         "kotai",
         "potai"
       ]
@@ -4501,20 +4331,19 @@
       "prior": 0.00002978048785234614,
       "guesses": [
         "raies",
-        "loute",
-        "klett",
+        "coult",
+        "lente",
         "bletz"
       ]
     },
     {
       "word": "nyâya",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00004568570688418908,
       "guesses": [
         "raies",
-        "coula",
-        "abyma",
-        "typha",
+        "coult",
+        "ndama",
         "nyâya"
       ]
     },
@@ -4524,7 +4353,7 @@
       "prior": 0.00004216031664179466,
       "guesses": [
         "raies",
-        "septa",
+        "spalt",
         "asple"
       ]
     },
@@ -4534,18 +4363,19 @@
       "prior": 0.00003132998220909161,
       "guesses": [
         "raies",
-        "coula",
-        "obang",
+        "coult",
+        "abyma",
         "avoyé"
       ]
     },
     {
       "word": "piles",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.0001295445672742573,
       "guesses": [
         "raies",
-        "lides",
+        "tildé",
+        "fimpi",
         "piles"
       ]
     },
@@ -4555,19 +4385,20 @@
       "prior": 0.000018464399547005627,
       "guesses": [
         "raies",
-        "oules",
-        "lèges",
+        "mulot",
+        "élève",
         "elfes",
         "flyes"
       ]
     },
     {
       "word": "santé",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.0002270122018227202,
       "guesses": [
         "raies",
-        "salta",
+        "pulsa",
+        "séton",
         "santé"
       ]
     },
@@ -4577,9 +4408,9 @@
       "prior": 0.00001980402134324273,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
         "écran",
-        "graal",
+        "arval",
         "arday"
       ]
     },
@@ -4590,22 +4421,19 @@
       "guesses": [
         "raies",
         "linge",
-        "picte",
-        "mixée",
+        "copté",
+        "demux",
         "xième"
       ]
     },
     {
       "word": "bêlez",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.000025343012621296147,
       "guesses": [
         "raies",
-        "nolet",
-        "celez",
-        "mêlez",
-        "vêlez",
-        "fêlez",
+        "mulot",
+        "bêché",
         "bêlez"
       ]
     },
@@ -4615,8 +4443,8 @@
       "prior": 0.0000678898539200222,
       "guesses": [
         "raies",
-        "tinel",
-        "bizet",
+        "bintz",
+        "palco",
         "civet"
       ]
     },
@@ -4626,46 +4454,41 @@
       "prior": 0.0000428885245664099,
       "guesses": [
         "raies",
-        "canta",
-        "malot",
-        "tabut",
+        "conta",
+        "mulat",
+        "typez",
         "taxât"
       ]
     },
     {
       "word": "sonné",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00011208116728091963,
       "guesses": [
         "raies",
         "souté",
-        "sondé",
-        "songé",
+        "cland",
         "sonné"
       ]
     },
     {
       "word": "hecht",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00006930569946552214,
       "guesses": [
         "raies",
-        "loute",
-        "venât",
+        "coult",
         "hecht"
       ]
     },
     {
       "word": "criks",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00003821794463583254,
       "guesses": [
         "raies",
-        "crins",
-        "crics",
-        "criés",
-        "criss",
-        "cribs",
+        "conté",
+        "buscs",
         "criks"
       ]
     },
@@ -4675,21 +4498,19 @@
       "prior": 0.000029739297531634717,
       "guesses": [
         "raies",
-        "nolet",
-        "lugez",
+        "mulot",
+        "gymel",
         "zemel"
       ]
     },
     {
       "word": "borne",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.0001639178713599471,
       "guesses": [
         "raies",
-        "toure",
-        "morce",
-        "dorge",
-        "borée",
+        "turco",
+        "mondé",
         "borne"
       ]
     },
@@ -4699,9 +4520,9 @@
       "prior": 0.00007522324629973262,
       "guesses": [
         "raies",
-        "alute",
-        "amane",
-        "agace",
+        "aluna",
+        "dgtpe",
+        "comme",
         "agave"
       ]
     },
@@ -4719,29 +4540,25 @@
     },
     {
       "word": "suces",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.000047617358693359576,
       "guesses": [
         "raies",
-        "oules",
-        "tubes",
-        "munes",
-        "puces",
-        "duces",
+        "mulot",
+        "bécon",
+        "passé",
         "suces"
       ]
     },
     {
       "word": "sones",
-      "num_guesses": 7,
+      "num_guesses": 5,
       "prior": 0.00004697449227284404,
       "guesses": [
         "raies",
-        "oules",
-        "notes",
-        "zones",
-        "gones",
-        "mones",
+        "mulot",
+        "ponch",
+        "nagez",
         "sones"
       ]
     },
@@ -4751,8 +4568,8 @@
       "prior": 0.00005143820296990233,
       "guesses": [
         "raies",
-        "alina",
-        "atipa",
+        "cloné",
+        "tampa",
         "aviva"
       ]
     },
@@ -4762,8 +4579,8 @@
       "prior": 0.00007843607106894334,
       "guesses": [
         "raies",
-        "tréou",
-        "vroom",
+        "couté",
+        "ombon",
         "brook"
       ]
     },
@@ -4773,7 +4590,7 @@
       "prior": 0.00002092899860906324,
       "guesses": [
         "raies",
-        "rosté",
+        "dévot",
         "rusât"
       ]
     },
@@ -4783,8 +4600,8 @@
       "prior": 0.00005687950485693071,
       "guesses": [
         "raies",
-        "trabe",
-        "greta",
+        "trada",
+        "arête",
         "arent"
       ]
     },
@@ -4794,9 +4611,9 @@
       "prior": 0.000016108613856293913,
       "guesses": [
         "raies",
-        "altos",
-        "lumas",
-        "hélas",
+        "tonal",
+        "vélum",
+        "blême",
         "hôlas"
       ]
     },
@@ -4806,31 +4623,31 @@
       "prior": 0.00006077571025267531,
       "guesses": [
         "raies",
-        "priée",
-        "criée",
+        "crépu",
+        "érige",
         "triée"
       ]
     },
     {
       "word": "cumac",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000025021675381561468,
       "guesses": [
         "raies",
-        "coula",
-        "cufat",
-        "cuman",
+        "coult",
+        "donax",
         "cumac"
       ]
     },
     {
       "word": "gobos",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00002514987884844644,
       "guesses": [
         "raies",
-        "tolus",
-        "sodos",
+        "clout",
+        "démon",
+        "kabig",
         "gobos"
       ]
     },
@@ -4852,9 +4669,9 @@
       "prior": 0.000026190684614960437,
       "guesses": [
         "raies",
-        "nolet",
-        "codez",
-        "douez",
+        "mulot",
+        "candy",
+        "podex",
         "dopez"
       ]
     },
@@ -4864,23 +4681,19 @@
       "prior": 0.00003892674578211486,
       "guesses": [
         "raies",
-        "réuse",
+        "outée",
         "ressu"
       ]
     },
     {
       "word": "tazon",
-      "num_guesses": 10,
+      "num_guesses": 6,
       "prior": 0.00002125544341496568,
       "guesses": [
         "raies",
-        "canta",
-        "paton",
-        "talon",
-        "taxon",
-        "tayon",
-        "tavon",
-        "tauon",
+        "conta",
+        "typon",
+        "velux",
         "tafon",
         "tazon"
       ]
@@ -4892,8 +4705,8 @@
       "guesses": [
         "raies",
         "sinto",
-        "sigil",
-        "sillé",
+        "kélim",
+        "siglé",
         "siclé"
       ]
     },
@@ -4903,26 +4716,22 @@
       "prior": 0.00007059145933859323,
       "guesses": [
         "raies",
-        "alute",
-        "alène",
-        "allée",
+        "aluna",
+        "pelté",
+        "comme",
         "alcée"
       ]
     },
     {
       "word": "tazas",
-      "num_guesses": 10,
+      "num_guesses": 6,
       "prior": 0.000026967227223208935,
       "guesses": [
         "raies",
-        "talas",
-        "tapas",
-        "tamas",
-        "tatas",
+        "mélac",
+        "dntps",
+        "wisky",
         "taxas",
-        "tasas",
-        "takas",
-        "tanas",
         "tazas"
       ]
     },
@@ -4932,42 +4741,43 @@
       "prior": 0.00004540902442184538,
       "guesses": [
         "raies",
-        "salta",
-        "balsa",
+        "pulsa",
+        "basse",
         "valsa"
       ]
     },
     {
       "word": "mozza",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003960053832014775,
       "guesses": [
         "raies",
-        "coula",
-        "monta",
+        "coult",
+        "damna",
+        "zooma",
         "mozza"
       ]
     },
     {
       "word": "agavé",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00005229093506720244,
       "guesses": [
         "raies",
-        "coula",
-        "étang",
+        "coult",
+        "ndama",
+        "agapè",
         "agavé"
       ]
     },
     {
       "word": "vicos",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000048292792143438495,
       "guesses": [
         "raies",
-        "linos",
-        "ditos",
-        "sivos",
+        "linot",
+        "opcvm",
         "vicos"
       ]
     },
@@ -4977,21 +4787,20 @@
       "prior": 0.00008350870629560501,
       "guesses": [
         "raies",
-        "latin",
-        "badai",
+        "tchin",
+        "joual",
         "hadji"
       ]
     },
     {
       "word": "fasse",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.0001885019609854525,
       "guesses": [
         "raies",
-        "salse",
-        "passe",
-        "masse",
-        "basse",
+        "pulsé",
+        "nimbe",
+        "styfe",
         "fasse"
       ]
     },
@@ -5001,9 +4810,9 @@
       "prior": 0.000040749900662005,
       "guesses": [
         "raies",
-        "septa",
-        "loase",
-        "ukase",
+        "spalt",
+        "usage",
+        "avait",
         "évase"
       ]
     },
@@ -5013,10 +4822,10 @@
       "prior": 0.000035388456069043954,
       "guesses": [
         "raies",
-        "canta",
-        "kamal",
+        "conta",
+        "glumé",
+        "kohol",
         "jamal",
-        "hamal",
         "zamal"
       ]
     },
@@ -5047,21 +4856,19 @@
       "prior": 0.00012008684920127954,
       "guesses": [
         "raies",
-        "rogué",
+        "técou",
         "réglé",
         "régné"
       ]
     },
     {
       "word": "siege",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00011395168955575945,
       "guesses": [
         "raies",
-        "liste",
-        "signe",
-        "siège",
-        "siége",
+        "silts",
+        "guené",
         "siege"
       ]
     },
@@ -5071,7 +4878,7 @@
       "prior": 0.00010528201485707007,
       "guesses": [
         "raies",
-        "rogué",
+        "técou",
         "réélu"
       ]
     },
@@ -5091,31 +4898,31 @@
       "prior": 0.00004984529553455162,
       "guesses": [
         "raies",
-        "alina",
-        "avili",
+        "cloné",
+        "voila",
         "apiol"
       ]
     },
     {
       "word": "deffe",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000035551744998013576,
       "guesses": [
         "raies",
-        "loute",
-        "phène",
-        "démée",
+        "coult",
+        "mendé",
         "debye",
         "deffe"
       ]
     },
     {
       "word": "tabac",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00016138052004018193,
       "guesses": [
         "raies",
-        "canta",
+        "conta",
+        "amphé",
         "tabac"
       ]
     },
@@ -5136,8 +4943,8 @@
       "prior": 0.00019080061129451696,
       "guesses": [
         "raies",
-        "tenus",
-        "cents",
+        "pleut",
+        "condé",
         "dents"
       ]
     },
@@ -5147,7 +4954,7 @@
       "prior": 0.00003379090202676706,
       "guesses": [
         "raies",
-        "lanet",
+        "lampt",
         "tapez",
         "patez"
       ]
@@ -5158,9 +4965,9 @@
       "prior": 0.000043607469289479284,
       "guesses": [
         "raies",
-        "canta",
-        "gaulé",
-        "gagou",
+        "conta",
+        "bloop",
+        "gumuz",
         "gazou"
       ]
     },
@@ -5177,25 +4984,24 @@
     },
     {
       "word": "priée",
-      "num_guesses": 2,
+      "num_guesses": 3,
       "prior": 0.00008690999276038768,
       "guesses": [
         "raies",
+        "crépu",
         "priée"
       ]
     },
     {
       "word": "houés",
-      "num_guesses": 8,
+      "num_guesses": 6,
       "prior": 0.000026297708066814266,
       "guesses": [
         "raies",
-        "tolus",
-        "doucs",
-        "boués",
+        "clout",
+        "bondé",
         "voués",
         "joués",
-        "noués",
         "houés"
       ]
     },
@@ -5206,8 +5012,8 @@
       "guesses": [
         "raies",
         "linge",
-        "picte",
-        "mixée",
+        "copté",
+        "demux",
         "mique"
       ]
     },
@@ -5217,19 +5023,18 @@
       "prior": 0.00022546864034293397,
       "guesses": [
         "raies",
-        "carme",
+        "cmdre",
         "cadre"
       ]
     },
     {
       "word": "ombus",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000026450334687334846,
       "guesses": [
         "raies",
-        "tolus",
-        "chous",
-        "ossus",
+        "clout",
+        "domus",
         "ombus"
       ]
     },
@@ -5239,8 +5044,8 @@
       "prior": 0.000026171036667394538,
       "guesses": [
         "raies",
-        "salez",
-        "sakem",
+        "split",
+        "savez",
         "sagex"
       ]
     },
@@ -5250,30 +5055,32 @@
       "prior": 0.000025712505151309468,
       "guesses": [
         "raies",
-        "altos",
-        "aunas",
-        "awacs",
+        "tonal",
+        "buché",
+        "shahs",
         "ayahs"
       ]
     },
     {
       "word": "group",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00011047755290746378,
       "guesses": [
         "raies",
-        "tréou",
+        "couté",
+        "bloom",
         "group"
       ]
     },
     {
       "word": "scoby",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00002384448203381277,
       "guesses": [
         "raies",
         "souté",
-        "scoop",
+        "cholo",
+        "smock",
         "scoby"
       ]
     },
@@ -5283,22 +5090,19 @@
       "prior": 0.00005128899850030948,
       "guesses": [
         "raies",
-        "relut",
-        "rende",
-        "reeve",
+        "donut",
+        "élève",
+        "rêche",
         "rebbe"
       ]
     },
     {
       "word": "molez",
-      "num_guesses": 6,
+      "num_guesses": 3,
       "prior": 0.00003232362774343636,
       "guesses": [
         "raies",
-        "nolet",
-        "volez",
-        "dolez",
-        "colez",
+        "mulot",
         "molez"
       ]
     },
@@ -5309,30 +5113,30 @@
       "guesses": [
         "raies",
         "souté",
-        "séqué",
+        "réglé",
         "suédé"
       ]
     },
     {
       "word": "ozane",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00003082535316750577,
       "guesses": [
         "raies",
-        "alute",
-        "cyane",
-        "émane",
+        "aluna",
+        "mythe",
         "ozane"
       ]
     },
     {
       "word": "dgtpe",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003429598033894864,
       "guesses": [
         "raies",
-        "loute",
-        "tempe",
+        "coult",
+        "tenté",
+        "mythe",
         "dgtpe"
       ]
     },
@@ -5352,7 +5156,7 @@
       "prior": 0.000054475489465528786,
       "guesses": [
         "raies",
-        "tolus",
+        "clout",
         "hélés",
         "mêlés",
         "fêlés"
@@ -5360,26 +5164,23 @@
     },
     {
       "word": "rayeb",
-      "num_guesses": 6,
+      "num_guesses": 4,
       "prior": 0.00002147690210294346,
       "guesses": [
         "raies",
-        "razet",
-        "ramer",
-        "ravel",
-        "ragea",
+        "altgr",
+        "mazda",
         "rayeb"
       ]
     },
     {
       "word": "mémos",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005925378354257568,
       "guesses": [
         "raies",
-        "tolus",
-        "scons",
-        "démos",
+        "clout",
+        "démon",
         "mémos"
       ]
     },
@@ -5390,7 +5191,7 @@
       "guesses": [
         "raies",
         "sorte",
-        "serré",
+        "vêpre",
         "servé"
       ]
     },
@@ -5406,12 +5207,13 @@
     },
     {
       "word": "chipa",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003814628141347988,
       "guesses": [
         "raies",
-        "alina",
-        "tuica",
+        "cloné",
+        "tchac",
+        "temps",
         "chipa"
       ]
     },
@@ -5421,35 +5223,32 @@
       "prior": 0.00010895638322926858,
       "guesses": [
         "raies",
-        "loute",
-        "loupe",
+        "coult",
+        "privé",
         "louée"
       ]
     },
     {
       "word": "eille",
-      "num_guesses": 10,
+      "num_guesses": 5,
       "prior": 0.000052349450306800816,
       "guesses": [
         "raies",
         "linge",
-        "bille",
-        "ville",
-        "mille",
-        "fille",
-        "tille",
-        "pille",
-        "cille",
+        "bolté",
+        "meuve",
         "eille"
       ]
     },
     {
       "word": "ceceo",
-      "num_guesses": 3,
+      "num_guesses": 5,
       "prior": 0.000028909475344589564,
       "guesses": [
         "raies",
-        "nolet",
+        "mulot",
+        "candy",
+        "copec",
         "ceceo"
       ]
     },
@@ -5459,7 +5258,7 @@
       "prior": 0.000040626970087459825,
       "guesses": [
         "raies",
-        "baisa",
+        "borna",
         "faisa",
         "paisa"
       ]
@@ -5470,8 +5269,8 @@
       "prior": 0.00007306230802143366,
       "guesses": [
         "raies",
-        "relut",
-        "revît",
+        "donut",
+        "vîmes",
         "remît"
       ]
     },
@@ -5488,29 +5287,26 @@
     },
     {
       "word": "zicos",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000025420855723807752,
       "guesses": [
         "raies",
-        "linos",
-        "ditos",
-        "sivos",
-        "micos",
+        "linot",
+        "opcvm",
+        "dicos",
         "zicos"
       ]
     },
     {
       "word": "walle",
-      "num_guesses": 8,
+      "num_guesses": 6,
       "prior": 0.00007024874520333851,
       "guesses": [
         "raies",
-        "lante",
-        "bacle",
-        "galle",
-        "halle",
-        "dalle",
-        "malle",
+        "blunt",
+        "campé",
+        "dholl",
+        "gwerz",
         "walle"
       ]
     },
@@ -5520,32 +5316,30 @@
       "prior": 0.00009614093598092281,
       "guesses": [
         "raies",
-        "talas",
+        "mélac",
         "calas"
       ]
     },
     {
       "word": "rhées",
-      "num_guesses": 8,
+      "num_guesses": 5,
       "prior": 0.00003331385957728875,
       "guesses": [
         "raies",
-        "roues",
-        "rêles",
-        "râces",
-        "rîmes",
+        "pound",
+        "mêlât",
         "règes",
-        "rôdes",
         "rhées"
       ]
     },
     {
       "word": "estoc",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00007691579762709598,
       "guesses": [
         "raies",
-        "soute",
+        "souté",
+        "oncle",
         "estoc"
       ]
     },
@@ -5565,17 +5359,18 @@
       "prior": 0.000027811579372417204,
       "guesses": [
         "raies",
-        "alios",
+        "calao",
         "anils"
       ]
     },
     {
       "word": "trado",
-      "num_guesses": 3,
+      "num_guesses": 4,
       "prior": 0.00004671280901979317,
       "guesses": [
         "raies",
-        "toura",
+        "aouat",
+        "trova",
         "trado"
       ]
     },
@@ -5592,25 +5387,23 @@
     },
     {
       "word": "tâche",
-      "num_guesses": 4,
+      "num_guesses": 3,
       "prior": 0.00019582271967106727,
       "guesses": [
         "raies",
-        "loute",
-        "tempe",
+        "coult",
         "tâche"
       ]
     },
     {
       "word": "biger",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00003573476051823671,
       "guesses": [
         "raies",
-        "liter",
-        "viner",
-        "pifer",
-        "dimer",
+        "vingt",
+        "figer",
+        "piger",
         "biger"
       ]
     },
@@ -5620,9 +5413,9 @@
       "prior": 0.000030307251404599304,
       "guesses": [
         "raies",
-        "loute",
-        "belle",
-        "mècle",
+        "coult",
+        "hayât",
+        "chele",
         "chèle"
       ]
     },
@@ -5633,7 +5426,7 @@
       "guesses": [
         "raies",
         "linge",
-        "minte",
+        "comté",
         "tinne"
       ]
     },
@@ -5643,9 +5436,9 @@
       "prior": 0.000037603547281447285,
       "guesses": [
         "raies",
-        "canta",
-        "balan",
-        "gaban",
+        "conta",
+        "migan",
+        "bayle",
         "kaban"
       ]
     },
@@ -5656,7 +5449,7 @@
       "guesses": [
         "raies",
         "liage",
-        "envia",
+        "tempi",
         "ineat"
       ]
     },
@@ -5666,8 +5459,8 @@
       "prior": 0.000022766054661217306,
       "guesses": [
         "raies",
-        "trabe",
-        "nerva",
+        "trada",
+        "munro",
         "feura"
       ]
     },
@@ -5677,22 +5470,21 @@
       "prior": 0.000022766054661217306,
       "guesses": [
         "raies",
-        "tidal",
-        "hunai",
-        "pokai",
+        "tilin",
+        "émoud",
+        "packy",
         "gobai",
         "boxai"
       ]
     },
     {
       "word": "nuent",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.00005514937977444469,
       "guesses": [
         "raies",
-        "loute",
-        "tetum",
-        "puent",
+        "coult",
+        "nibam",
         "nuent"
       ]
     },
@@ -5703,7 +5495,7 @@
       "guesses": [
         "raies",
         "coulé",
-        "goldo",
+        "goton",
         "gogol"
       ]
     },
@@ -5713,49 +5505,40 @@
       "prior": 0.00003574890170213386,
       "guesses": [
         "raies",
-        "loute",
+        "coult",
         "pelot",
         "velot"
       ]
     },
     {
       "word": "daine",
-      "num_guesses": 8,
+      "num_guesses": 3,
       "prior": 0.00007097390690688508,
       "guesses": [
         "raies",
-        "laine",
-        "haine",
-        "vaine",
-        "gaine",
-        "naine",
-        "faine",
+        "ndolé",
         "daine"
       ]
     },
     {
       "word": "panés",
-      "num_guesses": 7,
+      "num_guesses": 4,
       "prior": 0.00004701896054193209,
       "guesses": [
         "raies",
-        "talas",
-        "capos",
-        "pagés",
-        "payés",
-        "pavés",
+        "mélac",
+        "typon",
         "panés"
       ]
     },
     {
       "word": "ixant",
-      "num_guesses": 5,
+      "num_guesses": 4,
       "prior": 0.000034130926217005857,
       "guesses": [
         "raies",
-        "tidal",
-        "attié",
-        "coati",
+        "tilin",
+        "notai",
         "ixant"
       ]
     },
@@ -5765,18 +5548,19 @@
       "prior": 0.000054182525145384796,
       "guesses": [
         "raies",
-        "tréou",
+        "couté",
         "crédo"
       ]
     },
     {
       "word": "qajar",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.00003530269712407568,
       "guesses": [
         "raies",
-        "tarba",
-        "jamar",
+        "bérot",
+        "dumna",
+        "galop",
         "qajar"
       ]
     },
@@ -5786,24 +5570,19 @@
       "prior": 0.00004127675391832786,
       "guesses": [
         "raies",
-        "alute",
-        "benga",
+        "aluna",
+        "tendu",
         "nzema"
       ]
     },
     {
       "word": "marae",
-      "num_guesses": 9,
+      "num_guesses": 4,
       "prior": 0.00006199790405131724,
       "guesses": [
         "raies",
-        "carme",
-        "marge",
-        "marne",
-        "marée",
-        "marre",
-        "marle",
-        "marte",
+        "cmdre",
+        "métal",
         "marae"
       ]
     },
@@ -5819,29 +5598,23 @@
     },
     {
       "word": "tasai",
-      "num_guesses": 8,
+      "num_guesses": 3,
       "prior": 0.00001603947562190787,
       "guesses": [
         "raies",
-        "sanai",
-        "basai",
-        "casai",
-        "vasai",
-        "lasai",
-        "jasai",
+        "satan",
         "tasai"
       ]
     },
     {
       "word": "harle",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.00005819199398172445,
       "guesses": [
         "raies",
-        "carme",
-        "garbe",
-        "parte",
-        "larde",
+        "cmdre",
+        "lgbtq",
+        "parle",
         "harle"
       ]
     },
@@ -5852,31 +5625,31 @@
       "guesses": [
         "raies",
         "coulé",
-        "bugné",
+        "bétun",
         "dénué"
       ]
     },
     {
       "word": "burna",
-      "num_guesses": 6,
+      "num_guesses": 5,
       "prior": 0.000032148386853140895,
       "guesses": [
         "raies",
-        "toura",
-        "burla",
-        "burqa",
-        "burka",
+        "aouat",
+        "huard",
+        "blank",
         "burna"
       ]
     },
     {
       "word": "lélai",
-      "num_guesses": 4,
+      "num_guesses": 5,
       "prior": 0.000038860183259226266,
       "guesses": [
         "raies",
-        "tidal",
-        "lolai",
+        "tilin",
+        "odéum",
+        "celle",
         "lélai"
       ]
     },
@@ -5886,8 +5659,8 @@
       "prior": 0.000058292673468178,
       "guesses": [
         "raies",
-        "toure",
-        "ource",
+        "turco",
+        "droug",
         "proue",
         "broue"
       ]

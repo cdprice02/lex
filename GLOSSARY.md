@@ -32,6 +32,22 @@ _Avoid_: Golden file, reference run
 The words still consistent with every guess played so far in one game.
 _Avoid_: Remaining words, dictionary (mid-game)
 
+**Guess pool**:
+The words the solver may play as a guess, whether or not they can still be the answer; the Candidate set is always a subset of it.
+_Avoid_: Guess list, allowed words
+
+**Answer prior**:
+The probability that each word is the answer, derived from corpus frequency and a temperature, and renormalized over the Candidate set as it shrinks.
+_Avoid_: Weights, frequency (that is the raw count)
+
+**Strategy**:
+The solver's tunable choices: which Guess pool it draws from (hard mode restricts it to the Candidate set), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.
+_Avoid_: Policy, config
+
+**Hard mode**:
+A Strategy whose Guess pool is only the current Candidate set.
+_Avoid_: Constrained mode
+
 **Decision tree**:
 The shared record of every game position reached so far, where each position is identified by the sequence of (guess, feedback) steps that led to it and remembers the guess the solver chose there.
 _Avoid_: Cache (reserved for the on-disk Corpus form), memo table
