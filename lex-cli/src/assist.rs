@@ -12,7 +12,7 @@ use crate::cli::AssistArgs;
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     let word_set = lex_data::blocking::DataDir::new(&args.common.data_dir)
         .load::<N>(args.common.lang, args.common.dictionary_length)?;
-    let mut guesser = Guesser::new(word_set);
+    let mut guesser = Guesser::new(word_set, args.common.strategy());
 
     let stdin = std::io::stdin();
     let mut lines = stdin.lock().lines();
@@ -41,10 +41,15 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         };
         println!("\nTurn {turn} — {num_candidates} candidate{noun_suffix} remain{verb_suffix}");
         let suggestions = guesser.suggest_top_k(args.suggestions.max(1));
-        for (word, bits) in &suggestions {
-            println!("  {word}  ({bits:.3} bits)");
+        for s in &suggestions {
+            let note = if s.in_candidates {
+                ""
+            } else {
+                ", not a possible answer"
+            };
+            println!("  {}  ({:.3} bits{note})", s.word, s.entropy_bits);
         }
-        let top = suggestions[0].0;
+        let top = suggestions[0].word;
 
         let Some(word) = prompt_word::<N>(&mut lines, top)? else {
             return Ok(()); // EOF

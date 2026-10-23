@@ -8,8 +8,11 @@ mod candidates;
 mod correctness;
 mod game;
 mod guesser;
+mod strategy;
 mod tree;
 
+pub use candidates::Suggestion;
 pub use correctness::{Correctness, WordCorrectness};
 pub use game::{GameResult, play};
 pub use guesser::{Guess, Guesser};
+pub use strategy::{CANONICAL_TEMPERATURE, GuessPool, Strategy, answer_prior};

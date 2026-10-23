@@ -7,7 +7,7 @@
 use std::collections::HashMap;
 use std::io::Write;
 
-use lex_core::{Guesser, play};
+use lex_core::{CANONICAL_TEMPERATURE, Guesser, answer_prior, play};
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
@@ -21,8 +21,11 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let word_set = data_dir.load::<N>(lang, args.common.dictionary_length)?;
     let dictionary_length = word_set.len();
 
-    // Priors are taken over the full dictionary, before any game narrows the candidate set.
-    let priors: HashMap<_, _> = word_set.word_probs().collect();
+    // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
+    // taken over the full dictionary before any game narrows the candidate set.
+    let priors: HashMap<_, _> = answer_prior(&word_set, CANONICAL_TEMPERATURE)
+        .into_iter()
+        .collect();
     let targets = targets::select(
         &word_set,
         args.targets.as_deref(),
@@ -34,7 +37,8 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     log::info!("Simulating {num_games} games with {N}-letter words in {lang}...");
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
-    let mut guesser = Guesser::new(word_set);
+    let strategy = args.common.strategy();
+    let mut guesser = Guesser::new(word_set, strategy);
     let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
@@ -87,6 +91,7 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
             num_games,
             targets_file: args.targets.as_ref().map(|p| p.display().to_string()),
             first_guess: first_guess.to_string(),
+            strategy: strategy.into(),
         },
         corpus: Corpus {
             language: lang.to_string(),

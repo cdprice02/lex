@@ -4,6 +4,7 @@ use lex_data::Word;
 
 use crate::candidates::Candidates;
 use crate::guesser::Guess;
+use crate::strategy::Strategy;
 
 pub(crate) type NodeId = usize;
 
@@ -11,8 +12,9 @@ pub(crate) type NodeId = usize;
 ///
 /// A position is identified by its guess path: the `(guess word, feedback ordinal)` steps from
 /// the root. Given a fixed starting word set, the path fully determines the candidate set, and
-/// the suggestion is a deterministic function of the candidate set, so two games that reach the
-/// same node need the suggestion computed only once. The cache is only valid while
+/// the suggestion is a deterministic function of the candidate set and the [`Strategy`], which is
+/// fixed for the tree's life, so two games that reach the same node need the suggestion computed
+/// only once. The cache is only valid while
 /// [`Candidates::suggest`] stays deterministic: randomness or hidden state there must come out
 /// of the tree first.
 ///
@@ -20,6 +22,7 @@ pub(crate) type NodeId = usize;
 /// suggestion (the interactive assistant does).
 #[derive(Debug)]
 pub(crate) struct DecisionTree<const N: usize> {
+    strategy: Strategy,
     nodes: Vec<Node<N>>,
 }
 
@@ -44,8 +47,9 @@ impl<const N: usize> Node<N> {
 impl<const N: usize> DecisionTree<N> {
     pub(crate) const ROOT: NodeId = 0;
 
-    pub(crate) fn new(candidates: Candidates<N>) -> Self {
+    pub(crate) fn new(candidates: Candidates<N>, strategy: Strategy) -> Self {
         Self {
+            strategy,
             nodes: vec![Node::new(candidates)],
         }
     }
@@ -54,12 +58,16 @@ impl<const N: usize> DecisionTree<N> {
         &self.nodes[node].candidates
     }
 
+    pub(crate) fn strategy(&self) -> &Strategy {
+        &self.strategy
+    }
+
     /// The suggestion at `node`, computed on first request.
     pub(crate) fn suggest(&mut self, node: NodeId) -> Option<Word<N>> {
         let entry = &mut self.nodes[node];
         *entry
             .suggestion
-            .get_or_insert_with(|| entry.candidates.suggest())
+            .get_or_insert_with(|| entry.candidates.suggest(&self.strategy))
     }
 
     /// The node reached from `node` by playing `guess`, created on first visit.

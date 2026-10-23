@@ -1,0 +1,173 @@
+use std::sync::Arc;
+
+use lex_data::{Word, WordSet};
+
+/// The temperature the report's evaluation prior is always computed at, so runs with different
+/// solver temperatures stay comparable.
+pub const CANONICAL_TEMPERATURE: f64 = 5.0;
+
+/// Which words the solver may play as a guess.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum GuessPool {
+    /// Only words still consistent with every guess so far (hard mode).
+    Candidates,
+    /// Every word in the loaded set, including ones already ruled out as the answer.
+    All,
+}
+
+/// The solver's tunable choices. Fixed for the life of a [`Guesser`](crate::Guesser): the decision
+/// tree memoizes suggestions, so a different strategy needs a different guesser.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Strategy {
+    pub pool: GuessPool,
+    /// Answer prior temperature: p_i is proportional to f_i^(1/T). Must be positive and finite.
+    pub temperature: f64,
+    /// Bonus, in bits, per unit of probability that the guess is the answer. Must be finite and
+    /// non-negative; zero scores purely by entropy.
+    pub win_weight: f64,
+}
+
+impl Strategy {
+    /// The original solver: guesses only from the candidates, scored by entropy alone.
+    pub const fn hard_mode() -> Self {
+        Self {
+            pool: GuessPool::Candidates,
+            temperature: CANONICAL_TEMPERATURE,
+            win_weight: 0.0,
+        }
+    }
+
+    pub(crate) fn assert_valid(&self) {
+        assert!(
+            self.temperature.is_finite() && self.temperature > 0.0,
+            "temperature must be positive and finite, got {}",
+            self.temperature
+        );
+        assert!(
+            self.win_weight.is_finite() && self.win_weight >= 0.0,
+            "win_weight must be finite and non-negative, got {}",
+            self.win_weight
+        );
+    }
+}
+
+/// Unconstrained guessing with the temperature and win weight chosen by the sweep recorded in
+/// `benchmarks/README.md`.
+impl Default for Strategy {
+    fn default() -> Self {
+        Self {
+            pool: GuessPool::All,
+            temperature: CANONICAL_TEMPERATURE,
+            win_weight: 1.0,
+        }
+    }
+}
+
+/// The immutable guess pool: every loaded word in frequency-descending order with its
+/// log-frequency. Candidate sets index into it.
+#[derive(Debug)]
+pub(crate) struct Pool<const N: usize> {
+    words: Vec<Word<N>>,
+    ln_freqs: Vec<f64>,
+}
+
+impl<const N: usize> Pool<N> {
+    pub(crate) fn new(word_set: &WordSet<N>) -> Arc<Self> {
+        let (words, ln_freqs) = word_set
+            .word_frequencies()
+            .map(|(word, freq)| (word, (freq as f64).ln()))
+            .unzip();
+        Arc::new(Self { words, ln_freqs })
+    }
+
+    pub(crate) fn len(&self) -> usize {
+        self.words.len()
+    }
+
+    pub(crate) fn word(&self, index: u32) -> Word<N> {
+        self.words[index as usize]
+    }
+
+    /// The answer prior over `indices`, renormalized to sum to 1: p_i is proportional to
+    /// exp((ln f_i - max ln f) / T) over just those words.
+    pub(crate) fn prior(&self, indices: &[u32], temperature: f64) -> Vec<f64> {
+        if indices.is_empty() {
+            return Vec::new();
+        }
+        let max_lf = indices
+            .iter()
+            .map(|&i| self.ln_freqs[i as usize])
+            .fold(f64::NEG_INFINITY, f64::max);
+        let exp: Vec<f64> = indices
+            .iter()
+            .map(|&i| ((self.ln_freqs[i as usize] - max_lf) / temperature).exp())
+            .collect();
+        let sum: f64 = exp.iter().sum();
+        exp.into_iter().map(|e| e / sum).collect()
+    }
+}
+
+/// The answer prior over a whole word set at `temperature`, in frequency-descending order.
+/// Raw-frequency softmax collapses to one-hot on the top word because ngrams counts span many
+/// orders of magnitude; log-space input with temperature above 1 flattens the distribution
+/// toward uniform without discarding rank information.
+pub fn answer_prior<const N: usize>(
+    word_set: &WordSet<N>,
+    temperature: f64,
+) -> Vec<(Word<N>, f64)> {
+    let pool = Pool::new(word_set);
+    let all: Vec<u32> = (0..pool.len() as u32).collect();
+    let probs = pool.prior(&all, temperature);
+    pool.words.iter().copied().zip(probs).collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn set(pairs: &[(&str, u64)]) -> WordSet<5> {
+        WordSet::from_pairs(
+            pairs
+                .iter()
+                .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
+                .collect(),
+        )
+    }
+
+    #[test]
+    fn prior_sums_to_one_and_follows_frequency() {
+        let prior = answer_prior(&set(&[("crane", 100), ("stare", 200), ("light", 300)]), 5.0);
+        let sum: f64 = prior.iter().map(|&(_, p)| p).sum();
+        assert!((sum - 1.0).abs() < 1e-12, "prior sums to {sum}");
+        assert!(prior.windows(2).all(|w| w[0].1 >= w[1].1));
+        assert_eq!(prior[0].0, Word::<5>::try_from("light").unwrap());
+    }
+
+    #[test]
+    fn higher_temperature_flattens_the_prior() {
+        let ws = set(&[("crane", 1), ("stare", 1_000_000)]);
+        let spread = |t| {
+            let p = answer_prior(&ws, t);
+            p[0].1 - p[1].1
+        };
+        assert!(spread(20.0) < spread(1.0));
+    }
+
+    #[test]
+    fn renormalizes_over_the_surviving_subset() {
+        let pool = Pool::new(&set(&[("crane", 300), ("stare", 200), ("light", 100)]));
+        let probs = pool.prior(&[1, 2], 5.0);
+        assert_eq!(probs.len(), 2);
+        assert!((probs.iter().sum::<f64>() - 1.0).abs() < 1e-12);
+    }
+
+    #[test]
+    #[should_panic(expected = "temperature")]
+    fn rejects_zero_temperature() {
+        Strategy {
+            temperature: 0.0,
+            ..Strategy::default()
+        }
+        .assert_valid();
+    }
+}

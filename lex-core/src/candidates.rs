@@ -1,95 +1,186 @@
 use std::cell::RefCell;
 use std::hint::cold_path;
+use std::sync::Arc;
 
-use lex_data::{Word, WordSet};
+use lex_data::Word;
 
 use crate::correctness::WordCorrectness;
 use crate::guesser::Guess;
+use crate::strategy::{GuessPool, Pool, Strategy};
 
-/// The words still consistent with every guess played so far, and the entropy-based choice of
-/// the next guess among them. Holds no history and caches nothing: a [`DecisionTree`] node owns
-/// one and memoizes its [`suggest`](Self::suggest).
+/// A scored guess: how much it is expected to teach, and whether it could itself be the answer.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Suggestion<const N: usize> {
+    pub word: Word<N>,
+    /// Expected information gain under the answer prior, in bits.
+    pub entropy_bits: f64,
+    /// Probability that this word is the answer; zero for a guess already ruled out.
+    pub p_answer: f64,
+    /// Whether the word is still consistent with every guess played.
+    pub in_candidates: bool,
+}
+
+impl<const N: usize> Suggestion<N> {
+    /// The quantity the solver maximizes: entropy plus the bonus for a chance of winning now.
+    pub fn score(&self, win_weight: f64) -> f64 {
+        self.entropy_bits + win_weight * self.p_answer
+    }
+}
+
+/// The words still consistent with every guess played so far, as indices into the immutable
+/// guess pool, and the choice of the next guess under a [`Strategy`]. Holds no history and caches
+/// nothing: a [`DecisionTree`] node owns one and memoizes its [`suggest`](Self::suggest).
 ///
 /// [`DecisionTree`]: crate::tree::DecisionTree
 #[derive(Debug, Clone)]
 pub(crate) struct Candidates<const N: usize> {
-    word_set: WordSet<N>,
+    pool: Arc<Pool<N>>,
+    /// Ascending, so frequency-descending.
+    indices: Vec<u32>,
 }
 
 impl<const N: usize> Candidates<N> {
-    pub(crate) fn new(word_set: WordSet<N>) -> Self {
-        Self { word_set }
+    pub(crate) fn new(pool: Arc<Pool<N>>) -> Self {
+        let indices = (0..pool.len() as u32).collect();
+        Self { pool, indices }
     }
 
     /// The candidates that remain after `guess` is played.
     pub(crate) fn filtered(&self, guess: &Guess<N>) -> Self {
         let word = guess.word();
         let target_ordinal = guess.correctness().ordinal();
-        let mut word_set = self.word_set.clone();
-        word_set.retain(|w| WordCorrectness::correct(*w, word).ordinal() == target_ordinal);
-        Self { word_set }
+        let indices = self
+            .indices
+            .iter()
+            .copied()
+            .filter(|&i| {
+                WordCorrectness::correct(self.pool.word(i), word).ordinal() == target_ordinal
+            })
+            .collect();
+        Self {
+            pool: Arc::clone(&self.pool),
+            indices,
+        }
     }
 
     pub(crate) fn len(&self) -> usize {
-        self.word_set.len()
+        self.indices.len()
     }
 
-    /// The `k` most informative candidates with their entropy scores (bits), sorted descending.
-    /// Ties keep frequency-descending order, so the first element agrees with
+    /// Calls `f(pool index, entropy, p_answer, in_candidates)` for every guess the strategy's pool
+    /// allows, in frequency-descending order.
+    fn for_each_guess(&self, strategy: &Strategy, mut f: impl FnMut(u32, f64, f64, bool)) {
+        let probs = self.pool.prior(&self.indices, strategy.temperature);
+        let words: Vec<Word<N>> = self.indices.iter().map(|&i| self.pool.word(i)).collect();
+        match strategy.pool {
+            GuessPool::Candidates => {
+                for (pos, &i) in self.indices.iter().enumerate() {
+                    f(
+                        i,
+                        guess_entropy(&words[pos], &words, &probs),
+                        probs[pos],
+                        true,
+                    );
+                }
+            }
+            GuessPool::All => {
+                let mut next = 0;
+                for i in 0..self.pool.len() as u32 {
+                    let (p_answer, in_candidates) = match self.indices.get(next) {
+                        Some(&c) if c == i => {
+                            next += 1;
+                            (probs[next - 1], true)
+                        }
+                        _ => (0.0, false),
+                    };
+                    f(
+                        i,
+                        guess_entropy(&self.pool.word(i), &words, &probs),
+                        p_answer,
+                        in_candidates,
+                    );
+                }
+            }
+        }
+    }
+
+    /// The `k` best guesses by score, descending. Equal scores prefer words still in the
+    /// candidate set, then frequency order, so the first element agrees with
     /// [`suggest`](Self::suggest).
-    pub(crate) fn suggest_top_k(&self, k: usize) -> Vec<(Word<N>, f64)> {
-        let mut scored: Vec<(Word<N>, f64)> = self
-            .word_set
-            .words()
-            .map(|candidate| (candidate, guess_entropy(&candidate, &self.word_set)))
-            .collect();
-        // stable sort: equal scores keep frequency-descending iteration order
-        scored.sort_by(|a, b| b.1.partial_cmp(&a.1).expect("entropy scores are finite"));
+    pub(crate) fn suggest_top_k(&self, strategy: &Strategy, k: usize) -> Vec<Suggestion<N>> {
+        let mut scored = Vec::new();
+        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
+            scored.push(Suggestion {
+                word: self.pool.word(i),
+                entropy_bits,
+                p_answer,
+                in_candidates,
+            });
+        });
+        // stable sort: equal keys keep frequency-descending iteration order
+        scored.sort_by(|a, b| {
+            let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
+            sb.partial_cmp(&sa)
+                .expect("scores are finite")
+                .then(b.in_candidates.cmp(&a.in_candidates))
+        });
         scored.truncate(k);
         scored
     }
 
-    pub(crate) fn suggest(&self) -> Option<Word<N>> {
-        if self.word_set.is_empty() {
-            cold_path();
-            return None;
+    pub(crate) fn suggest(&self, strategy: &Strategy) -> Option<Word<N>> {
+        match self.indices.as_slice() {
+            [] => {
+                cold_path();
+                return None;
+            }
+            // every guess scores zero entropy against a single candidate, so it is the answer
+            &[only] => return Some(self.pool.word(only)),
+            _ => {}
         }
 
-        let mut best: Option<(Word<N>, f64)> = None;
-        for candidate in self.word_set.words() {
-            let score = guess_entropy(&candidate, &self.word_set);
-            log::trace!("{}: {}", candidate, score);
+        // (index, score, in_candidates)
+        let mut best: Option<(u32, f64, bool)> = None;
+        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
+            let score = entropy_bits + strategy.win_weight * p_answer;
+            log::trace!("{}: {}", self.pool.word(i), score);
             match best {
-                Some((best_word, best_score)) if score > best_score => {
-                    log::debug!("{} > {}; {} > {}", candidate, best_word, score, best_score);
-                    best = Some((candidate, score));
+                Some((best_i, best_score, best_in)) => {
+                    if score > best_score || (score == best_score && in_candidates && !best_in) {
+                        log::debug!(
+                            "{} > {}; {} > {}",
+                            self.pool.word(i),
+                            self.pool.word(best_i),
+                            score,
+                            best_score
+                        );
+                        best = Some((i, score, in_candidates));
+                    }
                 }
-                None => best = Some((candidate, score)),
-                _ => {}
+                None => best = Some((i, score, in_candidates)),
             }
-        }
-        best.map(|(word, _)| word)
+        });
+        best.map(|(i, _, _)| self.pool.word(i))
     }
 }
 
 #[optimize(speed)]
-fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 {
+fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
     thread_local! {
         static PATTERN_PROBS: RefCell<Vec<f64>> = const { RefCell::new(Vec::new()) };
     }
-    PATTERN_PROBS.with(|probs| {
-        let mut probs = probs.borrow_mut();
-        if probs.is_empty() {
-            *probs = vec![0.0; WordCorrectness::<N>::COUNT];
+    PATTERN_PROBS.with(|pattern_probs| {
+        let mut pattern_probs = pattern_probs.borrow_mut();
+        if pattern_probs.is_empty() {
+            *pattern_probs = vec![0.0; WordCorrectness::<N>::COUNT];
         } else {
-            probs.fill(0.0);
+            pattern_probs.fill(0.0);
         }
-        for (word, prob) in word_set.word_probs() {
-            log::trace!("{}: {}", word, prob);
-            probs[WordCorrectness::correct(word, *guess).ordinal()] += prob;
+        for (word, prob) in words.iter().zip(probs) {
+            pattern_probs[WordCorrectness::correct(*word, *guess).ordinal()] += prob;
         }
         // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
-        0.0 - probs.iter().fold(
+        0.0 - pattern_probs.iter().fold(
             0.0_f64,
             |acc, &p| if p > 0.0 { acc + p * p.log2() } else { acc },
         )
@@ -99,7 +190,6 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, word_set: &WordSet<N>) -> f64 
 #[cfg(test)]
 mod benches {
     extern crate test;
-    use std::collections::HashMap;
     use std::hint::black_box;
     use test::Bencher;
 
@@ -114,8 +204,8 @@ mod benches {
             })
             .collect();
         let guess = pairs[0].0;
-        let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
-        let ws = WordSet::from_frequency_map(frequencies);
-        b.iter(|| black_box(guess_entropy(&guess, &ws)));
+        let words: Vec<Word<5>> = pairs.iter().map(|&(w, _)| w).collect();
+        let probs = vec![0.1; words.len()];
+        b.iter(|| black_box(guess_entropy(&guess, &words, &probs)));
     }
 }
