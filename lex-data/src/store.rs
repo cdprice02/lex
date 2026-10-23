@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::io::{BufWriter, Write};
 
 use anyhow::Context;
@@ -16,8 +16,8 @@ use crate::word::{RawRecord, WordSet};
 pub(crate) const MIN_FREQUENCY: u64 = 1;
 
 /// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
-/// Ensures the Wiktionary dict is present first, then downloads all ngrams shards,
-/// filters to Wiktionary-valid words, and writes all length buckets to disk.
+/// Ensures the Wiktionary dict is present first, then downloads all ngrams shards keeping only
+/// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
 pub(crate) fn build_if_missing<const N: usize>(
     dir: &DataDir,
     lang: Language,
@@ -28,10 +28,9 @@ pub(crate) fn build_if_missing<const N: usize>(
         }
         let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
         log::warn!("Building {} corpus...", lang);
-        let by_length = ngrams::fetch(lang)?;
+        let by_length = ngrams::fetch(lang, &valid_words)?;
         let n_buckets = by_length.len();
-        let filtered = filter_by_dict(by_length, &valid_words);
-        populate(dir, lang, &filtered)?;
+        populate(dir, lang, &by_length)?;
         log::info!("Cached {} corpus ({} length buckets)", lang, n_buckets);
     }
     Ok(())
@@ -120,26 +119,6 @@ fn populate(
     Ok(())
 }
 
-fn filter_by_dict(
-    by_length: HashMap<usize, HashMap<String, u64>>,
-    valid: &HashSet<String>,
-) -> HashMap<usize, HashMap<String, u64>> {
-    by_length
-        .into_iter()
-        .filter_map(|(n, words)| {
-            let filtered: HashMap<String, u64> = words
-                .into_iter()
-                .filter(|(w, freq)| valid.contains(w) && *freq >= MIN_FREQUENCY)
-                .collect();
-            if filtered.is_empty() {
-                None
-            } else {
-                Some((n, filtered))
-            }
-        })
-        .collect()
-}
-
 fn write_bucket(
     dir: &DataDir,
     lang: Language,
@@ -175,7 +154,7 @@ mod tests {
     use crate::language::Language;
     use crate::word::{Word, WordSet};
 
-    use super::{clear, filter_by_dict, populate, read};
+    use super::{clear, populate, read};
 
     fn toy_corpus() -> HashMap<usize, HashMap<String, u64>> {
         let mut five = HashMap::new();
@@ -211,8 +190,7 @@ mod tests {
     fn populate_and_read_roundtrip() {
         let valid = all_words_valid();
         let (_tmp, dir) = make_dir_with_dict(&valid);
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        populate(&dir, Language::English, &filtered).unwrap();
+        populate(&dir, Language::English, &toy_corpus()).unwrap();
 
         let ws: WordSet<5> = read::<5>(&dir, Language::English, None).unwrap();
         assert_eq!(ws.len(), 5);
@@ -227,31 +205,10 @@ mod tests {
     }
 
     #[test]
-    fn filter_excludes_invalid_words() {
-        let valid: HashSet<String> = ["crane", "stare", "light", "mount"]
-            .iter()
-            .map(|s| s.to_string())
-            .collect();
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        let five = filtered.get(&5).unwrap();
-        assert!(!five.contains_key("swipe"));
-        assert!(five.contains_key("crane"));
-        assert_eq!(five.len(), 4);
-    }
-
-    #[test]
-    fn filter_drops_empty_buckets() {
-        let valid: HashSet<String> = HashSet::new();
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        assert!(filtered.is_empty());
-    }
-
-    #[test]
     fn read_respects_limit() {
         let valid = all_words_valid();
         let (_tmp, dir) = make_dir_with_dict(&valid);
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        populate(&dir, Language::English, &filtered).unwrap();
+        populate(&dir, Language::English, &toy_corpus()).unwrap();
 
         let ws: WordSet<5> = read::<5>(&dir, Language::English, Some(2)).unwrap();
         assert_eq!(ws.len(), 2);
@@ -264,8 +221,7 @@ mod tests {
     fn clear_removes_file() {
         let valid = all_words_valid();
         let (_tmp, dir) = make_dir_with_dict(&valid);
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        populate(&dir, Language::English, &filtered).unwrap();
+        populate(&dir, Language::English, &toy_corpus()).unwrap();
 
         assert!(dir.ngrams_path(Language::English, 5).exists());
         clear(&dir, Language::English, Some(5)).unwrap();
@@ -276,8 +232,7 @@ mod tests {
     fn clear_removes_language_dir() {
         let valid = all_words_valid();
         let (_tmp, dir) = make_dir_with_dict(&valid);
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        populate(&dir, Language::English, &filtered).unwrap();
+        populate(&dir, Language::English, &toy_corpus()).unwrap();
 
         let lang_dir = dir.as_ref().join("ngrams").join("eng");
         assert!(lang_dir.exists());
@@ -288,8 +243,7 @@ mod tests {
     fn cache_bytes() -> (tempfile::TempDir, DataDir, std::path::PathBuf, Vec<u8>) {
         let valid = all_words_valid();
         let (tmp, dir) = make_dir_with_dict(&valid);
-        let filtered = filter_by_dict(toy_corpus(), &valid);
-        populate(&dir, Language::English, &filtered).unwrap();
+        populate(&dir, Language::English, &toy_corpus()).unwrap();
         let path = dir.ngrams_path(Language::English, 5);
         let bytes = std::fs::read(&path).unwrap();
         (tmp, dir, path, bytes)
