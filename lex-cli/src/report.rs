@@ -39,6 +39,11 @@ pub struct StrategyReport {
     pub hard_mode: bool,
     pub temperature: f64,
     pub win_weight: f64,
+    /// Reports from before the endgame search never used one.
+    #[serde(default)]
+    pub endgame_threshold: usize,
+    #[serde(default)]
+    pub endgame_aversion: f64,
 }
 
 impl StrategyReport {
@@ -53,6 +58,8 @@ impl From<Strategy> for StrategyReport {
             hard_mode: s.pool == GuessPool::Candidates,
             temperature: s.temperature,
             win_weight: s.win_weight,
+            endgame_threshold: s.endgame_threshold,
+            endgame_aversion: s.endgame_aversion,
         }
     }
 }
@@ -61,14 +68,16 @@ impl std::fmt::Display for StrategyReport {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{}, temperature {}, win weight {}",
+            "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}",
             if self.hard_mode {
                 "hard mode"
             } else {
                 "unconstrained"
             },
             self.temperature,
-            self.win_weight
+            self.win_weight,
+            self.endgame_threshold,
+            self.endgame_aversion
         )
     }
 }

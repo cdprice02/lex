@@ -369,11 +369,15 @@ mod tests {
             pool: GuessPool::All,
             temperature: 5.0,
             win_weight: 0.0,
+            endgame_threshold: 0,
+            endgame_aversion: 0.0,
         },
         Strategy {
             pool: GuessPool::All,
             temperature: 2.0,
             win_weight: 1.5,
+            endgame_threshold: 0,
+            endgame_aversion: 0.0,
         },
     ];
 

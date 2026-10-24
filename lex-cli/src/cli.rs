@@ -92,6 +92,19 @@ pub struct CommonArgs {
         help = "Score bonus, in bits, per unit of probability that a guess is the answer"
     )]
     pub win_weight: f64,
+    #[arg(
+        long,
+        default_value_t = Strategy::default().endgame_threshold,
+        help = "Search the game tree exactly once this few candidates remain (0 disables)"
+    )]
+    pub endgame_threshold: usize,
+    #[arg(
+        long,
+        default_value_t = Strategy::default().endgame_aversion,
+        value_parser = parse_win_weight,
+        help = "Endgame risk aversion: minimize the mean of e^(aversion x guesses); 0 minimizes plain expected guesses"
+    )]
+    pub endgame_aversion: f64,
 }
 
 impl CommonArgs {
@@ -104,6 +117,8 @@ impl CommonArgs {
             },
             temperature: self.temperature,
             win_weight: self.win_weight,
+            endgame_threshold: self.endgame_threshold,
+            endgame_aversion: self.endgame_aversion,
         }
     }
 }

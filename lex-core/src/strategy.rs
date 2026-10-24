@@ -25,6 +25,13 @@ pub struct Strategy {
     /// Bonus, in bits, per unit of probability that the guess is the answer. Must be finite and
     /// non-negative; zero scores purely by entropy.
     pub win_weight: f64,
+    /// Candidate-set size at or below which the solver searches the game tree exactly instead of
+    /// scoring by entropy; zero turns the endgame off.
+    pub endgame_threshold: usize,
+    /// Risk aversion of the endgame search, as the log of the per-guess growth factor `a`: it
+    /// minimizes the prior-weighted mean of `a^guesses`, so a long game costs more than its
+    /// length alone. Zero minimizes plain expected guesses. Must be finite and non-negative.
+    pub endgame_aversion: f64,
 }
 
 impl Strategy {
@@ -34,6 +41,8 @@ impl Strategy {
             pool: GuessPool::Candidates,
             temperature: CANONICAL_TEMPERATURE,
             win_weight: 0.0,
+            endgame_threshold: 0,
+            endgame_aversion: 0.0,
         }
     }
 
@@ -48,6 +57,11 @@ impl Strategy {
             "win_weight must be finite and non-negative, got {}",
             self.win_weight
         );
+        assert!(
+            self.endgame_aversion.is_finite() && self.endgame_aversion >= 0.0,
+            "endgame_aversion must be finite and non-negative, got {}",
+            self.endgame_aversion
+        );
     }
 }
 
@@ -59,6 +73,8 @@ impl Default for Strategy {
             pool: GuessPool::All,
             temperature: CANONICAL_TEMPERATURE,
             win_weight: 1.0,
+            endgame_threshold: 0,
+            endgame_aversion: 0.0,
         }
     }
 }
@@ -86,6 +102,21 @@ impl<const N: usize> Pool<N> {
 
     pub(crate) fn word(&self, index: u32) -> Word<N> {
         self.words[index as usize]
+    }
+
+    /// Unnormalized answer prior for every word: exp((ln f - max ln f) / T) over the whole pool.
+    /// Ratios between words match [`prior`](Self::prior); unlike it, the scale does not depend on
+    /// which words survive, so a sum over any subset is comparable across game positions.
+    pub(crate) fn weights(&self, temperature: f64) -> Vec<f64> {
+        let max_lf = self
+            .ln_freqs
+            .iter()
+            .copied()
+            .fold(f64::NEG_INFINITY, f64::max);
+        self.ln_freqs
+            .iter()
+            .map(|&lf| ((lf - max_lf) / temperature).exp().max(f64::MIN_POSITIVE))
+            .collect()
     }
 
     /// The answer prior over `indices`, renormalized to sum to 1: p_i is proportional to
