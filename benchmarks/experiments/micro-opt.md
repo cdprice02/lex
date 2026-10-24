@@ -1,4 +1,4 @@
-# Phase 06: single-threaded micro-optimization
+# Micro-optimization results (phase 06)
 
 Arbiter: `#[bench]` plus the full English-5 default wall time. An item is adopted if it wins at
 least 10% on its own bench without slowing the full run, or if the code gets simpler. After every
