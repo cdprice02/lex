@@ -52,6 +52,14 @@ _Avoid_: Constrained mode
 The shared record of every game position reached so far, where each position is identified by the sequence of (guess, feedback) steps that led to it and remembers the guess the solver chose there.
 _Avoid_: Cache (reserved for the on-disk Corpus form), memo table
 
+**Endgame**:
+A position whose Candidate set is at or below the Strategy's Endgame threshold, where the solver searches the game tree exactly instead of scoring guesses by entropy.
+_Avoid_: Late game, exact mode
+
+**Endgame threshold**:
+The Candidate set size at or below which a position is an Endgame; zero turns the Endgame off.
+_Avoid_: Cutoff, search limit
+
 **Guess path**:
 The sequence of (guess, feedback) steps from the start of a game to one position in the Decision tree; two games with the same Guess path have the same Candidate set.
 _Avoid_: History (that is the list of guesses a single game played)
