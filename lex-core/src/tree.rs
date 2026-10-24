@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use lex_data::Word;
 
 use crate::candidates::Candidates;
+use crate::endgame::Endgame;
 use crate::guesser::Guess;
 use crate::strategy::Strategy;
 
@@ -23,6 +24,8 @@ pub(crate) type NodeId = usize;
 #[derive(Debug)]
 pub(crate) struct DecisionTree<const N: usize> {
     strategy: Strategy,
+    /// Present when the strategy has an endgame threshold; owns the memo of exact searches.
+    endgame: Option<Endgame<N>>,
     nodes: Vec<Node<N>>,
 }
 
@@ -48,8 +51,17 @@ impl<const N: usize> DecisionTree<N> {
     pub(crate) const ROOT: NodeId = 0;
 
     pub(crate) fn new(candidates: Candidates<N>, strategy: Strategy) -> Self {
+        let endgame = (strategy.endgame_threshold > 0).then(|| {
+            Endgame::new(
+                candidates.pool(),
+                strategy.pool,
+                strategy.temperature,
+                strategy.endgame_aversion,
+            )
+        });
         Self {
             strategy,
+            endgame,
             nodes: vec![Node::new(candidates)],
         }
     }
@@ -64,10 +76,19 @@ impl<const N: usize> DecisionTree<N> {
 
     /// The suggestion at `node`, computed on first request.
     pub(crate) fn suggest(&mut self, node: NodeId) -> Option<Word<N>> {
-        let entry = &mut self.nodes[node];
-        *entry
-            .suggestion
-            .get_or_insert_with(|| entry.candidates.suggest(&self.strategy))
+        let Self {
+            strategy,
+            endgame,
+            nodes,
+        } = self;
+        let entry = &mut nodes[node];
+        *entry.suggestion.get_or_insert_with(|| match endgame {
+            // a lone candidate needs no search; `Candidates::suggest` returns it directly
+            Some(endgame) if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) => {
+                endgame.best_guess(entry.candidates.indices())
+            }
+            _ => entry.candidates.suggest(strategy),
+        })
     }
 
     /// The node reached from `node` by playing `guess`, created on first visit.

@@ -11,6 +11,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies and the renormalized prior) |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
+| `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
 | `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
 | `game.rs` | `GameResult<N>`, `play()`, private `log_guess()` |
@@ -29,6 +30,24 @@ suggestion (`assist` does). Ordinals are `u16`; a const assertion in `correctnes
 
 `Guesser` holds the tree behind `Rc<RefCell<..>>`, so it is not `Send`; `Guesser::reset()` starts a
 new game on the same tree, and `play` takes `&mut Guesser` for that reason.
+
+## Endgame search (`endgame.rs`)
+
+Off unless `Strategy::endgame_threshold > 0`. `DecisionTree::suggest` calls `Endgame::best_guess` for
+nodes with 2 to threshold candidates and otherwise falls back to `Candidates::suggest`; the tree owns the
+`Endgame`, so its memo is shared by every game. Costs are weighted sums using pool-wide prior weights,
+so a set's cost is independent of the position it was reached from and the memo is keyed by the sorted
+candidate indices alone. Plain objective: sum of weight x guesses to finish. With
+`endgame_aversion = L > 0`: sum of weight x a^guesses, a = e^L; the exponential is what keeps the cost
+independent of depth (a penalty past guess 6 would not be).
+
+`search` computes a lower bound per guess from its partition (a group needs one guess for the answer it
+names and two for each other), sorts by it, and stops once the bound exceeds the best cost. A
+non-candidate that leaves the set in one group is skipped, which guarantees the recursion shrinks it.
+Ties go to a candidate, then pool order. Children are solved without any bound passed down, so memoized
+costs are exact. `win_weight` is ignored here. A top-K entropy probe limit was tried and rejected
+(`benchmarks/endgame.md`). The opt-in test `real_corpus_roots_match_simulated_cost` checks predicted
+cost against simulated games on real roots.
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 

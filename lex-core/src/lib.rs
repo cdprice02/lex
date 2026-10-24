@@ -5,6 +5,7 @@
 
 mod candidates;
 mod correctness;
+mod endgame;
 mod game;
 mod guesser;
 mod strategy;

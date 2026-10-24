@@ -61,6 +61,14 @@ impl<const N: usize> Candidates<N> {
         }
     }
 
+    pub(crate) fn pool(&self) -> Arc<Pool<N>> {
+        Arc::clone(&self.pool)
+    }
+
+    pub(crate) fn indices(&self) -> &[u32] {
+        &self.indices
+    }
+
     pub(crate) fn len(&self) -> usize {
         self.indices.len()
     }
