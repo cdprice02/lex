@@ -1,0 +1,48 @@
+dyn_vs_const N= 5 K=1000: const      9.3 us, runtime-width     26.0 us
+dyn_vs_const N=10 K=1000: const     30.2 us, runtime-width     91.1 us
+dyn_vs_const N=16 K=1000: const     74.2 us, runtime-width    146.7 us
+dyn_vs_const N=20 K=1000: const    122.8 us, runtime-width    200.8 us
+dyn_vs_const N= 5 K=10000: const    200.1 us, runtime-width    363.6 us
+dyn_vs_const N=10 K=10000: const    564.6 us, runtime-width    818.5 us
+dyn_vs_const N=16 K=10000: const    805.7 us, runtime-width   1414.8 us
+dyn_vs_const N=20 K=10000: const   1283.6 us, runtime-width   1753.8 us
+N= 5 K=    10 | pat_quad       0.1 pat_cnt       0.1 | dense       0.2 sort       0.2 hash       0.3 sort+cnt       0.2 (us/guess)
+N= 5 K=   100 | pat_quad       1.4 pat_cnt       1.0 | dense       2.1 sort       2.9 hash       2.3 sort+cnt       2.2 (us/guess)
+N= 5 K=  1000 | pat_quad      20.8 pat_cnt      19.3 | dense      26.1 sort      33.0 hash      28.7 sort+cnt      32.6 (us/guess)
+N= 5 K= 10000 | pat_quad     202.7 pat_cnt     178.7 | dense     240.3 sort     294.4 hash     253.3 sort+cnt     298.6 (us/guess)
+N= 5 K= 50000 | pat_quad    1007.0 pat_cnt     983.8 | dense    1163.0 sort    1558.9 hash    1311.6 sort+cnt    1700.5 (us/guess)
+N= 8 K=    10 | pat_quad       0.5 pat_cnt       0.2 | dense       0.6 sort       0.5 hash       0.6 sort+cnt       0.3 (us/guess)
+N= 8 K=   100 | pat_quad      11.4 pat_cnt       1.9 | dense      13.1 sort      13.4 hash      14.4 sort+cnt       4.0 (us/guess)
+N= 8 K=  1000 | pat_quad     125.3 pat_cnt      40.1 | dense     128.1 sort     146.8 hash     135.8 sort+cnt      66.6 (us/guess)
+N= 8 K= 10000 | pat_quad    1164.3 pat_cnt     379.8 | dense    1134.8 sort    1301.8 hash    1244.2 sort+cnt     571.5 (us/guess)
+N= 8 K= 50000 | pat_quad    5340.5 pat_cnt    1881.1 | dense    5229.9 sort    6216.6 hash    5477.1 sort+cnt    2626.1 (us/guess)
+N=10 K=    10 | pat_quad       0.6 pat_cnt       0.2 | dense       0.7 sort       0.7 hash       0.7 sort+cnt       0.3 (us/guess)
+N=10 K=   100 | pat_quad      15.7 pat_cnt       2.4 | dense      18.0 sort      18.2 hash      19.2 sort+cnt       4.8 (us/guess)
+N=10 K=  1000 | pat_quad     171.1 pat_cnt      50.9 | dense     182.5 sort     189.7 hash     197.1 sort+cnt      79.1 (us/guess)
+N=10 K= 10000 | pat_quad    1632.9 pat_cnt     504.2 | dense    1689.5 sort    1859.5 hash    1770.1 sort+cnt     782.4 (us/guess)
+N=10 K= 50000 | pat_quad    8525.2 pat_cnt    2589.5 | dense    8557.0 sort    9816.8 hash    8835.2 sort+cnt    3813.2 (us/guess)
+N=12 K=    10 | pat_quad       0.8 pat_cnt       0.4 | dense       0.9 sort       1.0 hash       1.1 sort+cnt       0.4 (us/guess)
+N=12 K=   100 | pat_quad      23.8 pat_cnt       4.0 | dense      24.4 sort      26.4 hash      27.3 sort+cnt       7.9 (us/guess)
+N=12 K=  1000 | pat_quad     219.6 pat_cnt      67.6 | dense     233.5 sort     245.9 hash     249.2 sort+cnt      97.5 (us/guess)
+N=12 K= 10000 | pat_quad    2105.7 pat_cnt     652.1 | dense    2348.4 sort    2403.0 hash    2419.6 sort+cnt     956.0 (us/guess)
+N=12 K= 50000 | pat_quad   10508.1 pat_cnt    3279.0 | dense   11222.1 sort   12211.6 hash   11845.6 sort+cnt    4679.8 (us/guess)
+N=14 K=    10 | pat_quad       1.0 pat_cnt       0.3 | dense       1.1 sort       1.1 hash       1.1 sort+cnt       0.4 (us/guess)
+N=14 K=   100 | pat_quad      26.8 pat_cnt       4.7 | dense      29.0 sort      29.0 hash      31.0 sort+cnt       7.5 (us/guess)
+N=14 K=  1000 | pat_quad     257.1 pat_cnt      72.2 | dense     284.5 sort     287.5 hash     296.9 sort+cnt     104.3 (us/guess)
+N=14 K= 10000 | pat_quad    2682.7 pat_cnt     754.8 | dense    3157.4 sort    3097.8 hash    3157.6 sort+cnt    1100.5 (us/guess)
+N=14 K= 50000 | pat_quad   13205.9 pat_cnt    3612.1 | dense   14595.4 sort   14693.9 hash   15298.1 sort+cnt    5313.9 (us/guess)
+N=16 K=    10 | pat_quad       1.9 pat_cnt       0.4 | dense       NaN sort       2.1 hash       2.1 sort+cnt       0.5 (us/guess)
+N=16 K=   100 | pat_quad      33.1 pat_cnt       6.4 | dense       NaN sort      35.0 hash      36.5 sort+cnt       9.4 (us/guess)
+N=16 K=  1000 | pat_quad     324.9 pat_cnt      88.9 | dense       NaN sort     356.6 hash     371.8 sort+cnt     119.9 (us/guess)
+N=16 K= 10000 | pat_quad    3332.9 pat_cnt     880.8 | dense       NaN sort    3687.4 hash    3813.6 sort+cnt    1231.4 (us/guess)
+N=16 K= 50000 | pat_quad   16369.9 pat_cnt    4480.4 | dense       NaN sort   18215.4 hash   18627.6 sort+cnt    6429.2 (us/guess)
+N=20 K=    10 | pat_quad       3.2 pat_cnt       0.3 | dense       NaN sort       3.4 hash       3.5 sort+cnt       0.4 (us/guess)
+N=20 K=   100 | pat_quad      43.0 pat_cnt      12.9 | dense       NaN sort      44.8 hash      47.3 sort+cnt      15.5 (us/guess)
+N=20 K=  1000 | pat_quad     441.9 pat_cnt     133.0 | dense       NaN sort     458.7 hash     474.1 sort+cnt     164.4 (us/guess)
+N=20 K= 10000 | pat_quad    4323.0 pat_cnt    1301.0 | dense       NaN sort    4708.1 hash    4946.1 sort+cnt    1658.6 (us/guess)
+N=20 K= 50000 | pat_quad   21178.1 pat_cnt    6540.6 | dense       NaN sort   24103.4 hash   24123.4 sort+cnt    8364.4 (us/guess)
+N=24 K=    10 | pat_quad       4.9 pat_cnt       0.4 | dense       NaN sort       5.1 hash       5.4 sort+cnt       0.5 (us/guess)
+N=24 K=   100 | pat_quad      58.1 pat_cnt      15.6 | dense       NaN sort      60.5 hash      63.9 sort+cnt      18.3 (us/guess)
+N=24 K=  1000 | pat_quad     598.1 pat_cnt     162.1 | dense       NaN sort     625.8 hash     656.0 sort+cnt     189.0 (us/guess)
+N=24 K= 10000 | pat_quad    6309.5 pat_cnt    1781.9 | dense       NaN sort    6925.3 hash    6643.8 sort+cnt    1995.0 (us/guess)
+N=24 K= 50000 | pat_quad   31376.3 pat_cnt    8154.4 | dense       NaN sort   36884.6 hash   38088.3 sort+cnt   11628.5 (us/guess)
