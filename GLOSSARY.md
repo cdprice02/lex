@@ -33,12 +33,28 @@ The words still consistent with every guess played so far in one game.
 _Avoid_: Remaining words, dictionary (mid-game)
 
 **Guess pool**:
-The words the solver may play as a guess, whether or not they can still be the answer; the Candidate set is always a subset of it.
+The words the solver may play as a guess, whether or not they can still be the answer: the Corpus, or a Profile's guess list. The Candidate set is always a subset of it.
 _Avoid_: Guess list, allowed words
 
 **Answer prior**:
-The probability that each word is the answer, derived from corpus frequency and a temperature, and renormalized over the Candidate set as it shrinks.
+The probability that each word is the answer, renormalized over the Candidate set as it shrinks: derived from corpus frequency and a temperature, or uniform over the Answer list when a Profile supplies one.
 _Avoid_: Weights, frequency (that is the raw count)
+
+**Supported length**:
+A word length at which a language's Corpus holds at least 500 words; a language's maximum length is its largest Supported length.
+_Avoid_: Max length (as a fixed constant)
+
+**Answer list**:
+A curated list of the words that can be the answer; when one is set, the Candidate set starts as exactly that list.
+_Avoid_: Target list (targets are the words a simulation plays, possibly a subset)
+
+**Profile**:
+A named pairing of an Answer list and a Guess pool for one language and word length, such as the Wordle profile for English-5; without one, the Corpus serves as both.
+_Avoid_: Mode, preset
+
+**Corpus track**:
+Benchmarking with no Profile: answers drawn from the Corpus under the frequency-derived Answer prior.
+_Avoid_: Default mode
 
 **Strategy**:
 The solver's tunable choices: which Guess pool it draws from (hard mode restricts it to the Candidate set), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.

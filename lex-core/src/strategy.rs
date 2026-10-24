@@ -66,7 +66,7 @@ impl Strategy {
 }
 
 /// Unconstrained guessing with the temperature and win weight chosen by the sweep recorded in
-/// `benchmarks/README.md`.
+/// `benchmarks/experiments/strategy.md`.
 impl Default for Strategy {
     fn default() -> Self {
         Self {

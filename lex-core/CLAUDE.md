@@ -46,7 +46,7 @@ names and two for each other), sorts by it, and stops once the bound exceeds the
 non-candidate that leaves the set in one group is skipped, which guarantees the recursion shrinks it.
 Ties go to a candidate, then pool order. Children are solved without any bound passed down, so memoized
 costs are exact. `win_weight` is ignored here. A top-K entropy probe limit was tried and rejected
-(`benchmarks/endgame.md`). The opt-in test `real_corpus_roots_match_simulated_cost` checks predicted
+(`benchmarks/experiments/endgame.md`). The opt-in test `real_corpus_roots_match_simulated_cost` checks predicted
 cost against simulated games on real roots.
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
@@ -70,7 +70,7 @@ Uses one thread-local `Patterns { buckets, touched }`, shared by every word leng
 
 One generic O(N^2) comparison over `[T; N]` with two `u16` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
 
-Measured and rejected (numbers in `benchmarks/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
+Measured and rejected (numbers in `benchmarks/experiments/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
 
 ## `ordinal()` encoding
 

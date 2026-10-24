@@ -26,6 +26,11 @@ reported because the machine was shared.
 
 ## Reading
 
+This verdict was reached when failure rate outranked the mean. Under the current objective
+(`docs/adr/0007-benchmark-objective.md`) a lower prior-weighted mean wins, which reopens the
+plain-expectation settings.
+
+
 - The endgame does not pay for itself on English-5. The best prior-weighted gain is 0.02 guesses
   (0.5%), and every setting that gets it worsens the uniform mean and more than doubles the
   failure rate, because exact expected play gives up rare words. Aversion trades the gain back for

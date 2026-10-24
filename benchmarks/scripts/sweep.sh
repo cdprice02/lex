@@ -1,6 +1,6 @@
 #!/bin/sh
 # Sweep answer-prior temperature (T) and win weight (lambda) on full-dictionary runs.
-# Usage: benchmarks/sweep.sh LANG LENGTH OUTDIR [extra lex args, e.g. "--data-dir PATH"]
+# Usage: benchmarks/scripts/sweep.sh LANG LENGTH OUTDIR [extra lex args, e.g. "--data-dir PATH"]
 # Writes OUTDIR/T{t}-L{l}.json per cell, then prints a TSV of the summaries.
 set -eu
 LANG_=$1 LENGTH=$2 OUT=$3 EXTRA=${4:-}
