@@ -10,7 +10,7 @@ use crate::http;
 use crate::language::Language;
 use crate::parse::parse_ngram_line;
 use crate::store::MIN_FREQUENCY;
-use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
+use crate::MIN_WORD_LENGTH;
 
 const SHARD_CONCURRENCY: usize = 4;
 
@@ -108,7 +108,7 @@ fn read_shard(
     for line in reader.lines() {
         if let Ok((word, count)) = parse_ngram_line(&line?) {
             let len = word.chars().count();
-            if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&len) && valid.contains(&word) {
+            if len >= MIN_WORD_LENGTH && valid.contains(&word) {
                 *acc.entry(word).or_insert(0) += count;
             }
         }
