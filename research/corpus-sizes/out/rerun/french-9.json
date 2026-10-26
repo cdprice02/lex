@@ -1,0 +1,5068 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T14:18:00.672129Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "carolines",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "french",
+    "word_length": 9,
+    "dictionary_length": 65983,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "66177c45adcc1fb2b9aa8ee682c10a3aa1fe509ebe58e03e03c078691c4bae1a",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:19:37.50315Z",
+      "source_sha256": "06c31dc9b75bdb515505b0eb001aad1e06a4c51f52b904d3a7cd7256375f4956",
+      "word_count": 1570316
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.023999999999972,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.08200000000000006,
+        "3": 0.8140000000000006,
+        "4": 0.10200000000000008,
+        "5": 0.002
+      }
+    },
+    "prior": {
+      "mean": 2.9806489927051136,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.10257668482872062,
+        "3": 0.8160158490232973,
+        "4": 0.07958925476212894,
+        "5": 0.0018182113858536985
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "segmentez",
+      "num_guesses": 3,
+      "prior": 9.202942982184246e-6,
+      "guesses": [
+        "carolines",
+        "suspendez",
+        "segmentez"
+      ]
+    },
+    {
+      "word": "chicoutai",
+      "num_guesses": 3,
+      "prior": 8.566437194540723e-6,
+      "guesses": [
+        "carolines",
+        "empiétait",
+        "chicoutai"
+      ]
+    },
+    {
+      "word": "truffette",
+      "num_guesses": 3,
+      "prior": 8.335063218059265e-6,
+      "guesses": [
+        "carolines",
+        "remetteur",
+        "truffette"
+      ]
+    },
+    {
+      "word": "dépendiez",
+      "num_guesses": 3,
+      "prior": 0.000012103088248822547,
+      "guesses": [
+        "carolines",
+        "pimentent",
+        "dépendiez"
+      ]
+    },
+    {
+      "word": "réessayez",
+      "num_guesses": 3,
+      "prior": 0.000011339408457572489,
+      "guesses": [
+        "carolines",
+        "ressauter",
+        "réessayez"
+      ]
+    },
+    {
+      "word": "dépeignes",
+      "num_guesses": 3,
+      "prior": 8.678822330517295e-6,
+      "guesses": [
+        "carolines",
+        "distingué",
+        "dépeignes"
+      ]
+    },
+    {
+      "word": "louvetage",
+      "num_guesses": 3,
+      "prior": 0.000010488016371726984,
+      "guesses": [
+        "carolines",
+        "plumbatae",
+        "louvetage"
+      ]
+    },
+    {
+      "word": "exequatur",
+      "num_guesses": 3,
+      "prior": 0.000034594827234887024,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "exequatur"
+      ]
+    },
+    {
+      "word": "vengeront",
+      "num_guesses": 3,
+      "prior": 0.00002099940852874789,
+      "guesses": [
+        "carolines",
+        "ténuement",
+        "vengeront"
+      ]
+    },
+    {
+      "word": "prætendit",
+      "num_guesses": 4,
+      "prior": 6.862686507323389e-6,
+      "guesses": [
+        "carolines",
+        "déterreur",
+        "tridentin",
+        "prætendit"
+      ]
+    },
+    {
+      "word": "cafeterie",
+      "num_guesses": 3,
+      "prior": 0.000010203400741647603,
+      "guesses": [
+        "carolines",
+        "perturbée",
+        "cafeterie"
+      ]
+    },
+    {
+      "word": "arabarque",
+      "num_guesses": 3,
+      "prior": 0.000010654655161419563,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "arabarque"
+      ]
+    },
+    {
+      "word": "barbadine",
+      "num_guesses": 3,
+      "prior": 0.000013151521015128417,
+      "guesses": [
+        "carolines",
+        "mandatent",
+        "barbadine"
+      ]
+    },
+    {
+      "word": "sciaphyte",
+      "num_guesses": 3,
+      "prior": 7.31670759123095e-6,
+      "guesses": [
+        "carolines",
+        "décapeuse",
+        "sciaphyte"
+      ]
+    },
+    {
+      "word": "basaliome",
+      "num_guesses": 2,
+      "prior": 7.370119887327087e-6,
+      "guesses": [
+        "carolines",
+        "basaliome"
+      ]
+    },
+    {
+      "word": "dépensive",
+      "num_guesses": 4,
+      "prior": 6.360099439443707e-6,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "défensive",
+        "dépensive"
+      ]
+    },
+    {
+      "word": "récuserai",
+      "num_guesses": 3,
+      "prior": 0.000011563373572065866,
+      "guesses": [
+        "carolines",
+        "séquestre",
+        "récuserai"
+      ]
+    },
+    {
+      "word": "alertâmes",
+      "num_guesses": 4,
+      "prior": 7.560114449717073e-6,
+      "guesses": [
+        "carolines",
+        "alléguant",
+        "alpestres",
+        "alertâmes"
+      ]
+    },
+    {
+      "word": "dégrènent",
+      "num_guesses": 4,
+      "prior": 6.670105919472504e-6,
+      "guesses": [
+        "carolines",
+        "remetteur",
+        "dégrèvent",
+        "dégrènent"
+      ]
+    },
+    {
+      "word": "entremêle",
+      "num_guesses": 3,
+      "prior": 0.00002361820448693803,
+      "guesses": [
+        "carolines",
+        "reprélude",
+        "entremêle"
+      ]
+    },
+    {
+      "word": "soudanite",
+      "num_guesses": 3,
+      "prior": 0.000011524892273833726,
+      "guesses": [
+        "carolines",
+        "vimentine",
+        "soudanite"
+      ]
+    },
+    {
+      "word": "trochures",
+      "num_guesses": 3,
+      "prior": 6.848623506909282e-6,
+      "guesses": [
+        "carolines",
+        "réoccupât",
+        "trochures"
+      ]
+    },
+    {
+      "word": "natchaver",
+      "num_guesses": 3,
+      "prior": 6.52246359485126e-6,
+      "guesses": [
+        "carolines",
+        "rancarder",
+        "natchaver"
+      ]
+    },
+    {
+      "word": "jaspinage",
+      "num_guesses": 3,
+      "prior": 7.891184372946113e-6,
+      "guesses": [
+        "carolines",
+        "métastase",
+        "jaspinage"
+      ]
+    },
+    {
+      "word": "calotines",
+      "num_guesses": 2,
+      "prior": 0.000011647286612832633,
+      "guesses": [
+        "carolines",
+        "calotines"
+      ]
+    },
+    {
+      "word": "détonnera",
+      "num_guesses": 3,
+      "prior": 0.000011067371452454737,
+      "guesses": [
+        "carolines",
+        "pendement",
+        "détonnera"
+      ]
+    },
+    {
+      "word": "presterai",
+      "num_guesses": 3,
+      "prior": 9.810250985717182e-6,
+      "guesses": [
+        "carolines",
+        "réapparut",
+        "presterai"
+      ]
+    },
+    {
+      "word": "délivriez",
+      "num_guesses": 3,
+      "prior": 0.000014743528538875956,
+      "guesses": [
+        "carolines",
+        "redébuter",
+        "délivriez"
+      ]
+    },
+    {
+      "word": "propagent",
+      "num_guesses": 3,
+      "prior": 0.000036616742090220216,
+      "guesses": [
+        "carolines",
+        "promurent",
+        "propagent"
+      ]
+    },
+    {
+      "word": "pénombrée",
+      "num_guesses": 4,
+      "prior": 7.954258807695852e-6,
+      "guesses": [
+        "carolines",
+        "démentent",
+        "ménorrhée",
+        "pénombrée"
+      ]
+    },
+    {
+      "word": "moisirent",
+      "num_guesses": 3,
+      "prior": 0.00001023473505820052,
+      "guesses": [
+        "carolines",
+        "spumosité",
+        "moisirent"
+      ]
+    },
+    {
+      "word": "impètrent",
+      "num_guesses": 4,
+      "prior": 9.357877170099306e-6,
+      "guesses": [
+        "carolines",
+        "déterreur",
+        "imitèrent",
+        "impètrent"
+      ]
+    },
+    {
+      "word": "enflammés",
+      "num_guesses": 2,
+      "prior": 0.00003680837094827827,
+      "guesses": [
+        "carolines",
+        "enflammés"
+      ]
+    },
+    {
+      "word": "ubiquiste",
+      "num_guesses": 3,
+      "prior": 0.000021310666087761995,
+      "guesses": [
+        "carolines",
+        "assiduité",
+        "ubiquiste"
+      ]
+    },
+    {
+      "word": "déséprise",
+      "num_guesses": 3,
+      "prior": 5.847085987049208e-6,
+      "guesses": [
+        "carolines",
+        "retrempée",
+        "déséprise"
+      ]
+    },
+    {
+      "word": "caducités",
+      "num_guesses": 3,
+      "prior": 0.000012799882113658283,
+      "guesses": [
+        "carolines",
+        "capacités",
+        "caducités"
+      ]
+    },
+    {
+      "word": "visonneau",
+      "num_guesses": 3,
+      "prior": 9.194265038425931e-6,
+      "guesses": [
+        "carolines",
+        "sénonaise",
+        "visonneau"
+      ]
+    },
+    {
+      "word": "suicidais",
+      "num_guesses": 3,
+      "prior": 9.889456029273505e-6,
+      "guesses": [
+        "carolines",
+        "échaudage",
+        "suicidais"
+      ]
+    },
+    {
+      "word": "caciquats",
+      "num_guesses": 3,
+      "prior": 0.000010361776328207502,
+      "guesses": [
+        "carolines",
+        "causatifs",
+        "caciquats"
+      ]
+    },
+    {
+      "word": "refonçait",
+      "num_guesses": 3,
+      "prior": 6.791184588565995e-6,
+      "guesses": [
+        "carolines",
+        "indenture",
+        "refonçait"
+      ]
+    },
+    {
+      "word": "subalaire",
+      "num_guesses": 3,
+      "prior": 0.000010142489219941457,
+      "guesses": [
+        "carolines",
+        "argileuse",
+        "subalaire"
+      ]
+    },
+    {
+      "word": "emboursez",
+      "num_guesses": 3,
+      "prior": 7.250482144583892e-6,
+      "guesses": [
+        "carolines",
+        "repressée",
+        "emboursez"
+      ]
+    },
+    {
+      "word": "caloriser",
+      "num_guesses": 2,
+      "prior": 7.023077846635237e-6,
+      "guesses": [
+        "carolines",
+        "caloriser"
+      ]
+    },
+    {
+      "word": "picotures",
+      "num_guesses": 3,
+      "prior": 7.969719097002025e-6,
+      "guesses": [
+        "carolines",
+        "ricombres",
+        "picotures"
+      ]
+    },
+    {
+      "word": "retombera",
+      "num_guesses": 3,
+      "prior": 0.00002783681041074445,
+      "guesses": [
+        "carolines",
+        "expurgade",
+        "retombera"
+      ]
+    },
+    {
+      "word": "gasconner",
+      "num_guesses": 2,
+      "prior": 0.000011161020833025243,
+      "guesses": [
+        "carolines",
+        "gasconner"
+      ]
+    },
+    {
+      "word": "fissident",
+      "num_guesses": 4,
+      "prior": 7.741400773012624e-6,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "dissipent",
+        "fissident"
+      ]
+    },
+    {
+      "word": "aéricoles",
+      "num_guesses": 3,
+      "prior": 8.096522907653267e-6,
+      "guesses": [
+        "carolines",
+        "agricoles",
+        "aéricoles"
+      ]
+    },
+    {
+      "word": "sacremens",
+      "num_guesses": 2,
+      "prior": 0.00003768177215482747,
+      "guesses": [
+        "carolines",
+        "sacremens"
+      ]
+    },
+    {
+      "word": "agropyres",
+      "num_guesses": 3,
+      "prior": 6.556436597855601e-6,
+      "guesses": [
+        "carolines",
+        "arrosages",
+        "agropyres"
+      ]
+    },
+    {
+      "word": "fichaises",
+      "num_guesses": 3,
+      "prior": 0.000010751703810198189,
+      "guesses": [
+        "carolines",
+        "scaphites",
+        "fichaises"
+      ]
+    },
+    {
+      "word": "cavillots",
+      "num_guesses": 3,
+      "prior": 6.157776422774724e-6,
+      "guesses": [
+        "carolines",
+        "cabillots",
+        "cavillots"
+      ]
+    },
+    {
+      "word": "embuscada",
+      "num_guesses": 3,
+      "prior": 5.847085987049208e-6,
+      "guesses": [
+        "carolines",
+        "achetasse",
+        "embuscada"
+      ]
+    },
+    {
+      "word": "castaline",
+      "num_guesses": 3,
+      "prior": 6.068818080451969e-6,
+      "guesses": [
+        "carolines",
+        "castelain",
+        "castaline"
+      ]
+    },
+    {
+      "word": "subodorés",
+      "num_guesses": 3,
+      "prior": 8.583673626104481e-6,
+      "guesses": [
+        "carolines",
+        "déboursés",
+        "subodorés"
+      ]
+    },
+    {
+      "word": "agelastes",
+      "num_guesses": 3,
+      "prior": 0.000011284387817284384,
+      "guesses": [
+        "carolines",
+        "blastulas",
+        "agelastes"
+      ]
+    },
+    {
+      "word": "incrémens",
+      "num_guesses": 3,
+      "prior": 0.000010430914150316173,
+      "guesses": [
+        "carolines",
+        "empereurs",
+        "incrémens"
+      ]
+    },
+    {
+      "word": "floueries",
+      "num_guesses": 3,
+      "prior": 8.927040769733717e-6,
+      "guesses": [
+        "carolines",
+        "follitude",
+        "floueries"
+      ]
+    },
+    {
+      "word": "dénoyaute",
+      "num_guesses": 3,
+      "prior": 9.119145644843776e-6,
+      "guesses": [
+        "carolines",
+        "détrompât",
+        "dénoyaute"
+      ]
+    },
+    {
+      "word": "laquaient",
+      "num_guesses": 3,
+      "prior": 8.975428649989401e-6,
+      "guesses": [
+        "carolines",
+        "palladium",
+        "laquaient"
+      ]
+    },
+    {
+      "word": "intersexe",
+      "num_guesses": 3,
+      "prior": 0.000013257784982647445,
+      "guesses": [
+        "carolines",
+        "russifiée",
+        "intersexe"
+      ]
+    },
+    {
+      "word": "percutané",
+      "num_guesses": 3,
+      "prior": 0.00001587882098940707,
+      "guesses": [
+        "carolines",
+        "percutant",
+        "percutané"
+      ]
+    },
+    {
+      "word": "redirigés",
+      "num_guesses": 3,
+      "prior": 0.000013279832974301655,
+      "guesses": [
+        "carolines",
+        "justifiés",
+        "redirigés"
+      ]
+    },
+    {
+      "word": "moricaude",
+      "num_guesses": 3,
+      "prior": 0.000014966156232068591,
+      "guesses": [
+        "carolines",
+        "forcerait",
+        "moricaude"
+      ]
+    },
+    {
+      "word": "encombrai",
+      "num_guesses": 3,
+      "prior": 7.3382593861302275e-6,
+      "guesses": [
+        "carolines",
+        "répugnent",
+        "encombrai"
+      ]
+    },
+    {
+      "word": "souciions",
+      "num_guesses": 3,
+      "prior": 0.000013445455968335964,
+      "guesses": [
+        "carolines",
+        "indisputé",
+        "souciions"
+      ]
+    },
+    {
+      "word": "dévissent",
+      "num_guesses": 4,
+      "prior": 0.000013496397905306378,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "fortement",
+        "dévissent"
+      ]
+    },
+    {
+      "word": "dissoutes",
+      "num_guesses": 3,
+      "prior": 0.000035951260398090794,
+      "guesses": [
+        "carolines",
+        "compostés",
+        "dissoutes"
+      ]
+    },
+    {
+      "word": "persanisé",
+      "num_guesses": 3,
+      "prior": 7.643826162028535e-6,
+      "guesses": [
+        "carolines",
+        "démentent",
+        "persanisé"
+      ]
+    },
+    {
+      "word": "désanglés",
+      "num_guesses": 3,
+      "prior": 6.340999696720496e-6,
+      "guesses": [
+        "carolines",
+        "sultanats",
+        "désanglés"
+      ]
+    },
+    {
+      "word": "exagérant",
+      "num_guesses": 4,
+      "prior": 0.0000322519251111181,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "frangeant",
+        "exagérant"
+      ]
+    },
+    {
+      "word": "érythèmes",
+      "num_guesses": 3,
+      "prior": 0.00002327152850462261,
+      "guesses": [
+        "carolines",
+        "retrempée",
+        "érythèmes"
+      ]
+    },
+    {
+      "word": "suffirent",
+      "num_guesses": 3,
+      "prior": 0.00003331189482339969,
+      "guesses": [
+        "carolines",
+        "russifiée",
+        "suffirent"
+      ]
+    },
+    {
+      "word": "marchâtes",
+      "num_guesses": 3,
+      "prior": 0.000010299039191697155,
+      "guesses": [
+        "carolines",
+        "débouchât",
+        "marchâtes"
+      ]
+    },
+    {
+      "word": "rhinobate",
+      "num_guesses": 3,
+      "prior": 0.000012665141377928177,
+      "guesses": [
+        "carolines",
+        "domingite",
+        "rhinobate"
+      ]
+    },
+    {
+      "word": "vasicoles",
+      "num_guesses": 3,
+      "prior": 0.000012578234728466128,
+      "guesses": [
+        "carolines",
+        "pastilles",
+        "vasicoles"
+      ]
+    },
+    {
+      "word": "défondait",
+      "num_guesses": 4,
+      "prior": 8.7541612921061e-6,
+      "guesses": [
+        "carolines",
+        "bétonnait",
+        "défonçait",
+        "défondait"
+      ]
+    },
+    {
+      "word": "confirmer",
+      "num_guesses": 2,
+      "prior": 0.00005828195169520264,
+      "guesses": [
+        "carolines",
+        "confirmer"
+      ]
+    },
+    {
+      "word": "rafroidit",
+      "num_guesses": 3,
+      "prior": 6.848623506909282e-6,
+      "guesses": [
+        "carolines",
+        "rafroidir",
+        "rafroidit"
+      ]
+    },
+    {
+      "word": "auréliens",
+      "num_guesses": 2,
+      "prior": 0.000012698768246098132,
+      "guesses": [
+        "carolines",
+        "auréliens"
+      ]
+    },
+    {
+      "word": "berserker",
+      "num_guesses": 2,
+      "prior": 0.000013618686190845228,
+      "guesses": [
+        "carolines",
+        "berserker"
+      ]
+    },
+    {
+      "word": "atmomètre",
+      "num_guesses": 4,
+      "prior": 0.000011664118022115242,
+      "guesses": [
+        "carolines",
+        "expurgade",
+        "aréomètre",
+        "atmomètre"
+      ]
+    },
+    {
+      "word": "pelleriez",
+      "num_guesses": 3,
+      "prior": 6.606112253079472e-6,
+      "guesses": [
+        "carolines",
+        "redébuter",
+        "pelleriez"
+      ]
+    },
+    {
+      "word": "pyritisés",
+      "num_guesses": 2,
+      "prior": 0.000013899469941137445,
+      "guesses": [
+        "carolines",
+        "pyritisés"
+      ]
+    },
+    {
+      "word": "décognoir",
+      "num_guesses": 3,
+      "prior": 0.000010025325092732561,
+      "guesses": [
+        "carolines",
+        "incorporé",
+        "décognoir"
+      ]
+    },
+    {
+      "word": "échenille",
+      "num_guesses": 3,
+      "prior": 0.000011075641494530088,
+      "guesses": [
+        "carolines",
+        "indicible",
+        "échenille"
+      ]
+    },
+    {
+      "word": "dépourvus",
+      "num_guesses": 3,
+      "prior": 0.00004668912678543729,
+      "guesses": [
+        "carolines",
+        "déboursés",
+        "dépourvus"
+      ]
+    },
+    {
+      "word": "mercurial",
+      "num_guesses": 3,
+      "prior": 0.000016470290782361534,
+      "guesses": [
+        "carolines",
+        "héraclide",
+        "mercurial"
+      ]
+    },
+    {
+      "word": "aluminées",
+      "num_guesses": 3,
+      "prior": 0.000010407189308323617,
+      "guesses": [
+        "carolines",
+        "aiguillat",
+        "aluminées"
+      ]
+    },
+    {
+      "word": "réobserva",
+      "num_guesses": 3,
+      "prior": 6.606112253079472e-6,
+      "guesses": [
+        "carolines",
+        "députasse",
+        "réobserva"
+      ]
+    },
+    {
+      "word": "battoires",
+      "num_guesses": 3,
+      "prior": 7.010261925717276e-6,
+      "guesses": [
+        "carolines",
+        "passoires",
+        "battoires"
+      ]
+    },
+    {
+      "word": "calicales",
+      "num_guesses": 3,
+      "prior": 6.157776422774724e-6,
+      "guesses": [
+        "carolines",
+        "flagellum",
+        "calicales"
+      ]
+    },
+    {
+      "word": "annexites",
+      "num_guesses": 3,
+      "prior": 0.000016619943555965065,
+      "guesses": [
+        "carolines",
+        "répandant",
+        "annexites"
+      ]
+    },
+    {
+      "word": "écologues",
+      "num_guesses": 3,
+      "prior": 0.000018100041693801104,
+      "guesses": [
+        "carolines",
+        "molécules",
+        "écologues"
+      ]
+    },
+    {
+      "word": "avertîmes",
+      "num_guesses": 3,
+      "prior": 0.000012530716427579793,
+      "guesses": [
+        "carolines",
+        "armaturée",
+        "avertîmes"
+      ]
+    },
+    {
+      "word": "sélénides",
+      "num_guesses": 3,
+      "prior": 9.267006776609059e-6,
+      "guesses": [
+        "carolines",
+        "séditieux",
+        "sélénides"
+      ]
+    },
+    {
+      "word": "survivras",
+      "num_guesses": 3,
+      "prior": 0.0000152459071574119,
+      "guesses": [
+        "carolines",
+        "déguerpir",
+        "survivras"
+      ]
+    },
+    {
+      "word": "hydratant",
+      "num_guesses": 3,
+      "prior": 0.000018768874887140972,
+      "guesses": [
+        "carolines",
+        "pétardant",
+        "hydratant"
+      ]
+    },
+    {
+      "word": "caprinisé",
+      "num_guesses": 3,
+      "prior": 0.000011067371452454737,
+      "guesses": [
+        "carolines",
+        "casuarina",
+        "caprinisé"
+      ]
+    },
+    {
+      "word": "décomptés",
+      "num_guesses": 3,
+      "prior": 0.00002183517664507018,
+      "guesses": [
+        "carolines",
+        "débouchés",
+        "décomptés"
+      ]
+    },
+    {
+      "word": "ternaires",
+      "num_guesses": 2,
+      "prior": 0.00003059192213446468,
+      "guesses": [
+        "carolines",
+        "ternaires"
+      ]
+    },
+    {
+      "word": "embrayent",
+      "num_guesses": 3,
+      "prior": 0.000012705927864393794,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "embrayent"
+      ]
+    },
+    {
+      "word": "fantasiés",
+      "num_guesses": 3,
+      "prior": 5.765085023447148e-6,
+      "guesses": [
+        "carolines",
+        "ambiguité",
+        "fantasiés"
+      ]
+    },
+    {
+      "word": "entassait",
+      "num_guesses": 3,
+      "prior": 0.00002548105647279851,
+      "guesses": [
+        "carolines",
+        "dégantant",
+        "entassait"
+      ]
+    },
+    {
+      "word": "réappeler",
+      "num_guesses": 4,
+      "prior": 8.441716474006559e-6,
+      "guesses": [
+        "carolines",
+        "réallumer",
+        "réatteler",
+        "réappeler"
+      ]
+    },
+    {
+      "word": "tithonien",
+      "num_guesses": 3,
+      "prior": 0.000014592539082286211,
+      "guesses": [
+        "carolines",
+        "poéticien",
+        "tithonien"
+      ]
+    },
+    {
+      "word": "chambards",
+      "num_guesses": 3,
+      "prior": 9.2712152282885e-6,
+      "guesses": [
+        "carolines",
+        "chéquards",
+        "chambards"
+      ]
+    },
+    {
+      "word": "dévouloir",
+      "num_guesses": 3,
+      "prior": 9.429685162255735e-6,
+      "guesses": [
+        "carolines",
+        "défouloir",
+        "dévouloir"
+      ]
+    },
+    {
+      "word": "testonnés",
+      "num_guesses": 4,
+      "prior": 8.302630081427532e-6,
+      "guesses": [
+        "carolines",
+        "monuments",
+        "festonnés",
+        "testonnés"
+      ]
+    },
+    {
+      "word": "pollinisé",
+      "num_guesses": 3,
+      "prior": 0.000012562059281571821,
+      "guesses": [
+        "carolines",
+        "postillon",
+        "pollinisé"
+      ]
+    },
+    {
+      "word": "chatoiera",
+      "num_guesses": 3,
+      "prior": 6.539538340598836e-6,
+      "guesses": [
+        "carolines",
+        "codifiera",
+        "chatoiera"
+      ]
+    },
+    {
+      "word": "acylation",
+      "num_guesses": 3,
+      "prior": 0.000015490362566152457,
+      "guesses": [
+        "carolines",
+        "échappait",
+        "acylation"
+      ]
+    },
+    {
+      "word": "noiseraie",
+      "num_guesses": 3,
+      "prior": 0.000010121856260693992,
+      "guesses": [
+        "carolines",
+        "saintaise",
+        "noiseraie"
+      ]
+    },
+    {
+      "word": "brevètent",
+      "num_guesses": 3,
+      "prior": 9.092031748551774e-6,
+      "guesses": [
+        "carolines",
+        "remetteur",
+        "brevètent"
+      ]
+    },
+    {
+      "word": "chevirent",
+      "num_guesses": 3,
+      "prior": 6.791184588565995e-6,
+      "guesses": [
+        "carolines",
+        "philérème",
+        "chevirent"
+      ]
+    },
+    {
+      "word": "adénosine",
+      "num_guesses": 3,
+      "prior": 0.000023416618090895947,
+      "guesses": [
+        "carolines",
+        "vimentine",
+        "adénosine"
+      ]
+    },
+    {
+      "word": "entrerons",
+      "num_guesses": 3,
+      "prior": 0.00002789749085093957,
+      "guesses": [
+        "carolines",
+        "dénuement",
+        "entrerons"
+      ]
+    },
+    {
+      "word": "bornasses",
+      "num_guesses": 3,
+      "prior": 5.87342527872767e-6,
+      "guesses": [
+        "carolines",
+        "disputent",
+        "bornasses"
+      ]
+    },
+    {
+      "word": "écolâtres",
+      "num_guesses": 3,
+      "prior": 0.000017960719429110155,
+      "guesses": [
+        "carolines",
+        "dresseurs",
+        "écolâtres"
+      ]
+    },
+    {
+      "word": "noirpiaud",
+      "num_guesses": 3,
+      "prior": 5.974315604675087e-6,
+      "guesses": [
+        "carolines",
+        "fournirai",
+        "noirpiaud"
+      ]
+    },
+    {
+      "word": "némorales",
+      "num_guesses": 2,
+      "prior": 0.000010019167025987932,
+      "guesses": [
+        "carolines",
+        "némorales"
+      ]
+    },
+    {
+      "word": "magnifiez",
+      "num_guesses": 3,
+      "prior": 0.000012543291180869106,
+      "guesses": [
+        "carolines",
+        "bonneteau",
+        "magnifiez"
+      ]
+    },
+    {
+      "word": "pontiques",
+      "num_guesses": 3,
+      "prior": 0.000023243924077193394,
+      "guesses": [
+        "carolines",
+        "compostés",
+        "pontiques"
+      ]
+    },
+    {
+      "word": "chamottée",
+      "num_guesses": 3,
+      "prior": 0.00001025728495479266,
+      "guesses": [
+        "carolines",
+        "combattue",
+        "chamottée"
+      ]
+    },
+    {
+      "word": "éclusière",
+      "num_guesses": 3,
+      "prior": 0.000014371508979889965,
+      "guesses": [
+        "carolines",
+        "siliciure",
+        "éclusière"
+      ]
+    },
+    {
+      "word": "obfusquer",
+      "num_guesses": 3,
+      "prior": 8.927040769733717e-6,
+      "guesses": [
+        "carolines",
+        "rebrosser",
+        "obfusquer"
+      ]
+    },
+    {
+      "word": "cestodose",
+      "num_guesses": 3,
+      "prior": 6.91781557291004e-6,
+      "guesses": [
+        "carolines",
+        "cystotome",
+        "cestodose"
+      ]
+    },
+    {
+      "word": "keepsakes",
+      "num_guesses": 3,
+      "prior": 0.000017220663022078186,
+      "guesses": [
+        "carolines",
+        "métabases",
+        "keepsakes"
+      ]
+    },
+    {
+      "word": "dendrites",
+      "num_guesses": 3,
+      "prior": 0.000026907111078492706,
+      "guesses": [
+        "carolines",
+        "résinites",
+        "dendrites"
+      ]
+    },
+    {
+      "word": "admirante",
+      "num_guesses": 3,
+      "prior": 0.00001365461989946521,
+      "guesses": [
+        "carolines",
+        "réentendu",
+        "admirante"
+      ]
+    },
+    {
+      "word": "désirerez",
+      "num_guesses": 3,
+      "prior": 0.000021604734655447647,
+      "guesses": [
+        "carolines",
+        "ressauter",
+        "désirerez"
+      ]
+    },
+    {
+      "word": "arriviste",
+      "num_guesses": 3,
+      "prior": 0.000024509988943156734,
+      "guesses": [
+        "carolines",
+        "attaquent",
+        "arriviste"
+      ]
+    },
+    {
+      "word": "décalogue",
+      "num_guesses": 2,
+      "prior": 0.00003289682542958191,
+      "guesses": [
+        "carolines",
+        "décalogue"
+      ]
+    },
+    {
+      "word": "spiralage",
+      "num_guesses": 3,
+      "prior": 8.95136549221544e-6,
+      "guesses": [
+        "carolines",
+        "réutilise",
+        "spiralage"
+      ]
+    },
+    {
+      "word": "enquêtiez",
+      "num_guesses": 3,
+      "prior": 0.000011214558121502935,
+      "guesses": [
+        "carolines",
+        "pimentent",
+        "enquêtiez"
+      ]
+    },
+    {
+      "word": "refouloir",
+      "num_guesses": 3,
+      "prior": 0.000019789253501887935,
+      "guesses": [
+        "carolines",
+        "félibrige",
+        "refouloir"
+      ]
+    },
+    {
+      "word": "riboulent",
+      "num_guesses": 3,
+      "prior": 7.502175707172778e-6,
+      "guesses": [
+        "carolines",
+        "nilomètre",
+        "riboulent"
+      ]
+    },
+    {
+      "word": "parésient",
+      "num_guesses": 2,
+      "prior": 6.62234368285178e-6,
+      "guesses": [
+        "carolines",
+        "parésient"
+      ]
+    },
+    {
+      "word": "baloutche",
+      "num_guesses": 2,
+      "prior": 0.000014623918242670216,
+      "guesses": [
+        "carolines",
+        "baloutche"
+      ]
+    },
+    {
+      "word": "rebellons",
+      "num_guesses": 3,
+      "prior": 0.000010393914788944031,
+      "guesses": [
+        "carolines",
+        "jongleurs",
+        "rebellons"
+      ]
+    },
+    {
+      "word": "rédigeons",
+      "num_guesses": 3,
+      "prior": 0.000018623963407796323,
+      "guesses": [
+        "carolines",
+        "vergeturé",
+        "rédigeons"
+      ]
+    },
+    {
+      "word": "mâchurant",
+      "num_guesses": 3,
+      "prior": 7.401438805871038e-6,
+      "guesses": [
+        "carolines",
+        "décantant",
+        "mâchurant"
+      ]
+    },
+    {
+      "word": "farnésène",
+      "num_guesses": 3,
+      "prior": 8.727552406705095e-6,
+      "guesses": [
+        "carolines",
+        "empattage",
+        "farnésène"
+      ]
+    },
+    {
+      "word": "contumace",
+      "num_guesses": 3,
+      "prior": 0.00003778118326014203,
+      "guesses": [
+        "carolines",
+        "contenant",
+        "contumace"
+      ]
+    },
+    {
+      "word": "arénisées",
+      "num_guesses": 4,
+      "prior": 9.484060922743766e-6,
+      "guesses": [
+        "carolines",
+        "distingué",
+        "réanimées",
+        "arénisées"
+      ]
+    },
+    {
+      "word": "déclouait",
+      "num_guesses": 3,
+      "prior": 9.912086600175574e-6,
+      "guesses": [
+        "carolines",
+        "loquacité",
+        "déclouait"
+      ]
+    },
+    {
+      "word": "dissociée",
+      "num_guesses": 3,
+      "prior": 0.00002932776041158837,
+      "guesses": [
+        "carolines",
+        "dogmatisé",
+        "dissociée"
+      ]
+    },
+    {
+      "word": "préromain",
+      "num_guesses": 3,
+      "prior": 0.000017610597019115032,
+      "guesses": [
+        "carolines",
+        "trépidait",
+        "préromain"
+      ]
+    },
+    {
+      "word": "acrotonie",
+      "num_guesses": 3,
+      "prior": 0.000011723920110948632,
+      "guesses": [
+        "carolines",
+        "acrodynie",
+        "acrotonie"
+      ]
+    },
+    {
+      "word": "crestoise",
+      "num_guesses": 3,
+      "prior": 8.531542196335023e-6,
+      "guesses": [
+        "carolines",
+        "croisetée",
+        "crestoise"
+      ]
+    },
+    {
+      "word": "dismutent",
+      "num_guesses": 4,
+      "prior": 8.404689974041314e-6,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "disputent",
+        "dismutent"
+      ]
+    },
+    {
+      "word": "majoralat",
+      "num_guesses": 2,
+      "prior": 7.715276214880764e-6,
+      "guesses": [
+        "carolines",
+        "majoralat"
+      ]
+    },
+    {
+      "word": "conquiert",
+      "num_guesses": 3,
+      "prior": 0.00003311164088401857,
+      "guesses": [
+        "carolines",
+        "contribue",
+        "conquiert"
+      ]
+    },
+    {
+      "word": "foliaison",
+      "num_guesses": 3,
+      "prior": 0.000013173255763589897,
+      "guesses": [
+        "carolines",
+        "soulaison",
+        "foliaison"
+      ]
+    },
+    {
+      "word": "carmenère",
+      "num_guesses": 3,
+      "prior": 0.000011628658987261985,
+      "guesses": [
+        "carolines",
+        "retriture",
+        "carmenère"
+      ]
+    },
+    {
+      "word": "déménages",
+      "num_guesses": 3,
+      "prior": 0.000014209889857336103,
+      "guesses": [
+        "carolines",
+        "augmentée",
+        "déménages"
+      ]
+    },
+    {
+      "word": "épisterne",
+      "num_guesses": 3,
+      "prior": 0.000014080306537264377,
+      "guesses": [
+        "carolines",
+        "russifiée",
+        "épisterne"
+      ]
+    },
+    {
+      "word": "inséminée",
+      "num_guesses": 2,
+      "prior": 0.000014085834731562515,
+      "guesses": [
+        "carolines",
+        "inséminée"
+      ]
+    },
+    {
+      "word": "strongyle",
+      "num_guesses": 2,
+      "prior": 0.00001293473096324999,
+      "guesses": [
+        "carolines",
+        "strongyle"
+      ]
+    },
+    {
+      "word": "munissent",
+      "num_guesses": 4,
+      "prior": 0.000020708709622609164,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "punissent",
+        "munissent"
+      ]
+    },
+    {
+      "word": "trompasse",
+      "num_guesses": 3,
+      "prior": 0.000013774045772120771,
+      "guesses": [
+        "carolines",
+        "députasse",
+        "trompasse"
+      ]
+    },
+    {
+      "word": "fructueux",
+      "num_guesses": 3,
+      "prior": 0.00003821415010538721,
+      "guesses": [
+        "carolines",
+        "détrempée",
+        "fructueux"
+      ]
+    },
+    {
+      "word": "alphagène",
+      "num_guesses": 3,
+      "prior": 0.000010620691543816835,
+      "guesses": [
+        "carolines",
+        "empannage",
+        "alphagène"
+      ]
+    },
+    {
+      "word": "revaccine",
+      "num_guesses": 3,
+      "prior": 0.00001166579582972525,
+      "guesses": [
+        "carolines",
+        "décarrant",
+        "revaccine"
+      ]
+    },
+    {
+      "word": "jacobiens",
+      "num_guesses": 3,
+      "prior": 0.000013379218972339828,
+      "guesses": [
+        "carolines",
+        "bajociens",
+        "jacobiens"
+      ]
+    },
+    {
+      "word": "pressurez",
+      "num_guesses": 3,
+      "prior": 0.000011067371452454737,
+      "guesses": [
+        "carolines",
+        "desserrer",
+        "pressurez"
+      ]
+    },
+    {
+      "word": "platinage",
+      "num_guesses": 3,
+      "prior": 0.000015330633972440128,
+      "guesses": [
+        "carolines",
+        "imaginant",
+        "platinage"
+      ]
+    },
+    {
+      "word": "ouighours",
+      "num_guesses": 3,
+      "prior": 0.000013496397905306378,
+      "guesses": [
+        "carolines",
+        "trisériés",
+        "ouighours"
+      ]
+    },
+    {
+      "word": "grasseyez",
+      "num_guesses": 4,
+      "prior": 7.85887547026854e-6,
+      "guesses": [
+        "carolines",
+        "ressauter",
+        "amasserez",
+        "grasseyez"
+      ]
+    },
+    {
+      "word": "rentrayés",
+      "num_guesses": 3,
+      "prior": 6.505208158302471e-6,
+      "guesses": [
+        "carolines",
+        "défeutrer",
+        "rentrayés"
+      ]
+    },
+    {
+      "word": "noyassent",
+      "num_guesses": 3,
+      "prior": 9.654453547441326e-6,
+      "guesses": [
+        "carolines",
+        "truandant",
+        "noyassent"
+      ]
+    },
+    {
+      "word": "whodunits",
+      "num_guesses": 3,
+      "prior": 7.08579385505747e-6,
+      "guesses": [
+        "carolines",
+        "séduisait",
+        "whodunits"
+      ]
+    },
+    {
+      "word": "acquirent",
+      "num_guesses": 3,
+      "prior": 0.00003363952707626008,
+      "guesses": [
+        "carolines",
+        "décarrant",
+        "acquirent"
+      ]
+    },
+    {
+      "word": "injectais",
+      "num_guesses": 3,
+      "prior": 0.000010469982338539601,
+      "guesses": [
+        "carolines",
+        "déviatifs",
+        "injectais"
+      ]
+    },
+    {
+      "word": "tordirent",
+      "num_guesses": 3,
+      "prior": 0.00001814325068818451,
+      "guesses": [
+        "carolines",
+        "démentent",
+        "tordirent"
+      ]
+    },
+    {
+      "word": "tortillis",
+      "num_guesses": 3,
+      "prior": 9.114649022516121e-6,
+      "guesses": [
+        "carolines",
+        "tortillés",
+        "tortillis"
+      ]
+    },
+    {
+      "word": "antiquisé",
+      "num_guesses": 4,
+      "prior": 6.136016951130498e-6,
+      "guesses": [
+        "carolines",
+        "gémissais",
+        "indianisé",
+        "antiquisé"
+      ]
+    },
+    {
+      "word": "dormiriez",
+      "num_guesses": 3,
+      "prior": 0.000013398553184495054,
+      "guesses": [
+        "carolines",
+        "mortifier",
+        "dormiriez"
+      ]
+    },
+    {
+      "word": "varletons",
+      "num_guesses": 3,
+      "prior": 6.452313265266956e-6,
+      "guesses": [
+        "carolines",
+        "parlerons",
+        "varletons"
+      ]
+    },
+    {
+      "word": "concréfié",
+      "num_guesses": 3,
+      "prior": 7.511956934285922e-6,
+      "guesses": [
+        "carolines",
+        "concourir",
+        "concréfié"
+      ]
+    },
+    {
+      "word": "négrilles",
+      "num_guesses": 3,
+      "prior": 0.000020469647062426518,
+      "guesses": [
+        "carolines",
+        "renfilées",
+        "négrilles"
+      ]
+    },
+    {
+      "word": "vagabonda",
+      "num_guesses": 3,
+      "prior": 0.00001572080372160524,
+      "guesses": [
+        "carolines",
+        "vagabondé",
+        "vagabonda"
+      ]
+    },
+    {
+      "word": "sassement",
+      "num_guesses": 4,
+      "prior": 0.00001388696289933228,
+      "guesses": [
+        "carolines",
+        "baptesmes",
+        "tassement",
+        "sassement"
+      ]
+    },
+    {
+      "word": "balanoïde",
+      "num_guesses": 3,
+      "prior": 6.136016951130498e-6,
+      "guesses": [
+        "carolines",
+        "paléogène",
+        "balanoïde"
+      ]
+    },
+    {
+      "word": "négocians",
+      "num_guesses": 2,
+      "prior": 0.00003802399987551951,
+      "guesses": [
+        "carolines",
+        "négocians"
+      ]
+    },
+    {
+      "word": "errements",
+      "num_guesses": 2,
+      "prior": 0.00003769127416698529,
+      "guesses": [
+        "carolines",
+        "errements"
+      ]
+    },
+    {
+      "word": "menthènes",
+      "num_guesses": 3,
+      "prior": 7.204949611960016e-6,
+      "guesses": [
+        "carolines",
+        "périlleux",
+        "menthènes"
+      ]
+    },
+    {
+      "word": "réarpenté",
+      "num_guesses": 4,
+      "prior": 6.28227661917302e-6,
+      "guesses": [
+        "carolines",
+        "fleuretée",
+        "réargenté",
+        "réarpenté"
+      ]
+    },
+    {
+      "word": "adaubages",
+      "num_guesses": 3,
+      "prior": 6.28227661917302e-6,
+      "guesses": [
+        "carolines",
+        "métabases",
+        "adaubages"
+      ]
+    },
+    {
+      "word": "rattachai",
+      "num_guesses": 3,
+      "prior": 0.000013971137477982632,
+      "guesses": [
+        "carolines",
+        "facturait",
+        "rattachai"
+      ]
+    },
+    {
+      "word": "braaliers",
+      "num_guesses": 3,
+      "prior": 9.7491231655756e-6,
+      "guesses": [
+        "carolines",
+        "espaliers",
+        "braaliers"
+      ]
+    },
+    {
+      "word": "filtrâmes",
+      "num_guesses": 3,
+      "prior": 9.262790666229717e-6,
+      "guesses": [
+        "carolines",
+        "subtilisé",
+        "filtrâmes"
+      ]
+    },
+    {
+      "word": "prostates",
+      "num_guesses": 3,
+      "prior": 0.00002019818925579944,
+      "guesses": [
+        "carolines",
+        "smartgrid",
+        "prostates"
+      ]
+    },
+    {
+      "word": "reprisage",
+      "num_guesses": 3,
+      "prior": 0.000012521883973427811,
+      "guesses": [
+        "carolines",
+        "réapparut",
+        "reprisage"
+      ]
+    },
+    {
+      "word": "tréhalose",
+      "num_guesses": 3,
+      "prior": 0.000020520705174690488,
+      "guesses": [
+        "carolines",
+        "fourailla",
+        "tréhalose"
+      ]
+    },
+    {
+      "word": "basipètes",
+      "num_guesses": 3,
+      "prior": 0.000011204720774671708,
+      "guesses": [
+        "carolines",
+        "subhastés",
+        "basipètes"
+      ]
+    },
+    {
+      "word": "dragsters",
+      "num_guesses": 4,
+      "prior": 0.000010457024399885414,
+      "guesses": [
+        "carolines",
+        "réputerez",
+        "traversas",
+        "dragsters"
+      ]
+    },
+    {
+      "word": "troublait",
+      "num_guesses": 3,
+      "prior": 0.00003583437110190696,
+      "guesses": [
+        "carolines",
+        "improduit",
+        "troublait"
+      ]
+    },
+    {
+      "word": "enclavait",
+      "num_guesses": 3,
+      "prior": 0.000012768480970461052,
+      "guesses": [
+        "carolines",
+        "guaranine",
+        "enclavait"
+      ]
+    },
+    {
+      "word": "rentrâtes",
+      "num_guesses": 4,
+      "prior": 0.000010475147601210416,
+      "guesses": [
+        "carolines",
+        "vergeture",
+        "rentrâmes",
+        "rentrâtes"
+      ]
+    },
+    {
+      "word": "bernesque",
+      "num_guesses": 3,
+      "prior": 0.000013850857482549031,
+      "guesses": [
+        "carolines",
+        "persévère",
+        "bernesque"
+      ]
+    },
+    {
+      "word": "parfumons",
+      "num_guesses": 3,
+      "prior": 0.000012013458525504576,
+      "guesses": [
+        "carolines",
+        "hauptmann",
+        "parfumons"
+      ]
+    },
+    {
+      "word": "souriance",
+      "num_guesses": 2,
+      "prior": 6.91781557291004e-6,
+      "guesses": [
+        "carolines",
+        "souriance"
+      ]
+    },
+    {
+      "word": "bénissoir",
+      "num_guesses": 3,
+      "prior": 6.505208158302471e-6,
+      "guesses": [
+        "carolines",
+        "subtilisé",
+        "bénissoir"
+      ]
+    },
+    {
+      "word": "évangiler",
+      "num_guesses": 3,
+      "prior": 6.068818080451969e-6,
+      "guesses": [
+        "carolines",
+        "annihiler",
+        "évangiler"
+      ]
+    },
+    {
+      "word": "flamusses",
+      "num_guesses": 3,
+      "prior": 7.411761633737698e-6,
+      "guesses": [
+        "carolines",
+        "blastulas",
+        "flamusses"
+      ]
+    },
+    {
+      "word": "colombaud",
+      "num_guesses": 2,
+      "prior": 0.000011448159892710347,
+      "guesses": [
+        "carolines",
+        "colombaud"
+      ]
+    },
+    {
+      "word": "instances",
+      "num_guesses": 3,
+      "prior": 0.000056576022003350085,
+      "guesses": [
+        "carolines",
+        "indignité",
+        "instances"
+      ]
+    },
+    {
+      "word": "réengager",
+      "num_guesses": 3,
+      "prior": 0.000017430943548302937,
+      "guesses": [
+        "carolines",
+        "regardeur",
+        "réengager"
+      ]
+    },
+    {
+      "word": "molestiez",
+      "num_guesses": 3,
+      "prior": 7.643826162028535e-6,
+      "guesses": [
+        "carolines",
+        "souleviez",
+        "molestiez"
+      ]
+    },
+    {
+      "word": "croyantes",
+      "num_guesses": 3,
+      "prior": 0.00002367167361376795,
+      "guesses": [
+        "carolines",
+        "croyances",
+        "croyantes"
+      ]
+    },
+    {
+      "word": "poupinels",
+      "num_guesses": 3,
+      "prior": 8.946521676882182e-6,
+      "guesses": [
+        "carolines",
+        "vaguement",
+        "poupinels"
+      ]
+    },
+    {
+      "word": "vannières",
+      "num_guesses": 3,
+      "prior": 0.000011173006922049937,
+      "guesses": [
+        "carolines",
+        "bénignité",
+        "vannières"
+      ]
+    },
+    {
+      "word": "clairsema",
+      "num_guesses": 3,
+      "prior": 9.766257055448319e-6,
+      "guesses": [
+        "carolines",
+        "clairsemé",
+        "clairsema"
+      ]
+    },
+    {
+      "word": "appellent",
+      "num_guesses": 3,
+      "prior": 0.0000579510163687193,
+      "guesses": [
+        "carolines",
+        "entourent",
+        "appellent"
+      ]
+    },
+    {
+      "word": "déblatéré",
+      "num_guesses": 3,
+      "prior": 0.000014316472224767234,
+      "guesses": [
+        "carolines",
+        "trafalgar",
+        "déblatéré"
+      ]
+    },
+    {
+      "word": "négociiez",
+      "num_guesses": 2,
+      "prior": 9.58185543111747e-6,
+      "guesses": [
+        "carolines",
+        "négociiez"
+      ]
+    },
+    {
+      "word": "rerédiger",
+      "num_guesses": 3,
+      "prior": 6.99735159510646e-6,
+      "guesses": [
+        "carolines",
+        "vérifiiez",
+        "rerédiger"
+      ]
+    },
+    {
+      "word": "consentez",
+      "num_guesses": 2,
+      "prior": 0.000029039418813460587,
+      "guesses": [
+        "carolines",
+        "consentez"
+      ]
+    },
+    {
+      "word": "reculades",
+      "num_guesses": 2,
+      "prior": 0.00001859858900811592,
+      "guesses": [
+        "carolines",
+        "reculades"
+      ]
+    },
+    {
+      "word": "enjouguer",
+      "num_guesses": 3,
+      "prior": 5.820263360257937e-6,
+      "guesses": [
+        "carolines",
+        "réaffuter",
+        "enjouguer"
+      ]
+    },
+    {
+      "word": "brulerais",
+      "num_guesses": 4,
+      "prior": 6.820145915113139e-6,
+      "guesses": [
+        "carolines",
+        "réagirait",
+        "brûlerais",
+        "brulerais"
+      ]
+    },
+    {
+      "word": "personnée",
+      "num_guesses": 3,
+      "prior": 0.000012734406135697701,
+      "guesses": [
+        "carolines",
+        "sermonnée",
+        "personnée"
+      ]
+    },
+    {
+      "word": "luperques",
+      "num_guesses": 3,
+      "prior": 0.000017881208115787204,
+      "guesses": [
+        "carolines",
+        "refleuret",
+        "luperques"
+      ]
+    },
+    {
+      "word": "nébulaire",
+      "num_guesses": 3,
+      "prior": 0.000017951754753102977,
+      "guesses": [
+        "carolines",
+        "braguetta",
+        "nébulaire"
+      ]
+    },
+    {
+      "word": "réexporta",
+      "num_guesses": 3,
+      "prior": 0.000010664279978531224,
+      "guesses": [
+        "carolines",
+        "muguettée",
+        "réexporta"
+      ]
+    },
+    {
+      "word": "couillues",
+      "num_guesses": 3,
+      "prior": 7.048432577997523e-6,
+      "guesses": [
+        "carolines",
+        "copilotes",
+        "couillues"
+      ]
+    },
+    {
+      "word": "uruguayen",
+      "num_guesses": 3,
+      "prior": 0.000022070309598852117,
+      "guesses": [
+        "carolines",
+        "regardeur",
+        "uruguayen"
+      ]
+    },
+    {
+      "word": "campemens",
+      "num_guesses": 3,
+      "prior": 0.00002198188033793318,
+      "guesses": [
+        "carolines",
+        "cabestans",
+        "campemens"
+      ]
+    },
+    {
+      "word": "reformula",
+      "num_guesses": 3,
+      "prior": 0.000014109429226888004,
+      "guesses": [
+        "carolines",
+        "défibreur",
+        "reformula"
+      ]
+    },
+    {
+      "word": "accourais",
+      "num_guesses": 3,
+      "prior": 0.000011027747284729666,
+      "guesses": [
+        "carolines",
+        "accordais",
+        "accourais"
+      ]
+    },
+    {
+      "word": "gondolier",
+      "num_guesses": 3,
+      "prior": 0.0000232549815802256,
+      "guesses": [
+        "carolines",
+        "boitillon",
+        "gondolier"
+      ]
+    },
+    {
+      "word": "navétanes",
+      "num_guesses": 3,
+      "prior": 0.000016433824523069327,
+      "guesses": [
+        "carolines",
+        "naphtènes",
+        "navétanes"
+      ]
+    },
+    {
+      "word": "nouraghes",
+      "num_guesses": 3,
+      "prior": 0.000013726248245684038,
+      "guesses": [
+        "carolines",
+        "moutardée",
+        "nouraghes"
+      ]
+    },
+    {
+      "word": "atteignes",
+      "num_guesses": 3,
+      "prior": 0.000012267922208049039,
+      "guesses": [
+        "carolines",
+        "androgyne",
+        "atteignes"
+      ]
+    },
+    {
+      "word": "brûleuses",
+      "num_guesses": 3,
+      "prior": 9.58185543111747e-6,
+      "guesses": [
+        "carolines",
+        "refleuret",
+        "brûleuses"
+      ]
+    },
+    {
+      "word": "tuilières",
+      "num_guesses": 3,
+      "prior": 0.000013339230796734147,
+      "guesses": [
+        "carolines",
+        "subtilisé",
+        "tuilières"
+      ]
+    },
+    {
+      "word": "diffusiez",
+      "num_guesses": 3,
+      "prior": 8.392201523648221e-6,
+      "guesses": [
+        "carolines",
+        "guébistes",
+        "diffusiez"
+      ]
+    },
+    {
+      "word": "savonneux",
+      "num_guesses": 3,
+      "prior": 0.000022623826733120548,
+      "guesses": [
+        "carolines",
+        "devraient",
+        "savonneux"
+      ]
+    },
+    {
+      "word": "chicheron",
+      "num_guesses": 3,
+      "prior": 8.769972643742349e-6,
+      "guesses": [
+        "carolines",
+        "dénuement",
+        "chicheron"
+      ]
+    },
+    {
+      "word": "lactogène",
+      "num_guesses": 2,
+      "prior": 0.000014339323264748267,
+      "guesses": [
+        "carolines",
+        "lactogène"
+      ]
+    },
+    {
+      "word": "kaqchikel",
+      "num_guesses": 2,
+      "prior": 7.452488051170413e-6,
+      "guesses": [
+        "carolines",
+        "kaqchikel"
+      ]
+    },
+    {
+      "word": "coulement",
+      "num_guesses": 3,
+      "prior": 0.00001698728654525927,
+      "guesses": [
+        "carolines",
+        "bougeotte",
+        "coulement"
+      ]
+    },
+    {
+      "word": "lasseront",
+      "num_guesses": 3,
+      "prior": 0.000020215517826244356,
+      "guesses": [
+        "carolines",
+        "salueront",
+        "lasseront"
+      ]
+    },
+    {
+      "word": "hyperbare",
+      "num_guesses": 3,
+      "prior": 0.000019036028553813992,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "hyperbare"
+      ]
+    },
+    {
+      "word": "sommables",
+      "num_guesses": 3,
+      "prior": 0.000018020031277583693,
+      "guesses": [
+        "carolines",
+        "boutrolle",
+        "sommables"
+      ]
+    },
+    {
+      "word": "lamaneurs",
+      "num_guesses": 2,
+      "prior": 0.000020588059521970164,
+      "guesses": [
+        "carolines",
+        "lamaneurs"
+      ]
+    },
+    {
+      "word": "enduiront",
+      "num_guesses": 4,
+      "prior": 8.50202058091528e-6,
+      "guesses": [
+        "carolines",
+        "ténuement",
+        "enfuiront",
+        "enduiront"
+      ]
+    },
+    {
+      "word": "inentamés",
+      "num_guesses": 3,
+      "prior": 0.000010920661487720457,
+      "guesses": [
+        "carolines",
+        "débandant",
+        "inentamés"
+      ]
+    },
+    {
+      "word": "irouléguy",
+      "num_guesses": 3,
+      "prior": 0.000014644914136201452,
+      "guesses": [
+        "carolines",
+        "également",
+        "irouléguy"
+      ]
+    },
+    {
+      "word": "mégalopes",
+      "num_guesses": 3,
+      "prior": 0.000013260800171720436,
+      "guesses": [
+        "carolines",
+        "modelages",
+        "mégalopes"
+      ]
+    },
+    {
+      "word": "déchoyons",
+      "num_guesses": 3,
+      "prior": 8.722191498231747e-6,
+      "guesses": [
+        "carolines",
+        "succédons",
+        "déchoyons"
+      ]
+    },
+    {
+      "word": "iraqienne",
+      "num_guesses": 4,
+      "prior": 0.000012539524048990847,
+      "guesses": [
+        "carolines",
+        "réentendu",
+        "irakienne",
+        "iraqienne"
+      ]
+    },
+    {
+      "word": "capybaras",
+      "num_guesses": 3,
+      "prior": 0.000010972584565645695,
+      "guesses": [
+        "carolines",
+        "cadastrés",
+        "capybaras"
+      ]
+    },
+    {
+      "word": "rassotées",
+      "num_guesses": 3,
+      "prior": 6.113944375460839e-6,
+      "guesses": [
+        "carolines",
+        "raspoutes",
+        "rassotées"
+      ]
+    },
+    {
+      "word": "cellières",
+      "num_guesses": 3,
+      "prior": 0.00001196383307940929,
+      "guesses": [
+        "carolines",
+        "câbleries",
+        "cellières"
+      ]
+    },
+    {
+      "word": "tricheurs",
+      "num_guesses": 3,
+      "prior": 0.000022752322184995064,
+      "guesses": [
+        "carolines",
+        "prescrits",
+        "tricheurs"
+      ]
+    },
+    {
+      "word": "enterrées",
+      "num_guesses": 3,
+      "prior": 0.000030701618223700914,
+      "guesses": [
+        "carolines",
+        "vergeture",
+        "enterrées"
+      ]
+    },
+    {
+      "word": "racontiez",
+      "num_guesses": 2,
+      "prior": 0.000019620921195014325,
+      "guesses": [
+        "carolines",
+        "racontiez"
+      ]
+    },
+    {
+      "word": "breakbeat",
+      "num_guesses": 3,
+      "prior": 9.953574569039747e-6,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "breakbeat"
+      ]
+    },
+    {
+      "word": "mastiquer",
+      "num_guesses": 3,
+      "prior": 0.00002347951026467203,
+      "guesses": [
+        "carolines",
+        "revissiez",
+        "mastiquer"
+      ]
+    },
+    {
+      "word": "décrépita",
+      "num_guesses": 4,
+      "prior": 8.289513696662393e-6,
+      "guesses": [
+        "carolines",
+        "décravaté",
+        "décrédita",
+        "décrépita"
+      ]
+    },
+    {
+      "word": "loudières",
+      "num_guesses": 3,
+      "prior": 0.00001064257502245174,
+      "guesses": [
+        "carolines",
+        "follitude",
+        "loudières"
+      ]
+    },
+    {
+      "word": "contredis",
+      "num_guesses": 3,
+      "prior": 0.000023019218531802447,
+      "guesses": [
+        "carolines",
+        "cupidités",
+        "contredis"
+      ]
+    },
+    {
+      "word": "dévêtîmes",
+      "num_guesses": 3,
+      "prior": 7.938677377898142e-6,
+      "guesses": [
+        "carolines",
+        "muguettée",
+        "dévêtîmes"
+      ]
+    },
+    {
+      "word": "freluquet",
+      "num_guesses": 3,
+      "prior": 0.000021118503052422326,
+      "guesses": [
+        "carolines",
+        "pelleteur",
+        "freluquet"
+      ]
+    },
+    {
+      "word": "activions",
+      "num_guesses": 3,
+      "prior": 0.00001013955192167285,
+      "guesses": [
+        "carolines",
+        "vécussent",
+        "activions"
+      ]
+    },
+    {
+      "word": "démiurges",
+      "num_guesses": 3,
+      "prior": 0.000020469116205993894,
+      "guesses": [
+        "carolines",
+        "détremper",
+        "démiurges"
+      ]
+    },
+    {
+      "word": "trimbalez",
+      "num_guesses": 3,
+      "prior": 9.689948819753792e-6,
+      "guesses": [
+        "carolines",
+        "rempiéter",
+        "trimbalez"
+      ]
+    },
+    {
+      "word": "jouventes",
+      "num_guesses": 3,
+      "prior": 7.250482144583892e-6,
+      "guesses": [
+        "carolines",
+        "soupentes",
+        "jouventes"
+      ]
+    },
+    {
+      "word": "pantennes",
+      "num_guesses": 3,
+      "prior": 7.023077846635237e-6,
+      "guesses": [
+        "carolines",
+        "naphtènes",
+        "pantennes"
+      ]
+    },
+    {
+      "word": "clayonnés",
+      "num_guesses": 2,
+      "prior": 0.000012051987739391428,
+      "guesses": [
+        "carolines",
+        "clayonnés"
+      ]
+    },
+    {
+      "word": "marmottée",
+      "num_guesses": 3,
+      "prior": 9.522150747081482e-6,
+      "guesses": [
+        "carolines",
+        "barbaroux",
+        "marmottée"
+      ]
+    },
+    {
+      "word": "génopoles",
+      "num_guesses": 3,
+      "prior": 8.022905928606961e-6,
+      "guesses": [
+        "carolines",
+        "monopoles",
+        "génopoles"
+      ]
+    },
+    {
+      "word": "chaufours",
+      "num_guesses": 3,
+      "prior": 0.000015053067866448509,
+      "guesses": [
+        "carolines",
+        "réducteur",
+        "chaufours"
+      ]
+    },
+    {
+      "word": "proposent",
+      "num_guesses": 3,
+      "prior": 0.00005147960929799425,
+      "guesses": [
+        "carolines",
+        "suspendue",
+        "proposent"
+      ]
+    },
+    {
+      "word": "charriera",
+      "num_guesses": 3,
+      "prior": 0.000014044559176328421,
+      "guesses": [
+        "carolines",
+        "chaudière",
+        "charriera"
+      ]
+    },
+    {
+      "word": "hypéricon",
+      "num_guesses": 3,
+      "prior": 8.667843392977295e-6,
+      "guesses": [
+        "carolines",
+        "mâchoiron",
+        "hypéricon"
+      ]
+    },
+    {
+      "word": "dératisée",
+      "num_guesses": 3,
+      "prior": 6.791184588565995e-6,
+      "guesses": [
+        "carolines",
+        "attaquent",
+        "dératisée"
+      ]
+    },
+    {
+      "word": "benzoates",
+      "num_guesses": 3,
+      "prior": 0.000018354989069892395,
+      "guesses": [
+        "carolines",
+        "mandatant",
+        "benzoates"
+      ]
+    },
+    {
+      "word": "claquarts",
+      "num_guesses": 3,
+      "prior": 7.550580857649834e-6,
+      "guesses": [
+        "carolines",
+        "claustras",
+        "claquarts"
+      ]
+    },
+    {
+      "word": "torturées",
+      "num_guesses": 3,
+      "prior": 0.000022857189273163763,
+      "guesses": [
+        "carolines",
+        "compoundé",
+        "torturées"
+      ]
+    },
+    {
+      "word": "tupinambá",
+      "num_guesses": 4,
+      "prior": 9.766257055448319e-6,
+      "guesses": [
+        "carolines",
+        "diminuant",
+        "tupinamba",
+        "tupinambá"
+      ]
+    },
+    {
+      "word": "sassenage",
+      "num_guesses": 3,
+      "prior": 0.00002563963944281967,
+      "guesses": [
+        "carolines",
+        "baptesmes",
+        "sassenage"
+      ]
+    },
+    {
+      "word": "obmettrez",
+      "num_guesses": 3,
+      "prior": 7.239206067997025e-6,
+      "guesses": [
+        "carolines",
+        "dégrouper",
+        "obmettrez"
+      ]
+    },
+    {
+      "word": "dégustiez",
+      "num_guesses": 3,
+      "prior": 8.887560877013556e-6,
+      "guesses": [
+        "carolines",
+        "guébistes",
+        "dégustiez"
+      ]
+    },
+    {
+      "word": "minorisée",
+      "num_guesses": 3,
+      "prior": 0.000013252753563747148,
+      "guesses": [
+        "carolines",
+        "sonorisée",
+        "minorisée"
+      ]
+    },
+    {
+      "word": "flagellés",
+      "num_guesses": 3,
+      "prior": 0.000027068153593402803,
+      "guesses": [
+        "carolines",
+        "assemblés",
+        "flagellés"
+      ]
+    },
+    {
+      "word": "lairrions",
+      "num_guesses": 3,
+      "prior": 9.950407665894799e-6,
+      "guesses": [
+        "carolines",
+        "salarions",
+        "lairrions"
+      ]
+    },
+    {
+      "word": "prévenait",
+      "num_guesses": 3,
+      "prior": 0.000030140882293476688,
+      "guesses": [
+        "carolines",
+        "déterrage",
+        "prévenait"
+      ]
+    },
+    {
+      "word": "boutasses",
+      "num_guesses": 3,
+      "prior": 8.429446485389349e-6,
+      "guesses": [
+        "carolines",
+        "débutasse",
+        "boutasses"
+      ]
+    },
+    {
+      "word": "peindront",
+      "num_guesses": 4,
+      "prior": 0.00001944595407993885,
+      "guesses": [
+        "carolines",
+        "ténuement",
+        "privilège",
+        "peindront"
+      ]
+    },
+    {
+      "word": "repulpées",
+      "num_guesses": 3,
+      "prior": 6.97124134579144e-6,
+      "guesses": [
+        "carolines",
+        "résultées",
+        "repulpées"
+      ]
+    },
+    {
+      "word": "préludant",
+      "num_guesses": 3,
+      "prior": 0.00002470751792189899,
+      "guesses": [
+        "carolines",
+        "débullage",
+        "préludant"
+      ]
+    },
+    {
+      "word": "reliables",
+      "num_guesses": 3,
+      "prior": 0.000012057871783567395,
+      "guesses": [
+        "carolines",
+        "multiplié",
+        "reliables"
+      ]
+    },
+    {
+      "word": "bourdaine",
+      "num_guesses": 3,
+      "prior": 0.000021394947260703886,
+      "guesses": [
+        "carolines",
+        "domingite",
+        "bourdaine"
+      ]
+    },
+    {
+      "word": "trioboles",
+      "num_guesses": 2,
+      "prior": 0.000013976840317502654,
+      "guesses": [
+        "carolines",
+        "trioboles"
+      ]
+    },
+    {
+      "word": "obturions",
+      "num_guesses": 4,
+      "prior": 6.28227661917302e-6,
+      "guesses": [
+        "carolines",
+        "dépuratif",
+        "suturions",
+        "obturions"
+      ]
+    },
+    {
+      "word": "fulminent",
+      "num_guesses": 3,
+      "prior": 0.00001823885277886076,
+      "guesses": [
+        "carolines",
+        "génuinité",
+        "fulminent"
+      ]
+    },
+    {
+      "word": "pomologie",
+      "num_guesses": 3,
+      "prior": 0.000023494312898180994,
+      "guesses": [
+        "carolines",
+        "épithumia",
+        "pomologie"
+      ]
+    },
+    {
+      "word": "mokhaznis",
+      "num_guesses": 3,
+      "prior": 0.000015039126449232242,
+      "guesses": [
+        "carolines",
+        "nipissing",
+        "mokhaznis"
+      ]
+    },
+    {
+      "word": "resèquent",
+      "num_guesses": 3,
+      "prior": 6.71653805484964e-6,
+      "guesses": [
+        "carolines",
+        "ressurent",
+        "resèquent"
+      ]
+    },
+    {
+      "word": "toxaphène",
+      "num_guesses": 3,
+      "prior": 0.00001574867766216965,
+      "guesses": [
+        "carolines",
+        "ténuement",
+        "toxaphène"
+      ]
+    },
+    {
+      "word": "avarement",
+      "num_guesses": 3,
+      "prior": 0.00001611733996344106,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "avarement"
+      ]
+    },
+    {
+      "word": "cyberpunk",
+      "num_guesses": 3,
+      "prior": 0.000015395875443487543,
+      "guesses": [
+        "carolines",
+        "chèrement",
+        "cyberpunk"
+      ]
+    },
+    {
+      "word": "revalidez",
+      "num_guesses": 3,
+      "prior": 6.539538340598836e-6,
+      "guesses": [
+        "carolines",
+        "établirez",
+        "revalidez"
+      ]
+    },
+    {
+      "word": "remontent",
+      "num_guesses": 3,
+      "prior": 0.00004856292823193755,
+      "guesses": [
+        "carolines",
+        "démentent",
+        "remontent"
+      ]
+    },
+    {
+      "word": "improvise",
+      "num_guesses": 3,
+      "prior": 0.00002843932474565826,
+      "guesses": [
+        "carolines",
+        "spumosité",
+        "improvise"
+      ]
+    },
+    {
+      "word": "risquerez",
+      "num_guesses": 3,
+      "prior": 0.000017486780952267797,
+      "guesses": [
+        "carolines",
+        "ressauter",
+        "risquerez"
+      ]
+    },
+    {
+      "word": "pissenlit",
+      "num_guesses": 3,
+      "prior": 0.000026281915322661874,
+      "guesses": [
+        "carolines",
+        "sismicité",
+        "pissenlit"
+      ]
+    },
+    {
+      "word": "protomère",
+      "num_guesses": 3,
+      "prior": 0.000010472566243676262,
+      "guesses": [
+        "carolines",
+        "regroupée",
+        "protomère"
+      ]
+    },
+    {
+      "word": "aliénante",
+      "num_guesses": 3,
+      "prior": 0.000023835120383897615,
+      "guesses": [
+        "carolines",
+        "limpidité",
+        "aliénante"
+      ]
+    },
+    {
+      "word": "engelures",
+      "num_guesses": 2,
+      "prior": 0.000025812962634781843,
+      "guesses": [
+        "carolines",
+        "engelures"
+      ]
+    },
+    {
+      "word": "phragmite",
+      "num_guesses": 3,
+      "prior": 0.000014614396568916973,
+      "guesses": [
+        "carolines",
+        "débuttage",
+        "phragmite"
+      ]
+    },
+    {
+      "word": "pressente",
+      "num_guesses": 2,
+      "prior": 0.000017238289121449495,
+      "guesses": [
+        "carolines",
+        "pressente"
+      ]
+    },
+    {
+      "word": "faillerai",
+      "num_guesses": 3,
+      "prior": 7.048432577997523e-6,
+      "guesses": [
+        "carolines",
+        "barrotage",
+        "faillerai"
+      ]
+    },
+    {
+      "word": "revoilant",
+      "num_guesses": 3,
+      "prior": 7.842519708312734e-6,
+      "guesses": [
+        "carolines",
+        "limonaire",
+        "revoilant"
+      ]
+    },
+    {
+      "word": "braquâmes",
+      "num_guesses": 3,
+      "prior": 8.60077271312165e-6,
+      "guesses": [
+        "carolines",
+        "armaturée",
+        "braquâmes"
+      ]
+    },
+    {
+      "word": "exercitée",
+      "num_guesses": 3,
+      "prior": 0.000010593697754936148,
+      "guesses": [
+        "carolines",
+        "introduit",
+        "exercitée"
+      ]
+    },
+    {
+      "word": "détrônent",
+      "num_guesses": 3,
+      "prior": 0.000016648751306485955,
+      "guesses": [
+        "carolines",
+        "remetteur",
+        "détrônent"
+      ]
+    },
+    {
+      "word": "pétrinaux",
+      "num_guesses": 3,
+      "prior": 6.606112253079472e-6,
+      "guesses": [
+        "carolines",
+        "dégantant",
+        "pétrinaux"
+      ]
+    },
+    {
+      "word": "tonsurent",
+      "num_guesses": 3,
+      "prior": 7.18174478322216e-6,
+      "guesses": [
+        "carolines",
+        "suspendue",
+        "tonsurent"
+      ]
+    },
+    {
+      "word": "opportuns",
+      "num_guesses": 3,
+      "prior": 0.000026378477269174764,
+      "guesses": [
+        "carolines",
+        "démontrés",
+        "opportuns"
+      ]
+    },
+    {
+      "word": "affadisse",
+      "num_guesses": 3,
+      "prior": 9.03214993463802e-6,
+      "guesses": [
+        "carolines",
+        "asiatisée",
+        "affadisse"
+      ]
+    },
+    {
+      "word": "imagistes",
+      "num_guesses": 3,
+      "prior": 0.000014445745187458142,
+      "guesses": [
+        "carolines",
+        "dépiautai",
+        "imagistes"
+      ]
+    },
+    {
+      "word": "accointez",
+      "num_guesses": 3,
+      "prior": 7.922972650746335e-6,
+      "guesses": [
+        "carolines",
+        "annonciez",
+        "accointez"
+      ]
+    },
+    {
+      "word": "adapteurs",
+      "num_guesses": 3,
+      "prior": 0.000012491410562416447,
+      "guesses": [
+        "carolines",
+        "réputerez",
+        "adapteurs"
+      ]
+    },
+    {
+      "word": "létalités",
+      "num_guesses": 3,
+      "prior": 6.80572687293862e-6,
+      "guesses": [
+        "carolines",
+        "légalisés",
+        "létalités"
+      ]
+    },
+    {
+      "word": "bécassier",
+      "num_guesses": 3,
+      "prior": 0.000010203400741647603,
+      "guesses": [
+        "carolines",
+        "échassier",
+        "bécassier"
+      ]
+    },
+    {
+      "word": "régalerai",
+      "num_guesses": 3,
+      "prior": 0.000014184656897522416,
+      "guesses": [
+        "carolines",
+        "ambiguité",
+        "régalerai"
+      ]
+    },
+    {
+      "word": "inaliénés",
+      "num_guesses": 3,
+      "prior": 8.560660765014511e-6,
+      "guesses": [
+        "carolines",
+        "saligauds",
+        "inaliénés"
+      ]
+    },
+    {
+      "word": "parvenant",
+      "num_guesses": 3,
+      "prior": 0.00003307724930241258,
+      "guesses": [
+        "carolines",
+        "budgètent",
+        "parvenant"
+      ]
+    },
+    {
+      "word": "spaetzles",
+      "num_guesses": 3,
+      "prior": 9.04611004755123e-6,
+      "guesses": [
+        "carolines",
+        "blastulas",
+        "spaetzles"
+      ]
+    },
+    {
+      "word": "corbillon",
+      "num_guesses": 3,
+      "prior": 0.000019358709654091015,
+      "guesses": [
+        "carolines",
+        "cornillon",
+        "corbillon"
+      ]
+    },
+    {
+      "word": "cingalais",
+      "num_guesses": 2,
+      "prior": 0.00001928875161555575,
+      "guesses": [
+        "carolines",
+        "cingalais"
+      ]
+    },
+    {
+      "word": "rancardée",
+      "num_guesses": 3,
+      "prior": 6.984345275420603e-6,
+      "guesses": [
+        "carolines",
+        "hantèrent",
+        "rancardée"
+      ]
+    },
+    {
+      "word": "rançonnes",
+      "num_guesses": 3,
+      "prior": 9.321130443664541e-6,
+      "guesses": [
+        "carolines",
+        "patronnes",
+        "rançonnes"
+      ]
+    },
+    {
+      "word": "fauchards",
+      "num_guesses": 3,
+      "prior": 0.00001204461648755107,
+      "guesses": [
+        "carolines",
+        "rattachés",
+        "fauchards"
+      ]
+    },
+    {
+      "word": "hymniques",
+      "num_guesses": 4,
+      "prior": 0.00001359239509470706,
+      "guesses": [
+        "carolines",
+        "unidentée",
+        "gymniques",
+        "hymniques"
+      ]
+    },
+    {
+      "word": "trompâtes",
+      "num_guesses": 4,
+      "prior": 0.000010993932167883129,
+      "guesses": [
+        "carolines",
+        "trémoussé",
+        "trompâmes",
+        "trompâtes"
+      ]
+    },
+    {
+      "word": "chiennots",
+      "num_guesses": 3,
+      "prior": 6.321667020620859e-6,
+      "guesses": [
+        "carolines",
+        "fouettait",
+        "chiennots"
+      ]
+    },
+    {
+      "word": "plisseuse",
+      "num_guesses": 3,
+      "prior": 8.743556583444009e-6,
+      "guesses": [
+        "carolines",
+        "dissimule",
+        "plisseuse"
+      ]
+    },
+    {
+      "word": "trachomes",
+      "num_guesses": 3,
+      "prior": 0.000014070016797505743,
+      "guesses": [
+        "carolines",
+        "écohameau",
+        "trachomes"
+      ]
+    },
+    {
+      "word": "motivâtes",
+      "num_guesses": 3,
+      "prior": 6.360099439443707e-6,
+      "guesses": [
+        "carolines",
+        "compostés",
+        "motivâtes"
+      ]
+    },
+    {
+      "word": "kommandos",
+      "num_guesses": 3,
+      "prior": 0.00002147427010462723,
+      "guesses": [
+        "carolines",
+        "péguystes",
+        "kommandos"
+      ]
+    },
+    {
+      "word": "obstruent",
+      "num_guesses": 3,
+      "prior": 0.000027226865789301312,
+      "guesses": [
+        "carolines",
+        "suspendue",
+        "obstruent"
+      ]
+    },
+    {
+      "word": "énumériez",
+      "num_guesses": 3,
+      "prior": 9.402020059947294e-6,
+      "guesses": [
+        "carolines",
+        "empiétiez",
+        "énumériez"
+      ]
+    },
+    {
+      "word": "gaulliste",
+      "num_guesses": 3,
+      "prior": 0.000035758180045204195,
+      "guesses": [
+        "carolines",
+        "embijouté",
+        "gaulliste"
+      ]
+    },
+    {
+      "word": "techniser",
+      "num_guesses": 3,
+      "prior": 5.87342527872767e-6,
+      "guesses": [
+        "carolines",
+        "inscrivez",
+        "techniser"
+      ]
+    },
+    {
+      "word": "embrayage",
+      "num_guesses": 3,
+      "prior": 0.000032174985986246066,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "embrayage"
+      ]
+    },
+    {
+      "word": "doctorand",
+      "num_guesses": 4,
+      "prior": 9.717975170316453e-6,
+      "guesses": [
+        "carolines",
+        "réordonna",
+        "doctorant",
+        "doctorand"
+      ]
+    },
+    {
+      "word": "ovulaient",
+      "num_guesses": 3,
+      "prior": 6.091548372700962e-6,
+      "guesses": [
+        "carolines",
+        "volleyeur",
+        "ovulaient"
+      ]
+    },
+    {
+      "word": "tambourné",
+      "num_guesses": 3,
+      "prior": 7.679883546641977e-6,
+      "guesses": [
+        "carolines",
+        "patronaux",
+        "tambourné"
+      ]
+    },
+    {
+      "word": "accroires",
+      "num_guesses": 3,
+      "prior": 9.37402545802704e-6,
+      "guesses": [
+        "carolines",
+        "oratrices",
+        "accroires"
+      ]
+    },
+    {
+      "word": "escartera",
+      "num_guesses": 3,
+      "prior": 6.761720637135056e-6,
+      "guesses": [
+        "carolines",
+        "sétuleuse",
+        "escartera"
+      ]
+    },
+    {
+      "word": "hanteront",
+      "num_guesses": 4,
+      "prior": 0.000015622437980047186,
+      "guesses": [
+        "carolines",
+        "mangetout",
+        "vanteront",
+        "hanteront"
+      ]
+    },
+    {
+      "word": "bossetier",
+      "num_guesses": 3,
+      "prior": 9.17681020904679e-6,
+      "guesses": [
+        "carolines",
+        "triforium",
+        "bossetier"
+      ]
+    },
+    {
+      "word": "serfouies",
+      "num_guesses": 3,
+      "prior": 6.97124134579144e-6,
+      "guesses": [
+        "carolines",
+        "feudistes",
+        "serfouies"
+      ]
+    },
+    {
+      "word": "essartant",
+      "num_guesses": 4,
+      "prior": 9.796798414026523e-6,
+      "guesses": [
+        "carolines",
+        "ressurent",
+        "assertant",
+        "essartant"
+      ]
+    },
+    {
+      "word": "factrices",
+      "num_guesses": 3,
+      "prior": 0.000013570482071307939,
+      "guesses": [
+        "carolines",
+        "paciaires",
+        "factrices"
+      ]
+    },
+    {
+      "word": "camarilla",
+      "num_guesses": 2,
+      "prior": 0.000023991296946318603,
+      "guesses": [
+        "carolines",
+        "camarilla"
+      ]
+    },
+    {
+      "word": "ingéniiez",
+      "num_guesses": 3,
+      "prior": 5.998503908606191e-6,
+      "guesses": [
+        "carolines",
+        "intimidez",
+        "ingéniiez"
+      ]
+    },
+    {
+      "word": "outraient",
+      "num_guesses": 4,
+      "prior": 0.000013268827296349287,
+      "guesses": [
+        "carolines",
+        "bourdonné",
+        "ouvraient",
+        "outraient"
+      ]
+    },
+    {
+      "word": "noirâtres",
+      "num_guesses": 3,
+      "prior": 0.00003970996682388029,
+      "guesses": [
+        "carolines",
+        "putridité",
+        "noirâtres"
+      ]
+    },
+    {
+      "word": "libyennes",
+      "num_guesses": 3,
+      "prior": 0.00002453858677052181,
+      "guesses": [
+        "carolines",
+        "siluridés",
+        "libyennes"
+      ]
+    },
+    {
+      "word": "lupinades",
+      "num_guesses": 3,
+      "prior": 6.378972469951851e-6,
+      "guesses": [
+        "carolines",
+        "aiguillat",
+        "lupinades"
+      ]
+    },
+    {
+      "word": "chanasien",
+      "num_guesses": 2,
+      "prior": 6.95803814237169e-6,
+      "guesses": [
+        "carolines",
+        "chanasien"
+      ]
+    },
+    {
+      "word": "barbottez",
+      "num_guesses": 3,
+      "prior": 6.302094920311533e-6,
+      "guesses": [
+        "carolines",
+        "margotter",
+        "barbottez"
+      ]
+    },
+    {
+      "word": "brassiers",
+      "num_guesses": 3,
+      "prior": 0.000019004935788489822,
+      "guesses": [
+        "carolines",
+        "rétribuai",
+        "brassiers"
+      ]
+    },
+    {
+      "word": "antidotez",
+      "num_guesses": 3,
+      "prior": 6.731733997695014e-6,
+      "guesses": [
+        "carolines",
+        "sensitifs",
+        "antidotez"
+      ]
+    },
+    {
+      "word": "repurgent",
+      "num_guesses": 3,
+      "prior": 7.134414498652991e-6,
+      "guesses": [
+        "carolines",
+        "remetteur",
+        "repurgent"
+      ]
+    },
+    {
+      "word": "goguelins",
+      "num_guesses": 3,
+      "prior": 6.6384175217288974e-6,
+      "guesses": [
+        "carolines",
+        "vaguement",
+        "goguelins"
+      ]
+    },
+    {
+      "word": "resterais",
+      "num_guesses": 3,
+      "prior": 0.000027568880873191457,
+      "guesses": [
+        "carolines",
+        "réduirait",
+        "resterais"
+      ]
+    },
+    {
+      "word": "pochtrons",
+      "num_guesses": 3,
+      "prior": 0.00001026569028016111,
+      "guesses": [
+        "carolines",
+        "procédant",
+        "pochtrons"
+      ]
+    },
+    {
+      "word": "argueront",
+      "num_guesses": 3,
+      "prior": 0.000012516825646600517,
+      "guesses": [
+        "carolines",
+        "promurent",
+        "argueront"
+      ]
+    },
+    {
+      "word": "grognants",
+      "num_guesses": 3,
+      "prior": 0.00001232094967183097,
+      "guesses": [
+        "carolines",
+        "gourmands",
+        "grognants"
+      ]
+    },
+    {
+      "word": "taximètre",
+      "num_guesses": 3,
+      "prior": 0.00001690935128934185,
+      "guesses": [
+        "carolines",
+        "fouettage",
+        "taximètre"
+      ]
+    },
+    {
+      "word": "dégustera",
+      "num_guesses": 3,
+      "prior": 0.000015033657011568932,
+      "guesses": [
+        "carolines",
+        "repatauge",
+        "dégustera"
+      ]
+    },
+    {
+      "word": "déformité",
+      "num_guesses": 3,
+      "prior": 0.000012510491217420561,
+      "guesses": [
+        "carolines",
+        "dégourdir",
+        "déformité"
+      ]
+    },
+    {
+      "word": "lavatorys",
+      "num_guesses": 3,
+      "prior": 6.984345275420603e-6,
+      "guesses": [
+        "carolines",
+        "labradors",
+        "lavatorys"
+      ]
+    },
+    {
+      "word": "monopolée",
+      "num_guesses": 3,
+      "prior": 7.060974352323512e-6,
+      "guesses": [
+        "carolines",
+        "multilobé",
+        "monopolée"
+      ]
+    },
+    {
+      "word": "branlerez",
+      "num_guesses": 3,
+      "prior": 7.842519708312734e-6,
+      "guesses": [
+        "carolines",
+        "annulerez",
+        "branlerez"
+      ]
+    },
+    {
+      "word": "débiteuse",
+      "num_guesses": 3,
+      "prior": 0.000011652346252714366,
+      "guesses": [
+        "carolines",
+        "désuettes",
+        "débiteuse"
+      ]
+    },
+    {
+      "word": "trinquets",
+      "num_guesses": 3,
+      "prior": 0.000010726009677155641,
+      "guesses": [
+        "carolines",
+        "repurgent",
+        "trinquets"
+      ]
+    },
+    {
+      "word": "lugdunien",
+      "num_guesses": 3,
+      "prior": 8.1535463111826e-6,
+      "guesses": [
+        "carolines",
+        "défouliez",
+        "lugdunien"
+      ]
+    },
+    {
+      "word": "éliminant",
+      "num_guesses": 3,
+      "prior": 0.00003612144937412378,
+      "guesses": [
+        "carolines",
+        "plaignant",
+        "éliminant"
+      ]
+    },
+    {
+      "word": "licherait",
+      "num_guesses": 3,
+      "prior": 6.045742058010995e-6,
+      "guesses": [
+        "carolines",
+        "hiérurgie",
+        "licherait"
+      ]
+    },
+    {
+      "word": "esquisses",
+      "num_guesses": 3,
+      "prior": 0.00004112739533600979,
+      "guesses": [
+        "carolines",
+        "piétismes",
+        "esquisses"
+      ]
+    },
+    {
+      "word": "dorerions",
+      "num_guesses": 3,
+      "prior": 6.200394860902339e-6,
+      "guesses": [
+        "carolines",
+        "démesurer",
+        "dorerions"
+      ]
+    },
+    {
+      "word": "concubina",
+      "num_guesses": 3,
+      "prior": 0.00001540636649197545,
+      "guesses": [
+        "carolines",
+        "boucanant",
+        "concubina"
+      ]
+    },
+    {
+      "word": "minirobot",
+      "num_guesses": 3,
+      "prior": 7.010261925717276e-6,
+      "guesses": [
+        "carolines",
+        "putridité",
+        "minirobot"
+      ]
+    },
+    {
+      "word": "désactive",
+      "num_guesses": 3,
+      "prior": 0.000017890314923726867,
+      "guesses": [
+        "carolines",
+        "décapeuse",
+        "désactive"
+      ]
+    },
+    {
+      "word": "modérerai",
+      "num_guesses": 3,
+      "prior": 0.00001092502626189154,
+      "guesses": [
+        "carolines",
+        "bourrette",
+        "modérerai"
+      ]
+    },
+    {
+      "word": "infusions",
+      "num_guesses": 3,
+      "prior": 0.00003096877846934288,
+      "guesses": [
+        "carolines",
+        "diminutif",
+        "infusions"
+      ]
+    },
+    {
+      "word": "repreniez",
+      "num_guesses": 3,
+      "prior": 0.00001834951201138019,
+      "guesses": [
+        "carolines",
+        "empiétiez",
+        "repreniez"
+      ]
+    },
+    {
+      "word": "déficelle",
+      "num_guesses": 3,
+      "prior": 9.721455821341942e-6,
+      "guesses": [
+        "carolines",
+        "difficile",
+        "déficelle"
+      ]
+    },
+    {
+      "word": "reprépare",
+      "num_guesses": 3,
+      "prior": 7.826026355727003e-6,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "reprépare"
+      ]
+    },
+    {
+      "word": "existants",
+      "num_guesses": 3,
+      "prior": 0.00004939039921950535,
+      "guesses": [
+        "carolines",
+        "gélinotte",
+        "existants"
+      ]
+    },
+    {
+      "word": "mallettes",
+      "num_guesses": 4,
+      "prior": 0.00002013262458375053,
+      "guesses": [
+        "carolines",
+        "palatable",
+        "sympathie",
+        "mallettes"
+      ]
+    },
+    {
+      "word": "clocherez",
+      "num_guesses": 3,
+      "prior": 9.95989631092394e-6,
+      "guesses": [
+        "carolines",
+        "collecter",
+        "clocherez"
+      ]
+    },
+    {
+      "word": "vervinois",
+      "num_guesses": 3,
+      "prior": 0.000012197165023943467,
+      "guesses": [
+        "carolines",
+        "sintering",
+        "vervinois"
+      ]
+    },
+    {
+      "word": "déprisent",
+      "num_guesses": 4,
+      "prior": 0.000012031302582682555,
+      "guesses": [
+        "carolines",
+        "russifiée",
+        "méprisent",
+        "déprisent"
+      ]
+    },
+    {
+      "word": "étanchées",
+      "num_guesses": 3,
+      "prior": 0.000013215281476524654,
+      "guesses": [
+        "carolines",
+        "échaudant",
+        "étanchées"
+      ]
+    },
+    {
+      "word": "dormiront",
+      "num_guesses": 3,
+      "prior": 0.00002110254872277932,
+      "guesses": [
+        "carolines",
+        "irruption",
+        "dormiront"
+      ]
+    },
+    {
+      "word": "lunettées",
+      "num_guesses": 3,
+      "prior": 6.321667020620859e-6,
+      "guesses": [
+        "carolines",
+        "dentelles",
+        "lunettées"
+      ]
+    },
+    {
+      "word": "lambliase",
+      "num_guesses": 3,
+      "prior": 0.000014699878515670158,
+      "guesses": [
+        "carolines",
+        "embijouté",
+        "lambliase"
+      ]
+    },
+    {
+      "word": "maquerait",
+      "num_guesses": 4,
+      "prior": 5.792936972656122e-6,
+      "guesses": [
+        "carolines",
+        "fouettage",
+        "vaquerait",
+        "maquerait"
+      ]
+    },
+    {
+      "word": "étouffage",
+      "num_guesses": 3,
+      "prior": 0.00001590269316266492,
+      "guesses": [
+        "carolines",
+        "déméthyle",
+        "étouffage"
+      ]
+    },
+    {
+      "word": "clopinera",
+      "num_guesses": 3,
+      "prior": 6.95803814237169e-6,
+      "guesses": [
+        "carolines",
+        "coltinera",
+        "clopinera"
+      ]
+    },
+    {
+      "word": "cambrages",
+      "num_guesses": 3,
+      "prior": 6.984345275420603e-6,
+      "guesses": [
+        "carolines",
+        "déblayant",
+        "cambrages"
+      ]
+    },
+    {
+      "word": "extournés",
+      "num_guesses": 3,
+      "prior": 8.435590403347281e-6,
+      "guesses": [
+        "carolines",
+        "retournés",
+        "extournés"
+      ]
+    },
+    {
+      "word": "brameront",
+      "num_guesses": 4,
+      "prior": 7.1700289870736285e-6,
+      "guesses": [
+        "carolines",
+        "promurent",
+        "trameront",
+        "brameront"
+      ]
+    },
+    {
+      "word": "prominule",
+      "num_guesses": 3,
+      "prior": 9.918514677305796e-6,
+      "guesses": [
+        "carolines",
+        "fougerole",
+        "prominule"
+      ]
+    },
+    {
+      "word": "isolative",
+      "num_guesses": 3,
+      "prior": 6.360099439443707e-6,
+      "guesses": [
+        "carolines",
+        "ludlamite",
+        "isolative"
+      ]
+    },
+    {
+      "word": "frissions",
+      "num_guesses": 4,
+      "prior": 5.792936972656122e-6,
+      "guesses": [
+        "carolines",
+        "dépuratif",
+        "griffions",
+        "frissions"
+      ]
+    },
+    {
+      "word": "zinguerie",
+      "num_guesses": 3,
+      "prior": 0.00001880105756077445,
+      "guesses": [
+        "carolines",
+        "déterreur",
+        "zinguerie"
+      ]
+    },
+    {
+      "word": "resongées",
+      "num_guesses": 3,
+      "prior": 7.31670759123095e-6,
+      "guesses": [
+        "carolines",
+        "redémonte",
+        "resongées"
+      ]
+    },
+    {
+      "word": "publiâtes",
+      "num_guesses": 3,
+      "prior": 0.000011596200052570488,
+      "guesses": [
+        "carolines",
+        "multiplié",
+        "publiâtes"
+      ]
+    },
+    {
+      "word": "tronquois",
+      "num_guesses": 3,
+      "prior": 0.000010077067528336044,
+      "guesses": [
+        "carolines",
+        "réduiroit",
+        "tronquois"
+      ]
+    },
+    {
+      "word": "molybdeux",
+      "num_guesses": 3,
+      "prior": 0.000013432121920450431,
+      "guesses": [
+        "carolines",
+        "pholidote",
+        "molybdeux"
+      ]
+    },
+    {
+      "word": "customisé",
+      "num_guesses": 2,
+      "prior": 0.000012416513512469527,
+      "guesses": [
+        "carolines",
+        "customisé"
+      ]
+    },
+    {
+      "word": "segmentée",
+      "num_guesses": 3,
+      "prior": 0.00002274350516154228,
+      "guesses": [
+        "carolines",
+        "despensée",
+        "segmentée"
+      ]
+    },
+    {
+      "word": "folklores",
+      "num_guesses": 3,
+      "prior": 0.00001943268379417261,
+      "guesses": [
+        "carolines",
+        "problèmes",
+        "folklores"
+      ]
+    },
+    {
+      "word": "lépidotes",
+      "num_guesses": 4,
+      "prior": 0.000010372533451126491,
+      "guesses": [
+        "carolines",
+        "boulottés",
+        "élohistes",
+        "lépidotes"
+      ]
+    },
+    {
+      "word": "concernas",
+      "num_guesses": 3,
+      "prior": 9.078352601700301e-6,
+      "guesses": [
+        "carolines",
+        "coparents",
+        "concernas"
+      ]
+    },
+    {
+      "word": "chevêtres",
+      "num_guesses": 3,
+      "prior": 0.000015197298880232967,
+      "guesses": [
+        "carolines",
+        "augmenter",
+        "chevêtres"
+      ]
+    },
+    {
+      "word": "remuerait",
+      "num_guesses": 4,
+      "prior": 0.00001827937775183443,
+      "guesses": [
+        "carolines",
+        "réagirait",
+        "reverrait",
+        "remuerait"
+      ]
+    },
+    {
+      "word": "échancrée",
+      "num_guesses": 3,
+      "prior": 0.00003336944182012216,
+      "guesses": [
+        "carolines",
+        "repartage",
+        "échancrée"
+      ]
+    },
+    {
+      "word": "partiront",
+      "num_guesses": 3,
+      "prior": 0.000031672434999148875,
+      "guesses": [
+        "carolines",
+        "narration",
+        "partiront"
+      ]
+    },
+    {
+      "word": "viendrons",
+      "num_guesses": 3,
+      "prior": 0.000029275674508169428,
+      "guesses": [
+        "carolines",
+        "vergeturé",
+        "viendrons"
+      ]
+    },
+    {
+      "word": "obamacare",
+      "num_guesses": 3,
+      "prior": 0.000012795249509435487,
+      "guesses": [
+        "carolines",
+        "départira",
+        "obamacare"
+      ]
+    },
+    {
+      "word": "ansiforme",
+      "num_guesses": 3,
+      "prior": 0.000012819496230933742,
+      "guesses": [
+        "carolines",
+        "saintaise",
+        "ansiforme"
+      ]
+    },
+    {
+      "word": "stockions",
+      "num_guesses": 4,
+      "prior": 9.114649022516121e-6,
+      "guesses": [
+        "carolines",
+        "indisputé",
+        "fonctions",
+        "stockions"
+      ]
+    },
+    {
+      "word": "charpente",
+      "num_guesses": 3,
+      "prior": 0.0000488048618500512,
+      "guesses": [
+        "carolines",
+        "charmante",
+        "charpente"
+      ]
+    },
+    {
+      "word": "prisèrent",
+      "num_guesses": 5,
+      "prior": 0.000013009331934499813,
+      "guesses": [
+        "carolines",
+        "russifiée",
+        "brisèrent",
+        "grisèrent",
+        "prisèrent"
+      ]
+    },
+    {
+      "word": "navaroise",
+      "num_guesses": 3,
+      "prior": 7.85887547026854e-6,
+      "guesses": [
+        "carolines",
+        "sanatoire",
+        "navaroise"
+      ]
+    },
+    {
+      "word": "dérompage",
+      "num_guesses": 3,
+      "prior": 8.706029204004245e-6,
+      "guesses": [
+        "carolines",
+        "aérophore",
+        "dérompage"
+      ]
+    },
+    {
+      "word": "concurrer",
+      "num_guesses": 4,
+      "prior": 0.00001112069088606641,
+      "guesses": [
+        "carolines",
+        "concerter",
+        "concorder",
+        "concurrer"
+      ]
+    },
+    {
+      "word": "rentaille",
+      "num_guesses": 3,
+      "prior": 6.022308243775538e-6,
+      "guesses": [
+        "carolines",
+        "pégreleux",
+        "rentaille"
+      ]
+    },
+    {
+      "word": "missaires",
+      "num_guesses": 4,
+      "prior": 0.00002374639256828922,
+      "guesses": [
+        "carolines",
+        "prévaudra",
+        "extraites",
+        "missaires"
+      ]
+    },
+    {
+      "word": "réinspiré",
+      "num_guesses": 3,
+      "prior": 7.193384625172367e-6,
+      "guesses": [
+        "carolines",
+        "industrié",
+        "réinspiré"
+      ]
+    },
+    {
+      "word": "épidermes",
+      "num_guesses": 3,
+      "prior": 0.000024235872654767577,
+      "guesses": [
+        "carolines",
+        "détremper",
+        "épidermes"
+      ]
+    },
+    {
+      "word": "inconquis",
+      "num_guesses": 3,
+      "prior": 9.71099887082604e-6,
+      "guesses": [
+        "carolines",
+        "déconfits",
+        "inconquis"
+      ]
+    },
+    {
+      "word": "ellipsant",
+      "num_guesses": 3,
+      "prior": 7.227859294226083e-6,
+      "guesses": [
+        "carolines",
+        "émaillait",
+        "ellipsant"
+      ]
+    },
+    {
+      "word": "suturions",
+      "num_guesses": 3,
+      "prior": 7.1700289870736285e-6,
+      "guesses": [
+        "carolines",
+        "dépuratif",
+        "suturions"
+      ]
+    },
+    {
+      "word": "vertébrai",
+      "num_guesses": 3,
+      "prior": 7.08579385505747e-6,
+      "guesses": [
+        "carolines",
+        "débuttage",
+        "vertébrai"
+      ]
+    },
+    {
+      "word": "inclinent",
+      "num_guesses": 3,
+      "prior": 0.00003081848616622115,
+      "guesses": [
+        "carolines",
+        "mustélidé",
+        "inclinent"
+      ]
+    },
+    {
+      "word": "écumettes",
+      "num_guesses": 4,
+      "prior": 6.761720637135056e-6,
+      "guesses": [
+        "carolines",
+        "débouchât",
+        "stucquées",
+        "écumettes"
+      ]
+    },
+    {
+      "word": "fierasfer",
+      "num_guesses": 4,
+      "prior": 0.000013207123259654657,
+      "guesses": [
+        "carolines",
+        "priassiez",
+        "attrister",
+        "fierasfer"
+      ]
+    },
+    {
+      "word": "scissiles",
+      "num_guesses": 3,
+      "prior": 8.36699926203122e-6,
+      "guesses": [
+        "carolines",
+        "félissent",
+        "scissiles"
+      ]
+    },
+    {
+      "word": "enjoûmens",
+      "num_guesses": 3,
+      "prior": 7.411761633737698e-6,
+      "guesses": [
+        "carolines",
+        "essangent",
+        "enjoûmens"
+      ]
+    },
+    {
+      "word": "triternée",
+      "num_guesses": 3,
+      "prior": 8.067397969446019e-6,
+      "guesses": [
+        "carolines",
+        "réinvente",
+        "triternée"
+      ]
+    },
+    {
+      "word": "parpaigne",
+      "num_guesses": 3,
+      "prior": 8.837203182089863e-6,
+      "guesses": [
+        "carolines",
+        "dubitatif",
+        "parpaigne"
+      ]
+    },
+    {
+      "word": "rongeants",
+      "num_guesses": 2,
+      "prior": 0.000017131431985088182,
+      "guesses": [
+        "carolines",
+        "rongeants"
+      ]
+    },
+    {
+      "word": "secréteur",
+      "num_guesses": 3,
+      "prior": 0.00001407951608609804,
+      "guesses": [
+        "carolines",
+        "receveuse",
+        "secréteur"
+      ]
+    },
+    {
+      "word": "recultivé",
+      "num_guesses": 3,
+      "prior": 6.378972469951851e-6,
+      "guesses": [
+        "carolines",
+        "féculerie",
+        "recultivé"
+      ]
+    },
+    {
+      "word": "dressings",
+      "num_guesses": 3,
+      "prior": 0.000015507052485304994,
+      "guesses": [
+        "carolines",
+        "piétinant",
+        "dressings"
+      ]
+    },
+    {
+      "word": "exceptent",
+      "num_guesses": 3,
+      "prior": 0.000018541904847685163,
+      "guesses": [
+        "carolines",
+        "débuchent",
+        "exceptent"
+      ]
+    },
+    {
+      "word": "genévrier",
+      "num_guesses": 3,
+      "prior": 0.00002802369150905101,
+      "guesses": [
+        "carolines",
+        "empiétiez",
+        "genévrier"
+      ]
+    },
+    {
+      "word": "conicités",
+      "num_guesses": 3,
+      "prior": 9.721455821341942e-6,
+      "guesses": [
+        "carolines",
+        "munitions",
+        "conicités"
+      ]
+    },
+    {
+      "word": "pétrifiée",
+      "num_guesses": 3,
+      "prior": 0.000030528882921342324,
+      "guesses": [
+        "carolines",
+        "perturbée",
+        "pétrifiée"
+      ]
+    },
+    {
+      "word": "dépravait",
+      "num_guesses": 3,
+      "prior": 0.000013486083130731609,
+      "guesses": [
+        "carolines",
+        "pétrirait",
+        "dépravait"
+      ]
+    },
+    {
+      "word": "délicoter",
+      "num_guesses": 3,
+      "prior": 7.670932609085438e-6,
+      "guesses": [
+        "carolines",
+        "bricolier",
+        "délicoter"
+      ]
+    },
+    {
+      "word": "anousvara",
+      "num_guesses": 3,
+      "prior": 0.000010350974348680044,
+      "guesses": [
+        "carolines",
+        "trébuchet",
+        "anousvara"
+      ]
+    },
+    {
+      "word": "stipendia",
+      "num_guesses": 3,
+      "prior": 0.000019608328872393805,
+      "guesses": [
+        "carolines",
+        "dégantant",
+        "stipendia"
+      ]
+    },
+    {
+      "word": "enfleront",
+      "num_guesses": 4,
+      "prior": 0.00001175499678620157,
+      "guesses": [
+        "carolines",
+        "préleveur",
+        "toblerone",
+        "enfleront"
+      ]
+    },
+    {
+      "word": "scaldéens",
+      "num_guesses": 3,
+      "prior": 7.023077846635237e-6,
+      "guesses": [
+        "carolines",
+        "blanchets",
+        "scaldéens"
+      ]
+    },
+    {
+      "word": "marquetée",
+      "num_guesses": 3,
+      "prior": 0.000018760606546731498,
+      "guesses": [
+        "carolines",
+        "étrampure",
+        "marquetée"
+      ]
+    },
+    {
+      "word": "rigidités",
+      "num_guesses": 3,
+      "prior": 0.000026705145494155172,
+      "guesses": [
+        "carolines",
+        "détruisis",
+        "rigidités"
+      ]
+    },
+    {
+      "word": "affouilla",
+      "num_guesses": 3,
+      "prior": 8.589388460480788e-6,
+      "guesses": [
+        "carolines",
+        "dépouilla",
+        "affouilla"
+      ]
+    },
+    {
+      "word": "éthylisme",
+      "num_guesses": 3,
+      "prior": 0.000020779171864096748,
+      "guesses": [
+        "carolines",
+        "simpliste",
+        "éthylisme"
+      ]
+    },
+    {
+      "word": "enceinter",
+      "num_guesses": 3,
+      "prior": 0.000010543901435333829,
+      "guesses": [
+        "carolines",
+        "réprimiez",
+        "enceinter"
+      ]
+    },
+    {
+      "word": "filochons",
+      "num_guesses": 2,
+      "prior": 7.462531872067062e-6,
+      "guesses": [
+        "carolines",
+        "filochons"
+      ]
+    },
+    {
+      "word": "dribbleur",
+      "num_guesses": 3,
+      "prior": 0.000011994007064506395,
+      "guesses": [
+        "carolines",
+        "terrifiée",
+        "dribbleur"
+      ]
+    },
+    {
+      "word": "sacrifiai",
+      "num_guesses": 3,
+      "prior": 0.00001760445607862005,
+      "guesses": [
+        "carolines",
+        "tabaschir",
+        "sacrifiai"
+      ]
+    },
+    {
+      "word": "encendrée",
+      "num_guesses": 3,
+      "prior": 6.302094920311533e-6,
+      "guesses": [
+        "carolines",
+        "rétribuât",
+        "encendrée"
+      ]
+    },
+    {
+      "word": "débusquai",
+      "num_guesses": 3,
+      "prior": 9.159221559893208e-6,
+      "guesses": [
+        "carolines",
+        "dépassais",
+        "débusquai"
+      ]
+    },
+    {
+      "word": "spongines",
+      "num_guesses": 3,
+      "prior": 7.946483368774638e-6,
+      "guesses": [
+        "carolines",
+        "poussines",
+        "spongines"
+      ]
+    },
+    {
+      "word": "fourragée",
+      "num_guesses": 3,
+      "prior": 0.000011059076617235826,
+      "guesses": [
+        "carolines",
+        "muguettée",
+        "fourragée"
+      ]
+    },
+    {
+      "word": "punaisies",
+      "num_guesses": 4,
+      "prior": 9.600211610608713e-6,
+      "guesses": [
+        "carolines",
+        "distingué",
+        "animiques",
+        "punaisies"
+      ]
+    },
+    {
+      "word": "enflammas",
+      "num_guesses": 3,
+      "prior": 8.160563142837651e-6,
+      "guesses": [
+        "carolines",
+        "enflammés",
+        "enflammas"
+      ]
+    },
+    {
+      "word": "défichées",
+      "num_guesses": 3,
+      "prior": 6.606112253079472e-6,
+      "guesses": [
+        "carolines",
+        "méphitisé",
+        "défichées"
+      ]
+    },
+    {
+      "word": "endraillé",
+      "num_guesses": 3,
+      "prior": 6.606112253079472e-6,
+      "guesses": [
+        "carolines",
+        "pégreleux",
+        "endraillé"
+      ]
+    },
+    {
+      "word": "réadaptée",
+      "num_guesses": 3,
+      "prior": 0.00001430684595460759,
+      "guesses": [
+        "carolines",
+        "retramage",
+        "réadaptée"
+      ]
+    },
+    {
+      "word": "déclanche",
+      "num_guesses": 3,
+      "prior": 0.00002214805638474725,
+      "guesses": [
+        "carolines",
+        "trépanant",
+        "déclanche"
+      ]
+    },
+    {
+      "word": "treiziste",
+      "num_guesses": 4,
+      "prior": 9.168032756145757e-6,
+      "guesses": [
+        "carolines",
+        "quiétisme",
+        "pierriste",
+        "treiziste"
+      ]
+    },
+    {
+      "word": "coopérait",
+      "num_guesses": 3,
+      "prior": 0.00001903768429260166,
+      "guesses": [
+        "carolines",
+        "captivait",
+        "coopérait"
+      ]
+    },
+    {
+      "word": "luiraient",
+      "num_guesses": 3,
+      "prior": 0.000012085665304800736,
+      "guesses": [
+        "carolines",
+        "pégreleux",
+        "luiraient"
+      ]
+    },
+    {
+      "word": "subveniez",
+      "num_guesses": 3,
+      "prior": 8.80125752643708e-6,
+      "guesses": [
+        "carolines",
+        "mussétien",
+        "subveniez"
+      ]
+    },
+    {
+      "word": "vainquait",
+      "num_guesses": 3,
+      "prior": 0.00001402454119417189,
+      "guesses": [
+        "carolines",
+        "naviguant",
+        "vainquait"
+      ]
+    },
+    {
+      "word": "brunissez",
+      "num_guesses": 3,
+      "prior": 9.069187158875689e-6,
+      "guesses": [
+        "carolines",
+        "empiétiez",
+        "brunissez"
+      ]
+    },
+    {
+      "word": "déduisiez",
+      "num_guesses": 3,
+      "prior": 0.000010536350292635168,
+      "guesses": [
+        "carolines",
+        "guébistes",
+        "déduisiez"
+      ]
+    },
+    {
+      "word": "bolognais",
+      "num_guesses": 2,
+      "prior": 0.000016291687784013272,
+      "guesses": [
+        "carolines",
+        "bolognais"
+      ]
+    },
+    {
+      "word": "tentantes",
+      "num_guesses": 4,
+      "prior": 0.000021667534407103816,
+      "guesses": [
+        "carolines",
+        "augmentée",
+        "pistolets",
+        "tentantes"
+      ]
+    },
+    {
+      "word": "défrichas",
+      "num_guesses": 3,
+      "prior": 5.765085023447148e-6,
+      "guesses": [
+        "carolines",
+        "décravaté",
+        "défrichas"
+      ]
+    },
+    {
+      "word": "égrappoir",
+      "num_guesses": 3,
+      "prior": 0.000015186217443924625,
+      "guesses": [
+        "carolines",
+        "dormirait",
+        "égrappoir"
+      ]
+    },
+    {
+      "word": "prêterait",
+      "num_guesses": 3,
+      "prior": 0.000031072509464042036,
+      "guesses": [
+        "carolines",
+        "réagirait",
+        "prêterait"
+      ]
+    },
+    {
+      "word": "rabobiner",
+      "num_guesses": 2,
+      "prior": 8.335063218059265e-6,
+      "guesses": [
+        "carolines",
+        "rabobiner"
+      ]
+    },
+    {
+      "word": "jacasseur",
+      "num_guesses": 3,
+      "prior": 9.9217224770315e-6,
+      "guesses": [
+        "carolines",
+        "mascarade",
+        "jacasseur"
+      ]
+    },
+    {
+      "word": "engraissa",
+      "num_guesses": 3,
+      "prior": 0.000015235543224387679,
+      "guesses": [
+        "carolines",
+        "instiguée",
+        "engraissa"
+      ]
+    }
+  ]
+}

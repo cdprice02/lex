@@ -1,0 +1,5406 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T14:26:17.235479Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "saiten",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 6,
+    "dictionary_length": 19040,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "c4379c75fd7ac7c3dbdfd6ed907505d376db7c5ccbf930d0cecdb75a4baef62e",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.6959999999999797,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.018000000000000002,
+        "3": 0.3860000000000003,
+        "4": 0.4820000000000004,
+        "5": 0.11000000000000008,
+        "6": 0.004
+      }
+    },
+    "prior": {
+      "mean": 3.587887199350471,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.02208963565207503,
+        "3": 0.4524825567508812,
+        "4": 0.4429704382368508,
+        "5": 0.08036571131487935,
+        "6": 0.002091658045312715
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "somata",
+      "num_guesses": 4,
+      "prior": 0.00003319673951807066,
+      "guesses": [
+        "saiten",
+        "fuhrst",
+        "lokale",
+        "somata"
+      ]
+    },
+    {
+      "word": "beraub",
+      "num_guesses": 4,
+      "prior": 0.00003015433985203509,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "bewahr",
+        "beraub"
+      ]
+    },
+    {
+      "word": "bembel",
+      "num_guesses": 4,
+      "prior": 0.000029086671095488177,
+      "guesses": [
+        "saiten",
+        "formul",
+        "pümpel",
+        "bembel"
+      ]
+    },
+    {
+      "word": "leguan",
+      "num_guesses": 3,
+      "prior": 0.000045481188829846454,
+      "guesses": [
+        "saiten",
+        "gramls",
+        "leguan"
+      ]
+    },
+    {
+      "word": "fundis",
+      "num_guesses": 4,
+      "prior": 0.00004246918474952078,
+      "guesses": [
+        "saiten",
+        "rodung",
+        "hindus",
+        "fundis"
+      ]
+    },
+    {
+      "word": "atzten",
+      "num_guesses": 4,
+      "prior": 0.000030690651106697786,
+      "guesses": [
+        "saiten",
+        "brauch",
+        "aleten",
+        "atzten"
+      ]
+    },
+    {
+      "word": "mäderl",
+      "num_guesses": 3,
+      "prior": 0.000038858283958741753,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "mäderl"
+      ]
+    },
+    {
+      "word": "synode",
+      "num_guesses": 3,
+      "prior": 0.00011407354178692988,
+      "guesses": [
+        "saiten",
+        "hudere",
+        "synode"
+      ]
+    },
+    {
+      "word": "laufes",
+      "num_guesses": 3,
+      "prior": 0.00007466142883259614,
+      "guesses": [
+        "saiten",
+        "buhler",
+        "laufes"
+      ]
+    },
+    {
+      "word": "kirres",
+      "num_guesses": 4,
+      "prior": 0.00002116405318685939,
+      "guesses": [
+        "saiten",
+        "erdles",
+        "kirrem",
+        "kirres"
+      ]
+    },
+    {
+      "word": "gämsen",
+      "num_guesses": 3,
+      "prior": 0.0000376232702740053,
+      "guesses": [
+        "saiten",
+        "besäum",
+        "gämsen"
+      ]
+    },
+    {
+      "word": "yeoman",
+      "num_guesses": 3,
+      "prior": 0.00003960167371871073,
+      "guesses": [
+        "saiten",
+        "gramls",
+        "yeoman"
+      ]
+    },
+    {
+      "word": "barrio",
+      "num_guesses": 3,
+      "prior": 0.00004927615294689305,
+      "guesses": [
+        "saiten",
+        "burlak",
+        "barrio"
+      ]
+    },
+    {
+      "word": "marane",
+      "num_guesses": 4,
+      "prior": 0.000023843037153142577,
+      "guesses": [
+        "saiten",
+        "goderl",
+        "maräne",
+        "marane"
+      ]
+    },
+    {
+      "word": "säusel",
+      "num_guesses": 3,
+      "prior": 0.00002408162348212538,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "säusel"
+      ]
+    },
+    {
+      "word": "dunere",
+      "num_guesses": 4,
+      "prior": 0.00001785497843251865,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "erneue",
+        "dunere"
+      ]
+    },
+    {
+      "word": "seyest",
+      "num_guesses": 3,
+      "prior": 0.00004341633725687737,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "seyest"
+      ]
+    },
+    {
+      "word": "gegeit",
+      "num_guesses": 4,
+      "prior": 0.000025147257383491193,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "fights",
+        "gegeit"
+      ]
+    },
+    {
+      "word": "äfftet",
+      "num_guesses": 5,
+      "prior": 0.000019989124160476698,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "tombak",
+        "wüßtet",
+        "äfftet"
+      ]
+    },
+    {
+      "word": "pfähle",
+      "num_guesses": 4,
+      "prior": 0.00008208267462238858,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "häufle",
+        "pfähle"
+      ]
+    },
+    {
+      "word": "steift",
+      "num_guesses": 3,
+      "prior": 0.00004322086314082056,
+      "guesses": [
+        "saiten",
+        "gierst",
+        "steift"
+      ]
+    },
+    {
+      "word": "gereiß",
+      "num_guesses": 3,
+      "prior": 0.000021065109376666743,
+      "guesses": [
+        "saiten",
+        "legire",
+        "gereiß"
+      ]
+    },
+    {
+      "word": "zerkau",
+      "num_guesses": 5,
+      "prior": 0.00001893101515512052,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "duplum",
+        "verhau",
+        "zerkau"
+      ]
+    },
+    {
+      "word": "deutle",
+      "num_guesses": 4,
+      "prior": 0.000026921634152886746,
+      "guesses": [
+        "saiten",
+        "kreole",
+        "bettle",
+        "deutle"
+      ]
+    },
+    {
+      "word": "formul",
+      "num_guesses": 2,
+      "prior": 0.000043710700496816985,
+      "guesses": [
+        "saiten",
+        "formul"
+      ]
+    },
+    {
+      "word": "lockst",
+      "num_guesses": 4,
+      "prior": 0.00004126641819620158,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "obläge",
+        "lockst"
+      ]
+    },
+    {
+      "word": "wuselt",
+      "num_guesses": 4,
+      "prior": 0.000035970008301528704,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "holdem",
+        "wuselt"
+      ]
+    },
+    {
+      "word": "kothen",
+      "num_guesses": 5,
+      "prior": 0.00005515762986018476,
+      "guesses": [
+        "saiten",
+        "trumpf",
+        "nehelg",
+        "cöthen",
+        "kothen"
+      ]
+    },
+    {
+      "word": "geriet",
+      "num_guesses": 3,
+      "prior": 0.0001192934871551449,
+      "guesses": [
+        "saiten",
+        "zerleg",
+        "geriet"
+      ]
+    },
+    {
+      "word": "tippet",
+      "num_guesses": 5,
+      "prior": 0.000027195107929411115,
+      "guesses": [
+        "saiten",
+        "zerleg",
+        "kumpfe",
+        "werden",
+        "tippet"
+      ]
+    },
+    {
+      "word": "nachos",
+      "num_guesses": 4,
+      "prior": 0.00003769969581003162,
+      "guesses": [
+        "saiten",
+        "konrad",
+        "cowboy",
+        "nachos"
+      ]
+    },
+    {
+      "word": "salbst",
+      "num_guesses": 3,
+      "prior": 0.000033949419794917276,
+      "guesses": [
+        "saiten",
+        "sorbus",
+        "salbst"
+      ]
+    },
+    {
+      "word": "kasten",
+      "num_guesses": 3,
+      "prior": 0.00011955724731779067,
+      "guesses": [
+        "saiten",
+        "klampf",
+        "kasten"
+      ]
+    },
+    {
+      "word": "harnes",
+      "num_guesses": 3,
+      "prior": 0.00007553223683885106,
+      "guesses": [
+        "saiten",
+        "hunger",
+        "harnes"
+      ]
+    },
+    {
+      "word": "rotzet",
+      "num_guesses": 5,
+      "prior": 0.000013992340737914012,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "bürdet",
+        "kröpfe",
+        "rotzet"
+      ]
+    },
+    {
+      "word": "koggen",
+      "num_guesses": 5,
+      "prior": 0.000047956141750587504,
+      "guesses": [
+        "saiten",
+        "herold",
+        "kompaß",
+        "kokken",
+        "koggen"
+      ]
+    },
+    {
+      "word": "palaus",
+      "num_guesses": 4,
+      "prior": 0.000033143572476588864,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "appell",
+        "palaus"
+      ]
+    },
+    {
+      "word": "matrik",
+      "num_guesses": 2,
+      "prior": 0.0000362724610422208,
+      "guesses": [
+        "saiten",
+        "matrik"
+      ]
+    },
+    {
+      "word": "funkel",
+      "num_guesses": 4,
+      "prior": 0.00003830066429769596,
+      "guesses": [
+        "saiten",
+        "dengel",
+        "käufer",
+        "funkel"
+      ]
+    },
+    {
+      "word": "locros",
+      "num_guesses": 3,
+      "prior": 0.000020698453991854212,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "locros"
+      ]
+    },
+    {
+      "word": "azetyl",
+      "num_guesses": 3,
+      "prior": 0.00003734066297222062,
+      "guesses": [
+        "saiten",
+        "blazar",
+        "azetyl"
+      ]
+    },
+    {
+      "word": "sampel",
+      "num_guesses": 4,
+      "prior": 0.00002352486450446635,
+      "guesses": [
+        "saiten",
+        "ambras",
+        "sammel",
+        "sampel"
+      ]
+    },
+    {
+      "word": "fuseln",
+      "num_guesses": 4,
+      "prior": 0.000022146717928497,
+      "guesses": [
+        "saiten",
+        "lemure",
+        "werden",
+        "fuseln"
+      ]
+    },
+    {
+      "word": "gunmen",
+      "num_guesses": 5,
+      "prior": 0.00002725693042105191,
+      "guesses": [
+        "saiten",
+        "herold",
+        "kumpfe",
+        "muggen",
+        "gunmen"
+      ]
+    },
+    {
+      "word": "tadeln",
+      "num_guesses": 3,
+      "prior": 0.00009385677682092095,
+      "guesses": [
+        "saiten",
+        "umfeld",
+        "tadeln"
+      ]
+    },
+    {
+      "word": "zahlet",
+      "num_guesses": 3,
+      "prior": 0.00004168271260418575,
+      "guesses": [
+        "saiten",
+        "buhler",
+        "zahlet"
+      ]
+    },
+    {
+      "word": "harams",
+      "num_guesses": 3,
+      "prior": 0.00002607729333629189,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "harams"
+      ]
+    },
+    {
+      "word": "grämet",
+      "num_guesses": 5,
+      "prior": 0.000027861162926173685,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "bürdet",
+        "kröpfe",
+        "grämet"
+      ]
+    },
+    {
+      "word": "kohlen",
+      "num_guesses": 3,
+      "prior": 0.00012136567597973069,
+      "guesses": [
+        "saiten",
+        "herold",
+        "kohlen"
+      ]
+    },
+    {
+      "word": "nammus",
+      "num_guesses": 4,
+      "prior": 0.000019227799659693938,
+      "guesses": [
+        "saiten",
+        "konrad",
+        "bmlfuw",
+        "nammus"
+      ]
+    },
+    {
+      "word": "taxons",
+      "num_guesses": 4,
+      "prior": 0.00003993757147010038,
+      "guesses": [
+        "saiten",
+        "bornas",
+        "talons",
+        "taxons"
+      ]
+    },
+    {
+      "word": "sicket",
+      "num_guesses": 3,
+      "prior": 0.00001638230127982853,
+      "guesses": [
+        "saiten",
+        "diezes",
+        "sicket"
+      ]
+    },
+    {
+      "word": "asciis",
+      "num_guesses": 4,
+      "prior": 0.000013750948648624197,
+      "guesses": [
+        "saiten",
+        "braais",
+        "aussis",
+        "asciis"
+      ]
+    },
+    {
+      "word": "nashis",
+      "num_guesses": 4,
+      "prior": 0.000015766867644535555,
+      "guesses": [
+        "saiten",
+        "konrad",
+        "wagnis",
+        "nashis"
+      ]
+    },
+    {
+      "word": "stöben",
+      "num_guesses": 5,
+      "prior": 0.000030199613605496095,
+      "guesses": [
+        "saiten",
+        "betreu",
+        "stäben",
+        "stoben",
+        "stöben"
+      ]
+    },
+    {
+      "word": "onager",
+      "num_guesses": 2,
+      "prior": 0.00004218794400233609,
+      "guesses": [
+        "saiten",
+        "onager"
+      ]
+    },
+    {
+      "word": "erweck",
+      "num_guesses": 4,
+      "prior": 0.00003858955177022765,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "urform",
+        "erweck"
+      ]
+    },
+    {
+      "word": "rötere",
+      "num_guesses": 4,
+      "prior": 0.000031847468603978126,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "prekär",
+        "rötere"
+      ]
+    },
+    {
+      "word": "grooms",
+      "num_guesses": 3,
+      "prior": 0.00003271480810065056,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "grooms"
+      ]
+    },
+    {
+      "word": "beiram",
+      "num_guesses": 3,
+      "prior": 0.000032078706029829964,
+      "guesses": [
+        "saiten",
+        "klemme",
+        "beiram"
+      ]
+    },
+    {
+      "word": "lockig",
+      "num_guesses": 4,
+      "prior": 0.00004955380461424354,
+      "guesses": [
+        "saiten",
+        "vorlud",
+        "wolkig",
+        "lockig"
+      ]
+    },
+    {
+      "word": "bangte",
+      "num_guesses": 4,
+      "prior": 0.000058934943499147274,
+      "guesses": [
+        "saiten",
+        "dunkle",
+        "narben",
+        "bangte"
+      ]
+    },
+    {
+      "word": "kieses",
+      "num_guesses": 4,
+      "prior": 0.00004963478014423107,
+      "guesses": [
+        "saiten",
+        "erdles",
+        "mohawk",
+        "kieses"
+      ]
+    },
+    {
+      "word": "wachem",
+      "num_guesses": 3,
+      "prior": 0.000055810687579565084,
+      "guesses": [
+        "saiten",
+        "schmul",
+        "wachem"
+      ]
+    },
+    {
+      "word": "texmex",
+      "num_guesses": 4,
+      "prior": 0.000023930899644205984,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "pzkpfw",
+        "texmex"
+      ]
+    },
+    {
+      "word": "medern",
+      "num_guesses": 4,
+      "prior": 0.000050262341023123424,
+      "guesses": [
+        "saiten",
+        "gebärd",
+        "klampf",
+        "medern"
+      ]
+    },
+    {
+      "word": "jockel",
+      "num_guesses": 4,
+      "prior": 0.000050412155258138185,
+      "guesses": [
+        "saiten",
+        "formul",
+        "gedeck",
+        "jockel"
+      ]
+    },
+    {
+      "word": "bitter",
+      "num_guesses": 3,
+      "prior": 0.00011658478268193914,
+      "guesses": [
+        "saiten",
+        "rebelt",
+        "bitter"
+      ]
+    },
+    {
+      "word": "warmup",
+      "num_guesses": 4,
+      "prior": 0.000025608389333279787,
+      "guesses": [
+        "saiten",
+        "marabu",
+        "parfum",
+        "warmup"
+      ]
+    },
+    {
+      "word": "häklig",
+      "num_guesses": 5,
+      "prior": 0.0000176571403101125,
+      "guesses": [
+        "saiten",
+        "vorlud",
+        "biliär",
+        "mäklig",
+        "häklig"
+      ]
+    },
+    {
+      "word": "verbum",
+      "num_guesses": 4,
+      "prior": 0.0001067410998361303,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "gumbos",
+        "verbum"
+      ]
+    },
+    {
+      "word": "klinke",
+      "num_guesses": 4,
+      "prior": 0.00008067355807832932,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "kräfte",
+        "klinke"
+      ]
+    },
+    {
+      "word": "angibt",
+      "num_guesses": 3,
+      "prior": 0.00010982427623912474,
+      "guesses": [
+        "saiten",
+        "ankauf",
+        "angibt"
+      ]
+    },
+    {
+      "word": "narden",
+      "num_guesses": 5,
+      "prior": 0.000037988205307958476,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "morphe",
+        "wanzen",
+        "narden"
+      ]
+    },
+    {
+      "word": "liebem",
+      "num_guesses": 4,
+      "prior": 0.000047465176392593634,
+      "guesses": [
+        "saiten",
+        "melder",
+        "vielem",
+        "liebem"
+      ]
+    },
+    {
+      "word": "hippen",
+      "num_guesses": 5,
+      "prior": 0.00004720161306467774,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "pinkem",
+        "nahezu",
+        "hippen"
+      ]
+    },
+    {
+      "word": "skiort",
+      "num_guesses": 3,
+      "prior": 0.00003102775364277229,
+      "guesses": [
+        "saiten",
+        "krahls",
+        "skiort"
+      ]
+    },
+    {
+      "word": "irgend",
+      "num_guesses": 3,
+      "prior": 0.000178470857141383,
+      "guesses": [
+        "saiten",
+        "legire",
+        "irgend"
+      ]
+    },
+    {
+      "word": "luftet",
+      "num_guesses": 4,
+      "prior": 0.00002100116380539301,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "defekt",
+        "luftet"
+      ]
+    },
+    {
+      "word": "losere",
+      "num_guesses": 3,
+      "prior": 0.00004757631264222298,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "losere"
+      ]
+    },
+    {
+      "word": "rallye",
+      "num_guesses": 4,
+      "prior": 0.00005087045626611796,
+      "guesses": [
+        "saiten",
+        "lemure",
+        "parole",
+        "rallye"
+      ]
+    },
+    {
+      "word": "häusle",
+      "num_guesses": 3,
+      "prior": 0.0000436955075107329,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "häusle"
+      ]
+    },
+    {
+      "word": "fistet",
+      "num_guesses": 3,
+      "prior": 0.00001954421623434994,
+      "guesses": [
+        "saiten",
+        "femels",
+        "fistet"
+      ]
+    },
+    {
+      "word": "eßbare",
+      "num_guesses": 3,
+      "prior": 0.00005190255316822896,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "eßbare"
+      ]
+    },
+    {
+      "word": "laiben",
+      "num_guesses": 3,
+      "prior": 0.00003674440919679277,
+      "guesses": [
+        "saiten",
+        "manndl",
+        "laiben"
+      ]
+    },
+    {
+      "word": "eozoon",
+      "num_guesses": 4,
+      "prior": 0.00004123307255007273,
+      "guesses": [
+        "saiten",
+        "gebärd",
+        "pofluß",
+        "eozoon"
+      ]
+    },
+    {
+      "word": "wirkte",
+      "num_guesses": 3,
+      "prior": 0.00014550487752187135,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "wirkte"
+      ]
+    },
+    {
+      "word": "salami",
+      "num_guesses": 3,
+      "prior": 0.0000607520228278488,
+      "guesses": [
+        "saiten",
+        "ambras",
+        "salami"
+      ]
+    },
+    {
+      "word": "kobras",
+      "num_guesses": 3,
+      "prior": 0.00003846867056622806,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "kobras"
+      ]
+    },
+    {
+      "word": "ochses",
+      "num_guesses": 4,
+      "prior": 0.000019494954823196823,
+      "guesses": [
+        "saiten",
+        "formul",
+        "oxydes",
+        "ochses"
+      ]
+    },
+    {
+      "word": "glömme",
+      "num_guesses": 4,
+      "prior": 0.000022071896224626948,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "kumpfe",
+        "glömme"
+      ]
+    },
+    {
+      "word": "eberns",
+      "num_guesses": 3,
+      "prior": 0.000016332354309388932,
+      "guesses": [
+        "saiten",
+        "leders",
+        "eberns"
+      ]
+    },
+    {
+      "word": "dessem",
+      "num_guesses": 4,
+      "prior": 0.00006120319072321186,
+      "guesses": [
+        "saiten",
+        "formul",
+        "hemdes",
+        "dessem"
+      ]
+    },
+    {
+      "word": "valide",
+      "num_guesses": 3,
+      "prior": 0.0000659798383326005,
+      "guesses": [
+        "saiten",
+        "brodle",
+        "valide"
+      ]
+    },
+    {
+      "word": "zieret",
+      "num_guesses": 3,
+      "prior": 0.00004704279501093389,
+      "guesses": [
+        "saiten",
+        "zerleg",
+        "zieret"
+      ]
+    },
+    {
+      "word": "silten",
+      "num_guesses": 3,
+      "prior": 0.00003346044581428693,
+      "guesses": [
+        "saiten",
+        "sitten",
+        "silten"
+      ]
+    },
+    {
+      "word": "anales",
+      "num_guesses": 3,
+      "prior": 0.00005677085946593838,
+      "guesses": [
+        "saiten",
+        "akador",
+        "anales"
+      ]
+    },
+    {
+      "word": "harley",
+      "num_guesses": 4,
+      "prior": 0.00006796457540342398,
+      "guesses": [
+        "saiten",
+        "schmul",
+        "halber",
+        "harley"
+      ]
+    },
+    {
+      "word": "bedank",
+      "num_guesses": 4,
+      "prior": 0.00004117787745001921,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "befand",
+        "bedank"
+      ]
+    },
+    {
+      "word": "breche",
+      "num_guesses": 3,
+      "prior": 0.00007656666254901733,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "breche"
+      ]
+    },
+    {
+      "word": "besass",
+      "num_guesses": 4,
+      "prior": 0.00010038154874218792,
+      "guesses": [
+        "saiten",
+        "beruss",
+        "formel",
+        "besass"
+      ]
+    },
+    {
+      "word": "lösses",
+      "num_guesses": 5,
+      "prior": 0.000047573520687000427,
+      "guesses": [
+        "saiten",
+        "formul",
+        "kehlig",
+        "blödes",
+        "lösses"
+      ]
+    },
+    {
+      "word": "bestob",
+      "num_guesses": 4,
+      "prior": 0.000013209994144447514,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "bestoß",
+        "bestob"
+      ]
+    },
+    {
+      "word": "lamina",
+      "num_guesses": 3,
+      "prior": 0.00008664604568242602,
+      "guesses": [
+        "saiten",
+        "gurkha",
+        "lamina"
+      ]
+    },
+    {
+      "word": "flexen",
+      "num_guesses": 5,
+      "prior": 0.000029518276000065705,
+      "guesses": [
+        "saiten",
+        "herold",
+        "läufig",
+        "flößen",
+        "flexen"
+      ]
+    },
+    {
+      "word": "schnei",
+      "num_guesses": 3,
+      "prior": 0.000054387764155720397,
+      "guesses": [
+        "saiten",
+        "sinnes",
+        "schnei"
+      ]
+    },
+    {
+      "word": "ernenn",
+      "num_guesses": 4,
+      "prior": 0.00003346329788096783,
+      "guesses": [
+        "saiten",
+        "gebärd",
+        "erkenn",
+        "ernenn"
+      ]
+    },
+    {
+      "word": "recrut",
+      "num_guesses": 4,
+      "prior": 0.00003424177689841545,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "rekrut",
+        "recrut"
+      ]
+    },
+    {
+      "word": "aymará",
+      "num_guesses": 4,
+      "prior": 0.00002890968559328173,
+      "guesses": [
+        "saiten",
+        "formul",
+        "armada",
+        "aymará"
+      ]
+    },
+    {
+      "word": "najade",
+      "num_guesses": 3,
+      "prior": 0.00004711775703006181,
+      "guesses": [
+        "saiten",
+        "goderl",
+        "najade"
+      ]
+    },
+    {
+      "word": "rippte",
+      "num_guesses": 5,
+      "prior": 0.000019108609895809112,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "richte",
+        "ritzte",
+        "rippte"
+      ]
+    },
+    {
+      "word": "ginger",
+      "num_guesses": 4,
+      "prior": 0.000057529493864639516,
+      "guesses": [
+        "saiten",
+        "kindrg",
+        "färber",
+        "ginger"
+      ]
+    },
+    {
+      "word": "grafem",
+      "num_guesses": 3,
+      "prior": 0.00003717832627940301,
+      "guesses": [
+        "saiten",
+        "kluger",
+        "grafem"
+      ]
+    },
+    {
+      "word": "acholi",
+      "num_guesses": 3,
+      "prior": 0.000032573112073804564,
+      "guesses": [
+        "saiten",
+        "adolar",
+        "acholi"
+      ]
+    },
+    {
+      "word": "sitars",
+      "num_guesses": 3,
+      "prior": 0.000020717898323002243,
+      "guesses": [
+        "saiten",
+        "stabil",
+        "sitars"
+      ]
+    },
+    {
+      "word": "regnum",
+      "num_guesses": 3,
+      "prior": 0.00008081102800778013,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "regnum"
+      ]
+    },
+    {
+      "word": "beruhe",
+      "num_guesses": 3,
+      "prior": 0.00009343837993451223,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "beruhe"
+      ]
+    },
+    {
+      "word": "äthins",
+      "num_guesses": 3,
+      "prior": 0.000014174120388759236,
+      "guesses": [
+        "saiten",
+        "gehurt",
+        "äthins"
+      ]
+    },
+    {
+      "word": "gedenk",
+      "num_guesses": 4,
+      "prior": 0.00006548386225956024,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "gegend",
+        "gedenk"
+      ]
+    },
+    {
+      "word": "agbert",
+      "num_guesses": 4,
+      "prior": 0.00001478378168491634,
+      "guesses": [
+        "saiten",
+        "belage",
+        "abgeht",
+        "agbert"
+      ]
+    },
+    {
+      "word": "satins",
+      "num_guesses": 2,
+      "prior": 0.00003669129448215633,
+      "guesses": [
+        "saiten",
+        "satins"
+      ]
+    },
+    {
+      "word": "geruhe",
+      "num_guesses": 3,
+      "prior": 0.00004703768313200385,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "geruhe"
+      ]
+    },
+    {
+      "word": "kantor",
+      "num_guesses": 3,
+      "prior": 0.00008023434364330464,
+      "guesses": [
+        "saiten",
+        "mantra",
+        "kantor"
+      ]
+    },
+    {
+      "word": "anband",
+      "num_guesses": 3,
+      "prior": 0.000037717380675704444,
+      "guesses": [
+        "saiten",
+        "unhold",
+        "anband"
+      ]
+    },
+    {
+      "word": "evchen",
+      "num_guesses": 5,
+      "prior": 0.00005350507876241585,
+      "guesses": [
+        "saiten",
+        "herold",
+        "zökums",
+        "wähnen",
+        "evchen"
+      ]
+    },
+    {
+      "word": "filous",
+      "num_guesses": 3,
+      "prior": 0.00003180390145228904,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "filous"
+      ]
+    },
+    {
+      "word": "jeside",
+      "num_guesses": 4,
+      "prior": 0.000021509066790966164,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "messie",
+        "jeside"
+      ]
+    },
+    {
+      "word": "parnaß",
+      "num_guesses": 3,
+      "prior": 0.00006318175866920408,
+      "guesses": [
+        "saiten",
+        "manual",
+        "parnaß"
+      ]
+    },
+    {
+      "word": "südens",
+      "num_guesses": 3,
+      "prior": 0.00009037311576212121,
+      "guesses": [
+        "saiten",
+        "hudere",
+        "südens"
+      ]
+    },
+    {
+      "word": "baumen",
+      "num_guesses": 4,
+      "prior": 0.00005089552704679738,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "dauben",
+        "baumen"
+      ]
+    },
+    {
+      "word": "anlaut",
+      "num_guesses": 3,
+      "prior": 0.00007580046553352475,
+      "guesses": [
+        "saiten",
+        "anlagt",
+        "anlaut"
+      ]
+    },
+    {
+      "word": "rasend",
+      "num_guesses": 3,
+      "prior": 0.0000837293561891315,
+      "guesses": [
+        "saiten",
+        "mugels",
+        "rasend"
+      ]
+    },
+    {
+      "word": "sprich",
+      "num_guesses": 3,
+      "prior": 0.00010767995483314377,
+      "guesses": [
+        "saiten",
+        "formul",
+        "sprich"
+      ]
+    },
+    {
+      "word": "stripp",
+      "num_guesses": 4,
+      "prior": 0.000031913237536029526,
+      "guesses": [
+        "saiten",
+        "profit",
+        "strips",
+        "stripp"
+      ]
+    },
+    {
+      "word": "arturs",
+      "num_guesses": 3,
+      "prior": 0.000041767062598115014,
+      "guesses": [
+        "saiten",
+        "aufass",
+        "arturs"
+      ]
+    },
+    {
+      "word": "hieben",
+      "num_guesses": 5,
+      "prior": 0.0000707421448077443,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "hickup",
+        "befaßt",
+        "hieben"
+      ]
+    },
+    {
+      "word": "munkle",
+      "num_guesses": 5,
+      "prior": 0.000024745691425906185,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "dunkle",
+        "funkle",
+        "munkle"
+      ]
+    },
+    {
+      "word": "koppte",
+      "num_guesses": 4,
+      "prior": 0.000019665242305416975,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "pflock",
+        "koppte"
+      ]
+    },
+    {
+      "word": "polten",
+      "num_guesses": 4,
+      "prior": 0.0000544124652771634,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "klobig",
+        "polten"
+      ]
+    },
+    {
+      "word": "relaxt",
+      "num_guesses": 3,
+      "prior": 0.00003835368956171593,
+      "guesses": [
+        "saiten",
+        "belage",
+        "relaxt"
+      ]
+    },
+    {
+      "word": "geräts",
+      "num_guesses": 3,
+      "prior": 0.00006736520991297444,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "geräts"
+      ]
+    },
+    {
+      "word": "hieige",
+      "num_guesses": 4,
+      "prior": 0.000024249382838834393,
+      "guesses": [
+        "saiten",
+        "legire",
+        "zweige",
+        "hieige"
+      ]
+    },
+    {
+      "word": "befahr",
+      "num_guesses": 4,
+      "prior": 0.00003085019525515164,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "bewahr",
+        "befahr"
+      ]
+    },
+    {
+      "word": "marine",
+      "num_guesses": 3,
+      "prior": 0.00011958311100276759,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "marine"
+      ]
+    },
+    {
+      "word": "köpers",
+      "num_guesses": 5,
+      "prior": 0.00003446386132486405,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "kuhfuß",
+        "köders",
+        "köpers"
+      ]
+    },
+    {
+      "word": "trudes",
+      "num_guesses": 4,
+      "prior": 0.00003626212700605801,
+      "guesses": [
+        "saiten",
+        "hutlos",
+        "truges",
+        "trudes"
+      ]
+    },
+    {
+      "word": "stifte",
+      "num_guesses": 4,
+      "prior": 0.00009687391369613617,
+      "guesses": [
+        "saiten",
+        "remple",
+        "stiche",
+        "stifte"
+      ]
+    },
+    {
+      "word": "abbate",
+      "num_guesses": 3,
+      "prior": 0.00006428102872060976,
+      "guesses": [
+        "saiten",
+        "belage",
+        "abbate"
+      ]
+    },
+    {
+      "word": "japsen",
+      "num_guesses": 4,
+      "prior": 0.000043856166043703135,
+      "guesses": [
+        "saiten",
+        "kumpel",
+        "rapses",
+        "japsen"
+      ]
+    },
+    {
+      "word": "yuccas",
+      "num_guesses": 4,
+      "prior": 0.000029932705667906786,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "dolche",
+        "yuccas"
+      ]
+    },
+    {
+      "word": "salmis",
+      "num_guesses": 3,
+      "prior": 0.000029303227204445786,
+      "guesses": [
+        "saiten",
+        "ambras",
+        "salmis"
+      ]
+    },
+    {
+      "word": "sindse",
+      "num_guesses": 3,
+      "prior": 0.00002592869509302444,
+      "guesses": [
+        "saiten",
+        "gerade",
+        "sindse"
+      ]
+    },
+    {
+      "word": "rinder",
+      "num_guesses": 4,
+      "prior": 0.00010792353624842993,
+      "guesses": [
+        "saiten",
+        "kindrg",
+        "bmlfuw",
+        "rinder"
+      ]
+    },
+    {
+      "word": "sähest",
+      "num_guesses": 4,
+      "prior": 0.0000490873100635516,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "mähest",
+        "sähest"
+      ]
+    },
+    {
+      "word": "sticke",
+      "num_guesses": 4,
+      "prior": 0.000043481053436992616,
+      "guesses": [
+        "saiten",
+        "remple",
+        "stiche",
+        "sticke"
+      ]
+    },
+    {
+      "word": "sechst",
+      "num_guesses": 4,
+      "prior": 0.000052950286350660475,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "seufzt",
+        "sechst"
+      ]
+    },
+    {
+      "word": "thymin",
+      "num_guesses": 3,
+      "prior": 0.000052421032160084225,
+      "guesses": [
+        "saiten",
+        "primiz",
+        "thymin"
+      ]
+    },
+    {
+      "word": "nagten",
+      "num_guesses": 5,
+      "prior": 0.00005243995928770088,
+      "guesses": [
+        "saiten",
+        "kugerl",
+        "wetzte",
+        "jagten",
+        "nagten"
+      ]
+    },
+    {
+      "word": "jagens",
+      "num_guesses": 4,
+      "prior": 0.00004822852342369198,
+      "guesses": [
+        "saiten",
+        "mugels",
+        "zwerch",
+        "jagens"
+      ]
+    },
+    {
+      "word": "sackes",
+      "num_guesses": 4,
+      "prior": 0.00007302799974426684,
+      "guesses": [
+        "saiten",
+        "ambras",
+        "salzes",
+        "sackes"
+      ]
+    },
+    {
+      "word": "schute",
+      "num_guesses": 4,
+      "prior": 0.000051254657102836574,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "schäum",
+        "schute"
+      ]
+    },
+    {
+      "word": "kopfes",
+      "num_guesses": 3,
+      "prior": 0.00012037832438765644,
+      "guesses": [
+        "saiten",
+        "formul",
+        "kopfes"
+      ]
+    },
+    {
+      "word": "knacke",
+      "num_guesses": 6,
+      "prior": 0.00003927278426482338,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "anhand",
+        "knappe",
+        "knalle",
+        "knacke"
+      ]
+    },
+    {
+      "word": "befliß",
+      "num_guesses": 4,
+      "prior": 0.0000436048919978962,
+      "guesses": [
+        "saiten",
+        "legire",
+        "keloid",
+        "befliß"
+      ]
+    },
+    {
+      "word": "hinriß",
+      "num_guesses": 3,
+      "prior": 0.000049819566370949,
+      "guesses": [
+        "saiten",
+        "findig",
+        "hinriß"
+      ]
+    },
+    {
+      "word": "zottel",
+      "num_guesses": 4,
+      "prior": 0.000041112376783004796,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "klopft",
+        "zottel"
+      ]
+    },
+    {
+      "word": "flösse",
+      "num_guesses": 5,
+      "prior": 0.00005684313727560484,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "säufst",
+        "flüsse",
+        "flösse"
+      ]
+    },
+    {
+      "word": "turtle",
+      "num_guesses": 4,
+      "prior": 0.00005022278045492675,
+      "guesses": [
+        "saiten",
+        "kreole",
+        "gärtle",
+        "turtle"
+      ]
+    },
+    {
+      "word": "schrap",
+      "num_guesses": 4,
+      "prior": 0.00002668611156886637,
+      "guesses": [
+        "saiten",
+        "ruhlas",
+        "kämpfe",
+        "schrap"
+      ]
+    },
+    {
+      "word": "ahming",
+      "num_guesses": 3,
+      "prior": 0.000018775357876084418,
+      "guesses": [
+        "saiten",
+        "anhang",
+        "ahming"
+      ]
+    },
+    {
+      "word": "degout",
+      "num_guesses": 4,
+      "prior": 0.00003517757906402452,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "geläut",
+        "degout"
+      ]
+    },
+    {
+      "word": "tüftel",
+      "num_guesses": 4,
+      "prior": 0.000022485487973377003,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "klopft",
+        "tüftel"
+      ]
+    },
+    {
+      "word": "contra",
+      "num_guesses": 2,
+      "prior": 0.00010905790693598543,
+      "guesses": [
+        "saiten",
+        "contra"
+      ]
+    },
+    {
+      "word": "glyphe",
+      "num_guesses": 4,
+      "prior": 0.00003862255016294067,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "fläche",
+        "glyphe"
+      ]
+    },
+    {
+      "word": "muffel",
+      "num_guesses": 3,
+      "prior": 0.00006581772607730694,
+      "guesses": [
+        "saiten",
+        "formul",
+        "muffel"
+      ]
+    },
+    {
+      "word": "leezen",
+      "num_guesses": 5,
+      "prior": 0.000032630086090103394,
+      "guesses": [
+        "saiten",
+        "herold",
+        "bmlfuw",
+        "lenken",
+        "leezen"
+      ]
+    },
+    {
+      "word": "bakeln",
+      "num_guesses": 3,
+      "prior": 0.000016204742151014295,
+      "guesses": [
+        "saiten",
+        "urbild",
+        "bakeln"
+      ]
+    },
+    {
+      "word": "bessre",
+      "num_guesses": 3,
+      "prior": 0.000049871119143920537,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "bessre"
+      ]
+    },
+    {
+      "word": "abätzt",
+      "num_guesses": 3,
+      "prior": 0.000018447592749639033,
+      "guesses": [
+        "saiten",
+        "krault",
+        "abätzt"
+      ]
+    },
+    {
+      "word": "brunzt",
+      "num_guesses": 4,
+      "prior": 0.00002481208557331345,
+      "guesses": [
+        "saiten",
+        "kreuzt",
+        "grunzt",
+        "brunzt"
+      ]
+    },
+    {
+      "word": "trieft",
+      "num_guesses": 3,
+      "prior": 0.00007233456060198197,
+      "guesses": [
+        "saiten",
+        "heferl",
+        "trieft"
+      ]
+    },
+    {
+      "word": "parier",
+      "num_guesses": 3,
+      "prior": 0.00005815334619340314,
+      "guesses": [
+        "saiten",
+        "pardel",
+        "parier"
+      ]
+    },
+    {
+      "word": "olymps",
+      "num_guesses": 3,
+      "prior": 0.00005167038217298125,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "olymps"
+      ]
+    },
+    {
+      "word": "ubiers",
+      "num_guesses": 3,
+      "prior": 0.000016178731194801277,
+      "guesses": [
+        "saiten",
+        "begehr",
+        "ubiers"
+      ]
+    },
+    {
+      "word": "nadeln",
+      "num_guesses": 3,
+      "prior": 0.00011950727588632246,
+      "guesses": [
+        "saiten",
+        "urbild",
+        "nadeln"
+      ]
+    },
+    {
+      "word": "wählte",
+      "num_guesses": 5,
+      "prior": 0.00011873176494627836,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "hohlem",
+        "würfel",
+        "wählte"
+      ]
+    },
+    {
+      "word": "kotete",
+      "num_guesses": 4,
+      "prior": 0.000023132563550421984,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "tollte",
+        "kotete"
+      ]
+    },
+    {
+      "word": "juxend",
+      "num_guesses": 4,
+      "prior": 0.00001721224278250901,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "zulauf",
+        "juxend"
+      ]
+    },
+    {
+      "word": "betane",
+      "num_guesses": 3,
+      "prior": 0.000017332760340674258,
+      "guesses": [
+        "saiten",
+        "arkane",
+        "betane"
+      ]
+    },
+    {
+      "word": "atomar",
+      "num_guesses": 3,
+      "prior": 0.00005194338515241182,
+      "guesses": [
+        "saiten",
+        "flarak",
+        "atomar"
+      ]
+    },
+    {
+      "word": "judoka",
+      "num_guesses": 3,
+      "prior": 0.00003557926935760464,
+      "guesses": [
+        "saiten",
+        "formul",
+        "judoka"
+      ]
+    },
+    {
+      "word": "körten",
+      "num_guesses": 5,
+      "prior": 0.0000333787500986107,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "torweg",
+        "zökums",
+        "körten"
+      ]
+    },
+    {
+      "word": "batzen",
+      "num_guesses": 4,
+      "prior": 0.00007152795037899253,
+      "guesses": [
+        "saiten",
+        "punkig",
+        "thürmt",
+        "batzen"
+      ]
+    },
+    {
+      "word": "wetzte",
+      "num_guesses": 4,
+      "prior": 0.000046858092774807074,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "wolkig",
+        "wetzte"
+      ]
+    },
+    {
+      "word": "pensum",
+      "num_guesses": 4,
+      "prior": 0.00007236920441907296,
+      "guesses": [
+        "saiten",
+        "leders",
+        "mensch",
+        "pensum"
+      ]
+    },
+    {
+      "word": "kirren",
+      "num_guesses": 4,
+      "prior": 0.00004168508134390692,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "kurzer",
+        "kirren"
+      ]
+    },
+    {
+      "word": "sessil",
+      "num_guesses": 3,
+      "prior": 0.00003856290986510836,
+      "guesses": [
+        "saiten",
+        "delire",
+        "sessil"
+      ]
+    },
+    {
+      "word": "freies",
+      "num_guesses": 3,
+      "prior": 0.00011362335795618401,
+      "guesses": [
+        "saiten",
+        "erdles",
+        "freies"
+      ]
+    },
+    {
+      "word": "burgus",
+      "num_guesses": 4,
+      "prior": 0.000047604892467366726,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "kursus",
+        "burgus"
+      ]
+    },
+    {
+      "word": "flitze",
+      "num_guesses": 3,
+      "prior": 0.000038616120304480764,
+      "guesses": [
+        "saiten",
+        "durfte",
+        "flitze"
+      ]
+    },
+    {
+      "word": "logion",
+      "num_guesses": 3,
+      "prior": 0.000051525855484342415,
+      "guesses": [
+        "saiten",
+        "florid",
+        "logion"
+      ]
+    },
+    {
+      "word": "eagles",
+      "num_guesses": 4,
+      "prior": 0.0000448164888188897,
+      "guesses": [
+        "saiten",
+        "buhler",
+        "bmlfuw",
+        "eagles"
+      ]
+    },
+    {
+      "word": "lunsch",
+      "num_guesses": 4,
+      "prior": 0.000021483949088955173,
+      "guesses": [
+        "saiten",
+        "urcool",
+        "lunchs",
+        "lunsch"
+      ]
+    },
+    {
+      "word": "gansus",
+      "num_guesses": 4,
+      "prior": 0.000018760948528423794,
+      "guesses": [
+        "saiten",
+        "konrad",
+        "umfass",
+        "gansus"
+      ]
+    },
+    {
+      "word": "konans",
+      "num_guesses": 4,
+      "prior": 0.000015589334194777547,
+      "guesses": [
+        "saiten",
+        "rodung",
+        "bemerk",
+        "konans"
+      ]
+    },
+    {
+      "word": "solala",
+      "num_guesses": 4,
+      "prior": 0.000024228665693808507,
+      "guesses": [
+        "saiten",
+        "ruhlas",
+        "sobald",
+        "solala"
+      ]
+    },
+    {
+      "word": "troyer",
+      "num_guesses": 5,
+      "prior": 0.00004265874065921429,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "träger",
+        "trüber",
+        "troyer"
+      ]
+    },
+    {
+      "word": "reiche",
+      "num_guesses": 3,
+      "prior": 0.0001600207554705148,
+      "guesses": [
+        "saiten",
+        "gehler",
+        "reiche"
+      ]
+    },
+    {
+      "word": "bandit",
+      "num_guesses": 3,
+      "prior": 0.00006352666660749331,
+      "guesses": [
+        "saiten",
+        "optima",
+        "bandit"
+      ]
+    },
+    {
+      "word": "chillt",
+      "num_guesses": 3,
+      "prior": 0.000025512051476344497,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "chillt"
+      ]
+    },
+    {
+      "word": "heulte",
+      "num_guesses": 3,
+      "prior": 0.0000809244451820226,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "heulte"
+      ]
+    },
+    {
+      "word": "urerde",
+      "num_guesses": 4,
+      "prior": 0.00003185268067156469,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "erkund",
+        "urerde"
+      ]
+    },
+    {
+      "word": "zweckt",
+      "num_guesses": 4,
+      "prior": 0.000041472727004691005,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "modell",
+        "zweckt"
+      ]
+    },
+    {
+      "word": "ammers",
+      "num_guesses": 4,
+      "prior": 0.000035613788618543216,
+      "guesses": [
+        "saiten",
+        "beruss",
+        "elfeck",
+        "ammers"
+      ]
+    },
+    {
+      "word": "stücke",
+      "num_guesses": 4,
+      "prior": 0.00016168541423519,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "konsum",
+        "stücke"
+      ]
+    },
+    {
+      "word": "lunten",
+      "num_guesses": 4,
+      "prior": 0.00005317400346785173,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "punkig",
+        "lunten"
+      ]
+    },
+    {
+      "word": "baalen",
+      "num_guesses": 4,
+      "prior": 0.000034881937199312806,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "külbel",
+        "baalen"
+      ]
+    },
+    {
+      "word": "ansäge",
+      "num_guesses": 4,
+      "prior": 0.000021957725119006177,
+      "guesses": [
+        "saiten",
+        "gelend",
+        "ansage",
+        "ansäge"
+      ]
+    },
+    {
+      "word": "gratis",
+      "num_guesses": 2,
+      "prior": 0.00009545057000388702,
+      "guesses": [
+        "saiten",
+        "gratis"
+      ]
+    },
+    {
+      "word": "stemmt",
+      "num_guesses": 4,
+      "prior": 0.00006691803883243301,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "mähest",
+        "stemmt"
+      ]
+    },
+    {
+      "word": "bingte",
+      "num_guesses": 5,
+      "prior": 0.00001370057751912528,
+      "guesses": [
+        "saiten",
+        "einige",
+        "dingte",
+        "pingte",
+        "bingte"
+      ]
+    },
+    {
+      "word": "helmte",
+      "num_guesses": 4,
+      "prior": 0.000020814041193379265,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "hohlem",
+        "helmte"
+      ]
+    },
+    {
+      "word": "queere",
+      "num_guesses": 5,
+      "prior": 0.00004746235819286068,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "urform",
+        "äußere",
+        "queere"
+      ]
+    },
+    {
+      "word": "stilen",
+      "num_guesses": 2,
+      "prior": 0.00006488981061184879,
+      "guesses": [
+        "saiten",
+        "stilen"
+      ]
+    },
+    {
+      "word": "singet",
+      "num_guesses": 3,
+      "prior": 0.00006507968351757932,
+      "guesses": [
+        "saiten",
+        "signet",
+        "singet"
+      ]
+    },
+    {
+      "word": "gekört",
+      "num_guesses": 3,
+      "prior": 0.0000394145534893033,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "gekört"
+      ]
+    },
+    {
+      "word": "arosas",
+      "num_guesses": 4,
+      "prior": 0.00002225708910100857,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "agoras",
+        "arosas"
+      ]
+    },
+    {
+      "word": "schalk",
+      "num_guesses": 4,
+      "prior": 0.0000766474353284978,
+      "guesses": [
+        "saiten",
+        "ruhlas",
+        "schall",
+        "schalk"
+      ]
+    },
+    {
+      "word": "dreher",
+      "num_guesses": 4,
+      "prior": 0.00007628403903305799,
+      "guesses": [
+        "saiten",
+        "formul",
+        "bedeck",
+        "dreher"
+      ]
+    },
+    {
+      "word": "hadert",
+      "num_guesses": 4,
+      "prior": 0.00005237478242163444,
+      "guesses": [
+        "saiten",
+        "kurble",
+        "pattem",
+        "hadert"
+      ]
+    },
+    {
+      "word": "albits",
+      "num_guesses": 3,
+      "prior": 0.00004082489381005334,
+      "guesses": [
+        "saiten",
+        "abtrat",
+        "albits"
+      ]
+    },
+    {
+      "word": "quoten",
+      "num_guesses": 4,
+      "prior": 0.00007970740380896664,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "totbiß",
+        "quoten"
+      ]
+    },
+    {
+      "word": "ablaut",
+      "num_guesses": 4,
+      "prior": 0.00006022737164309956,
+      "guesses": [
+        "saiten",
+        "flarak",
+        "umgeht",
+        "ablaut"
+      ]
+    },
+    {
+      "word": "tötest",
+      "num_guesses": 5,
+      "prior": 0.000050977329590519024,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "hältst",
+        "tosest",
+        "tötest"
+      ]
+    },
+    {
+      "word": "finnig",
+      "num_guesses": 3,
+      "prior": 0.000045760607744068526,
+      "guesses": [
+        "saiten",
+        "findig",
+        "finnig"
+      ]
+    },
+    {
+      "word": "fylgja",
+      "num_guesses": 3,
+      "prior": 0.000034874688501869746,
+      "guesses": [
+        "saiten",
+        "formul",
+        "fylgja"
+      ]
+    },
+    {
+      "word": "webens",
+      "num_guesses": 4,
+      "prior": 0.0000494982348909226,
+      "guesses": [
+        "saiten",
+        "leders",
+        "schwbg",
+        "webens"
+      ]
+    },
+    {
+      "word": "besonn",
+      "num_guesses": 3,
+      "prior": 0.000029220317518243263,
+      "guesses": [
+        "saiten",
+        "lemure",
+        "besonn"
+      ]
+    },
+    {
+      "word": "mutige",
+      "num_guesses": 4,
+      "prior": 0.0000781413168310331,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "glotzt",
+        "mutige"
+      ]
+    },
+    {
+      "word": "kossät",
+      "num_guesses": 4,
+      "prior": 0.000030991015998781125,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "bokmål",
+        "kossät"
+      ]
+    },
+    {
+      "word": "ragend",
+      "num_guesses": 3,
+      "prior": 0.00005319969626108468,
+      "guesses": [
+        "saiten",
+        "goderl",
+        "ragend"
+      ]
+    },
+    {
+      "word": "datete",
+      "num_guesses": 5,
+      "prior": 0.000024472730062914682,
+      "guesses": [
+        "saiten",
+        "kurble",
+        "tempeh",
+        "watete",
+        "datete"
+      ]
+    },
+    {
+      "word": "mordet",
+      "num_guesses": 4,
+      "prior": 0.00006202678703394708,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "bürdet",
+        "mordet"
+      ]
+    },
+    {
+      "word": "ereilt",
+      "num_guesses": 3,
+      "prior": 0.00007135761782113578,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "ereilt"
+      ]
+    },
+    {
+      "word": "wölbte",
+      "num_guesses": 4,
+      "prior": 0.00006809146386337449,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "jobbte",
+        "wölbte"
+      ]
+    },
+    {
+      "word": "seriös",
+      "num_guesses": 3,
+      "prior": 0.00006517756009963367,
+      "guesses": [
+        "saiten",
+        "delire",
+        "seriös"
+      ]
+    },
+    {
+      "word": "ziehst",
+      "num_guesses": 4,
+      "prior": 0.00007232874751225361,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "physik",
+        "ziehst"
+      ]
+    },
+    {
+      "word": "fohlte",
+      "num_guesses": 5,
+      "prior": 0.000029731812016416872,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "hohlem",
+        "kräfte",
+        "fohlte"
+      ]
+    },
+    {
+      "word": "beitel",
+      "num_guesses": 3,
+      "prior": 0.00004035598696761082,
+      "guesses": [
+        "saiten",
+        "urwelt",
+        "beitel"
+      ]
+    },
+    {
+      "word": "tuchen",
+      "num_guesses": 3,
+      "prior": 0.00005423592100702258,
+      "guesses": [
+        "saiten",
+        "trumpf",
+        "tuchen"
+      ]
+    },
+    {
+      "word": "hagels",
+      "num_guesses": 4,
+      "prior": 0.000049211393288603196,
+      "guesses": [
+        "saiten",
+        "humple",
+        "selbst",
+        "hagels"
+      ]
+    },
+    {
+      "word": "fusels",
+      "num_guesses": 4,
+      "prior": 0.000030764851796066934,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "dubiös",
+        "fusels"
+      ]
+    },
+    {
+      "word": "loewes",
+      "num_guesses": 5,
+      "prior": 0.00004685512564078507,
+      "guesses": [
+        "saiten",
+        "formul",
+        "zollvg",
+        "loches",
+        "loewes"
+      ]
+    },
+    {
+      "word": "morsen",
+      "num_guesses": 4,
+      "prior": 0.000040600388827914444,
+      "guesses": [
+        "saiten",
+        "besäum",
+        "sofort",
+        "morsen"
+      ]
+    },
+    {
+      "word": "vermur",
+      "num_guesses": 4,
+      "prior": 0.000016019041400954036,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "vergor",
+        "vermur"
+      ]
+    },
+    {
+      "word": "drille",
+      "num_guesses": 4,
+      "prior": 0.000044573215781190945,
+      "guesses": [
+        "saiten",
+        "gehler",
+        "brille",
+        "drille"
+      ]
+    },
+    {
+      "word": "vorhut",
+      "num_guesses": 3,
+      "prior": 0.0000783534054388837,
+      "guesses": [
+        "saiten",
+        "formul",
+        "vorhut"
+      ]
+    },
+    {
+      "word": "lesers",
+      "num_guesses": 4,
+      "prior": 0.00009890598689272413,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "besuch",
+        "lesers"
+      ]
+    },
+    {
+      "word": "ladens",
+      "num_guesses": 3,
+      "prior": 0.0000698124132818193,
+      "guesses": [
+        "saiten",
+        "mugels",
+        "ladens"
+      ]
+    },
+    {
+      "word": "fracke",
+      "num_guesses": 4,
+      "prior": 0.000036330115108803246,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "kumpel",
+        "fracke"
+      ]
+    },
+    {
+      "word": "ration",
+      "num_guesses": 3,
+      "prior": 0.00008012624359209665,
+      "guesses": [
+        "saiten",
+        "nation",
+        "ration"
+      ]
+    },
+    {
+      "word": "rhäter",
+      "num_guesses": 3,
+      "prior": 0.000028770131114572132,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "rhäter"
+      ]
+    },
+    {
+      "word": "thuest",
+      "num_guesses": 4,
+      "prior": 0.000039247951389745955,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "holdem",
+        "thuest"
+      ]
+    },
+    {
+      "word": "umhang",
+      "num_guesses": 3,
+      "prior": 0.00007896719923013824,
+      "guesses": [
+        "saiten",
+        "unhold",
+        "umhang"
+      ]
+    },
+    {
+      "word": "zamien",
+      "num_guesses": 3,
+      "prior": 0.000027059752891202466,
+      "guesses": [
+        "saiten",
+        "marien",
+        "zamien"
+      ]
+    },
+    {
+      "word": "presst",
+      "num_guesses": 4,
+      "prior": 0.00007376273197794217,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "diplom",
+        "presst"
+      ]
+    },
+    {
+      "word": "gigerl",
+      "num_guesses": 3,
+      "prior": 0.00003712389218600067,
+      "guesses": [
+        "saiten",
+        "legire",
+        "gigerl"
+      ]
+    },
+    {
+      "word": "borken",
+      "num_guesses": 4,
+      "prior": 0.00007197209452651033,
+      "guesses": [
+        "saiten",
+        "herold",
+        "krampf",
+        "borken"
+      ]
+    },
+    {
+      "word": "iambos",
+      "num_guesses": 4,
+      "prior": 0.0000352901069261034,
+      "guesses": [
+        "saiten",
+        "purims",
+        "maggis",
+        "iambos"
+      ]
+    },
+    {
+      "word": "eirest",
+      "num_guesses": 4,
+      "prior": 0.000023406939443161358,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "eiters",
+        "eirest"
+      ]
+    },
+    {
+      "word": "heferl",
+      "num_guesses": 3,
+      "prior": 0.00002210194656907149,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "heferl"
+      ]
+    },
+    {
+      "word": "vagant",
+      "num_guesses": 3,
+      "prior": 0.00004486116076576323,
+      "guesses": [
+        "saiten",
+        "organa",
+        "vagant"
+      ]
+    },
+    {
+      "word": "besieg",
+      "num_guesses": 4,
+      "prior": 0.00003455086372864562,
+      "guesses": [
+        "saiten",
+        "erdles",
+        "gefahr",
+        "besieg"
+      ]
+    },
+    {
+      "word": "rammes",
+      "num_guesses": 4,
+      "prior": 0.00002739480923973787,
+      "guesses": [
+        "saiten",
+        "buhler",
+        "parmas",
+        "rammes"
+      ]
+    },
+    {
+      "word": "hantel",
+      "num_guesses": 3,
+      "prior": 0.0000555718618530985,
+      "guesses": [
+        "saiten",
+        "thürmt",
+        "hantel"
+      ]
+    },
+    {
+      "word": "muster",
+      "num_guesses": 4,
+      "prior": 0.000146959388470906,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "kruder",
+        "muster"
+      ]
+    },
+    {
+      "word": "chalet",
+      "num_guesses": 3,
+      "prior": 0.00005200537115243142,
+      "guesses": [
+        "saiten",
+        "glaubt",
+        "chalet"
+      ]
+    },
+    {
+      "word": "umnäht",
+      "num_guesses": 4,
+      "prior": 0.000030476081566485592,
+      "guesses": [
+        "saiten",
+        "kreuzt",
+        "umtönt",
+        "umnäht"
+      ]
+    },
+    {
+      "word": "tanits",
+      "num_guesses": 3,
+      "prior": 0.000020649520928899604,
+      "guesses": [
+        "saiten",
+        "nazist",
+        "tanits"
+      ]
+    },
+    {
+      "word": "zeigst",
+      "num_guesses": 4,
+      "prior": 0.00006602317673763478,
+      "guesses": [
+        "saiten",
+        "heferl",
+        "gebiss",
+        "zeigst"
+      ]
+    },
+    {
+      "word": "diseur",
+      "num_guesses": 4,
+      "prior": 0.000024997964675510095,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "dampfs",
+        "diseur"
+      ]
+    },
+    {
+      "word": "tizian",
+      "num_guesses": 3,
+      "prior": 0.00007850244740851807,
+      "guesses": [
+        "saiten",
+        "aktion",
+        "tizian"
+      ]
+    },
+    {
+      "word": "stunde",
+      "num_guesses": 3,
+      "prior": 0.00017891519049162253,
+      "guesses": [
+        "saiten",
+        "äthere",
+        "stunde"
+      ]
+    },
+    {
+      "word": "fibrin",
+      "num_guesses": 3,
+      "prior": 0.00008566731204582045,
+      "guesses": [
+        "saiten",
+        "florid",
+        "fibrin"
+      ]
+    },
+    {
+      "word": "couchs",
+      "num_guesses": 4,
+      "prior": 0.0000233169100842073,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "coupés",
+        "couchs"
+      ]
+    },
+    {
+      "word": "flause",
+      "num_guesses": 4,
+      "prior": 0.00003151200784402695,
+      "guesses": [
+        "saiten",
+        "beruss",
+        "zurück",
+        "flause"
+      ]
+    },
+    {
+      "word": "lassem",
+      "num_guesses": 4,
+      "prior": 0.000049115607089294566,
+      "guesses": [
+        "saiten",
+        "buhler",
+        "kalmus",
+        "lassem"
+      ]
+    },
+    {
+      "word": "glosse",
+      "num_guesses": 3,
+      "prior": 0.0000893957601598459,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "glosse"
+      ]
+    },
+    {
+      "word": "brummi",
+      "num_guesses": 4,
+      "prior": 0.000036282783315105355,
+      "guesses": [
+        "saiten",
+        "vorlud",
+        "rubrik",
+        "brummi"
+      ]
+    },
+    {
+      "word": "pumpen",
+      "num_guesses": 4,
+      "prior": 0.0000971266100359784,
+      "guesses": [
+        "saiten",
+        "herold",
+        "kumpfe",
+        "pumpen"
+      ]
+    },
+    {
+      "word": "ramins",
+      "num_guesses": 4,
+      "prior": 0.00002932259965486168,
+      "guesses": [
+        "saiten",
+        "konrad",
+        "warins",
+        "ramins"
+      ]
+    },
+    {
+      "word": "anpaßt",
+      "num_guesses": 4,
+      "prior": 0.00006919049517767724,
+      "guesses": [
+        "saiten",
+        "anlagt",
+        "humbug",
+        "anpaßt"
+      ]
+    },
+    {
+      "word": "toross",
+      "num_guesses": 4,
+      "prior": 0.000021738025219555537,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "torsos",
+        "toross"
+      ]
+    },
+    {
+      "word": "barmen",
+      "num_guesses": 4,
+      "prior": 0.00008317851066877975,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "dibbuk",
+        "barmen"
+      ]
+    },
+    {
+      "word": "käthes",
+      "num_guesses": 3,
+      "prior": 0.00004483862589504811,
+      "guesses": [
+        "saiten",
+        "hutlos",
+        "käthes"
+      ]
+    },
+    {
+      "word": "gewühl",
+      "num_guesses": 4,
+      "prior": 0.00007431642924121615,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "gefühl",
+        "gewühl"
+      ]
+    },
+    {
+      "word": "ledern",
+      "num_guesses": 4,
+      "prior": 0.00005175189225179715,
+      "guesses": [
+        "saiten",
+        "gebärd",
+        "klampf",
+        "ledern"
+      ]
+    },
+    {
+      "word": "walone",
+      "num_guesses": 3,
+      "prior": 0.000017292960241176595,
+      "guesses": [
+        "saiten",
+        "goderl",
+        "walone"
+      ]
+    },
+    {
+      "word": "beeten",
+      "num_guesses": 5,
+      "prior": 0.00006563464820626994,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "betupf",
+        "bebten",
+        "beeten"
+      ]
+    },
+    {
+      "word": "achter",
+      "num_guesses": 3,
+      "prior": 0.00007996620538670679,
+      "guesses": [
+        "saiten",
+        "krault",
+        "achter"
+      ]
+    },
+    {
+      "word": "borgte",
+      "num_guesses": 3,
+      "prior": 0.00005545514682919759,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "borgte"
+      ]
+    },
+    {
+      "word": "wegmuß",
+      "num_guesses": 4,
+      "prior": 0.000020186748666010208,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "wegzug",
+        "wegmuß"
+      ]
+    },
+    {
+      "word": "yoruba",
+      "num_guesses": 4,
+      "prior": 0.000057912810808939734,
+      "guesses": [
+        "saiten",
+        "formul",
+        "vorbau",
+        "yoruba"
+      ]
+    },
+    {
+      "word": "regere",
+      "num_guesses": 4,
+      "prior": 0.000059098971062913364,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "gerede",
+        "regere"
+      ]
+    },
+    {
+      "word": "ahndet",
+      "num_guesses": 3,
+      "prior": 0.00005671066242175747,
+      "guesses": [
+        "saiten",
+        "anglet",
+        "ahndet"
+      ]
+    },
+    {
+      "word": "dolcht",
+      "num_guesses": 3,
+      "prior": 0.00001908171519397128,
+      "guesses": [
+        "saiten",
+        "formul",
+        "dolcht"
+      ]
+    },
+    {
+      "word": "lieder",
+      "num_guesses": 3,
+      "prior": 0.00014002570494564957,
+      "guesses": [
+        "saiten",
+        "melder",
+        "lieder"
+      ]
+    },
+    {
+      "word": "andren",
+      "num_guesses": 4,
+      "prior": 0.00009299615074341699,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "avesta",
+        "andren"
+      ]
+    },
+    {
+      "word": "markts",
+      "num_guesses": 3,
+      "prior": 0.00006337888112323907,
+      "guesses": [
+        "saiten",
+        "mulcht",
+        "markts"
+      ]
+    },
+    {
+      "word": "zunahm",
+      "num_guesses": 4,
+      "prior": 0.0000870529504889638,
+      "guesses": [
+        "saiten",
+        "unhold",
+        "ahnung",
+        "zunahm"
+      ]
+    },
+    {
+      "word": "bohret",
+      "num_guesses": 5,
+      "prior": 0.000038528083809111514,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "rühret",
+        "währet",
+        "bohret"
+      ]
+    },
+    {
+      "word": "konvex",
+      "num_guesses": 4,
+      "prior": 0.00008073807688048532,
+      "guesses": [
+        "saiten",
+        "dengel",
+        "kämpfe",
+        "konvex"
+      ]
+    },
+    {
+      "word": "olmütz",
+      "num_guesses": 3,
+      "prior": 0.00008594385919127016,
+      "guesses": [
+        "saiten",
+        "formul",
+        "olmütz"
+      ]
+    },
+    {
+      "word": "boiler",
+      "num_guesses": 3,
+      "prior": 0.000053978724781241836,
+      "guesses": [
+        "saiten",
+        "gehlem",
+        "boiler"
+      ]
+    },
+    {
+      "word": "hekate",
+      "num_guesses": 3,
+      "prior": 0.00006271445924996161,
+      "guesses": [
+        "saiten",
+        "belage",
+        "hekate"
+      ]
+    },
+    {
+      "word": "wattet",
+      "num_guesses": 4,
+      "prior": 0.000022227870635809136,
+      "guesses": [
+        "saiten",
+        "formul",
+        "gothik",
+        "wattet"
+      ]
+    },
+    {
+      "word": "knöppe",
+      "num_guesses": 4,
+      "prior": 0.00002651109385970193,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "pflock",
+        "knöppe"
+      ]
+    },
+    {
+      "word": "hörndl",
+      "num_guesses": 3,
+      "prior": 0.0000301348532945991,
+      "guesses": [
+        "saiten",
+        "kordel",
+        "hörndl"
+      ]
+    },
+    {
+      "word": "amoral",
+      "num_guesses": 3,
+      "prior": 0.00003899532340800842,
+      "guesses": [
+        "saiten",
+        "formul",
+        "amoral"
+      ]
+    },
+    {
+      "word": "wirfst",
+      "num_guesses": 4,
+      "prior": 0.000060543755328502875,
+      "guesses": [
+        "saiten",
+        "lurchs",
+        "wibkes",
+        "wirfst"
+      ]
+    },
+    {
+      "word": "söhnst",
+      "num_guesses": 4,
+      "prior": 0.000019420115934440552,
+      "guesses": [
+        "saiten",
+        "gehont",
+        "sühnst",
+        "söhnst"
+      ]
+    },
+    {
+      "word": "gartet",
+      "num_guesses": 4,
+      "prior": 0.000022987143723926378,
+      "guesses": [
+        "saiten",
+        "formul",
+        "khowar",
+        "gartet"
+      ]
+    },
+    {
+      "word": "bemalt",
+      "num_guesses": 3,
+      "prior": 0.00008720656933524176,
+      "guesses": [
+        "saiten",
+        "belage",
+        "bemalt"
+      ]
+    },
+    {
+      "word": "zeugst",
+      "num_guesses": 4,
+      "prior": 0.000032132552251646035,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "gelust",
+        "zeugst"
+      ]
+    },
+    {
+      "word": "forder",
+      "num_guesses": 3,
+      "prior": 0.000053350613514760346,
+      "guesses": [
+        "saiten",
+        "formul",
+        "forder"
+      ]
+    },
+    {
+      "word": "fügest",
+      "num_guesses": 5,
+      "prior": 0.000026938630147587334,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "hältst",
+        "pzkpfw",
+        "fügest"
+      ]
+    },
+    {
+      "word": "besamt",
+      "num_guesses": 4,
+      "prior": 0.00004649922270744586,
+      "guesses": [
+        "saiten",
+        "erbest",
+        "großem",
+        "besamt"
+      ]
+    },
+    {
+      "word": "ysopen",
+      "num_guesses": 4,
+      "prior": 0.000020775797404934672,
+      "guesses": [
+        "saiten",
+        "besäum",
+        "drosch",
+        "ysopen"
+      ]
+    },
+    {
+      "word": "abhalf",
+      "num_guesses": 3,
+      "prior": 0.00003731672249837926,
+      "guesses": [
+        "saiten",
+        "formul",
+        "abhalf"
+      ]
+    },
+    {
+      "word": "verhau",
+      "num_guesses": 4,
+      "prior": 0.00005242955274982728,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "duplum",
+        "verhau"
+      ]
+    },
+    {
+      "word": "morste",
+      "num_guesses": 5,
+      "prior": 0.00002995938370106294,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "schwof",
+        "mutter",
+        "morste"
+      ]
+    },
+    {
+      "word": "stabil",
+      "num_guesses": 2,
+      "prior": 0.0001043748606994064,
+      "guesses": [
+        "saiten",
+        "stabil"
+      ]
+    },
+    {
+      "word": "combos",
+      "num_guesses": 3,
+      "prior": 0.00003221265100799262,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "combos"
+      ]
+    },
+    {
+      "word": "gebots",
+      "num_guesses": 3,
+      "prior": 0.0000687085179436612,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "gebots"
+      ]
+    },
+    {
+      "word": "mildem",
+      "num_guesses": 3,
+      "prior": 0.00006846956786895051,
+      "guesses": [
+        "saiten",
+        "melder",
+        "mildem"
+      ]
+    },
+    {
+      "word": "musizi",
+      "num_guesses": 4,
+      "prior": 0.000021841128835836225,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "muschi",
+        "musizi"
+      ]
+    },
+    {
+      "word": "ihrzen",
+      "num_guesses": 4,
+      "prior": 0.00003351588657161132,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "kurzer",
+        "ihrzen"
+      ]
+    },
+    {
+      "word": "pyrits",
+      "num_guesses": 4,
+      "prior": 0.00004473955514917539,
+      "guesses": [
+        "saiten",
+        "lurchs",
+        "toriis",
+        "pyrits"
+      ]
+    },
+    {
+      "word": "grölen",
+      "num_guesses": 4,
+      "prior": 0.00005023429673670864,
+      "guesses": [
+        "saiten",
+        "herold",
+        "klären",
+        "grölen"
+      ]
+    },
+    {
+      "word": "briete",
+      "num_guesses": 4,
+      "prior": 0.000040561493812086694,
+      "guesses": [
+        "saiten",
+        "heferl",
+        "triebe",
+        "briete"
+      ]
+    },
+    {
+      "word": "grahms",
+      "num_guesses": 4,
+      "prior": 0.000017620200362343613,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "gramms",
+        "grahms"
+      ]
+    },
+    {
+      "word": "cargos",
+      "num_guesses": 4,
+      "prior": 0.00003080069211931889,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "bardos",
+        "cargos"
+      ]
+    },
+    {
+      "word": "errata",
+      "num_guesses": 4,
+      "prior": 0.00005196988176122808,
+      "guesses": [
+        "saiten",
+        "belage",
+        "kämpft",
+        "errata"
+      ]
+    },
+    {
+      "word": "krenes",
+      "num_guesses": 5,
+      "prior": 0.000017801890341553807,
+      "guesses": [
+        "saiten",
+        "bernds",
+        "grünes",
+        "frones",
+        "krenes"
+      ]
+    },
+    {
+      "word": "comics",
+      "num_guesses": 3,
+      "prior": 0.00007421728554302596,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "comics"
+      ]
+    },
+    {
+      "word": "fettes",
+      "num_guesses": 4,
+      "prior": 0.00008928941066149421,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "bushof",
+        "fettes"
+      ]
+    },
+    {
+      "word": "umsank",
+      "num_guesses": 4,
+      "prior": 0.000033910299685643156,
+      "guesses": [
+        "saiten",
+        "rodung",
+        "hunans",
+        "umsank"
+      ]
+    },
+    {
+      "word": "wehren",
+      "num_guesses": 4,
+      "prior": 0.0001105747484055627,
+      "guesses": [
+        "saiten",
+        "herold",
+        "mohawk",
+        "wehren"
+      ]
+    },
+    {
+      "word": "gamten",
+      "num_guesses": 5,
+      "prior": 0.000014038674006387838,
+      "guesses": [
+        "saiten",
+        "kugerl",
+        "gatten",
+        "ganten",
+        "gamten"
+      ]
+    },
+    {
+      "word": "bloßes",
+      "num_guesses": 3,
+      "prior": 0.00010141509369473107,
+      "guesses": [
+        "saiten",
+        "formul",
+        "bloßes"
+      ]
+    },
+    {
+      "word": "wackel",
+      "num_guesses": 5,
+      "prior": 0.00003533494837567067,
+      "guesses": [
+        "saiten",
+        "schmul",
+        "ölfeld",
+        "wenige",
+        "wackel"
+      ]
+    },
+    {
+      "word": "juckle",
+      "num_guesses": 5,
+      "prior": 0.000015880925596535968,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "kumpfe",
+        "zuckle",
+        "juckle"
+      ]
+    },
+    {
+      "word": "hervés",
+      "num_guesses": 4,
+      "prior": 0.000025690998757306164,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "verbuk",
+        "hervés"
+      ]
+    },
+    {
+      "word": "betöre",
+      "num_guesses": 3,
+      "prior": 0.00003371470815395944,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "betöre"
+      ]
+    },
+    {
+      "word": "oreale",
+      "num_guesses": 4,
+      "prior": 0.000020520077855066737,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "areale",
+        "oreale"
+      ]
+    },
+    {
+      "word": "ekzems",
+      "num_guesses": 3,
+      "prior": 0.000057323511799855046,
+      "guesses": [
+        "saiten",
+        "orgele",
+        "ekzems"
+      ]
+    },
+    {
+      "word": "kümpfe",
+      "num_guesses": 5,
+      "prior": 0.000032794025399822265,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "kungfu",
+        "kämpfe",
+        "kümpfe"
+      ]
+    },
+    {
+      "word": "peilst",
+      "num_guesses": 5,
+      "prior": 0.000021746025967110882,
+      "guesses": [
+        "saiten",
+        "heferl",
+        "tombak",
+        "weilst",
+        "peilst"
+      ]
+    },
+    {
+      "word": "äthert",
+      "num_guesses": 4,
+      "prior": 0.000035616011077209394,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "erhält",
+        "äthert"
+      ]
+    },
+    {
+      "word": "poncho",
+      "num_guesses": 3,
+      "prior": 0.00005011383752839146,
+      "guesses": [
+        "saiten",
+        "kordel",
+        "poncho"
+      ]
+    },
+    {
+      "word": "raffte",
+      "num_guesses": 4,
+      "prior": 0.00008083202031499933,
+      "guesses": [
+        "saiten",
+        "kurble",
+        "tempeh",
+        "raffte"
+      ]
+    },
+    {
+      "word": "frügst",
+      "num_guesses": 4,
+      "prior": 0.000015036951972258633,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "frägst",
+        "frügst"
+      ]
+    },
+    {
+      "word": "quälst",
+      "num_guesses": 4,
+      "prior": 0.000049037014318228215,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "phloem",
+        "quälst"
+      ]
+    },
+    {
+      "word": "röhren",
+      "num_guesses": 4,
+      "prior": 0.00011906197575534213,
+      "guesses": [
+        "saiten",
+        "herold",
+        "mäurer",
+        "röhren"
+      ]
+    },
+    {
+      "word": "zeugte",
+      "num_guesses": 3,
+      "prior": 0.00008229215189173037,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "zeugte"
+      ]
+    },
+    {
+      "word": "futier",
+      "num_guesses": 5,
+      "prior": 0.000017942080023590316,
+      "guesses": [
+        "saiten",
+        "zerleg",
+        "roßkur",
+        "mutier",
+        "futier"
+      ]
+    },
+    {
+      "word": "malmst",
+      "num_guesses": 3,
+      "prior": 0.000021616576135398657,
+      "guesses": [
+        "saiten",
+        "mulcht",
+        "malmst"
+      ]
+    },
+    {
+      "word": "bechre",
+      "num_guesses": 4,
+      "prior": 0.000017411281156788812,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "beehre",
+        "bechre"
+      ]
+    },
+    {
+      "word": "bergan",
+      "num_guesses": 3,
+      "prior": 0.00006759071277745518,
+      "guesses": [
+        "saiten",
+        "gramls",
+        "bergan"
+      ]
+    },
+    {
+      "word": "zinkte",
+      "num_guesses": 4,
+      "prior": 0.00002033527466015036,
+      "guesses": [
+        "saiten",
+        "einige",
+        "walkuh",
+        "zinkte"
+      ]
+    },
+    {
+      "word": "quasen",
+      "num_guesses": 4,
+      "prior": 0.000022623658055222703,
+      "guesses": [
+        "saiten",
+        "glasur",
+        "ukasen",
+        "quasen"
+      ]
+    },
+    {
+      "word": "rankem",
+      "num_guesses": 5,
+      "prior": 0.000019653273189848083,
+      "guesses": [
+        "saiten",
+        "hörndl",
+        "arbzrg",
+        "janker",
+        "rankem"
+      ]
+    },
+    {
+      "word": "greife",
+      "num_guesses": 3,
+      "prior": 0.00008996292390384669,
+      "guesses": [
+        "saiten",
+        "legire",
+        "greife"
+      ]
+    },
+    {
+      "word": "gräbst",
+      "num_guesses": 4,
+      "prior": 0.000037533615328045314,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "trübpl",
+        "gräbst"
+      ]
+    },
+    {
+      "word": "plicht",
+      "num_guesses": 4,
+      "prior": 0.000046516037302804915,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "klickt",
+        "plicht"
+      ]
+    },
+    {
+      "word": "kokkus",
+      "num_guesses": 3,
+      "prior": 0.000045731214068597206,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "kokkus"
+      ]
+    },
+    {
+      "word": "zirpen",
+      "num_guesses": 4,
+      "prior": 0.00006128376198248778,
+      "guesses": [
+        "saiten",
+        "gelder",
+        "kurzer",
+        "zirpen"
+      ]
+    },
+    {
+      "word": "siebes",
+      "num_guesses": 3,
+      "prior": 0.0000552824221540714,
+      "guesses": [
+        "saiten",
+        "gehler",
+        "siebes"
+      ]
+    },
+    {
+      "word": "gurtes",
+      "num_guesses": 3,
+      "prior": 0.00004649310227449123,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "gurtes"
+      ]
+    },
+    {
+      "word": "behöbe",
+      "num_guesses": 4,
+      "prior": 0.000021761992229521935,
+      "guesses": [
+        "saiten",
+        "belehr",
+        "behufe",
+        "behöbe"
+      ]
+    },
+    {
+      "word": "sligos",
+      "num_guesses": 3,
+      "prior": 0.00002223518965966654,
+      "guesses": [
+        "saiten",
+        "slicks",
+        "sligos"
+      ]
+    },
+    {
+      "word": "ophirs",
+      "num_guesses": 4,
+      "prior": 0.0000264638755546316,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "profis",
+        "ophirs"
+      ]
+    },
+    {
+      "word": "seucht",
+      "num_guesses": 4,
+      "prior": 0.00004323264050261762,
+      "guesses": [
+        "saiten",
+        "perlte",
+        "seufzt",
+        "seucht"
+      ]
+    },
+    {
+      "word": "wappne",
+      "num_guesses": 4,
+      "prior": 0.00003948762181114045,
+      "guesses": [
+        "saiten",
+        "goderl",
+        "bmlfuw",
+        "wappne"
+      ]
+    },
+    {
+      "word": "crèmes",
+      "num_guesses": 4,
+      "prior": 0.000027970090914465062,
+      "guesses": [
+        "saiten",
+        "formul",
+        "cremes",
+        "crèmes"
+      ]
+    },
+    {
+      "word": "dorfes",
+      "num_guesses": 3,
+      "prior": 0.00011064055397069019,
+      "guesses": [
+        "saiten",
+        "formul",
+        "dorfes"
+      ]
+    },
+    {
+      "word": "porzin",
+      "num_guesses": 4,
+      "prior": 0.000015371433443167137,
+      "guesses": [
+        "saiten",
+        "florid",
+        "vorhin",
+        "porzin"
+      ]
+    },
+    {
+      "word": "teilte",
+      "num_guesses": 4,
+      "prior": 0.0001211546074843662,
+      "guesses": [
+        "saiten",
+        "heferl",
+        "tombak",
+        "teilte"
+      ]
+    },
+    {
+      "word": "durals",
+      "num_guesses": 3,
+      "prior": 0.000016552480403882467,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "durals"
+      ]
+    },
+    {
+      "word": "mostes",
+      "num_guesses": 4,
+      "prior": 0.00005654706857128684,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "cosmos",
+        "mostes"
+      ]
+    },
+    {
+      "word": "ermatt",
+      "num_guesses": 4,
+      "prior": 0.00002192687466327136,
+      "guesses": [
+        "saiten",
+        "belage",
+        "kämpft",
+        "ermatt"
+      ]
+    },
+    {
+      "word": "gurten",
+      "num_guesses": 4,
+      "prior": 0.00006430645378460344,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "wegkam",
+        "gurten"
+      ]
+    },
+    {
+      "word": "kiosks",
+      "num_guesses": 3,
+      "prior": 0.00004022846020333941,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "kiosks"
+      ]
+    },
+    {
+      "word": "flanke",
+      "num_guesses": 4,
+      "prior": 0.00009800746109133727,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "anhand",
+        "flanke"
+      ]
+    },
+    {
+      "word": "vermag",
+      "num_guesses": 4,
+      "prior": 0.00016150663823468652,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "mangel",
+        "vermag"
+      ]
+    },
+    {
+      "word": "mummel",
+      "num_guesses": 4,
+      "prior": 0.00003532347226140262,
+      "guesses": [
+        "saiten",
+        "formul",
+        "phobie",
+        "mummel"
+      ]
+    },
+    {
+      "word": "dübens",
+      "num_guesses": 4,
+      "prior": 0.00002642365671284775,
+      "guesses": [
+        "saiten",
+        "leders",
+        "obwohl",
+        "dübens"
+      ]
+    },
+    {
+      "word": "klaren",
+      "num_guesses": 3,
+      "prior": 0.00013775119698061403,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "klaren"
+      ]
+    },
+    {
+      "word": "reiher",
+      "num_guesses": 4,
+      "prior": 0.00007054574309403618,
+      "guesses": [
+        "saiten",
+        "gehlem",
+        "zerriß",
+        "reiher"
+      ]
+    },
+    {
+      "word": "abhaue",
+      "num_guesses": 4,
+      "prior": 0.000036236240252788994,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "umhabe",
+        "abhaue"
+      ]
+    },
+    {
+      "word": "begebt",
+      "num_guesses": 4,
+      "prior": 0.00004522212223616703,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "belegt",
+        "begebt"
+      ]
+    },
+    {
+      "word": "lausig",
+      "num_guesses": 3,
+      "prior": 0.000044607134156329825,
+      "guesses": [
+        "saiten",
+        "purims",
+        "lausig"
+      ]
+    },
+    {
+      "word": "flehet",
+      "num_guesses": 3,
+      "prior": 0.00004880037038555098,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "flehet"
+      ]
+    },
+    {
+      "word": "hostie",
+      "num_guesses": 3,
+      "prior": 0.00007295929053380877,
+      "guesses": [
+        "saiten",
+        "genres",
+        "hostie"
+      ]
+    },
+    {
+      "word": "hoblet",
+      "num_guesses": 4,
+      "prior": 0.00001752647057407937,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "selbst",
+        "hoblet"
+      ]
+    },
+    {
+      "word": "gelüst",
+      "num_guesses": 5,
+      "prior": 0.00005404322195093383,
+      "guesses": [
+        "saiten",
+        "bereut",
+        "kohlst",
+        "gelöst",
+        "gelüst"
+      ]
+    },
+    {
+      "word": "fräßet",
+      "num_guesses": 6,
+      "prior": 0.00001332538280081538,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "bürdet",
+        "kröpfe",
+        "träfet",
+        "fräßet"
+      ]
+    },
+    {
+      "word": "abgehe",
+      "num_guesses": 4,
+      "prior": 0.000058123927117450864,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "weggeh",
+        "abgehe"
+      ]
+    },
+    {
+      "word": "stuhlt",
+      "num_guesses": 4,
+      "prior": 0.000021657362418232126,
+      "guesses": [
+        "saiten",
+        "tourst",
+        "stupft",
+        "stuhlt"
+      ]
+    },
+    {
+      "word": "douros",
+      "num_guesses": 3,
+      "prior": 0.000021785854120453576,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "douros"
+      ]
+    },
+    {
+      "word": "boubou",
+      "num_guesses": 3,
+      "prior": 0.000029312919831127468,
+      "guesses": [
+        "saiten",
+        "formul",
+        "boubou"
+      ]
+    },
+    {
+      "word": "nazist",
+      "num_guesses": 2,
+      "prior": 0.000022844516476187027,
+      "guesses": [
+        "saiten",
+        "nazist"
+      ]
+    },
+    {
+      "word": "tumbes",
+      "num_guesses": 4,
+      "prior": 0.0000360328002836875,
+      "guesses": [
+        "saiten",
+        "hutlos",
+        "turmes",
+        "tumbes"
+      ]
+    },
+    {
+      "word": "kröcht",
+      "num_guesses": 4,
+      "prior": 0.000017766143285229966,
+      "guesses": [
+        "saiten",
+        "formul",
+        "drückt",
+        "kröcht"
+      ]
+    },
+    {
+      "word": "sabble",
+      "num_guesses": 3,
+      "prior": 0.000013436907836501071,
+      "guesses": [
+        "saiten",
+        "murmle",
+        "sabble"
+      ]
+    },
+    {
+      "word": "sinnig",
+      "num_guesses": 3,
+      "prior": 0.00006676721933286543,
+      "guesses": [
+        "saiten",
+        "sindur",
+        "sinnig"
+      ]
+    },
+    {
+      "word": "gluons",
+      "num_guesses": 4,
+      "prior": 0.00002370310355869503,
+      "guesses": [
+        "saiten",
+        "urcool",
+        "luzons",
+        "gluons"
+      ]
+    },
+    {
+      "word": "duzten",
+      "num_guesses": 5,
+      "prior": 0.00004297890725504598,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "totbiß",
+        "fänden",
+        "duzten"
+      ]
+    },
+    {
+      "word": "abbiss",
+      "num_guesses": 3,
+      "prior": 0.00003667747366614896,
+      "guesses": [
+        "saiten",
+        "braais",
+        "abbiss"
+      ]
+    },
+    {
+      "word": "herbem",
+      "num_guesses": 4,
+      "prior": 0.0000495187682750538,
+      "guesses": [
+        "saiten",
+        "formul",
+        "mörder",
+        "herbem"
+      ]
+    },
+    {
+      "word": "trünke",
+      "num_guesses": 4,
+      "prior": 0.00004604490451613714,
+      "guesses": [
+        "saiten",
+        "erhole",
+        "käufer",
+        "trünke"
+      ]
+    },
+    {
+      "word": "meidet",
+      "num_guesses": 4,
+      "prior": 0.00007730351418877935,
+      "guesses": [
+        "saiten",
+        "zähler",
+        "fußweg",
+        "meidet"
+      ]
+    },
+    {
+      "word": "sonnig",
+      "num_guesses": 3,
+      "prior": 0.00006855056009819811,
+      "guesses": [
+        "saiten",
+        "sindur",
+        "sonnig"
+      ]
+    },
+    {
+      "word": "skypen",
+      "num_guesses": 5,
+      "prior": 0.00003791408646059142,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "ozänen",
+        "süssen",
+        "skypen"
+      ]
+    },
+    {
+      "word": "jammen",
+      "num_guesses": 5,
+      "prior": 0.00003230017770123759,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "mohawk",
+        "schmid",
+        "jammen"
+      ]
+    },
+    {
+      "word": "schmiß",
+      "num_guesses": 4,
+      "prior": 0.0000556823981324173,
+      "guesses": [
+        "saiten",
+        "formul",
+        "schmid",
+        "schmiß"
+      ]
+    },
+    {
+      "word": "flicht",
+      "num_guesses": 3,
+      "prior": 0.00006531075785975494,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "flicht"
+      ]
+    },
+    {
+      "word": "harter",
+      "num_guesses": 4,
+      "prior": 0.00010336616316156771,
+      "guesses": [
+        "saiten",
+        "formul",
+        "khowar",
+        "harter"
+      ]
+    },
+    {
+      "word": "stehet",
+      "num_guesses": 3,
+      "prior": 0.00009923228781414326,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "stehet"
+      ]
+    },
+    {
+      "word": "bullen",
+      "num_guesses": 5,
+      "prior": 0.00009363431772019948,
+      "guesses": [
+        "saiten",
+        "herold",
+        "läufig",
+        "publik",
+        "bullen"
+      ]
+    },
+    {
+      "word": "berate",
+      "num_guesses": 3,
+      "prior": 0.00004737856375542046,
+      "guesses": [
+        "saiten",
+        "belage",
+        "berate"
+      ]
+    },
+    {
+      "word": "kunzes",
+      "num_guesses": 4,
+      "prior": 0.00004745530976363678,
+      "guesses": [
+        "saiten",
+        "bernds",
+        "kulanz",
+        "kunzes"
+      ]
+    },
+    {
+      "word": "znacht",
+      "num_guesses": 4,
+      "prior": 0.000032448282678492876,
+      "guesses": [
+        "saiten",
+        "anlagt",
+        "knarrt",
+        "znacht"
+      ]
+    },
+    {
+      "word": "singen",
+      "num_guesses": 3,
+      "prior": 0.00013507586045715788,
+      "guesses": [
+        "saiten",
+        "begier",
+        "singen"
+      ]
+    },
+    {
+      "word": "hufner",
+      "num_guesses": 5,
+      "prior": 0.000048065836152991045,
+      "guesses": [
+        "saiten",
+        "dengel",
+        "hüfner",
+        "häfner",
+        "hufner"
+      ]
+    },
+    {
+      "word": "trikes",
+      "num_guesses": 3,
+      "prior": 0.000026518328434079774,
+      "guesses": [
+        "saiten",
+        "gehört",
+        "trikes"
+      ]
+    },
+    {
+      "word": "gemuht",
+      "num_guesses": 3,
+      "prior": 0.00003054416908392873,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "gemuht"
+      ]
+    },
+    {
+      "word": "gelass",
+      "num_guesses": 3,
+      "prior": 0.00004099151332991188,
+      "guesses": [
+        "saiten",
+        "beruss",
+        "gelass"
+      ]
+    },
+    {
+      "word": "mèchen",
+      "num_guesses": 5,
+      "prior": 0.000015241148262418344,
+      "guesses": [
+        "saiten",
+        "herold",
+        "zökums",
+        "nähmen",
+        "mèchen"
+      ]
+    },
+    {
+      "word": "wägung",
+      "num_guesses": 4,
+      "prior": 0.0000797969843174024,
+      "guesses": [
+        "saiten",
+        "kordel",
+        "fügung",
+        "wägung"
+      ]
+    },
+    {
+      "word": "zythos",
+      "num_guesses": 4,
+      "prior": 0.00002298073704965224,
+      "guesses": [
+        "saiten",
+        "furcht",
+        "mythos",
+        "zythos"
+      ]
+    },
+    {
+      "word": "genuin",
+      "num_guesses": 4,
+      "prior": 0.00008098796137776298,
+      "guesses": [
+        "saiten",
+        "beleih",
+        "runden",
+        "genuin"
+      ]
+    },
+    {
+      "word": "albane",
+      "num_guesses": 4,
+      "prior": 0.00003525082756609841,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "anbaue",
+        "albane"
+      ]
+    },
+    {
+      "word": "baumte",
+      "num_guesses": 3,
+      "prior": 0.000023169904444700345,
+      "guesses": [
+        "saiten",
+        "kurble",
+        "baumte"
+      ]
+    },
+    {
+      "word": "giggel",
+      "num_guesses": 5,
+      "prior": 0.000022837948183992153,
+      "guesses": [
+        "saiten",
+        "melder",
+        "pzkpfw",
+        "hibbel",
+        "giggel"
+      ]
+    },
+    {
+      "word": "stankt",
+      "num_guesses": 4,
+      "prior": 0.000022351004206443977,
+      "guesses": [
+        "saiten",
+        "stands",
+        "stanzt",
+        "stankt"
+      ]
+    },
+    {
+      "word": "poeten",
+      "num_guesses": 4,
+      "prior": 0.00009710176621857216,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "obenan",
+        "poeten"
+      ]
+    },
+    {
+      "word": "kabbel",
+      "num_guesses": 5,
+      "prior": 0.000020509984353941714,
+      "guesses": [
+        "saiten",
+        "schmul",
+        "perfid",
+        "beweis",
+        "kabbel"
+      ]
+    },
+    {
+      "word": "klagst",
+      "num_guesses": 4,
+      "prior": 0.00004866883962827428,
+      "guesses": [
+        "saiten",
+        "aufass",
+        "klapst",
+        "klagst"
+      ]
+    },
+    {
+      "word": "ogmios",
+      "num_guesses": 4,
+      "prior": 0.000028996189763387822,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "lipoms",
+        "ogmios"
+      ]
+    },
+    {
+      "word": "afkult",
+      "num_guesses": 3,
+      "prior": 0.000024139817890828076,
+      "guesses": [
+        "saiten",
+        "flarak",
+        "afkult"
+      ]
+    },
+    {
+      "word": "taktet",
+      "num_guesses": 5,
+      "prior": 0.000027498771371127922,
+      "guesses": [
+        "saiten",
+        "formul",
+        "gothik",
+        "kaktee",
+        "taktet"
+      ]
+    },
+    {
+      "word": "mobils",
+      "num_guesses": 4,
+      "prior": 0.00003118623235657575,
+      "guesses": [
+        "saiten",
+        "kormus",
+        "comics",
+        "mobils"
+      ]
+    },
+    {
+      "word": "pfades",
+      "num_guesses": 3,
+      "prior": 0.00006178331284320512,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "pfades"
+      ]
+    },
+    {
+      "word": "pickte",
+      "num_guesses": 4,
+      "prior": 0.00005177306071412038,
+      "guesses": [
+        "saiten",
+        "riegle",
+        "pzkpfw",
+        "pickte"
+      ]
+    },
+    {
+      "word": "afarit",
+      "num_guesses": 3,
+      "prior": 0.00001792479475061859,
+      "guesses": [
+        "saiten",
+        "amoral",
+        "afarit"
+      ]
+    },
+    {
+      "word": "lottes",
+      "num_guesses": 3,
+      "prior": 0.00005664986151184249,
+      "guesses": [
+        "saiten",
+        "reglos",
+        "lottes"
+      ]
+    },
+    {
+      "word": "ehrbar",
+      "num_guesses": 4,
+      "prior": 0.00006592351694845964,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "akteur",
+        "ehrbar"
+      ]
+    },
+    {
+      "word": "athens",
+      "num_guesses": 3,
+      "prior": 0.00009036279448321308,
+      "guesses": [
+        "saiten",
+        "anhabe",
+        "athens"
+      ]
+    },
+    {
+      "word": "knaufs",
+      "num_guesses": 3,
+      "prior": 0.0000352727993616567,
+      "guesses": [
+        "saiten",
+        "rodung",
+        "knaufs"
+      ]
+    },
+    {
+      "word": "parole",
+      "num_guesses": 3,
+      "prior": 0.00009615698983020144,
+      "guesses": [
+        "saiten",
+        "lemure",
+        "parole"
+      ]
+    },
+    {
+      "word": "augits",
+      "num_guesses": 4,
+      "prior": 0.000049634485572306504,
+      "guesses": [
+        "saiten",
+        "abtrat",
+        "audits",
+        "augits"
+      ]
+    },
+    {
+      "word": "bedarf",
+      "num_guesses": 3,
+      "prior": 0.000175728336771733,
+      "guesses": [
+        "saiten",
+        "gebare",
+        "bedarf"
+      ]
+    },
+    {
+      "word": "umflog",
+      "num_guesses": 4,
+      "prior": 0.00003777638454841455,
+      "guesses": [
+        "saiten",
+        "formul",
+        "umfloß",
+        "umflog"
+      ]
+    },
+    {
+      "word": "werter",
+      "num_guesses": 4,
+      "prior": 0.00006898552478405127,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "retter",
+        "werter"
+      ]
+    },
+    {
+      "word": "sinnet",
+      "num_guesses": 3,
+      "prior": 0.00004354041311752477,
+      "guesses": [
+        "saiten",
+        "signet",
+        "sinnet"
+      ]
+    },
+    {
+      "word": "tunkst",
+      "num_guesses": 4,
+      "prior": 0.000022018910951498863,
+      "guesses": [
+        "saiten",
+        "humors",
+        "finden",
+        "tunkst"
+      ]
+    },
+    {
+      "word": "natter",
+      "num_guesses": 3,
+      "prior": 0.00006647562330900312,
+      "guesses": [
+        "saiten",
+        "thürmt",
+        "natter"
+      ]
+    },
+    {
+      "word": "regnet",
+      "num_guesses": 4,
+      "prior": 0.00008682254578162511,
+      "guesses": [
+        "saiten",
+        "kenner",
+        "lernet",
+        "regnet"
+      ]
+    },
+    {
+      "word": "toreut",
+      "num_guesses": 3,
+      "prior": 0.00003001686228024332,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "toreut"
+      ]
+    },
+    {
+      "word": "euklid",
+      "num_guesses": 4,
+      "prior": 0.00007183645729508825,
+      "guesses": [
+        "saiten",
+        "legire",
+        "elohim",
+        "euklid"
+      ]
+    },
+    {
+      "word": "natals",
+      "num_guesses": 4,
+      "prior": 0.00003862094309972357,
+      "guesses": [
+        "saiten",
+        "bornas",
+        "nachts",
+        "natals"
+      ]
+    },
+    {
+      "word": "takken",
+      "num_guesses": 4,
+      "prior": 0.000024397505083722202,
+      "guesses": [
+        "saiten",
+        "punkig",
+        "welche",
+        "takken"
+      ]
+    },
+    {
+      "word": "gerant",
+      "num_guesses": 3,
+      "prior": 0.00004437626855745128,
+      "guesses": [
+        "saiten",
+        "arkane",
+        "gerant"
+      ]
+    },
+    {
+      "word": "ebenem",
+      "num_guesses": 4,
+      "prior": 0.00006320552558853193,
+      "guesses": [
+        "saiten",
+        "dengel",
+        "ebener",
+        "ebenem"
+      ]
+    },
+    {
+      "word": "bietet",
+      "num_guesses": 3,
+      "prior": 0.0001747888937096829,
+      "guesses": [
+        "saiten",
+        "rebelt",
+        "bietet"
+      ]
+    },
+    {
+      "word": "sutane",
+      "num_guesses": 3,
+      "prior": 0.00003263796775432978,
+      "guesses": [
+        "saiten",
+        "gonade",
+        "sutane"
+      ]
+    },
+    {
+      "word": "tights",
+      "num_guesses": 4,
+      "prior": 0.00002701290748336444,
+      "guesses": [
+        "saiten",
+        "lurchs",
+        "fights",
+        "tights"
+      ]
+    },
+    {
+      "word": "quasar",
+      "num_guesses": 3,
+      "prior": 0.000040643067425843816,
+      "guesses": [
+        "saiten",
+        "abraum",
+        "quasar"
+      ]
+    },
+    {
+      "word": "infixe",
+      "num_guesses": 4,
+      "prior": 0.00003472105490816156,
+      "guesses": [
+        "saiten",
+        "legire",
+        "nomine",
+        "infixe"
+      ]
+    },
+    {
+      "word": "bewögt",
+      "num_guesses": 4,
+      "prior": 0.000027952541957270175,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "zuflog",
+        "bewögt"
+      ]
+    },
+    {
+      "word": "nölend",
+      "num_guesses": 4,
+      "prior": 0.000019394911286288384,
+      "guesses": [
+        "saiten",
+        "geruhe",
+        "plombe",
+        "nölend"
+      ]
+    },
+    {
+      "word": "stande",
+      "num_guesses": 3,
+      "prior": 0.00015899370068025062,
+      "guesses": [
+        "saiten",
+        "gonade",
+        "stande"
+      ]
+    },
+    {
+      "word": "mäkeln",
+      "num_guesses": 4,
+      "prior": 0.00005248056032935172,
+      "guesses": [
+        "saiten",
+        "gebärd",
+        "ähneln",
+        "mäkeln"
+      ]
+    },
+    {
+      "word": "wannen",
+      "num_guesses": 5,
+      "prior": 0.0000754566683451685,
+      "guesses": [
+        "saiten",
+        "flurbg",
+        "mohawk",
+        "dienen",
+        "wannen"
+      ]
+    },
+    {
+      "word": "korkig",
+      "num_guesses": 3,
+      "prior": 0.00003265213559402818,
+      "guesses": [
+        "saiten",
+        "vorlud",
+        "korkig"
+      ]
+    },
+    {
+      "word": "sermon",
+      "num_guesses": 3,
+      "prior": 0.00006726079719767208,
+      "guesses": [
+        "saiten",
+        "euroeg",
+        "sermon"
+      ]
+    },
+    {
+      "word": "profoß",
+      "num_guesses": 4,
+      "prior": 0.00004465849333914868,
+      "guesses": [
+        "saiten",
+        "formul",
+        "oxford",
+        "profoß"
+      ]
+    },
+    {
+      "word": "zócalo",
+      "num_guesses": 4,
+      "prior": 0.000030991015998781125,
+      "guesses": [
+        "saiten",
+        "formul",
+        "abhold",
+        "zócalo"
+      ]
+    },
+    {
+      "word": "sellen",
+      "num_guesses": 4,
+      "prior": 0.000051522303936508535,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "seelen",
+        "sellen"
+      ]
+    },
+    {
+      "word": "mithat",
+      "num_guesses": 4,
+      "prior": 0.00003225405558045845,
+      "guesses": [
+        "saiten",
+        "amoral",
+        "mitmag",
+        "mithat"
+      ]
+    },
+    {
+      "word": "patios",
+      "num_guesses": 3,
+      "prior": 0.00003857502894665494,
+      "guesses": [
+        "saiten",
+        "orbits",
+        "patios"
+      ]
+    },
+    {
+      "word": "gellte",
+      "num_guesses": 4,
+      "prior": 0.00005909603960267086,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "wolkig",
+        "gellte"
+      ]
+    },
+    {
+      "word": "mohren",
+      "num_guesses": 4,
+      "prior": 0.00007398096339889846,
+      "guesses": [
+        "saiten",
+        "herold",
+        "rothem",
+        "mohren"
+      ]
+    },
+    {
+      "word": "cölbes",
+      "num_guesses": 5,
+      "prior": 0.00001326819020512803,
+      "guesses": [
+        "saiten",
+        "formul",
+        "kehlig",
+        "blödes",
+        "cölbes"
+      ]
+    },
+    {
+      "word": "nitril",
+      "num_guesses": 3,
+      "prior": 0.000055480078225509895,
+      "guesses": [
+        "saiten",
+        "goldig",
+        "nitril"
+      ]
+    },
+    {
+      "word": "erholt",
+      "num_guesses": 4,
+      "prior": 0.00009715885299417769,
+      "guesses": [
+        "saiten",
+        "beruhe",
+        "erhält",
+        "erholt"
+      ]
+    },
+    {
+      "word": "crolls",
+      "num_guesses": 4,
+      "prior": 0.000028835075638250997,
+      "guesses": [
+        "saiten",
+        "cormus",
+        "chlors",
+        "crolls"
+      ]
+    },
+    {
+      "word": "petzer",
+      "num_guesses": 4,
+      "prior": 0.00003598388150650741,
+      "guesses": [
+        "saiten",
+        "heuler",
+        "ketzer",
+        "petzer"
+      ]
+    },
+    {
+      "word": "quitte",
+      "num_guesses": 3,
+      "prior": 0.000055627053098475006,
+      "guesses": [
+        "saiten",
+        "durfte",
+        "quitte"
+      ]
+    }
+  ]
+}

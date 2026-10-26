@@ -1,0 +1,4991 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T14:25:49.261823Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "cartolines",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "french",
+    "word_length": 10,
+    "dictionary_length": 61865,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "b0f4ddd2e4594eb357cb48b93f7a0c36425803bda3112b3fcce1cf94f9af0ee2",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:19:37.50315Z",
+      "source_sha256": "06c31dc9b75bdb515505b0eb001aad1e06a4c51f52b904d3a7cd7256375f4956",
+      "word_count": 1570316
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 2.869999999999977,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.17600000000000013,
+        "3": 0.7800000000000006,
+        "4": 0.04200000000000002,
+        "5": 0.002
+      }
+    },
+    "prior": {
+      "mean": 2.7974374010287657,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.2345585410936365,
+        "3": 0.7345633310179902,
+        "4": 0.029760313654341747,
+        "5": 0.001117814234031157
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "surcodages",
+      "num_guesses": 2,
+      "prior": 0.000010050466211191382,
+      "guesses": [
+        "cartolines",
+        "surcodages"
+      ]
+    },
+    {
+      "word": "retardasse",
+      "num_guesses": 3,
+      "prior": 9.389278288767879e-6,
+      "guesses": [
+        "cartolines",
+        "artérieuse",
+        "retardasse"
+      ]
+    },
+    {
+      "word": "grincherie",
+      "num_guesses": 3,
+      "prior": 9.141844333870054e-6,
+      "guesses": [
+        "cartolines",
+        "rechigneux",
+        "grincherie"
+      ]
+    },
+    {
+      "word": "solontchak",
+      "num_guesses": 3,
+      "prior": 0.000013070350778347916,
+      "guesses": [
+        "cartolines",
+        "bousculant",
+        "solontchak"
+      ]
+    },
+    {
+      "word": "nourririez",
+      "num_guesses": 3,
+      "prior": 0.000012274492146210071,
+      "guesses": [
+        "cartolines",
+        "figureriez",
+        "nourririez"
+      ]
+    },
+    {
+      "word": "chaussages",
+      "num_guesses": 3,
+      "prior": 9.507201308775716e-6,
+      "guesses": [
+        "cartolines",
+        "chauffages",
+        "chaussages"
+      ]
+    },
+    {
+      "word": "chocolater",
+      "num_guesses": 2,
+      "prior": 0.000011384989772731077,
+      "guesses": [
+        "cartolines",
+        "chocolater"
+      ]
+    },
+    {
+      "word": "géorgiques",
+      "num_guesses": 3,
+      "prior": 0.000036086746920186596,
+      "guesses": [
+        "cartolines",
+        "poudrerizé",
+        "géorgiques"
+      ]
+    },
+    {
+      "word": "baconienne",
+      "num_guesses": 2,
+      "prior": 0.000021979729344806403,
+      "guesses": [
+        "cartolines",
+        "baconienne"
+      ]
+    },
+    {
+      "word": "gognandise",
+      "num_guesses": 3,
+      "prior": 7.6044707087425275e-6,
+      "guesses": [
+        "cartolines",
+        "voyageasse",
+        "gognandise"
+      ]
+    },
+    {
+      "word": "miseraient",
+      "num_guesses": 4,
+      "prior": 0.000011079465606191606,
+      "guesses": [
+        "cartolines",
+        "supersédée",
+        "viseraient",
+        "miseraient"
+      ]
+    },
+    {
+      "word": "dégrilleur",
+      "num_guesses": 3,
+      "prior": 0.000011563564988099475,
+      "guesses": [
+        "cartolines",
+        "privilégie",
+        "dégrilleur"
+      ]
+    },
+    {
+      "word": "épiloguent",
+      "num_guesses": 3,
+      "prior": 0.00001419082260031906,
+      "guesses": [
+        "cartolines",
+        "exploitent",
+        "épiloguent"
+      ]
+    },
+    {
+      "word": "gerbillons",
+      "num_guesses": 3,
+      "prior": 8.07227154786327e-6,
+      "guesses": [
+        "cartolines",
+        "vermillons",
+        "gerbillons"
+      ]
+    },
+    {
+      "word": "expectasse",
+      "num_guesses": 3,
+      "prior": 8.136345235760662e-6,
+      "guesses": [
+        "cartolines",
+        "acceptasse",
+        "expectasse"
+      ]
+    },
+    {
+      "word": "admiromane",
+      "num_guesses": 3,
+      "prior": 7.094047584644557e-6,
+      "guesses": [
+        "cartolines",
+        "embordurée",
+        "admiromane"
+      ]
+    },
+    {
+      "word": "dysostoses",
+      "num_guesses": 3,
+      "prior": 0.000012520176716841446,
+      "guesses": [
+        "cartolines",
+        "monophasés",
+        "dysostoses"
+      ]
+    },
+    {
+      "word": "usufruités",
+      "num_guesses": 3,
+      "prior": 8.340306234175279e-6,
+      "guesses": [
+        "cartolines",
+        "prémédités",
+        "usufruités"
+      ]
+    },
+    {
+      "word": "florissiez",
+      "num_guesses": 3,
+      "prior": 7.394850924610098e-6,
+      "guesses": [
+        "cartolines",
+        "boisselier",
+        "florissiez"
+      ]
+    },
+    {
+      "word": "prophétisa",
+      "num_guesses": 3,
+      "prior": 0.000024688193921192785,
+      "guesses": [
+        "cartolines",
+        "pourissoir",
+        "prophétisa"
+      ]
+    },
+    {
+      "word": "kidnappait",
+      "num_guesses": 3,
+      "prior": 0.000012481694158183076,
+      "guesses": [
+        "cartolines",
+        "dédaignant",
+        "kidnappait"
+      ]
+    },
+    {
+      "word": "bâtardiser",
+      "num_guesses": 3,
+      "prior": 7.587866902423182e-6,
+      "guesses": [
+        "cartolines",
+        "rhématiser",
+        "bâtardiser"
+      ]
+    },
+    {
+      "word": "sycophants",
+      "num_guesses": 3,
+      "prior": 7.240656172735532e-6,
+      "guesses": [
+        "cartolines",
+        "décombants",
+        "sycophants"
+      ]
+    },
+    {
+      "word": "désestimée",
+      "num_guesses": 3,
+      "prior": 8.677516065412875e-6,
+      "guesses": [
+        "cartolines",
+        "mésestimée",
+        "désestimée"
+      ]
+    },
+    {
+      "word": "sérialisée",
+      "num_guesses": 3,
+      "prior": 0.000012608902525791719,
+      "guesses": [
+        "cartolines",
+        "irréalisme",
+        "sérialisée"
+      ]
+    },
+    {
+      "word": "suggérerez",
+      "num_guesses": 3,
+      "prior": 0.000011983368919292739,
+      "guesses": [
+        "cartolines",
+        "désespérer",
+        "suggérerez"
+      ]
+    },
+    {
+      "word": "roussilles",
+      "num_guesses": 4,
+      "prior": 0.000010677071950656726,
+      "guesses": [
+        "cartolines",
+        "follieuses",
+        "soudrilles",
+        "roussilles"
+      ]
+    },
+    {
+      "word": "hexactines",
+      "num_guesses": 3,
+      "prior": 0.000015801523632164115,
+      "guesses": [
+        "cartolines",
+        "déciatines",
+        "hexactines"
+      ]
+    },
+    {
+      "word": "prestement",
+      "num_guesses": 3,
+      "prior": 0.000037946429431984844,
+      "guesses": [
+        "cartolines",
+        "desserrent",
+        "prestement"
+      ]
+    },
+    {
+      "word": "reparquées",
+      "num_guesses": 3,
+      "prior": 8.74471724921575e-6,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "reparquées"
+      ]
+    },
+    {
+      "word": "ciconiidés",
+      "num_guesses": 3,
+      "prior": 0.000011112288824814296,
+      "guesses": [
+        "cartolines",
+        "confusions",
+        "ciconiidés"
+      ]
+    },
+    {
+      "word": "scélotyrbe",
+      "num_guesses": 2,
+      "prior": 0.00001019778860607389,
+      "guesses": [
+        "cartolines",
+        "scélotyrbe"
+      ]
+    },
+    {
+      "word": "superposer",
+      "num_guesses": 3,
+      "prior": 0.00003813031729480216,
+      "guesses": [
+        "cartolines",
+        "déposséder",
+        "superposer"
+      ]
+    },
+    {
+      "word": "pianoforte",
+      "num_guesses": 3,
+      "prior": 0.000022307569588752766,
+      "guesses": [
+        "cartolines",
+        "renfonçait",
+        "pianoforte"
+      ]
+    },
+    {
+      "word": "étinceliez",
+      "num_guesses": 3,
+      "prior": 6.5614822938842006e-6,
+      "guesses": [
+        "cartolines",
+        "incidentel",
+        "étinceliez"
+      ]
+    },
+    {
+      "word": "déplissées",
+      "num_guesses": 3,
+      "prior": 0.000013820265704053492,
+      "guesses": [
+        "cartolines",
+        "simplifiés",
+        "déplissées"
+      ]
+    },
+    {
+      "word": "lapidifiée",
+      "num_guesses": 2,
+      "prior": 0.00001003960668694363,
+      "guesses": [
+        "cartolines",
+        "lapidifiée"
+      ]
+    },
+    {
+      "word": "crotalidés",
+      "num_guesses": 2,
+      "prior": 0.000010744281489094287,
+      "guesses": [
+        "cartolines",
+        "crotalidés"
+      ]
+    },
+    {
+      "word": "taquinerai",
+      "num_guesses": 3,
+      "prior": 0.000011253667054492476,
+      "guesses": [
+        "cartolines",
+        "rodinienne",
+        "taquinerai"
+      ]
+    },
+    {
+      "word": "emmuration",
+      "num_guesses": 3,
+      "prior": 7.519955600923769e-6,
+      "guesses": [
+        "cartolines",
+        "traintrain",
+        "emmuration"
+      ]
+    },
+    {
+      "word": "coincerons",
+      "num_guesses": 3,
+      "prior": 0.000011016383502499343,
+      "guesses": [
+        "cartolines",
+        "confierons",
+        "coincerons"
+      ]
+    },
+    {
+      "word": "chicuelina",
+      "num_guesses": 3,
+      "prior": 8.019507079954851e-6,
+      "guesses": [
+        "cartolines",
+        "channeling",
+        "chicuelina"
+      ]
+    },
+    {
+      "word": "désactives",
+      "num_guesses": 3,
+      "prior": 7.778195790228064e-6,
+      "guesses": [
+        "cartolines",
+        "industries",
+        "désactives"
+      ]
+    },
+    {
+      "word": "ithacienne",
+      "num_guesses": 3,
+      "prior": 8.754150623100069e-6,
+      "guesses": [
+        "cartolines",
+        "impatience",
+        "ithacienne"
+      ]
+    },
+    {
+      "word": "microflore",
+      "num_guesses": 3,
+      "prior": 0.000029011016589611917,
+      "guesses": [
+        "cartolines",
+        "picrochole",
+        "microflore"
+      ]
+    },
+    {
+      "word": "flaminiens",
+      "num_guesses": 3,
+      "prior": 0.00001208614373132572,
+      "guesses": [
+        "cartolines",
+        "anselmiens",
+        "flaminiens"
+      ]
+    },
+    {
+      "word": "allophobie",
+      "num_guesses": 3,
+      "prior": 8.515583834068048e-6,
+      "guesses": [
+        "cartolines",
+        "polyphagie",
+        "allophobie"
+      ]
+    },
+    {
+      "word": "trieraient",
+      "num_guesses": 3,
+      "prior": 8.88213613119937e-6,
+      "guesses": [
+        "cartolines",
+        "repurifiée",
+        "trieraient"
+      ]
+    },
+    {
+      "word": "plissement",
+      "num_guesses": 3,
+      "prior": 0.000039095052406801674,
+      "guesses": [
+        "cartolines",
+        "gémisseuse",
+        "plissement"
+      ]
+    },
+    {
+      "word": "rustiquant",
+      "num_guesses": 3,
+      "prior": 7.280442393657058e-6,
+      "guesses": [
+        "cartolines",
+        "distrayant",
+        "rustiquant"
+      ]
+    },
+    {
+      "word": "hétairisme",
+      "num_guesses": 3,
+      "prior": 0.00001166384212629221,
+      "guesses": [
+        "cartolines",
+        "médiatisés",
+        "hétairisme"
+      ]
+    },
+    {
+      "word": "convoieras",
+      "num_guesses": 2,
+      "prior": 6.885714810589674e-6,
+      "guesses": [
+        "cartolines",
+        "convoieras"
+      ]
+    },
+    {
+      "word": "retriturée",
+      "num_guesses": 3,
+      "prior": 6.5614822938842006e-6,
+      "guesses": [
+        "cartolines",
+        "extérieure",
+        "retriturée"
+      ]
+    },
+    {
+      "word": "autocréées",
+      "num_guesses": 3,
+      "prior": 6.784410141204298e-6,
+      "guesses": [
+        "cartolines",
+        "ascodrutes",
+        "autocréées"
+      ]
+    },
+    {
+      "word": "permanenta",
+      "num_guesses": 4,
+      "prior": 9.403461553278954e-6,
+      "guesses": [
+        "cartolines",
+        "permanente",
+        "permanenté",
+        "permanenta"
+      ]
+    },
+    {
+      "word": "carbonites",
+      "num_guesses": 2,
+      "prior": 0.000012222916824876408,
+      "guesses": [
+        "cartolines",
+        "carbonites"
+      ]
+    },
+    {
+      "word": "cachettent",
+      "num_guesses": 3,
+      "prior": 0.000011325135457937916,
+      "guesses": [
+        "cartolines",
+        "catananche",
+        "cachettent"
+      ]
+    },
+    {
+      "word": "effraierai",
+      "num_guesses": 3,
+      "prior": 9.76365516285804e-6,
+      "guesses": [
+        "cartolines",
+        "défraierai",
+        "effraierai"
+      ]
+    },
+    {
+      "word": "cabbalisme",
+      "num_guesses": 3,
+      "prior": 9.962242212287296e-6,
+      "guesses": [
+        "cartolines",
+        "causalisme",
+        "cabbalisme"
+      ]
+    },
+    {
+      "word": "libératifs",
+      "num_guesses": 3,
+      "prior": 9.817800749022204e-6,
+      "guesses": [
+        "cartolines",
+        "travaillés",
+        "libératifs"
+      ]
+    },
+    {
+      "word": "bottereaux",
+      "num_guesses": 3,
+      "prior": 0.000014290294441980407,
+      "guesses": [
+        "cartolines",
+        "habitèrent",
+        "bottereaux"
+      ]
+    },
+    {
+      "word": "presserons",
+      "num_guesses": 3,
+      "prior": 0.000016923366803205255,
+      "guesses": [
+        "cartolines",
+        "résoudrons",
+        "presserons"
+      ]
+    },
+    {
+      "word": "palladisme",
+      "num_guesses": 3,
+      "prior": 0.000014311441844104497,
+      "guesses": [
+        "cartolines",
+        "balsamique",
+        "palladisme"
+      ]
+    },
+    {
+      "word": "affligions",
+      "num_guesses": 3,
+      "prior": 0.000016018075427708538,
+      "guesses": [
+        "cartolines",
+        "égalisâmes",
+        "affligions"
+      ]
+    },
+    {
+      "word": "bidonneurs",
+      "num_guesses": 3,
+      "prior": 8.09814474382197e-6,
+      "guesses": [
+        "cartolines",
+        "dévoreuses",
+        "bidonneurs"
+      ]
+    },
+    {
+      "word": "réexplique",
+      "num_guesses": 3,
+      "prior": 0.000014483825589694899,
+      "guesses": [
+        "cartolines",
+        "république",
+        "réexplique"
+      ]
+    },
+    {
+      "word": "dominotier",
+      "num_guesses": 3,
+      "prior": 0.000014527527582111773,
+      "guesses": [
+        "cartolines",
+        "droguetier",
+        "dominotier"
+      ]
+    },
+    {
+      "word": "persuasive",
+      "num_guesses": 2,
+      "prior": 0.00003736085196330968,
+      "guesses": [
+        "cartolines",
+        "persuasive"
+      ]
+    },
+    {
+      "word": "tourtelets",
+      "num_guesses": 3,
+      "prior": 8.429766985795984e-6,
+      "guesses": [
+        "cartolines",
+        "bourrelets",
+        "tourtelets"
+      ]
+    },
+    {
+      "word": "décaperont",
+      "num_guesses": 4,
+      "prior": 7.049844468387766e-6,
+      "guesses": [
+        "cartolines",
+        "becquètent",
+        "accéderont",
+        "décaperont"
+      ]
+    },
+    {
+      "word": "atrocement",
+      "num_guesses": 2,
+      "prior": 0.000033696843815601225,
+      "guesses": [
+        "cartolines",
+        "atrocement"
+      ]
+    },
+    {
+      "word": "conciliera",
+      "num_guesses": 2,
+      "prior": 0.000024258622704511097,
+      "guesses": [
+        "cartolines",
+        "conciliera"
+      ]
+    },
+    {
+      "word": "forfaiture",
+      "num_guesses": 3,
+      "prior": 0.00003480087995601181,
+      "guesses": [
+        "cartolines",
+        "pénombreux",
+        "forfaiture"
+      ]
+    },
+    {
+      "word": "ravinèrent",
+      "num_guesses": 3,
+      "prior": 0.000011190929788150064,
+      "guesses": [
+        "cartolines",
+        "rodinienne",
+        "ravinèrent"
+      ]
+    },
+    {
+      "word": "dénotèrent",
+      "num_guesses": 3,
+      "prior": 0.000013674789396655995,
+      "guesses": [
+        "cartolines",
+        "rémunèrent",
+        "dénotèrent"
+      ]
+    },
+    {
+      "word": "syntoniser",
+      "num_guesses": 3,
+      "prior": 0.000013585089897846233,
+      "guesses": [
+        "cartolines",
+        "supérieure",
+        "syntoniser"
+      ]
+    },
+    {
+      "word": "reprouvera",
+      "num_guesses": 3,
+      "prior": 9.600101596138535e-6,
+      "guesses": [
+        "cartolines",
+        "regroupera",
+        "reprouvera"
+      ]
+    },
+    {
+      "word": "successifs",
+      "num_guesses": 2,
+      "prior": 0.00006270433102934731,
+      "guesses": [
+        "cartolines",
+        "successifs"
+      ]
+    },
+    {
+      "word": "mâchonnera",
+      "num_guesses": 3,
+      "prior": 7.571116480926421e-6,
+      "guesses": [
+        "cartolines",
+        "prononcera",
+        "mâchonnera"
+      ]
+    },
+    {
+      "word": "chaufferai",
+      "num_guesses": 3,
+      "prior": 0.00001371095827324905,
+      "guesses": [
+        "cartolines",
+        "chercherai",
+        "chaufferai"
+      ]
+    },
+    {
+      "word": "délassante",
+      "num_guesses": 3,
+      "prior": 0.000014671115349234676,
+      "guesses": [
+        "cartolines",
+        "suppléante",
+        "délassante"
+      ]
+    },
+    {
+      "word": "rapamycine",
+      "num_guesses": 2,
+      "prior": 0.000012626351341962506,
+      "guesses": [
+        "cartolines",
+        "rapamycine"
+      ]
+    },
+    {
+      "word": "désulfatée",
+      "num_guesses": 3,
+      "prior": 7.338538397939765e-6,
+      "guesses": [
+        "cartolines",
+        "détestable",
+        "désulfatée"
+      ]
+    },
+    {
+      "word": "répandîmes",
+      "num_guesses": 3,
+      "prior": 0.000014946930076316594,
+      "guesses": [
+        "cartolines",
+        "dégagement",
+        "répandîmes"
+      ]
+    },
+    {
+      "word": "dégriffées",
+      "num_guesses": 3,
+      "prior": 0.000010873865674334835,
+      "guesses": [
+        "cartolines",
+        "repurifiée",
+        "dégriffées"
+      ]
+    },
+    {
+      "word": "ordonnasse",
+      "num_guesses": 3,
+      "prior": 0.000011996743248261619,
+      "guesses": [
+        "cartolines",
+        "sonagraphe",
+        "ordonnasse"
+      ]
+    },
+    {
+      "word": "pétroliers",
+      "num_guesses": 2,
+      "prior": 0.000048487827314106604,
+      "guesses": [
+        "cartolines",
+        "pétroliers"
+      ]
+    },
+    {
+      "word": "ignimbrite",
+      "num_guesses": 3,
+      "prior": 0.000017510653880153165,
+      "guesses": [
+        "cartolines",
+        "énergumène",
+        "ignimbrite"
+      ]
+    },
+    {
+      "word": "fournières",
+      "num_guesses": 3,
+      "prior": 0.000011304899827498128,
+      "guesses": [
+        "cartolines",
+        "déformerez",
+        "fournières"
+      ]
+    },
+    {
+      "word": "aubainages",
+      "num_guesses": 3,
+      "prior": 7.319377461681352e-6,
+      "guesses": [
+        "cartolines",
+        "madégasses",
+        "aubainages"
+      ]
+    },
+    {
+      "word": "deutériums",
+      "num_guesses": 3,
+      "prior": 7.763033499856692e-6,
+      "guesses": [
+        "cartolines",
+        "dextérités",
+        "deutériums"
+      ]
+    },
+    {
+      "word": "débronzées",
+      "num_guesses": 3,
+      "prior": 6.860945410112638e-6,
+      "guesses": [
+        "cartolines",
+        "refrognées",
+        "débronzées"
+      ]
+    },
+    {
+      "word": "autologues",
+      "num_guesses": 3,
+      "prior": 0.000017646133305741324,
+      "guesses": [
+        "cartolines",
+        "décomposés",
+        "autologues"
+      ]
+    },
+    {
+      "word": "décelèrent",
+      "num_guesses": 3,
+      "prior": 0.000019127656268638196,
+      "guesses": [
+        "cartolines",
+        "reculement",
+        "décelèrent"
+      ]
+    },
+    {
+      "word": "flashlight",
+      "num_guesses": 2,
+      "prior": 0.000013544268576959568,
+      "guesses": [
+        "cartolines",
+        "flashlight"
+      ]
+    },
+    {
+      "word": "ensemençai",
+      "num_guesses": 3,
+      "prior": 0.000010104071739241463,
+      "guesses": [
+        "cartolines",
+        "ménageasse",
+        "ensemençai"
+      ]
+    },
+    {
+      "word": "hasardions",
+      "num_guesses": 3,
+      "prior": 0.0000162884281126211,
+      "guesses": [
+        "cartolines",
+        "réussiriez",
+        "hasardions"
+      ]
+    },
+    {
+      "word": "fulminates",
+      "num_guesses": 3,
+      "prior": 0.000019824566437514666,
+      "guesses": [
+        "cartolines",
+        "métalangue",
+        "fulminates"
+      ]
+    },
+    {
+      "word": "initiatifs",
+      "num_guesses": 3,
+      "prior": 0.00001198068687584601,
+      "guesses": [
+        "cartolines",
+        "inattaqués",
+        "initiatifs"
+      ]
+    },
+    {
+      "word": "suspensifs",
+      "num_guesses": 2,
+      "prior": 0.000022807490382606582,
+      "guesses": [
+        "cartolines",
+        "suspensifs"
+      ]
+    },
+    {
+      "word": "préviendra",
+      "num_guesses": 3,
+      "prior": 0.000031903906371531474,
+      "guesses": [
+        "cartolines",
+        "dégarnirai",
+        "préviendra"
+      ]
+    },
+    {
+      "word": "chicheface",
+      "num_guesses": 3,
+      "prior": 0.000013718770790157232,
+      "guesses": [
+        "cartolines",
+        "chevauchai",
+        "chicheface"
+      ]
+    },
+    {
+      "word": "hébraïsait",
+      "num_guesses": 3,
+      "prior": 6.469462461792099e-6,
+      "guesses": [
+        "cartolines",
+        "guérissait",
+        "hébraïsait"
+      ]
+    },
+    {
+      "word": "salpingite",
+      "num_guesses": 3,
+      "prior": 0.000026619708531947557,
+      "guesses": [
+        "cartolines",
+        "nasalisent",
+        "salpingite"
+      ]
+    },
+    {
+      "word": "mitraillai",
+      "num_guesses": 3,
+      "prior": 9.250061981363868e-6,
+      "guesses": [
+        "cartolines",
+        "témébilité",
+        "mitraillai"
+      ]
+    },
+    {
+      "word": "dénudaient",
+      "num_guesses": 3,
+      "prior": 0.00001563766213112912,
+      "guesses": [
+        "cartolines",
+        "diminuende",
+        "dénudaient"
+      ]
+    },
+    {
+      "word": "tumescents",
+      "num_guesses": 3,
+      "prior": 0.000010109370154183572,
+      "guesses": [
+        "cartolines",
+        "pubescents",
+        "tumescents"
+      ]
+    },
+    {
+      "word": "masturbées",
+      "num_guesses": 3,
+      "prior": 0.000010273336041611685,
+      "guesses": [
+        "cartolines",
+        "maîtresses",
+        "masturbées"
+      ]
+    },
+    {
+      "word": "effluvions",
+      "num_guesses": 3,
+      "prior": 9.109962670078117e-6,
+      "guesses": [
+        "cartolines",
+        "inflexions",
+        "effluvions"
+      ]
+    },
+    {
+      "word": "écoperches",
+      "num_guesses": 3,
+      "prior": 0.000013570450758336763,
+      "guesses": [
+        "cartolines",
+        "perturbées",
+        "écoperches"
+      ]
+    },
+    {
+      "word": "escorchait",
+      "num_guesses": 3,
+      "prior": 7.260658290223465e-6,
+      "guesses": [
+        "cartolines",
+        "priorisent",
+        "escorchait"
+      ]
+    },
+    {
+      "word": "tolèrerait",
+      "num_guesses": 3,
+      "prior": 0.000016506347056484534,
+      "guesses": [
+        "cartolines",
+        "débourrage",
+        "tolèrerait"
+      ]
+    },
+    {
+      "word": "dénicheuse",
+      "num_guesses": 3,
+      "prior": 0.000010989983101497624,
+      "guesses": [
+        "cartolines",
+        "syncinésie",
+        "dénicheuse"
+      ]
+    },
+    {
+      "word": "nolanacées",
+      "num_guesses": 3,
+      "prior": 9.934020109341626e-6,
+      "guesses": [
+        "cartolines",
+        "solanacées",
+        "nolanacées"
+      ]
+    },
+    {
+      "word": "régaleriez",
+      "num_guesses": 3,
+      "prior": 7.519955600923769e-6,
+      "guesses": [
+        "cartolines",
+        "déambuliez",
+        "régaleriez"
+      ]
+    },
+    {
+      "word": "prolongeât",
+      "num_guesses": 3,
+      "prior": 0.000024433747394605265,
+      "guesses": [
+        "cartolines",
+        "prolongent",
+        "prolongeât"
+      ]
+    },
+    {
+      "word": "compreniez",
+      "num_guesses": 3,
+      "prior": 0.000029069701340967624,
+      "guesses": [
+        "cartolines",
+        "confieriez",
+        "compreniez"
+      ]
+    },
+    {
+      "word": "menstruant",
+      "num_guesses": 3,
+      "prior": 6.591039717251066e-6,
+      "guesses": [
+        "cartolines",
+        "pressurage",
+        "menstruant"
+      ]
+    },
+    {
+      "word": "aiguillées",
+      "num_guesses": 3,
+      "prior": 0.00001899660677323279,
+      "guesses": [
+        "cartolines",
+        "gémissante",
+        "aiguillées"
+      ]
+    },
+    {
+      "word": "wakeboards",
+      "num_guesses": 3,
+      "prior": 6.676666341198442e-6,
+      "guesses": [
+        "cartolines",
+        "savoureras",
+        "wakeboards"
+      ]
+    },
+    {
+      "word": "dédouanage",
+      "num_guesses": 3,
+      "prior": 0.000010869908662488125,
+      "guesses": [
+        "cartolines",
+        "endommagée",
+        "dédouanage"
+      ]
+    },
+    {
+      "word": "structuras",
+      "num_guesses": 2,
+      "prior": 0.000013554110613686224,
+      "guesses": [
+        "cartolines",
+        "structuras"
+      ]
+    },
+    {
+      "word": "condensait",
+      "num_guesses": 3,
+      "prior": 0.000024220189204824986,
+      "guesses": [
+        "cartolines",
+        "consentait",
+        "condensait"
+      ]
+    },
+    {
+      "word": "monophones",
+      "num_guesses": 3,
+      "prior": 0.000011141142933155775,
+      "guesses": [
+        "cartolines",
+        "homophones",
+        "monophones"
+      ]
+    },
+    {
+      "word": "brownstone",
+      "num_guesses": 3,
+      "prior": 0.000015393486748895235,
+      "guesses": [
+        "cartolines",
+        "dépresseur",
+        "brownstone"
+      ]
+    },
+    {
+      "word": "guacharaca",
+      "num_guesses": 3,
+      "prior": 9.76365516285804e-6,
+      "guesses": [
+        "cartolines",
+        "préchauffé",
+        "guacharaca"
+      ]
+    },
+    {
+      "word": "boucleries",
+      "num_guesses": 3,
+      "prior": 7.669475642998723e-6,
+      "guesses": [
+        "cartolines",
+        "echirolles",
+        "boucleries"
+      ]
+    },
+    {
+      "word": "mépriserai",
+      "num_guesses": 3,
+      "prior": 0.00001823344979515409,
+      "guesses": [
+        "cartolines",
+        "dépressage",
+        "mépriserai"
+      ]
+    },
+    {
+      "word": "orangistes",
+      "num_guesses": 3,
+      "prior": 0.000027979334671673425,
+      "guesses": [
+        "cartolines",
+        "séminaires",
+        "orangistes"
+      ]
+    },
+    {
+      "word": "indiquâmes",
+      "num_guesses": 3,
+      "prior": 0.000014707921232011848,
+      "guesses": [
+        "cartolines",
+        "désenfumée",
+        "indiquâmes"
+      ]
+    },
+    {
+      "word": "soussignée",
+      "num_guesses": 3,
+      "prior": 0.00002255645100227927,
+      "guesses": [
+        "cartolines",
+        "vigésimaux",
+        "soussignée"
+      ]
+    },
+    {
+      "word": "avancerons",
+      "num_guesses": 3,
+      "prior": 0.00002560463494723155,
+      "guesses": [
+        "cartolines",
+        "encuvement",
+        "avancerons"
+      ]
+    },
+    {
+      "word": "dérangeait",
+      "num_guesses": 3,
+      "prior": 0.00003434435403152348,
+      "guesses": [
+        "cartolines",
+        "détimbrait",
+        "dérangeait"
+      ]
+    },
+    {
+      "word": "repeinture",
+      "num_guesses": 3,
+      "prior": 9.793883776017745e-6,
+      "guesses": [
+        "cartolines",
+        "énergumène",
+        "repeinture"
+      ]
+    },
+    {
+      "word": "calycanthe",
+      "num_guesses": 2,
+      "prior": 0.00001214769315982721,
+      "guesses": [
+        "cartolines",
+        "calycanthe"
+      ]
+    },
+    {
+      "word": "nanomètres",
+      "num_guesses": 2,
+      "prior": 0.000020814720736583375,
+      "guesses": [
+        "cartolines",
+        "nanomètres"
+      ]
+    },
+    {
+      "word": "patientise",
+      "num_guesses": 4,
+      "prior": 8.270600304427079e-6,
+      "guesses": [
+        "cartolines",
+        "manganique",
+        "bassinette",
+        "patientise"
+      ]
+    },
+    {
+      "word": "soultziens",
+      "num_guesses": 3,
+      "prior": 7.3575012823634505e-6,
+      "guesses": [
+        "cartolines",
+        "potentiels",
+        "soultziens"
+      ]
+    },
+    {
+      "word": "trogloxène",
+      "num_guesses": 3,
+      "prior": 0.000015672635770052254,
+      "guesses": [
+        "cartolines",
+        "meuglèrent",
+        "trogloxène"
+      ]
+    },
+    {
+      "word": "gastrolyse",
+      "num_guesses": 2,
+      "prior": 0.00001129132848004145,
+      "guesses": [
+        "cartolines",
+        "gastrolyse"
+      ]
+    },
+    {
+      "word": "incroyante",
+      "num_guesses": 2,
+      "prior": 0.00001967265006629537,
+      "guesses": [
+        "cartolines",
+        "incroyante"
+      ]
+    },
+    {
+      "word": "débandâmes",
+      "num_guesses": 3,
+      "prior": 8.173841503230946e-6,
+      "guesses": [
+        "cartolines",
+        "décagramme",
+        "débandâmes"
+      ]
+    },
+    {
+      "word": "heptagynie",
+      "num_guesses": 3,
+      "prior": 9.56733597962364e-6,
+      "guesses": [
+        "cartolines",
+        "pentagynie",
+        "heptagynie"
+      ]
+    },
+    {
+      "word": "moscovites",
+      "num_guesses": 2,
+      "prior": 0.000039165319992374356,
+      "guesses": [
+        "cartolines",
+        "moscovites"
+      ]
+    },
+    {
+      "word": "détotalise",
+      "num_guesses": 3,
+      "prior": 0.000010332212883766783,
+      "guesses": [
+        "cartolines",
+        "optimalise",
+        "détotalise"
+      ]
+    },
+    {
+      "word": "carotteuse",
+      "num_guesses": 2,
+      "prior": 0.000010764943721562292,
+      "guesses": [
+        "cartolines",
+        "carotteuse"
+      ]
+    },
+    {
+      "word": "monitoring",
+      "num_guesses": 3,
+      "prior": 0.00003059879110257849,
+      "guesses": [
+        "cartolines",
+        "éburnéenne",
+        "monitoring"
+      ]
+    },
+    {
+      "word": "subnormale",
+      "num_guesses": 2,
+      "prior": 0.000018655133126895064,
+      "guesses": [
+        "cartolines",
+        "subnormale"
+      ]
+    },
+    {
+      "word": "vertevelle",
+      "num_guesses": 2,
+      "prior": 0.000012690939630629732,
+      "guesses": [
+        "cartolines",
+        "vertevelle"
+      ]
+    },
+    {
+      "word": "purifiâtes",
+      "num_guesses": 3,
+      "prior": 9.35344030254315e-6,
+      "guesses": [
+        "cartolines",
+        "sémitiques",
+        "purifiâtes"
+      ]
+    },
+    {
+      "word": "extemporel",
+      "num_guesses": 3,
+      "prior": 9.219658490246237e-6,
+      "guesses": [
+        "cartolines",
+        "révolterez",
+        "extemporel"
+      ]
+    },
+    {
+      "word": "subtilises",
+      "num_guesses": 2,
+      "prior": 8.494453092547924e-6,
+      "guesses": [
+        "cartolines",
+        "subtilises"
+      ]
+    },
+    {
+      "word": "bacchantes",
+      "num_guesses": 3,
+      "prior": 0.000034551944358308866,
+      "guesses": [
+        "cartolines",
+        "manchettes",
+        "bacchantes"
+      ]
+    },
+    {
+      "word": "mécoptères",
+      "num_guesses": 3,
+      "prior": 0.000014204428399626447,
+      "guesses": [
+        "cartolines",
+        "démuselées",
+        "mécoptères"
+      ]
+    },
+    {
+      "word": "chiffriers",
+      "num_guesses": 3,
+      "prior": 0.000012584751568723172,
+      "guesses": [
+        "cartolines",
+        "chemisiers",
+        "chiffriers"
+      ]
+    },
+    {
+      "word": "délaissais",
+      "num_guesses": 3,
+      "prior": 0.000015249025006108391,
+      "guesses": [
+        "cartolines",
+        "idéalisais",
+        "délaissais"
+      ]
+    },
+    {
+      "word": "envieillir",
+      "num_guesses": 3,
+      "prior": 0.000015117969819318082,
+      "guesses": [
+        "cartolines",
+        "bilirubine",
+        "envieillir"
+      ]
+    },
+    {
+      "word": "balaieront",
+      "num_guesses": 3,
+      "prior": 0.000015123257672944441,
+      "guesses": [
+        "cartolines",
+        "ralliforme",
+        "balaieront"
+      ]
+    },
+    {
+      "word": "ensoutanés",
+      "num_guesses": 3,
+      "prior": 0.000013956950135364974,
+      "guesses": [
+        "cartolines",
+        "onusiennes",
+        "ensoutanés"
+      ]
+    },
+    {
+      "word": "ignorerons",
+      "num_guesses": 3,
+      "prior": 0.00002167808942433315,
+      "guesses": [
+        "cartolines",
+        "dévoreuses",
+        "ignorerons"
+      ]
+    },
+    {
+      "word": "redonnerai",
+      "num_guesses": 3,
+      "prior": 0.000014816182101556612,
+      "guesses": [
+        "cartolines",
+        "embordurée",
+        "redonnerai"
+      ]
+    },
+    {
+      "word": "clémentine",
+      "num_guesses": 3,
+      "prior": 0.0000397180586862975,
+      "guesses": [
+        "cartolines",
+        "clignement",
+        "clémentine"
+      ]
+    },
+    {
+      "word": "lunulaires",
+      "num_guesses": 3,
+      "prior": 0.000011529352657535057,
+      "guesses": [
+        "cartolines",
+        "annulaires",
+        "lunulaires"
+      ]
+    },
+    {
+      "word": "identifiai",
+      "num_guesses": 3,
+      "prior": 0.000012626351341962506,
+      "guesses": [
+        "cartolines",
+        "mitadinage",
+        "identifiai"
+      ]
+    },
+    {
+      "word": "torpillant",
+      "num_guesses": 3,
+      "prior": 0.000014408940248409984,
+      "guesses": [
+        "cartolines",
+        "mordillant",
+        "torpillant"
+      ]
+    },
+    {
+      "word": "junonienne",
+      "num_guesses": 3,
+      "prior": 0.000011983368919292739,
+      "guesses": [
+        "cartolines",
+        "xénophonie",
+        "junonienne"
+      ]
+    },
+    {
+      "word": "bénisseurs",
+      "num_guesses": 3,
+      "prior": 0.0000163592771195443,
+      "guesses": [
+        "cartolines",
+        "résignerai",
+        "bénisseurs"
+      ]
+    },
+    {
+      "word": "inclinerez",
+      "num_guesses": 3,
+      "prior": 0.000014525044456151421,
+      "guesses": [
+        "cartolines",
+        "influencer",
+        "inclinerez"
+      ]
+    },
+    {
+      "word": "incolorées",
+      "num_guesses": 3,
+      "prior": 8.638160628431872e-6,
+      "guesses": [
+        "cartolines",
+        "régnicoles",
+        "incolorées"
+      ]
+    },
+    {
+      "word": "épauffrées",
+      "num_guesses": 3,
+      "prior": 7.220430560097327e-6,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "épauffrées"
+      ]
+    },
+    {
+      "word": "leucémides",
+      "num_guesses": 3,
+      "prior": 0.000010496671623565747,
+      "guesses": [
+        "cartolines",
+        "séleucides",
+        "leucémides"
+      ]
+    },
+    {
+      "word": "fatrouillé",
+      "num_guesses": 3,
+      "prior": 7.837691793921005e-6,
+      "guesses": [
+        "cartolines",
+        "patrouillé",
+        "fatrouillé"
+      ]
+    },
+    {
+      "word": "allergique",
+      "num_guesses": 3,
+      "prior": 0.0000350973434371375,
+      "guesses": [
+        "cartolines",
+        "académique",
+        "allergique"
+      ]
+    },
+    {
+      "word": "polonismes",
+      "num_guesses": 3,
+      "prior": 0.000011365178185521755,
+      "guesses": [
+        "cartolines",
+        "dolomisées",
+        "polonismes"
+      ]
+    },
+    {
+      "word": "pressurait",
+      "num_guesses": 3,
+      "prior": 0.000019165091587944145,
+      "guesses": [
+        "cartolines",
+        "réassurait",
+        "pressurait"
+      ]
+    },
+    {
+      "word": "suroccupée",
+      "num_guesses": 2,
+      "prior": 9.956623346775543e-6,
+      "guesses": [
+        "cartolines",
+        "suroccupée"
+      ]
+    },
+    {
+      "word": "assayaient",
+      "num_guesses": 4,
+      "prior": 6.860945410112638e-6,
+      "guesses": [
+        "cartolines",
+        "autistisée",
+        "asseyaient",
+        "assayaient"
+      ]
+    },
+    {
+      "word": "générèrent",
+      "num_guesses": 4,
+      "prior": 0.000014429402125853458,
+      "guesses": [
+        "cartolines",
+        "rédempteur",
+        "vénérèrent",
+        "générèrent"
+      ]
+    },
+    {
+      "word": "soupesâmes",
+      "num_guesses": 3,
+      "prior": 7.179285826131713e-6,
+      "guesses": [
+        "cartolines",
+        "hémophobes",
+        "soupesâmes"
+      ]
+    },
+    {
+      "word": "rénumérant",
+      "num_guesses": 3,
+      "prior": 8.294096706754123e-6,
+      "guesses": [
+        "cartolines",
+        "démarquant",
+        "rénumérant"
+      ]
+    },
+    {
+      "word": "aggravants",
+      "num_guesses": 3,
+      "prior": 0.000021466219064488196,
+      "guesses": [
+        "cartolines",
+        "départager",
+        "aggravants"
+      ]
+    },
+    {
+      "word": "baassistes",
+      "num_guesses": 3,
+      "prior": 0.000016768231486718164,
+      "guesses": [
+        "cartolines",
+        "mutabilité",
+        "baassistes"
+      ]
+    },
+    {
+      "word": "possédasse",
+      "num_guesses": 2,
+      "prior": 0.000014931391539626674,
+      "guesses": [
+        "cartolines",
+        "possédasse"
+      ]
+    },
+    {
+      "word": "tonifierez",
+      "num_guesses": 4,
+      "prior": 6.83581306625996e-6,
+      "guesses": [
+        "cartolines",
+        "droguetier",
+        "notifierez",
+        "tonifierez"
+      ]
+    },
+    {
+      "word": "carnivores",
+      "num_guesses": 2,
+      "prior": 0.00003947994781487068,
+      "guesses": [
+        "cartolines",
+        "carnivores"
+      ]
+    },
+    {
+      "word": "vietnamien",
+      "num_guesses": 2,
+      "prior": 0.0000390922122372064,
+      "guesses": [
+        "cartolines",
+        "vietnamien"
+      ]
+    },
+    {
+      "word": "patouillas",
+      "num_guesses": 3,
+      "prior": 7.965316256127005e-6,
+      "guesses": [
+        "cartolines",
+        "latifoliés",
+        "patouillas"
+      ]
+    },
+    {
+      "word": "tendanceur",
+      "num_guesses": 3,
+      "prior": 6.981386405811953e-6,
+      "guesses": [
+        "cartolines",
+        "empuantent",
+        "tendanceur"
+      ]
+    },
+    {
+      "word": "mandatives",
+      "num_guesses": 3,
+      "prior": 7.004504085456756e-6,
+      "guesses": [
+        "cartolines",
+        "magnétites",
+        "mandatives"
+      ]
+    },
+    {
+      "word": "rickettsie",
+      "num_guesses": 3,
+      "prior": 0.000015005176624883138,
+      "guesses": [
+        "cartolines",
+        "ressuscité",
+        "rickettsie"
+      ]
+    },
+    {
+      "word": "emboîtions",
+      "num_guesses": 3,
+      "prior": 0.0000106081262509883,
+      "guesses": [
+        "cartolines",
+        "entendîtes",
+        "emboîtions"
+      ]
+    },
+    {
+      "word": "rechantera",
+      "num_guesses": 3,
+      "prior": 0.000010104071739241463,
+      "guesses": [
+        "cartolines",
+        "empuantent",
+        "rechantera"
+      ]
+    },
+    {
+      "word": "cascarille",
+      "num_guesses": 2,
+      "prior": 0.0000212244314760733,
+      "guesses": [
+        "cartolines",
+        "cascarille"
+      ]
+    },
+    {
+      "word": "cryptonyme",
+      "num_guesses": 3,
+      "prior": 0.000013522845487385487,
+      "guesses": [
+        "cartolines",
+        "touchement",
+        "cryptonyme"
+      ]
+    },
+    {
+      "word": "majorquins",
+      "num_guesses": 3,
+      "prior": 0.000021508231702554436,
+      "guesses": [
+        "cartolines",
+        "japonisant",
+        "majorquins"
+      ]
+    },
+    {
+      "word": "holacratie",
+      "num_guesses": 3,
+      "prior": 0.00001213242259844892,
+      "guesses": [
+        "cartolines",
+        "prucheraie",
+        "holacratie"
+      ]
+    },
+    {
+      "word": "quartation",
+      "num_guesses": 3,
+      "prior": 0.00001134522748635705,
+      "guesses": [
+        "cartolines",
+        "rédarguant",
+        "quartation"
+      ]
+    },
+    {
+      "word": "globuleuse",
+      "num_guesses": 2,
+      "prior": 0.000037255244563273334,
+      "guesses": [
+        "cartolines",
+        "globuleuse"
+      ]
+    },
+    {
+      "word": "implorerai",
+      "num_guesses": 3,
+      "prior": 0.000013783703642115431,
+      "guesses": [
+        "cartolines",
+        "reproduire",
+        "implorerai"
+      ]
+    },
+    {
+      "word": "equevillon",
+      "num_guesses": 3,
+      "prior": 0.000011368489718189302,
+      "guesses": [
+        "cartolines",
+        "monolingue",
+        "equevillon"
+      ]
+    },
+    {
+      "word": "essangeage",
+      "num_guesses": 3,
+      "prior": 0.000014895629993522975,
+      "guesses": [
+        "cartolines",
+        "demandeuse",
+        "essangeage"
+      ]
+    },
+    {
+      "word": "estampilla",
+      "num_guesses": 3,
+      "prior": 0.000012976185251718648,
+      "guesses": [
+        "cartolines",
+        "surestimée",
+        "estampilla"
+      ]
+    },
+    {
+      "word": "bichonneur",
+      "num_guesses": 3,
+      "prior": 7.653430574279138e-6,
+      "guesses": [
+        "cartolines",
+        "microphone",
+        "bichonneur"
+      ]
+    },
+    {
+      "word": "fourrelier",
+      "num_guesses": 3,
+      "prior": 7.220430560097327e-6,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "fourrelier"
+      ]
+    },
+    {
+      "word": "ébractéolé",
+      "num_guesses": 2,
+      "prior": 6.784410141204298e-6,
+      "guesses": [
+        "cartolines",
+        "ébractéolé"
+      ]
+    },
+    {
+      "word": "attrairont",
+      "num_guesses": 3,
+      "prior": 8.173841503230946e-6,
+      "guesses": [
+        "cartolines",
+        "rédarguant",
+        "attrairont"
+      ]
+    },
+    {
+      "word": "whewellite",
+      "num_guesses": 3,
+      "prior": 0.000012400937043793355,
+      "guesses": [
+        "cartolines",
+        "feuillette",
+        "whewellite"
+      ]
+    },
+    {
+      "word": "intérieurs",
+      "num_guesses": 3,
+      "prior": 0.00006055215124729453,
+      "guesses": [
+        "cartolines",
+        "délivrerai",
+        "intérieurs"
+      ]
+    },
+    {
+      "word": "cambriolée",
+      "num_guesses": 3,
+      "prior": 0.000018451256460185,
+      "guesses": [
+        "cartolines",
+        "calorifère",
+        "cambriolée"
+      ]
+    },
+    {
+      "word": "fustigeurs",
+      "num_guesses": 3,
+      "prior": 8.418790689456656e-6,
+      "guesses": [
+        "cartolines",
+        "pestiférés",
+        "fustigeurs"
+      ]
+    },
+    {
+      "word": "manœuvrées",
+      "num_guesses": 3,
+      "prior": 0.000024725432528041294,
+      "guesses": [
+        "cartolines",
+        "saugrenues",
+        "manœuvrées"
+      ]
+    },
+    {
+      "word": "kéralaises",
+      "num_guesses": 3,
+      "prior": 9.787867872351382e-6,
+      "guesses": [
+        "cartolines",
+        "eurylaimes",
+        "kéralaises"
+      ]
+    },
+    {
+      "word": "grelotteux",
+      "num_guesses": 3,
+      "prior": 0.000012096489257912427,
+      "guesses": [
+        "cartolines",
+        "temporelle",
+        "grelotteux"
+      ]
+    },
+    {
+      "word": "mésoporeux",
+      "num_guesses": 3,
+      "prior": 0.000010625530981613291,
+      "guesses": [
+        "cartolines",
+        "possesseur",
+        "mésoporeux"
+      ]
+    },
+    {
+      "word": "comparable",
+      "num_guesses": 2,
+      "prior": 0.00006215967820314765,
+      "guesses": [
+        "cartolines",
+        "comparable"
+      ]
+    },
+    {
+      "word": "molesquine",
+      "num_guesses": 3,
+      "prior": 0.00001533695350639255,
+      "guesses": [
+        "cartolines",
+        "mousseline",
+        "molesquine"
+      ]
+    },
+    {
+      "word": "monophytes",
+      "num_guesses": 3,
+      "prior": 0.000010432128562875563,
+      "guesses": [
+        "cartolines",
+        "admonestes",
+        "monophytes"
+      ]
+    },
+    {
+      "word": "dépénalisa",
+      "num_guesses": 2,
+      "prior": 7.747751819298397e-6,
+      "guesses": [
+        "cartolines",
+        "dépénalisa"
+      ]
+    },
+    {
+      "word": "amplifiées",
+      "num_guesses": 3,
+      "prior": 0.00003028991884395282,
+      "guesses": [
+        "cartolines",
+        "qualifiées",
+        "amplifiées"
+      ]
+    },
+    {
+      "word": "bouchèrent",
+      "num_guesses": 4,
+      "prior": 0.000019636717030462582,
+      "guesses": [
+        "cartolines",
+        "décohéreur",
+        "touchèrent",
+        "bouchèrent"
+      ]
+    },
+    {
+      "word": "reconverge",
+      "num_guesses": 3,
+      "prior": 6.531382481574925e-6,
+      "guesses": [
+        "cartolines",
+        "reconforme",
+        "reconverge"
+      ]
+    },
+    {
+      "word": "barigoules",
+      "num_guesses": 3,
+      "prior": 7.5542164987563445e-6,
+      "guesses": [
+        "cartolines",
+        "lariformes",
+        "barigoules"
+      ]
+    },
+    {
+      "word": "frisottant",
+      "num_guesses": 3,
+      "prior": 0.000013745201074953779,
+      "guesses": [
+        "cartolines",
+        "grisonnant",
+        "frisottant"
+      ]
+    },
+    {
+      "word": "préfaciers",
+      "num_guesses": 3,
+      "prior": 0.00001892431730863545,
+      "guesses": [
+        "cartolines",
+        "échassiers",
+        "préfaciers"
+      ]
+    },
+    {
+      "word": "programmez",
+      "num_guesses": 3,
+      "prior": 0.000018986407703270257,
+      "guesses": [
+        "cartolines",
+        "dédommager",
+        "programmez"
+      ]
+    },
+    {
+      "word": "éliasienne",
+      "num_guesses": 3,
+      "prior": 0.000011569742109673101,
+      "guesses": [
+        "cartolines",
+        "gélasienne",
+        "éliasienne"
+      ]
+    },
+    {
+      "word": "effluaient",
+      "num_guesses": 4,
+      "prior": 7.80817045832142e-6,
+      "guesses": [
+        "cartolines",
+        "guillemite",
+        "exultaient",
+        "effluaient"
+      ]
+    },
+    {
+      "word": "apprenante",
+      "num_guesses": 3,
+      "prior": 0.00002306339649380814,
+      "guesses": [
+        "cartolines",
+        "retraversé",
+        "apprenante"
+      ]
+    },
+    {
+      "word": "houspiller",
+      "num_guesses": 3,
+      "prior": 0.00002296406995106947,
+      "guesses": [
+        "cartolines",
+        "boisselier",
+        "houspiller"
+      ]
+    },
+    {
+      "word": "transgènes",
+      "num_guesses": 3,
+      "prior": 0.000015142232961852845,
+      "guesses": [
+        "cartolines",
+        "athermanes",
+        "transgènes"
+      ]
+    },
+    {
+      "word": "rabattages",
+      "num_guesses": 3,
+      "prior": 0.00001193744392669207,
+      "guesses": [
+        "cartolines",
+        "mutassarif",
+        "rabattages"
+      ]
+    },
+    {
+      "word": "entropique",
+      "num_guesses": 2,
+      "prior": 0.000024236393019557843,
+      "guesses": [
+        "cartolines",
+        "entropique"
+      ]
+    },
+    {
+      "word": "coupassent",
+      "num_guesses": 3,
+      "prior": 0.000017466330022862576,
+      "guesses": [
+        "cartolines",
+        "compensant",
+        "coupassent"
+      ]
+    },
+    {
+      "word": "rapprenons",
+      "num_guesses": 3,
+      "prior": 0.000014771168330011691,
+      "guesses": [
+        "cartolines",
+        "fantasmons",
+        "rapprenons"
+      ]
+    },
+    {
+      "word": "lutineries",
+      "num_guesses": 3,
+      "prior": 0.000013245544925233486,
+      "guesses": [
+        "cartolines",
+        "infiltrées",
+        "lutineries"
+      ]
+    },
+    {
+      "word": "stockèrent",
+      "num_guesses": 3,
+      "prior": 0.000010432128562875563,
+      "guesses": [
+        "cartolines",
+        "secouèrent",
+        "stockèrent"
+      ]
+    },
+    {
+      "word": "paradeisos",
+      "num_guesses": 2,
+      "prior": 0.000014366366755473907,
+      "guesses": [
+        "cartolines",
+        "paradeisos"
+      ]
+    },
+    {
+      "word": "domicilias",
+      "num_guesses": 3,
+      "prior": 9.204305101955743e-6,
+      "guesses": [
+        "cartolines",
+        "favorables",
+        "domicilias"
+      ]
+    },
+    {
+      "word": "prélogique",
+      "num_guesses": 3,
+      "prior": 0.000023628059231246947,
+      "guesses": [
+        "cartolines",
+        "débourbeur",
+        "prélogique"
+      ]
+    },
+    {
+      "word": "embrochera",
+      "num_guesses": 3,
+      "prior": 9.606601332356833e-6,
+      "guesses": [
+        "cartolines",
+        "récupèrent",
+        "embrochera"
+      ]
+    },
+    {
+      "word": "fébrigènes",
+      "num_guesses": 3,
+      "prior": 0.000015363836152907728,
+      "guesses": [
+        "cartolines",
+        "stipendiés",
+        "fébrigènes"
+      ]
+    },
+    {
+      "word": "ennuageant",
+      "num_guesses": 3,
+      "prior": 8.222790161908811e-6,
+      "guesses": [
+        "cartolines",
+        "engagement",
+        "ennuageant"
+      ]
+    },
+    {
+      "word": "fourvoyées",
+      "num_guesses": 3,
+      "prior": 0.00001801626807733208,
+      "guesses": [
+        "cartolines",
+        "péroreuses",
+        "fourvoyées"
+      ]
+    },
+    {
+      "word": "tutoyaient",
+      "num_guesses": 4,
+      "prior": 0.000021239121937216493,
+      "guesses": [
+        "cartolines",
+        "admonétant",
+        "vivotaient",
+        "tutoyaient"
+      ]
+    },
+    {
+      "word": "épouillage",
+      "num_guesses": 3,
+      "prior": 0.00002009110261362212,
+      "guesses": [
+        "cartolines",
+        "mouillable",
+        "épouillage"
+      ]
+    },
+    {
+      "word": "francisant",
+      "num_guesses": 3,
+      "prior": 0.000019038448063118302,
+      "guesses": [
+        "cartolines",
+        "inscrivant",
+        "francisant"
+      ]
+    },
+    {
+      "word": "mormonisme",
+      "num_guesses": 3,
+      "prior": 0.00002157880670406904,
+      "guesses": [
+        "cartolines",
+        "nervosisme",
+        "mormonisme"
+      ]
+    },
+    {
+      "word": "corroborai",
+      "num_guesses": 3,
+      "prior": 9.317044488933497e-6,
+      "guesses": [
+        "cartolines",
+        "corromprai",
+        "corroborai"
+      ]
+    },
+    {
+      "word": "praguoises",
+      "num_guesses": 3,
+      "prior": 0.00001182368038376951,
+      "guesses": [
+        "cartolines",
+        "grassoises",
+        "praguoises"
+      ]
+    },
+    {
+      "word": "pâliraient",
+      "num_guesses": 4,
+      "prior": 0.000015690918276204642,
+      "guesses": [
+        "cartolines",
+        "pivertisme",
+        "plairaient",
+        "pâliraient"
+      ]
+    },
+    {
+      "word": "urédospore",
+      "num_guesses": 3,
+      "prior": 0.000014290294441980407,
+      "guesses": [
+        "cartolines",
+        "remboursée",
+        "urédospore"
+      ]
+    },
+    {
+      "word": "cocufiages",
+      "num_guesses": 3,
+      "prior": 9.560728697089896e-6,
+      "guesses": [
+        "cartolines",
+        "coassocies",
+        "cocufiages"
+      ]
+    },
+    {
+      "word": "aiguillats",
+      "num_guesses": 3,
+      "prior": 0.000013547552434437843,
+      "guesses": [
+        "cartolines",
+        "détaillais",
+        "aiguillats"
+      ]
+    },
+    {
+      "word": "taperaient",
+      "num_guesses": 3,
+      "prior": 0.000011882493634480544,
+      "guesses": [
+        "cartolines",
+        "pigovienne",
+        "taperaient"
+      ]
+    },
+    {
+      "word": "gracieusez",
+      "num_guesses": 3,
+      "prior": 6.83581306625996e-6,
+      "guesses": [
+        "cartolines",
+        "gracieuser",
+        "gracieusez"
+      ]
+    },
+    {
+      "word": "affourchés",
+      "num_guesses": 3,
+      "prior": 0.000012925088583572009,
+      "guesses": [
+        "cartolines",
+        "découragés",
+        "affourchés"
+      ]
+    },
+    {
+      "word": "prédestine",
+      "num_guesses": 4,
+      "prior": 0.0000237641206294989,
+      "guesses": [
+        "cartolines",
+        "détruirait",
+        "prédestiné",
+        "prédestine"
+      ]
+    },
+    {
+      "word": "libanaises",
+      "num_guesses": 2,
+      "prior": 0.00003200949722212232,
+      "guesses": [
+        "cartolines",
+        "libanaises"
+      ]
+    },
+    {
+      "word": "loubavitch",
+      "num_guesses": 2,
+      "prior": 0.000020643464191664848,
+      "guesses": [
+        "cartolines",
+        "loubavitch"
+      ]
+    },
+    {
+      "word": "fœtoscopie",
+      "num_guesses": 3,
+      "prior": 0.00001080985024169553,
+      "guesses": [
+        "cartolines",
+        "vicomtesse",
+        "fœtoscopie"
+      ]
+    },
+    {
+      "word": "franchisés",
+      "num_guesses": 2,
+      "prior": 0.000024481949706694754,
+      "guesses": [
+        "cartolines",
+        "franchisés"
+      ]
+    },
+    {
+      "word": "ravineuses",
+      "num_guesses": 3,
+      "prior": 9.101922090316603e-6,
+      "guesses": [
+        "cartolines",
+        "endiguable",
+        "ravineuses"
+      ]
+    },
+    {
+      "word": "bazinistes",
+      "num_guesses": 3,
+      "prior": 0.000011548064174998622,
+      "guesses": [
+        "cartolines",
+        "unionismes",
+        "bazinistes"
+      ]
+    },
+    {
+      "word": "duveteuses",
+      "num_guesses": 2,
+      "prior": 0.000024033884278263188,
+      "guesses": [
+        "cartolines",
+        "duveteuses"
+      ]
+    },
+    {
+      "word": "orographes",
+      "num_guesses": 3,
+      "prior": 8.725727455916775e-6,
+      "guesses": [
+        "cartolines",
+        "gomorrhéen",
+        "orographes"
+      ]
+    },
+    {
+      "word": "machinales",
+      "num_guesses": 3,
+      "prior": 0.00002209064068656505,
+      "guesses": [
+        "cartolines",
+        "savonnages",
+        "machinales"
+      ]
+    },
+    {
+      "word": "vulgarisez",
+      "num_guesses": 3,
+      "prior": 0.000011012627489521454,
+      "guesses": [
+        "cartolines",
+        "vulgariser",
+        "vulgarisez"
+      ]
+    },
+    {
+      "word": "psittacose",
+      "num_guesses": 2,
+      "prior": 0.000021463093902043165,
+      "guesses": [
+        "cartolines",
+        "psittacose"
+      ]
+    },
+    {
+      "word": "effrayâmes",
+      "num_guesses": 3,
+      "prior": 0.000010537340101961294,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "effrayâmes"
+      ]
+    },
+    {
+      "word": "giboyaient",
+      "num_guesses": 3,
+      "prior": 8.006096457932657e-6,
+      "guesses": [
+        "cartolines",
+        "admonétant",
+        "giboyaient"
+      ]
+    },
+    {
+      "word": "fignolerai",
+      "num_guesses": 3,
+      "prior": 7.778195790228064e-6,
+      "guesses": [
+        "cartolines",
+        "unipolaire",
+        "fignolerai"
+      ]
+    },
+    {
+      "word": "fouillerez",
+      "num_guesses": 3,
+      "prior": 0.00001301687589543559,
+      "guesses": [
+        "cartolines",
+        "profilerez",
+        "fouillerez"
+      ]
+    },
+    {
+      "word": "hypotendue",
+      "num_guesses": 3,
+      "prior": 0.000010370731055387187,
+      "guesses": [
+        "cartolines",
+        "enjuponnée",
+        "hypotendue"
+      ]
+    },
+    {
+      "word": "innoverons",
+      "num_guesses": 3,
+      "prior": 8.80991405480246e-6,
+      "guesses": [
+        "cartolines",
+        "dévoreuses",
+        "innoverons"
+      ]
+    },
+    {
+      "word": "faisselles",
+      "num_guesses": 3,
+      "prior": 0.00001610036012370311,
+      "guesses": [
+        "cartolines",
+        "familiales",
+        "faisselles"
+      ]
+    },
+    {
+      "word": "perpétuité",
+      "num_guesses": 2,
+      "prior": 0.000053925536454770176,
+      "guesses": [
+        "cartolines",
+        "perpétuité"
+      ]
+    },
+    {
+      "word": "célébrante",
+      "num_guesses": 2,
+      "prior": 0.000015076468466355493,
+      "guesses": [
+        "cartolines",
+        "célébrante"
+      ]
+    },
+    {
+      "word": "déchireuse",
+      "num_guesses": 3,
+      "prior": 9.500424964533363e-6,
+      "guesses": [
+        "cartolines",
+        "discursive",
+        "déchireuse"
+      ]
+    },
+    {
+      "word": "désœuvrait",
+      "num_guesses": 3,
+      "prior": 7.519955600923769e-6,
+      "guesses": [
+        "cartolines",
+        "guérissait",
+        "désœuvrait"
+      ]
+    },
+    {
+      "word": "plaisances",
+      "num_guesses": 3,
+      "prior": 0.000019389258861322995,
+      "guesses": [
+        "cartolines",
+        "sichuanais",
+        "plaisances"
+      ]
+    },
+    {
+      "word": "assoupirez",
+      "num_guesses": 3,
+      "prior": 8.328849726304636e-6,
+      "guesses": [
+        "cartolines",
+        "assouvirez",
+        "assoupirez"
+      ]
+    },
+    {
+      "word": "océanistes",
+      "num_guesses": 2,
+      "prior": 0.00002389306577446387,
+      "guesses": [
+        "cartolines",
+        "océanistes"
+      ]
+    },
+    {
+      "word": "excellence",
+      "num_guesses": 2,
+      "prior": 0.00007254152829616861,
+      "guesses": [
+        "cartolines",
+        "excellence"
+      ]
+    },
+    {
+      "word": "commandais",
+      "num_guesses": 3,
+      "prior": 0.000026785204933984315,
+      "guesses": [
+        "cartolines",
+        "convaincus",
+        "commandais"
+      ]
+    },
+    {
+      "word": "affistolée",
+      "num_guesses": 3,
+      "prior": 7.99259537524898e-6,
+      "guesses": [
+        "cartolines",
+        "optimalise",
+        "affistolée"
+      ]
+    },
+    {
+      "word": "culbuterez",
+      "num_guesses": 2,
+      "prior": 9.720695867948889e-6,
+      "guesses": [
+        "cartolines",
+        "culbuterez"
+      ]
+    },
+    {
+      "word": "defterdars",
+      "num_guesses": 3,
+      "prior": 0.000014282331791543111,
+      "guesses": [
+        "cartolines",
+        "testateurs",
+        "defterdars"
+      ]
+    },
+    {
+      "word": "rachetable",
+      "num_guesses": 3,
+      "prior": 0.000028148488807615653,
+      "guesses": [
+        "cartolines",
+        "maculature",
+        "rachetable"
+      ]
+    },
+    {
+      "word": "glouterons",
+      "num_guesses": 3,
+      "prior": 0.000010801740817529399,
+      "guesses": [
+        "cartolines",
+        "solutréens",
+        "glouterons"
+      ]
+    },
+    {
+      "word": "infligeait",
+      "num_guesses": 3,
+      "prior": 0.00003134487066588445,
+      "guesses": [
+        "cartolines",
+        "déteignent",
+        "infligeait"
+      ]
+    },
+    {
+      "word": "importerai",
+      "num_guesses": 3,
+      "prior": 9.234910283314267e-6,
+      "guesses": [
+        "cartolines",
+        "embourrage",
+        "importerai"
+      ]
+    },
+    {
+      "word": "halluciner",
+      "num_guesses": 2,
+      "prior": 0.00002047262640619169,
+      "guesses": [
+        "cartolines",
+        "halluciner"
+      ]
+    },
+    {
+      "word": "pontillant",
+      "num_guesses": 3,
+      "prior": 7.716821682504285e-6,
+      "guesses": [
+        "cartolines",
+        "boitillant",
+        "pontillant"
+      ]
+    },
+    {
+      "word": "diamétrale",
+      "num_guesses": 3,
+      "prior": 0.000025766691287531043,
+      "guesses": [
+        "cartolines",
+        "dépiautait",
+        "diamétrale"
+      ]
+    },
+    {
+      "word": "anthracine",
+      "num_guesses": 3,
+      "prior": 0.000013020724765385677,
+      "guesses": [
+        "cartolines",
+        "traduirait",
+        "anthracine"
+      ]
+    },
+    {
+      "word": "matriciels",
+      "num_guesses": 2,
+      "prior": 0.00002237392337005757,
+      "guesses": [
+        "cartolines",
+        "matriciels"
+      ]
+    },
+    {
+      "word": "médicateur",
+      "num_guesses": 3,
+      "prior": 0.000015010625129088279,
+      "guesses": [
+        "cartolines",
+        "dépiautait",
+        "médicateur"
+      ]
+    },
+    {
+      "word": "transfusai",
+      "num_guesses": 3,
+      "prior": 7.004504085456756e-6,
+      "guesses": [
+        "cartolines",
+        "traduisais",
+        "transfusai"
+      ]
+    },
+    {
+      "word": "appropriez",
+      "num_guesses": 3,
+      "prior": 0.00001924312991677574,
+      "guesses": [
+        "cartolines",
+        "approprier",
+        "appropriez"
+      ]
+    },
+    {
+      "word": "flanqueurs",
+      "num_guesses": 3,
+      "prior": 0.000024491022337651477,
+      "guesses": [
+        "cartolines",
+        "phalangers",
+        "flanqueurs"
+      ]
+    },
+    {
+      "word": "soutenante",
+      "num_guesses": 2,
+      "prior": 0.00001608882572225046,
+      "guesses": [
+        "cartolines",
+        "soutenante"
+      ]
+    },
+    {
+      "word": "couponnées",
+      "num_guesses": 3,
+      "prior": 7.43146088757565e-6,
+      "guesses": [
+        "cartolines",
+        "convoquées",
+        "couponnées"
+      ]
+    },
+    {
+      "word": "miaulaient",
+      "num_guesses": 3,
+      "prior": 0.00001679193916087928,
+      "guesses": [
+        "cartolines",
+        "guillemite",
+        "miaulaient"
+      ]
+    },
+    {
+      "word": "tayloriste",
+      "num_guesses": 3,
+      "prior": 0.000017147190996023322,
+      "guesses": [
+        "cartolines",
+        "déterminer",
+        "tayloriste"
+      ]
+    },
+    {
+      "word": "perditions",
+      "num_guesses": 3,
+      "prior": 0.000016402273888629614,
+      "guesses": [
+        "cartolines",
+        "terminions",
+        "perditions"
+      ]
+    },
+    {
+      "word": "bretaudées",
+      "num_guesses": 3,
+      "prior": 7.260658290223465e-6,
+      "guesses": [
+        "cartolines",
+        "restaurées",
+        "bretaudées"
+      ]
+    },
+    {
+      "word": "terrorisme",
+      "num_guesses": 3,
+      "prior": 0.00005037660720222346,
+      "guesses": [
+        "cartolines",
+        "traitement",
+        "terrorisme"
+      ]
+    },
+    {
+      "word": "canonicats",
+      "num_guesses": 2,
+      "prior": 0.00002962619539606428,
+      "guesses": [
+        "cartolines",
+        "canonicats"
+      ]
+    },
+    {
+      "word": "réabsorbée",
+      "num_guesses": 3,
+      "prior": 0.00001850012396272774,
+      "guesses": [
+        "cartolines",
+        "déformètre",
+        "réabsorbée"
+      ]
+    },
+    {
+      "word": "vitellines",
+      "num_guesses": 2,
+      "prior": 0.00002742240536814172,
+      "guesses": [
+        "cartolines",
+        "vitellines"
+      ]
+    },
+    {
+      "word": "pourpreuse",
+      "num_guesses": 3,
+      "prior": 0.000011365178185521755,
+      "guesses": [
+        "cartolines",
+        "possesseur",
+        "pourpreuse"
+      ]
+    },
+    {
+      "word": "tréfilerie",
+      "num_guesses": 3,
+      "prior": 0.000024892089364195295,
+      "guesses": [
+        "cartolines",
+        "hôtellerie",
+        "tréfilerie"
+      ]
+    },
+    {
+      "word": "combattrai",
+      "num_guesses": 3,
+      "prior": 0.000026961476954813607,
+      "guesses": [
+        "cartolines",
+        "croupirait",
+        "combattrai"
+      ]
+    },
+    {
+      "word": "armadilles",
+      "num_guesses": 3,
+      "prior": 0.000015660706236637485,
+      "guesses": [
+        "cartolines",
+        "redirigées",
+        "armadilles"
+      ]
+    },
+    {
+      "word": "paganismes",
+      "num_guesses": 3,
+      "prior": 0.000018250423712056577,
+      "guesses": [
+        "cartolines",
+        "vasospasme",
+        "paganismes"
+      ]
+    },
+    {
+      "word": "antirebond",
+      "num_guesses": 3,
+      "prior": 7.80817045832142e-6,
+      "guesses": [
+        "cartolines",
+        "traintrain",
+        "antirebond"
+      ]
+    },
+    {
+      "word": "lancequine",
+      "num_guesses": 3,
+      "prior": 8.618210852721611e-6,
+      "guesses": [
+        "cartolines",
+        "jacqueline",
+        "lancequine"
+      ]
+    },
+    {
+      "word": "éreintages",
+      "num_guesses": 3,
+      "prior": 9.417559759868535e-6,
+      "guesses": [
+        "cartolines",
+        "empiristes",
+        "éreintages"
+      ]
+    },
+    {
+      "word": "ontogénies",
+      "num_guesses": 3,
+      "prior": 0.000011494729351465589,
+      "guesses": [
+        "cartolines",
+        "dénominaux",
+        "ontogénies"
+      ]
+    },
+    {
+      "word": "xylographe",
+      "num_guesses": 3,
+      "prior": 0.000017676248275742428,
+      "guesses": [
+        "cartolines",
+        "polymodale",
+        "xylographe"
+      ]
+    },
+    {
+      "word": "reboulonne",
+      "num_guesses": 3,
+      "prior": 7.319377461681352e-6,
+      "guesses": [
+        "cartolines",
+        "reboulonné",
+        "reboulonne"
+      ]
+    },
+    {
+      "word": "freudismes",
+      "num_guesses": 3,
+      "prior": 7.951535349582978e-6,
+      "guesses": [
+        "cartolines",
+        "repurifiée",
+        "freudismes"
+      ]
+    },
+    {
+      "word": "rocamadour",
+      "num_guesses": 2,
+      "prior": 0.000027491660398199774,
+      "guesses": [
+        "cartolines",
+        "rocamadour"
+      ]
+    },
+    {
+      "word": "planctique",
+      "num_guesses": 3,
+      "prior": 9.870777570589102e-6,
+      "guesses": [
+        "cartolines",
+        "acheuléens",
+        "planctique"
+      ]
+    },
+    {
+      "word": "hibernales",
+      "num_guesses": 3,
+      "prior": 0.00001546082911573255,
+      "guesses": [
+        "cartolines",
+        "biguanides",
+        "hibernales"
+      ]
+    },
+    {
+      "word": "affilement",
+      "num_guesses": 5,
+      "prior": 8.706570899031526e-6,
+      "guesses": [
+        "cartolines",
+        "déteignent",
+        "miaulement",
+        "axialement",
+        "affilement"
+      ]
+    },
+    {
+      "word": "collatrice",
+      "num_guesses": 3,
+      "prior": 0.000013484607175727666,
+      "guesses": [
+        "cartolines",
+        "croulerait",
+        "collatrice"
+      ]
+    },
+    {
+      "word": "révoltâtes",
+      "num_guesses": 3,
+      "prior": 7.537163917326953e-6,
+      "guesses": [
+        "cartolines",
+        "soumettrez",
+        "révoltâtes"
+      ]
+    },
+    {
+      "word": "déplantent",
+      "num_guesses": 4,
+      "prior": 0.000011075794476953894,
+      "guesses": [
+        "cartolines",
+        "ménageable",
+        "dépeuplant",
+        "déplantent"
+      ]
+    },
+    {
+      "word": "paraverbal",
+      "num_guesses": 3,
+      "prior": 0.000015217198176649038,
+      "guesses": [
+        "cartolines",
+        "gargamelle",
+        "paraverbal"
+      ]
+    },
+    {
+      "word": "botryoïdal",
+      "num_guesses": 3,
+      "prior": 9.382154397187426e-6,
+      "guesses": [
+        "cartolines",
+        "autorégulé",
+        "botryoïdal"
+      ]
+    },
+    {
+      "word": "incarcérés",
+      "num_guesses": 3,
+      "prior": 0.000034499616266309274,
+      "guesses": [
+        "cartolines",
+        "américains",
+        "incarcérés"
+      ]
+    },
+    {
+      "word": "chiquitano",
+      "num_guesses": 3,
+      "prior": 9.882397117276288e-6,
+      "guesses": [
+        "cartolines",
+        "augmentait",
+        "chiquitano"
+      ]
+    },
+    {
+      "word": "mondialité",
+      "num_guesses": 3,
+      "prior": 0.000020389823333891493,
+      "guesses": [
+        "cartolines",
+        "audimutité",
+        "mondialité"
+      ]
+    },
+    {
+      "word": "économisez",
+      "num_guesses": 2,
+      "prior": 0.00002033030642493739,
+      "guesses": [
+        "cartolines",
+        "économisez"
+      ]
+    },
+    {
+      "word": "redégagées",
+      "num_guesses": 3,
+      "prior": 7.732348612288467e-6,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "redégagées"
+      ]
+    },
+    {
+      "word": "sténotyper",
+      "num_guesses": 2,
+      "prior": 0.000010161753115862353,
+      "guesses": [
+        "cartolines",
+        "sténotyper"
+      ]
+    },
+    {
+      "word": "sanflorain",
+      "num_guesses": 2,
+      "prior": 0.000013011094041260454,
+      "guesses": [
+        "cartolines",
+        "sanflorain"
+      ]
+    },
+    {
+      "word": "ravaudages",
+      "num_guesses": 3,
+      "prior": 0.000014633936372310675,
+      "guesses": [
+        "cartolines",
+        "ramassages",
+        "ravaudages"
+      ]
+    },
+    {
+      "word": "nyctéribie",
+      "num_guesses": 3,
+      "prior": 0.000011899085498484512,
+      "guesses": [
+        "cartolines",
+        "rectifient",
+        "nyctéribie"
+      ]
+    },
+    {
+      "word": "déchlorées",
+      "num_guesses": 3,
+      "prior": 7.049844468387766e-6,
+      "guesses": [
+        "cartolines",
+        "sérogroupe",
+        "déchlorées"
+      ]
+    },
+    {
+      "word": "évanouîmes",
+      "num_guesses": 3,
+      "prior": 9.58049605136866e-6,
+      "guesses": [
+        "cartolines",
+        "pennonages",
+        "évanouîmes"
+      ]
+    },
+    {
+      "word": "obventions",
+      "num_guesses": 3,
+      "prior": 0.000015098872035206457,
+      "guesses": [
+        "cartolines",
+        "entendîtes",
+        "obventions"
+      ]
+    },
+    {
+      "word": "expression",
+      "num_guesses": 3,
+      "prior": 0.00009691890841804777,
+      "guesses": [
+        "cartolines",
+        "empourprée",
+        "expression"
+      ]
+    },
+    {
+      "word": "italianisé",
+      "num_guesses": 3,
+      "prior": 0.000022434045598777062,
+      "guesses": [
+        "cartolines",
+        "déniaisant",
+        "italianisé"
+      ]
+    },
+    {
+      "word": "garnissage",
+      "num_guesses": 3,
+      "prior": 0.000028305581461845426,
+      "guesses": [
+        "cartolines",
+        "marinesque",
+        "garnissage"
+      ]
+    },
+    {
+      "word": "lesbophobe",
+      "num_guesses": 3,
+      "prior": 0.000010243384114655893,
+      "guesses": [
+        "cartolines",
+        "employeuse",
+        "lesbophobe"
+      ]
+    },
+    {
+      "word": "réagissant",
+      "num_guesses": 3,
+      "prior": 0.000037150922064646677,
+      "guesses": [
+        "cartolines",
+        "traduisais",
+        "réagissant"
+      ]
+    },
+    {
+      "word": "égorgillés",
+      "num_guesses": 3,
+      "prior": 6.591039717251066e-6,
+      "guesses": [
+        "cartolines",
+        "polissoirs",
+        "égorgillés"
+      ]
+    },
+    {
+      "word": "exercerait",
+      "num_guesses": 3,
+      "prior": 0.000033522684995003924,
+      "guesses": [
+        "cartolines",
+        "dépiautait",
+        "exercerait"
+      ]
+    },
+    {
+      "word": "surélèvera",
+      "num_guesses": 3,
+      "prior": 0.000010572970129507378,
+      "guesses": [
+        "cartolines",
+        "surévaluée",
+        "surélèvera"
+      ]
+    },
+    {
+      "word": "déformeras",
+      "num_guesses": 3,
+      "prior": 6.810305589466062e-6,
+      "guesses": [
+        "cartolines",
+        "désobusage",
+        "déformeras"
+      ]
+    },
+    {
+      "word": "écrouellés",
+      "num_guesses": 2,
+      "prior": 8.462357263473211e-6,
+      "guesses": [
+        "cartolines",
+        "écrouellés"
+      ]
+    },
+    {
+      "word": "réaffleure",
+      "num_guesses": 3,
+      "prior": 0.000010207991516541052,
+      "guesses": [
+        "cartolines",
+        "remballage",
+        "réaffleure"
+      ]
+    },
+    {
+      "word": "défraichit",
+      "num_guesses": 3,
+      "prior": 7.502588312441569e-6,
+      "guesses": [
+        "cartolines",
+        "rafraichir",
+        "défraichit"
+      ]
+    },
+    {
+      "word": "prosternes",
+      "num_guesses": 3,
+      "prior": 0.000016653389196869192,
+      "guesses": [
+        "cartolines",
+        "opportunes",
+        "prosternes"
+      ]
+    },
+    {
+      "word": "déferrisée",
+      "num_guesses": 3,
+      "prior": 0.00001002322877476406,
+      "guesses": [
+        "cartolines",
+        "supervisée",
+        "déferrisée"
+      ]
+    },
+    {
+      "word": "empocheras",
+      "num_guesses": 3,
+      "prior": 7.716821682504285e-6,
+      "guesses": [
+        "cartolines",
+        "accordeurs",
+        "empocheras"
+      ]
+    },
+    {
+      "word": "gyroplanes",
+      "num_guesses": 3,
+      "prior": 0.000010655717635748761,
+      "guesses": [
+        "cartolines",
+        "aéroplanes",
+        "gyroplanes"
+      ]
+    },
+    {
+      "word": "branlettes",
+      "num_guesses": 3,
+      "prior": 0.000014612173978007565,
+      "guesses": [
+        "cartolines",
+        "flagrantes",
+        "branlettes"
+      ]
+    },
+    {
+      "word": "voiturette",
+      "num_guesses": 2,
+      "prior": 0.000025035289319725316,
+      "guesses": [
+        "cartolines",
+        "voiturette"
+      ]
+    },
+    {
+      "word": "humorisant",
+      "num_guesses": 3,
+      "prior": 6.7314004400297295e-6,
+      "guesses": [
+        "cartolines",
+        "déméritait",
+        "humorisant"
+      ]
+    },
+    {
+      "word": "appropriât",
+      "num_guesses": 3,
+      "prior": 0.000014295593032403286,
+      "guesses": [
+        "cartolines",
+        "prévoirait",
+        "appropriât"
+      ]
+    },
+    {
+      "word": "adsorption",
+      "num_guesses": 3,
+      "prior": 0.00004111905734464901,
+      "guesses": [
+        "cartolines",
+        "déméritait",
+        "adsorption"
+      ]
+    },
+    {
+      "word": "quadrillée",
+      "num_guesses": 3,
+      "prior": 0.000025618125955671058,
+      "guesses": [
+        "cartolines",
+        "dépigmente",
+        "quadrillée"
+      ]
+    },
+    {
+      "word": "assouvîmes",
+      "num_guesses": 3,
+      "prior": 7.094047584644557e-6,
+      "guesses": [
+        "cartolines",
+        "pédagogues",
+        "assouvîmes"
+      ]
+    },
+    {
+      "word": "verguettes",
+      "num_guesses": 3,
+      "prior": 7.701168771250616e-6,
+      "guesses": [
+        "cartolines",
+        "fermetures",
+        "verguettes"
+      ]
+    },
+    {
+      "word": "judéologie",
+      "num_guesses": 3,
+      "prior": 7.027320543071648e-6,
+      "guesses": [
+        "cartolines",
+        "héliologie",
+        "judéologie"
+      ]
+    },
+    {
+      "word": "raskolniks",
+      "num_guesses": 2,
+      "prior": 0.00002004748441448329,
+      "guesses": [
+        "cartolines",
+        "raskolniks"
+      ]
+    },
+    {
+      "word": "antiquiser",
+      "num_guesses": 3,
+      "prior": 7.467363336602411e-6,
+      "guesses": [
+        "cartolines",
+        "pédantiser",
+        "antiquiser"
+      ]
+    },
+    {
+      "word": "rebutables",
+      "num_guesses": 3,
+      "prior": 7.881156706320842e-6,
+      "guesses": [
+        "cartolines",
+        "patentable",
+        "rebutables"
+      ]
+    },
+    {
+      "word": "chambardez",
+      "num_guesses": 3,
+      "prior": 7.3575012823634505e-6,
+      "guesses": [
+        "cartolines",
+        "chevaucher",
+        "chambardez"
+      ]
+    },
+    {
+      "word": "taylorisme",
+      "num_guesses": 3,
+      "prior": 0.000028671559271987195,
+      "guesses": [
+        "cartolines",
+        "déterminer",
+        "taylorisme"
+      ]
+    },
+    {
+      "word": "bucoliasme",
+      "num_guesses": 3,
+      "prior": 0.000011148309965739376,
+      "guesses": [
+        "cartolines",
+        "délocalise",
+        "bucoliasme"
+      ]
+    },
+    {
+      "word": "protoslave",
+      "num_guesses": 2,
+      "prior": 0.000013512911946675453,
+      "guesses": [
+        "cartolines",
+        "protoslave"
+      ]
+    },
+    {
+      "word": "dissoudrez",
+      "num_guesses": 3,
+      "prior": 0.000013298992035051667,
+      "guesses": [
+        "cartolines",
+        "disposerez",
+        "dissoudrez"
+      ]
+    },
+    {
+      "word": "neurinomes",
+      "num_guesses": 3,
+      "prior": 0.000017927774729965903,
+      "guesses": [
+        "cartolines",
+        "déformerez",
+        "neurinomes"
+      ]
+    },
+    {
+      "word": "scissurale",
+      "num_guesses": 3,
+      "prior": 0.000016081393246461616,
+      "guesses": [
+        "cartolines",
+        "sécularise",
+        "scissurale"
+      ]
+    },
+    {
+      "word": "refranchir",
+      "num_guesses": 3,
+      "prior": 0.000013504611625946477,
+      "guesses": [
+        "cartolines",
+        "réenfourne",
+        "refranchir"
+      ]
+    },
+    {
+      "word": "rebecquait",
+      "num_guesses": 3,
+      "prior": 7.716821682504285e-6,
+      "guesses": [
+        "cartolines",
+        "dépiautait",
+        "rebecquait"
+      ]
+    },
+    {
+      "word": "escalaient",
+      "num_guesses": 3,
+      "prior": 7.80817045832142e-6,
+      "guesses": [
+        "cartolines",
+        "atlantique",
+        "escalaient"
+      ]
+    },
+    {
+      "word": "égyptomane",
+      "num_guesses": 3,
+      "prior": 8.618210852721611e-6,
+      "guesses": [
+        "cartolines",
+        "démunirent",
+        "égyptomane"
+      ]
+    },
+    {
+      "word": "inoubliées",
+      "num_guesses": 2,
+      "prior": 0.000012608902525791719,
+      "guesses": [
+        "cartolines",
+        "inoubliées"
+      ]
+    },
+    {
+      "word": "articulais",
+      "num_guesses": 2,
+      "prior": 0.000011636835255690975,
+      "guesses": [
+        "cartolines",
+        "articulais"
+      ]
+    },
+    {
+      "word": "réexposent",
+      "num_guesses": 3,
+      "prior": 8.952082851246919e-6,
+      "guesses": [
+        "cartolines",
+        "dépresseur",
+        "réexposent"
+      ]
+    },
+    {
+      "word": "débordante",
+      "num_guesses": 3,
+      "prior": 0.000037447865893558104,
+      "guesses": [
+        "cartolines",
+        "démontrent",
+        "débordante"
+      ]
+    },
+    {
+      "word": "marouiller",
+      "num_guesses": 2,
+      "prior": 6.758113186186927e-6,
+      "guesses": [
+        "cartolines",
+        "marouiller"
+      ]
+    },
+    {
+      "word": "paralysies",
+      "num_guesses": 2,
+      "prior": 0.000042866758349118384,
+      "guesses": [
+        "cartolines",
+        "paralysies"
+      ]
+    },
+    {
+      "word": "briefèrent",
+      "num_guesses": 4,
+      "prior": 6.910132852026745e-6,
+      "guesses": [
+        "cartolines",
+        "énergumène",
+        "retirèrent",
+        "briefèrent"
+      ]
+    },
+    {
+      "word": "trahirions",
+      "num_guesses": 3,
+      "prior": 0.00001641066692520376,
+      "guesses": [
+        "cartolines",
+        "apéritives",
+        "trahirions"
+      ]
+    },
+    {
+      "word": "miracleurs",
+      "num_guesses": 2,
+      "prior": 7.747751819298397e-6,
+      "guesses": [
+        "cartolines",
+        "miracleurs"
+      ]
+    },
+    {
+      "word": "manganèses",
+      "num_guesses": 2,
+      "prior": 0.000018928194977967646,
+      "guesses": [
+        "cartolines",
+        "manganèses"
+      ]
+    },
+    {
+      "word": "gémisseurs",
+      "num_guesses": 3,
+      "prior": 0.000011826507662998517,
+      "guesses": [
+        "cartolines",
+        "dépigmenté",
+        "gémisseurs"
+      ]
+    },
+    {
+      "word": "introduira",
+      "num_guesses": 3,
+      "prior": 0.00003234554484802805,
+      "guesses": [
+        "cartolines",
+        "prononçait",
+        "introduira"
+      ]
+    },
+    {
+      "word": "aficionado",
+      "num_guesses": 3,
+      "prior": 0.00001937868631304264,
+      "guesses": [
+        "cartolines",
+        "dominicain",
+        "aficionado"
+      ]
+    },
+    {
+      "word": "repeindrai",
+      "num_guesses": 4,
+      "prior": 0.000010577390269066115,
+      "guesses": [
+        "cartolines",
+        "dégarnirai",
+        "reviendrai",
+        "repeindrai"
+      ]
+    },
+    {
+      "word": "filatières",
+      "num_guesses": 4,
+      "prior": 8.608166290623332e-6,
+      "guesses": [
+        "cartolines",
+        "tatarisées",
+        "gigalitres",
+        "filatières"
+      ]
+    },
+    {
+      "word": "conjecture",
+      "num_guesses": 3,
+      "prior": 0.00005138844321675688,
+      "guesses": [
+        "cartolines",
+        "touchement",
+        "conjecture"
+      ]
+    },
+    {
+      "word": "frigorifié",
+      "num_guesses": 2,
+      "prior": 0.000021155608557100074,
+      "guesses": [
+        "cartolines",
+        "frigorifié"
+      ]
+    },
+    {
+      "word": "traçassent",
+      "num_guesses": 4,
+      "prior": 0.000010813895845463967,
+      "guesses": [
+        "cartolines",
+        "pressurage",
+        "symbolique",
+        "traçassent"
+      ]
+    },
+    {
+      "word": "actionnels",
+      "num_guesses": 2,
+      "prior": 0.000013169238531183655,
+      "guesses": [
+        "cartolines",
+        "actionnels"
+      ]
+    },
+    {
+      "word": "rallongeai",
+      "num_guesses": 2,
+      "prior": 0.000012995625316820849,
+      "guesses": [
+        "cartolines",
+        "rallongeai"
+      ]
+    },
+    {
+      "word": "débourrant",
+      "num_guesses": 3,
+      "prior": 0.000014250302319046534,
+      "guesses": [
+        "cartolines",
+        "rétributif",
+        "débourrant"
+      ]
+    },
+    {
+      "word": "basophilie",
+      "num_guesses": 2,
+      "prior": 0.000022074366780786175,
+      "guesses": [
+        "cartolines",
+        "basophilie"
+      ]
+    },
+    {
+      "word": "abonderais",
+      "num_guesses": 3,
+      "prior": 7.027320543071648e-6,
+      "guesses": [
+        "cartolines",
+        "beauregard",
+        "abonderais"
+      ]
+    },
+    {
+      "word": "secourront",
+      "num_guesses": 3,
+      "prior": 0.0000157506535572473,
+      "guesses": [
+        "cartolines",
+        "secouèrent",
+        "secourront"
+      ]
+    },
+    {
+      "word": "évolueriez",
+      "num_guesses": 3,
+      "prior": 6.469462461792099e-6,
+      "guesses": [
+        "cartolines",
+        "déparfumer",
+        "évolueriez"
+      ]
+    },
+    {
+      "word": "mésogéenne",
+      "num_guesses": 2,
+      "prior": 0.0000169421959950918,
+      "guesses": [
+        "cartolines",
+        "mésogéenne"
+      ]
+    },
+    {
+      "word": "télémétrée",
+      "num_guesses": 3,
+      "prior": 7.701168771250616e-6,
+      "guesses": [
+        "cartolines",
+        "télérelève",
+        "télémétrée"
+      ]
+    },
+    {
+      "word": "twisterais",
+      "num_guesses": 3,
+      "prior": 7.732348612288467e-6,
+      "guesses": [
+        "cartolines",
+        "détruirait",
+        "twisterais"
+      ]
+    },
+    {
+      "word": "vivifieras",
+      "num_guesses": 3,
+      "prior": 9.242498551801248e-6,
+      "guesses": [
+        "cartolines",
+        "beauregard",
+        "vivifieras"
+      ]
+    },
+    {
+      "word": "covoyageur",
+      "num_guesses": 3,
+      "prior": 7.923683402802556e-6,
+      "guesses": [
+        "cartolines",
+        "compradore",
+        "covoyageur"
+      ]
+    },
+    {
+      "word": "chopinière",
+      "num_guesses": 3,
+      "prior": 0.000010773164383091276,
+      "guesses": [
+        "cartolines",
+        "chondriome",
+        "chopinière"
+      ]
+    },
+    {
+      "word": "réinitient",
+      "num_guesses": 3,
+      "prior": 7.072084167325535e-6,
+      "guesses": [
+        "cartolines",
+        "réunifient",
+        "réinitient"
+      ]
+    },
+    {
+      "word": "rénovative",
+      "num_guesses": 4,
+      "prior": 6.500717359016054e-6,
+      "guesses": [
+        "cartolines",
+        "traintrain",
+        "entozoaire",
+        "rénovative"
+      ]
+    },
+    {
+      "word": "mercaptans",
+      "num_guesses": 2,
+      "prior": 0.000019847776097976295,
+      "guesses": [
+        "cartolines",
+        "mercaptans"
+      ]
+    },
+    {
+      "word": "fringalait",
+      "num_guesses": 3,
+      "prior": 8.07227154786327e-6,
+      "guesses": [
+        "cartolines",
+        "dénaturant",
+        "fringalait"
+      ]
+    },
+    {
+      "word": "perchlorés",
+      "num_guesses": 2,
+      "prior": 0.000012549288513519002,
+      "guesses": [
+        "cartolines",
+        "perchlorés"
+      ]
+    },
+    {
+      "word": "bienvenant",
+      "num_guesses": 3,
+      "prior": 0.00001093640820803425,
+      "guesses": [
+        "cartolines",
+        "mitadinage",
+        "bienvenant"
+      ]
+    },
+    {
+      "word": "défatiguer",
+      "num_guesses": 3,
+      "prior": 0.000014464933578948596,
+      "guesses": [
+        "cartolines",
+        "traiteriez",
+        "défatiguer"
+      ]
+    },
+    {
+      "word": "lécanorine",
+      "num_guesses": 2,
+      "prior": 0.000013399951347480272,
+      "guesses": [
+        "cartolines",
+        "lécanorine"
+      ]
+    },
+    {
+      "word": "multiflore",
+      "num_guesses": 3,
+      "prior": 0.000023734056745763877,
+      "guesses": [
+        "cartolines",
+        "multiforme",
+        "multiflore"
+      ]
+    },
+    {
+      "word": "rétrécisse",
+      "num_guesses": 3,
+      "prior": 0.000020460969342306185,
+      "guesses": [
+        "cartolines",
+        "tiercéiste",
+        "rétrécisse"
+      ]
+    },
+    {
+      "word": "lèseraient",
+      "num_guesses": 3,
+      "prior": 0.000011260552141966704,
+      "guesses": [
+        "cartolines",
+        "hygiénique",
+        "lèseraient"
+      ]
+    },
+    {
+      "word": "larissiens",
+      "num_guesses": 3,
+      "prior": 9.922640904079847e-6,
+      "guesses": [
+        "cartolines",
+        "laryngiens",
+        "larissiens"
+      ]
+    },
+    {
+      "word": "farfouillé",
+      "num_guesses": 3,
+      "prior": 0.000016242620131854252,
+      "guesses": [
+        "cartolines",
+        "magnifiées",
+        "farfouillé"
+      ]
+    },
+    {
+      "word": "rescindant",
+      "num_guesses": 3,
+      "prior": 0.00001928807411406545,
+      "guesses": [
+        "cartolines",
+        "vitrifient",
+        "rescindant"
+      ]
+    },
+    {
+      "word": "déductible",
+      "num_guesses": 3,
+      "prior": 0.00003479609200777947,
+      "guesses": [
+        "cartolines",
+        "éclectique",
+        "déductible"
+      ]
+    },
+    {
+      "word": "sauvegardé",
+      "num_guesses": 3,
+      "prior": 0.00003300948195526733,
+      "guesses": [
+        "cartolines",
+        "répressive",
+        "sauvegardé"
+      ]
+    },
+    {
+      "word": "sahélienne",
+      "num_guesses": 3,
+      "prior": 0.000030504245765483652,
+      "guesses": [
+        "cartolines",
+        "salésienne",
+        "sahélienne"
+      ]
+    },
+    {
+      "word": "surestimes",
+      "num_guesses": 3,
+      "prior": 0.0000138111614367919,
+      "guesses": [
+        "cartolines",
+        "terrifiées",
+        "surestimes"
+      ]
+    },
+    {
+      "word": "rechargera",
+      "num_guesses": 3,
+      "prior": 0.000013838402598116967,
+      "guesses": [
+        "cartolines",
+        "réémergera",
+        "rechargera"
+      ]
+    },
+    {
+      "word": "narcissisé",
+      "num_guesses": 2,
+      "prior": 9.956623346775543e-6,
+      "guesses": [
+        "cartolines",
+        "narcissisé"
+      ]
+    },
+    {
+      "word": "phonétique",
+      "num_guesses": 2,
+      "prior": 0.00005068200448302004,
+      "guesses": [
+        "cartolines",
+        "phonétique"
+      ]
+    },
+    {
+      "word": "jardiniste",
+      "num_guesses": 3,
+      "prior": 0.000014030472533367805,
+      "guesses": [
+        "cartolines",
+        "droitement",
+        "jardiniste"
+      ]
+    },
+    {
+      "word": "taillardas",
+      "num_guesses": 2,
+      "prior": 8.628208804039976e-6,
+      "guesses": [
+        "cartolines",
+        "taillardas"
+      ]
+    },
+    {
+      "word": "annotative",
+      "num_guesses": 3,
+      "prior": 9.54079649717407e-6,
+      "guesses": [
+        "cartolines",
+        "amlodipine",
+        "annotative"
+      ]
+    },
+    {
+      "word": "teinterait",
+      "num_guesses": 3,
+      "prior": 0.000012044403407440735,
+      "guesses": [
+        "cartolines",
+        "détruirait",
+        "teinterait"
+      ]
+    },
+    {
+      "word": "effilèrent",
+      "num_guesses": 4,
+      "prior": 6.7314004400297295e-6,
+      "guesses": [
+        "cartolines",
+        "melléphèbe",
+        "enfilèrent",
+        "effilèrent"
+      ]
+    },
+    {
+      "word": "littératie",
+      "num_guesses": 3,
+      "prior": 0.000024788711156075486,
+      "guesses": [
+        "cartolines",
+        "littéraire",
+        "littératie"
+      ]
+    },
+    {
+      "word": "écocidaire",
+      "num_guesses": 3,
+      "prior": 7.951535349582978e-6,
+      "guesses": [
+        "cartolines",
+        "désemparée",
+        "écocidaire"
+      ]
+    },
+    {
+      "word": "phocidiens",
+      "num_guesses": 3,
+      "prior": 0.000025301723228312562,
+      "guesses": [
+        "cartolines",
+        "enfoncions",
+        "phocidiens"
+      ]
+    },
+    {
+      "word": "mandailing",
+      "num_guesses": 2,
+      "prior": 0.00001056410761065299,
+      "guesses": [
+        "cartolines",
+        "mandailing"
+      ]
+    },
+    {
+      "word": "débatteuse",
+      "num_guesses": 3,
+      "prior": 7.97900244727403e-6,
+      "guesses": [
+        "cartolines",
+        "œdémateuse",
+        "débatteuse"
+      ]
+    },
+    {
+      "word": "homologuas",
+      "num_guesses": 3,
+      "prior": 7.923683402802556e-6,
+      "guesses": [
+        "cartolines",
+        "polyphasés",
+        "homologuas"
+      ]
+    },
+    {
+      "word": "réénonçant",
+      "num_guesses": 4,
+      "prior": 7.837691793921005e-6,
+      "guesses": [
+        "cartolines",
+        "réprouvant",
+        "réabonnant",
+        "réénonçant"
+      ]
+    },
+    {
+      "word": "manœuvrant",
+      "num_guesses": 2,
+      "prior": 0.000032174556844381695,
+      "guesses": [
+        "cartolines",
+        "manœuvrant"
+      ]
+    },
+    {
+      "word": "épargnable",
+      "num_guesses": 3,
+      "prior": 7.502588312441569e-6,
+      "guesses": [
+        "cartolines",
+        "demandable",
+        "épargnable"
+      ]
+    },
+    {
+      "word": "requinqués",
+      "num_guesses": 3,
+      "prior": 0.000014240905917105743,
+      "guesses": [
+        "cartolines",
+        "résignerai",
+        "requinqués"
+      ]
+    },
+    {
+      "word": "antimonate",
+      "num_guesses": 3,
+      "prior": 9.173287361405244e-6,
+      "guesses": [
+        "cartolines",
+        "amlodipine",
+        "antimonate"
+      ]
+    },
+    {
+      "word": "mongoliser",
+      "num_guesses": 2,
+      "prior": 8.186188752140441e-6,
+      "guesses": [
+        "cartolines",
+        "mongoliser"
+      ]
+    },
+    {
+      "word": "nouméennes",
+      "num_guesses": 3,
+      "prior": 8.84631989909012e-6,
+      "guesses": [
+        "cartolines",
+        "homophones",
+        "nouméennes"
+      ]
+    },
+    {
+      "word": "bambochard",
+      "num_guesses": 3,
+      "prior": 9.676963456809628e-6,
+      "guesses": [
+        "cartolines",
+        "raccommodé",
+        "bambochard"
+      ]
+    },
+    {
+      "word": "semenceaux",
+      "num_guesses": 2,
+      "prior": 0.00001815576552187448,
+      "guesses": [
+        "cartolines",
+        "semenceaux"
+      ]
+    },
+    {
+      "word": "quinteuses",
+      "num_guesses": 3,
+      "prior": 0.000015110554372631076,
+      "guesses": [
+        "cartolines",
+        "féminitude",
+        "quinteuses"
+      ]
+    },
+    {
+      "word": "inquisiter",
+      "num_guesses": 3,
+      "prior": 7.115742324930938e-6,
+      "guesses": [
+        "cartolines",
+        "interdisez",
+        "inquisiter"
+      ]
+    },
+    {
+      "word": "fendillait",
+      "num_guesses": 3,
+      "prior": 0.000016515273834640862,
+      "guesses": [
+        "cartolines",
+        "détrempent",
+        "fendillait"
+      ]
+    },
+    {
+      "word": "réfrigérer",
+      "num_guesses": 3,
+      "prior": 0.000019577241338917217,
+      "guesses": [
+        "cartolines",
+        "réformerez",
+        "réfrigérer"
+      ]
+    },
+    {
+      "word": "désolèrent",
+      "num_guesses": 3,
+      "prior": 0.00002920370412607927,
+      "guesses": [
+        "cartolines",
+        "résolument",
+        "désolèrent"
+      ]
+    },
+    {
+      "word": "circonfixe",
+      "num_guesses": 3,
+      "prior": 0.000010572970129507378,
+      "guesses": [
+        "cartolines",
+        "circoncire",
+        "circonfixe"
+      ]
+    },
+    {
+      "word": "invariante",
+      "num_guesses": 3,
+      "prior": 0.000031746116696814996,
+      "guesses": [
+        "cartolines",
+        "méditative",
+        "invariante"
+      ]
+    },
+    {
+      "word": "médaillées",
+      "num_guesses": 3,
+      "prior": 0.000014510109925931498,
+      "guesses": [
+        "cartolines",
+        "gémissante",
+        "médaillées"
+      ]
+    },
+    {
+      "word": "versionner",
+      "num_guesses": 2,
+      "prior": 8.440686409703015e-6,
+      "guesses": [
+        "cartolines",
+        "versionner"
+      ]
+    },
+    {
+      "word": "inflictive",
+      "num_guesses": 3,
+      "prior": 0.000011243307723898362,
+      "guesses": [
+        "cartolines",
+        "véhiculent",
+        "inflictive"
+      ]
+    },
+    {
+      "word": "irritatifs",
+      "num_guesses": 3,
+      "prior": 0.000020617524358699628,
+      "guesses": [
+        "cartolines",
+        "stratifiés",
+        "irritatifs"
+      ]
+    },
+    {
+      "word": "milésiaque",
+      "num_guesses": 3,
+      "prior": 0.000012720636287535458,
+      "guesses": [
+        "cartolines",
+        "dépressage",
+        "milésiaque"
+      ]
+    },
+    {
+      "word": "rétrocèdes",
+      "num_guesses": 3,
+      "prior": 7.778195790228064e-6,
+      "guesses": [
+        "cartolines",
+        "thyrocytes",
+        "rétrocèdes"
+      ]
+    },
+    {
+      "word": "hésychasme",
+      "num_guesses": 3,
+      "prior": 0.000019805560867124002,
+      "guesses": [
+        "cartolines",
+        "déchaussée",
+        "hésychasme"
+      ]
+    },
+    {
+      "word": "appareilla",
+      "num_guesses": 3,
+      "prior": 0.000027792380719513737,
+      "guesses": [
+        "cartolines",
+        "académique",
+        "appareilla"
+      ]
+    },
+    {
+      "word": "vendiquées",
+      "num_guesses": 3,
+      "prior": 9.410521217054781e-6,
+      "guesses": [
+        "cartolines",
+        "désenfumée",
+        "vendiquées"
+      ]
+    },
+    {
+      "word": "panifiable",
+      "num_guesses": 2,
+      "prior": 0.000021743033786834033,
+      "guesses": [
+        "cartolines",
+        "panifiable"
+      ]
+    },
+    {
+      "word": "lithargiré",
+      "num_guesses": 3,
+      "prior": 0.00001144038587125196,
+      "guesses": [
+        "cartolines",
+        "témébilité",
+        "lithargiré"
+      ]
+    },
+    {
+      "word": "expectores",
+      "num_guesses": 3,
+      "prior": 8.234847090785196e-6,
+      "guesses": [
+        "cartolines",
+        "démuselées",
+        "expectores"
+      ]
+    },
+    {
+      "word": "antoiniste",
+      "num_guesses": 3,
+      "prior": 0.000012950737717086708,
+      "guesses": [
+        "cartolines",
+        "épuisemens",
+        "antoiniste"
+      ]
+    },
+    {
+      "word": "effaroucha",
+      "num_guesses": 3,
+      "prior": 0.000018639129925404097,
+      "guesses": [
+        "cartolines",
+        "embauchera",
+        "effaroucha"
+      ]
+    },
+    {
+      "word": "déplâtrées",
+      "num_guesses": 3,
+      "prior": 7.004504085456756e-6,
+      "guesses": [
+        "cartolines",
+        "sépultures",
+        "déplâtrées"
+      ]
+    },
+    {
+      "word": "cressonnée",
+      "num_guesses": 3,
+      "prior": 0.000010006743111854861,
+      "guesses": [
+        "cartolines",
+        "coprésence",
+        "cressonnée"
+      ]
+    },
+    {
+      "word": "fadasserie",
+      "num_guesses": 3,
+      "prior": 8.735242993755678e-6,
+      "guesses": [
+        "cartolines",
+        "débourrage",
+        "fadasserie"
+      ]
+    },
+    {
+      "word": "accourrons",
+      "num_guesses": 3,
+      "prior": 0.000011967240504268565,
+      "guesses": [
+        "cartolines",
+        "accordéons",
+        "accourrons"
+      ]
+    },
+    {
+      "word": "flotterais",
+      "num_guesses": 2,
+      "prior": 0.000010446093979112034,
+      "guesses": [
+        "cartolines",
+        "flotterais"
+      ]
+    },
+    {
+      "word": "nickelages",
+      "num_guesses": 2,
+      "prior": 8.960674117401734e-6,
+      "guesses": [
+        "cartolines",
+        "nickelages"
+      ]
+    },
+    {
+      "word": "grainerais",
+      "num_guesses": 3,
+      "prior": 7.319377461681352e-6,
+      "guesses": [
+        "cartolines",
+        "miniserres",
+        "grainerais"
+      ]
+    },
+    {
+      "word": "chassoires",
+      "num_guesses": 3,
+      "prior": 7.319377461681352e-6,
+      "guesses": [
+        "cartolines",
+        "couardises",
+        "chassoires"
+      ]
+    },
+    {
+      "word": "sectorisée",
+      "num_guesses": 2,
+      "prior": 0.000015328951961142693,
+      "guesses": [
+        "cartolines",
+        "sectorisée"
+      ]
+    },
+    {
+      "word": "congruente",
+      "num_guesses": 2,
+      "prior": 0.000023116104709752198,
+      "guesses": [
+        "cartolines",
+        "congruente"
+      ]
+    },
+    {
+      "word": "pestiférer",
+      "num_guesses": 3,
+      "prior": 0.000010012250403639205,
+      "guesses": [
+        "cartolines",
+        "distribuer",
+        "pestiférer"
+      ]
+    },
+    {
+      "word": "colombelle",
+      "num_guesses": 3,
+      "prior": 0.000020086350295240223,
+      "guesses": [
+        "cartolines",
+        "cholédoque",
+        "colombelle"
+      ]
+    },
+    {
+      "word": "tirebourre",
+      "num_guesses": 3,
+      "prior": 0.000013045632160845728,
+      "guesses": [
+        "cartolines",
+        "territoire",
+        "tirebourre"
+      ]
+    },
+    {
+      "word": "réformeras",
+      "num_guesses": 3,
+      "prior": 9.638838974417101e-6,
+      "guesses": [
+        "cartolines",
+        "désobusage",
+        "réformeras"
+      ]
+    },
+    {
+      "word": "ramasseras",
+      "num_guesses": 3,
+      "prior": 0.000015049622732458562,
+      "guesses": [
+        "cartolines",
+        "hamburgers",
+        "ramasseras"
+      ]
+    },
+    {
+      "word": "esclaffées",
+      "num_guesses": 3,
+      "prior": 9.916931670779582e-6,
+      "guesses": [
+        "cartolines",
+        "escaladées",
+        "esclaffées"
+      ]
+    },
+    {
+      "word": "liquéfiais",
+      "num_guesses": 3,
+      "prior": 0.000011430687875501608,
+      "guesses": [
+        "cartolines",
+        "sulfamidés",
+        "liquéfiais"
+      ]
+    },
+    {
+      "word": "bazochiens",
+      "num_guesses": 3,
+      "prior": 0.000017317699922358695,
+      "guesses": [
+        "cartolines",
+        "basochiens",
+        "bazochiens"
+      ]
+    },
+    {
+      "word": "clepsydres",
+      "num_guesses": 2,
+      "prior": 0.000022591365310289598,
+      "guesses": [
+        "cartolines",
+        "clepsydres"
+      ]
+    },
+    {
+      "word": "patelinent",
+      "num_guesses": 3,
+      "prior": 6.469462461792099e-6,
+      "guesses": [
+        "cartolines",
+        "délitement",
+        "patelinent"
+      ]
+    },
+    {
+      "word": "mycophages",
+      "num_guesses": 3,
+      "prior": 0.0000162298920369672,
+      "guesses": [
+        "cartolines",
+        "accouchées",
+        "mycophages"
+      ]
+    },
+    {
+      "word": "déchaînées",
+      "num_guesses": 3,
+      "prior": 0.000032437743816536726,
+      "guesses": [
+        "cartolines",
+        "échafaudée",
+        "déchaînées"
+      ]
+    },
+    {
+      "word": "cuisissent",
+      "num_guesses": 3,
+      "prior": 9.141844333870054e-6,
+      "guesses": [
+        "cartolines",
+        "cuisinette",
+        "cuisissent"
+      ]
+    },
+    {
+      "word": "porphyrins",
+      "num_guesses": 3,
+      "prior": 0.0000107772653223774,
+      "guesses": [
+        "cartolines",
+        "springboks",
+        "porphyrins"
+      ]
+    },
+    {
+      "word": "irrévérent",
+      "num_guesses": 3,
+      "prior": 0.000016272690471521324,
+      "guesses": [
+        "cartolines",
+        "dévotement",
+        "irrévérent"
+      ]
+    }
+  ]
+}

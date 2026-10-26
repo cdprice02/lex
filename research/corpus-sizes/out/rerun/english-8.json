@@ -1,0 +1,5174 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T13:38:41.514765Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "tonaries",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 8,
+    "dictionary_length": 84573,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "09a55016b8acad0c5bc0957fb458d861f59e77027e879036a520e2e5dd0f629a",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.235999999999971,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.022000000000000006,
+        "3": 0.7280000000000005,
+        "4": 0.2420000000000002,
+        "5": 0.008
+      }
+    },
+    "prior": {
+      "mean": 3.1522359150692747,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.026179513448935206,
+        "3": 0.7987555594047803,
+        "4": 0.1717144257743586,
+        "5": 0.003350501371926534
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "hamatsas",
+      "num_guesses": 3,
+      "prior": 7.008128759263699e-6,
+      "guesses": [
+        "tonaries",
+        "malahack",
+        "hamatsas"
+      ]
+    },
+    {
+      "word": "unioneer",
+      "num_guesses": 3,
+      "prior": 6.508270762333389e-6,
+      "guesses": [
+        "tonaries",
+        "reclined",
+        "unioneer"
+      ]
+    },
+    {
+      "word": "exaflops",
+      "num_guesses": 3,
+      "prior": 6.321300883021322e-6,
+      "guesses": [
+        "tonaries",
+        "smallcap",
+        "exaflops"
+      ]
+    },
+    {
+      "word": "helitron",
+      "num_guesses": 4,
+      "prior": 9.11131170707234e-6,
+      "guesses": [
+        "tonaries",
+        "pruritic",
+        "integron",
+        "helitron"
+      ]
+    },
+    {
+      "word": "mesaraic",
+      "num_guesses": 3,
+      "prior": 8.581390953645989e-6,
+      "guesses": [
+        "tonaries",
+        "sefardic",
+        "mesaraic"
+      ]
+    },
+    {
+      "word": "ziplocks",
+      "num_guesses": 3,
+      "prior": 6.599273018910928e-6,
+      "guesses": [
+        "tonaries",
+        "kililoch",
+        "ziplocks"
+      ]
+    },
+    {
+      "word": "flatbill",
+      "num_guesses": 3,
+      "prior": 7.951523146519557e-6,
+      "guesses": [
+        "tonaries",
+        "caliphal",
+        "flatbill"
+      ]
+    },
+    {
+      "word": "trawling",
+      "num_guesses": 3,
+      "prior": 0.000028544239219475114,
+      "guesses": [
+        "tonaries",
+        "magickly",
+        "trawling"
+      ]
+    },
+    {
+      "word": "blennies",
+      "num_guesses": 3,
+      "prior": 0.00001553794876114435,
+      "guesses": [
+        "tonaries",
+        "shelduck",
+        "blennies"
+      ]
+    },
+    {
+      "word": "pascuage",
+      "num_guesses": 3,
+      "prior": 5.031444297176919e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "pascuage"
+      ]
+    },
+    {
+      "word": "nonpaved",
+      "num_guesses": 3,
+      "prior": 7.757055345429988e-6,
+      "guesses": [
+        "tonaries",
+        "capbadge",
+        "nonpaved"
+      ]
+    },
+    {
+      "word": "thraneen",
+      "num_guesses": 3,
+      "prior": 8.07998899623757e-6,
+      "guesses": [
+        "tonaries",
+        "truanted",
+        "thraneen"
+      ]
+    },
+    {
+      "word": "suicider",
+      "num_guesses": 3,
+      "prior": 9.846899071465496e-6,
+      "guesses": [
+        "tonaries",
+        "curlered",
+        "suicider"
+      ]
+    },
+    {
+      "word": "gambicin",
+      "num_guesses": 3,
+      "prior": 5.475695247641954e-6,
+      "guesses": [
+        "tonaries",
+        "lahmacun",
+        "gambicin"
+      ]
+    },
+    {
+      "word": "uglifier",
+      "num_guesses": 4,
+      "prior": 5.521610706865765e-6,
+      "guesses": [
+        "tonaries",
+        "cupelled",
+        "fluffier",
+        "uglifier"
+      ]
+    },
+    {
+      "word": "peccants",
+      "num_guesses": 3,
+      "prior": 4.530178640582208e-6,
+      "guesses": [
+        "tonaries",
+        "plateasm",
+        "peccants"
+      ]
+    },
+    {
+      "word": "poppling",
+      "num_guesses": 4,
+      "prior": 8.740728058267199e-6,
+      "guesses": [
+        "tonaries",
+        "chumbled",
+        "golliwog",
+        "poppling"
+      ]
+    },
+    {
+      "word": "pasagian",
+      "num_guesses": 4,
+      "prior": 5.687825276355328e-6,
+      "guesses": [
+        "tonaries",
+        "gaslamps",
+        "pasagini",
+        "pasagian"
+      ]
+    },
+    {
+      "word": "nailsick",
+      "num_guesses": 4,
+      "prior": 4.838584034898625e-6,
+      "guesses": [
+        "tonaries",
+        "schlumps",
+        "callsign",
+        "nailsick"
+      ]
+    },
+    {
+      "word": "inedited",
+      "num_guesses": 3,
+      "prior": 0.00001781535480562959,
+      "guesses": [
+        "tonaries",
+        "untented",
+        "inedited"
+      ]
+    },
+    {
+      "word": "sheafing",
+      "num_guesses": 4,
+      "prior": 8.7130961203142e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "findings",
+        "sheafing"
+      ]
+    },
+    {
+      "word": "berninas",
+      "num_guesses": 3,
+      "prior": 5.0194787769001615e-6,
+      "guesses": [
+        "tonaries",
+        "marriage",
+        "berninas"
+      ]
+    },
+    {
+      "word": "troupand",
+      "num_guesses": 3,
+      "prior": 4.6905602665828596e-6,
+      "guesses": [
+        "tonaries",
+        "clansman",
+        "troupand"
+      ]
+    },
+    {
+      "word": "approvee",
+      "num_guesses": 3,
+      "prior": 5.968613122717262e-6,
+      "guesses": [
+        "tonaries",
+        "beplumed",
+        "approvee"
+      ]
+    },
+    {
+      "word": "spinward",
+      "num_guesses": 3,
+      "prior": 8.797515950824518e-6,
+      "guesses": [
+        "tonaries",
+        "machilid",
+        "spinward"
+      ]
+    },
+    {
+      "word": "urticate",
+      "num_guesses": 4,
+      "prior": 8.36997448408036e-6,
+      "guesses": [
+        "tonaries",
+        "pergelic",
+        "cruciate",
+        "urticate"
+      ]
+    },
+    {
+      "word": "squeeged",
+      "num_guesses": 4,
+      "prior": 7.466241667428777e-6,
+      "guesses": [
+        "tonaries",
+        "behelmed",
+        "squeezed",
+        "squeeged"
+      ]
+    },
+    {
+      "word": "dispones",
+      "num_guesses": 3,
+      "prior": 0.000010977792418241405,
+      "guesses": [
+        "tonaries",
+        "ziplined",
+        "dispones"
+      ]
+    },
+    {
+      "word": "hegelian",
+      "num_guesses": 3,
+      "prior": 0.00003044238773824114,
+      "guesses": [
+        "tonaries",
+        "nebelung",
+        "hegelian"
+      ]
+    },
+    {
+      "word": "telopsis",
+      "num_guesses": 3,
+      "prior": 6.021780866499351e-6,
+      "guesses": [
+        "tonaries",
+        "tefillos",
+        "telopsis"
+      ]
+    },
+    {
+      "word": "melanous",
+      "num_guesses": 3,
+      "prior": 7.776977756000047e-6,
+      "guesses": [
+        "tonaries",
+        "hexanols",
+        "melanous"
+      ]
+    },
+    {
+      "word": "leoparde",
+      "num_guesses": 4,
+      "prior": 7.1214687796030585e-6,
+      "guesses": [
+        "tonaries",
+        "preclare",
+        "aeropyle",
+        "leoparde"
+      ]
+    },
+    {
+      "word": "footpath",
+      "num_guesses": 3,
+      "prior": 0.00003064235580934804,
+      "guesses": [
+        "tonaries",
+        "humpback",
+        "footpath"
+      ]
+    },
+    {
+      "word": "carnifex",
+      "num_guesses": 3,
+      "prior": 0.00001578951410713385,
+      "guesses": [
+        "tonaries",
+        "larcener",
+        "carnifex"
+      ]
+    },
+    {
+      "word": "upperers",
+      "num_guesses": 3,
+      "prior": 3.9593998591897466e-6,
+      "guesses": [
+        "tonaries",
+        "ruleress",
+        "upperers"
+      ]
+    },
+    {
+      "word": "webworks",
+      "num_guesses": 3,
+      "prior": 9.606524250558196e-6,
+      "guesses": [
+        "tonaries",
+        "dropworm",
+        "webworks"
+      ]
+    },
+    {
+      "word": "lammings",
+      "num_guesses": 4,
+      "prior": 7.003376407179536e-6,
+      "guesses": [
+        "tonaries",
+        "mailpack",
+        "lambings",
+        "lammings"
+      ]
+    },
+    {
+      "word": "overmade",
+      "num_guesses": 4,
+      "prior": 7.520701391208521e-6,
+      "guesses": [
+        "tonaries",
+        "preclare",
+        "overmake",
+        "overmade"
+      ]
+    },
+    {
+      "word": "arecaine",
+      "num_guesses": 3,
+      "prior": 7.869671857456819e-6,
+      "guesses": [
+        "tonaries",
+        "medregal",
+        "arecaine"
+      ]
+    },
+    {
+      "word": "delofted",
+      "num_guesses": 4,
+      "prior": 4.951539498261066e-6,
+      "guesses": [
+        "tonaries",
+        "buttload",
+        "yclothed",
+        "delofted"
+      ]
+    },
+    {
+      "word": "spetches",
+      "num_guesses": 4,
+      "prior": 7.711196565626966e-6,
+      "guesses": [
+        "tonaries",
+        "scuttles",
+        "sketches",
+        "spetches"
+      ]
+    },
+    {
+      "word": "fishlice",
+      "num_guesses": 5,
+      "prior": 5.423783549159252e-6,
+      "guesses": [
+        "tonaries",
+        "dihelium",
+        "fishlike",
+        "fishlife",
+        "fishlice"
+      ]
+    },
+    {
+      "word": "shearest",
+      "num_guesses": 3,
+      "prior": 5.198594504577151e-6,
+      "guesses": [
+        "tonaries",
+        "crewmate",
+        "shearest"
+      ]
+    },
+    {
+      "word": "sabotted",
+      "num_guesses": 3,
+      "prior": 6.030461989822118e-6,
+      "guesses": [
+        "tonaries",
+        "accosted",
+        "sabotted"
+      ]
+    },
+    {
+      "word": "leanness",
+      "num_guesses": 3,
+      "prior": 0.000021757337398641915,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "leanness"
+      ]
+    },
+    {
+      "word": "kamaiura",
+      "num_guesses": 3,
+      "prior": 8.442568430556053e-6,
+      "guesses": [
+        "tonaries",
+        "barcrawl",
+        "kamaiura"
+      ]
+    },
+    {
+      "word": "wikified",
+      "num_guesses": 3,
+      "prior": 5.839898886281196e-6,
+      "guesses": [
+        "tonaries",
+        "vengeful",
+        "wikified"
+      ]
+    },
+    {
+      "word": "fancical",
+      "num_guesses": 3,
+      "prior": 6.133630466001372e-6,
+      "guesses": [
+        "tonaries",
+        "cambalid",
+        "fancical"
+      ]
+    },
+    {
+      "word": "cyclones",
+      "num_guesses": 3,
+      "prior": 0.00003163045509573527,
+      "guesses": [
+        "tonaries",
+        "encloses",
+        "cyclones"
+      ]
+    },
+    {
+      "word": "zonetime",
+      "num_guesses": 3,
+      "prior": 4.729330502377173e-6,
+      "guesses": [
+        "tonaries",
+        "melchite",
+        "zonetime"
+      ]
+    },
+    {
+      "word": "midorbit",
+      "num_guesses": 3,
+      "prior": 8.152967780933985e-6,
+      "guesses": [
+        "tonaries",
+        "biotroph",
+        "midorbit"
+      ]
+    },
+    {
+      "word": "unmiffed",
+      "num_guesses": 5,
+      "prior": 4.299455646710674e-6,
+      "guesses": [
+        "tonaries",
+        "decupled",
+        "knowings",
+        "unimbued",
+        "unmiffed"
+      ]
+    },
+    {
+      "word": "ecowalks",
+      "num_guesses": 3,
+      "prior": 3.9278468332062515e-6,
+      "guesses": [
+        "tonaries",
+        "smallcap",
+        "ecowalks"
+      ]
+    },
+    {
+      "word": "insurest",
+      "num_guesses": 4,
+      "prior": 4.206153774868517e-6,
+      "guesses": [
+        "tonaries",
+        "interest",
+        "injurest",
+        "insurest"
+      ]
+    },
+    {
+      "word": "adidases",
+      "num_guesses": 4,
+      "prior": 6.520982325553597e-6,
+      "guesses": [
+        "tonaries",
+        "emplaced",
+        "diabases",
+        "adidases"
+      ]
+    },
+    {
+      "word": "unleafed",
+      "num_guesses": 4,
+      "prior": 8.541617835431955e-6,
+      "guesses": [
+        "tonaries",
+        "deplaced",
+        "thankful",
+        "unleafed"
+      ]
+    },
+    {
+      "word": "bootlike",
+      "num_guesses": 3,
+      "prior": 7.919769921755636e-6,
+      "guesses": [
+        "tonaries",
+        "polycomb",
+        "bootlike"
+      ]
+    },
+    {
+      "word": "catlover",
+      "num_guesses": 4,
+      "prior": 6.79638615543129e-6,
+      "guesses": [
+        "tonaries",
+        "larruped",
+        "balloter",
+        "catlover"
+      ]
+    },
+    {
+      "word": "boneware",
+      "num_guesses": 3,
+      "prior": 6.945315999487001e-6,
+      "guesses": [
+        "tonaries",
+        "ponderal",
+        "boneware"
+      ]
+    },
+    {
+      "word": "lurement",
+      "num_guesses": 3,
+      "prior": 6.833536757988154e-6,
+      "guesses": [
+        "tonaries",
+        "dectuple",
+        "lurement"
+      ]
+    },
+    {
+      "word": "backword",
+      "num_guesses": 4,
+      "prior": 9.918898692206724e-6,
+      "guesses": [
+        "tonaries",
+        "carbaryl",
+        "backdoor",
+        "backword"
+      ]
+    },
+    {
+      "word": "rondeaus",
+      "num_guesses": 2,
+      "prior": 0.00001175749729440627,
+      "guesses": [
+        "tonaries",
+        "rondeaus"
+      ]
+    },
+    {
+      "word": "casimere",
+      "num_guesses": 4,
+      "prior": 9.934618103421893e-6,
+      "guesses": [
+        "tonaries",
+        "cephalad",
+        "causerie",
+        "casimere"
+      ]
+    },
+    {
+      "word": "resetted",
+      "num_guesses": 4,
+      "prior": 0.000011134082834105825,
+      "guesses": [
+        "tonaries",
+        "spleeted",
+        "retested",
+        "resetted"
+      ]
+    },
+    {
+      "word": "russetin",
+      "num_guesses": 4,
+      "prior": 5.496756235904342e-6,
+      "guesses": [
+        "tonaries",
+        "deignest",
+        "spectrin",
+        "russetin"
+      ]
+    },
+    {
+      "word": "safranal",
+      "num_guesses": 3,
+      "prior": 0.000010061399560758834,
+      "guesses": [
+        "tonaries",
+        "haydamak",
+        "safranal"
+      ]
+    },
+    {
+      "word": "izinduna",
+      "num_guesses": 4,
+      "prior": 0.00001009358900152762,
+      "guesses": [
+        "tonaries",
+        "lahmacun",
+        "quinidia",
+        "izinduna"
+      ]
+    },
+    {
+      "word": "talisman",
+      "num_guesses": 3,
+      "prior": 0.000029786011041520274,
+      "guesses": [
+        "tonaries",
+        "tailspin",
+        "talisman"
+      ]
+    },
+    {
+      "word": "kathetal",
+      "num_guesses": 3,
+      "prior": 5.762410256677572e-6,
+      "guesses": [
+        "tonaries",
+        "beallach",
+        "kathetal"
+      ]
+    },
+    {
+      "word": "hagrides",
+      "num_guesses": 4,
+      "prior": 4.4933430299769466e-6,
+      "guesses": [
+        "tonaries",
+        "amphidal",
+        "hayrides",
+        "hagrides"
+      ]
+    },
+    {
+      "word": "ravished",
+      "num_guesses": 3,
+      "prior": 0.000026286828709432957,
+      "guesses": [
+        "tonaries",
+        "reprised",
+        "ravished"
+      ]
+    },
+    {
+      "word": "rockwool",
+      "num_guesses": 3,
+      "prior": 0.000017505131444939757,
+      "guesses": [
+        "tonaries",
+        "fordhook",
+        "rockwool"
+      ]
+    },
+    {
+      "word": "sidewall",
+      "num_guesses": 4,
+      "prior": 0.000027363429987237956,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "sidewalk",
+        "sidewall"
+      ]
+    },
+    {
+      "word": "intuiter",
+      "num_guesses": 3,
+      "prior": 7.827435042899798e-6,
+      "guesses": [
+        "tonaries",
+        "bewitted",
+        "intuiter"
+      ]
+    },
+    {
+      "word": "leechdom",
+      "num_guesses": 3,
+      "prior": 9.512862163017609e-6,
+      "guesses": [
+        "tonaries",
+        "wellcome",
+        "leechdom"
+      ]
+    },
+    {
+      "word": "eringoes",
+      "num_guesses": 3,
+      "prior": 9.451020719332132e-6,
+      "guesses": [
+        "tonaries",
+        "erigible",
+        "eringoes"
+      ]
+    },
+    {
+      "word": "coatomic",
+      "num_guesses": 3,
+      "prior": 6.664371100937368e-6,
+      "guesses": [
+        "tonaries",
+        "chapatti",
+        "coatomic"
+      ]
+    },
+    {
+      "word": "enhanced",
+      "num_guesses": 3,
+      "prior": 0.00005660256071193424,
+      "guesses": [
+        "tonaries",
+        "humplock",
+        "enhanced"
+      ]
+    },
+    {
+      "word": "relagate",
+      "num_guesses": 3,
+      "prior": 5.007398062104082e-6,
+      "guesses": [
+        "tonaries",
+        "celature",
+        "relagate"
+      ]
+    },
+    {
+      "word": "overloop",
+      "num_guesses": 3,
+      "prior": 9.535586072697117e-6,
+      "guesses": [
+        "tonaries",
+        "preclude",
+        "overloop"
+      ]
+    },
+    {
+      "word": "moviedom",
+      "num_guesses": 3,
+      "prior": 0.000010191662935590945,
+      "guesses": [
+        "tonaries",
+        "colledge",
+        "moviedom"
+      ]
+    },
+    {
+      "word": "aqualite",
+      "num_guesses": 4,
+      "prior": 8.81275203455152e-6,
+      "guesses": [
+        "tonaries",
+        "melilite",
+        "fayalite",
+        "aqualite"
+      ]
+    },
+    {
+      "word": "grigging",
+      "num_guesses": 4,
+      "prior": 4.7742372674962475e-6,
+      "guesses": [
+        "tonaries",
+        "crumbled",
+        "gangplow",
+        "grigging"
+      ]
+    },
+    {
+      "word": "allogamy",
+      "num_guesses": 3,
+      "prior": 0.00001039261335523366,
+      "guesses": [
+        "tonaries",
+        "callbook",
+        "allogamy"
+      ]
+    },
+    {
+      "word": "styrenyl",
+      "num_guesses": 3,
+      "prior": 7.61833007130452e-6,
+      "guesses": [
+        "tonaries",
+        "sternest",
+        "styrenyl"
+      ]
+    },
+    {
+      "word": "hydrosis",
+      "num_guesses": 4,
+      "prior": 8.380057885427777e-6,
+      "guesses": [
+        "tonaries",
+        "urochord",
+        "hidrosis",
+        "hydrosis"
+      ]
+    },
+    {
+      "word": "pathetic",
+      "num_guesses": 3,
+      "prior": 0.00004143443614752806,
+      "guesses": [
+        "tonaries",
+        "magicall",
+        "pathetic"
+      ]
+    },
+    {
+      "word": "menthols",
+      "num_guesses": 2,
+      "prior": 0.000012171932795692722,
+      "guesses": [
+        "tonaries",
+        "menthols"
+      ]
+    },
+    {
+      "word": "mazikeen",
+      "num_guesses": 3,
+      "prior": 7.904189287232823e-6,
+      "guesses": [
+        "tonaries",
+        "enclined",
+        "mazikeen"
+      ]
+    },
+    {
+      "word": "dumetose",
+      "num_guesses": 3,
+      "prior": 4.766869582272614e-6,
+      "guesses": [
+        "tonaries",
+        "sleptest",
+        "dumetose"
+      ]
+    },
+    {
+      "word": "chartage",
+      "num_guesses": 3,
+      "prior": 5.188102805494272e-6,
+      "guesses": [
+        "tonaries",
+        "leachate",
+        "chartage"
+      ]
+    },
+    {
+      "word": "mercying",
+      "num_guesses": 4,
+      "prior": 4.288229760692876e-6,
+      "guesses": [
+        "tonaries",
+        "peduncle",
+        "merching",
+        "mercying"
+      ]
+    },
+    {
+      "word": "saltiest",
+      "num_guesses": 4,
+      "prior": 0.000012266755371339489,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "shaliest",
+        "saltiest"
+      ]
+    },
+    {
+      "word": "barbacoa",
+      "num_guesses": 3,
+      "prior": 0.000013338280161909878,
+      "guesses": [
+        "tonaries",
+        "carbaryl",
+        "barbacoa"
+      ]
+    },
+    {
+      "word": "chousing",
+      "num_guesses": 3,
+      "prior": 9.422147407497218e-6,
+      "guesses": [
+        "tonaries",
+        "scoopful",
+        "chousing"
+      ]
+    },
+    {
+      "word": "pineless",
+      "num_guesses": 4,
+      "prior": 7.054957840553203e-6,
+      "guesses": [
+        "tonaries",
+        "milkweed",
+        "pitfalls",
+        "pineless"
+      ]
+    },
+    {
+      "word": "bolognas",
+      "num_guesses": 4,
+      "prior": 0.0000113320204090759,
+      "guesses": [
+        "tonaries",
+        "lymphads",
+        "volcanos",
+        "bolognas"
+      ]
+    },
+    {
+      "word": "reichian",
+      "num_guesses": 4,
+      "prior": 0.000013826493185157699,
+      "guesses": [
+        "tonaries",
+        "medregal",
+        "peruvian",
+        "reichian"
+      ]
+    },
+    {
+      "word": "epoxying",
+      "num_guesses": 3,
+      "prior": 8.370751857037401e-6,
+      "guesses": [
+        "tonaries",
+        "velodyne",
+        "epoxying"
+      ]
+    },
+    {
+      "word": "woodshop",
+      "num_guesses": 3,
+      "prior": 0.0000162313594523031,
+      "guesses": [
+        "tonaries",
+        "shopbook",
+        "woodshop"
+      ]
+    },
+    {
+      "word": "hostelry",
+      "num_guesses": 3,
+      "prior": 0.00002444052559798198,
+      "guesses": [
+        "tonaries",
+        "chiefery",
+        "hostelry"
+      ]
+    },
+    {
+      "word": "fluffers",
+      "num_guesses": 4,
+      "prior": 9.541578662701497e-6,
+      "guesses": [
+        "tonaries",
+        "behelped",
+        "closings",
+        "fluffers"
+      ]
+    },
+    {
+      "word": "perbreak",
+      "num_guesses": 3,
+      "prior": 3.826564333180856e-6,
+      "guesses": [
+        "tonaries",
+        "beheadal",
+        "perbreak"
+      ]
+    },
+    {
+      "word": "reheater",
+      "num_guesses": 3,
+      "prior": 0.00001949491822658868,
+      "guesses": [
+        "tonaries",
+        "lecherer",
+        "reheater"
+      ]
+    },
+    {
+      "word": "dogeater",
+      "num_guesses": 4,
+      "prior": 6.409614939404659e-6,
+      "guesses": [
+        "tonaries",
+        "palmated",
+        "dogwater",
+        "dogeater"
+      ]
+    },
+    {
+      "word": "dioleate",
+      "num_guesses": 3,
+      "prior": 0.000010875806357668329,
+      "guesses": [
+        "tonaries",
+        "palmette",
+        "dioleate"
+      ]
+    },
+    {
+      "word": "preradio",
+      "num_guesses": 4,
+      "prior": 7.058035921061888e-6,
+      "guesses": [
+        "tonaries",
+        "archlord",
+        "proedria",
+        "preradio"
+      ]
+    },
+    {
+      "word": "premiate",
+      "num_guesses": 3,
+      "prior": 7.179849288091482e-6,
+      "guesses": [
+        "tonaries",
+        "pergelic",
+        "premiate"
+      ]
+    },
+    {
+      "word": "besteads",
+      "num_guesses": 4,
+      "prior": 6.297219036475302e-6,
+      "guesses": [
+        "tonaries",
+        "helpless",
+        "keyseats",
+        "besteads"
+      ]
+    },
+    {
+      "word": "cuddlers",
+      "num_guesses": 4,
+      "prior": 9.442395762100502e-6,
+      "guesses": [
+        "tonaries",
+        "behelped",
+        "germfree",
+        "cuddlers"
+      ]
+    },
+    {
+      "word": "unwooing",
+      "num_guesses": 4,
+      "prior": 4.713975208948776e-6,
+      "guesses": [
+        "tonaries",
+        "uplocked",
+        "brownish",
+        "unwooing"
+      ]
+    },
+    {
+      "word": "beguiler",
+      "num_guesses": 3,
+      "prior": 0.000011490658434577401,
+      "guesses": [
+        "tonaries",
+        "decupled",
+        "beguiler"
+      ]
+    },
+    {
+      "word": "bombazin",
+      "num_guesses": 3,
+      "prior": 7.698201918135667e-6,
+      "guesses": [
+        "tonaries",
+        "myologic",
+        "bombazin"
+      ]
+    },
+    {
+      "word": "smouldry",
+      "num_guesses": 3,
+      "prior": 6.920540162106902e-6,
+      "guesses": [
+        "tonaries",
+        "showboys",
+        "smouldry"
+      ]
+    },
+    {
+      "word": "supputed",
+      "num_guesses": 3,
+      "prior": 4.957871410898029e-6,
+      "guesses": [
+        "tonaries",
+        "helmette",
+        "supputed"
+      ]
+    },
+    {
+      "word": "chlorids",
+      "num_guesses": 3,
+      "prior": 0.000017644245833010357,
+      "guesses": [
+        "tonaries",
+        "risorius",
+        "chlorids"
+      ]
+    },
+    {
+      "word": "geminate",
+      "num_guesses": 4,
+      "prior": 0.00002181110334550085,
+      "guesses": [
+        "tonaries",
+        "halidame",
+        "intimate",
+        "geminate"
+      ]
+    },
+    {
+      "word": "dighters",
+      "num_guesses": 3,
+      "prior": 3.989978008519435e-6,
+      "guesses": [
+        "tonaries",
+        "deputeth",
+        "dighters"
+      ]
+    },
+    {
+      "word": "stuivers",
+      "num_guesses": 3,
+      "prior": 0.000013252303873602314,
+      "guesses": [
+        "tonaries",
+        "deputeth",
+        "stuivers"
+      ]
+    },
+    {
+      "word": "picolins",
+      "num_guesses": 3,
+      "prior": 4.090209736146388e-6,
+      "guesses": [
+        "tonaries",
+        "cipolins",
+        "picolins"
+      ]
+    },
+    {
+      "word": "ethiopid",
+      "num_guesses": 3,
+      "prior": 7.613793322472469e-6,
+      "guesses": [
+        "tonaries",
+        "chilopod",
+        "ethiopid"
+      ]
+    },
+    {
+      "word": "kabylian",
+      "num_guesses": 3,
+      "prior": 9.430364127998324e-6,
+      "guesses": [
+        "tonaries",
+        "blackgum",
+        "kabylian"
+      ]
+    },
+    {
+      "word": "burbling",
+      "num_guesses": 3,
+      "prior": 0.000017482518342195046,
+      "guesses": [
+        "tonaries",
+        "crumbled",
+        "burbling"
+      ]
+    },
+    {
+      "word": "overjust",
+      "num_guesses": 4,
+      "prior": 7.796698091668339e-6,
+      "guesses": [
+        "tonaries",
+        "procourt",
+        "building",
+        "overjust"
+      ]
+    },
+    {
+      "word": "geocoder",
+      "num_guesses": 4,
+      "prior": 0.000010715116023612223,
+      "guesses": [
+        "tonaries",
+        "deplorer",
+        "bedcover",
+        "geocoder"
+      ]
+    },
+    {
+      "word": "gospeled",
+      "num_guesses": 3,
+      "prior": 6.798173737518521e-6,
+      "guesses": [
+        "tonaries",
+        "halfdeck",
+        "gospeled"
+      ]
+    },
+    {
+      "word": "wangbren",
+      "num_guesses": 3,
+      "prior": 5.089626749390942e-6,
+      "guesses": [
+        "tonaries",
+        "cudgeled",
+        "wangbren"
+      ]
+    },
+    {
+      "word": "reviewal",
+      "num_guesses": 4,
+      "prior": 0.000012705162674274595,
+      "guesses": [
+        "tonaries",
+        "carryall",
+        "epidural",
+        "reviewal"
+      ]
+    },
+    {
+      "word": "nembutal",
+      "num_guesses": 3,
+      "prior": 0.000020833274752326415,
+      "guesses": [
+        "tonaries",
+        "achelate",
+        "nembutal"
+      ]
+    },
+    {
+      "word": "gloriest",
+      "num_guesses": 3,
+      "prior": 0.000010216652290787922,
+      "guesses": [
+        "tonaries",
+        "cirrhose",
+        "gloriest"
+      ]
+    },
+    {
+      "word": "auditive",
+      "num_guesses": 4,
+      "prior": 0.0000160389945593399,
+      "guesses": [
+        "tonaries",
+        "mathlete",
+        "adaptive",
+        "auditive"
+      ]
+    },
+    {
+      "word": "polarons",
+      "num_guesses": 2,
+      "prior": 0.000018618177120022266,
+      "guesses": [
+        "tonaries",
+        "polarons"
+      ]
+    },
+    {
+      "word": "airstrip",
+      "num_guesses": 3,
+      "prior": 0.000026984867149209217,
+      "guesses": [
+        "tonaries",
+        "macrural",
+        "airstrip"
+      ]
+    },
+    {
+      "word": "sheltery",
+      "num_guesses": 4,
+      "prior": 6.817714146452993e-6,
+      "guesses": [
+        "tonaries",
+        "sleepest",
+        "smeltery",
+        "sheltery"
+      ]
+    },
+    {
+      "word": "solfaing",
+      "num_guesses": 3,
+      "prior": 8.488632344908475e-6,
+      "guesses": [
+        "tonaries",
+        "chowning",
+        "solfaing"
+      ]
+    },
+    {
+      "word": "heptanol",
+      "num_guesses": 3,
+      "prior": 0.000014622802906514413,
+      "guesses": [
+        "tonaries",
+        "hemocoel",
+        "heptanol"
+      ]
+    },
+    {
+      "word": "québecer",
+      "num_guesses": 4,
+      "prior": 5.63583903696371e-6,
+      "guesses": [
+        "tonaries",
+        "beplumed",
+        "quebecer",
+        "québecer"
+      ]
+    },
+    {
+      "word": "lanately",
+      "num_guesses": 3,
+      "prior": 4.79607158086284e-6,
+      "guesses": [
+        "tonaries",
+        "vanadate",
+        "lanately"
+      ]
+    },
+    {
+      "word": "newshole",
+      "num_guesses": 3,
+      "prior": 0.000010900513864037497,
+      "guesses": [
+        "tonaries",
+        "nucleome",
+        "newshole"
+      ]
+    },
+    {
+      "word": "scedules",
+      "num_guesses": 3,
+      "prior": 7.89831474392355e-6,
+      "guesses": [
+        "tonaries",
+        "speculum",
+        "scedules"
+      ]
+    },
+    {
+      "word": "horologe",
+      "num_guesses": 3,
+      "prior": 0.000013731323924085349,
+      "guesses": [
+        "tonaries",
+        "herblore",
+        "horologe"
+      ]
+    },
+    {
+      "word": "hopeward",
+      "num_guesses": 4,
+      "prior": 5.554069141508524e-6,
+      "guesses": [
+        "tonaries",
+        "acredale",
+        "homeward",
+        "hopeward"
+      ]
+    },
+    {
+      "word": "transume",
+      "num_guesses": 3,
+      "prior": 6.63903055273811e-6,
+      "guesses": [
+        "tonaries",
+        "adaptive",
+        "transume"
+      ]
+    },
+    {
+      "word": "hangings",
+      "num_guesses": 3,
+      "prior": 0.0000317572225566918,
+      "guesses": [
+        "tonaries",
+        "plugback",
+        "hangings"
+      ]
+    },
+    {
+      "word": "rockfest",
+      "num_guesses": 3,
+      "prior": 7.21961354414085e-6,
+      "guesses": [
+        "tonaries",
+        "chiefery",
+        "rockfest"
+      ]
+    },
+    {
+      "word": "reagants",
+      "num_guesses": 3,
+      "prior": 7.536144439971861e-6,
+      "guesses": [
+        "tonaries",
+        "phanaeng",
+        "reagants"
+      ]
+    },
+    {
+      "word": "moralism",
+      "num_guesses": 2,
+      "prior": 0.000023266245533153932,
+      "guesses": [
+        "tonaries",
+        "moralism"
+      ]
+    },
+    {
+      "word": "textbase",
+      "num_guesses": 3,
+      "prior": 0.000012985688696595356,
+      "guesses": [
+        "tonaries",
+        "teletube",
+        "textbase"
+      ]
+    },
+    {
+      "word": "biostats",
+      "num_guesses": 3,
+      "prior": 8.859697617966657e-6,
+      "guesses": [
+        "tonaries",
+        "paulists",
+        "biostats"
+      ]
+    },
+    {
+      "word": "vergings",
+      "num_guesses": 4,
+      "prior": 6.482545566556576e-6,
+      "guesses": [
+        "tonaries",
+        "deckless",
+        "survivor",
+        "vergings"
+      ]
+    },
+    {
+      "word": "prochoos",
+      "num_guesses": 3,
+      "prior": 6.382251656284819e-6,
+      "guesses": [
+        "tonaries",
+        "mudcloth",
+        "prochoos"
+      ]
+    },
+    {
+      "word": "gurkhans",
+      "num_guesses": 3,
+      "prior": 5.820079767605627e-6,
+      "guesses": [
+        "tonaries",
+        "haydamak",
+        "gurkhans"
+      ]
+    },
+    {
+      "word": "hairline",
+      "num_guesses": 3,
+      "prior": 0.000027184098279580277,
+      "guesses": [
+        "tonaries",
+        "medregal",
+        "hairline"
+      ]
+    },
+    {
+      "word": "brickers",
+      "num_guesses": 4,
+      "prior": 9.864693813803977e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "cruisers",
+        "brickers"
+      ]
+    },
+    {
+      "word": "yearends",
+      "num_guesses": 3,
+      "prior": 8.787939531944905e-6,
+      "guesses": [
+        "tonaries",
+        "deckless",
+        "yearends"
+      ]
+    },
+    {
+      "word": "communar",
+      "num_guesses": 3,
+      "prior": 0.000010612126521375517,
+      "guesses": [
+        "tonaries",
+        "moonclad",
+        "communar"
+      ]
+    },
+    {
+      "word": "agenetic",
+      "num_guesses": 4,
+      "prior": 0.000010526509010413799,
+      "guesses": [
+        "tonaries",
+        "halidame",
+        "akinetic",
+        "agenetic"
+      ]
+    },
+    {
+      "word": "fretteth",
+      "num_guesses": 4,
+      "prior": 0.00001053023586884853,
+      "guesses": [
+        "tonaries",
+        "curvette",
+        "greeteth",
+        "fretteth"
+      ]
+    },
+    {
+      "word": "godships",
+      "num_guesses": 3,
+      "prior": 9.704426911318017e-6,
+      "guesses": [
+        "tonaries",
+        "comodule",
+        "godships"
+      ]
+    },
+    {
+      "word": "filiated",
+      "num_guesses": 3,
+      "prior": 0.000015301596431595808,
+      "guesses": [
+        "tonaries",
+        "amphilic",
+        "filiated"
+      ]
+    },
+    {
+      "word": "skaiting",
+      "num_guesses": 4,
+      "prior": 0.000010304781477838775,
+      "guesses": [
+        "tonaries",
+        "chantant",
+        "blasting",
+        "skaiting"
+      ]
+    },
+    {
+      "word": "alloying",
+      "num_guesses": 3,
+      "prior": 0.00003228334461694112,
+      "guesses": [
+        "tonaries",
+        "calangay",
+        "alloying"
+      ]
+    },
+    {
+      "word": "semiweak",
+      "num_guesses": 4,
+      "prior": 8.05294994347575e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "semideaf",
+        "semiweak"
+      ]
+    },
+    {
+      "word": "unholily",
+      "num_guesses": 3,
+      "prior": 8.816544641909792e-6,
+      "guesses": [
+        "tonaries",
+        "uplocked",
+        "unholily"
+      ]
+    },
+    {
+      "word": "basilard",
+      "num_guesses": 3,
+      "prior": 0.000010015554705956319,
+      "guesses": [
+        "tonaries",
+        "shakycam",
+        "basilard"
+      ]
+    },
+    {
+      "word": "reposest",
+      "num_guesses": 3,
+      "prior": 8.373858464631575e-6,
+      "guesses": [
+        "tonaries",
+        "procourt",
+        "reposest"
+      ]
+    },
+    {
+      "word": "percepta",
+      "num_guesses": 3,
+      "prior": 0.000011387021677535273,
+      "guesses": [
+        "tonaries",
+        "leachate",
+        "percepta"
+      ]
+    },
+    {
+      "word": "chagalls",
+      "num_guesses": 3,
+      "prior": 0.000010097996844396926,
+      "guesses": [
+        "tonaries",
+        "campable",
+        "chagalls"
+      ]
+    },
+    {
+      "word": "teaballs",
+      "num_guesses": 3,
+      "prior": 5.947415077185522e-6,
+      "guesses": [
+        "tonaries",
+        "pallette",
+        "teaballs"
+      ]
+    },
+    {
+      "word": "moracins",
+      "num_guesses": 3,
+      "prior": 4.6746866019916955e-6,
+      "guesses": [
+        "tonaries",
+        "rosavins",
+        "moracins"
+      ]
+    },
+    {
+      "word": "panochas",
+      "num_guesses": 4,
+      "prior": 7.347065293852647e-6,
+      "guesses": [
+        "tonaries",
+        "bagloads",
+        "nanoamps",
+        "panochas"
+      ]
+    },
+    {
+      "word": "coachlet",
+      "num_guesses": 3,
+      "prior": 5.2648075460512735e-6,
+      "guesses": [
+        "tonaries",
+        "collated",
+        "coachlet"
+      ]
+    },
+    {
+      "word": "scatters",
+      "num_guesses": 3,
+      "prior": 0.000027732437792690153,
+      "guesses": [
+        "tonaries",
+        "castlets",
+        "scatters"
+      ]
+    },
+    {
+      "word": "musculin",
+      "num_guesses": 3,
+      "prior": 7.944829935728893e-6,
+      "guesses": [
+        "tonaries",
+        "sulfidic",
+        "musculin"
+      ]
+    },
+    {
+      "word": "lactitol",
+      "num_guesses": 3,
+      "prior": 0.000013371628977787176,
+      "guesses": [
+        "tonaries",
+        "machilid",
+        "lactitol"
+      ]
+    },
+    {
+      "word": "dipodoid",
+      "num_guesses": 4,
+      "prior": 6.942032936804872e-6,
+      "guesses": [
+        "tonaries",
+        "limuloid",
+        "ziphioid",
+        "dipodoid"
+      ]
+    },
+    {
+      "word": "infought",
+      "num_guesses": 3,
+      "prior": 4.276885078508578e-6,
+      "guesses": [
+        "tonaries",
+        "hypnotic",
+        "infought"
+      ]
+    },
+    {
+      "word": "eyelines",
+      "num_guesses": 3,
+      "prior": 0.000010029547190841632,
+      "guesses": [
+        "tonaries",
+        "secludes",
+        "eyelines"
+      ]
+    },
+    {
+      "word": "shechted",
+      "num_guesses": 3,
+      "prior": 4.625726208948524e-6,
+      "guesses": [
+        "tonaries",
+        "helmette",
+        "shechted"
+      ]
+    },
+    {
+      "word": "perlieus",
+      "num_guesses": 3,
+      "prior": 5.647140944023263e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "perlieus"
+      ]
+    },
+    {
+      "word": "discases",
+      "num_guesses": 3,
+      "prior": 0.000015154714776894246,
+      "guesses": [
+        "tonaries",
+        "emplaced",
+        "discases"
+      ]
+    },
+    {
+      "word": "brailler",
+      "num_guesses": 4,
+      "prior": 0.000011650741138666035,
+      "guesses": [
+        "tonaries",
+        "cheliped",
+        "arriflex",
+        "brailler"
+      ]
+    },
+    {
+      "word": "proposee",
+      "num_guesses": 3,
+      "prior": 0.000010388357306249776,
+      "guesses": [
+        "tonaries",
+        "preluder",
+        "proposee"
+      ]
+    },
+    {
+      "word": "shaglike",
+      "num_guesses": 5,
+      "prior": 4.276885078508578e-6,
+      "guesses": [
+        "tonaries",
+        "capeless",
+        "slablike",
+        "swaglike",
+        "shaglike"
+      ]
+    },
+    {
+      "word": "colloids",
+      "num_guesses": 3,
+      "prior": 0.00003208729990861529,
+      "guesses": [
+        "tonaries",
+        "comodule",
+        "colloids"
+      ]
+    },
+    {
+      "word": "nonwhite",
+      "num_guesses": 3,
+      "prior": 0.00003173208718818696,
+      "guesses": [
+        "tonaries",
+        "melchite",
+        "nonwhite"
+      ]
+    },
+    {
+      "word": "snowdogs",
+      "num_guesses": 3,
+      "prior": 5.3789527416094615e-6,
+      "guesses": [
+        "tonaries",
+        "booklung",
+        "snowdogs"
+      ]
+    },
+    {
+      "word": "emailled",
+      "num_guesses": 3,
+      "prior": 4.425815744341016e-6,
+      "guesses": [
+        "tonaries",
+        "callipee",
+        "emailled"
+      ]
+    },
+    {
+      "word": "gavelers",
+      "num_guesses": 4,
+      "prior": 4.445530626271741e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "rageless",
+        "gavelers"
+      ]
+    },
+    {
+      "word": "unsoured",
+      "num_guesses": 3,
+      "prior": 0.000010446036146332263,
+      "guesses": [
+        "tonaries",
+        "spelched",
+        "unsoured"
+      ]
+    },
+    {
+      "word": "iniparib",
+      "num_guesses": 4,
+      "prior": 7.41772315733195e-6,
+      "guesses": [
+        "tonaries",
+        "cambalid",
+        "brivanib",
+        "iniparib"
+      ]
+    },
+    {
+      "word": "tarhonya",
+      "num_guesses": 3,
+      "prior": 7.054957840553203e-6,
+      "guesses": [
+        "tonaries",
+        "clansman",
+        "tarhonya"
+      ]
+    },
+    {
+      "word": "eustress",
+      "num_guesses": 3,
+      "prior": 0.000014961230443643268,
+      "guesses": [
+        "tonaries",
+        "lustedst",
+        "eustress"
+      ]
+    },
+    {
+      "word": "staphyla",
+      "num_guesses": 3,
+      "prior": 9.413901924568633e-6,
+      "guesses": [
+        "tonaries",
+        "backhaul",
+        "staphyla"
+      ]
+    },
+    {
+      "word": "tricorne",
+      "num_guesses": 3,
+      "prior": 0.000015180670338631248,
+      "guesses": [
+        "tonaries",
+        "pinacoid",
+        "tricorne"
+      ]
+    },
+    {
+      "word": "alphorns",
+      "num_guesses": 3,
+      "prior": 8.479794603360425e-6,
+      "guesses": [
+        "tonaries",
+        "garboard",
+        "alphorns"
+      ]
+    },
+    {
+      "word": "regroove",
+      "num_guesses": 4,
+      "prior": 7.936191100571734e-6,
+      "guesses": [
+        "tonaries",
+        "preclude",
+        "herefore",
+        "regroove"
+      ]
+    },
+    {
+      "word": "flinders",
+      "num_guesses": 3,
+      "prior": 0.000029795347167763072,
+      "guesses": [
+        "tonaries",
+        "deckless",
+        "flinders"
+      ]
+    },
+    {
+      "word": "mottetti",
+      "num_guesses": 3,
+      "prior": 9.584467992628576e-6,
+      "guesses": [
+        "tonaries",
+        "chattily",
+        "mottetti"
+      ]
+    },
+    {
+      "word": "makassan",
+      "num_guesses": 3,
+      "prior": 7.947701215819507e-6,
+      "guesses": [
+        "tonaries",
+        "musalman",
+        "makassan"
+      ]
+    },
+    {
+      "word": "arsenick",
+      "num_guesses": 3,
+      "prior": 0.000010363665954277196,
+      "guesses": [
+        "tonaries",
+        "creening",
+        "arsenick"
+      ]
+    },
+    {
+      "word": "behatted",
+      "num_guesses": 3,
+      "prior": 9.050710129516413e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "behatted"
+      ]
+    },
+    {
+      "word": "bothymen",
+      "num_guesses": 3,
+      "prior": 5.089626749390942e-6,
+      "guesses": [
+        "tonaries",
+        "bottomed",
+        "bothymen"
+      ]
+    },
+    {
+      "word": "deriched",
+      "num_guesses": 3,
+      "prior": 4.6746866019916955e-6,
+      "guesses": [
+        "tonaries",
+        "decupled",
+        "deriched"
+      ]
+    },
+    {
+      "word": "lagopode",
+      "num_guesses": 3,
+      "prior": 4.193890727099089e-6,
+      "guesses": [
+        "tonaries",
+        "clodpole",
+        "lagopode"
+      ]
+    },
+    {
+      "word": "oversang",
+      "num_guesses": 4,
+      "prior": 5.554069141508524e-6,
+      "guesses": [
+        "tonaries",
+        "preclude",
+        "oversman",
+        "oversang"
+      ]
+    },
+    {
+      "word": "ladlemen",
+      "num_guesses": 3,
+      "prior": 8.670979289808148e-6,
+      "guesses": [
+        "tonaries",
+        "deplaced",
+        "ladlemen"
+      ]
+    },
+    {
+      "word": "explicit",
+      "num_guesses": 3,
+      "prior": 0.00005535903342917841,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "explicit"
+      ]
+    },
+    {
+      "word": "whosever",
+      "num_guesses": 4,
+      "prior": 0.00001286036749944599,
+      "guesses": [
+        "tonaries",
+        "preluder",
+        "embosser",
+        "whosever"
+      ]
+    },
+    {
+      "word": "observed",
+      "num_guesses": 3,
+      "prior": 0.00008278001471932323,
+      "guesses": [
+        "tonaries",
+        "suborder",
+        "observed"
+      ]
+    },
+    {
+      "word": "execrate",
+      "num_guesses": 3,
+      "prior": 0.0000178827645163914,
+      "guesses": [
+        "tonaries",
+        "cagemate",
+        "execrate"
+      ]
+    },
+    {
+      "word": "wantedst",
+      "num_guesses": 3,
+      "prior": 6.815946983398903e-6,
+      "guesses": [
+        "tonaries",
+        "gulkhand",
+        "wantedst"
+      ]
+    },
+    {
+      "word": "bastadin",
+      "num_guesses": 4,
+      "prior": 8.454552252312374e-6,
+      "guesses": [
+        "tonaries",
+        "anipamil",
+        "shayatin",
+        "bastadin"
+      ]
+    },
+    {
+      "word": "minifigs",
+      "num_guesses": 3,
+      "prior": 7.434037035335755e-6,
+      "guesses": [
+        "tonaries",
+        "hogplums",
+        "minifigs"
+      ]
+    },
+    {
+      "word": "reflects",
+      "num_guesses": 3,
+      "prior": 0.000057059231765410226,
+      "guesses": [
+        "tonaries",
+        "electeth",
+        "reflects"
+      ]
+    },
+    {
+      "word": "peckings",
+      "num_guesses": 3,
+      "prior": 0.000010678097110193874,
+      "guesses": [
+        "tonaries",
+        "helpdesk",
+        "peckings"
+      ]
+    },
+    {
+      "word": "spotsman",
+      "num_guesses": 3,
+      "prior": 7.299301339276152e-6,
+      "guesses": [
+        "tonaries",
+        "scattald",
+        "spotsman"
+      ]
+    },
+    {
+      "word": "rackoone",
+      "num_guesses": 4,
+      "prior": 5.177525545599718e-6,
+      "guesses": [
+        "tonaries",
+        "peduncle",
+        "bromance",
+        "rackoone"
+      ]
+    },
+    {
+      "word": "overused",
+      "num_guesses": 3,
+      "prior": 0.000023000465216023656,
+      "guesses": [
+        "tonaries",
+        "preluder",
+        "overused"
+      ]
+    },
+    {
+      "word": "inhalent",
+      "num_guesses": 3,
+      "prior": 0.000013712703870776829,
+      "guesses": [
+        "tonaries",
+        "dampning",
+        "inhalent"
+      ]
+    },
+    {
+      "word": "transfan",
+      "num_guesses": 3,
+      "prior": 3.911682305829146e-6,
+      "guesses": [
+        "tonaries",
+        "fancyman",
+        "transfan"
+      ]
+    },
+    {
+      "word": "dysurias",
+      "num_guesses": 3,
+      "prior": 4.982880859013105e-6,
+      "guesses": [
+        "tonaries",
+        "mudirias",
+        "dysurias"
+      ]
+    },
+    {
+      "word": "wordhood",
+      "num_guesses": 3,
+      "prior": 9.562663204190568e-6,
+      "guesses": [
+        "tonaries",
+        "fordhook",
+        "wordhood"
+      ]
+    },
+    {
+      "word": "medinese",
+      "num_guesses": 3,
+      "prior": 0.000013198546037821857,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "medinese"
+      ]
+    },
+    {
+      "word": "nongrain",
+      "num_guesses": 2,
+      "prior": 0.000013253169802789625,
+      "guesses": [
+        "tonaries",
+        "nongrain"
+      ]
+    },
+    {
+      "word": "losenges",
+      "num_guesses": 3,
+      "prior": 8.091594375757198e-6,
+      "guesses": [
+        "tonaries",
+        "cubeless",
+        "losenges"
+      ]
+    },
+    {
+      "word": "kerbless",
+      "num_guesses": 4,
+      "prior": 5.224459436113954e-6,
+      "guesses": [
+        "tonaries",
+        "behelped",
+        "verbless",
+        "kerbless"
+      ]
+    },
+    {
+      "word": "opercles",
+      "num_guesses": 3,
+      "prior": 0.00001649686892181722,
+      "guesses": [
+        "tonaries",
+        "precured",
+        "opercles"
+      ]
+    },
+    {
+      "word": "chaudron",
+      "num_guesses": 3,
+      "prior": 0.00001639969204161893,
+      "guesses": [
+        "tonaries",
+        "carbload",
+        "chaudron"
+      ]
+    },
+    {
+      "word": "gringoes",
+      "num_guesses": 3,
+      "prior": 0.000010544782158919271,
+      "guesses": [
+        "tonaries",
+        "erigible",
+        "gringoes"
+      ]
+    },
+    {
+      "word": "coadding",
+      "num_guesses": 3,
+      "prior": 8.344157639354568e-6,
+      "guesses": [
+        "tonaries",
+        "colophon",
+        "coadding"
+      ]
+    },
+    {
+      "word": "crochets",
+      "num_guesses": 3,
+      "prior": 0.00001751317061887075,
+      "guesses": [
+        "tonaries",
+        "urochord",
+        "crochets"
+      ]
+    },
+    {
+      "word": "beartrap",
+      "num_guesses": 3,
+      "prior": 0.00001215064909774059,
+      "guesses": [
+        "tonaries",
+        "leachate",
+        "beartrap"
+      ]
+    },
+    {
+      "word": "phialine",
+      "num_guesses": 3,
+      "prior": 0.000010268656941459421,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "phialine"
+      ]
+    },
+    {
+      "word": "parklife",
+      "num_guesses": 4,
+      "prior": 9.237344749430451e-6,
+      "guesses": [
+        "tonaries",
+        "cempedak",
+        "parklike",
+        "parklife"
+      ]
+    },
+    {
+      "word": "outerweb",
+      "num_guesses": 3,
+      "prior": 7.299301339276152e-6,
+      "guesses": [
+        "tonaries",
+        "retemper",
+        "outerweb"
+      ]
+    },
+    {
+      "word": "lyretail",
+      "num_guesses": 4,
+      "prior": 9.983878601054504e-6,
+      "guesses": [
+        "tonaries",
+        "pergelic",
+        "firetail",
+        "lyretail"
+      ]
+    },
+    {
+      "word": "whiddles",
+      "num_guesses": 3,
+      "prior": 6.3730253774978934e-6,
+      "guesses": [
+        "tonaries",
+        "secludes",
+        "whiddles"
+      ]
+    },
+    {
+      "word": "letterer",
+      "num_guesses": 3,
+      "prior": 0.000016986579097708256,
+      "guesses": [
+        "tonaries",
+        "lettered",
+        "letterer"
+      ]
+    },
+    {
+      "word": "speccing",
+      "num_guesses": 4,
+      "prior": 6.6740156725664195e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "specking",
+        "speccing"
+      ]
+    },
+    {
+      "word": "dropline",
+      "num_guesses": 3,
+      "prior": 0.000010695358631907249,
+      "guesses": [
+        "tonaries",
+        "demolike",
+        "dropline"
+      ]
+    },
+    {
+      "word": "cherched",
+      "num_guesses": 3,
+      "prior": 5.593603874351293e-6,
+      "guesses": [
+        "tonaries",
+        "beplumed",
+        "cherched"
+      ]
+    },
+    {
+      "word": "rheotome",
+      "num_guesses": 3,
+      "prior": 0.000012543522914768872,
+      "guesses": [
+        "tonaries",
+        "perchery",
+        "rheotome"
+      ]
+    },
+    {
+      "word": "kakemono",
+      "num_guesses": 3,
+      "prior": 0.000014979161603360315,
+      "guesses": [
+        "tonaries",
+        "cageable",
+        "kakemono"
+      ]
+    },
+    {
+      "word": "sasanqua",
+      "num_guesses": 3,
+      "prior": 0.000014054509811135119,
+      "guesses": [
+        "tonaries",
+        "musalman",
+        "sasanqua"
+      ]
+    },
+    {
+      "word": "meesters",
+      "num_guesses": 4,
+      "prior": 0.000013288724358061785,
+      "guesses": [
+        "tonaries",
+        "electeth",
+        "messages",
+        "meesters"
+      ]
+    },
+    {
+      "word": "cutpoint",
+      "num_guesses": 3,
+      "prior": 0.000015234535480426016,
+      "guesses": [
+        "tonaries",
+        "pittiful",
+        "cutpoint"
+      ]
+    },
+    {
+      "word": "cotingid",
+      "num_guesses": 3,
+      "prior": 6.458599982017658e-6,
+      "guesses": [
+        "tonaries",
+        "cottolin",
+        "cotingid"
+      ]
+    },
+    {
+      "word": "lantskip",
+      "num_guesses": 3,
+      "prior": 8.275333742324724e-6,
+      "guesses": [
+        "tonaries",
+        "placidly",
+        "lantskip"
+      ]
+    },
+    {
+      "word": "massings",
+      "num_guesses": 3,
+      "prior": 0.000010916951478184775,
+      "guesses": [
+        "tonaries",
+        "mailpack",
+        "massings"
+      ]
+    },
+    {
+      "word": "cloistre",
+      "num_guesses": 4,
+      "prior": 9.926770843939059e-6,
+      "guesses": [
+        "tonaries",
+        "cirrhose",
+        "crosstie",
+        "cloistre"
+      ]
+    },
+    {
+      "word": "femalest",
+      "num_guesses": 3,
+      "prior": 6.6370651792281834e-6,
+      "guesses": [
+        "tonaries",
+        "electeth",
+        "femalest"
+      ]
+    },
+    {
+      "word": "reclamas",
+      "num_guesses": 3,
+      "prior": 9.431811168748987e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "reclamas"
+      ]
+    },
+    {
+      "word": "phaeozem",
+      "num_guesses": 3,
+      "prior": 8.310030684189505e-6,
+      "guesses": [
+        "tonaries",
+        "gazoomph",
+        "phaeozem"
+      ]
+    },
+    {
+      "word": "phiznomy",
+      "num_guesses": 3,
+      "prior": 4.2421090385652306e-6,
+      "guesses": [
+        "tonaries",
+        "midcolon",
+        "phiznomy"
+      ]
+    },
+    {
+      "word": "levelest",
+      "num_guesses": 4,
+      "prior": 9.022095234308875e-6,
+      "guesses": [
+        "tonaries",
+        "sleepeth",
+        "deselect",
+        "levelest"
+      ]
+    },
+    {
+      "word": "redresse",
+      "num_guesses": 3,
+      "prior": 0.00001711159252455757,
+      "guesses": [
+        "tonaries",
+        "sumpless",
+        "redresse"
+      ]
+    },
+    {
+      "word": "toxicant",
+      "num_guesses": 2,
+      "prior": 0.000024618316538578532,
+      "guesses": [
+        "tonaries",
+        "toxicant"
+      ]
+    },
+    {
+      "word": "gilthead",
+      "num_guesses": 3,
+      "prior": 0.000014514548597987476,
+      "guesses": [
+        "tonaries",
+        "magicall",
+        "gilthead"
+      ]
+    },
+    {
+      "word": "frenchly",
+      "num_guesses": 3,
+      "prior": 7.568982914921034e-6,
+      "guesses": [
+        "tonaries",
+        "defleece",
+        "frenchly"
+      ]
+    },
+    {
+      "word": "enactive",
+      "num_guesses": 3,
+      "prior": 0.000017726048172471088,
+      "guesses": [
+        "tonaries",
+        "analgene",
+        "enactive"
+      ]
+    },
+    {
+      "word": "hanghang",
+      "num_guesses": 3,
+      "prior": 6.289922123431397e-6,
+      "guesses": [
+        "tonaries",
+        "handyman",
+        "hanghang"
+      ]
+    },
+    {
+      "word": "midtread",
+      "num_guesses": 3,
+      "prior": 8.071915270662674e-6,
+      "guesses": [
+        "tonaries",
+        "lutecite",
+        "midtread"
+      ]
+    },
+    {
+      "word": "glovebox",
+      "num_guesses": 3,
+      "prior": 0.0000173300445165836,
+      "guesses": [
+        "tonaries",
+        "wellcome",
+        "glovebox"
+      ]
+    },
+    {
+      "word": "purdahed",
+      "num_guesses": 4,
+      "prior": 6.013049393025487e-6,
+      "guesses": [
+        "tonaries",
+        "carbaryl",
+        "pervaded",
+        "purdahed"
+      ]
+    },
+    {
+      "word": "goldwork",
+      "num_guesses": 3,
+      "prior": 0.00001567647558932124,
+      "guesses": [
+        "tonaries",
+        "fordhook",
+        "goldwork"
+      ]
+    },
+    {
+      "word": "bonelets",
+      "num_guesses": 4,
+      "prior": 7.71227550740219e-6,
+      "guesses": [
+        "tonaries",
+        "tempests",
+        "conelets",
+        "bonelets"
+      ]
+    },
+    {
+      "word": "canoemen",
+      "num_guesses": 3,
+      "prior": 0.00001516179807738352,
+      "guesses": [
+        "tonaries",
+        "cannoned",
+        "canoemen"
+      ]
+    },
+    {
+      "word": "miserate",
+      "num_guesses": 3,
+      "prior": 7.3730732552667585e-6,
+      "guesses": [
+        "tonaries",
+        "maserati",
+        "miserate"
+      ]
+    },
+    {
+      "word": "meatsuit",
+      "num_guesses": 3,
+      "prior": 5.41493556801626e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "meatsuit"
+      ]
+    },
+    {
+      "word": "minuanos",
+      "num_guesses": 3,
+      "prior": 5.203808752279487e-6,
+      "guesses": [
+        "tonaries",
+        "mansions",
+        "minuanos"
+      ]
+    },
+    {
+      "word": "umuganda",
+      "num_guesses": 3,
+      "prior": 9.083456365319266e-6,
+      "guesses": [
+        "tonaries",
+        "backhaul",
+        "umuganda"
+      ]
+    },
+    {
+      "word": "vermeils",
+      "num_guesses": 3,
+      "prior": 7.251633912396331e-6,
+      "guesses": [
+        "tonaries",
+        "perseids",
+        "vermeils"
+      ]
+    },
+    {
+      "word": "whiprays",
+      "num_guesses": 3,
+      "prior": 6.075937166060213e-6,
+      "guesses": [
+        "tonaries",
+        "pagodahs",
+        "whiprays"
+      ]
+    },
+    {
+      "word": "siroccos",
+      "num_guesses": 3,
+      "prior": 0.000011203483123038624,
+      "guesses": [
+        "tonaries",
+        "urochord",
+        "siroccos"
+      ]
+    },
+    {
+      "word": "ammonium",
+      "num_guesses": 3,
+      "prior": 0.00004813421118420416,
+      "guesses": [
+        "tonaries",
+        "calangay",
+        "ammonium"
+      ]
+    },
+    {
+      "word": "airspray",
+      "num_guesses": 3,
+      "prior": 0.000010500272058397157,
+      "guesses": [
+        "tonaries",
+        "shakycam",
+        "airspray"
+      ]
+    },
+    {
+      "word": "pickpack",
+      "num_guesses": 4,
+      "prior": 6.597259817493172e-6,
+      "guesses": [
+        "tonaries",
+        "balladic",
+        "highjack",
+        "pickpack"
+      ]
+    },
+    {
+      "word": "forspill",
+      "num_guesses": 3,
+      "prior": 4.951539498261066e-6,
+      "guesses": [
+        "tonaries",
+        "marchfly",
+        "forspill"
+      ]
+    },
+    {
+      "word": "unmodern",
+      "num_guesses": 3,
+      "prior": 0.000013540391211899754,
+      "guesses": [
+        "tonaries",
+        "depozone",
+        "unmodern"
+      ]
+    },
+    {
+      "word": "kvitlach",
+      "num_guesses": 4,
+      "prior": 5.680514422778901e-6,
+      "guesses": [
+        "tonaries",
+        "caliphal",
+        "quachtli",
+        "kvitlach"
+      ]
+    },
+    {
+      "word": "goddesse",
+      "num_guesses": 3,
+      "prior": 0.000017225477554798967,
+      "guesses": [
+        "tonaries",
+        "doughboy",
+        "goddesse"
+      ]
+    },
+    {
+      "word": "salaming",
+      "num_guesses": 3,
+      "prior": 7.435286033564083e-6,
+      "guesses": [
+        "tonaries",
+        "gaslamps",
+        "salaming"
+      ]
+    },
+    {
+      "word": "aphasics",
+      "num_guesses": 3,
+      "prior": 0.000019683055704663397,
+      "guesses": [
+        "tonaries",
+        "salambas",
+        "aphasics"
+      ]
+    },
+    {
+      "word": "holotech",
+      "num_guesses": 3,
+      "prior": 5.406029375764707e-6,
+      "guesses": [
+        "tonaries",
+        "copyhold",
+        "holotech"
+      ]
+    },
+    {
+      "word": "bargeful",
+      "num_guesses": 4,
+      "prior": 6.767525723229717e-6,
+      "guesses": [
+        "tonaries",
+        "peacable",
+        "blueward",
+        "bargeful"
+      ]
+    },
+    {
+      "word": "chitters",
+      "num_guesses": 4,
+      "prior": 9.9228378907057e-6,
+      "guesses": [
+        "tonaries",
+        "deputeth",
+        "congress",
+        "chitters"
+      ]
+    },
+    {
+      "word": "kingwood",
+      "num_guesses": 3,
+      "prior": 0.000021041564552472368,
+      "guesses": [
+        "tonaries",
+        "demology",
+        "kingwood"
+      ]
+    },
+    {
+      "word": "timbiras",
+      "num_guesses": 3,
+      "prior": 7.56549168515334e-6,
+      "guesses": [
+        "tonaries",
+        "haulback",
+        "timbiras"
+      ]
+    },
+    {
+      "word": "nocturne",
+      "num_guesses": 3,
+      "prior": 0.000024069344776559474,
+      "guesses": [
+        "tonaries",
+        "coronene",
+        "nocturne"
+      ]
+    },
+    {
+      "word": "biotaxis",
+      "num_guesses": 3,
+      "prior": 6.400545762719673e-6,
+      "guesses": [
+        "tonaries",
+        "paulists",
+        "biotaxis"
+      ]
+    },
+    {
+      "word": "hohlraum",
+      "num_guesses": 3,
+      "prior": 0.000014361044545578875,
+      "guesses": [
+        "tonaries",
+        "colorado",
+        "hohlraum"
+      ]
+    },
+    {
+      "word": "oathlike",
+      "num_guesses": 3,
+      "prior": 5.139808022661903e-6,
+      "guesses": [
+        "tonaries",
+        "packmule",
+        "oathlike"
+      ]
+    },
+    {
+      "word": "allodial",
+      "num_guesses": 3,
+      "prior": 0.000018809182185546267,
+      "guesses": [
+        "tonaries",
+        "maiolica",
+        "allodial"
+      ]
+    },
+    {
+      "word": "coinhere",
+      "num_guesses": 3,
+      "prior": 9.087936217749103e-6,
+      "guesses": [
+        "tonaries",
+        "cornicle",
+        "coinhere"
+      ]
+    },
+    {
+      "word": "geocoded",
+      "num_guesses": 3,
+      "prior": 0.000015883549291497443,
+      "guesses": [
+        "tonaries",
+        "bullydom",
+        "geocoded"
+      ]
+    },
+    {
+      "word": "slambang",
+      "num_guesses": 3,
+      "prior": 0.00001045403587706765,
+      "guesses": [
+        "tonaries",
+        "sambusak",
+        "slambang"
+      ]
+    },
+    {
+      "word": "kurpians",
+      "num_guesses": 3,
+      "prior": 4.445530626271741e-6,
+      "guesses": [
+        "tonaries",
+        "carrland",
+        "kurpians"
+      ]
+    },
+    {
+      "word": "exceptor",
+      "num_guesses": 3,
+      "prior": 0.000013448796494434198,
+      "guesses": [
+        "tonaries",
+        "perchery",
+        "exceptor"
+      ]
+    },
+    {
+      "word": "devested",
+      "num_guesses": 3,
+      "prior": 0.00001774706299354069,
+      "guesses": [
+        "tonaries",
+        "helmette",
+        "devested"
+      ]
+    },
+    {
+      "word": "peircian",
+      "num_guesses": 3,
+      "prior": 0.000011192319176856012,
+      "guesses": [
+        "tonaries",
+        "medregal",
+        "peircian"
+      ]
+    },
+    {
+      "word": "megadump",
+      "num_guesses": 3,
+      "prior": 4.87965287425877e-6,
+      "guesses": [
+        "tonaries",
+        "megalake",
+        "megadump"
+      ]
+    },
+    {
+      "word": "capstern",
+      "num_guesses": 4,
+      "prior": 0.000011676104490256933,
+      "guesses": [
+        "tonaries",
+        "gearcase",
+        "ancestry",
+        "capstern"
+      ]
+    },
+    {
+      "word": "higgsino",
+      "num_guesses": 4,
+      "prior": 0.000011930829820964472,
+      "guesses": [
+        "tonaries",
+        "scoopful",
+        "division",
+        "higgsino"
+      ]
+    },
+    {
+      "word": "spookier",
+      "num_guesses": 3,
+      "prior": 0.000011436522551774912,
+      "guesses": [
+        "tonaries",
+        "splodges",
+        "spookier"
+      ]
+    },
+    {
+      "word": "trolless",
+      "num_guesses": 3,
+      "prior": 4.721677823916837e-6,
+      "guesses": [
+        "tonaries",
+        "sumpters",
+        "trolless"
+      ]
+    },
+    {
+      "word": "patented",
+      "num_guesses": 3,
+      "prior": 0.00004441344439478234,
+      "guesses": [
+        "tonaries",
+        "hateable",
+        "patented"
+      ]
+    },
+    {
+      "word": "toolroom",
+      "num_guesses": 3,
+      "prior": 0.000022434359888698838,
+      "guesses": [
+        "tonaries",
+        "tomorrow",
+        "toolroom"
+      ]
+    },
+    {
+      "word": "nonmodal",
+      "num_guesses": 3,
+      "prior": 0.00001290373936742978,
+      "guesses": [
+        "tonaries",
+        "codology",
+        "nonmodal"
+      ]
+    },
+    {
+      "word": "platysma",
+      "num_guesses": 3,
+      "prior": 0.00002030527160603751,
+      "guesses": [
+        "tonaries",
+        "backhaul",
+        "platysma"
+      ]
+    },
+    {
+      "word": "preponed",
+      "num_guesses": 3,
+      "prior": 7.948657387793267e-6,
+      "guesses": [
+        "tonaries",
+        "befooled",
+        "preponed"
+      ]
+    },
+    {
+      "word": "artinian",
+      "num_guesses": 3,
+      "prior": 0.000018034460999711306,
+      "guesses": [
+        "tonaries",
+        "flathead",
+        "artinian"
+      ]
+    },
+    {
+      "word": "lethally",
+      "num_guesses": 3,
+      "prior": 0.000019875157798382856,
+      "guesses": [
+        "tonaries",
+        "beallach",
+        "lethally"
+      ]
+    },
+    {
+      "word": "lodgeing",
+      "num_guesses": 3,
+      "prior": 0.00001090267527081311,
+      "guesses": [
+        "tonaries",
+        "dumbling",
+        "lodgeing"
+      ]
+    },
+    {
+      "word": "bonspiel",
+      "num_guesses": 2,
+      "prior": 0.000012727054417512977,
+      "guesses": [
+        "tonaries",
+        "bonspiel"
+      ]
+    },
+    {
+      "word": "decenner",
+      "num_guesses": 3,
+      "prior": 5.224459436113954e-6,
+      "guesses": [
+        "tonaries",
+        "defueled",
+        "decenner"
+      ]
+    },
+    {
+      "word": "haplosis",
+      "num_guesses": 4,
+      "prior": 5.9320864839036255e-6,
+      "guesses": [
+        "tonaries",
+        "choliamb",
+        "hyalosis",
+        "haplosis"
+      ]
+    },
+    {
+      "word": "suberoyl",
+      "num_guesses": 3,
+      "prior": 6.537778381540907e-6,
+      "guesses": [
+        "tonaries",
+        "pupildom",
+        "suberoyl"
+      ]
+    },
+    {
+      "word": "melilots",
+      "num_guesses": 3,
+      "prior": 8.035635530770048e-6,
+      "guesses": [
+        "tonaries",
+        "hitlists",
+        "melilots"
+      ]
+    },
+    {
+      "word": "cuspules",
+      "num_guesses": 3,
+      "prior": 0.000012297776883658478,
+      "guesses": [
+        "tonaries",
+        "speculum",
+        "cuspules"
+      ]
+    },
+    {
+      "word": "sawables",
+      "num_guesses": 5,
+      "prior": 4.766869582272614e-6,
+      "guesses": [
+        "tonaries",
+        "bauchled",
+        "payables",
+        "salables",
+        "sawables"
+      ]
+    },
+    {
+      "word": "fuckoffs",
+      "num_guesses": 3,
+      "prior": 5.360594112690971e-6,
+      "guesses": [
+        "tonaries",
+        "schloomp",
+        "fuckoffs"
+      ]
+    },
+    {
+      "word": "witnesse",
+      "num_guesses": 3,
+      "prior": 0.000020417585051086473,
+      "guesses": [
+        "tonaries",
+        "sleptest",
+        "witnesse"
+      ]
+    },
+    {
+      "word": "queenpin",
+      "num_guesses": 3,
+      "prior": 6.876735754223611e-6,
+      "guesses": [
+        "tonaries",
+        "pedicule",
+        "queenpin"
+      ]
+    },
+    {
+      "word": "capiases",
+      "num_guesses": 3,
+      "prior": 0.000010775794724378166,
+      "guesses": [
+        "tonaries",
+        "emplaced",
+        "capiases"
+      ]
+    },
+    {
+      "word": "topcodes",
+      "num_guesses": 3,
+      "prior": 5.992476405307588e-6,
+      "guesses": [
+        "tonaries",
+        "palpably",
+        "topcodes"
+      ]
+    },
+    {
+      "word": "clangors",
+      "num_guesses": 3,
+      "prior": 9.392425489602789e-6,
+      "guesses": [
+        "tonaries",
+        "garboard",
+        "clangors"
+      ]
+    },
+    {
+      "word": "unpurses",
+      "num_guesses": 3,
+      "prior": 4.97667550867176e-6,
+      "guesses": [
+        "tonaries",
+        "unmerges",
+        "unpurses"
+      ]
+    },
+    {
+      "word": "bumfluff",
+      "num_guesses": 3,
+      "prior": 7.758109006884981e-6,
+      "guesses": [
+        "tonaries",
+        "buckjump",
+        "bumfluff"
+      ]
+    },
+    {
+      "word": "wastings",
+      "num_guesses": 4,
+      "prior": 0.000010601272570739942,
+      "guesses": [
+        "tonaries",
+        "pastilas",
+        "combfish",
+        "wastings"
+      ]
+    },
+    {
+      "word": "taxeater",
+      "num_guesses": 3,
+      "prior": 6.508270762333389e-6,
+      "guesses": [
+        "tonaries",
+        "paletted",
+        "taxeater"
+      ]
+    },
+    {
+      "word": "jostling",
+      "num_guesses": 3,
+      "prior": 0.000027251303255539573,
+      "guesses": [
+        "tonaries",
+        "hulijing",
+        "jostling"
+      ]
+    },
+    {
+      "word": "altereds",
+      "num_guesses": 4,
+      "prior": 6.886943719643021e-6,
+      "guesses": [
+        "tonaries",
+        "caseless",
+        "alterers",
+        "altereds"
+      ]
+    },
+    {
+      "word": "richling",
+      "num_guesses": 3,
+      "prior": 0.000014291198580159138,
+      "guesses": [
+        "tonaries",
+        "crumbled",
+        "richling"
+      ]
+    },
+    {
+      "word": "zindabad",
+      "num_guesses": 3,
+      "prior": 0.00001424201016386297,
+      "guesses": [
+        "tonaries",
+        "cambalid",
+        "zindabad"
+      ]
+    },
+    {
+      "word": "renarrow",
+      "num_guesses": 2,
+      "prior": 5.161495746971912e-6,
+      "guesses": [
+        "tonaries",
+        "renarrow"
+      ]
+    },
+    {
+      "word": "draineth",
+      "num_guesses": 3,
+      "prior": 7.0990737800660284e-6,
+      "guesses": [
+        "tonaries",
+        "artifact",
+        "draineth"
+      ]
+    },
+    {
+      "word": "flatsawn",
+      "num_guesses": 3,
+      "prior": 9.081774139813658e-6,
+      "guesses": [
+        "tonaries",
+        "playhead",
+        "flatsawn"
+      ]
+    },
+    {
+      "word": "pulpally",
+      "num_guesses": 3,
+      "prior": 0.000010175696805565716,
+      "guesses": [
+        "tonaries",
+        "ballhawk",
+        "pulpally"
+      ]
+    },
+    {
+      "word": "dogsbane",
+      "num_guesses": 3,
+      "prior": 8.324384531622808e-6,
+      "guesses": [
+        "tonaries",
+        "disclose",
+        "dogsbane"
+      ]
+    },
+    {
+      "word": "yamulkes",
+      "num_guesses": 4,
+      "prior": 4.4933430299769466e-6,
+      "guesses": [
+        "tonaries",
+        "capeable",
+        "galluses",
+        "yamulkes"
+      ]
+    },
+    {
+      "word": "cumshaws",
+      "num_guesses": 3,
+      "prior": 6.652723425112671e-6,
+      "guesses": [
+        "tonaries",
+        "campable",
+        "cumshaws"
+      ]
+    },
+    {
+      "word": "notarium",
+      "num_guesses": 3,
+      "prior": 0.000010521531641198815,
+      "guesses": [
+        "tonaries",
+        "notarial",
+        "notarium"
+      ]
+    },
+    {
+      "word": "cachemia",
+      "num_guesses": 4,
+      "prior": 4.530178640582208e-6,
+      "guesses": [
+        "tonaries",
+        "palladic",
+        "cachexia",
+        "cachemia"
+      ]
+    },
+    {
+      "word": "furfurol",
+      "num_guesses": 3,
+      "prior": 0.000015963791906481856,
+      "guesses": [
+        "tonaries",
+        "drygulch",
+        "furfurol"
+      ]
+    },
+    {
+      "word": "rockfill",
+      "num_guesses": 3,
+      "prior": 0.000021212204069303966,
+      "guesses": [
+        "tonaries",
+        "mockbird",
+        "rockfill"
+      ]
+    },
+    {
+      "word": "fanfolds",
+      "num_guesses": 3,
+      "prior": 7.161083844262952e-6,
+      "guesses": [
+        "tonaries",
+        "bagloads",
+        "fanfolds"
+      ]
+    },
+    {
+      "word": "mindless",
+      "num_guesses": 3,
+      "prior": 0.000029792586792280194,
+      "guesses": [
+        "tonaries",
+        "milkweed",
+        "mindless"
+      ]
+    },
+    {
+      "word": "plasheth",
+      "num_guesses": 4,
+      "prior": 3.974806549951556e-6,
+      "guesses": [
+        "tonaries",
+        "acalephe",
+        "slappeth",
+        "plasheth"
+      ]
+    },
+    {
+      "word": "cypriots",
+      "num_guesses": 3,
+      "prior": 0.000026326572296637748,
+      "guesses": [
+        "tonaries",
+        "cupboord",
+        "cypriots"
+      ]
+    },
+    {
+      "word": "submaxim",
+      "num_guesses": 3,
+      "prior": 7.394895058536858e-6,
+      "guesses": [
+        "tonaries",
+        "palladic",
+        "submaxim"
+      ]
+    },
+    {
+      "word": "vartabad",
+      "num_guesses": 3,
+      "prior": 4.230259386802159e-6,
+      "guesses": [
+        "tonaries",
+        "cardplay",
+        "vartabad"
+      ]
+    },
+    {
+      "word": "whigship",
+      "num_guesses": 4,
+      "prior": 5.7932270426908895e-6,
+      "guesses": [
+        "tonaries",
+        "scybalum",
+        "whipship",
+        "whigship"
+      ]
+    },
+    {
+      "word": "shankala",
+      "num_guesses": 3,
+      "prior": 7.137714522235374e-6,
+      "guesses": [
+        "tonaries",
+        "sambusak",
+        "shankala"
+      ]
+    },
+    {
+      "word": "amadotte",
+      "num_guesses": 4,
+      "prior": 4.932346906901988e-6,
+      "guesses": [
+        "tonaries",
+        "maculele",
+        "ammodyte",
+        "amadotte"
+      ]
+    },
+    {
+      "word": "oversite",
+      "num_guesses": 3,
+      "prior": 0.000011591320033925531,
+      "guesses": [
+        "tonaries",
+        "grossite",
+        "oversite"
+      ]
+    },
+    {
+      "word": "levining",
+      "num_guesses": 4,
+      "prior": 6.993832819940986e-6,
+      "guesses": [
+        "tonaries",
+        "peduncle",
+        "wellnigh",
+        "levining"
+      ]
+    },
+    {
+      "word": "wrenning",
+      "num_guesses": 4,
+      "prior": 5.145264306739402e-6,
+      "guesses": [
+        "tonaries",
+        "peduncle",
+        "bringing",
+        "wrenning"
+      ]
+    },
+    {
+      "word": "afflated",
+      "num_guesses": 4,
+      "prior": 7.460091542384612e-6,
+      "guesses": [
+        "tonaries",
+        "capeable",
+        "adulated",
+        "afflated"
+      ]
+    },
+    {
+      "word": "amorosas",
+      "num_guesses": 3,
+      "prior": 0.00001016285136572904,
+      "guesses": [
+        "tonaries",
+        "macrural",
+        "amorosas"
+      ]
+    },
+    {
+      "word": "desalted",
+      "num_guesses": 3,
+      "prior": 0.000018192136693394015,
+      "guesses": [
+        "tonaries",
+        "embattle",
+        "desalted"
+      ]
+    },
+    {
+      "word": "dearthed",
+      "num_guesses": 3,
+      "prior": 4.130317505261158e-6,
+      "guesses": [
+        "tonaries",
+        "lecherer",
+        "dearthed"
+      ]
+    },
+    {
+      "word": "fumehood",
+      "num_guesses": 3,
+      "prior": 9.935793056317262e-6,
+      "guesses": [
+        "tonaries",
+        "wellcome",
+        "fumehood"
+      ]
+    },
+    {
+      "word": "minimise",
+      "num_guesses": 3,
+      "prior": 0.000033973052204808295,
+      "guesses": [
+        "tonaries",
+        "legicide",
+        "minimise"
+      ]
+    },
+    {
+      "word": "gingivae",
+      "num_guesses": 3,
+      "prior": 0.000018678569545509333,
+      "guesses": [
+        "tonaries",
+        "bandplan",
+        "gingivae"
+      ]
+    },
+    {
+      "word": "refreins",
+      "num_guesses": 3,
+      "prior": 4.5570392901270115e-6,
+      "guesses": [
+        "tonaries",
+        "bemocked",
+        "refreins"
+      ]
+    },
+    {
+      "word": "adwising",
+      "num_guesses": 4,
+      "prior": 5.1232986621128936e-6,
+      "guesses": [
+        "tonaries",
+        "schlumps",
+        "advising",
+        "adwising"
+      ]
+    },
+    {
+      "word": "forfight",
+      "num_guesses": 3,
+      "prior": 4.4649018640803345e-6,
+      "guesses": [
+        "tonaries",
+        "coliform",
+        "forfight"
+      ]
+    },
+    {
+      "word": "endpiece",
+      "num_guesses": 3,
+      "prior": 0.000014036074903040158,
+      "guesses": [
+        "tonaries",
+        "pedicule",
+        "endpiece"
+      ]
+    },
+    {
+      "word": "poophole",
+      "num_guesses": 4,
+      "prior": 4.906282848275041e-6,
+      "guesses": [
+        "tonaries",
+        "comodule",
+        "loophole",
+        "poophole"
+      ]
+    },
+    {
+      "word": "hamulose",
+      "num_guesses": 3,
+      "prior": 5.303955409002266e-6,
+      "guesses": [
+        "tonaries",
+        "schedule",
+        "hamulose"
+      ]
+    },
+    {
+      "word": "unispore",
+      "num_guesses": 4,
+      "prior": 4.8032621252791e-6,
+      "guesses": [
+        "tonaries",
+        "melissic",
+        "virenose",
+        "unispore"
+      ]
+    },
+    {
+      "word": "readouts",
+      "num_guesses": 3,
+      "prior": 0.000021563268838806516,
+      "guesses": [
+        "tonaries",
+        "larboard",
+        "readouts"
+      ]
+    },
+    {
+      "word": "rewooded",
+      "num_guesses": 4,
+      "prior": 7.80597008971051e-6,
+      "guesses": [
+        "tonaries",
+        "deplorer",
+        "backwash",
+        "rewooded"
+      ]
+    },
+    {
+      "word": "alternan",
+      "num_guesses": 4,
+      "prior": 9.41244383653472e-6,
+      "guesses": [
+        "tonaries",
+        "macehead",
+        "albertan",
+        "alternan"
+      ]
+    },
+    {
+      "word": "decanone",
+      "num_guesses": 3,
+      "prior": 9.27219579308566e-6,
+      "guesses": [
+        "tonaries",
+        "hackling",
+        "decanone"
+      ]
+    },
+    {
+      "word": "babygirl",
+      "num_guesses": 3,
+      "prior": 0.000012490670203399247,
+      "guesses": [
+        "tonaries",
+        "carbamyl",
+        "babygirl"
+      ]
+    },
+    {
+      "word": "workyard",
+      "num_guesses": 3,
+      "prior": 0.000011193291724319427,
+      "guesses": [
+        "tonaries",
+        "woolpack",
+        "workyard"
+      ]
+    },
+    {
+      "word": "cyclamin",
+      "num_guesses": 3,
+      "prior": 9.409038113175313e-6,
+      "guesses": [
+        "tonaries",
+        "lahmacun",
+        "cyclamin"
+      ]
+    },
+    {
+      "word": "hexarchs",
+      "num_guesses": 3,
+      "prior": 5.1506975440945594e-6,
+      "guesses": [
+        "tonaries",
+        "muckheap",
+        "hexarchs"
+      ]
+    },
+    {
+      "word": "parrieth",
+      "num_guesses": 3,
+      "prior": 5.2346635362257545e-6,
+      "guesses": [
+        "tonaries",
+        "pergelic",
+        "parrieth"
+      ]
+    },
+    {
+      "word": "sweatery",
+      "num_guesses": 4,
+      "prior": 5.929001673870829e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "breakest",
+        "sweatery"
+      ]
+    },
+    {
+      "word": "ankyrins",
+      "num_guesses": 3,
+      "prior": 8.810853279986844e-6,
+      "guesses": [
+        "tonaries",
+        "addition",
+        "ankyrins"
+      ]
+    },
+    {
+      "word": "vicianin",
+      "num_guesses": 4,
+      "prior": 8.139102109193428e-6,
+      "guesses": [
+        "tonaries",
+        "lahmacun",
+        "piccanin",
+        "vicianin"
+      ]
+    },
+    {
+      "word": "outwrest",
+      "num_guesses": 3,
+      "prior": 6.181410083074117e-6,
+      "guesses": [
+        "tonaries",
+        "dumetose",
+        "outwrest"
+      ]
+    },
+    {
+      "word": "airframe",
+      "num_guesses": 3,
+      "prior": 0.000030214039440867766,
+      "guesses": [
+        "tonaries",
+        "paleface",
+        "airframe"
+      ]
+    },
+    {
+      "word": "fleshens",
+      "num_guesses": 3,
+      "prior": 4.168925317342679e-6,
+      "guesses": [
+        "tonaries",
+        "seedless",
+        "fleshens"
+      ]
+    },
+    {
+      "word": "seamless",
+      "num_guesses": 3,
+      "prior": 0.00003574724997931451,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "seamless"
+      ]
+    },
+    {
+      "word": "chonoans",
+      "num_guesses": 4,
+      "prior": 4.332447667416225e-6,
+      "guesses": [
+        "tonaries",
+        "backland",
+        "phocæans",
+        "chonoans"
+      ]
+    },
+    {
+      "word": "sidecast",
+      "num_guesses": 3,
+      "prior": 0.000011448986970901392,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "sidecast"
+      ]
+    },
+    {
+      "word": "forweary",
+      "num_guesses": 3,
+      "prior": 5.18282496871991e-6,
+      "guesses": [
+        "tonaries",
+        "acredale",
+        "forweary"
+      ]
+    },
+    {
+      "word": "outmatch",
+      "num_guesses": 3,
+      "prior": 0.000013219229585967587,
+      "guesses": [
+        "tonaries",
+        "matchday",
+        "outmatch"
+      ]
+    },
+    {
+      "word": "cortèges",
+      "num_guesses": 3,
+      "prior": 8.280210194586231e-6,
+      "guesses": [
+        "tonaries",
+        "fulgence",
+        "cortèges"
+      ]
+    },
+    {
+      "word": "scienter",
+      "num_guesses": 3,
+      "prior": 0.000025033425241884493,
+      "guesses": [
+        "tonaries",
+        "unrented",
+        "scienter"
+      ]
+    },
+    {
+      "word": "freeburn",
+      "num_guesses": 3,
+      "prior": 0.000013543341509861932,
+      "guesses": [
+        "tonaries",
+        "defleece",
+        "freeburn"
+      ]
+    },
+    {
+      "word": "elasmoid",
+      "num_guesses": 3,
+      "prior": 7.398719346942127e-6,
+      "guesses": [
+        "tonaries",
+        "dumpable",
+        "elasmoid"
+      ]
+    },
+    {
+      "word": "repacify",
+      "num_guesses": 3,
+      "prior": 5.922812723347649e-6,
+      "guesses": [
+        "tonaries",
+        "farmyard",
+        "repacify"
+      ]
+    },
+    {
+      "word": "enduring",
+      "num_guesses": 3,
+      "prior": 0.000045826172715510166,
+      "guesses": [
+        "tonaries",
+        "rehumble",
+        "enduring"
+      ]
+    },
+    {
+      "word": "crawlies",
+      "num_guesses": 3,
+      "prior": 0.000014932253077705165,
+      "guesses": [
+        "tonaries",
+        "hairclip",
+        "crawlies"
+      ]
+    },
+    {
+      "word": "redetect",
+      "num_guesses": 3,
+      "prior": 7.575946112456284e-6,
+      "guesses": [
+        "tonaries",
+        "curvette",
+        "redetect"
+      ]
+    },
+    {
+      "word": "antimask",
+      "num_guesses": 3,
+      "prior": 9.190755959404448e-6,
+      "guesses": [
+        "tonaries",
+        "anipamil",
+        "antimask"
+      ]
+    },
+    {
+      "word": "reconned",
+      "num_guesses": 3,
+      "prior": 9.073907227992862e-6,
+      "guesses": [
+        "tonaries",
+        "befooled",
+        "reconned"
+      ]
+    },
+    {
+      "word": "scissure",
+      "num_guesses": 3,
+      "prior": 9.903475722707065e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "scissure"
+      ]
+    },
+    {
+      "word": "autofill",
+      "num_guesses": 3,
+      "prior": 0.00001568095914782912,
+      "guesses": [
+        "tonaries",
+        "albolith",
+        "autofill"
+      ]
+    },
+    {
+      "word": "popstrel",
+      "num_guesses": 3,
+      "prior": 4.483942648379484e-6,
+      "guesses": [
+        "tonaries",
+        "purebred",
+        "popstrel"
+      ]
+    },
+    {
+      "word": "itemises",
+      "num_guesses": 4,
+      "prior": 0.000010966470739374733,
+      "guesses": [
+        "tonaries",
+        "multihit",
+        "itemizes",
+        "itemises"
+      ]
+    },
+    {
+      "word": "egotises",
+      "num_guesses": 4,
+      "prior": 3.861515930472619e-6,
+      "guesses": [
+        "tonaries",
+        "spodosol",
+        "myotises",
+        "egotises"
+      ]
+    },
+    {
+      "word": "calypter",
+      "num_guesses": 3,
+      "prior": 0.000011789867342574825,
+      "guesses": [
+        "tonaries",
+        "lecherer",
+        "calypter"
+      ]
+    },
+    {
+      "word": "audenian",
+      "num_guesses": 3,
+      "prior": 5.134328470729713e-6,
+      "guesses": [
+        "tonaries",
+        "nebelung",
+        "audenian"
+      ]
+    },
+    {
+      "word": "frænulum",
+      "num_guesses": 4,
+      "prior": 5.1561079526077475e-6,
+      "guesses": [
+        "tonaries",
+        "burgundy",
+        "unchurch",
+        "frænulum"
+      ]
+    },
+    {
+      "word": "palpless",
+      "num_guesses": 4,
+      "prior": 6.409614939404659e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "waspless",
+        "palpless"
+      ]
+    },
+    {
+      "word": "tritovum",
+      "num_guesses": 3,
+      "prior": 5.341980489075164e-6,
+      "guesses": [
+        "tonaries",
+        "olimpico",
+        "tritovum"
+      ]
+    },
+    {
+      "word": "bicorned",
+      "num_guesses": 3,
+      "prior": 7.543229514640348e-6,
+      "guesses": [
+        "tonaries",
+        "informed",
+        "bicorned"
+      ]
+    },
+    {
+      "word": "armbrace",
+      "num_guesses": 4,
+      "prior": 4.521081822889542e-6,
+      "guesses": [
+        "tonaries",
+        "beheadal",
+        "vambrace",
+        "armbrace"
+      ]
+    },
+    {
+      "word": "celebdom",
+      "num_guesses": 3,
+      "prior": 3.878527672714995e-6,
+      "guesses": [
+        "tonaries",
+        "wellcome",
+        "celebdom"
+      ]
+    },
+    {
+      "word": "creatrix",
+      "num_guesses": 3,
+      "prior": 0.000013873678369915855,
+      "guesses": [
+        "tonaries",
+        "lipaemic",
+        "creatrix"
+      ]
+    },
+    {
+      "word": "passbyes",
+      "num_guesses": 3,
+      "prior": 5.479933406934315e-6,
+      "guesses": [
+        "tonaries",
+        "capeable",
+        "passbyes"
+      ]
+    },
+    {
+      "word": "appliest",
+      "num_guesses": 4,
+      "prior": 8.773174118007156e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "epiblast",
+        "appliest"
+      ]
+    },
+    {
+      "word": "cloppity",
+      "num_guesses": 3,
+      "prior": 7.667535179118884e-6,
+      "guesses": [
+        "tonaries",
+        "hylicist",
+        "cloppity"
+      ]
+    },
+    {
+      "word": "laybarge",
+      "num_guesses": 3,
+      "prior": 0.0000100636327807689,
+      "guesses": [
+        "tonaries",
+        "peacable",
+        "laybarge"
+      ]
+    },
+    {
+      "word": "crimeful",
+      "num_guesses": 3,
+      "prior": 9.33936314547127e-6,
+      "guesses": [
+        "tonaries",
+        "pedicule",
+        "crimeful"
+      ]
+    },
+    {
+      "word": "kosovars",
+      "num_guesses": 3,
+      "prior": 0.000017127408358577846,
+      "guesses": [
+        "tonaries",
+        "carbaryl",
+        "kosovars"
+      ]
+    },
+    {
+      "word": "hawkeyes",
+      "num_guesses": 3,
+      "prior": 0.000014366423383335624,
+      "guesses": [
+        "tonaries",
+        "capeable",
+        "hawkeyes"
+      ]
+    },
+    {
+      "word": "thinhorn",
+      "num_guesses": 3,
+      "prior": 7.880585463504368e-6,
+      "guesses": [
+        "tonaries",
+        "biologic",
+        "thinhorn"
+      ]
+    },
+    {
+      "word": "nounless",
+      "num_guesses": 4,
+      "prior": 6.9155421741070675e-6,
+      "guesses": [
+        "tonaries",
+        "locoweed",
+        "foulness",
+        "nounless"
+      ]
+    },
+    {
+      "word": "talkings",
+      "num_guesses": 3,
+      "prior": 0.000011315309865093195,
+      "guesses": [
+        "tonaries",
+        "mailpack",
+        "talkings"
+      ]
+    },
+    {
+      "word": "quotably",
+      "num_guesses": 4,
+      "prior": 0.000013493523678659596,
+      "guesses": [
+        "tonaries",
+        "matchday",
+        "allotypy",
+        "quotably"
+      ]
+    },
+    {
+      "word": "tabulate",
+      "num_guesses": 3,
+      "prior": 0.00002760407847222479,
+      "guesses": [
+        "tonaries",
+        "paleface",
+        "tabulate"
+      ]
+    },
+    {
+      "word": "dominoes",
+      "num_guesses": 3,
+      "prior": 0.000025798973868144265,
+      "guesses": [
+        "tonaries",
+        "becudgel",
+        "dominoes"
+      ]
+    },
+    {
+      "word": "pyorrhea",
+      "num_guesses": 3,
+      "prior": 0.000023311841300710365,
+      "guesses": [
+        "tonaries",
+        "afforded",
+        "pyorrhea"
+      ]
+    },
+    {
+      "word": "nongrass",
+      "num_guesses": 2,
+      "prior": 9.6150224462146e-6,
+      "guesses": [
+        "tonaries",
+        "nongrass"
+      ]
+    },
+    {
+      "word": "winchite",
+      "num_guesses": 3,
+      "prior": 9.637686012661026e-6,
+      "guesses": [
+        "tonaries",
+        "vicelike",
+        "winchite"
+      ]
+    },
+    {
+      "word": "nonminer",
+      "num_guesses": 4,
+      "prior": 6.943675244283881e-6,
+      "guesses": [
+        "tonaries",
+        "flenched",
+        "evidence",
+        "nonminer"
+      ]
+    },
+    {
+      "word": "chaplain",
+      "num_guesses": 3,
+      "prior": 0.000045070308240954984,
+      "guesses": [
+        "tonaries",
+        "lahmacun",
+        "chaplain"
+      ]
+    },
+    {
+      "word": "raveller",
+      "num_guesses": 4,
+      "prior": 9.761408141161706e-6,
+      "guesses": [
+        "tonaries",
+        "carbaryl",
+        "rappeler",
+        "raveller"
+      ]
+    },
+    {
+      "word": "maddener",
+      "num_guesses": 3,
+      "prior": 5.941302613004814e-6,
+      "guesses": [
+        "tonaries",
+        "cudgeled",
+        "maddener"
+      ]
+    },
+    {
+      "word": "lovekins",
+      "num_guesses": 3,
+      "prior": 6.62522377428584e-6,
+      "guesses": [
+        "tonaries",
+        "baseless",
+        "lovekins"
+      ]
+    },
+    {
+      "word": "pequiste",
+      "num_guesses": 3,
+      "prior": 8.421431549011225e-6,
+      "guesses": [
+        "tonaries",
+        "multihit",
+        "pequiste"
+      ]
+    },
+    {
+      "word": "heatspot",
+      "num_guesses": 4,
+      "prior": 4.156214942528207e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "deadspot",
+        "heatspot"
+      ]
+    },
+    {
+      "word": "itemised",
+      "num_guesses": 3,
+      "prior": 0.00001799736898902882,
+      "guesses": [
+        "tonaries",
+        "decuplet",
+        "itemised"
+      ]
+    },
+    {
+      "word": "dactiles",
+      "num_guesses": 3,
+      "prior": 5.36980480983454e-6,
+      "guesses": [
+        "tonaries",
+        "dalmatic",
+        "dactiles"
+      ]
+    },
+    {
+      "word": "rainwear",
+      "num_guesses": 3,
+      "prior": 0.00001846734619823269,
+      "guesses": [
+        "tonaries",
+        "cephalad",
+        "rainwear"
+      ]
+    },
+    {
+      "word": "headbang",
+      "num_guesses": 3,
+      "prior": 7.392341131124352e-6,
+      "guesses": [
+        "tonaries",
+        "macehead",
+        "headbang"
+      ]
+    },
+    {
+      "word": "spissati",
+      "num_guesses": 3,
+      "prior": 5.392559035428829e-6,
+      "guesses": [
+        "tonaries",
+        "biapical",
+        "spissati"
+      ]
+    },
+    {
+      "word": "muselars",
+      "num_guesses": 3,
+      "prior": 5.341980489075164e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "muselars"
+      ]
+    },
+    {
+      "word": "spoonier",
+      "num_guesses": 3,
+      "prior": 5.254836248035852e-6,
+      "guesses": [
+        "tonaries",
+        "snoopier",
+        "spoonier"
+      ]
+    },
+    {
+      "word": "plaudits",
+      "num_guesses": 3,
+      "prior": 0.000024877273144853655,
+      "guesses": [
+        "tonaries",
+        "calidity",
+        "plaudits"
+      ]
+    },
+    {
+      "word": "premerit",
+      "num_guesses": 4,
+      "prior": 4.932346906901988e-6,
+      "guesses": [
+        "tonaries",
+        "deputeth",
+        "precepit",
+        "premerit"
+      ]
+    },
+    {
+      "word": "antiarin",
+      "num_guesses": 3,
+      "prior": 9.899505596867637e-6,
+      "guesses": [
+        "tonaries",
+        "margaric",
+        "antiarin"
+      ]
+    },
+    {
+      "word": "foolfish",
+      "num_guesses": 4,
+      "prior": 6.352068683721505e-6,
+      "guesses": [
+        "tonaries",
+        "mycology",
+        "followed",
+        "foolfish"
+      ]
+    },
+    {
+      "word": "karrikin",
+      "num_guesses": 4,
+      "prior": 5.558073521402967e-6,
+      "guesses": [
+        "tonaries",
+        "cambalid",
+        "naringin",
+        "karrikin"
+      ]
+    },
+    {
+      "word": "rushfoil",
+      "num_guesses": 3,
+      "prior": 6.106429258629345e-6,
+      "guesses": [
+        "tonaries",
+        "pimphood",
+        "rushfoil"
+      ]
+    },
+    {
+      "word": "opposure",
+      "num_guesses": 3,
+      "prior": 6.732601808249296e-6,
+      "guesses": [
+        "tonaries",
+        "decouple",
+        "opposure"
+      ]
+    },
+    {
+      "word": "malikite",
+      "num_guesses": 3,
+      "prior": 0.000012658246754240633,
+      "guesses": [
+        "tonaries",
+        "mathlete",
+        "malikite"
+      ]
+    },
+    {
+      "word": "chicadee",
+      "num_guesses": 3,
+      "prior": 0.000010533647527038647,
+      "guesses": [
+        "tonaries",
+        "callipee",
+        "chicadee"
+      ]
+    },
+    {
+      "word": "outroots",
+      "num_guesses": 4,
+      "prior": 4.5570392901270115e-6,
+      "guesses": [
+        "tonaries",
+        "cupboord",
+        "outrooms",
+        "outroots"
+      ]
+    },
+    {
+      "word": "coaxings",
+      "num_guesses": 4,
+      "prior": 0.000011518107189321159,
+      "guesses": [
+        "tonaries",
+        "chandala",
+        "coamings",
+        "coaxings"
+      ]
+    },
+    {
+      "word": "bandaids",
+      "num_guesses": 3,
+      "prior": 0.000013685072358239524,
+      "guesses": [
+        "tonaries",
+        "headache",
+        "bandaids"
+      ]
+    },
+    {
+      "word": "tallying",
+      "num_guesses": 3,
+      "prior": 0.000022062496907924777,
+      "guesses": [
+        "tonaries",
+        "winkling",
+        "tallying"
+      ]
+    },
+    {
+      "word": "midclass",
+      "num_guesses": 4,
+      "prior": 7.399992354475674e-6,
+      "guesses": [
+        "tonaries",
+        "mailpack",
+        "musicals",
+        "midclass"
+      ]
+    },
+    {
+      "word": "pullorum",
+      "num_guesses": 3,
+      "prior": 0.00002450341686548152,
+      "guesses": [
+        "tonaries",
+        "drygulch",
+        "pullorum"
+      ]
+    },
+    {
+      "word": "laingian",
+      "num_guesses": 4,
+      "prior": 0.000010100931136227797,
+      "guesses": [
+        "tonaries",
+        "blackgum",
+        "wildlife",
+        "laingian"
+      ]
+    },
+    {
+      "word": "bitochki",
+      "num_guesses": 3,
+      "prior": 5.7830276360220155e-6,
+      "guesses": [
+        "tonaries",
+        "bythitid",
+        "bitochki"
+      ]
+    },
+    {
+      "word": "menubars",
+      "num_guesses": 3,
+      "prior": 7.868676704180496e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "menubars"
+      ]
+    },
+    {
+      "word": "wyandott",
+      "num_guesses": 3,
+      "prior": 0.000014521935271671508,
+      "guesses": [
+        "tonaries",
+        "chaology",
+        "wyandott"
+      ]
+    },
+    {
+      "word": "colitose",
+      "num_guesses": 3,
+      "prior": 8.889839617260672e-6,
+      "guesses": [
+        "tonaries",
+        "gumfield",
+        "colitose"
+      ]
+    },
+    {
+      "word": "retvrned",
+      "num_guesses": 3,
+      "prior": 5.203808752279487e-6,
+      "guesses": [
+        "tonaries",
+        "beplumed",
+        "retvrned"
+      ]
+    },
+    {
+      "word": "subscore",
+      "num_guesses": 3,
+      "prior": 0.000013851876811858779,
+      "guesses": [
+        "tonaries",
+        "decouple",
+        "subscore"
+      ]
+    },
+    {
+      "word": "formants",
+      "num_guesses": 3,
+      "prior": 0.00002075588717258582,
+      "guesses": [
+        "tonaries",
+        "mordants",
+        "formants"
+      ]
+    },
+    {
+      "word": "raillies",
+      "num_guesses": 3,
+      "prior": 6.531500093661085e-6,
+      "guesses": [
+        "tonaries",
+        "hairclip",
+        "raillies"
+      ]
+    },
+    {
+      "word": "tagboard",
+      "num_guesses": 3,
+      "prior": 0.00001542097636356033,
+      "guesses": [
+        "tonaries",
+        "bargadar",
+        "tagboard"
+      ]
+    },
+    {
+      "word": "selfotel",
+      "num_guesses": 3,
+      "prior": 8.001483304884119e-6,
+      "guesses": [
+        "tonaries",
+        "dectuple",
+        "selfotel"
+      ]
+    },
+    {
+      "word": "reäction",
+      "num_guesses": 3,
+      "prior": 5.597496434748019e-6,
+      "guesses": [
+        "tonaries",
+        "erection",
+        "reäction"
+      ]
+    },
+    {
+      "word": "syncopic",
+      "num_guesses": 3,
+      "prior": 9.044445868090467e-6,
+      "guesses": [
+        "tonaries",
+        "sinusoid",
+        "syncopic"
+      ]
+    },
+    {
+      "word": "grandfer",
+      "num_guesses": 3,
+      "prior": 0.000013002286788154578,
+      "guesses": [
+        "tonaries",
+        "cudgeled",
+        "grandfer"
+      ]
+    },
+    {
+      "word": "postfuck",
+      "num_guesses": 3,
+      "prior": 4.445530626271741e-6,
+      "guesses": [
+        "tonaries",
+        "folkmoot",
+        "postfuck"
+      ]
+    },
+    {
+      "word": "secaline",
+      "num_guesses": 3,
+      "prior": 6.982632389590689e-6,
+      "guesses": [
+        "tonaries",
+        "sescuple",
+        "secaline"
+      ]
+    },
+    {
+      "word": "frustose",
+      "num_guesses": 3,
+      "prior": 6.0188760022110044e-6,
+      "guesses": [
+        "tonaries",
+        "procourt",
+        "frustose"
+      ]
+    },
+    {
+      "word": "pondhawk",
+      "num_guesses": 3,
+      "prior": 8.373858464631575e-6,
+      "guesses": [
+        "tonaries",
+        "codology",
+        "pondhawk"
+      ]
+    },
+    {
+      "word": "cadelles",
+      "num_guesses": 4,
+      "prior": 7.314028589419527e-6,
+      "guesses": [
+        "tonaries",
+        "capeable",
+        "caleches",
+        "cadelles"
+      ]
+    },
+    {
+      "word": "knotwort",
+      "num_guesses": 4,
+      "prior": 6.186628672260128e-6,
+      "guesses": [
+        "tonaries",
+        "pronotum",
+        "knotwork",
+        "knotwort"
+      ]
+    },
+    {
+      "word": "annattos",
+      "num_guesses": 2,
+      "prior": 4.766869582272614e-6,
+      "guesses": [
+        "tonaries",
+        "annattos"
+      ]
+    },
+    {
+      "word": "stampery",
+      "num_guesses": 4,
+      "prior": 4.7742372674962475e-6,
+      "guesses": [
+        "tonaries",
+        "slapdash",
+        "spattery",
+        "stampery"
+      ]
+    },
+    {
+      "word": "totalise",
+      "num_guesses": 2,
+      "prior": 0.000010682203169404586,
+      "guesses": [
+        "tonaries",
+        "totalise"
+      ]
+    },
+    {
+      "word": "sinology",
+      "num_guesses": 3,
+      "prior": 0.000016597142661561137,
+      "guesses": [
+        "tonaries",
+        "sinusoid",
+        "sinology"
+      ]
+    },
+    {
+      "word": "perspiry",
+      "num_guesses": 4,
+      "prior": 6.987441369625989e-6,
+      "guesses": [
+        "tonaries",
+        "seedcase",
+        "resilium",
+        "perspiry"
+      ]
+    },
+    {
+      "word": "taconian",
+      "num_guesses": 3,
+      "prior": 0.000014080040778214483,
+      "guesses": [
+        "tonaries",
+        "tauonium",
+        "taconian"
+      ]
+    },
+    {
+      "word": "pentroof",
+      "num_guesses": 3,
+      "prior": 9.110204016114174e-6,
+      "guesses": [
+        "tonaries",
+        "centrode",
+        "pentroof"
+      ]
+    },
+    {
+      "word": "unpatent",
+      "num_guesses": 3,
+      "prior": 6.7026196454204324e-6,
+      "guesses": [
+        "tonaries",
+        "dephlegm",
+        "unpatent"
+      ]
+    },
+    {
+      "word": "otherise",
+      "num_guesses": 3,
+      "prior": 0.000010496502439023435,
+      "guesses": [
+        "tonaries",
+        "hedgehop",
+        "otherise"
+      ]
+    },
+    {
+      "word": "blaffert",
+      "num_guesses": 4,
+      "prior": 6.912202137690165e-6,
+      "guesses": [
+        "tonaries",
+        "leachate",
+        "grateful",
+        "blaffert"
+      ]
+    },
+    {
+      "word": "keftians",
+      "num_guesses": 4,
+      "prior": 7.993087186379857e-6,
+      "guesses": [
+        "tonaries",
+        "baltists",
+        "heatings",
+        "keftians"
+      ]
+    },
+    {
+      "word": "irenaean",
+      "num_guesses": 3,
+      "prior": 0.000012063087244876011,
+      "guesses": [
+        "tonaries",
+        "cephalad",
+        "irenaean"
+      ]
+    },
+    {
+      "word": "syntaxis",
+      "num_guesses": 3,
+      "prior": 0.000016146975385271623,
+      "guesses": [
+        "tonaries",
+        "dastgahs",
+        "syntaxis"
+      ]
+    },
+    {
+      "word": "thingier",
+      "num_guesses": 3,
+      "prior": 3.844199017498156e-6,
+      "guesses": [
+        "tonaries",
+        "trendier",
+        "thingier"
+      ]
+    },
+    {
+      "word": "birimian",
+      "num_guesses": 3,
+      "prior": 0.00001131251515602167,
+      "guesses": [
+        "tonaries",
+        "drachmal",
+        "birimian"
+      ]
+    },
+    {
+      "word": "callback",
+      "num_guesses": 3,
+      "prior": 0.000025240703216614374,
+      "guesses": [
+        "tonaries",
+        "ballhawk",
+        "callback"
+      ]
+    },
+    {
+      "word": "decrewed",
+      "num_guesses": 3,
+      "prior": 6.321300883021322e-6,
+      "guesses": [
+        "tonaries",
+        "beplumed",
+        "decrewed"
+      ]
+    },
+    {
+      "word": "ceruleum",
+      "num_guesses": 3,
+      "prior": 7.5479381509644765e-6,
+      "guesses": [
+        "tonaries",
+        "defleece",
+        "ceruleum"
+      ]
+    },
+    {
+      "word": "wickings",
+      "num_guesses": 4,
+      "prior": 0.000011339877358058587,
+      "guesses": [
+        "tonaries",
+        "dislimbs",
+        "preknown",
+        "wickings"
+      ]
+    }
+  ]
+}

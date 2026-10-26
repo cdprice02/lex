@@ -1,0 +1,5268 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T14:27:28.84713Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "satiren",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 7,
+    "dictionary_length": 29280,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "e2d10a6bc39382d1be94c5905cbaf5e25adaa75fd45dd65bb1eb3087cca37301",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.423999999999977,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.020000000000000004,
+        "3": 0.5580000000000004,
+        "4": 0.4000000000000003,
+        "5": 0.022000000000000006
+      }
+    },
+    "prior": {
+      "mean": 3.3469646657722123,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.03262710921822344,
+        "3": 0.601216611550657,
+        "4": 0.3527207834718109,
+        "5": 0.013435495759310039
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "uhrband",
+      "num_guesses": 3,
+      "prior": 0.00002151762644028835,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "uhrband"
+      ]
+    },
+    {
+      "word": "täubers",
+      "num_guesses": 3,
+      "prior": 0.00001957531429607931,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "täubers"
+      ]
+    },
+    {
+      "word": "zulöten",
+      "num_guesses": 4,
+      "prior": 0.000018812475515693755,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "plätzen",
+        "zulöten"
+      ]
+    },
+    {
+      "word": "anwirbt",
+      "num_guesses": 2,
+      "prior": 0.000029412197306950118,
+      "guesses": [
+        "satiren",
+        "anwirbt"
+      ]
+    },
+    {
+      "word": "klickst",
+      "num_guesses": 4,
+      "prior": 0.00002748525373123149,
+      "guesses": [
+        "satiren",
+        "postgut",
+        "klimbim",
+        "klickst"
+      ]
+    },
+    {
+      "word": "bestaub",
+      "num_guesses": 3,
+      "prior": 0.00001993669485550532,
+      "guesses": [
+        "satiren",
+        "bussele",
+        "bestaub"
+      ]
+    },
+    {
+      "word": "kerogen",
+      "num_guesses": 4,
+      "prior": 0.000025173972140689625,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "pyrogen",
+        "kerogen"
+      ]
+    },
+    {
+      "word": "furchen",
+      "num_guesses": 3,
+      "prior": 0.0000741519296838519,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "furchen"
+      ]
+    },
+    {
+      "word": "abgüsse",
+      "num_guesses": 4,
+      "prior": 0.00004852148627725856,
+      "guesses": [
+        "satiren",
+        "bussele",
+        "geblümt",
+        "abgüsse"
+      ]
+    },
+    {
+      "word": "kiesten",
+      "num_guesses": 4,
+      "prior": 0.000014120822427358904,
+      "guesses": [
+        "satiren",
+        "eisfeld",
+        "kleinen",
+        "kiesten"
+      ]
+    },
+    {
+      "word": "abmalte",
+      "num_guesses": 4,
+      "prior": 0.000024441712611009835,
+      "guesses": [
+        "satiren",
+        "gebuhlt",
+        "ablebte",
+        "abmalte"
+      ]
+    },
+    {
+      "word": "ermatte",
+      "num_guesses": 3,
+      "prior": 0.000025644022310478945,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "ermatte"
+      ]
+    },
+    {
+      "word": "suboxyd",
+      "num_guesses": 3,
+      "prior": 0.00003197339438984624,
+      "guesses": [
+        "satiren",
+        "pflocks",
+        "suboxyd"
+      ]
+    },
+    {
+      "word": "tolteke",
+      "num_guesses": 5,
+      "prior": 0.000015742257451124268,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "demozug",
+        "popelte",
+        "tolteke"
+      ]
+    },
+    {
+      "word": "knapste",
+      "num_guesses": 4,
+      "prior": 0.000015914911220996303,
+      "guesses": [
+        "satiren",
+        "absahnt",
+        "peanuts",
+        "knapste"
+      ]
+    },
+    {
+      "word": "ersinge",
+      "num_guesses": 3,
+      "prior": 0.000012302367870946252,
+      "guesses": [
+        "satiren",
+        "leobens",
+        "ersinge"
+      ]
+    },
+    {
+      "word": "erlahme",
+      "num_guesses": 3,
+      "prior": 0.00002803697367971891,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "erlahme"
+      ]
+    },
+    {
+      "word": "toteren",
+      "num_guesses": 3,
+      "prior": 0.000016516447859119923,
+      "guesses": [
+        "satiren",
+        "teurere",
+        "toteren"
+      ]
+    },
+    {
+      "word": "zoolith",
+      "num_guesses": 4,
+      "prior": 0.000013422680424979421,
+      "guesses": [
+        "satiren",
+        "mitgift",
+        "tödlich",
+        "zoolith"
+      ]
+    },
+    {
+      "word": "winkten",
+      "num_guesses": 4,
+      "prior": 0.00005330381180791232,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "findung",
+        "winkten"
+      ]
+    },
+    {
+      "word": "krätzen",
+      "num_guesses": 4,
+      "prior": 0.000027925229585843536,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "urenkel",
+        "krätzen"
+      ]
+    },
+    {
+      "word": "quiquis",
+      "num_guesses": 4,
+      "prior": 0.000014076934018137583,
+      "guesses": [
+        "satiren",
+        "miglios",
+        "chichis",
+        "quiquis"
+      ]
+    },
+    {
+      "word": "baulers",
+      "num_guesses": 4,
+      "prior": 0.000012887503863858726,
+      "guesses": [
+        "satiren",
+        "muskels",
+        "laubers",
+        "baulers"
+      ]
+    },
+    {
+      "word": "geseier",
+      "num_guesses": 3,
+      "prior": 0.00001751769538957547,
+      "guesses": [
+        "satiren",
+        "geisels",
+        "geseier"
+      ]
+    },
+    {
+      "word": "brackig",
+      "num_guesses": 3,
+      "prior": 0.00002823960003801047,
+      "guesses": [
+        "satiren",
+        "adaldag",
+        "brackig"
+      ]
+    },
+    {
+      "word": "fällens",
+      "num_guesses": 4,
+      "prior": 0.000026699370943966288,
+      "guesses": [
+        "satiren",
+        "heulend",
+        "worüber",
+        "fällens"
+      ]
+    },
+    {
+      "word": "humidem",
+      "num_guesses": 3,
+      "prior": 0.000023266130988529845,
+      "guesses": [
+        "satiren",
+        "domizil",
+        "humidem"
+      ]
+    },
+    {
+      "word": "urbanes",
+      "num_guesses": 3,
+      "prior": 0.000035636772548691545,
+      "guesses": [
+        "satiren",
+        "glaukom",
+        "urbanes"
+      ]
+    },
+    {
+      "word": "westens",
+      "num_guesses": 4,
+      "prior": 0.00007771744830157762,
+      "guesses": [
+        "satiren",
+        "lengens",
+        "besteht",
+        "westens"
+      ]
+    },
+    {
+      "word": "krankst",
+      "num_guesses": 3,
+      "prior": 0.000017698095820083553,
+      "guesses": [
+        "satiren",
+        "knaudts",
+        "krankst"
+      ]
+    },
+    {
+      "word": "cobalts",
+      "num_guesses": 4,
+      "prior": 0.000024508164120644568,
+      "guesses": [
+        "satiren",
+        "auslast",
+        "klatsch",
+        "cobalts"
+      ]
+    },
+    {
+      "word": "frönend",
+      "num_guesses": 5,
+      "prior": 0.000021967591270950026,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "product",
+        "krönend",
+        "frönend"
+      ]
+    },
+    {
+      "word": "nichtig",
+      "num_guesses": 3,
+      "prior": 0.00007804412185701764,
+      "guesses": [
+        "satiren",
+        "kinohit",
+        "nichtig"
+      ]
+    },
+    {
+      "word": "cosinus",
+      "num_guesses": 3,
+      "prior": 0.00004912192015351386,
+      "guesses": [
+        "satiren",
+        "sudokus",
+        "cosinus"
+      ]
+    },
+    {
+      "word": "rauntet",
+      "num_guesses": 4,
+      "prior": 0.000010242375829594052,
+      "guesses": [
+        "satiren",
+        "hirntod",
+        "ranntet",
+        "rauntet"
+      ]
+    },
+    {
+      "word": "escarpe",
+      "num_guesses": 3,
+      "prior": 0.00003115379378307075,
+      "guesses": [
+        "satiren",
+        "obdachs",
+        "escarpe"
+      ]
+    },
+    {
+      "word": "zurennt",
+      "num_guesses": 3,
+      "prior": 0.000021474988800428833,
+      "guesses": [
+        "satiren",
+        "beugend",
+        "zurennt"
+      ]
+    },
+    {
+      "word": "lohgare",
+      "num_guesses": 4,
+      "prior": 0.000023489647633088388,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "formale",
+        "lohgare"
+      ]
+    },
+    {
+      "word": "hinzöge",
+      "num_guesses": 4,
+      "prior": 0.000024852826880516727,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "winzige",
+        "hinzöge"
+      ]
+    },
+    {
+      "word": "fenneke",
+      "num_guesses": 3,
+      "prior": 0.000013848846810977075,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "fenneke"
+      ]
+    },
+    {
+      "word": "mattrot",
+      "num_guesses": 3,
+      "prior": 0.000024261720755799404,
+      "guesses": [
+        "satiren",
+        "katarrh",
+        "mattrot"
+      ]
+    },
+    {
+      "word": "pochade",
+      "num_guesses": 4,
+      "prior": 0.00001554686557514754,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "apokope",
+        "pochade"
+      ]
+    },
+    {
+      "word": "abregte",
+      "num_guesses": 4,
+      "prior": 0.000014730925548514987,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "etagere",
+        "abregte"
+      ]
+    },
+    {
+      "word": "abgebet",
+      "num_guesses": 3,
+      "prior": 0.00001774206678664379,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "abgebet"
+      ]
+    },
+    {
+      "word": "baptist",
+      "num_guesses": 3,
+      "prior": 0.00006122731726055984,
+      "guesses": [
+        "satiren",
+        "muschis",
+        "baptist"
+      ]
+    },
+    {
+      "word": "omnivor",
+      "num_guesses": 3,
+      "prior": 0.00002695793784848402,
+      "guesses": [
+        "satiren",
+        "ordinär",
+        "omnivor"
+      ]
+    },
+    {
+      "word": "gebrämt",
+      "num_guesses": 4,
+      "prior": 0.000017051569831567128,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "geprobt",
+        "gebrämt"
+      ]
+    },
+    {
+      "word": "grafits",
+      "num_guesses": 3,
+      "prior": 0.0000181355092306549,
+      "guesses": [
+        "satiren",
+        "trilith",
+        "grafits"
+      ]
+    },
+    {
+      "word": "beklagt",
+      "num_guesses": 3,
+      "prior": 0.00007947731821204908,
+      "guesses": [
+        "satiren",
+        "gebuhlt",
+        "beklagt"
+      ]
+    },
+    {
+      "word": "umhiebt",
+      "num_guesses": 3,
+      "prior": 0.000013040969780918407,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "umhiebt"
+      ]
+    },
+    {
+      "word": "melqart",
+      "num_guesses": 4,
+      "prior": 0.000025883129802225015,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "melkart",
+        "melqart"
+      ]
+    },
+    {
+      "word": "totbiss",
+      "num_guesses": 3,
+      "prior": 0.000011480415447031718,
+      "guesses": [
+        "satiren",
+        "wollust",
+        "totbiss"
+      ]
+    },
+    {
+      "word": "künerts",
+      "num_guesses": 3,
+      "prior": 0.000010162347460031476,
+      "guesses": [
+        "satiren",
+        "mündung",
+        "künerts"
+      ]
+    },
+    {
+      "word": "ankenne",
+      "num_guesses": 3,
+      "prior": 0.000011135903456799501,
+      "guesses": [
+        "satiren",
+        "anklang",
+        "ankenne"
+      ]
+    },
+    {
+      "word": "beugest",
+      "num_guesses": 4,
+      "prior": 0.000019619403288586973,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "zeugest",
+        "beugest"
+      ]
+    },
+    {
+      "word": "knusper",
+      "num_guesses": 3,
+      "prior": 0.000027318389157462445,
+      "guesses": [
+        "satiren",
+        "kremser",
+        "knusper"
+      ]
+    },
+    {
+      "word": "berusst",
+      "num_guesses": 4,
+      "prior": 0.000025027627314629627,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "berufst",
+        "berusst"
+      ]
+    },
+    {
+      "word": "shriner",
+      "num_guesses": 3,
+      "prior": 0.00002062560366895373,
+      "guesses": [
+        "satiren",
+        "seniler",
+        "shriner"
+      ]
+    },
+    {
+      "word": "klumpte",
+      "num_guesses": 3,
+      "prior": 0.000021218191877883803,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "klumpte"
+      ]
+    },
+    {
+      "word": "tickens",
+      "num_guesses": 3,
+      "prior": 0.000020792949404656614,
+      "guesses": [
+        "satiren",
+        "wendels",
+        "tickens"
+      ]
+    },
+    {
+      "word": "kopiere",
+      "num_guesses": 4,
+      "prior": 0.000032187871065834936,
+      "guesses": [
+        "satiren",
+        "feudele",
+        "mirakel",
+        "kopiere"
+      ]
+    },
+    {
+      "word": "mastaba",
+      "num_guesses": 3,
+      "prior": 0.000038030606524808676,
+      "guesses": [
+        "satiren",
+        "lactats",
+        "mastaba"
+      ]
+    },
+    {
+      "word": "nächtig",
+      "num_guesses": 3,
+      "prior": 0.000032245821923576265,
+      "guesses": [
+        "satiren",
+        "kinohit",
+        "nächtig"
+      ]
+    },
+    {
+      "word": "rappelt",
+      "num_guesses": 4,
+      "prior": 0.000036123537561385494,
+      "guesses": [
+        "satiren",
+        "kurbelt",
+        "familie",
+        "rappelt"
+      ]
+    },
+    {
+      "word": "entlohn",
+      "num_guesses": 3,
+      "prior": 0.000015798331026208377,
+      "guesses": [
+        "satiren",
+        "zuklebe",
+        "entlohn"
+      ]
+    },
+    {
+      "word": "abdacht",
+      "num_guesses": 3,
+      "prior": 0.00003268558128727188,
+      "guesses": [
+        "satiren",
+        "aufhalf",
+        "abdacht"
+      ]
+    },
+    {
+      "word": "hexagon",
+      "num_guesses": 3,
+      "prior": 0.00003279650007404108,
+      "guesses": [
+        "satiren",
+        "kugelte",
+        "hexagon"
+      ]
+    },
+    {
+      "word": "örtlich",
+      "num_guesses": 3,
+      "prior": 0.00007628793738197134,
+      "guesses": [
+        "satiren",
+        "ramscht",
+        "örtlich"
+      ]
+    },
+    {
+      "word": "schabst",
+      "num_guesses": 4,
+      "prior": 0.000016781613444074557,
+      "guesses": [
+        "satiren",
+        "schlufs",
+        "schasst",
+        "schabst"
+      ]
+    },
+    {
+      "word": "marolts",
+      "num_guesses": 4,
+      "prior": 0.000012166931449633815,
+      "guesses": [
+        "satiren",
+        "cursors",
+        "bartlos",
+        "marolts"
+      ]
+    },
+    {
+      "word": "muslime",
+      "num_guesses": 3,
+      "prior": 0.00006950339478223872,
+      "guesses": [
+        "satiren",
+        "hielige",
+        "muslime"
+      ]
+    },
+    {
+      "word": "nachhut",
+      "num_guesses": 3,
+      "prior": 0.000052494412361989345,
+      "guesses": [
+        "satiren",
+        "landgut",
+        "nachhut"
+      ]
+    },
+    {
+      "word": "website",
+      "num_guesses": 3,
+      "prior": 0.00007134033535226301,
+      "guesses": [
+        "satiren",
+        "bemehlt",
+        "website"
+      ]
+    },
+    {
+      "word": "danzers",
+      "num_guesses": 4,
+      "prior": 0.00002467764342516804,
+      "guesses": [
+        "satiren",
+        "henkend",
+        "wälzten",
+        "danzers"
+      ]
+    },
+    {
+      "word": "holzhof",
+      "num_guesses": 3,
+      "prior": 0.0000308021434198747,
+      "guesses": [
+        "satiren",
+        "hochbog",
+        "holzhof"
+      ]
+    },
+    {
+      "word": "mehrste",
+      "num_guesses": 4,
+      "prior": 0.000030583784261443,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "herzogs",
+        "mehrste"
+      ]
+    },
+    {
+      "word": "hortest",
+      "num_guesses": 4,
+      "prior": 0.000020130474303600016,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "groschs",
+        "hortest"
+      ]
+    },
+    {
+      "word": "gebäude",
+      "num_guesses": 3,
+      "prior": 0.0001175909472351863,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "gebäude"
+      ]
+    },
+    {
+      "word": "bründls",
+      "num_guesses": 3,
+      "prior": 0.000014032491350156131,
+      "guesses": [
+        "satiren",
+        "dornlos",
+        "bründls"
+      ]
+    },
+    {
+      "word": "drempel",
+      "num_guesses": 3,
+      "prior": 0.00003087929710223341,
+      "guesses": [
+        "satiren",
+        "bergler",
+        "drempel"
+      ]
+    },
+    {
+      "word": "undinen",
+      "num_guesses": 3,
+      "prior": 0.00003309492669678552,
+      "guesses": [
+        "satiren",
+        "lenzend",
+        "undinen"
+      ]
+    },
+    {
+      "word": "fernamt",
+      "num_guesses": 4,
+      "prior": 0.000028248456636710166,
+      "guesses": [
+        "satiren",
+        "gedanke",
+        "rentamt",
+        "fernamt"
+      ]
+    },
+    {
+      "word": "acrylan",
+      "num_guesses": 3,
+      "prior": 0.000013216079052489271,
+      "guesses": [
+        "satiren",
+        "vorwarn",
+        "acrylan"
+      ]
+    },
+    {
+      "word": "reschen",
+      "num_guesses": 3,
+      "prior": 0.000033730327444357874,
+      "guesses": [
+        "satiren",
+        "köbesse",
+        "reschen"
+      ]
+    },
+    {
+      "word": "tougher",
+      "num_guesses": 3,
+      "prior": 0.00002386614797071974,
+      "guesses": [
+        "satiren",
+        "geoutet",
+        "tougher"
+      ]
+    },
+    {
+      "word": "stiebte",
+      "num_guesses": 3,
+      "prior": 0.00002670874901826585,
+      "guesses": [
+        "satiren",
+        "spielte",
+        "stiebte"
+      ]
+    },
+    {
+      "word": "dreißig",
+      "num_guesses": 3,
+      "prior": 0.00009517148094237933,
+      "guesses": [
+        "satiren",
+        "feudele",
+        "dreißig"
+      ]
+    },
+    {
+      "word": "flimmer",
+      "num_guesses": 3,
+      "prior": 0.000039363106721220324,
+      "guesses": [
+        "satiren",
+        "beflieg",
+        "flimmer"
+      ]
+    },
+    {
+      "word": "karners",
+      "num_guesses": 3,
+      "prior": 0.000024969903084943643,
+      "guesses": [
+        "satiren",
+        "henkend",
+        "karners"
+      ]
+    },
+    {
+      "word": "zubände",
+      "num_guesses": 4,
+      "prior": 0.000013187534338687884,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "umwände",
+        "zubände"
+      ]
+    },
+    {
+      "word": "unkende",
+      "num_guesses": 4,
+      "prior": 0.00001469391270485016,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "zuwende",
+        "unkende"
+      ]
+    },
+    {
+      "word": "freßaal",
+      "num_guesses": 4,
+      "prior": 0.00001143006080606984,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "overall",
+        "freßaal"
+      ]
+    },
+    {
+      "word": "hammeln",
+      "num_guesses": 4,
+      "prior": 0.000039638056268749204,
+      "guesses": [
+        "satiren",
+        "kundgab",
+        "pipchen",
+        "hammeln"
+      ]
+    },
+    {
+      "word": "gestühl",
+      "num_guesses": 3,
+      "prior": 0.00004272935452186725,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "gestühl"
+      ]
+    },
+    {
+      "word": "passaus",
+      "num_guesses": 3,
+      "prior": 0.000030478506247909582,
+      "guesses": [
+        "satiren",
+        "palmach",
+        "passaus"
+      ]
+    },
+    {
+      "word": "räusper",
+      "num_guesses": 4,
+      "prior": 0.000021706406478212104,
+      "guesses": [
+        "satiren",
+        "kremser",
+        "röscher",
+        "räusper"
+      ]
+    },
+    {
+      "word": "krampft",
+      "num_guesses": 3,
+      "prior": 0.00003673873896595043,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "krampft"
+      ]
+    },
+    {
+      "word": "beerben",
+      "num_guesses": 4,
+      "prior": 0.000044106968326156733,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "lügende",
+        "beerben"
+      ]
+    },
+    {
+      "word": "nuckelt",
+      "num_guesses": 3,
+      "prior": 0.00002667800800178045,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "nuckelt"
+      ]
+    },
+    {
+      "word": "amylase",
+      "num_guesses": 3,
+      "prior": 0.00004991119574877389,
+      "guesses": [
+        "satiren",
+        "bussele",
+        "amylase"
+      ]
+    },
+    {
+      "word": "defekte",
+      "num_guesses": 4,
+      "prior": 0.00006612830153892874,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "prüfung",
+        "defekte"
+      ]
+    },
+    {
+      "word": "gameboy",
+      "num_guesses": 3,
+      "prior": 0.00003089025633459208,
+      "guesses": [
+        "satiren",
+        "buckele",
+        "gameboy"
+      ]
+    },
+    {
+      "word": "stärend",
+      "num_guesses": 3,
+      "prior": 9.860381768022386e-6,
+      "guesses": [
+        "satiren",
+        "ätzende",
+        "stärend"
+      ]
+    },
+    {
+      "word": "moränen",
+      "num_guesses": 4,
+      "prior": 0.00005680194156734676,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "coronen",
+        "moränen"
+      ]
+    },
+    {
+      "word": "meynend",
+      "num_guesses": 4,
+      "prior": 0.00001913361309783006,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "denkend",
+        "meynend"
+      ]
+    },
+    {
+      "word": "torques",
+      "num_guesses": 3,
+      "prior": 0.000035240438117359924,
+      "guesses": [
+        "satiren",
+        "glottis",
+        "torques"
+      ]
+    },
+    {
+      "word": "beharkt",
+      "num_guesses": 4,
+      "prior": 0.000021712261997402,
+      "guesses": [
+        "satiren",
+        "gebadet",
+        "beharrt",
+        "beharkt"
+      ]
+    },
+    {
+      "word": "aufhübe",
+      "num_guesses": 4,
+      "prior": 0.000022179419078614332,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "überaus",
+        "aufhübe"
+      ]
+    },
+    {
+      "word": "pimente",
+      "num_guesses": 4,
+      "prior": 0.0000186968378272213,
+      "guesses": [
+        "satiren",
+        "bengelt",
+        "infekte",
+        "pimente"
+      ]
+    },
+    {
+      "word": "eckerts",
+      "num_guesses": 3,
+      "prior": 0.00003053905640368381,
+      "guesses": [
+        "satiren",
+        "gekopft",
+        "eckerts"
+      ]
+    },
+    {
+      "word": "badetet",
+      "num_guesses": 3,
+      "prior": 0.000012995687542050052,
+      "guesses": [
+        "satiren",
+        "buchtel",
+        "badetet"
+      ]
+    },
+    {
+      "word": "eozänen",
+      "num_guesses": 3,
+      "prior": 0.00003719874293677276,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "eozänen"
+      ]
+    },
+    {
+      "word": "aleukie",
+      "num_guesses": 3,
+      "prior": 0.0000241785703117727,
+      "guesses": [
+        "satiren",
+        "beileid",
+        "aleukie"
+      ]
+    },
+    {
+      "word": "doubeln",
+      "num_guesses": 3,
+      "prior": 0.000021127586283331144,
+      "guesses": [
+        "satiren",
+        "kuhdorf",
+        "doubeln"
+      ]
+    },
+    {
+      "word": "trübest",
+      "num_guesses": 3,
+      "prior": 0.000013872339476706525,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "trübest"
+      ]
+    },
+    {
+      "word": "schallt",
+      "num_guesses": 3,
+      "prior": 0.00005276944089884039,
+      "guesses": [
+        "satiren",
+        "schlufs",
+        "schallt"
+      ]
+    },
+    {
+      "word": "drähten",
+      "num_guesses": 4,
+      "prior": 0.00006107446757303891,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "törende",
+        "drähten"
+      ]
+    },
+    {
+      "word": "vaternd",
+      "num_guesses": 3,
+      "prior": 0.00001031997846065596,
+      "guesses": [
+        "satiren",
+        "laterne",
+        "vaternd"
+      ]
+    },
+    {
+      "word": "brodelt",
+      "num_guesses": 3,
+      "prior": 0.00004239888626140217,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "brodelt"
+      ]
+    },
+    {
+      "word": "enthobt",
+      "num_guesses": 4,
+      "prior": 0.000010676675264713868,
+      "guesses": [
+        "satiren",
+        "deutelt",
+        "entzogt",
+        "enthobt"
+      ]
+    },
+    {
+      "word": "maltest",
+      "num_guesses": 4,
+      "prior": 0.000023839362103009283,
+      "guesses": [
+        "satiren",
+        "hüstelt",
+        "luftweg",
+        "maltest"
+      ]
+    },
+    {
+      "word": "jagdzug",
+      "num_guesses": 3,
+      "prior": 0.00003048302656774047,
+      "guesses": [
+        "satiren",
+        "coulomb",
+        "jagdzug"
+      ]
+    },
+    {
+      "word": "ehrbare",
+      "num_guesses": 3,
+      "prior": 0.000052324204649302485,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "ehrbare"
+      ]
+    },
+    {
+      "word": "betrugt",
+      "num_guesses": 3,
+      "prior": 0.000024548885528902795,
+      "guesses": [
+        "satiren",
+        "getäubt",
+        "betrugt"
+      ]
+    },
+    {
+      "word": "beikost",
+      "num_guesses": 3,
+      "prior": 0.000034749049579009215,
+      "guesses": [
+        "satiren",
+        "bemehlt",
+        "beikost"
+      ]
+    },
+    {
+      "word": "kohlart",
+      "num_guesses": 4,
+      "prior": 0.000020616012591255113,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "holzart",
+        "kohlart"
+      ]
+    },
+    {
+      "word": "klarett",
+      "num_guesses": 4,
+      "prior": 0.000014322175728380609,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "plektra",
+        "klarett"
+      ]
+    },
+    {
+      "word": "gekeimt",
+      "num_guesses": 4,
+      "prior": 0.000040890411023026856,
+      "guesses": [
+        "satiren",
+        "befehle",
+        "gezeigt",
+        "gekeimt"
+      ]
+    },
+    {
+      "word": "magnete",
+      "num_guesses": 3,
+      "prior": 0.0000591750953505576,
+      "guesses": [
+        "satiren",
+        "hundele",
+        "magnete"
+      ]
+    },
+    {
+      "word": "generat",
+      "num_guesses": 3,
+      "prior": 0.000033159723916920324,
+      "guesses": [
+        "satiren",
+        "zunehmt",
+        "generat"
+      ]
+    },
+    {
+      "word": "agnaten",
+      "num_guesses": 4,
+      "prior": 0.000049492898014435653,
+      "guesses": [
+        "satiren",
+        "beultet",
+        "monaten",
+        "agnaten"
+      ]
+    },
+    {
+      "word": "wedelte",
+      "num_guesses": 4,
+      "prior": 0.00005488663956464013,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "meldete",
+        "wedelte"
+      ]
+    },
+    {
+      "word": "vorstoß",
+      "num_guesses": 4,
+      "prior": 0.00007028999539355097,
+      "guesses": [
+        "satiren",
+        "kottbus",
+        "forscht",
+        "vorstoß"
+      ]
+    },
+    {
+      "word": "alembik",
+      "num_guesses": 3,
+      "prior": 0.000020701697426282084,
+      "guesses": [
+        "satiren",
+        "beileid",
+        "alembik"
+      ]
+    },
+    {
+      "word": "erholst",
+      "num_guesses": 4,
+      "prior": 0.00002709123854404224,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "erlässt",
+        "erholst"
+      ]
+    },
+    {
+      "word": "helenas",
+      "num_guesses": 3,
+      "prior": 0.000046049247625158184,
+      "guesses": [
+        "satiren",
+        "goldene",
+        "helenas"
+      ]
+    },
+    {
+      "word": "rapsöle",
+      "num_guesses": 3,
+      "prior": 0.000016307311433763606,
+      "guesses": [
+        "satiren",
+        "muskels",
+        "rapsöle"
+      ]
+    },
+    {
+      "word": "fladert",
+      "num_guesses": 4,
+      "prior": 0.000013272439644094516,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "plektra",
+        "fladert"
+      ]
+    },
+    {
+      "word": "nebelig",
+      "num_guesses": 4,
+      "prior": 0.000035290332909128916,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "feeling",
+        "nebelig"
+      ]
+    },
+    {
+      "word": "anbinde",
+      "num_guesses": 3,
+      "prior": 0.0000249183906027134,
+      "guesses": [
+        "satiren",
+        "angelde",
+        "anbinde"
+      ]
+    },
+    {
+      "word": "häcksel",
+      "num_guesses": 4,
+      "prior": 0.00004373059782821481,
+      "guesses": [
+        "satiren",
+        "behelfs",
+        "wirkung",
+        "häcksel"
+      ]
+    },
+    {
+      "word": "papadam",
+      "num_guesses": 4,
+      "prior": 0.000016028172333812168,
+      "guesses": [
+        "satiren",
+        "coulomb",
+        "makadam",
+        "papadam"
+      ]
+    },
+    {
+      "word": "flippst",
+      "num_guesses": 3,
+      "prior": 0.000020056003602470616,
+      "guesses": [
+        "satiren",
+        "postgut",
+        "flippst"
+      ]
+    },
+    {
+      "word": "erobern",
+      "num_guesses": 4,
+      "prior": 0.00007890892425526482,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "barmann",
+        "erobern"
+      ]
+    },
+    {
+      "word": "kippend",
+      "num_guesses": 4,
+      "prior": 0.00002231917923296163,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "kopfweh",
+        "kippend"
+      ]
+    },
+    {
+      "word": "arsches",
+      "num_guesses": 3,
+      "prior": 0.000023510969587391668,
+      "guesses": [
+        "satiren",
+        "glaukom",
+        "arsches"
+      ]
+    },
+    {
+      "word": "fluchen",
+      "num_guesses": 3,
+      "prior": 0.0000636162664578085,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "fluchen"
+      ]
+    },
+    {
+      "word": "reichet",
+      "num_guesses": 3,
+      "prior": 0.00004167438147381074,
+      "guesses": [
+        "satiren",
+        "feiltet",
+        "reichet"
+      ]
+    },
+    {
+      "word": "usedoms",
+      "num_guesses": 4,
+      "prior": 0.000028367951794597033,
+      "guesses": [
+        "satiren",
+        "buckele",
+        "dessous",
+        "usedoms"
+      ]
+    },
+    {
+      "word": "erlegst",
+      "num_guesses": 3,
+      "prior": 0.000019455761446940466,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "erlegst"
+      ]
+    },
+    {
+      "word": "unworte",
+      "num_guesses": 4,
+      "prior": 0.000019012400858857982,
+      "guesses": [
+        "satiren",
+        "gehölze",
+        "knurrte",
+        "unworte"
+      ]
+    },
+    {
+      "word": "duftens",
+      "num_guesses": 4,
+      "prior": 0.00001696871588944036,
+      "guesses": [
+        "satiren",
+        "lengens",
+        "hustens",
+        "duftens"
+      ]
+    },
+    {
+      "word": "spräche",
+      "num_guesses": 4,
+      "prior": 0.00007054453630378999,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "sprüche",
+        "spräche"
+      ]
+    },
+    {
+      "word": "seewegs",
+      "num_guesses": 3,
+      "prior": 0.00003193305374474319,
+      "guesses": [
+        "satiren",
+        "häufele",
+        "seewegs"
+      ]
+    },
+    {
+      "word": "verwert",
+      "num_guesses": 3,
+      "prior": 0.00002813659571159061,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "verwert"
+      ]
+    },
+    {
+      "word": "monsune",
+      "num_guesses": 3,
+      "prior": 0.00003435889451087796,
+      "guesses": [
+        "satiren",
+        "heulend",
+        "monsune"
+      ]
+    },
+    {
+      "word": "bezähmt",
+      "num_guesses": 3,
+      "prior": 0.00003404331373929192,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "bezähmt"
+      ]
+    },
+    {
+      "word": "kuwaits",
+      "num_guesses": 3,
+      "prior": 0.00003406555628391756,
+      "guesses": [
+        "satiren",
+        "ausmalt",
+        "kuwaits"
+      ]
+    },
+    {
+      "word": "behaust",
+      "num_guesses": 3,
+      "prior": 0.000031421167938244585,
+      "guesses": [
+        "satiren",
+        "bussele",
+        "behaust"
+      ]
+    },
+    {
+      "word": "drollig",
+      "num_guesses": 3,
+      "prior": 0.0000477147442256999,
+      "guesses": [
+        "satiren",
+        "domizil",
+        "drollig"
+      ]
+    },
+    {
+      "word": "brennst",
+      "num_guesses": 3,
+      "prior": 0.00003338854556956328,
+      "guesses": [
+        "satiren",
+        "tenness",
+        "brennst"
+      ]
+    },
+    {
+      "word": "weiters",
+      "num_guesses": 3,
+      "prior": 0.00007951430318506044,
+      "guesses": [
+        "satiren",
+        "reitest",
+        "weiters"
+      ]
+    },
+    {
+      "word": "schebat",
+      "num_guesses": 3,
+      "prior": 0.000025487743675489742,
+      "guesses": [
+        "satiren",
+        "flutete",
+        "schebat"
+      ]
+    },
+    {
+      "word": "verläge",
+      "num_guesses": 4,
+      "prior": 0.00002821706786875366,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "umflöge",
+        "verläge"
+      ]
+    },
+    {
+      "word": "schmort",
+      "num_guesses": 3,
+      "prior": 0.00003245677281251525,
+      "guesses": [
+        "satiren",
+        "zukroch",
+        "schmort"
+      ]
+    },
+    {
+      "word": "sirrten",
+      "num_guesses": 3,
+      "prior": 0.000026656576412409113,
+      "guesses": [
+        "satiren",
+        "stirnen",
+        "sirrten"
+      ]
+    },
+    {
+      "word": "unziale",
+      "num_guesses": 3,
+      "prior": 0.00003683650138356768,
+      "guesses": [
+        "satiren",
+        "angelde",
+        "unziale"
+      ]
+    },
+    {
+      "word": "pumpten",
+      "num_guesses": 4,
+      "prior": 0.00003272612390009722,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "preußen",
+        "pumpten"
+      ]
+    },
+    {
+      "word": "pottsau",
+      "num_guesses": 3,
+      "prior": 0.000017419929090430466,
+      "guesses": [
+        "satiren",
+        "asthmas",
+        "pottsau"
+      ]
+    },
+    {
+      "word": "gidions",
+      "num_guesses": 4,
+      "prior": 0.000012824015534132989,
+      "guesses": [
+        "satiren",
+        "sudokus",
+        "indigos",
+        "gidions"
+      ]
+    },
+    {
+      "word": "trugest",
+      "num_guesses": 3,
+      "prior": 0.000022760837420130627,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "trugest"
+      ]
+    },
+    {
+      "word": "giftend",
+      "num_guesses": 3,
+      "prior": 0.000014954223181459927,
+      "guesses": [
+        "satiren",
+        "bengelt",
+        "giftend"
+      ]
+    },
+    {
+      "word": "ritters",
+      "num_guesses": 3,
+      "prior": 0.00007136773026747244,
+      "guesses": [
+        "satiren",
+        "härtere",
+        "ritters"
+      ]
+    },
+    {
+      "word": "wanners",
+      "num_guesses": 4,
+      "prior": 0.000025076058304211853,
+      "guesses": [
+        "satiren",
+        "henkend",
+        "gewerbe",
+        "wanners"
+      ]
+    },
+    {
+      "word": "kramers",
+      "num_guesses": 4,
+      "prior": 0.000042715950517584936,
+      "guesses": [
+        "satiren",
+        "beugels",
+        "aschers",
+        "kramers"
+      ]
+    },
+    {
+      "word": "plosivs",
+      "num_guesses": 4,
+      "prior": 0.00002117955064058478,
+      "guesses": [
+        "satiren",
+        "miglios",
+        "fossils",
+        "plosivs"
+      ]
+    },
+    {
+      "word": "rohrest",
+      "num_guesses": 4,
+      "prior": 0.000011352823588706252,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "fürsorg",
+        "rohrest"
+      ]
+    },
+    {
+      "word": "medisch",
+      "num_guesses": 3,
+      "prior": 0.0000325093425461756,
+      "guesses": [
+        "satiren",
+        "wegmuss",
+        "medisch"
+      ]
+    },
+    {
+      "word": "autocue",
+      "num_guesses": 3,
+      "prior": 0.000012642626056590508,
+      "guesses": [
+        "satiren",
+        "abfluge",
+        "autocue"
+      ]
+    },
+    {
+      "word": "erdiene",
+      "num_guesses": 3,
+      "prior": 0.00001635000131504986,
+      "guesses": [
+        "satiren",
+        "gerbend",
+        "erdiene"
+      ]
+    },
+    {
+      "word": "bliesen",
+      "num_guesses": 3,
+      "prior": 0.00004727035496875583,
+      "guesses": [
+        "satiren",
+        "webshop",
+        "bliesen"
+      ]
+    },
+    {
+      "word": "gewähnt",
+      "num_guesses": 5,
+      "prior": 0.000037611745340997054,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "gewöhnt",
+        "gewohnt",
+        "gewähnt"
+      ]
+    },
+    {
+      "word": "deppert",
+      "num_guesses": 4,
+      "prior": 0.00003363500635324536,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "klumpen",
+        "deppert"
+      ]
+    },
+    {
+      "word": "skatend",
+      "num_guesses": 3,
+      "prior": 0.000011352823588706252,
+      "guesses": [
+        "satiren",
+        "zuckens",
+        "skatend"
+      ]
+    },
+    {
+      "word": "spezies",
+      "num_guesses": 3,
+      "prior": 0.00007908170191440362,
+      "guesses": [
+        "satiren",
+        "schelms",
+        "spezies"
+      ]
+    },
+    {
+      "word": "angetan",
+      "num_guesses": 3,
+      "prior": 0.00007844991009050787,
+      "guesses": [
+        "satiren",
+        "ungetan",
+        "angetan"
+      ]
+    },
+    {
+      "word": "trippet",
+      "num_guesses": 3,
+      "prior": 0.000015333291439177774,
+      "guesses": [
+        "satiren",
+        "feiltet",
+        "trippet"
+      ]
+    },
+    {
+      "word": "manntet",
+      "num_guesses": 4,
+      "prior": 0.000011876414279360164,
+      "guesses": [
+        "satiren",
+        "danktet",
+        "blindem",
+        "manntet"
+      ]
+    },
+    {
+      "word": "feiltet",
+      "num_guesses": 4,
+      "prior": 0.00001196232858525476,
+      "guesses": [
+        "satiren",
+        "gehelmt",
+        "zweifel",
+        "feiltet"
+      ]
+    },
+    {
+      "word": "fündige",
+      "num_guesses": 4,
+      "prior": 0.000033799705916869636,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "bedämpf",
+        "fündige"
+      ]
+    },
+    {
+      "word": "apartem",
+      "num_guesses": 3,
+      "prior": 0.00002300743648249531,
+      "guesses": [
+        "satiren",
+        "traktur",
+        "apartem"
+      ]
+    },
+    {
+      "word": "angelnd",
+      "num_guesses": 3,
+      "prior": 0.000021673105273582028,
+      "guesses": [
+        "satiren",
+        "anklang",
+        "angelnd"
+      ]
+    },
+    {
+      "word": "ketonen",
+      "num_guesses": 4,
+      "prior": 0.000046763265603820404,
+      "guesses": [
+        "satiren",
+        "molette",
+        "betonen",
+        "ketonen"
+      ]
+    },
+    {
+      "word": "fabelte",
+      "num_guesses": 4,
+      "prior": 0.000030356452577170292,
+      "guesses": [
+        "satiren",
+        "buckele",
+        "gabelte",
+        "fabelte"
+      ]
+    },
+    {
+      "word": "bewirbt",
+      "num_guesses": 3,
+      "prior": 0.00004732441371890979,
+      "guesses": [
+        "satiren",
+        "bezweck",
+        "bewirbt"
+      ]
+    },
+    {
+      "word": "culotte",
+      "num_guesses": 4,
+      "prior": 0.000027018411580013954,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "klumpte",
+        "culotte"
+      ]
+    },
+    {
+      "word": "feiende",
+      "num_guesses": 4,
+      "prior": 0.000025035357345719547,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "beneide",
+        "feiende"
+      ]
+    },
+    {
+      "word": "tödlich",
+      "num_guesses": 3,
+      "prior": 0.00007512564066854377,
+      "guesses": [
+        "satiren",
+        "mitgift",
+        "tödlich"
+      ]
+    },
+    {
+      "word": "moulage",
+      "num_guesses": 4,
+      "prior": 0.00003097643352986101,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "collage",
+        "moulage"
+      ]
+    },
+    {
+      "word": "absicht",
+      "num_guesses": 2,
+      "prior": 0.00012693793811752947,
+      "guesses": [
+        "satiren",
+        "absicht"
+      ]
+    },
+    {
+      "word": "rothers",
+      "num_guesses": 3,
+      "prior": 0.00003355297126587679,
+      "guesses": [
+        "satiren",
+        "lehrort",
+        "rothers"
+      ]
+    },
+    {
+      "word": "zuhauen",
+      "num_guesses": 3,
+      "prior": 0.00002910276922162078,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "zuhauen"
+      ]
+    },
+    {
+      "word": "gezippt",
+      "num_guesses": 3,
+      "prior": 0.000014301508722007317,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "gezippt"
+      ]
+    },
+    {
+      "word": "zulache",
+      "num_guesses": 4,
+      "prior": 0.00001280794528872473,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "öllampe",
+        "zulache"
+      ]
+    },
+    {
+      "word": "stankst",
+      "num_guesses": 3,
+      "prior": 0.000011050012195738667,
+      "guesses": [
+        "satiren",
+        "schunds",
+        "stankst"
+      ]
+    },
+    {
+      "word": "heuerst",
+      "num_guesses": 4,
+      "prior": 0.000016028172333812168,
+      "guesses": [
+        "satiren",
+        "gekopft",
+        "beehrst",
+        "heuerst"
+      ]
+    },
+    {
+      "word": "vettere",
+      "num_guesses": 4,
+      "prior": 0.000027675559048954382,
+      "guesses": [
+        "satiren",
+        "getäubt",
+        "vorwurf",
+        "vettere"
+      ]
+    },
+    {
+      "word": "neueren",
+      "num_guesses": 3,
+      "prior": 0.00011026722286942542,
+      "guesses": [
+        "satiren",
+        "hegemon",
+        "neueren"
+      ]
+    },
+    {
+      "word": "erinyen",
+      "num_guesses": 3,
+      "prior": 0.000041151612092137324,
+      "guesses": [
+        "satiren",
+        "prengel",
+        "erinyen"
+      ]
+    },
+    {
+      "word": "gelbaal",
+      "num_guesses": 3,
+      "prior": 0.000016759690947983175,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "gelbaal"
+      ]
+    },
+    {
+      "word": "ghettos",
+      "num_guesses": 3,
+      "prior": 0.000052980543819663,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "ghettos"
+      ]
+    },
+    {
+      "word": "beeilet",
+      "num_guesses": 3,
+      "prior": 0.00002066616798780461,
+      "guesses": [
+        "satiren",
+        "klebtet",
+        "beeilet"
+      ]
+    },
+    {
+      "word": "braches",
+      "num_guesses": 3,
+      "prior": 0.00002693079396144668,
+      "guesses": [
+        "satiren",
+        "glaukom",
+        "braches"
+      ]
+    },
+    {
+      "word": "kilobit",
+      "num_guesses": 3,
+      "prior": 0.000023045988033381965,
+      "guesses": [
+        "satiren",
+        "mitgift",
+        "kilobit"
+      ]
+    },
+    {
+      "word": "nachher",
+      "num_guesses": 3,
+      "prior": 0.0001116311261622972,
+      "guesses": [
+        "satiren",
+        "handsam",
+        "nachher"
+      ]
+    },
+    {
+      "word": "asiatin",
+      "num_guesses": 2,
+      "prior": 0.00003452647978020172,
+      "guesses": [
+        "satiren",
+        "asiatin"
+      ]
+    },
+    {
+      "word": "sangoma",
+      "num_guesses": 3,
+      "prior": 0.000022595292440270936,
+      "guesses": [
+        "satiren",
+        "holzrad",
+        "sangoma"
+      ]
+    },
+    {
+      "word": "formtet",
+      "num_guesses": 4,
+      "prior": 0.000014637684348245862,
+      "guesses": [
+        "satiren",
+        "geoutet",
+        "robotet",
+        "formtet"
+      ]
+    },
+    {
+      "word": "wormser",
+      "num_guesses": 3,
+      "prior": 0.00006282108347484036,
+      "guesses": [
+        "satiren",
+        "kremser",
+        "wormser"
+      ]
+    },
+    {
+      "word": "junkern",
+      "num_guesses": 4,
+      "prior": 0.00004358043872424415,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "abdampf",
+        "junkern"
+      ]
+    },
+    {
+      "word": "abfielt",
+      "num_guesses": 3,
+      "prior": 0.000010121368917254493,
+      "guesses": [
+        "satiren",
+        "weghalf",
+        "abfielt"
+      ]
+    },
+    {
+      "word": "wälztet",
+      "num_guesses": 4,
+      "prior": 0.000013930384766293268,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "kletzel",
+        "wälztet"
+      ]
+    },
+    {
+      "word": "fibroms",
+      "num_guesses": 3,
+      "prior": 0.0000308893039750973,
+      "guesses": [
+        "satiren",
+        "bromids",
+        "fibroms"
+      ]
+    },
+    {
+      "word": "rümpfen",
+      "num_guesses": 4,
+      "prior": 0.00004209733600921732,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "fremden",
+        "rümpfen"
+      ]
+    },
+    {
+      "word": "hörtest",
+      "num_guesses": 4,
+      "prior": 0.00004224415153534565,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "groschs",
+        "hörtest"
+      ]
+    },
+    {
+      "word": "humoren",
+      "num_guesses": 3,
+      "prior": 0.000025595720559848044,
+      "guesses": [
+        "satiren",
+        "hegemon",
+        "humoren"
+      ]
+    },
+    {
+      "word": "lilanes",
+      "num_guesses": 4,
+      "prior": 0.000014821864097046682,
+      "guesses": [
+        "satiren",
+        "finales",
+        "milanes",
+        "lilanes"
+      ]
+    },
+    {
+      "word": "geruche",
+      "num_guesses": 4,
+      "prior": 0.000050238371279359195,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "gerüche",
+        "geruche"
+      ]
+    },
+    {
+      "word": "waldweg",
+      "num_guesses": 3,
+      "prior": 0.00005000182576772909,
+      "guesses": [
+        "satiren",
+        "falafel",
+        "waldweg"
+      ]
+    },
+    {
+      "word": "autoren",
+      "num_guesses": 2,
+      "prior": 0.00012858061575672457,
+      "guesses": [
+        "satiren",
+        "autoren"
+      ]
+    },
+    {
+      "word": "sprechs",
+      "num_guesses": 3,
+      "prior": 0.000026543132684720287,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "sprechs"
+      ]
+    },
+    {
+      "word": "notarzt",
+      "num_guesses": 3,
+      "prior": 0.000052141668553259975,
+      "guesses": [
+        "satiren",
+        "anthrax",
+        "notarzt"
+      ]
+    },
+    {
+      "word": "getanen",
+      "num_guesses": 3,
+      "prior": 0.00003907969569300783,
+      "guesses": [
+        "satiren",
+        "luftnot",
+        "getanen"
+      ]
+    },
+    {
+      "word": "sattelt",
+      "num_guesses": 3,
+      "prior": 0.0000332595238916407,
+      "guesses": [
+        "satiren",
+        "bereits",
+        "sattelt"
+      ]
+    },
+    {
+      "word": "gräzist",
+      "num_guesses": 4,
+      "prior": 0.000029700217350565616,
+      "guesses": [
+        "satiren",
+        "frostet",
+        "grillst",
+        "gräzist"
+      ]
+    },
+    {
+      "word": "aufzöge",
+      "num_guesses": 4,
+      "prior": 0.000022593628942318702,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "kürzung",
+        "aufzöge"
+      ]
+    },
+    {
+      "word": "punktet",
+      "num_guesses": 3,
+      "prior": 0.00003227584042831247,
+      "guesses": [
+        "satiren",
+        "lenkung",
+        "punktet"
+      ]
+    },
+    {
+      "word": "gepupst",
+      "num_guesses": 4,
+      "prior": 0.000018952297229347093,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "abdampf",
+        "gepupst"
+      ]
+    },
+    {
+      "word": "nickels",
+      "num_guesses": 3,
+      "prior": 0.000051166796419914295,
+      "guesses": [
+        "satiren",
+        "lenzend",
+        "nickels"
+      ]
+    },
+    {
+      "word": "kuhmaul",
+      "num_guesses": 3,
+      "prior": 0.000020133113673600747,
+      "guesses": [
+        "satiren",
+        "fallaub",
+        "kuhmaul"
+      ]
+    },
+    {
+      "word": "torkelt",
+      "num_guesses": 4,
+      "prior": 0.00003455146058300655,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "wegzogt",
+        "torkelt"
+      ]
+    },
+    {
+      "word": "tankini",
+      "num_guesses": 2,
+      "prior": 0.00001615744853769194,
+      "guesses": [
+        "satiren",
+        "tankini"
+      ]
+    },
+    {
+      "word": "hechten",
+      "num_guesses": 3,
+      "prior": 0.000040301622303055596,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "hechten"
+      ]
+    },
+    {
+      "word": "gelappt",
+      "num_guesses": 4,
+      "prior": 0.000046707467989643435,
+      "guesses": [
+        "satiren",
+        "gebuhlt",
+        "fokalem",
+        "gelappt"
+      ]
+    },
+    {
+      "word": "tandler",
+      "num_guesses": 3,
+      "prior": 0.00004444572333669455,
+      "guesses": [
+        "satiren",
+        "hirntod",
+        "tandler"
+      ]
+    },
+    {
+      "word": "verwest",
+      "num_guesses": 4,
+      "prior": 0.00004234899685396406,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "werkest",
+        "verwest"
+      ]
+    },
+    {
+      "word": "giraffe",
+      "num_guesses": 3,
+      "prior": 0.0000474113068720243,
+      "guesses": [
+        "satiren",
+        "heilige",
+        "giraffe"
+      ]
+    },
+    {
+      "word": "dostals",
+      "num_guesses": 3,
+      "prior": 0.000019333195711110227,
+      "guesses": [
+        "satiren",
+        "auslast",
+        "dostals"
+      ]
+    },
+    {
+      "word": "einwebt",
+      "num_guesses": 4,
+      "prior": 0.00002625847224340225,
+      "guesses": [
+        "satiren",
+        "bengelt",
+        "einhebt",
+        "einwebt"
+      ]
+    },
+    {
+      "word": "erlaben",
+      "num_guesses": 4,
+      "prior": 0.00003524662020705282,
+      "guesses": [
+        "satiren",
+        "glaukom",
+        "renalen",
+        "erlaben"
+      ]
+    },
+    {
+      "word": "zuweise",
+      "num_guesses": 4,
+      "prior": 0.000032080121715500794,
+      "guesses": [
+        "satiren",
+        "hielige",
+        "beweise",
+        "zuweise"
+      ]
+    },
+    {
+      "word": "rindere",
+      "num_guesses": 3,
+      "prior": 0.00002002104856396845,
+      "guesses": [
+        "satiren",
+        "zerrede",
+        "rindere"
+      ]
+    },
+    {
+      "word": "datiere",
+      "num_guesses": 3,
+      "prior": 0.000030382445346899517,
+      "guesses": [
+        "satiren",
+        "datiert",
+        "datiere"
+      ]
+    },
+    {
+      "word": "livides",
+      "num_guesses": 3,
+      "prior": 0.000026401890836565546,
+      "guesses": [
+        "satiren",
+        "gemelkt",
+        "livides"
+      ]
+    },
+    {
+      "word": "wegzogt",
+      "num_guesses": 4,
+      "prior": 0.000011246455194232842,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "zukommt",
+        "wegzogt"
+      ]
+    },
+    {
+      "word": "exogame",
+      "num_guesses": 3,
+      "prior": 0.0000289402044723838,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "exogame"
+      ]
+    },
+    {
+      "word": "dekaden",
+      "num_guesses": 4,
+      "prior": 0.00005139815936801028,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "ankamen",
+        "dekaden"
+      ]
+    },
+    {
+      "word": "anhange",
+      "num_guesses": 4,
+      "prior": 0.00006558030120269742,
+      "guesses": [
+        "satiren",
+        "anklang",
+        "anfange",
+        "anhange"
+      ]
+    },
+    {
+      "word": "halbton",
+      "num_guesses": 3,
+      "prior": 0.000045519655424281325,
+      "guesses": [
+        "satiren",
+        "lanthan",
+        "halbton"
+      ]
+    },
+    {
+      "word": "cedille",
+      "num_guesses": 3,
+      "prior": 0.0000236261836350405,
+      "guesses": [
+        "satiren",
+        "beföhle",
+        "cedille"
+      ]
+    },
+    {
+      "word": "quälend",
+      "num_guesses": 4,
+      "prior": 0.00005252156022393307,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "leblose",
+        "quälend"
+      ]
+    },
+    {
+      "word": "bodycam",
+      "num_guesses": 4,
+      "prior": 0.00001864690278929848,
+      "guesses": [
+        "satiren",
+        "fallaub",
+        "abbozzo",
+        "bodycam"
+      ]
+    },
+    {
+      "word": "froschs",
+      "num_guesses": 3,
+      "prior": 0.000025509280911173875,
+      "guesses": [
+        "satiren",
+        "folsoms",
+        "froschs"
+      ]
+    },
+    {
+      "word": "darling",
+      "num_guesses": 3,
+      "prior": 0.000051766078484061974,
+      "guesses": [
+        "satiren",
+        "haploid",
+        "darling"
+      ]
+    },
+    {
+      "word": "abzockt",
+      "num_guesses": 4,
+      "prior": 0.000017631308647106297,
+      "guesses": [
+        "satiren",
+        "aufhalf",
+        "abkommt",
+        "abzockt"
+      ]
+    },
+    {
+      "word": "android",
+      "num_guesses": 3,
+      "prior": 0.00004833428512201712,
+      "guesses": [
+        "satiren",
+        "kragarm",
+        "android"
+      ]
+    },
+    {
+      "word": "subraum",
+      "num_guesses": 3,
+      "prior": 0.000024179838729065997,
+      "guesses": [
+        "satiren",
+        "laufarm",
+        "subraum"
+      ]
+    },
+    {
+      "word": "fasanen",
+      "num_guesses": 3,
+      "prior": 0.00004711354322930639,
+      "guesses": [
+        "satiren",
+        "auswahl",
+        "fasanen"
+      ]
+    },
+    {
+      "word": "relikts",
+      "num_guesses": 3,
+      "prior": 0.00002282828287904566,
+      "guesses": [
+        "satiren",
+        "geekelt",
+        "relikts"
+      ]
+    },
+    {
+      "word": "merzigs",
+      "num_guesses": 4,
+      "prior": 0.000015487039401422794,
+      "guesses": [
+        "satiren",
+        "gipfele",
+        "vergiss",
+        "merzigs"
+      ]
+    },
+    {
+      "word": "pikiere",
+      "num_guesses": 4,
+      "prior": 0.000014712465684050123,
+      "guesses": [
+        "satiren",
+        "feudele",
+        "mirakel",
+        "pikiere"
+      ]
+    },
+    {
+      "word": "elbling",
+      "num_guesses": 3,
+      "prior": 0.000029164154048555776,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "elbling"
+      ]
+    },
+    {
+      "word": "malagas",
+      "num_guesses": 3,
+      "prior": 0.00002239380376673332,
+      "guesses": [
+        "satiren",
+        "palmach",
+        "malagas"
+      ]
+    },
+    {
+      "word": "beothuk",
+      "num_guesses": 3,
+      "prior": 0.00001787567529202151,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "beothuk"
+      ]
+    },
+    {
+      "word": "lametta",
+      "num_guesses": 4,
+      "prior": 0.000036147184963801163,
+      "guesses": [
+        "satiren",
+        "buckele",
+        "paletot",
+        "lametta"
+      ]
+    },
+    {
+      "word": "einzeln",
+      "num_guesses": 3,
+      "prior": 0.00010052259822835985,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "einzeln"
+      ]
+    },
+    {
+      "word": "whiskys",
+      "num_guesses": 3,
+      "prior": 0.000033887279657280334,
+      "guesses": [
+        "satiren",
+        "miglios",
+        "whiskys"
+      ]
+    },
+    {
+      "word": "stieget",
+      "num_guesses": 4,
+      "prior": 0.00001985646966994261,
+      "guesses": [
+        "satiren",
+        "flettes",
+        "gegeben",
+        "stieget"
+      ]
+    },
+    {
+      "word": "scannet",
+      "num_guesses": 4,
+      "prior": 0.000013837040445290985,
+      "guesses": [
+        "satiren",
+        "standes",
+        "spannet",
+        "scannet"
+      ]
+    },
+    {
+      "word": "anbahnt",
+      "num_guesses": 3,
+      "prior": 0.00004301032403755273,
+      "guesses": [
+        "satiren",
+        "anklang",
+        "anbahnt"
+      ]
+    },
+    {
+      "word": "mungers",
+      "num_guesses": 4,
+      "prior": 0.00001646367857609041,
+      "guesses": [
+        "satiren",
+        "kernend",
+        "häufige",
+        "mungers"
+      ]
+    },
+    {
+      "word": "höfling",
+      "num_guesses": 3,
+      "prior": 0.00005151429697622767,
+      "guesses": [
+        "satiren",
+        "findung",
+        "höfling"
+      ]
+    },
+    {
+      "word": "vissers",
+      "num_guesses": 5,
+      "prior": 0.00002302443098137875,
+      "guesses": [
+        "satiren",
+        "gipfele",
+        "dammweg",
+        "kickers",
+        "vissers"
+      ]
+    },
+    {
+      "word": "krebses",
+      "num_guesses": 3,
+      "prior": 0.00005661590015880375,
+      "guesses": [
+        "satiren",
+        "kremser",
+        "krebses"
+      ]
+    },
+    {
+      "word": "druseln",
+      "num_guesses": 4,
+      "prior": 0.000015449173326131653,
+      "guesses": [
+        "satiren",
+        "säusele",
+        "gruseln",
+        "druseln"
+      ]
+    },
+    {
+      "word": "popelte",
+      "num_guesses": 4,
+      "prior": 0.000020472426288252107,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "demozug",
+        "popelte"
+      ]
+    },
+    {
+      "word": "zuhörst",
+      "num_guesses": 3,
+      "prior": 0.00003205018393468983,
+      "guesses": [
+        "satiren",
+        "autoput",
+        "zuhörst"
+      ]
+    },
+    {
+      "word": "tödtung",
+      "num_guesses": 3,
+      "prior": 0.0000590192364309786,
+      "guesses": [
+        "satiren",
+        "zuläuft",
+        "tödtung"
+      ]
+    },
+    {
+      "word": "paarend",
+      "num_guesses": 4,
+      "prior": 0.00002359968743513121,
+      "guesses": [
+        "satiren",
+        "uhrwerk",
+        "empfang",
+        "paarend"
+      ]
+    },
+    {
+      "word": "eifrige",
+      "num_guesses": 3,
+      "prior": 0.000064464227738598,
+      "guesses": [
+        "satiren",
+        "lehmige",
+        "eifrige"
+      ]
+    },
+    {
+      "word": "eräugte",
+      "num_guesses": 4,
+      "prior": 0.000019052051674440402,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "kegelte",
+        "eräugte"
+      ]
+    },
+    {
+      "word": "pflückt",
+      "num_guesses": 3,
+      "prior": 0.00004514642244414371,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "pflückt"
+      ]
+    },
+    {
+      "word": "abließt",
+      "num_guesses": 3,
+      "prior": 0.000014493205231322068,
+      "guesses": [
+        "satiren",
+        "weghalf",
+        "abließt"
+      ]
+    },
+    {
+      "word": "youtube",
+      "num_guesses": 3,
+      "prior": 0.000054822284709688765,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "youtube"
+      ]
+    },
+    {
+      "word": "parasol",
+      "num_guesses": 3,
+      "prior": 0.000029164154048555776,
+      "guesses": [
+        "satiren",
+        "borkums",
+        "parasol"
+      ]
+    },
+    {
+      "word": "knieten",
+      "num_guesses": 4,
+      "prior": 0.00004879036740891318,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "dienten",
+        "knieten"
+      ]
+    },
+    {
+      "word": "gemurrt",
+      "num_guesses": 4,
+      "prior": 0.0000337587481610711,
+      "guesses": [
+        "satiren",
+        "behemot",
+        "gewärmt",
+        "gemurrt"
+      ]
+    },
+    {
+      "word": "zuckest",
+      "num_guesses": 5,
+      "prior": 0.000011941080975782811,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "samtfuß",
+        "tendenz",
+        "zuckest"
+      ]
+    },
+    {
+      "word": "shampoo",
+      "num_guesses": 3,
+      "prior": 0.00004273572528470363,
+      "guesses": [
+        "satiren",
+        "oftmals",
+        "shampoo"
+      ]
+    },
+    {
+      "word": "euratom",
+      "num_guesses": 3,
+      "prior": 0.00005244332957698181,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "euratom"
+      ]
+    },
+    {
+      "word": "fixiere",
+      "num_guesses": 3,
+      "prior": 0.00003609599812586681,
+      "guesses": [
+        "satiren",
+        "feudele",
+        "fixiere"
+      ]
+    },
+    {
+      "word": "vaziert",
+      "num_guesses": 4,
+      "prior": 0.00001354078672734729,
+      "guesses": [
+        "satiren",
+        "verkett",
+        "vagiert",
+        "vaziert"
+      ]
+    },
+    {
+      "word": "abhangs",
+      "num_guesses": 3,
+      "prior": 0.00003756809976482438,
+      "guesses": [
+        "satiren",
+        "ahndung",
+        "abhangs"
+      ]
+    },
+    {
+      "word": "walkers",
+      "num_guesses": 3,
+      "prior": 0.000038360777915427535,
+      "guesses": [
+        "satiren",
+        "muskels",
+        "walkers"
+      ]
+    },
+    {
+      "word": "herlief",
+      "num_guesses": 4,
+      "prior": 0.000036840032602809774,
+      "guesses": [
+        "satiren",
+        "beflieg",
+        "verlief",
+        "herlief"
+      ]
+    },
+    {
+      "word": "sausest",
+      "num_guesses": 4,
+      "prior": 0.00001298045222753094,
+      "guesses": [
+        "satiren",
+        "umsegle",
+        "saufest",
+        "sausest"
+      ]
+    },
+    {
+      "word": "scheibe",
+      "num_guesses": 4,
+      "prior": 0.00009469427015622535,
+      "guesses": [
+        "satiren",
+        "mehlige",
+        "deshalb",
+        "scheibe"
+      ]
+    },
+    {
+      "word": "städter",
+      "num_guesses": 4,
+      "prior": 0.0000613939213297419,
+      "guesses": [
+        "satiren",
+        "korrupt",
+        "stecher",
+        "städter"
+      ]
+    },
+    {
+      "word": "miglien",
+      "num_guesses": 3,
+      "prior": 0.000041149949022000154,
+      "guesses": [
+        "satiren",
+        "kehlige",
+        "miglien"
+      ]
+    },
+    {
+      "word": "spieles",
+      "num_guesses": 3,
+      "prior": 0.000057593546824559844,
+      "guesses": [
+        "satiren",
+        "schelms",
+        "spieles"
+      ]
+    },
+    {
+      "word": "lachtet",
+      "num_guesses": 3,
+      "prior": 0.000025044179992673587,
+      "guesses": [
+        "satiren",
+        "buchtel",
+        "lachtet"
+      ]
+    },
+    {
+      "word": "reverse",
+      "num_guesses": 3,
+      "prior": 0.00005303090642739879,
+      "guesses": [
+        "satiren",
+        "besolde",
+        "reverse"
+      ]
+    },
+    {
+      "word": "gelüste",
+      "num_guesses": 4,
+      "prior": 0.00005689839964431425,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "biomüll",
+        "gelüste"
+      ]
+    },
+    {
+      "word": "chirale",
+      "num_guesses": 3,
+      "prior": 0.00003512413984230425,
+      "guesses": [
+        "satiren",
+        "heilige",
+        "chirale"
+      ]
+    },
+    {
+      "word": "gewühle",
+      "num_guesses": 4,
+      "prior": 0.000040715862488337524,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "gefühle",
+        "gewühle"
+      ]
+    },
+    {
+      "word": "entwend",
+      "num_guesses": 4,
+      "prior": 0.00001481287024084811,
+      "guesses": [
+        "satiren",
+        "deutelt",
+        "entdeck",
+        "entwend"
+      ]
+    },
+    {
+      "word": "hurende",
+      "num_guesses": 4,
+      "prior": 0.000017339145794933155,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "hörende",
+        "hurende"
+      ]
+    },
+    {
+      "word": "libyers",
+      "num_guesses": 4,
+      "prior": 0.00001962817370035634,
+      "guesses": [
+        "satiren",
+        "gipfele",
+        "bemerkt",
+        "libyers"
+      ]
+    },
+    {
+      "word": "hyponym",
+      "num_guesses": 4,
+      "prior": 0.00002536639758504064,
+      "guesses": [
+        "satiren",
+        "zählend",
+        "knowhow",
+        "hyponym"
+      ]
+    },
+    {
+      "word": "literal",
+      "num_guesses": 3,
+      "prior": 0.000039464789036001155,
+      "guesses": [
+        "satiren",
+        "general",
+        "literal"
+      ]
+    },
+    {
+      "word": "nadelst",
+      "num_guesses": 3,
+      "prior": 0.000013173168798760567,
+      "guesses": [
+        "satiren",
+        "tändelt",
+        "nadelst"
+      ]
+    },
+    {
+      "word": "ankräht",
+      "num_guesses": 4,
+      "prior": 0.00001527002660339017,
+      "guesses": [
+        "satiren",
+        "aufband",
+        "anrührt",
+        "ankräht"
+      ]
+    },
+    {
+      "word": "grenzte",
+      "num_guesses": 3,
+      "prior": 0.000057679387226534564,
+      "guesses": [
+        "satiren",
+        "beugend",
+        "grenzte"
+      ]
+    },
+    {
+      "word": "deutele",
+      "num_guesses": 3,
+      "prior": 0.000020909912825877524,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "deutele"
+      ]
+    },
+    {
+      "word": "axiales",
+      "num_guesses": 3,
+      "prior": 0.000034752616968615915,
+      "guesses": [
+        "satiren",
+        "abflaut",
+        "axiales"
+      ]
+    },
+    {
+      "word": "spinate",
+      "num_guesses": 3,
+      "prior": 0.0000175634939112723,
+      "guesses": [
+        "satiren",
+        "statine",
+        "spinate"
+      ]
+    },
+    {
+      "word": "trennst",
+      "num_guesses": 3,
+      "prior": 0.0000302032856110385,
+      "guesses": [
+        "satiren",
+        "tenness",
+        "trennst"
+      ]
+    },
+    {
+      "word": "göttins",
+      "num_guesses": 3,
+      "prior": 0.000013907282840168007,
+      "guesses": [
+        "satiren",
+        "ostwind",
+        "göttins"
+      ]
+    },
+    {
+      "word": "extasen",
+      "num_guesses": 2,
+      "prior": 0.00002432767737154919,
+      "guesses": [
+        "satiren",
+        "extasen"
+      ]
+    },
+    {
+      "word": "hofarzt",
+      "num_guesses": 3,
+      "prior": 0.000034174635342638765,
+      "guesses": [
+        "satiren",
+        "aufgabt",
+        "hofarzt"
+      ]
+    },
+    {
+      "word": "sensten",
+      "num_guesses": 4,
+      "prior": 0.000019497939089815032,
+      "guesses": [
+        "satiren",
+        "häuptel",
+        "kennung",
+        "sensten"
+      ]
+    },
+    {
+      "word": "strauch",
+      "num_guesses": 3,
+      "prior": 0.00006958000982736228,
+      "guesses": [
+        "satiren",
+        "pfuschs",
+        "strauch"
+      ]
+    },
+    {
+      "word": "nachahm",
+      "num_guesses": 4,
+      "prior": 0.000020952826164282137,
+      "guesses": [
+        "satiren",
+        "logbuch",
+        "nachkam",
+        "nachahm"
+      ]
+    },
+    {
+      "word": "drosera",
+      "num_guesses": 3,
+      "prior": 0.000044893450795620497,
+      "guesses": [
+        "satiren",
+        "beugels",
+        "drosera"
+      ]
+    },
+    {
+      "word": "vorwahl",
+      "num_guesses": 4,
+      "prior": 0.000044752859639322685,
+      "guesses": [
+        "satiren",
+        "rufmord",
+        "corolla",
+        "vorwahl"
+      ]
+    },
+    {
+      "word": "baumten",
+      "num_guesses": 3,
+      "prior": 0.000014570973373893988,
+      "guesses": [
+        "satiren",
+        "munkeln",
+        "baumten"
+      ]
+    },
+    {
+      "word": "britpop",
+      "num_guesses": 3,
+      "prior": 0.000021805102421814562,
+      "guesses": [
+        "satiren",
+        "trotzig",
+        "britpop"
+      ]
+    },
+    {
+      "word": "leckern",
+      "num_guesses": 3,
+      "prior": 0.00002911484631644102,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "leckern"
+      ]
+    },
+    {
+      "word": "trecken",
+      "num_guesses": 4,
+      "prior": 0.0000328584708641406,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "urenkel",
+        "trecken"
+      ]
+    },
+    {
+      "word": "keckste",
+      "num_guesses": 4,
+      "prior": 0.000026421491371033472,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "besteck",
+        "keckste"
+      ]
+    },
+    {
+      "word": "dremels",
+      "num_guesses": 4,
+      "prior": 0.00001212710430522835,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "merkels",
+        "dremels"
+      ]
+    },
+    {
+      "word": "zureite",
+      "num_guesses": 4,
+      "prior": 0.000020056003602470616,
+      "guesses": [
+        "satiren",
+        "herlegt",
+        "direkte",
+        "zureite"
+      ]
+    },
+    {
+      "word": "bulldog",
+      "num_guesses": 3,
+      "prior": 0.0000339027174613187,
+      "guesses": [
+        "satiren",
+        "hochbog",
+        "bulldog"
+      ]
+    },
+    {
+      "word": "müffele",
+      "num_guesses": 5,
+      "prior": 0.00001228338264484625,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "klöpple",
+        "mümmele",
+        "müffele"
+      ]
+    },
+    {
+      "word": "smoking",
+      "num_guesses": 3,
+      "prior": 0.000048833821683986136,
+      "guesses": [
+        "satiren",
+        "wohnung",
+        "smoking"
+      ]
+    },
+    {
+      "word": "drunten",
+      "num_guesses": 4,
+      "prior": 0.00005910584605743389,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "beräume",
+        "drunten"
+      ]
+    },
+    {
+      "word": "fabulös",
+      "num_guesses": 4,
+      "prior": 0.000022030526082724927,
+      "guesses": [
+        "satiren",
+        "palmach",
+        "lausbub",
+        "fabulös"
+      ]
+    },
+    {
+      "word": "diözese",
+      "num_guesses": 3,
+      "prior": 0.00007387929896325304,
+      "guesses": [
+        "satiren",
+        "hielige",
+        "diözese"
+      ]
+    },
+    {
+      "word": "espenen",
+      "num_guesses": 4,
+      "prior": 0.000010281470004010477,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "äsenden",
+        "espenen"
+      ]
+    },
+    {
+      "word": "stühlen",
+      "num_guesses": 4,
+      "prior": 0.00006812588031985353,
+      "guesses": [
+        "satiren",
+        "häuptel",
+        "überall",
+        "stühlen"
+      ]
+    },
+    {
+      "word": "luganda",
+      "num_guesses": 3,
+      "prior": 0.0000228838847836472,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "luganda"
+      ]
+    },
+    {
+      "word": "bushöfe",
+      "num_guesses": 3,
+      "prior": 0.00001119172531994967,
+      "guesses": [
+        "satiren",
+        "buckele",
+        "bushöfe"
+      ]
+    },
+    {
+      "word": "pausier",
+      "num_guesses": 3,
+      "prior": 0.000016857453393454536,
+      "guesses": [
+        "satiren",
+        "skepsis",
+        "pausier"
+      ]
+    },
+    {
+      "word": "camaieu",
+      "num_guesses": 3,
+      "prior": 0.000021939595099316926,
+      "guesses": [
+        "satiren",
+        "papagei",
+        "camaieu"
+      ]
+    },
+    {
+      "word": "trackte",
+      "num_guesses": 4,
+      "prior": 0.000013753245974004342,
+      "guesses": [
+        "satiren",
+        "gemahle",
+        "kurpark",
+        "trackte"
+      ]
+    },
+    {
+      "word": "stilart",
+      "num_guesses": 2,
+      "prior": 0.000037270018382115444,
+      "guesses": [
+        "satiren",
+        "stilart"
+      ]
+    },
+    {
+      "word": "halsung",
+      "num_guesses": 3,
+      "prior": 0.000021324076339072123,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "halsung"
+      ]
+    },
+    {
+      "word": "rottons",
+      "num_guesses": 3,
+      "prior": 0.000014522563754048173,
+      "guesses": [
+        "satiren",
+        "notrufs",
+        "rottons"
+      ]
+    },
+    {
+      "word": "pöbelei",
+      "num_guesses": 3,
+      "prior": 0.00002309343650781672,
+      "guesses": [
+        "satiren",
+        "heimweg",
+        "pöbelei"
+      ]
+    },
+    {
+      "word": "chrisam",
+      "num_guesses": 3,
+      "prior": 0.00003278449988785105,
+      "guesses": [
+        "satiren",
+        "afrikas",
+        "chrisam"
+      ]
+    },
+    {
+      "word": "umlagen",
+      "num_guesses": 3,
+      "prior": 0.000053224957917017346,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "umlagen"
+      ]
+    },
+    {
+      "word": "abseife",
+      "num_guesses": 3,
+      "prior": 0.000010806917135557669,
+      "guesses": [
+        "satiren",
+        "bussole",
+        "abseife"
+      ]
+    },
+    {
+      "word": "widmend",
+      "num_guesses": 5,
+      "prior": 0.00003203867120993647,
+      "guesses": [
+        "satiren",
+        "eilzuge",
+        "kopfweh",
+        "windend",
+        "widmend"
+      ]
+    },
+    {
+      "word": "neugier",
+      "num_guesses": 3,
+      "prior": 0.00008008809369710481,
+      "guesses": [
+        "satiren",
+        "zugbild",
+        "neugier"
+      ]
+    },
+    {
+      "word": "schließ",
+      "num_guesses": 4,
+      "prior": 0.000054335885538694863,
+      "guesses": [
+        "satiren",
+        "schelms",
+        "schlief",
+        "schließ"
+      ]
+    },
+    {
+      "word": "zugieße",
+      "num_guesses": 4,
+      "prior": 0.000012358631047699965,
+      "guesses": [
+        "satiren",
+        "beföhle",
+        "umgieße",
+        "zugieße"
+      ]
+    },
+    {
+      "word": "gutäern",
+      "num_guesses": 3,
+      "prior": 0.00001442376162688993,
+      "guesses": [
+        "satiren",
+        "lenkung",
+        "gutäern"
+      ]
+    },
+    {
+      "word": "daphart",
+      "num_guesses": 3,
+      "prior": 0.000012025181408378995,
+      "guesses": [
+        "satiren",
+        "hartmut",
+        "daphart"
+      ]
+    },
+    {
+      "word": "viecher",
+      "num_guesses": 4,
+      "prior": 0.00004420958620625944,
+      "guesses": [
+        "satiren",
+        "beflieg",
+        "hierher",
+        "viecher"
+      ]
+    },
+    {
+      "word": "shōgune",
+      "num_guesses": 3,
+      "prior": 0.000013629878538054174,
+      "guesses": [
+        "satiren",
+        "hundele",
+        "shōgune"
+      ]
+    },
+    {
+      "word": "zerbsts",
+      "num_guesses": 4,
+      "prior": 0.000015056834684197144,
+      "guesses": [
+        "satiren",
+        "beutelt",
+        "zerstob",
+        "zerbsts"
+      ]
+    },
+    {
+      "word": "zuhätte",
+      "num_guesses": 3,
+      "prior": 0.000013272439644094516,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "zuhätte"
+      ]
+    },
+    {
+      "word": "prägten",
+      "num_guesses": 4,
+      "prior": 0.000059630191512809466,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "treppen",
+        "prägten"
+      ]
+    },
+    {
+      "word": "buttert",
+      "num_guesses": 3,
+      "prior": 0.000024496135568040535,
+      "guesses": [
+        "satiren",
+        "getäubt",
+        "buttert"
+      ]
+    },
+    {
+      "word": "lampion",
+      "num_guesses": 3,
+      "prior": 0.00003023759166695152,
+      "guesses": [
+        "satiren",
+        "zukommt",
+        "lampion"
+      ]
+    },
+    {
+      "word": "meistem",
+      "num_guesses": 4,
+      "prior": 0.000029740780182864873,
+      "guesses": [
+        "satiren",
+        "geletzt",
+        "feistes",
+        "meistem"
+      ]
+    },
+    {
+      "word": "blumige",
+      "num_guesses": 4,
+      "prior": 0.000040027752376684556,
+      "guesses": [
+        "satiren",
+        "kehlige",
+        "läufige",
+        "blumige"
+      ]
+    },
+    {
+      "word": "fischöl",
+      "num_guesses": 3,
+      "prior": 0.000036018540389853145,
+      "guesses": [
+        "satiren",
+        "miglios",
+        "fischöl"
+      ]
+    },
+    {
+      "word": "störrig",
+      "num_guesses": 2,
+      "prior": 0.000030220977880826378,
+      "guesses": [
+        "satiren",
+        "störrig"
+      ]
+    },
+    {
+      "word": "klapses",
+      "num_guesses": 4,
+      "prior": 0.000014542005006753564,
+      "guesses": [
+        "satiren",
+        "allbuch",
+        "klassem",
+        "klapses"
+      ]
+    },
+    {
+      "word": "kirrend",
+      "num_guesses": 4,
+      "prior": 0.000014821864097046682,
+      "guesses": [
+        "satiren",
+        "zerrede",
+        "gewesen",
+        "kirrend"
+      ]
+    },
+    {
+      "word": "achirie",
+      "num_guesses": 3,
+      "prior": 0.000017319917418481286,
+      "guesses": [
+        "satiren",
+        "dreirad",
+        "achirie"
+      ]
+    },
+    {
+      "word": "notarin",
+      "num_guesses": 3,
+      "prior": 0.000028097055456308225,
+      "guesses": [
+        "satiren",
+        "autorin",
+        "notarin"
+      ]
+    },
+    {
+      "word": "vorsäle",
+      "num_guesses": 3,
+      "prior": 0.000025699918265644325,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "vorsäle"
+      ]
+    },
+    {
+      "word": "planere",
+      "num_guesses": 4,
+      "prior": 0.000018250275051653565,
+      "guesses": [
+        "satiren",
+        "uhrband",
+        "romanze",
+        "planere"
+      ]
+    },
+    {
+      "word": "abscheu",
+      "num_guesses": 3,
+      "prior": 0.00007410207521949445,
+      "guesses": [
+        "satiren",
+        "allbuch",
+        "abscheu"
+      ]
+    },
+    {
+      "word": "zippten",
+      "num_guesses": 3,
+      "prior": 0.00001096136427941925,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "zippten"
+      ]
+    },
+    {
+      "word": "steilen",
+      "num_guesses": 3,
+      "prior": 0.00008206742184193779,
+      "guesses": [
+        "satiren",
+        "fleißig",
+        "steilen"
+      ]
+    },
+    {
+      "word": "amuzgos",
+      "num_guesses": 3,
+      "prior": 0.000011578552934826908,
+      "guesses": [
+        "satiren",
+        "auslugs",
+        "amuzgos"
+      ]
+    },
+    {
+      "word": "spülten",
+      "num_guesses": 3,
+      "prior": 0.000036800878127207545,
+      "guesses": [
+        "satiren",
+        "häuptel",
+        "spülten"
+      ]
+    },
+    {
+      "word": "sieglet",
+      "num_guesses": 3,
+      "prior": 0.000014647115853721594,
+      "guesses": [
+        "satiren",
+        "flettes",
+        "sieglet"
+      ]
+    },
+    {
+      "word": "erhoffe",
+      "num_guesses": 4,
+      "prior": 0.00004193162837693615,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "erzähle",
+        "erhoffe"
+      ]
+    },
+    {
+      "word": "warnton",
+      "num_guesses": 3,
+      "prior": 0.000026214553858605246,
+      "guesses": [
+        "satiren",
+        "farbton",
+        "warnton"
+      ]
+    },
+    {
+      "word": "geendet",
+      "num_guesses": 3,
+      "prior": 0.00006553725786028158,
+      "guesses": [
+        "satiren",
+        "lenkung",
+        "geendet"
+      ]
+    },
+    {
+      "word": "schären",
+      "num_guesses": 4,
+      "prior": 0.00004287954814460007,
+      "guesses": [
+        "satiren",
+        "mühelos",
+        "sphären",
+        "schären"
+      ]
+    },
+    {
+      "word": "darfurs",
+      "num_guesses": 3,
+      "prior": 0.00002288546548994009,
+      "guesses": [
+        "satiren",
+        "borkums",
+        "darfurs"
+      ]
+    },
+    {
+      "word": "erließt",
+      "num_guesses": 4,
+      "prior": 0.000017286060856240942,
+      "guesses": [
+        "satiren",
+        "gehpelz",
+        "erlieft",
+        "erließt"
+      ]
+    },
+    {
+      "word": "herzogs",
+      "num_guesses": 3,
+      "prior": 0.0000944077509952798,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "herzogs"
+      ]
+    },
+    {
+      "word": "semmeln",
+      "num_guesses": 3,
+      "prior": 0.000046293463326272225,
+      "guesses": [
+        "satiren",
+        "konsums",
+        "semmeln"
+      ]
+    },
+    {
+      "word": "rußland",
+      "num_guesses": 3,
+      "prior": 0.0001153812293976352,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "rußland"
+      ]
+    },
+    {
+      "word": "selchen",
+      "num_guesses": 3,
+      "prior": 0.00002944456802817174,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "selchen"
+      ]
+    },
+    {
+      "word": "anböten",
+      "num_guesses": 4,
+      "prior": 0.000029046954781996727,
+      "guesses": [
+        "satiren",
+        "beultet",
+        "anboten",
+        "anböten"
+      ]
+    },
+    {
+      "word": "aufrieb",
+      "num_guesses": 3,
+      "prior": 0.00003188705858306521,
+      "guesses": [
+        "satiren",
+        "klagbar",
+        "aufrieb"
+      ]
+    },
+    {
+      "word": "biester",
+      "num_guesses": 3,
+      "prior": 0.00004805707463420813,
+      "guesses": [
+        "satiren",
+        "telgtes",
+        "biester"
+      ]
+    },
+    {
+      "word": "trimmst",
+      "num_guesses": 4,
+      "prior": 0.00001210699291042678,
+      "guesses": [
+        "satiren",
+        "frostet",
+        "trickst",
+        "trimmst"
+      ]
+    },
+    {
+      "word": "äolisch",
+      "num_guesses": 3,
+      "prior": 0.000035262336893623366,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "äolisch"
+      ]
+    },
+    {
+      "word": "umnutze",
+      "num_guesses": 4,
+      "prior": 9.95044587323305e-6,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "unnütze",
+        "umnutze"
+      ]
+    },
+    {
+      "word": "erwärme",
+      "num_guesses": 3,
+      "prior": 0.00003779134852834641,
+      "guesses": [
+        "satiren",
+        "behemot",
+        "erwärme"
+      ]
+    },
+    {
+      "word": "abatons",
+      "num_guesses": 3,
+      "prior": 0.000014453686700893098,
+      "guesses": [
+        "satiren",
+        "auslagt",
+        "abatons"
+      ]
+    },
+    {
+      "word": "verfett",
+      "num_guesses": 4,
+      "prior": 0.000014551686776323677,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "klampft",
+        "verfett"
+      ]
+    },
+    {
+      "word": "erdeten",
+      "num_guesses": 5,
+      "prior": 0.00001905862815224981,
+      "guesses": [
+        "satiren",
+        "rehkopf",
+        "beräume",
+        "trennen",
+        "erdeten"
+      ]
+    },
+    {
+      "word": "fessern",
+      "num_guesses": 5,
+      "prior": 0.00001518944148784754,
+      "guesses": [
+        "satiren",
+        "säusele",
+        "bessern",
+        "messern",
+        "fessern"
+      ]
+    },
+    {
+      "word": "amalfis",
+      "num_guesses": 3,
+      "prior": 0.00002344676998603212,
+      "guesses": [
+        "satiren",
+        "lusakas",
+        "amalfis"
+      ]
+    },
+    {
+      "word": "adelare",
+      "num_guesses": 3,
+      "prior": 0.000012264279313414347,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "adelare"
+      ]
+    },
+    {
+      "word": "espener",
+      "num_guesses": 4,
+      "prior": 9.994282134286987e-6,
+      "guesses": [
+        "satiren",
+        "kremser",
+        "essener",
+        "espener"
+      ]
+    },
+    {
+      "word": "durstes",
+      "num_guesses": 3,
+      "prior": 0.000043711613922063355,
+      "guesses": [
+        "satiren",
+        "glottis",
+        "durstes"
+      ]
+    },
+    {
+      "word": "anstaue",
+      "num_guesses": 3,
+      "prior": 0.000015699671820377273,
+      "guesses": [
+        "satiren",
+        "absahnt",
+        "anstaue"
+      ]
+    },
+    {
+      "word": "weibels",
+      "num_guesses": 4,
+      "prior": 0.00002794445204946513,
+      "guesses": [
+        "satiren",
+        "hielige",
+        "schwofs",
+        "weibels"
+      ]
+    },
+    {
+      "word": "gehopst",
+      "num_guesses": 3,
+      "prior": 0.00002394315427679714,
+      "guesses": [
+        "satiren",
+        "geheult",
+        "gehopst"
+      ]
+    },
+    {
+      "word": "fäustel",
+      "num_guesses": 4,
+      "prior": 0.00003241211382877853,
+      "guesses": [
+        "satiren",
+        "gebuhlt",
+        "wulstes",
+        "fäustel"
+      ]
+    },
+    {
+      "word": "worfeln",
+      "num_guesses": 4,
+      "prior": 0.000029943581992349937,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "rümpfte",
+        "worfeln"
+      ]
+    },
+    {
+      "word": "findung",
+      "num_guesses": 2,
+      "prior": 0.000051079845556837266,
+      "guesses": [
+        "satiren",
+        "findung"
+      ]
+    },
+    {
+      "word": "umläufe",
+      "num_guesses": 4,
+      "prior": 0.000044934042552426406,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "umfelde",
+        "umläufe"
+      ]
+    },
+    {
+      "word": "barchan",
+      "num_guesses": 3,
+      "prior": 0.00002474276298280911,
+      "guesses": [
+        "satiren",
+        "ramadan",
+        "barchan"
+      ]
+    },
+    {
+      "word": "häuptel",
+      "num_guesses": 4,
+      "prior": 0.000021030968868361133,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "fluchet",
+        "häuptel"
+      ]
+    },
+    {
+      "word": "tetrade",
+      "num_guesses": 3,
+      "prior": 0.00003635206485925025,
+      "guesses": [
+        "satiren",
+        "gebeamt",
+        "tetrade"
+      ]
+    },
+    {
+      "word": "bäckers",
+      "num_guesses": 4,
+      "prior": 0.00004266517528058313,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "brokers",
+        "bäckers"
+      ]
+    },
+    {
+      "word": "maschen",
+      "num_guesses": 4,
+      "prior": 0.00006953841673422643,
+      "guesses": [
+        "satiren",
+        "auswahl",
+        "kämpfen",
+        "maschen"
+      ]
+    },
+    {
+      "word": "veranda",
+      "num_guesses": 3,
+      "prior": 0.00006671295386390581,
+      "guesses": [
+        "satiren",
+        "uhrband",
+        "veranda"
+      ]
+    },
+    {
+      "word": "genervt",
+      "num_guesses": 4,
+      "prior": 0.00006237750236172832,
+      "guesses": [
+        "satiren",
+        "gehölze",
+        "gekernt",
+        "genervt"
+      ]
+    },
+    {
+      "word": "bezecht",
+      "num_guesses": 3,
+      "prior": 0.00003093109713164743,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "bezecht"
+      ]
+    },
+    {
+      "word": "friedes",
+      "num_guesses": 4,
+      "prior": 0.00003100181907394758,
+      "guesses": [
+        "satiren",
+        "geisels",
+        "briefes",
+        "friedes"
+      ]
+    },
+    {
+      "word": "sennern",
+      "num_guesses": 3,
+      "prior": 0.000021118875669656713,
+      "guesses": [
+        "satiren",
+        "hornung",
+        "sennern"
+      ]
+    },
+    {
+      "word": "flachen",
+      "num_guesses": 3,
+      "prior": 0.00009300954180208471,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "flachen"
+      ]
+    },
+    {
+      "word": "banates",
+      "num_guesses": 3,
+      "prior": 0.000031426503432407524,
+      "guesses": [
+        "satiren",
+        "wanstes",
+        "banates"
+      ]
+    },
+    {
+      "word": "lupften",
+      "num_guesses": 5,
+      "prior": 0.000017358289253992112,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "plätzen",
+        "lüpften",
+        "lupften"
+      ]
+    },
+    {
+      "word": "luteins",
+      "num_guesses": 3,
+      "prior": 0.00001993943831162345,
+      "guesses": [
+        "satiren",
+        "zufiele",
+        "luteins"
+      ]
+    },
+    {
+      "word": "anhinge",
+      "num_guesses": 4,
+      "prior": 0.0000266968109991197,
+      "guesses": [
+        "satiren",
+        "angelde",
+        "anfinge",
+        "anhinge"
+      ]
+    },
+    {
+      "word": "sülzten",
+      "num_guesses": 4,
+      "prior": 0.000010900632760812945,
+      "guesses": [
+        "satiren",
+        "häuptel",
+        "sollten",
+        "sülzten"
+      ]
+    },
+    {
+      "word": "klarste",
+      "num_guesses": 3,
+      "prior": 0.00005269874748997107,
+      "guesses": [
+        "satiren",
+        "grasart",
+        "klarste"
+      ]
+    },
+    {
+      "word": "biozids",
+      "num_guesses": 4,
+      "prior": 0.000015277992192806816,
+      "guesses": [
+        "satiren",
+        "miglios",
+        "dioxids",
+        "biozids"
+      ]
+    },
+    {
+      "word": "bverwge",
+      "num_guesses": 4,
+      "prior": 0.0000535519078362529,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "bverfge",
+        "bverwge"
+      ]
+    },
+    {
+      "word": "denvers",
+      "num_guesses": 4,
+      "prior": 0.00002284740740982673,
+      "guesses": [
+        "satiren",
+        "kernend",
+        "feldzug",
+        "denvers"
+      ]
+    },
+    {
+      "word": "bräteln",
+      "num_guesses": 4,
+      "prior": 0.000015387804262183832,
+      "guesses": [
+        "satiren",
+        "teufelt",
+        "gärteln",
+        "bräteln"
+      ]
+    },
+    {
+      "word": "gebeles",
+      "num_guesses": 3,
+      "prior": 0.000015173117493658097,
+      "guesses": [
+        "satiren",
+        "behelfs",
+        "gebeles"
+      ]
+    },
+    {
+      "word": "vögelnd",
+      "num_guesses": 4,
+      "prior": 0.000014901842828498974,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "zügelnd",
+        "vögelnd"
+      ]
+    },
+    {
+      "word": "gehirne",
+      "num_guesses": 2,
+      "prior": 0.00006506047854387243,
+      "guesses": [
+        "satiren",
+        "gehirne"
+      ]
+    },
+    {
+      "word": "mondbär",
+      "num_guesses": 3,
+      "prior": 0.000013741107167816152,
+      "guesses": [
+        "satiren",
+        "krähend",
+        "mondbär"
+      ]
+    },
+    {
+      "word": "schaums",
+      "num_guesses": 3,
+      "prior": 0.00003184543481833339,
+      "guesses": [
+        "satiren",
+        "oftmals",
+        "schaums"
+      ]
+    },
+    {
+      "word": "grethes",
+      "num_guesses": 3,
+      "prior": 0.000018829750545287492,
+      "guesses": [
+        "satiren",
+        "glottis",
+        "grethes"
+      ]
+    },
+    {
+      "word": "smutjes",
+      "num_guesses": 4,
+      "prior": 0.000016001810065516833,
+      "guesses": [
+        "satiren",
+        "couplet",
+        "stummes",
+        "smutjes"
+      ]
+    },
+    {
+      "word": "schabau",
+      "num_guesses": 4,
+      "prior": 0.00001797228348845015,
+      "guesses": [
+        "satiren",
+        "oftmals",
+        "schapka",
+        "schabau"
+      ]
+    },
+    {
+      "word": "lockren",
+      "num_guesses": 4,
+      "prior": 0.000020304329453376425,
+      "guesses": [
+        "satiren",
+        "hegemon",
+        "knorren",
+        "lockren"
+      ]
+    },
+    {
+      "word": "jahrtag",
+      "num_guesses": 3,
+      "prior": 0.000040385740559409525,
+      "guesses": [
+        "satiren",
+        "hartmut",
+        "jahrtag"
+      ]
+    },
+    {
+      "word": "pflogen",
+      "num_guesses": 4,
+      "prior": 0.000033860607875732936,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "gockele",
+        "pflogen"
+      ]
+    },
+    {
+      "word": "gewährt",
+      "num_guesses": 3,
+      "prior": 0.00011041845515025415,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "gewährt"
+      ]
+    },
+    {
+      "word": "ansaugt",
+      "num_guesses": 3,
+      "prior": 0.00003693020732657788,
+      "guesses": [
+        "satiren",
+        "auslagt",
+        "ansaugt"
+      ]
+    },
+    {
+      "word": "wählers",
+      "num_guesses": 4,
+      "prior": 0.00004312010838030193,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "ökowein",
+        "wählers"
+      ]
+    },
+    {
+      "word": "ebendas",
+      "num_guesses": 3,
+      "prior": 0.000060199173100468805,
+      "guesses": [
+        "satiren",
+        "goldene",
+        "ebendas"
+      ]
+    },
+    {
+      "word": "önologe",
+      "num_guesses": 4,
+      "prior": 0.00002287597469368765,
+      "guesses": [
+        "satiren",
+        "geheule",
+        "oblonge",
+        "önologe"
+      ]
+    },
+    {
+      "word": "schürze",
+      "num_guesses": 3,
+      "prior": 0.00006440172145854703,
+      "guesses": [
+        "satiren",
+        "zufiele",
+        "schürze"
+      ]
+    },
+    {
+      "word": "nistend",
+      "num_guesses": 3,
+      "prior": 0.00003252175380453792,
+      "guesses": [
+        "satiren",
+        "wendels",
+        "nistend"
+      ]
+    },
+    {
+      "word": "begrubt",
+      "num_guesses": 4,
+      "prior": 0.00001679253187455401,
+      "guesses": [
+        "satiren",
+        "berühre",
+        "begräbt",
+        "begrubt"
+      ]
+    },
+    {
+      "word": "beölten",
+      "num_guesses": 4,
+      "prior": 0.000024682317664242908,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "wölbung",
+        "beölten"
+      ]
+    },
+    {
+      "word": "rebhuhn",
+      "num_guesses": 3,
+      "prior": 0.000045221002226876404,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "rebhuhn"
+      ]
+    },
+    {
+      "word": "grossos",
+      "num_guesses": 3,
+      "prior": 0.000028301364360422058,
+      "guesses": [
+        "satiren",
+        "folsoms",
+        "grossos"
+      ]
+    },
+    {
+      "word": "gilbest",
+      "num_guesses": 3,
+      "prior": 0.00001469391270485016,
+      "guesses": [
+        "satiren",
+        "bemehlt",
+        "gilbest"
+      ]
+    },
+    {
+      "word": "wühlten",
+      "num_guesses": 4,
+      "prior": 0.000043581400191774896,
+      "guesses": [
+        "satiren",
+        "hemlock",
+        "zufälle",
+        "wühlten"
+      ]
+    },
+    {
+      "word": "abglanz",
+      "num_guesses": 3,
+      "prior": 0.0000578058579714679,
+      "guesses": [
+        "satiren",
+        "holdung",
+        "abglanz"
+      ]
+    },
+    {
+      "word": "fladern",
+      "num_guesses": 4,
+      "prior": 0.00001956644866096682,
+      "guesses": [
+        "satiren",
+        "bengeln",
+        "playern",
+        "fladern"
+      ]
+    },
+    {
+      "word": "teilhat",
+      "num_guesses": 3,
+      "prior": 0.00004736135016109841,
+      "guesses": [
+        "satiren",
+        "amulett",
+        "teilhat"
+      ]
+    },
+    {
+      "word": "vorbaue",
+      "num_guesses": 3,
+      "prior": 0.00002516965265310845,
+      "guesses": [
+        "satiren",
+        "beklaue",
+        "vorbaue"
+      ]
+    },
+    {
+      "word": "davidas",
+      "num_guesses": 4,
+      "prior": 0.00001615744853769194,
+      "guesses": [
+        "satiren",
+        "kobolds",
+        "vadiums",
+        "davidas"
+      ]
+    },
+    {
+      "word": "weisest",
+      "num_guesses": 4,
+      "prior": 0.000028905510573223107,
+      "guesses": [
+        "satiren",
+        "bemehlt",
+        "giftend",
+        "weisest"
+      ]
+    },
+    {
+      "word": "esprits",
+      "num_guesses": 4,
+      "prior": 0.00004121310782025769,
+      "guesses": [
+        "satiren",
+        "reitest",
+        "bierstg",
+        "esprits"
+      ]
+    },
+    {
+      "word": "belairs",
+      "num_guesses": 3,
+      "prior": 0.000011941080975782811,
+      "guesses": [
+        "satiren",
+        "meilers",
+        "belairs"
+      ]
+    },
+    {
+      "word": "ziemers",
+      "num_guesses": 4,
+      "prior": 0.00002124166810819773,
+      "guesses": [
+        "satiren",
+        "gipfele",
+        "vermerk",
+        "ziemers"
+      ]
+    },
+    {
+      "word": "aperten",
+      "num_guesses": 5,
+      "prior": 0.000017622326824487563,
+      "guesses": [
+        "satiren",
+        "traktur",
+        "beraten",
+        "deshalb",
+        "aperten"
+      ]
+    },
+    {
+      "word": "packens",
+      "num_guesses": 4,
+      "prior": 0.00002652213749712958,
+      "guesses": [
+        "satiren",
+        "hundeln",
+        "schwips",
+        "packens"
+      ]
+    },
+    {
+      "word": "kramend",
+      "num_guesses": 4,
+      "prior": 0.000022570288366707495,
+      "guesses": [
+        "satiren",
+        "uhrband",
+        "fragend",
+        "kramend"
+      ]
+    },
+    {
+      "word": "umrande",
+      "num_guesses": 3,
+      "prior": 0.000018250275051653565,
+      "guesses": [
+        "satiren",
+        "uhrband",
+        "umrande"
+      ]
+    },
+    {
+      "word": "männern",
+      "num_guesses": 4,
+      "prior": 0.00011328446266163324,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "fängern",
+        "männern"
+      ]
+    },
+    {
+      "word": "wieglet",
+      "num_guesses": 3,
+      "prior": 0.000013173168798760567,
+      "guesses": [
+        "satiren",
+        "gehelmt",
+        "wieglet"
+      ]
+    },
+    {
+      "word": "eislauf",
+      "num_guesses": 3,
+      "prior": 0.000034306160198995054,
+      "guesses": [
+        "satiren",
+        "bussole",
+        "eislauf"
+      ]
+    },
+    {
+      "word": "beklage",
+      "num_guesses": 3,
+      "prior": 0.00004982447617308281,
+      "guesses": [
+        "satiren",
+        "befolge",
+        "beklage"
+      ]
+    },
+    {
+      "word": "vorfüße",
+      "num_guesses": 4,
+      "prior": 0.0000212565536645843,
+      "guesses": [
+        "satiren",
+        "herberg",
+        "lockruf",
+        "vorfüße"
+      ]
+    },
+    {
+      "word": "abmühen",
+      "num_guesses": 4,
+      "prior": 0.000044128940341704854,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "überheb",
+        "abmühen"
+      ]
+    },
+    {
+      "word": "jacuzzi",
+      "num_guesses": 3,
+      "prior": 0.000029142547835754083,
+      "guesses": [
+        "satiren",
+        "bucklig",
+        "jacuzzi"
+      ]
+    },
+    {
+      "word": "anspült",
+      "num_guesses": 3,
+      "prior": 0.0000201856127273406,
+      "guesses": [
+        "satiren",
+        "auslagt",
+        "anspült"
+      ]
+    },
+    {
+      "word": "zeichen",
+      "num_guesses": 3,
+      "prior": 0.0001389748085538843,
+      "guesses": [
+        "satiren",
+        "kehlige",
+        "zeichen"
+      ]
+    },
+    {
+      "word": "bummele",
+      "num_guesses": 4,
+      "prior": 0.00002099092653846265,
+      "guesses": [
+        "satiren",
+        "bugholz",
+        "dadurch",
+        "bummele"
+      ]
+    },
+    {
+      "word": "reuschs",
+      "num_guesses": 4,
+      "prior": 0.000025126293820779318,
+      "guesses": [
+        "satiren",
+        "humpele",
+        "erwuchs",
+        "reuschs"
+      ]
+    },
+    {
+      "word": "subakut",
+      "num_guesses": 3,
+      "prior": 0.00003854263581770532,
+      "guesses": [
+        "satiren",
+        "schlufs",
+        "subakut"
+      ]
+    },
+    {
+      "word": "gurgeln",
+      "num_guesses": 4,
+      "prior": 0.0000488885870184053,
+      "guesses": [
+        "satiren",
+        "dunkele",
+        "wimperg",
+        "gurgeln"
+      ]
+    },
+    {
+      "word": "jazzend",
+      "num_guesses": 4,
+      "prior": 9.905823240995767e-6,
+      "guesses": [
+        "satiren",
+        "buhlend",
+        "konzept",
+        "jazzend"
+      ]
+    },
+    {
+      "word": "stetson",
+      "num_guesses": 3,
+      "prior": 0.00003627552616901002,
+      "guesses": [
+        "satiren",
+        "stößeln",
+        "stetson"
+      ]
+    },
+    {
+      "word": "brüsten",
+      "num_guesses": 3,
+      "prior": 0.00006532649363384766,
+      "guesses": [
+        "satiren",
+        "burghof",
+        "brüsten"
+      ]
+    },
+    {
+      "word": "katzoff",
+      "num_guesses": 3,
+      "prior": 0.0000187145431978125,
+      "guesses": [
+        "satiren",
+        "katalog",
+        "katzoff"
+      ]
+    },
+    {
+      "word": "bossier",
+      "num_guesses": 4,
+      "prior": 0.00002342665260763457,
+      "guesses": [
+        "satiren",
+        "geisels",
+        "dossier",
+        "bossier"
+      ]
+    },
+    {
+      "word": "kuppelt",
+      "num_guesses": 4,
+      "prior": 0.00003637735258680045,
+      "guesses": [
+        "satiren",
+        "befähle",
+        "topikum",
+        "kuppelt"
+      ]
+    }
+  ]
+}

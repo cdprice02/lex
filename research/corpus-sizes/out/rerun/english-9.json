@@ -1,0 +1,5060 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T13:54:13.290872Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "cerations",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 9,
+    "dictionary_length": 92832,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "a3dec4bd6d3909e2432de844168b760b9a4e079a6a829a27e2d7f88425f5c855",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.0119999999999716,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.08600000000000006,
+        "3": 0.8160000000000006,
+        "4": 0.09800000000000007
+      }
+    },
+    "prior": {
+      "mean": 2.9627815754788966,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.1061208260391325,
+        "3": 0.8249767724428403,
+        "4": 0.0689024015180275
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "krumhorns",
+      "num_guesses": 3,
+      "prior": 6.5451688134507756e-6,
+      "guesses": [
+        "cerations",
+        "longhorns",
+        "krumhorns"
+      ]
+    },
+    {
+      "word": "rebeaming",
+      "num_guesses": 4,
+      "prior": 6.097498615028059e-6,
+      "guesses": [
+        "cerations",
+        "regraphed",
+        "revealing",
+        "rebeaming"
+      ]
+    },
+    {
+      "word": "motoritis",
+      "num_guesses": 3,
+      "prior": 5.9306188234013604e-6,
+      "guesses": [
+        "cerations",
+        "motorists",
+        "motoritis"
+      ]
+    },
+    {
+      "word": "guanábana",
+      "num_guesses": 3,
+      "prior": 8.439300531897713e-6,
+      "guesses": [
+        "cerations",
+        "upanayana",
+        "guanábana"
+      ]
+    },
+    {
+      "word": "sherwanis",
+      "num_guesses": 3,
+      "prior": 7.961714039040706e-6,
+      "guesses": [
+        "cerations",
+        "filigreed",
+        "sherwanis"
+      ]
+    },
+    {
+      "word": "gumashtah",
+      "num_guesses": 3,
+      "prior": 6.174523805858184e-6,
+      "guesses": [
+        "cerations",
+        "maladjust",
+        "gumashtah"
+      ]
+    },
+    {
+      "word": "atacicept",
+      "num_guesses": 3,
+      "prior": 7.4039220682659975e-6,
+      "guesses": [
+        "cerations",
+        "amphiliid",
+        "atacicept"
+      ]
+    },
+    {
+      "word": "incognita",
+      "num_guesses": 3,
+      "prior": 0.00002520946572925652,
+      "guesses": [
+        "cerations",
+        "aluminian",
+        "incognita"
+      ]
+    },
+    {
+      "word": "buhrstone",
+      "num_guesses": 3,
+      "prior": 0.000013976772423800482,
+      "guesses": [
+        "cerations",
+        "therefrom",
+        "buhrstone"
+      ]
+    },
+    {
+      "word": "outpeered",
+      "num_guesses": 3,
+      "prior": 4.797815843360017e-6,
+      "guesses": [
+        "cerations",
+        "orthopter",
+        "outpeered"
+      ]
+    },
+    {
+      "word": "serpented",
+      "num_guesses": 3,
+      "prior": 7.21888837307179e-6,
+      "guesses": [
+        "cerations",
+        "serpentry",
+        "serpented"
+      ]
+    },
+    {
+      "word": "taberdars",
+      "num_guesses": 3,
+      "prior": 7.516287518471257e-6,
+      "guesses": [
+        "cerations",
+        "saberlegs",
+        "taberdars"
+      ]
+    },
+    {
+      "word": "epochally",
+      "num_guesses": 3,
+      "prior": 9.080296567726473e-6,
+      "guesses": [
+        "cerations",
+        "poachable",
+        "epochally"
+      ]
+    },
+    {
+      "word": "cantonise",
+      "num_guesses": 3,
+      "prior": 5.1819729726034825e-6,
+      "guesses": [
+        "cerations",
+        "caseation",
+        "cantonise"
+      ]
+    },
+    {
+      "word": "holotapes",
+      "num_guesses": 3,
+      "prior": 5.219290765727238e-6,
+      "guesses": [
+        "cerations",
+        "apartotel",
+        "holotapes"
+      ]
+    },
+    {
+      "word": "dilatedly",
+      "num_guesses": 3,
+      "prior": 4.366192811338587e-6,
+      "guesses": [
+        "cerations",
+        "dilatable",
+        "dilatedly"
+      ]
+    },
+    {
+      "word": "nanojoule",
+      "num_guesses": 3,
+      "prior": 8.10981491342408e-6,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "nanojoule"
+      ]
+    },
+    {
+      "word": "inflexing",
+      "num_guesses": 3,
+      "prior": 5.371141314810928e-6,
+      "guesses": [
+        "cerations",
+        "unpledged",
+        "inflexing"
+      ]
+    },
+    {
+      "word": "vinophile",
+      "num_guesses": 4,
+      "prior": 4.6322108892108895e-6,
+      "guesses": [
+        "cerations",
+        "engloomed",
+        "bonnibell",
+        "vinophile"
+      ]
+    },
+    {
+      "word": "latenight",
+      "num_guesses": 3,
+      "prior": 0.00001590107259547924,
+      "guesses": [
+        "cerations",
+        "untempled",
+        "latenight"
+      ]
+    },
+    {
+      "word": "watchless",
+      "num_guesses": 4,
+      "prior": 8.08361269210469e-6,
+      "guesses": [
+        "cerations",
+        "halfsleep",
+        "matchless",
+        "watchless"
+      ]
+    },
+    {
+      "word": "alcotests",
+      "num_guesses": 3,
+      "prior": 4.784866083999956e-6,
+      "guesses": [
+        "cerations",
+        "mycetomas",
+        "alcotests"
+      ]
+    },
+    {
+      "word": "nonhorses",
+      "num_guesses": 4,
+      "prior": 4.498741837234269e-6,
+      "guesses": [
+        "cerations",
+        "dogfennel",
+        "nonnurses",
+        "nonhorses"
+      ]
+    },
+    {
+      "word": "nonangled",
+      "num_guesses": 3,
+      "prior": 5.624826208940122e-6,
+      "guesses": [
+        "cerations",
+        "mohamedan",
+        "nonangled"
+      ]
+    },
+    {
+      "word": "respirate",
+      "num_guesses": 3,
+      "prior": 8.169669573932521e-6,
+      "guesses": [
+        "cerations",
+        "reptilase",
+        "respirate"
+      ]
+    },
+    {
+      "word": "olivaster",
+      "num_guesses": 3,
+      "prior": 7.779462913982255e-6,
+      "guesses": [
+        "cerations",
+        "sputative",
+        "olivaster"
+      ]
+    },
+    {
+      "word": "tieflings",
+      "num_guesses": 3,
+      "prior": 6.956759581972794e-6,
+      "guesses": [
+        "cerations",
+        "sidelings",
+        "tieflings"
+      ]
+    },
+    {
+      "word": "fecaliths",
+      "num_guesses": 2,
+      "prior": 0.000010043652658966397,
+      "guesses": [
+        "cerations",
+        "fecaliths"
+      ]
+    },
+    {
+      "word": "guiltless",
+      "num_guesses": 3,
+      "prior": 0.000026973106444741626,
+      "guesses": [
+        "cerations",
+        "shlemiels",
+        "guiltless"
+      ]
+    },
+    {
+      "word": "tarrapins",
+      "num_guesses": 3,
+      "prior": 5.668460759889756e-6,
+      "guesses": [
+        "cerations",
+        "partisans",
+        "tarrapins"
+      ]
+    },
+    {
+      "word": "sublimers",
+      "num_guesses": 4,
+      "prior": 7.237638985159042e-6,
+      "guesses": [
+        "cerations",
+        "disperser",
+        "wholeness",
+        "sublimers"
+      ]
+    },
+    {
+      "word": "spanceled",
+      "num_guesses": 3,
+      "prior": 6.647881231561618e-6,
+      "guesses": [
+        "cerations",
+        "unplanked",
+        "spanceled"
+      ]
+    },
+    {
+      "word": "clamorous",
+      "num_guesses": 2,
+      "prior": 0.000027147803729280293,
+      "guesses": [
+        "cerations",
+        "clamorous"
+      ]
+    },
+    {
+      "word": "sapientes",
+      "num_guesses": 4,
+      "prior": 0.00001419332787201019,
+      "guesses": [
+        "cerations",
+        "tantalium",
+        "bassinets",
+        "sapientes"
+      ]
+    },
+    {
+      "word": "scranches",
+      "num_guesses": 2,
+      "prior": 3.856562033174408e-6,
+      "guesses": [
+        "cerations",
+        "scranches"
+      ]
+    },
+    {
+      "word": "nonparity",
+      "num_guesses": 4,
+      "prior": 8.869446792327168e-6,
+      "guesses": [
+        "cerations",
+        "animalian",
+        "nontariff",
+        "nonparity"
+      ]
+    },
+    {
+      "word": "ḥimyarite",
+      "num_guesses": 4,
+      "prior": 6.539581011778783e-6,
+      "guesses": [
+        "cerations",
+        "multitide",
+        "himyarite",
+        "ḥimyarite"
+      ]
+    },
+    {
+      "word": "fruitloop",
+      "num_guesses": 3,
+      "prior": 7.007020038436963e-6,
+      "guesses": [
+        "cerations",
+        "driftwood",
+        "fruitloop"
+      ]
+    },
+    {
+      "word": "beheaders",
+      "num_guesses": 3,
+      "prior": 7.326225136234386e-6,
+      "guesses": [
+        "cerations",
+        "realarmed",
+        "beheaders"
+      ]
+    },
+    {
+      "word": "corkwings",
+      "num_guesses": 3,
+      "prior": 4.731613700222621e-6,
+      "guesses": [
+        "cerations",
+        "cornmills",
+        "corkwings"
+      ]
+    },
+    {
+      "word": "remissory",
+      "num_guesses": 3,
+      "prior": 7.1769374216627634e-6,
+      "guesses": [
+        "cerations",
+        "meiospore",
+        "remissory"
+      ]
+    },
+    {
+      "word": "kommetjes",
+      "num_guesses": 4,
+      "prior": 5.133760188640255e-6,
+      "guesses": [
+        "cerations",
+        "soupbowls",
+        "moffettes",
+        "kommetjes"
+      ]
+    },
+    {
+      "word": "underbone",
+      "num_guesses": 3,
+      "prior": 4.931800980706936e-6,
+      "guesses": [
+        "cerations",
+        "hedgeable",
+        "underbone"
+      ]
+    },
+    {
+      "word": "eoldermen",
+      "num_guesses": 3,
+      "prior": 5.675055845517836e-6,
+      "guesses": [
+        "cerations",
+        "unpreened",
+        "eoldermen"
+      ]
+    },
+    {
+      "word": "illyrians",
+      "num_guesses": 3,
+      "prior": 0.000019199080621972918,
+      "guesses": [
+        "cerations",
+        "sumirians",
+        "illyrians"
+      ]
+    },
+    {
+      "word": "underated",
+      "num_guesses": 4,
+      "prior": 7.842711454851668e-6,
+      "guesses": [
+        "cerations",
+        "ungenteel",
+        "unaerated",
+        "underated"
+      ]
+    },
+    {
+      "word": "putchamin",
+      "num_guesses": 3,
+      "prior": 5.511243166846364e-6,
+      "guesses": [
+        "cerations",
+        "laminarin",
+        "putchamin"
+      ]
+    },
+    {
+      "word": "downtrace",
+      "num_guesses": 2,
+      "prior": 5.767407541659036e-6,
+      "guesses": [
+        "cerations",
+        "downtrace"
+      ]
+    },
+    {
+      "word": "pastorate",
+      "num_guesses": 3,
+      "prior": 0.00002808408567390297,
+      "guesses": [
+        "cerations",
+        "duathlete",
+        "pastorate"
+      ]
+    },
+    {
+      "word": "macrodose",
+      "num_guesses": 3,
+      "prior": 4.531582855967667e-6,
+      "guesses": [
+        "cerations",
+        "accessory",
+        "macrodose"
+      ]
+    },
+    {
+      "word": "insertees",
+      "num_guesses": 3,
+      "prior": 7.579370108220342e-6,
+      "guesses": [
+        "cerations",
+        "unnettled",
+        "insertees"
+      ]
+    },
+    {
+      "word": "propledge",
+      "num_guesses": 3,
+      "prior": 4.171119809352364e-6,
+      "guesses": [
+        "cerations",
+        "umbreller",
+        "propledge"
+      ]
+    },
+    {
+      "word": "kickstool",
+      "num_guesses": 3,
+      "prior": 3.825203707465914e-6,
+      "guesses": [
+        "cerations",
+        "ritualism",
+        "kickstool"
+      ]
+    },
+    {
+      "word": "hoofology",
+      "num_guesses": 3,
+      "prior": 4.089039266971448e-6,
+      "guesses": [
+        "cerations",
+        "bumpology",
+        "hoofology"
+      ]
+    },
+    {
+      "word": "autophyte",
+      "num_guesses": 3,
+      "prior": 6.109792058850193e-6,
+      "guesses": [
+        "cerations",
+        "patellate",
+        "autophyte"
+      ]
+    },
+    {
+      "word": "fenitised",
+      "num_guesses": 2,
+      "prior": 7.930040803674372e-6,
+      "guesses": [
+        "cerations",
+        "fenitised"
+      ]
+    },
+    {
+      "word": "pneumoniæ",
+      "num_guesses": 3,
+      "prior": 7.371849417424385e-6,
+      "guesses": [
+        "cerations",
+        "engloomed",
+        "pneumoniæ"
+      ]
+    },
+    {
+      "word": "kinghoods",
+      "num_guesses": 3,
+      "prior": 6.353953888536344e-6,
+      "guesses": [
+        "cerations",
+        "mongondow",
+        "kinghoods"
+      ]
+    },
+    {
+      "word": "igneously",
+      "num_guesses": 3,
+      "prior": 6.4864837346849355e-6,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "igneously"
+      ]
+    },
+    {
+      "word": "pushstick",
+      "num_guesses": 3,
+      "prior": 6.387103149035135e-6,
+      "guesses": [
+        "cerations",
+        "putschist",
+        "pushstick"
+      ]
+    },
+    {
+      "word": "butylthio",
+      "num_guesses": 3,
+      "prior": 9.147070648823511e-6,
+      "guesses": [
+        "cerations",
+        "toothbill",
+        "butylthio"
+      ]
+    },
+    {
+      "word": "roughhead",
+      "num_guesses": 3,
+      "prior": 0.000010706684041197932,
+      "guesses": [
+        "cerations",
+        "problemed",
+        "roughhead"
+      ]
+    },
+    {
+      "word": "nightward",
+      "num_guesses": 3,
+      "prior": 9.16067880519354e-6,
+      "guesses": [
+        "cerations",
+        "anarthria",
+        "nightward"
+      ]
+    },
+    {
+      "word": "nobiletin",
+      "num_guesses": 3,
+      "prior": 0.000010181976999938091,
+      "guesses": [
+        "cerations",
+        "pontoniid",
+        "nobiletin"
+      ]
+    },
+    {
+      "word": "hybridase",
+      "num_guesses": 3,
+      "prior": 5.196092999353418e-6,
+      "guesses": [
+        "cerations",
+        "submersed",
+        "hybridase"
+      ]
+    },
+    {
+      "word": "stenopeic",
+      "num_guesses": 3,
+      "prior": 9.263495150899892e-6,
+      "guesses": [
+        "cerations",
+        "decennium",
+        "stenopeic"
+      ]
+    },
+    {
+      "word": "cranelike",
+      "num_guesses": 3,
+      "prior": 9.29067615403985e-6,
+      "guesses": [
+        "cerations",
+        "namierian",
+        "cranelike"
+      ]
+    },
+    {
+      "word": "dietitian",
+      "num_guesses": 3,
+      "prior": 0.00002641748184406524,
+      "guesses": [
+        "cerations",
+        "matildite",
+        "dietitian"
+      ]
+    },
+    {
+      "word": "damasquin",
+      "num_guesses": 3,
+      "prior": 5.442994892914124e-6,
+      "guesses": [
+        "cerations",
+        "synangium",
+        "damasquin"
+      ]
+    },
+    {
+      "word": "outreness",
+      "num_guesses": 3,
+      "prior": 4.33765315690429e-6,
+      "guesses": [
+        "cerations",
+        "mutedness",
+        "outreness"
+      ]
+    },
+    {
+      "word": "knockdown",
+      "num_guesses": 3,
+      "prior": 0.000023181793294568633,
+      "guesses": [
+        "cerations",
+        "monoblock",
+        "knockdown"
+      ]
+    },
+    {
+      "word": "spritsail",
+      "num_guesses": 2,
+      "prior": 0.000015618387762084515,
+      "guesses": [
+        "cerations",
+        "spritsail"
+      ]
+    },
+    {
+      "word": "niggardly",
+      "num_guesses": 3,
+      "prior": 0.000024117960823088118,
+      "guesses": [
+        "cerations",
+        "gilmanian",
+        "niggardly"
+      ]
+    },
+    {
+      "word": "uncrooked",
+      "num_guesses": 3,
+      "prior": 7.284289775567052e-6,
+      "guesses": [
+        "cerations",
+        "honnoured",
+        "uncrooked"
+      ]
+    },
+    {
+      "word": "backbonds",
+      "num_guesses": 3,
+      "prior": 8.795435623717098e-6,
+      "guesses": [
+        "cerations",
+        "nonglobal",
+        "backbonds"
+      ]
+    },
+    {
+      "word": "eolipiles",
+      "num_guesses": 3,
+      "prior": 8.740001427434413e-6,
+      "guesses": [
+        "cerations",
+        "solipedes",
+        "eolipiles"
+      ]
+    },
+    {
+      "word": "regraphed",
+      "num_guesses": 3,
+      "prior": 6.23664963572056e-6,
+      "guesses": [
+        "cerations",
+        "belgrader",
+        "regraphed"
+      ]
+    },
+    {
+      "word": "surviving",
+      "num_guesses": 3,
+      "prior": 0.00005125282359967612,
+      "guesses": [
+        "cerations",
+        "sphingids",
+        "surviving"
+      ]
+    },
+    {
+      "word": "strappies",
+      "num_guesses": 2,
+      "prior": 4.77833827512216e-6,
+      "guesses": [
+        "cerations",
+        "strappies"
+      ]
+    },
+    {
+      "word": "backtests",
+      "num_guesses": 2,
+      "prior": 8.81360699308678e-6,
+      "guesses": [
+        "cerations",
+        "backtests"
+      ]
+    },
+    {
+      "word": "shahzadeh",
+      "num_guesses": 3,
+      "prior": 9.36770738230537e-6,
+      "guesses": [
+        "cerations",
+        "pledgable",
+        "shahzadeh"
+      ]
+    },
+    {
+      "word": "palmyrans",
+      "num_guesses": 3,
+      "prior": 8.181889383003803e-6,
+      "guesses": [
+        "cerations",
+        "bukharans",
+        "palmyrans"
+      ]
+    },
+    {
+      "word": "unparents",
+      "num_guesses": 2,
+      "prior": 4.571339675139993e-6,
+      "guesses": [
+        "cerations",
+        "unparents"
+      ]
+    },
+    {
+      "word": "handgrasp",
+      "num_guesses": 3,
+      "prior": 9.543137802371952e-6,
+      "guesses": [
+        "cerations",
+        "suffragan",
+        "handgrasp"
+      ]
+    },
+    {
+      "word": "muslimist",
+      "num_guesses": 3,
+      "prior": 7.094013241729679e-6,
+      "guesses": [
+        "cerations",
+        "multipath",
+        "muslimist"
+      ]
+    },
+    {
+      "word": "levitican",
+      "num_guesses": 3,
+      "prior": 7.78875740037392e-6,
+      "guesses": [
+        "cerations",
+        "genetical",
+        "levitican"
+      ]
+    },
+    {
+      "word": "precludes",
+      "num_guesses": 2,
+      "prior": 0.00003719412333965724,
+      "guesses": [
+        "cerations",
+        "precludes"
+      ]
+    },
+    {
+      "word": "subtilize",
+      "num_guesses": 3,
+      "prior": 0.000011078324740017469,
+      "guesses": [
+        "cerations",
+        "dustsheet",
+        "subtilize"
+      ]
+    },
+    {
+      "word": "woolbuyer",
+      "num_guesses": 3,
+      "prior": 7.357931414867041e-6,
+      "guesses": [
+        "cerations",
+        "umbreller",
+        "woolbuyer"
+      ]
+    },
+    {
+      "word": "albicanol",
+      "num_guesses": 3,
+      "prior": 4.563498566053315e-6,
+      "guesses": [
+        "cerations",
+        "colimycin",
+        "albicanol"
+      ]
+    },
+    {
+      "word": "coemerged",
+      "num_guesses": 3,
+      "prior": 4.9260192520493624e-6,
+      "guesses": [
+        "cerations",
+        "empowered",
+        "coemerged"
+      ]
+    },
+    {
+      "word": "petereros",
+      "num_guesses": 3,
+      "prior": 4.159785077027024e-6,
+      "guesses": [
+        "cerations",
+        "restreets",
+        "petereros"
+      ]
+    },
+    {
+      "word": "reperused",
+      "num_guesses": 3,
+      "prior": 0.00001116486376342892,
+      "guesses": [
+        "cerations",
+        "repledged",
+        "reperused"
+      ]
+    },
+    {
+      "word": "outbreath",
+      "num_guesses": 3,
+      "prior": 0.00001212602575527103,
+      "guesses": [
+        "cerations",
+        "aledraper",
+        "outbreath"
+      ]
+    },
+    {
+      "word": "hemshinli",
+      "num_guesses": 3,
+      "prior": 8.714708583683995e-6,
+      "guesses": [
+        "cerations",
+        "feminised",
+        "hemshinli"
+      ]
+    },
+    {
+      "word": "columnize",
+      "num_guesses": 3,
+      "prior": 6.587387369020146e-6,
+      "guesses": [
+        "cerations",
+        "velodrome",
+        "columnize"
+      ]
+    },
+    {
+      "word": "boogeymen",
+      "num_guesses": 3,
+      "prior": 0.000010351196302094845,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "boogeymen"
+      ]
+    },
+    {
+      "word": "autacoids",
+      "num_guesses": 2,
+      "prior": 0.00001252793894764323,
+      "guesses": [
+        "cerations",
+        "autacoids"
+      ]
+    },
+    {
+      "word": "reenables",
+      "num_guesses": 3,
+      "prior": 7.781325366413581e-6,
+      "guesses": [
+        "cerations",
+        "pledgeted",
+        "reenables"
+      ]
+    },
+    {
+      "word": "defueling",
+      "num_guesses": 3,
+      "prior": 0.000014548830621969257,
+      "guesses": [
+        "cerations",
+        "unblended",
+        "defueling"
+      ]
+    },
+    {
+      "word": "disputant",
+      "num_guesses": 3,
+      "prior": 0.00002156995404690628,
+      "guesses": [
+        "cerations",
+        "mistitled",
+        "disputant"
+      ]
+    },
+    {
+      "word": "prelarval",
+      "num_guesses": 3,
+      "prior": 8.819818934729093e-6,
+      "guesses": [
+        "cerations",
+        "plumbered",
+        "prelarval"
+      ]
+    },
+    {
+      "word": "colourate",
+      "num_guesses": 3,
+      "prior": 3.741967503937569e-6,
+      "guesses": [
+        "cerations",
+        "potometer",
+        "colourate"
+      ]
+    },
+    {
+      "word": "flagellin",
+      "num_guesses": 3,
+      "prior": 0.000017329324023995795,
+      "guesses": [
+        "cerations",
+        "lingulide",
+        "flagellin"
+      ]
+    },
+    {
+      "word": "remappers",
+      "num_guesses": 4,
+      "prior": 6.005918245649338e-6,
+      "guesses": [
+        "cerations",
+        "subahdars",
+        "remarkers",
+        "remappers"
+      ]
+    },
+    {
+      "word": "habituses",
+      "num_guesses": 3,
+      "prior": 9.958033099793167e-6,
+      "guesses": [
+        "cerations",
+        "applaused",
+        "habituses"
+      ]
+    },
+    {
+      "word": "cymograph",
+      "num_guesses": 3,
+      "prior": 6.591007809441981e-6,
+      "guesses": [
+        "cerations",
+        "floodlamp",
+        "cymograph"
+      ]
+    },
+    {
+      "word": "sternwalk",
+      "num_guesses": 4,
+      "prior": 6.702872493286714e-6,
+      "guesses": [
+        "cerations",
+        "realarmed",
+        "sternally",
+        "sternwalk"
+      ]
+    },
+    {
+      "word": "incrested",
+      "num_guesses": 3,
+      "prior": 5.908385324471696e-6,
+      "guesses": [
+        "cerations",
+        "cocircuit",
+        "incrested"
+      ]
+    },
+    {
+      "word": "dahabeeah",
+      "num_guesses": 3,
+      "prior": 8.730036944117127e-6,
+      "guesses": [
+        "cerations",
+        "halazepam",
+        "dahabeeah"
+      ]
+    },
+    {
+      "word": "rockflows",
+      "num_guesses": 3,
+      "prior": 4.523461687526164e-6,
+      "guesses": [
+        "cerations",
+        "rockpools",
+        "rockflows"
+      ]
+    },
+    {
+      "word": "otoscopes",
+      "num_guesses": 3,
+      "prior": 0.000010482471404615349,
+      "guesses": [
+        "cerations",
+        "poloneses",
+        "otoscopes"
+      ]
+    },
+    {
+      "word": "isogamete",
+      "num_guesses": 3,
+      "prior": 7.162733223980566e-6,
+      "guesses": [
+        "cerations",
+        "volumette",
+        "isogamete"
+      ]
+    },
+    {
+      "word": "birdscape",
+      "num_guesses": 3,
+      "prior": 6.467091806865112e-6,
+      "guesses": [
+        "cerations",
+        "wirescape",
+        "birdscape"
+      ]
+    },
+    {
+      "word": "corcelets",
+      "num_guesses": 3,
+      "prior": 4.738402270044317e-6,
+      "guesses": [
+        "cerations",
+        "corselets",
+        "corcelets"
+      ]
+    },
+    {
+      "word": "honestest",
+      "num_guesses": 3,
+      "prior": 0.00001575714780120906,
+      "guesses": [
+        "cerations",
+        "postmoult",
+        "honestest"
+      ]
+    },
+    {
+      "word": "seashores",
+      "num_guesses": 3,
+      "prior": 0.000019271665710838914,
+      "guesses": [
+        "cerations",
+        "shopfolks",
+        "seashores"
+      ]
+    },
+    {
+      "word": "embushing",
+      "num_guesses": 3,
+      "prior": 3.886932414904195e-6,
+      "guesses": [
+        "cerations",
+        "unwhelmed",
+        "embushing"
+      ]
+    },
+    {
+      "word": "alikeness",
+      "num_guesses": 4,
+      "prior": 0.000012047683629506475,
+      "guesses": [
+        "cerations",
+        "galumphed",
+        "aliveness",
+        "alikeness"
+      ]
+    },
+    {
+      "word": "premiates",
+      "num_guesses": 4,
+      "prior": 3.972756247278767e-6,
+      "guesses": [
+        "cerations",
+        "tabletted",
+        "emigrates",
+        "premiates"
+      ]
+    },
+    {
+      "word": "cassidine",
+      "num_guesses": 3,
+      "prior": 7.089966454587617e-6,
+      "guesses": [
+        "cerations",
+        "cispadane",
+        "cassidine"
+      ]
+    },
+    {
+      "word": "dustcarts",
+      "num_guesses": 3,
+      "prior": 8.720616866119388e-6,
+      "guesses": [
+        "cerations",
+        "abstracts",
+        "dustcarts"
+      ]
+    },
+    {
+      "word": "backroads",
+      "num_guesses": 3,
+      "prior": 0.000015601951733491738,
+      "guesses": [
+        "cerations",
+        "roadworks",
+        "backroads"
+      ]
+    },
+    {
+      "word": "unprepare",
+      "num_guesses": 4,
+      "prior": 7.256197277556631e-6,
+      "guesses": [
+        "cerations",
+        "bugleweed",
+        "unfreeman",
+        "unprepare"
+      ]
+    },
+    {
+      "word": "personism",
+      "num_guesses": 3,
+      "prior": 9.820322928595113e-6,
+      "guesses": [
+        "cerations",
+        "sermonise",
+        "personism"
+      ]
+    },
+    {
+      "word": "nonrating",
+      "num_guesses": 3,
+      "prior": 6.353953888536344e-6,
+      "guesses": [
+        "cerations",
+        "patroning",
+        "nonrating"
+      ]
+    },
+    {
+      "word": "reaccedes",
+      "num_guesses": 3,
+      "prior": 4.848263897567848e-6,
+      "guesses": [
+        "cerations",
+        "decreases",
+        "reaccedes"
+      ]
+    },
+    {
+      "word": "theologue",
+      "num_guesses": 3,
+      "prior": 0.000011574063079200252,
+      "guesses": [
+        "cerations",
+        "polylogue",
+        "theologue"
+      ]
+    },
+    {
+      "word": "conveners",
+      "num_guesses": 3,
+      "prior": 0.000018471425753546293,
+      "guesses": [
+        "cerations",
+        "mauveness",
+        "conveners"
+      ]
+    },
+    {
+      "word": "unrescued",
+      "num_guesses": 3,
+      "prior": 9.38932064829059e-6,
+      "guesses": [
+        "cerations",
+        "scrunched",
+        "unrescued"
+      ]
+    },
+    {
+      "word": "tubercula",
+      "num_guesses": 3,
+      "prior": 0.000014406146133307404,
+      "guesses": [
+        "cerations",
+        "laureated",
+        "tubercula"
+      ]
+    },
+    {
+      "word": "perfluoro",
+      "num_guesses": 3,
+      "prior": 0.000016596361461124783,
+      "guesses": [
+        "cerations",
+        "herbology",
+        "perfluoro"
+      ]
+    },
+    {
+      "word": "astrolabe",
+      "num_guesses": 3,
+      "prior": 0.000023769237711666217,
+      "guesses": [
+        "cerations",
+        "duathlete",
+        "astrolabe"
+      ]
+    },
+    {
+      "word": "oysterish",
+      "num_guesses": 4,
+      "prior": 6.3747528732564985e-6,
+      "guesses": [
+        "cerations",
+        "sutteeism",
+        "posterish",
+        "oysterish"
+      ]
+    },
+    {
+      "word": "parseable",
+      "num_guesses": 3,
+      "prior": 7.88377034309457e-6,
+      "guesses": [
+        "cerations",
+        "parsleyed",
+        "parseable"
+      ]
+    },
+    {
+      "word": "mammonism",
+      "num_guesses": 3,
+      "prior": 0.000013205102588260228,
+      "guesses": [
+        "cerations",
+        "gilmanian",
+        "mammonism"
+      ]
+    },
+    {
+      "word": "alkadiyne",
+      "num_guesses": 3,
+      "prior": 5.321013028435899e-6,
+      "guesses": [
+        "cerations",
+        "alkadiene",
+        "alkadiyne"
+      ]
+    },
+    {
+      "word": "turmoiler",
+      "num_guesses": 3,
+      "prior": 4.5945456379936654e-6,
+      "guesses": [
+        "cerations",
+        "regularly",
+        "turmoiler"
+      ]
+    },
+    {
+      "word": "sabianism",
+      "num_guesses": 4,
+      "prior": 9.978424203632565e-6,
+      "guesses": [
+        "cerations",
+        "malpighia",
+        "fabianism",
+        "sabianism"
+      ]
+    },
+    {
+      "word": "ferreters",
+      "num_guesses": 3,
+      "prior": 7.352101033996635e-6,
+      "guesses": [
+        "cerations",
+        "selvedges",
+        "ferreters"
+      ]
+    },
+    {
+      "word": "neotenous",
+      "num_guesses": 2,
+      "prior": 0.000012448246599112436,
+      "guesses": [
+        "cerations",
+        "neotenous"
+      ]
+    },
+    {
+      "word": "shortsome",
+      "num_guesses": 3,
+      "prior": 5.24659456182681e-6,
+      "guesses": [
+        "cerations",
+        "twostroke",
+        "shortsome"
+      ]
+    },
+    {
+      "word": "franklier",
+      "num_guesses": 3,
+      "prior": 6.213928996436596e-6,
+      "guesses": [
+        "cerations",
+        "guidelike",
+        "franklier"
+      ]
+    },
+    {
+      "word": "middlings",
+      "num_guesses": 3,
+      "prior": 0.00002835981834073756,
+      "guesses": [
+        "cerations",
+        "blimplike",
+        "middlings"
+      ]
+    },
+    {
+      "word": "hexamines",
+      "num_guesses": 3,
+      "prior": 6.739657739739948e-6,
+      "guesses": [
+        "cerations",
+        "felstones",
+        "hexamines"
+      ]
+    },
+    {
+      "word": "ramoneurs",
+      "num_guesses": 3,
+      "prior": 7.019713998563183e-6,
+      "guesses": [
+        "cerations",
+        "pheloderm",
+        "ramoneurs"
+      ]
+    },
+    {
+      "word": "chantries",
+      "num_guesses": 2,
+      "prior": 0.00002053229582335665,
+      "guesses": [
+        "cerations",
+        "chantries"
+      ]
+    },
+    {
+      "word": "albacores",
+      "num_guesses": 3,
+      "prior": 0.000011815720393788242,
+      "guesses": [
+        "cerations",
+        "sycamores",
+        "albacores"
+      ]
+    },
+    {
+      "word": "colopathy",
+      "num_guesses": 3,
+      "prior": 8.221107536874582e-6,
+      "guesses": [
+        "cerations",
+        "cloudcapt",
+        "colopathy"
+      ]
+    },
+    {
+      "word": "watcheyes",
+      "num_guesses": 3,
+      "prior": 6.077620445724305e-6,
+      "guesses": [
+        "cerations",
+        "halfsleep",
+        "watcheyes"
+      ]
+    },
+    {
+      "word": "grantedst",
+      "num_guesses": 3,
+      "prior": 5.9821264480948136e-6,
+      "guesses": [
+        "cerations",
+        "sauntered",
+        "grantedst"
+      ]
+    },
+    {
+      "word": "mountably",
+      "num_guesses": 3,
+      "prior": 5.496367799571853e-6,
+      "guesses": [
+        "cerations",
+        "polytonal",
+        "mountably"
+      ]
+    },
+    {
+      "word": "squeamish",
+      "num_guesses": 3,
+      "prior": 0.000023981408110998883,
+      "guesses": [
+        "cerations",
+        "maplelike",
+        "squeamish"
+      ]
+    },
+    {
+      "word": "rimiterol",
+      "num_guesses": 3,
+      "prior": 9.094806703511688e-6,
+      "guesses": [
+        "cerations",
+        "supergirl",
+        "rimiterol"
+      ]
+    },
+    {
+      "word": "arboreals",
+      "num_guesses": 3,
+      "prior": 8.158916939678637e-6,
+      "guesses": [
+        "cerations",
+        "lampboard",
+        "arboreals"
+      ]
+    },
+    {
+      "word": "hypopygia",
+      "num_guesses": 3,
+      "prior": 9.734064852731045e-6,
+      "guesses": [
+        "cerations",
+        "boobyalla",
+        "hypopygia"
+      ]
+    },
+    {
+      "word": "heptamers",
+      "num_guesses": 3,
+      "prior": 9.654475736045541e-6,
+      "guesses": [
+        "cerations",
+        "deterreth",
+        "heptamers"
+      ]
+    },
+    {
+      "word": "parcimony",
+      "num_guesses": 2,
+      "prior": 9.660752013564592e-6,
+      "guesses": [
+        "cerations",
+        "parcimony"
+      ]
+    },
+    {
+      "word": "mopsticks",
+      "num_guesses": 3,
+      "prior": 8.958618469479348e-6,
+      "guesses": [
+        "cerations",
+        "politicos",
+        "mopsticks"
+      ]
+    },
+    {
+      "word": "inhalator",
+      "num_guesses": 3,
+      "prior": 0.000013805406314091707,
+      "guesses": [
+        "cerations",
+        "antagomir",
+        "inhalator"
+      ]
+    },
+    {
+      "word": "boracites",
+      "num_guesses": 2,
+      "prior": 9.458542210398933e-6,
+      "guesses": [
+        "cerations",
+        "boracites"
+      ]
+    },
+    {
+      "word": "consoling",
+      "num_guesses": 3,
+      "prior": 0.00002888316241628407,
+      "guesses": [
+        "cerations",
+        "confusing",
+        "consoling"
+      ]
+    },
+    {
+      "word": "shortarse",
+      "num_guesses": 3,
+      "prior": 7.493699525741535e-6,
+      "guesses": [
+        "cerations",
+        "plottered",
+        "shortarse"
+      ]
+    },
+    {
+      "word": "isophenes",
+      "num_guesses": 4,
+      "prior": 8.184932958432775e-6,
+      "guesses": [
+        "cerations",
+        "goldmohur",
+        "phoniness",
+        "isophenes"
+      ]
+    },
+    {
+      "word": "goldplate",
+      "num_guesses": 3,
+      "prior": 9.226122292343972e-6,
+      "guesses": [
+        "cerations",
+        "patellate",
+        "goldplate"
+      ]
+    },
+    {
+      "word": "rotovirus",
+      "num_guesses": 3,
+      "prior": 7.78411570613409e-6,
+      "guesses": [
+        "cerations",
+        "motorists",
+        "rotovirus"
+      ]
+    },
+    {
+      "word": "demurrals",
+      "num_guesses": 3,
+      "prior": 0.00001040328005330744,
+      "guesses": [
+        "cerations",
+        "realarmed",
+        "demurrals"
+      ]
+    },
+    {
+      "word": "courtings",
+      "num_guesses": 2,
+      "prior": 9.293422573050798e-6,
+      "guesses": [
+        "cerations",
+        "courtings"
+      ]
+    },
+    {
+      "word": "inflaring",
+      "num_guesses": 4,
+      "prior": 5.604221895985483e-6,
+      "guesses": [
+        "cerations",
+        "upgliding",
+        "raillying",
+        "inflaring"
+      ]
+    },
+    {
+      "word": "couchness",
+      "num_guesses": 3,
+      "prior": 4.481955018767658e-6,
+      "guesses": [
+        "cerations",
+        "dulnesses",
+        "couchness"
+      ]
+    },
+    {
+      "word": "isaxonine",
+      "num_guesses": 3,
+      "prior": 6.8500978240829665e-6,
+      "guesses": [
+        "cerations",
+        "sialoside",
+        "isaxonine"
+      ]
+    },
+    {
+      "word": "amblingly",
+      "num_guesses": 3,
+      "prior": 4.9881790672667e-6,
+      "guesses": [
+        "cerations",
+        "galliambi",
+        "amblingly"
+      ]
+    },
+    {
+      "word": "pompadour",
+      "num_guesses": 3,
+      "prior": 0.00002450758999049413,
+      "guesses": [
+        "cerations",
+        "flurothyl",
+        "pompadour"
+      ]
+    },
+    {
+      "word": "shreeking",
+      "num_guesses": 3,
+      "prior": 7.397096068271736e-6,
+      "guesses": [
+        "cerations",
+        "heavenful",
+        "shreeking"
+      ]
+    },
+    {
+      "word": "précieuse",
+      "num_guesses": 3,
+      "prior": 0.000012160394992823818,
+      "guesses": [
+        "cerations",
+        "spikefish",
+        "précieuse"
+      ]
+    },
+    {
+      "word": "assholism",
+      "num_guesses": 3,
+      "prior": 6.484554955356384e-6,
+      "guesses": [
+        "cerations",
+        "sepiolids",
+        "assholism"
+      ]
+    },
+    {
+      "word": "heptaoses",
+      "num_guesses": 3,
+      "prior": 4.1367377575179e-6,
+      "guesses": [
+        "cerations",
+        "keeshonds",
+        "heptaoses"
+      ]
+    },
+    {
+      "word": "orienters",
+      "num_guesses": 3,
+      "prior": 9.239271659794248e-6,
+      "guesses": [
+        "cerations",
+        "orthopter",
+        "orienters"
+      ]
+    },
+    {
+      "word": "coupettes",
+      "num_guesses": 3,
+      "prior": 4.4388512873306605e-6,
+      "guesses": [
+        "cerations",
+        "seoulites",
+        "coupettes"
+      ]
+    },
+    {
+      "word": "nonanones",
+      "num_guesses": 2,
+      "prior": 5.329499535736024e-6,
+      "guesses": [
+        "cerations",
+        "nonanones"
+      ]
+    },
+    {
+      "word": "concentre",
+      "num_guesses": 3,
+      "prior": 0.000013666124823512313,
+      "guesses": [
+        "cerations",
+        "concenter",
+        "concentre"
+      ]
+    },
+    {
+      "word": "raciation",
+      "num_guesses": 3,
+      "prior": 0.000010619851637014815,
+      "guesses": [
+        "cerations",
+        "philautia",
+        "raciation"
+      ]
+    },
+    {
+      "word": "subimagos",
+      "num_guesses": 3,
+      "prior": 9.539844083030703e-6,
+      "guesses": [
+        "cerations",
+        "hapludalf",
+        "subimagos"
+      ]
+    },
+    {
+      "word": "clitching",
+      "num_guesses": 3,
+      "prior": 4.1367377575179e-6,
+      "guesses": [
+        "cerations",
+        "clutching",
+        "clitching"
+      ]
+    },
+    {
+      "word": "wasteland",
+      "num_guesses": 3,
+      "prior": 0.000028737141171918962,
+      "guesses": [
+        "cerations",
+        "blaspheme",
+        "wasteland"
+      ]
+    },
+    {
+      "word": "diffusive",
+      "num_guesses": 3,
+      "prior": 0.00002832740670271054,
+      "guesses": [
+        "cerations",
+        "millipede",
+        "diffusive"
+      ]
+    },
+    {
+      "word": "clingsome",
+      "num_guesses": 3,
+      "prior": 5.0836651388807886e-6,
+      "guesses": [
+        "cerations",
+        "chinovose",
+        "clingsome"
+      ]
+    },
+    {
+      "word": "rauenings",
+      "num_guesses": 3,
+      "prior": 4.267975709397871e-6,
+      "guesses": [
+        "cerations",
+        "enlivened",
+        "rauenings"
+      ]
+    },
+    {
+      "word": "rathouses",
+      "num_guesses": 4,
+      "prior": 4.288348834679125e-6,
+      "guesses": [
+        "cerations",
+        "mouthfeel",
+        "arthouses",
+        "rathouses"
+      ]
+    },
+    {
+      "word": "carlylian",
+      "num_guesses": 3,
+      "prior": 9.588375697476178e-6,
+      "guesses": [
+        "cerations",
+        "carnapian",
+        "carlylian"
+      ]
+    },
+    {
+      "word": "squarsons",
+      "num_guesses": 3,
+      "prior": 6.916970377813454e-6,
+      "guesses": [
+        "cerations",
+        "squadrons",
+        "squarsons"
+      ]
+    },
+    {
+      "word": "scroddled",
+      "num_guesses": 2,
+      "prior": 6.587387369020146e-6,
+      "guesses": [
+        "cerations",
+        "scroddled"
+      ]
+    },
+    {
+      "word": "antishock",
+      "num_guesses": 3,
+      "prior": 0.000013486130936811511,
+      "guesses": [
+        "cerations",
+        "macintosh",
+        "antishock"
+      ]
+    },
+    {
+      "word": "surnaming",
+      "num_guesses": 3,
+      "prior": 8.710563232522128e-6,
+      "guesses": [
+        "cerations",
+        "companies",
+        "surnaming"
+      ]
+    },
+    {
+      "word": "nonexcess",
+      "num_guesses": 3,
+      "prior": 0.00001369699770154447,
+      "guesses": [
+        "cerations",
+        "noseholes",
+        "nonexcess"
+      ]
+    },
+    {
+      "word": "underself",
+      "num_guesses": 3,
+      "prior": 7.879348708038902e-6,
+      "guesses": [
+        "cerations",
+        "preferred",
+        "underself"
+      ]
+    },
+    {
+      "word": "eternizes",
+      "num_guesses": 3,
+      "prior": 7.390244778893232e-6,
+      "guesses": [
+        "cerations",
+        "sulphenes",
+        "eternizes"
+      ]
+    },
+    {
+      "word": "chattered",
+      "num_guesses": 3,
+      "prior": 0.000026453731511882432,
+      "guesses": [
+        "cerations",
+        "flutterer",
+        "chattered"
+      ]
+    },
+    {
+      "word": "intertone",
+      "num_guesses": 3,
+      "prior": 8.851731009025175e-6,
+      "guesses": [
+        "cerations",
+        "protected",
+        "intertone"
+      ]
+    },
+    {
+      "word": "etherical",
+      "num_guesses": 3,
+      "prior": 7.400512216311847e-6,
+      "guesses": [
+        "cerations",
+        "prevented",
+        "etherical"
+      ]
+    },
+    {
+      "word": "bluefaced",
+      "num_guesses": 3,
+      "prior": 9.517491618787277e-6,
+      "guesses": [
+        "cerations",
+        "flashlamp",
+        "bluefaced"
+      ]
+    },
+    {
+      "word": "meandrine",
+      "num_guesses": 3,
+      "prior": 8.391675479929642e-6,
+      "guesses": [
+        "cerations",
+        "regraphed",
+        "meandrine"
+      ]
+    },
+    {
+      "word": "sexoholic",
+      "num_guesses": 3,
+      "prior": 4.842071969440615e-6,
+      "guesses": [
+        "cerations",
+        "unspooled",
+        "sexoholic"
+      ]
+    },
+    {
+      "word": "annullity",
+      "num_guesses": 3,
+      "prior": 4.481955018767658e-6,
+      "guesses": [
+        "cerations",
+        "paulinian",
+        "annullity"
+      ]
+    },
+    {
+      "word": "muscosity",
+      "num_guesses": 3,
+      "prior": 4.064330271272939e-6,
+      "guesses": [
+        "cerations",
+        "milphosis",
+        "muscosity"
+      ]
+    },
+    {
+      "word": "wheelspun",
+      "num_guesses": 3,
+      "prior": 5.251090364965991e-6,
+      "guesses": [
+        "cerations",
+        "bushelled",
+        "wheelspun"
+      ]
+    },
+    {
+      "word": "beeswaxes",
+      "num_guesses": 3,
+      "prior": 8.044068314932915e-6,
+      "guesses": [
+        "cerations",
+        "slashable",
+        "beeswaxes"
+      ]
+    },
+    {
+      "word": "afterward",
+      "num_guesses": 3,
+      "prior": 0.00005022559908754813,
+      "guesses": [
+        "cerations",
+        "aledraper",
+        "afterward"
+      ]
+    },
+    {
+      "word": "geysering",
+      "num_guesses": 4,
+      "prior": 0.000011701121618243712,
+      "guesses": [
+        "cerations",
+        "edileship",
+        "reseeking",
+        "geysering"
+      ]
+    },
+    {
+      "word": "postpagan",
+      "num_guesses": 3,
+      "prior": 5.442994892914124e-6,
+      "guesses": [
+        "cerations",
+        "monobutyl",
+        "postpagan"
+      ]
+    },
+    {
+      "word": "cercarial",
+      "num_guesses": 3,
+      "prior": 0.00001596955036993824,
+      "guesses": [
+        "cerations",
+        "cercariae",
+        "cercarial"
+      ]
+    },
+    {
+      "word": "woodkerns",
+      "num_guesses": 4,
+      "prior": 6.37268516186667e-6,
+      "guesses": [
+        "cerations",
+        "hydrogens",
+        "woodferns",
+        "woodkerns"
+      ]
+    },
+    {
+      "word": "nonagonal",
+      "num_guesses": 3,
+      "prior": 7.855298698411307e-6,
+      "guesses": [
+        "cerations",
+        "nonannual",
+        "nonagonal"
+      ]
+    },
+    {
+      "word": "blissless",
+      "num_guesses": 3,
+      "prior": 6.931813798447968e-6,
+      "guesses": [
+        "cerations",
+        "millipede",
+        "blissless"
+      ]
+    },
+    {
+      "word": "abilities",
+      "num_guesses": 3,
+      "prior": 0.00005194186600945192,
+      "guesses": [
+        "cerations",
+        "billetted",
+        "abilities"
+      ]
+    },
+    {
+      "word": "smyrniote",
+      "num_guesses": 2,
+      "prior": 9.789678817859427e-6,
+      "guesses": [
+        "cerations",
+        "smyrniote"
+      ]
+    },
+    {
+      "word": "brexiters",
+      "num_guesses": 4,
+      "prior": 6.806143061461232e-6,
+      "guesses": [
+        "cerations",
+        "titheless",
+        "itemizers",
+        "brexiters"
+      ]
+    },
+    {
+      "word": "caddichus",
+      "num_guesses": 3,
+      "prior": 4.9143736861403825e-6,
+      "guesses": [
+        "cerations",
+        "cadillacs",
+        "caddichus"
+      ]
+    },
+    {
+      "word": "unfurling",
+      "num_guesses": 3,
+      "prior": 0.00002035392327334513,
+      "guesses": [
+        "cerations",
+        "plebified",
+        "unfurling"
+      ]
+    },
+    {
+      "word": "rulebooks",
+      "num_guesses": 3,
+      "prior": 0.000012436571586614148,
+      "guesses": [
+        "cerations",
+        "bulgeless",
+        "rulebooks"
+      ]
+    },
+    {
+      "word": "remeading",
+      "num_guesses": 4,
+      "prior": 3.825203707465914e-6,
+      "guesses": [
+        "cerations",
+        "regraphed",
+        "releading",
+        "remeading"
+      ]
+    },
+    {
+      "word": "silkvines",
+      "num_guesses": 3,
+      "prior": 4.758537849518289e-6,
+      "guesses": [
+        "cerations",
+        "engulphed",
+        "silkvines"
+      ]
+    },
+    {
+      "word": "raclettes",
+      "num_guesses": 3,
+      "prior": 8.836112506733162e-6,
+      "guesses": [
+        "cerations",
+        "spherules",
+        "raclettes"
+      ]
+    },
+    {
+      "word": "dilactone",
+      "num_guesses": 2,
+      "prior": 0.000012009540776189671,
+      "guesses": [
+        "cerations",
+        "dilactone"
+      ]
+    },
+    {
+      "word": "fleetwide",
+      "num_guesses": 3,
+      "prior": 0.000012053024060368841,
+      "guesses": [
+        "cerations",
+        "lightlike",
+        "fleetwide"
+      ]
+    },
+    {
+      "word": "metalayer",
+      "num_guesses": 3,
+      "prior": 7.526948962077445e-6,
+      "guesses": [
+        "cerations",
+        "drummette",
+        "metalayer"
+      ]
+    },
+    {
+      "word": "launchful",
+      "num_guesses": 3,
+      "prior": 4.9546608296466125e-6,
+      "guesses": [
+        "cerations",
+        "phenylium",
+        "launchful"
+      ]
+    },
+    {
+      "word": "silanized",
+      "num_guesses": 3,
+      "prior": 0.000014782133693032302,
+      "guesses": [
+        "cerations",
+        "paralyses",
+        "silanized"
+      ]
+    },
+    {
+      "word": "diasporan",
+      "num_guesses": 3,
+      "prior": 0.000014696017472074609,
+      "guesses": [
+        "cerations",
+        "iopromide",
+        "diasporan"
+      ]
+    },
+    {
+      "word": "scrounges",
+      "num_guesses": 2,
+      "prior": 9.678317133253795e-6,
+      "guesses": [
+        "cerations",
+        "scrounges"
+      ]
+    },
+    {
+      "word": "plashings",
+      "num_guesses": 3,
+      "prior": 7.757915419257158e-6,
+      "guesses": [
+        "cerations",
+        "flashdamp",
+        "plashings"
+      ]
+    },
+    {
+      "word": "multizone",
+      "num_guesses": 3,
+      "prior": 0.000015637209769498277,
+      "guesses": [
+        "cerations",
+        "dithizone",
+        "multizone"
+      ]
+    },
+    {
+      "word": "leafspots",
+      "num_guesses": 3,
+      "prior": 0.000011062876273645821,
+      "guesses": [
+        "cerations",
+        "headshots",
+        "leafspots"
+      ]
+    },
+    {
+      "word": "noonlight",
+      "num_guesses": 3,
+      "prior": 9.434114494970552e-6,
+      "guesses": [
+        "cerations",
+        "moonlight",
+        "noonlight"
+      ]
+    },
+    {
+      "word": "microzyma",
+      "num_guesses": 3,
+      "prior": 8.553873490237398e-6,
+      "guesses": [
+        "cerations",
+        "trihybrid",
+        "microzyma"
+      ]
+    },
+    {
+      "word": "pretaping",
+      "num_guesses": 3,
+      "prior": 6.807732539229514e-6,
+      "guesses": [
+        "cerations",
+        "titlepage",
+        "pretaping"
+      ]
+    },
+    {
+      "word": "flightier",
+      "num_guesses": 4,
+      "prior": 9.202928894363123e-6,
+      "guesses": [
+        "cerations",
+        "preterite",
+        "vitrified",
+        "flightier"
+      ]
+    },
+    {
+      "word": "galoubets",
+      "num_guesses": 3,
+      "prior": 5.974111064519215e-6,
+      "guesses": [
+        "cerations",
+        "sulphates",
+        "galoubets"
+      ]
+    },
+    {
+      "word": "preluding",
+      "num_guesses": 3,
+      "prior": 0.000015172738242919419,
+      "guesses": [
+        "cerations",
+        "funnelled",
+        "preluding"
+      ]
+    },
+    {
+      "word": "patrilect",
+      "num_guesses": 3,
+      "prior": 6.247886915169551e-6,
+      "guesses": [
+        "cerations",
+        "tablemate",
+        "patrilect"
+      ]
+    },
+    {
+      "word": "scoopfuls",
+      "num_guesses": 3,
+      "prior": 9.804494895998458e-6,
+      "guesses": [
+        "cerations",
+        "bookclubs",
+        "scoopfuls"
+      ]
+    },
+    {
+      "word": "clinitian",
+      "num_guesses": 3,
+      "prior": 5.286514086286848e-6,
+      "guesses": [
+        "cerations",
+        "hawaiitic",
+        "clinitian"
+      ]
+    },
+    {
+      "word": "guessable",
+      "num_guesses": 3,
+      "prior": 0.000011424990209597955,
+      "guesses": [
+        "cerations",
+        "pledgable",
+        "guessable"
+      ]
+    },
+    {
+      "word": "fluridone",
+      "num_guesses": 3,
+      "prior": 0.000013506084877906094,
+      "guesses": [
+        "cerations",
+        "milrinone",
+        "fluridone"
+      ]
+    },
+    {
+      "word": "subissues",
+      "num_guesses": 3,
+      "prior": 0.000012720183700525933,
+      "guesses": [
+        "cerations",
+        "millipede",
+        "subissues"
+      ]
+    },
+    {
+      "word": "maneaters",
+      "num_guesses": 3,
+      "prior": 0.000012088227469650189,
+      "guesses": [
+        "cerations",
+        "aftersets",
+        "maneaters"
+      ]
+    },
+    {
+      "word": "reemitted",
+      "num_guesses": 3,
+      "prior": 0.000013750484062823733,
+      "guesses": [
+        "cerations",
+        "rethermed",
+        "reemitted"
+      ]
+    },
+    {
+      "word": "puggeries",
+      "num_guesses": 4,
+      "prior": 6.057478758337721e-6,
+      "guesses": [
+        "cerations",
+        "disperser",
+        "following",
+        "puggeries"
+      ]
+    },
+    {
+      "word": "embusqués",
+      "num_guesses": 3,
+      "prior": 7.690820216134374e-6,
+      "guesses": [
+        "cerations",
+        "shellbeds",
+        "embusqués"
+      ]
+    },
+    {
+      "word": "decastyle",
+      "num_guesses": 3,
+      "prior": 9.99625885582051e-6,
+      "guesses": [
+        "cerations",
+        "desacetyl",
+        "decastyle"
+      ]
+    },
+    {
+      "word": "emaculate",
+      "num_guesses": 3,
+      "prior": 9.156313572668638e-6,
+      "guesses": [
+        "cerations",
+        "beclumpse",
+        "emaculate"
+      ]
+    },
+    {
+      "word": "futunians",
+      "num_guesses": 3,
+      "prior": 6.21163856861307e-6,
+      "guesses": [
+        "cerations",
+        "tunisians",
+        "futunians"
+      ]
+    },
+    {
+      "word": "cetothere",
+      "num_guesses": 2,
+      "prior": 8.722386232597956e-6,
+      "guesses": [
+        "cerations",
+        "cetothere"
+      ]
+    },
+    {
+      "word": "swampiest",
+      "num_guesses": 3,
+      "prior": 7.726575037096042e-6,
+      "guesses": [
+        "cerations",
+        "sheepbush",
+        "swampiest"
+      ]
+    },
+    {
+      "word": "snoutfuls",
+      "num_guesses": 3,
+      "prior": 4.113165067066558e-6,
+      "guesses": [
+        "cerations",
+        "hypotonus",
+        "snoutfuls"
+      ]
+    },
+    {
+      "word": "analogise",
+      "num_guesses": 3,
+      "prior": 8.363968146052794e-6,
+      "guesses": [
+        "cerations",
+        "pigeonmen",
+        "analogise"
+      ]
+    },
+    {
+      "word": "subthemes",
+      "num_guesses": 3,
+      "prior": 0.00001527024821045807,
+      "guesses": [
+        "cerations",
+        "plumelets",
+        "subthemes"
+      ]
+    },
+    {
+      "word": "watchdogs",
+      "num_guesses": 3,
+      "prior": 0.000021775592860926703,
+      "guesses": [
+        "cerations",
+        "jackboots",
+        "watchdogs"
+      ]
+    },
+    {
+      "word": "pinealoma",
+      "num_guesses": 3,
+      "prior": 0.000013111536008755347,
+      "guesses": [
+        "cerations",
+        "aneuploid",
+        "pinealoma"
+      ]
+    },
+    {
+      "word": "photolike",
+      "num_guesses": 4,
+      "prior": 7.048981242611873e-6,
+      "guesses": [
+        "cerations",
+        "woolybutt",
+        "floodtide",
+        "photolike"
+      ]
+    },
+    {
+      "word": "ratemeter",
+      "num_guesses": 3,
+      "prior": 0.00001582856868060301,
+      "guesses": [
+        "cerations",
+        "aledraper",
+        "ratemeter"
+      ]
+    },
+    {
+      "word": "ethicizes",
+      "num_guesses": 3,
+      "prior": 5.9027743121386055e-6,
+      "guesses": [
+        "cerations",
+        "omnibuses",
+        "ethicizes"
+      ]
+    },
+    {
+      "word": "figurette",
+      "num_guesses": 3,
+      "prior": 7.510934031899144e-6,
+      "guesses": [
+        "cerations",
+        "preterite",
+        "figurette"
+      ]
+    },
+    {
+      "word": "oomycetes",
+      "num_guesses": 3,
+      "prior": 0.000015480816713437704,
+      "guesses": [
+        "cerations",
+        "poloneses",
+        "oomycetes"
+      ]
+    },
+    {
+      "word": "moanfully",
+      "num_guesses": 3,
+      "prior": 5.661834837903603e-6,
+      "guesses": [
+        "cerations",
+        "monogonal",
+        "moanfully"
+      ]
+    },
+    {
+      "word": "alluvions",
+      "num_guesses": 3,
+      "prior": 0.000014097098533600318,
+      "guesses": [
+        "cerations",
+        "allisions",
+        "alluvions"
+      ]
+    },
+    {
+      "word": "shoutouts",
+      "num_guesses": 3,
+      "prior": 7.179507958647969e-6,
+      "guesses": [
+        "cerations",
+        "shootouts",
+        "shoutouts"
+      ]
+    },
+    {
+      "word": "influents",
+      "num_guesses": 3,
+      "prior": 0.000013675796473062686,
+      "guesses": [
+        "cerations",
+        "gintlemen",
+        "influents"
+      ]
+    },
+    {
+      "word": "cycadlike",
+      "num_guesses": 3,
+      "prior": 6.876243995982898e-6,
+      "guesses": [
+        "cerations",
+        "cavaedium",
+        "cycadlike"
+      ]
+    },
+    {
+      "word": "khuushuur",
+      "num_guesses": 3,
+      "prior": 5.123896983790542e-6,
+      "guesses": [
+        "cerations",
+        "sulphuryl",
+        "khuushuur"
+      ]
+    },
+    {
+      "word": "encenillo",
+      "num_guesses": 3,
+      "prior": 4.937555723300724e-6,
+      "guesses": [
+        "cerations",
+        "unpoliced",
+        "encenillo"
+      ]
+    },
+    {
+      "word": "tommyhawk",
+      "num_guesses": 3,
+      "prior": 8.418342304912278e-6,
+      "guesses": [
+        "cerations",
+        "hallmarky",
+        "tommyhawk"
+      ]
+    },
+    {
+      "word": "superkick",
+      "num_guesses": 3,
+      "prior": 6.76591481081294e-6,
+      "guesses": [
+        "cerations",
+        "spikefish",
+        "superkick"
+      ]
+    },
+    {
+      "word": "hailshaft",
+      "num_guesses": 3,
+      "prior": 5.7139964177802705e-6,
+      "guesses": [
+        "cerations",
+        "multigait",
+        "hailshaft"
+      ]
+    },
+    {
+      "word": "frenchify",
+      "num_guesses": 3,
+      "prior": 0.000010246556012245656,
+      "guesses": [
+        "cerations",
+        "unperched",
+        "frenchify"
+      ]
+    },
+    {
+      "word": "charities",
+      "num_guesses": 2,
+      "prior": 0.000043833471395234904,
+      "guesses": [
+        "cerations",
+        "charities"
+      ]
+    },
+    {
+      "word": "sanations",
+      "num_guesses": 3,
+      "prior": 9.633171928740337e-6,
+      "guesses": [
+        "cerations",
+        "lindmania",
+        "sanations"
+      ]
+    },
+    {
+      "word": "tribulate",
+      "num_guesses": 3,
+      "prior": 6.172174290791874e-6,
+      "guesses": [
+        "cerations",
+        "multitide",
+        "tribulate"
+      ]
+    },
+    {
+      "word": "unruffles",
+      "num_guesses": 3,
+      "prior": 4.731613700222621e-6,
+      "guesses": [
+        "cerations",
+        "unrumples",
+        "unruffles"
+      ]
+    },
+    {
+      "word": "confirmee",
+      "num_guesses": 3,
+      "prior": 0.000012298452034974198,
+      "guesses": [
+        "cerations",
+        "nongreedy",
+        "confirmee"
+      ]
+    },
+    {
+      "word": "snaggling",
+      "num_guesses": 4,
+      "prior": 5.3629159449383865e-6,
+      "guesses": [
+        "cerations",
+        "silphiums",
+        "bodyguard",
+        "snaggling"
+      ]
+    },
+    {
+      "word": "redstarts",
+      "num_guesses": 3,
+      "prior": 0.000015367654989901282,
+      "guesses": [
+        "cerations",
+        "heartless",
+        "redstarts"
+      ]
+    },
+    {
+      "word": "seedtimes",
+      "num_guesses": 3,
+      "prior": 6.931813798447968e-6,
+      "guesses": [
+        "cerations",
+        "vedutists",
+        "seedtimes"
+      ]
+    },
+    {
+      "word": "decemvirs",
+      "num_guesses": 3,
+      "prior": 0.000017501478378823205,
+      "guesses": [
+        "cerations",
+        "deciphers",
+        "decemvirs"
+      ]
+    },
+    {
+      "word": "flatstick",
+      "num_guesses": 4,
+      "prior": 5.1139572445374695e-6,
+      "guesses": [
+        "cerations",
+        "malpighia",
+        "blacklist",
+        "flatstick"
+      ]
+    },
+    {
+      "word": "eclosures",
+      "num_guesses": 3,
+      "prior": 6.328630117774724e-6,
+      "guesses": [
+        "cerations",
+        "preluders",
+        "eclosures"
+      ]
+    },
+    {
+      "word": "volsellar",
+      "num_guesses": 3,
+      "prior": 9.153398786347952e-6,
+      "guesses": [
+        "cerations",
+        "plumehead",
+        "volsellar"
+      ]
+    },
+    {
+      "word": "coarsened",
+      "num_guesses": 2,
+      "prior": 0.000018651102171323602,
+      "guesses": [
+        "cerations",
+        "coarsened"
+      ]
+    },
+    {
+      "word": "folkiness",
+      "num_guesses": 3,
+      "prior": 7.046214765604602e-6,
+      "guesses": [
+        "cerations",
+        "goldmohur",
+        "folkiness"
+      ]
+    },
+    {
+      "word": "budweiser",
+      "num_guesses": 3,
+      "prior": 0.000021269765982356593,
+      "guesses": [
+        "cerations",
+        "subprimes",
+        "budweiser"
+      ]
+    },
+    {
+      "word": "unpotting",
+      "num_guesses": 3,
+      "prior": 6.000663715952085e-6,
+      "guesses": [
+        "cerations",
+        "unwotting",
+        "unpotting"
+      ]
+    },
+    {
+      "word": "candlenut",
+      "num_guesses": 3,
+      "prior": 0.000012993264477529858,
+      "guesses": [
+        "cerations",
+        "cattlemen",
+        "candlenut"
+      ]
+    },
+    {
+      "word": "fordulled",
+      "num_guesses": 3,
+      "prior": 4.884766869911498e-6,
+      "guesses": [
+        "cerations",
+        "wormholed",
+        "fordulled"
+      ]
+    },
+    {
+      "word": "milrinone",
+      "num_guesses": 2,
+      "prior": 0.00001677663637771068,
+      "guesses": [
+        "cerations",
+        "milrinone"
+      ]
+    },
+    {
+      "word": "outraised",
+      "num_guesses": 3,
+      "prior": 8.42105833783926e-6,
+      "guesses": [
+        "cerations",
+        "steroidal",
+        "outraised"
+      ]
+    },
+    {
+      "word": "anglicize",
+      "num_guesses": 3,
+      "prior": 0.000014291354318113455,
+      "guesses": [
+        "cerations",
+        "danieline",
+        "anglicize"
+      ]
+    },
+    {
+      "word": "loadspace",
+      "num_guesses": 3,
+      "prior": 9.596838886920125e-6,
+      "guesses": [
+        "cerations",
+        "shockpads",
+        "loadspace"
+      ]
+    },
+    {
+      "word": "ascerbate",
+      "num_guesses": 3,
+      "prior": 4.288348834679125e-6,
+      "guesses": [
+        "cerations",
+        "shadscale",
+        "ascerbate"
+      ]
+    },
+    {
+      "word": "thornveld",
+      "num_guesses": 3,
+      "prior": 0.000012220043235908648,
+      "guesses": [
+        "cerations",
+        "unwhetted",
+        "thornveld"
+      ]
+    },
+    {
+      "word": "ninetyone",
+      "num_guesses": 3,
+      "prior": 0.000015848090767862263,
+      "guesses": [
+        "cerations",
+        "eightyone",
+        "ninetyone"
+      ]
+    },
+    {
+      "word": "mushairas",
+      "num_guesses": 3,
+      "prior": 0.000010239426133363344,
+      "guesses": [
+        "cerations",
+        "malpighia",
+        "mushairas"
+      ]
+    },
+    {
+      "word": "indagated",
+      "num_guesses": 3,
+      "prior": 4.66868949677588e-6,
+      "guesses": [
+        "cerations",
+        "pilumnids",
+        "indagated"
+      ]
+    },
+    {
+      "word": "forestand",
+      "num_guesses": 2,
+      "prior": 0.000010640961641361716,
+      "guesses": [
+        "cerations",
+        "forestand"
+      ]
+    },
+    {
+      "word": "mollymawk",
+      "num_guesses": 3,
+      "prior": 0.000010875764980879215,
+      "guesses": [
+        "cerations",
+        "homoallyl",
+        "mollymawk"
+      ]
+    },
+    {
+      "word": "nondivine",
+      "num_guesses": 3,
+      "prior": 0.000010440592597567312,
+      "guesses": [
+        "cerations",
+        "goblindom",
+        "nondivine"
+      ]
+    },
+    {
+      "word": "precornua",
+      "num_guesses": 3,
+      "prior": 4.523461687526164e-6,
+      "guesses": [
+        "cerations",
+        "concerned",
+        "precornua"
+      ]
+    },
+    {
+      "word": "omissions",
+      "num_guesses": 3,
+      "prior": 0.000040109416674304514,
+      "guesses": [
+        "cerations",
+        "diluvions",
+        "omissions"
+      ]
+    },
+    {
+      "word": "batterers",
+      "num_guesses": 3,
+      "prior": 0.00001985853991255445,
+      "guesses": [
+        "cerations",
+        "saberlegs",
+        "batterers"
+      ]
+    },
+    {
+      "word": "playworld",
+      "num_guesses": 3,
+      "prior": 0.00001174287237965788,
+      "guesses": [
+        "cerations",
+        "doomfully",
+        "playworld"
+      ]
+    },
+    {
+      "word": "porewater",
+      "num_guesses": 2,
+      "prior": 0.000018038494039893473,
+      "guesses": [
+        "cerations",
+        "porewater"
+      ]
+    },
+    {
+      "word": "lysozymal",
+      "num_guesses": 3,
+      "prior": 7.401649531905186e-6,
+      "guesses": [
+        "cerations",
+        "bloomsday",
+        "lysozymal"
+      ]
+    },
+    {
+      "word": "airspaces",
+      "num_guesses": 2,
+      "prior": 0.000016110183049605326,
+      "guesses": [
+        "cerations",
+        "airspaces"
+      ]
+    },
+    {
+      "word": "angiology",
+      "num_guesses": 3,
+      "prior": 0.000017651429317059788,
+      "guesses": [
+        "cerations",
+        "finialled",
+        "angiology"
+      ]
+    },
+    {
+      "word": "historied",
+      "num_guesses": 3,
+      "prior": 9.981863854295988e-6,
+      "guesses": [
+        "cerations",
+        "sutteeism",
+        "historied"
+      ]
+    },
+    {
+      "word": "reinvaded",
+      "num_guesses": 3,
+      "prior": 0.000011600186907084178,
+      "guesses": [
+        "cerations",
+        "mellified",
+        "reinvaded"
+      ]
+    },
+    {
+      "word": "zygomorph",
+      "num_guesses": 3,
+      "prior": 4.9546608296466125e-6,
+      "guesses": [
+        "cerations",
+        "hoodlumry",
+        "zygomorph"
+      ]
+    },
+    {
+      "word": "snowblink",
+      "num_guesses": 4,
+      "prior": 5.593805054616439e-6,
+      "guesses": [
+        "cerations",
+        "splooshed",
+        "slounging",
+        "snowblink"
+      ]
+    },
+    {
+      "word": "prenuclei",
+      "num_guesses": 3,
+      "prior": 6.124414783945411e-6,
+      "guesses": [
+        "cerations",
+        "unperched",
+        "prenuclei"
+      ]
+    },
+    {
+      "word": "geocacher",
+      "num_guesses": 3,
+      "prior": 7.4763049970950965e-6,
+      "guesses": [
+        "cerations",
+        "democracy",
+        "geocacher"
+      ]
+    },
+    {
+      "word": "beerhalls",
+      "num_guesses": 3,
+      "prior": 0.00001120129968593772,
+      "guesses": [
+        "cerations",
+        "realarmed",
+        "beerhalls"
+      ]
+    },
+    {
+      "word": "bellyload",
+      "num_guesses": 2,
+      "prior": 4.563498566053315e-6,
+      "guesses": [
+        "cerations",
+        "bellyload"
+      ]
+    },
+    {
+      "word": "kerugmata",
+      "num_guesses": 3,
+      "prior": 5.073405387936895e-6,
+      "guesses": [
+        "cerations",
+        "epaulette",
+        "kerugmata"
+      ]
+    },
+    {
+      "word": "celecoxib",
+      "num_guesses": 2,
+      "prior": 0.000018114303743475697,
+      "guesses": [
+        "cerations",
+        "celecoxib"
+      ]
+    },
+    {
+      "word": "shrewdish",
+      "num_guesses": 3,
+      "prior": 6.427595161270612e-6,
+      "guesses": [
+        "cerations",
+        "shriveled",
+        "shrewdish"
+      ]
+    },
+    {
+      "word": "microfill",
+      "num_guesses": 3,
+      "prior": 9.870082651607459e-6,
+      "guesses": [
+        "cerations",
+        "bloodplay",
+        "microfill"
+      ]
+    },
+    {
+      "word": "tantalous",
+      "num_guesses": 3,
+      "prior": 5.645132969110173e-6,
+      "guesses": [
+        "cerations",
+        "raspingly",
+        "tantalous"
+      ]
+    },
+    {
+      "word": "debussian",
+      "num_guesses": 3,
+      "prior": 8.694499657054038e-6,
+      "guesses": [
+        "cerations",
+        "mildening",
+        "debussian"
+      ]
+    },
+    {
+      "word": "fanpetals",
+      "num_guesses": 4,
+      "prior": 4.751863857114935e-6,
+      "guesses": [
+        "cerations",
+        "basenames",
+        "pantalets",
+        "fanpetals"
+      ]
+    },
+    {
+      "word": "bicurious",
+      "num_guesses": 2,
+      "prior": 7.220144487359272e-6,
+      "guesses": [
+        "cerations",
+        "bicurious"
+      ]
+    },
+    {
+      "word": "extortive",
+      "num_guesses": 3,
+      "prior": 9.72606987315432e-6,
+      "guesses": [
+        "cerations",
+        "mtorolite",
+        "extortive"
+      ]
+    },
+    {
+      "word": "mistitles",
+      "num_guesses": 4,
+      "prior": 6.097498615028059e-6,
+      "guesses": [
+        "cerations",
+        "submeshes",
+        "mystifies",
+        "mistitles"
+      ]
+    },
+    {
+      "word": "boathouse",
+      "num_guesses": 3,
+      "prior": 0.000024072851218074938,
+      "guesses": [
+        "cerations",
+        "souplesse",
+        "boathouse"
+      ]
+    },
+    {
+      "word": "cropheads",
+      "num_guesses": 3,
+      "prior": 6.437560472956889e-6,
+      "guesses": [
+        "cerations",
+        "polemized",
+        "cropheads"
+      ]
+    },
+    {
+      "word": "chittered",
+      "num_guesses": 3,
+      "prior": 0.000012940152602286832,
+      "guesses": [
+        "cerations",
+        "cleithrum",
+        "chittered"
+      ]
+    },
+    {
+      "word": "scarpered",
+      "num_guesses": 3,
+      "prior": 0.00001289184193857482,
+      "guesses": [
+        "cerations",
+        "subserver",
+        "scarpered"
+      ]
+    },
+    {
+      "word": "apertness",
+      "num_guesses": 3,
+      "prior": 4.902616676552639e-6,
+      "guesses": [
+        "cerations",
+        "stalwarts",
+        "apertness"
+      ]
+    },
+    {
+      "word": "pantagamy",
+      "num_guesses": 3,
+      "prior": 6.626782002655218e-6,
+      "guesses": [
+        "cerations",
+        "adamantly",
+        "pantagamy"
+      ]
+    },
+    {
+      "word": "pannicles",
+      "num_guesses": 3,
+      "prior": 8.4176627486954e-6,
+      "guesses": [
+        "cerations",
+        "panfungal",
+        "pannicles"
+      ]
+    },
+    {
+      "word": "overtunic",
+      "num_guesses": 3,
+      "prior": 9.359272791793492e-6,
+      "guesses": [
+        "cerations",
+        "electrion",
+        "overtunic"
+      ]
+    },
+    {
+      "word": "skeltered",
+      "num_guesses": 4,
+      "prior": 7.739932989254925e-6,
+      "guesses": [
+        "cerations",
+        "published",
+        "sweltered",
+        "skeltered"
+      ]
+    },
+    {
+      "word": "flankable",
+      "num_guesses": 4,
+      "prior": 4.327970798800785e-6,
+      "guesses": [
+        "cerations",
+        "pledgable",
+        "blankable",
+        "flankable"
+      ]
+    },
+    {
+      "word": "passments",
+      "num_guesses": 3,
+      "prior": 6.229868195642951e-6,
+      "guesses": [
+        "cerations",
+        "basenames",
+        "passments"
+      ]
+    },
+    {
+      "word": "notchings",
+      "num_guesses": 4,
+      "prior": 9.653297115223877e-6,
+      "guesses": [
+        "cerations",
+        "stockings",
+        "touchings",
+        "notchings"
+      ]
+    },
+    {
+      "word": "selenanes",
+      "num_guesses": 3,
+      "prior": 4.366192811338587e-6,
+      "guesses": [
+        "cerations",
+        "headlands",
+        "selenanes"
+      ]
+    },
+    {
+      "word": "dataphone",
+      "num_guesses": 2,
+      "prior": 0.000014349289865051676,
+      "guesses": [
+        "cerations",
+        "dataphone"
+      ]
+    },
+    {
+      "word": "cottonian",
+      "num_guesses": 3,
+      "prior": 0.00001876156922643617,
+      "guesses": [
+        "cerations",
+        "montanian",
+        "cottonian"
+      ]
+    },
+    {
+      "word": "infolines",
+      "num_guesses": 3,
+      "prior": 6.684172836495492e-6,
+      "guesses": [
+        "cerations",
+        "homolyzed",
+        "infolines"
+      ]
+    },
+    {
+      "word": "clattered",
+      "num_guesses": 3,
+      "prior": 0.000026489499423857945,
+      "guesses": [
+        "cerations",
+        "flutterer",
+        "clattered"
+      ]
+    },
+    {
+      "word": "homebakes",
+      "num_guesses": 4,
+      "prior": 3.8718663318191665e-6,
+      "guesses": [
+        "cerations",
+        "begloomed",
+        "homebases",
+        "homebakes"
+      ]
+    },
+    {
+      "word": "riverhead",
+      "num_guesses": 3,
+      "prior": 0.0000232283503323358,
+      "guesses": [
+        "cerations",
+        "praeamble",
+        "riverhead"
+      ]
+    },
+    {
+      "word": "lichenose",
+      "num_guesses": 3,
+      "prior": 6.897481421460188e-6,
+      "guesses": [
+        "cerations",
+        "kilojoule",
+        "lichenose"
+      ]
+    },
+    {
+      "word": "sambousik",
+      "num_guesses": 3,
+      "prior": 4.1011731280170725e-6,
+      "guesses": [
+        "cerations",
+        "sepiolids",
+        "sambousik"
+      ]
+    },
+    {
+      "word": "docblocks",
+      "num_guesses": 3,
+      "prior": 5.473748234312916e-6,
+      "guesses": [
+        "cerations",
+        "bookclubs",
+        "docblocks"
+      ]
+    },
+    {
+      "word": "phychical",
+      "num_guesses": 3,
+      "prior": 6.663531661459313e-6,
+      "guesses": [
+        "cerations",
+        "phallical",
+        "phychical"
+      ]
+    },
+    {
+      "word": "triblends",
+      "num_guesses": 3,
+      "prior": 4.711010825711257e-6,
+      "guesses": [
+        "cerations",
+        "unnettled",
+        "triblends"
+      ]
+    },
+    {
+      "word": "mudéjares",
+      "num_guesses": 3,
+      "prior": 0.000010574393138817562,
+      "guesses": [
+        "cerations",
+        "supergerm",
+        "mudéjares"
+      ]
+    },
+    {
+      "word": "resoluter",
+      "num_guesses": 3,
+      "prior": 6.532100773707336e-6,
+      "guesses": [
+        "cerations",
+        "desorbers",
+        "resoluter"
+      ]
+    },
+    {
+      "word": "birdcliff",
+      "num_guesses": 3,
+      "prior": 4.89074579463278e-6,
+      "guesses": [
+        "cerations",
+        "girlchild",
+        "birdcliff"
+      ]
+    },
+    {
+      "word": "decastere",
+      "num_guesses": 3,
+      "prior": 6.952383340566059e-6,
+      "guesses": [
+        "cerations",
+        "megacryst",
+        "decastere"
+      ]
+    },
+    {
+      "word": "plumdamas",
+      "num_guesses": 3,
+      "prior": 9.345892790256406e-6,
+      "guesses": [
+        "cerations",
+        "pushbacks",
+        "plumdamas"
+      ]
+    },
+    {
+      "word": "saltcedar",
+      "num_guesses": 3,
+      "prior": 0.000016244894170260986,
+      "guesses": [
+        "cerations",
+        "shadscale",
+        "saltcedar"
+      ]
+    },
+    {
+      "word": "torchable",
+      "num_guesses": 2,
+      "prior": 4.013028902061314e-6,
+      "guesses": [
+        "cerations",
+        "torchable"
+      ]
+    },
+    {
+      "word": "conscribe",
+      "num_guesses": 3,
+      "prior": 9.164068242753153e-6,
+      "guesses": [
+        "cerations",
+        "coinsured",
+        "conscribe"
+      ]
+    },
+    {
+      "word": "insurable",
+      "num_guesses": 3,
+      "prior": 0.000030466169914999743,
+      "guesses": [
+        "cerations",
+        "magnesial",
+        "insurable"
+      ]
+    },
+    {
+      "word": "premières",
+      "num_guesses": 4,
+      "prior": 0.00001667888287228918,
+      "guesses": [
+        "cerations",
+        "disperser",
+        "premieres",
+        "premières"
+      ]
+    },
+    {
+      "word": "zilascorb",
+      "num_guesses": 3,
+      "prior": 4.384812646233059e-6,
+      "guesses": [
+        "cerations",
+        "disaccord",
+        "zilascorb"
+      ]
+    },
+    {
+      "word": "meatarian",
+      "num_guesses": 3,
+      "prior": 4.872720442392284e-6,
+      "guesses": [
+        "cerations",
+        "spannable",
+        "meatarian"
+      ]
+    },
+    {
+      "word": "mangonize",
+      "num_guesses": 3,
+      "prior": 4.298391916225446e-6,
+      "guesses": [
+        "cerations",
+        "pandemian",
+        "mangonize"
+      ]
+    },
+    {
+      "word": "ironizing",
+      "num_guesses": 3,
+      "prior": 0.000012708300295280002,
+      "guesses": [
+        "cerations",
+        "woodpulps",
+        "ironizing"
+      ]
+    },
+    {
+      "word": "killshots",
+      "num_guesses": 3,
+      "prior": 4.690041102021375e-6,
+      "guesses": [
+        "cerations",
+        "giftbooks",
+        "killshots"
+      ]
+    },
+    {
+      "word": "undersent",
+      "num_guesses": 3,
+      "prior": 5.02081988414959e-6,
+      "guesses": [
+        "cerations",
+        "unpresent",
+        "undersent"
+      ]
+    },
+    {
+      "word": "polcalcin",
+      "num_guesses": 3,
+      "prior": 4.60217781568991e-6,
+      "guesses": [
+        "cerations",
+        "colimycin",
+        "polcalcin"
+      ]
+    },
+    {
+      "word": "gloomiest",
+      "num_guesses": 3,
+      "prior": 0.000019067518672234183,
+      "guesses": [
+        "cerations",
+        "blossomed",
+        "gloomiest"
+      ]
+    },
+    {
+      "word": "neoarctic",
+      "num_guesses": 3,
+      "prior": 7.26724176899209e-6,
+      "guesses": [
+        "cerations",
+        "redaction",
+        "neoarctic"
+      ]
+    },
+    {
+      "word": "seapowers",
+      "num_guesses": 3,
+      "prior": 8.710563232522128e-6,
+      "guesses": [
+        "cerations",
+        "shopfolks",
+        "seapowers"
+      ]
+    },
+    {
+      "word": "melastome",
+      "num_guesses": 3,
+      "prior": 8.58613646440559e-6,
+      "guesses": [
+        "cerations",
+        "melastoma",
+        "melastome"
+      ]
+    },
+    {
+      "word": "factotums",
+      "num_guesses": 3,
+      "prior": 0.000011383227989470818,
+      "guesses": [
+        "cerations",
+        "aulacopod",
+        "factotums"
+      ]
+    },
+    {
+      "word": "detailman",
+      "num_guesses": 3,
+      "prior": 0.00001024035724423928,
+      "guesses": [
+        "cerations",
+        "depainten",
+        "detailman"
+      ]
+    },
+    {
+      "word": "pranksome",
+      "num_guesses": 3,
+      "prior": 8.708190912912978e-6,
+      "guesses": [
+        "cerations",
+        "ponderosa",
+        "pranksome"
+      ]
+    },
+    {
+      "word": "recrushes",
+      "num_guesses": 3,
+      "prior": 4.896695624635623e-6,
+      "guesses": [
+        "cerations",
+        "resecures",
+        "recrushes"
+      ]
+    },
+    {
+      "word": "serpently",
+      "num_guesses": 3,
+      "prior": 4.960310400577272e-6,
+      "guesses": [
+        "cerations",
+        "serpentry",
+        "serpently"
+      ]
+    },
+    {
+      "word": "curarines",
+      "num_guesses": 3,
+      "prior": 5.590315466712632e-6,
+      "guesses": [
+        "cerations",
+        "carabines",
+        "curarines"
+      ]
+    },
+    {
+      "word": "coolamons",
+      "num_guesses": 3,
+      "prior": 8.181889383003803e-6,
+      "guesses": [
+        "cerations",
+        "cabochons",
+        "coolamons"
+      ]
+    },
+    {
+      "word": "maistered",
+      "num_guesses": 3,
+      "prior": 7.570040986531086e-6,
+      "guesses": [
+        "cerations",
+        "amiloride",
+        "maistered"
+      ]
+    },
+    {
+      "word": "cantarito",
+      "num_guesses": 3,
+      "prior": 5.8099536224032995e-6,
+      "guesses": [
+        "cerations",
+        "cantorial",
+        "cantarito"
+      ]
+    },
+    {
+      "word": "adventist",
+      "num_guesses": 3,
+      "prior": 0.000026866613837836047,
+      "guesses": [
+        "cerations",
+        "matildite",
+        "adventist"
+      ]
+    },
+    {
+      "word": "mascotism",
+      "num_guesses": 4,
+      "prior": 4.0517469638162025e-6,
+      "guesses": [
+        "cerations",
+        "pyohaemia",
+        "midcostal",
+        "mascotism"
+      ]
+    },
+    {
+      "word": "outbursts",
+      "num_guesses": 3,
+      "prior": 0.000032022445480028753,
+      "guesses": [
+        "cerations",
+        "doorposts",
+        "outbursts"
+      ]
+    },
+    {
+      "word": "dullardry",
+      "num_guesses": 3,
+      "prior": 4.193426535335953e-6,
+      "guesses": [
+        "cerations",
+        "gradually",
+        "dullardry"
+      ]
+    },
+    {
+      "word": "cyreneans",
+      "num_guesses": 2,
+      "prior": 0.000010451196861278152,
+      "guesses": [
+        "cerations",
+        "cyreneans"
+      ]
+    },
+    {
+      "word": "hypsidont",
+      "num_guesses": 3,
+      "prior": 4.920210250916533e-6,
+      "guesses": [
+        "cerations",
+        "sigmodont",
+        "hypsidont"
+      ]
+    },
+    {
+      "word": "zombified",
+      "num_guesses": 3,
+      "prior": 0.000012029813469918943,
+      "guesses": [
+        "cerations",
+        "bumpology",
+        "zombified"
+      ]
+    },
+    {
+      "word": "replaited",
+      "num_guesses": 3,
+      "prior": 7.695690910487463e-6,
+      "guesses": [
+        "cerations",
+        "underpaid",
+        "replaited"
+      ]
+    },
+    {
+      "word": "gyrations",
+      "num_guesses": 3,
+      "prior": 0.000022136975466087113,
+      "guesses": [
+        "cerations",
+        "plumbagin",
+        "gyrations"
+      ]
+    },
+    {
+      "word": "prefiring",
+      "num_guesses": 4,
+      "prior": 0.000012304412756075161,
+      "guesses": [
+        "cerations",
+        "funnelled",
+        "prefixing",
+        "prefiring"
+      ]
+    },
+    {
+      "word": "cofunctor",
+      "num_guesses": 3,
+      "prior": 6.901998440016662e-6,
+      "guesses": [
+        "cerations",
+        "conductor",
+        "cofunctor"
+      ]
+    },
+    {
+      "word": "falsifyer",
+      "num_guesses": 4,
+      "prior": 5.583310036843919e-6,
+      "guesses": [
+        "cerations",
+        "submersed",
+        "falsifier",
+        "falsifyer"
+      ]
+    },
+    {
+      "word": "expulsion",
+      "num_guesses": 3,
+      "prior": 0.000041903258804012734,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "expulsion"
+      ]
+    },
+    {
+      "word": "thiazolyl",
+      "num_guesses": 3,
+      "prior": 0.00001347196827648374,
+      "guesses": [
+        "cerations",
+        "kopagmiut",
+        "thiazolyl"
+      ]
+    },
+    {
+      "word": "bioseston",
+      "num_guesses": 3,
+      "prior": 7.0572547175562e-6,
+      "guesses": [
+        "cerations",
+        "dieselise",
+        "bioseston"
+      ]
+    },
+    {
+      "word": "responser",
+      "num_guesses": 3,
+      "prior": 8.512685305590476e-6,
+      "guesses": [
+        "cerations",
+        "pretender",
+        "responser"
+      ]
+    },
+    {
+      "word": "reedmaker",
+      "num_guesses": 3,
+      "prior": 8.410855086936939e-6,
+      "guesses": [
+        "cerations",
+        "belgrader",
+        "reedmaker"
+      ]
+    },
+    {
+      "word": "bivisible",
+      "num_guesses": 3,
+      "prior": 9.134361582627229e-6,
+      "guesses": [
+        "cerations",
+        "empuzzled",
+        "bivisible"
+      ]
+    },
+    {
+      "word": "gunstocks",
+      "num_guesses": 2,
+      "prior": 0.000014105383741286514,
+      "guesses": [
+        "cerations",
+        "gunstocks"
+      ]
+    },
+    {
+      "word": "scoopless",
+      "num_guesses": 3,
+      "prior": 4.327970798800785e-6,
+      "guesses": [
+        "cerations",
+        "supershed",
+        "scoopless"
+      ]
+    },
+    {
+      "word": "uncessant",
+      "num_guesses": 3,
+      "prior": 0.000010037945271431138,
+      "guesses": [
+        "cerations",
+        "tableland",
+        "uncessant"
+      ]
+    },
+    {
+      "word": "firmliest",
+      "num_guesses": 3,
+      "prior": 3.7592123245944e-6,
+      "guesses": [
+        "cerations",
+        "surfeited",
+        "firmliest"
+      ]
+    },
+    {
+      "word": "dorcopsis",
+      "num_guesses": 2,
+      "prior": 0.000010748425761333844,
+      "guesses": [
+        "cerations",
+        "dorcopsis"
+      ]
+    },
+    {
+      "word": "carlicues",
+      "num_guesses": 3,
+      "prior": 4.878758528386635e-6,
+      "guesses": [
+        "cerations",
+        "carriages",
+        "carlicues"
+      ]
+    },
+    {
+      "word": "adviceful",
+      "num_guesses": 3,
+      "prior": 4.896695624635623e-6,
+      "guesses": [
+        "cerations",
+        "alipamide",
+        "adviceful"
+      ]
+    },
+    {
+      "word": "potamonid",
+      "num_guesses": 3,
+      "prior": 6.008538629825472e-6,
+      "guesses": [
+        "cerations",
+        "papayotin",
+        "potamonid"
+      ]
+    },
+    {
+      "word": "preschism",
+      "num_guesses": 3,
+      "prior": 5.052633327220041e-6,
+      "guesses": [
+        "cerations",
+        "spikefish",
+        "preschism"
+      ]
+    },
+    {
+      "word": "travoises",
+      "num_guesses": 3,
+      "prior": 7.028125902873409e-6,
+      "guesses": [
+        "cerations",
+        "subtotems",
+        "travoises"
+      ]
+    },
+    {
+      "word": "uneyeable",
+      "num_guesses": 4,
+      "prior": 4.356762501206032e-6,
+      "guesses": [
+        "cerations",
+        "pledgable",
+        "unequable",
+        "uneyeable"
+      ]
+    },
+    {
+      "word": "procelles",
+      "num_guesses": 3,
+      "prior": 3.7761463991262405e-6,
+      "guesses": [
+        "cerations",
+        "preluders",
+        "procelles"
+      ]
+    },
+    {
+      "word": "calyptrae",
+      "num_guesses": 4,
+      "prior": 0.000012577553651341012,
+      "guesses": [
+        "cerations",
+        "caveached",
+        "caprylate",
+        "calyptrae"
+      ]
+    },
+    {
+      "word": "throatlet",
+      "num_guesses": 4,
+      "prior": 5.1819729726034825e-6,
+      "guesses": [
+        "cerations",
+        "porewater",
+        "kartoffel",
+        "throatlet"
+      ]
+    },
+    {
+      "word": "unshorted",
+      "num_guesses": 3,
+      "prior": 8.142680929627561e-6,
+      "guesses": [
+        "cerations",
+        "unstented",
+        "unshorted"
+      ]
+    },
+    {
+      "word": "broilings",
+      "num_guesses": 3,
+      "prior": 7.137930016275097e-6,
+      "guesses": [
+        "cerations",
+        "poolbundy",
+        "broilings"
+      ]
+    },
+    {
+      "word": "kashghari",
+      "num_guesses": 3,
+      "prior": 9.268587021188604e-6,
+      "guesses": [
+        "cerations",
+        "syphilids",
+        "kashghari"
+      ]
+    },
+    {
+      "word": "unscalped",
+      "num_guesses": 3,
+      "prior": 8.646193890885005e-6,
+      "guesses": [
+        "cerations",
+        "unplanked",
+        "unscalped"
+      ]
+    },
+    {
+      "word": "unroofing",
+      "num_guesses": 3,
+      "prior": 0.000015290278528474947,
+      "guesses": [
+        "cerations",
+        "uniformed",
+        "unroofing"
+      ]
+    },
+    {
+      "word": "kiwanians",
+      "num_guesses": 3,
+      "prior": 0.000012999245269236269,
+      "guesses": [
+        "cerations",
+        "shindling",
+        "kiwanians"
+      ]
+    },
+    {
+      "word": "honeyware",
+      "num_guesses": 3,
+      "prior": 7.33803216792216e-6,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "honeyware"
+      ]
+    },
+    {
+      "word": "motuporin",
+      "num_guesses": 3,
+      "prior": 6.463185375860803e-6,
+      "guesses": [
+        "cerations",
+        "prorogued",
+        "motuporin"
+      ]
+    },
+    {
+      "word": "pronomial",
+      "num_guesses": 3,
+      "prior": 0.00001034166726543466,
+      "guesses": [
+        "cerations",
+        "ganoidian",
+        "pronomial"
+      ]
+    },
+    {
+      "word": "booktalks",
+      "num_guesses": 3,
+      "prior": 0.000012261235156597867,
+      "guesses": [
+        "cerations",
+        "blastomas",
+        "booktalks"
+      ]
+    },
+    {
+      "word": "sternness",
+      "num_guesses": 3,
+      "prior": 0.0000244166378150809,
+      "guesses": [
+        "cerations",
+        "kneedness",
+        "sternness"
+      ]
+    },
+    {
+      "word": "nonpareil",
+      "num_guesses": 3,
+      "prior": 0.000022837474252774362,
+      "guesses": [
+        "cerations",
+        "handelian",
+        "nonpareil"
+      ]
+    },
+    {
+      "word": "quantiles",
+      "num_guesses": 3,
+      "prior": 0.000020618262986661926,
+      "guesses": [
+        "cerations",
+        "glassines",
+        "quantiles"
+      ]
+    },
+    {
+      "word": "demonises",
+      "num_guesses": 3,
+      "prior": 8.878801028366652e-6,
+      "guesses": [
+        "cerations",
+        "demonizes",
+        "demonises"
+      ]
+    },
+    {
+      "word": "atticisms",
+      "num_guesses": 3,
+      "prior": 8.89575795528959e-6,
+      "guesses": [
+        "cerations",
+        "activists",
+        "atticisms"
+      ]
+    },
+    {
+      "word": "macrogels",
+      "num_guesses": 3,
+      "prior": 6.48841022262044e-6,
+      "guesses": [
+        "cerations",
+        "rulemaker",
+        "macrogels"
+      ]
+    },
+    {
+      "word": "judicious",
+      "num_guesses": 3,
+      "prior": 0.000041121063061071794,
+      "guesses": [
+        "cerations",
+        "following",
+        "judicious"
+      ]
+    },
+    {
+      "word": "ulsterian",
+      "num_guesses": 3,
+      "prior": 9.007873406172273e-6,
+      "guesses": [
+        "cerations",
+        "buttermen",
+        "ulsterian"
+      ]
+    },
+    {
+      "word": "diploidic",
+      "num_guesses": 3,
+      "prior": 5.600758220967723e-6,
+      "guesses": [
+        "cerations",
+        "obviously",
+        "diploidic"
+      ]
+    },
+    {
+      "word": "sculptury",
+      "num_guesses": 2,
+      "prior": 6.20013545525666e-6,
+      "guesses": [
+        "cerations",
+        "sculptury"
+      ]
+    },
+    {
+      "word": "kiloponds",
+      "num_guesses": 3,
+      "prior": 7.83004288050981e-6,
+      "guesses": [
+        "cerations",
+        "limonoids",
+        "kiloponds"
+      ]
+    },
+    {
+      "word": "uphearted",
+      "num_guesses": 3,
+      "prior": 4.039005368762284e-6,
+      "guesses": [
+        "cerations",
+        "aledraper",
+        "uphearted"
+      ]
+    },
+    {
+      "word": "albertans",
+      "num_guesses": 3,
+      "prior": 0.000016084008565069942,
+      "guesses": [
+        "cerations",
+        "lutherans",
+        "albertans"
+      ]
+    },
+    {
+      "word": "cacholote",
+      "num_guesses": 3,
+      "prior": 5.0785456268412145e-6,
+      "guesses": [
+        "cerations",
+        "cachalote",
+        "cacholote"
+      ]
+    },
+    {
+      "word": "rebooting",
+      "num_guesses": 3,
+      "prior": 0.000016476667396275915,
+      "guesses": [
+        "cerations",
+        "rotograph",
+        "rebooting"
+      ]
+    },
+    {
+      "word": "moresomes",
+      "num_guesses": 3,
+      "prior": 6.892952539404554e-6,
+      "guesses": [
+        "cerations",
+        "boreholed",
+        "moresomes"
+      ]
+    },
+    {
+      "word": "divinours",
+      "num_guesses": 3,
+      "prior": 5.103939621560813e-6,
+      "guesses": [
+        "cerations",
+        "wingforms",
+        "divinours"
+      ]
+    },
+    {
+      "word": "exilarchy",
+      "num_guesses": 3,
+      "prior": 5.052633327220041e-6,
+      "guesses": [
+        "cerations",
+        "praeamble",
+        "exilarchy"
+      ]
+    },
+    {
+      "word": "seminasal",
+      "num_guesses": 4,
+      "prior": 4.982655045883654e-6,
+      "guesses": [
+        "cerations",
+        "mildening",
+        "seminally",
+        "seminasal"
+      ]
+    },
+    {
+      "word": "preverbal",
+      "num_guesses": 3,
+      "prior": 0.000022027157770489335,
+      "guesses": [
+        "cerations",
+        "plumbered",
+        "preverbal"
+      ]
+    },
+    {
+      "word": "coemerges",
+      "num_guesses": 4,
+      "prior": 4.717918495898997e-6,
+      "guesses": [
+        "cerations",
+        "modelless",
+        "commerces",
+        "coemerges"
+      ]
+    },
+    {
+      "word": "talonlike",
+      "num_guesses": 3,
+      "prior": 9.129945764145292e-6,
+      "guesses": [
+        "cerations",
+        "aluminian",
+        "talonlike"
+      ]
+    },
+    {
+      "word": "entoderms",
+      "num_guesses": 3,
+      "prior": 5.955239397839161e-6,
+      "guesses": [
+        "cerations",
+        "mutedness",
+        "entoderms"
+      ]
+    },
+    {
+      "word": "orophilic",
+      "num_guesses": 3,
+      "prior": 5.251090364965991e-6,
+      "guesses": [
+        "cerations",
+        "dolorific",
+        "orophilic"
+      ]
+    },
+    {
+      "word": "anatropia",
+      "num_guesses": 3,
+      "prior": 5.742520280431512e-6,
+      "guesses": [
+        "cerations",
+        "animalian",
+        "anatropia"
+      ]
+    },
+    {
+      "word": "leprotene",
+      "num_guesses": 3,
+      "prior": 6.298564006266846e-6,
+      "guesses": [
+        "cerations",
+        "petrogeny",
+        "leprotene"
+      ]
+    },
+    {
+      "word": "bipedally",
+      "num_guesses": 3,
+      "prior": 0.000011541169190230604,
+      "guesses": [
+        "cerations",
+        "palladium",
+        "bipedally"
+      ]
+    },
+    {
+      "word": "lintwhite",
+      "num_guesses": 4,
+      "prior": 9.667793385484579e-6,
+      "guesses": [
+        "cerations",
+        "midinette",
+        "liptinite",
+        "lintwhite"
+      ]
+    },
+    {
+      "word": "hedgewise",
+      "num_guesses": 3,
+      "prior": 4.384812646233059e-6,
+      "guesses": [
+        "cerations",
+        "childlike",
+        "hedgewise"
+      ]
+    },
+    {
+      "word": "anchizone",
+      "num_guesses": 2,
+      "prior": 0.0000105142149184045,
+      "guesses": [
+        "cerations",
+        "anchizone"
+      ]
+    },
+    {
+      "word": "nanobelts",
+      "num_guesses": 3,
+      "prior": 0.000012423277137226141,
+      "guesses": [
+        "cerations",
+        "mathletes",
+        "nanobelts"
+      ]
+    },
+    {
+      "word": "screeches",
+      "num_guesses": 3,
+      "prior": 0.000019553608345003106,
+      "guesses": [
+        "cerations",
+        "empleaded",
+        "screeches"
+      ]
+    },
+    {
+      "word": "sandshark",
+      "num_guesses": 3,
+      "prior": 6.901998440016662e-6,
+      "guesses": [
+        "cerations",
+        "suffragan",
+        "sandshark"
+      ]
+    },
+    {
+      "word": "sustainer",
+      "num_guesses": 3,
+      "prior": 0.00002167994653342724,
+      "guesses": [
+        "cerations",
+        "abligated",
+        "sustainer"
+      ]
+    },
+    {
+      "word": "crotamine",
+      "num_guesses": 3,
+      "prior": 9.300730527294169e-6,
+      "guesses": [
+        "cerations",
+        "crotaline",
+        "crotamine"
+      ]
+    },
+    {
+      "word": "acronomic",
+      "num_guesses": 3,
+      "prior": 5.4622967778299126e-6,
+      "guesses": [
+        "cerations",
+        "adjacency",
+        "acronomic"
+      ]
+    },
+    {
+      "word": "entrucked",
+      "num_guesses": 3,
+      "prior": 7.328592635560971e-6,
+      "guesses": [
+        "cerations",
+        "encrypted",
+        "entrucked"
+      ]
+    },
+    {
+      "word": "uncrating",
+      "num_guesses": 3,
+      "prior": 0.000013122716949614393,
+      "guesses": [
+        "cerations",
+        "untracing",
+        "uncrating"
+      ]
+    },
+    {
+      "word": "ecpyrosis",
+      "num_guesses": 3,
+      "prior": 8.247826514349528e-6,
+      "guesses": [
+        "cerations",
+        "begloomed",
+        "ecpyrosis"
+      ]
+    },
+    {
+      "word": "haywiring",
+      "num_guesses": 4,
+      "prior": 4.937555723300724e-6,
+      "guesses": [
+        "cerations",
+        "upgliding",
+        "arabizing",
+        "haywiring"
+      ]
+    },
+    {
+      "word": "palatally",
+      "num_guesses": 2,
+      "prior": 0.00001256347742654237,
+      "guesses": [
+        "cerations",
+        "palatally"
+      ]
+    },
+    {
+      "word": "hawksbill",
+      "num_guesses": 3,
+      "prior": 0.000018425706248026763,
+      "guesses": [
+        "cerations",
+        "malpighia",
+        "hawksbill"
+      ]
+    },
+    {
+      "word": "disthrone",
+      "num_guesses": 3,
+      "prior": 6.119556059236e-6,
+      "guesses": [
+        "cerations",
+        "rendering",
+        "disthrone"
+      ]
+    },
+    {
+      "word": "micromole",
+      "num_guesses": 3,
+      "prior": 0.00001390339711317451,
+      "guesses": [
+        "cerations",
+        "punchcard",
+        "micromole"
+      ]
+    },
+    {
+      "word": "cosmicism",
+      "num_guesses": 3,
+      "prior": 7.4487976101057505e-6,
+      "guesses": [
+        "cerations",
+        "copiously",
+        "cosmicism"
+      ]
+    },
+    {
+      "word": "twifflers",
+      "num_guesses": 4,
+      "prior": 5.290875902525332e-6,
+      "guesses": [
+        "cerations",
+        "titheless",
+        "performed",
+        "twifflers"
+      ]
+    },
+    {
+      "word": "detangled",
+      "num_guesses": 3,
+      "prior": 8.386853070671905e-6,
+      "guesses": [
+        "cerations",
+        "demandeth",
+        "detangled"
+      ]
+    },
+    {
+      "word": "solidbody",
+      "num_guesses": 2,
+      "prior": 0.000011840476893502412,
+      "guesses": [
+        "cerations",
+        "solidbody"
+      ]
+    },
+    {
+      "word": "heptanoid",
+      "num_guesses": 3,
+      "prior": 4.288348834679125e-6,
+      "guesses": [
+        "cerations",
+        "dentinoma",
+        "heptanoid"
+      ]
+    },
+    {
+      "word": "ghostlily",
+      "num_guesses": 3,
+      "prior": 6.52081576397534e-6,
+      "guesses": [
+        "cerations",
+        "smoothish",
+        "ghostlily"
+      ]
+    },
+    {
+      "word": "gripingly",
+      "num_guesses": 3,
+      "prior": 5.668460759889756e-6,
+      "guesses": [
+        "cerations",
+        "prelimbic",
+        "gripingly"
+      ]
+    },
+    {
+      "word": "instreams",
+      "num_guesses": 3,
+      "prior": 7.785973712242933e-6,
+      "guesses": [
+        "cerations",
+        "grimeless",
+        "instreams"
+      ]
+    },
+    {
+      "word": "globulets",
+      "num_guesses": 3,
+      "prior": 6.820395230885904e-6,
+      "guesses": [
+        "cerations",
+        "soupbowls",
+        "globulets"
+      ]
+    },
+    {
+      "word": "qandilite",
+      "num_guesses": 3,
+      "prior": 5.815930953591711e-6,
+      "guesses": [
+        "cerations",
+        "matildite",
+        "qandilite"
+      ]
+    },
+    {
+      "word": "thripples",
+      "num_guesses": 3,
+      "prior": 4.563498566053315e-6,
+      "guesses": [
+        "cerations",
+        "trembleth",
+        "thripples"
+      ]
+    },
+    {
+      "word": "scrimpily",
+      "num_guesses": 3,
+      "prior": 4.571339675139993e-6,
+      "guesses": [
+        "cerations",
+        "scruffily",
+        "scrimpily"
+      ]
+    },
+    {
+      "word": "afterpeak",
+      "num_guesses": 3,
+      "prior": 9.796357146619954e-6,
+      "guesses": [
+        "cerations",
+        "aledraper",
+        "afterpeak"
+      ]
+    },
+    {
+      "word": "starshine",
+      "num_guesses": 3,
+      "prior": 0.000014870408377412707,
+      "guesses": [
+        "cerations",
+        "musteline",
+        "starshine"
+      ]
+    },
+    {
+      "word": "myeloplax",
+      "num_guesses": 3,
+      "prior": 6.52646802536672e-6,
+      "guesses": [
+        "cerations",
+        "polylogue",
+        "myeloplax"
+      ]
+    },
+    {
+      "word": "arational",
+      "num_guesses": 3,
+      "prior": 0.00001274989316742857,
+      "guesses": [
+        "cerations",
+        "animalian",
+        "arational"
+      ]
+    },
+    {
+      "word": "admirante",
+      "num_guesses": 3,
+      "prior": 8.440645547589892e-6,
+      "guesses": [
+        "cerations",
+        "tablemate",
+        "admirante"
+      ]
+    },
+    {
+      "word": "laniisoma",
+      "num_guesses": 3,
+      "prior": 6.274531323198825e-6,
+      "guesses": [
+        "cerations",
+        "salmonoid",
+        "laniisoma"
+      ]
+    },
+    {
+      "word": "salomonic",
+      "num_guesses": 2,
+      "prior": 9.630793171697697e-6,
+      "guesses": [
+        "cerations",
+        "salomonic"
+      ]
+    },
+    {
+      "word": "scopeloid",
+      "num_guesses": 3,
+      "prior": 6.461228613353724e-6,
+      "guesses": [
+        "cerations",
+        "scolecoid",
+        "scopeloid"
+      ]
+    },
+    {
+      "word": "sweetsops",
+      "num_guesses": 3,
+      "prior": 7.441022230302894e-6,
+      "guesses": [
+        "cerations",
+        "theftuous",
+        "sweetsops"
+      ]
+    },
+    {
+      "word": "cortesian",
+      "num_guesses": 2,
+      "prior": 0.00001099623870234048,
+      "guesses": [
+        "cerations",
+        "cortesian"
+      ]
+    },
+    {
+      "word": "nonstatic",
+      "num_guesses": 2,
+      "prior": 0.000014501299439267217,
+      "guesses": [
+        "cerations",
+        "nonstatic"
+      ]
+    },
+    {
+      "word": "leucosoid",
+      "num_guesses": 3,
+      "prior": 3.741967503937569e-6,
+      "guesses": [
+        "cerations",
+        "bellicose",
+        "leucosoid"
+      ]
+    },
+    {
+      "word": "acceptive",
+      "num_guesses": 3,
+      "prior": 0.0000103407721154805,
+      "guesses": [
+        "cerations",
+        "amphiliid",
+        "acceptive"
+      ]
+    },
+    {
+      "word": "hobbyists",
+      "num_guesses": 3,
+      "prior": 0.00002232865683585241,
+      "guesses": [
+        "cerations",
+        "mobilists",
+        "hobbyists"
+      ]
+    },
+    {
+      "word": "emendates",
+      "num_guesses": 3,
+      "prior": 5.9306188234013604e-6,
+      "guesses": [
+        "cerations",
+        "basenames",
+        "emendates"
+      ]
+    },
+    {
+      "word": "triphonic",
+      "num_guesses": 3,
+      "prior": 7.032316797864152e-6,
+      "guesses": [
+        "cerations",
+        "pneumonia",
+        "triphonic"
+      ]
+    },
+    {
+      "word": "nanolayer",
+      "num_guesses": 4,
+      "prior": 0.000010366311063195227,
+      "guesses": [
+        "cerations",
+        "bundlemen",
+        "nonplayer",
+        "nanolayer"
+      ]
+    }
+  ]
+}
