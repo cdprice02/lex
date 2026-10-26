@@ -1,0 +1,4 @@
+real 84.31 user 74.59  english-5
+real 142.61 user 139.20  russian-5
+real 1137.55 user 1110.21  german-10
+real 628.19 user 613.57  english-7
