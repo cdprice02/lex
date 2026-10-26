@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
 use lex_core::{GuessPool, Strategy};
-use lex_data::Language;
+use lex_data::{Language, Profile};
 
 use crate::error::CliError;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
@@ -22,17 +22,28 @@ pub enum Command {
     Assist(AssistArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
-    /// Delete cached corpora so they are rebuilt on next use (the Wiktionary dictionary is kept)
+    /// Delete a cached corpus or a fetched Profile so it is rebuilt on next use (the Wiktionary dictionary is kept)
     Clear(ClearArgs),
 }
 
 #[derive(clap::Args, Debug)]
 pub struct ClearArgs {
-    #[arg(long, help = "Language whose corpus cache to delete")]
-    pub lang: Language,
+    #[arg(
+        long,
+        required_unless_present = "profile",
+        conflicts_with = "profile",
+        help = "Language whose corpus cache to delete"
+    )]
+    pub lang: Option<Language>,
+    #[arg(
+        long,
+        help = "Profile whose fetched lists to delete (never touches corpora)"
+    )]
+    pub profile: Option<Profile>,
     #[arg(
         short = 'l',
         long,
+        conflicts_with = "profile",
         value_parser = parse_word_length,
         help = "Delete only this word length (default: every length for the language)"
     )]
@@ -201,5 +212,28 @@ fn parse_win_weight(s: &str) -> anyhow::Result<f64> {
         Ok(w)
     } else {
         Err(CliError::InvalidWinWeight(w).into())
+    }
+}
+
+#[cfg(test)]
+mod clear_tests {
+    use super::*;
+
+    fn parse(args: &[&str]) -> Result<Cli, clap::Error> {
+        Cli::try_parse_from(["lex", "clear"].into_iter().chain(args.iter().copied()))
+    }
+
+    #[test]
+    fn exactly_one_of_lang_and_profile() {
+        assert!(parse(&[]).is_err());
+        assert!(parse(&["--lang", "english"]).is_ok());
+        assert!(parse(&["--profile", "wordle"]).is_ok());
+        assert!(parse(&["--lang", "english", "--profile", "wordle"]).is_err());
+    }
+
+    #[test]
+    fn word_length_goes_only_with_lang() {
+        assert!(parse(&["--lang", "english", "-l", "5"]).is_ok());
+        assert!(parse(&["--profile", "wordle", "-l", "5"]).is_err());
     }
 }

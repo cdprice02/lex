@@ -17,6 +17,9 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `wiktionary.rs` | `fetch_dict`, `read_dict` (any `BufRead`), `load_valid_words`, `load_metadata`, `DictMetadata` |
 | `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
 | `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view); exposes raw frequencies only (`word_frequencies`), the answer prior lives in `lex-core` |
+| `profile.rs` | `Profile` enum (`wordle`, `wordle-all`), `spec()` registry (language, length, `ListSpec`s of pinned `Source` URLs plus compiled-in checksums), `ProfileData`, `ProfileStats` |
+| `profile_store.rs` | fetch (temp file then rename; `meta.json` last), re-hash on every load, build the pool and Answer list; `Get` is injected so tests skip the network |
+| `list.rs` | pure list handling: `parse` (normalize, blank lines only at the end), `validate` (length, Alphabet, duplicates, file and line named), `canonicalize` (sorted, `\n` after each; its SHA-256 is the checksum) |
 | `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
 | `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`) |
 | `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=10; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
@@ -28,6 +31,9 @@ data/
   ngrams/{lang_code}/{N}.bin      — 64-byte header, then frequency-descending records: N×u32 (char LE) + u64 (freq LE) each
   dicts/{lang_code}.txt           — sorted Wiktionary word list (one per line)
   dicts/{lang_code}.meta.json     — DictMetadata: word_count, min/max word length, provenance (source_url, fetched_at, source_sha256 of the compressed download; absent in caches that predate stamping)
+  profiles/{name}/answers.txt     — normalized Answer list (sorted, one word per line)
+  profiles/{name}/guess-only.txt  — normalized guess-only words (empty for wordle-all)
+  profiles/{name}/meta.json       — Provenance per list: sha256, word count, source URLs and checksums, fetched_at
 ```
 
 `lang_code` is the Google Books slug (e.g. `eng`, `fre`). See `Language::lang_code()`.
@@ -67,3 +73,7 @@ A single miss triggers a full language download — all length buckets are writt
 ## Provenance
 
 KAIKKI extracts are rolling, so `fetch_dict` hashes the compressed bytes while streaming and stamps `DictMetadata`. `DataDir::ngrams_sha256` returns the corpus checksum from a cached `{N}.bin` header; that is the identity benchmark reports embed (the dict can change under a cache that was filtered against an older copy). `NGRAMS_SNAPSHOT` records the frozen ngrams release.
+
+## Profiles
+
+`DataDir::load_profile::<N>(Profile)` loads the Corpus of the Profile's language and length, fetches the lists if `meta.json` is absent, then re-hashes both stored files against the compiled-in checksums (a mismatch is a hard error, never a refetch). The Alphabet is derived from the Corpus. `pool` is the Profile's words only: Corpus words in Corpus order, then words the Corpus lacks, alphabetically, at the Unseen-word floor (the Corpus's minimum count). `wordle-all` stores its merged answers (both gists) and an empty `guess-only.txt`. The real-fetch test is `#[ignore]`: `LEX_CORPUS_DIR=<data> cargo test -p lex-data --test profile_fetch -- --ignored`.

@@ -25,7 +25,12 @@ fn main() -> anyhow::Result<()> {
         }
         Command::Compare(args) => compare_reports(&args),
         Command::Clear(args) => {
-            lex_data::DataDir::new(&args.data_dir).clear(args.lang, args.word_length)
+            let dir = lex_data::DataDir::new(&args.data_dir);
+            match (args.lang, args.profile) {
+                (Some(lang), _) => dir.clear(lang, args.word_length),
+                (None, Some(profile)) => dir.clear_profile(profile),
+                (None, None) => unreachable!("clap requires --lang or --profile"),
+            }
         }
     }
 }

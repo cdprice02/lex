@@ -1,6 +1,11 @@
 use std::path::{Path, PathBuf};
 
+use anyhow::Context;
+
+use crate::error::LexDataError;
 use crate::language::Language;
+use crate::profile::{Profile, ProfileData};
+use crate::profile_store;
 use crate::store;
 use crate::wiktionary::{self, DictMetadata};
 use crate::word::WordSet;
@@ -50,6 +55,39 @@ impl DataDir {
     /// language ngrams directory (None). Does not remove the Wiktionary dict.
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
         store::clear(self, lang, n)
+    }
+
+    /// Loads a Profile: its lists (fetched and checksum-verified on first use) against the
+    /// Corpus of its language and length, which is built on a miss. `N` must be the Profile's
+    /// word length.
+    pub fn load_profile<const N: usize>(&self, profile: Profile) -> anyhow::Result<ProfileData<N>> {
+        let spec = profile.spec();
+        if spec.word_length != N {
+            return Err(LexDataError::WordLengthError {
+                expected: spec.word_length,
+                got: N,
+            }
+            .into());
+        }
+        let corpus = self.load::<N>(spec.language, None)?;
+        profile_store::load(
+            &self.profile_dir(profile),
+            &profile.to_string(),
+            &spec,
+            &corpus,
+            &profile_store::http_get,
+        )
+    }
+
+    /// Removes a Profile's stored lists so they are fetched again on next use.
+    pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<()> {
+        std::fs::remove_dir_all(self.profile_dir(profile))
+            .with_context(|| format!("removing profile {profile}"))
+    }
+
+    /// Directory holding a Profile's `answers.txt`, `guess-only.txt` and `meta.json`.
+    pub fn profile_dir(&self, profile: Profile) -> PathBuf {
+        self.path.join("profiles").join(profile.to_string())
     }
 
     /// Path to the cached ngrams binary file for `lang` at word length `n`.
