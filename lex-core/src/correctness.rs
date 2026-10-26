@@ -25,8 +25,11 @@ impl std::fmt::Display for Correctness {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
-// Ordinals are stored as u16 (see `ordinal_u16`); 3^11 = 177,147 would overflow it.
-const _: () = assert!(WordCorrectness::<{ lex_data::MAX_WORD_LENGTH }>::COUNT <= 1 << 16);
+// Ordinals are `u64`: 3^MAX_WORD_LENGTH must fit.
+const _: () = assert!(
+    3u128.pow(lex_data::MAX_WORD_LENGTH as u32) <= u64::MAX as u128,
+    "pattern ordinals must fit u64"
+);
 
 impl<const N: usize> std::ops::Deref for WordCorrectness<N> {
     type Target = [Correctness; N];
@@ -43,16 +46,11 @@ impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
 }
 
 impl<const N: usize> WordCorrectness<N> {
-    pub const COUNT: usize = Correctness::COUNT.pow(N as u32);
+    pub const COUNT: u64 = (Correctness::COUNT as u64).pow(N as u32);
 
-    pub fn ordinal(&self) -> usize {
+    pub fn ordinal(&self) -> u64 {
         self.iter()
-            .fold(0, |acc, &c| acc * Correctness::COUNT + c as usize)
-    }
-
-    /// [`ordinal`](Self::ordinal) as a `u16`, the compact key for sparse tree edges.
-    pub fn ordinal_u16(&self) -> u16 {
-        u16::try_from(self.ordinal()).expect("pattern ordinals fit u16 up to MAX_WORD_LENGTH")
+            .fold(0, |acc, &c| acc * Correctness::COUNT as u64 + c as u64)
     }
 
     pub fn absent() -> Self {
@@ -65,16 +63,16 @@ impl<const N: usize> WordCorrectness<N> {
     }
 
     /// Inverse of [`ordinal`](Self::ordinal). The ordinal must be below [`COUNT`](Self::COUNT).
-    fn from_ordinal(mut ordinal: usize) -> Self {
+    fn from_ordinal(mut ordinal: u64) -> Self {
         debug_assert!(ordinal < Self::COUNT);
         let mut result = Self::absent();
         for slot in result.0.iter_mut().rev() {
-            *slot = match ordinal % Correctness::COUNT {
+            *slot = match ordinal % Correctness::COUNT as u64 {
                 0 => Correctness::Absent,
                 1 => Correctness::Misplaced,
                 _ => Correctness::Correct,
             };
-            ordinal /= Correctness::COUNT;
+            ordinal /= Correctness::COUNT as u64;
         }
         result
     }
@@ -92,11 +90,8 @@ impl<const N: usize> WordCorrectness<N> {
 /// claimed at most once, left to right), else `Absent`. O(N^2) with two position bitmasks and no
 /// shared state: for N up to 10 that beats a count table, whose scattered cache lines cost more
 /// than the extra compares.
-pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(
-    word: &[T; N],
-    guess: &[T; N],
-) -> usize {
-    let mut green = 0u16;
+pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(word: &[T; N], guess: &[T; N]) -> u64 {
+    let mut green = 0u32;
     for (i, (w, g)) in word.iter().zip(guess).enumerate() {
         if w == g {
             green |= 1 << i;
@@ -107,7 +102,7 @@ pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(
     let mut ordinal = 0;
     for (i, &letter) in guess.iter().enumerate() {
         let digit = if green >> i & 1 == 1 {
-            Correctness::Correct as usize
+            Correctness::Correct as u64
         } else {
             let unclaimed = word
                 .iter()
@@ -116,12 +111,12 @@ pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(
             match unclaimed {
                 Some(j) => {
                     claimed |= 1 << j;
-                    Correctness::Misplaced as usize
+                    Correctness::Misplaced as u64
                 }
-                None => Correctness::Absent as usize,
+                None => Correctness::Absent as u64,
             }
         };
-        ordinal = ordinal * Correctness::COUNT + digit;
+        ordinal = ordinal * Correctness::COUNT as u64 + digit;
     }
     ordinal
 }
@@ -375,7 +370,7 @@ mod prop_tests {
             word in proptest::array::uniform10(0u8..4),
             guess in proptest::array::uniform10(0u8..4),
         ) {
-            fn reference<const N: usize>(word: &[u8; N], guess: &[u8; N]) -> usize {
+            fn reference<const N: usize>(word: &[u8; N], guess: &[u8; N]) -> u64 {
                 let mut counts = [0usize; 4];
                 for i in 0..N {
                     if word[i] != guess[i] {
@@ -403,7 +398,7 @@ mod prop_tests {
         }
 
         #[test]
-        fn ordinal_round_trips_through_correctness(ordinal in 0usize..243) {
+        fn ordinal_round_trips_through_correctness(ordinal in 0u64..243) {
             prop_assert_eq!(WordCorrectness::<5>::from_ordinal(ordinal).ordinal(), ordinal);
         }
 

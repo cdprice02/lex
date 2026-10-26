@@ -23,10 +23,10 @@ All public types are re-exported from `lib.rs`: `use lex_core::{Guesser, Guess, 
 A game position is identified by its guess path: the `(guess word, feedback ordinal)` steps from the
 root. For a fixed starting `WordSet` the path determines the candidate set, and `Candidates::suggest`
 is deterministic, so a node computes its suggestion once and every later game reaching it reuses
-it. Edges are sparse (`HashMap<(Word<N>, u16), NodeId>`: 59,049 possible patterns at N=10) and
+it. Edges are sparse (`HashMap<(Word<N>, u64), NodeId>`: 59,049 possible patterns at N=10) and
 keyed by the guess word as well as the pattern, because callers may push guesses that were not the
-suggestion (`assist` does). Ordinals are `u16`; a const assertion in `correctness.rs` ties that to
-`MAX_WORD_LENGTH`. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so it is part of the tree's identity.
+suggestion (`assist` does). Ordinals are `u64` at every length; a const assertion in `correctness.rs` checks that
+3^`MAX_WORD_LENGTH` fits. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so it is part of the tree's identity.
 
 `Guesser` holds the tree behind `Rc<RefCell<..>>`, so it is not `Send`; `Guesser::reset()` starts a
 new game on the same tree, and `play` takes `&mut Guesser` for that reason.
@@ -68,7 +68,7 @@ Uses one thread-local `Patterns { buckets, touched }`, shared by every word leng
 
 ## Correctness algorithm (`pattern_ordinal` in `correctness.rs`)
 
-One generic O(N^2) comparison over `[T; N]` with two `u16` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
+One generic O(N^2) comparison over `[T; N]` with two `u32` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
 
 Measured and rejected (numbers in `benchmarks/experiments/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
 
