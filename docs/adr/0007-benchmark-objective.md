@@ -8,7 +8,7 @@ A solver change is judged by mean guesses first and failure rate (more than 6 gu
 
 A change lands when the average per-track mean delta over the headline tier is negative, no headline track regresses by more than 0.005 guesses, and no breadth track regresses by more than 0.02. Tunables are derived from the Corpus at load time or set once globally against the pooled matrix; a table of values tuned per language and length is not allowed.
 
-Budgets: a full-dictionary run at length 5 finishes within 10 minutes on one core, breadth runs within 10 minutes each, assist within 1 second per move at every length, and in-memory precomputed structures within 1 GB. Per-thread scratch reused across calls (pattern buckets, sort buffers) is working memory, not a precomputed structure, and does not count toward that cap.
+Budgets: a full-dictionary run at length 5 finishes within 10 minutes on one core, breadth runs within 10 minutes each, assist within 1 second per move at every length, and in-memory precomputed structures within 1 GB. Per-thread scratch reused across calls (pattern buckets, sort buffers) is working memory, not a precomputed structure, and does not count toward that cap. Run and assist times are measured with the Opening book built; building it has its own budget (ADR 0011).
 
 ## Considered Options
 
