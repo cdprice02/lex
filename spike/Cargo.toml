@@ -1,0 +1,10 @@
+[package]
+name = "spike"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+lex-core = { path = "../lex-core" }
+lex-data = { path = "../lex-data" }
+anyhow = { workspace = true }

@@ -3,7 +3,7 @@ cargo-features = ["profile-rustflags"]
 [workspace]
 resolver = "3"
 
-members = ["lex-core", "lex-cli", "lex-data"]
+members = ["lex-core", "lex-cli", "lex-data", "spike"]
 
 [workspace.dependencies]
 anyhow = "1"
