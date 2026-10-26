@@ -37,8 +37,16 @@ The words the solver may play as a guess, whether or not they can still be the a
 _Avoid_: Guess list, allowed words
 
 **Answer prior**:
-The probability that each word is the answer, renormalized over the Candidate set as it shrinks: derived from corpus frequency and a temperature, or uniform over the Answer list when a Profile supplies one.
+The probability that each word is the answer, renormalized over the Candidate set as it shrinks: derived from corpus frequency and a temperature, over the Answer list when a Profile supplies one and over the Corpus otherwise. The report prior used to score a run is separate and fixed: uniform on a Wordle Profile.
 _Avoid_: Weights, frequency (that is the raw count)
+
+**Report prior**:
+The fixed prior that weights a run's results, independent of the solver's own temperature: uniform over the Answer list for the Wordle headline score, frequency-derived at the canonical temperature for the secondary readout.
+_Avoid_: Evaluation prior, Answer prior (that is the solver's)
+
+**Unseen-word floor**:
+The Corpus's minimum observed count, assigned to Profile words the Corpus lacks so they carry a positive frequency and sort after every Corpus word.
+_Avoid_: Default frequency
 
 **Supported length**:
 A word length at which a language's Corpus holds at least 500 words; a language's maximum length is its largest Supported length.
