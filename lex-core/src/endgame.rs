@@ -125,7 +125,7 @@ impl<const N: usize> Endgame<N> {
 
     /// Fills `out` with `(feedback ordinal, answer)` for every answer in `set` against `guess`,
     /// grouped by ordinal and ascending by index within a group.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(usize, u32)>) {
+    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
         let word = self.pool.word(guess);
         out.clear();
         out.extend(
@@ -142,7 +142,7 @@ impl<const N: usize> Endgame<N> {
     ///
     /// A group of unsolved answers needs at least one guess for the one it names and two for every
     /// other (one more when only plain expectation counts), which is exact for a lone answer.
-    fn floor(&self, keyed: &[(usize, u32)], guess: u32, in_set: bool, mass: f64) -> Option<f64> {
+    fn floor(&self, keyed: &[(u64, u32)], guess: u32, in_set: bool, mass: f64) -> Option<f64> {
         if !in_set && keyed.first().map(|k| k.0) == keyed.last().map(|k| k.0) {
             return None;
         }
