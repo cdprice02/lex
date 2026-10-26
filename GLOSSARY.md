@@ -108,6 +108,14 @@ _Avoid_: Late game, exact mode
 The Candidate set size at or below which a position is an Endgame; zero turns the Endgame off.
 _Avoid_: Cutoff, search limit
 
+**Rollout**:
+Scoring each of the top few guesses at a position by how the solver's own one-guess-ahead choices would play out in the positions it leads to, then choosing the guess that plays out best.
+_Avoid_: Look-ahead, two-ply search
+
+**Pre-screen**:
+Narrowing the Guess pool at a position by a cheap approximate score before the surviving guesses are scored exactly.
+_Avoid_: Pruning, shortlist
+
 **Guess path**:
 The sequence of (guess, feedback) steps from the start of a game to one position in the Decision tree; two games with the same Guess path have the same Candidate set.
 _Avoid_: History (that is the list of guesses a single game played)
