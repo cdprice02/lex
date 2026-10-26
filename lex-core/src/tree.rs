@@ -34,7 +34,7 @@ struct Node<const N: usize> {
     candidates: Candidates<N>,
     suggestion: Option<Option<Word<N>>>,
     // Sparse: fan-out is 3^N per guess, 59,049 at the length cap.
-    children: HashMap<(Word<N>, u16), NodeId>,
+    children: HashMap<(Word<N>, u64), NodeId>,
 }
 
 impl<const N: usize> Node<N> {
@@ -93,7 +93,7 @@ impl<const N: usize> DecisionTree<N> {
 
     /// The node reached from `node` by playing `guess`, created on first visit.
     pub(crate) fn child(&mut self, node: NodeId, guess: &Guess<N>) -> NodeId {
-        let key = (guess.word(), guess.correctness().ordinal_u16());
+        let key = (guess.word(), guess.correctness().ordinal());
         if let Some(&id) = self.nodes[node].children.get(&key) {
             return id;
         }

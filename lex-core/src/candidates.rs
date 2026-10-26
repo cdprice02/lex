@@ -207,16 +207,17 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f6
     PATTERNS.with(|patterns| {
         let Patterns { buckets, touched } = &mut *patterns.borrow_mut();
         // one static serves every monomorphization, so it grows to the largest N seen
-        if buckets.len() < WordCorrectness::<N>::COUNT {
-            buckets.resize(WordCorrectness::<N>::COUNT, 0.0);
+        if (buckets.len() as u64) < WordCorrectness::<N>::COUNT {
+            buckets.resize(WordCorrectness::<N>::COUNT as usize, 0.0);
         }
         for (word, &prob) in words.iter().zip(probs) {
             debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
             let ordinal = pattern_ordinal(word, guess);
-            if buckets[ordinal] == 0.0 {
+            let slot = ordinal as usize;
+            if buckets[slot] == 0.0 {
                 touched.push(ordinal as u32);
             }
-            buckets[ordinal] += prob;
+            buckets[slot] += prob;
         }
         // ascending ordinal order keeps the floating-point sum independent of word order
         touched.sort_unstable();

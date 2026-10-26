@@ -10,7 +10,7 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 | `README.md` | Methodology and the current results |
 | `baselines/*.json` | Committed `lex simulate` reports that changes are paired against |
 | `experiments/<topic>.md` | The evidence and verdict behind each solver or performance choice |
-| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid) |
+| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid; `oracle.sh <base-ref>`: the Oracle, byte-equal `simulate` output against a base commit) |
 
 ## Current results
 
