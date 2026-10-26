@@ -21,8 +21,12 @@ Update this table whenever a change lands.
 |---|---|---|---|---|---|
 | English-5 | 27,524 | 4.3442 | 4.1769 | 0.37% | `29104fb5747b` (phase 08) |
 | French-5 | 16,978 | 4.233 | 4.079 | 0.38% | `9b5e427a4e54` (phase 05) |
+| Wordle profile | 2,315 | 3.4721 | 3.3930 | 0.00% | `29104fb5747b` |
 
-The Wordle profiles and the other languages and lengths are not measured yet. The committed
+The Wordle profile is run with `lex simulate --profile wordle` (the 2,315 answers as targets, the
+12,972-word Guess pool, the Answer prior at T=5); its headline is the uniform mean. Guess counts:
+2 in 59 games, 3 in 1,164, 4 in 1,032, 5 in 60. The `wordle-all` profile, Wordle hard mode, and the
+other languages and lengths are not measured yet. The committed
 baselines predate the English corpus rebuild (`cf683dcd1747`), so they must be regenerated before
 the next paired comparison.
 
