@@ -96,6 +96,10 @@ _Avoid_: Constrained mode
 The shared record of every game position reached so far, where each position is identified by the sequence of (guess, feedback) steps that led to it and remembers the guess the solver chose there.
 _Avoid_: Cache (reserved for the on-disk Corpus form), memo table
 
+**Opening book**:
+The persisted top levels of a Decision tree, built ahead of play so positions too slow to search per move are looked up instead; a game plays identically with or without it.
+_Avoid_: Solved tree, opener table
+
 **Endgame**:
 A position whose Candidate set is at or below the Strategy's Endgame threshold, where the solver searches the game tree exactly instead of scoring guesses by entropy.
 _Avoid_: Late game, exact mode
