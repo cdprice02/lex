@@ -23,7 +23,7 @@ fn fixture() -> WordSet<5> {
 }
 
 fn sequence(strategy: Strategy, target: &str) -> Vec<String> {
-    let mut guesser = Guesser::new(fixture(), strategy);
+    let mut guesser = Guesser::new(fixture(), None, strategy);
     let result = play(
         Word::<5>::try_from(target).unwrap(),
         &mut guesser,

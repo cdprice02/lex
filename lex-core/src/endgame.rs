@@ -365,7 +365,7 @@ mod tests {
         let mut suggested = std::collections::HashMap::new();
         for target_index in (0..pool.len() as u32).step_by(400) {
             let target = pool.word(target_index);
-            let mut candidates = Candidates::new(Arc::clone(&pool));
+            let mut candidates = Candidates::new(Arc::clone(&pool), None);
             while candidates.len() > LIMIT {
                 let guess = *suggested
                     .entry(candidates.indices().to_vec())

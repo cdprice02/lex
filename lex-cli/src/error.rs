@@ -12,4 +12,11 @@ pub enum CliError {
     InvalidTemperature(f64),
     #[error("invalid win weight: expected a non-negative finite number, got {0}")]
     InvalidWinWeight(f64),
+    #[error("--profile {profile} fixes {flag} to {expected}, got {given}")]
+    ProfileConflict {
+        profile: lex_data::Profile,
+        flag: &'static str,
+        given: String,
+        expected: String,
+    },
 }

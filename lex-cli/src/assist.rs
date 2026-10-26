@@ -1,7 +1,9 @@
 use std::io::{BufRead, Write};
 
 use lex_core::{Correctness, Guess, Guesser, WordCorrectness};
-use lex_data::Word;
+use lex_data::{Word, WordSet};
+
+use crate::lists::GameLists;
 
 use crate::cli::AssistArgs;
 
@@ -10,9 +12,15 @@ use crate::cli::AssistArgs;
 /// candidate set until solved (or until the candidates are exhausted, e.g.
 /// when the day's target is missing from our corpus).
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
-    let word_set = lex_data::DataDir::new(&args.common.data_dir)
-        .load::<N>(args.common.lang, args.common.dictionary_length)?;
-    let mut guesser = Guesser::new(word_set, args.common.strategy());
+    let (lang, _) = args.common.target()?;
+    let lists = GameLists::<N>::load(&args.common, &lex_data::DataDir::new(&args.common.data_dir))?;
+    // A Profile's Guess pool is closed; a Corpus run accepts any word, as it always has.
+    let closed_pool = lists.profile.as_ref().map(|_| lists.pool.clone());
+    let source = match &lists.profile {
+        Some(p) => p.name.clone(),
+        None => lang.to_string(),
+    };
+    let mut guesser = Guesser::new(lists.pool, lists.answers, args.common.strategy());
 
     let stdin = std::io::stdin();
     let mut lines = stdin.lock().lines();
@@ -20,7 +28,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     println!(
         "Assisting a {N}-letter game in {}. Feedback formats: letters (g=green, y=yellow, \
          x/b/./- = gray), digits (2=green, 1=yellow, 0=gray), or emoji.",
-        args.common.lang
+        source
     );
 
     let mut turn = 1;
@@ -51,7 +59,12 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         }
         let top = suggestions[0].word;
 
-        let Some(word) = prompt_word::<N>(&mut lines, top)? else {
+        let Some(word) = prompt_word::<N>(&mut lines, top, |w| {
+            closed_pool
+                .as_ref()
+                .map_or(Ok(()), |pool| check_in_pool(pool, &source, w))
+        })?
+        else {
             return Ok(()); // EOF
         };
         let Some(feedback) = prompt_feedback::<N>(&mut lines)? else {
@@ -68,11 +81,25 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     }
 }
 
+/// Rejects a word outside the Profile's Guess pool.
+fn check_in_pool<const N: usize>(
+    pool: &WordSet<N>,
+    profile: &str,
+    word: &Word<N>,
+) -> Result<(), String> {
+    if pool.contains(word) {
+        Ok(())
+    } else {
+        Err(format!("{word} is not in the {profile} guess pool"))
+    }
+}
+
 /// Prompts for the word the user played. Empty input accepts `default`;
-/// `Ok(None)` signals EOF. Re-prompts until the input parses as a `Word<N>`.
+/// `Ok(None)` signals EOF. Re-prompts until the input parses as a `Word<N>` that `accept` allows.
 fn prompt_word<const N: usize>(
     lines: &mut impl Iterator<Item = std::io::Result<String>>,
     default: Word<N>,
+    accept: impl Fn(&Word<N>) -> Result<(), String>,
 ) -> anyhow::Result<Option<Word<N>>> {
     loop {
         print!("word played [{default}]: ");
@@ -85,7 +112,10 @@ fn prompt_word<const N: usize>(
             return Ok(Some(default));
         }
         match Word::<N>::try_from(input.as_str()) {
-            Ok(word) => return Ok(Some(word)),
+            Ok(word) => match accept(&word) {
+                Ok(()) => return Ok(Some(word)),
+                Err(e) => println!("  {e}"),
+            },
             Err(e) => println!("  {e}"),
         }
     }
@@ -165,6 +195,14 @@ fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, Str
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn pool_check_names_the_profile() {
+        let pool = WordSet::<5>::from_pairs(vec![(Word::try_from("crane").unwrap(), 1)]);
+        assert!(check_in_pool(&pool, "wordle", &Word::try_from("crane").unwrap()).is_ok());
+        let err = check_in_pool(&pool, "wordle", &Word::try_from("zebra").unwrap()).unwrap_err();
+        assert_eq!(err, "zebra is not in the wordle guess pool");
+    }
 
     fn wc(pattern: [Correctness; 5]) -> WordCorrectness<5> {
         let mut wc = WordCorrectness::<5>::absent();

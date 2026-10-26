@@ -9,6 +9,7 @@ mod assist;
 mod cli;
 mod compare;
 mod error;
+mod lists;
 mod report;
 mod simulate;
 mod targets;
@@ -18,10 +19,12 @@ fn main() -> anyhow::Result<()> {
 
     match Cli::parse().command {
         Command::Simulate(args) => {
-            lex_data::match_word_length!(simulate, args.common.word_length, &args)
+            let (_, len) = args.common.target()?;
+            lex_data::match_word_length!(simulate, len, &args)
         }
         Command::Assist(args) => {
-            lex_data::match_word_length!(assist, args.common.word_length, &args)
+            let (_, len) = args.common.target()?;
+            lex_data::match_word_length!(assist, len, &args)
         }
         Command::Compare(args) => compare_reports(&args),
         Command::Clear(args) => {

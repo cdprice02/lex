@@ -12,22 +12,29 @@ use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
 use crate::cli::SimulateArgs;
+use crate::lists::GameLists;
 use crate::report::{Corpus, DictProvenance, Game, Report, Run, SCHEMA_VERSION, Summary};
 use crate::targets;
 
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let data_dir = lex_data::DataDir::new(&args.common.data_dir);
-    let lang = args.common.lang;
-    let word_set = data_dir.load::<N>(lang, args.common.dictionary_length)?;
-    let dictionary_length = word_set.len();
+    let (lang, _) = args.common.target()?;
+    let lists = GameLists::<N>::load(&args.common, &data_dir)?;
+    // The Corpus size, whichever pool is played over.
+    let dictionary_length = match lists.profile {
+        Some(_) => data_dir.ngrams_count(lang, N)?,
+        None => lists.pool.len(),
+    };
 
     // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
-    // taken over the full dictionary before any game narrows the candidate set.
-    let priors: HashMap<_, _> = answer_prior(&word_set, CANONICAL_TEMPERATURE)
+    // taken over the whole pool before any game narrows the candidate set; only the Answer
+    // list's words are ever looked up.
+    let priors: HashMap<_, _> = answer_prior(&lists.pool, CANONICAL_TEMPERATURE)
         .into_iter()
         .collect();
     let targets = targets::select(
-        &word_set,
+        lists.answer_words(),
+        &lists.answer_noun(),
         args.targets.as_deref(),
         args.num_games,
         args.seed,
@@ -38,7 +45,12 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
     let strategy = args.common.strategy();
-    let mut guesser = Guesser::new(word_set, strategy);
+    let GameLists {
+        pool,
+        answers,
+        profile,
+    } = lists;
+    let mut guesser = Guesser::new(pool, answers, strategy);
     let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
@@ -101,6 +113,7 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
             ngrams_sha256: data_dir.ngrams_sha256(lang, N)?,
             dict,
         },
+        profile: profile.map(Into::into),
         summary: Summary::from_games(&games),
         games,
     };

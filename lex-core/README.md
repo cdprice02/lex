@@ -5,11 +5,11 @@ Entropy-based Wordle solver library. Given a `WordSet`, suggests guesses that ma
 ## Public API
 
 ```rust
-use lex_core::{Guesser, Guess, WordCorrectness, play};
+use lex_core::{Guesser, Guess, Strategy, WordCorrectness, play};
 use lex_data::WordSet;
 
 // Create a guesser and get the first suggestion
-let mut guesser = Guesser::new(word_set);
+let mut guesser = Guesser::new(word_set, None, Strategy::default());
 let suggestion = guesser.suggest().unwrap();
 
 // Apply feedback and narrow the candidate set
