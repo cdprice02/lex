@@ -60,9 +60,25 @@ _Avoid_: Target list (targets are the words a simulation plays, possibly a subse
 A named pairing of an Answer list and a Guess pool for one language and word length, such as the Wordle profile for English-5; without one, the Corpus serves as both.
 _Avoid_: Mode, preset
 
+**Track**:
+One scored pairing in the benchmark: a Profile, or a language with no Profile, at one word length.
+_Avoid_: Benchmark, config
+
 **Corpus track**:
-Benchmarking with no Profile: answers drawn from the Corpus under the frequency-derived Answer prior.
+A Track with no Profile: answers drawn from the Corpus under the frequency-derived Answer prior.
 _Avoid_: Default mode
+
+**Tier**:
+The weight a Track carries in a Verdict: headline Tracks are scored on their full dictionary, breadth Tracks on sampled targets with a looser regression bound, and smoke Tracks only have to finish.
+_Avoid_: Level, suite (that is the whole matrix)
+
+**Suite manifest**:
+The committed list of every Track and its Tier; it changes only when the Tiers are deliberately recalibrated.
+_Avoid_: Matrix (informal for the same thing), config
+
+**Verdict**:
+The accept-or-reject outcome of judging a candidate solver against a base solver over the Suite manifest, under the benchmark objective.
+_Avoid_: Result, score (that is one Track's mean)
 
 **Strategy**:
 The solver's tunable choices: which Guess pool it draws from (hard mode restricts it to the Candidate set), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.
