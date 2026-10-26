@@ -62,7 +62,9 @@ single candidate is returned without scanning the pool. `answer_prior` exposes t
 for reports; the CLI fixes the report prior at `CANONICAL_TEMPERATURE`. Cost is O(pool x candidates)
 per node, the reason memoization matters.
 
-`guess_entropy`: for one guess, iterates the candidate words and accumulates probability mass per feedback ordinal (`pattern_ordinal`, no `WordCorrectness` built). Returns entropy in bits.
+`guess_entropy` dispatches on a `const` memory rule: `entropy_dense` while 3^N x 8 bytes <= `DENSE_BOUND_BYTES` (16 MiB, N <= 13), else `entropy_sorted`. Both are the per-guess counters described below, and a proptest asserts they agree bit for bit. Sort-and-run keeps a thread-local `Vec<(u64, f64)>` scratch (outside the 1 GB cap, ADR 0007), stably sorts it by ordinal so each run's mass accumulates in word order, and sums runs in ascending ordinal through the same `entropy_from_masses` as the dense path. Production reaches it only once `MAX_WORD_LENGTH` exceeds 13.
+
+Dense counter: for one guess, iterates the candidate words and accumulates probability mass per feedback ordinal (`pattern_ordinal`, no `WordCorrectness` built). Returns entropy in bits.
 
 Uses one thread-local `Patterns { buckets, touched }`, shared by every word length: `buckets` grows to the largest `WordCorrectness::<N>::COUNT` (= 3^N) seen and is all zero between calls; `touched` lists the ordinals a call wrote (a bucket is listed when it is 0.0 before the add, so every prior must be positive). The call sorts `touched` ascending, sums `p * log2(p)` in that order while zeroing each bucket, and clears the list. The ascending order makes the floating-point result independent of word order, which keeps guess sequences bit-identical.
 
