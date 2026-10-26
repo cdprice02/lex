@@ -1,0 +1,5180 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:47:03.306801Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "terianas",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 8,
+    "dictionary_length": 54669,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "9a2a9ecec8d72f9011778075c4bde03005212233ce550da098ca567aef9415b3",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.2479999999999722,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.02600000000000001,
+        "3": 0.7120000000000005,
+        "4": 0.25000000000000017,
+        "5": 0.012
+      }
+    },
+    "prior": {
+      "mean": 3.150434814159529,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.04539213679743664,
+        "3": 0.7654051170427716,
+        "4": 0.18257854136261994,
+        "5": 0.006624204797172549
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "resudada",
+      "num_guesses": 3,
+      "prior": 0.000011044361272151202,
+      "guesses": [
+        "terianas",
+        "robadora",
+        "resudada"
+      ]
+    },
+    {
+      "word": "enchufen",
+      "num_guesses": 3,
+      "prior": 0.000010219271958213626,
+      "guesses": [
+        "terianas",
+        "conduele",
+        "enchufen"
+      ]
+    },
+    {
+      "word": "embragan",
+      "num_guesses": 4,
+      "prior": 9.928000512365819e-6,
+      "guesses": [
+        "terianas",
+        "agolpaba",
+        "bregaban",
+        "embragan"
+      ]
+    },
+    {
+      "word": "avefrías",
+      "num_guesses": 4,
+      "prior": 0.000014888639983408233,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "arbóreas",
+        "avefrías"
+      ]
+    },
+    {
+      "word": "alturada",
+      "num_guesses": 3,
+      "prior": 0.000013868194566765047,
+      "guesses": [
+        "terianas",
+        "adoptaba",
+        "alturada"
+      ]
+    },
+    {
+      "word": "encajáis",
+      "num_guesses": 3,
+      "prior": 0.000010365684819391387,
+      "guesses": [
+        "terianas",
+        "angélico",
+        "encajáis"
+      ]
+    },
+    {
+      "word": "jugaréis",
+      "num_guesses": 3,
+      "prior": 0.000012730463258691968,
+      "guesses": [
+        "terianas",
+        "rodrigué",
+        "jugaréis"
+      ]
+    },
+    {
+      "word": "ortodoxa",
+      "num_guesses": 3,
+      "prior": 0.00004075866814858126,
+      "guesses": [
+        "terianas",
+        "bucéfalo",
+        "ortodoxa"
+      ]
+    },
+    {
+      "word": "cántabra",
+      "num_guesses": 3,
+      "prior": 0.00002601687159016345,
+      "guesses": [
+        "terianas",
+        "captaron",
+        "cántabra"
+      ]
+    },
+    {
+      "word": "reavivas",
+      "num_guesses": 3,
+      "prior": 8.106516167918998e-6,
+      "guesses": [
+        "terianas",
+        "realizas",
+        "reavivas"
+      ]
+    },
+    {
+      "word": "desbrava",
+      "num_guesses": 4,
+      "prior": 0.000012364562164945614,
+      "guesses": [
+        "terianas",
+        "robadora",
+        "sembrada",
+        "desbrava"
+      ]
+    },
+    {
+      "word": "alteráis",
+      "num_guesses": 3,
+      "prior": 0.000012953710488887366,
+      "guesses": [
+        "terianas",
+        "acordáis",
+        "alteráis"
+      ]
+    },
+    {
+      "word": "chacchar",
+      "num_guesses": 3,
+      "prior": 0.000016281725397932625,
+      "guesses": [
+        "terianas",
+        "comulgad",
+        "chacchar"
+      ]
+    },
+    {
+      "word": "hinnible",
+      "num_guesses": 3,
+      "prior": 8.68090203835469e-6,
+      "guesses": [
+        "terianas",
+        "locución",
+        "hinnible"
+      ]
+    },
+    {
+      "word": "flojeara",
+      "num_guesses": 4,
+      "prior": 8.742914787325467e-6,
+      "guesses": [
+        "terianas",
+        "maculada",
+        "floreaba",
+        "flojeara"
+      ]
+    },
+    {
+      "word": "piqueteó",
+      "num_guesses": 3,
+      "prior": 7.490276075904087e-6,
+      "guesses": [
+        "terianas",
+        "embeleco",
+        "piqueteó"
+      ]
+    },
+    {
+      "word": "churrera",
+      "num_guesses": 3,
+      "prior": 0.000014185552224256002,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "churrera"
+      ]
+    },
+    {
+      "word": "revolare",
+      "num_guesses": 3,
+      "prior": 8.985821922856688e-6,
+      "guesses": [
+        "terianas",
+        "recolare",
+        "revolare"
+      ]
+    },
+    {
+      "word": "repatrié",
+      "num_guesses": 4,
+      "prior": 7.86040449416909e-6,
+      "guesses": [
+        "terianas",
+        "domótica",
+        "repatrie",
+        "repatrié"
+      ]
+    },
+    {
+      "word": "parásita",
+      "num_guesses": 3,
+      "prior": 0.000029092785213701364,
+      "guesses": [
+        "terianas",
+        "arrasado",
+        "parásita"
+      ]
+    },
+    {
+      "word": "prángana",
+      "num_guesses": 4,
+      "prior": 0.000014134012272462212,
+      "guesses": [
+        "terianas",
+        "armadora",
+        "franquía",
+        "prángana"
+      ]
+    },
+    {
+      "word": "asosegad",
+      "num_guesses": 3,
+      "prior": 8.073154886765801e-6,
+      "guesses": [
+        "terianas",
+        "falsedad",
+        "asosegad"
+      ]
+    },
+    {
+      "word": "agachéis",
+      "num_guesses": 3,
+      "prior": 7.66364505529458e-6,
+      "guesses": [
+        "terianas",
+        "alampado",
+        "agachéis"
+      ]
+    },
+    {
+      "word": "vindiqué",
+      "num_guesses": 3,
+      "prior": 9.39593081508072e-6,
+      "guesses": [
+        "terianas",
+        "dilucidó",
+        "vindiqué"
+      ]
+    },
+    {
+      "word": "iterando",
+      "num_guesses": 3,
+      "prior": 0.000014306962188537824,
+      "guesses": [
+        "terianas",
+        "vibrante",
+        "iterando"
+      ]
+    },
+    {
+      "word": "chismean",
+      "num_guesses": 3,
+      "prior": 0.000013505950892411266,
+      "guesses": [
+        "terianas",
+        "esplican",
+        "chismean"
+      ]
+    },
+    {
+      "word": "gambiano",
+      "num_guesses": 4,
+      "prior": 0.00001185324600849179,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "zambiano",
+        "gambiano"
+      ]
+    },
+    {
+      "word": "remuneró",
+      "num_guesses": 4,
+      "prior": 0.000018371885821244523,
+      "guesses": [
+        "terianas",
+        "demuelen",
+        "comisión",
+        "remuneró"
+      ]
+    },
+    {
+      "word": "gustaban",
+      "num_guesses": 3,
+      "prior": 0.00004273147740744839,
+      "guesses": [
+        "terianas",
+        "desplugo",
+        "gustaban"
+      ]
+    },
+    {
+      "word": "buceados",
+      "num_guesses": 4,
+      "prior": 9.468146274164386e-6,
+      "guesses": [
+        "terianas",
+        "comulgad",
+        "educados",
+        "buceados"
+      ]
+    },
+    {
+      "word": "colmarás",
+      "num_guesses": 3,
+      "prior": 0.00001240706350397104,
+      "guesses": [
+        "terianas",
+        "coulombs",
+        "colmarás"
+      ]
+    },
+    {
+      "word": "resellen",
+      "num_guesses": 4,
+      "prior": 0.000011243528759065708,
+      "guesses": [
+        "terianas",
+        "coherede",
+        "resequen",
+        "resellen"
+      ]
+    },
+    {
+      "word": "plantado",
+      "num_guesses": 3,
+      "prior": 0.000042924443821986965,
+      "guesses": [
+        "terianas",
+        "amputada",
+        "plantado"
+      ]
+    },
+    {
+      "word": "hundiera",
+      "num_guesses": 3,
+      "prior": 0.000026386993025391003,
+      "guesses": [
+        "terianas",
+        "creedora",
+        "hundiera"
+      ]
+    },
+    {
+      "word": "engoznan",
+      "num_guesses": 3,
+      "prior": 6.906842828773468e-6,
+      "guesses": [
+        "terianas",
+        "condenan",
+        "engoznan"
+      ]
+    },
+    {
+      "word": "camberas",
+      "num_guesses": 3,
+      "prior": 0.000015808717757711842,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "camberas"
+      ]
+    },
+    {
+      "word": "inquinar",
+      "num_guesses": 3,
+      "prior": 0.00001102991785575103,
+      "guesses": [
+        "terianas",
+        "inclinar",
+        "inquinar"
+      ]
+    },
+    {
+      "word": "españoló",
+      "num_guesses": 4,
+      "prior": 0.000011945888599656312,
+      "guesses": [
+        "terianas",
+        "espeluco",
+        "españolá",
+        "españoló"
+      ]
+    },
+    {
+      "word": "selénica",
+      "num_guesses": 4,
+      "prior": 0.000012577207318876439,
+      "guesses": [
+        "terianas",
+        "demonice",
+        "vesánica",
+        "selénica"
+      ]
+    },
+    {
+      "word": "deferías",
+      "num_guesses": 4,
+      "prior": 7.987250708507973e-6,
+      "guesses": [
+        "terianas",
+        "recursos",
+        "deberías",
+        "deferías"
+      ]
+    },
+    {
+      "word": "sanativa",
+      "num_guesses": 4,
+      "prior": 0.000012274617246511656,
+      "guesses": [
+        "terianas",
+        "zapatito",
+        "sabatina",
+        "sanativa"
+      ]
+    },
+    {
+      "word": "apiñemos",
+      "num_guesses": 4,
+      "prior": 8.604067806864672e-6,
+      "guesses": [
+        "terianas",
+        "másculos",
+        "viajemos",
+        "apiñemos"
+      ]
+    },
+    {
+      "word": "engranas",
+      "num_guesses": 3,
+      "prior": 8.3110067269458e-6,
+      "guesses": [
+        "terianas",
+        "orejanas",
+        "engranas"
+      ]
+    },
+    {
+      "word": "remuneré",
+      "num_guesses": 4,
+      "prior": 9.485860422893405e-6,
+      "guesses": [
+        "terianas",
+        "demuelen",
+        "comisión",
+        "remuneré"
+      ]
+    },
+    {
+      "word": "baratura",
+      "num_guesses": 3,
+      "prior": 0.00003367226731915956,
+      "guesses": [
+        "terianas",
+        "adoptaba",
+        "baratura"
+      ]
+    },
+    {
+      "word": "baturras",
+      "num_guesses": 3,
+      "prior": 0.000013634461727504658,
+      "guesses": [
+        "terianas",
+        "computad",
+        "baturras"
+      ]
+    },
+    {
+      "word": "acedados",
+      "num_guesses": 4,
+      "prior": 9.2049913292753e-6,
+      "guesses": [
+        "terianas",
+        "calmosos",
+        "producto",
+        "acedados"
+      ]
+    },
+    {
+      "word": "briñones",
+      "num_guesses": 4,
+      "prior": 9.639626840908807e-6,
+      "guesses": [
+        "terianas",
+        "fingidos",
+        "bribones",
+        "briñones"
+      ]
+    },
+    {
+      "word": "calificó",
+      "num_guesses": 3,
+      "prior": 0.00004378684088071118,
+      "guesses": [
+        "terianas",
+        "modulaba",
+        "calificó"
+      ]
+    },
+    {
+      "word": "resonáis",
+      "num_guesses": 3,
+      "prior": 7.70462945231445e-6,
+      "guesses": [
+        "terianas",
+        "custodiá",
+        "resonáis"
+      ]
+    },
+    {
+      "word": "despeada",
+      "num_guesses": 4,
+      "prior": 0.000013070833683188976,
+      "guesses": [
+        "terianas",
+        "caloñada",
+        "desusada",
+        "despeada"
+      ]
+    },
+    {
+      "word": "zurubíes",
+      "num_guesses": 4,
+      "prior": 7.248141171519846e-6,
+      "guesses": [
+        "terianas",
+        "cobrador",
+        "surubíes",
+        "zurubíes"
+      ]
+    },
+    {
+      "word": "detraigo",
+      "num_guesses": 3,
+      "prior": 6.8751587269982455e-6,
+      "guesses": [
+        "terianas",
+        "retraigo",
+        "detraigo"
+      ]
+    },
+    {
+      "word": "afuciado",
+      "num_guesses": 4,
+      "prior": 7.141504378501624e-6,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "afichado",
+        "afuciado"
+      ]
+    },
+    {
+      "word": "conhortó",
+      "num_guesses": 3,
+      "prior": 0.000010238849251117213,
+      "guesses": [
+        "terianas",
+        "homófono",
+        "conhortó"
+      ]
+    },
+    {
+      "word": "hidrosol",
+      "num_guesses": 3,
+      "prior": 0.00001379992306266192,
+      "guesses": [
+        "terianas",
+        "bodorrio",
+        "hidrosol"
+      ]
+    },
+    {
+      "word": "costaste",
+      "num_guesses": 3,
+      "prior": 0.000012664498757994184,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "costaste"
+      ]
+    },
+    {
+      "word": "arquease",
+      "num_guesses": 4,
+      "prior": 0.000010691149179796266,
+      "guesses": [
+        "terianas",
+        "acaudalo",
+        "abjurase",
+        "arquease"
+      ]
+    },
+    {
+      "word": "incubase",
+      "num_guesses": 4,
+      "prior": 0.000010936638575668572,
+      "guesses": [
+        "terianas",
+        "modelice",
+        "concepto",
+        "incubase"
+      ]
+    },
+    {
+      "word": "excitéis",
+      "num_guesses": 3,
+      "prior": 0.000010755981517911255,
+      "guesses": [
+        "terianas",
+        "silábico",
+        "excitéis"
+      ]
+    },
+    {
+      "word": "exhortas",
+      "num_guesses": 4,
+      "prior": 0.000016411795652053038,
+      "guesses": [
+        "terianas",
+        "empuerco",
+        "estrofas",
+        "exhortas"
+      ]
+    },
+    {
+      "word": "geodesta",
+      "num_guesses": 3,
+      "prior": 0.00001980378900851626,
+      "guesses": [
+        "terianas",
+        "deflecto",
+        "geodesta"
+      ]
+    },
+    {
+      "word": "salediza",
+      "num_guesses": 3,
+      "prior": 0.0000164382996769388,
+      "guesses": [
+        "terianas",
+        "acoplada",
+        "salediza"
+      ]
+    },
+    {
+      "word": "padrotes",
+      "num_guesses": 3,
+      "prior": 0.000018663504183399804,
+      "guesses": [
+        "terianas",
+        "castores",
+        "padrotes"
+      ]
+    },
+    {
+      "word": "fallases",
+      "num_guesses": 4,
+      "prior": 8.705919462059281e-6,
+      "guesses": [
+        "terianas",
+        "calmosos",
+        "provecho",
+        "fallases"
+      ]
+    },
+    {
+      "word": "impidáis",
+      "num_guesses": 3,
+      "prior": 0.000016666696930687375,
+      "guesses": [
+        "terianas",
+        "moluscos",
+        "impidáis"
+      ]
+    },
+    {
+      "word": "remansan",
+      "num_guesses": 3,
+      "prior": 0.000016725539337350845,
+      "guesses": [
+        "terianas",
+        "describí",
+        "remansan"
+      ]
+    },
+    {
+      "word": "cardíaco",
+      "num_guesses": 4,
+      "prior": 0.00004210453365278705,
+      "guesses": [
+        "terianas",
+        "aguadaba",
+        "marchado",
+        "cardíaco"
+      ]
+    },
+    {
+      "word": "rateadas",
+      "num_guesses": 3,
+      "prior": 9.082350516877786e-6,
+      "guesses": [
+        "terianas",
+        "digestís",
+        "rateadas"
+      ]
+    },
+    {
+      "word": "aceparon",
+      "num_guesses": 4,
+      "prior": 7.444319991704119e-6,
+      "guesses": [
+        "terianas",
+        "agolpada",
+        "apenaron",
+        "aceparon"
+      ]
+    },
+    {
+      "word": "descanse",
+      "num_guesses": 3,
+      "prior": 0.000038244570511871654,
+      "guesses": [
+        "terianas",
+        "descoles",
+        "descanse"
+      ]
+    },
+    {
+      "word": "emanaban",
+      "num_guesses": 3,
+      "prior": 0.000028575131706352737,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "emanaban"
+      ]
+    },
+    {
+      "word": "huérfana",
+      "num_guesses": 3,
+      "prior": 0.00003938028426597476,
+      "guesses": [
+        "terianas",
+        "armadora",
+        "huérfana"
+      ]
+    },
+    {
+      "word": "grupetos",
+      "num_guesses": 3,
+      "prior": 0.000012493293909114815,
+      "guesses": [
+        "terianas",
+        "competed",
+        "grupetos"
+      ]
+    },
+    {
+      "word": "sonadora",
+      "num_guesses": 3,
+      "prior": 0.00001562729656119,
+      "guesses": [
+        "terianas",
+        "abrazará",
+        "sonadora"
+      ]
+    },
+    {
+      "word": "reviendo",
+      "num_guesses": 3,
+      "prior": 0.000015509327439562335,
+      "guesses": [
+        "terianas",
+        "remiendo",
+        "reviendo"
+      ]
+    },
+    {
+      "word": "patotera",
+      "num_guesses": 3,
+      "prior": 0.000010474757541010949,
+      "guesses": [
+        "terianas",
+        "acortara",
+        "patotera"
+      ]
+    },
+    {
+      "word": "mercedes",
+      "num_guesses": 3,
+      "prior": 0.00006658743948688505,
+      "guesses": [
+        "terianas",
+        "corrompé",
+        "mercedes"
+      ]
+    },
+    {
+      "word": "plazcáis",
+      "num_guesses": 3,
+      "prior": 8.073154886765801e-6,
+      "guesses": [
+        "terianas",
+        "maldicho",
+        "plazcáis"
+      ]
+    },
+    {
+      "word": "hertzios",
+      "num_guesses": 3,
+      "prior": 0.000015665444356027573,
+      "guesses": [
+        "terianas",
+        "clámides",
+        "hertzios"
+      ]
+    },
+    {
+      "word": "descreen",
+      "num_guesses": 3,
+      "prior": 0.000016919991646234354,
+      "guesses": [
+        "terianas",
+        "coherede",
+        "descreen"
+      ]
+    },
+    {
+      "word": "císticos",
+      "num_guesses": 4,
+      "prior": 0.000014322276526621377,
+      "guesses": [
+        "terianas",
+        "suplicio",
+        "céspedes",
+        "císticos"
+      ]
+    },
+    {
+      "word": "adonecer",
+      "num_guesses": 4,
+      "prior": 7.764517199761548e-6,
+      "guesses": [
+        "terianas",
+        "creedero",
+        "acoderen",
+        "adonecer"
+      ]
+    },
+    {
+      "word": "cubicado",
+      "num_guesses": 3,
+      "prior": 0.000017298438137083085,
+      "guesses": [
+        "terianas",
+        "modulaba",
+        "cubicado"
+      ]
+    },
+    {
+      "word": "trepidas",
+      "num_guesses": 3,
+      "prior": 0.00001212960074273734,
+      "guesses": [
+        "terianas",
+        "sublimes",
+        "trepidas"
+      ]
+    },
+    {
+      "word": "reabrían",
+      "num_guesses": 3,
+      "prior": 0.00001352094801951448,
+      "guesses": [
+        "terianas",
+        "relancen",
+        "reabrían"
+      ]
+    },
+    {
+      "word": "seriedad",
+      "num_guesses": 2,
+      "prior": 0.00005363309590801962,
+      "guesses": [
+        "terianas",
+        "seriedad"
+      ]
+    },
+    {
+      "word": "reposara",
+      "num_guesses": 3,
+      "prior": 0.000020576687512096032,
+      "guesses": [
+        "terianas",
+        "robadora",
+        "reposara"
+      ]
+    },
+    {
+      "word": "rezongue",
+      "num_guesses": 3,
+      "prior": 0.000012636603115300871,
+      "guesses": [
+        "terianas",
+        "demuelen",
+        "rezongue"
+      ]
+    },
+    {
+      "word": "espadase",
+      "num_guesses": 3,
+      "prior": 7.764517199761548e-6,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "espadase"
+      ]
+    },
+    {
+      "word": "rezurcir",
+      "num_guesses": 4,
+      "prior": 8.295977683309238e-6,
+      "guesses": [
+        "terianas",
+        "recuerdo",
+        "relucirá",
+        "rezurcir"
+      ]
+    },
+    {
+      "word": "remedare",
+      "num_guesses": 4,
+      "prior": 7.222068045296935e-6,
+      "guesses": [
+        "terianas",
+        "recolare",
+        "remudare",
+        "remedare"
+      ]
+    },
+    {
+      "word": "blasfemó",
+      "num_guesses": 3,
+      "prior": 0.00002072672620775714,
+      "guesses": [
+        "terianas",
+        "espeluco",
+        "blasfemó"
+      ]
+    },
+    {
+      "word": "márchese",
+      "num_guesses": 2,
+      "prior": 0.000022657683741232645,
+      "guesses": [
+        "terianas",
+        "márchese"
+      ]
+    },
+    {
+      "word": "babirusa",
+      "num_guesses": 3,
+      "prior": 0.000015453358077434775,
+      "guesses": [
+        "terianas",
+        "pulidora",
+        "babirusa"
+      ]
+    },
+    {
+      "word": "atentaré",
+      "num_guesses": 4,
+      "prior": 0.00001112481285500132,
+      "guesses": [
+        "terianas",
+        "avaluará",
+        "antojare",
+        "atentaré"
+      ]
+    },
+    {
+      "word": "fenestra",
+      "num_guesses": 3,
+      "prior": 0.00001901454435800723,
+      "guesses": [
+        "terianas",
+        "fumadora",
+        "fenestra"
+      ]
+    },
+    {
+      "word": "etruscas",
+      "num_guesses": 3,
+      "prior": 0.00002348312781480051,
+      "guesses": [
+        "terianas",
+        "protervo",
+        "etruscas"
+      ]
+    },
+    {
+      "word": "dominaos",
+      "num_guesses": 3,
+      "prior": 0.000013503802999348988,
+      "guesses": [
+        "terianas",
+        "simuláis",
+        "dominaos"
+      ]
+    },
+    {
+      "word": "liquiden",
+      "num_guesses": 3,
+      "prior": 0.0000269401266272746,
+      "guesses": [
+        "terianas",
+        "locución",
+        "liquiden"
+      ]
+    },
+    {
+      "word": "lacustre",
+      "num_guesses": 3,
+      "prior": 0.00003633649488376199,
+      "guesses": [
+        "terianas",
+        "copulare",
+        "lacustre"
+      ]
+    },
+    {
+      "word": "asechaba",
+      "num_guesses": 3,
+      "prior": 0.000015672555856736323,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "asechaba"
+      ]
+    },
+    {
+      "word": "solieses",
+      "num_guesses": 4,
+      "prior": 6.809979576093101e-6,
+      "guesses": [
+        "terianas",
+        "culpemos",
+        "dolieses",
+        "solieses"
+      ]
+    },
+    {
+      "word": "agrandar",
+      "num_guesses": 3,
+      "prior": 0.000031074943191935356,
+      "guesses": [
+        "terianas",
+        "brujidor",
+        "agrandar"
+      ]
+    },
+    {
+      "word": "centonar",
+      "num_guesses": 3,
+      "prior": 0.000010056978822752369,
+      "guesses": [
+        "terianas",
+        "detornar",
+        "centonar"
+      ]
+    },
+    {
+      "word": "cubramos",
+      "num_guesses": 3,
+      "prior": 0.000018172569085090414,
+      "guesses": [
+        "terianas",
+        "coulombs",
+        "cubramos"
+      ]
+    },
+    {
+      "word": "envidaba",
+      "num_guesses": 3,
+      "prior": 0.000011129473440153873,
+      "guesses": [
+        "terianas",
+        "himplaba",
+        "envidaba"
+      ]
+    },
+    {
+      "word": "fornicas",
+      "num_guesses": 3,
+      "prior": 0.000011353135535984321,
+      "guesses": [
+        "terianas",
+        "cornisas",
+        "fornicas"
+      ]
+    },
+    {
+      "word": "felposas",
+      "num_guesses": 3,
+      "prior": 9.883478536028395e-6,
+      "guesses": [
+        "terianas",
+        "culposos",
+        "felposas"
+      ]
+    },
+    {
+      "word": "alhajita",
+      "num_guesses": 3,
+      "prior": 0.000015492001304355024,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "alhajita"
+      ]
+    },
+    {
+      "word": "añascada",
+      "num_guesses": 3,
+      "prior": 7.68424654902753e-6,
+      "guesses": [
+        "terianas",
+        "copulado",
+        "añascada"
+      ]
+    },
+    {
+      "word": "erigirán",
+      "num_guesses": 3,
+      "prior": 0.000019305556330030914,
+      "guesses": [
+        "terianas",
+        "irguiere",
+        "erigirán"
+      ]
+    },
+    {
+      "word": "tintines",
+      "num_guesses": 2,
+      "prior": 0.000012246159558676245,
+      "guesses": [
+        "terianas",
+        "tintines"
+      ]
+    },
+    {
+      "word": "palabrón",
+      "num_guesses": 4,
+      "prior": 0.000010896392263509137,
+      "guesses": [
+        "terianas",
+        "armadora",
+        "palafrén",
+        "palabrón"
+      ]
+    },
+    {
+      "word": "eximiste",
+      "num_guesses": 4,
+      "prior": 8.004728448364715e-6,
+      "guesses": [
+        "terianas",
+        "delimite",
+        "emitiste",
+        "eximiste"
+      ]
+    },
+    {
+      "word": "educaron",
+      "num_guesses": 3,
+      "prior": 0.0000287543930779237,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "educaron"
+      ]
+    },
+    {
+      "word": "intitula",
+      "num_guesses": 3,
+      "prior": 0.00003372075629437599,
+      "guesses": [
+        "terianas",
+        "intoxicó",
+        "intitula"
+      ]
+    },
+    {
+      "word": "ufanarás",
+      "num_guesses": 3,
+      "prior": 6.937955993219365e-6,
+      "guesses": [
+        "terianas",
+        "acaldado",
+        "ufanarás"
+      ]
+    },
+    {
+      "word": "divagaba",
+      "num_guesses": 3,
+      "prior": 0.00002248705751813141,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "divagaba"
+      ]
+    },
+    {
+      "word": "asierais",
+      "num_guesses": 3,
+      "prior": 7.028089534250825e-6,
+      "guesses": [
+        "terianas",
+        "casables",
+        "asierais"
+      ]
+    },
+    {
+      "word": "semillen",
+      "num_guesses": 4,
+      "prior": 0.000012116369622340478,
+      "guesses": [
+        "terianas",
+        "decisión",
+        "bebiesen",
+        "semillen"
+      ]
+    },
+    {
+      "word": "estrobos",
+      "num_guesses": 4,
+      "prior": 0.000015468362579935614,
+      "guesses": [
+        "terianas",
+        "competed",
+        "estorbos",
+        "estrobos"
+      ]
+    },
+    {
+      "word": "póstumas",
+      "num_guesses": 3,
+      "prior": 0.000028513789176066784,
+      "guesses": [
+        "terianas",
+        "comprobó",
+        "póstumas"
+      ]
+    },
+    {
+      "word": "empernar",
+      "num_guesses": 3,
+      "prior": 0.000012431090919079064,
+      "guesses": [
+        "terianas",
+        "encordar",
+        "empernar"
+      ]
+    },
+    {
+      "word": "numerará",
+      "num_guesses": 3,
+      "prior": 0.00001789845122349044,
+      "guesses": [
+        "terianas",
+        "creedero",
+        "numerará"
+      ]
+    },
+    {
+      "word": "semideas",
+      "num_guesses": 3,
+      "prior": 0.000010691149179796266,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "semideas"
+      ]
+    },
+    {
+      "word": "turífera",
+      "num_guesses": 3,
+      "prior": 8.171637117422305e-6,
+      "guesses": [
+        "terianas",
+        "torreado",
+        "turífera"
+      ]
+    },
+    {
+      "word": "fauvismo",
+      "num_guesses": 3,
+      "prior": 0.000021514964798278115,
+      "guesses": [
+        "terianas",
+        "culombio",
+        "fauvismo"
+      ]
+    },
+    {
+      "word": "recidiva",
+      "num_guesses": 3,
+      "prior": 0.000032660972109351995,
+      "guesses": [
+        "terianas",
+        "remecida",
+        "recidiva"
+      ]
+    },
+    {
+      "word": "atendría",
+      "num_guesses": 3,
+      "prior": 0.000016964217320152676,
+      "guesses": [
+        "terianas",
+        "avaluará",
+        "atendría"
+      ]
+    },
+    {
+      "word": "enfadaba",
+      "num_guesses": 3,
+      "prior": 0.000026692698207623134,
+      "guesses": [
+        "terianas",
+        "bacalado",
+        "enfadaba"
+      ]
+    },
+    {
+      "word": "dilataba",
+      "num_guesses": 3,
+      "prior": 0.000030025462766403737,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "dilataba"
+      ]
+    },
+    {
+      "word": "rupturas",
+      "num_guesses": 3,
+      "prior": 0.00003895127750628963,
+      "guesses": [
+        "terianas",
+        "posturas",
+        "rupturas"
+      ]
+    },
+    {
+      "word": "tostarán",
+      "num_guesses": 3,
+      "prior": 0.000010723761323676765,
+      "guesses": [
+        "terianas",
+        "tostaron",
+        "tostarán"
+      ]
+    },
+    {
+      "word": "trituren",
+      "num_guesses": 3,
+      "prior": 0.000013706064490193124,
+      "guesses": [
+        "terianas",
+        "tributen",
+        "trituren"
+      ]
+    },
+    {
+      "word": "desangre",
+      "num_guesses": 3,
+      "prior": 0.00002465454966239191,
+      "guesses": [
+        "terianas",
+        "demorase",
+        "desangre"
+      ]
+    },
+    {
+      "word": "enharinó",
+      "num_guesses": 4,
+      "prior": 8.907769458467814e-6,
+      "guesses": [
+        "terianas",
+        "creedora",
+        "engarfió",
+        "enharinó"
+      ]
+    },
+    {
+      "word": "ajorando",
+      "num_guesses": 5,
+      "prior": 7.784075425471765e-6,
+      "guesses": [
+        "terianas",
+        "complugo",
+        "zafiedad",
+        "añorando",
+        "ajorando"
+      ]
+    },
+    {
+      "word": "radiolas",
+      "num_guesses": 3,
+      "prior": 0.000018217548015107813,
+      "guesses": [
+        "terianas",
+        "alcaldes",
+        "radiolas"
+      ]
+    },
+    {
+      "word": "esnifaba",
+      "num_guesses": 3,
+      "prior": 0.000012616928593283185,
+      "guesses": [
+        "terianas",
+        "balancee",
+        "esnifaba"
+      ]
+    },
+    {
+      "word": "engañara",
+      "num_guesses": 3,
+      "prior": 0.000023288453107154307,
+      "guesses": [
+        "terianas",
+        "cagadora",
+        "engañara"
+      ]
+    },
+    {
+      "word": "carajean",
+      "num_guesses": 3,
+      "prior": 8.791287946865893e-6,
+      "guesses": [
+        "terianas",
+        "aplancho",
+        "carajean"
+      ]
+    },
+    {
+      "word": "láudanos",
+      "num_guesses": 3,
+      "prior": 0.000010438904705664251,
+      "guesses": [
+        "terianas",
+        "colindan",
+        "láudanos"
+      ]
+    },
+    {
+      "word": "parecerá",
+      "num_guesses": 3,
+      "prior": 0.0000438061623673609,
+      "guesses": [
+        "terianas",
+        "culebreo",
+        "parecerá"
+      ]
+    },
+    {
+      "word": "enredare",
+      "num_guesses": 4,
+      "prior": 0.00001142112324483025,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "apéndice",
+        "enredare"
+      ]
+    },
+    {
+      "word": "asocados",
+      "num_guesses": 4,
+      "prior": 0.000011970346605077175,
+      "guesses": [
+        "terianas",
+        "cambalud",
+        "procesos",
+        "asocados"
+      ]
+    },
+    {
+      "word": "prospere",
+      "num_guesses": 3,
+      "prior": 0.00003513407322452433,
+      "guesses": [
+        "terianas",
+        "creedero",
+        "prospere"
+      ]
+    },
+    {
+      "word": "revenido",
+      "num_guesses": 3,
+      "prior": 0.000022022905651475373,
+      "guesses": [
+        "terianas",
+        "ruborice",
+        "revenido"
+      ]
+    },
+    {
+      "word": "enmarada",
+      "num_guesses": 4,
+      "prior": 0.000014401205799877504,
+      "guesses": [
+        "terianas",
+        "cagadora",
+        "envarada",
+        "enmarada"
+      ]
+    },
+    {
+      "word": "surjamos",
+      "num_guesses": 4,
+      "prior": 0.000010172999096847829,
+      "guesses": [
+        "terianas",
+        "cobrador",
+        "hurgamos",
+        "surjamos"
+      ]
+    },
+    {
+      "word": "justicié",
+      "num_guesses": 4,
+      "prior": 0.000010007608378739026,
+      "guesses": [
+        "terianas",
+        "coágulos",
+        "justició",
+        "justicié"
+      ]
+    },
+    {
+      "word": "mimetizo",
+      "num_guesses": 3,
+      "prior": 9.174941749812011e-6,
+      "guesses": [
+        "terianas",
+        "embeleco",
+        "mimetizo"
+      ]
+    },
+    {
+      "word": "déficits",
+      "num_guesses": 3,
+      "prior": 0.00003913876237235646,
+      "guesses": [
+        "terianas",
+        "simuléis",
+        "déficits"
+      ]
+    },
+    {
+      "word": "detraído",
+      "num_guesses": 3,
+      "prior": 0.0000162928932689711,
+      "guesses": [
+        "terianas",
+        "rotación",
+        "detraído"
+      ]
+    },
+    {
+      "word": "abreviad",
+      "num_guesses": 3,
+      "prior": 0.000014274414882694142,
+      "guesses": [
+        "terianas",
+        "apreciar",
+        "abreviad"
+      ]
+    },
+    {
+      "word": "sermonea",
+      "num_guesses": 2,
+      "prior": 0.00001771222018834368,
+      "guesses": [
+        "terianas",
+        "sermonea"
+      ]
+    },
+    {
+      "word": "discante",
+      "num_guesses": 3,
+      "prior": 0.000017533713768461158,
+      "guesses": [
+        "terianas",
+        "instante",
+        "discante"
+      ]
+    },
+    {
+      "word": "encallan",
+      "num_guesses": 3,
+      "prior": 0.000017542775514341305,
+      "guesses": [
+        "terianas",
+        "cambalud",
+        "encallan"
+      ]
+    },
+    {
+      "word": "pregusto",
+      "num_guesses": 3,
+      "prior": 0.000015990924859616684,
+      "guesses": [
+        "terianas",
+        "empuerco",
+        "pregusto"
+      ]
+    },
+    {
+      "word": "bonanzas",
+      "num_guesses": 3,
+      "prior": 0.00002566026441471867,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "bonanzas"
+      ]
+    },
+    {
+      "word": "acunados",
+      "num_guesses": 3,
+      "prior": 0.000017111732348544027,
+      "guesses": [
+        "terianas",
+        "condumio",
+        "acunados"
+      ]
+    },
+    {
+      "word": "tardanza",
+      "num_guesses": 2,
+      "prior": 0.000044304098345094554,
+      "guesses": [
+        "terianas",
+        "tardanza"
+      ]
+    },
+    {
+      "word": "puteaban",
+      "num_guesses": 3,
+      "prior": 0.000012899980032616181,
+      "guesses": [
+        "terianas",
+        "balompié",
+        "puteaban"
+      ]
+    },
+    {
+      "word": "colimado",
+      "num_guesses": 3,
+      "prior": 0.000014320578165785442,
+      "guesses": [
+        "terianas",
+        "modulaba",
+        "colimado"
+      ]
+    },
+    {
+      "word": "modelara",
+      "num_guesses": 3,
+      "prior": 0.000016564525806825986,
+      "guesses": [
+        "terianas",
+        "maculada",
+        "modelara"
+      ]
+    },
+    {
+      "word": "subsigan",
+      "num_guesses": 3,
+      "prior": 0.000013503802999348988,
+      "guesses": [
+        "terianas",
+        "dislocan",
+        "subsigan"
+      ]
+    },
+    {
+      "word": "fisurada",
+      "num_guesses": 3,
+      "prior": 0.00001911138570205893,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "fisurada"
+      ]
+    },
+    {
+      "word": "superaré",
+      "num_guesses": 4,
+      "prior": 0.000016719143685127168,
+      "guesses": [
+        "terianas",
+        "ulcerare",
+        "superará",
+        "superaré"
+      ]
+    },
+    {
+      "word": "empujare",
+      "num_guesses": 4,
+      "prior": 9.35897418929391e-6,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "engáñese",
+        "empujare"
+      ]
+    },
+    {
+      "word": "remilgan",
+      "num_guesses": 3,
+      "prior": 7.642819624880574e-6,
+      "guesses": [
+        "terianas",
+        "diverger",
+        "remilgan"
+      ]
+    },
+    {
+      "word": "palmando",
+      "num_guesses": 3,
+      "prior": 0.000011639364661880094,
+      "guesses": [
+        "terianas",
+        "callampa",
+        "palmando"
+      ]
+    },
+    {
+      "word": "cacharse",
+      "num_guesses": 4,
+      "prior": 8.398973488823866e-6,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "rascarse",
+        "cacharse"
+      ]
+    },
+    {
+      "word": "expresas",
+      "num_guesses": 3,
+      "prior": 0.00003964834064912298,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "expresas"
+      ]
+    },
+    {
+      "word": "xilófago",
+      "num_guesses": 3,
+      "prior": 0.000012705886891432493,
+      "guesses": [
+        "terianas",
+        "complico",
+        "xilófago"
+      ]
+    },
+    {
+      "word": "gusanito",
+      "num_guesses": 3,
+      "prior": 0.000022705464684045878,
+      "guesses": [
+        "terianas",
+        "funcionó",
+        "gusanito"
+      ]
+    },
+    {
+      "word": "retinaba",
+      "num_guesses": 3,
+      "prior": 0.000010921615663751126,
+      "guesses": [
+        "terianas",
+        "libertad",
+        "retinaba"
+      ]
+    },
+    {
+      "word": "desvaino",
+      "num_guesses": 3,
+      "prior": 7.222068045296935e-6,
+      "guesses": [
+        "terianas",
+        "desvainó",
+        "desvaino"
+      ]
+    },
+    {
+      "word": "ataderos",
+      "num_guesses": 3,
+      "prior": 0.000016593840387726736,
+      "guesses": [
+        "terianas",
+        "cetreros",
+        "ataderos"
+      ]
+    },
+    {
+      "word": "agudices",
+      "num_guesses": 3,
+      "prior": 7.578943091706397e-6,
+      "guesses": [
+        "terianas",
+        "másculos",
+        "agudices"
+      ]
+    },
+    {
+      "word": "nuclease",
+      "num_guesses": 3,
+      "prior": 8.919088134712274e-6,
+      "guesses": [
+        "terianas",
+        "edulcore",
+        "nuclease"
+      ]
+    },
+    {
+      "word": "traspuso",
+      "num_guesses": 3,
+      "prior": 0.000025434861440995835,
+      "guesses": [
+        "terianas",
+        "dicótomo",
+        "traspuso"
+      ]
+    },
+    {
+      "word": "drupáceo",
+      "num_guesses": 3,
+      "prior": 0.00001959602591647281,
+      "guesses": [
+        "terianas",
+        "culebreo",
+        "drupáceo"
+      ]
+    },
+    {
+      "word": "vernales",
+      "num_guesses": 2,
+      "prior": 0.000017272829678142632,
+      "guesses": [
+        "terianas",
+        "vernales"
+      ]
+    },
+    {
+      "word": "derraiga",
+      "num_guesses": 3,
+      "prior": 7.222068045296935e-6,
+      "guesses": [
+        "terianas",
+        "herbaria",
+        "derraiga"
+      ]
+    },
+    {
+      "word": "impondrá",
+      "num_guesses": 3,
+      "prior": 0.00004410263143334487,
+      "guesses": [
+        "terianas",
+        "modificó",
+        "impondrá"
+      ]
+    },
+    {
+      "word": "abordaje",
+      "num_guesses": 3,
+      "prior": 0.00004367449096333498,
+      "guesses": [
+        "terianas",
+        "maculada",
+        "abordaje"
+      ]
+    },
+    {
+      "word": "azotabas",
+      "num_guesses": 3,
+      "prior": 8.537874805378498e-6,
+      "guesses": [
+        "terianas",
+        "coagulad",
+        "azotabas"
+      ]
+    },
+    {
+      "word": "tronares",
+      "num_guesses": 3,
+      "prior": 7.373182864006867e-6,
+      "guesses": [
+        "terianas",
+        "tronales",
+        "tronares"
+      ]
+    },
+    {
+      "word": "resaluda",
+      "num_guesses": 4,
+      "prior": 7.397200255138489e-6,
+      "guesses": [
+        "terianas",
+        "robadora",
+        "repasada",
+        "resaluda"
+      ]
+    },
+    {
+      "word": "estorbas",
+      "num_guesses": 4,
+      "prior": 0.00001738454750633706,
+      "guesses": [
+        "terianas",
+        "empuerco",
+        "estrofas",
+        "estorbas"
+      ]
+    },
+    {
+      "word": "extingas",
+      "num_guesses": 3,
+      "prior": 0.000011772529301836674,
+      "guesses": [
+        "terianas",
+        "extintas",
+        "extingas"
+      ]
+    },
+    {
+      "word": "regaléis",
+      "num_guesses": 3,
+      "prior": 0.000011120144446787336,
+      "guesses": [
+        "terianas",
+        "polaricé",
+        "regaléis"
+      ]
+    },
+    {
+      "word": "bruñidos",
+      "num_guesses": 4,
+      "prior": 0.000025105507782563563,
+      "guesses": [
+        "terianas",
+        "corrompí",
+        "gruñidos",
+        "bruñidos"
+      ]
+    },
+    {
+      "word": "orábamos",
+      "num_guesses": 4,
+      "prior": 0.000015428220314236027,
+      "guesses": [
+        "terianas",
+        "coulombs",
+        "probamos",
+        "orábamos"
+      ]
+    },
+    {
+      "word": "exéresis",
+      "num_guesses": 3,
+      "prior": 0.000025474173624719274,
+      "guesses": [
+        "terianas",
+        "epicedio",
+        "exéresis"
+      ]
+    },
+    {
+      "word": "mutilara",
+      "num_guesses": 3,
+      "prior": 0.000013691863386354405,
+      "guesses": [
+        "terianas",
+        "magulada",
+        "mutilara"
+      ]
+    },
+    {
+      "word": "respondé",
+      "num_guesses": 4,
+      "prior": 0.000012689396392115146,
+      "guesses": [
+        "terianas",
+        "poseedor",
+        "respondí",
+        "respondé"
+      ]
+    },
+    {
+      "word": "escénico",
+      "num_guesses": 3,
+      "prior": 0.0000419506460599587,
+      "guesses": [
+        "terianas",
+        "modelice",
+        "escénico"
+      ]
+    },
+    {
+      "word": "astillan",
+      "num_guesses": 3,
+      "prior": 0.0000157511042793706,
+      "guesses": [
+        "terianas",
+        "assistan",
+        "astillan"
+      ]
+    },
+    {
+      "word": "mitigues",
+      "num_guesses": 3,
+      "prior": 0.000012711364749425048,
+      "guesses": [
+        "terianas",
+        "silábico",
+        "mitigues"
+      ]
+    },
+    {
+      "word": "paseadas",
+      "num_guesses": 4,
+      "prior": 0.000017221152372654326,
+      "guesses": [
+        "terianas",
+        "agolpaba",
+        "empresas",
+        "paseadas"
+      ]
+    },
+    {
+      "word": "trasvina",
+      "num_guesses": 3,
+      "prior": 0.000014759938801886213,
+      "guesses": [
+        "terianas",
+        "majestad",
+        "trasvina"
+      ]
+    },
+    {
+      "word": "recreces",
+      "num_guesses": 3,
+      "prior": 8.171637117422305e-6,
+      "guesses": [
+        "terianas",
+        "recuerde",
+        "recreces"
+      ]
+    },
+    {
+      "word": "ahincase",
+      "num_guesses": 3,
+      "prior": 7.642819624880574e-6,
+      "guesses": [
+        "terianas",
+        "enlanche",
+        "ahincase"
+      ]
+    },
+    {
+      "word": "respigan",
+      "num_guesses": 3,
+      "prior": 7.113823295623508e-6,
+      "guesses": [
+        "terianas",
+        "respiran",
+        "respigan"
+      ]
+    },
+    {
+      "word": "arregazó",
+      "num_guesses": 4,
+      "prior": 8.791287946865893e-6,
+      "guesses": [
+        "terianas",
+        "acombada",
+        "préstese",
+        "arregazó"
+      ]
+    },
+    {
+      "word": "escalase",
+      "num_guesses": 3,
+      "prior": 0.000014030461893171895,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "escalase"
+      ]
+    },
+    {
+      "word": "defectos",
+      "num_guesses": 3,
+      "prior": 0.0000640763018744684,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "defectos"
+      ]
+    },
+    {
+      "word": "completé",
+      "num_guesses": 4,
+      "prior": 0.00002177946451953505,
+      "guesses": [
+        "terianas",
+        "ciclópeo",
+        "complete",
+        "completé"
+      ]
+    },
+    {
+      "word": "tuneadas",
+      "num_guesses": 2,
+      "prior": 9.082350516877786e-6,
+      "guesses": [
+        "terianas",
+        "tuneadas"
+      ]
+    },
+    {
+      "word": "ultimado",
+      "num_guesses": 3,
+      "prior": 0.00002909697274678841,
+      "guesses": [
+        "terianas",
+        "movilicé",
+        "ultimado"
+      ]
+    },
+    {
+      "word": "azuritas",
+      "num_guesses": 3,
+      "prior": 0.00001071835347356115,
+      "guesses": [
+        "terianas",
+        "aparcero",
+        "azuritas"
+      ]
+    },
+    {
+      "word": "chimbero",
+      "num_guesses": 4,
+      "prior": 0.00001364272128935929,
+      "guesses": [
+        "terianas",
+        "epicedio",
+        "chiquero",
+        "chimbero"
+      ]
+    },
+    {
+      "word": "caudatos",
+      "num_guesses": 3,
+      "prior": 0.000011794762754531959,
+      "guesses": [
+        "terianas",
+        "complugo",
+        "caudatos"
+      ]
+    },
+    {
+      "word": "efectuar",
+      "num_guesses": 3,
+      "prior": 0.00006542199971658649,
+      "guesses": [
+        "terianas",
+        "receptor",
+        "efectuar"
+      ]
+    },
+    {
+      "word": "engobado",
+      "num_guesses": 3,
+      "prior": 0.000017826164494423388,
+      "guesses": [
+        "terianas",
+        "embeleco",
+        "engobado"
+      ]
+    },
+    {
+      "word": "oxigenen",
+      "num_guesses": 3,
+      "prior": 0.000011544401339944529,
+      "guesses": [
+        "terianas",
+        "foguereo",
+        "oxigenen"
+      ]
+    },
+    {
+      "word": "mambeado",
+      "num_guesses": 3,
+      "prior": 8.280838936986299e-6,
+      "guesses": [
+        "terianas",
+        "maculaba",
+        "mambeado"
+      ]
+    },
+    {
+      "word": "marcaban",
+      "num_guesses": 3,
+      "prior": 0.00003487690664810997,
+      "guesses": [
+        "terianas",
+        "malograr",
+        "marcaban"
+      ]
+    },
+    {
+      "word": "rociados",
+      "num_guesses": 3,
+      "prior": 0.000023245546361502392,
+      "guesses": [
+        "terianas",
+        "rociamos",
+        "rociados"
+      ]
+    },
+    {
+      "word": "hacinaos",
+      "num_guesses": 2,
+      "prior": 6.8751587269982455e-6,
+      "guesses": [
+        "terianas",
+        "hacinaos"
+      ]
+    },
+    {
+      "word": "rebataba",
+      "num_guesses": 5,
+      "prior": 8.039232867630376e-6,
+      "guesses": [
+        "terianas",
+        "catadora",
+        "relataba",
+        "remataba",
+        "rebataba"
+      ]
+    },
+    {
+      "word": "apúntate",
+      "num_guesses": 4,
+      "prior": 0.000015707921141311374,
+      "guesses": [
+        "terianas",
+        "bacalado",
+        "vuélvete",
+        "apúntate"
+      ]
+    },
+    {
+      "word": "estrujan",
+      "num_guesses": 3,
+      "prior": 0.000022390391773825503,
+      "guesses": [
+        "terianas",
+        "escuetos",
+        "estrujan"
+      ]
+    },
+    {
+      "word": "relievar",
+      "num_guesses": 3,
+      "prior": 0.000022463537783017647,
+      "guesses": [
+        "terianas",
+        "peligrar",
+        "relievar"
+      ]
+    },
+    {
+      "word": "mancaron",
+      "num_guesses": 4,
+      "prior": 0.00001296131392426924,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "concepto",
+        "mancaron"
+      ]
+    },
+    {
+      "word": "calzarás",
+      "num_guesses": 4,
+      "prior": 8.340742752461359e-6,
+      "guesses": [
+        "terianas",
+        "acampado",
+        "callarás",
+        "calzarás"
+      ]
+    },
+    {
+      "word": "panoplia",
+      "num_guesses": 4,
+      "prior": 0.00002727189468595007,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "magnolia",
+        "panoplia"
+      ]
+    },
+    {
+      "word": "malacate",
+      "num_guesses": 3,
+      "prior": 0.000027129902264235538,
+      "guesses": [
+        "terianas",
+        "capotada",
+        "malacate"
+      ]
+    },
+    {
+      "word": "recluten",
+      "num_guesses": 3,
+      "prior": 0.000017571348186044902,
+      "guesses": [
+        "terianas",
+        "drupáceo",
+        "recluten"
+      ]
+    },
+    {
+      "word": "apólogas",
+      "num_guesses": 3,
+      "prior": 0.000013449656094374763,
+      "guesses": [
+        "terianas",
+        "zambullo",
+        "apólogas"
+      ]
+    },
+    {
+      "word": "lombarda",
+      "num_guesses": 3,
+      "prior": 0.000028513464921141627,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "lombarda"
+      ]
+    },
+    {
+      "word": "puzolana",
+      "num_guesses": 3,
+      "prior": 0.000020522600844452098,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "puzolana"
+      ]
+    },
+    {
+      "word": "buscares",
+      "num_guesses": 3,
+      "prior": 0.00001704538953193738,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "buscares"
+      ]
+    },
+    {
+      "word": "adormiló",
+      "num_guesses": 3,
+      "prior": 0.00001510610506676553,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "adormiló"
+      ]
+    },
+    {
+      "word": "trinaría",
+      "num_guesses": 3,
+      "prior": 0.00001154842097926857,
+      "guesses": [
+        "terianas",
+        "tintaría",
+        "trinaría"
+      ]
+    },
+    {
+      "word": "restaran",
+      "num_guesses": 3,
+      "prior": 0.00001651007690491874,
+      "guesses": [
+        "terianas",
+        "restañar",
+        "restaran"
+      ]
+    },
+    {
+      "word": "vendíais",
+      "num_guesses": 3,
+      "prior": 9.993321941626584e-6,
+      "guesses": [
+        "terianas",
+        "devanáis",
+        "vendíais"
+      ]
+    },
+    {
+      "word": "operaría",
+      "num_guesses": 3,
+      "prior": 0.000027877987935853057,
+      "guesses": [
+        "terianas",
+        "agolpada",
+        "operaría"
+      ]
+    },
+    {
+      "word": "ceilanés",
+      "num_guesses": 3,
+      "prior": 0.000010486600146216168,
+      "guesses": [
+        "terianas",
+        "neivanos",
+        "ceilanés"
+      ]
+    },
+    {
+      "word": "tableada",
+      "num_guesses": 2,
+      "prior": 0.00001785085945386835,
+      "guesses": [
+        "terianas",
+        "tableada"
+      ]
+    },
+    {
+      "word": "oblicúan",
+      "num_guesses": 3,
+      "prior": 8.8386192859078e-6,
+      "guesses": [
+        "terianas",
+        "coludido",
+        "oblicúan"
+      ]
+    },
+    {
+      "word": "barriere",
+      "num_guesses": 3,
+      "prior": 0.000021201537776343225,
+      "guesses": [
+        "terianas",
+        "copulada",
+        "barriere"
+      ]
+    },
+    {
+      "word": "valuadas",
+      "num_guesses": 4,
+      "prior": 0.000025121493645383453,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "salvadas",
+        "valuadas"
+      ]
+    },
+    {
+      "word": "tendiese",
+      "num_guesses": 3,
+      "prior": 0.000023800746473696328,
+      "guesses": [
+        "terianas",
+        "endógeno",
+        "tendiese"
+      ]
+    },
+    {
+      "word": "arándano",
+      "num_guesses": 3,
+      "prior": 0.000022538512671562446,
+      "guesses": [
+        "terianas",
+        "armadora",
+        "arándano"
+      ]
+    },
+    {
+      "word": "electora",
+      "num_guesses": 3,
+      "prior": 0.000025535127823353554,
+      "guesses": [
+        "terianas",
+        "coletero",
+        "electora"
+      ]
+    },
+    {
+      "word": "situabas",
+      "num_guesses": 3,
+      "prior": 0.000010125868681457527,
+      "guesses": [
+        "terianas",
+        "dilucido",
+        "situabas"
+      ]
+    },
+    {
+      "word": "reinemos",
+      "num_guesses": 4,
+      "prior": 0.000013290933407088924,
+      "guesses": [
+        "terianas",
+        "custodiá",
+        "peineros",
+        "reinemos"
+      ]
+    },
+    {
+      "word": "sinólogo",
+      "num_guesses": 3,
+      "prior": 0.000018232442763403534,
+      "guesses": [
+        "terianas",
+        "monódico",
+        "sinólogo"
+      ]
+    },
+    {
+      "word": "cursamos",
+      "num_guesses": 3,
+      "prior": 0.00001639798514146407,
+      "guesses": [
+        "terianas",
+        "cobrador",
+        "cursamos"
+      ]
+    },
+    {
+      "word": "estajero",
+      "num_guesses": 4,
+      "prior": 0.000010426843547267026,
+      "guesses": [
+        "terianas",
+        "copulare",
+        "masetero",
+        "estajero"
+      ]
+    },
+    {
+      "word": "deduciré",
+      "num_guesses": 4,
+      "prior": 0.00001545461068003512,
+      "guesses": [
+        "terianas",
+        "recuerdo",
+        "deducirá",
+        "deduciré"
+      ]
+    },
+    {
+      "word": "mollizna",
+      "num_guesses": 3,
+      "prior": 0.000013365644434543926,
+      "guesses": [
+        "terianas",
+        "codicilo",
+        "mollizna"
+      ]
+    },
+    {
+      "word": "nasalice",
+      "num_guesses": 3,
+      "prior": 7.195612872344486e-6,
+      "guesses": [
+        "terianas",
+        "enlanche",
+        "nasalice"
+      ]
+    },
+    {
+      "word": "sufusión",
+      "num_guesses": 4,
+      "prior": 0.000014702286954622872,
+      "guesses": [
+        "terianas",
+        "monódico",
+        "infusión",
+        "sufusión"
+      ]
+    },
+    {
+      "word": "fuselaje",
+      "num_guesses": 3,
+      "prior": 0.000028009573866792457,
+      "guesses": [
+        "terianas",
+        "espeluco",
+        "fuselaje"
+      ]
+    },
+    {
+      "word": "purifica",
+      "num_guesses": 3,
+      "prior": 0.000036371018815107114,
+      "guesses": [
+        "terianas",
+        "oprimida",
+        "purifica"
+      ]
+    },
+    {
+      "word": "percibes",
+      "num_guesses": 3,
+      "prior": 0.000024469443931656886,
+      "guesses": [
+        "terianas",
+        "proceder",
+        "percibes"
+      ]
+    },
+    {
+      "word": "cabriole",
+      "num_guesses": 3,
+      "prior": 0.000012025511830373078,
+      "guesses": [
+        "terianas",
+        "edulcore",
+        "cabriole"
+      ]
+    },
+    {
+      "word": "valiendo",
+      "num_guesses": 4,
+      "prior": 0.00002881185256631638,
+      "guesses": [
+        "terianas",
+        "chiflido",
+        "lamiendo",
+        "valiendo"
+      ]
+    },
+    {
+      "word": "imbuiría",
+      "num_guesses": 3,
+      "prior": 9.868457982493286e-6,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "imbuiría"
+      ]
+    },
+    {
+      "word": "limitéis",
+      "num_guesses": 3,
+      "prior": 0.00001292567740773848,
+      "guesses": [
+        "terianas",
+        "simuléis",
+        "limitéis"
+      ]
+    },
+    {
+      "word": "entraste",
+      "num_guesses": 3,
+      "prior": 0.000028270597558764937,
+      "guesses": [
+        "terianas",
+        "cobrasen",
+        "entraste"
+      ]
+    },
+    {
+      "word": "compaseo",
+      "num_guesses": 3,
+      "prior": 9.459239253430285e-6,
+      "guesses": [
+        "terianas",
+        "cleuasmo",
+        "compaseo"
+      ]
+    },
+    {
+      "word": "descendí",
+      "num_guesses": 3,
+      "prior": 0.00002610438641148795,
+      "guesses": [
+        "terianas",
+        "preveído",
+        "descendí"
+      ]
+    },
+    {
+      "word": "búngalos",
+      "num_guesses": 3,
+      "prior": 0.000012265160673458395,
+      "guesses": [
+        "terianas",
+        "complugo",
+        "búngalos"
+      ]
+    },
+    {
+      "word": "comilona",
+      "num_guesses": 3,
+      "prior": 0.000025413658141405966,
+      "guesses": [
+        "terianas",
+        "dicótomo",
+        "comilona"
+      ]
+    },
+    {
+      "word": "caratuló",
+      "num_guesses": 3,
+      "prior": 0.000011689536197475598,
+      "guesses": [
+        "terianas",
+        "adoptaba",
+        "caratuló"
+      ]
+    },
+    {
+      "word": "figurear",
+      "num_guesses": 4,
+      "prior": 8.590991655523665e-6,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "bizquear",
+        "figurear"
+      ]
+    },
+    {
+      "word": "apostemo",
+      "num_guesses": 4,
+      "prior": 8.3110067269458e-6,
+      "guesses": [
+        "terianas",
+        "espeluco",
+        "apestoso",
+        "apostemo"
+      ]
+    },
+    {
+      "word": "descruza",
+      "num_guesses": 3,
+      "prior": 0.000014807798560477864,
+      "guesses": [
+        "terianas",
+        "mecedora",
+        "descruza"
+      ]
+    },
+    {
+      "word": "menearan",
+      "num_guesses": 3,
+      "prior": 0.000011466942497770809,
+      "guesses": [
+        "terianas",
+        "implorad",
+        "menearan"
+      ]
+    },
+    {
+      "word": "listemos",
+      "num_guesses": 3,
+      "prior": 9.546839755611937e-6,
+      "guesses": [
+        "terianas",
+        "suplimos",
+        "listemos"
+      ]
+    },
+    {
+      "word": "atrazina",
+      "num_guesses": 3,
+      "prior": 0.000018759090944440548,
+      "guesses": [
+        "terianas",
+        "garantir",
+        "atrazina"
+      ]
+    },
+    {
+      "word": "fijación",
+      "num_guesses": 3,
+      "prior": 0.00005827452687262551,
+      "guesses": [
+        "terianas",
+        "codicilo",
+        "fijación"
+      ]
+    },
+    {
+      "word": "iniciare",
+      "num_guesses": 3,
+      "prior": 0.000017471284822797023,
+      "guesses": [
+        "terianas",
+        "creedora",
+        "iniciare"
+      ]
+    },
+    {
+      "word": "concubio",
+      "num_guesses": 4,
+      "prior": 0.000010353278219109078,
+      "guesses": [
+        "terianas",
+        "dilucidó",
+        "teléfono",
+        "concubio"
+      ]
+    },
+    {
+      "word": "recejaba",
+      "num_guesses": 4,
+      "prior": 8.004728448364715e-6,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "recreaba",
+        "recejaba"
+      ]
+    },
+    {
+      "word": "lustrada",
+      "num_guesses": 3,
+      "prior": 0.000022964022626174364,
+      "guesses": [
+        "terianas",
+        "columbra",
+        "lustrada"
+      ]
+    },
+    {
+      "word": "azareada",
+      "num_guesses": 4,
+      "prior": 8.974836777626986e-6,
+      "guesses": [
+        "terianas",
+        "maculada",
+        "apartaba",
+        "azareada"
+      ]
+    },
+    {
+      "word": "salmodia",
+      "num_guesses": 3,
+      "prior": 0.000028119446708956355,
+      "guesses": [
+        "terianas",
+        "maculado",
+        "salmodia"
+      ]
+    },
+    {
+      "word": "basterna",
+      "num_guesses": 4,
+      "prior": 0.000011794762754531959,
+      "guesses": [
+        "terianas",
+        "coetánea",
+        "santería",
+        "basterna"
+      ]
+    },
+    {
+      "word": "facultar",
+      "num_guesses": 3,
+      "prior": 0.00003119454001454004,
+      "guesses": [
+        "terianas",
+        "capturar",
+        "facultar"
+      ]
+    },
+    {
+      "word": "acuernan",
+      "num_guesses": 3,
+      "prior": 8.577835404403673e-6,
+      "guesses": [
+        "terianas",
+        "enajenar",
+        "acuernan"
+      ]
+    },
+    {
+      "word": "anegaste",
+      "num_guesses": 4,
+      "prior": 0.00001064147209814472,
+      "guesses": [
+        "terianas",
+        "lactaban",
+        "anudaste",
+        "anegaste"
+      ]
+    },
+    {
+      "word": "migrados",
+      "num_guesses": 3,
+      "prior": 0.000016388091930554525,
+      "guesses": [
+        "terianas",
+        "civismos",
+        "migrados"
+      ]
+    },
+    {
+      "word": "semejaba",
+      "num_guesses": 3,
+      "prior": 0.0000327979463009146,
+      "guesses": [
+        "terianas",
+        "caloñada",
+        "semejaba"
+      ]
+    },
+    {
+      "word": "colegias",
+      "num_guesses": 3,
+      "prior": 0.00001201867137552969,
+      "guesses": [
+        "terianas",
+        "dilucido",
+        "colegias"
+      ]
+    },
+    {
+      "word": "estampar",
+      "num_guesses": 3,
+      "prior": 0.000035782314567528795,
+      "guesses": [
+        "terianas",
+        "empotrar",
+        "estampar"
+      ]
+    },
+    {
+      "word": "ondulará",
+      "num_guesses": 3,
+      "prior": 0.000010035938933738601,
+      "guesses": [
+        "terianas",
+        "nombrado",
+        "ondulará"
+      ]
+    },
+    {
+      "word": "intimidó",
+      "num_guesses": 3,
+      "prior": 0.000024276710479902706,
+      "guesses": [
+        "terianas",
+        "notificó",
+        "intimidó"
+      ]
+    },
+    {
+      "word": "roturare",
+      "num_guesses": 3,
+      "prior": 8.234746060426546e-6,
+      "guesses": [
+        "terianas",
+        "coletero",
+        "roturare"
+      ]
+    },
+    {
+      "word": "intituló",
+      "num_guesses": 3,
+      "prior": 0.000030195727739574428,
+      "guesses": [
+        "terianas",
+        "notificó",
+        "intituló"
+      ]
+    },
+    {
+      "word": "bautizas",
+      "num_guesses": 3,
+      "prior": 0.000014815221019625568,
+      "guesses": [
+        "terianas",
+        "platicad",
+        "bautizas"
+      ]
+    },
+    {
+      "word": "construí",
+      "num_guesses": 3,
+      "prior": 0.00002641581494538185,
+      "guesses": [
+        "terianas",
+        "monstruo",
+        "construí"
+      ]
+    },
+    {
+      "word": "enconaba",
+      "num_guesses": 3,
+      "prior": 0.00001738845678208797,
+      "guesses": [
+        "terianas",
+        "bacalado",
+        "enconaba"
+      ]
+    },
+    {
+      "word": "densamos",
+      "num_guesses": 4,
+      "prior": 7.397200255138489e-6,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "vendamos",
+        "densamos"
+      ]
+    },
+    {
+      "word": "atraerán",
+      "num_guesses": 3,
+      "prior": 0.000022809611567822363,
+      "guesses": [
+        "terianas",
+        "abertura",
+        "atraerán"
+      ]
+    },
+    {
+      "word": "aducción",
+      "num_guesses": 3,
+      "prior": 0.000028820349224656194,
+      "guesses": [
+        "terianas",
+        "codicilo",
+        "aducción"
+      ]
+    },
+    {
+      "word": "botsuana",
+      "num_guesses": 3,
+      "prior": 0.000018744645300515506,
+      "guesses": [
+        "terianas",
+        "amoldaba",
+        "botsuana"
+      ]
+    },
+    {
+      "word": "amaneado",
+      "num_guesses": 3,
+      "prior": 7.897483520046395e-6,
+      "guesses": [
+        "terianas",
+        "bacalado",
+        "amaneado"
+      ]
+    },
+    {
+      "word": "gradúate",
+      "num_guesses": 4,
+      "prior": 0.00001961681570725621,
+      "guesses": [
+        "terianas",
+        "acortara",
+        "voluntad",
+        "gradúate"
+      ]
+    },
+    {
+      "word": "encantas",
+      "num_guesses": 3,
+      "prior": 0.000020089453969609704,
+      "guesses": [
+        "terianas",
+        "alcabtea",
+        "encantas"
+      ]
+    },
+    {
+      "word": "pasmadas",
+      "num_guesses": 3,
+      "prior": 0.000019174696247711618,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "pasmadas"
+      ]
+    },
+    {
+      "word": "testeaba",
+      "num_guesses": 3,
+      "prior": 7.68424654902753e-6,
+      "guesses": [
+        "terianas",
+        "testeada",
+        "testeaba"
+      ]
+    },
+    {
+      "word": "quedaría",
+      "num_guesses": 3,
+      "prior": 0.000055088516886693025,
+      "guesses": [
+        "terianas",
+        "agolpada",
+        "quedaría"
+      ]
+    },
+    {
+      "word": "denegado",
+      "num_guesses": 3,
+      "prior": 0.00003424271300211767,
+      "guesses": [
+        "terianas",
+        "complugo",
+        "denegado"
+      ]
+    },
+    {
+      "word": "agotarán",
+      "num_guesses": 4,
+      "prior": 0.00002183820758471508,
+      "guesses": [
+        "terianas",
+        "captaron",
+        "ingresos",
+        "agotarán"
+      ]
+    },
+    {
+      "word": "telúrico",
+      "num_guesses": 2,
+      "prior": 0.00003192448507748788,
+      "guesses": [
+        "terianas",
+        "telúrico"
+      ]
+    },
+    {
+      "word": "prometés",
+      "num_guesses": 3,
+      "prior": 0.000012705886891432493,
+      "guesses": [
+        "terianas",
+        "competed",
+        "prometés"
+      ]
+    },
+    {
+      "word": "despojan",
+      "num_guesses": 3,
+      "prior": 0.00002923998825337192,
+      "guesses": [
+        "terianas",
+        "compungí",
+        "despojan"
+      ]
+    },
+    {
+      "word": "apócrifa",
+      "num_guesses": 3,
+      "prior": 0.000031399468918884925,
+      "guesses": [
+        "terianas",
+        "aclamado",
+        "apócrifa"
+      ]
+    },
+    {
+      "word": "depravar",
+      "num_guesses": 4,
+      "prior": 0.000018192179816803718,
+      "guesses": [
+        "terianas",
+        "declarar",
+        "degradar",
+        "depravar"
+      ]
+    },
+    {
+      "word": "enojadas",
+      "num_guesses": 3,
+      "prior": 0.000021524292917086825,
+      "guesses": [
+        "terianas",
+        "amontada",
+        "enojadas"
+      ]
+    },
+    {
+      "word": "subyugad",
+      "num_guesses": 3,
+      "prior": 8.340742752461359e-6,
+      "guesses": [
+        "terianas",
+        "sollozad",
+        "subyugad"
+      ]
+    },
+    {
+      "word": "placadas",
+      "num_guesses": 4,
+      "prior": 9.340274790717724e-6,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "clavadas",
+        "placadas"
+      ]
+    },
+    {
+      "word": "mascaría",
+      "num_guesses": 3,
+      "prior": 0.000010258277947350337,
+      "guesses": [
+        "terianas",
+        "maculada",
+        "mascaría"
+      ]
+    },
+    {
+      "word": "crossfit",
+      "num_guesses": 3,
+      "prior": 0.00001285581877416658,
+      "guesses": [
+        "terianas",
+        "cistidio",
+        "crossfit"
+      ]
+    },
+    {
+      "word": "embarrar",
+      "num_guesses": 4,
+      "prior": 0.000020741802174356464,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "embargar",
+        "embarrar"
+      ]
+    },
+    {
+      "word": "cádmicos",
+      "num_guesses": 4,
+      "prior": 7.744759902369774e-6,
+      "guesses": [
+        "terianas",
+        "bullicio",
+        "cósmicos",
+        "cádmicos"
+      ]
+    },
+    {
+      "word": "revesaba",
+      "num_guesses": 4,
+      "prior": 8.524386784121902e-6,
+      "guesses": [
+        "terianas",
+        "robadora",
+        "descampe",
+        "revesaba"
+      ]
+    },
+    {
+      "word": "vendajes",
+      "num_guesses": 3,
+      "prior": 0.00003202828884302434,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "vendajes"
+      ]
+    },
+    {
+      "word": "candando",
+      "num_guesses": 3,
+      "prior": 0.000010814068252949847,
+      "guesses": [
+        "terianas",
+        "callampa",
+        "candando"
+      ]
+    },
+    {
+      "word": "aniónica",
+      "num_guesses": 3,
+      "prior": 0.000017974382590711907,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "aniónica"
+      ]
+    },
+    {
+      "word": "intimáis",
+      "num_guesses": 3,
+      "prior": 9.432314985660837e-6,
+      "guesses": [
+        "terianas",
+        "invitáis",
+        "intimáis"
+      ]
+    },
+    {
+      "word": "empalada",
+      "num_guesses": 4,
+      "prior": 0.000015383830946056363,
+      "guesses": [
+        "terianas",
+        "maculaba",
+        "empalaga",
+        "empalada"
+      ]
+    },
+    {
+      "word": "tatacoas",
+      "num_guesses": 3,
+      "prior": 8.022054862594103e-6,
+      "guesses": [
+        "terianas",
+        "columnas",
+        "tatacoas"
+      ]
+    },
+    {
+      "word": "abstraje",
+      "num_guesses": 4,
+      "prior": 0.000012355378276003175,
+      "guesses": [
+        "terianas",
+        "capotara",
+        "abstraer",
+        "abstraje"
+      ]
+    },
+    {
+      "word": "topadora",
+      "num_guesses": 3,
+      "prior": 0.000017664782576033387,
+      "guesses": [
+        "terianas",
+        "tapaboca",
+        "topadora"
+      ]
+    },
+    {
+      "word": "neceando",
+      "num_guesses": 3,
+      "prior": 0.000010206136603783039,
+      "guesses": [
+        "terianas",
+        "complete",
+        "neceando"
+      ]
+    },
+    {
+      "word": "dirigirá",
+      "num_guesses": 3,
+      "prior": 0.00003902622372479431,
+      "guesses": [
+        "terianas",
+        "comprará",
+        "dirigirá"
+      ]
+    },
+    {
+      "word": "destoque",
+      "num_guesses": 3,
+      "prior": 0.000010834884707842486,
+      "guesses": [
+        "terianas",
+        "complote",
+        "destoque"
+      ]
+    },
+    {
+      "word": "acaricie",
+      "num_guesses": 3,
+      "prior": 0.000024147610421247465,
+      "guesses": [
+        "terianas",
+        "ampliada",
+        "acaricie"
+      ]
+    },
+    {
+      "word": "recontar",
+      "num_guesses": 3,
+      "prior": 0.00002407786733901486,
+      "guesses": [
+        "terianas",
+        "retorced",
+        "recontar"
+      ]
+    },
+    {
+      "word": "antrueja",
+      "num_guesses": 3,
+      "prior": 8.265588669657602e-6,
+      "guesses": [
+        "terianas",
+        "avaluará",
+        "antrueja"
+      ]
+    },
+    {
+      "word": "macabeas",
+      "num_guesses": 3,
+      "prior": 0.000011193916387177967,
+      "guesses": [
+        "terianas",
+        "cambalud",
+        "macabeas"
+      ]
+    },
+    {
+      "word": "boguemos",
+      "num_guesses": 3,
+      "prior": 0.000014797382050323707,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "boguemos"
+      ]
+    },
+    {
+      "word": "reditúen",
+      "num_guesses": 3,
+      "prior": 0.000016853216306072408,
+      "guesses": [
+        "terianas",
+        "metieron",
+        "reditúen"
+      ]
+    },
+    {
+      "word": "amatiste",
+      "num_guesses": 3,
+      "prior": 0.000013392402695741712,
+      "guesses": [
+        "terianas",
+        "ampliada",
+        "amatiste"
+      ]
+    },
+    {
+      "word": "tequiosa",
+      "num_guesses": 3,
+      "prior": 7.444319991704119e-6,
+      "guesses": [
+        "terianas",
+        "televisa",
+        "tequiosa"
+      ]
+    },
+    {
+      "word": "llovemos",
+      "num_guesses": 4,
+      "prior": 0.00001045091037824041,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "glosemos",
+        "llovemos"
+      ]
+    },
+    {
+      "word": "chingaos",
+      "num_guesses": 3,
+      "prior": 0.000017500326093475548,
+      "guesses": [
+        "terianas",
+        "gnómicos",
+        "chingaos"
+      ]
+    },
+    {
+      "word": "tuiteada",
+      "num_guesses": 3,
+      "prior": 7.490276075904087e-6,
+      "guesses": [
+        "terianas",
+        "tuiteaba",
+        "tuiteada"
+      ]
+    },
+    {
+      "word": "abrazara",
+      "num_guesses": 3,
+      "prior": 0.00002649776717017651,
+      "guesses": [
+        "terianas",
+        "aguadaba",
+        "abrazara"
+      ]
+    },
+    {
+      "word": "prevengo",
+      "num_guesses": 3,
+      "prior": 0.00003292853852429007,
+      "guesses": [
+        "terianas",
+        "pendoneo",
+        "prevengo"
+      ]
+    },
+    {
+      "word": "lindados",
+      "num_guesses": 3,
+      "prior": 0.00001130105473572469,
+      "guesses": [
+        "terianas",
+        "condumio",
+        "lindados"
+      ]
+    },
+    {
+      "word": "sutileza",
+      "num_guesses": 3,
+      "prior": 0.00004173489248635971,
+      "guesses": [
+        "terianas",
+        "complete",
+        "sutileza"
+      ]
+    },
+    {
+      "word": "grietaba",
+      "num_guesses": 3,
+      "prior": 6.906842828773468e-6,
+      "guesses": [
+        "terianas",
+        "aberrara",
+        "grietaba"
+      ]
+    },
+    {
+      "word": "olvidaré",
+      "num_guesses": 3,
+      "prior": 0.0000379635502449905,
+      "guesses": [
+        "terianas",
+        "comulgué",
+        "olvidaré"
+      ]
+    },
+    {
+      "word": "refringe",
+      "num_guesses": 3,
+      "prior": 0.0000117237723276406,
+      "guesses": [
+        "terianas",
+        "relación",
+        "refringe"
+      ]
+    },
+    {
+      "word": "anunciés",
+      "num_guesses": 4,
+      "prior": 7.168762821504869e-6,
+      "guesses": [
+        "terianas",
+        "gnómicos",
+        "anunciás",
+        "anunciés"
+      ]
+    },
+    {
+      "word": "infectad",
+      "num_guesses": 3,
+      "prior": 9.123966695667138e-6,
+      "guesses": [
+        "terianas",
+        "convoyan",
+        "infectad"
+      ]
+    },
+    {
+      "word": "acriolló",
+      "num_guesses": 3,
+      "prior": 0.000011256908640760781,
+      "guesses": [
+        "terianas",
+        "oprimida",
+        "acriolló"
+      ]
+    },
+    {
+      "word": "cambaras",
+      "num_guesses": 4,
+      "prior": 7.969618636452904e-6,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "camparas",
+        "cambaras"
+      ]
+    },
+    {
+      "word": "aboliese",
+      "num_guesses": 3,
+      "prior": 0.000019464421259042466,
+      "guesses": [
+        "terianas",
+        "edulcore",
+        "aboliese"
+      ]
+    },
+    {
+      "word": "agrillas",
+      "num_guesses": 3,
+      "prior": 0.000011005676043594448,
+      "guesses": [
+        "terianas",
+        "calmosos",
+        "agrillas"
+      ]
+    },
+    {
+      "word": "musieres",
+      "num_guesses": 3,
+      "prior": 8.234746060426546e-6,
+      "guesses": [
+        "terianas",
+        "comulgad",
+        "musieres"
+      ]
+    },
+    {
+      "word": "huachuma",
+      "num_guesses": 4,
+      "prior": 0.000011824149011777144,
+      "guesses": [
+        "terianas",
+        "aclamado",
+        "machucha",
+        "huachuma"
+      ]
+    },
+    {
+      "word": "aquieten",
+      "num_guesses": 3,
+      "prior": 0.000016828345845791237,
+      "guesses": [
+        "terianas",
+        "patuleco",
+        "aquieten"
+      ]
+    },
+    {
+      "word": "llevaste",
+      "num_guesses": 3,
+      "prior": 0.000029426521918372062,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "llevaste"
+      ]
+    },
+    {
+      "word": "bandearé",
+      "num_guesses": 3,
+      "prior": 7.057132216351021e-6,
+      "guesses": [
+        "terianas",
+        "cagadora",
+        "bandearé"
+      ]
+    },
+    {
+      "word": "firulete",
+      "num_guesses": 3,
+      "prior": 0.000016405882555344788,
+      "guesses": [
+        "terianas",
+        "director",
+        "firulete"
+      ]
+    },
+    {
+      "word": "promovió",
+      "num_guesses": 3,
+      "prior": 0.000045609288102987244,
+      "guesses": [
+        "terianas",
+        "chirrido",
+        "promovió"
+      ]
+    },
+    {
+      "word": "militado",
+      "num_guesses": 3,
+      "prior": 0.000030001337906280616,
+      "guesses": [
+        "terianas",
+        "movilicé",
+        "militado"
+      ]
+    },
+    {
+      "word": "espejeas",
+      "num_guesses": 3,
+      "prior": 7.5128375571874815e-6,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "espejeas"
+      ]
+    },
+    {
+      "word": "catuchas",
+      "num_guesses": 3,
+      "prior": 8.20343433178894e-6,
+      "guesses": [
+        "terianas",
+        "cloasmas",
+        "catuchas"
+      ]
+    },
+    {
+      "word": "codeemos",
+      "num_guesses": 3,
+      "prior": 7.397200255138489e-6,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "codeemos"
+      ]
+    },
+    {
+      "word": "negrillo",
+      "num_guesses": 3,
+      "prior": 0.000023746620775596084,
+      "guesses": [
+        "terianas",
+        "ruborice",
+        "negrillo"
+      ]
+    },
+    {
+      "word": "atocinan",
+      "num_guesses": 3,
+      "prior": 7.93387899563515e-6,
+      "guesses": [
+        "terianas",
+        "amotinan",
+        "atocinan"
+      ]
+    },
+    {
+      "word": "ronceaba",
+      "num_guesses": 3,
+      "prior": 8.441610063797842e-6,
+      "guesses": [
+        "terianas",
+        "cagadora",
+        "ronceaba"
+      ]
+    },
+    {
+      "word": "sigilara",
+      "num_guesses": 3,
+      "prior": 7.803439036524385e-6,
+      "guesses": [
+        "terianas",
+        "pulidora",
+        "sigilara"
+      ]
+    },
+    {
+      "word": "congrega",
+      "num_guesses": 3,
+      "prior": 0.00003328696834149885,
+      "guesses": [
+        "terianas",
+        "creedero",
+        "congrega"
+      ]
+    },
+    {
+      "word": "grangeen",
+      "num_guesses": 4,
+      "prior": 0.000012437068844862707,
+      "guesses": [
+        "terianas",
+        "creedero",
+        "granjeen",
+        "grangeen"
+      ]
+    },
+    {
+      "word": "epónimas",
+      "num_guesses": 3,
+      "prior": 0.000015411792488933027,
+      "guesses": [
+        "terianas",
+        "enuncien",
+        "epónimas"
+      ]
+    },
+    {
+      "word": "apamates",
+      "num_guesses": 3,
+      "prior": 0.000015165997793221644,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "apamates"
+      ]
+    },
+    {
+      "word": "acentúen",
+      "num_guesses": 3,
+      "prior": 0.000021084630117594475,
+      "guesses": [
+        "terianas",
+        "complete",
+        "acentúen"
+      ]
+    },
+    {
+      "word": "addicion",
+      "num_guesses": 3,
+      "prior": 0.00001873363675370356,
+      "guesses": [
+        "terianas",
+        "dicótomo",
+        "addicion"
+      ]
+    },
+    {
+      "word": "esforzad",
+      "num_guesses": 3,
+      "prior": 0.00001540672365294431,
+      "guesses": [
+        "terianas",
+        "emporcar",
+        "esforzad"
+      ]
+    },
+    {
+      "word": "epistato",
+      "num_guesses": 3,
+      "prior": 8.250225015685356e-6,
+      "guesses": [
+        "terianas",
+        "cumplite",
+        "epistato"
+      ]
+    },
+    {
+      "word": "fisgaron",
+      "num_guesses": 3,
+      "prior": 8.340742752461359e-6,
+      "guesses": [
+        "terianas",
+        "cinéfilo",
+        "fisgaron"
+      ]
+    },
+    {
+      "word": "ventoseó",
+      "num_guesses": 4,
+      "prior": 9.330868654015624e-6,
+      "guesses": [
+        "terianas",
+        "destejen",
+        "ventoseo",
+        "ventoseó"
+      ]
+    },
+    {
+      "word": "descogió",
+      "num_guesses": 4,
+      "prior": 0.000014300134715998382,
+      "guesses": [
+        "terianas",
+        "pescuezo",
+        "seguimos",
+        "descogió"
+      ]
+    },
+    {
+      "word": "rapiñado",
+      "num_guesses": 3,
+      "prior": 0.000013036384470626067,
+      "guesses": [
+        "terianas",
+        "bacalado",
+        "rapiñado"
+      ]
+    },
+    {
+      "word": "guiarías",
+      "num_guesses": 4,
+      "prior": 9.704930879178178e-6,
+      "guesses": [
+        "terianas",
+        "almacigo",
+        "bisagras",
+        "guiarías"
+      ]
+    },
+    {
+      "word": "cometida",
+      "num_guesses": 3,
+      "prior": 0.00004204201394627584,
+      "guesses": [
+        "terianas",
+        "modelice",
+        "cometida"
+      ]
+    },
+    {
+      "word": "delinees",
+      "num_guesses": 3,
+      "prior": 7.085704536634452e-6,
+      "guesses": [
+        "terianas",
+        "meninges",
+        "delinees"
+      ]
+    },
+    {
+      "word": "bellezas",
+      "num_guesses": 3,
+      "prior": 0.000047381726282891595,
+      "guesses": [
+        "terianas",
+        "culposos",
+        "bellezas"
+      ]
+    },
+    {
+      "word": "suputada",
+      "num_guesses": 3,
+      "prior": 7.273844445084955e-6,
+      "guesses": [
+        "terianas",
+        "copulado",
+        "suputada"
+      ]
+    },
+    {
+      "word": "fichajes",
+      "num_guesses": 3,
+      "prior": 0.000019183672674958764,
+      "guesses": [
+        "terianas",
+        "disculpo",
+        "fichajes"
+      ]
+    },
+    {
+      "word": "tacharas",
+      "num_guesses": 3,
+      "prior": 8.280838936986299e-6,
+      "guesses": [
+        "terianas",
+        "zabucada",
+        "tacharas"
+      ]
+    },
+    {
+      "word": "adaptara",
+      "num_guesses": 3,
+      "prior": 0.00002237986395155833,
+      "guesses": [
+        "terianas",
+        "adoptaba",
+        "adaptara"
+      ]
+    },
+    {
+      "word": "garantía",
+      "num_guesses": 3,
+      "prior": 0.00007266972108442097,
+      "guesses": [
+        "terianas",
+        "agradaba",
+        "garantía"
+      ]
+    },
+    {
+      "word": "destruya",
+      "num_guesses": 4,
+      "prior": 0.00003664196614179938,
+      "guesses": [
+        "terianas",
+        "poseíste",
+        "destrabó",
+        "destruya"
+      ]
+    },
+    {
+      "word": "bailemos",
+      "num_guesses": 4,
+      "prior": 0.00002294317498711075,
+      "guesses": [
+        "terianas",
+        "másculos",
+        "afilemos",
+        "bailemos"
+      ]
+    },
+    {
+      "word": "desclave",
+      "num_guesses": 4,
+      "prior": 0.000011731326310926054,
+      "guesses": [
+        "terianas",
+        "copulado",
+        "viéndose",
+        "desclave"
+      ]
+    },
+    {
+      "word": "arcilles",
+      "num_guesses": 3,
+      "prior": 9.321424435613216e-6,
+      "guesses": [
+        "terianas",
+        "hampesco",
+        "arcilles"
+      ]
+    },
+    {
+      "word": "aquéllas",
+      "num_guesses": 3,
+      "prior": 0.00005592913806211131,
+      "guesses": [
+        "terianas",
+        "zambullo",
+        "aquéllas"
+      ]
+    },
+    {
+      "word": "esfumaba",
+      "num_guesses": 4,
+      "prior": 0.00002500287969214753,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "saquease",
+        "esfumaba"
+      ]
+    },
+    {
+      "word": "escarzos",
+      "num_guesses": 4,
+      "prior": 0.000012035743420758953,
+      "guesses": [
+        "terianas",
+        "almuerce",
+        "cobardes",
+        "escarzos"
+      ]
+    },
+    {
+      "word": "macrismo",
+      "num_guesses": 3,
+      "prior": 0.000014994711489147906,
+      "guesses": [
+        "terianas",
+        "ocurrido",
+        "macrismo"
+      ]
+    },
+    {
+      "word": "calerías",
+      "num_guesses": 3,
+      "prior": 0.000014783946148573614,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "calerías"
+      ]
+    },
+    {
+      "word": "congerie",
+      "num_guesses": 3,
+      "prior": 0.000016339266565349625,
+      "guesses": [
+        "terianas",
+        "irguiere",
+        "congerie"
+      ]
+    },
+    {
+      "word": "indolora",
+      "num_guesses": 3,
+      "prior": 0.00002607678746035604,
+      "guesses": [
+        "terianas",
+        "dinámico",
+        "indolora"
+      ]
+    },
+    {
+      "word": "levarías",
+      "num_guesses": 4,
+      "prior": 7.4209097166713605e-6,
+      "guesses": [
+        "terianas",
+        "comulgad",
+        "polvorín",
+        "levarías"
+      ]
+    },
+    {
+      "word": "insumirá",
+      "num_guesses": 3,
+      "prior": 0.00001828579249988488,
+      "guesses": [
+        "terianas",
+        "hipónimo",
+        "insumirá"
+      ]
+    },
+    {
+      "word": "escavase",
+      "num_guesses": 4,
+      "prior": 6.809979576093101e-6,
+      "guesses": [
+        "terianas",
+        "aplacado",
+        "excavase",
+        "escavase"
+      ]
+    },
+    {
+      "word": "premiara",
+      "num_guesses": 4,
+      "prior": 0.000019804253482776414,
+      "guesses": [
+        "terianas",
+        "ampliada",
+        "premiaba",
+        "premiara"
+      ]
+    },
+    {
+      "word": "copleada",
+      "num_guesses": 4,
+      "prior": 8.2191498384694e-6,
+      "guesses": [
+        "terianas",
+        "maculaba",
+        "elegíaca",
+        "copleada"
+      ]
+    },
+    {
+      "word": "afondaba",
+      "num_guesses": 5,
+      "prior": 8.250225015685356e-6,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "ahondaba",
+        "abondaba",
+        "afondaba"
+      ]
+    },
+    {
+      "word": "alaciado",
+      "num_guesses": 3,
+      "prior": 0.000010049985089405237,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "alaciado"
+      ]
+    },
+    {
+      "word": "guiseras",
+      "num_guesses": 4,
+      "prior": 8.497151764661226e-6,
+      "guesses": [
+        "terianas",
+        "empuerco",
+        "quijeras",
+        "guiseras"
+      ]
+    },
+    {
+      "word": "zanjemos",
+      "num_guesses": 4,
+      "prior": 0.000011970346605077175,
+      "guesses": [
+        "terianas",
+        "escueles",
+        "pandemos",
+        "zanjemos"
+      ]
+    },
+    {
+      "word": "anualizó",
+      "num_guesses": 4,
+      "prior": 7.467439443165055e-6,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "finaliza",
+        "anualizó"
+      ]
+    },
+    {
+      "word": "destalló",
+      "num_guesses": 3,
+      "prior": 6.8428795601342875e-6,
+      "guesses": [
+        "terianas",
+        "doblegue",
+        "destalló"
+      ]
+    },
+    {
+      "word": "examinad",
+      "num_guesses": 3,
+      "prior": 0.000023479367618806537,
+      "guesses": [
+        "terianas",
+        "avecinan",
+        "examinad"
+      ]
+    },
+    {
+      "word": "raposear",
+      "num_guesses": 3,
+      "prior": 8.68090203835469e-6,
+      "guesses": [
+        "terianas",
+        "emparedo",
+        "raposear"
+      ]
+    },
+    {
+      "word": "rezongué",
+      "num_guesses": 4,
+      "prior": 0.000014222411988434737,
+      "guesses": [
+        "terianas",
+        "demuelen",
+        "negruzco",
+        "rezongué"
+      ]
+    },
+    {
+      "word": "alteando",
+      "num_guesses": 3,
+      "prior": 0.00001218519843950226,
+      "guesses": [
+        "terianas",
+        "amollece",
+        "alteando"
+      ]
+    },
+    {
+      "word": "liaremos",
+      "num_guesses": 4,
+      "prior": 0.000016636028662220747,
+      "guesses": [
+        "terianas",
+        "acarrado",
+        "filipino",
+        "liaremos"
+      ]
+    },
+    {
+      "word": "estírate",
+      "num_guesses": 3,
+      "prior": 0.000015280400852625862,
+      "guesses": [
+        "terianas",
+        "copulare",
+        "estírate"
+      ]
+    },
+    {
+      "word": "agonista",
+      "num_guesses": 3,
+      "prior": 0.00002796403963935291,
+      "guesses": [
+        "terianas",
+        "zapatito",
+        "agonista"
+      ]
+    },
+    {
+      "word": "escribís",
+      "num_guesses": 3,
+      "prior": 0.0000242358462717826,
+      "guesses": [
+        "terianas",
+        "epicedio",
+        "escribís"
+      ]
+    },
+    {
+      "word": "ministro",
+      "num_guesses": 2,
+      "prior": 0.00009687784485240116,
+      "guesses": [
+        "terianas",
+        "ministro"
+      ]
+    },
+    {
+      "word": "minorara",
+      "num_guesses": 4,
+      "prior": 0.000010870933124790291,
+      "guesses": [
+        "terianas",
+        "acombada",
+        "inmolara",
+        "minorara"
+      ]
+    },
+    {
+      "word": "zumbaron",
+      "num_guesses": 3,
+      "prior": 0.000018919593851668876,
+      "guesses": [
+        "terianas",
+        "complugo",
+        "zumbaron"
+      ]
+    },
+    {
+      "word": "acobardó",
+      "num_guesses": 3,
+      "prior": 0.000022854829446150854,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "acobardó"
+      ]
+    },
+    {
+      "word": "presiden",
+      "num_guesses": 3,
+      "prior": 0.00003926608341432944,
+      "guesses": [
+        "terianas",
+        "empuerco",
+        "presiden"
+      ]
+    },
+    {
+      "word": "hojalata",
+      "num_guesses": 3,
+      "prior": 0.00003734928434161437,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "hojalata"
+      ]
+    },
+    {
+      "word": "instaura",
+      "num_guesses": 2,
+      "prior": 0.000035000271322816994,
+      "guesses": [
+        "terianas",
+        "instaura"
+      ]
+    },
+    {
+      "word": "pañolero",
+      "num_guesses": 3,
+      "prior": 0.000015784622488692015,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "pañolero"
+      ]
+    },
+    {
+      "word": "ahusadas",
+      "num_guesses": 5,
+      "prior": 0.000015818999487741293,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "subyazga",
+        "añudadas",
+        "ahusadas"
+      ]
+    },
+    {
+      "word": "borboneo",
+      "num_guesses": 3,
+      "prior": 0.000010916589607473752,
+      "guesses": [
+        "terianas",
+        "muérdago",
+        "borboneo"
+      ]
+    },
+    {
+      "word": "reflejan",
+      "num_guesses": 3,
+      "prior": 0.00005515635327926385,
+      "guesses": [
+        "terianas",
+        "endulcen",
+        "reflejan"
+      ]
+    },
+    {
+      "word": "ayunasen",
+      "num_guesses": 4,
+      "prior": 0.000016067761021549727,
+      "guesses": [
+        "terianas",
+        "acalmado",
+        "unboxing",
+        "ayunasen"
+      ]
+    },
+    {
+      "word": "bamboneo",
+      "num_guesses": 3,
+      "prior": 9.349643189488545e-6,
+      "guesses": [
+        "terianas",
+        "miología",
+        "bamboneo"
+      ]
+    },
+    {
+      "word": "heladizo",
+      "num_guesses": 3,
+      "prior": 0.000010402552442177775,
+      "guesses": [
+        "terianas",
+        "policiva",
+        "heladizo"
+      ]
+    },
+    {
+      "word": "oficiáis",
+      "num_guesses": 3,
+      "prior": 0.000013573972972840489,
+      "guesses": [
+        "terianas",
+        "bullicio",
+        "oficiáis"
+      ]
+    },
+    {
+      "word": "garuados",
+      "num_guesses": 4,
+      "prior": 7.085704536634452e-6,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "arruados",
+        "garuados"
+      ]
+    },
+    {
+      "word": "buscasen",
+      "num_guesses": 4,
+      "prior": 0.000029129791208143157,
+      "guesses": [
+        "terianas",
+        "compeled",
+        "subyacen",
+        "buscasen"
+      ]
+    },
+    {
+      "word": "bosniano",
+      "num_guesses": 3,
+      "prior": 8.524386784121902e-6,
+      "guesses": [
+        "terianas",
+        "monódico",
+        "bosniano"
+      ]
+    },
+    {
+      "word": "decreció",
+      "num_guesses": 3,
+      "prior": 0.000029688330666952703,
+      "guesses": [
+        "terianas",
+        "recuerdo",
+        "decreció"
+      ]
+    },
+    {
+      "word": "infiltro",
+      "num_guesses": 4,
+      "prior": 0.000011716198824981884,
+      "guesses": [
+        "terianas",
+        "invirtió",
+        "infiltré",
+        "infiltro"
+      ]
+    },
+    {
+      "word": "violentá",
+      "num_guesses": 5,
+      "prior": 8.551278128542061e-6,
+      "guesses": [
+        "terianas",
+        "empleado",
+        "violentó",
+        "violenté",
+        "violentá"
+      ]
+    },
+    {
+      "word": "bitinias",
+      "num_guesses": 3,
+      "prior": 8.497151764661226e-6,
+      "guesses": [
+        "terianas",
+        "noticias",
+        "bitinias"
+      ]
+    },
+    {
+      "word": "enfriaré",
+      "num_guesses": 4,
+      "prior": 8.370060673362714e-6,
+      "guesses": [
+        "terianas",
+        "creedora",
+        "enfriará",
+        "enfriaré"
+      ]
+    },
+    {
+      "word": "chocante",
+      "num_guesses": 3,
+      "prior": 0.00003645319990139308,
+      "guesses": [
+        "terianas",
+        "golpeteo",
+        "chocante"
+      ]
+    },
+    {
+      "word": "plegaras",
+      "num_guesses": 3,
+      "prior": 7.969618636452904e-6,
+      "guesses": [
+        "terianas",
+        "plegados",
+        "plegaras"
+      ]
+    },
+    {
+      "word": "perfumen",
+      "num_guesses": 3,
+      "prior": 0.000016324202679958474,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "perfumen"
+      ]
+    },
+    {
+      "word": "polveaba",
+      "num_guesses": 4,
+      "prior": 9.964501499187396e-6,
+      "guesses": [
+        "terianas",
+        "maculaba",
+        "golpeaba",
+        "polveaba"
+      ]
+    },
+    {
+      "word": "jurídico",
+      "num_guesses": 3,
+      "prior": 0.00007486201702115859,
+      "guesses": [
+        "terianas",
+        "dicótomo",
+        "jurídico"
+      ]
+    },
+    {
+      "word": "buceadas",
+      "num_guesses": 4,
+      "prior": 9.589461271101845e-6,
+      "guesses": [
+        "terianas",
+        "agolpaba",
+        "judicial",
+        "buceadas"
+      ]
+    },
+    {
+      "word": "agonices",
+      "num_guesses": 3,
+      "prior": 0.000010573758397700502,
+      "guesses": [
+        "terianas",
+        "angélico",
+        "agonices"
+      ]
+    },
+    {
+      "word": "procomún",
+      "num_guesses": 3,
+      "prior": 0.0000213648386479284,
+      "guesses": [
+        "terianas",
+        "monólogo",
+        "procomún"
+      ]
+    },
+    {
+      "word": "menguara",
+      "num_guesses": 3,
+      "prior": 0.000017510977084509757,
+      "guesses": [
+        "terianas",
+        "adveraba",
+        "menguara"
+      ]
+    },
+    {
+      "word": "borrajee",
+      "num_guesses": 4,
+      "prior": 7.5128375571874815e-6,
+      "guesses": [
+        "terianas",
+        "comprobó",
+        "borrajeé",
+        "borrajee"
+      ]
+    },
+    {
+      "word": "enhebran",
+      "num_guesses": 4,
+      "prior": 0.00001929731994857478,
+      "guesses": [
+        "terianas",
+        "podrecer",
+        "habíamos",
+        "enhebran"
+      ]
+    },
+    {
+      "word": "granjera",
+      "num_guesses": 3,
+      "prior": 0.000023159266766479322,
+      "guesses": [
+        "terianas",
+        "cagadora",
+        "granjera"
+      ]
+    },
+    {
+      "word": "acarrean",
+      "num_guesses": 3,
+      "prior": 0.00003375252431483829,
+      "guesses": [
+        "terianas",
+        "almagrar",
+        "acarrean"
+      ]
+    },
+    {
+      "word": "alistaos",
+      "num_guesses": 3,
+      "prior": 0.000011727551752129321,
+      "guesses": [
+        "terianas",
+        "albaidas",
+        "alistaos"
+      ]
+    },
+    {
+      "word": "bustillo",
+      "num_guesses": 3,
+      "prior": 0.000036083913451221353,
+      "guesses": [
+        "terianas",
+        "coágulos",
+        "bustillo"
+      ]
+    },
+    {
+      "word": "hacinaba",
+      "num_guesses": 3,
+      "prior": 0.00001668793904938392,
+      "guesses": [
+        "terianas",
+        "caminado",
+        "hacinaba"
+      ]
+    },
+    {
+      "word": "alzarías",
+      "num_guesses": 4,
+      "prior": 9.103253731203327e-6,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "almagras",
+        "alzarías"
+      ]
+    },
+    {
+      "word": "loquerío",
+      "num_guesses": 3,
+      "prior": 0.000012551404761394492,
+      "guesses": [
+        "terianas",
+        "culebreo",
+        "loquerío"
+      ]
+    },
+    {
+      "word": "ahuecado",
+      "num_guesses": 4,
+      "prior": 0.000024426245703060436,
+      "guesses": [
+        "terianas",
+        "maculaba",
+        "adecuado",
+        "ahuecado"
+      ]
+    },
+    {
+      "word": "pelignos",
+      "num_guesses": 3,
+      "prior": 0.000014427684867830383,
+      "guesses": [
+        "terianas",
+        "sospeche",
+        "pelignos"
+      ]
+    },
+    {
+      "word": "amaretis",
+      "num_guesses": 3,
+      "prior": 8.3110067269458e-6,
+      "guesses": [
+        "terianas",
+        "matareis",
+        "amaretis"
+      ]
+    },
+    {
+      "word": "biotopos",
+      "num_guesses": 4,
+      "prior": 0.00002342979031033993,
+      "guesses": [
+        "terianas",
+        "suplicio",
+        "isótopos",
+        "biotopos"
+      ]
+    },
+    {
+      "word": "piraguas",
+      "num_guesses": 3,
+      "prior": 0.000032309421127201584,
+      "guesses": [
+        "terianas",
+        "cuadriga",
+        "piraguas"
+      ]
+    },
+    {
+      "word": "rayarían",
+      "num_guesses": 5,
+      "prior": 0.000010245341868417563,
+      "guesses": [
+        "terianas",
+        "cabalgad",
+        "empanzan",
+        "rajarían",
+        "rayarían"
+      ]
+    },
+    {
+      "word": "contarás",
+      "num_guesses": 3,
+      "prior": 0.000025707712906212494,
+      "guesses": [
+        "terianas",
+        "cántaros",
+        "contarás"
+      ]
+    },
+    {
+      "word": "porfiaré",
+      "num_guesses": 3,
+      "prior": 0.000012795088221719295,
+      "guesses": [
+        "terianas",
+        "cumplido",
+        "porfiaré"
+      ]
+    },
+    {
+      "word": "aliviané",
+      "num_guesses": 4,
+      "prior": 8.850295177735317e-6,
+      "guesses": [
+        "terianas",
+        "cabalado",
+        "alivianó",
+        "aliviané"
+      ]
+    },
+    {
+      "word": "tensionó",
+      "num_guesses": 3,
+      "prior": 0.000014728190201440383,
+      "guesses": [
+        "terianas",
+        "endógeno",
+        "tensionó"
+      ]
+    },
+    {
+      "word": "tachaban",
+      "num_guesses": 3,
+      "prior": 0.000021975932460125775,
+      "guesses": [
+        "terianas",
+        "aplancha",
+        "tachaban"
+      ]
+    },
+    {
+      "word": "obyectos",
+      "num_guesses": 4,
+      "prior": 7.397200255138489e-6,
+      "guesses": [
+        "terianas",
+        "moluscos",
+        "objectos",
+        "obyectos"
+      ]
+    },
+    {
+      "word": "marginad",
+      "num_guesses": 3,
+      "prior": 0.000010986127650078715,
+      "guesses": [
+        "terianas",
+        "calderón",
+        "marginad"
+      ]
+    },
+    {
+      "word": "corvejos",
+      "num_guesses": 3,
+      "prior": 9.459239253430285e-6,
+      "guesses": [
+        "terianas",
+        "cobrador",
+        "corvejos"
+      ]
+    },
+    {
+      "word": "vertamos",
+      "num_guesses": 3,
+      "prior": 0.00001348224853508124,
+      "guesses": [
+        "terianas",
+        "cervatos",
+        "vertamos"
+      ]
+    },
+    {
+      "word": "amétrope",
+      "num_guesses": 4,
+      "prior": 0.000011560446435024158,
+      "guesses": [
+        "terianas",
+        "coletero",
+        "prometía",
+        "amétrope"
+      ]
+    },
+    {
+      "word": "despines",
+      "num_guesses": 3,
+      "prior": 9.712971429465564e-6,
+      "guesses": [
+        "terianas",
+        "golpeteo",
+        "despines"
+      ]
+    },
+    {
+      "word": "enrecian",
+      "num_guesses": 3,
+      "prior": 7.764517199761548e-6,
+      "guesses": [
+        "terianas",
+        "enrubiar",
+        "enrecian"
+      ]
+    },
+    {
+      "word": "forcejes",
+      "num_guesses": 3,
+      "prior": 7.764517199761548e-6,
+      "guesses": [
+        "terianas",
+        "cobrador",
+        "forcejes"
+      ]
+    },
+    {
+      "word": "pajarete",
+      "num_guesses": 3,
+      "prior": 0.00001779706097657599,
+      "guesses": [
+        "terianas",
+        "acortara",
+        "pajarete"
+      ]
+    },
+    {
+      "word": "sumandos",
+      "num_guesses": 3,
+      "prior": 0.0000273047501571885,
+      "guesses": [
+        "terianas",
+        "compulso",
+        "sumandos"
+      ]
+    },
+    {
+      "word": "mamullar",
+      "num_guesses": 3,
+      "prior": 0.000010991027798169854,
+      "guesses": [
+        "terianas",
+        "comulgad",
+        "mamullar"
+      ]
+    },
+    {
+      "word": "aparejan",
+      "num_guesses": 3,
+      "prior": 0.00002377441617516947,
+      "guesses": [
+        "terianas",
+        "almagrar",
+        "aparejan"
+      ]
+    },
+    {
+      "word": "cizañero",
+      "num_guesses": 3,
+      "prior": 0.000014837399593537426,
+      "guesses": [
+        "terianas",
+        "edulcore",
+        "cizañero"
+      ]
+    },
+    {
+      "word": "mercadeó",
+      "num_guesses": 4,
+      "prior": 0.00001053344332970516,
+      "guesses": [
+        "terianas",
+        "herrador",
+        "mercadee",
+        "mercadeó"
+      ]
+    },
+    {
+      "word": "camináis",
+      "num_guesses": 3,
+      "prior": 0.000017432775995893714,
+      "guesses": [
+        "terianas",
+        "simuláis",
+        "camináis"
+      ]
+    },
+    {
+      "word": "reglamos",
+      "num_guesses": 4,
+      "prior": 0.000010865812569938754,
+      "guesses": [
+        "terianas",
+        "deslomes",
+        "reclamos",
+        "reglamos"
+      ]
+    },
+    {
+      "word": "saudosas",
+      "num_guesses": 3,
+      "prior": 0.000012779054226189878,
+      "guesses": [
+        "terianas",
+        "zambullo",
+        "saudosas"
+      ]
+    },
+    {
+      "word": "proyecté",
+      "num_guesses": 4,
+      "prior": 0.000020306655271237524,
+      "guesses": [
+        "terianas",
+        "claveteo",
+        "proyectó",
+        "proyecté"
+      ]
+    },
+    {
+      "word": "deseemos",
+      "num_guesses": 3,
+      "prior": 0.00002669002368724297,
+      "guesses": [
+        "terianas",
+        "culpemos",
+        "deseemos"
+      ]
+    },
+    {
+      "word": "salteaos",
+      "num_guesses": 3,
+      "prior": 6.809979576093101e-6,
+      "guesses": [
+        "terianas",
+        "empilcho",
+        "salteaos"
+      ]
+    },
+    {
+      "word": "orinaban",
+      "num_guesses": 3,
+      "prior": 0.00001890283599201337,
+      "guesses": [
+        "terianas",
+        "anclaban",
+        "orinaban"
+      ]
+    },
+    {
+      "word": "traviesa",
+      "num_guesses": 2,
+      "prior": 0.000036728354735775474,
+      "guesses": [
+        "terianas",
+        "traviesa"
+      ]
+    },
+    {
+      "word": "arremató",
+      "num_guesses": 4,
+      "prior": 9.920635518713206e-6,
+      "guesses": [
+        "terianas",
+        "aprobara",
+        "lenguaje",
+        "arremató"
+      ]
+    },
+    {
+      "word": "profetan",
+      "num_guesses": 4,
+      "prior": 0.000011973824335648223,
+      "guesses": [
+        "terianas",
+        "encentar",
+        "prometan",
+        "profetan"
+      ]
+    },
+    {
+      "word": "vasallas",
+      "num_guesses": 3,
+      "prior": 0.00001896620260144231,
+      "guesses": [
+        "terianas",
+        "zambullo",
+        "vasallas"
+      ]
+    }
+  ]
+}

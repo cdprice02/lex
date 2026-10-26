@@ -1,0 +1,5319 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:42:13.898618Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "coteras",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 7,
+    "dictionary_length": 43397,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "0e92e299283769516e2a30e0cb4668288135d7fe4c225c0894f30e3c873ce457",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.5219999999999803,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.014,
+        "3": 0.4960000000000004,
+        "4": 0.44600000000000034,
+        "5": 0.04200000000000002,
+        "6": 0.002
+      }
+    },
+    "prior": {
+      "mean": 3.41593843379114,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.02314220525972803,
+        "3": 0.5624269968959889,
+        "4": 0.39084099639068093,
+        "5": 0.02252976170061901,
+        "6": 0.0010600397529829798
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "redolar",
+      "num_guesses": 4,
+      "prior": 0.000013779912682669995,
+      "guesses": [
+        "coteras",
+        "embolen",
+        "revolar",
+        "redolar"
+      ]
+    },
+    {
+      "word": "rejales",
+      "num_guesses": 4,
+      "prior": 0.000012713212201630562,
+      "guesses": [
+        "coteras",
+        "arralen",
+        "vegosos",
+        "rejales"
+      ]
+    },
+    {
+      "word": "onecido",
+      "num_guesses": 3,
+      "prior": 0.000012332602134780225,
+      "guesses": [
+        "coteras",
+        "demonio",
+        "onecido"
+      ]
+    },
+    {
+      "word": "aclamad",
+      "num_guesses": 3,
+      "prior": 0.000018615389338127656,
+      "guesses": [
+        "coteras",
+        "aplican",
+        "aclamad"
+      ]
+    },
+    {
+      "word": "granice",
+      "num_guesses": 4,
+      "prior": 0.00001736320204309506,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "fungiré",
+        "granice"
+      ]
+    },
+    {
+      "word": "changón",
+      "num_guesses": 4,
+      "prior": 0.000012893888360455708,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "changüí",
+        "changón"
+      ]
+    },
+    {
+      "word": "tarifan",
+      "num_guesses": 3,
+      "prior": 0.00001587018484686379,
+      "guesses": [
+        "coteras",
+        "apriman",
+        "tarifan"
+      ]
+    },
+    {
+      "word": "muestre",
+      "num_guesses": 3,
+      "prior": 0.00005224101357623969,
+      "guesses": [
+        "coteras",
+        "pusiere",
+        "muestre"
+      ]
+    },
+    {
+      "word": "abonaba",
+      "num_guesses": 4,
+      "prior": 0.000032876271669017904,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "abonada",
+        "abonaba"
+      ]
+    },
+    {
+      "word": "escoten",
+      "num_guesses": 3,
+      "prior": 9.887826580109538e-6,
+      "guesses": [
+        "coteras",
+        "escueto",
+        "escoten"
+      ]
+    },
+    {
+      "word": "arrasas",
+      "num_guesses": 4,
+      "prior": 0.000015412593628113,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "basales",
+        "arrasas"
+      ]
+    },
+    {
+      "word": "aseamos",
+      "num_guesses": 4,
+      "prior": 0.0000161626647028301,
+      "guesses": [
+        "coteras",
+        "pelamen",
+        "obispos",
+        "aseamos"
+      ]
+    },
+    {
+      "word": "jugarás",
+      "num_guesses": 3,
+      "prior": 0.000020299389082038875,
+      "guesses": [
+        "coteras",
+        "maligna",
+        "jugarás"
+      ]
+    },
+    {
+      "word": "decretá",
+      "num_guesses": 5,
+      "prior": 0.000010663381967277072,
+      "guesses": [
+        "coteras",
+        "encuetó",
+        "decrete",
+        "decreté",
+        "decretá"
+      ]
+    },
+    {
+      "word": "sachado",
+      "num_guesses": 3,
+      "prior": 0.000010755662320261858,
+      "guesses": [
+        "coteras",
+        "nascido",
+        "sachado"
+      ]
+    },
+    {
+      "word": "jambras",
+      "num_guesses": 4,
+      "prior": 9.049720145696398e-6,
+      "guesses": [
+        "coteras",
+        "malanga",
+        "zambras",
+        "jambras"
+      ]
+    },
+    {
+      "word": "apantle",
+      "num_guesses": 4,
+      "prior": 0.000017750078659558672,
+      "guesses": [
+        "coteras",
+        "almunia",
+        "adelant",
+        "apantle"
+      ]
+    },
+    {
+      "word": "enastas",
+      "num_guesses": 4,
+      "prior": 0.000011073267387232948,
+      "guesses": [
+        "coteras",
+        "dilatan",
+        "atentas",
+        "enastas"
+      ]
+    },
+    {
+      "word": "aleudes",
+      "num_guesses": 4,
+      "prior": 9.537264334998203e-6,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "apelles",
+        "aleudes"
+      ]
+    },
+    {
+      "word": "medrosa",
+      "num_guesses": 3,
+      "prior": 0.00003683609218723041,
+      "guesses": [
+        "coteras",
+        "densaba",
+        "medrosa"
+      ]
+    },
+    {
+      "word": "ailanto",
+      "num_guesses": 3,
+      "prior": 0.00001768496160420383,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "ailanto"
+      ]
+    },
+    {
+      "word": "hiñeran",
+      "num_guesses": 4,
+      "prior": 9.85127169152103e-6,
+      "guesses": [
+        "coteras",
+        "mundial",
+        "riñeran",
+        "hiñeran"
+      ]
+    },
+    {
+      "word": "ajustés",
+      "num_guesses": 4,
+      "prior": 9.294660659294076e-6,
+      "guesses": [
+        "coteras",
+        "ansiáis",
+        "asustés",
+        "ajustés"
+      ]
+    },
+    {
+      "word": "adecuas",
+      "num_guesses": 4,
+      "prior": 0.0000116359691908204,
+      "guesses": [
+        "coteras",
+        "empanad",
+        "acedías",
+        "adecuas"
+      ]
+    },
+    {
+      "word": "exudada",
+      "num_guesses": 4,
+      "prior": 0.00001789615418786687,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "exudaba",
+        "exudada"
+      ]
+    },
+    {
+      "word": "afligís",
+      "num_guesses": 3,
+      "prior": 0.000016851142087374366,
+      "guesses": [
+        "coteras",
+        "amilané",
+        "afligís"
+      ]
+    },
+    {
+      "word": "potiche",
+      "num_guesses": 3,
+      "prior": 0.00001476404110215194,
+      "guesses": [
+        "coteras",
+        "noticie",
+        "potiche"
+      ]
+    },
+    {
+      "word": "enfoqué",
+      "num_guesses": 3,
+      "prior": 0.000023050168597327246,
+      "guesses": [
+        "coteras",
+        "peeling",
+        "enfoqué"
+      ]
+    },
+    {
+      "word": "cuartas",
+      "num_guesses": 2,
+      "prior": 0.00005484142313402279,
+      "guesses": [
+        "coteras",
+        "cuartas"
+      ]
+    },
+    {
+      "word": "zarrios",
+      "num_guesses": 5,
+      "prior": 0.000011729068814865428,
+      "guesses": [
+        "coteras",
+        "arrimad",
+        "barrios",
+        "sarrios",
+        "zarrios"
+      ]
+    },
+    {
+      "word": "nescias",
+      "num_guesses": 4,
+      "prior": 0.000015449297977958135,
+      "guesses": [
+        "coteras",
+        "empanad",
+        "vencías",
+        "nescias"
+      ]
+    },
+    {
+      "word": "radiare",
+      "num_guesses": 3,
+      "prior": 0.000014025889332514739,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "radiare"
+      ]
+    },
+    {
+      "word": "íntegra",
+      "num_guesses": 3,
+      "prior": 0.00005502799890936506,
+      "guesses": [
+        "coteras",
+        "impugna",
+        "íntegra"
+      ]
+    },
+    {
+      "word": "clamado",
+      "num_guesses": 3,
+      "prior": 0.000033283496448666484,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "clamado"
+      ]
+    },
+    {
+      "word": "pitatos",
+      "num_guesses": 4,
+      "prior": 8.284342468608768e-6,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "autitos",
+        "pitatos"
+      ]
+    },
+    {
+      "word": "cuézase",
+      "num_guesses": 3,
+      "prior": 0.000019752922464305446,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "cuézase"
+      ]
+    },
+    {
+      "word": "marrase",
+      "num_guesses": 3,
+      "prior": 0.0000137654531411758,
+      "guesses": [
+        "coteras",
+        "rumiara",
+        "marrase"
+      ]
+    },
+    {
+      "word": "redorar",
+      "num_guesses": 3,
+      "prior": 0.000014882570878066405,
+      "guesses": [
+        "coteras",
+        "demorar",
+        "redorar"
+      ]
+    },
+    {
+      "word": "cauteló",
+      "num_guesses": 4,
+      "prior": 0.000015665393929189422,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "jóvenes",
+        "cauteló"
+      ]
+    },
+    {
+      "word": "choráis",
+      "num_guesses": 3,
+      "prior": 9.7382252552446e-6,
+      "guesses": [
+        "coteras",
+        "sublimé",
+        "choráis"
+      ]
+    },
+    {
+      "word": "oleando",
+      "num_guesses": 4,
+      "prior": 0.00001531296843261315,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "levando",
+        "oleando"
+      ]
+    },
+    {
+      "word": "enchino",
+      "num_guesses": 4,
+      "prior": 0.000010567792051764586,
+      "guesses": [
+        "coteras",
+        "demonio",
+        "epiceno",
+        "enchino"
+      ]
+    },
+    {
+      "word": "acoracé",
+      "num_guesses": 4,
+      "prior": 0.000010178637558895736,
+      "guesses": [
+        "coteras",
+        "arriaba",
+        "opondré",
+        "acoracé"
+      ]
+    },
+    {
+      "word": "durarse",
+      "num_guesses": 4,
+      "prior": 0.000011756430859177508,
+      "guesses": [
+        "coteras",
+        "maligna",
+        "deprave",
+        "durarse"
+      ]
+    },
+    {
+      "word": "rótulos",
+      "num_guesses": 2,
+      "prior": 0.000042869296028325475,
+      "guesses": [
+        "coteras",
+        "rótulos"
+      ]
+    },
+    {
+      "word": "muleras",
+      "num_guesses": 3,
+      "prior": 0.00001702805153556661,
+      "guesses": [
+        "coteras",
+        "pelmeni",
+        "muleras"
+      ]
+    },
+    {
+      "word": "oblasen",
+      "num_guesses": 4,
+      "prior": 0.00001136853136256985,
+      "guesses": [
+        "coteras",
+        "implada",
+        "alevoso",
+        "oblasen"
+      ]
+    },
+    {
+      "word": "descere",
+      "num_guesses": 3,
+      "prior": 0.000011949694576070986,
+      "guesses": [
+        "coteras",
+        "regresó",
+        "descere"
+      ]
+    },
+    {
+      "word": "fanegas",
+      "num_guesses": 3,
+      "prior": 0.00005626082500445071,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "fanegas"
+      ]
+    },
+    {
+      "word": "heríais",
+      "num_guesses": 4,
+      "prior": 9.363347891526859e-6,
+      "guesses": [
+        "coteras",
+        "arralen",
+        "servido",
+        "heríais"
+      ]
+    },
+    {
+      "word": "elicita",
+      "num_guesses": 3,
+      "prior": 0.000016307443009486945,
+      "guesses": [
+        "coteras",
+        "animate",
+        "elicita"
+      ]
+    },
+    {
+      "word": "deseñan",
+      "num_guesses": 3,
+      "prior": 8.715677258799529e-6,
+      "guesses": [
+        "coteras",
+        "enseñan",
+        "deseñan"
+      ]
+    },
+    {
+      "word": "depilás",
+      "num_guesses": 3,
+      "prior": 8.247191453265941e-6,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "depilás"
+      ]
+    },
+    {
+      "word": "emporre",
+      "num_guesses": 3,
+      "prior": 8.559939894057878e-6,
+      "guesses": [
+        "coteras",
+        "menudeo",
+        "emporre"
+      ]
+    },
+    {
+      "word": "antelar",
+      "num_guesses": 2,
+      "prior": 0.00001273306635181081,
+      "guesses": [
+        "coteras",
+        "antelar"
+      ]
+    },
+    {
+      "word": "hartase",
+      "num_guesses": 3,
+      "prior": 0.000017256967579380494,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "hartase"
+      ]
+    },
+    {
+      "word": "raspará",
+      "num_guesses": 4,
+      "prior": 0.00001577612448329149,
+      "guesses": [
+        "coteras",
+        "aligada",
+        "pasmará",
+        "raspará"
+      ]
+    },
+    {
+      "word": "viboreó",
+      "num_guesses": 3,
+      "prior": 0.000013311437239476211,
+      "guesses": [
+        "coteras",
+        "menudeo",
+        "viboreó"
+      ]
+    },
+    {
+      "word": "acetará",
+      "num_guesses": 3,
+      "prior": 0.000013642527619961738,
+      "guesses": [
+        "coteras",
+        "neceara",
+        "acetará"
+      ]
+    },
+    {
+      "word": "rajarán",
+      "num_guesses": 4,
+      "prior": 0.000013398661328407018,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "rempujó",
+        "rajarán"
+      ]
+    },
+    {
+      "word": "praxias",
+      "num_guesses": 3,
+      "prior": 0.00002045627626396731,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "praxias"
+      ]
+    },
+    {
+      "word": "callana",
+      "num_guesses": 3,
+      "prior": 0.000024908688318819764,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "callana"
+      ]
+    },
+    {
+      "word": "espiche",
+      "num_guesses": 3,
+      "prior": 0.00002049868634222028,
+      "guesses": [
+        "coteras",
+        "enrieló",
+        "espiche"
+      ]
+    },
+    {
+      "word": "defiera",
+      "num_guesses": 5,
+      "prior": 0.000023421945492987724,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "medievo",
+        "debiera",
+        "defiera"
+      ]
+    },
+    {
+      "word": "halares",
+      "num_guesses": 4,
+      "prior": 0.000010703320845863594,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "sajaban",
+        "halares"
+      ]
+    },
+    {
+      "word": "atinara",
+      "num_guesses": 4,
+      "prior": 0.00002076101092419267,
+      "guesses": [
+        "coteras",
+        "tritura",
+        "persona",
+        "atinara"
+      ]
+    },
+    {
+      "word": "camelar",
+      "num_guesses": 3,
+      "prior": 0.000020838839103472977,
+      "guesses": [
+        "coteras",
+        "carenar",
+        "camelar"
+      ]
+    },
+    {
+      "word": "invitar",
+      "num_guesses": 3,
+      "prior": 0.00005377005701251751,
+      "guesses": [
+        "coteras",
+        "apriman",
+        "invitar"
+      ]
+    },
+    {
+      "word": "cangros",
+      "num_guesses": 3,
+      "prior": 0.000011219314270594546,
+      "guesses": [
+        "coteras",
+        "diacono",
+        "cangros"
+      ]
+    },
+    {
+      "word": "cogotea",
+      "num_guesses": 3,
+      "prior": 8.997406118420213e-6,
+      "guesses": [
+        "coteras",
+        "gambeta",
+        "cogotea"
+      ]
+    },
+    {
+      "word": "habemos",
+      "num_guesses": 4,
+      "prior": 0.00004905571640017026,
+      "guesses": [
+        "coteras",
+        "albumen",
+        "sabemos",
+        "habemos"
+      ]
+    },
+    {
+      "word": "manejen",
+      "num_guesses": 3,
+      "prior": 0.00003621502638786259,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "manejen"
+      ]
+    },
+    {
+      "word": "armazón",
+      "num_guesses": 3,
+      "prior": 0.00005051997899492325,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "armazón"
+      ]
+    },
+    {
+      "word": "desojar",
+      "num_guesses": 4,
+      "prior": 0.000015557366554723945,
+      "guesses": [
+        "coteras",
+        "deposan",
+        "valores",
+        "desojar"
+      ]
+    },
+    {
+      "word": "infamas",
+      "num_guesses": 4,
+      "prior": 0.000019533960716124653,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "pinazas",
+        "infamas"
+      ]
+    },
+    {
+      "word": "entrama",
+      "num_guesses": 3,
+      "prior": 0.000019408485166628458,
+      "guesses": [
+        "coteras",
+        "emanare",
+        "entrama"
+      ]
+    },
+    {
+      "word": "henchís",
+      "num_guesses": 4,
+      "prior": 0.000013017002710566505,
+      "guesses": [
+        "coteras",
+        "pudelen",
+        "vencéis",
+        "henchís"
+      ]
+    },
+    {
+      "word": "extraño",
+      "num_guesses": 3,
+      "prior": 0.00008553172664361646,
+      "guesses": [
+        "coteras",
+        "rajando",
+        "extraño"
+      ]
+    },
+    {
+      "word": "rameaba",
+      "num_guesses": 3,
+      "prior": 9.832788875177777e-6,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "rameaba"
+      ]
+    },
+    {
+      "word": "cataban",
+      "num_guesses": 3,
+      "prior": 0.000019580194057127564,
+      "guesses": [
+        "coteras",
+        "citaban",
+        "cataban"
+      ]
+    },
+    {
+      "word": "hierran",
+      "num_guesses": 3,
+      "prior": 0.000021064716445973864,
+      "guesses": [
+        "coteras",
+        "deparar",
+        "hierran"
+      ]
+    },
+    {
+      "word": "agencie",
+      "num_guesses": 4,
+      "prior": 0.00001791639684970754,
+      "guesses": [
+        "coteras",
+        "anélida",
+        "agenció",
+        "agencie"
+      ]
+    },
+    {
+      "word": "digüeñe",
+      "num_guesses": 4,
+      "prior": 9.451905954037827e-6,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "dihueñe",
+        "digüeñe"
+      ]
+    },
+    {
+      "word": "alburas",
+      "num_guesses": 3,
+      "prior": 0.000021550060770214546,
+      "guesses": [
+        "coteras",
+        "malanga",
+        "alburas"
+      ]
+    },
+    {
+      "word": "inviene",
+      "num_guesses": 4,
+      "prior": 0.000015115545319240818,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "higiene",
+        "inviene"
+      ]
+    },
+    {
+      "word": "varaban",
+      "num_guesses": 4,
+      "prior": 0.00001686831307406482,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "proveyó",
+        "varaban"
+      ]
+    },
+    {
+      "word": "deseado",
+      "num_guesses": 3,
+      "prior": 0.00006862601499026046,
+      "guesses": [
+        "coteras",
+        "salinas",
+        "deseado"
+      ]
+    },
+    {
+      "word": "cerúlea",
+      "num_guesses": 4,
+      "prior": 0.000025866896164100454,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "cercena",
+        "cerúlea"
+      ]
+    },
+    {
+      "word": "migrare",
+      "num_guesses": 4,
+      "prior": 0.000015733904097651087,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "librare",
+        "migrare"
+      ]
+    },
+    {
+      "word": "estallá",
+      "num_guesses": 5,
+      "prior": 9.43007683879807e-6,
+      "guesses": [
+        "coteras",
+        "enmiela",
+        "estalló",
+        "estallé",
+        "estallá"
+      ]
+    },
+    {
+      "word": "atusara",
+      "num_guesses": 3,
+      "prior": 0.000010162429455044772,
+      "guesses": [
+        "coteras",
+        "paliada",
+        "atusara"
+      ]
+    },
+    {
+      "word": "ranquen",
+      "num_guesses": 5,
+      "prior": 8.685413759522814e-6,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "ranquel",
+        "ranqueó",
+        "ranquen"
+      ]
+    },
+    {
+      "word": "cuajaba",
+      "num_guesses": 4,
+      "prior": 0.000026075025986486905,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "cuchaba",
+        "cuajaba"
+      ]
+    },
+    {
+      "word": "mitrado",
+      "num_guesses": 3,
+      "prior": 0.0000284112962545924,
+      "guesses": [
+        "coteras",
+        "miniado",
+        "mitrado"
+      ]
+    },
+    {
+      "word": "bástate",
+      "num_guesses": 4,
+      "prior": 0.000019337074187537764,
+      "guesses": [
+        "coteras",
+        "pintada",
+        "deglute",
+        "bástate"
+      ]
+    },
+    {
+      "word": "mesapia",
+      "num_guesses": 3,
+      "prior": 0.000013874791957914529,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "mesapia"
+      ]
+    },
+    {
+      "word": "indicia",
+      "num_guesses": 4,
+      "prior": 0.0000238940710854933,
+      "guesses": [
+        "coteras",
+        "anulada",
+        "incidía",
+        "indicia"
+      ]
+    },
+    {
+      "word": "cesados",
+      "num_guesses": 4,
+      "prior": 0.000029477953622509117,
+      "guesses": [
+        "coteras",
+        "mahjong",
+        "posible",
+        "cesados"
+      ]
+    },
+    {
+      "word": "prasina",
+      "num_guesses": 4,
+      "prior": 0.00001684253028162924,
+      "guesses": [
+        "coteras",
+        "aligada",
+        "marisma",
+        "prasina"
+      ]
+    },
+    {
+      "word": "digiere",
+      "num_guesses": 4,
+      "prior": 0.000033934698262983544,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "difiere",
+        "digiere"
+      ]
+    },
+    {
+      "word": "bautizó",
+      "num_guesses": 3,
+      "prior": 0.000046621846003859245,
+      "guesses": [
+        "coteras",
+        "alunada",
+        "bautizó"
+      ]
+    },
+    {
+      "word": "pujaron",
+      "num_guesses": 5,
+      "prior": 0.000019590801524166863,
+      "guesses": [
+        "coteras",
+        "maligna",
+        "forzudo",
+        "jujeños",
+        "pujaron"
+      ]
+    },
+    {
+      "word": "tollían",
+      "num_guesses": 3,
+      "prior": 8.131530823735886e-6,
+      "guesses": [
+        "coteras",
+        "maginan",
+        "tollían"
+      ]
+    },
+    {
+      "word": "sacaría",
+      "num_guesses": 3,
+      "prior": 0.00003951175252055051,
+      "guesses": [
+        "coteras",
+        "sacarán",
+        "sacaría"
+      ]
+    },
+    {
+      "word": "adieren",
+      "num_guesses": 3,
+      "prior": 0.000012514577543774223,
+      "guesses": [
+        "coteras",
+        "madrina",
+        "adieren"
+      ]
+    },
+    {
+      "word": "inculpó",
+      "num_guesses": 3,
+      "prior": 0.000022766833545736674,
+      "guesses": [
+        "coteras",
+        "diplomó",
+        "inculpó"
+      ]
+    },
+    {
+      "word": "resurgí",
+      "num_guesses": 4,
+      "prior": 0.000013879468329707465,
+      "guesses": [
+        "coteras",
+        "rulimán",
+        "resurge",
+        "resurgí"
+      ]
+    },
+    {
+      "word": "rapiñan",
+      "num_guesses": 4,
+      "prior": 0.00001414050958103359,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "diploma",
+        "rapiñan"
+      ]
+    },
+    {
+      "word": "ticamos",
+      "num_guesses": 3,
+      "prior": 0.000012264378267888138,
+      "guesses": [
+        "coteras",
+        "tabacos",
+        "ticamos"
+      ]
+    },
+    {
+      "word": "relejes",
+      "num_guesses": 3,
+      "prior": 0.00001937537306296152,
+      "guesses": [
+        "coteras",
+        "revelen",
+        "relejes"
+      ]
+    },
+    {
+      "word": "páprica",
+      "num_guesses": 4,
+      "prior": 9.340676080833094e-6,
+      "guesses": [
+        "coteras",
+        "arruaba",
+        "réplica",
+        "páprica"
+      ]
+    },
+    {
+      "word": "ondeada",
+      "num_guesses": 3,
+      "prior": 0.00002424286748255622,
+      "guesses": [
+        "coteras",
+        "lampaba",
+        "ondeada"
+      ]
+    },
+    {
+      "word": "zaireña",
+      "num_guesses": 3,
+      "prior": 0.00001528129707878096,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "zaireña"
+      ]
+    },
+    {
+      "word": "absentó",
+      "num_guesses": 4,
+      "prior": 0.000013587006796847035,
+      "guesses": [
+        "coteras",
+        "paulina",
+        "célebre",
+        "absentó"
+      ]
+    },
+    {
+      "word": "sallará",
+      "num_guesses": 4,
+      "prior": 9.7382252552446e-6,
+      "guesses": [
+        "coteras",
+        "aligada",
+        "salvará",
+        "sallará"
+      ]
+    },
+    {
+      "word": "achiote",
+      "num_guesses": 3,
+      "prior": 0.000036453238226509745,
+      "guesses": [
+        "coteras",
+        "animate",
+        "achiote"
+      ]
+    },
+    {
+      "word": "ganadas",
+      "num_guesses": 3,
+      "prior": 0.00004286626607668544,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "ganadas"
+      ]
+    },
+    {
+      "word": "lógrate",
+      "num_guesses": 4,
+      "prior": 8.320838782818269e-6,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "diplomó",
+        "lógrate"
+      ]
+    },
+    {
+      "word": "cesares",
+      "num_guesses": 3,
+      "prior": 0.000028197571956699977,
+      "guesses": [
+        "coteras",
+        "aseasen",
+        "cesares"
+      ]
+    },
+    {
+      "word": "difluís",
+      "num_guesses": 4,
+      "prior": 8.426646145297242e-6,
+      "guesses": [
+        "coteras",
+        "pulséis",
+        "influís",
+        "difluís"
+      ]
+    },
+    {
+      "word": "semblen",
+      "num_guesses": 3,
+      "prior": 0.000015102233501736445,
+      "guesses": [
+        "coteras",
+        "punible",
+        "semblen"
+      ]
+    },
+    {
+      "word": "alienas",
+      "num_guesses": 3,
+      "prior": 0.000019349461817296797,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "alienas"
+      ]
+    },
+    {
+      "word": "zapallo",
+      "num_guesses": 4,
+      "prior": 0.00003611537206939768,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "bagallo",
+        "zapallo"
+      ]
+    },
+    {
+      "word": "remolde",
+      "num_guesses": 3,
+      "prior": 0.000015488671332076787,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "remolde"
+      ]
+    },
+    {
+      "word": "contero",
+      "num_guesses": 3,
+      "prior": 0.00002235037161226036,
+      "guesses": [
+        "coteras",
+        "erróneo",
+        "contero"
+      ]
+    },
+    {
+      "word": "absento",
+      "num_guesses": 3,
+      "prior": 0.000013305909232070983,
+      "guesses": [
+        "coteras",
+        "paulina",
+        "absento"
+      ]
+    },
+    {
+      "word": "mormada",
+      "num_guesses": 3,
+      "prior": 9.976920498032475e-6,
+      "guesses": [
+        "coteras",
+        "mirrada",
+        "mormada"
+      ]
+    },
+    {
+      "word": "gorrita",
+      "num_guesses": 3,
+      "prior": 0.000027062096797576135,
+      "guesses": [
+        "coteras",
+        "tintada",
+        "gorrita"
+      ]
+    },
+    {
+      "word": "montera",
+      "num_guesses": 3,
+      "prior": 0.000041412105414407945,
+      "guesses": [
+        "coteras",
+        "terrana",
+        "montera"
+      ]
+    },
+    {
+      "word": "remitos",
+      "num_guesses": 3,
+      "prior": 0.00002111032098872174,
+      "guesses": [
+        "coteras",
+        "premien",
+        "remitos"
+      ]
+    },
+    {
+      "word": "excusan",
+      "num_guesses": 3,
+      "prior": 0.00003357728893356845,
+      "guesses": [
+        "coteras",
+        "escapad",
+        "excusan"
+      ]
+    },
+    {
+      "word": "hídrica",
+      "num_guesses": 4,
+      "prior": 0.00003811616720298502,
+      "guesses": [
+        "coteras",
+        "arruaba",
+        "réplica",
+        "hídrica"
+      ]
+    },
+    {
+      "word": "respiro",
+      "num_guesses": 3,
+      "prior": 0.00004994179821805641,
+      "guesses": [
+        "coteras",
+        "represo",
+        "respiro"
+      ]
+    },
+    {
+      "word": "sarakof",
+      "num_guesses": 4,
+      "prior": 0.000013349878498799716,
+      "guesses": [
+        "coteras",
+        "migrada",
+        "paraíso",
+        "sarakof"
+      ]
+    },
+    {
+      "word": "acosará",
+      "num_guesses": 3,
+      "prior": 0.000017109773594654486,
+      "guesses": [
+        "coteras",
+        "radiara",
+        "acosará"
+      ]
+    },
+    {
+      "word": "pacense",
+      "num_guesses": 3,
+      "prior": 0.00003100291397340339,
+      "guesses": [
+        "coteras",
+        "rechine",
+        "pacense"
+      ]
+    },
+    {
+      "word": "luirían",
+      "num_guesses": 4,
+      "prior": 0.00001096745242535205,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "grillan",
+        "luirían"
+      ]
+    },
+    {
+      "word": "infurta",
+      "num_guesses": 3,
+      "prior": 9.473535255712193e-6,
+      "guesses": [
+        "coteras",
+        "pizarra",
+        "infurta"
+      ]
+    },
+    {
+      "word": "papayal",
+      "num_guesses": 4,
+      "prior": 0.00002281632154062756,
+      "guesses": [
+        "coteras",
+        "igualad",
+        "balanza",
+        "papayal"
+      ]
+    },
+    {
+      "word": "cámaros",
+      "num_guesses": 3,
+      "prior": 0.000015714045157906886,
+      "guesses": [
+        "coteras",
+        "diacono",
+        "cámaros"
+      ]
+    },
+    {
+      "word": "ayunaba",
+      "num_guesses": 4,
+      "prior": 0.00002925408878529637,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "zapping",
+        "ayunaba"
+      ]
+    },
+    {
+      "word": "ripeado",
+      "num_guesses": 3,
+      "prior": 0.000010807004331288547,
+      "guesses": [
+        "coteras",
+        "marrado",
+        "ripeado"
+      ]
+    },
+    {
+      "word": "centone",
+      "num_guesses": 3,
+      "prior": 0.00001296217950547455,
+      "guesses": [
+        "coteras",
+        "pellejo",
+        "centone"
+      ]
+    },
+    {
+      "word": "criador",
+      "num_guesses": 3,
+      "prior": 0.00005615230967728582,
+      "guesses": [
+        "coteras",
+        "mirrada",
+        "criador"
+      ]
+    },
+    {
+      "word": "izarían",
+      "num_guesses": 4,
+      "prior": 0.000014217737831967352,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "diploma",
+        "izarían"
+      ]
+    },
+    {
+      "word": "chepudo",
+      "num_guesses": 4,
+      "prior": 0.000014907234364782048,
+      "guesses": [
+        "coteras",
+        "inoculo",
+        "chequeo",
+        "chepudo"
+      ]
+    },
+    {
+      "word": "bajamos",
+      "num_guesses": 4,
+      "prior": 0.000044927639295937015,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "fisgaba",
+        "bajamos"
+      ]
+    },
+    {
+      "word": "zahiere",
+      "num_guesses": 4,
+      "prior": 0.000027625346435070027,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "valiere",
+        "zahiere"
+      ]
+    },
+    {
+      "word": "carrica",
+      "num_guesses": 3,
+      "prior": 0.00001800967308570709,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "carrica"
+      ]
+    },
+    {
+      "word": "signate",
+      "num_guesses": 3,
+      "prior": 0.000012659652793809324,
+      "guesses": [
+        "coteras",
+        "pintada",
+        "signate"
+      ]
+    },
+    {
+      "word": "mampare",
+      "num_guesses": 4,
+      "prior": 0.000012450286928395681,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "malpaga",
+        "mampare"
+      ]
+    },
+    {
+      "word": "mormado",
+      "num_guesses": 3,
+      "prior": 0.000011337212618333455,
+      "guesses": [
+        "coteras",
+        "mirrada",
+        "mormado"
+      ]
+    },
+    {
+      "word": "brindis",
+      "num_guesses": 3,
+      "prior": 0.00005011639540335718,
+      "guesses": [
+        "coteras",
+        "burláis",
+        "brindis"
+      ]
+    },
+    {
+      "word": "careyes",
+      "num_guesses": 3,
+      "prior": 0.000020305513502849552,
+      "guesses": [
+        "coteras",
+        "almacén",
+        "careyes"
+      ]
+    },
+    {
+      "word": "adiendo",
+      "num_guesses": 4,
+      "prior": 0.000017851978199419878,
+      "guesses": [
+        "coteras",
+        "lampaba",
+        "aquenio",
+        "adiendo"
+      ]
+    },
+    {
+      "word": "mofaron",
+      "num_guesses": 4,
+      "prior": 0.000022065928485233786,
+      "guesses": [
+        "coteras",
+        "mándala",
+        "febrero",
+        "mofaron"
+      ]
+    },
+    {
+      "word": "rociana",
+      "num_guesses": 3,
+      "prior": 0.000021816772974591973,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "rociana"
+      ]
+    },
+    {
+      "word": "veníais",
+      "num_guesses": 4,
+      "prior": 0.000021825186990933637,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "apenéis",
+        "veníais"
+      ]
+    },
+    {
+      "word": "malcría",
+      "num_guesses": 3,
+      "prior": 0.00001994727291004759,
+      "guesses": [
+        "coteras",
+        "diluvia",
+        "malcría"
+      ]
+    },
+    {
+      "word": "solutos",
+      "num_guesses": 3,
+      "prior": 0.000032365256119428806,
+      "guesses": [
+        "coteras",
+        "tulipán",
+        "solutos"
+      ]
+    },
+    {
+      "word": "leseras",
+      "num_guesses": 4,
+      "prior": 0.0000213074477033326,
+      "guesses": [
+        "coteras",
+        "pelmeni",
+        "leyeras",
+        "leseras"
+      ]
+    },
+    {
+      "word": "elabora",
+      "num_guesses": 3,
+      "prior": 0.00005671475497057551,
+      "guesses": [
+        "coteras",
+        "pernada",
+        "elabora"
+      ]
+    },
+    {
+      "word": "fumasen",
+      "num_guesses": 4,
+      "prior": 0.000016080512215096904,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "ofensas",
+        "fumasen"
+      ]
+    },
+    {
+      "word": "atrofie",
+      "num_guesses": 4,
+      "prior": 0.000017909659460624987,
+      "guesses": [
+        "coteras",
+        "pernera",
+        "barbote",
+        "atrofie"
+      ]
+    },
+    {
+      "word": "pecunio",
+      "num_guesses": 3,
+      "prior": 0.000020640123455033467,
+      "guesses": [
+        "coteras",
+        "demonio",
+        "pecunio"
+      ]
+    },
+    {
+      "word": "anapelo",
+      "num_guesses": 3,
+      "prior": 0.000016838217765308577,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "anapelo"
+      ]
+    },
+    {
+      "word": "lineros",
+      "num_guesses": 3,
+      "prior": 0.00002398750913067912,
+      "guesses": [
+        "coteras",
+        "pelmeni",
+        "lineros"
+      ]
+    },
+    {
+      "word": "catalpa",
+      "num_guesses": 3,
+      "prior": 0.000020814873637677816,
+      "guesses": [
+        "coteras",
+        "catalán",
+        "catalpa"
+      ]
+    },
+    {
+      "word": "apozada",
+      "num_guesses": 6,
+      "prior": 0.000011578646356509797,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "abogada",
+        "apoyada",
+        "apodada",
+        "apozada"
+      ]
+    },
+    {
+      "word": "raicees",
+      "num_guesses": 4,
+      "prior": 9.271306945315476e-6,
+      "guesses": [
+        "coteras",
+        "abracen",
+        "racimes",
+        "raicees"
+      ]
+    },
+    {
+      "word": "vezares",
+      "num_guesses": 5,
+      "prior": 0.000014471640236277396,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "despees",
+        "rezares",
+        "vezares"
+      ]
+    },
+    {
+      "word": "sallase",
+      "num_guesses": 4,
+      "prior": 0.00001028930093652797,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "sueldos",
+        "sallase"
+      ]
+    },
+    {
+      "word": "razonar",
+      "num_guesses": 3,
+      "prior": 0.000050825148529986876,
+      "guesses": [
+        "coteras",
+        "arbolar",
+        "razonar"
+      ]
+    },
+    {
+      "word": "fisiona",
+      "num_guesses": 4,
+      "prior": 0.000015828963030585803,
+      "guesses": [
+        "coteras",
+        "bailona",
+        "familia",
+        "fisiona"
+      ]
+    },
+    {
+      "word": "lizondo",
+      "num_guesses": 3,
+      "prior": 0.000028441573942662355,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "lizondo"
+      ]
+    },
+    {
+      "word": "aguacha",
+      "num_guesses": 3,
+      "prior": 0.000013627475143844156,
+      "guesses": [
+        "coteras",
+        "anulada",
+        "aguacha"
+      ]
+    },
+    {
+      "word": "alagaos",
+      "num_guesses": 3,
+      "prior": 8.65472248373701e-6,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "alagaos"
+      ]
+    },
+    {
+      "word": "mengüen",
+      "num_guesses": 4,
+      "prior": 0.00002066776062028969,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "venguen",
+        "mengüen"
+      ]
+    },
+    {
+      "word": "acedará",
+      "num_guesses": 3,
+      "prior": 9.175458894173521e-6,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "acedará"
+      ]
+    },
+    {
+      "word": "exilara",
+      "num_guesses": 3,
+      "prior": 0.000010991320882810297,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "exilara"
+      ]
+    },
+    {
+      "word": "impelen",
+      "num_guesses": 3,
+      "prior": 0.00003203621356723193,
+      "guesses": [
+        "coteras",
+        "depende",
+        "impelen"
+      ]
+    },
+    {
+      "word": "penaban",
+      "num_guesses": 4,
+      "prior": 0.00002464267207212836,
+      "guesses": [
+        "coteras",
+        "empalad",
+        "pegaban",
+        "penaban"
+      ]
+    },
+    {
+      "word": "huevada",
+      "num_guesses": 4,
+      "prior": 0.000021504841419140644,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "quedaba",
+        "huevada"
+      ]
+    },
+    {
+      "word": "borneas",
+      "num_guesses": 3,
+      "prior": 8.65472248373701e-6,
+      "guesses": [
+        "coteras",
+        "bengalí",
+        "borneas"
+      ]
+    },
+    {
+      "word": "falange",
+      "num_guesses": 3,
+      "prior": 0.00005646273924588462,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "falange"
+      ]
+    },
+    {
+      "word": "apremio",
+      "num_guesses": 3,
+      "prior": 0.00005591733922106971,
+      "guesses": [
+        "coteras",
+        "marrado",
+        "apremio"
+      ]
+    },
+    {
+      "word": "adieran",
+      "num_guesses": 4,
+      "prior": 0.000010483012711353806,
+      "guesses": [
+        "coteras",
+        "mundial",
+        "dijeran",
+        "adieran"
+      ]
+    },
+    {
+      "word": "chavada",
+      "num_guesses": 5,
+      "prior": 8.888971956216004e-6,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "flipado",
+        "chazada",
+        "chavada"
+      ]
+    },
+    {
+      "word": "anejará",
+      "num_guesses": 5,
+      "prior": 8.916577990871738e-6,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "desgome",
+        "anexará",
+        "anejará"
+      ]
+    },
+    {
+      "word": "tamizan",
+      "num_guesses": 3,
+      "prior": 0.000021643330407172656,
+      "guesses": [
+        "coteras",
+        "admitan",
+        "tamizan"
+      ]
+    },
+    {
+      "word": "explano",
+      "num_guesses": 4,
+      "prior": 0.000014652881343631327,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "anzuelo",
+        "explano"
+      ]
+    },
+    {
+      "word": "acátese",
+      "num_guesses": 3,
+      "prior": 0.00001387010927309535,
+      "guesses": [
+        "coteras",
+        "sanease",
+        "acátese"
+      ]
+    },
+    {
+      "word": "mucosos",
+      "num_guesses": 3,
+      "prior": 0.00003161533863189593,
+      "guesses": [
+        "coteras",
+        "limpión",
+        "mucosos"
+      ]
+    },
+    {
+      "word": "laurear",
+      "num_guesses": 4,
+      "prior": 0.000019290961794404173,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "maullar",
+        "laurear"
+      ]
+    },
+    {
+      "word": "cuñadas",
+      "num_guesses": 3,
+      "prior": 0.00003209134350934308,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "cuñadas"
+      ]
+    },
+    {
+      "word": "obcecar",
+      "num_guesses": 2,
+      "prior": 0.000017085420835122663,
+      "guesses": [
+        "coteras",
+        "obcecar"
+      ]
+    },
+    {
+      "word": "conejil",
+      "num_guesses": 3,
+      "prior": 0.000015801241383975003,
+      "guesses": [
+        "coteras",
+        "delineó",
+        "conejil"
+      ]
+    },
+    {
+      "word": "irónico",
+      "num_guesses": 3,
+      "prior": 0.00005342955323811639,
+      "guesses": [
+        "coteras",
+        "párroco",
+        "irónico"
+      ]
+    },
+    {
+      "word": "victime",
+      "num_guesses": 3,
+      "prior": 0.000019662097938102058,
+      "guesses": [
+        "coteras",
+        "viénete",
+        "victime"
+      ]
+    },
+    {
+      "word": "gemirás",
+      "num_guesses": 4,
+      "prior": 0.000015831724538609886,
+      "guesses": [
+        "coteras",
+        "refirme",
+        "medirás",
+        "gemirás"
+      ]
+    },
+    {
+      "word": "fluirán",
+      "num_guesses": 3,
+      "prior": 0.000021452692053513018,
+      "guesses": [
+        "coteras",
+        "fumigan",
+        "fluirán"
+      ]
+    },
+    {
+      "word": "hurgara",
+      "num_guesses": 4,
+      "prior": 0.000018434265602130536,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "hurgará",
+        "hurgara"
+      ]
+    },
+    {
+      "word": "exiliad",
+      "num_guesses": 3,
+      "prior": 9.976920498032475e-6,
+      "guesses": [
+        "coteras",
+        "empalad",
+        "exiliad"
+      ]
+    },
+    {
+      "word": "carlean",
+      "num_guesses": 3,
+      "prior": 9.24771552761153e-6,
+      "guesses": [
+        "coteras",
+        "lardean",
+        "carlean"
+      ]
+    },
+    {
+      "word": "desaoja",
+      "num_guesses": 3,
+      "prior": 8.559939894057878e-6,
+      "guesses": [
+        "coteras",
+        "implada",
+        "desaoja"
+      ]
+    },
+    {
+      "word": "buzares",
+      "num_guesses": 4,
+      "prior": 0.000010807004331288547,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "despees",
+        "buzares"
+      ]
+    },
+    {
+      "word": "adradas",
+      "num_guesses": 4,
+      "prior": 0.000017551773838973374,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "jarrazo",
+        "adradas"
+      ]
+    },
+    {
+      "word": "hablaba",
+      "num_guesses": 4,
+      "prior": 0.00008153062626615447,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "hallaba",
+        "hablaba"
+      ]
+    },
+    {
+      "word": "devanar",
+      "num_guesses": 3,
+      "prior": 0.000027337110868185566,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "devanar"
+      ]
+    },
+    {
+      "word": "cohetea",
+      "num_guesses": 3,
+      "prior": 0.000011219314270594546,
+      "guesses": [
+        "coteras",
+        "plumetí",
+        "cohetea"
+      ]
+    },
+    {
+      "word": "acerado",
+      "num_guesses": 3,
+      "prior": 0.00003676697905920928,
+      "guesses": [
+        "coteras",
+        "perlara",
+        "acerado"
+      ]
+    },
+    {
+      "word": "rugiría",
+      "num_guesses": 4,
+      "prior": 0.000013338940443551816,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "urgiría",
+        "rugiría"
+      ]
+    },
+    {
+      "word": "peraron",
+      "num_guesses": 4,
+      "prior": 0.0000170321750501646,
+      "guesses": [
+        "coteras",
+        "meloneo",
+        "rodrigo",
+        "peraron"
+      ]
+    },
+    {
+      "word": "revenes",
+      "num_guesses": 3,
+      "prior": 0.000014675383954952983,
+      "guesses": [
+        "coteras",
+        "revelen",
+        "revenes"
+      ]
+    },
+    {
+      "word": "consigo",
+      "num_guesses": 3,
+      "prior": 0.00008313103762224427,
+      "guesses": [
+        "coteras",
+        "gnómico",
+        "consigo"
+      ]
+    },
+    {
+      "word": "zéjeles",
+      "num_guesses": 3,
+      "prior": 0.000022229536521315558,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "zéjeles"
+      ]
+    },
+    {
+      "word": "tabaleo",
+      "num_guesses": 3,
+      "prior": 0.000014375474638016287,
+      "guesses": [
+        "coteras",
+        "amilano",
+        "tabaleo"
+      ]
+    },
+    {
+      "word": "reuntar",
+      "num_guesses": 4,
+      "prior": 0.000010129699533565045,
+      "guesses": [
+        "coteras",
+        "plantad",
+        "exentar",
+        "reuntar"
+      ]
+    },
+    {
+      "word": "copiada",
+      "num_guesses": 3,
+      "prior": 0.00004444472644570066,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "copiada"
+      ]
+    },
+    {
+      "word": "aliende",
+      "num_guesses": 3,
+      "prior": 0.000029163790046427705,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "aliende"
+      ]
+    },
+    {
+      "word": "aminará",
+      "num_guesses": 4,
+      "prior": 8.209358703941393e-6,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "animará",
+        "aminará"
+      ]
+    },
+    {
+      "word": "dementé",
+      "num_guesses": 4,
+      "prior": 9.776490580914785e-6,
+      "guesses": [
+        "coteras",
+        "enviudó",
+        "demente",
+        "dementé"
+      ]
+    },
+    {
+      "word": "definid",
+      "num_guesses": 4,
+      "prior": 0.00001961897633122237,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "definió",
+        "definid"
+      ]
+    },
+    {
+      "word": "salvaré",
+      "num_guesses": 4,
+      "prior": 0.0000280439323259667,
+      "guesses": [
+        "coteras",
+        "aligada",
+        "salvará",
+        "salvaré"
+      ]
+    },
+    {
+      "word": "ficiera",
+      "num_guesses": 4,
+      "prior": 0.000028156027074718304,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "hiciera",
+        "ficiera"
+      ]
+    },
+    {
+      "word": "tumbaré",
+      "num_guesses": 4,
+      "prior": 0.00001615757890424483,
+      "guesses": [
+        "coteras",
+        "tritura",
+        "tumbará",
+        "tumbaré"
+      ]
+    },
+    {
+      "word": "galimar",
+      "num_guesses": 4,
+      "prior": 0.000010226652131901744,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "dumping",
+        "galimar"
+      ]
+    },
+    {
+      "word": "radiada",
+      "num_guesses": 4,
+      "prior": 0.00003427489117114425,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "variada",
+        "radiada"
+      ]
+    },
+    {
+      "word": "auxilie",
+      "num_guesses": 3,
+      "prior": 0.000034106747589727525,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "auxilie"
+      ]
+    },
+    {
+      "word": "boceles",
+      "num_guesses": 3,
+      "prior": 0.00002185035148849029,
+      "guesses": [
+        "coteras",
+        "hierben",
+        "boceles"
+      ]
+    },
+    {
+      "word": "delates",
+      "num_guesses": 3,
+      "prior": 0.00001676202360742515,
+      "guesses": [
+        "coteras",
+        "amaleen",
+        "delates"
+      ]
+    },
+    {
+      "word": "prendía",
+      "num_guesses": 3,
+      "prior": 0.00003605533474211897,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "prendía"
+      ]
+    },
+    {
+      "word": "rodeará",
+      "num_guesses": 4,
+      "prior": 0.000025768139341502334,
+      "guesses": [
+        "coteras",
+        "baldado",
+        "deberán",
+        "rodeará"
+      ]
+    },
+    {
+      "word": "mentará",
+      "num_guesses": 4,
+      "prior": 0.000021206371422292956,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "evádete",
+        "mentará"
+      ]
+    },
+    {
+      "word": "chirlas",
+      "num_guesses": 3,
+      "prior": 0.000018861524129120393,
+      "guesses": [
+        "coteras",
+        "carrica",
+        "chirlas"
+      ]
+    },
+    {
+      "word": "dólares",
+      "num_guesses": 4,
+      "prior": 0.00009315059148152538,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "repechó",
+        "dólares"
+      ]
+    },
+    {
+      "word": "arameas",
+      "num_guesses": 3,
+      "prior": 0.00002056310592033068,
+      "guesses": [
+        "coteras",
+        "deprimí",
+        "arameas"
+      ]
+    },
+    {
+      "word": "cosijos",
+      "num_guesses": 4,
+      "prior": 0.000012421281867871083,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "posible",
+        "cosijos"
+      ]
+    },
+    {
+      "word": "susurré",
+      "num_guesses": 3,
+      "prior": 0.0000351214603382782,
+      "guesses": [
+        "coteras",
+        "susurró",
+        "susurré"
+      ]
+    },
+    {
+      "word": "embaste",
+      "num_guesses": 4,
+      "prior": 0.000013029061094115313,
+      "guesses": [
+        "coteras",
+        "pintada",
+        "legases",
+        "embaste"
+      ]
+    },
+    {
+      "word": "pericas",
+      "num_guesses": 3,
+      "prior": 0.000022278326291066343,
+      "guesses": [
+        "coteras",
+        "arrecia",
+        "pericas"
+      ]
+    },
+    {
+      "word": "designá",
+      "num_guesses": 5,
+      "prior": 0.000010882234364243009,
+      "guesses": [
+        "coteras",
+        "punible",
+        "designó",
+        "designé",
+        "designá"
+      ]
+    },
+    {
+      "word": "orinado",
+      "num_guesses": 4,
+      "prior": 0.000026628395606444898,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "fundada",
+        "orinado"
+      ]
+    },
+    {
+      "word": "enfilar",
+      "num_guesses": 3,
+      "prior": 0.00003161828905440589,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "enfilar"
+      ]
+    },
+    {
+      "word": "agradas",
+      "num_guesses": 4,
+      "prior": 0.000029810297399774845,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "adargas",
+        "agradas"
+      ]
+    },
+    {
+      "word": "cifosis",
+      "num_guesses": 4,
+      "prior": 0.000028233143970426606,
+      "guesses": [
+        "coteras",
+        "chilcón",
+        "cupidos",
+        "cifosis"
+      ]
+    },
+    {
+      "word": "hincada",
+      "num_guesses": 3,
+      "prior": 0.000032169773173701505,
+      "guesses": [
+        "coteras",
+        "anulada",
+        "hincada"
+      ]
+    },
+    {
+      "word": "mariden",
+      "num_guesses": 4,
+      "prior": 0.000012598294559510137,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "laringe",
+        "mariden"
+      ]
+    },
+    {
+      "word": "rabiará",
+      "num_guesses": 3,
+      "prior": 0.00001657328479493295,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "rabiará"
+      ]
+    },
+    {
+      "word": "rozamos",
+      "num_guesses": 4,
+      "prior": 0.00002282271714682955,
+      "guesses": [
+        "coteras",
+        "agramad",
+        "zabullí",
+        "rozamos"
+      ]
+    },
+    {
+      "word": "remitid",
+      "num_guesses": 3,
+      "prior": 0.000020426478211324832,
+      "guesses": [
+        "coteras",
+        "perdure",
+        "remitid"
+      ]
+    },
+    {
+      "word": "maquile",
+      "num_guesses": 3,
+      "prior": 0.000012956030461195203,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "maquile"
+      ]
+    },
+    {
+      "word": "evocase",
+      "num_guesses": 4,
+      "prior": 0.000019324654733365804,
+      "guesses": [
+        "coteras",
+        "asilada",
+        "ocupase",
+        "evocase"
+      ]
+    },
+    {
+      "word": "vetaban",
+      "num_guesses": 4,
+      "prior": 0.000016670968541483083,
+      "guesses": [
+        "coteras",
+        "libando",
+        "tapujos",
+        "vetaban"
+      ]
+    },
+    {
+      "word": "bosaron",
+      "num_guesses": 3,
+      "prior": 8.623589581327575e-6,
+      "guesses": [
+        "coteras",
+        "símbolo",
+        "bosaron"
+      ]
+    },
+    {
+      "word": "plagues",
+      "num_guesses": 3,
+      "prior": 0.00001834785828204351,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "plagues"
+      ]
+    },
+    {
+      "word": "récords",
+      "num_guesses": 3,
+      "prior": 0.00003530910240493481,
+      "guesses": [
+        "coteras",
+        "pulcros",
+        "récords"
+      ]
+    },
+    {
+      "word": "recobró",
+      "num_guesses": 3,
+      "prior": 0.000046592480076415115,
+      "guesses": [
+        "coteras",
+        "delineo",
+        "recobró"
+      ]
+    },
+    {
+      "word": "detonar",
+      "num_guesses": 3,
+      "prior": 0.000030670554917250886,
+      "guesses": [
+        "coteras",
+        "domeñan",
+        "detonar"
+      ]
+    },
+    {
+      "word": "mayorea",
+      "num_guesses": 3,
+      "prior": 0.000014973367583768986,
+      "guesses": [
+        "coteras",
+        "meloneo",
+        "mayorea"
+      ]
+    },
+    {
+      "word": "diurnos",
+      "num_guesses": 4,
+      "prior": 0.00003643741240685509,
+      "guesses": [
+        "coteras",
+        "prodigo",
+        "muebles",
+        "diurnos"
+      ]
+    },
+    {
+      "word": "apárese",
+      "num_guesses": 4,
+      "prior": 0.00001224900932451622,
+      "guesses": [
+        "coteras",
+        "rumiara",
+        "preverá",
+        "apárese"
+      ]
+    },
+    {
+      "word": "osmoles",
+      "num_guesses": 4,
+      "prior": 0.000016108941456358414,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "mújoles",
+        "osmoles"
+      ]
+    },
+    {
+      "word": "exiguas",
+      "num_guesses": 3,
+      "prior": 0.00003569552160218668,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "exiguas"
+      ]
+    },
+    {
+      "word": "medíais",
+      "num_guesses": 3,
+      "prior": 0.000011701449036890135,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "medíais"
+      ]
+    },
+    {
+      "word": "autista",
+      "num_guesses": 3,
+      "prior": 0.00003292319588097199,
+      "guesses": [
+        "coteras",
+        "situaba",
+        "autista"
+      ]
+    },
+    {
+      "word": "densado",
+      "num_guesses": 4,
+      "prior": 0.00001529716554193574,
+      "guesses": [
+        "coteras",
+        "implada",
+        "sesgado",
+        "densado"
+      ]
+    },
+    {
+      "word": "trineos",
+      "num_guesses": 3,
+      "prior": 0.00003198749596969734,
+      "guesses": [
+        "coteras",
+        "premien",
+        "trineos"
+      ]
+    },
+    {
+      "word": "amaneas",
+      "num_guesses": 4,
+      "prior": 0.000014538242369922897,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "menazas",
+        "amaneas"
+      ]
+    },
+    {
+      "word": "rejugar",
+      "num_guesses": 4,
+      "prior": 0.000010553850325034098,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "juzgaba",
+        "rejugar"
+      ]
+    },
+    {
+      "word": "venadeó",
+      "num_guesses": 4,
+      "prior": 0.000010178637558895736,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "vendaje",
+        "venadeó"
+      ]
+    },
+    {
+      "word": "piecito",
+      "num_guesses": 3,
+      "prior": 0.00001850727192987835,
+      "guesses": [
+        "coteras",
+        "utópico",
+        "piecito"
+      ]
+    },
+    {
+      "word": "becando",
+      "num_guesses": 4,
+      "prior": 0.000014276664757329717,
+      "guesses": [
+        "coteras",
+        "animado",
+        "pecando",
+        "becando"
+      ]
+    },
+    {
+      "word": "meremos",
+      "num_guesses": 5,
+      "prior": 0.000011837023234003375,
+      "guesses": [
+        "coteras",
+        "perimen",
+        "veremos",
+        "seremos",
+        "meremos"
+      ]
+    },
+    {
+      "word": "templad",
+      "num_guesses": 3,
+      "prior": 0.000023500365746519915,
+      "guesses": [
+        "coteras",
+        "abultad",
+        "templad"
+      ]
+    },
+    {
+      "word": "milagro",
+      "num_guesses": 3,
+      "prior": 0.0000744587139198597,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "milagro"
+      ]
+    },
+    {
+      "word": "realcen",
+      "num_guesses": 3,
+      "prior": 0.000021738903502773595,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "realcen"
+      ]
+    },
+    {
+      "word": "melisas",
+      "num_guesses": 3,
+      "prior": 0.00001286236258365632,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "melisas"
+      ]
+    },
+    {
+      "word": "desasgo",
+      "num_guesses": 5,
+      "prior": 9.7382252552446e-6,
+      "guesses": [
+        "coteras",
+        "implada",
+        "fogones",
+        "desaguo",
+        "desasgo"
+      ]
+    },
+    {
+      "word": "crespas",
+      "num_guesses": 3,
+      "prior": 0.000028724759765693672,
+      "guesses": [
+        "coteras",
+        "padrean",
+        "crespas"
+      ]
+    },
+    {
+      "word": "horrará",
+      "num_guesses": 5,
+      "prior": 0.000011050101352884735,
+      "guesses": [
+        "coteras",
+        "mirrada",
+        "borrará",
+        "forrará",
+        "horrará"
+      ]
+    },
+    {
+      "word": "cubetas",
+      "num_guesses": 3,
+      "prior": 0.00003546569533063732,
+      "guesses": [
+        "coteras",
+        "insalud",
+        "cubetas"
+      ]
+    },
+    {
+      "word": "amarino",
+      "num_guesses": 3,
+      "prior": 0.000014671643096971255,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "amarino"
+      ]
+    },
+    {
+      "word": "viejito",
+      "num_guesses": 3,
+      "prior": 0.00003961756033568513,
+      "guesses": [
+        "coteras",
+        "menipeo",
+        "viejito"
+      ]
+    },
+    {
+      "word": "cucadas",
+      "num_guesses": 4,
+      "prior": 0.00001052574379979239,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "cuñadas",
+        "cucadas"
+      ]
+    },
+    {
+      "word": "mononas",
+      "num_guesses": 4,
+      "prior": 0.000013227534939614292,
+      "guesses": [
+        "coteras",
+        "molando",
+        "consejo",
+        "mononas"
+      ]
+    },
+    {
+      "word": "campara",
+      "num_guesses": 3,
+      "prior": 0.000020410514549391277,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "campara"
+      ]
+    },
+    {
+      "word": "llenará",
+      "num_guesses": 4,
+      "prior": 0.000041498950474810987,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "deberán",
+        "llenará"
+      ]
+    },
+    {
+      "word": "pitutos",
+      "num_guesses": 4,
+      "prior": 0.000014959541736005266,
+      "guesses": [
+        "coteras",
+        "impulsé",
+        "tartufo",
+        "pitutos"
+      ]
+    },
+    {
+      "word": "perfila",
+      "num_guesses": 4,
+      "prior": 0.000045781608406198544,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "perdida",
+        "perfila"
+      ]
+    },
+    {
+      "word": "coartes",
+      "num_guesses": 2,
+      "prior": 0.000012486167312940424,
+      "guesses": [
+        "coteras",
+        "coartes"
+      ]
+    },
+    {
+      "word": "obligas",
+      "num_guesses": 3,
+      "prior": 0.000030373832292073133,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "obligas"
+      ]
+    },
+    {
+      "word": "neceara",
+      "num_guesses": 4,
+      "prior": 0.000010079797107866217,
+      "guesses": [
+        "coteras",
+        "pariría",
+        "buceara",
+        "neceara"
+      ]
+    },
+    {
+      "word": "ligando",
+      "num_guesses": 4,
+      "prior": 0.000038229044503317755,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "holgaba",
+        "ligando"
+      ]
+    },
+    {
+      "word": "caspios",
+      "num_guesses": 3,
+      "prior": 0.000018510227418999035,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "caspios"
+      ]
+    },
+    {
+      "word": "cuadran",
+      "num_guesses": 3,
+      "prior": 0.00003325617761396253,
+      "guesses": [
+        "coteras",
+        "igualan",
+        "cuadran"
+      ]
+    },
+    {
+      "word": "reabren",
+      "num_guesses": 3,
+      "prior": 0.000021633838061687336,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "reabren"
+      ]
+    },
+    {
+      "word": "coitase",
+      "num_guesses": 3,
+      "prior": 8.916577990871738e-6,
+      "guesses": [
+        "coteras",
+        "listado",
+        "coitase"
+      ]
+    },
+    {
+      "word": "alterne",
+      "num_guesses": 3,
+      "prior": 0.000028521428026488117,
+      "guesses": [
+        "coteras",
+        "menipea",
+        "alterne"
+      ]
+    },
+    {
+      "word": "colilla",
+      "num_guesses": 3,
+      "prior": 0.00003643160599264729,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "colilla"
+      ]
+    },
+    {
+      "word": "jalaban",
+      "num_guesses": 4,
+      "prior": 0.00002347186655307935,
+      "guesses": [
+        "coteras",
+        "igualad",
+        "balanza",
+        "jalaban"
+      ]
+    },
+    {
+      "word": "vulneré",
+      "num_guesses": 4,
+      "prior": 9.59933420238401e-6,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "vulneró",
+        "vulneré"
+      ]
+    },
+    {
+      "word": "puntazo",
+      "num_guesses": 4,
+      "prior": 0.00002464267207212836,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "puntano",
+        "puntazo"
+      ]
+    },
+    {
+      "word": "ardites",
+      "num_guesses": 3,
+      "prior": 0.0000252116305866567,
+      "guesses": [
+        "coteras",
+        "asaltes",
+        "ardites"
+      ]
+    },
+    {
+      "word": "ventear",
+      "num_guesses": 4,
+      "prior": 0.000024064535544650048,
+      "guesses": [
+        "coteras",
+        "plantad",
+        "vertían",
+        "ventear"
+      ]
+    },
+    {
+      "word": "sopapeo",
+      "num_guesses": 4,
+      "prior": 9.340676080833094e-6,
+      "guesses": [
+        "coteras",
+        "pulgada",
+        "sopapeó",
+        "sopapeo"
+      ]
+    },
+    {
+      "word": "esclavo",
+      "num_guesses": 3,
+      "prior": 0.0000698253310839763,
+      "guesses": [
+        "coteras",
+        "asilada",
+        "esclavo"
+      ]
+    },
+    {
+      "word": "alcancé",
+      "num_guesses": 4,
+      "prior": 0.000043494101876398946,
+      "guesses": [
+        "coteras",
+        "anulada",
+        "alcanzó",
+        "alcancé"
+      ]
+    },
+    {
+      "word": "emplead",
+      "num_guesses": 3,
+      "prior": 0.00002739554979826958,
+      "guesses": [
+        "coteras",
+        "empalad",
+        "emplead"
+      ]
+    },
+    {
+      "word": "astutos",
+      "num_guesses": 4,
+      "prior": 0.00004049412586203393,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "autobús",
+        "astutos"
+      ]
+    },
+    {
+      "word": "guiajes",
+      "num_guesses": 3,
+      "prior": 0.000015817897683849263,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "guiajes"
+      ]
+    },
+    {
+      "word": "alforja",
+      "num_guesses": 4,
+      "prior": 0.00003692187727401006,
+      "guesses": [
+        "coteras",
+        "maligna",
+        "alforza",
+        "alforja"
+      ]
+    },
+    {
+      "word": "nacimos",
+      "num_guesses": 3,
+      "prior": 0.00003987624952266484,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "nacimos"
+      ]
+    },
+    {
+      "word": "tocabas",
+      "num_guesses": 3,
+      "prior": 0.000022757789343640885,
+      "guesses": [
+        "coteras",
+        "tocadas",
+        "tocabas"
+      ]
+    },
+    {
+      "word": "grangeó",
+      "num_guesses": 4,
+      "prior": 0.00002704428957602677,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "renegón",
+        "grangeó"
+      ]
+    },
+    {
+      "word": "badazas",
+      "num_guesses": 5,
+      "prior": 0.000010226652131901744,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "bajases",
+        "bañadas",
+        "badazas"
+      ]
+    },
+    {
+      "word": "librees",
+      "num_guesses": 4,
+      "prior": 0.000011549553912451714,
+      "guesses": [
+        "coteras",
+        "redimen",
+        "hierves",
+        "librees"
+      ]
+    },
+    {
+      "word": "incensé",
+      "num_guesses": 3,
+      "prior": 0.000012759347414201078,
+      "guesses": [
+        "coteras",
+        "inculpé",
+        "incensé"
+      ]
+    },
+    {
+      "word": "excepté",
+      "num_guesses": 3,
+      "prior": 0.000016007225579559167,
+      "guesses": [
+        "coteras",
+        "efélide",
+        "excepté"
+      ]
+    },
+    {
+      "word": "niponas",
+      "num_guesses": 3,
+      "prior": 0.000026055865031455842,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "niponas"
+      ]
+    },
+    {
+      "word": "enyugue",
+      "num_guesses": 4,
+      "prior": 9.4080437081469e-6,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "enjugue",
+        "enyugue"
+      ]
+    },
+    {
+      "word": "atizáis",
+      "num_guesses": 4,
+      "prior": 0.000010454133449515753,
+      "guesses": [
+        "coteras",
+        "ansiáis",
+        "agitáis",
+        "atizáis"
+      ]
+    },
+    {
+      "word": "regulen",
+      "num_guesses": 3,
+      "prior": 0.000040609879304423494,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "regulen"
+      ]
+    },
+    {
+      "word": "apurare",
+      "num_guesses": 3,
+      "prior": 0.000013473162053282934,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "apurare"
+      ]
+    },
+    {
+      "word": "chochas",
+      "num_guesses": 3,
+      "prior": 0.00002243862854118909,
+      "guesses": [
+        "coteras",
+        "lampuga",
+        "chochas"
+      ]
+    },
+    {
+      "word": "pelabas",
+      "num_guesses": 4,
+      "prior": 0.00001167356599778334,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "paellas",
+        "pelabas"
+      ]
+    },
+    {
+      "word": "revoleo",
+      "num_guesses": 4,
+      "prior": 0.000019229207268207607,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "provocó",
+        "revoleo"
+      ]
+    },
+    {
+      "word": "chandis",
+      "num_guesses": 4,
+      "prior": 9.776490580914785e-6,
+      "guesses": [
+        "coteras",
+        "rulimán",
+        "canséis",
+        "chandis"
+      ]
+    },
+    {
+      "word": "grábese",
+      "num_guesses": 4,
+      "prior": 0.000015381737337219222,
+      "guesses": [
+        "coteras",
+        "reprime",
+        "búrlese",
+        "grábese"
+      ]
+    },
+    {
+      "word": "dañarán",
+      "num_guesses": 3,
+      "prior": 0.000021980413343418368,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "dañarán"
+      ]
+    },
+    {
+      "word": "logrear",
+      "num_guesses": 4,
+      "prior": 0.00001269990687450734,
+      "guesses": [
+        "coteras",
+        "marguen",
+        "golpear",
+        "logrear"
+      ]
+    },
+    {
+      "word": "trazada",
+      "num_guesses": 4,
+      "prior": 0.00004983504660899227,
+      "guesses": [
+        "coteras",
+        "tritura",
+        "zambada",
+        "trazada"
+      ]
+    },
+    {
+      "word": "aquejes",
+      "num_guesses": 3,
+      "prior": 0.000013504592788573584,
+      "guesses": [
+        "coteras",
+        "ambulen",
+        "aquejes"
+      ]
+    },
+    {
+      "word": "ochavos",
+      "num_guesses": 3,
+      "prior": 0.000030221949342702768,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "ochavos"
+      ]
+    },
+    {
+      "word": "corteja",
+      "num_guesses": 3,
+      "prior": 0.000030113068766653184,
+      "guesses": [
+        "coteras",
+        "ventaja",
+        "corteja"
+      ]
+    },
+    {
+      "word": "zambuto",
+      "num_guesses": 3,
+      "prior": 0.000010113174650216587,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "zambuto"
+      ]
+    },
+    {
+      "word": "ayuntas",
+      "num_guesses": 4,
+      "prior": 0.000013958018940121667,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "payasas",
+        "ayuntas"
+      ]
+    },
+    {
+      "word": "ullucos",
+      "num_guesses": 4,
+      "prior": 0.00001848653045867649,
+      "guesses": [
+        "coteras",
+        "limpión",
+        "sucumbe",
+        "ullucos"
+      ]
+    },
+    {
+      "word": "héticos",
+      "num_guesses": 4,
+      "prior": 0.000020960637544981325,
+      "guesses": [
+        "coteras",
+        "impugnó",
+        "boletín",
+        "héticos"
+      ]
+    },
+    {
+      "word": "asmando",
+      "num_guesses": 3,
+      "prior": 0.000016693360789508696,
+      "guesses": [
+        "coteras",
+        "bailona",
+        "asmando"
+      ]
+    },
+    {
+      "word": "pateare",
+      "num_guesses": 4,
+      "prior": 8.970786106973702e-6,
+      "guesses": [
+        "coteras",
+        "impugna",
+        "deberán",
+        "pateare"
+      ]
+    },
+    {
+      "word": "guipado",
+      "num_guesses": 4,
+      "prior": 0.000012974442705756787,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "guiñapo",
+        "guipado"
+      ]
+    },
+    {
+      "word": "aretina",
+      "num_guesses": 3,
+      "prior": 0.00002177373546562108,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "aretina"
+      ]
+    },
+    {
+      "word": "marfuza",
+      "num_guesses": 4,
+      "prior": 9.023714772653432e-6,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "magrura",
+        "marfuza"
+      ]
+    },
+    {
+      "word": "huidiza",
+      "num_guesses": 3,
+      "prior": 0.000033328735799675316,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "huidiza"
+      ]
+    },
+    {
+      "word": "partera",
+      "num_guesses": 3,
+      "prior": 0.000041686296183105406,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "partera"
+      ]
+    },
+    {
+      "word": "zanatas",
+      "num_guesses": 3,
+      "prior": 0.000014083665864993984,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "zanatas"
+      ]
+    },
+    {
+      "word": "impulsó",
+      "num_guesses": 2,
+      "prior": 0.00005300176580222508,
+      "guesses": [
+        "coteras",
+        "impulsó"
+      ]
+    },
+    {
+      "word": "ñaparen",
+      "num_guesses": 5,
+      "prior": 8.284342468608768e-6,
+      "guesses": [
+        "coteras",
+        "pedalea",
+        "amparen",
+        "raparen",
+        "ñaparen"
+      ]
+    },
+    {
+      "word": "prédica",
+      "num_guesses": 4,
+      "prior": 0.00004846230291076791,
+      "guesses": [
+        "coteras",
+        "arruaba",
+        "práxica",
+        "prédica"
+      ]
+    },
+    {
+      "word": "repostó",
+      "num_guesses": 3,
+      "prior": 0.00001458836213536212,
+      "guesses": [
+        "coteras",
+        "remuevo",
+        "repostó"
+      ]
+    },
+    {
+      "word": "bisecas",
+      "num_guesses": 4,
+      "prior": 8.592000491829373e-6,
+      "guesses": [
+        "coteras",
+        "encamad",
+        "uzbecas",
+        "bisecas"
+      ]
+    },
+    {
+      "word": "enduras",
+      "num_guesses": 3,
+      "prior": 0.000011273516380355852,
+      "guesses": [
+        "coteras",
+        "plegada",
+        "enduras"
+      ]
+    },
+    {
+      "word": "chamara",
+      "num_guesses": 4,
+      "prior": 0.000014034840130697888,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "clamara",
+        "chamara"
+      ]
+    },
+    {
+      "word": "alámbar",
+      "num_guesses": 4,
+      "prior": 9.69934886293085e-6,
+      "guesses": [
+        "coteras",
+        "aliaban",
+        "almíbar",
+        "alámbar"
+      ]
+    },
+    {
+      "word": "bananal",
+      "num_guesses": 4,
+      "prior": 0.000024420491718299606,
+      "guesses": [
+        "coteras",
+        "igualad",
+        "balanza",
+        "bananal"
+      ]
+    },
+    {
+      "word": "dentona",
+      "num_guesses": 4,
+      "prior": 0.000013726594502249733,
+      "guesses": [
+        "coteras",
+        "amilano",
+        "teutona",
+        "dentona"
+      ]
+    },
+    {
+      "word": "realmes",
+      "num_guesses": 4,
+      "prior": 0.000010079797107866217,
+      "guesses": [
+        "coteras",
+        "arralen",
+        "raulíes",
+        "realmes"
+      ]
+    },
+    {
+      "word": "testare",
+      "num_guesses": 4,
+      "prior": 0.000014719979512036372,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "deberán",
+        "testare"
+      ]
+    },
+    {
+      "word": "agrafia",
+      "num_guesses": 4,
+      "prior": 0.000020919145295605887,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "agravia",
+        "agrafia"
+      ]
+    },
+    {
+      "word": "morones",
+      "num_guesses": 3,
+      "prior": 0.00003716474472048677,
+      "guesses": [
+        "coteras",
+        "noruego",
+        "morones"
+      ]
+    },
+    {
+      "word": "ahitara",
+      "num_guesses": 4,
+      "prior": 8.460763237792793e-6,
+      "guesses": [
+        "coteras",
+        "tritura",
+        "agitara",
+        "ahitara"
+      ]
+    },
+    {
+      "word": "afronté",
+      "num_guesses": 4,
+      "prior": 0.000020422491973384193,
+      "guesses": [
+        "coteras",
+        "trinada",
+        "fogoneó",
+        "afronté"
+      ]
+    },
+    {
+      "word": "dorados",
+      "num_guesses": 4,
+      "prior": 0.00005790161229586572,
+      "guesses": [
+        "coteras",
+        "agramad",
+        "diferir",
+        "dorados"
+      ]
+    },
+    {
+      "word": "muerden",
+      "num_guesses": 3,
+      "prior": 0.00003797453949912292,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "muerden"
+      ]
+    },
+    {
+      "word": "seriare",
+      "num_guesses": 4,
+      "prior": 9.075429992341579e-6,
+      "guesses": [
+        "coteras",
+        "rumiara",
+        "seriará",
+        "seriare"
+      ]
+    },
+    {
+      "word": "toperos",
+      "num_guesses": 3,
+      "prior": 0.000010045971522258835,
+      "guesses": [
+        "coteras",
+        "simples",
+        "toperos"
+      ]
+    },
+    {
+      "word": "averiad",
+      "num_guesses": 4,
+      "prior": 8.943846322729836e-6,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "ijadear",
+        "averiad"
+      ]
+    },
+    {
+      "word": "cedazos",
+      "num_guesses": 4,
+      "prior": 0.000029703019570879216,
+      "guesses": [
+        "coteras",
+        "mahjong",
+        "posible",
+        "cedazos"
+      ]
+    },
+    {
+      "word": "acorche",
+      "num_guesses": 3,
+      "prior": 9.639839161484243e-6,
+      "guesses": [
+        "coteras",
+        "perlara",
+        "acorche"
+      ]
+    },
+    {
+      "word": "rielara",
+      "num_guesses": 3,
+      "prior": 0.000010350460079634274,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "rielara"
+      ]
+    },
+    {
+      "word": "panosos",
+      "num_guesses": 4,
+      "prior": 9.473535255712193e-6,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "ganosos",
+        "panosos"
+      ]
+    },
+    {
+      "word": "firmará",
+      "num_guesses": 3,
+      "prior": 0.000042165484596682444,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "firmará"
+      ]
+    },
+    {
+      "word": "volcaré",
+      "num_guesses": 4,
+      "prior": 0.000015479620680394385,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "volcará",
+        "volcaré"
+      ]
+    },
+    {
+      "word": "almonas",
+      "num_guesses": 3,
+      "prior": 0.00001925450894427074,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "almonas"
+      ]
+    },
+    {
+      "word": "matabas",
+      "num_guesses": 4,
+      "prior": 0.00001892684227612915,
+      "guesses": [
+        "coteras",
+        "lapidan",
+        "batatas",
+        "matabas"
+      ]
+    },
+    {
+      "word": "notasen",
+      "num_guesses": 3,
+      "prior": 0.00002643485782196494,
+      "guesses": [
+        "coteras",
+        "nevaban",
+        "notasen"
+      ]
+    },
+    {
+      "word": "adoraré",
+      "num_guesses": 4,
+      "prior": 0.00002345126109807308,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "adorará",
+        "adoraré"
+      ]
+    },
+    {
+      "word": "oprimas",
+      "num_guesses": 3,
+      "prior": 0.00001924945924283007,
+      "guesses": [
+        "coteras",
+        "arbolan",
+        "oprimas"
+      ]
+    },
+    {
+      "word": "avallan",
+      "num_guesses": 4,
+      "prior": 0.000010096541049211177,
+      "guesses": [
+        "coteras",
+        "igualad",
+        "vayamos",
+        "avallan"
+      ]
+    },
+    {
+      "word": "instalá",
+      "num_guesses": 5,
+      "prior": 0.000010226652131901744,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "instaló",
+        "instalé",
+        "instalá"
+      ]
+    },
+    {
+      "word": "alfayas",
+      "num_guesses": 4,
+      "prior": 0.000011539790961965779,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "bajamar",
+        "alfayas"
+      ]
+    },
+    {
+      "word": "vulpina",
+      "num_guesses": 4,
+      "prior": 0.00001786221149831821,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "válvula",
+        "vulpina"
+      ]
+    },
+    {
+      "word": "flocula",
+      "num_guesses": 3,
+      "prior": 0.00001624068804471276,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "flocula"
+      ]
+    },
+    {
+      "word": "aislaos",
+      "num_guesses": 4,
+      "prior": 0.000012033560313741935,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "afilaos",
+        "aislaos"
+      ]
+    },
+    {
+      "word": "contará",
+      "num_guesses": 3,
+      "prior": 0.00005332514827351142,
+      "guesses": [
+        "coteras",
+        "indulta",
+        "contará"
+      ]
+    },
+    {
+      "word": "flectes",
+      "num_guesses": 3,
+      "prior": 8.527391651143015e-6,
+      "guesses": [
+        "coteras",
+        "encueré",
+        "flectes"
+      ]
+    },
+    {
+      "word": "aceptan",
+      "num_guesses": 2,
+      "prior": 0.00005976150384408735,
+      "guesses": [
+        "coteras",
+        "aceptan"
+      ]
+    },
+    {
+      "word": "cofreen",
+      "num_guesses": 4,
+      "prior": 8.745526167559247e-6,
+      "guesses": [
+        "coteras",
+        "hornero",
+        "febrero",
+        "cofreen"
+      ]
+    },
+    {
+      "word": "pulirse",
+      "num_guesses": 3,
+      "prior": 0.000024061431978283492,
+      "guesses": [
+        "coteras",
+        "rulimán",
+        "pulirse"
+      ]
+    },
+    {
+      "word": "tepojal",
+      "num_guesses": 3,
+      "prior": 0.000010146117285118848,
+      "guesses": [
+        "coteras",
+        "embotan",
+        "tepojal"
+      ]
+    },
+    {
+      "word": "saboreo",
+      "num_guesses": 4,
+      "prior": 0.00002797150064457078,
+      "guesses": [
+        "coteras",
+        "despeen",
+        "anómalo",
+        "saboreo"
+      ]
+    },
+    {
+      "word": "escarzo",
+      "num_guesses": 3,
+      "prior": 0.000016564079965706328,
+      "guesses": [
+        "coteras",
+        "brizado",
+        "escarzo"
+      ]
+    },
+    {
+      "word": "imaginé",
+      "num_guesses": 4,
+      "prior": 0.00004675876440309739,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "imaginó",
+        "imaginé"
+      ]
+    },
+    {
+      "word": "desdiga",
+      "num_guesses": 4,
+      "prior": 0.000028662077661581936,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "seguida",
+        "desdiga"
+      ]
+    },
+    {
+      "word": "efébica",
+      "num_guesses": 3,
+      "prior": 0.000014592189093426894,
+      "guesses": [
+        "coteras",
+        "anélida",
+        "efébica"
+      ]
+    },
+    {
+      "word": "decimes",
+      "num_guesses": 4,
+      "prior": 0.000011529994860437088,
+      "guesses": [
+        "coteras",
+        "pudelen",
+        "decides",
+        "decimes"
+      ]
+    },
+    {
+      "word": "acuerda",
+      "num_guesses": 3,
+      "prior": 0.00007054957238907863,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "acuerda"
+      ]
+    },
+    {
+      "word": "callaré",
+      "num_guesses": 4,
+      "prior": 0.000031381557183126775,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "realizá",
+        "callaré"
+      ]
+    },
+    {
+      "word": "migrará",
+      "num_guesses": 4,
+      "prior": 0.000014976816079663045,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "firmará",
+        "migrará"
+      ]
+    },
+    {
+      "word": "bañaste",
+      "num_guesses": 4,
+      "prior": 0.000018726695783053717,
+      "guesses": [
+        "coteras",
+        "pintada",
+        "bajeles",
+        "bañaste"
+      ]
+    },
+    {
+      "word": "engullí",
+      "num_guesses": 4,
+      "prior": 0.000018450755579035057,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "engulló",
+        "engullí"
+      ]
+    },
+    {
+      "word": "encausó",
+      "num_guesses": 4,
+      "prior": 0.000020330952712577134,
+      "guesses": [
+        "coteras",
+        "enchule",
+        "américa",
+        "encausó"
+      ]
+    },
+    {
+      "word": "adeudar",
+      "num_guesses": 4,
+      "prior": 0.0000328216093947218,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "madrear",
+        "adeudar"
+      ]
+    },
+    {
+      "word": "azuzare",
+      "num_guesses": 4,
+      "prior": 8.970786106973702e-6,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "azulado",
+        "azuzare"
+      ]
+    },
+    {
+      "word": "empujas",
+      "num_guesses": 3,
+      "prior": 0.000022896387466285347,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "empujas"
+      ]
+    },
+    {
+      "word": "propagá",
+      "num_guesses": 4,
+      "prior": 8.131530823735886e-6,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "colofón",
+        "propagá"
+      ]
+    },
+    {
+      "word": "portare",
+      "num_guesses": 3,
+      "prior": 0.00002484392956229455,
+      "guesses": [
+        "coteras",
+        "terrana",
+        "portare"
+      ]
+    },
+    {
+      "word": "reditúo",
+      "num_guesses": 3,
+      "prior": 0.000010045971522258835,
+      "guesses": [
+        "coteras",
+        "terreno",
+        "reditúo"
+      ]
+    },
+    {
+      "word": "encorno",
+      "num_guesses": 3,
+      "prior": 0.000010096541049211177,
+      "guesses": [
+        "coteras",
+        "venéreo",
+        "encorno"
+      ]
+    },
+    {
+      "word": "tronare",
+      "num_guesses": 3,
+      "prior": 0.000012500404712898154,
+      "guesses": [
+        "coteras",
+        "pernera",
+        "tronare"
+      ]
+    },
+    {
+      "word": "fogonea",
+      "num_guesses": 3,
+      "prior": 0.00001042493150309353,
+      "guesses": [
+        "coteras",
+        "nobleza",
+        "fogonea"
+      ]
+    },
+    {
+      "word": "crispas",
+      "num_guesses": 4,
+      "prior": 0.000014896684294503954,
+      "guesses": [
+        "coteras",
+        "carrica",
+        "crismas",
+        "crispas"
+      ]
+    },
+    {
+      "word": "forjaos",
+      "num_guesses": 4,
+      "prior": 9.023714772653432e-6,
+      "guesses": [
+        "coteras",
+        "agramad",
+        "fuerzas",
+        "forjaos"
+      ]
+    },
+    {
+      "word": "chipean",
+      "num_guesses": 3,
+      "prior": 8.170815410619303e-6,
+      "guesses": [
+        "coteras",
+        "pangola",
+        "chipean"
+      ]
+    },
+    {
+      "word": "riberos",
+      "num_guesses": 4,
+      "prior": 0.00002938317839214569,
+      "guesses": [
+        "coteras",
+        "pelmeni",
+        "bovajes",
+        "riberos"
+      ]
+    },
+    {
+      "word": "leñaron",
+      "num_guesses": 4,
+      "prior": 0.000010663381967277072,
+      "guesses": [
+        "coteras",
+        "meloneo",
+        "pergeño",
+        "leñaron"
+      ]
+    },
+    {
+      "word": "ramonea",
+      "num_guesses": 4,
+      "prior": 0.000017764033141156128,
+      "guesses": [
+        "coteras",
+        "pernada",
+        "enamora",
+        "ramonea"
+      ]
+    },
+    {
+      "word": "bernesa",
+      "num_guesses": 4,
+      "prior": 0.00001518141075749811,
+      "guesses": [
+        "coteras",
+        "rumiara",
+        "expresa",
+        "bernesa"
+      ]
+    },
+    {
+      "word": "riñamos",
+      "num_guesses": 4,
+      "prior": 0.000020680101857697588,
+      "guesses": [
+        "coteras",
+        "arrimad",
+        "zampoña",
+        "riñamos"
+      ]
+    },
+    {
+      "word": "baniano",
+      "num_guesses": 4,
+      "prior": 0.0000190836903114319,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "bahiano",
+        "baniano"
+      ]
+    },
+    {
+      "word": "airosos",
+      "num_guesses": 3,
+      "prior": 0.00003517962362840495,
+      "guesses": [
+        "coteras",
+        "arrimad",
+        "airosos"
+      ]
+    },
+    {
+      "word": "segregó",
+      "num_guesses": 3,
+      "prior": 0.000030302797655525614,
+      "guesses": [
+        "coteras",
+        "reprime",
+        "segregó"
+      ]
+    },
+    {
+      "word": "aguardá",
+      "num_guesses": 5,
+      "prior": 0.000015645184175641128,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "aguardó",
+        "aguardé",
+        "aguardá"
+      ]
+    },
+    {
+      "word": "arrales",
+      "num_guesses": 3,
+      "prior": 0.000013556336039684716,
+      "guesses": [
+        "coteras",
+        "arralen",
+        "arrales"
+      ]
+    },
+    {
+      "word": "atorada",
+      "num_guesses": 3,
+      "prior": 0.000023733375154972837,
+      "guesses": [
+        "coteras",
+        "trinada",
+        "atorada"
+      ]
+    },
+    {
+      "word": "deslino",
+      "num_guesses": 3,
+      "prior": 0.00002853974959764569,
+      "guesses": [
+        "coteras",
+        "delineo",
+        "deslino"
+      ]
+    },
+    {
+      "word": "serafín",
+      "num_guesses": 4,
+      "prior": 0.000049993320596522935,
+      "guesses": [
+        "coteras",
+        "rumiara",
+        "preverá",
+        "serafín"
+      ]
+    },
+    {
+      "word": "madrazo",
+      "num_guesses": 3,
+      "prior": 0.00004770070064540786,
+      "guesses": [
+        "coteras",
+        "pirrada",
+        "madrazo"
+      ]
+    },
+    {
+      "word": "ruinoso",
+      "num_guesses": 3,
+      "prior": 0.00004444699292957708,
+      "guesses": [
+        "coteras",
+        "dumping",
+        "ruinoso"
+      ]
+    },
+    {
+      "word": "loquees",
+      "num_guesses": 3,
+      "prior": 0.00001968293997083299,
+      "guesses": [
+        "coteras",
+        "minguen",
+        "loquees"
+      ]
+    },
+    {
+      "word": "abantos",
+      "num_guesses": 3,
+      "prior": 0.00001973123095855515,
+      "guesses": [
+        "coteras",
+        "paladín",
+        "abantos"
+      ]
+    },
+    {
+      "word": "porteen",
+      "num_guesses": 3,
+      "prior": 0.000013607301146925028,
+      "guesses": [
+        "coteras",
+        "purrete",
+        "porteen"
+      ]
+    },
+    {
+      "word": "minoría",
+      "num_guesses": 3,
+      "prior": 0.00006947821277851811,
+      "guesses": [
+        "coteras",
+        "maligna",
+        "minoría"
+      ]
+    },
+    {
+      "word": "paniega",
+      "num_guesses": 4,
+      "prior": 0.00002002228929818989,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "enviada",
+        "paniega"
+      ]
+    },
+    {
+      "word": "ambleos",
+      "num_guesses": 4,
+      "prior": 0.000011568981362771501,
+      "guesses": [
+        "coteras",
+        "pelamen",
+        "flameos",
+        "ambleos"
+      ]
+    },
+    {
+      "word": "cohobar",
+      "num_guesses": 3,
+      "prior": 0.00001291888881651993,
+      "guesses": [
+        "coteras",
+        "pilongo",
+        "cohobar"
+      ]
+    },
+    {
+      "word": "desunan",
+      "num_guesses": 3,
+      "prior": 0.000016923641137795547,
+      "guesses": [
+        "coteras",
+        "saludan",
+        "desunan"
+      ]
+    },
+    {
+      "word": "amánese",
+      "num_guesses": 4,
+      "prior": 8.494338750448865e-6,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "ofensas",
+        "amánese"
+      ]
+    },
+    {
+      "word": "vagaban",
+      "num_guesses": 4,
+      "prior": 0.000036719118854398354,
+      "guesses": [
+        "coteras",
+        "igualad",
+        "pagaban",
+        "vagaban"
+      ]
+    },
+    {
+      "word": "bajoneo",
+      "num_guesses": 4,
+      "prior": 0.000010454133449515753,
+      "guesses": [
+        "coteras",
+        "galinda",
+        "bermejo",
+        "bajoneo"
+      ]
+    },
+    {
+      "word": "comezón",
+      "num_guesses": 3,
+      "prior": 0.000037486647079936725,
+      "guesses": [
+        "coteras",
+        "delineó",
+        "comezón"
+      ]
+    },
+    {
+      "word": "lucrase",
+      "num_guesses": 3,
+      "prior": 0.000014569166855516514,
+      "guesses": [
+        "coteras",
+        "pairare",
+        "lucrase"
+      ]
+    },
+    {
+      "word": "chipara",
+      "num_guesses": 5,
+      "prior": 0.00001051157720227006,
+      "guesses": [
+        "coteras",
+        "marrida",
+        "crianza",
+        "vencido",
+        "chipara"
+      ]
+    },
+    {
+      "word": "tufosos",
+      "num_guesses": 4,
+      "prior": 0.00001042493150309353,
+      "guesses": [
+        "coteras",
+        "impiden",
+        "túbulos",
+        "tufosos"
+      ]
+    },
+    {
+      "word": "efables",
+      "num_guesses": 4,
+      "prior": 0.000010273781558266042,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "apelles",
+        "efables"
+      ]
+    },
+    {
+      "word": "solemos",
+      "num_guesses": 3,
+      "prior": 0.00004655636040281791,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "solemos"
+      ]
+    },
+    {
+      "word": "ajenaba",
+      "num_guesses": 4,
+      "prior": 9.69934886293085e-6,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "enjugad",
+        "ajenaba"
+      ]
+    },
+    {
+      "word": "orearse",
+      "num_guesses": 3,
+      "prior": 0.000020312649334448608,
+      "guesses": [
+        "coteras",
+        "despeen",
+        "orearse"
+      ]
+    },
+    {
+      "word": "aforras",
+      "num_guesses": 4,
+      "prior": 0.000012355011614188384,
+      "guesses": [
+        "coteras",
+        "fumaban",
+        "azofras",
+        "aforras"
+      ]
+    },
+    {
+      "word": "avenenó",
+      "num_guesses": 3,
+      "prior": 0.000010807004331288547,
+      "guesses": [
+        "coteras",
+        "alumina",
+        "avenenó"
+      ]
+    },
+    {
+      "word": "ufanada",
+      "num_guesses": 4,
+      "prior": 0.00001188086526139887,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "juagada",
+        "ufanada"
+      ]
+    },
+    {
+      "word": "ronchar",
+      "num_guesses": 3,
+      "prior": 0.00001314725788196626,
+      "guesses": [
+        "coteras",
+        "ponchar",
+        "ronchar"
+      ]
+    },
+    {
+      "word": "torture",
+      "num_guesses": 3,
+      "prior": 0.0000268121040593088,
+      "guesses": [
+        "coteras",
+        "purrete",
+        "torture"
+      ]
+    },
+    {
+      "word": "avalara",
+      "num_guesses": 4,
+      "prior": 0.00002176910406939957,
+      "guesses": [
+        "coteras",
+        "bailada",
+        "anulara",
+        "avalara"
+      ]
+    },
+    {
+      "word": "cafetea",
+      "num_guesses": 3,
+      "prior": 9.075429992341579e-6,
+      "guesses": [
+        "coteras",
+        "ilusión",
+        "cafetea"
+      ]
+    },
+    {
+      "word": "tentara",
+      "num_guesses": 3,
+      "prior": 0.000024192956607530576,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "tentara"
+      ]
+    },
+    {
+      "word": "aplauda",
+      "num_guesses": 3,
+      "prior": 0.000028953899053474608,
+      "guesses": [
+        "coteras",
+        "maulada",
+        "aplauda"
+      ]
+    },
+    {
+      "word": "pintora",
+      "num_guesses": 3,
+      "prior": 0.00004269614435607448,
+      "guesses": [
+        "coteras",
+        "trinada",
+        "pintora"
+      ]
+    },
+    {
+      "word": "alistes",
+      "num_guesses": 4,
+      "prior": 0.00001458836213536212,
+      "guesses": [
+        "coteras",
+        "amaleen",
+        "atifles",
+        "alistes"
+      ]
+    },
+    {
+      "word": "atónito",
+      "num_guesses": 4,
+      "prior": 0.00004606749986282193,
+      "guesses": [
+        "coteras",
+        "mandila",
+        "juanito",
+        "atónito"
+      ]
+    },
+    {
+      "word": "henchid",
+      "num_guesses": 3,
+      "prior": 0.000020746053407993388,
+      "guesses": [
+        "coteras",
+        "enucleó",
+        "henchid"
+      ]
+    },
+    {
+      "word": "plegare",
+      "num_guesses": 4,
+      "prior": 0.000011241120682559975,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "llévame",
+        "plegare"
+      ]
+    },
+    {
+      "word": "gorrear",
+      "num_guesses": 4,
+      "prior": 0.000015607372356871724,
+      "guesses": [
+        "coteras",
+        "marguen",
+        "gorjear",
+        "gorrear"
+      ]
+    },
+    {
+      "word": "redacté",
+      "num_guesses": 4,
+      "prior": 0.0000305600097342741,
+      "guesses": [
+        "coteras",
+        "neceara",
+        "redactó",
+        "redacté"
+      ]
+    },
+    {
+      "word": "arderás",
+      "num_guesses": 3,
+      "prior": 0.000018016262193145584,
+      "guesses": [
+        "coteras",
+        "humilde",
+        "arderás"
+      ]
+    },
+    {
+      "word": "pungado",
+      "num_guesses": 5,
+      "prior": 0.000010178637558895736,
+      "guesses": [
+        "coteras",
+        "amilana",
+        "fundado",
+        "punzado",
+        "pungado"
+      ]
+    },
+    {
+      "word": "minutes",
+      "num_guesses": 4,
+      "prior": 0.000029311873343087554,
+      "guesses": [
+        "coteras",
+        "dimiten",
+        "mientes",
+        "minutes"
+      ]
+    },
+    {
+      "word": "pregona",
+      "num_guesses": 3,
+      "prior": 0.00004087478657250014,
+      "guesses": [
+        "coteras",
+        "pernada",
+        "pregona"
+      ]
+    },
+    {
+      "word": "bendecí",
+      "num_guesses": 4,
+      "prior": 0.00001273306635181081,
+      "guesses": [
+        "coteras",
+        "enucleó",
+        "bendice",
+        "bendecí"
+      ]
+    },
+    {
+      "word": "calculé",
+      "num_guesses": 4,
+      "prior": 0.00003232056306375348,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "calculó",
+        "calculé"
+      ]
+    },
+    {
+      "word": "rooibos",
+      "num_guesses": 3,
+      "prior": 0.000015919092353245414,
+      "guesses": [
+        "coteras",
+        "derribé",
+        "rooibos"
+      ]
+    },
+    {
+      "word": "erectar",
+      "num_guesses": 4,
+      "prior": 0.000010894572530145676,
+      "guesses": [
+        "coteras",
+        "ranciar",
+        "eructar",
+        "erectar"
+      ]
+    },
+    {
+      "word": "alancea",
+      "num_guesses": 4,
+      "prior": 0.000018366184795984718,
+      "guesses": [
+        "coteras",
+        "anélida",
+        "alacena",
+        "alancea"
+      ]
+    },
+    {
+      "word": "térreos",
+      "num_guesses": 3,
+      "prior": 0.000027509439780520225,
+      "guesses": [
+        "coteras",
+        "premien",
+        "térreos"
+      ]
+    },
+    {
+      "word": "urdíais",
+      "num_guesses": 3,
+      "prior": 8.916577990871738e-6,
+      "guesses": [
+        "coteras",
+        "amargué",
+        "urdíais"
+      ]
+    },
+    {
+      "word": "tangare",
+      "num_guesses": 3,
+      "prior": 0.000013692228490958922,
+      "guesses": [
+        "coteras",
+        "turnara",
+        "tangare"
+      ]
+    },
+    {
+      "word": "lavases",
+      "num_guesses": 4,
+      "prior": 0.000011710684604064398,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "lasañas",
+        "lavases"
+      ]
+    },
+    {
+      "word": "rebuzne",
+      "num_guesses": 4,
+      "prior": 0.000016790485932712786,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "bórrese",
+        "rebuzne"
+      ]
+    },
+    {
+      "word": "rolaban",
+      "num_guesses": 4,
+      "prior": 0.000014387636647498552,
+      "guesses": [
+        "coteras",
+        "mudaban",
+        "gabazos",
+        "rolaban"
+      ]
+    },
+    {
+      "word": "ancados",
+      "num_guesses": 3,
+      "prior": 0.000012033560313741935,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "ancados"
+      ]
+    },
+    {
+      "word": "rilamos",
+      "num_guesses": 5,
+      "prior": 9.4080437081469e-6,
+      "guesses": [
+        "coteras",
+        "arrimad",
+        "zampoña",
+        "ejemplo",
+        "rilamos"
+      ]
+    },
+    {
+      "word": "indicás",
+      "num_guesses": 3,
+      "prior": 9.43007683879807e-6,
+      "guesses": [
+        "coteras",
+        "incliná",
+        "indicás"
+      ]
+    },
+    {
+      "word": "lechuzo",
+      "num_guesses": 3,
+      "prior": 0.000022141486062177216,
+      "guesses": [
+        "coteras",
+        "demonio",
+        "lechuzo"
+      ]
+    },
+    {
+      "word": "casacas",
+      "num_guesses": 4,
+      "prior": 0.00003422169702377244,
+      "guesses": [
+        "coteras",
+        "laminad",
+        "sabugos",
+        "casacas"
+      ]
+    },
+    {
+      "word": "oseados",
+      "num_guesses": 4,
+      "prior": 0.000013702082569886236,
+      "guesses": [
+        "coteras",
+        "pelamen",
+        "rijosos",
+        "oseados"
+      ]
+    },
+    {
+      "word": "vuelcos",
+      "num_guesses": 3,
+      "prior": 0.000029710813302254216,
+      "guesses": [
+        "coteras",
+        "meloneo",
+        "vuelcos"
+      ]
+    },
+    {
+      "word": "branque",
+      "num_guesses": 4,
+      "prior": 0.000018524976622914867,
+      "guesses": [
+        "coteras",
+        "ruinara",
+        "arenque",
+        "branque"
+      ]
+    },
+    {
+      "word": "veletes",
+      "num_guesses": 4,
+      "prior": 0.000013070917591204666,
+      "guesses": [
+        "coteras",
+        "publicá",
+        "túneles",
+        "veletes"
+      ]
+    },
+    {
+      "word": "toldado",
+      "num_guesses": 3,
+      "prior": 0.000021666201739857478,
+      "guesses": [
+        "coteras",
+        "lambida",
+        "toldado"
+      ]
+    },
+    {
+      "word": "apeonar",
+      "num_guesses": 4,
+      "prior": 0.000013540895981335314,
+      "guesses": [
+        "coteras",
+        "embolen",
+        "renovar",
+        "apeonar"
+      ]
+    },
+    {
+      "word": "encendé",
+      "num_guesses": 4,
+      "prior": 0.000015902856631177666,
+      "guesses": [
+        "coteras",
+        "encepen",
+        "encendí",
+        "encendé"
+      ]
+    },
+    {
+      "word": "lapides",
+      "num_guesses": 4,
+      "prior": 0.00002542849867514411,
+      "guesses": [
+        "coteras",
+        "milanga",
+        "bailáis",
+        "lapides"
+      ]
+    },
+    {
+      "word": "séricos",
+      "num_guesses": 3,
+      "prior": 0.00003347778570383825,
+      "guesses": [
+        "coteras",
+        "subidón",
+        "séricos"
+      ]
+    },
+    {
+      "word": "duchaos",
+      "num_guesses": 4,
+      "prior": 8.131530823735886e-6,
+      "guesses": [
+        "coteras",
+        "maulina",
+        "guachos",
+        "duchaos"
+      ]
+    },
+    {
+      "word": "fincase",
+      "num_guesses": 4,
+      "prior": 0.000023690586339621396,
+      "guesses": [
+        "coteras",
+        "enchule",
+        "mancase",
+        "fincase"
+      ]
+    },
+    {
+      "word": "enviase",
+      "num_guesses": 3,
+      "prior": 0.00004678460277550657,
+      "guesses": [
+        "coteras",
+        "meliana",
+        "enviase"
+      ]
+    },
+    {
+      "word": "heñidos",
+      "num_guesses": 5,
+      "prior": 0.000012302467132737985,
+      "guesses": [
+        "coteras",
+        "depilen",
+        "medidos",
+        "bebidos",
+        "heñidos"
+      ]
+    },
+    {
+      "word": "breadas",
+      "num_guesses": 4,
+      "prior": 0.000014896684294503954,
+      "guesses": [
+        "coteras",
+        "deprimí",
+        "erradas",
+        "breadas"
+      ]
+    },
+    {
+      "word": "súcubos",
+      "num_guesses": 3,
+      "prior": 0.00002377531487338684,
+      "guesses": [
+        "coteras",
+        "limpión",
+        "súcubos"
+      ]
+    }
+  ]
+}

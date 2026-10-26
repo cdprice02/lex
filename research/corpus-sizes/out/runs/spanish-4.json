@@ -1,0 +1,6014 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:38:32.612443Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sora",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 4,
+    "dictionary_length": 4379,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "3867c288756f6c3d36971526ad94e7fb86e51d67b8feaefeb19d4885a0bd41b6",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.90399999999997,
+      "failure_rate": 0.06400000000000004,
+      "histogram": {
+        "2": 0.004,
+        "3": 0.07400000000000005,
+        "4": 0.2840000000000002,
+        "5": 0.35600000000000026,
+        "6": 0.21800000000000017,
+        "7": 0.06200000000000004,
+        "8": 0.002
+      }
+    },
+    "prior": {
+      "mean": 4.67965544469668,
+      "failure_rate": 0.04274258815689947,
+      "histogram": {
+        "2": 0.003545991590148116,
+        "3": 0.11351862325327296,
+        "4": 0.3449735308496464,
+        "5": 0.319490884498,
+        "6": 0.17572838165203342,
+        "7": 0.04165194929941906,
+        "8": 0.0010906388574804097
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "imes",
+      "num_guesses": 5,
+      "prior": 0.00014905480651487238,
+      "guesses": [
+        "sora",
+        "pite",
+        "veda",
+        "ices",
+        "imes"
+      ]
+    },
+    {
+      "word": "arpe",
+      "num_guesses": 6,
+      "prior": 0.00013654007438478006,
+      "guesses": [
+        "sora",
+        "erar",
+        "html",
+        "dice",
+        "arfe",
+        "arpe"
+      ]
+    },
+    {
+      "word": "sisó",
+      "num_guesses": 4,
+      "prior": 0.000131035627956363,
+      "guesses": [
+        "sora",
+        "pide",
+        "tusó",
+        "sisó"
+      ]
+    },
+    {
+      "word": "pipí",
+      "num_guesses": 6,
+      "prior": 0.00019800296667794003,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "moái",
+        "pipí"
+      ]
+    },
+    {
+      "word": "oses",
+      "num_guesses": 4,
+      "prior": 0.00018653542812913128,
+      "guesses": [
+        "sora",
+        "oseo",
+        "anós",
+        "oses"
+      ]
+    },
+    {
+      "word": "bots",
+      "num_guesses": 3,
+      "prior": 0.0001387205638693858,
+      "guesses": [
+        "sora",
+        "teso",
+        "bots"
+      ]
+    },
+    {
+      "word": "lumi",
+      "num_guesses": 5,
+      "prior": 0.00017297843822095866,
+      "guesses": [
+        "sora",
+        "cine",
+        "quid",
+        "play",
+        "lumi"
+      ]
+    },
+    {
+      "word": "baño",
+      "num_guesses": 5,
+      "prior": 0.00048723221582818094,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "bajo",
+        "zayn",
+        "baño"
+      ]
+    },
+    {
+      "word": "yema",
+      "num_guesses": 5,
+      "prior": 0.0003121139950827576,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "yang",
+        "yema"
+      ]
+    },
+    {
+      "word": "rhos",
+      "num_guesses": 5,
+      "prior": 0.0000937091236056468,
+      "guesses": [
+        "sora",
+        "oreo",
+        "ríos",
+        "rios",
+        "rhos"
+      ]
+    },
+    {
+      "word": "haló",
+      "num_guesses": 6,
+      "prior": 0.00016770169906125818,
+      "guesses": [
+        "sora",
+        "cale",
+        "jimé",
+        "batá",
+        "valí",
+        "haló"
+      ]
+    },
+    {
+      "word": "curá",
+      "num_guesses": 5,
+      "prior": 0.00017585243911067376,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "sólo",
+        "curá"
+      ]
+    },
+    {
+      "word": "pise",
+      "num_guesses": 3,
+      "prior": 0.00021131347335183402,
+      "guesses": [
+        "sora",
+        "pite",
+        "pise"
+      ]
+    },
+    {
+      "word": "sedá",
+      "num_guesses": 5,
+      "prior": 0.0001076035692466669,
+      "guesses": [
+        "sora",
+        "pide",
+        "sedó",
+        "sedé",
+        "sedá"
+      ]
+    },
+    {
+      "word": "shií",
+      "num_guesses": 4,
+      "prior": 0.00010913194223681994,
+      "guesses": [
+        "sora",
+        "pide",
+        "skin",
+        "shií"
+      ]
+    },
+    {
+      "word": "popá",
+      "num_guesses": 6,
+      "prior": 0.00007735074673743839,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "yund",
+        "popé",
+        "popá"
+      ]
+    },
+    {
+      "word": "turf",
+      "num_guesses": 6,
+      "prior": 0.00019003851991014758,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "ungí",
+        "tipo",
+        "turf"
+      ]
+    },
+    {
+      "word": "gruí",
+      "num_guesses": 4,
+      "prior": 0.00011464241089158943,
+      "guesses": [
+        "sora",
+        "crie",
+        "urgí",
+        "gruí"
+      ]
+    },
+    {
+      "word": "faño",
+      "num_guesses": 7,
+      "prior": 0.00008827188930669466,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "pyme",
+        "fado",
+        "fajo",
+        "faño"
+      ]
+    },
+    {
+      "word": "nazi",
+      "num_guesses": 5,
+      "prior": 0.0003433774731964929,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "punk",
+        "nazi"
+      ]
+    },
+    {
+      "word": "fíes",
+      "num_guesses": 5,
+      "prior": 0.00018943615607308617,
+      "guesses": [
+        "sora",
+        "pite",
+        "leen",
+        "fuñí",
+        "fíes"
+      ]
+    },
+    {
+      "word": "secá",
+      "num_guesses": 4,
+      "prior": 0.00009312266248511187,
+      "guesses": [
+        "sora",
+        "pide",
+        "ceñó",
+        "secá"
+      ]
+    },
+    {
+      "word": "hitó",
+      "num_guesses": 6,
+      "prior": 0.00008277325299147173,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavo",
+        "bitó",
+        "hitó"
+      ]
+    },
+    {
+      "word": "json",
+      "num_guesses": 4,
+      "prior": 0.00012217860564376926,
+      "guesses": [
+        "sora",
+        "oseo",
+        "usos",
+        "json"
+      ]
+    },
+    {
+      "word": "doto",
+      "num_guesses": 6,
+      "prior": 0.00019131426939816804,
+      "guesses": [
+        "sora",
+        "teco",
+        "flan",
+        "mbps",
+        "voto",
+        "doto"
+      ]
+    },
+    {
+      "word": "sexi",
+      "num_guesses": 4,
+      "prior": 0.00018125124354415476,
+      "guesses": [
+        "sora",
+        "pide",
+        "seis",
+        "sexi"
+      ]
+    },
+    {
+      "word": "bosé",
+      "num_guesses": 5,
+      "prior": 0.00016000486567011209,
+      "guesses": [
+        "sora",
+        "teso",
+        "lepé",
+        "cabo",
+        "bosé"
+      ]
+    },
+    {
+      "word": "novi",
+      "num_guesses": 4,
+      "prior": 0.0002325552527773677,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "novi"
+      ]
+    },
+    {
+      "word": "peña",
+      "num_guesses": 6,
+      "prior": 0.0005012669821178648,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "dong",
+        "jipi",
+        "peña"
+      ]
+    },
+    {
+      "word": "añir",
+      "num_guesses": 5,
+      "prior": 0.00012343520534109363,
+      "guesses": [
+        "sora",
+        "erar",
+        "gime",
+        "doña",
+        "añir"
+      ]
+    },
+    {
+      "word": "jato",
+      "num_guesses": 7,
+      "prior": 0.00016782348691593197,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "chup",
+        "fqdn",
+        "maña",
+        "juez",
+        "jato"
+      ]
+    },
+    {
+      "word": "lude",
+      "num_guesses": 6,
+      "prior": 0.00015161120232369153,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "lgbt",
+        "doxa",
+        "lude"
+      ]
+    },
+    {
+      "word": "poco",
+      "num_guesses": 4,
+      "prior": 0.0008910691975276072,
+      "guesses": [
+        "sora",
+        "teco",
+        "flop",
+        "poco"
+      ]
+    },
+    {
+      "word": "nata",
+      "num_guesses": 6,
+      "prior": 0.0003127732835905348,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "vida",
+        "jota",
+        "nata"
+      ]
+    },
+    {
+      "word": "yodó",
+      "num_guesses": 6,
+      "prior": 0.00005884608709182109,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "yang",
+        "yoyó",
+        "yodó"
+      ]
+    },
+    {
+      "word": "urde",
+      "num_guesses": 5,
+      "prior": 0.00020622640444819797,
+      "guesses": [
+        "sora",
+        "crie",
+        "tubo",
+        "urge",
+        "urde"
+      ]
+    },
+    {
+      "word": "cloc",
+      "num_guesses": 4,
+      "prior": 0.0001481721999536653,
+      "guesses": [
+        "sora",
+        "lite",
+        "bloc",
+        "cloc"
+      ]
+    },
+    {
+      "word": "kiri",
+      "num_guesses": 6,
+      "prior": 0.00016122621374003003,
+      "guesses": [
+        "sora",
+        "dime",
+        "togó",
+        "pavé",
+        "ayer",
+        "kiri"
+      ]
+    },
+    {
+      "word": "cuto",
+      "num_guesses": 5,
+      "prior": 0.00017057605246846908,
+      "guesses": [
+        "sora",
+        "lite",
+        "tupé",
+        "cuya",
+        "cuto"
+      ]
+    },
+    {
+      "word": "gayó",
+      "num_guesses": 7,
+      "prior": 0.00009147364880515197,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "bang",
+        "pagó",
+        "fray",
+        "gayó"
+      ]
+    },
+    {
+      "word": "piti",
+      "num_guesses": 5,
+      "prior": 0.00016577894941108488,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavé",
+        "piti"
+      ]
+    },
+    {
+      "word": "japi",
+      "num_guesses": 5,
+      "prior": 0.00010569836537415577,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "punk",
+        "japi"
+      ]
+    },
+    {
+      "word": "pisá",
+      "num_guesses": 5,
+      "prior": 0.0000989689185848062,
+      "guesses": [
+        "sora",
+        "pite",
+        "piés",
+        "pisó",
+        "pisá"
+      ]
+    },
+    {
+      "word": "unás",
+      "num_guesses": 4,
+      "prior": 0.000123496707716088,
+      "guesses": [
+        "sora",
+        "pite",
+        "musí",
+        "unás"
+      ]
+    },
+    {
+      "word": "filo",
+      "num_guesses": 5,
+      "prior": 0.00039063538946336186,
+      "guesses": [
+        "sora",
+        "lite",
+        "kohl",
+        "vafo",
+        "filo"
+      ]
+    },
+    {
+      "word": "huno",
+      "num_guesses": 5,
+      "prior": 0.00018211366539764296,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "nabí",
+        "huno"
+      ]
+    },
+    {
+      "word": "yund",
+      "num_guesses": 5,
+      "prior": 0.0001186900185970439,
+      "guesses": [
+        "sora",
+        "cine",
+        "pujó",
+        "doté",
+        "yund"
+      ]
+    },
+    {
+      "word": "lufa",
+      "num_guesses": 6,
+      "prior": 0.0001257407438791601,
+      "guesses": [
+        "sora",
+        "celu",
+        "puní",
+        "djim",
+        "yafu",
+        "lufa"
+      ]
+    },
+    {
+      "word": "olor",
+      "num_guesses": 4,
+      "prior": 0.000503849597684083,
+      "guesses": [
+        "sora",
+        "creo",
+        "flor",
+        "olor"
+      ]
+    },
+    {
+      "word": "chió",
+      "num_guesses": 5,
+      "prior": 0.0000841000692402295,
+      "guesses": [
+        "sora",
+        "cine",
+        "clic",
+        "tupí",
+        "chió"
+      ]
+    },
+    {
+      "word": "balo",
+      "num_guesses": 4,
+      "prior": 0.0001766227847695448,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "albo",
+        "balo"
+      ]
+    },
+    {
+      "word": "jopó",
+      "num_guesses": 5,
+      "prior": 0.00006998802556432645,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "dopó",
+        "jopó"
+      ]
+    },
+    {
+      "word": "bité",
+      "num_guesses": 6,
+      "prior": 0.00005760283279100145,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavé",
+        "hité",
+        "bité"
+      ]
+    },
+    {
+      "word": "legá",
+      "num_guesses": 6,
+      "prior": 0.00006680814689904568,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "puñá",
+        "levá",
+        "legá"
+      ]
+    },
+    {
+      "word": "vejó",
+      "num_guesses": 5,
+      "prior": 0.00013611077590426377,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "dejó",
+        "vejó"
+      ]
+    },
+    {
+      "word": "freí",
+      "num_guesses": 6,
+      "prior": 0.0001843620961441432,
+      "guesses": [
+        "sora",
+        "crie",
+        "tony",
+        "zapá",
+        "brem",
+        "freí"
+      ]
+    },
+    {
+      "word": "lizo",
+      "num_guesses": 4,
+      "prior": 0.00017117533696752845,
+      "guesses": [
+        "sora",
+        "lite",
+        "zinc",
+        "lizo"
+      ]
+    },
+    {
+      "word": "masá",
+      "num_guesses": 4,
+      "prior": 0.0001432616999164597,
+      "guesses": [
+        "sora",
+        "peas",
+        "cimó",
+        "masá"
+      ]
+    },
+    {
+      "word": "kapo",
+      "num_guesses": 6,
+      "prior": 0.00014666687199851782,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "pyme",
+        "zuño",
+        "kapo"
+      ]
+    },
+    {
+      "word": "sobó",
+      "num_guesses": 5,
+      "prior": 0.00014406272710479958,
+      "guesses": [
+        "sora",
+        "óleo",
+        "niño",
+        "tipo",
+        "sobó"
+      ]
+    },
+    {
+      "word": "jebe",
+      "num_guesses": 5,
+      "prior": 0.00021085726284863652,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "jfet",
+        "jebe"
+      ]
+    },
+    {
+      "word": "sema",
+      "num_guesses": 3,
+      "prior": 0.00024445083783690576,
+      "guesses": [
+        "sora",
+        "cime",
+        "sema"
+      ]
+    },
+    {
+      "word": "atro",
+      "num_guesses": 4,
+      "prior": 0.00021104490352061444,
+      "guesses": [
+        "sora",
+        "faba",
+        "gato",
+        "atro"
+      ]
+    },
+    {
+      "word": "tios",
+      "num_guesses": 5,
+      "prior": 0.00023353280204944048,
+      "guesses": [
+        "sora",
+        "oseo",
+        "dimí",
+        "bios",
+        "tios"
+      ]
+    },
+    {
+      "word": "adís",
+      "num_guesses": 6,
+      "prior": 0.00010768340381152386,
+      "guesses": [
+        "sora",
+        "peas",
+        "aité",
+        "ungí",
+        "asís",
+        "adís"
+      ]
+    },
+    {
+      "word": "trol",
+      "num_guesses": 4,
+      "prior": 0.0002132202656298671,
+      "guesses": [
+        "sora",
+        "creo",
+        "opón",
+        "trol"
+      ]
+    },
+    {
+      "word": "aloe",
+      "num_guesses": 4,
+      "prior": 0.00021417284515115432,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "aloe"
+      ]
+    },
+    {
+      "word": "celo",
+      "num_guesses": 5,
+      "prior": 0.0004770310209867898,
+      "guesses": [
+        "sora",
+        "lite",
+        "epeo",
+        "foco",
+        "celo"
+      ]
+    },
+    {
+      "word": "velá",
+      "num_guesses": 5,
+      "prior": 0.00011633925002039469,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "pavé",
+        "velá"
+      ]
+    },
+    {
+      "word": "hocé",
+      "num_guesses": 5,
+      "prior": 0.00007627316015503304,
+      "guesses": [
+        "sora",
+        "teco",
+        "cimó",
+        "gocé",
+        "hocé"
+      ]
+    },
+    {
+      "word": "goza",
+      "num_guesses": 4,
+      "prior": 0.0004358769650145003,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "yodo",
+        "goza"
+      ]
+    },
+    {
+      "word": "nues",
+      "num_guesses": 4,
+      "prior": 0.00032889341159760775,
+      "guesses": [
+        "sora",
+        "pite",
+        "leen",
+        "nues"
+      ]
+    },
+    {
+      "word": "mozo",
+      "num_guesses": 6,
+      "prior": 0.00044581574771971634,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "yund",
+        "zuño",
+        "mozo"
+      ]
+    },
+    {
+      "word": "moña",
+      "num_guesses": 7,
+      "prior": 0.00016806824644703526,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "nazi",
+        "jiña",
+        "moña"
+      ]
+    },
+    {
+      "word": "jode",
+      "num_guesses": 5,
+      "prior": 0.0002036854956287068,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "djim",
+        "jode"
+      ]
+    },
+    {
+      "word": "telo",
+      "num_guesses": 3,
+      "prior": 0.00020253717119066077,
+      "guesses": [
+        "sora",
+        "lite",
+        "telo"
+      ]
+    },
+    {
+      "word": "troj",
+      "num_guesses": 5,
+      "prior": 0.00013935633135777993,
+      "guesses": [
+        "sora",
+        "creo",
+        "opón",
+        "trol",
+        "troj"
+      ]
+    },
+    {
+      "word": "cruz",
+      "num_guesses": 3,
+      "prior": 0.0006721877871488629,
+      "guesses": [
+        "sora",
+        "crie",
+        "cruz"
+      ]
+    },
+    {
+      "word": "vucé",
+      "num_guesses": 4,
+      "prior": 0.00009273942864451404,
+      "guesses": [
+        "sora",
+        "cine",
+        "hulé",
+        "vucé"
+      ]
+    },
+    {
+      "word": "bose",
+      "num_guesses": 5,
+      "prior": 0.00020402272854311133,
+      "guesses": [
+        "sora",
+        "teso",
+        "clip",
+        "bien",
+        "bose"
+      ]
+    },
+    {
+      "word": "tañe",
+      "num_guesses": 5,
+      "prior": 0.00021507956204700566,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "pata",
+        "tañe"
+      ]
+    },
+    {
+      "word": "coña",
+      "num_guesses": 7,
+      "prior": 0.00018975414294526268,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "jaca",
+        "viña",
+        "coña"
+      ]
+    },
+    {
+      "word": "poye",
+      "num_guesses": 5,
+      "prior": 0.00008578134287153125,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "yodo",
+        "poye"
+      ]
+    },
+    {
+      "word": "ligó",
+      "num_guesses": 5,
+      "prior": 0.00021836533383646576,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "gama",
+        "ligó"
+      ]
+    },
+    {
+      "word": "tees",
+      "num_guesses": 5,
+      "prior": 0.00016315453963567533,
+      "guesses": [
+        "sora",
+        "pite",
+        "test",
+        "teus",
+        "tees"
+      ]
+    },
+    {
+      "word": "rams",
+      "num_guesses": 4,
+      "prior": 0.00017994304578584683,
+      "guesses": [
+        "sora",
+        "reas",
+        "fumé",
+        "rams"
+      ]
+    },
+    {
+      "word": "cita",
+      "num_guesses": 4,
+      "prior": 0.0005629649444910173,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "cita"
+      ]
+    },
+    {
+      "word": "alió",
+      "num_guesses": 5,
+      "prior": 0.0002496151349126661,
+      "guesses": [
+        "sora",
+        "cale",
+        "inal",
+        "cómo",
+        "alió"
+      ]
+    },
+    {
+      "word": "naca",
+      "num_guesses": 4,
+      "prior": 0.00017019025933160106,
+      "guesses": [
+        "sora",
+        "celu",
+        "napa",
+        "naca"
+      ]
+    },
+    {
+      "word": "ofri",
+      "num_guesses": 4,
+      "prior": 0.00008534808160631411,
+      "guesses": [
+        "sora",
+        "tupe",
+        "migo",
+        "ofri"
+      ]
+    },
+    {
+      "word": "hueá",
+      "num_guesses": 5,
+      "prior": 0.00009830843779846075,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "jugá",
+        "hueá"
+      ]
+    },
+    {
+      "word": "cuyé",
+      "num_guesses": 6,
+      "prior": 0.00006953547881746001,
+      "guesses": [
+        "sora",
+        "cine",
+        "pulí",
+        "hiñó",
+        "cucú",
+        "cuyé"
+      ]
+    },
+    {
+      "word": "curo",
+      "num_guesses": 5,
+      "prior": 0.0002514578108813018,
+      "guesses": [
+        "sora",
+        "tupe",
+        "djim",
+        "cabo",
+        "curo"
+      ]
+    },
+    {
+      "word": "puré",
+      "num_guesses": 4,
+      "prior": 0.00026946251599242326,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "puré"
+      ]
+    },
+    {
+      "word": "apea",
+      "num_guesses": 5,
+      "prior": 0.00020123163355819997,
+      "guesses": [
+        "sora",
+        "celu",
+        "anti",
+        "pyme",
+        "apea"
+      ]
+    },
+    {
+      "word": "limó",
+      "num_guesses": 5,
+      "prior": 0.00014847486589838265,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "gama",
+        "limó"
+      ]
+    },
+    {
+      "word": "atea",
+      "num_guesses": 4,
+      "prior": 0.00023486177606861657,
+      "guesses": [
+        "sora",
+        "celu",
+        "anti",
+        "atea"
+      ]
+    },
+    {
+      "word": "taco",
+      "num_guesses": 5,
+      "prior": 0.000277548383764573,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nade",
+        "caja",
+        "taco"
+      ]
+    },
+    {
+      "word": "hipó",
+      "num_guesses": 5,
+      "prior": 0.00017954770567477706,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "puff",
+        "hipó"
+      ]
+    },
+    {
+      "word": "roda",
+      "num_guesses": 4,
+      "prior": 0.0003099883063585853,
+      "guesses": [
+        "sora",
+        "mbps",
+        "cdti",
+        "roda"
+      ]
+    },
+    {
+      "word": "cuan",
+      "num_guesses": 4,
+      "prior": 0.0004025935758158096,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "cuan"
+      ]
+    },
+    {
+      "word": "ojea",
+      "num_guesses": 4,
+      "prior": 0.0002031796133794694,
+      "guesses": [
+        "sora",
+        "deli",
+        "tajo",
+        "ojea"
+      ]
+    },
+    {
+      "word": "oleá",
+      "num_guesses": 6,
+      "prior": 0.00005493255223211686,
+      "guesses": [
+        "sora",
+        "lite",
+        "epeo",
+        "dejó",
+        "oleé",
+        "oleá"
+      ]
+    },
+    {
+      "word": "case",
+      "num_guesses": 4,
+      "prior": 0.00035089931983889756,
+      "guesses": [
+        "sora",
+        "peas",
+        "cabe",
+        "case"
+      ]
+    },
+    {
+      "word": "reté",
+      "num_guesses": 5,
+      "prior": 0.00013209688036530174,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "taló",
+        "reté"
+      ]
+    },
+    {
+      "word": "dome",
+      "num_guesses": 5,
+      "prior": 0.00022778843282552218,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "djim",
+        "dome"
+      ]
+    },
+    {
+      "word": "cuse",
+      "num_guesses": 4,
+      "prior": 0.0001483386028937047,
+      "guesses": [
+        "sora",
+        "pite",
+        "cede",
+        "cuse"
+      ]
+    },
+    {
+      "word": "jasa",
+      "num_guesses": 6,
+      "prior": 0.000151675389985276,
+      "guesses": [
+        "sora",
+        "time",
+        "paca",
+        "bang",
+        "lasa",
+        "jasa"
+      ]
+    },
+    {
+      "word": "doga",
+      "num_guesses": 4,
+      "prior": 0.00012871272042563233,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "yodo",
+        "doga"
+      ]
+    },
+    {
+      "word": "riñó",
+      "num_guesses": 4,
+      "prior": 0.00020112475434460185,
+      "guesses": [
+        "sora",
+        "crie",
+        "fumó",
+        "riñó"
+      ]
+    },
+    {
+      "word": "besá",
+      "num_guesses": 6,
+      "prior": 0.00008363061057758305,
+      "guesses": [
+        "sora",
+        "pite",
+        "leen",
+        "bucé",
+        "besó",
+        "besá"
+      ]
+    },
+    {
+      "word": "pcus",
+      "num_guesses": 4,
+      "prior": 0.00023637574028971184,
+      "guesses": [
+        "sora",
+        "pite",
+        "bulé",
+        "pcus"
+      ]
+    },
+    {
+      "word": "faña",
+      "num_guesses": 7,
+      "prior": 0.0001639732111722522,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "paty",
+        "djim",
+        "zafa",
+        "faña"
+      ]
+    },
+    {
+      "word": "reya",
+      "num_guesses": 6,
+      "prior": 0.0001452779991568288,
+      "guesses": [
+        "sora",
+        "crie",
+        "tejí",
+        "maíz",
+        "reda",
+        "reya"
+      ]
+    },
+    {
+      "word": "mocá",
+      "num_guesses": 4,
+      "prior": 0.00009134571313113973,
+      "guesses": [
+        "sora",
+        "teco",
+        "cimó",
+        "mocá"
+      ]
+    },
+    {
+      "word": "dual",
+      "num_guesses": 5,
+      "prior": 0.00032452118311127926,
+      "guesses": [
+        "sora",
+        "cale",
+        "inal",
+        "vudú",
+        "dual"
+      ]
+    },
+    {
+      "word": "goya",
+      "num_guesses": 4,
+      "prior": 0.0003727911023516203,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "yodo",
+        "goya"
+      ]
+    },
+    {
+      "word": "heñí",
+      "num_guesses": 7,
+      "prior": 0.00005999237046466769,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "dejé",
+        "tupí",
+        "bebí",
+        "heñí"
+      ]
+    },
+    {
+      "word": "maté",
+      "num_guesses": 4,
+      "prior": 0.00026664890502986173,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "maté"
+      ]
+    },
+    {
+      "word": "alfó",
+      "num_guesses": 6,
+      "prior": 0.00006332470017423382,
+      "guesses": [
+        "sora",
+        "cale",
+        "inal",
+        "zafá",
+        "alfé",
+        "alfó"
+      ]
+    },
+    {
+      "word": "jipi",
+      "num_guesses": 5,
+      "prior": 0.0001619000450315583,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "jipi"
+      ]
+    },
+    {
+      "word": "bito",
+      "num_guesses": 6,
+      "prior": 0.0002006707187381551,
+      "guesses": [
+        "sora",
+        "lite",
+        "mach",
+        "tuvo",
+        "irpf",
+        "bito"
+      ]
+    },
+    {
+      "word": "cava",
+      "num_guesses": 6,
+      "prior": 0.00032200436158052326,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "pañí",
+        "cctv",
+        "cava"
+      ]
+    },
+    {
+      "word": "tuso",
+      "num_guesses": 6,
+      "prior": 0.00016586401034606967,
+      "guesses": [
+        "sora",
+        "oseo",
+        "plum",
+        "chuy",
+        "foto",
+        "tuso"
+      ]
+    },
+    {
+      "word": "erra",
+      "num_guesses": 5,
+      "prior": 0.00022271497638554714,
+      "guesses": [
+        "sora",
+        "capi",
+        "mude",
+        "vera",
+        "erra"
+      ]
+    },
+    {
+      "word": "sape",
+      "num_guesses": 4,
+      "prior": 0.00014201890969804757,
+      "guesses": [
+        "sora",
+        "león",
+        "mbps",
+        "sape"
+      ]
+    },
+    {
+      "word": "puñe",
+      "num_guesses": 7,
+      "prior": 0.00009461798826231217,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "pude",
+        "joya",
+        "pupe",
+        "puñe"
+      ]
+    },
+    {
+      "word": "preo",
+      "num_guesses": 4,
+      "prior": 0.00025709262951989964,
+      "guesses": [
+        "sora",
+        "creo",
+        "optó",
+        "preo"
+      ]
+    },
+    {
+      "word": "feto",
+      "num_guesses": 5,
+      "prior": 0.00036093658767626986,
+      "guesses": [
+        "sora",
+        "lite",
+        "punk",
+        "vafo",
+        "feto"
+      ]
+    },
+    {
+      "word": "jete",
+      "num_guesses": 5,
+      "prior": 0.00021322112994758165,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "jfet",
+        "jete"
+      ]
+    },
+    {
+      "word": "tara",
+      "num_guesses": 6,
+      "prior": 0.0003050047538026811,
+      "guesses": [
+        "sora",
+        "capi",
+        "revé",
+        "ejem",
+        "gato",
+        "tara"
+      ]
+    },
+    {
+      "word": "losa",
+      "num_guesses": 4,
+      "prior": 0.0003345572431149932,
+      "guesses": [
+        "sora",
+        "cifp",
+        "lgbt",
+        "losa"
+      ]
+    },
+    {
+      "word": "auge",
+      "num_guesses": 4,
+      "prior": 0.0004207874724959054,
+      "guesses": [
+        "sora",
+        "cale",
+        "ente",
+        "auge"
+      ]
+    },
+    {
+      "word": "ñire",
+      "num_guesses": 5,
+      "prior": 0.00014239023458751795,
+      "guesses": [
+        "sora",
+        "dime",
+        "paty",
+        "vega",
+        "ñire"
+      ]
+    },
+    {
+      "word": "ceos",
+      "num_guesses": 4,
+      "prior": 0.0001806731921226924,
+      "guesses": [
+        "sora",
+        "oseo",
+        "meca",
+        "ceos"
+      ]
+    },
+    {
+      "word": "pana",
+      "num_guesses": 5,
+      "prior": 0.00028763568539066117,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "pyme",
+        "pana"
+      ]
+    },
+    {
+      "word": "basá",
+      "num_guesses": 5,
+      "prior": 0.00011129861231183301,
+      "guesses": [
+        "sora",
+        "peas",
+        "cimó",
+        "atén",
+        "basá"
+      ]
+    },
+    {
+      "word": "ñúes",
+      "num_guesses": 5,
+      "prior": 0.00008620602374984494,
+      "guesses": [
+        "sora",
+        "pite",
+        "leen",
+        "fuñí",
+        "ñúes"
+      ]
+    },
+    {
+      "word": "ocas",
+      "num_guesses": 3,
+      "prior": 0.00022655829382376964,
+      "guesses": [
+        "sora",
+        "cano",
+        "ocas"
+      ]
+    },
+    {
+      "word": "reye",
+      "num_guesses": 5,
+      "prior": 0.00016809286789669053,
+      "guesses": [
+        "sora",
+        "crie",
+        "ente",
+        "pyme",
+        "reye"
+      ]
+    },
+    {
+      "word": "domo",
+      "num_guesses": 6,
+      "prior": 0.00027112854303502074,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "golf",
+        "adán",
+        "domo"
+      ]
+    },
+    {
+      "word": "paná",
+      "num_guesses": 5,
+      "prior": 0.000108840716982367,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "paná"
+      ]
+    },
+    {
+      "word": "doné",
+      "num_guesses": 6,
+      "prior": 0.0001375379325171887,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "gomá",
+        "juné",
+        "doné"
+      ]
+    },
+    {
+      "word": "rayo",
+      "num_guesses": 4,
+      "prior": 0.0004583226615209119,
+      "guesses": [
+        "sora",
+        "amlo",
+        "byte",
+        "rayo"
+      ]
+    },
+    {
+      "word": "aneo",
+      "num_guesses": 5,
+      "prior": 0.0001521116799846625,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "enuí",
+        "aneo"
+      ]
+    },
+    {
+      "word": "ruga",
+      "num_guesses": 6,
+      "prior": 0.00015940069376372366,
+      "guesses": [
+        "sora",
+        "crie",
+        "yund",
+        "loft",
+        "gama",
+        "ruga"
+      ]
+    },
+    {
+      "word": "cede",
+      "num_guesses": 4,
+      "prior": 0.00038176578293482066,
+      "guesses": [
+        "sora",
+        "cine",
+        "ludí",
+        "cede"
+      ]
+    },
+    {
+      "word": "stop",
+      "num_guesses": 4,
+      "prior": 0.00025959309635540984,
+      "guesses": [
+        "sora",
+        "unte",
+        "html",
+        "stop"
+      ]
+    },
+    {
+      "word": "curé",
+      "num_guesses": 4,
+      "prior": 0.00018863171233501615,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "curé"
+      ]
+    },
+    {
+      "word": "arfa",
+      "num_guesses": 6,
+      "prior": 0.00013386199576440738,
+      "guesses": [
+        "sora",
+        "crie",
+        "apud",
+        "arma",
+        "arla",
+        "arfa"
+      ]
+    },
+    {
+      "word": "hiña",
+      "num_guesses": 7,
+      "prior": 0.00013072512792561568,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "http",
+        "hifa",
+        "hiña"
+      ]
+    },
+    {
+      "word": "keli",
+      "num_guesses": 5,
+      "prior": 0.00011709963911888181,
+      "guesses": [
+        "sora",
+        "cine",
+        "peli",
+        "modo",
+        "keli"
+      ]
+    },
+    {
+      "word": "mate",
+      "num_guesses": 5,
+      "prior": 0.00041279182591343267,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "mbps",
+        "mate"
+      ]
+    },
+    {
+      "word": "adre",
+      "num_guesses": 4,
+      "prior": 0.00020662976992923677,
+      "guesses": [
+        "sora",
+        "pibe",
+        "cadí",
+        "adre"
+      ]
+    },
+    {
+      "word": "liba",
+      "num_guesses": 6,
+      "prior": 0.00018654870593224571,
+      "guesses": [
+        "sora",
+        "celu",
+        "mata",
+        "jiga",
+        "azab",
+        "liba"
+      ]
+    },
+    {
+      "word": "brin",
+      "num_guesses": 4,
+      "prior": 0.0002196143667677204,
+      "guesses": [
+        "sora",
+        "crie",
+        "botó",
+        "brin"
+      ]
+    },
+    {
+      "word": "veló",
+      "num_guesses": 5,
+      "prior": 0.0002178934509093151,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "vaho",
+        "veló"
+      ]
+    },
+    {
+      "word": "fray",
+      "num_guesses": 5,
+      "prior": 0.0005828344511822824,
+      "guesses": [
+        "sora",
+        "erar",
+        "acné",
+        "graf",
+        "fray"
+      ]
+    },
+    {
+      "word": "deco",
+      "num_guesses": 4,
+      "prior": 0.0002044794927595225,
+      "guesses": [
+        "sora",
+        "lite",
+        "cedo",
+        "deco"
+      ]
+    },
+    {
+      "word": "idos",
+      "num_guesses": 4,
+      "prior": 0.00029423043545910544,
+      "guesses": [
+        "sora",
+        "oseo",
+        "dimí",
+        "idos"
+      ]
+    },
+    {
+      "word": "retó",
+      "num_guesses": 5,
+      "prior": 0.00021378427095654915,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "taló",
+        "retó"
+      ]
+    },
+    {
+      "word": "fuga",
+      "num_guesses": 4,
+      "prior": 0.00045366613802440845,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "fuga"
+      ]
+    },
+    {
+      "word": "icen",
+      "num_guesses": 3,
+      "prior": 0.00017152348885783296,
+      "guesses": [
+        "sora",
+        "cine",
+        "icen"
+      ]
+    },
+    {
+      "word": "kiwi",
+      "num_guesses": 6,
+      "prior": 0.00018703880784730253,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "moví",
+        "kiwi"
+      ]
+    },
+    {
+      "word": "tete",
+      "num_guesses": 6,
+      "prior": 0.00020879758903111136,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "jfet",
+        "vete",
+        "tete"
+      ]
+    },
+    {
+      "word": "obse",
+      "num_guesses": 3,
+      "prior": 0.00017823954513195578,
+      "guesses": [
+        "sora",
+        "oseo",
+        "obse"
+      ]
+    },
+    {
+      "word": "naco",
+      "num_guesses": 4,
+      "prior": 0.00023280939281444186,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "naco"
+      ]
+    },
+    {
+      "word": "stud",
+      "num_guesses": 3,
+      "prior": 0.0002097116089765716,
+      "guesses": [
+        "sora",
+        "pide",
+        "stud"
+      ]
+    },
+    {
+      "word": "jita",
+      "num_guesses": 6,
+      "prior": 0.00012044662912945966,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "jfet",
+        "jita"
+      ]
+    },
+    {
+      "word": "losá",
+      "num_guesses": 5,
+      "prior": 0.00008131464800114326,
+      "guesses": [
+        "sora",
+        "teso",
+        "lepé",
+        "losó",
+        "losá"
+      ]
+    },
+    {
+      "word": "aguó",
+      "num_guesses": 5,
+      "prior": 0.00015426550447075892,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "guay",
+        "aguó"
+      ]
+    },
+    {
+      "word": "dorá",
+      "num_guesses": 5,
+      "prior": 0.00009972085342692192,
+      "guesses": [
+        "sora",
+        "deco",
+        "doré",
+        "doró",
+        "dorá"
+      ]
+    },
+    {
+      "word": "aula",
+      "num_guesses": 4,
+      "prior": 0.00041111981094446386,
+      "guesses": [
+        "sora",
+        "celu",
+        "bana",
+        "aula"
+      ]
+    },
+    {
+      "word": "fifo",
+      "num_guesses": 7,
+      "prior": 0.00016854467713543634,
+      "guesses": [
+        "sora",
+        "lite",
+        "dong",
+        "chuj",
+        "fimo",
+        "fizo",
+        "fifo"
+      ]
+    },
+    {
+      "word": "asir",
+      "num_guesses": 3,
+      "prior": 0.0002637105305319994,
+      "guesses": [
+        "sora",
+        "reas",
+        "asir"
+      ]
+    },
+    {
+      "word": "alfo",
+      "num_guesses": 5,
+      "prior": 0.00014483008745628804,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "fíen",
+        "alfo"
+      ]
+    },
+    {
+      "word": "rucs",
+      "num_guesses": 4,
+      "prior": 0.00006883374403897902,
+      "guesses": [
+        "sora",
+        "tres",
+        "cuál",
+        "rucs"
+      ]
+    },
+    {
+      "word": "almo",
+      "num_guesses": 4,
+      "prior": 0.00020872610650469483,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "almo"
+      ]
+    },
+    {
+      "word": "suvs",
+      "num_guesses": 5,
+      "prior": 0.00007947633698593542,
+      "guesses": [
+        "sora",
+        "pide",
+        "fumó",
+        "subí",
+        "suvs"
+      ]
+    },
+    {
+      "word": "posá",
+      "num_guesses": 5,
+      "prior": 0.00011128696776122115,
+      "guesses": [
+        "sora",
+        "teso",
+        "lepé",
+        "posó",
+        "posá"
+      ]
+    },
+    {
+      "word": "topo",
+      "num_guesses": 6,
+      "prior": 0.00029035947198935056,
+      "guesses": [
+        "sora",
+        "teco",
+        "djim",
+        "bang",
+        "pozo",
+        "topo"
+      ]
+    },
+    {
+      "word": "gara",
+      "num_guesses": 6,
+      "prior": 0.00023549132861169284,
+      "guesses": [
+        "sora",
+        "capi",
+        "revé",
+        "ejem",
+        "gato",
+        "gara"
+      ]
+    },
+    {
+      "word": "fele",
+      "num_guesses": 6,
+      "prior": 0.0002142975102770929,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "leve",
+        "foto",
+        "fele"
+      ]
+    },
+    {
+      "word": "hité",
+      "num_guesses": 5,
+      "prior": 0.00006875398282345996,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavé",
+        "hité"
+      ]
+    },
+    {
+      "word": "cuán",
+      "num_guesses": 3,
+      "prior": 0.000444797227000948,
+      "guesses": [
+        "sora",
+        "cine",
+        "cuán"
+      ]
+    },
+    {
+      "word": "vaca",
+      "num_guesses": 6,
+      "prior": 0.0004427400638905141,
+      "guesses": [
+        "sora",
+        "celu",
+        "napa",
+        "jfet",
+        "moví",
+        "vaca"
+      ]
+    },
+    {
+      "word": "gañe",
+      "num_guesses": 7,
+      "prior": 0.00010258635382783987,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "djim",
+        "pibe",
+        "gafe",
+        "gañe"
+      ]
+    },
+    {
+      "word": "ocán",
+      "num_guesses": 4,
+      "prior": 0.00007379473691825385,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "ocán"
+      ]
+    },
+    {
+      "word": "jumó",
+      "num_guesses": 5,
+      "prior": 0.00007438754192066434,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "humó",
+        "jumó"
+      ]
+    },
+    {
+      "word": "lose",
+      "num_guesses": 4,
+      "prior": 0.00021468407392932396,
+      "guesses": [
+        "sora",
+        "teso",
+        "clip",
+        "lose"
+      ]
+    },
+    {
+      "word": "lamí",
+      "num_guesses": 4,
+      "prior": 0.00015552849131141505,
+      "guesses": [
+        "sora",
+        "cale",
+        "limé",
+        "lamí"
+      ]
+    },
+    {
+      "word": "liño",
+      "num_guesses": 7,
+      "prior": 0.0001470700200076936,
+      "guesses": [
+        "sora",
+        "lite",
+        "zinc",
+        "ejem",
+        "gala",
+        "libo",
+        "liño"
+      ]
+    },
+    {
+      "word": "tour",
+      "num_guesses": 3,
+      "prior": 0.00028661214123002935,
+      "guesses": [
+        "sora",
+        "telo",
+        "tour"
+      ]
+    },
+    {
+      "word": "maco",
+      "num_guesses": 6,
+      "prior": 0.00019773141579973506,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "cupo",
+        "java",
+        "maco"
+      ]
+    },
+    {
+      "word": "ario",
+      "num_guesses": 4,
+      "prior": 0.00028958781508178484,
+      "guesses": [
+        "sora",
+        "amlo",
+        "cdti",
+        "ario"
+      ]
+    },
+    {
+      "word": "unca",
+      "num_guesses": 4,
+      "prior": 0.00017944961656522632,
+      "guesses": [
+        "sora",
+        "celu",
+        "yund",
+        "unca"
+      ]
+    },
+    {
+      "word": "batí",
+      "num_guesses": 5,
+      "prior": 0.00016768814521811158,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "pedí",
+        "batí"
+      ]
+    },
+    {
+      "word": "vice",
+      "num_guesses": 4,
+      "prior": 0.0004216330459458768,
+      "guesses": [
+        "sora",
+        "cine",
+        "tdah",
+        "vice"
+      ]
+    },
+    {
+      "word": "aína",
+      "num_guesses": 5,
+      "prior": 0.00020069384865168294,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "dimí",
+        "aína"
+      ]
+    },
+    {
+      "word": "posé",
+      "num_guesses": 4,
+      "prior": 0.0001680032661038086,
+      "guesses": [
+        "sora",
+        "teso",
+        "lepé",
+        "posé"
+      ]
+    },
+    {
+      "word": "mura",
+      "num_guesses": 4,
+      "prior": 0.0002129012408962559,
+      "guesses": [
+        "sora",
+        "capi",
+        "mude",
+        "mura"
+      ]
+    },
+    {
+      "word": "cuma",
+      "num_guesses": 6,
+      "prior": 0.00019086678334471547,
+      "guesses": [
+        "sora",
+        "celu",
+        "byte",
+        "niño",
+        "jaca",
+        "cuma"
+      ]
+    },
+    {
+      "word": "agüé",
+      "num_guesses": 5,
+      "prior": 0.00009380160750011006,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "afaz",
+        "agüé"
+      ]
+    },
+    {
+      "word": "xiji",
+      "num_guesses": 6,
+      "prior": 0.00008110930535870067,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "fijá",
+        "xiji"
+      ]
+    },
+    {
+      "word": "púan",
+      "num_guesses": 6,
+      "prior": 0.00006579122748292388,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "fíat",
+        "aman",
+        "púan"
+      ]
+    },
+    {
+      "word": "dudá",
+      "num_guesses": 6,
+      "prior": 0.00010824873660833261,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "pelé",
+        "dañá",
+        "dudá"
+      ]
+    },
+    {
+      "word": "azud",
+      "num_guesses": 5,
+      "prior": 0.00018213639753797187,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "apud",
+        "azud"
+      ]
+    },
+    {
+      "word": "capa",
+      "num_guesses": 5,
+      "prior": 0.0005186144768898163,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "pañí",
+        "capa"
+      ]
+    },
+    {
+      "word": "tris",
+      "num_guesses": 3,
+      "prior": 0.0002534297238073967,
+      "guesses": [
+        "sora",
+        "tres",
+        "tris"
+      ]
+    },
+    {
+      "word": "álef",
+      "num_guesses": 5,
+      "prior": 0.00011468374955225787,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "elul",
+        "álef"
+      ]
+    },
+    {
+      "word": "mona",
+      "num_guesses": 6,
+      "prior": 0.00031540526041342004,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "nazi",
+        "mona"
+      ]
+    },
+    {
+      "word": "ruña",
+      "num_guesses": 7,
+      "prior": 0.00014106194173487755,
+      "guesses": [
+        "sora",
+        "crie",
+        "yund",
+        "loft",
+        "gama",
+        "ruja",
+        "ruña"
+      ]
+    },
+    {
+      "word": "raes",
+      "num_guesses": 3,
+      "prior": 0.0001784760971398024,
+      "guesses": [
+        "sora",
+        "reas",
+        "raes"
+      ]
+    },
+    {
+      "word": "facu",
+      "num_guesses": 4,
+      "prior": 0.0001553479355336858,
+      "guesses": [
+        "sora",
+        "cale",
+        "humé",
+        "facu"
+      ]
+    },
+    {
+      "word": "ramo",
+      "num_guesses": 3,
+      "prior": 0.0005183194290089871,
+      "guesses": [
+        "sora",
+        "amlo",
+        "ramo"
+      ]
+    },
+    {
+      "word": "ciña",
+      "num_guesses": 5,
+      "prior": 0.00021794018995519552,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "cita",
+        "ciña"
+      ]
+    },
+    {
+      "word": "copé",
+      "num_guesses": 4,
+      "prior": 0.00015247036743507917,
+      "guesses": [
+        "sora",
+        "teco",
+        "pilé",
+        "copé"
+      ]
+    },
+    {
+      "word": "cebá",
+      "num_guesses": 6,
+      "prior": 0.00009697201467541998,
+      "guesses": [
+        "sora",
+        "cine",
+        "leñó",
+        "bidé",
+        "cebú",
+        "cebá"
+      ]
+    },
+    {
+      "word": "fosa",
+      "num_guesses": 3,
+      "prior": 0.00036328965575763893,
+      "guesses": [
+        "sora",
+        "cifp",
+        "fosa"
+      ]
+    },
+    {
+      "word": "goda",
+      "num_guesses": 4,
+      "prior": 0.0002650481084082514,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "yodo",
+        "goda"
+      ]
+    },
+    {
+      "word": "najé",
+      "num_guesses": 6,
+      "prior": 0.00005727459014520284,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "nadé",
+        "najé"
+      ]
+    },
+    {
+      "word": "remá",
+      "num_guesses": 6,
+      "prior": 0.00009124284607602183,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "taló",
+        "mayá",
+        "remá"
+      ]
+    },
+    {
+      "word": "ovas",
+      "num_guesses": 6,
+      "prior": 0.00019926299130570044,
+      "guesses": [
+        "sora",
+        "cano",
+        "años",
+        "dolí",
+        "suvs",
+        "ovas"
+      ]
+    },
+    {
+      "word": "frió",
+      "num_guesses": 4,
+      "prior": 0.00025784672882243664,
+      "guesses": [
+        "sora",
+        "crie",
+        "botó",
+        "frió"
+      ]
+    },
+    {
+      "word": "gané",
+      "num_guesses": 5,
+      "prior": 0.00025821225653828683,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "gané"
+      ]
+    },
+    {
+      "word": "rula",
+      "num_guesses": 5,
+      "prior": 0.000170983475628219,
+      "guesses": [
+        "sora",
+        "crie",
+        "yund",
+        "loft",
+        "rula"
+      ]
+    },
+    {
+      "word": "asaí",
+      "num_guesses": 5,
+      "prior": 0.00009827015568490193,
+      "guesses": [
+        "sora",
+        "peas",
+        "nuez",
+        "asad",
+        "asaí"
+      ]
+    },
+    {
+      "word": "mola",
+      "num_guesses": 4,
+      "prior": 0.00029987309385156685,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "mach",
+        "mola"
+      ]
+    },
+    {
+      "word": "lesa",
+      "num_guesses": 5,
+      "prior": 0.00029858446881451484,
+      "guesses": [
+        "sora",
+        "time",
+        "pecó",
+        "bluf",
+        "lesa"
+      ]
+    },
+    {
+      "word": "dañó",
+      "num_guesses": 6,
+      "prior": 0.00021492322307366731,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "bang",
+        "pafs",
+        "dañó"
+      ]
+    },
+    {
+      "word": "pile",
+      "num_guesses": 5,
+      "prior": 0.00017618741628971506,
+      "guesses": [
+        "sora",
+        "cine",
+        "html",
+        "file",
+        "pile"
+      ]
+    },
+    {
+      "word": "hoya",
+      "num_guesses": 6,
+      "prior": 0.0003079462196863154,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "joya",
+        "hoya"
+      ]
+    },
+    {
+      "word": "cías",
+      "num_guesses": 5,
+      "prior": 0.00024042779863780284,
+      "guesses": [
+        "sora",
+        "peas",
+        "ludí",
+        "cctv",
+        "cías"
+      ]
+    },
+    {
+      "word": "fias",
+      "num_guesses": 5,
+      "prior": 0.00021011094337625857,
+      "guesses": [
+        "sora",
+        "peas",
+        "ludí",
+        "cimé",
+        "fias"
+      ]
+    },
+    {
+      "word": "nade",
+      "num_guesses": 5,
+      "prior": 0.00019378973997486555,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "veja",
+        "nade"
+      ]
+    },
+    {
+      "word": "alna",
+      "num_guesses": 5,
+      "prior": 0.00015211835315935684,
+      "guesses": [
+        "sora",
+        "celu",
+        "mata",
+        "bang",
+        "alna"
+      ]
+    },
+    {
+      "word": "gena",
+      "num_guesses": 5,
+      "prior": 0.00020571123400597133,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "dong",
+        "gena"
+      ]
+    },
+    {
+      "word": "maul",
+      "num_guesses": 4,
+      "prior": 0.00012884263511909593,
+      "guesses": [
+        "sora",
+        "cale",
+        "limé",
+        "maul"
+      ]
+    },
+    {
+      "word": "viví",
+      "num_guesses": 6,
+      "prior": 0.0003029910764822535,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "moví",
+        "viví"
+      ]
+    },
+    {
+      "word": "acle",
+      "num_guesses": 3,
+      "prior": 0.00013688272017904773,
+      "guesses": [
+        "sora",
+        "cale",
+        "acle"
+      ]
+    },
+    {
+      "word": "soba",
+      "num_guesses": 3,
+      "prior": 0.00021707820297833368,
+      "guesses": [
+        "sora",
+        "lgbt",
+        "soba"
+      ]
+    },
+    {
+      "word": "igur",
+      "num_guesses": 4,
+      "prior": 0.0001089930488831185,
+      "guesses": [
+        "sora",
+        "crie",
+        "fumó",
+        "igur"
+      ]
+    },
+    {
+      "word": "mead",
+      "num_guesses": 4,
+      "prior": 0.00024574140353035025,
+      "guesses": [
+        "sora",
+        "cale",
+        "amén",
+        "mead"
+      ]
+    },
+    {
+      "word": "liza",
+      "num_guesses": 6,
+      "prior": 0.0002791556224933549,
+      "guesses": [
+        "sora",
+        "celu",
+        "mata",
+        "jiga",
+        "azab",
+        "liza"
+      ]
+    },
+    {
+      "word": "puto",
+      "num_guesses": 4,
+      "prior": 0.00026803829572319854,
+      "guesses": [
+        "sora",
+        "lite",
+        "tupé",
+        "puto"
+      ]
+    },
+    {
+      "word": "full",
+      "num_guesses": 5,
+      "prior": 0.0002575562985668348,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "alfé",
+        "full"
+      ]
+    },
+    {
+      "word": "piar",
+      "num_guesses": 4,
+      "prior": 0.00028394773792099286,
+      "guesses": [
+        "sora",
+        "erar",
+        "film",
+        "piar"
+      ]
+    },
+    {
+      "word": "pero",
+      "num_guesses": 3,
+      "prior": 0.0012071630777531807,
+      "guesses": [
+        "sora",
+        "tupe",
+        "pero"
+      ]
+    },
+    {
+      "word": "babi",
+      "num_guesses": 5,
+      "prior": 0.00017383392863494265,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "punk",
+        "babi"
+      ]
+    },
+    {
+      "word": "mixe",
+      "num_guesses": 5,
+      "prior": 0.00022040958629565514,
+      "guesses": [
+        "sora",
+        "cine",
+        "html",
+        "mide",
+        "mixe"
+      ]
+    },
+    {
+      "word": "tojo",
+      "num_guesses": 4,
+      "prior": 0.00020481966065204733,
+      "guesses": [
+        "sora",
+        "teco",
+        "djim",
+        "tojo"
+      ]
+    },
+    {
+      "word": "ideé",
+      "num_guesses": 5,
+      "prior": 0.00013587574054453925,
+      "guesses": [
+        "sora",
+        "cine",
+        "peli",
+        "ideó",
+        "ideé"
+      ]
+    },
+    {
+      "word": "pate",
+      "num_guesses": 5,
+      "prior": 0.0001967195713462893,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "mbps",
+        "pate"
+      ]
+    },
+    {
+      "word": "após",
+      "num_guesses": 4,
+      "prior": 0.00017436090223804443,
+      "guesses": [
+        "sora",
+        "peas",
+        "tipo",
+        "após"
+      ]
+    },
+    {
+      "word": "cimó",
+      "num_guesses": 5,
+      "prior": 0.0000675964034403871,
+      "guesses": [
+        "sora",
+        "cine",
+        "optó",
+        "ciñó",
+        "cimó"
+      ]
+    },
+    {
+      "word": "guan",
+      "num_guesses": 6,
+      "prior": 0.0001885907750979827,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "juan",
+        "yuan",
+        "guan"
+      ]
+    },
+    {
+      "word": "orla",
+      "num_guesses": 3,
+      "prior": 0.0003021041093811865,
+      "guesses": [
+        "sora",
+        "clon",
+        "orla"
+      ]
+    },
+    {
+      "word": "joya",
+      "num_guesses": 5,
+      "prior": 0.0003671729759078547,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "joya"
+      ]
+    },
+    {
+      "word": "pace",
+      "num_guesses": 4,
+      "prior": 0.00027136417447415356,
+      "guesses": [
+        "sora",
+        "cale",
+        "http",
+        "pace"
+      ]
+    },
+    {
+      "word": "kush",
+      "num_guesses": 4,
+      "prior": 0.00015759480521122408,
+      "guesses": [
+        "sora",
+        "pite",
+        "musí",
+        "kush"
+      ]
+    },
+    {
+      "word": "cole",
+      "num_guesses": 4,
+      "prior": 0.0003068002450548692,
+      "guesses": [
+        "sora",
+        "teco",
+        "plum",
+        "cole"
+      ]
+    },
+    {
+      "word": "biná",
+      "num_guesses": 5,
+      "prior": 0.00012691904612559103,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "bagá",
+        "biná"
+      ]
+    },
+    {
+      "word": "filó",
+      "num_guesses": 5,
+      "prior": 0.00016936894941280167,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "hipo",
+        "filó"
+      ]
+    },
+    {
+      "word": "baza",
+      "num_guesses": 6,
+      "prior": 0.00030327204917235054,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "tybi",
+        "jiña",
+        "baza"
+      ]
+    },
+    {
+      "word": "asid",
+      "num_guesses": 5,
+      "prior": 0.0001207758615821444,
+      "guesses": [
+        "sora",
+        "peas",
+        "cimó",
+        "tasi",
+        "asid"
+      ]
+    },
+    {
+      "word": "aros",
+      "num_guesses": 3,
+      "prior": 0.0002885583408357839,
+      "guesses": [
+        "sora",
+        "oras",
+        "aros"
+      ]
+    },
+    {
+      "word": "zote",
+      "num_guesses": 6,
+      "prior": 0.00016058930471009593,
+      "guesses": [
+        "sora",
+        "teco",
+        "blon",
+        "djim",
+        "pozo",
+        "zote"
+      ]
+    },
+    {
+      "word": "rufo",
+      "num_guesses": 4,
+      "prior": 0.00027937619884760935,
+      "guesses": [
+        "sora",
+        "creo",
+        "film",
+        "rufo"
+      ]
+    },
+    {
+      "word": "sané",
+      "num_guesses": 3,
+      "prior": 0.00015318751376180593,
+      "guesses": [
+        "sora",
+        "león",
+        "sané"
+      ]
+    },
+    {
+      "word": "cayá",
+      "num_guesses": 7,
+      "prior": 0.00010306575020113151,
+      "guesses": [
+        "sora",
+        "cale",
+        "pitó",
+        "fuñí",
+        "nevá",
+        "yugo",
+        "cayá"
+      ]
+    },
+    {
+      "word": "yupe",
+      "num_guesses": 5,
+      "prior": 0.00009709292778766097,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "tupe",
+        "yupe"
+      ]
+    },
+    {
+      "word": "muir",
+      "num_guesses": 4,
+      "prior": 0.00018918858807922398,
+      "guesses": [
+        "sora",
+        "crie",
+        "huir",
+        "muir"
+      ]
+    },
+    {
+      "word": "anee",
+      "num_guesses": 4,
+      "prior": 0.00015020938615639259,
+      "guesses": [
+        "sora",
+        "cale",
+        "ente",
+        "anee"
+      ]
+    },
+    {
+      "word": "yode",
+      "num_guesses": 6,
+      "prior": 0.00012193714406078992,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "djim",
+        "bode",
+        "yode"
+      ]
+    },
+    {
+      "word": "ñero",
+      "num_guesses": 5,
+      "prior": 0.00022410682032626374,
+      "guesses": [
+        "sora",
+        "tupe",
+        "meca",
+        "vaya",
+        "ñero"
+      ]
+    },
+    {
+      "word": "caro",
+      "num_guesses": 4,
+      "prior": 0.00046615221298624047,
+      "guesses": [
+        "sora",
+        "faba",
+        "ptsc",
+        "caro"
+      ]
+    },
+    {
+      "word": "boli",
+      "num_guesses": 4,
+      "prior": 0.00021184921381947624,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "boli"
+      ]
+    },
+    {
+      "word": "yupi",
+      "num_guesses": 5,
+      "prior": 0.000134632000531219,
+      "guesses": [
+        "sora",
+        "cine",
+        "quid",
+        "play",
+        "yupi"
+      ]
+    },
+    {
+      "word": "yuré",
+      "num_guesses": 5,
+      "prior": 0.00008994339053582207,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "puré",
+        "yuré"
+      ]
+    },
+    {
+      "word": "malo",
+      "num_guesses": 4,
+      "prior": 0.0005222934506000021,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "malo"
+      ]
+    },
+    {
+      "word": "uchú",
+      "num_guesses": 4,
+      "prior": 0.00011127531833484193,
+      "guesses": [
+        "sora",
+        "cine",
+        "hulé",
+        "uchú"
+      ]
+    },
+    {
+      "word": "ésos",
+      "num_guesses": 4,
+      "prior": 0.0003008269170250385,
+      "guesses": [
+        "sora",
+        "oseo",
+        "usos",
+        "ésos"
+      ]
+    },
+    {
+      "word": "macé",
+      "num_guesses": 4,
+      "prior": 0.00015405675043453425,
+      "guesses": [
+        "sora",
+        "cale",
+        "humé",
+        "macé"
+      ]
+    },
+    {
+      "word": "noté",
+      "num_guesses": 4,
+      "prior": 0.0003221927401778636,
+      "guesses": [
+        "sora",
+        "teco",
+        "ibón",
+        "noté"
+      ]
+    },
+    {
+      "word": "rojo",
+      "num_guesses": 4,
+      "prior": 0.0005547833801862685,
+      "guesses": [
+        "sora",
+        "telo",
+        "djim",
+        "rojo"
+      ]
+    },
+    {
+      "word": "sexa",
+      "num_guesses": 6,
+      "prior": 0.00013833246038688195,
+      "guesses": [
+        "sora",
+        "cime",
+        "pudo",
+        "niño",
+        "seta",
+        "sexa"
+      ]
+    },
+    {
+      "word": "rayó",
+      "num_guesses": 5,
+      "prior": 0.00020360031761250744,
+      "guesses": [
+        "sora",
+        "erar",
+        "tizó",
+        "paja",
+        "rayó"
+      ]
+    },
+    {
+      "word": "pipa",
+      "num_guesses": 7,
+      "prior": 0.00033187791691646204,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "http",
+        "piña",
+        "pipa"
+      ]
+    },
+    {
+      "word": "muto",
+      "num_guesses": 5,
+      "prior": 0.00015698186119224235,
+      "guesses": [
+        "sora",
+        "lite",
+        "tupé",
+        "cuya",
+        "muto"
+      ]
+    },
+    {
+      "word": "ítem",
+      "num_guesses": 5,
+      "prior": 0.00035629382159793914,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "ídem",
+        "ítem"
+      ]
+    },
+    {
+      "word": "ispa",
+      "num_guesses": 5,
+      "prior": 0.00012880371572364648,
+      "guesses": [
+        "sora",
+        "time",
+        "isla",
+        "pibe",
+        "ispa"
+      ]
+    },
+    {
+      "word": "albo",
+      "num_guesses": 3,
+      "prior": 0.00026810748029606644,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "albo"
+      ]
+    },
+    {
+      "word": "gafé",
+      "num_guesses": 5,
+      "prior": 0.00009490599027709424,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "gafé"
+      ]
+    },
+    {
+      "word": "meza",
+      "num_guesses": 5,
+      "prior": 0.0003142007197728036,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "zona",
+        "meza"
+      ]
+    },
+    {
+      "word": "coro",
+      "num_guesses": 3,
+      "prior": 0.0004979608980276819,
+      "guesses": [
+        "sora",
+        "deco",
+        "coro"
+      ]
+    },
+    {
+      "word": "vate",
+      "num_guesses": 6,
+      "prior": 0.0002875748495626878,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "mbps",
+        "vida",
+        "vate"
+      ]
+    },
+    {
+      "word": "ludo",
+      "num_guesses": 5,
+      "prior": 0.0002104790549355427,
+      "guesses": [
+        "sora",
+        "lite",
+        "xiji",
+        "dolo",
+        "ludo"
+      ]
+    },
+    {
+      "word": "arpó",
+      "num_guesses": 5,
+      "prior": 0.00007403414093363209,
+      "guesses": [
+        "sora",
+        "erar",
+        "muón",
+        "clip",
+        "arpó"
+      ]
+    },
+    {
+      "word": "usía",
+      "num_guesses": 5,
+      "prior": 0.0002551847427275451,
+      "guesses": [
+        "sora",
+        "time",
+        "paca",
+        "lusa",
+        "usía"
+      ]
+    },
+    {
+      "word": "dama",
+      "num_guesses": 6,
+      "prior": 0.0004902423122377295,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "paty",
+        "djim",
+        "dama"
+      ]
+    },
+    {
+      "word": "mojó",
+      "num_guesses": 5,
+      "prior": 0.00022225637818566981,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "yang",
+        "mojó"
+      ]
+    },
+    {
+      "word": "felé",
+      "num_guesses": 6,
+      "prior": 0.00008761485360051185,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "pavé",
+        "haga",
+        "felé"
+      ]
+    },
+    {
+      "word": "cave",
+      "num_guesses": 4,
+      "prior": 0.00022999211185144628,
+      "guesses": [
+        "sora",
+        "cale",
+        "cctv",
+        "cave"
+      ]
+    },
+    {
+      "word": "razó",
+      "num_guesses": 4,
+      "prior": 0.00023355502073584927,
+      "guesses": [
+        "sora",
+        "erar",
+        "tizó",
+        "razó"
+      ]
+    },
+    {
+      "word": "pari",
+      "num_guesses": 3,
+      "prior": 0.00022695155969562953,
+      "guesses": [
+        "sora",
+        "pibe",
+        "pari"
+      ]
+    },
+    {
+      "word": "cojé",
+      "num_guesses": 6,
+      "prior": 0.00008215518473100205,
+      "guesses": [
+        "sora",
+        "teco",
+        "pilé",
+        "gama",
+        "cové",
+        "cojé"
+      ]
+    },
+    {
+      "word": "pide",
+      "num_guesses": 5,
+      "prior": 0.0005565498448601009,
+      "guesses": [
+        "sora",
+        "cine",
+        "html",
+        "dije",
+        "pide"
+      ]
+    },
+    {
+      "word": "cala",
+      "num_guesses": 3,
+      "prior": 0.0003409950160178836,
+      "guesses": [
+        "sora",
+        "celu",
+        "cala"
+      ]
+    },
+    {
+      "word": "erró",
+      "num_guesses": 4,
+      "prior": 0.0002464519969387846,
+      "guesses": [
+        "sora",
+        "dime",
+        "nevé",
+        "erró"
+      ]
+    },
+    {
+      "word": "teja",
+      "num_guesses": 5,
+      "prior": 0.000323179360037028,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "paty",
+        "teja"
+      ]
+    },
+    {
+      "word": "laxe",
+      "num_guesses": 6,
+      "prior": 0.00016510411768883362,
+      "guesses": [
+        "sora",
+        "cale",
+        "byte",
+        "moví",
+        "lañe",
+        "laxe"
+      ]
+    },
+    {
+      "word": "oyes",
+      "num_guesses": 4,
+      "prior": 0.0003049235851899407,
+      "guesses": [
+        "sora",
+        "oseo",
+        "tuvo",
+        "oyes"
+      ]
+    },
+    {
+      "word": "chas",
+      "num_guesses": 5,
+      "prior": 0.00032016204811066164,
+      "guesses": [
+        "sora",
+        "peas",
+        "ludí",
+        "cimé",
+        "chas"
+      ]
+    },
+    {
+      "word": "tupí",
+      "num_guesses": 5,
+      "prior": 0.0002170564771331961,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "pelé",
+        "tupí"
+      ]
+    },
+    {
+      "word": "bebí",
+      "num_guesses": 6,
+      "prior": 0.00024420620554145296,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "dejé",
+        "tupí",
+        "bebí"
+      ]
+    },
+    {
+      "word": "uzos",
+      "num_guesses": 5,
+      "prior": 0.0000973528590334767,
+      "guesses": [
+        "sora",
+        "oseo",
+        "dimí",
+        "unos",
+        "uzos"
+      ]
+    },
+    {
+      "word": "pead",
+      "num_guesses": 5,
+      "prior": 0.00011794250642132449,
+      "guesses": [
+        "sora",
+        "cale",
+        "amén",
+        "edad",
+        "pead"
+      ]
+    },
+    {
+      "word": "cija",
+      "num_guesses": 4,
+      "prior": 0.00013231325164240175,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "cija"
+      ]
+    },
+    {
+      "word": "aeda",
+      "num_guesses": 6,
+      "prior": 0.00016663340469456685,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "dong",
+        "pava",
+        "aeda"
+      ]
+    },
+    {
+      "word": "diva",
+      "num_guesses": 6,
+      "prior": 0.0002375300665950396,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "tuvo",
+        "diva"
+      ]
+    },
+    {
+      "word": "ditá",
+      "num_guesses": 5,
+      "prior": 0.00008395673637576484,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavé",
+        "ditá"
+      ]
+    },
+    {
+      "word": "alzá",
+      "num_guesses": 5,
+      "prior": 0.00010112592622770784,
+      "guesses": [
+        "sora",
+        "cale",
+        "inal",
+        "zafá",
+        "alzá"
+      ]
+    },
+    {
+      "word": "hule",
+      "num_guesses": 5,
+      "prior": 0.000322404492188483,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "lgbt",
+        "hule"
+      ]
+    },
+    {
+      "word": "afaz",
+      "num_guesses": 4,
+      "prior": 0.00014069457612796854,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "afaz"
+      ]
+    },
+    {
+      "word": "guau",
+      "num_guesses": 5,
+      "prior": 0.00021443456117166854,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "guay",
+        "guau"
+      ]
+    },
+    {
+      "word": "vezo",
+      "num_guesses": 7,
+      "prior": 0.0001198378486123325,
+      "guesses": [
+        "sora",
+        "lite",
+        "cedo",
+        "bang",
+        "mejo",
+        "yeyo",
+        "vezo"
+      ]
+    },
+    {
+      "word": "unge",
+      "num_guesses": 4,
+      "prior": 0.0001936832216201994,
+      "guesses": [
+        "sora",
+        "cine",
+        "nube",
+        "unge"
+      ]
+    },
+    {
+      "word": "vivá",
+      "num_guesses": 6,
+      "prior": 0.00009032234090536018,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pujé",
+        "moví",
+        "vivá"
+      ]
+    },
+    {
+      "word": "raen",
+      "num_guesses": 4,
+      "prior": 0.0001600075911520097,
+      "guesses": [
+        "sora",
+        "erar",
+        "face",
+        "raen"
+      ]
+    },
+    {
+      "word": "afea",
+      "num_guesses": 5,
+      "prior": 0.00021148342958973018,
+      "guesses": [
+        "sora",
+        "celu",
+        "anti",
+        "pyme",
+        "afea"
+      ]
+    },
+    {
+      "word": "usos",
+      "num_guesses": 3,
+      "prior": 0.0005040168299499335,
+      "guesses": [
+        "sora",
+        "oseo",
+        "usos"
+      ]
+    },
+    {
+      "word": "amas",
+      "num_guesses": 5,
+      "prior": 0.0003672758275883462,
+      "guesses": [
+        "sora",
+        "peas",
+        "ludí",
+        "cimé",
+        "amas"
+      ]
+    },
+    {
+      "word": "epeo",
+      "num_guesses": 5,
+      "prior": 0.0001408174576492342,
+      "guesses": [
+        "sora",
+        "lite",
+        "cedo",
+        "jeep",
+        "epeo"
+      ]
+    },
+    {
+      "word": "moja",
+      "num_guesses": 7,
+      "prior": 0.0002634106462389782,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "nazi",
+        "jiña",
+        "moja"
+      ]
+    },
+    {
+      "word": "tate",
+      "num_guesses": 5,
+      "prior": 0.0002630165038061505,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "pata",
+        "tate"
+      ]
+    },
+    {
+      "word": "halá",
+      "num_guesses": 6,
+      "prior": 0.00009525572243030214,
+      "guesses": [
+        "sora",
+        "cale",
+        "jimé",
+        "batá",
+        "zalá",
+        "halá"
+      ]
+    },
+    {
+      "word": "señe",
+      "num_guesses": 5,
+      "prior": 0.0001455337648304016,
+      "guesses": [
+        "sora",
+        "pide",
+        "sube",
+        "sexe",
+        "señe"
+      ]
+    },
+    {
+      "word": "shin",
+      "num_guesses": 4,
+      "prior": 0.00018670039449639444,
+      "guesses": [
+        "sora",
+        "pide",
+        "skin",
+        "shin"
+      ]
+    },
+    {
+      "word": "bree",
+      "num_guesses": 4,
+      "prior": 0.000205056642544332,
+      "guesses": [
+        "sora",
+        "crie",
+        "tubo",
+        "bree"
+      ]
+    },
+    {
+      "word": "mofó",
+      "num_guesses": 6,
+      "prior": 0.00017250292891526694,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "yang",
+        "mojó",
+        "mofó"
+      ]
+    },
+    {
+      "word": "tité",
+      "num_guesses": 6,
+      "prior": 0.00007546442798877404,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "titi",
+        "titá",
+        "tité"
+      ]
+    },
+    {
+      "word": "puña",
+      "num_guesses": 7,
+      "prior": 0.0001350964088060149,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "tony",
+        "dips",
+        "puja",
+        "puña"
+      ]
+    },
+    {
+      "word": "pipe",
+      "num_guesses": 6,
+      "prior": 0.00020957380619321988,
+      "guesses": [
+        "sora",
+        "cine",
+        "html",
+        "dije",
+        "pibe",
+        "pipe"
+      ]
+    },
+    {
+      "word": "edad",
+      "num_guesses": 4,
+      "prior": 0.0007435751821994439,
+      "guesses": [
+        "sora",
+        "cale",
+        "amén",
+        "edad"
+      ]
+    },
+    {
+      "word": "clin",
+      "num_guesses": 3,
+      "prior": 0.00028151782977692193,
+      "guesses": [
+        "sora",
+        "cine",
+        "clin"
+      ]
+    },
+    {
+      "word": "asma",
+      "num_guesses": 3,
+      "prior": 0.0003242806692905707,
+      "guesses": [
+        "sora",
+        "time",
+        "asma"
+      ]
+    },
+    {
+      "word": "éste",
+      "num_guesses": 4,
+      "prior": 0.0007778094494104532,
+      "guesses": [
+        "sora",
+        "pite",
+        "este",
+        "éste"
+      ]
+    },
+    {
+      "word": "codo",
+      "num_guesses": 4,
+      "prior": 0.0003787683884818122,
+      "guesses": [
+        "sora",
+        "teco",
+        "djim",
+        "codo"
+      ]
+    },
+    {
+      "word": "ticá",
+      "num_guesses": 6,
+      "prior": 0.00005899431589007017,
+      "guesses": [
+        "sora",
+        "cine",
+        "optó",
+        "ticú",
+        "ticé",
+        "ticá"
+      ]
+    },
+    {
+      "word": "maza",
+      "num_guesses": 7,
+      "prior": 0.0003581995527934416,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "paty",
+        "djim",
+        "fama",
+        "maza"
+      ]
+    },
+    {
+      "word": "odio",
+      "num_guesses": 3,
+      "prior": 0.0005142677565902655,
+      "guesses": [
+        "sora",
+        "lite",
+        "odio"
+      ]
+    },
+    {
+      "word": "cucá",
+      "num_guesses": 7,
+      "prior": 0.00006662782538319767,
+      "guesses": [
+        "sora",
+        "cine",
+        "pulí",
+        "hiñó",
+        "cucú",
+        "cucu",
+        "cucá"
+      ]
+    },
+    {
+      "word": "paki",
+      "num_guesses": 5,
+      "prior": 0.00011391975107888415,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "punk",
+        "paki"
+      ]
+    },
+    {
+      "word": "sobo",
+      "num_guesses": 4,
+      "prior": 0.00014603211207783994,
+      "guesses": [
+        "sora",
+        "óleo",
+        "post",
+        "sobo"
+      ]
+    },
+    {
+      "word": "puás",
+      "num_guesses": 5,
+      "prior": 0.00008896702942143757,
+      "guesses": [
+        "sora",
+        "pite",
+        "bulé",
+        "pufs",
+        "puás"
+      ]
+    },
+    {
+      "word": "atra",
+      "num_guesses": 5,
+      "prior": 0.0002267316129459209,
+      "guesses": [
+        "sora",
+        "capi",
+        "mude",
+        "lgbt",
+        "atra"
+      ]
+    },
+    {
+      "word": "aguo",
+      "num_guesses": 4,
+      "prior": 0.00014285222783650444,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "agio",
+        "aguo"
+      ]
+    },
+    {
+      "word": "ideá",
+      "num_guesses": 6,
+      "prior": 0.00009446144618083246,
+      "guesses": [
+        "sora",
+        "cine",
+        "peli",
+        "ideó",
+        "ideé",
+        "ideá"
+      ]
+    },
+    {
+      "word": "roja",
+      "num_guesses": 5,
+      "prior": 0.00048827291148740475,
+      "guesses": [
+        "sora",
+        "mbps",
+        "cdti",
+        "zuñí",
+        "roja"
+      ]
+    },
+    {
+      "word": "barí",
+      "num_guesses": 4,
+      "prior": 0.0002046152199680177,
+      "guesses": [
+        "sora",
+        "pibe",
+        "abrí",
+        "barí"
+      ]
+    },
+    {
+      "word": "tías",
+      "num_guesses": 5,
+      "prior": 0.0003012263495852653,
+      "guesses": [
+        "sora",
+        "peas",
+        "ludí",
+        "cctv",
+        "tías"
+      ]
+    },
+    {
+      "word": "arfá",
+      "num_guesses": 6,
+      "prior": 0.00006418952147217392,
+      "guesses": [
+        "sora",
+        "erar",
+        "muón",
+        "dolé",
+        "arcá",
+        "arfá"
+      ]
+    },
+    {
+      "word": "manú",
+      "num_guesses": 6,
+      "prior": 0.00020107122942982235,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "juná",
+        "maní",
+        "manú"
+      ]
+    },
+    {
+      "word": "vota",
+      "num_guesses": 5,
+      "prior": 0.00039116004236907417,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "djim",
+        "vino",
+        "vota"
+      ]
+    },
+    {
+      "word": "oval",
+      "num_guesses": 5,
+      "prior": 0.0003046978003935369,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "jaca",
+        "oval"
+      ]
+    },
+    {
+      "word": "uixo",
+      "num_guesses": 5,
+      "prior": 0.00007679384442012315,
+      "guesses": [
+        "sora",
+        "lite",
+        "dong",
+        "chuj",
+        "uixo"
+      ]
+    },
+    {
+      "word": "reyé",
+      "num_guesses": 6,
+      "prior": 0.00009352305289178144,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "taló",
+        "mayá",
+        "reyé"
+      ]
+    },
+    {
+      "word": "rilé",
+      "num_guesses": 5,
+      "prior": 0.00007409351081022861,
+      "guesses": [
+        "sora",
+        "crie",
+        "fumó",
+        "ring",
+        "rilé"
+      ]
+    },
+    {
+      "word": "laúd",
+      "num_guesses": 5,
+      "prior": 0.0002579267012251296,
+      "guesses": [
+        "sora",
+        "cale",
+        "limé",
+        "vedó",
+        "laúd"
+      ]
+    },
+    {
+      "word": "yeli",
+      "num_guesses": 6,
+      "prior": 0.00008818344034211721,
+      "guesses": [
+        "sora",
+        "cine",
+        "peli",
+        "modo",
+        "keli",
+        "yeli"
+      ]
+    },
+    {
+      "word": "fajé",
+      "num_guesses": 6,
+      "prior": 0.00009933856069349103,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "gafé",
+        "fajé"
+      ]
+    },
+    {
+      "word": "tajé",
+      "num_guesses": 6,
+      "prior": 0.0000848024638357381,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "puñá",
+        "tabú",
+        "tajé"
+      ]
+    },
+    {
+      "word": "veas",
+      "num_guesses": 4,
+      "prior": 0.0003231778861545374,
+      "guesses": [
+        "sora",
+        "peas",
+        "loft",
+        "veas"
+      ]
+    },
+    {
+      "word": "maki",
+      "num_guesses": 4,
+      "prior": 0.00016004300552971244,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "maki"
+      ]
+    },
+    {
+      "word": "fela",
+      "num_guesses": 6,
+      "prior": 0.00019203689484034595,
+      "guesses": [
+        "sora",
+        "celu",
+        "lgbt",
+        "vela",
+        "pela",
+        "fela"
+      ]
+    },
+    {
+      "word": "popo",
+      "num_guesses": 5,
+      "prior": 0.00018954423435061136,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "pudo",
+        "popo"
+      ]
+    },
+    {
+      "word": "sane",
+      "num_guesses": 3,
+      "prior": 0.00023645751420602336,
+      "guesses": [
+        "sora",
+        "león",
+        "sane"
+      ]
+    },
+    {
+      "word": "lavo",
+      "num_guesses": 6,
+      "prior": 0.00021844227807307166,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "azud",
+        "pyme",
+        "coxa",
+        "lavo"
+      ]
+    },
+    {
+      "word": "otea",
+      "num_guesses": 4,
+      "prior": 0.00019175892872368565,
+      "guesses": [
+        "sora",
+        "deli",
+        "tajo",
+        "otea"
+      ]
+    },
+    {
+      "word": "polo",
+      "num_guesses": 5,
+      "prior": 0.0004456898181291505,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "azul",
+        "polo"
+      ]
+    },
+    {
+      "word": "cosé",
+      "num_guesses": 5,
+      "prior": 0.00009707281740321209,
+      "guesses": [
+        "sora",
+        "teso",
+        "lepé",
+        "cabo",
+        "cosé"
+      ]
+    },
+    {
+      "word": "unjo",
+      "num_guesses": 6,
+      "prior": 0.00011714710554676674,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "djim",
+        "jugo",
+        "unjo"
+      ]
+    },
+    {
+      "word": "zape",
+      "num_guesses": 6,
+      "prior": 0.00018007915376229327,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "djim",
+        "pibe",
+        "zape"
+      ]
+    },
+    {
+      "word": "cimo",
+      "num_guesses": 6,
+      "prior": 0.00016743433206085854,
+      "guesses": [
+        "sora",
+        "lite",
+        "dong",
+        "chuj",
+        "mapa",
+        "cimo"
+      ]
+    },
+    {
+      "word": "sugo",
+      "num_guesses": 6,
+      "prior": 0.00012321122557956083,
+      "guesses": [
+        "sora",
+        "unte",
+        "pyme",
+        "base",
+        "vida",
+        "sugo"
+      ]
+    },
+    {
+      "word": "bebe",
+      "num_guesses": 6,
+      "prior": 0.00036971680126269966,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "jfet",
+        "debe",
+        "bebe"
+      ]
+    },
+    {
+      "word": "zapá",
+      "num_guesses": 6,
+      "prior": 0.00006501010124394429,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "papá",
+        "zapá"
+      ]
+    },
+    {
+      "word": "casi",
+      "num_guesses": 4,
+      "prior": 0.0008314689827825622,
+      "guesses": [
+        "sora",
+        "peas",
+        "cimó",
+        "casi"
+      ]
+    },
+    {
+      "word": "agua",
+      "num_guesses": 4,
+      "prior": 0.0008111792340308137,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "agua"
+      ]
+    },
+    {
+      "word": "riñe",
+      "num_guesses": 4,
+      "prior": 0.00022193699551851793,
+      "guesses": [
+        "sora",
+        "crie",
+        "golf",
+        "riñe"
+      ]
+    },
+    {
+      "word": "hets",
+      "num_guesses": 4,
+      "prior": 0.00009540712874808584,
+      "guesses": [
+        "sora",
+        "pite",
+        "está",
+        "hets"
+      ]
+    },
+    {
+      "word": "seto",
+      "num_guesses": 3,
+      "prior": 0.0002452653723093097,
+      "guesses": [
+        "sora",
+        "unte",
+        "seto"
+      ]
+    },
+    {
+      "word": "soap",
+      "num_guesses": 2,
+      "prior": 0.0001706034759333869,
+      "guesses": [
+        "sora",
+        "soap"
+      ]
+    },
+    {
+      "word": "menú",
+      "num_guesses": 4,
+      "prior": 0.0003424037173763076,
+      "guesses": [
+        "sora",
+        "cine",
+        "pavé",
+        "menú"
+      ]
+    },
+    {
+      "word": "luso",
+      "num_guesses": 4,
+      "prior": 0.00024871223842441845,
+      "guesses": [
+        "sora",
+        "oseo",
+        "plum",
+        "luso"
+      ]
+    },
+    {
+      "word": "rife",
+      "num_guesses": 4,
+      "prior": 0.0001512818015796662,
+      "guesses": [
+        "sora",
+        "crie",
+        "golf",
+        "rife"
+      ]
+    },
+    {
+      "word": "ludí",
+      "num_guesses": 6,
+      "prior": 0.0001170235323754717,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "pelé",
+        "luxá",
+        "ludí"
+      ]
+    },
+    {
+      "word": "gala",
+      "num_guesses": 5,
+      "prior": 0.0004078270935286293,
+      "guesses": [
+        "sora",
+        "celu",
+        "mapa",
+        "lgbt",
+        "gala"
+      ]
+    },
+    {
+      "word": "mida",
+      "num_guesses": 5,
+      "prior": 0.00026496769869674804,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "mida"
+      ]
+    },
+    {
+      "word": "jope",
+      "num_guesses": 5,
+      "prior": 0.00015465780305984033,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "dijo",
+        "jope"
+      ]
+    },
+    {
+      "word": "tapo",
+      "num_guesses": 6,
+      "prior": 0.0001865575557012996,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nade",
+        "caja",
+        "maña",
+        "tapo"
+      ]
+    },
+    {
+      "word": "yero",
+      "num_guesses": 5,
+      "prior": 0.00018451338871200377,
+      "guesses": [
+        "sora",
+        "tupe",
+        "meca",
+        "vaya",
+        "yero"
+      ]
+    },
+    {
+      "word": "daos",
+      "num_guesses": 4,
+      "prior": 0.0001988190926435091,
+      "guesses": [
+        "sora",
+        "cano",
+        "lgbt",
+        "daos"
+      ]
+    },
+    {
+      "word": "payo",
+      "num_guesses": 5,
+      "prior": 0.0002714540529649075,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "pyme",
+        "payo"
+      ]
+    },
+    {
+      "word": "gibó",
+      "num_guesses": 7,
+      "prior": 0.0000747915321660452,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "puff",
+        "ñame",
+        "vivó",
+        "gibó"
+      ]
+    },
+    {
+      "word": "odre",
+      "num_guesses": 4,
+      "prior": 0.0002141014774097501,
+      "guesses": [
+        "sora",
+        "tupe",
+        "cabo",
+        "odre"
+      ]
+    },
+    {
+      "word": "fufó",
+      "num_guesses": 6,
+      "prior": 0.0000551273534072374,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "fugó",
+        "fuñó",
+        "fufó"
+      ]
+    },
+    {
+      "word": "caco",
+      "num_guesses": 5,
+      "prior": 0.00022673769656129453,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nach",
+        "cupo",
+        "caco"
+      ]
+    },
+    {
+      "word": "pupé",
+      "num_guesses": 6,
+      "prior": 0.00009349968964807269,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "pelé",
+        "jipi",
+        "pupé"
+      ]
+    },
+    {
+      "word": "azoa",
+      "num_guesses": 4,
+      "prior": 0.00009407689208092432,
+      "guesses": [
+        "sora",
+        "deli",
+        "zapa",
+        "azoa"
+      ]
+    },
+    {
+      "word": "ubia",
+      "num_guesses": 5,
+      "prior": 0.00012749892079813008,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "unta",
+        "ubia"
+      ]
+    },
+    {
+      "word": "caer",
+      "num_guesses": 4,
+      "prior": 0.0005692407886542472,
+      "guesses": [
+        "sora",
+        "erar",
+        "ayer",
+        "caer"
+      ]
+    },
+    {
+      "word": "ruco",
+      "num_guesses": 4,
+      "prior": 0.00015377344478314657,
+      "guesses": [
+        "sora",
+        "creo",
+        "rico",
+        "ruco"
+      ]
+    },
+    {
+      "word": "yubo",
+      "num_guesses": 7,
+      "prior": 0.00007584613171495079,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "djim",
+        "fugo",
+        "buzo",
+        "yubo"
+      ]
+    },
+    {
+      "word": "atoé",
+      "num_guesses": 5,
+      "prior": 0.00005550889400550208,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "nade",
+        "atoo",
+        "atoé"
+      ]
+    },
+    {
+      "word": "anca",
+      "num_guesses": 4,
+      "prior": 0.0002517133176331506,
+      "guesses": [
+        "sora",
+        "celu",
+        "napa",
+        "anca"
+      ]
+    },
+    {
+      "word": "capé",
+      "num_guesses": 5,
+      "prior": 0.00010367592706677122,
+      "guesses": [
+        "sora",
+        "cale",
+        "pitó",
+        "capá",
+        "capé"
+      ]
+    },
+    {
+      "word": "dodo",
+      "num_guesses": 6,
+      "prior": 0.00017880238103203455,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "dong",
+        "dolo",
+        "dodo"
+      ]
+    },
+    {
+      "word": "boso",
+      "num_guesses": 5,
+      "prior": 0.0001563382645968945,
+      "guesses": [
+        "sora",
+        "teso",
+        "cifp",
+        "loso",
+        "boso"
+      ]
+    },
+    {
+      "word": "orco",
+      "num_guesses": 3,
+      "prior": 0.0002008324047017378,
+      "guesses": [
+        "sora",
+        "creo",
+        "orco"
+      ]
+    },
+    {
+      "word": "xugo",
+      "num_guesses": 7,
+      "prior": 0.00018907689818475532,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "djim",
+        "fugo",
+        "yugo",
+        "xugo"
+      ]
+    },
+    {
+      "word": "nodo",
+      "num_guesses": 5,
+      "prior": 0.0002851297202423324,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "dong",
+        "nodo"
+      ]
+    },
+    {
+      "word": "arco",
+      "num_guesses": 4,
+      "prior": 0.0005046143023977976,
+      "guesses": [
+        "sora",
+        "amlo",
+        "cdti",
+        "arco"
+      ]
+    },
+    {
+      "word": "fork",
+      "num_guesses": 4,
+      "prior": 0.0001608410091229764,
+      "guesses": [
+        "sora",
+        "deco",
+        "migó",
+        "fork"
+      ]
+    },
+    {
+      "word": "coté",
+      "num_guesses": 5,
+      "prior": 0.00013978473705596924,
+      "guesses": [
+        "sora",
+        "teco",
+        "cotí",
+        "cotó",
+        "coté"
+      ]
+    },
+    {
+      "word": "neos",
+      "num_guesses": 5,
+      "prior": 0.00021803038588402666,
+      "guesses": [
+        "sora",
+        "oseo",
+        "meca",
+        "flop",
+        "neos"
+      ]
+    },
+    {
+      "word": "chal",
+      "num_guesses": 4,
+      "prior": 0.0002461597918193775,
+      "guesses": [
+        "sora",
+        "cale",
+        "cual",
+        "chal"
+      ]
+    },
+    {
+      "word": "dora",
+      "num_guesses": 4,
+      "prior": 0.0003494878202565824,
+      "guesses": [
+        "sora",
+        "chip",
+        "djim",
+        "dora"
+      ]
+    },
+    {
+      "word": "roce",
+      "num_guesses": 4,
+      "prior": 0.00033830872270345345,
+      "guesses": [
+        "sora",
+        "telo",
+        "caer",
+        "roce"
+      ]
+    },
+    {
+      "word": "obró",
+      "num_guesses": 4,
+      "prior": 0.0003245319741828499,
+      "guesses": [
+        "sora",
+        "tupe",
+        "migo",
+        "obró"
+      ]
+    },
+    {
+      "word": "oreo",
+      "num_guesses": 4,
+      "prior": 0.00019392255943836075,
+      "guesses": [
+        "sora",
+        "creo",
+        "optó",
+        "oreo"
+      ]
+    },
+    {
+      "word": "ampa",
+      "num_guesses": 5,
+      "prior": 0.00019432135521879173,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "ampa"
+      ]
+    },
+    {
+      "word": "alié",
+      "num_guesses": 6,
+      "prior": 0.00014029106528616435,
+      "guesses": [
+        "sora",
+        "cale",
+        "inal",
+        "cómo",
+        "aliá",
+        "alié"
+      ]
+    },
+    {
+      "word": "tuya",
+      "num_guesses": 5,
+      "prior": 0.00039816001448978735,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "tony",
+        "tuya"
+      ]
+    },
+    {
+      "word": "cedí",
+      "num_guesses": 5,
+      "prior": 0.0001962545363885016,
+      "guesses": [
+        "sora",
+        "cine",
+        "leñó",
+        "bidé",
+        "cedí"
+      ]
+    },
+    {
+      "word": "asgo",
+      "num_guesses": 4,
+      "prior": 0.000117071122278308,
+      "guesses": [
+        "sora",
+        "cano",
+        "gime",
+        "asgo"
+      ]
+    },
+    {
+      "word": "rapo",
+      "num_guesses": 5,
+      "prior": 0.00013244704268292547,
+      "guesses": [
+        "sora",
+        "amlo",
+        "byte",
+        "juez",
+        "rapo"
+      ]
+    },
+    {
+      "word": "hoce",
+      "num_guesses": 5,
+      "prior": 0.0001717991688280657,
+      "guesses": [
+        "sora",
+        "teco",
+        "doce",
+        "goce",
+        "hoce"
+      ]
+    },
+    {
+      "word": "napó",
+      "num_guesses": 7,
+      "prior": 0.000064502147572432,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "bang",
+        "nadó",
+        "najó",
+        "napó"
+      ]
+    },
+    {
+      "word": "posa",
+      "num_guesses": 3,
+      "prior": 0.0002916384899762149,
+      "guesses": [
+        "sora",
+        "cifp",
+        "posa"
+      ]
+    },
+    {
+      "word": "moke",
+      "num_guesses": 6,
+      "prior": 0.00010018618990222392,
+      "guesses": [
+        "sora",
+        "teco",
+        "prnl",
+        "djim",
+        "fome",
+        "moke"
+      ]
+    },
+    {
+      "word": "pito",
+      "num_guesses": 6,
+      "prior": 0.0002945280261067232,
+      "guesses": [
+        "sora",
+        "lite",
+        "mach",
+        "tuvo",
+        "irpf",
+        "pito"
+      ]
+    },
+    {
+      "word": "jume",
+      "num_guesses": 6,
+      "prior": 0.00015014616817353484,
+      "guesses": [
+        "sora",
+        "cine",
+        "plum",
+        "mude",
+        "jefe",
+        "jume"
+      ]
+    },
+    {
+      "word": "uñir",
+      "num_guesses": 5,
+      "prior": 0.00010095452536712629,
+      "guesses": [
+        "sora",
+        "crie",
+        "huir",
+        "unir",
+        "uñir"
+      ]
+    },
+    {
+      "word": "femó",
+      "num_guesses": 5,
+      "prior": 0.00009961222478833798,
+      "guesses": [
+        "sora",
+        "cine",
+        "meló",
+        "temó",
+        "femó"
+      ]
+    },
+    {
+      "word": "vatu",
+      "num_guesses": 6,
+      "prior": 0.00009713309864451699,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "pedí",
+        "baht",
+        "vatu"
+      ]
+    },
+    {
+      "word": "juró",
+      "num_guesses": 4,
+      "prior": 0.0003304897901656033,
+      "guesses": [
+        "sora",
+        "dime",
+        "cejé",
+        "juró"
+      ]
+    },
+    {
+      "word": "sajé",
+      "num_guesses": 5,
+      "prior": 0.00008841852116060438,
+      "guesses": [
+        "sora",
+        "león",
+        "gais",
+        "bajá",
+        "sajé"
+      ]
+    },
+    {
+      "word": "raga",
+      "num_guesses": 5,
+      "prior": 0.0001973418890060055,
+      "guesses": [
+        "sora",
+        "crie",
+        "yund",
+        "lgbt",
+        "raga"
+      ]
+    },
+    {
+      "word": "mudá",
+      "num_guesses": 5,
+      "prior": 0.00012584775743316234,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "datá",
+        "mudá"
+      ]
+    },
+    {
+      "word": "ello",
+      "num_guesses": 4,
+      "prior": 0.0008437973719582592,
+      "guesses": [
+        "sora",
+        "lite",
+        "epeo",
+        "ello"
+      ]
+    },
+    {
+      "word": "gozá",
+      "num_guesses": 5,
+      "prior": 0.0001208178122215052,
+      "guesses": [
+        "sora",
+        "teco",
+        "piló",
+        "gomá",
+        "gozá"
+      ]
+    },
+    {
+      "word": "yudo",
+      "num_guesses": 7,
+      "prior": 0.00013512321365114226,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "djim",
+        "nudo",
+        "ñudo",
+        "yudo"
+      ]
+    },
+    {
+      "word": "bañó",
+      "num_guesses": 6,
+      "prior": 0.0002344197606084006,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "bang",
+        "bajó",
+        "bañó"
+      ]
+    },
+    {
+      "word": "pido",
+      "num_guesses": 4,
+      "prior": 0.0005124896152067225,
+      "guesses": [
+        "sora",
+        "lite",
+        "dong",
+        "pido"
+      ]
+    },
+    {
+      "word": "ligá",
+      "num_guesses": 5,
+      "prior": 0.00007637843751952756,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "majá",
+        "ligá"
+      ]
+    },
+    {
+      "word": "meda",
+      "num_guesses": 6,
+      "prior": 0.0002195521254106798,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "zona",
+        "dijo",
+        "meda"
+      ]
+    },
+    {
+      "word": "finn",
+      "num_guesses": 5,
+      "prior": 0.00024632111294527886,
+      "guesses": [
+        "sora",
+        "cine",
+        "fumó",
+        "oían",
+        "finn"
+      ]
+    },
+    {
+      "word": "cata",
+      "num_guesses": 6,
+      "prior": 0.0003146975384746853,
+      "guesses": [
+        "sora",
+        "celu",
+        "djim",
+        "pañí",
+        "cctv",
+        "cata"
+      ]
+    },
+    {
+      "word": "lefa",
+      "num_guesses": 6,
+      "prior": 0.00014981428777110402,
+      "guesses": [
+        "sora",
+        "celu",
+        "muñí",
+        "vino",
+        "jugo",
+        "lefa"
+      ]
+    },
+    {
+      "word": "note",
+      "num_guesses": 4,
+      "prior": 0.0003258275436070465,
+      "guesses": [
+        "sora",
+        "teco",
+        "blon",
+        "note"
+      ]
+    },
+    {
+      "word": "fofa",
+      "num_guesses": 5,
+      "prior": 0.00019971083106147948,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "foja",
+        "fofa"
+      ]
+    },
+    {
+      "word": "papu",
+      "num_guesses": 7,
+      "prior": 0.00011164570412198882,
+      "guesses": [
+        "sora",
+        "cale",
+        "timó",
+        "napé",
+        "papá",
+        "papú",
+        "papu"
+      ]
+    },
+    {
+      "word": "pitó",
+      "num_guesses": 5,
+      "prior": 0.00015949742594213045,
+      "guesses": [
+        "sora",
+        "cine",
+        "taló",
+        "pavo",
+        "pitó"
+      ]
+    },
+    {
+      "word": "moda",
+      "num_guesses": 5,
+      "prior": 0.00047665272828679935,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "moda"
+      ]
+    },
+    {
+      "word": "raje",
+      "num_guesses": 5,
+      "prior": 0.00017945995183795002,
+      "guesses": [
+        "sora",
+        "erar",
+        "face",
+        "paja",
+        "raje"
+      ]
+    },
+    {
+      "word": "izás",
+      "num_guesses": 4,
+      "prior": 0.00009536396784882875,
+      "guesses": [
+        "sora",
+        "pite",
+        "luis",
+        "izás"
+      ]
+    },
+    {
+      "word": "doma",
+      "num_guesses": 6,
+      "prior": 0.000247862809832992,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "niño",
+        "pyme",
+        "doma"
+      ]
+    },
+    {
+      "word": "ríen",
+      "num_guesses": 4,
+      "prior": 0.0003058072328270242,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "ríen"
+      ]
+    },
+    {
+      "word": "arnr",
+      "num_guesses": 3,
+      "prior": 0.00012938900663471737,
+      "guesses": [
+        "sora",
+        "erar",
+        "arnr"
+      ]
+    },
+    {
+      "word": "chis",
+      "num_guesses": 5,
+      "prior": 0.0002640005988481493,
+      "guesses": [
+        "sora",
+        "pite",
+        "luis",
+        "cabo",
+        "chis"
+      ]
+    },
+    {
+      "word": "pían",
+      "num_guesses": 5,
+      "prior": 0.00016276697071486746,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "fíat",
+        "pían"
+      ]
+    },
+    {
+      "word": "rezá",
+      "num_guesses": 7,
+      "prior": 0.00010673688678256847,
+      "guesses": [
+        "sora",
+        "crie",
+        "peír",
+        "taló",
+        "mayá",
+        "diez",
+        "rezá"
+      ]
+    },
+    {
+      "word": "asna",
+      "num_guesses": 5,
+      "prior": 0.0001815958803057124,
+      "guesses": [
+        "sora",
+        "time",
+        "paca",
+        "gran",
+        "asna"
+      ]
+    },
+    {
+      "word": "bufo",
+      "num_guesses": 6,
+      "prior": 0.00023740253767195126,
+      "guesses": [
+        "sora",
+        "lite",
+        "chup",
+        "djim",
+        "fugo",
+        "bufo"
+      ]
+    },
+    {
+      "word": "ceñe",
+      "num_guesses": 5,
+      "prior": 0.00007318224773782889,
+      "guesses": [
+        "sora",
+        "cine",
+        "ludí",
+        "ñoba",
+        "ceñe"
+      ]
+    },
+    {
+      "word": "lepa",
+      "num_guesses": 7,
+      "prior": 0.00014038318031322396,
+      "guesses": [
+        "sora",
+        "celu",
+        "muñí",
+        "vino",
+        "jugo",
+        "lefa",
+        "lepa"
+      ]
+    },
+    {
+      "word": "yeya",
+      "num_guesses": 8,
+      "prior": 0.00011846411285026151,
+      "guesses": [
+        "sora",
+        "celu",
+        "temí",
+        "dong",
+        "jipi",
+        "hubo",
+        "veza",
+        "yeya"
+      ]
+    },
+    {
+      "word": "rúas",
+      "num_guesses": 4,
+      "prior": 0.00017034117703062347,
+      "guesses": [
+        "sora",
+        "reas",
+        "iría",
+        "rúas"
+      ]
+    },
+    {
+      "word": "capá",
+      "num_guesses": 4,
+      "prior": 0.0001472224442448131,
+      "guesses": [
+        "sora",
+        "cale",
+        "pitó",
+        "capá"
+      ]
+    },
+    {
+      "word": "plié",
+      "num_guesses": 5,
+      "prior": 0.00012199365626782197,
+      "guesses": [
+        "sora",
+        "cine",
+        "quid",
+        "útil",
+        "plié"
+      ]
+    },
+    {
+      "word": "kaci",
+      "num_guesses": 7,
+      "prior": 0.00008288710934085219,
+      "guesses": [
+        "sora",
+        "cale",
+        "humé",
+        "aptó",
+        "nací",
+        "vacá",
+        "kaci"
+      ]
+    },
+    {
+      "word": "rimá",
+      "num_guesses": 5,
+      "prior": 0.00008303795130238096,
+      "guesses": [
+        "sora",
+        "crie",
+        "fumó",
+        "rimé",
+        "rimá"
+      ]
+    },
+    {
+      "word": "tuba",
+      "num_guesses": 6,
+      "prior": 0.00020664838628337915,
+      "guesses": [
+        "sora",
+        "celu",
+        "mugí",
+        "tony",
+        "http",
+        "tuba"
+      ]
+    },
+    {
+      "word": "coso",
+      "num_guesses": 4,
+      "prior": 0.0002725804001706232,
+      "guesses": [
+        "sora",
+        "teso",
+        "cifp",
+        "coso"
+      ]
+    },
+    {
+      "word": "mían",
+      "num_guesses": 6,
+      "prior": 0.0001403095076511091,
+      "guesses": [
+        "sora",
+        "cale",
+        "unid",
+        "fíat",
+        "pían",
+        "mían"
+      ]
+    },
+    {
+      "word": "edil",
+      "num_guesses": 4,
+      "prior": 0.00024824171725834924,
+      "guesses": [
+        "sora",
+        "cine",
+        "peli",
+        "edil"
+      ]
+    },
+    {
+      "word": "taha",
+      "num_guesses": 7,
+      "prior": 0.00018223045285235175,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "paty",
+        "juez",
+        "kohl",
+        "taha"
+      ]
+    },
+    {
+      "word": "orlo",
+      "num_guesses": 5,
+      "prior": 0.0001339342454928201,
+      "guesses": [
+        "sora",
+        "creo",
+        "fito",
+        "ungí",
+        "orlo"
+      ]
+    },
+    {
+      "word": "habe",
+      "num_guesses": 6,
+      "prior": 0.0002045499525925771,
+      "guesses": [
+        "sora",
+        "cale",
+        "tony",
+        "djim",
+        "pibe",
+        "habe"
+      ]
+    },
+    {
+      "word": "yoda",
+      "num_guesses": 5,
+      "prior": 0.00013831782151459528,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "cfdi",
+        "pyme",
+        "yoda"
+      ]
+    },
+    {
+      "word": "jima",
+      "num_guesses": 6,
+      "prior": 0.0001617306795214292,
+      "guesses": [
+        "sora",
+        "celu",
+        "bang",
+        "djim",
+        "mija",
+        "jima"
+      ]
+    },
+    {
+      "word": "alzo",
+      "num_guesses": 5,
+      "prior": 0.0002261465710899403,
+      "guesses": [
+        "sora",
+        "lgtb",
+        "ampo",
+        "fíen",
+        "alzo"
+      ]
+    },
+    {
+      "word": "moho",
+      "num_guesses": 7,
+      "prior": 0.00026889118241012823,
+      "guesses": [
+        "sora",
+        "teco",
+        "mbps",
+        "yund",
+        "zuño",
+        "hijo",
+        "moho"
+      ]
+    },
+    {
+      "word": "aire",
+      "num_guesses": 3,
+      "prior": 0.0006759282387451592,
+      "guesses": [
+        "sora",
+        "pibe",
+        "aire"
+      ]
+    },
+    {
+      "word": "soro",
+      "num_guesses": 2,
+      "prior": 0.0002145586196771027,
+      "guesses": [
+        "sora",
+        "soro"
+      ]
+    },
+    {
+      "word": "rogó",
+      "num_guesses": 4,
+      "prior": 0.0003240255038997611,
+      "guesses": [
+        "sora",
+        "telo",
+        "bagó",
+        "rogó"
+      ]
+    },
+    {
+      "word": "baló",
+      "num_guesses": 5,
+      "prior": 0.00012499589321283776,
+      "guesses": [
+        "sora",
+        "cale",
+        "jimé",
+        "batá",
+        "baló"
+      ]
+    },
+    {
+      "word": "cune",
+      "num_guesses": 4,
+      "prior": 0.00015218835089735104,
+      "guesses": [
+        "sora",
+        "cine",
+        "cene",
+        "cune"
+      ]
+    },
+    {
+      "word": "seis",
+      "num_guesses": 3,
+      "prior": 0.0007238198564052466,
+      "guesses": [
+        "sora",
+        "pide",
+        "seis"
+      ]
+    }
+  ]
+}

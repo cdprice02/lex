@@ -1,0 +1,6121 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:38:31.359531Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sea",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 3,
+    "dictionary_length": 911,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "eb75fc9b497b375255131161a867ea3baf3856a59cea9c9254e5ccb252219c69",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 5.10999999999997,
+      "failure_rate": 0.12000000000000009,
+      "histogram": {
+        "2": 0.012,
+        "3": 0.07200000000000005,
+        "4": 0.2440000000000002,
+        "5": 0.3060000000000002,
+        "6": 0.2460000000000002,
+        "7": 0.08200000000000006,
+        "8": 0.030000000000000013,
+        "9": 0.006,
+        "10": 0.002
+      }
+    },
+    "prior": {
+      "mean": 4.773360214254793,
+      "failure_rate": 0.07791512892268929,
+      "histogram": {
+        "2": 0.02068530512701818,
+        "3": 0.1212238535455291,
+        "4": 0.29431966069796833,
+        "5": 0.2934270081078808,
+        "6": 0.192429043598915,
+        "7": 0.05755186716808344,
+        "8": 0.017355026651441348,
+        "9": 0.002455535980359305,
+        "10": 0.0005526991228051634
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "bum",
+      "num_guesses": 5,
+      "prior": 0.0007457454222137422,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "cab",
+        "bum"
+      ]
+    },
+    {
+      "word": "ruc",
+      "num_guesses": 4,
+      "prior": 0.0006937497223203203,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "ruc"
+      ]
+    },
+    {
+      "word": "hei",
+      "num_guesses": 5,
+      "prior": 0.0006699076019487896,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "hei"
+      ]
+    },
+    {
+      "word": "fir",
+      "num_guesses": 4,
+      "prior": 0.0009361369004706851,
+      "guesses": [
+        "sea",
+        "rio",
+        "muy",
+        "fir"
+      ]
+    },
+    {
+      "word": "zoo",
+      "num_guesses": 6,
+      "prior": 0.000889563835454533,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "too",
+        "loo",
+        "zoo"
+      ]
+    },
+    {
+      "word": "tep",
+      "num_guesses": 4,
+      "prior": 0.0007032428748624608,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "tep"
+      ]
+    },
+    {
+      "word": "mem",
+      "num_guesses": 6,
+      "prior": 0.0008283239277980133,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "ése",
+        "mem"
+      ]
+    },
+    {
+      "word": "pie",
+      "num_guesses": 5,
+      "prior": 0.002349658402389719,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "pie"
+      ]
+    },
+    {
+      "word": "oea",
+      "num_guesses": 4,
+      "prior": 0.0013664612852502102,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "oea"
+      ]
+    },
+    {
+      "word": "tqm",
+      "num_guesses": 5,
+      "prior": 0.0004903028299325493,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tfm",
+        "tqm"
+      ]
+    },
+    {
+      "word": "led",
+      "num_guesses": 3,
+      "prior": 0.0008123046977384251,
+      "guesses": [
+        "sea",
+        "ldr",
+        "led"
+      ]
+    },
+    {
+      "word": "pvc",
+      "num_guesses": 6,
+      "prior": 0.0008363433884670408,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "tal",
+        "pvc"
+      ]
+    },
+    {
+      "word": "bla",
+      "num_guesses": 5,
+      "prior": 0.0009752638621998408,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ala",
+        "bla"
+      ]
+    },
+    {
+      "word": "ssl",
+      "num_guesses": 6,
+      "prior": 0.0005523201574774567,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "lid",
+        "sql",
+        "ssl"
+      ]
+    },
+    {
+      "word": "aró",
+      "num_guesses": 6,
+      "prior": 0.0005564647016566554,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "aré",
+        "aró"
+      ]
+    },
+    {
+      "word": "bjt",
+      "num_guesses": 5,
+      "prior": 0.00040615023792318303,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "bjt"
+      ]
+    },
+    {
+      "word": "ona",
+      "num_guesses": 5,
+      "prior": 0.0008961438460575871,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ntc",
+        "ona"
+      ]
+    },
+    {
+      "word": "gnu",
+      "num_guesses": 5,
+      "prior": 0.0005793727406629448,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní",
+        "gnu"
+      ]
+    },
+    {
+      "word": "abá",
+      "num_guesses": 7,
+      "prior": 0.0004534967560183147,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "gpl",
+        "ajá",
+        "abá"
+      ]
+    },
+    {
+      "word": "hai",
+      "num_guesses": 6,
+      "prior": 0.001466803366137967,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "hay",
+        "hai"
+      ]
+    },
+    {
+      "word": "api",
+      "num_guesses": 6,
+      "prior": 0.000892243820473029,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "afi",
+        "api"
+      ]
+    },
+    {
+      "word": "cht",
+      "num_guesses": 6,
+      "prior": 0.0004864579830815695,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "tnt",
+        "cht"
+      ]
+    },
+    {
+      "word": "liá",
+      "num_guesses": 7,
+      "prior": 0.0004300249871057829,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "tad",
+        "lió",
+        "lié",
+        "liá"
+      ]
+    },
+    {
+      "word": "ñus",
+      "num_guesses": 6,
+      "prior": 0.000614774482992727,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "boy",
+        "ñus"
+      ]
+    },
+    {
+      "word": "han",
+      "num_guesses": 4,
+      "prior": 0.003552217184518825,
+      "guesses": [
+        "sea",
+        "tan",
+        "hdp",
+        "han"
+      ]
+    },
+    {
+      "word": "chu",
+      "num_guesses": 5,
+      "prior": 0.0008606069410180109,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní",
+        "chu"
+      ]
+    },
+    {
+      "word": "huy",
+      "num_guesses": 6,
+      "prior": 0.0007827730774499258,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "huy"
+      ]
+    },
+    {
+      "word": "cao",
+      "num_guesses": 6,
+      "prior": 0.0010448895205824118,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "cao"
+      ]
+    },
+    {
+      "word": "rio",
+      "num_guesses": 2,
+      "prior": 0.0020800875435574343,
+      "guesses": [
+        "sea",
+        "rio"
+      ]
+    },
+    {
+      "word": "aio",
+      "num_guesses": 5,
+      "prior": 0.0006257149175848033,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "dij",
+        "aio"
+      ]
+    },
+    {
+      "word": "moa",
+      "num_guesses": 5,
+      "prior": 0.0008068338679826461,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ctm",
+        "moa"
+      ]
+    },
+    {
+      "word": "que",
+      "num_guesses": 4,
+      "prior": 0.007082351336714607,
+      "guesses": [
+        "sea",
+        "ruo",
+        "qof",
+        "que"
+      ]
+    },
+    {
+      "word": "ido",
+      "num_guesses": 3,
+      "prior": 0.0020457374395220075,
+      "guesses": [
+        "sea",
+        "rio",
+        "ido"
+      ]
+    },
+    {
+      "word": "ene",
+      "num_guesses": 7,
+      "prior": 0.0013286661903123592,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "jam",
+        "fin",
+        "ene"
+      ]
+    },
+    {
+      "word": "upé",
+      "num_guesses": 7,
+      "prior": 0.00028676502769606714,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "upd",
+        "upó",
+        "upé"
+      ]
+    },
+    {
+      "word": "som",
+      "num_guesses": 4,
+      "prior": 0.0009455907436702539,
+      "guesses": [
+        "sea",
+        "nos",
+        "mil",
+        "som"
+      ]
+    },
+    {
+      "word": "teu",
+      "num_guesses": 5,
+      "prior": 0.0007374909418683783,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "uve",
+        "teu"
+      ]
+    },
+    {
+      "word": "año",
+      "num_guesses": 5,
+      "prior": 0.0033455669357421707,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "dij",
+        "año"
+      ]
+    },
+    {
+      "word": "leu",
+      "num_guesses": 5,
+      "prior": 0.0008108322772121957,
+      "guesses": [
+        "sea",
+        "ldr",
+        "oye",
+        "uvi",
+        "leu"
+      ]
+    },
+    {
+      "word": "ssd",
+      "num_guesses": 5,
+      "prior": 0.0004674523167449261,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "lid",
+        "ssd"
+      ]
+    },
+    {
+      "word": "fat",
+      "num_guesses": 4,
+      "prior": 0.0008016271319406912,
+      "guesses": [
+        "sea",
+        "tan",
+        "pat",
+        "fat"
+      ]
+    },
+    {
+      "word": "suv",
+      "num_guesses": 5,
+      "prior": 0.0005365409424487014,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "sud",
+        "suv"
+      ]
+    },
+    {
+      "word": "atá",
+      "num_guesses": 6,
+      "prior": 0.0005097941439207243,
+      "guesses": [
+        "sea",
+        "tan",
+        "otó",
+        "rkt",
+        "até",
+        "atá"
+      ]
+    },
+    {
+      "word": "omt",
+      "num_guesses": 5,
+      "prior": 0.0006230847540147213,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "otó",
+        "omt"
+      ]
+    },
+    {
+      "word": "cía",
+      "num_guesses": 5,
+      "prior": 0.0015245122174011624,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ctm",
+        "cía"
+      ]
+    },
+    {
+      "word": "fío",
+      "num_guesses": 6,
+      "prior": 0.0008531435294187433,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "ptm",
+        "bol",
+        "fío"
+      ]
+    },
+    {
+      "word": "upe",
+      "num_guesses": 4,
+      "prior": 0.0005926715883252693,
+      "guesses": [
+        "sea",
+        "ruo",
+        "upn",
+        "upe"
+      ]
+    },
+    {
+      "word": "eñe",
+      "num_guesses": 8,
+      "prior": 0.0006338126800817115,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "jam",
+        "fin",
+        "exe",
+        "eñe"
+      ]
+    },
+    {
+      "word": "ojo",
+      "num_guesses": 5,
+      "prior": 0.0018405534359926938,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "too",
+        "ojo"
+      ]
+    },
+    {
+      "word": "úes",
+      "num_guesses": 9,
+      "prior": 0.0004311745170299776,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "fiv",
+        "epo",
+        "gay",
+        "bío",
+        "zúa",
+        "úes"
+      ]
+    },
+    {
+      "word": "cus",
+      "num_guesses": 5,
+      "prior": 0.0008221531928739002,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "cus"
+      ]
+    },
+    {
+      "word": "mru",
+      "num_guesses": 4,
+      "prior": 0.0003655800697969222,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "mru"
+      ]
+    },
+    {
+      "word": "sbk",
+      "num_guesses": 6,
+      "prior": 0.0002676689119148243,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "lid",
+        "shh",
+        "sbk"
+      ]
+    },
+    {
+      "word": "pwn",
+      "num_guesses": 5,
+      "prior": 0.0003458651759455445,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "pwn"
+      ]
+    },
+    {
+      "word": "bye",
+      "num_guesses": 6,
+      "prior": 0.0006757244393541754,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "míe",
+        "bye"
+      ]
+    },
+    {
+      "word": "tun",
+      "num_guesses": 6,
+      "prior": 0.0008557163499787499,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "cut",
+        "tun"
+      ]
+    },
+    {
+      "word": "url",
+      "num_guesses": 4,
+      "prior": 0.0008081503412715348,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "url"
+      ]
+    },
+    {
+      "word": "raí",
+      "num_guesses": 6,
+      "prior": 0.0007058982592451821,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pum",
+        "fué",
+        "raí"
+      ]
+    },
+    {
+      "word": "yal",
+      "num_guesses": 7,
+      "prior": 0.0007239475401277168,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pvc",
+        "jam",
+        "gif",
+        "yal"
+      ]
+    },
+    {
+      "word": "cof",
+      "num_guesses": 6,
+      "prior": 0.0007145699186577828,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "luz",
+        "yak",
+        "cof"
+      ]
+    },
+    {
+      "word": "loo",
+      "num_guesses": 5,
+      "prior": 0.0009499520326870194,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "too",
+        "loo"
+      ]
+    },
+    {
+      "word": "ice",
+      "num_guesses": 4,
+      "prior": 0.0010564697963984582,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "ice"
+      ]
+    },
+    {
+      "word": "pnb",
+      "num_guesses": 5,
+      "prior": 0.0009498030101477244,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "pnb"
+      ]
+    },
+    {
+      "word": "lui",
+      "num_guesses": 5,
+      "prior": 0.0010134816274899293,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "fal",
+        "lui"
+      ]
+    },
+    {
+      "word": "png",
+      "num_guesses": 5,
+      "prior": 0.0005418042874784365,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "png"
+      ]
+    },
+    {
+      "word": "zum",
+      "num_guesses": 5,
+      "prior": 0.0009537953078769878,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "cab",
+        "zum"
+      ]
+    },
+    {
+      "word": "lao",
+      "num_guesses": 5,
+      "prior": 0.0009566214503085937,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "goy",
+        "lao"
+      ]
+    },
+    {
+      "word": "dad",
+      "num_guesses": 4,
+      "prior": 0.0016595234838337088,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "dad"
+      ]
+    },
+    {
+      "word": "pbc",
+      "num_guesses": 5,
+      "prior": 0.0005773934911433899,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "pbc"
+      ]
+    },
+    {
+      "word": "ciá",
+      "num_guesses": 8,
+      "prior": 0.00039762620636084485,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "sud",
+        "ció",
+        "cié",
+        "ciá"
+      ]
+    },
+    {
+      "word": "col",
+      "num_guesses": 5,
+      "prior": 0.0015569514435653732,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "luz",
+        "col"
+      ]
+    },
+    {
+      "word": "tio",
+      "num_guesses": 5,
+      "prior": 0.0013042942726791,
+      "guesses": [
+        "sea",
+        "rio",
+        "lcd",
+        "ptm",
+        "tio"
+      ]
+    },
+    {
+      "word": "ave",
+      "num_guesses": 4,
+      "prior": 0.0015723000066685542,
+      "guesses": [
+        "sea",
+        "car",
+        "dvd",
+        "ave"
+      ]
+    },
+    {
+      "word": "aes",
+      "num_guesses": 2,
+      "prior": 0.0007935145253808164,
+      "guesses": [
+        "sea",
+        "aes"
+      ]
+    },
+    {
+      "word": "epa",
+      "num_guesses": 4,
+      "prior": 0.0009135024987076201,
+      "guesses": [
+        "sea",
+        "vfr",
+        "tul",
+        "epa"
+      ]
+    },
+    {
+      "word": "evo",
+      "num_guesses": 5,
+      "prior": 0.0009109943333467145,
+      "guesses": [
+        "sea",
+        "ruo",
+        "lcd",
+        "rpg",
+        "evo"
+      ]
+    },
+    {
+      "word": "upn",
+      "num_guesses": 5,
+      "prior": 0.0006838032936333121,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "upn"
+      ]
+    },
+    {
+      "word": "veo",
+      "num_guesses": 6,
+      "prior": 0.0019182027341580403,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "pvc",
+        "veo"
+      ]
+    },
+    {
+      "word": "gpl",
+      "num_guesses": 5,
+      "prior": 0.0004676638598226338,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tcp",
+        "gpl"
+      ]
+    },
+    {
+      "word": "cra",
+      "num_guesses": 4,
+      "prior": 0.0009122054123095206,
+      "guesses": [
+        "sea",
+        "uir",
+        "aro",
+        "cra"
+      ]
+    },
+    {
+      "word": "cut",
+      "num_guesses": 5,
+      "prior": 0.0009511520892108895,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "cut"
+      ]
+    },
+    {
+      "word": "ite",
+      "num_guesses": 4,
+      "prior": 0.0008668798268069418,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "ite"
+      ]
+    },
+    {
+      "word": "toá",
+      "num_guesses": 7,
+      "prior": 0.00044044625769502877,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pié",
+        "oyó",
+        "toá"
+      ]
+    },
+    {
+      "word": "fía",
+      "num_guesses": 7,
+      "prior": 0.000960294856902752,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ctm",
+        "vid",
+        "pía",
+        "fía"
+      ]
+    },
+    {
+      "word": "pad",
+      "num_guesses": 5,
+      "prior": 0.0007691098246179187,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "dad",
+        "pad"
+      ]
+    },
+    {
+      "word": "uro",
+      "num_guesses": 6,
+      "prior": 0.0008232305843287307,
+      "guesses": [
+        "sea",
+        "rio",
+        "ong",
+        "pro",
+        "bro",
+        "uro"
+      ]
+    },
+    {
+      "word": "ama",
+      "num_guesses": 7,
+      "prior": 0.00173675815016648,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "ajd",
+        "muy",
+        "ama"
+      ]
+    },
+    {
+      "word": "cab",
+      "num_guesses": 6,
+      "prior": 0.0010497342103331858,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "cab"
+      ]
+    },
+    {
+      "word": "ese",
+      "num_guesses": 3,
+      "prior": 0.003289281373768092,
+      "guesses": [
+        "sea",
+        "eso",
+        "ese"
+      ]
+    },
+    {
+      "word": "luz",
+      "num_guesses": 5,
+      "prior": 0.0026128555121424212,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "luz"
+      ]
+    },
+    {
+      "word": "wea",
+      "num_guesses": 6,
+      "prior": 0.0004998181958801094,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "dip",
+        "tea",
+        "wea"
+      ]
+    },
+    {
+      "word": "ahó",
+      "num_guesses": 6,
+      "prior": 0.0003570060425012873,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ahó"
+      ]
+    },
+    {
+      "word": "paz",
+      "num_guesses": 6,
+      "prior": 0.0026265084084668216,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "puf",
+        "paz"
+      ]
+    },
+    {
+      "word": "bol",
+      "num_guesses": 5,
+      "prior": 0.0011045847563779167,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "bol"
+      ]
+    },
+    {
+      "word": "ura",
+      "num_guesses": 3,
+      "prior": 0.0008981668479863283,
+      "guesses": [
+        "sea",
+        "uir",
+        "ura"
+      ]
+    },
+    {
+      "word": "ask",
+      "num_guesses": 4,
+      "prior": 0.0007212915100373518,
+      "guesses": [
+        "sea",
+        "las",
+        "koi",
+        "ask"
+      ]
+    },
+    {
+      "word": "nun",
+      "num_guesses": 8,
+      "prior": 0.0010000502324292778,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "huy",
+        "dux",
+        "nun"
+      ]
+    },
+    {
+      "word": "tad",
+      "num_guesses": 4,
+      "prior": 0.001118708806560013,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "tad"
+      ]
+    },
+    {
+      "word": "éso",
+      "num_guesses": 4,
+      "prior": 0.0008183791742637914,
+      "guesses": [
+        "sea",
+        "mio",
+        "ucé",
+        "éso"
+      ]
+    },
+    {
+      "word": "roa",
+      "num_guesses": 4,
+      "prior": 0.0012028831823251737,
+      "guesses": [
+        "sea",
+        "uir",
+        "aro",
+        "roa"
+      ]
+    },
+    {
+      "word": "car",
+      "num_guesses": 5,
+      "prior": 0.0014298432801535625,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pbc",
+        "car"
+      ]
+    },
+    {
+      "word": "mmm",
+      "num_guesses": 5,
+      "prior": 0.0008998047556066471,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tfm",
+        "mmm"
+      ]
+    },
+    {
+      "word": "upá",
+      "num_guesses": 8,
+      "prior": 0.00025196612127623824,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "upd",
+        "upó",
+        "upé",
+        "upá"
+      ]
+    },
+    {
+      "word": "sam",
+      "num_guesses": 4,
+      "prior": 0.0012960659536253435,
+      "guesses": [
+        "sea",
+        "nal",
+        "has",
+        "sam"
+      ]
+    },
+    {
+      "word": "foe",
+      "num_guesses": 5,
+      "prior": 0.000642679050338171,
+      "guesses": [
+        "sea",
+        "ruo",
+        "tol",
+        "boe",
+        "foe"
+      ]
+    },
+    {
+      "word": "cta",
+      "num_guesses": 5,
+      "prior": 0.0009660180345051171,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "cta"
+      ]
+    },
+    {
+      "word": "aló",
+      "num_guesses": 7,
+      "prior": 0.0007172152244416703,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ajó",
+        "aló"
+      ]
+    },
+    {
+      "word": "lap",
+      "num_guesses": 5,
+      "prior": 0.0007285658836028939,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "goy",
+        "lap"
+      ]
+    },
+    {
+      "word": "uso",
+      "num_guesses": 4,
+      "prior": 0.0026617821775979074,
+      "guesses": [
+        "sea",
+        "mio",
+        "ucé",
+        "uso"
+      ]
+    },
+    {
+      "word": "tol",
+      "num_guesses": 5,
+      "prior": 0.0008904471082736323,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "tol"
+      ]
+    },
+    {
+      "word": "uñó",
+      "num_guesses": 6,
+      "prior": 0.0004260273712414454,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní",
+        "tic",
+        "uñó"
+      ]
+    },
+    {
+      "word": "fes",
+      "num_guesses": 5,
+      "prior": 0.000994590658275202,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "fiv",
+        "fes"
+      ]
+    },
+    {
+      "word": "cpu",
+      "num_guesses": 5,
+      "prior": 0.0007648068421987127,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "cpu"
+      ]
+    },
+    {
+      "word": "xml",
+      "num_guesses": 4,
+      "prior": 0.0006975951857570373,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "xml"
+      ]
+    },
+    {
+      "word": "kaf",
+      "num_guesses": 7,
+      "prior": 0.00045449194023141953,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "kaf"
+      ]
+    },
+    {
+      "word": "afi",
+      "num_guesses": 5,
+      "prior": 0.001214359008003955,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "afi"
+      ]
+    },
+    {
+      "word": "día",
+      "num_guesses": 6,
+      "prior": 0.003184826916415695,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ctm",
+        "vid",
+        "día"
+      ]
+    },
+    {
+      "word": "raé",
+      "num_guesses": 6,
+      "prior": 0.00028969452660511006,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pum",
+        "fué",
+        "raé"
+      ]
+    },
+    {
+      "word": "bel",
+      "num_guesses": 4,
+      "prior": 0.0010786540400774364,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ntc",
+        "bel"
+      ]
+    },
+    {
+      "word": "upó",
+      "num_guesses": 6,
+      "prior": 0.00031350233420981,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "upd",
+        "upó"
+      ]
+    },
+    {
+      "word": "aje",
+      "num_guesses": 5,
+      "prior": 0.0007570854198009043,
+      "guesses": [
+        "sea",
+        "car",
+        "dvd",
+        "ctm",
+        "aje"
+      ]
+    },
+    {
+      "word": "rer",
+      "num_guesses": 4,
+      "prior": 0.0008844821386631114,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ver",
+        "rer"
+      ]
+    },
+    {
+      "word": "ata",
+      "num_guesses": 5,
+      "prior": 0.0011995672578343237,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "ata"
+      ]
+    },
+    {
+      "word": "até",
+      "num_guesses": 5,
+      "prior": 0.0007674505449990239,
+      "guesses": [
+        "sea",
+        "tan",
+        "otó",
+        "rkt",
+        "até"
+      ]
+    },
+    {
+      "word": "cíe",
+      "num_guesses": 5,
+      "prior": 0.0009481825728719624,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "día",
+        "cíe"
+      ]
+    },
+    {
+      "word": "ova",
+      "num_guesses": 6,
+      "prior": 0.0006802867102786229,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ntc",
+        "vid",
+        "ova"
+      ]
+    },
+    {
+      "word": "miá",
+      "num_guesses": 7,
+      "prior": 0.0004686587354806775,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "izó",
+        "axé",
+        "miá"
+      ]
+    },
+    {
+      "word": "rin",
+      "num_guesses": 4,
+      "prior": 0.0010361483598503628,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnb",
+        "rin"
+      ]
+    },
+    {
+      "word": "nao",
+      "num_guesses": 4,
+      "prior": 0.0012647131815097699,
+      "guesses": [
+        "sea",
+        "tan",
+        "nal",
+        "nao"
+      ]
+    },
+    {
+      "word": "bie",
+      "num_guesses": 6,
+      "prior": 0.0009163017527275896,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "fbi",
+        "bie"
+      ]
+    },
+    {
+      "word": "mea",
+      "num_guesses": 4,
+      "prior": 0.0011473211893219658,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "mea"
+      ]
+    },
+    {
+      "word": "set",
+      "num_guesses": 3,
+      "prior": 0.001208858751932495,
+      "guesses": [
+        "sea",
+        "trd",
+        "set"
+      ]
+    },
+    {
+      "word": "sus",
+      "num_guesses": 3,
+      "prior": 0.00453087284988424,
+      "guesses": [
+        "sea",
+        "nos",
+        "sus"
+      ]
+    },
+    {
+      "word": "reo",
+      "num_guesses": 5,
+      "prior": 0.0015815797581570914,
+      "guesses": [
+        "sea",
+        "ldr",
+        "muy",
+        "río",
+        "reo"
+      ]
+    },
+    {
+      "word": "dou",
+      "num_guesses": 6,
+      "prior": 0.000812051228714025,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "dou"
+      ]
+    },
+    {
+      "word": "lev",
+      "num_guesses": 5,
+      "prior": 0.0011014186392741701,
+      "guesses": [
+        "sea",
+        "ldr",
+        "oye",
+        "uvi",
+        "lev"
+      ]
+    },
+    {
+      "word": "uzi",
+      "num_guesses": 5,
+      "prior": 0.0005419428672733974,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "vez",
+        "uzi"
+      ]
+    },
+    {
+      "word": "vez",
+      "num_guesses": 5,
+      "prior": 0.0034299403063679543,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "vez"
+      ]
+    },
+    {
+      "word": "lux",
+      "num_guesses": 7,
+      "prior": 0.0009476612297396377,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "luz",
+        "uní",
+        "lux"
+      ]
+    },
+    {
+      "word": "jua",
+      "num_guesses": 6,
+      "prior": 0.0007675141199696256,
+      "guesses": [
+        "sea",
+        "uir",
+        "ecg",
+        "puf",
+        "jam",
+        "jua"
+      ]
+    },
+    {
+      "word": "yes",
+      "num_guesses": 7,
+      "prior": 0.0010590847508893603,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "fiv",
+        "epo",
+        "gay",
+        "yes"
+      ]
+    },
+    {
+      "word": "pga",
+      "num_guesses": 6,
+      "prior": 0.0005286959358264782,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "dúo",
+        "pga"
+      ]
+    },
+    {
+      "word": "goy",
+      "num_guesses": 8,
+      "prior": 0.0006600717825511153,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "voy",
+        "doy",
+        "goy"
+      ]
+    },
+    {
+      "word": "cho",
+      "num_guesses": 5,
+      "prior": 0.0013837440919316302,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "hoy",
+        "cho"
+      ]
+    },
+    {
+      "word": "eco",
+      "num_guesses": 4,
+      "prior": 0.0017257991528111442,
+      "guesses": [
+        "sea",
+        "ruo",
+        "lcd",
+        "eco"
+      ]
+    },
+    {
+      "word": "cío",
+      "num_guesses": 4,
+      "prior": 0.0007403762972231651,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "cío"
+      ]
+    },
+    {
+      "word": "uva",
+      "num_guesses": 4,
+      "prior": 0.0012684191939498798,
+      "guesses": [
+        "sea",
+        "uir",
+        "pnv",
+        "uva"
+      ]
+    },
+    {
+      "word": "gro",
+      "num_guesses": 4,
+      "prior": 0.0010215039447701148,
+      "guesses": [
+        "sea",
+        "rio",
+        "ong",
+        "gro"
+      ]
+    },
+    {
+      "word": "mar",
+      "num_guesses": 5,
+      "prior": 0.0025791830730055756,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pbc",
+        "mar"
+      ]
+    },
+    {
+      "word": "oni",
+      "num_guesses": 4,
+      "prior": 0.0006401541907813144,
+      "guesses": [
+        "sea",
+        "rio",
+        "noh",
+        "oni"
+      ]
+    },
+    {
+      "word": "mrp",
+      "num_guesses": 5,
+      "prior": 0.000628354656978153,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "try",
+        "mrp"
+      ]
+    },
+    {
+      "word": "yus",
+      "num_guesses": 6,
+      "prior": 0.0005623855726993026,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "boy",
+        "yus"
+      ]
+    },
+    {
+      "word": "ría",
+      "num_guesses": 4,
+      "prior": 0.0013276965968598848,
+      "guesses": [
+        "sea",
+        "uir",
+        "aro",
+        "ría"
+      ]
+    },
+    {
+      "word": "uní",
+      "num_guesses": 4,
+      "prior": 0.0008887595454858397,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní"
+      ]
+    },
+    {
+      "word": "cié",
+      "num_guesses": 7,
+      "prior": 0.0008182951502866792,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "sud",
+        "ció",
+        "cié"
+      ]
+    },
+    {
+      "word": "rua",
+      "num_guesses": 3,
+      "prior": 0.000918316295444663,
+      "guesses": [
+        "sea",
+        "uir",
+        "rua"
+      ]
+    },
+    {
+      "word": "rel",
+      "num_guesses": 3,
+      "prior": 0.0009141890838663245,
+      "guesses": [
+        "sea",
+        "ldr",
+        "rel"
+      ]
+    },
+    {
+      "word": "des",
+      "num_guesses": 3,
+      "prior": 0.002078802806558638,
+      "guesses": [
+        "sea",
+        "ldr",
+        "des"
+      ]
+    },
+    {
+      "word": "kit",
+      "num_guesses": 6,
+      "prior": 0.0008765890776617157,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "bah",
+        "kit"
+      ]
+    },
+    {
+      "word": "pia",
+      "num_guesses": 5,
+      "prior": 0.0010969580079686321,
+      "guesses": [
+        "sea",
+        "uir",
+        "ctm",
+        "pal",
+        "pia"
+      ]
+    },
+    {
+      "word": "nra",
+      "num_guesses": 5,
+      "prior": 0.0009027230047084617,
+      "guesses": [
+        "sea",
+        "uir",
+        "aro",
+        "cra",
+        "nra"
+      ]
+    },
+    {
+      "word": "usó",
+      "num_guesses": 4,
+      "prior": 0.001343828559177606,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "usó"
+      ]
+    },
+    {
+      "word": "sal",
+      "num_guesses": 3,
+      "prior": 0.0018675694906095282,
+      "guesses": [
+        "sea",
+        "nal",
+        "sal"
+      ]
+    },
+    {
+      "word": "puf",
+      "num_guesses": 6,
+      "prior": 0.0008166817684242104,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "ban",
+        "fal",
+        "puf"
+      ]
+    },
+    {
+      "word": "ése",
+      "num_guesses": 3,
+      "prior": 0.001468414793823898,
+      "guesses": [
+        "sea",
+        "eso",
+        "ése"
+      ]
+    },
+    {
+      "word": "upa",
+      "num_guesses": 4,
+      "prior": 0.0007930805695082285,
+      "guesses": [
+        "sea",
+        "uir",
+        "pnv",
+        "upa"
+      ]
+    },
+    {
+      "word": "pos",
+      "num_guesses": 5,
+      "prior": 0.0015196951201398832,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "pos"
+      ]
+    },
+    {
+      "word": "ala",
+      "num_guesses": 4,
+      "prior": 0.0016866190590519759,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ala"
+      ]
+    },
+    {
+      "word": "kif",
+      "num_guesses": 7,
+      "prior": 0.000568639632172254,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "gif",
+        "kif"
+      ]
+    },
+    {
+      "word": "lgb",
+      "num_guesses": 5,
+      "prior": 0.0004102870411607195,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "lgb"
+      ]
+    },
+    {
+      "word": "cid",
+      "num_guesses": 6,
+      "prior": 0.0015014750322730397,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "sud",
+        "cid"
+      ]
+    },
+    {
+      "word": "meó",
+      "num_guesses": 7,
+      "prior": 0.0004895690791590592,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "ése",
+        "mem",
+        "meó"
+      ]
+    },
+    {
+      "word": "mor",
+      "num_guesses": 5,
+      "prior": 0.001260971938284922,
+      "guesses": [
+        "sea",
+        "rio",
+        "por",
+        "omc",
+        "mor"
+      ]
+    },
+    {
+      "word": "het",
+      "num_guesses": 6,
+      "prior": 0.000758187217776866,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "boj",
+        "taf",
+        "het"
+      ]
+    },
+    {
+      "word": "ció",
+      "num_guesses": 6,
+      "prior": 0.0010107463514439166,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "sud",
+        "ció"
+      ]
+    },
+    {
+      "word": "rsc",
+      "num_guesses": 4,
+      "prior": 0.0006743567530548315,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "rsc"
+      ]
+    },
+    {
+      "word": "púe",
+      "num_guesses": 6,
+      "prior": 0.0003473930771955909,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "píe",
+        "púe"
+      ]
+    },
+    {
+      "word": "bou",
+      "num_guesses": 6,
+      "prior": 0.0008842071509162858,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pub",
+        "bou"
+      ]
+    },
+    {
+      "word": "icé",
+      "num_guesses": 6,
+      "prior": 0.00040292450860754603,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "ión",
+        "paz",
+        "icé"
+      ]
+    },
+    {
+      "word": "jab",
+      "num_guesses": 6,
+      "prior": 0.0005306343566706923,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "jab"
+      ]
+    },
+    {
+      "word": "más",
+      "num_guesses": 3,
+      "prior": 0.0045660795797136345,
+      "guesses": [
+        "sea",
+        "mio",
+        "más"
+      ]
+    },
+    {
+      "word": "fin",
+      "num_guesses": 4,
+      "prior": 0.0030977914189181644,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "fin"
+      ]
+    },
+    {
+      "word": "fem",
+      "num_guesses": 5,
+      "prior": 0.0008937008100671894,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "fem"
+      ]
+    },
+    {
+      "word": "mes",
+      "num_guesses": 4,
+      "prior": 0.0025474262704355283,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "mes"
+      ]
+    },
+    {
+      "word": "fmi",
+      "num_guesses": 4,
+      "prior": 0.0012748320244027275,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "fmi"
+      ]
+    },
+    {
+      "word": "sor",
+      "num_guesses": 5,
+      "prior": 0.0015711131762455213,
+      "guesses": [
+        "sea",
+        "nos",
+        "mil",
+        "soy",
+        "sor"
+      ]
+    },
+    {
+      "word": "tls",
+      "num_guesses": 6,
+      "prior": 0.0005028875623053174,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ntp",
+        "tés",
+        "tls"
+      ]
+    },
+    {
+      "word": "xus",
+      "num_guesses": 7,
+      "prior": 0.0003811283946441078,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "boy",
+        "ñus",
+        "xus"
+      ]
+    },
+    {
+      "word": "svn",
+      "num_guesses": 4,
+      "prior": 0.0003825550721435141,
+      "guesses": [
+        "sea",
+        "nos",
+        "sin",
+        "svn"
+      ]
+    },
+    {
+      "word": "qué",
+      "num_guesses": 5,
+      "prior": 0.003451947661141893,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué"
+      ]
+    },
+    {
+      "word": "uda",
+      "num_guesses": 6,
+      "prior": 0.000715104929786889,
+      "guesses": [
+        "sea",
+        "uir",
+        "pnv",
+        "fet",
+        "uña",
+        "uda"
+      ]
+    },
+    {
+      "word": "hub",
+      "num_guesses": 5,
+      "prior": 0.0006777968091313398,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "hub"
+      ]
+    },
+    {
+      "word": "rae",
+      "num_guesses": 3,
+      "prior": 0.0010412059097397318,
+      "guesses": [
+        "sea",
+        "car",
+        "rae"
+      ]
+    },
+    {
+      "word": "cay",
+      "num_guesses": 7,
+      "prior": 0.0008314050849209271,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "caí",
+        "cay"
+      ]
+    },
+    {
+      "word": "bue",
+      "num_guesses": 5,
+      "prior": 0.0010440616738614744,
+      "guesses": [
+        "sea",
+        "ruo",
+        "qof",
+        "pnb",
+        "bue"
+      ]
+    },
+    {
+      "word": "ver",
+      "num_guesses": 3,
+      "prior": 0.0029498355983531128,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ver"
+      ]
+    },
+    {
+      "word": "iro",
+      "num_guesses": 3,
+      "prior": 0.0007454629090126055,
+      "guesses": [
+        "sea",
+        "rio",
+        "iro"
+      ]
+    },
+    {
+      "word": "rió",
+      "num_guesses": 4,
+      "prior": 0.0012221872301402409,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnb",
+        "rió"
+      ]
+    },
+    {
+      "word": "son",
+      "num_guesses": 3,
+      "prior": 0.003846849250282732,
+      "guesses": [
+        "sea",
+        "nos",
+        "son"
+      ]
+    },
+    {
+      "word": "ccp",
+      "num_guesses": 5,
+      "prior": 0.0007439118837327459,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tcp",
+        "ccp"
+      ]
+    },
+    {
+      "word": "cum",
+      "num_guesses": 5,
+      "prior": 0.0015025759512037773,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "cab",
+        "cum"
+      ]
+    },
+    {
+      "word": "lei",
+      "num_guesses": 5,
+      "prior": 0.0015320153335442177,
+      "guesses": [
+        "sea",
+        "ldr",
+        "oye",
+        "uvi",
+        "lei"
+      ]
+    },
+    {
+      "word": "emú",
+      "num_guesses": 5,
+      "prior": 0.00045562786277192997,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "emú"
+      ]
+    },
+    {
+      "word": "piá",
+      "num_guesses": 5,
+      "prior": 0.00040577802596575556,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "abá",
+        "piá"
+      ]
+    },
+    {
+      "word": "ñao",
+      "num_guesses": 7,
+      "prior": 0.0003280687000403554,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "fao",
+        "ñao"
+      ]
+    },
+    {
+      "word": "upd",
+      "num_guesses": 5,
+      "prior": 0.0005178623045672726,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "con",
+        "upd"
+      ]
+    },
+    {
+      "word": "raf",
+      "num_guesses": 6,
+      "prior": 0.0007869869210751012,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pum",
+        "fué",
+        "raf"
+      ]
+    },
+    {
+      "word": "cio",
+      "num_guesses": 4,
+      "prior": 0.0012882765242310048,
+      "guesses": [
+        "sea",
+        "rio",
+        "lcd",
+        "cio"
+      ]
+    },
+    {
+      "word": "ore",
+      "num_guesses": 3,
+      "prior": 0.0009617720300762546,
+      "guesses": [
+        "sea",
+        "ruo",
+        "ore"
+      ]
+    },
+    {
+      "word": "itp",
+      "num_guesses": 6,
+      "prior": 0.0005385443309543791,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "ión",
+        "paz",
+        "itp"
+      ]
+    },
+    {
+      "word": "apa",
+      "num_guesses": 5,
+      "prior": 0.0010882389621017562,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "apa"
+      ]
+    },
+    {
+      "word": "cco",
+      "num_guesses": 6,
+      "prior": 0.0006441804653483332,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "hoy",
+        "clo",
+        "cco"
+      ]
+    },
+    {
+      "word": "qrs",
+      "num_guesses": 4,
+      "prior": 0.0007748136356289011,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "qrs"
+      ]
+    },
+    {
+      "word": "con",
+      "num_guesses": 3,
+      "prior": 0.005570563487125926,
+      "guesses": [
+        "sea",
+        "rio",
+        "con"
+      ]
+    },
+    {
+      "word": "feo",
+      "num_guesses": 6,
+      "prior": 0.0013649268055585114,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "pvc",
+        "feo"
+      ]
+    },
+    {
+      "word": "dvd",
+      "num_guesses": 6,
+      "prior": 0.0008868853294215998,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "doc",
+        "dvd"
+      ]
+    },
+    {
+      "word": "try",
+      "num_guesses": 4,
+      "prior": 0.0006914531486432845,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "try"
+      ]
+    },
+    {
+      "word": "foé",
+      "num_guesses": 7,
+      "prior": 0.00046305881482276614,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "faz",
+        "foé"
+      ]
+    },
+    {
+      "word": "ela",
+      "num_guesses": 4,
+      "prior": 0.001131877137608827,
+      "guesses": [
+        "sea",
+        "vfr",
+        "tul",
+        "ela"
+      ]
+    },
+    {
+      "word": "dos",
+      "num_guesses": 4,
+      "prior": 0.003798555744821403,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "dos"
+      ]
+    },
+    {
+      "word": "rkt",
+      "num_guesses": 5,
+      "prior": 0.00026455350362487244,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "rpg",
+        "rkt"
+      ]
+    },
+    {
+      "word": "toé",
+      "num_guesses": 6,
+      "prior": 0.0004444982883623454,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pié",
+        "toé"
+      ]
+    },
+    {
+      "word": "toc",
+      "num_guesses": 5,
+      "prior": 0.000819702603059929,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "doc",
+        "toc"
+      ]
+    },
+    {
+      "word": "mío",
+      "num_guesses": 5,
+      "prior": 0.0018812129158000343,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "ptm",
+        "mío"
+      ]
+    },
+    {
+      "word": "aba",
+      "num_guesses": 7,
+      "prior": 0.0009606749840626498,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "ajd",
+        "muy",
+        "aba"
+      ]
+    },
+    {
+      "word": "rip",
+      "num_guesses": 4,
+      "prior": 0.0007423205751080853,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnb",
+        "rip"
+      ]
+    },
+    {
+      "word": "fué",
+      "num_guesses": 6,
+      "prior": 0.002923356374476354,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "fué"
+      ]
+    },
+    {
+      "word": "ami",
+      "num_guesses": 5,
+      "prior": 0.0010274493130004194,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "rió",
+        "ami"
+      ]
+    },
+    {
+      "word": "cas",
+      "num_guesses": 4,
+      "prior": 0.0014883740393325138,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "cas"
+      ]
+    },
+    {
+      "word": "fet",
+      "num_guesses": 6,
+      "prior": 0.0008709443834367195,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "boj",
+        "taf",
+        "fet"
+      ]
+    },
+    {
+      "word": "fió",
+      "num_guesses": 6,
+      "prior": 0.0007573956870679732,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "fió"
+      ]
+    },
+    {
+      "word": "don",
+      "num_guesses": 5,
+      "prior": 0.003320534698631798,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "ntp",
+        "don"
+      ]
+    },
+    {
+      "word": "lil",
+      "num_guesses": 5,
+      "prior": 0.0009238805073667096,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "lpm",
+        "lil"
+      ]
+    },
+    {
+      "word": "rap",
+      "num_guesses": 5,
+      "prior": 0.0008478085046876284,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pum",
+        "rap"
+      ]
+    },
+    {
+      "word": "sip",
+      "num_guesses": 5,
+      "prior": 0.0008049403465690071,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "lid",
+        "sip"
+      ]
+    },
+    {
+      "word": "tma",
+      "num_guesses": 5,
+      "prior": 0.0006826137405202899,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "tma"
+      ]
+    },
+    {
+      "word": "ean",
+      "num_guesses": 4,
+      "prior": 0.0008326707518507533,
+      "guesses": [
+        "sea",
+        "car",
+        "mae",
+        "ean"
+      ]
+    },
+    {
+      "word": "miz",
+      "num_guesses": 6,
+      "prior": 0.0005941760572075457,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "izó",
+        "miz"
+      ]
+    },
+    {
+      "word": "top",
+      "num_guesses": 6,
+      "prior": 0.00101749954498432,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pié",
+        "top"
+      ]
+    },
+    {
+      "word": "taf",
+      "num_guesses": 6,
+      "prior": 0.0006283369691370854,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "ciu",
+        "por",
+        "taf"
+      ]
+    },
+    {
+      "word": "cde",
+      "num_guesses": 5,
+      "prior": 0.0008687272512034342,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "día",
+        "cde"
+      ]
+    },
+    {
+      "word": "nop",
+      "num_guesses": 5,
+      "prior": 0.0005136145090749312,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "pié",
+        "nop"
+      ]
+    },
+    {
+      "word": "ató",
+      "num_guesses": 4,
+      "prior": 0.0009287734623557537,
+      "guesses": [
+        "sea",
+        "tan",
+        "otó",
+        "ató"
+      ]
+    },
+    {
+      "word": "mol",
+      "num_guesses": 6,
+      "prior": 0.000981502561625394,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "kgb",
+        "mol"
+      ]
+    },
+    {
+      "word": "cuy",
+      "num_guesses": 7,
+      "prior": 0.0009612365135499311,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "huy",
+        "cuy"
+      ]
+    },
+    {
+      "word": "rus",
+      "num_guesses": 3,
+      "prior": 0.0009452813067396916,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus"
+      ]
+    },
+    {
+      "word": "mió",
+      "num_guesses": 6,
+      "prior": 0.0009834929712296192,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "izó",
+        "mió"
+      ]
+    },
+    {
+      "word": "amá",
+      "num_guesses": 6,
+      "prior": 0.0005980624607266236,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "rió",
+        "amé",
+        "amá"
+      ]
+    },
+    {
+      "word": "sas",
+      "num_guesses": 4,
+      "prior": 0.0012367365374847295,
+      "guesses": [
+        "sea",
+        "nal",
+        "has",
+        "sas"
+      ]
+    },
+    {
+      "word": "íes",
+      "num_guesses": 8,
+      "prior": 0.0008713433430292426,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "fiv",
+        "epo",
+        "gay",
+        "bío",
+        "íes"
+      ]
+    },
+    {
+      "word": "lar",
+      "num_guesses": 4,
+      "prior": 0.001246816706991405,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "lar"
+      ]
+    },
+    {
+      "word": "roí",
+      "num_guesses": 6,
+      "prior": 0.0006145813398559471,
+      "guesses": [
+        "sea",
+        "rio",
+        "nal",
+        "bum",
+        "cía",
+        "roí"
+      ]
+    },
+    {
+      "word": "roo",
+      "num_guesses": 4,
+      "prior": 0.0012201298499837608,
+      "guesses": [
+        "sea",
+        "rio",
+        "huí",
+        "roo"
+      ]
+    },
+    {
+      "word": "asa",
+      "num_guesses": 4,
+      "prior": 0.0011988330961743073,
+      "guesses": [
+        "sea",
+        "ucé",
+        "lio",
+        "asa"
+      ]
+    },
+    {
+      "word": "ñac",
+      "num_guesses": 6,
+      "prior": 0.00033629380384371375,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "ñac"
+      ]
+    },
+    {
+      "word": "nal",
+      "num_guesses": 3,
+      "prior": 0.001333122614386235,
+      "guesses": [
+        "sea",
+        "tan",
+        "nal"
+      ]
+    },
+    {
+      "word": "aso",
+      "num_guesses": 4,
+      "prior": 0.0010050762979896843,
+      "guesses": [
+        "sea",
+        "las",
+        "koi",
+        "aso"
+      ]
+    },
+    {
+      "word": "zas",
+      "num_guesses": 6,
+      "prior": 0.0010951040552356543,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "vdr",
+        "haz",
+        "zas"
+      ]
+    },
+    {
+      "word": "pon",
+      "num_guesses": 5,
+      "prior": 0.0012447424503415497,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "ntp",
+        "pon"
+      ]
+    },
+    {
+      "word": "rib",
+      "num_guesses": 4,
+      "prior": 0.0006937100409311503,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnb",
+        "rib"
+      ]
+    },
+    {
+      "word": "ace",
+      "num_guesses": 3,
+      "prior": 0.0010104432425595768,
+      "guesses": [
+        "sea",
+        "car",
+        "ace"
+      ]
+    },
+    {
+      "word": "has",
+      "num_guesses": 6,
+      "prior": 0.0021922152822424733,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "vdr",
+        "haz",
+        "has"
+      ]
+    },
+    {
+      "word": "une",
+      "num_guesses": 4,
+      "prior": 0.0017235340726986066,
+      "guesses": [
+        "sea",
+        "ruo",
+        "upn",
+        "une"
+      ]
+    },
+    {
+      "word": "res",
+      "num_guesses": 3,
+      "prior": 0.0017680578048737913,
+      "guesses": [
+        "sea",
+        "ldr",
+        "res"
+      ]
+    },
+    {
+      "word": "sij",
+      "num_guesses": 6,
+      "prior": 0.0005490522344400809,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "lid",
+        "sip",
+        "sij"
+      ]
+    },
+    {
+      "word": "alá",
+      "num_guesses": 6,
+      "prior": 0.0009706425323776951,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "gpl",
+        "alá"
+      ]
+    },
+    {
+      "word": "fíe",
+      "num_guesses": 6,
+      "prior": 0.0006982884908007037,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "míe",
+        "fíe"
+      ]
+    },
+    {
+      "word": "iva",
+      "num_guesses": 5,
+      "prior": 0.001293713244207859,
+      "guesses": [
+        "sea",
+        "uir",
+        "dub",
+        "vez",
+        "iva"
+      ]
+    },
+    {
+      "word": "rss",
+      "num_guesses": 4,
+      "prior": 0.000673746800812069,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "rss"
+      ]
+    },
+    {
+      "word": "msh",
+      "num_guesses": 5,
+      "prior": 0.00048307970680308657,
+      "guesses": [
+        "sea",
+        "mio",
+        "más",
+        "msm",
+        "msh"
+      ]
+    },
+    {
+      "word": "vid",
+      "num_guesses": 6,
+      "prior": 0.001650405347406667,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "vid"
+      ]
+    },
+    {
+      "word": "cok",
+      "num_guesses": 6,
+      "prior": 0.0007769666826694653,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "luz",
+        "yak",
+        "cok"
+      ]
+    },
+    {
+      "word": "pnl",
+      "num_guesses": 6,
+      "prior": 0.0006612873659478283,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "vil",
+        "pnl"
+      ]
+    },
+    {
+      "word": "eei",
+      "num_guesses": 6,
+      "prior": 0.0005530490614762985,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "hei",
+        "eei"
+      ]
+    },
+    {
+      "word": "pis",
+      "num_guesses": 5,
+      "prior": 0.0008613278472414719,
+      "guesses": [
+        "sea",
+        "mio",
+        "btl",
+        "pvc",
+        "pis"
+      ]
+    },
+    {
+      "word": "sis",
+      "num_guesses": 4,
+      "prior": 0.0011327487603763262,
+      "guesses": [
+        "sea",
+        "nos",
+        "sus",
+        "sis"
+      ]
+    },
+    {
+      "word": "mie",
+      "num_guesses": 6,
+      "prior": 0.0008275454485498769,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "fbi",
+        "mie"
+      ]
+    },
+    {
+      "word": "asó",
+      "num_guesses": 6,
+      "prior": 0.0005981845377483745,
+      "guesses": [
+        "sea",
+        "las",
+        "koi",
+        "así",
+        "asá",
+        "asó"
+      ]
+    },
+    {
+      "word": "twi",
+      "num_guesses": 6,
+      "prior": 0.0004298905202292309,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "del",
+        "twi"
+      ]
+    },
+    {
+      "word": "ait",
+      "num_guesses": 4,
+      "prior": 0.0009215323137713252,
+      "guesses": [
+        "sea",
+        "tan",
+        "otó",
+        "ait"
+      ]
+    },
+    {
+      "word": "ajd",
+      "num_guesses": 7,
+      "prior": 0.0005132441835557438,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ajó",
+        "ajd"
+      ]
+    },
+    {
+      "word": "fis",
+      "num_guesses": 6,
+      "prior": 0.000978007621880882,
+      "guesses": [
+        "sea",
+        "mio",
+        "btl",
+        "pvc",
+        "gif",
+        "fis"
+      ]
+    },
+    {
+      "word": "del",
+      "num_guesses": 3,
+      "prior": 0.006025957933480231,
+      "guesses": [
+        "sea",
+        "ldr",
+        "del"
+      ]
+    },
+    {
+      "word": "nat",
+      "num_guesses": 3,
+      "prior": 0.0010079499794639088,
+      "guesses": [
+        "sea",
+        "tan",
+        "nat"
+      ]
+    },
+    {
+      "word": "djs",
+      "num_guesses": 6,
+      "prior": 0.00047824156528625456,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ntp",
+        "dvd",
+        "djs"
+      ]
+    },
+    {
+      "word": "aís",
+      "num_guesses": 4,
+      "prior": 0.0006126168488819081,
+      "guesses": [
+        "sea",
+        "las",
+        "pib",
+        "aís"
+      ]
+    },
+    {
+      "word": "clo",
+      "num_guesses": 5,
+      "prior": 0.0008052006978464115,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "hoy",
+        "clo"
+      ]
+    },
+    {
+      "word": "gel",
+      "num_guesses": 5,
+      "prior": 0.001012567029845075,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ntc",
+        "bel",
+        "gel"
+      ]
+    },
+    {
+      "word": "kas",
+      "num_guesses": 8,
+      "prior": 0.000677513522042934,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "vdr",
+        "haz",
+        "gif",
+        "uas",
+        "kas"
+      ]
+    },
+    {
+      "word": "vio",
+      "num_guesses": 5,
+      "prior": 0.0020932538368673066,
+      "guesses": [
+        "sea",
+        "rio",
+        "lcd",
+        "ptm",
+        "vio"
+      ]
+    },
+    {
+      "word": "zar",
+      "num_guesses": 7,
+      "prior": 0.001179749584078128,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pbc",
+        "mar",
+        "var",
+        "zar"
+      ]
+    },
+    {
+      "word": "lía",
+      "num_guesses": 4,
+      "prior": 0.0009324787835684693,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "lía"
+      ]
+    },
+    {
+      "word": "vfr",
+      "num_guesses": 5,
+      "prior": 0.00044754053642443706,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "ldr",
+        "vfr"
+      ]
+    },
+    {
+      "word": "bro",
+      "num_guesses": 5,
+      "prior": 0.0009835283330572853,
+      "guesses": [
+        "sea",
+        "rio",
+        "ong",
+        "pro",
+        "bro"
+      ]
+    },
+    {
+      "word": "oes",
+      "num_guesses": 6,
+      "prior": 0.0007613836406160741,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "fiv",
+        "epo",
+        "oes"
+      ]
+    },
+    {
+      "word": "soy",
+      "num_guesses": 4,
+      "prior": 0.0023213800560710836,
+      "guesses": [
+        "sea",
+        "nos",
+        "mil",
+        "soy"
+      ]
+    },
+    {
+      "word": "fax",
+      "num_guesses": 7,
+      "prior": 0.0014436330378397502,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "fax"
+      ]
+    },
+    {
+      "word": "rúo",
+      "num_guesses": 5,
+      "prior": 0.0003579067314485059,
+      "guesses": [
+        "sea",
+        "rio",
+        "huí",
+        "roo",
+        "rúo"
+      ]
+    },
+    {
+      "word": "epi",
+      "num_guesses": 4,
+      "prior": 0.0009049252209195691,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epi"
+      ]
+    },
+    {
+      "word": "bey",
+      "num_guesses": 6,
+      "prior": 0.0009653966741277055,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "vez",
+        "bey"
+      ]
+    },
+    {
+      "word": "gin",
+      "num_guesses": 7,
+      "prior": 0.0008362099727879831,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "fin",
+        "dub",
+        "yin",
+        "gin"
+      ]
+    },
+    {
+      "word": "btl",
+      "num_guesses": 4,
+      "prior": 0.0004146372342547052,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl"
+      ]
+    },
+    {
+      "word": "aun",
+      "num_guesses": 4,
+      "prior": 0.002765778402404872,
+      "guesses": [
+        "sea",
+        "tan",
+        "dúo",
+        "aun"
+      ]
+    },
+    {
+      "word": "spa",
+      "num_guesses": 2,
+      "prior": 0.0008624669997410046,
+      "guesses": [
+        "sea",
+        "spa"
+      ]
+    },
+    {
+      "word": "ceo",
+      "num_guesses": 6,
+      "prior": 0.000842176822985841,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "pvc",
+        "ceo"
+      ]
+    },
+    {
+      "word": "par",
+      "num_guesses": 5,
+      "prior": 0.0021621277187777433,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pbc",
+        "par"
+      ]
+    },
+    {
+      "word": "oms",
+      "num_guesses": 3,
+      "prior": 0.0010890163671177502,
+      "guesses": [
+        "sea",
+        "mio",
+        "oms"
+      ]
+    },
+    {
+      "word": "tac",
+      "num_guesses": 5,
+      "prior": 0.0010033465248251781,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "ciu",
+        "tac"
+      ]
+    },
+    {
+      "word": "vil",
+      "num_guesses": 6,
+      "prior": 0.0015420114585836043,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "lpm",
+        "gil",
+        "vil"
+      ]
+    },
+    {
+      "word": "edo",
+      "num_guesses": 4,
+      "prior": 0.0012053798687163013,
+      "guesses": [
+        "sea",
+        "ruo",
+        "lcd",
+        "edo"
+      ]
+    },
+    {
+      "word": "los",
+      "num_guesses": 4,
+      "prior": 0.0063944237793578254,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "los"
+      ]
+    },
+    {
+      "word": "pus",
+      "num_guesses": 5,
+      "prior": 0.0011824115363885765,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "pus"
+      ]
+    },
+    {
+      "word": "mur",
+      "num_guesses": 4,
+      "prior": 0.0009739845133031217,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "mur"
+      ]
+    },
+    {
+      "word": "tío",
+      "num_guesses": 5,
+      "prior": 0.00175503779056976,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "ptm",
+        "tío"
+      ]
+    },
+    {
+      "word": "ola",
+      "num_guesses": 4,
+      "prior": 0.0014482533383440035,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ola"
+      ]
+    },
+    {
+      "word": "fés",
+      "num_guesses": 6,
+      "prior": 0.00045260232116188,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ntp",
+        "dvd",
+        "fés"
+      ]
+    },
+    {
+      "word": "ifr",
+      "num_guesses": 4,
+      "prior": 0.0005247921519450157,
+      "guesses": [
+        "sea",
+        "rio",
+        "irá",
+        "ifr"
+      ]
+    },
+    {
+      "word": "nos",
+      "num_guesses": 5,
+      "prior": 0.003550796837565404,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "nos"
+      ]
+    },
+    {
+      "word": "ará",
+      "num_guesses": 5,
+      "prior": 0.0006948492479405689,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "ará"
+      ]
+    },
+    {
+      "word": "mas",
+      "num_guesses": 4,
+      "prior": 0.003377973717939381,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "mas"
+      ]
+    },
+    {
+      "word": "hsm",
+      "num_guesses": 4,
+      "prior": 0.00040250519505437646,
+      "guesses": [
+        "sea",
+        "mio",
+        "csm",
+        "hsm"
+      ]
+    },
+    {
+      "word": "cuí",
+      "num_guesses": 9,
+      "prior": 0.00046024630385108485,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "huy",
+        "dux",
+        "nun",
+        "cuí"
+      ]
+    },
+    {
+      "word": "zac",
+      "num_guesses": 5,
+      "prior": 0.0009671331013242413,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "zac"
+      ]
+    },
+    {
+      "word": "líe",
+      "num_guesses": 6,
+      "prior": 0.0006061660413008115,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "lle",
+        "líe"
+      ]
+    },
+    {
+      "word": "rey",
+      "num_guesses": 4,
+      "prior": 0.00294521531291326,
+      "guesses": [
+        "sea",
+        "ldr",
+        "muy",
+        "rey"
+      ]
+    },
+    {
+      "word": "buz",
+      "num_guesses": 6,
+      "prior": 0.0005271458975574105,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "bug",
+        "buz"
+      ]
+    },
+    {
+      "word": "upo",
+      "num_guesses": 6,
+      "prior": 0.0007590391499751751,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "uno",
+        "zpl",
+        "upo"
+      ]
+    },
+    {
+      "word": "vea",
+      "num_guesses": 3,
+      "prior": 0.0016835598718517,
+      "guesses": [
+        "sea",
+        "vfr",
+        "vea"
+      ]
+    },
+    {
+      "word": "cos",
+      "num_guesses": 6,
+      "prior": 0.0014130590213905904,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "try",
+        "cos"
+      ]
+    },
+    {
+      "word": "coz",
+      "num_guesses": 5,
+      "prior": 0.0008047366440274132,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "luz",
+        "coz"
+      ]
+    },
+    {
+      "word": "rpg",
+      "num_guesses": 4,
+      "prior": 0.0005691573119939536,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "rpg"
+      ]
+    },
+    {
+      "word": "pax",
+      "num_guesses": 6,
+      "prior": 0.0009979046375867878,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "pax"
+      ]
+    },
+    {
+      "word": "epp",
+      "num_guesses": 5,
+      "prior": 0.0006036330246977951,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "epp"
+      ]
+    },
+    {
+      "word": "ema",
+      "num_guesses": 5,
+      "prior": 0.0008923264639694832,
+      "guesses": [
+        "sea",
+        "vfr",
+        "tul",
+        "epa",
+        "ema"
+      ]
+    },
+    {
+      "word": "cae",
+      "num_guesses": 3,
+      "prior": 0.0017413809284283761,
+      "guesses": [
+        "sea",
+        "car",
+        "cae"
+      ]
+    },
+    {
+      "word": "vdr",
+      "num_guesses": 5,
+      "prior": 0.000443600018150769,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "ldr",
+        "vdr"
+      ]
+    },
+    {
+      "word": "rho",
+      "num_guesses": 4,
+      "prior": 0.0006196819052413112,
+      "guesses": [
+        "sea",
+        "rio",
+        "huí",
+        "rho"
+      ]
+    },
+    {
+      "word": "ano",
+      "num_guesses": 3,
+      "prior": 0.001497738752384766,
+      "guesses": [
+        "sea",
+        "tan",
+        "ano"
+      ]
+    },
+    {
+      "word": "mir",
+      "num_guesses": 4,
+      "prior": 0.001189015470966882,
+      "guesses": [
+        "sea",
+        "rio",
+        "muy",
+        "mir"
+      ]
+    },
+    {
+      "word": "dns",
+      "num_guesses": 5,
+      "prior": 0.0007003100205664525,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ntp",
+        "dns"
+      ]
+    },
+    {
+      "word": "pop",
+      "num_guesses": 7,
+      "prior": 0.0011095948231847497,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "faz",
+        "pop"
+      ]
+    },
+    {
+      "word": "bob",
+      "num_guesses": 6,
+      "prior": 0.0010823598436784203,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pub",
+        "bob"
+      ]
+    },
+    {
+      "word": "coy",
+      "num_guesses": 6,
+      "prior": 0.0007935029346280413,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "luz",
+        "yak",
+        "coy"
+      ]
+    },
+    {
+      "word": "ejb",
+      "num_guesses": 6,
+      "prior": 0.0003730389707422224,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "pnl",
+        "emú",
+        "ejb"
+      ]
+    },
+    {
+      "word": "pió",
+      "num_guesses": 6,
+      "prior": 0.0009071509969390647,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "abá",
+        "pié",
+        "pió"
+      ]
+    },
+    {
+      "word": "mae",
+      "num_guesses": 3,
+      "prior": 0.0009525739396043104,
+      "guesses": [
+        "sea",
+        "car",
+        "mae"
+      ]
+    },
+    {
+      "word": "pin",
+      "num_guesses": 4,
+      "prior": 0.0010464193687660113,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "pin"
+      ]
+    },
+    {
+      "word": "ños",
+      "num_guesses": 8,
+      "prior": 0.0009854810397124214,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "try",
+        "cos",
+        "jos",
+        "ños"
+      ]
+    },
+    {
+      "word": "río",
+      "num_guesses": 4,
+      "prior": 0.0025695834055483157,
+      "guesses": [
+        "sea",
+        "rio",
+        "huí",
+        "río"
+      ]
+    },
+    {
+      "word": "ado",
+      "num_guesses": 5,
+      "prior": 0.0011637991650656338,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "dij",
+        "ado"
+      ]
+    },
+    {
+      "word": "tnt",
+      "num_guesses": 5,
+      "prior": 0.0006364446673408356,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "tnt"
+      ]
+    },
+    {
+      "word": "ové",
+      "num_guesses": 6,
+      "prior": 0.0003172189556378001,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "otó",
+        "olí",
+        "ové"
+      ]
+    },
+    {
+      "word": "fli",
+      "num_guesses": 6,
+      "prior": 0.0005043732657425458,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "del",
+        "fli"
+      ]
+    },
+    {
+      "word": "cso",
+      "num_guesses": 4,
+      "prior": 0.0006134692724083709,
+      "guesses": [
+        "sea",
+        "mio",
+        "ucé",
+        "cso"
+      ]
+    },
+    {
+      "word": "xuv",
+      "num_guesses": 8,
+      "prior": 0.0004128178918208787,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "qué",
+        "huy",
+        "dux",
+        "xuv"
+      ]
+    },
+    {
+      "word": "peí",
+      "num_guesses": 6,
+      "prior": 0.0008141434132959298,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "coz",
+        "pie",
+        "peí"
+      ]
+    },
+    {
+      "word": "fas",
+      "num_guesses": 7,
+      "prior": 0.0011415125390490904,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "vdr",
+        "haz",
+        "gif",
+        "fas"
+      ]
+    },
+    {
+      "word": "lee",
+      "num_guesses": 4,
+      "prior": 0.00181076641811322,
+      "guesses": [
+        "sea",
+        "ldr",
+        "oye",
+        "lee"
+      ]
+    },
+    {
+      "word": "lit",
+      "num_guesses": 5,
+      "prior": 0.0010171803713691812,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "tad",
+        "lit"
+      ]
+    },
+    {
+      "word": "mio",
+      "num_guesses": 5,
+      "prior": 0.0015925929965768671,
+      "guesses": [
+        "sea",
+        "rio",
+        "lcd",
+        "ptm",
+        "mio"
+      ]
+    },
+    {
+      "word": "sos",
+      "num_guesses": 3,
+      "prior": 0.0014569355915195353,
+      "guesses": [
+        "sea",
+        "nos",
+        "sos"
+      ]
+    },
+    {
+      "word": "caú",
+      "num_guesses": 10,
+      "prior": 0.0003023682829667411,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "caí",
+        "cay",
+        "caá",
+        "caé",
+        "caú"
+      ]
+    },
+    {
+      "word": "ase",
+      "num_guesses": 2,
+      "prior": 0.001056973212320741,
+      "guesses": [
+        "sea",
+        "ase"
+      ]
+    },
+    {
+      "word": "pun",
+      "num_guesses": 5,
+      "prior": 0.000979618656114332,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "ban",
+        "pun"
+      ]
+    },
+    {
+      "word": "dúo",
+      "num_guesses": 5,
+      "prior": 0.0010081484638621502,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "too",
+        "dúo"
+      ]
+    },
+    {
+      "word": "rem",
+      "num_guesses": 4,
+      "prior": 0.0010331811394913447,
+      "guesses": [
+        "sea",
+        "ldr",
+        "muy",
+        "rem"
+      ]
+    },
+    {
+      "word": "pea",
+      "num_guesses": 5,
+      "prior": 0.0011371352879665747,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "dip",
+        "pea"
+      ]
+    },
+    {
+      "word": "ahé",
+      "num_guesses": 7,
+      "prior": 0.00035152180078231213,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ahó",
+        "ahé"
+      ]
+    },
+    {
+      "word": "erp",
+      "num_guesses": 4,
+      "prior": 0.0008545837822727878,
+      "guesses": [
+        "sea",
+        "ruo",
+        "píe",
+        "erp"
+      ]
+    },
+    {
+      "word": "así",
+      "num_guesses": 4,
+      "prior": 0.0035917308885808777,
+      "guesses": [
+        "sea",
+        "las",
+        "koi",
+        "así"
+      ]
+    },
+    {
+      "word": "mks",
+      "num_guesses": 5,
+      "prior": 0.0004465279388286008,
+      "guesses": [
+        "sea",
+        "mio",
+        "más",
+        "mus",
+        "mks"
+      ]
+    },
+    {
+      "word": "tia",
+      "num_guesses": 4,
+      "prior": 0.001099883067149641,
+      "guesses": [
+        "sea",
+        "uir",
+        "ctm",
+        "tia"
+      ]
+    },
+    {
+      "word": "rom",
+      "num_guesses": 5,
+      "prior": 0.0012059561749732661,
+      "guesses": [
+        "sea",
+        "rio",
+        "nal",
+        "bum",
+        "rom"
+      ]
+    },
+    {
+      "word": "pua",
+      "num_guesses": 5,
+      "prior": 0.000649152175543852,
+      "guesses": [
+        "sea",
+        "uir",
+        "ecg",
+        "puf",
+        "pua"
+      ]
+    },
+    {
+      "word": "rcp",
+      "num_guesses": 4,
+      "prior": 0.0007349916784965046,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "rcp"
+      ]
+    },
+    {
+      "word": "tuc",
+      "num_guesses": 6,
+      "prior": 0.0007285789308109646,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "cut",
+        "tuc"
+      ]
+    },
+    {
+      "word": "pei",
+      "num_guesses": 6,
+      "prior": 0.0008168965227735635,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "coz",
+        "pie",
+        "pei"
+      ]
+    },
+    {
+      "word": "ufa",
+      "num_guesses": 5,
+      "prior": 0.0007927853083429886,
+      "guesses": [
+        "sea",
+        "uir",
+        "pnv",
+        "fet",
+        "ufa"
+      ]
+    },
+    {
+      "word": "izo",
+      "num_guesses": 5,
+      "prior": 0.0007329776947613279,
+      "guesses": [
+        "sea",
+        "rio",
+        "ido",
+        "ico",
+        "izo"
+      ]
+    },
+    {
+      "word": "cie",
+      "num_guesses": 3,
+      "prior": 0.0011702855288710625,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie"
+      ]
+    },
+    {
+      "word": "xix",
+      "num_guesses": 6,
+      "prior": 0.0020411833531349772,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "xix"
+      ]
+    },
+    {
+      "word": "ñam",
+      "num_guesses": 8,
+      "prior": 0.0005085910442138973,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "jam",
+        "ñam"
+      ]
+    },
+    {
+      "word": "fez",
+      "num_guesses": 6,
+      "prior": 0.0010436792993642927,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "vez",
+        "fez"
+      ]
+    },
+    {
+      "word": "dub",
+      "num_guesses": 6,
+      "prior": 0.0006680306820763528,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "hub",
+        "dub"
+      ]
+    },
+    {
+      "word": "seo",
+      "num_guesses": 4,
+      "prior": 0.001087206847967764,
+      "guesses": [
+        "sea",
+        "trd",
+        "con",
+        "seo"
+      ]
+    },
+    {
+      "word": "tes",
+      "num_guesses": 4,
+      "prior": 0.0015890318835973566,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ctm",
+        "tes"
+      ]
+    },
+    {
+      "word": "uoh",
+      "num_guesses": 6,
+      "prior": 0.0003025878680079785,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "uoh"
+      ]
+    },
+    {
+      "word": "tul",
+      "num_guesses": 5,
+      "prior": 0.0009569986783287743,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "tul"
+      ]
+    },
+    {
+      "word": "aca",
+      "num_guesses": 5,
+      "prior": 0.0011918514839327759,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "aca"
+      ]
+    },
+    {
+      "word": "oís",
+      "num_guesses": 7,
+      "prior": 0.000786387018771496,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "try",
+        "cos",
+        "oís"
+      ]
+    },
+    {
+      "word": "ají",
+      "num_guesses": 6,
+      "prior": 0.0009825086593082464,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ají"
+      ]
+    },
+    {
+      "word": "pbi",
+      "num_guesses": 5,
+      "prior": 0.0010890333562283937,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "pbi"
+      ]
+    },
+    {
+      "word": "fié",
+      "num_guesses": 7,
+      "prior": 0.0006693178855900362,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "fió",
+        "fié"
+      ]
+    },
+    {
+      "word": "gay",
+      "num_guesses": 8,
+      "prior": 0.0012269551724072107,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "jam",
+        "gay"
+      ]
+    },
+    {
+      "word": "hoz",
+      "num_guesses": 6,
+      "prior": 0.0011974089836445088,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "huy",
+        "hoz"
+      ]
+    },
+    {
+      "word": "nel",
+      "num_guesses": 4,
+      "prior": 0.001127229597550269,
+      "guesses": [
+        "sea",
+        "ldr",
+        "ntc",
+        "nel"
+      ]
+    },
+    {
+      "word": "jos",
+      "num_guesses": 7,
+      "prior": 0.0013639793759593032,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "try",
+        "cos",
+        "jos"
+      ]
+    },
+    {
+      "word": "sér",
+      "num_guesses": 4,
+      "prior": 0.0012171946810179306,
+      "guesses": [
+        "sea",
+        "nos",
+        "ruc",
+        "sér"
+      ]
+    },
+    {
+      "word": "psi",
+      "num_guesses": 4,
+      "prior": 0.0008388845307048908,
+      "guesses": [
+        "sea",
+        "mio",
+        "its",
+        "psi"
+      ]
+    },
+    {
+      "word": "tal",
+      "num_guesses": 4,
+      "prior": 0.003250824992444326,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "tal"
+      ]
+    },
+    {
+      "word": "uir",
+      "num_guesses": 4,
+      "prior": 0.0007072000850490529,
+      "guesses": [
+        "sea",
+        "rio",
+        "muy",
+        "uir"
+      ]
+    },
+    {
+      "word": "ion",
+      "num_guesses": 4,
+      "prior": 0.001277833331287518,
+      "guesses": [
+        "sea",
+        "rio",
+        "noh",
+        "ion"
+      ]
+    },
+    {
+      "word": "eso",
+      "num_guesses": 2,
+      "prior": 0.0030260516287429194,
+      "guesses": [
+        "sea",
+        "eso"
+      ]
+    },
+    {
+      "word": "ote",
+      "num_guesses": 4,
+      "prior": 0.0008461995992088927,
+      "guesses": [
+        "sea",
+        "ruo",
+        "tol",
+        "ote"
+      ]
+    },
+    {
+      "word": "ujt",
+      "num_guesses": 6,
+      "prior": 0.0003509178078645214,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní",
+        "tic",
+        "ujt"
+      ]
+    },
+    {
+      "word": "aro",
+      "num_guesses": 6,
+      "prior": 0.0011118399593476038,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "dij",
+        "año",
+        "aro"
+      ]
+    },
+    {
+      "word": "das",
+      "num_guesses": 5,
+      "prior": 0.001737718559721499,
+      "guesses": [
+        "sea",
+        "las",
+        "ctm",
+        "vdr",
+        "das"
+      ]
+    },
+    {
+      "word": "ime",
+      "num_guesses": 5,
+      "prior": 0.0007839226866219858,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "ite",
+        "ime"
+      ]
+    },
+    {
+      "word": "otá",
+      "num_guesses": 5,
+      "prior": 0.0004207361276448658,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "otó",
+        "otá"
+      ]
+    },
+    {
+      "word": "pue",
+      "num_guesses": 5,
+      "prior": 0.001375204857845409,
+      "guesses": [
+        "sea",
+        "ruo",
+        "qof",
+        "pnb",
+        "pue"
+      ]
+    },
+    {
+      "word": "gen",
+      "num_guesses": 6,
+      "prior": 0.0013795572387844681,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "ven",
+        "gay",
+        "gen"
+      ]
+    },
+    {
+      "word": "otó",
+      "num_guesses": 4,
+      "prior": 0.0004405926907936201,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "otó"
+      ]
+    },
+    {
+      "word": "kan",
+      "num_guesses": 5,
+      "prior": 0.0009646951955593327,
+      "guesses": [
+        "sea",
+        "tan",
+        "hdp",
+        "kcv",
+        "kan"
+      ]
+    },
+    {
+      "word": "fui",
+      "num_guesses": 5,
+      "prior": 0.0018078932525926606,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "fal",
+        "fui"
+      ]
+    },
+    {
+      "word": "uñí",
+      "num_guesses": 5,
+      "prior": 0.00025398569856590616,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "uní",
+        "uñí"
+      ]
+    },
+    {
+      "word": "oró",
+      "num_guesses": 4,
+      "prior": 0.0008143524977549289,
+      "guesses": [
+        "sea",
+        "rio",
+        "por",
+        "oró"
+      ]
+    },
+    {
+      "word": "ovó",
+      "num_guesses": 6,
+      "prior": 0.00045273365619037697,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "otó",
+        "oyó",
+        "ovó"
+      ]
+    },
+    {
+      "word": "are",
+      "num_guesses": 3,
+      "prior": 0.001345016585886601,
+      "guesses": [
+        "sea",
+        "car",
+        "are"
+      ]
+    },
+    {
+      "word": "uno",
+      "num_guesses": 4,
+      "prior": 0.003393217254915461,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "uno"
+      ]
+    },
+    {
+      "word": "sms",
+      "num_guesses": 5,
+      "prior": 0.000730383466705718,
+      "guesses": [
+        "sea",
+        "nos",
+        "sus",
+        "sis",
+        "sms"
+      ]
+    },
+    {
+      "word": "ram",
+      "num_guesses": 5,
+      "prior": 0.0009791801520633453,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pum",
+        "ram"
+      ]
+    },
+    {
+      "word": "gap",
+      "num_guesses": 6,
+      "prior": 0.0008423192797291936,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "gap"
+      ]
+    },
+    {
+      "word": "rpm",
+      "num_guesses": 4,
+      "prior": 0.0008161501064375511,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "rpm"
+      ]
+    },
+    {
+      "word": "dij",
+      "num_guesses": 7,
+      "prior": 0.0006286432768546117,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "xix",
+        "dij"
+      ]
+    },
+    {
+      "word": "pti",
+      "num_guesses": 6,
+      "prior": 0.0005646549471538528,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "pdi",
+        "pti"
+      ]
+    },
+    {
+      "word": "ayo",
+      "num_guesses": 7,
+      "prior": 0.0010079455273486978,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "dij",
+        "año",
+        "aro",
+        "ayo"
+      ]
+    },
+    {
+      "word": "ful",
+      "num_guesses": 5,
+      "prior": 0.0008045327350242939,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "ful"
+      ]
+    },
+    {
+      "word": "ato",
+      "num_guesses": 4,
+      "prior": 0.0008977512536408673,
+      "guesses": [
+        "sea",
+        "tan",
+        "otó",
+        "ato"
+      ]
+    },
+    {
+      "word": "doc",
+      "num_guesses": 4,
+      "prior": 0.0013523516463807947,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "doc"
+      ]
+    },
+    {
+      "word": "dni",
+      "num_guesses": 6,
+      "prior": 0.0008843153836327816,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "del",
+        "dni"
+      ]
+    },
+    {
+      "word": "van",
+      "num_guesses": 5,
+      "prior": 0.002428322199896876,
+      "guesses": [
+        "sea",
+        "tan",
+        "hdp",
+        "kcv",
+        "van"
+      ]
+    },
+    {
+      "word": "voi",
+      "num_guesses": 4,
+      "prior": 0.0009278452687052638,
+      "guesses": [
+        "sea",
+        "rio",
+        "noh",
+        "voi"
+      ]
+    },
+    {
+      "word": "ptc",
+      "num_guesses": 6,
+      "prior": 0.0005625141431758157,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "bng",
+        "tal",
+        "ptc"
+      ]
+    },
+    {
+      "word": "tan",
+      "num_guesses": 2,
+      "prior": 0.0034973347506739505,
+      "guesses": [
+        "sea",
+        "tan"
+      ]
+    },
+    {
+      "word": "cri",
+      "num_guesses": 4,
+      "prior": 0.0009589509558017242,
+      "guesses": [
+        "sea",
+        "rio",
+        "irá",
+        "cri"
+      ]
+    },
+    {
+      "word": "lea",
+      "num_guesses": 4,
+      "prior": 0.0014138748087376787,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "lea"
+      ]
+    },
+    {
+      "word": "tev",
+      "num_guesses": 5,
+      "prior": 0.0005399140266155825,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "uve",
+        "tev"
+      ]
+    },
+    {
+      "word": "ntc",
+      "num_guesses": 5,
+      "prior": 0.0006470423798187227,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "ntc"
+      ]
+    },
+    {
+      "word": "peá",
+      "num_guesses": 8,
+      "prior": 0.0003007007091039985,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "coz",
+        "pie",
+        "peí",
+        "peó",
+        "peá"
+      ]
+    },
+    {
+      "word": "prc",
+      "num_guesses": 4,
+      "prior": 0.0008333445457608866,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr",
+        "prc"
+      ]
+    },
+    {
+      "word": "reí",
+      "num_guesses": 5,
+      "prior": 0.001011496391102125,
+      "guesses": [
+        "sea",
+        "ldr",
+        "muy",
+        "río",
+        "reí"
+      ]
+    },
+    {
+      "word": "ión",
+      "num_guesses": 4,
+      "prior": 0.0011025454438593819,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "ión"
+      ]
+    },
+    {
+      "word": "jol",
+      "num_guesses": 7,
+      "prior": 0.0005844778177124314,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "kgb",
+        "mol",
+        "jol"
+      ]
+    },
+    {
+      "word": "peó",
+      "num_guesses": 7,
+      "prior": 0.0004355009393418965,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "coz",
+        "pie",
+        "peí",
+        "peó"
+      ]
+    },
+    {
+      "word": "pié",
+      "num_guesses": 5,
+      "prior": 0.001521053288070605,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "abá",
+        "pié"
+      ]
+    },
+    {
+      "word": "cyo",
+      "num_guesses": 5,
+      "prior": 0.0004270270553806007,
+      "guesses": [
+        "sea",
+        "rio",
+        "cuí",
+        "hoy",
+        "cyo"
+      ]
+    },
+    {
+      "word": "exe",
+      "num_guesses": 7,
+      "prior": 0.0008731470729477578,
+      "guesses": [
+        "sea",
+        "ruo",
+        "cie",
+        "epl",
+        "jam",
+        "fin",
+        "exe"
+      ]
+    },
+    {
+      "word": "ofi",
+      "num_guesses": 4,
+      "prior": 0.0009929774756164324,
+      "guesses": [
+        "sea",
+        "rio",
+        "noh",
+        "ofi"
+      ]
+    },
+    {
+      "word": "pda",
+      "num_guesses": 6,
+      "prior": 0.0007037756664946243,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ptc",
+        "dúo",
+        "pda"
+      ]
+    },
+    {
+      "word": "eró",
+      "num_guesses": 6,
+      "prior": 0.0005168488174180385,
+      "guesses": [
+        "sea",
+        "ruo",
+        "píe",
+        "erá",
+        "eré",
+        "eró"
+      ]
+    },
+    {
+      "word": "caé",
+      "num_guesses": 9,
+      "prior": 0.00045194334871620463,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "caí",
+        "cay",
+        "caá",
+        "caé"
+      ]
+    },
+    {
+      "word": "tos",
+      "num_guesses": 6,
+      "prior": 0.0018107394889896261,
+      "guesses": [
+        "sea",
+        "mio",
+        "lsd",
+        "pnv",
+        "try",
+        "tos"
+      ]
+    },
+    {
+      "word": "bin",
+      "num_guesses": 6,
+      "prior": 0.0009160304120205343,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "fin",
+        "dub",
+        "bin"
+      ]
+    },
+    {
+      "word": "uci",
+      "num_guesses": 5,
+      "prior": 0.0007655869389187502,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "vez",
+        "uci"
+      ]
+    },
+    {
+      "word": "oré",
+      "num_guesses": 5,
+      "prior": 0.0007216578529498848,
+      "guesses": [
+        "sea",
+        "rio",
+        "por",
+        "oró",
+        "oré"
+      ]
+    },
+    {
+      "word": "tus",
+      "num_guesses": 5,
+      "prior": 0.002273003900254142,
+      "guesses": [
+        "sea",
+        "mio",
+        "rus",
+        "ptc",
+        "tus"
+      ]
+    },
+    {
+      "word": "lun",
+      "num_guesses": 7,
+      "prior": 0.0007421873484766779,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "luz",
+        "uní",
+        "lun"
+      ]
+    },
+    {
+      "word": "ove",
+      "num_guesses": 5,
+      "prior": 0.000780406315551333,
+      "guesses": [
+        "sea",
+        "ruo",
+        "tol",
+        "oye",
+        "ove"
+      ]
+    },
+    {
+      "word": "ota",
+      "num_guesses": 5,
+      "prior": 0.0008415309067334806,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ntc",
+        "ota"
+      ]
+    },
+    {
+      "word": "boy",
+      "num_guesses": 6,
+      "prior": 0.001120185950145725,
+      "guesses": [
+        "sea",
+        "rio",
+        "con",
+        "btl",
+        "pub",
+        "boy"
+      ]
+    },
+    {
+      "word": "ole",
+      "num_guesses": 4,
+      "prior": 0.0008499554384512329,
+      "guesses": [
+        "sea",
+        "ruo",
+        "tol",
+        "ole"
+      ]
+    },
+    {
+      "word": "ucr",
+      "num_guesses": 3,
+      "prior": 0.0009398895126468709,
+      "guesses": [
+        "sea",
+        "rio",
+        "ucr"
+      ]
+    },
+    {
+      "word": "dal",
+      "num_guesses": 4,
+      "prior": 0.0010757654128006656,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "dal"
+      ]
+    },
+    {
+      "word": "rri",
+      "num_guesses": 3,
+      "prior": 0.0006041582122069669,
+      "guesses": [
+        "sea",
+        "rio",
+        "rri"
+      ]
+    },
+    {
+      "word": "ecu",
+      "num_guesses": 4,
+      "prior": 0.0007846368729832688,
+      "guesses": [
+        "sea",
+        "ruo",
+        "upn",
+        "ecu"
+      ]
+    },
+    {
+      "word": "mci",
+      "num_guesses": 4,
+      "prior": 0.0006544627446179484,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "mci"
+      ]
+    },
+    {
+      "word": "fiá",
+      "num_guesses": 8,
+      "prior": 0.00041435701059184247,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "fiv",
+        "fió",
+        "fié",
+        "fiá"
+      ]
+    },
+    {
+      "word": "rfc",
+      "num_guesses": 4,
+      "prior": 0.0007765981264335792,
+      "guesses": [
+        "sea",
+        "rio",
+        "mcu",
+        "rfc"
+      ]
+    },
+    {
+      "word": "eva",
+      "num_guesses": 3,
+      "prior": 0.0014864780234227998,
+      "guesses": [
+        "sea",
+        "vfr",
+        "eva"
+      ]
+    },
+    {
+      "word": "bng",
+      "num_guesses": 5,
+      "prior": 0.0005188932770853083,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "bng"
+      ]
+    },
+    {
+      "word": "cor",
+      "num_guesses": 5,
+      "prior": 0.0014368391569137815,
+      "guesses": [
+        "sea",
+        "rio",
+        "por",
+        "omc",
+        "cor"
+      ]
+    },
+    {
+      "word": "ajó",
+      "num_guesses": 6,
+      "prior": 0.0006061796555141526,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ajó"
+      ]
+    },
+    {
+      "word": "dea",
+      "num_guesses": 5,
+      "prior": 0.0011167266711064544,
+      "guesses": [
+        "sea",
+        "vfr",
+        "mol",
+        "dip",
+        "dea"
+      ]
+    },
+    {
+      "word": "caá",
+      "num_guesses": 8,
+      "prior": 0.0006581824793399456,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "caí",
+        "cay",
+        "caá"
+      ]
+    },
+    {
+      "word": "oda",
+      "num_guesses": 6,
+      "prior": 0.001230348162645066,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ntc",
+        "vid",
+        "oda"
+      ]
+    },
+    {
+      "word": "aak",
+      "num_guesses": 7,
+      "prior": 0.00034077183732606663,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "aak"
+      ]
+    },
+    {
+      "word": "ska",
+      "num_guesses": 3,
+      "prior": 0.0005465002916445125,
+      "guesses": [
+        "sea",
+        "spa",
+        "ska"
+      ]
+    },
+    {
+      "word": "ciu",
+      "num_guesses": 6,
+      "prior": 0.0011289050198618903,
+      "guesses": [
+        "sea",
+        "rio",
+        "pnl",
+        "ctm",
+        "sud",
+        "ciu"
+      ]
+    },
+    {
+      "word": "jal",
+      "num_guesses": 6,
+      "prior": 0.0010916086391376245,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pvc",
+        "jam",
+        "jal"
+      ]
+    },
+    {
+      "word": "uke",
+      "num_guesses": 5,
+      "prior": 0.0005642203111014292,
+      "guesses": [
+        "sea",
+        "ruo",
+        "upn",
+        "kcv",
+        "uke"
+      ]
+    },
+    {
+      "word": "apb",
+      "num_guesses": 8,
+      "prior": 0.0004950448558238346,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "huí",
+        "ajó",
+        "kgb",
+        "apb"
+      ]
+    },
+    {
+      "word": "meé",
+      "num_guesses": 6,
+      "prior": 0.00038246921082364205,
+      "guesses": [
+        "sea",
+        "ldr",
+        "pnt",
+        "mio",
+        "ése",
+        "meé"
+      ]
+    },
+    {
+      "word": "jam",
+      "num_guesses": 7,
+      "prior": 0.000907449375168443,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "hoz",
+        "pbc",
+        "afk",
+        "jam"
+      ]
+    },
+    {
+      "word": "cis",
+      "num_guesses": 5,
+      "prior": 0.0009573687483806876,
+      "guesses": [
+        "sea",
+        "mio",
+        "btl",
+        "pvc",
+        "cis"
+      ]
+    },
+    {
+      "word": "ade",
+      "num_guesses": 4,
+      "prior": 0.001113142590757971,
+      "guesses": [
+        "sea",
+        "car",
+        "dvd",
+        "ade"
+      ]
+    },
+    {
+      "word": "dan",
+      "num_guesses": 4,
+      "prior": 0.0022744659834420633,
+      "guesses": [
+        "sea",
+        "tan",
+        "hdp",
+        "dan"
+      ]
+    },
+    {
+      "word": "luí",
+      "num_guesses": 7,
+      "prior": 0.0007603690438135461,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "btl",
+        "luz",
+        "uní",
+        "luí"
+      ]
+    },
+    {
+      "word": "val",
+      "num_guesses": 5,
+      "prior": 0.0012869558380330741,
+      "guesses": [
+        "sea",
+        "tan",
+        "ldr",
+        "pvc",
+        "val"
+      ]
+    },
+    {
+      "word": "ntp",
+      "num_guesses": 5,
+      "prior": 0.0005223089898050136,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tcp",
+        "ntp"
+      ]
+    },
+    {
+      "word": "pía",
+      "num_guesses": 6,
+      "prior": 0.0010929374667562684,
+      "guesses": [
+        "sea",
+        "uir",
+        "olí",
+        "ctm",
+        "vid",
+        "pía"
+      ]
+    },
+    {
+      "word": "apá",
+      "num_guesses": 6,
+      "prior": 0.0005339090659287859,
+      "guesses": [
+        "sea",
+        "tan",
+        "omc",
+        "irá",
+        "gpl",
+        "apá"
+      ]
+    },
+    {
+      "word": "pdi",
+      "num_guesses": 5,
+      "prior": 0.0005954901316040838,
+      "guesses": [
+        "sea",
+        "rio",
+        "mui",
+        "pbc",
+        "pdi"
+      ]
+    },
+    {
+      "word": "lsa",
+      "num_guesses": 4,
+      "prior": 0.0007302768597702705,
+      "guesses": [
+        "sea",
+        "ucé",
+        "lio",
+        "lsa"
+      ]
+    },
+    {
+      "word": "emo",
+      "num_guesses": 6,
+      "prior": 0.0007783813872358888,
+      "guesses": [
+        "sea",
+        "ruo",
+        "lcd",
+        "rpg",
+        "evo",
+        "emo"
+      ]
+    },
+    {
+      "word": "ctm",
+      "num_guesses": 5,
+      "prior": 0.0010295650617399232,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "tfm",
+        "ctm"
+      ]
+    },
+    {
+      "word": "sol",
+      "num_guesses": 4,
+      "prior": 0.0024085324928402665,
+      "guesses": [
+        "sea",
+        "nos",
+        "mil",
+        "sol"
+      ]
+    },
+    {
+      "word": "reu",
+      "num_guesses": 4,
+      "prior": 0.0008168160163575876,
+      "guesses": [
+        "sea",
+        "ldr",
+        "muy",
+        "reu"
+      ]
+    },
+    {
+      "word": "koi",
+      "num_guesses": 5,
+      "prior": 0.0004958836612236491,
+      "guesses": [
+        "sea",
+        "rio",
+        "noh",
+        "voi",
+        "koi"
+      ]
+    },
+    {
+      "word": "lpm",
+      "num_guesses": 4,
+      "prior": 0.000566076250155944,
+      "guesses": [
+        "sea",
+        "rio",
+        "pum",
+        "lpm"
+      ]
+    },
+    {
+      "word": "roc",
+      "num_guesses": 6,
+      "prior": 0.0007059056621287313,
+      "guesses": [
+        "sea",
+        "rio",
+        "nal",
+        "bum",
+        "cía",
+        "roc"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[2026-10-25T22:55:52Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for spanish from https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz...
+[2026-10-25T22:56:30Z INFO  lex_data::wiktionary] Cached spanish Wiktionary dict (883133 words, lengths 1–37)
+[2026-10-25T22:56:31Z WARN  lex_data::store] Building spanish corpus...
+[2026-10-25T23:00:39Z INFO  lex_data::ngrams]   [1/3] done
+[2026-10-25T23:02:55Z INFO  lex_data::ngrams]   [2/3] done
+[2026-10-25T23:05:38Z INFO  lex_data::ngrams]   [3/3] done
+[2026-10-25T23:05:39Z INFO  lex_data::store] Cached spanish corpus (23 length buckets)
+[2026-10-25T23:05:39Z INFO  lex::simulate] Simulating 1 games with 5-letter words in spanish...
+[2026-10-25T23:05:44Z INFO  lex_core::game] Guess 1: rosea -> 🟨⬜⬜⬜🟨
+[2026-10-25T23:05:44Z INFO  lex_core::game] Guess 2: talan -> 🟩🟩⬜🟩⬜
+[2026-10-25T23:05:44Z INFO  lex_core::game] Guess 3: carpa -> ⬜🟩🟨⬜🟨
+[2026-10-25T23:05:44Z INFO  lex_core::game] Guess 4: vejez -> ⬜⬜⬜⬜⬜
+[2026-10-25T23:05:44Z INFO  lex_core::game] Guess 5: tañar -> 🟩🟩🟩🟩🟩
+[2026-10-25T23:05:44Z INFO  lex::simulate] Great
+[2026-10-25T23:05:44Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter spanish words (dictionary: 13431), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: rosea
+ngrams sha256: 0b2a8b076031
+dict: 883133 words, fetched 2026-10-25T22:56:30.342377Z, sha256 f348077dec29
+
+uniform: mean 5.000 guesses, failure rate (>6) 0.00%
+   5 | 100.00% (1) ########################################
+
+prior-weighted: mean 5.000 guesses, failure rate (>6) 0.00%
+   5 | 100.00% ########################################

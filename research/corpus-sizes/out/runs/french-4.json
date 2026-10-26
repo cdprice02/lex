@@ -1,0 +1,6005 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T02:17:50.568205Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "saie",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "french",
+    "word_length": 4,
+    "dictionary_length": 6921,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "ea4fb92f4afe89dda5d431e85cdbf5764fb560871eac4ca9814a348c17fd4706",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:19:37.50315Z",
+      "source_sha256": "06c31dc9b75bdb515505b0eb001aad1e06a4c51f52b904d3a7cd7256375f4956",
+      "word_count": 1570316
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.889999999999968,
+      "failure_rate": 0.03800000000000002,
+      "histogram": {
+        "2": 0.002,
+        "3": 0.03800000000000002,
+        "4": 0.3120000000000002,
+        "5": 0.4020000000000003,
+        "6": 0.20800000000000016,
+        "7": 0.03800000000000002
+      }
+    },
+    "prior": {
+      "mean": 4.694350728353599,
+      "failure_rate": 0.02033822414651542,
+      "histogram": {
+        "2": 0.0017390356554393787,
+        "3": 0.07394944311010311,
+        "4": 0.35792236087992957,
+        "5": 0.3813383020809899,
+        "6": 0.16471263412702253,
+        "7": 0.02033822414651542
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "valé",
+      "num_guesses": 6,
+      "prior": 0.00009288178837851463,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "gfdl",
+        "htlv",
+        "valé"
+      ]
+    },
+    {
+      "word": "arcé",
+      "num_guesses": 4,
+      "prior": 0.00008505085350504173,
+      "guesses": [
+        "saie",
+        "arta",
+        "éduc",
+        "arcé"
+      ]
+    },
+    {
+      "word": "orlé",
+      "num_guesses": 6,
+      "prior": 0.00008243095179824738,
+      "guesses": [
+        "saie",
+        "rout",
+        "proc",
+        "gony",
+        "ordo",
+        "orlé"
+      ]
+    },
+    {
+      "word": "reco",
+      "num_guesses": 4,
+      "prior": 0.00012087933573470343,
+      "guesses": [
+        "saie",
+        "reut",
+        "donc",
+        "reco"
+      ]
+    },
+    {
+      "word": "reva",
+      "num_guesses": 3,
+      "prior": 0.00011397336583722274,
+      "guesses": [
+        "saie",
+        "vert",
+        "reva"
+      ]
+    },
+    {
+      "word": "gove",
+      "num_guesses": 6,
+      "prior": 0.00008639794721129179,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "odbc",
+        "vegf",
+        "gove"
+      ]
+    },
+    {
+      "word": "srpj",
+      "num_guesses": 4,
+      "prior": 0.0001054548690263019,
+      "guesses": [
+        "saie",
+        "rout",
+        "kpss",
+        "srpj"
+      ]
+    },
+    {
+      "word": "isbn",
+      "num_guesses": 4,
+      "prior": 0.00032174903485238516,
+      "guesses": [
+        "saie",
+        "tins",
+        "béou",
+        "isbn"
+      ]
+    },
+    {
+      "word": "lean",
+      "num_guesses": 5,
+      "prior": 0.00019162745076598613,
+      "guesses": [
+        "saie",
+        "vert",
+        "luba",
+        "dans",
+        "lean"
+      ]
+    },
+    {
+      "word": "ovoo",
+      "num_guesses": 5,
+      "prior": 0.00006126557892798501,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "bédo",
+        "ovoo"
+      ]
+    },
+    {
+      "word": "zuni",
+      "num_guesses": 5,
+      "prior": 0.00010311767250323011,
+      "guesses": [
+        "saie",
+        "tion",
+        "dégu",
+        "cump",
+        "zuni"
+      ]
+    },
+    {
+      "word": "émou",
+      "num_guesses": 5,
+      "prior": 0.00010712148762122853,
+      "guesses": [
+        "saie",
+        "rout",
+        "chol",
+        "méon",
+        "émou"
+      ]
+    },
+    {
+      "word": "olla",
+      "num_guesses": 6,
+      "prior": 0.00012920894690789832,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "dobv",
+        "olla"
+      ]
+    },
+    {
+      "word": "gudu",
+      "num_guesses": 5,
+      "prior": 0.0000684603266918669,
+      "guesses": [
+        "saie",
+        "rout",
+        "délu",
+        "pudu",
+        "gudu"
+      ]
+    },
+    {
+      "word": "twit",
+      "num_guesses": 4,
+      "prior": 0.00006903311747462917,
+      "guesses": [
+        "saie",
+        "troc",
+        "punk",
+        "twit"
+      ]
+    },
+    {
+      "word": "spof",
+      "num_guesses": 5,
+      "prior": 0.00005162369669613957,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "spoc",
+        "spof"
+      ]
+    },
+    {
+      "word": "soue",
+      "num_guesses": 3,
+      "prior": 0.00011607623745823502,
+      "guesses": [
+        "saie",
+        "mrou",
+        "soue"
+      ]
+    },
+    {
+      "word": "ryal",
+      "num_guesses": 5,
+      "prior": 0.00007181782912740209,
+      "guesses": [
+        "saie",
+        "arta",
+        "hdlc",
+        "réal",
+        "ryal"
+      ]
+    },
+    {
+      "word": "bâme",
+      "num_guesses": 6,
+      "prior": 0.000057633859236243125,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "mède",
+        "bâby",
+        "bâme"
+      ]
+    },
+    {
+      "word": "pies",
+      "num_guesses": 6,
+      "prior": 0.00021022708369630927,
+      "guesses": [
+        "saie",
+        "lied",
+        "vont",
+        "irmf",
+        "pabx",
+        "pies"
+      ]
+    },
+    {
+      "word": "krou",
+      "num_guesses": 4,
+      "prior": 0.00011555510023954275,
+      "guesses": [
+        "saie",
+        "rout",
+        "puck",
+        "krou"
+      ]
+    },
+    {
+      "word": "tôla",
+      "num_guesses": 5,
+      "prior": 0.00006100585382121228,
+      "guesses": [
+        "saie",
+        "arta",
+        "boum",
+        "hylé",
+        "tôla"
+      ]
+    },
+    {
+      "word": "sgeg",
+      "num_guesses": 5,
+      "prior": 0.000054744979999299785,
+      "guesses": [
+        "saie",
+        "ruts",
+        "moxé",
+        "chez",
+        "sgeg"
+      ]
+    },
+    {
+      "word": "keut",
+      "num_guesses": 4,
+      "prior": 0.00007641587014343678,
+      "guesses": [
+        "saie",
+        "reut",
+        "spvm",
+        "keut"
+      ]
+    },
+    {
+      "word": "yaks",
+      "num_guesses": 6,
+      "prior": 0.00011684235358423644,
+      "guesses": [
+        "saie",
+        "rmns",
+        "cdlt",
+        "psys",
+        "woks",
+        "yaks"
+      ]
+    },
+    {
+      "word": "lapi",
+      "num_guesses": 4,
+      "prior": 0.00011097079076097066,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "hdlc",
+        "lapi"
+      ]
+    },
+    {
+      "word": "vène",
+      "num_guesses": 6,
+      "prior": 0.00009884234389664011,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "gède",
+        "fuck",
+        "vène"
+      ]
+    },
+    {
+      "word": "sado",
+      "num_guesses": 5,
+      "prior": 0.0001422442049812494,
+      "guesses": [
+        "saie",
+        "nuls",
+        "béta",
+        "oryx",
+        "sado"
+      ]
+    },
+    {
+      "word": "aube",
+      "num_guesses": 4,
+      "prior": 0.0003351376959420535,
+      "guesses": [
+        "saie",
+        "curl",
+        "long",
+        "aube"
+      ]
+    },
+    {
+      "word": "bôrô",
+      "num_guesses": 5,
+      "prior": 0.00007733970867984003,
+      "guesses": [
+        "saie",
+        "rout",
+        "créé",
+        "würm",
+        "bôrô"
+      ]
+    },
+    {
+      "word": "beus",
+      "num_guesses": 4,
+      "prior": 0.00010331117198552657,
+      "guesses": [
+        "saie",
+        "retu",
+        "film",
+        "beus"
+      ]
+    },
+    {
+      "word": "bubi",
+      "num_guesses": 5,
+      "prior": 0.00009412821541985615,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "bulk",
+        "bubi"
+      ]
+    },
+    {
+      "word": "vise",
+      "num_guesses": 4,
+      "prior": 0.0003361303066863986,
+      "guesses": [
+        "saie",
+        "midp",
+        "lgbt",
+        "vise"
+      ]
+    },
+    {
+      "word": "wifi",
+      "num_guesses": 5,
+      "prior": 0.00019268921296884195,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "wbmp",
+        "wifi"
+      ]
+    },
+    {
+      "word": "aïls",
+      "num_guesses": 6,
+      "prior": 0.00003753200592103872,
+      "guesses": [
+        "saie",
+        "abar",
+        "oups",
+        "véké",
+        "gtld",
+        "aïls"
+      ]
+    },
+    {
+      "word": "koro",
+      "num_guesses": 5,
+      "prior": 0.0001259748053529967,
+      "guesses": [
+        "saie",
+        "rout",
+        "démo",
+        "have",
+        "koro"
+      ]
+    },
+    {
+      "word": "saho",
+      "num_guesses": 6,
+      "prior": 0.00009246758329092314,
+      "guesses": [
+        "saie",
+        "nuls",
+        "béta",
+        "oryx",
+        "sado",
+        "saho"
+      ]
+    },
+    {
+      "word": "lfss",
+      "num_guesses": 5,
+      "prior": 0.00009968609613800285,
+      "guesses": [
+        "saie",
+        "rout",
+        "blés",
+        "lœss",
+        "lfss"
+      ]
+    },
+    {
+      "word": "dris",
+      "num_guesses": 5,
+      "prior": 0.0001041830990336047,
+      "guesses": [
+        "saie",
+        "puro",
+        "igbt",
+        "fndc",
+        "dris"
+      ]
+    },
+    {
+      "word": "yatt",
+      "num_guesses": 6,
+      "prior": 0.000059860733164309245,
+      "guesses": [
+        "saie",
+        "téra",
+        "hunt",
+        "plug",
+        "watt",
+        "yatt"
+      ]
+    },
+    {
+      "word": "sirh",
+      "num_guesses": 5,
+      "prior": 0.00010224505117494325,
+      "guesses": [
+        "saie",
+        "ouli",
+        "snsm",
+        "préf",
+        "sirh"
+      ]
+    },
+    {
+      "word": "cabé",
+      "num_guesses": 4,
+      "prior": 0.00006760463781266245,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "cabé"
+      ]
+    },
+    {
+      "word": "chva",
+      "num_guesses": 6,
+      "prior": 0.00006372947186326282,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "câlé",
+        "whig",
+        "chva"
+      ]
+    },
+    {
+      "word": "cbam",
+      "num_guesses": 5,
+      "prior": 0.00007743554504420937,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "mdph",
+        "cbam"
+      ]
+    },
+    {
+      "word": "salé",
+      "num_guesses": 4,
+      "prior": 0.0002465016062060517,
+      "guesses": [
+        "saie",
+        "nuls",
+        "léon",
+        "salé"
+      ]
+    },
+    {
+      "word": "orcs",
+      "num_guesses": 4,
+      "prior": 0.0001117358621383679,
+      "guesses": [
+        "saie",
+        "rout",
+        "écog",
+        "orcs"
+      ]
+    },
+    {
+      "word": "gyne",
+      "num_guesses": 7,
+      "prior": 0.0000742966387692176,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "gède",
+        "gêne",
+        "gône",
+        "gyne"
+      ]
+    },
+    {
+      "word": "oier",
+      "num_guesses": 4,
+      "prior": 0.00007904549547376656,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "phot",
+        "oier"
+      ]
+    },
+    {
+      "word": "flux",
+      "num_guesses": 5,
+      "prior": 0.0003413967990940826,
+      "guesses": [
+        "saie",
+        "rout",
+        "club",
+        "fixé",
+        "flux"
+      ]
+    },
+    {
+      "word": "ajaw",
+      "num_guesses": 6,
+      "prior": 0.000055530026648884913,
+      "guesses": [
+        "saie",
+        "arta",
+        "lmnp",
+        "jdbc",
+        "ajax",
+        "ajaw"
+      ]
+    },
+    {
+      "word": "niue",
+      "num_guesses": 4,
+      "prior": 0.00010770959032184929,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "cuvé",
+        "niue"
+      ]
+    },
+    {
+      "word": "miju",
+      "num_guesses": 6,
+      "prior": 0.0000467946742175836,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "fcpr",
+        "biju",
+        "miju"
+      ]
+    },
+    {
+      "word": "wipi",
+      "num_guesses": 5,
+      "prior": 0.00003672843839950442,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "wbmp",
+        "wipi"
+      ]
+    },
+    {
+      "word": "ourk",
+      "num_guesses": 4,
+      "prior": 0.000044656578423906585,
+      "guesses": [
+        "saie",
+        "rout",
+        "puck",
+        "ourk"
+      ]
+    },
+    {
+      "word": "kufr",
+      "num_guesses": 4,
+      "prior": 0.00008500701471871325,
+      "guesses": [
+        "saie",
+        "rout",
+        "écru",
+        "kufr"
+      ]
+    },
+    {
+      "word": "dube",
+      "num_guesses": 5,
+      "prior": 0.00011289971614939974,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "jdbc",
+        "dube"
+      ]
+    },
+    {
+      "word": "sône",
+      "num_guesses": 5,
+      "prior": 0.0001047395735465136,
+      "guesses": [
+        "saie",
+        "mrou",
+        "vexé",
+        "sène",
+        "sône"
+      ]
+    },
+    {
+      "word": "inir",
+      "num_guesses": 4,
+      "prior": 0.0000891293337567498,
+      "guesses": [
+        "saie",
+        "troc",
+        "funk",
+        "inir"
+      ]
+    },
+    {
+      "word": "toye",
+      "num_guesses": 5,
+      "prior": 0.00009139830634587451,
+      "guesses": [
+        "saie",
+        "turo",
+        "mpeg",
+        "yeux",
+        "toye"
+      ]
+    },
+    {
+      "word": "bums",
+      "num_guesses": 6,
+      "prior": 0.00008972057545868725,
+      "guesses": [
+        "saie",
+        "rout",
+        "bgén",
+        "bush",
+        "buls",
+        "bums"
+      ]
+    },
+    {
+      "word": "shit",
+      "num_guesses": 4,
+      "prior": 0.00012937091648749136,
+      "guesses": [
+        "saie",
+        "optn",
+        "suit",
+        "shit"
+      ]
+    },
+    {
+      "word": "cand",
+      "num_guesses": 4,
+      "prior": 0.00015114822367244863,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "cand"
+      ]
+    },
+    {
+      "word": "xiao",
+      "num_guesses": 5,
+      "prior": 0.0001294940707305034,
+      "guesses": [
+        "saie",
+        "rian",
+        "floc",
+        "blum",
+        "xiao"
+      ]
+    },
+    {
+      "word": "gnon",
+      "num_guesses": 5,
+      "prior": 0.00014347198174317107,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "pâmé",
+        "gnon"
+      ]
+    },
+    {
+      "word": "foal",
+      "num_guesses": 5,
+      "prior": 0.00006856433070623044,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "goal",
+        "foal"
+      ]
+    },
+    {
+      "word": "lamp",
+      "num_guesses": 6,
+      "prior": 0.00013082272184540395,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "mull",
+        "lamb",
+        "lamp"
+      ]
+    },
+    {
+      "word": "swap",
+      "num_guesses": 4,
+      "prior": 0.00013121285939633856,
+      "guesses": [
+        "saie",
+        "port",
+        "spas",
+        "swap"
+      ]
+    },
+    {
+      "word": "naît",
+      "num_guesses": 4,
+      "prior": 0.0003187075907026769,
+      "guesses": [
+        "saie",
+        "téra",
+        "hunt",
+        "naît"
+      ]
+    },
+    {
+      "word": "bâde",
+      "num_guesses": 5,
+      "prior": 0.00007280937278370243,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "cède",
+        "bâde"
+      ]
+    },
+    {
+      "word": "baié",
+      "num_guesses": 5,
+      "prior": 0.00005087641472332154,
+      "guesses": [
+        "saie",
+        "ndtr",
+        "film",
+        "paix",
+        "baié"
+      ]
+    },
+    {
+      "word": "péri",
+      "num_guesses": 4,
+      "prior": 0.00028954210794982426,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "péri"
+      ]
+    },
+    {
+      "word": "dada",
+      "num_guesses": 6,
+      "prior": 0.0002048846747301722,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "jdbc",
+        "yadd",
+        "dada"
+      ]
+    },
+    {
+      "word": "flot",
+      "num_guesses": 5,
+      "prior": 0.00029798655684541795,
+      "guesses": [
+        "saie",
+        "rout",
+        "chop",
+        "bref",
+        "flot"
+      ]
+    },
+    {
+      "word": "nusa",
+      "num_guesses": 4,
+      "prior": 0.00010357965925104184,
+      "guesses": [
+        "saie",
+        "abar",
+        "luon",
+        "nusa"
+      ]
+    },
+    {
+      "word": "suça",
+      "num_guesses": 5,
+      "prior": 0.00012449365177809497,
+      "guesses": [
+        "saie",
+        "port",
+        "chum",
+        "kçar",
+        "suça"
+      ]
+    },
+    {
+      "word": "mood",
+      "num_guesses": 5,
+      "prior": 0.00012377875223828577,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "mcpb",
+        "mood"
+      ]
+    },
+    {
+      "word": "ocra",
+      "num_guesses": 5,
+      "prior": 0.00008704282997895501,
+      "guesses": [
+        "saie",
+        "arta",
+        "roum",
+        "york",
+        "ocra"
+      ]
+    },
+    {
+      "word": "amis",
+      "num_guesses": 3,
+      "prior": 0.0004993386138883579,
+      "guesses": [
+        "saie",
+        "vmps",
+        "amis"
+      ]
+    },
+    {
+      "word": "ajpp",
+      "num_guesses": 6,
+      "prior": 0.00006074162888304973,
+      "guesses": [
+        "saie",
+        "arta",
+        "luon",
+        "mcpb",
+        "avpf",
+        "ajpp"
+      ]
+    },
+    {
+      "word": "toua",
+      "num_guesses": 4,
+      "prior": 0.00012483363061486068,
+      "guesses": [
+        "saie",
+        "arta",
+        "boum",
+        "toua"
+      ]
+    },
+    {
+      "word": "grip",
+      "num_guesses": 5,
+      "prior": 0.00013206937725889666,
+      "guesses": [
+        "saie",
+        "troc",
+        "bgén",
+        "gril",
+        "grip"
+      ]
+    },
+    {
+      "word": "rian",
+      "num_guesses": 2,
+      "prior": 0.00011637136631156336,
+      "guesses": [
+        "saie",
+        "rian"
+      ]
+    },
+    {
+      "word": "rhôs",
+      "num_guesses": 4,
+      "prior": 0.000056424565064748174,
+      "guesses": [
+        "saie",
+        "rout",
+        "défs",
+        "rhôs"
+      ]
+    },
+    {
+      "word": "waqf",
+      "num_guesses": 6,
+      "prior": 0.0001342947938041047,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "bfup",
+        "wakf",
+        "waqf"
+      ]
+    },
+    {
+      "word": "hash",
+      "num_guesses": 5,
+      "prior": 0.00010078326681473327,
+      "guesses": [
+        "saie",
+        "rmns",
+        "thca",
+        "dash",
+        "hash"
+      ]
+    },
+    {
+      "word": "poue",
+      "num_guesses": 5,
+      "prior": 0.00011041881542081678,
+      "guesses": [
+        "saie",
+        "turo",
+        "obnl",
+        "mdph",
+        "poue"
+      ]
+    },
+    {
+      "word": "café",
+      "num_guesses": 5,
+      "prior": 0.00039976365310754567,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "folk",
+        "café"
+      ]
+    },
+    {
+      "word": "bani",
+      "num_guesses": 5,
+      "prior": 0.0001551156221686825,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "bowl",
+        "isbn",
+        "bani"
+      ]
+    },
+    {
+      "word": "lopé",
+      "num_guesses": 6,
+      "prior": 0.00010420092279142307,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "bigé",
+        "ddvp",
+        "lopé"
+      ]
+    },
+    {
+      "word": "mézé",
+      "num_guesses": 5,
+      "prior": 0.00005619665630712885,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "gémi",
+        "mézé"
+      ]
+    },
+    {
+      "word": "axas",
+      "num_guesses": 7,
+      "prior": 0.00006337832391755208,
+      "guesses": [
+        "saie",
+        "abar",
+        "gyms",
+        "land",
+        "avec",
+        "awas",
+        "axas"
+      ]
+    },
+    {
+      "word": "hafu",
+      "num_guesses": 6,
+      "prior": 0.00004651251520809061,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "bfup",
+        "zafu",
+        "hafu"
+      ]
+    },
+    {
+      "word": "rima",
+      "num_guesses": 4,
+      "prior": 0.00015624945650634506,
+      "guesses": [
+        "saie",
+        "rian",
+        "vamp",
+        "rima"
+      ]
+    },
+    {
+      "word": "gite",
+      "num_guesses": 4,
+      "prior": 0.00016716259333331122,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "tpmg",
+        "gite"
+      ]
+    },
+    {
+      "word": "oyer",
+      "num_guesses": 5,
+      "prior": 0.0001231459159699029,
+      "guesses": [
+        "saie",
+        "reut",
+        "froc",
+        "poly",
+        "oyer"
+      ]
+    },
+    {
+      "word": "dplg",
+      "num_guesses": 5,
+      "prior": 0.00009293816738882349,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "pégé",
+        "dplg"
+      ]
+    },
+    {
+      "word": "lets",
+      "num_guesses": 4,
+      "prior": 0.00014522419696457999,
+      "guesses": [
+        "saie",
+        "retu",
+        "lmnp",
+        "lets"
+      ]
+    },
+    {
+      "word": "audi",
+      "num_guesses": 4,
+      "prior": 0.00017219802116164693,
+      "guesses": [
+        "saie",
+        "rian",
+        "boud",
+        "audi"
+      ]
+    },
+    {
+      "word": "néné",
+      "num_guesses": 5,
+      "prior": 0.0001100762745937425,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "aîné",
+        "néné"
+      ]
+    },
+    {
+      "word": "sout",
+      "num_guesses": 3,
+      "prior": 0.00019336678391614225,
+      "guesses": [
+        "saie",
+        "rout",
+        "sout"
+      ]
+    },
+    {
+      "word": "tsar",
+      "num_guesses": 4,
+      "prior": 0.0002641902823287877,
+      "guesses": [
+        "saie",
+        "abar",
+        "coût",
+        "tsar"
+      ]
+    },
+    {
+      "word": "popa",
+      "num_guesses": 6,
+      "prior": 0.00012448331533976276,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "dpgf",
+        "popa"
+      ]
+    },
+    {
+      "word": "lcfa",
+      "num_guesses": 5,
+      "prior": 0.000034338147079591394,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "câlé",
+        "lcfa"
+      ]
+    },
+    {
+      "word": "polo",
+      "num_guesses": 5,
+      "prior": 0.00021863785956674378,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "mcpb",
+        "polo"
+      ]
+    },
+    {
+      "word": "lakh",
+      "num_guesses": 6,
+      "prior": 0.00008314236975836955,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "mull",
+        "lady",
+        "lakh"
+      ]
+    },
+    {
+      "word": "mute",
+      "num_guesses": 4,
+      "prior": 0.00013948209354743772,
+      "guesses": [
+        "saie",
+        "turo",
+        "mcpb",
+        "mute"
+      ]
+    },
+    {
+      "word": "siée",
+      "num_guesses": 5,
+      "prior": 0.0000929253659878709,
+      "guesses": [
+        "saie",
+        "rest",
+        "dmla",
+        "abbé",
+        "siée"
+      ]
+    },
+    {
+      "word": "meuh",
+      "num_guesses": 6,
+      "prior": 0.00009433649251109624,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "ptyx",
+        "blum",
+        "meuh"
+      ]
+    },
+    {
+      "word": "mosl",
+      "num_guesses": 5,
+      "prior": 0.00008151755134093707,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "gfdl",
+        "mosl"
+      ]
+    },
+    {
+      "word": "hala",
+      "num_guesses": 5,
+      "prior": 0.00012329088650565103,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "hvdc",
+        "hala"
+      ]
+    },
+    {
+      "word": "hvdc",
+      "num_guesses": 4,
+      "prior": 0.00005510172336535547,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "hvdc"
+      ]
+    },
+    {
+      "word": "hori",
+      "num_guesses": 5,
+      "prior": 0.00014633908275144114,
+      "guesses": [
+        "saie",
+        "tion",
+        "lord",
+        "chez",
+        "hori"
+      ]
+    },
+    {
+      "word": "omon",
+      "num_guesses": 5,
+      "prior": 0.00010153276904600825,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "pâmé",
+        "omon"
+      ]
+    },
+    {
+      "word": "opah",
+      "num_guesses": 5,
+      "prior": 0.0000907516206975571,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "mdph",
+        "opah"
+      ]
+    },
+    {
+      "word": "nuas",
+      "num_guesses": 5,
+      "prior": 0.000059860733164309245,
+      "guesses": [
+        "saie",
+        "abar",
+        "coup",
+        "hunt",
+        "nuas"
+      ]
+    },
+    {
+      "word": "beth",
+      "num_guesses": 5,
+      "prior": 0.0002037440283675573,
+      "guesses": [
+        "saie",
+        "reut",
+        "télo",
+        "mcpb",
+        "beth"
+      ]
+    },
+    {
+      "word": "mini",
+      "num_guesses": 5,
+      "prior": 0.00023820343951987648,
+      "guesses": [
+        "saie",
+        "tion",
+        "cgpi",
+        "film",
+        "mini"
+      ]
+    },
+    {
+      "word": "târs",
+      "num_guesses": 5,
+      "prior": 0.000038535487454112254,
+      "guesses": [
+        "saie",
+        "rout",
+        "très",
+        "tjrs",
+        "târs"
+      ]
+    },
+    {
+      "word": "chie",
+      "num_guesses": 4,
+      "prior": 0.00016551867219416353,
+      "guesses": [
+        "saie",
+        "viro",
+        "culé",
+        "chie"
+      ]
+    },
+    {
+      "word": "dsil",
+      "num_guesses": 4,
+      "prior": 0.00004156918655273804,
+      "guesses": [
+        "saie",
+        "puro",
+        "html",
+        "dsil"
+      ]
+    },
+    {
+      "word": "manx",
+      "num_guesses": 7,
+      "prior": 0.00010028226051276883,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "bung",
+        "dhow",
+        "manz",
+        "manx"
+      ]
+    },
+    {
+      "word": "muge",
+      "num_guesses": 5,
+      "prior": 0.00012292508106677365,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "gfdl",
+        "muge"
+      ]
+    },
+    {
+      "word": "baal",
+      "num_guesses": 6,
+      "prior": 0.00020178170735931224,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "mull",
+        "grad",
+        "baal"
+      ]
+    },
+    {
+      "word": "diés",
+      "num_guesses": 6,
+      "prior": 0.00010277765133902062,
+      "guesses": [
+        "saie",
+        "tins",
+        "fcpr",
+        "oklm",
+        "godé",
+        "diés"
+      ]
+    },
+    {
+      "word": "ouït",
+      "num_guesses": 4,
+      "prior": 0.00013764908163317572,
+      "guesses": [
+        "saie",
+        "rout",
+        "chol",
+        "ouït"
+      ]
+    },
+    {
+      "word": "arek",
+      "num_guesses": 6,
+      "prior": 0.00008868927302548853,
+      "guesses": [
+        "saie",
+        "vert",
+        "bruc",
+        "gaza",
+        "arer",
+        "arek"
+      ]
+    },
+    {
+      "word": "ptet",
+      "num_guesses": 5,
+      "prior": 0.00006198062588241798,
+      "guesses": [
+        "saie",
+        "reut",
+        "emop",
+        "plet",
+        "ptet"
+      ]
+    },
+    {
+      "word": "mélo",
+      "num_guesses": 5,
+      "prior": 0.0001601793630060878,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "vélo",
+        "mélo"
+      ]
+    },
+    {
+      "word": "loys",
+      "num_guesses": 6,
+      "prior": 0.00022893146443736067,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "gfdl",
+        "melk",
+        "loys"
+      ]
+    },
+    {
+      "word": "œils",
+      "num_guesses": 6,
+      "prior": 0.000131532126790216,
+      "guesses": [
+        "saie",
+        "tins",
+        "fcpr",
+        "oklm",
+        "vœux",
+        "œils"
+      ]
+    },
+    {
+      "word": "asse",
+      "num_guesses": 3,
+      "prior": 0.00019072857382625006,
+      "guesses": [
+        "saie",
+        "psns",
+        "asse"
+      ]
+    },
+    {
+      "word": "mile",
+      "num_guesses": 4,
+      "prior": 0.00020987433392660455,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "igmp",
+        "mile"
+      ]
+    },
+    {
+      "word": "rein",
+      "num_guesses": 3,
+      "prior": 0.0002842278576034999,
+      "guesses": [
+        "saie",
+        "lent",
+        "rein"
+      ]
+    },
+    {
+      "word": "mbay",
+      "num_guesses": 5,
+      "prior": 0.00008904140792376464,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "dahu",
+        "mbay"
+      ]
+    },
+    {
+      "word": "hmmm",
+      "num_guesses": 5,
+      "prior": 0.00011131494135094481,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "yéla",
+        "hmmm"
+      ]
+    },
+    {
+      "word": "ténu",
+      "num_guesses": 4,
+      "prior": 0.00017866324963527544,
+      "guesses": [
+        "saie",
+        "rout",
+        "tubé",
+        "ténu"
+      ]
+    },
+    {
+      "word": "daki",
+      "num_guesses": 5,
+      "prior": 0.00007054611038362352,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "bowl",
+        "nhdc",
+        "daki"
+      ]
+    },
+    {
+      "word": "éjac",
+      "num_guesses": 5,
+      "prior": 0.00005670437002295682,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "judd",
+        "éjac"
+      ]
+    },
+    {
+      "word": "poum",
+      "num_guesses": 6,
+      "prior": 0.00013912866297123358,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "faux",
+        "home",
+        "poum"
+      ]
+    },
+    {
+      "word": "jiao",
+      "num_guesses": 6,
+      "prior": 0.00010388313176066172,
+      "guesses": [
+        "saie",
+        "rian",
+        "floc",
+        "blum",
+        "xiao",
+        "jiao"
+      ]
+    },
+    {
+      "word": "sins",
+      "num_guesses": 4,
+      "prior": 0.00016988927986374145,
+      "guesses": [
+        "saie",
+        "ouli",
+        "snsm",
+        "sins"
+      ]
+    },
+    {
+      "word": "naps",
+      "num_guesses": 5,
+      "prior": 0.00006917547227419016,
+      "guesses": [
+        "saie",
+        "rmns",
+        "ouït",
+        "paya",
+        "naps"
+      ]
+    },
+    {
+      "word": "crûe",
+      "num_guesses": 5,
+      "prior": 0.00008632585727888355,
+      "guesses": [
+        "saie",
+        "turo",
+        "câlé",
+        "cree",
+        "crûe"
+      ]
+    },
+    {
+      "word": "jure",
+      "num_guesses": 5,
+      "prior": 0.00031465503139730284,
+      "guesses": [
+        "saie",
+        "turo",
+        "dhcp",
+        "jbel",
+        "jure"
+      ]
+    },
+    {
+      "word": "deff",
+      "num_guesses": 6,
+      "prior": 0.00009461215968536917,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "deçà",
+        "deck",
+        "deff"
+      ]
+    },
+    {
+      "word": "suku",
+      "num_guesses": 5,
+      "prior": 0.00009887033720144673,
+      "guesses": [
+        "saie",
+        "rout",
+        "bécu",
+        "susu",
+        "suku"
+      ]
+    },
+    {
+      "word": "pers",
+      "num_guesses": 4,
+      "prior": 0.00024718236060818495,
+      "guesses": [
+        "saie",
+        "retu",
+        "vmps",
+        "pers"
+      ]
+    },
+    {
+      "word": "cnrc",
+      "num_guesses": 4,
+      "prior": 0.00016211168319583223,
+      "guesses": [
+        "saie",
+        "rout",
+        "créé",
+        "cnrc"
+      ]
+    },
+    {
+      "word": "ripe",
+      "num_guesses": 4,
+      "prior": 0.00011610147188243012,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "prrt",
+        "ripe"
+      ]
+    },
+    {
+      "word": "ragi",
+      "num_guesses": 5,
+      "prior": 0.00008399585296916456,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "verd",
+        "gens",
+        "ragi"
+      ]
+    },
+    {
+      "word": "goon",
+      "num_guesses": 5,
+      "prior": 0.00008249702217810493,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "poon",
+        "goon"
+      ]
+    },
+    {
+      "word": "snpd",
+      "num_guesses": 4,
+      "prior": 0.00007363960760693775,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "snpd"
+      ]
+    },
+    {
+      "word": "omis",
+      "num_guesses": 4,
+      "prior": 0.0002806202659625038,
+      "guesses": [
+        "saie",
+        "puro",
+        "milf",
+        "omis"
+      ]
+    },
+    {
+      "word": "hose",
+      "num_guesses": 4,
+      "prior": 0.000127531215798233,
+      "guesses": [
+        "saie",
+        "pour",
+        "dahl",
+        "hose"
+      ]
+    },
+    {
+      "word": "jomo",
+      "num_guesses": 6,
+      "prior": 0.00011504728854844558,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "mdph",
+        "komo",
+        "jomo"
+      ]
+    },
+    {
+      "word": "ouah",
+      "num_guesses": 5,
+      "prior": 0.00013539048528835176,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "mdph",
+        "ouah"
+      ]
+    },
+    {
+      "word": "apec",
+      "num_guesses": 5,
+      "prior": 0.0001345054854720185,
+      "guesses": [
+        "saie",
+        "vert",
+        "ylem",
+        "chap",
+        "apec"
+      ]
+    },
+    {
+      "word": "ânon",
+      "num_guesses": 5,
+      "prior": 0.00013453872420802346,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "pâmé",
+        "ânon"
+      ]
+    },
+    {
+      "word": "gula",
+      "num_guesses": 5,
+      "prior": 0.00012548728631985278,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lmnp",
+        "gula"
+      ]
+    },
+    {
+      "word": "bêta",
+      "num_guesses": 5,
+      "prior": 0.00018407434638341062,
+      "guesses": [
+        "saie",
+        "arta",
+        "poub",
+        "mêlé",
+        "bêta"
+      ]
+    },
+    {
+      "word": "ctes",
+      "num_guesses": 5,
+      "prior": 0.00013203106678293615,
+      "guesses": [
+        "saie",
+        "retu",
+        "ptêt",
+        "èché",
+        "ctes"
+      ]
+    },
+    {
+      "word": "amas",
+      "num_guesses": 4,
+      "prior": 0.000313490376303998,
+      "guesses": [
+        "saie",
+        "abar",
+        "gyms",
+        "amas"
+      ]
+    },
+    {
+      "word": "sont",
+      "num_guesses": 3,
+      "prior": 0.0009353110240971373,
+      "guesses": [
+        "saie",
+        "rout",
+        "sont"
+      ]
+    },
+    {
+      "word": "gnac",
+      "num_guesses": 4,
+      "prior": 0.00011533902349291741,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "gnac"
+      ]
+    },
+    {
+      "word": "finy",
+      "num_guesses": 6,
+      "prior": 0.00012900688726845102,
+      "guesses": [
+        "saie",
+        "tion",
+        "cgpi",
+        "kiné",
+        "binz",
+        "finy"
+      ]
+    },
+    {
+      "word": "bira",
+      "num_guesses": 5,
+      "prior": 0.00010933538782911905,
+      "guesses": [
+        "saie",
+        "rian",
+        "cdlt",
+        "ambo",
+        "bira"
+      ]
+    },
+    {
+      "word": "cama",
+      "num_guesses": 6,
+      "prior": 0.00014412535992762014,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "gyms",
+        "dock",
+        "cama"
+      ]
+    },
+    {
+      "word": "rani",
+      "num_guesses": 5,
+      "prior": 0.00012967556468082764,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "verd",
+        "gens",
+        "rani"
+      ]
+    },
+    {
+      "word": "ricm",
+      "num_guesses": 6,
+      "prior": 0.00007550979147847607,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "fcpr",
+        "rich",
+        "ricm"
+      ]
+    },
+    {
+      "word": "rcnc",
+      "num_guesses": 4,
+      "prior": 0.0000541807019653758,
+      "guesses": [
+        "saie",
+        "rout",
+        "pvdc",
+        "rcnc"
+      ]
+    },
+    {
+      "word": "nævi",
+      "num_guesses": 5,
+      "prior": 0.00009599620969198191,
+      "guesses": [
+        "saie",
+        "tion",
+        "dégu",
+        "incr",
+        "nævi"
+      ]
+    },
+    {
+      "word": "ivac",
+      "num_guesses": 6,
+      "prior": 0.00006446478903018156,
+      "guesses": [
+        "saie",
+        "rian",
+        "puht",
+        "aloi",
+        "imam",
+        "ivac"
+      ]
+    },
+    {
+      "word": "basé",
+      "num_guesses": 5,
+      "prior": 0.0002828028286137281,
+      "guesses": [
+        "saie",
+        "rmns",
+        "thca",
+        "pubé",
+        "basé"
+      ]
+    },
+    {
+      "word": "inée",
+      "num_guesses": 4,
+      "prior": 0.0001041506609175507,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "timp",
+        "inée"
+      ]
+    },
+    {
+      "word": "hour",
+      "num_guesses": 6,
+      "prior": 0.00016528291473118315,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "juif",
+        "goïm",
+        "hour"
+      ]
+    },
+    {
+      "word": "èche",
+      "num_guesses": 5,
+      "prior": 0.00009064155683508834,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "cède",
+        "èche"
+      ]
+    },
+    {
+      "word": "goïs",
+      "num_guesses": 7,
+      "prior": 0.00004634815591891135,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "gfdl",
+        "yoga",
+        "vliw",
+        "goïs"
+      ]
+    },
+    {
+      "word": "abit",
+      "num_guesses": 5,
+      "prior": 0.0001289399427299376,
+      "guesses": [
+        "saie",
+        "arnt",
+        "agit",
+        "avit",
+        "abit"
+      ]
+    },
+    {
+      "word": "énés",
+      "num_guesses": 5,
+      "prior": 0.00005297599751351028,
+      "guesses": [
+        "saie",
+        "rout",
+        "blés",
+        "géné",
+        "énés"
+      ]
+    },
+    {
+      "word": "olés",
+      "num_guesses": 5,
+      "prior": 0.00007062304198458563,
+      "guesses": [
+        "saie",
+        "rout",
+        "écos",
+        "rsvp",
+        "olés"
+      ]
+    },
+    {
+      "word": "hora",
+      "num_guesses": 5,
+      "prior": 0.00018197846975522087,
+      "guesses": [
+        "saie",
+        "arta",
+        "roum",
+        "nhdc",
+        "hora"
+      ]
+    },
+    {
+      "word": "arde",
+      "num_guesses": 4,
+      "prior": 0.00014677205965786536,
+      "guesses": [
+        "saie",
+        "curl",
+        "arme",
+        "arde"
+      ]
+    },
+    {
+      "word": "lové",
+      "num_guesses": 6,
+      "prior": 0.00013279633910379685,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "bigé",
+        "ddvp",
+        "lové"
+      ]
+    },
+    {
+      "word": "clmi",
+      "num_guesses": 5,
+      "prior": 0.00004613937194970014,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "icmp",
+        "clmi"
+      ]
+    },
+    {
+      "word": "loix",
+      "num_guesses": 4,
+      "prior": 0.00030900316051755923,
+      "guesses": [
+        "saie",
+        "troc",
+        "loin",
+        "loix"
+      ]
+    },
+    {
+      "word": "azur",
+      "num_guesses": 4,
+      "prior": 0.0003061085862218742,
+      "guesses": [
+        "saie",
+        "arta",
+        "démo",
+        "azur"
+      ]
+    },
+    {
+      "word": "ouep",
+      "num_guesses": 5,
+      "prior": 0.00006638188939049212,
+      "guesses": [
+        "saie",
+        "reut",
+        "quel",
+        "bpco",
+        "ouep"
+      ]
+    },
+    {
+      "word": "hôla",
+      "num_guesses": 7,
+      "prior": 0.00004887192278014122,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "déli",
+        "bêla",
+        "hâla",
+        "hôla"
+      ]
+    },
+    {
+      "word": "zyva",
+      "num_guesses": 7,
+      "prior": 0.00004942817225624859,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "déli",
+        "gôna",
+        "hypa",
+        "zyva"
+      ]
+    },
+    {
+      "word": "hève",
+      "num_guesses": 6,
+      "prior": 0.00013321310731931416,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "cède",
+        "vabf",
+        "hève"
+      ]
+    },
+    {
+      "word": "zino",
+      "num_guesses": 5,
+      "prior": 0.00009681851038067263,
+      "guesses": [
+        "saie",
+        "tion",
+        "oklm",
+        "deuz",
+        "zino"
+      ]
+    },
+    {
+      "word": "prce",
+      "num_guesses": 4,
+      "prior": 0.00009219431672789313,
+      "guesses": [
+        "saie",
+        "turo",
+        "câlé",
+        "prce"
+      ]
+    },
+    {
+      "word": "troy",
+      "num_guesses": 4,
+      "prior": 0.00017950428220118335,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "troy"
+      ]
+    },
+    {
+      "word": "colé",
+      "num_guesses": 6,
+      "prior": 0.0001219219625979366,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "fumé",
+        "civd",
+        "colé"
+      ]
+    },
+    {
+      "word": "lace",
+      "num_guesses": 3,
+      "prior": 0.00018157233989356416,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "lace"
+      ]
+    },
+    {
+      "word": "mdph",
+      "num_guesses": 4,
+      "prior": 0.00011065672580982841,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "mdph"
+      ]
+    },
+    {
+      "word": "péta",
+      "num_guesses": 4,
+      "prior": 0.00010391099169683251,
+      "guesses": [
+        "saie",
+        "arta",
+        "poub",
+        "péta"
+      ]
+    },
+    {
+      "word": "anna",
+      "num_guesses": 5,
+      "prior": 0.0002936400134928997,
+      "guesses": [
+        "saie",
+        "arta",
+        "lump",
+        "nhdc",
+        "anna"
+      ]
+    },
+    {
+      "word": "miso",
+      "num_guesses": 4,
+      "prior": 0.00012375759389330715,
+      "guesses": [
+        "saie",
+        "tins",
+        "pové",
+        "miso"
+      ]
+    },
+    {
+      "word": "nune",
+      "num_guesses": 5,
+      "prior": 0.00010399929033174849,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "nhdc",
+        "nune"
+      ]
+    },
+    {
+      "word": "muta",
+      "num_guesses": 5,
+      "prior": 0.00013204174794238148,
+      "guesses": [
+        "saie",
+        "arta",
+        "poub",
+        "tmtc",
+        "muta"
+      ]
+    },
+    {
+      "word": "delf",
+      "num_guesses": 6,
+      "prior": 0.00011789492177130903,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "delà",
+        "delo",
+        "delf"
+      ]
+    },
+    {
+      "word": "buai",
+      "num_guesses": 6,
+      "prior": 0.00006179840333203759,
+      "guesses": [
+        "saie",
+        "rian",
+        "puht",
+        "goma",
+        "quai",
+        "buai"
+      ]
+    },
+    {
+      "word": "ugli",
+      "num_guesses": 5,
+      "prior": 0.0000540470857833659,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "plui",
+        "ugli"
+      ]
+    },
+    {
+      "word": "coxé",
+      "num_guesses": 6,
+      "prior": 0.000044064891518312255,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "pgcd",
+        "coyé",
+        "coxé"
+      ]
+    },
+    {
+      "word": "atig",
+      "num_guesses": 3,
+      "prior": 0.00006902470700685089,
+      "guesses": [
+        "saie",
+        "arnt",
+        "atig"
+      ]
+    },
+    {
+      "word": "chié",
+      "num_guesses": 5,
+      "prior": 0.00011289148739270789,
+      "guesses": [
+        "saie",
+        "troc",
+        "lmnp",
+        "hahé",
+        "chié"
+      ]
+    },
+    {
+      "word": "îles",
+      "num_guesses": 5,
+      "prior": 0.00039207233698914203,
+      "guesses": [
+        "saie",
+        "retu",
+        "méon",
+        "dplg",
+        "îles"
+      ]
+    },
+    {
+      "word": "kala",
+      "num_guesses": 6,
+      "prior": 0.00015922916693756825,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "hvdc",
+        "bugy",
+        "kala"
+      ]
+    },
+    {
+      "word": "feum",
+      "num_guesses": 6,
+      "prior": 0.00007215912317062425,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "feux",
+        "feuj",
+        "feum"
+      ]
+    },
+    {
+      "word": "raid",
+      "num_guesses": 3,
+      "prior": 0.00020022669536813107,
+      "guesses": [
+        "saie",
+        "ndtr",
+        "raid"
+      ]
+    },
+    {
+      "word": "padd",
+      "num_guesses": 5,
+      "prior": 0.00008849708167854787,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "bfup",
+        "padd"
+      ]
+    },
+    {
+      "word": "sgbd",
+      "num_guesses": 5,
+      "prior": 0.00011005024875454117,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "cedh",
+        "sgbd"
+      ]
+    },
+    {
+      "word": "khal",
+      "num_guesses": 5,
+      "prior": 0.00009683371838727222,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "dégu",
+        "khal"
+      ]
+    },
+    {
+      "word": "léon",
+      "num_guesses": 5,
+      "prior": 0.00039253744855273216,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "lyon",
+        "léon"
+      ]
+    },
+    {
+      "word": "alas",
+      "num_guesses": 5,
+      "prior": 0.00013520013244998938,
+      "guesses": [
+        "saie",
+        "abar",
+        "gyms",
+        "land",
+        "alas"
+      ]
+    },
+    {
+      "word": "resh",
+      "num_guesses": 4,
+      "prior": 0.00009526327614900952,
+      "guesses": [
+        "saie",
+        "retu",
+        "chpm",
+        "resh"
+      ]
+    },
+    {
+      "word": "zébi",
+      "num_guesses": 5,
+      "prior": 0.00006278747739186934,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "clud",
+        "zébi"
+      ]
+    },
+    {
+      "word": "coma",
+      "num_guesses": 4,
+      "prior": 0.00023610487881467167,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "coma"
+      ]
+    },
+    {
+      "word": "sars",
+      "num_guesses": 4,
+      "prior": 0.00016673660283601384,
+      "guesses": [
+        "saie",
+        "nuls",
+        "trac",
+        "sars"
+      ]
+    },
+    {
+      "word": "azys",
+      "num_guesses": 7,
+      "prior": 0.00003618807876924776,
+      "guesses": [
+        "saie",
+        "abar",
+        "oups",
+        "véké",
+        "gtld",
+        "sans",
+        "azys"
+      ]
+    },
+    {
+      "word": "oblo",
+      "num_guesses": 6,
+      "prior": 0.000059920104204107476,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "vélo",
+        "pays",
+        "oblo"
+      ]
+    },
+    {
+      "word": "haim",
+      "num_guesses": 4,
+      "prior": 0.00012313345811269601,
+      "guesses": [
+        "saie",
+        "ndtr",
+        "film",
+        "haim"
+      ]
+    },
+    {
+      "word": "viti",
+      "num_guesses": 4,
+      "prior": 0.00016193489432540876,
+      "guesses": [
+        "saie",
+        "tion",
+        "lcti",
+        "viti"
+      ]
+    },
+    {
+      "word": "figs",
+      "num_guesses": 5,
+      "prior": 0.0001623072456289854,
+      "guesses": [
+        "saie",
+        "tins",
+        "fcpr",
+        "égal",
+        "figs"
+      ]
+    },
+    {
+      "word": "goet",
+      "num_guesses": 4,
+      "prior": 0.00010531242678677519,
+      "guesses": [
+        "saie",
+        "reut",
+        "emop",
+        "goet"
+      ]
+    },
+    {
+      "word": "sexé",
+      "num_guesses": 4,
+      "prior": 0.00006368309781241483,
+      "guesses": [
+        "saie",
+        "ruts",
+        "moxé",
+        "sexé"
+      ]
+    },
+    {
+      "word": "fila",
+      "num_guesses": 5,
+      "prior": 0.0001894807089463165,
+      "guesses": [
+        "saie",
+        "rian",
+        "dmla",
+        "bfup",
+        "fila"
+      ]
+    },
+    {
+      "word": "vomi",
+      "num_guesses": 5,
+      "prior": 0.00018829548775245713,
+      "guesses": [
+        "saie",
+        "tion",
+        "lord",
+        "gcum",
+        "vomi"
+      ]
+    },
+    {
+      "word": "vina",
+      "num_guesses": 5,
+      "prior": 0.0001337281838480245,
+      "guesses": [
+        "saie",
+        "rian",
+        "pdma",
+        "evjf",
+        "vina"
+      ]
+    },
+    {
+      "word": "coto",
+      "num_guesses": 4,
+      "prior": 0.00010851470315774092,
+      "guesses": [
+        "saie",
+        "rout",
+        "téco",
+        "coto"
+      ]
+    },
+    {
+      "word": "irai",
+      "num_guesses": 4,
+      "prior": 0.0001964329052796652,
+      "guesses": [
+        "saie",
+        "rian",
+        "ivac",
+        "irai"
+      ]
+    },
+    {
+      "word": "pura",
+      "num_guesses": 5,
+      "prior": 0.00015133945737175934,
+      "guesses": [
+        "saie",
+        "arta",
+        "roum",
+        "jdbc",
+        "pura"
+      ]
+    },
+    {
+      "word": "puel",
+      "num_guesses": 5,
+      "prior": 0.00013048457420627134,
+      "guesses": [
+        "saie",
+        "reut",
+        "quel",
+        "fond",
+        "puel"
+      ]
+    },
+    {
+      "word": "dram",
+      "num_guesses": 5,
+      "prior": 0.00011968612391761868,
+      "guesses": [
+        "saie",
+        "arta",
+        "pgdc",
+        "melk",
+        "dram"
+      ]
+    },
+    {
+      "word": "gasy",
+      "num_guesses": 5,
+      "prior": 0.00009509107182169439,
+      "guesses": [
+        "saie",
+        "rmns",
+        "thca",
+        "pubé",
+        "gasy"
+      ]
+    },
+    {
+      "word": "paté",
+      "num_guesses": 4,
+      "prior": 0.00012772984109555755,
+      "guesses": [
+        "saie",
+        "téra",
+        "dcdm",
+        "paté"
+      ]
+    },
+    {
+      "word": "suga",
+      "num_guesses": 6,
+      "prior": 0.00008189460646340117,
+      "guesses": [
+        "saie",
+        "port",
+        "chum",
+        "kçar",
+        "bugy",
+        "suga"
+      ]
+    },
+    {
+      "word": "capi",
+      "num_guesses": 4,
+      "prior": 0.00019224822703115777,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "hdlc",
+        "capi"
+      ]
+    },
+    {
+      "word": "vibe",
+      "num_guesses": 6,
+      "prior": 0.00008628799957464568,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "tpmg",
+        "xive",
+        "vice",
+        "vibe"
+      ]
+    },
+    {
+      "word": "sone",
+      "num_guesses": 4,
+      "prior": 0.00013497304669285562,
+      "guesses": [
+        "saie",
+        "mrou",
+        "lyon",
+        "sone"
+      ]
+    },
+    {
+      "word": "shob",
+      "num_guesses": 5,
+      "prior": 0.00006958750542525805,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "show",
+        "shob"
+      ]
+    },
+    {
+      "word": "reus",
+      "num_guesses": 3,
+      "prior": 0.000154990074476623,
+      "guesses": [
+        "saie",
+        "retu",
+        "reus"
+      ]
+    },
+    {
+      "word": "maxi",
+      "num_guesses": 4,
+      "prior": 0.00017794723228270487,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "lynx",
+        "maxi"
+      ]
+    },
+    {
+      "word": "gate",
+      "num_guesses": 4,
+      "prior": 0.00016934318178566282,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "tpmg",
+        "gate"
+      ]
+    },
+    {
+      "word": "orry",
+      "num_guesses": 5,
+      "prior": 0.0001621346257719039,
+      "guesses": [
+        "saie",
+        "rout",
+        "proc",
+        "gony",
+        "orry"
+      ]
+    },
+    {
+      "word": "rets",
+      "num_guesses": 3,
+      "prior": 0.0001798164220961649,
+      "guesses": [
+        "saie",
+        "retu",
+        "rets"
+      ]
+    },
+    {
+      "word": "boge",
+      "num_guesses": 6,
+      "prior": 0.00008320222753800647,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "odbc",
+        "yeux",
+        "boge"
+      ]
+    },
+    {
+      "word": "snle",
+      "num_guesses": 5,
+      "prior": 0.00010748018546243712,
+      "guesses": [
+        "saie",
+        "mrou",
+        "vexé",
+        "sène",
+        "snle"
+      ]
+    },
+    {
+      "word": "fiée",
+      "num_guesses": 6,
+      "prior": 0.00013753399338530602,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "tpmg",
+        "xive",
+        "bock",
+        "fiée"
+      ]
+    },
+    {
+      "word": "glou",
+      "num_guesses": 5,
+      "prior": 0.000126730007091297,
+      "guesses": [
+        "saie",
+        "rout",
+        "chol",
+        "fang",
+        "glou"
+      ]
+    },
+    {
+      "word": "bruk",
+      "num_guesses": 5,
+      "prior": 0.00008559135997564822,
+      "guesses": [
+        "saie",
+        "rout",
+        "bruc",
+        "brun",
+        "bruk"
+      ]
+    },
+    {
+      "word": "grab",
+      "num_guesses": 6,
+      "prior": 0.00012151042503657154,
+      "guesses": [
+        "saie",
+        "arta",
+        "pgdc",
+        "fuye",
+        "gram",
+        "grab"
+      ]
+    },
+    {
+      "word": "bouh",
+      "num_guesses": 6,
+      "prior": 0.00010781861838113794,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "bléé",
+        "film",
+        "bouh"
+      ]
+    },
+    {
+      "word": "héez",
+      "num_guesses": 5,
+      "prior": 0.00004553377192201594,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "ghez",
+        "héez"
+      ]
+    },
+    {
+      "word": "flet",
+      "num_guesses": 5,
+      "prior": 0.00011704757070590496,
+      "guesses": [
+        "saie",
+        "reut",
+        "emop",
+        "fbcf",
+        "flet"
+      ]
+    },
+    {
+      "word": "tube",
+      "num_guesses": 4,
+      "prior": 0.0003947359393923706,
+      "guesses": [
+        "saie",
+        "turo",
+        "noté",
+        "tube"
+      ]
+    },
+    {
+      "word": "ares",
+      "num_guesses": 4,
+      "prior": 0.00024312549329251156,
+      "guesses": [
+        "saie",
+        "pmss",
+        "grex",
+        "ares"
+      ]
+    },
+    {
+      "word": "kola",
+      "num_guesses": 6,
+      "prior": 0.0001727802553113557,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "dobv",
+        "kola"
+      ]
+    },
+    {
+      "word": "soca",
+      "num_guesses": 4,
+      "prior": 0.00009833908213565451,
+      "guesses": [
+        "saie",
+        "port",
+        "jdbc",
+        "soca"
+      ]
+    },
+    {
+      "word": "cous",
+      "num_guesses": 4,
+      "prior": 0.00019664369471593653,
+      "guesses": [
+        "saie",
+        "rout",
+        "cnav",
+        "cous"
+      ]
+    },
+    {
+      "word": "pulu",
+      "num_guesses": 5,
+      "prior": 0.000080656257174886,
+      "guesses": [
+        "saie",
+        "rout",
+        "délu",
+        "bull",
+        "pulu"
+      ]
+    },
+    {
+      "word": "cula",
+      "num_guesses": 5,
+      "prior": 0.00010487409897875136,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "cuba",
+        "cula"
+      ]
+    },
+    {
+      "word": "hunt",
+      "num_guesses": 4,
+      "prior": 0.00019345289505480202,
+      "guesses": [
+        "saie",
+        "rout",
+        "ânkh",
+        "hunt"
+      ]
+    },
+    {
+      "word": "plov",
+      "num_guesses": 6,
+      "prior": 0.00007603119746708957,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "dpgf",
+        "plop",
+        "plov"
+      ]
+    },
+    {
+      "word": "pero",
+      "num_guesses": 5,
+      "prior": 0.0001826655872226049,
+      "guesses": [
+        "saie",
+        "reut",
+        "mdph",
+        "fois",
+        "pero"
+      ]
+    },
+    {
+      "word": "spée",
+      "num_guesses": 4,
+      "prior": 0.0001004741212882278,
+      "guesses": [
+        "saie",
+        "mrou",
+        "vexé",
+        "spée"
+      ]
+    },
+    {
+      "word": "indé",
+      "num_guesses": 4,
+      "prior": 0.000178418943469121,
+      "guesses": [
+        "saie",
+        "tion",
+        "dégu",
+        "indé"
+      ]
+    },
+    {
+      "word": "ruas",
+      "num_guesses": 4,
+      "prior": 0.00009574984208811549,
+      "guesses": [
+        "saie",
+        "abar",
+        "futé",
+        "ruas"
+      ]
+    },
+    {
+      "word": "tebi",
+      "num_guesses": 4,
+      "prior": 0.00006694272494254862,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "bief",
+        "tebi"
+      ]
+    },
+    {
+      "word": "foxa",
+      "num_guesses": 7,
+      "prior": 0.00006310374183232362,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "doxa",
+        "boxa",
+        "foxa"
+      ]
+    },
+    {
+      "word": "rupe",
+      "num_guesses": 4,
+      "prior": 0.00011763180516491227,
+      "guesses": [
+        "saie",
+        "turo",
+        "déni",
+        "rupe"
+      ]
+    },
+    {
+      "word": "opex",
+      "num_guesses": 5,
+      "prior": 0.00009419622896228934,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "eply",
+        "opex"
+      ]
+    },
+    {
+      "word": "muas",
+      "num_guesses": 6,
+      "prior": 0.00007718967901674997,
+      "guesses": [
+        "saie",
+        "abar",
+        "coup",
+        "hunt",
+        "quas",
+        "muas"
+      ]
+    },
+    {
+      "word": "dépt",
+      "num_guesses": 4,
+      "prior": 0.000139953141341787,
+      "guesses": [
+        "saie",
+        "rout",
+        "dplg",
+        "dépt"
+      ]
+    },
+    {
+      "word": "feux",
+      "num_guesses": 4,
+      "prior": 0.0003459705791618105,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "feux"
+      ]
+    },
+    {
+      "word": "iule",
+      "num_guesses": 5,
+      "prior": 0.00013221717769260213,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "igmp",
+        "ille",
+        "iule"
+      ]
+    },
+    {
+      "word": "nagô",
+      "num_guesses": 5,
+      "prior": 0.00008494108649662774,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "bung",
+        "nagô"
+      ]
+    },
+    {
+      "word": "zors",
+      "num_guesses": 6,
+      "prior": 0.0000593000554737214,
+      "guesses": [
+        "saie",
+        "rout",
+        "hdlc",
+        "film",
+        "gors",
+        "zors"
+      ]
+    },
+    {
+      "word": "anon",
+      "num_guesses": 5,
+      "prior": 0.00016356838588854782,
+      "guesses": [
+        "saie",
+        "arta",
+        "luon",
+        "dnbp",
+        "anon"
+      ]
+    },
+    {
+      "word": "ubas",
+      "num_guesses": 4,
+      "prior": 0.00007077590714265534,
+      "guesses": [
+        "saie",
+        "abar",
+        "obas",
+        "ubas"
+      ]
+    },
+    {
+      "word": "mimi",
+      "num_guesses": 5,
+      "prior": 0.00019180654360732876,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "wbmp",
+        "mimi"
+      ]
+    },
+    {
+      "word": "bidé",
+      "num_guesses": 5,
+      "prior": 0.00009635554713426944,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "brav",
+        "bidé"
+      ]
+    },
+    {
+      "word": "lane",
+      "num_guesses": 4,
+      "prior": 0.00020775263173449646,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "lmnp",
+        "lane"
+      ]
+    },
+    {
+      "word": "sbah",
+      "num_guesses": 4,
+      "prior": 0.00006662594704004761,
+      "guesses": [
+        "saie",
+        "port",
+        "chum",
+        "sbah"
+      ]
+    },
+    {
+      "word": "élué",
+      "num_guesses": 5,
+      "prior": 0.00008725140938597478,
+      "guesses": [
+        "saie",
+        "rout",
+        "club",
+        "fixé",
+        "élué"
+      ]
+    },
+    {
+      "word": "bina",
+      "num_guesses": 7,
+      "prior": 0.00012612382661033344,
+      "guesses": [
+        "saie",
+        "rian",
+        "pdma",
+        "evjf",
+        "zouk",
+        "fiqh",
+        "bina"
+      ]
+    },
+    {
+      "word": "nais",
+      "num_guesses": 6,
+      "prior": 0.0002159407251378118,
+      "guesses": [
+        "saie",
+        "vrmt",
+        "dpgf",
+        "jhil",
+        "bien",
+        "nais"
+      ]
+    },
+    {
+      "word": "lofs",
+      "num_guesses": 6,
+      "prior": 0.00009808869554716347,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "gfdl",
+        "fols",
+        "lofs"
+      ]
+    },
+    {
+      "word": "noce",
+      "num_guesses": 5,
+      "prior": 0.00023584727043289076,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "cozy",
+        "noce"
+      ]
+    },
+    {
+      "word": "olpé",
+      "num_guesses": 5,
+      "prior": 0.00008203844538188459,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "ollé",
+        "olpé"
+      ]
+    },
+    {
+      "word": "râpé",
+      "num_guesses": 4,
+      "prior": 0.00017049471361524828,
+      "guesses": [
+        "saie",
+        "rout",
+        "pvdc",
+        "râpé"
+      ]
+    },
+    {
+      "word": "cmup",
+      "num_guesses": 5,
+      "prior": 0.00006226271734526451,
+      "guesses": [
+        "saie",
+        "rout",
+        "club",
+        "chum",
+        "cmup"
+      ]
+    },
+    {
+      "word": "info",
+      "num_guesses": 4,
+      "prior": 0.00020196739812490853,
+      "guesses": [
+        "saie",
+        "tion",
+        "novi",
+        "info"
+      ]
+    },
+    {
+      "word": "raze",
+      "num_guesses": 5,
+      "prior": 0.00011742663507169747,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "amdg",
+        "vazy",
+        "raze"
+      ]
+    },
+    {
+      "word": "zona",
+      "num_guesses": 6,
+      "prior": 0.0001832520136033998,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "chez",
+        "zona"
+      ]
+    },
+    {
+      "word": "acté",
+      "num_guesses": 4,
+      "prior": 0.00013137800938796415,
+      "guesses": [
+        "saie",
+        "arta",
+        "curé",
+        "acté"
+      ]
+    },
+    {
+      "word": "pezh",
+      "num_guesses": 7,
+      "prior": 0.00004926716501555503,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "proc",
+        "peek",
+        "pexé",
+        "pezh"
+      ]
+    },
+    {
+      "word": "dlle",
+      "num_guesses": 6,
+      "prior": 0.00016201146824160943,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "blès",
+        "elle",
+        "dlle"
+      ]
+    },
+    {
+      "word": "vola",
+      "num_guesses": 6,
+      "prior": 0.00019497056239953082,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "dobv",
+        "vola"
+      ]
+    },
+    {
+      "word": "gêna",
+      "num_guesses": 6,
+      "prior": 0.00013934105008530772,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "déli",
+        "gôna",
+        "gêna"
+      ]
+    },
+    {
+      "word": "noob",
+      "num_guesses": 4,
+      "prior": 0.00005770292337603907,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "noob"
+      ]
+    },
+    {
+      "word": "avia",
+      "num_guesses": 4,
+      "prior": 0.00014420846731826714,
+      "guesses": [
+        "saie",
+        "arnt",
+        "dmla",
+        "avia"
+      ]
+    },
+    {
+      "word": "seme",
+      "num_guesses": 4,
+      "prior": 0.0001469313757411041,
+      "guesses": [
+        "saie",
+        "mrou",
+        "sème",
+        "seme"
+      ]
+    },
+    {
+      "word": "suri",
+      "num_guesses": 4,
+      "prior": 0.00014155657041106185,
+      "guesses": [
+        "saie",
+        "ouli",
+        "bref",
+        "suri"
+      ]
+    },
+    {
+      "word": "puât",
+      "num_guesses": 5,
+      "prior": 0.000054744979999299785,
+      "guesses": [
+        "saie",
+        "rout",
+        "ânkh",
+        "temp",
+        "puât"
+      ]
+    },
+    {
+      "word": "roux",
+      "num_guesses": 4,
+      "prior": 0.0003283337085080276,
+      "guesses": [
+        "saie",
+        "rout",
+        "mixé",
+        "roux"
+      ]
+    },
+    {
+      "word": "viie",
+      "num_guesses": 3,
+      "prior": 0.00022413825265961564,
+      "guesses": [
+        "saie",
+        "viro",
+        "viie"
+      ]
+    },
+    {
+      "word": "topo",
+      "num_guesses": 5,
+      "prior": 0.00015707904417529465,
+      "guesses": [
+        "saie",
+        "rout",
+        "téco",
+        "gîte",
+        "topo"
+      ]
+    },
+    {
+      "word": "étés",
+      "num_guesses": 4,
+      "prior": 0.00020974632333992663,
+      "guesses": [
+        "saie",
+        "rout",
+        "fttc",
+        "étés"
+      ]
+    },
+    {
+      "word": "bake",
+      "num_guesses": 6,
+      "prior": 0.00010333965359863446,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "dpgf",
+        "yabh",
+        "vont",
+        "bake"
+      ]
+    },
+    {
+      "word": "novi",
+      "num_guesses": 3,
+      "prior": 0.00019589798213741079,
+      "guesses": [
+        "saie",
+        "tion",
+        "novi"
+      ]
+    },
+    {
+      "word": "fend",
+      "num_guesses": 5,
+      "prior": 0.00020674059814270785,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "fond",
+        "fend"
+      ]
+    },
+    {
+      "word": "kata",
+      "num_guesses": 6,
+      "prior": 0.0001358824703175713,
+      "guesses": [
+        "saie",
+        "téra",
+        "nhdc",
+        "mcpb",
+        "king",
+        "kata"
+      ]
+    },
+    {
+      "word": "slow",
+      "num_guesses": 4,
+      "prior": 0.00015498709604299228,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "slow"
+      ]
+    },
+    {
+      "word": "eess",
+      "num_guesses": 6,
+      "prior": 0.00006330715212209504,
+      "guesses": [
+        "saie",
+        "retu",
+        "pcnb",
+        "gfdl",
+        "mesh",
+        "eess"
+      ]
+    },
+    {
+      "word": "ruen",
+      "num_guesses": 5,
+      "prior": 0.00007471799607922795,
+      "guesses": [
+        "saie",
+        "reut",
+        "ruer",
+        "ruez",
+        "ruen"
+      ]
+    },
+    {
+      "word": "sats",
+      "num_guesses": 4,
+      "prior": 0.00008386501167759797,
+      "guesses": [
+        "saie",
+        "nuls",
+        "trac",
+        "sats"
+      ]
+    },
+    {
+      "word": "scat",
+      "num_guesses": 4,
+      "prior": 0.00010410355374780373,
+      "guesses": [
+        "saie",
+        "port",
+        "wack",
+        "scat"
+      ]
+    },
+    {
+      "word": "pink",
+      "num_guesses": 4,
+      "prior": 0.00015063694264964378,
+      "guesses": [
+        "saie",
+        "tion",
+        "cgpi",
+        "pink"
+      ]
+    },
+    {
+      "word": "hiée",
+      "num_guesses": 7,
+      "prior": 0.00005576895993697924,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "tpmg",
+        "xive",
+        "bock",
+        "fiée",
+        "hiée"
+      ]
+    },
+    {
+      "word": "gtld",
+      "num_guesses": 4,
+      "prior": 0.00006549297621089546,
+      "guesses": [
+        "saie",
+        "rout",
+        "http",
+        "gtld"
+      ]
+    },
+    {
+      "word": "coca",
+      "num_guesses": 4,
+      "prior": 0.0002096133506160206,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "coca"
+      ]
+    },
+    {
+      "word": "code",
+      "num_guesses": 5,
+      "prior": 0.0004915285391975924,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "odbc",
+        "code"
+      ]
+    },
+    {
+      "word": "épar",
+      "num_guesses": 5,
+      "prior": 0.0001343522797704227,
+      "guesses": [
+        "saie",
+        "arta",
+        "hdlc",
+        "puni",
+        "épar"
+      ]
+    },
+    {
+      "word": "plof",
+      "num_guesses": 5,
+      "prior": 0.00007556843993094021,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "dpgf",
+        "plof"
+      ]
+    },
+    {
+      "word": "téké",
+      "num_guesses": 5,
+      "prior": 0.00012037426376173413,
+      "guesses": [
+        "saie",
+        "rout",
+        "http",
+        "télé",
+        "téké"
+      ]
+    },
+    {
+      "word": "téci",
+      "num_guesses": 4,
+      "prior": 0.000059696237030616535,
+      "guesses": [
+        "saie",
+        "tion",
+        "acul",
+        "téci"
+      ]
+    },
+    {
+      "word": "cuta",
+      "num_guesses": 5,
+      "prior": 0.00010056016940328858,
+      "guesses": [
+        "saie",
+        "arta",
+        "poub",
+        "tmtc",
+        "cuta"
+      ]
+    },
+    {
+      "word": "noye",
+      "num_guesses": 5,
+      "prior": 0.00013261408233285874,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "cozy",
+        "noye"
+      ]
+    },
+    {
+      "word": "mpsi",
+      "num_guesses": 5,
+      "prior": 0.00008335310105489842,
+      "guesses": [
+        "saie",
+        "tins",
+        "isbd",
+        "coup",
+        "mpsi"
+      ]
+    },
+    {
+      "word": "hong",
+      "num_guesses": 6,
+      "prior": 0.00025122747245024063,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "pgcd",
+        "kham",
+        "hong"
+      ]
+    },
+    {
+      "word": "dhal",
+      "num_guesses": 5,
+      "prior": 0.00008882466303302516,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "dégu",
+        "dhal"
+      ]
+    },
+    {
+      "word": "axis",
+      "num_guesses": 5,
+      "prior": 0.00016844742515184134,
+      "guesses": [
+        "saie",
+        "vmps",
+        "gent",
+        "deux",
+        "axis"
+      ]
+    },
+    {
+      "word": "yard",
+      "num_guesses": 6,
+      "prior": 0.00016782545711340206,
+      "guesses": [
+        "saie",
+        "téra",
+        "dhcp",
+        "flan",
+        "jury",
+        "yard"
+      ]
+    },
+    {
+      "word": "eeps",
+      "num_guesses": 5,
+      "prior": 0.00006236404044836092,
+      "guesses": [
+        "saie",
+        "retu",
+        "pcnb",
+        "edpm",
+        "eeps"
+      ]
+    },
+    {
+      "word": "falé",
+      "num_guesses": 5,
+      "prior": 0.00009175131090984473,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "gfdl",
+        "falé"
+      ]
+    },
+    {
+      "word": "spic",
+      "num_guesses": 4,
+      "prior": 0.00011671297111266431,
+      "guesses": [
+        "saie",
+        "optn",
+        "camp",
+        "spic"
+      ]
+    },
+    {
+      "word": "berk",
+      "num_guesses": 5,
+      "prior": 0.0001280915200663146,
+      "guesses": [
+        "saie",
+        "reut",
+        "mdph",
+        "nerf",
+        "berk"
+      ]
+    },
+    {
+      "word": "yoni",
+      "num_guesses": 5,
+      "prior": 0.00010727621496592433,
+      "guesses": [
+        "saie",
+        "tion",
+        "novi",
+        "body",
+        "yoni"
+      ]
+    },
+    {
+      "word": "ulid",
+      "num_guesses": 4,
+      "prior": 0.00005023331244884391,
+      "guesses": [
+        "saie",
+        "troc",
+        "funé",
+        "ulid"
+      ]
+    },
+    {
+      "word": "teth",
+      "num_guesses": 5,
+      "prior": 0.00008538039153037974,
+      "guesses": [
+        "saie",
+        "reut",
+        "télo",
+        "chad",
+        "teth"
+      ]
+    },
+    {
+      "word": "moud",
+      "num_guesses": 5,
+      "prior": 0.00013135171813748154,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "mary",
+        "moud"
+      ]
+    },
+    {
+      "word": "dômé",
+      "num_guesses": 6,
+      "prior": 0.000051102415470102135,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "pégé",
+        "dîmé",
+        "dômé"
+      ]
+    },
+    {
+      "word": "hase",
+      "num_guesses": 4,
+      "prior": 0.0001814590546602649,
+      "guesses": [
+        "saie",
+        "nrbc",
+        "htlv",
+        "hase"
+      ]
+    },
+    {
+      "word": "numa",
+      "num_guesses": 5,
+      "prior": 0.00021210363728982302,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "fœhn",
+        "numa"
+      ]
+    },
+    {
+      "word": "ndla",
+      "num_guesses": 5,
+      "prior": 0.00009271699374792211,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "déli",
+        "ndla"
+      ]
+    },
+    {
+      "word": "pres",
+      "num_guesses": 4,
+      "prior": 0.00026258894785291726,
+      "guesses": [
+        "saie",
+        "retu",
+        "opes",
+        "pres"
+      ]
+    },
+    {
+      "word": "pâré",
+      "num_guesses": 5,
+      "prior": 0.00003800130177623406,
+      "guesses": [
+        "saie",
+        "rout",
+        "créé",
+        "lyré",
+        "pâré"
+      ]
+    },
+    {
+      "word": "quis",
+      "num_guesses": 5,
+      "prior": 0.00024213571663844253,
+      "guesses": [
+        "saie",
+        "puro",
+        "lgbt",
+        "fqdn",
+        "quis"
+      ]
+    },
+    {
+      "word": "béli",
+      "num_guesses": 6,
+      "prior": 0.00009553761532140284,
+      "guesses": [
+        "saie",
+        "tion",
+        "muré",
+        "clud",
+        "vifs",
+        "béli"
+      ]
+    },
+    {
+      "word": "noüé",
+      "num_guesses": 6,
+      "prior": 0.00004484701850594915,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "voyé",
+        "nocé",
+        "noüé"
+      ]
+    },
+    {
+      "word": "rtem",
+      "num_guesses": 3,
+      "prior": 0.00007214503096699657,
+      "guesses": [
+        "saie",
+        "reut",
+        "rtem"
+      ]
+    },
+    {
+      "word": "dorm",
+      "num_guesses": 4,
+      "prior": 0.00009229190777210429,
+      "guesses": [
+        "saie",
+        "rout",
+        "démo",
+        "dorm"
+      ]
+    },
+    {
+      "word": "yolé",
+      "num_guesses": 7,
+      "prior": 0.00005855579862611244,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "fumé",
+        "civd",
+        "lolé",
+        "yolé"
+      ]
+    },
+    {
+      "word": "anar",
+      "num_guesses": 4,
+      "prior": 0.0001425613733856637,
+      "guesses": [
+        "saie",
+        "arta",
+        "fndc",
+        "anar"
+      ]
+    },
+    {
+      "word": "mabi",
+      "num_guesses": 5,
+      "prior": 0.00009021894043441098,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "lynx",
+        "dock",
+        "mabi"
+      ]
+    },
+    {
+      "word": "efel",
+      "num_guesses": 5,
+      "prior": 0.00006222455055072928,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "geek",
+        "efel"
+      ]
+    },
+    {
+      "word": "mutu",
+      "num_guesses": 5,
+      "prior": 0.00009612404361745221,
+      "guesses": [
+        "saie",
+        "rout",
+        "tubé",
+        "luth",
+        "mutu"
+      ]
+    },
+    {
+      "word": "tend",
+      "num_guesses": 5,
+      "prior": 0.00039526823608861616,
+      "guesses": [
+        "saie",
+        "reut",
+        "télo",
+        "chad",
+        "tend"
+      ]
+    },
+    {
+      "word": "plat",
+      "num_guesses": 5,
+      "prior": 0.0003619169574054594,
+      "guesses": [
+        "saie",
+        "arta",
+        "écot",
+        "dplg",
+        "plat"
+      ]
+    },
+    {
+      "word": "jhil",
+      "num_guesses": 6,
+      "prior": 0.000042309756364400715,
+      "guesses": [
+        "saie",
+        "troc",
+        "funé",
+        "dplg",
+        "vœux",
+        "jhil"
+      ]
+    },
+    {
+      "word": "moos",
+      "num_guesses": 6,
+      "prior": 0.00012524376245828052,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "gfdl",
+        "méos",
+        "moos"
+      ]
+    },
+    {
+      "word": "créa",
+      "num_guesses": 4,
+      "prior": 0.00028372134587205324,
+      "guesses": [
+        "saie",
+        "arta",
+        "gnou",
+        "créa"
+      ]
+    },
+    {
+      "word": "goya",
+      "num_guesses": 6,
+      "prior": 0.00019746085842588959,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lynx",
+        "gave",
+        "goya"
+      ]
+    },
+    {
+      "word": "nekh",
+      "num_guesses": 6,
+      "prior": 0.000051542781413147346,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "méen",
+        "neck",
+        "nekh"
+      ]
+    },
+    {
+      "word": "vînâ",
+      "num_guesses": 6,
+      "prior": 0.00006190279312207862,
+      "guesses": [
+        "saie",
+        "rout",
+        "nhdc",
+        "mégé",
+        "lynx",
+        "vînâ"
+      ]
+    },
+    {
+      "word": "hufa",
+      "num_guesses": 6,
+      "prior": 0.000049491991929525034,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lmnp",
+        "bugy",
+        "hufa"
+      ]
+    },
+    {
+      "word": "dodo",
+      "num_guesses": 6,
+      "prior": 0.00016498322061321102,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "mdph",
+        "judd",
+        "dodo"
+      ]
+    },
+    {
+      "word": "émas",
+      "num_guesses": 6,
+      "prior": 0.00005799281672422428,
+      "guesses": [
+        "saie",
+        "abar",
+        "coup",
+        "htlv",
+        "éfik",
+        "émas"
+      ]
+    },
+    {
+      "word": "zode",
+      "num_guesses": 6,
+      "prior": 0.00006445372780972407,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "odbc",
+        "doge",
+        "zode"
+      ]
+    },
+    {
+      "word": "séen",
+      "num_guesses": 4,
+      "prior": 0.00005625398045523765,
+      "guesses": [
+        "saie",
+        "ruts",
+        "moxé",
+        "séen"
+      ]
+    },
+    {
+      "word": "malt",
+      "num_guesses": 5,
+      "prior": 0.00021212599403628955,
+      "guesses": [
+        "saie",
+        "téra",
+        "hunt",
+        "plug",
+        "malt"
+      ]
+    },
+    {
+      "word": "ouli",
+      "num_guesses": 4,
+      "prior": 0.00010094562491299981,
+      "guesses": [
+        "saie",
+        "tion",
+        "lord",
+        "ouli"
+      ]
+    },
+    {
+      "word": "vost",
+      "num_guesses": 5,
+      "prior": 0.0001199040230917903,
+      "guesses": [
+        "saie",
+        "rout",
+        "post",
+        "host",
+        "vost"
+      ]
+    },
+    {
+      "word": "upas",
+      "num_guesses": 4,
+      "prior": 0.00011855664644360293,
+      "guesses": [
+        "saie",
+        "abar",
+        "coup",
+        "upas"
+      ]
+    },
+    {
+      "word": "baas",
+      "num_guesses": 7,
+      "prior": 0.00015120343037140638,
+      "guesses": [
+        "saie",
+        "rmns",
+        "cdlt",
+        "psys",
+        "bhog",
+        "abab",
+        "baas"
+      ]
+    },
+    {
+      "word": "rosi",
+      "num_guesses": 5,
+      "prior": 0.00013800100810305114,
+      "guesses": [
+        "saie",
+        "tins",
+        "isbd",
+        "coup",
+        "rosi"
+      ]
+    },
+    {
+      "word": "clie",
+      "num_guesses": 4,
+      "prior": 0.00011979295352156296,
+      "guesses": [
+        "saie",
+        "viro",
+        "culé",
+        "clie"
+      ]
+    },
+    {
+      "word": "féas",
+      "num_guesses": 6,
+      "prior": 0.00006223728322021182,
+      "guesses": [
+        "saie",
+        "abar",
+        "coup",
+        "htlv",
+        "éfik",
+        "féas"
+      ]
+    },
+    {
+      "word": "dzis",
+      "num_guesses": 5,
+      "prior": 0.00006322371178966465,
+      "guesses": [
+        "saie",
+        "puro",
+        "html",
+        "isbd",
+        "dzis"
+      ]
+    },
+    {
+      "word": "zire",
+      "num_guesses": 6,
+      "prior": 0.00007434045685271875,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "prrt",
+        "mvcc",
+        "bang",
+        "zire"
+      ]
+    },
+    {
+      "word": "jils",
+      "num_guesses": 6,
+      "prior": 0.00011279373448192016,
+      "guesses": [
+        "saie",
+        "tins",
+        "fcpr",
+        "oklm",
+        "vœux",
+        "jils"
+      ]
+    },
+    {
+      "word": "tête",
+      "num_guesses": 4,
+      "prior": 0.0005938847095475851,
+      "guesses": [
+        "saie",
+        "turo",
+        "lète",
+        "tête"
+      ]
+    },
+    {
+      "word": "admr",
+      "num_guesses": 4,
+      "prior": 0.00007824179744469226,
+      "guesses": [
+        "saie",
+        "arta",
+        "démo",
+        "admr"
+      ]
+    },
+    {
+      "word": "haie",
+      "num_guesses": 4,
+      "prior": 0.0002600153179246001,
+      "guesses": [
+        "saie",
+        "brgm",
+        "cntp",
+        "haie"
+      ]
+    },
+    {
+      "word": "zots",
+      "num_guesses": 7,
+      "prior": 0.000043385842050328335,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "abcd",
+        "tasy",
+        "kots",
+        "zots"
+      ]
+    },
+    {
+      "word": "lady",
+      "num_guesses": 5,
+      "prior": 0.00028676902424829806,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "mull",
+        "lady"
+      ]
+    },
+    {
+      "word": "beuj",
+      "num_guesses": 7,
+      "prior": 0.00004710902439996212,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "ptyx",
+        "blum",
+        "hugo",
+        "beuj"
+      ]
+    },
+    {
+      "word": "safe",
+      "num_guesses": 4,
+      "prior": 0.00014005850615632666,
+      "guesses": [
+        "saie",
+        "dplg",
+        "rtfm",
+        "safe"
+      ]
+    },
+    {
+      "word": "sshd",
+      "num_guesses": 5,
+      "prior": 0.00006250229340688743,
+      "guesses": [
+        "saie",
+        "rout",
+        "lmnp",
+        "cedh",
+        "sshd"
+      ]
+    },
+    {
+      "word": "taxa",
+      "num_guesses": 5,
+      "prior": 0.00015749868055090982,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "batx",
+        "taxa"
+      ]
+    },
+    {
+      "word": "ître",
+      "num_guesses": 5,
+      "prior": 0.00010609254747894521,
+      "guesses": [
+        "saie",
+        "turo",
+        "être",
+        "âtre",
+        "ître"
+      ]
+    },
+    {
+      "word": "abat",
+      "num_guesses": 4,
+      "prior": 0.0002301295836791949,
+      "guesses": [
+        "saie",
+        "arta",
+        "enby",
+        "abat"
+      ]
+    },
+    {
+      "word": "gour",
+      "num_guesses": 6,
+      "prior": 0.00016039402635307728,
+      "guesses": [
+        "saie",
+        "rout",
+        "pcnb",
+        "juif",
+        "goïm",
+        "gour"
+      ]
+    },
+    {
+      "word": "rêle",
+      "num_guesses": 5,
+      "prior": 0.00009537431399832509,
+      "guesses": [
+        "saie",
+        "turo",
+        "câlé",
+        "rôle",
+        "rêle"
+      ]
+    },
+    {
+      "word": "kilé",
+      "num_guesses": 5,
+      "prior": 0.00007410766648955615,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "bfup",
+        "kilé"
+      ]
+    },
+    {
+      "word": "lier",
+      "num_guesses": 3,
+      "prior": 0.00030942256601143396,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "lier"
+      ]
+    },
+    {
+      "word": "veuë",
+      "num_guesses": 6,
+      "prior": 0.00017113688419768806,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "ptyx",
+        "blum",
+        "veuë"
+      ]
+    },
+    {
+      "word": "luma",
+      "num_guesses": 6,
+      "prior": 0.00009751262096906768,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "fœhn",
+        "plus",
+        "luma"
+      ]
+    },
+    {
+      "word": "kans",
+      "num_guesses": 7,
+      "prior": 0.00011728569048744851,
+      "guesses": [
+        "saie",
+        "rmns",
+        "dpgf",
+        "htlv",
+        "jdbc",
+        "sexy",
+        "kans"
+      ]
+    },
+    {
+      "word": "faré",
+      "num_guesses": 5,
+      "prior": 0.00011579932378764102,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "garé",
+        "faré"
+      ]
+    },
+    {
+      "word": "lors",
+      "num_guesses": 4,
+      "prior": 0.000561640948044687,
+      "guesses": [
+        "saie",
+        "rout",
+        "hdlc",
+        "lors"
+      ]
+    },
+    {
+      "word": "graf",
+      "num_guesses": 5,
+      "prior": 0.00017716235367868163,
+      "guesses": [
+        "saie",
+        "arta",
+        "pgdc",
+        "fuye",
+        "graf"
+      ]
+    },
+    {
+      "word": "teug",
+      "num_guesses": 4,
+      "prior": 0.000049929765669225995,
+      "guesses": [
+        "saie",
+        "reut",
+        "golf",
+        "teug"
+      ]
+    },
+    {
+      "word": "gane",
+      "num_guesses": 6,
+      "prior": 0.00013479362660049149,
+      "guesses": [
+        "saie",
+        "ctrl",
+        "dpgf",
+        "zemb",
+        "vont",
+        "gane"
+      ]
+    },
+    {
+      "word": "oaïs",
+      "num_guesses": 7,
+      "prior": 0.00003447441385121159,
+      "guesses": [
+        "saie",
+        "rmns",
+        "cdlt",
+        "psys",
+        "bhog",
+        "oaas",
+        "oaïs"
+      ]
+    },
+    {
+      "word": "trek",
+      "num_guesses": 4,
+      "prior": 0.000143220973207576,
+      "guesses": [
+        "saie",
+        "reut",
+        "kfor",
+        "trek"
+      ]
+    },
+    {
+      "word": "faos",
+      "num_guesses": 6,
+      "prior": 0.00006190279312207862,
+      "guesses": [
+        "saie",
+        "rmns",
+        "cdlt",
+        "psys",
+        "bhog",
+        "faos"
+      ]
+    },
+    {
+      "word": "clos",
+      "num_guesses": 4,
+      "prior": 0.00033569830771732666,
+      "guesses": [
+        "saie",
+        "rout",
+        "écos",
+        "clos"
+      ]
+    },
+    {
+      "word": "tiac",
+      "num_guesses": 5,
+      "prior": 0.00008163828028640546,
+      "guesses": [
+        "saie",
+        "rian",
+        "floc",
+        "diac",
+        "tiac"
+      ]
+    },
+    {
+      "word": "cuys",
+      "num_guesses": 5,
+      "prior": 0.0000648148050712994,
+      "guesses": [
+        "saie",
+        "rout",
+        "bgén",
+        "cplc",
+        "cuys"
+      ]
+    },
+    {
+      "word": "poub",
+      "num_guesses": 6,
+      "prior": 0.00009681416348035515,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "faux",
+        "home",
+        "poub"
+      ]
+    },
+    {
+      "word": "idée",
+      "num_guesses": 3,
+      "prior": 0.0005643578918104676,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "idée"
+      ]
+    },
+    {
+      "word": "yeuh",
+      "num_guesses": 6,
+      "prior": 0.0000349989804790836,
+      "guesses": [
+        "saie",
+        "reut",
+        "fndc",
+        "ptyx",
+        "yeuz",
+        "yeuh"
+      ]
+    },
+    {
+      "word": "niez",
+      "num_guesses": 4,
+      "prior": 0.0001622017204406918,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "mvet",
+        "niez"
+      ]
+    },
+    {
+      "word": "peïs",
+      "num_guesses": 6,
+      "prior": 0.00006739305294686069,
+      "guesses": [
+        "saie",
+        "retu",
+        "pcnb",
+        "pesé",
+        "peps",
+        "peïs"
+      ]
+    },
+    {
+      "word": "arnt",
+      "num_guesses": 4,
+      "prior": 0.00011190563528195156,
+      "guesses": [
+        "saie",
+        "arta",
+        "nord",
+        "arnt"
+      ]
+    },
+    {
+      "word": "falc",
+      "num_guesses": 4,
+      "prior": 0.00009839007733115884,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "falc"
+      ]
+    },
+    {
+      "word": "flop",
+      "num_guesses": 5,
+      "prior": 0.0001257610141223726,
+      "guesses": [
+        "saie",
+        "rout",
+        "clon",
+        "dpgf",
+        "flop"
+      ]
+    },
+    {
+      "word": "sené",
+      "num_guesses": 4,
+      "prior": 0.00011868011207030502,
+      "guesses": [
+        "saie",
+        "ruts",
+        "moxé",
+        "sené"
+      ]
+    },
+    {
+      "word": "chio",
+      "num_guesses": 4,
+      "prior": 0.0001850869076922571,
+      "guesses": [
+        "saie",
+        "troc",
+        "coin",
+        "chio"
+      ]
+    },
+    {
+      "word": "espé",
+      "num_guesses": 4,
+      "prior": 0.000165804671229326,
+      "guesses": [
+        "saie",
+        "retu",
+        "méon",
+        "espé"
+      ]
+    },
+    {
+      "word": "fras",
+      "num_guesses": 4,
+      "prior": 0.00010141750725526214,
+      "guesses": [
+        "saie",
+        "abar",
+        "futé",
+        "fras"
+      ]
+    },
+    {
+      "word": "soff",
+      "num_guesses": 5,
+      "prior": 0.00008862745782477468,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "décs",
+        "soff"
+      ]
+    },
+    {
+      "word": "push",
+      "num_guesses": 6,
+      "prior": 0.00013808882518091462,
+      "guesses": [
+        "saie",
+        "rout",
+        "bgén",
+        "cplc",
+        "puys",
+        "push"
+      ]
+    },
+    {
+      "word": "thot",
+      "num_guesses": 4,
+      "prior": 0.0001588509914918497,
+      "guesses": [
+        "saie",
+        "rout",
+        "chop",
+        "thot"
+      ]
+    },
+    {
+      "word": "paya",
+      "num_guesses": 5,
+      "prior": 0.00024018782088597047,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "cuvy",
+        "paya"
+      ]
+    },
+    {
+      "word": "vire",
+      "num_guesses": 5,
+      "prior": 0.00023021088835077045,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "prrt",
+        "mvcc",
+        "vire"
+      ]
+    },
+    {
+      "word": "soja",
+      "num_guesses": 4,
+      "prior": 0.00021743740756374912,
+      "guesses": [
+        "saie",
+        "port",
+        "jdbc",
+        "soja"
+      ]
+    },
+    {
+      "word": "tiki",
+      "num_guesses": 4,
+      "prior": 0.00012132150456230598,
+      "guesses": [
+        "saie",
+        "tion",
+        "képi",
+        "tiki"
+      ]
+    },
+    {
+      "word": "ilôt",
+      "num_guesses": 4,
+      "prior": 0.0001214367541291592,
+      "guesses": [
+        "saie",
+        "tion",
+        "butô",
+        "ilôt"
+      ]
+    },
+    {
+      "word": "exif",
+      "num_guesses": 4,
+      "prior": 0.00008900796570293907,
+      "guesses": [
+        "saie",
+        "lent",
+        "chef",
+        "exif"
+      ]
+    },
+    {
+      "word": "aigu",
+      "num_guesses": 4,
+      "prior": 0.0003016627541732263,
+      "guesses": [
+        "saie",
+        "rian",
+        "dmla",
+        "aigu"
+      ]
+    },
+    {
+      "word": "ilus",
+      "num_guesses": 4,
+      "prior": 0.00012264277754671878,
+      "guesses": [
+        "saie",
+        "tins",
+        "roux",
+        "ilus"
+      ]
+    },
+    {
+      "word": "yark",
+      "num_guesses": 5,
+      "prior": 0.00007430916877056596,
+      "guesses": [
+        "saie",
+        "téra",
+        "dhcp",
+        "yomb",
+        "yark"
+      ]
+    },
+    {
+      "word": "frik",
+      "num_guesses": 5,
+      "prior": 0.00008441742950437705,
+      "guesses": [
+        "saie",
+        "troc",
+        "bgén",
+        "prix",
+        "frik"
+      ]
+    },
+    {
+      "word": "nats",
+      "num_guesses": 4,
+      "prior": 0.00010750878964092959,
+      "guesses": [
+        "saie",
+        "rmns",
+        "ouït",
+        "nats"
+      ]
+    },
+    {
+      "word": "téso",
+      "num_guesses": 4,
+      "prior": 0.00004277609222611518,
+      "guesses": [
+        "saie",
+        "rout",
+        "osts",
+        "téso"
+      ]
+    },
+    {
+      "word": "logo",
+      "num_guesses": 5,
+      "prior": 0.00018969576982391488,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "gock",
+        "logo"
+      ]
+    },
+    {
+      "word": "époi",
+      "num_guesses": 4,
+      "prior": 0.00006518917291012303,
+      "guesses": [
+        "saie",
+        "tion",
+        "képi",
+        "époi"
+      ]
+    },
+    {
+      "word": "expo",
+      "num_guesses": 5,
+      "prior": 0.00019218247793047823,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "eply",
+        "expo"
+      ]
+    },
+    {
+      "word": "babé",
+      "num_guesses": 5,
+      "prior": 0.00009496461736674897,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "blob",
+        "babé"
+      ]
+    },
+    {
+      "word": "pyen",
+      "num_guesses": 5,
+      "prior": 0.00006566848008297699,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "edpm",
+        "pyen"
+      ]
+    },
+    {
+      "word": "tjrs",
+      "num_guesses": 4,
+      "prior": 0.00006474975160620456,
+      "guesses": [
+        "saie",
+        "rout",
+        "très",
+        "tjrs"
+      ]
+    },
+    {
+      "word": "ouak",
+      "num_guesses": 6,
+      "prior": 0.00006357825951179493,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "mdph",
+        "ouaf",
+        "ouak"
+      ]
+    },
+    {
+      "word": "vida",
+      "num_guesses": 5,
+      "prior": 0.00022441795869276946,
+      "guesses": [
+        "saie",
+        "rian",
+        "dmla",
+        "bava",
+        "vida"
+      ]
+    },
+    {
+      "word": "béez",
+      "num_guesses": 5,
+      "prior": 0.00005837602582516108,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "ghez",
+        "béez"
+      ]
+    },
+    {
+      "word": "bouf",
+      "num_guesses": 6,
+      "prior": 0.00012387459720466902,
+      "guesses": [
+        "saie",
+        "rout",
+        "pgcd",
+        "bléé",
+        "film",
+        "bouf"
+      ]
+    },
+    {
+      "word": "asap",
+      "num_guesses": 4,
+      "prior": 0.00008062916555241134,
+      "guesses": [
+        "saie",
+        "abar",
+        "gyms",
+        "asap"
+      ]
+    },
+    {
+      "word": "piné",
+      "num_guesses": 5,
+      "prior": 0.00006831189709012966,
+      "guesses": [
+        "saie",
+        "tion",
+        "cgpi",
+        "pink",
+        "piné"
+      ]
+    },
+    {
+      "word": "euze",
+      "num_guesses": 6,
+      "prior": 0.00007687513985951013,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "jdbc",
+        "hylé",
+        "euze"
+      ]
+    },
+    {
+      "word": "okel",
+      "num_guesses": 5,
+      "prior": 0.00008584602698127586,
+      "guesses": [
+        "saie",
+        "reut",
+        "clon",
+        "obel",
+        "okel"
+      ]
+    },
+    {
+      "word": "fina",
+      "num_guesses": 5,
+      "prior": 0.00015073213510670793,
+      "guesses": [
+        "saie",
+        "rian",
+        "pdma",
+        "evjf",
+        "fina"
+      ]
+    },
+    {
+      "word": "soum",
+      "num_guesses": 5,
+      "prior": 0.00012969244336686326,
+      "guesses": [
+        "saie",
+        "rout",
+        "laks",
+        "cinq",
+        "soum"
+      ]
+    },
+    {
+      "word": "dtmf",
+      "num_guesses": 5,
+      "prior": 0.000051461354811425995,
+      "guesses": [
+        "saie",
+        "rout",
+        "http",
+        "gtld",
+        "dtmf"
+      ]
+    },
+    {
+      "word": "saas",
+      "num_guesses": 4,
+      "prior": 0.00013946443119783306,
+      "guesses": [
+        "saie",
+        "nuls",
+        "trac",
+        "saas"
+      ]
+    },
+    {
+      "word": "dîna",
+      "num_guesses": 5,
+      "prior": 0.0001597260195646485,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "déli",
+        "dîna"
+      ]
+    },
+    {
+      "word": "cecy",
+      "num_guesses": 5,
+      "prior": 0.00020945663062300069,
+      "guesses": [
+        "saie",
+        "reut",
+        "dplg",
+        "méen",
+        "cecy"
+      ]
+    },
+    {
+      "word": "lize",
+      "num_guesses": 7,
+      "prior": 0.00009492466787114741,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "kifé",
+        "mvcc",
+        "goût",
+        "lixe",
+        "lize"
+      ]
+    },
+    {
+      "word": "bush",
+      "num_guesses": 4,
+      "prior": 0.00022144789177266352,
+      "guesses": [
+        "saie",
+        "rout",
+        "bgén",
+        "bush"
+      ]
+    },
+    {
+      "word": "roua",
+      "num_guesses": 4,
+      "prior": 0.00012545800898031826,
+      "guesses": [
+        "saie",
+        "arta",
+        "roum",
+        "roua"
+      ]
+    },
+    {
+      "word": "amla",
+      "num_guesses": 4,
+      "prior": 0.00007176751131160547,
+      "guesses": [
+        "saie",
+        "arta",
+        "lump",
+        "amla"
+      ]
+    },
+    {
+      "word": "tada",
+      "num_guesses": 7,
+      "prior": 0.00010098054275694548,
+      "guesses": [
+        "saie",
+        "téra",
+        "lmnp",
+        "batx",
+        "zouk",
+        "doge",
+        "tada"
+      ]
+    },
+    {
+      "word": "ship",
+      "num_guesses": 4,
+      "prior": 0.00016557892655020846,
+      "guesses": [
+        "saie",
+        "optn",
+        "loch",
+        "ship"
+      ]
+    },
+    {
+      "word": "aceh",
+      "num_guesses": 5,
+      "prior": 0.00011276304326834398,
+      "guesses": [
+        "saie",
+        "vert",
+        "ylem",
+        "chap",
+        "aceh"
+      ]
+    },
+    {
+      "word": "npai",
+      "num_guesses": 4,
+      "prior": 0.0000625647333850093,
+      "guesses": [
+        "saie",
+        "rian",
+        "nuai",
+        "npai"
+      ]
+    },
+    {
+      "word": "gagé",
+      "num_guesses": 6,
+      "prior": 0.0001607919500966829,
+      "guesses": [
+        "saie",
+        "téra",
+        "mcpb",
+        "gfdl",
+        "végé",
+        "gagé"
+      ]
+    },
+    {
+      "word": "tans",
+      "num_guesses": 5,
+      "prior": 0.0002026159032869195,
+      "guesses": [
+        "saie",
+        "rmns",
+        "dpgf",
+        "htlv",
+        "tans"
+      ]
+    },
+    {
+      "word": "ixes",
+      "num_guesses": 5,
+      "prior": 0.00008307432189450859,
+      "guesses": [
+        "saie",
+        "lied",
+        "rsvp",
+        "ijes",
+        "ixes"
+      ]
+    },
+    {
+      "word": "liez",
+      "num_guesses": 4,
+      "prior": 0.00017216434417556146,
+      "guesses": [
+        "saie",
+        "ndlr",
+        "limu",
+        "liez"
+      ]
+    },
+    {
+      "word": "luxa",
+      "num_guesses": 6,
+      "prior": 0.00010259387635067513,
+      "guesses": [
+        "saie",
+        "arta",
+        "muco",
+        "lmnp",
+        "luba",
+        "luxa"
+      ]
+    },
+    {
+      "word": "ashé",
+      "num_guesses": 4,
+      "prior": 0.00006886412372705618,
+      "guesses": [
+        "saie",
+        "abar",
+        "oups",
+        "ashé"
+      ]
+    },
+    {
+      "word": "rove",
+      "num_guesses": 5,
+      "prior": 0.00011435110439852272,
+      "guesses": [
+        "saie",
+        "turo",
+        "brgm",
+        "indy",
+        "rove"
+      ]
+    },
+    {
+      "word": "esti",
+      "num_guesses": 3,
+      "prior": 0.00015324877931732742,
+      "guesses": [
+        "saie",
+        "lied",
+        "esti"
+      ]
+    },
+    {
+      "word": "zefs",
+      "num_guesses": 6,
+      "prior": 0.000048938687951008285,
+      "guesses": [
+        "saie",
+        "retu",
+        "pcnb",
+        "gfdl",
+        "fems",
+        "zefs"
+      ]
+    },
+    {
+      "word": "pagc",
+      "num_guesses": 6,
+      "prior": 0.00008925606273007309,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "kaph",
+        "pacu",
+        "pagc"
+      ]
+    },
+    {
+      "word": "suve",
+      "num_guesses": 5,
+      "prior": 0.00007533274429748319,
+      "guesses": [
+        "saie",
+        "mrou",
+        "pécu",
+        "baux",
+        "suve"
+      ]
+    },
+    {
+      "word": "curl",
+      "num_guesses": 4,
+      "prior": 0.00010644740000858145,
+      "guesses": [
+        "saie",
+        "rout",
+        "écru",
+        "curl"
+      ]
+    },
+    {
+      "word": "yari",
+      "num_guesses": 6,
+      "prior": 0.00009373327164715882,
+      "guesses": [
+        "saie",
+        "tpmr",
+        "verd",
+        "bock",
+        "gley",
+        "yari"
+      ]
+    },
+    {
+      "word": "fkih",
+      "num_guesses": 5,
+      "prior": 0.00007782463514160399,
+      "guesses": [
+        "saie",
+        "troc",
+        "funé",
+        "fqih",
+        "fkih"
+      ]
+    },
+    {
+      "word": "bipc",
+      "num_guesses": 6,
+      "prior": 0.00005544946043836804,
+      "guesses": [
+        "saie",
+        "tion",
+        "déli",
+        "fcpr",
+        "cipc",
+        "bipc"
+      ]
+    },
+    {
+      "word": "nidé",
+      "num_guesses": 6,
+      "prior": 0.00005548980203103237,
+      "guesses": [
+        "saie",
+        "tion",
+        "cgpi",
+        "kiné",
+        "deux",
+        "nidé"
+      ]
+    },
+    {
+      "word": "ubac",
+      "num_guesses": 5,
+      "prior": 0.00013079663360705089,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "judd",
+        "ubac"
+      ]
+    },
+    {
+      "word": "grau",
+      "num_guesses": 5,
+      "prior": 0.0001797681758151146,
+      "guesses": [
+        "saie",
+        "arta",
+        "pgdc",
+        "fuye",
+        "grau"
+      ]
+    },
+    {
+      "word": "siar",
+      "num_guesses": 4,
+      "prior": 0.00008928613046899326,
+      "guesses": [
+        "saie",
+        "dmla",
+        "brun",
+        "siar"
+      ]
+    },
+    {
+      "word": "adel",
+      "num_guesses": 5,
+      "prior": 0.00016151870348589536,
+      "guesses": [
+        "saie",
+        "vert",
+        "ylem",
+        "zend",
+        "adel"
+      ]
+    },
+    {
+      "word": "roba",
+      "num_guesses": 5,
+      "prior": 0.00011506799167891149,
+      "guesses": [
+        "saie",
+        "arta",
+        "roum",
+        "body",
+        "roba"
+      ]
+    },
+    {
+      "word": "zaïn",
+      "num_guesses": 6,
+      "prior": 0.00008527231473883984,
+      "guesses": [
+        "saie",
+        "téra",
+        "clon",
+        "paya",
+        "jaïn",
+        "zaïn"
+      ]
+    },
+    {
+      "word": "essi",
+      "num_guesses": 4,
+      "prior": 0.00012891229620112056,
+      "guesses": [
+        "saie",
+        "lied",
+        "esti",
+        "essi"
+      ]
+    },
+    {
+      "word": "lifo",
+      "num_guesses": 5,
+      "prior": 0.00008814560526081073,
+      "guesses": [
+        "saie",
+        "tion",
+        "pvdc",
+        "golf",
+        "lifo"
+      ]
+    },
+    {
+      "word": "abet",
+      "num_guesses": 4,
+      "prior": 0.00010227124770699474,
+      "guesses": [
+        "saie",
+        "vert",
+        "bien",
+        "abet"
+      ]
+    },
+    {
+      "word": "buol",
+      "num_guesses": 4,
+      "prior": 0.0001439918992065348,
+      "guesses": [
+        "saie",
+        "rout",
+        "chol",
+        "buol"
+      ]
+    },
+    {
+      "word": "méso",
+      "num_guesses": 4,
+      "prior": 0.00017670895756559252,
+      "guesses": [
+        "saie",
+        "rout",
+        "écos",
+        "méso"
+      ]
+    },
+    {
+      "word": "rdns",
+      "num_guesses": 5,
+      "prior": 0.00003447441385121159,
+      "guesses": [
+        "saie",
+        "rout",
+        "défs",
+        "rdss",
+        "rdns"
+      ]
+    },
+    {
+      "word": "yole",
+      "num_guesses": 6,
+      "prior": 0.0001369499809574764,
+      "guesses": [
+        "saie",
+        "turo",
+        "lmnp",
+        "dobv",
+        "vécu",
+        "yole"
+      ]
+    },
+    {
+      "word": "pèse",
+      "num_guesses": 3,
+      "prior": 0.00031062518125737215,
+      "guesses": [
+        "saie",
+        "pour",
+        "pèse"
+      ]
+    },
+    {
+      "word": "plaf",
+      "num_guesses": 5,
+      "prior": 0.00007964293312919373,
+      "guesses": [
+        "saie",
+        "arta",
+        "clon",
+        "vegf",
+        "plaf"
+      ]
+    },
+    {
+      "word": "cogé",
+      "num_guesses": 5,
+      "prior": 0.00009618659097864999,
+      "guesses": [
+        "saie",
+        "rout",
+        "nolo",
+        "pgcd",
+        "cogé"
+      ]
+    },
+    {
+      "word": "mita",
+      "num_guesses": 5,
+      "prior": 0.00013728384324471711,
+      "guesses": [
+        "saie",
+        "rian",
+        "dmla",
+        "matc",
+        "mita"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5855 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:00:25.173607Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "aio",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 3,
+    "dictionary_length": 614,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "4f351e70ae426a6dada97fa3e244b92318f6b4e7cf83b5d38bb133f14181e449",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.5859999999999745,
+      "failure_rate": 0.030000000000000013,
+      "histogram": {
+        "1": 0.002,
+        "2": 0.008,
+        "3": 0.10600000000000008,
+        "4": 0.3720000000000003,
+        "5": 0.34000000000000025,
+        "6": 0.1420000000000001,
+        "7": 0.030000000000000013
+      }
+    },
+    "prior": {
+      "mean": 4.325077310086228,
+      "failure_rate": 0.01606422885145956,
+      "histogram": {
+        "1": 0.0015738987313461766,
+        "2": 0.011733778103354183,
+        "3": 0.1545233361056595,
+        "4": 0.4484597356365413,
+        "5": 0.27569283310502335,
+        "6": 0.0919521894666156,
+        "7": 0.01606422885145956
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "phi",
+      "num_guesses": 5,
+      "prior": 0.0010357386569778125,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "phi"
+      ]
+    },
+    {
+      "word": "usb",
+      "num_guesses": 4,
+      "prior": 0.0009593680920291994,
+      "guesses": [
+        "aio",
+        "sue",
+        "lab",
+        "usb"
+      ]
+    },
+    {
+      "word": "dns",
+      "num_guesses": 5,
+      "prior": 0.0009206712088056461,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "dns"
+      ]
+    },
+    {
+      "word": "job",
+      "num_guesses": 6,
+      "prior": 0.0013152154599472862,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "bjt",
+        "job"
+      ]
+    },
+    {
+      "word": "thè",
+      "num_guesses": 5,
+      "prior": 0.0012578517454197894,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "thè"
+      ]
+    },
+    {
+      "word": "rft",
+      "num_guesses": 5,
+      "prior": 0.00097225309345018,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ndt",
+        "rft"
+      ]
+    },
+    {
+      "word": "adr",
+      "num_guesses": 5,
+      "prior": 0.0011687537956011137,
+      "guesses": [
+        "aio",
+        "dna",
+        "che",
+        "adì",
+        "adr"
+      ]
+    },
+    {
+      "word": "sui",
+      "num_guesses": 3,
+      "prior": 0.003818560537446041,
+      "guesses": [
+        "aio",
+        "sue",
+        "sui"
+      ]
+    },
+    {
+      "word": "cee",
+      "num_guesses": 5,
+      "prior": 0.0019569619907502016,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "che",
+        "cee"
+      ]
+    },
+    {
+      "word": "tft",
+      "num_guesses": 6,
+      "prior": 0.0007030330686903892,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ndt",
+        "rft",
+        "tft"
+      ]
+    },
+    {
+      "word": "vip",
+      "num_guesses": 4,
+      "prior": 0.001147694960348577,
+      "guesses": [
+        "aio",
+        "per",
+        "suv",
+        "vip"
+      ]
+    },
+    {
+      "word": "led",
+      "num_guesses": 4,
+      "prior": 0.0011804501473749057,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "led"
+      ]
+    },
+    {
+      "word": "gel",
+      "num_guesses": 6,
+      "prior": 0.001396454480696742,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "del",
+        "bel",
+        "gel"
+      ]
+    },
+    {
+      "word": "hbv",
+      "num_guesses": 6,
+      "prior": 0.0007951286459178928,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "hdl",
+        "hbv"
+      ]
+    },
+    {
+      "word": "tmc",
+      "num_guesses": 4,
+      "prior": 0.0008015715029065912,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tmc"
+      ]
+    },
+    {
+      "word": "mwh",
+      "num_guesses": 5,
+      "prior": 0.0006230140480387903,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "mwh"
+      ]
+    },
+    {
+      "word": "kwh",
+      "num_guesses": 5,
+      "prior": 0.0012672094806158484,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "kwh"
+      ]
+    },
+    {
+      "word": "adc",
+      "num_guesses": 4,
+      "prior": 0.0008377055019667527,
+      "guesses": [
+        "aio",
+        "dna",
+        "che",
+        "adc"
+      ]
+    },
+    {
+      "word": "fms",
+      "num_guesses": 4,
+      "prior": 0.0006671855684193712,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "fms"
+      ]
+    },
+    {
+      "word": "sen",
+      "num_guesses": 3,
+      "prior": 0.002136746734412512,
+      "guesses": [
+        "aio",
+        "sue",
+        "sen"
+      ]
+    },
+    {
+      "word": "tao",
+      "num_guesses": 2,
+      "prior": 0.0012562229271085854,
+      "guesses": [
+        "aio",
+        "tao"
+      ]
+    },
+    {
+      "word": "sbs",
+      "num_guesses": 5,
+      "prior": 0.0006969314278185548,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sms",
+        "sbs"
+      ]
+    },
+    {
+      "word": "kda",
+      "num_guesses": 6,
+      "prior": 0.0006479336541979283,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "cap",
+        "fda",
+        "kda"
+      ]
+    },
+    {
+      "word": "tep",
+      "num_guesses": 4,
+      "prior": 0.000864763284345739,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "tep"
+      ]
+    },
+    {
+      "word": "sms",
+      "num_guesses": 4,
+      "prior": 0.0012651609199563789,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sms"
+      ]
+    },
+    {
+      "word": "pac",
+      "num_guesses": 5,
+      "prior": 0.0012043971371620851,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pet",
+        "pac"
+      ]
+    },
+    {
+      "word": "aas",
+      "num_guesses": 5,
+      "prior": 0.0010666890892729233,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "abs",
+        "aas"
+      ]
+    },
+    {
+      "word": "bob",
+      "num_guesses": 6,
+      "prior": 0.0014942947361786954,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "bjt",
+        "bob"
+      ]
+    },
+    {
+      "word": "est",
+      "num_guesses": 3,
+      "prior": 0.0031708856608575085,
+      "guesses": [
+        "aio",
+        "sue",
+        "est"
+      ]
+    },
+    {
+      "word": "afi",
+      "num_guesses": 6,
+      "prior": 0.0008669957254708624,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "gin",
+        "ati",
+        "afi"
+      ]
+    },
+    {
+      "word": "tau",
+      "num_guesses": 6,
+      "prior": 0.0011200140044788757,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "tag",
+        "tau"
+      ]
+    },
+    {
+      "word": "ose",
+      "num_guesses": 6,
+      "prior": 0.001025779307910016,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ove",
+        "ode",
+        "ose"
+      ]
+    },
+    {
+      "word": "tua",
+      "num_guesses": 5,
+      "prior": 0.003109452852081,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "bot",
+        "tua"
+      ]
+    },
+    {
+      "word": "rom",
+      "num_guesses": 4,
+      "prior": 0.0018649351357570294,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "rom"
+      ]
+    },
+    {
+      "word": "grz",
+      "num_guesses": 6,
+      "prior": 0.00040472144313320155,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "gdf",
+        "grz"
+      ]
+    },
+    {
+      "word": "zie",
+      "num_guesses": 5,
+      "prior": 0.0013233447639744926,
+      "guesses": [
+        "aio",
+        "per",
+        "mev",
+        "die",
+        "zie"
+      ]
+    },
+    {
+      "word": "dae",
+      "num_guesses": 5,
+      "prior": 0.0010091098944022025,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "not",
+        "dae"
+      ]
+    },
+    {
+      "word": "rfi",
+      "num_guesses": 4,
+      "prior": 0.0010649664822062613,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "rfi"
+      ]
+    },
+    {
+      "word": "bmw",
+      "num_guesses": 6,
+      "prior": 0.0011281275025459103,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "bmx",
+        "bmw"
+      ]
+    },
+    {
+      "word": "bll",
+      "num_guesses": 7,
+      "prior": 0.0006856050273085908,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "box",
+        "bll"
+      ]
+    },
+    {
+      "word": "sax",
+      "num_guesses": 4,
+      "prior": 0.0010961877766350358,
+      "guesses": [
+        "aio",
+        "ras",
+        "san",
+        "sax"
+      ]
+    },
+    {
+      "word": "hav",
+      "num_guesses": 6,
+      "prior": 0.0007784512983171142,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "van",
+        "hav"
+      ]
+    },
+    {
+      "word": "aev",
+      "num_guesses": 5,
+      "prior": 0.0007213628839519718,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "pvc",
+        "aev"
+      ]
+    },
+    {
+      "word": "già",
+      "num_guesses": 4,
+      "prior": 0.004739009464303643,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "già"
+      ]
+    },
+    {
+      "word": "rio",
+      "num_guesses": 3,
+      "prior": 0.0022187903690029788,
+      "guesses": [
+        "aio",
+        "dpr",
+        "rio"
+      ]
+    },
+    {
+      "word": "fez",
+      "num_guesses": 5,
+      "prior": 0.0011899506200492359,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "fez"
+      ]
+    },
+    {
+      "word": "anp",
+      "num_guesses": 4,
+      "prior": 0.0008416313559783153,
+      "guesses": [
+        "aio",
+        "dna",
+        "anc",
+        "anp"
+      ]
+    },
+    {
+      "word": "alu",
+      "num_guesses": 6,
+      "prior": 0.0008715881968720468,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "può",
+        "alu"
+      ]
+    },
+    {
+      "word": "cap",
+      "num_guesses": 5,
+      "prior": 0.0027524780070724924,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pet",
+        "cap"
+      ]
+    },
+    {
+      "word": "uno",
+      "num_guesses": 3,
+      "prior": 0.004758873176984821,
+      "guesses": [
+        "aio",
+        "eur",
+        "uno"
+      ]
+    },
+    {
+      "word": "tfr",
+      "num_guesses": 5,
+      "prior": 0.0011554998598576048,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "tfr"
+      ]
+    },
+    {
+      "word": "vlf",
+      "num_guesses": 6,
+      "prior": 0.0005650422658031893,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "vlf"
+      ]
+    },
+    {
+      "word": "vvb",
+      "num_guesses": 7,
+      "prior": 0.00036841068578268097,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "vvf",
+        "vvb"
+      ]
+    },
+    {
+      "word": "bmx",
+      "num_guesses": 5,
+      "prior": 0.0005352867586073271,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "bmx"
+      ]
+    },
+    {
+      "word": "mib",
+      "num_guesses": 5,
+      "prior": 0.0009126257890797157,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "mix",
+        "mib"
+      ]
+    },
+    {
+      "word": "oto",
+      "num_guesses": 4,
+      "prior": 0.0011895160141553096,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "oto"
+      ]
+    },
+    {
+      "word": "nas",
+      "num_guesses": 4,
+      "prior": 0.0011169407370045636,
+      "guesses": [
+        "aio",
+        "ras",
+        "pmn",
+        "nas"
+      ]
+    },
+    {
+      "word": "rss",
+      "num_guesses": 5,
+      "prior": 0.0009595373343364468,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "lsd",
+        "rss"
+      ]
+    },
+    {
+      "word": "opa",
+      "num_guesses": 5,
+      "prior": 0.0009907291064046434,
+      "guesses": [
+        "aio",
+        "rds",
+        "col",
+        "ova",
+        "opa"
+      ]
+    },
+    {
+      "word": "kva",
+      "num_guesses": 4,
+      "prior": 0.0009689809359128899,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "kva"
+      ]
+    },
+    {
+      "word": "non",
+      "num_guesses": 3,
+      "prior": 0.007626176607035905,
+      "guesses": [
+        "aio",
+        "not",
+        "non"
+      ]
+    },
+    {
+      "word": "acs",
+      "num_guesses": 4,
+      "prior": 0.0014756033896971463,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "acs"
+      ]
+    },
+    {
+      "word": "hai",
+      "num_guesses": 4,
+      "prior": 0.0031226569158273845,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "hai"
+      ]
+    },
+    {
+      "word": "dpr",
+      "num_guesses": 5,
+      "prior": 0.001416791154396647,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ppm",
+        "dpr"
+      ]
+    },
+    {
+      "word": "rds",
+      "num_guesses": 5,
+      "prior": 0.0007799380699866437,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "rds"
+      ]
+    },
+    {
+      "word": "lan",
+      "num_guesses": 4,
+      "prior": 0.0013231392727935832,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "lan"
+      ]
+    },
+    {
+      "word": "via",
+      "num_guesses": 4,
+      "prior": 0.004278615682421224,
+      "guesses": [
+        "aio",
+        "smd",
+        "grz",
+        "via"
+      ]
+    },
+    {
+      "word": "sub",
+      "num_guesses": 4,
+      "prior": 0.002331939521792011,
+      "guesses": [
+        "aio",
+        "sue",
+        "del",
+        "sub"
+      ]
+    },
+    {
+      "word": "lcd",
+      "num_guesses": 5,
+      "prior": 0.0008278773539655943,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "hdl",
+        "lcd"
+      ]
+    },
+    {
+      "word": "ffs",
+      "num_guesses": 5,
+      "prior": 0.000611293962412196,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "ffs"
+      ]
+    },
+    {
+      "word": "evo",
+      "num_guesses": 4,
+      "prior": 0.0021418226375317724,
+      "guesses": [
+        "aio",
+        "eur",
+        "pvc",
+        "evo"
+      ]
+    },
+    {
+      "word": "udì",
+      "num_guesses": 5,
+      "prior": 0.001773280863455325,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "ndt",
+        "udì"
+      ]
+    },
+    {
+      "word": "bei",
+      "num_guesses": 5,
+      "prior": 0.0021785984686025486,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "dpr",
+        "bei"
+      ]
+    },
+    {
+      "word": "ecg",
+      "num_guesses": 6,
+      "prior": 0.0010671120822367667,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "ecg"
+      ]
+    },
+    {
+      "word": "ace",
+      "num_guesses": 4,
+      "prior": 0.0012679336631481245,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "ace"
+      ]
+    },
+    {
+      "word": "fra",
+      "num_guesses": 4,
+      "prior": 0.004704695400290737,
+      "guesses": [
+        "aio",
+        "ras",
+        "tep",
+        "fra"
+      ]
+    },
+    {
+      "word": "per",
+      "num_guesses": 4,
+      "prior": 0.007739410536553316,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "per"
+      ]
+    },
+    {
+      "word": "dee",
+      "num_guesses": 5,
+      "prior": 0.0025867487343066565,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme",
+        "dee"
+      ]
+    },
+    {
+      "word": "ddp",
+      "num_guesses": 5,
+      "prior": 0.0006820682567945181,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "pnf",
+        "ddp"
+      ]
+    },
+    {
+      "word": "sia",
+      "num_guesses": 3,
+      "prior": 0.005099891749889756,
+      "guesses": [
+        "aio",
+        "smd",
+        "sia"
+      ]
+    },
+    {
+      "word": "cid",
+      "num_guesses": 5,
+      "prior": 0.0013050646723303156,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "cid"
+      ]
+    },
+    {
+      "word": "sip",
+      "num_guesses": 4,
+      "prior": 0.0011850619119995519,
+      "guesses": [
+        "aio",
+        "per",
+        "suv",
+        "sip"
+      ]
+    },
+    {
+      "word": "sta",
+      "num_guesses": 4,
+      "prior": 0.003523339636470849,
+      "guesses": [
+        "aio",
+        "ras",
+        "tuo",
+        "sta"
+      ]
+    },
+    {
+      "word": "rsi",
+      "num_guesses": 4,
+      "prior": 0.001318943150779752,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "rsi"
+      ]
+    },
+    {
+      "word": "ddr",
+      "num_guesses": 6,
+      "prior": 0.0010406239136087198,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "ddr"
+      ]
+    },
+    {
+      "word": "afa",
+      "num_guesses": 5,
+      "prior": 0.0011459983662998228,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "tra",
+        "afa"
+      ]
+    },
+    {
+      "word": "ama",
+      "num_guesses": 4,
+      "prior": 0.0023303036730674934,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "ama"
+      ]
+    },
+    {
+      "word": "bea",
+      "num_guesses": 5,
+      "prior": 0.0014558980460062732,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "eta",
+        "bea"
+      ]
+    },
+    {
+      "word": "cpp",
+      "num_guesses": 5,
+      "prior": 0.0010619510063335804,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "cpc",
+        "cpp"
+      ]
+    },
+    {
+      "word": "smd",
+      "num_guesses": 5,
+      "prior": 0.0006477300934746725,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sms",
+        "smd"
+      ]
+    },
+    {
+      "word": "cgs",
+      "num_guesses": 5,
+      "prior": 0.0006983369788872534,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "cgs"
+      ]
+    },
+    {
+      "word": "tvc",
+      "num_guesses": 5,
+      "prior": 0.0005549932047640008,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tmc",
+        "tvc"
+      ]
+    },
+    {
+      "word": "emo",
+      "num_guesses": 5,
+      "prior": 0.0014474264095167342,
+      "guesses": [
+        "aio",
+        "eur",
+        "pvc",
+        "ego",
+        "emo"
+      ]
+    },
+    {
+      "word": "ton",
+      "num_guesses": 3,
+      "prior": 0.0015125533872020365,
+      "guesses": [
+        "aio",
+        "not",
+        "ton"
+      ]
+    },
+    {
+      "word": "alo",
+      "num_guesses": 3,
+      "prior": 0.0012235561520603719,
+      "guesses": [
+        "aio",
+        "vlm",
+        "alo"
+      ]
+    },
+    {
+      "word": "pda",
+      "num_guesses": 5,
+      "prior": 0.0009706484978701765,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "cap",
+        "pda"
+      ]
+    },
+    {
+      "word": "ava",
+      "num_guesses": 4,
+      "prior": 0.0013750081752835729,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "ava"
+      ]
+    },
+    {
+      "word": "ree",
+      "num_guesses": 4,
+      "prior": 0.0015272323091177118,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "ree"
+      ]
+    },
+    {
+      "word": "bce",
+      "num_guesses": 4,
+      "prior": 0.0011193296179550696,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "bce"
+      ]
+    },
+    {
+      "word": "out",
+      "num_guesses": 3,
+      "prior": 0.0016171796835574143,
+      "guesses": [
+        "aio",
+        "not",
+        "out"
+      ]
+    },
+    {
+      "word": "sue",
+      "num_guesses": 2,
+      "prior": 0.0043144806449062064,
+      "guesses": [
+        "aio",
+        "sue"
+      ]
+    },
+    {
+      "word": "van",
+      "num_guesses": 5,
+      "prior": 0.0023417185951139473,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "van"
+      ]
+    },
+    {
+      "word": "beè",
+      "num_guesses": 7,
+      "prior": 0.00032519264358265833,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "beò",
+        "beè"
+      ]
+    },
+    {
+      "word": "ano",
+      "num_guesses": 4,
+      "prior": 0.001707232472787673,
+      "guesses": [
+        "aio",
+        "vlm",
+        "rtg",
+        "ano"
+      ]
+    },
+    {
+      "word": "bye",
+      "num_guesses": 5,
+      "prior": 0.0008736816438100649,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme",
+        "bye"
+      ]
+    },
+    {
+      "word": "par",
+      "num_guesses": 4,
+      "prior": 0.0029045755320383465,
+      "guesses": [
+        "aio",
+        "ras",
+        "btp",
+        "par"
+      ]
+    },
+    {
+      "word": "del",
+      "num_guesses": 4,
+      "prior": 0.00788178355402104,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "del"
+      ]
+    },
+    {
+      "word": "beo",
+      "num_guesses": 4,
+      "prior": 0.0009765879998320014,
+      "guesses": [
+        "aio",
+        "eur",
+        "con",
+        "beo"
+      ]
+    },
+    {
+      "word": "dei",
+      "num_guesses": 5,
+      "prior": 0.006423190819793884,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "dpr",
+        "dei"
+      ]
+    },
+    {
+      "word": "rii",
+      "num_guesses": 4,
+      "prior": 0.0012131278962409084,
+      "guesses": [
+        "aio",
+        "per",
+        "sui",
+        "rii"
+      ]
+    },
+    {
+      "word": "vga",
+      "num_guesses": 5,
+      "prior": 0.0006358051556293793,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "kva",
+        "vga"
+      ]
+    },
+    {
+      "word": "eni",
+      "num_guesses": 4,
+      "prior": 0.0013601042339171606,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "eni"
+      ]
+    },
+    {
+      "word": "qui",
+      "num_guesses": 4,
+      "prior": 0.004360759096074382,
+      "guesses": [
+        "aio",
+        "sue",
+        "col",
+        "qui"
+      ]
+    },
+    {
+      "word": "goi",
+      "num_guesses": 5,
+      "prior": 0.0009259917327540092,
+      "guesses": [
+        "aio",
+        "con",
+        "vip",
+        "toi",
+        "goi"
+      ]
+    },
+    {
+      "word": "emù",
+      "num_guesses": 6,
+      "prior": 0.0006651569788036849,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "emc",
+        "emù"
+      ]
+    },
+    {
+      "word": "ira",
+      "num_guesses": 3,
+      "prior": 0.0022764860273364407,
+      "guesses": [
+        "aio",
+        "ram",
+        "ira"
+      ]
+    },
+    {
+      "word": "tar",
+      "num_guesses": 4,
+      "prior": 0.0017214101380841871,
+      "guesses": [
+        "aio",
+        "ras",
+        "btp",
+        "tar"
+      ]
+    },
+    {
+      "word": "mai",
+      "num_guesses": 3,
+      "prior": 0.004294094329765189,
+      "guesses": [
+        "aio",
+        "ram",
+        "mai"
+      ]
+    },
+    {
+      "word": "ili",
+      "num_guesses": 5,
+      "prior": 0.002387703669193056,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "gli",
+        "ili"
+      ]
+    },
+    {
+      "word": "mho",
+      "num_guesses": 4,
+      "prior": 0.00048058461011212916,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "mho"
+      ]
+    },
+    {
+      "word": "isp",
+      "num_guesses": 4,
+      "prior": 0.0010153258859843524,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "isp"
+      ]
+    },
+    {
+      "word": "etr",
+      "num_guesses": 6,
+      "prior": 0.0011942495583368861,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "età",
+        "etr"
+      ]
+    },
+    {
+      "word": "gay",
+      "num_guesses": 7,
+      "prior": 0.001584690678819804,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "zig",
+        "gay"
+      ]
+    },
+    {
+      "word": "not",
+      "num_guesses": 2,
+      "prior": 0.002126923786396863,
+      "guesses": [
+        "aio",
+        "not"
+      ]
+    },
+    {
+      "word": "ovo",
+      "num_guesses": 5,
+      "prior": 0.001283809564495918,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "odo",
+        "ovo"
+      ]
+    },
+    {
+      "word": "tsh",
+      "num_guesses": 4,
+      "prior": 0.0009046459623245001,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "tsh"
+      ]
+    },
+    {
+      "word": "sdì",
+      "num_guesses": 5,
+      "prior": 0.0006816891717989406,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sms",
+        "sdì"
+      ]
+    },
+    {
+      "word": "bit",
+      "num_guesses": 6,
+      "prior": 0.0014006943159911673,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fbi",
+        "bit"
+      ]
+    },
+    {
+      "word": "beh",
+      "num_guesses": 6,
+      "prior": 0.001640499703300465,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "beh"
+      ]
+    },
+    {
+      "word": "cad",
+      "num_guesses": 4,
+      "prior": 0.0012409919640033703,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "cad"
+      ]
+    },
+    {
+      "word": "box",
+      "num_guesses": 6,
+      "prior": 0.0015280317549728163,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "xke",
+        "box"
+      ]
+    },
+    {
+      "word": "cal",
+      "num_guesses": 4,
+      "prior": 0.0015857095010453498,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "cal"
+      ]
+    },
+    {
+      "word": "uve",
+      "num_guesses": 4,
+      "prior": 0.00173294940097296,
+      "guesses": [
+        "aio",
+        "sue",
+        "une",
+        "uve"
+      ]
+    },
+    {
+      "word": "dtl",
+      "num_guesses": 5,
+      "prior": 0.0009023862790908796,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "dtl"
+      ]
+    },
+    {
+      "word": "sla",
+      "num_guesses": 5,
+      "prior": 0.0010705384218133104,
+      "guesses": [
+        "aio",
+        "ras",
+        "tuo",
+        "pel",
+        "sla"
+      ]
+    },
+    {
+      "word": "gru",
+      "num_guesses": 4,
+      "prior": 0.0014646480919034207,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "gru"
+      ]
+    },
+    {
+      "word": "bci",
+      "num_guesses": 5,
+      "prior": 0.0007623437073760625,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "pci",
+        "bci"
+      ]
+    },
+    {
+      "word": "alé",
+      "num_guesses": 6,
+      "prior": 0.0006417425411887413,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "può",
+        "alé"
+      ]
+    },
+    {
+      "word": "sos",
+      "num_guesses": 4,
+      "prior": 0.00127692737629208,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "sos"
+      ]
+    },
+    {
+      "word": "guf",
+      "num_guesses": 5,
+      "prior": 0.0010222530731220137,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "ghb",
+        "guf"
+      ]
+    },
+    {
+      "word": "idi",
+      "num_guesses": 5,
+      "prior": 0.0014113596820078402,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "idi"
+      ]
+    },
+    {
+      "word": "tpl",
+      "num_guesses": 4,
+      "prior": 0.0007405713799475258,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tpl"
+      ]
+    },
+    {
+      "word": "crt",
+      "num_guesses": 5,
+      "prior": 0.0008813520738498466,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "cct",
+        "crt"
+      ]
+    },
+    {
+      "word": "dan",
+      "num_guesses": 5,
+      "prior": 0.0017350914761648665,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "not",
+        "dan"
+      ]
+    },
+    {
+      "word": "tcp",
+      "num_guesses": 4,
+      "prior": 0.0009479497593937767,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tcp"
+      ]
+    },
+    {
+      "word": "zip",
+      "num_guesses": 5,
+      "prior": 0.0009870224588556466,
+      "guesses": [
+        "aio",
+        "per",
+        "suv",
+        "gip",
+        "zip"
+      ]
+    },
+    {
+      "word": "agi",
+      "num_guesses": 5,
+      "prior": 0.001625769705135179,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "gin",
+        "agi"
+      ]
+    },
+    {
+      "word": "arm",
+      "num_guesses": 5,
+      "prior": 0.001369938488833212,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "arm"
+      ]
+    },
+    {
+      "word": "cda",
+      "num_guesses": 5,
+      "prior": 0.0011027078434659523,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "cap",
+        "cda"
+      ]
+    },
+    {
+      "word": "gsm",
+      "num_guesses": 4,
+      "prior": 0.0008631729085458787,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gsm"
+      ]
+    },
+    {
+      "word": "hdl",
+      "num_guesses": 5,
+      "prior": 0.0008569574018178841,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "hdl"
+      ]
+    },
+    {
+      "word": "gup",
+      "num_guesses": 5,
+      "prior": 0.0007856938898765317,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "può",
+        "gup"
+      ]
+    },
+    {
+      "word": "sci",
+      "num_guesses": 4,
+      "prior": 0.001647779058824791,
+      "guesses": [
+        "aio",
+        "sue",
+        "sti",
+        "sci"
+      ]
+    },
+    {
+      "word": "ohm",
+      "num_guesses": 4,
+      "prior": 0.0011779999604465358,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ohm"
+      ]
+    },
+    {
+      "word": "ict",
+      "num_guesses": 5,
+      "prior": 0.001071255014858618,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "pci",
+        "ict"
+      ]
+    },
+    {
+      "word": "rei",
+      "num_guesses": 5,
+      "prior": 0.002238353860872449,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "dpr",
+        "rei"
+      ]
+    },
+    {
+      "word": "agì",
+      "num_guesses": 6,
+      "prior": 0.0012170915526457193,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "gpu",
+        "agì"
+      ]
+    },
+    {
+      "word": "psi",
+      "num_guesses": 4,
+      "prior": 0.0017751025711596812,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "psi"
+      ]
+    },
+    {
+      "word": "snc",
+      "num_guesses": 4,
+      "prior": 0.0011636614330912073,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "snc"
+      ]
+    },
+    {
+      "word": "ape",
+      "num_guesses": 5,
+      "prior": 0.001432466734517258,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "pvc",
+        "ape"
+      ]
+    },
+    {
+      "word": "aie",
+      "num_guesses": 3,
+      "prior": 0.0011989935019193886,
+      "guesses": [
+        "aio",
+        "era",
+        "aie"
+      ]
+    },
+    {
+      "word": "mas",
+      "num_guesses": 4,
+      "prior": 0.0016531178049849612,
+      "guesses": [
+        "aio",
+        "ras",
+        "pmn",
+        "mas"
+      ]
+    },
+    {
+      "word": "rut",
+      "num_guesses": 5,
+      "prior": 0.0010189627388402867,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "rum",
+        "rut"
+      ]
+    },
+    {
+      "word": "ero",
+      "num_guesses": 3,
+      "prior": 0.0027807326804317146,
+      "guesses": [
+        "aio",
+        "eur",
+        "ero"
+      ]
+    },
+    {
+      "word": "ime",
+      "num_guesses": 4,
+      "prior": 0.0011713065135829307,
+      "guesses": [
+        "aio",
+        "sue",
+        "tfr",
+        "ime"
+      ]
+    },
+    {
+      "word": "boh",
+      "num_guesses": 6,
+      "prior": 0.0010362633272772946,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "xke",
+        "boh"
+      ]
+    },
+    {
+      "word": "una",
+      "num_guesses": 4,
+      "prior": 0.006962671115628608,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "una"
+      ]
+    },
+    {
+      "word": "iva",
+      "num_guesses": 4,
+      "prior": 0.0019061499834553137,
+      "guesses": [
+        "aio",
+        "ram",
+        "pnf",
+        "iva"
+      ]
+    },
+    {
+      "word": "wai",
+      "num_guesses": 7,
+      "prior": 0.0007945768648076331,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "sul",
+        "gai",
+        "wai"
+      ]
+    },
+    {
+      "word": "nnt",
+      "num_guesses": 5,
+      "prior": 0.0006166288617472526,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ndt",
+        "nnt"
+      ]
+    },
+    {
+      "word": "luì",
+      "num_guesses": 5,
+      "prior": 0.000934842572947096,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "ghb",
+        "luì"
+      ]
+    },
+    {
+      "word": "gwh",
+      "num_guesses": 5,
+      "prior": 0.0006896146868981266,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "gwh"
+      ]
+    },
+    {
+      "word": "neo",
+      "num_guesses": 4,
+      "prior": 0.0019126963710981986,
+      "guesses": [
+        "aio",
+        "eur",
+        "con",
+        "neo"
+      ]
+    },
+    {
+      "word": "toh",
+      "num_guesses": 4,
+      "prior": 0.0009987278260228123,
+      "guesses": [
+        "aio",
+        "not",
+        "che",
+        "toh"
+      ]
+    },
+    {
+      "word": "bel",
+      "num_guesses": 5,
+      "prior": 0.002903880388210923,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "del",
+        "bel"
+      ]
+    },
+    {
+      "word": "gif",
+      "num_guesses": 7,
+      "prior": 0.0008929846993971433,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "già",
+        "giù",
+        "gin",
+        "gif"
+      ]
+    },
+    {
+      "word": "riò",
+      "num_guesses": 5,
+      "prior": 0.0005312330083815666,
+      "guesses": [
+        "aio",
+        "per",
+        "sui",
+        "rià",
+        "riò"
+      ]
+    },
+    {
+      "word": "aro",
+      "num_guesses": 4,
+      "prior": 0.0011585551095067246,
+      "guesses": [
+        "aio",
+        "vlm",
+        "rtg",
+        "aro"
+      ]
+    },
+    {
+      "word": "rià",
+      "num_guesses": 4,
+      "prior": 0.0006095601334849895,
+      "guesses": [
+        "aio",
+        "per",
+        "sui",
+        "rià"
+      ]
+    },
+    {
+      "word": "ttl",
+      "num_guesses": 5,
+      "prior": 0.0007359504218824182,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "ttl"
+      ]
+    },
+    {
+      "word": "gai",
+      "num_guesses": 6,
+      "prior": 0.0013786116779022904,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "sul",
+        "gai"
+      ]
+    },
+    {
+      "word": "rho",
+      "num_guesses": 4,
+      "prior": 0.0012427191330017778,
+      "guesses": [
+        "aio",
+        "eur",
+        "oro",
+        "rho"
+      ]
+    },
+    {
+      "word": "atm",
+      "num_guesses": 5,
+      "prior": 0.001170164097869186,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "atm"
+      ]
+    },
+    {
+      "word": "pus",
+      "num_guesses": 3,
+      "prior": 0.0016641843698328408,
+      "guesses": [
+        "aio",
+        "sue",
+        "pus"
+      ]
+    },
+    {
+      "word": "osò",
+      "num_guesses": 4,
+      "prior": 0.001582770030402805,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "osò"
+      ]
+    },
+    {
+      "word": "ras",
+      "num_guesses": 2,
+      "prior": 0.001580890859918329,
+      "guesses": [
+        "aio",
+        "ras"
+      ]
+    },
+    {
+      "word": "pmn",
+      "num_guesses": 5,
+      "prior": 0.0006954268687409025,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "pnf",
+        "pmn"
+      ]
+    },
+    {
+      "word": "srb",
+      "num_guesses": 4,
+      "prior": 0.0005629668954629158,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "srb"
+      ]
+    },
+    {
+      "word": "ore",
+      "num_guesses": 4,
+      "prior": 0.003449426291073329,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ore"
+      ]
+    },
+    {
+      "word": "lab",
+      "num_guesses": 5,
+      "prior": 0.001165018666481852,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "lan",
+        "lab"
+      ]
+    },
+    {
+      "word": "cfc",
+      "num_guesses": 6,
+      "prior": 0.0009150641145956797,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dmn",
+        "ché",
+        "cfc"
+      ]
+    },
+    {
+      "word": "ada",
+      "num_guesses": 3,
+      "prior": 0.0016694854586857789,
+      "guesses": [
+        "aio",
+        "dna",
+        "ada"
+      ]
+    },
+    {
+      "word": "ufo",
+      "num_guesses": 5,
+      "prior": 0.0013460868557549897,
+      "guesses": [
+        "aio",
+        "eur",
+        "uno",
+        "uso",
+        "ufo"
+      ]
+    },
+    {
+      "word": "var",
+      "num_guesses": 4,
+      "prior": 0.0017833372100676326,
+      "guesses": [
+        "aio",
+        "ras",
+        "btp",
+        "var"
+      ]
+    },
+    {
+      "word": "def",
+      "num_guesses": 5,
+      "prior": 0.0013472160333769328,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "def"
+      ]
+    },
+    {
+      "word": "avi",
+      "num_guesses": 3,
+      "prior": 0.0017417005399771365,
+      "guesses": [
+        "aio",
+        "vlm",
+        "avi"
+      ]
+    },
+    {
+      "word": "con",
+      "num_guesses": 3,
+      "prior": 0.006881296860771915,
+      "guesses": [
+        "aio",
+        "not",
+        "con"
+      ]
+    },
+    {
+      "word": "pci",
+      "num_guesses": 4,
+      "prior": 0.0019236202592592018,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "pci"
+      ]
+    },
+    {
+      "word": "fbi",
+      "num_guesses": 6,
+      "prior": 0.0010812190529673352,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "imi",
+        "fbi"
+      ]
+    },
+    {
+      "word": "dia",
+      "num_guesses": 3,
+      "prior": 0.002341704457056824,
+      "guesses": [
+        "aio",
+        "smd",
+        "dia"
+      ]
+    },
+    {
+      "word": "ceo",
+      "num_guesses": 4,
+      "prior": 0.0011499298778539326,
+      "guesses": [
+        "aio",
+        "eur",
+        "con",
+        "ceo"
+      ]
+    },
+    {
+      "word": "pnl",
+      "num_guesses": 5,
+      "prior": 0.0010463864801902847,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "pnf",
+        "pnl"
+      ]
+    },
+    {
+      "word": "ewe",
+      "num_guesses": 6,
+      "prior": 0.0006552082890942042,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme",
+        "epe",
+        "ewe"
+      ]
+    },
+    {
+      "word": "pos",
+      "num_guesses": 5,
+      "prior": 0.0016591833797898025,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "per",
+        "pos"
+      ]
+    },
+    {
+      "word": "ehf",
+      "num_guesses": 6,
+      "prior": 0.0005064522477605987,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "def",
+        "ehf"
+      ]
+    },
+    {
+      "word": "utc",
+      "num_guesses": 5,
+      "prior": 0.0007044114935889106,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "ndt",
+        "utc"
+      ]
+    },
+    {
+      "word": "hum",
+      "num_guesses": 5,
+      "prior": 0.0010206391719562525,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "ghb",
+        "hum"
+      ]
+    },
+    {
+      "word": "ari",
+      "num_guesses": 4,
+      "prior": 0.0015616551244155882,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "ari"
+      ]
+    },
+    {
+      "word": "diu",
+      "num_guesses": 5,
+      "prior": 0.0012450341940207035,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "diu"
+      ]
+    },
+    {
+      "word": "osa",
+      "num_guesses": 3,
+      "prior": 0.0016545063768478945,
+      "guesses": [
+        "aio",
+        "rds",
+        "osa"
+      ]
+    },
+    {
+      "word": "mix",
+      "num_guesses": 4,
+      "prior": 0.0013688912787813041,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "mix"
+      ]
+    },
+    {
+      "word": "btp",
+      "num_guesses": 4,
+      "prior": 0.0008620813817742982,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "btp"
+      ]
+    },
+    {
+      "word": "apc",
+      "num_guesses": 5,
+      "prior": 0.0009992215661709782,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "arc",
+        "apc"
+      ]
+    },
+    {
+      "word": "fax",
+      "num_guesses": 6,
+      "prior": 0.0018999080441885888,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "fax"
+      ]
+    },
+    {
+      "word": "dat",
+      "num_guesses": 5,
+      "prior": 0.0015356207722204548,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "not",
+        "dat"
+      ]
+    },
+    {
+      "word": "dal",
+      "num_guesses": 4,
+      "prior": 0.005742912034515587,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "dal"
+      ]
+    },
+    {
+      "word": "iat",
+      "num_guesses": 5,
+      "prior": 0.0008945659377165332,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "iat"
+      ]
+    },
+    {
+      "word": "zec",
+      "num_guesses": 7,
+      "prior": 0.0006585644163491,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "kev",
+        "zec"
+      ]
+    },
+    {
+      "word": "imi",
+      "num_guesses": 5,
+      "prior": 0.0014091907596236462,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "imi"
+      ]
+    },
+    {
+      "word": "rem",
+      "num_guesses": 6,
+      "prior": 0.0017309011202250467,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "emc",
+        "rem"
+      ]
+    },
+    {
+      "word": "xke",
+      "num_guesses": 6,
+      "prior": 0.00034248898486595783,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme",
+        "bye",
+        "xke"
+      ]
+    },
+    {
+      "word": "cvd",
+      "num_guesses": 6,
+      "prior": 0.0006447344776649626,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dmn",
+        "ccd",
+        "cvd"
+      ]
+    },
+    {
+      "word": "ido",
+      "num_guesses": 4,
+      "prior": 0.0010523340890511534,
+      "guesses": [
+        "aio",
+        "mst",
+        "iro",
+        "ido"
+      ]
+    },
+    {
+      "word": "hiv",
+      "num_guesses": 7,
+      "prior": 0.001225744515685586,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fbi",
+        "uil",
+        "hiv"
+      ]
+    },
+    {
+      "word": "bio",
+      "num_guesses": 5,
+      "prior": 0.0015129426670221168,
+      "guesses": [
+        "aio",
+        "dpr",
+        "mhz",
+        "fio",
+        "bio"
+      ]
+    },
+    {
+      "word": "cct",
+      "num_guesses": 4,
+      "prior": 0.0009573278079794526,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "cct"
+      ]
+    },
+    {
+      "word": "mhm",
+      "num_guesses": 6,
+      "prior": 0.0006594605734630153,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "mhz",
+        "mhm"
+      ]
+    },
+    {
+      "word": "zoo",
+      "num_guesses": 5,
+      "prior": 0.0012934681048417604,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "odo",
+        "zoo"
+      ]
+    },
+    {
+      "word": "bai",
+      "num_guesses": 5,
+      "prior": 0.001292386669560597,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "bai"
+      ]
+    },
+    {
+      "word": "abs",
+      "num_guesses": 4,
+      "prior": 0.0011055956804099198,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "abs"
+      ]
+    },
+    {
+      "word": "cos",
+      "num_guesses": 5,
+      "prior": 0.0016944556683577564,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "per",
+        "cos"
+      ]
+    },
+    {
+      "word": "ati",
+      "num_guesses": 5,
+      "prior": 0.0013001634921638331,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "gin",
+        "ati"
+      ]
+    },
+    {
+      "word": "pnf",
+      "num_guesses": 4,
+      "prior": 0.001176199034806912,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "pnf"
+      ]
+    },
+    {
+      "word": "odi",
+      "num_guesses": 4,
+      "prior": 0.0018950487755809247,
+      "guesses": [
+        "aio",
+        "con",
+        "dsl",
+        "odi"
+      ]
+    },
+    {
+      "word": "api",
+      "num_guesses": 4,
+      "prior": 0.0018865499532364192,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "api"
+      ]
+    },
+    {
+      "word": "ove",
+      "num_guesses": 4,
+      "prior": 0.0036660644731592758,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ove"
+      ]
+    },
+    {
+      "word": "gps",
+      "num_guesses": 5,
+      "prior": 0.0010571186202177499,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "gps"
+      ]
+    },
+    {
+      "word": "gdo",
+      "num_guesses": 5,
+      "prior": 0.0008008754882712004,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "odo",
+        "gdo"
+      ]
+    },
+    {
+      "word": "uil",
+      "num_guesses": 6,
+      "prior": 0.0012885449948931507,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fbi",
+        "uil"
+      ]
+    },
+    {
+      "word": "kgm",
+      "num_guesses": 5,
+      "prior": 0.000835015191791462,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "kgm"
+      ]
+    },
+    {
+      "word": "xml",
+      "num_guesses": 6,
+      "prior": 0.0010851814401967679,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "bmx",
+        "xml"
+      ]
+    },
+    {
+      "word": "gdf",
+      "num_guesses": 5,
+      "prior": 0.0006962570750269545,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "gdf"
+      ]
+    },
+    {
+      "word": "spa",
+      "num_guesses": 5,
+      "prior": 0.0017271207541170533,
+      "guesses": [
+        "aio",
+        "ras",
+        "tuo",
+        "pel",
+        "spa"
+      ]
+    },
+    {
+      "word": "ago",
+      "num_guesses": 4,
+      "prior": 0.0019331864521563023,
+      "guesses": [
+        "aio",
+        "vlm",
+        "rtg",
+        "ago"
+      ]
+    },
+    {
+      "word": "anc",
+      "num_guesses": 3,
+      "prior": 0.0012141549017795658,
+      "guesses": [
+        "aio",
+        "dna",
+        "anc"
+      ]
+    },
+    {
+      "word": "pas",
+      "num_guesses": 4,
+      "prior": 0.0020263330302851346,
+      "guesses": [
+        "aio",
+        "ras",
+        "pmn",
+        "pas"
+      ]
+    },
+    {
+      "word": "imo",
+      "num_guesses": 3,
+      "prior": 0.0014494431387072077,
+      "guesses": [
+        "aio",
+        "mst",
+        "imo"
+      ]
+    },
+    {
+      "word": "suo",
+      "num_guesses": 3,
+      "prior": 0.005358748997026088,
+      "guesses": [
+        "aio",
+        "eur",
+        "suo"
+      ]
+    },
+    {
+      "word": "dac",
+      "num_guesses": 4,
+      "prior": 0.0009432215945908227,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "dac"
+      ]
+    },
+    {
+      "word": "amò",
+      "num_guesses": 6,
+      "prior": 0.0015921357531548193,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "gpu",
+        "amò"
+      ]
+    },
+    {
+      "word": "bis",
+      "num_guesses": 4,
+      "prior": 0.002541117123826817,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "bis"
+      ]
+    },
+    {
+      "word": "cpt",
+      "num_guesses": 3,
+      "prior": 0.0008215666614487825,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt"
+      ]
+    },
+    {
+      "word": "erg",
+      "num_guesses": 7,
+      "prior": 0.0010174425465226638,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "ecg",
+        "erg"
+      ]
+    },
+    {
+      "word": "eme",
+      "num_guesses": 4,
+      "prior": 0.000940238943899833,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme"
+      ]
+    },
+    {
+      "word": "oso",
+      "num_guesses": 4,
+      "prior": 0.0015748378556071116,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "oso"
+      ]
+    },
+    {
+      "word": "epa",
+      "num_guesses": 5,
+      "prior": 0.0009937621475592958,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "eta",
+        "epa"
+      ]
+    },
+    {
+      "word": "nei",
+      "num_guesses": 4,
+      "prior": 0.004822683196791638,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "nei"
+      ]
+    },
+    {
+      "word": "dea",
+      "num_guesses": 4,
+      "prior": 0.0021937008846715364,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "dea"
+      ]
+    },
+    {
+      "word": "alt",
+      "num_guesses": 5,
+      "prior": 0.001748787285117985,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "alt"
+      ]
+    },
+    {
+      "word": "poh",
+      "num_guesses": 6,
+      "prior": 0.0008792967032602464,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "pop",
+        "poh"
+      ]
+    },
+    {
+      "word": "adì",
+      "num_guesses": 4,
+      "prior": 0.0014047571785810557,
+      "guesses": [
+        "aio",
+        "dna",
+        "che",
+        "adì"
+      ]
+    },
+    {
+      "word": "voi",
+      "num_guesses": 4,
+      "prior": 0.0038674235280884515,
+      "guesses": [
+        "aio",
+        "con",
+        "vip",
+        "voi"
+      ]
+    },
+    {
+      "word": "lsd",
+      "num_guesses": 4,
+      "prior": 0.0009057597798574149,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "lsd"
+      ]
+    },
+    {
+      "word": "srl",
+      "num_guesses": 4,
+      "prior": 0.0014396792702675522,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "srl"
+      ]
+    },
+    {
+      "word": "msg",
+      "num_guesses": 5,
+      "prior": 0.0007358805675389945,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "mst",
+        "msg"
+      ]
+    },
+    {
+      "word": "pro",
+      "num_guesses": 4,
+      "prior": 0.002861413520070011,
+      "guesses": [
+        "aio",
+        "eur",
+        "oro",
+        "pro"
+      ]
+    },
+    {
+      "word": "cpa",
+      "num_guesses": 5,
+      "prior": 0.0008828832215693988,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "kva",
+        "cpa"
+      ]
+    },
+    {
+      "word": "rna",
+      "num_guesses": 4,
+      "prior": 0.0011987058652450564,
+      "guesses": [
+        "aio",
+        "ras",
+        "rea",
+        "rna"
+      ]
+    },
+    {
+      "word": "won",
+      "num_guesses": 6,
+      "prior": 0.0008630621577894727,
+      "guesses": [
+        "aio",
+        "not",
+        "con",
+        "don",
+        "fon",
+        "won"
+      ]
+    },
+    {
+      "word": "amo",
+      "num_guesses": 3,
+      "prior": 0.0021144863522147327,
+      "guesses": [
+        "aio",
+        "vlm",
+        "amo"
+      ]
+    },
+    {
+      "word": "sto",
+      "num_guesses": 4,
+      "prior": 0.0025541459565375465,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "sto"
+      ]
+    },
+    {
+      "word": "lai",
+      "num_guesses": 6,
+      "prior": 0.0015954720456026487,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "sul",
+        "lai"
+      ]
+    },
+    {
+      "word": "dsp",
+      "num_guesses": 5,
+      "prior": 0.0008557478123273756,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "lsd",
+        "dsp"
+      ]
+    },
+    {
+      "word": "zen",
+      "num_guesses": 4,
+      "prior": 0.0013891303407387087,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "zen"
+      ]
+    },
+    {
+      "word": "sco",
+      "num_guesses": 4,
+      "prior": 0.0014735482388829014,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "sco"
+      ]
+    },
+    {
+      "word": "ros",
+      "num_guesses": 5,
+      "prior": 0.001610976485308726,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "per",
+        "ros"
+      ]
+    },
+    {
+      "word": "esc",
+      "num_guesses": 4,
+      "prior": 0.0010332475709064072,
+      "guesses": [
+        "aio",
+        "sue",
+        "est",
+        "esc"
+      ]
+    },
+    {
+      "word": "zia",
+      "num_guesses": 4,
+      "prior": 0.002095610172997489,
+      "guesses": [
+        "aio",
+        "smd",
+        "grz",
+        "zia"
+      ]
+    },
+    {
+      "word": "spb",
+      "num_guesses": 6,
+      "prior": 0.0006184602207986944,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sms",
+        "sdì",
+        "spb"
+      ]
+    },
+    {
+      "word": "ris",
+      "num_guesses": 4,
+      "prior": 0.001542034966262698,
+      "guesses": [
+        "aio",
+        "per",
+        "sui",
+        "ris"
+      ]
+    },
+    {
+      "word": "ara",
+      "num_guesses": 5,
+      "prior": 0.0016977569692878387,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "tra",
+        "ara"
+      ]
+    },
+    {
+      "word": "toc",
+      "num_guesses": 4,
+      "prior": 0.00120025978417887,
+      "guesses": [
+        "aio",
+        "not",
+        "che",
+        "toc"
+      ]
+    },
+    {
+      "word": "tso",
+      "num_guesses": 4,
+      "prior": 0.0008592247665205169,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "tso"
+      ]
+    },
+    {
+      "word": "pub",
+      "num_guesses": 5,
+      "prior": 0.0017823460567490037,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "può",
+        "pub"
+      ]
+    },
+    {
+      "word": "mtf",
+      "num_guesses": 5,
+      "prior": 0.0006581281541906668,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "mtf"
+      ]
+    },
+    {
+      "word": "tac",
+      "num_guesses": 5,
+      "prior": 0.0014363553500916916,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pet",
+        "tac"
+      ]
+    },
+    {
+      "word": "pil",
+      "num_guesses": 6,
+      "prior": 0.001545181789003624,
+      "guesses": [
+        "aio",
+        "per",
+        "più",
+        "dèi",
+        "nel",
+        "pil"
+      ]
+    },
+    {
+      "word": "tue",
+      "num_guesses": 4,
+      "prior": 0.0023724011182337345,
+      "guesses": [
+        "aio",
+        "sue",
+        "dtl",
+        "tue"
+      ]
+    },
+    {
+      "word": "top",
+      "num_guesses": 4,
+      "prior": 0.0015559276147344607,
+      "guesses": [
+        "aio",
+        "not",
+        "che",
+        "top"
+      ]
+    },
+    {
+      "word": "tot",
+      "num_guesses": 4,
+      "prior": 0.001562925910111032,
+      "guesses": [
+        "aio",
+        "not",
+        "tvb",
+        "tot"
+      ]
+    },
+    {
+      "word": "ire",
+      "num_guesses": 4,
+      "prior": 0.0018918651994093978,
+      "guesses": [
+        "aio",
+        "sue",
+        "tfr",
+        "ire"
+      ]
+    },
+    {
+      "word": "mgh",
+      "num_guesses": 4,
+      "prior": 0.0011455138995035972,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh"
+      ]
+    },
+    {
+      "word": "sul",
+      "num_guesses": 4,
+      "prior": 0.004834048637867168,
+      "guesses": [
+        "aio",
+        "sue",
+        "del",
+        "sul"
+      ]
+    },
+    {
+      "word": "usò",
+      "num_guesses": 4,
+      "prior": 0.001747658781014383,
+      "guesses": [
+        "aio",
+        "sue",
+        "lab",
+        "usò"
+      ]
+    },
+    {
+      "word": "ode",
+      "num_guesses": 5,
+      "prior": 0.0018790572578453813,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ove",
+        "ode"
+      ]
+    },
+    {
+      "word": "ppm",
+      "num_guesses": 4,
+      "prior": 0.0011567040905614543,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ppm"
+      ]
+    },
+    {
+      "word": "dag",
+      "num_guesses": 6,
+      "prior": 0.0010086154505886617,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "not",
+        "dae",
+        "dag"
+      ]
+    },
+    {
+      "word": "fin",
+      "num_guesses": 5,
+      "prior": 0.0033542932083692784,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fin"
+      ]
+    },
+    {
+      "word": "bus",
+      "num_guesses": 4,
+      "prior": 0.0014595765709383166,
+      "guesses": [
+        "aio",
+        "sue",
+        "pus",
+        "bus"
+      ]
+    },
+    {
+      "word": "nel",
+      "num_guesses": 4,
+      "prior": 0.0064686134722399015,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "nel"
+      ]
+    },
+    {
+      "word": "gia",
+      "num_guesses": 4,
+      "prior": 0.0020095149313177066,
+      "guesses": [
+        "aio",
+        "smd",
+        "grz",
+        "gia"
+      ]
+    },
+    {
+      "word": "rie",
+      "num_guesses": 3,
+      "prior": 0.0016341610969241916,
+      "guesses": [
+        "aio",
+        "per",
+        "rie"
+      ]
+    },
+    {
+      "word": "suv",
+      "num_guesses": 5,
+      "prior": 0.0010361033710055724,
+      "guesses": [
+        "aio",
+        "sue",
+        "del",
+        "sub",
+        "suv"
+      ]
+    },
+    {
+      "word": "pvc",
+      "num_guesses": 5,
+      "prior": 0.0010425734027492309,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "rlc",
+        "pvc"
+      ]
+    },
+    {
+      "word": "ogm",
+      "num_guesses": 5,
+      "prior": 0.0010315296753812635,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "ohm",
+        "ogm"
+      ]
+    },
+    {
+      "word": "rtg",
+      "num_guesses": 5,
+      "prior": 0.0005908200333113442,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "rtg"
+      ]
+    },
+    {
+      "word": "jet",
+      "num_guesses": 5,
+      "prior": 0.0012677572341561888,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "jet"
+      ]
+    },
+    {
+      "word": "asl",
+      "num_guesses": 4,
+      "prior": 0.0012955274699797692,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "asl"
+      ]
+    },
+    {
+      "word": "ase",
+      "num_guesses": 4,
+      "prior": 0.0010534926507991594,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "ase"
+      ]
+    },
+    {
+      "word": "usi",
+      "num_guesses": 3,
+      "prior": 0.002454169160830258,
+      "guesses": [
+        "aio",
+        "sue",
+        "usi"
+      ]
+    },
+    {
+      "word": "dir",
+      "num_guesses": 3,
+      "prior": 0.0028980186564353033,
+      "guesses": [
+        "aio",
+        "per",
+        "dir"
+      ]
+    },
+    {
+      "word": "bau",
+      "num_guesses": 5,
+      "prior": 0.0011555716808904347,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "bau"
+      ]
+    },
+    {
+      "word": "ria",
+      "num_guesses": 4,
+      "prior": 0.0018320327753734882,
+      "guesses": [
+        "aio",
+        "smd",
+        "grz",
+        "ria"
+      ]
+    },
+    {
+      "word": "gas",
+      "num_guesses": 4,
+      "prior": 0.0025490622045194135,
+      "guesses": [
+        "aio",
+        "ras",
+        "pmn",
+        "gas"
+      ]
+    },
+    {
+      "word": "wan",
+      "num_guesses": 6,
+      "prior": 0.0010458133447236746,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "wan"
+      ]
+    },
+    {
+      "word": "pot",
+      "num_guesses": 4,
+      "prior": 0.0012959417707950464,
+      "guesses": [
+        "aio",
+        "not",
+        "tvb",
+        "pot"
+      ]
+    },
+    {
+      "word": "emc",
+      "num_guesses": 5,
+      "prior": 0.0006950322254134977,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "emc"
+      ]
+    },
+    {
+      "word": "cso",
+      "num_guesses": 5,
+      "prior": 0.0007529078526266438,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "oso",
+        "cso"
+      ]
+    },
+    {
+      "word": "aib",
+      "num_guesses": 3,
+      "prior": 0.0008628589669672178,
+      "guesses": [
+        "aio",
+        "era",
+        "aib"
+      ]
+    },
+    {
+      "word": "bug",
+      "num_guesses": 5,
+      "prior": 0.0010321577398911476,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "ghb",
+        "bug"
+      ]
+    },
+    {
+      "word": "oda",
+      "num_guesses": 3,
+      "prior": 0.0012775490465254695,
+      "guesses": [
+        "aio",
+        "rds",
+        "oda"
+      ]
+    },
+    {
+      "word": "zes",
+      "num_guesses": 4,
+      "prior": 0.0006471470771439047,
+      "guesses": [
+        "aio",
+        "sue",
+        "est",
+        "zes"
+      ]
+    },
+    {
+      "word": "pel",
+      "num_guesses": 4,
+      "prior": 0.0034896169627234336,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "pel"
+      ]
+    },
+    {
+      "word": "osé",
+      "num_guesses": 5,
+      "prior": 0.0007823728876192572,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "osò",
+        "osé"
+      ]
+    },
+    {
+      "word": "gnu",
+      "num_guesses": 5,
+      "prior": 0.0009777116478504686,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "gru",
+        "gnu"
+      ]
+    },
+    {
+      "word": "ata",
+      "num_guesses": 5,
+      "prior": 0.0013059005430368503,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "tra",
+        "ata"
+      ]
+    },
+    {
+      "word": "epo",
+      "num_guesses": 4,
+      "prior": 0.0009097651862643987,
+      "guesses": [
+        "aio",
+        "eur",
+        "pvc",
+        "epo"
+      ]
+    },
+    {
+      "word": "vie",
+      "num_guesses": 4,
+      "prior": 0.0028647263323823154,
+      "guesses": [
+        "aio",
+        "per",
+        "mev",
+        "vie"
+      ]
+    },
+    {
+      "word": "kev",
+      "num_guesses": 6,
+      "prior": 0.0008388982285117004,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "kev"
+      ]
+    },
+    {
+      "word": "irc",
+      "num_guesses": 4,
+      "prior": 0.0009645007749434462,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "irc"
+      ]
+    },
+    {
+      "word": "aci",
+      "num_guesses": 4,
+      "prior": 0.001361154842223347,
+      "guesses": [
+        "aio",
+        "vlm",
+        "pcr",
+        "aci"
+      ]
+    },
+    {
+      "word": "yin",
+      "num_guesses": 6,
+      "prior": 0.0011686769235909847,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fin",
+        "yin"
+      ]
+    },
+    {
+      "word": "era",
+      "num_guesses": 4,
+      "prior": 0.00553017714094345,
+      "guesses": [
+        "aio",
+        "ras",
+        "tep",
+        "era"
+      ]
+    },
+    {
+      "word": "ego",
+      "num_guesses": 4,
+      "prior": 0.0019506530551026816,
+      "guesses": [
+        "aio",
+        "eur",
+        "pvc",
+        "ego"
+      ]
+    },
+    {
+      "word": "kgb",
+      "num_guesses": 5,
+      "prior": 0.0010435513430550073,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "kgb"
+      ]
+    },
+    {
+      "word": "tag",
+      "num_guesses": 5,
+      "prior": 0.0013527722384894438,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "tag"
+      ]
+    },
+    {
+      "word": "adh",
+      "num_guesses": 4,
+      "prior": 0.0007903428977437242,
+      "guesses": [
+        "aio",
+        "dna",
+        "che",
+        "adh"
+      ]
+    },
+    {
+      "word": "ipa",
+      "num_guesses": 4,
+      "prior": 0.0008912704562797904,
+      "guesses": [
+        "aio",
+        "ram",
+        "pnf",
+        "ipa"
+      ]
+    },
+    {
+      "word": "hub",
+      "num_guesses": 5,
+      "prior": 0.0009231317751003453,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "ghb",
+        "hub"
+      ]
+    },
+    {
+      "word": "dsl",
+      "num_guesses": 5,
+      "prior": 0.0008608444376763627,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "lsd",
+        "dsl"
+      ]
+    },
+    {
+      "word": "eri",
+      "num_guesses": 4,
+      "prior": 0.001934780577329247,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "eri"
+      ]
+    },
+    {
+      "word": "mst",
+      "num_guesses": 4,
+      "prior": 0.0007366127190762869,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "mst"
+      ]
+    },
+    {
+      "word": "rum",
+      "num_guesses": 4,
+      "prior": 0.001507208837898019,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "rum"
+      ]
+    },
+    {
+      "word": "onu",
+      "num_guesses": 3,
+      "prior": 0.0012914194810958843,
+      "guesses": [
+        "aio",
+        "not",
+        "onu"
+      ]
+    },
+    {
+      "word": "arn",
+      "num_guesses": 3,
+      "prior": 0.0010467621856792434,
+      "guesses": [
+        "aio",
+        "dna",
+        "arn"
+      ]
+    },
+    {
+      "word": "iro",
+      "num_guesses": 3,
+      "prior": 0.0010990251285584738,
+      "guesses": [
+        "aio",
+        "mst",
+        "iro"
+      ]
+    },
+    {
+      "word": "cud",
+      "num_guesses": 4,
+      "prior": 0.0007837487782375641,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "cud"
+      ]
+    },
+    {
+      "word": "vai",
+      "num_guesses": 4,
+      "prior": 0.0021080334574062926,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "vai"
+      ]
+    },
+    {
+      "word": "ere",
+      "num_guesses": 4,
+      "prior": 0.0015265302391992306,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "ere"
+      ]
+    },
+    {
+      "word": "dai",
+      "num_guesses": 4,
+      "prior": 0.004374668458219814,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "dai"
+      ]
+    },
+    {
+      "word": "sua",
+      "num_guesses": 4,
+      "prior": 0.005476333156222034,
+      "guesses": [
+        "aio",
+        "ras",
+        "tuo",
+        "sua"
+      ]
+    },
+    {
+      "word": "vvf",
+      "num_guesses": 6,
+      "prior": 0.0004732591185324276,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "vvf"
+      ]
+    },
+    {
+      "word": "avo",
+      "num_guesses": 3,
+      "prior": 0.0015295685681242506,
+      "guesses": [
+        "aio",
+        "vlm",
+        "avo"
+      ]
+    },
+    {
+      "word": "rip",
+      "num_guesses": 3,
+      "prior": 0.0012086584702271262,
+      "guesses": [
+        "aio",
+        "per",
+        "rip"
+      ]
+    },
+    {
+      "word": "msh",
+      "num_guesses": 3,
+      "prior": 0.0006033504255932655,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh"
+      ]
+    },
+    {
+      "word": "cnr",
+      "num_guesses": 5,
+      "prior": 0.0015115705814794374,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dmn",
+        "cnr"
+      ]
+    },
+    {
+      "word": "ldh",
+      "num_guesses": 6,
+      "prior": 0.0007616143940869762,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "kwh",
+        "ldh"
+      ]
+    },
+    {
+      "word": "ztl",
+      "num_guesses": 6,
+      "prior": 0.0006140926783799983,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr",
+        "dtl",
+        "ztl"
+      ]
+    },
+    {
+      "word": "hcv",
+      "num_guesses": 5,
+      "prior": 0.0007908934863073667,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "hdl",
+        "hcv"
+      ]
+    },
+    {
+      "word": "uic",
+      "num_guesses": 6,
+      "prior": 0.0009010770302482977,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "cic",
+        "uic"
+      ]
+    },
+    {
+      "word": "ozi",
+      "num_guesses": 5,
+      "prior": 0.0013383875458309006,
+      "guesses": [
+        "aio",
+        "con",
+        "dsl",
+        "rti",
+        "ozi"
+      ]
+    },
+    {
+      "word": "plz",
+      "num_guesses": 5,
+      "prior": 0.00041961961998186997,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "pnf",
+        "plz"
+      ]
+    },
+    {
+      "word": "rap",
+      "num_guesses": 3,
+      "prior": 0.0015310386425955564,
+      "guesses": [
+        "aio",
+        "ras",
+        "rap"
+      ]
+    },
+    {
+      "word": "url",
+      "num_guesses": 4,
+      "prior": 0.0011056847979552347,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "url"
+      ]
+    },
+    {
+      "word": "osi",
+      "num_guesses": 4,
+      "prior": 0.001431739755000824,
+      "guesses": [
+        "aio",
+        "con",
+        "dsl",
+        "osi"
+      ]
+    },
+    {
+      "word": "coi",
+      "num_guesses": 3,
+      "prior": 0.003295602539151709,
+      "guesses": [
+        "aio",
+        "con",
+        "coi"
+      ]
+    },
+    {
+      "word": "tir",
+      "num_guesses": 4,
+      "prior": 0.0012840527109781723,
+      "guesses": [
+        "aio",
+        "per",
+        "dir",
+        "tir"
+      ]
+    },
+    {
+      "word": "dmn",
+      "num_guesses": 7,
+      "prior": 0.0005259852335715858,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "bmx",
+        "kmq",
+        "dmn"
+      ]
+    },
+    {
+      "word": "kmq",
+      "num_guesses": 6,
+      "prior": 0.0014051095146554815,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "bmx",
+        "kmq"
+      ]
+    },
+    {
+      "word": "boa",
+      "num_guesses": 4,
+      "prior": 0.0012375106799616873,
+      "guesses": [
+        "aio",
+        "rds",
+        "col",
+        "boa"
+      ]
+    },
+    {
+      "word": "beò",
+      "num_guesses": 6,
+      "prior": 0.000618214952943751,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "ghb",
+        "beò"
+      ]
+    },
+    {
+      "word": "pal",
+      "num_guesses": 4,
+      "prior": 0.001626374126957483,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pal"
+      ]
+    },
+    {
+      "word": "mos",
+      "num_guesses": 4,
+      "prior": 0.0012821990225969741,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "mos"
+      ]
+    },
+    {
+      "word": "inv",
+      "num_guesses": 5,
+      "prior": 0.001760288834086229,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "inv"
+      ]
+    },
+    {
+      "word": "bue",
+      "num_guesses": 4,
+      "prior": 0.0018247210275872828,
+      "guesses": [
+        "aio",
+        "sue",
+        "dtl",
+        "bue"
+      ]
+    },
+    {
+      "word": "eur",
+      "num_guesses": 3,
+      "prior": 0.0013144236471906838,
+      "guesses": [
+        "aio",
+        "sue",
+        "eur"
+      ]
+    },
+    {
+      "word": "zii",
+      "num_guesses": 6,
+      "prior": 0.0014334119123175799,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "fbi",
+        "zii"
+      ]
+    },
+    {
+      "word": "doc",
+      "num_guesses": 5,
+      "prior": 0.001963915918885876,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "doc"
+      ]
+    },
+    {
+      "word": "dio",
+      "num_guesses": 3,
+      "prior": 0.003928663561308188,
+      "guesses": [
+        "aio",
+        "dpr",
+        "dio"
+      ]
+    },
+    {
+      "word": "wop",
+      "num_guesses": 6,
+      "prior": 0.0006093745183063829,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "dop",
+        "wop"
+      ]
+    },
+    {
+      "word": "sud",
+      "num_guesses": 4,
+      "prior": 0.0028471173219358154,
+      "guesses": [
+        "aio",
+        "sue",
+        "del",
+        "sud"
+      ]
+    },
+    {
+      "word": "ima",
+      "num_guesses": 3,
+      "prior": 0.0016358318796020333,
+      "guesses": [
+        "aio",
+        "ram",
+        "ima"
+      ]
+    },
+    {
+      "word": "fsh",
+      "num_guesses": 5,
+      "prior": 0.0008383182704148656,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "tsh",
+        "fsh"
+      ]
+    },
+    {
+      "word": "ite",
+      "num_guesses": 4,
+      "prior": 0.0014043979052617726,
+      "guesses": [
+        "aio",
+        "sue",
+        "tfr",
+        "ite"
+      ]
+    },
+    {
+      "word": "tra",
+      "num_guesses": 4,
+      "prior": 0.004963207543704873,
+      "guesses": [
+        "aio",
+        "ras",
+        "tep",
+        "tra"
+      ]
+    },
+    {
+      "word": "ciò",
+      "num_guesses": 5,
+      "prior": 0.004673935797385311,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "ciò"
+      ]
+    },
+    {
+      "word": "ali",
+      "num_guesses": 3,
+      "prior": 0.0025229650121196346,
+      "guesses": [
+        "aio",
+        "vlm",
+        "ali"
+      ]
+    },
+    {
+      "word": "col",
+      "num_guesses": 4,
+      "prior": 0.004546662408259988,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "col"
+      ]
+    },
+    {
+      "word": "blu",
+      "num_guesses": 4,
+      "prior": 0.0020479341732829092,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "blu"
+      ]
+    },
+    {
+      "word": "tsi",
+      "num_guesses": 4,
+      "prior": 0.0008971029532483143,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "tsi"
+      ]
+    },
+    {
+      "word": "ctz",
+      "num_guesses": 4,
+      "prior": 0.0006079189001433749,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ctz"
+      ]
+    },
+    {
+      "word": "fet",
+      "num_guesses": 5,
+      "prior": 0.0009226728565913779,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "fet"
+      ]
+    },
+    {
+      "word": "gal",
+      "num_guesses": 5,
+      "prior": 0.0014708013879471391,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pal",
+        "gal"
+      ]
+    },
+    {
+      "word": "off",
+      "num_guesses": 5,
+      "prior": 0.0015663538975767913,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "osò",
+        "off"
+      ]
+    },
+    {
+      "word": "lue",
+      "num_guesses": 4,
+      "prior": 0.001514294207873969,
+      "guesses": [
+        "aio",
+        "sue",
+        "dtl",
+        "lue"
+      ]
+    },
+    {
+      "word": "sai",
+      "num_guesses": 6,
+      "prior": 0.0025547284473314475,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "sul",
+        "sai"
+      ]
+    },
+    {
+      "word": "uhf",
+      "num_guesses": 5,
+      "prior": 0.0006499266228957038,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "ndt",
+        "uhf"
+      ]
+    },
+    {
+      "word": "mac",
+      "num_guesses": 5,
+      "prior": 0.0017312234073067376,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "pet",
+        "mac"
+      ]
+    },
+    {
+      "word": "arc",
+      "num_guesses": 4,
+      "prior": 0.0012911947377357174,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "arc"
+      ]
+    },
+    {
+      "word": "aio",
+      "num_guesses": 1,
+      "prior": 0.0012445648727946754,
+      "guesses": [
+        "aio"
+      ]
+    },
+    {
+      "word": "eta",
+      "num_guesses": 4,
+      "prior": 0.0014632798337578616,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "eta"
+      ]
+    },
+    {
+      "word": "epe",
+      "num_guesses": 5,
+      "prior": 0.0008295497812877275,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "eme",
+        "epe"
+      ]
+    },
+    {
+      "word": "oti",
+      "num_guesses": 5,
+      "prior": 0.0008520288300826776,
+      "guesses": [
+        "aio",
+        "con",
+        "dsl",
+        "rti",
+        "oti"
+      ]
+    },
+    {
+      "word": "gip",
+      "num_guesses": 4,
+      "prior": 0.0011374681325200316,
+      "guesses": [
+        "aio",
+        "per",
+        "suv",
+        "gip"
+      ]
+    },
+    {
+      "word": "ito",
+      "num_guesses": 3,
+      "prior": 0.0015953408050793515,
+      "guesses": [
+        "aio",
+        "mst",
+        "ito"
+      ]
+    },
+    {
+      "word": "fda",
+      "num_guesses": 5,
+      "prior": 0.0008649006283016875,
+      "guesses": [
+        "aio",
+        "ras",
+        "due",
+        "cap",
+        "fda"
+      ]
+    },
+    {
+      "word": "zds",
+      "num_guesses": 6,
+      "prior": 0.00028148344773145794,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "rds",
+        "zds"
+      ]
+    },
+    {
+      "word": "iri",
+      "num_guesses": 4,
+      "prior": 0.0014016855949122373,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "iri"
+      ]
+    },
+    {
+      "word": "nfc",
+      "num_guesses": 5,
+      "prior": 0.000594432737993056,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "hdl",
+        "nfc"
+      ]
+    },
+    {
+      "word": "mhz",
+      "num_guesses": 5,
+      "prior": 0.0010217413054458091,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "mhz"
+      ]
+    },
+    {
+      "word": "rlc",
+      "num_guesses": 5,
+      "prior": 0.0006654967982345237,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "hdl",
+        "rlc"
+      ]
+    },
+    {
+      "word": "sim",
+      "num_guesses": 4,
+      "prior": 0.0016155024618597696,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "sim"
+      ]
+    },
+    {
+      "word": "wok",
+      "num_guesses": 6,
+      "prior": 0.0007319613913599098,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "wow",
+        "wok"
+      ]
+    },
+    {
+      "word": "zig",
+      "num_guesses": 5,
+      "prior": 0.0012816831507652356,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "big",
+        "zig"
+      ]
+    },
+    {
+      "word": "gag",
+      "num_guesses": 7,
+      "prior": 0.001025728414065669,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "zig",
+        "gag"
+      ]
+    },
+    {
+      "word": "meq",
+      "num_guesses": 6,
+      "prior": 0.000899204565146796,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "mev",
+        "meq"
+      ]
+    },
+    {
+      "word": "ics",
+      "num_guesses": 4,
+      "prior": 0.0011526790057693984,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "ics"
+      ]
+    },
+    {
+      "word": "are",
+      "num_guesses": 5,
+      "prior": 0.002013164475185716,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "pvc",
+        "are"
+      ]
+    },
+    {
+      "word": "ala",
+      "num_guesses": 4,
+      "prior": 0.00204577654910667,
+      "guesses": [
+        "aio",
+        "dna",
+        "vlm",
+        "ala"
+      ]
+    },
+    {
+      "word": "può",
+      "num_guesses": 4,
+      "prior": 0.0049902509395812165,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "può"
+      ]
+    },
+    {
+      "word": "tnt",
+      "num_guesses": 5,
+      "prior": 0.0008043928362954156,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ndt",
+        "tnt"
+      ]
+    },
+    {
+      "word": "slm",
+      "num_guesses": 4,
+      "prior": 0.0009104818492349472,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "slm"
+      ]
+    },
+    {
+      "word": "zar",
+      "num_guesses": 5,
+      "prior": 0.0014965643431111544,
+      "guesses": [
+        "aio",
+        "ras",
+        "btp",
+        "var",
+        "zar"
+      ]
+    },
+    {
+      "word": "pmi",
+      "num_guesses": 6,
+      "prior": 0.0012135036877097753,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "imi",
+        "pmi"
+      ]
+    },
+    {
+      "word": "lei",
+      "num_guesses": 4,
+      "prior": 0.003941306408281508,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "lei"
+      ]
+    },
+    {
+      "word": "uer",
+      "num_guesses": 3,
+      "prior": 0.0008522522532084722,
+      "guesses": [
+        "aio",
+        "sue",
+        "uer"
+      ]
+    },
+    {
+      "word": "lte",
+      "num_guesses": 5,
+      "prior": 0.000871721290871464,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "the",
+        "lte"
+      ]
+    },
+    {
+      "word": "sql",
+      "num_guesses": 4,
+      "prior": 0.000953999514786898,
+      "guesses": [
+        "aio",
+        "sue",
+        "rlc",
+        "sql"
+      ]
+    },
+    {
+      "word": "ccd",
+      "num_guesses": 5,
+      "prior": 0.0009453090298680297,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dmn",
+        "ccd"
+      ]
+    },
+    {
+      "word": "reo",
+      "num_guesses": 3,
+      "prior": 0.002116064661460939,
+      "guesses": [
+        "aio",
+        "eur",
+        "reo"
+      ]
+    },
+    {
+      "word": "lui",
+      "num_guesses": 4,
+      "prior": 0.004616461145657909,
+      "guesses": [
+        "aio",
+        "sue",
+        "col",
+        "lui"
+      ]
+    },
+    {
+      "word": "rti",
+      "num_guesses": 5,
+      "prior": 0.0010468219073009326,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "rfi",
+        "rti"
+      ]
+    },
+    {
+      "word": "kob",
+      "num_guesses": 6,
+      "prior": 0.0006771217313700661,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "bjt",
+        "kob"
+      ]
+    },
+    {
+      "word": "pie",
+      "num_guesses": 3,
+      "prior": 0.0021786623563073773,
+      "guesses": [
+        "aio",
+        "per",
+        "pie"
+      ]
+    },
+    {
+      "word": "tur",
+      "num_guesses": 4,
+      "prior": 0.001501330959116543,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "tur"
+      ]
+    },
+    {
+      "word": "bps",
+      "num_guesses": 5,
+      "prior": 0.0006307091402249579,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "bps"
+      ]
+    },
+    {
+      "word": "gaz",
+      "num_guesses": 7,
+      "prior": 0.0016614494797155275,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "zig",
+        "gaz"
+      ]
+    },
+    {
+      "word": "ius",
+      "num_guesses": 3,
+      "prior": 0.0018735849781810468,
+      "guesses": [
+        "aio",
+        "sue",
+        "ius"
+      ]
+    },
+    {
+      "word": "ivi",
+      "num_guesses": 5,
+      "prior": 0.0033919061450070074,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "ivi"
+      ]
+    },
+    {
+      "word": "imu",
+      "num_guesses": 4,
+      "prior": 0.0009960050599415573,
+      "guesses": [
+        "aio",
+        "sue",
+        "uni",
+        "imu"
+      ]
+    },
+    {
+      "word": "cmq",
+      "num_guesses": 5,
+      "prior": 0.0010572621362592207,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dmn",
+        "cmq"
+      ]
+    },
+    {
+      "word": "cic",
+      "num_guesses": 5,
+      "prior": 0.0016198719141205932,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "ndc",
+        "cic"
+      ]
+    },
+    {
+      "word": "ppb",
+      "num_guesses": 5,
+      "prior": 0.0006942622875237469,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ppm",
+        "ppb"
+      ]
+    },
+    {
+      "word": "oli",
+      "num_guesses": 4,
+      "prior": 0.0018541913755960012,
+      "guesses": [
+        "aio",
+        "con",
+        "dsl",
+        "oli"
+      ]
+    },
+    {
+      "word": "nep",
+      "num_guesses": 4,
+      "prior": 0.0011176867912035253,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "nep"
+      ]
+    },
+    {
+      "word": "ghb",
+      "num_guesses": 6,
+      "prior": 0.0005770341688265793,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "ghz",
+        "ghb"
+      ]
+    },
+    {
+      "word": "ldl",
+      "num_guesses": 6,
+      "prior": 0.0009016899925522817,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "ldl"
+      ]
+    },
+    {
+      "word": "ayu",
+      "num_guesses": 6,
+      "prior": 0.0005393424251374017,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "gpu",
+        "ayu"
+      ]
+    },
+    {
+      "word": "rea",
+      "num_guesses": 3,
+      "prior": 0.0018160430245343746,
+      "guesses": [
+        "aio",
+        "ras",
+        "rea"
+      ]
+    },
+    {
+      "word": "odo",
+      "num_guesses": 4,
+      "prior": 0.0015147897011210424,
+      "guesses": [
+        "aio",
+        "eur",
+        "mst",
+        "odo"
+      ]
+    },
+    {
+      "word": "tlr",
+      "num_guesses": 4,
+      "prior": 0.0006058421100025685,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "tlr"
+      ]
+    },
+    {
+      "word": "fan",
+      "num_guesses": 6,
+      "prior": 0.0020565849284895393,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "fan"
+      ]
+    },
+    {
+      "word": "dpc",
+      "num_guesses": 4,
+      "prior": 0.0006534479275034065,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "dpc"
+      ]
+    },
+    {
+      "word": "usa",
+      "num_guesses": 4,
+      "prior": 0.0025150154963139624,
+      "guesses": [
+        "aio",
+        "ras",
+        "tuo",
+        "usa"
+      ]
+    },
+    {
+      "word": "oms",
+      "num_guesses": 4,
+      "prior": 0.001004941152200474,
+      "guesses": [
+        "aio",
+        "not",
+        "rem",
+        "oms"
+      ]
+    },
+    {
+      "word": "bar",
+      "num_guesses": 4,
+      "prior": 0.002129506719648501,
+      "guesses": [
+        "aio",
+        "ras",
+        "btp",
+        "bar"
+      ]
+    },
+    {
+      "word": "pop",
+      "num_guesses": 5,
+      "prior": 0.0016857887159548806,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "pcb",
+        "pop"
+      ]
+    },
+    {
+      "word": "fai",
+      "num_guesses": 5,
+      "prior": 0.002276228312787127,
+      "guesses": [
+        "aio",
+        "ram",
+        "hdv",
+        "fbi",
+        "fai"
+      ]
+    },
+    {
+      "word": "sei",
+      "num_guesses": 3,
+      "prior": 0.003572846482003615,
+      "guesses": [
+        "aio",
+        "sue",
+        "sei"
+      ]
+    },
+    {
+      "word": "gpu",
+      "num_guesses": 4,
+      "prior": 0.0006767314310997606,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "gpu"
+      ]
+    },
+    {
+      "word": "set",
+      "num_guesses": 4,
+      "prior": 0.0018532518133144273,
+      "guesses": [
+        "aio",
+        "sue",
+        "sen",
+        "set"
+      ]
+    },
+    {
+      "word": "ihs",
+      "num_guesses": 5,
+      "prior": 0.0007709431870551354,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "tsi",
+        "ihs"
+      ]
+    },
+    {
+      "word": "gap",
+      "num_guesses": 6,
+      "prior": 0.0014122943495757812,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "gap"
+      ]
+    },
+    {
+      "word": "ram",
+      "num_guesses": 4,
+      "prior": 0.001344523125252686,
+      "guesses": [
+        "aio",
+        "ras",
+        "rap",
+        "ram"
+      ]
+    },
+    {
+      "word": "hot",
+      "num_guesses": 5,
+      "prior": 0.001218444754637796,
+      "guesses": [
+        "aio",
+        "not",
+        "tvb",
+        "pot",
+        "hot"
+      ]
+    },
+    {
+      "word": "vhf",
+      "num_guesses": 6,
+      "prior": 0.0007154793850396846,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "hdl",
+        "vhf"
+      ]
+    },
+    {
+      "word": "une",
+      "num_guesses": 3,
+      "prior": 0.0023910098397418988,
+      "guesses": [
+        "aio",
+        "sue",
+        "une"
+      ]
+    },
+    {
+      "word": "pei",
+      "num_guesses": 5,
+      "prior": 0.0028698208001137365,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "dpr",
+        "pei"
+      ]
+    },
+    {
+      "word": "gol",
+      "num_guesses": 5,
+      "prior": 0.00133549532668939,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "col",
+        "gol"
+      ]
+    },
+    {
+      "word": "pcr",
+      "num_guesses": 5,
+      "prior": 0.001249430516466729,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "rlc",
+        "pcr"
+      ]
+    },
+    {
+      "word": "los",
+      "num_guesses": 4,
+      "prior": 0.001990238335179685,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "los"
+      ]
+    },
+    {
+      "word": "new",
+      "num_guesses": 5,
+      "prior": 0.0026571799115674755,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "zen",
+        "new"
+      ]
+    },
+    {
+      "word": "sti",
+      "num_guesses": 3,
+      "prior": 0.001703926431500215,
+      "guesses": [
+        "aio",
+        "sue",
+        "sti"
+      ]
+    },
+    {
+      "word": "wap",
+      "num_guesses": 7,
+      "prior": 0.0007048685802425538,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "gap",
+        "wap"
+      ]
+    },
+    {
+      "word": "bpm",
+      "num_guesses": 5,
+      "prior": 0.0007987350499118317,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "ppm",
+        "bpm"
+      ]
+    },
+    {
+      "word": "xké",
+      "num_guesses": 7,
+      "prior": 0.0004249349933735835,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "box",
+        "xké"
+      ]
+    },
+    {
+      "word": "uni",
+      "num_guesses": 3,
+      "prior": 0.0024154463133727634,
+      "guesses": [
+        "aio",
+        "sue",
+        "uni"
+      ]
+    },
+    {
+      "word": "dub",
+      "num_guesses": 4,
+      "prior": 0.0011204660848038214,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "dub"
+      ]
+    },
+    {
+      "word": "adn",
+      "num_guesses": 3,
+      "prior": 0.0008957226906880917,
+      "guesses": [
+        "aio",
+        "dna",
+        "adn"
+      ]
+    },
+    {
+      "word": "csi",
+      "num_guesses": 4,
+      "prior": 0.000997737406470511,
+      "guesses": [
+        "aio",
+        "sue",
+        "pcr",
+        "csi"
+      ]
+    },
+    {
+      "word": "ecl",
+      "num_guesses": 5,
+      "prior": 0.0010058184811251234,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "del",
+        "ecl"
+      ]
+    },
+    {
+      "word": "dry",
+      "num_guesses": 6,
+      "prior": 0.001015084784635449,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd",
+        "dry"
+      ]
+    },
+    {
+      "word": "mat",
+      "num_guesses": 5,
+      "prior": 0.0016530018798488336,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "mat"
+      ]
+    },
+    {
+      "word": "pra",
+      "num_guesses": 4,
+      "prior": 0.0015647295409718285,
+      "guesses": [
+        "aio",
+        "ras",
+        "tep",
+        "pra"
+      ]
+    },
+    {
+      "word": "app",
+      "num_guesses": 6,
+      "prior": 0.0017536316530129016,
+      "guesses": [
+        "aio",
+        "dna",
+        "esc",
+        "rtl",
+        "gpu",
+        "app"
+      ]
+    },
+    {
+      "word": "dèi",
+      "num_guesses": 5,
+      "prior": 0.001889695905242625,
+      "guesses": [
+        "aio",
+        "sue",
+        "rcl",
+        "hdv",
+        "dèi"
+      ]
+    },
+    {
+      "word": "sol",
+      "num_guesses": 4,
+      "prior": 0.002708534988848741,
+      "guesses": [
+        "aio",
+        "not",
+        "slm",
+        "sol"
+      ]
+    },
+    {
+      "word": "fon",
+      "num_guesses": 5,
+      "prior": 0.0016284698121876843,
+      "guesses": [
+        "aio",
+        "not",
+        "con",
+        "don",
+        "fon"
+      ]
+    },
+    {
+      "word": "tcs",
+      "num_guesses": 6,
+      "prior": 0.0006232857951780079,
+      "guesses": [
+        "aio",
+        "sue",
+        "msh",
+        "gdf",
+        "bps",
+        "tcs"
+      ]
+    },
+    {
+      "word": "tev",
+      "num_guesses": 6,
+      "prior": 0.0007204336072291338,
+      "guesses": [
+        "aio",
+        "sue",
+        "pnl",
+        "mtf",
+        "jet",
+        "tev"
+      ]
+    },
+    {
+      "word": "uht",
+      "num_guesses": 5,
+      "prior": 0.0006333094951687328,
+      "guesses": [
+        "aio",
+        "sue",
+        "gpl",
+        "ndt",
+        "uht"
+      ]
+    },
+    {
+      "word": "rcp",
+      "num_guesses": 5,
+      "prior": 0.0009579976731997712,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "rlc",
+        "rcp"
+      ]
+    },
+    {
+      "word": "giù",
+      "num_guesses": 5,
+      "prior": 0.0026318173141563965,
+      "guesses": [
+        "aio",
+        "per",
+        "gsm",
+        "già",
+        "giù"
+      ]
+    },
+    {
+      "word": "usl",
+      "num_guesses": 4,
+      "prior": 0.001276068907763222,
+      "guesses": [
+        "aio",
+        "sue",
+        "lab",
+        "usl"
+      ]
+    },
+    {
+      "word": "tre",
+      "num_guesses": 4,
+      "prior": 0.004241694478997446,
+      "guesses": [
+        "aio",
+        "sue",
+        "crt",
+        "tre"
+      ]
+    },
+    {
+      "word": "pur",
+      "num_guesses": 4,
+      "prior": 0.00385152885630344,
+      "guesses": [
+        "aio",
+        "sue",
+        "dpr",
+        "pur"
+      ]
+    },
+    {
+      "word": "yak",
+      "num_guesses": 7,
+      "prior": 0.0008066556146761925,
+      "guesses": [
+        "aio",
+        "ras",
+        "lcd",
+        "tvb",
+        "pnf",
+        "zig",
+        "yak"
+      ]
+    },
+    {
+      "word": "dvd",
+      "num_guesses": 5,
+      "prior": 0.0012736138965668143,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "mgh",
+        "dvd"
+      ]
+    },
+    {
+      "word": "cpc",
+      "num_guesses": 4,
+      "prior": 0.001226281810916777,
+      "guesses": [
+        "aio",
+        "sue",
+        "cpt",
+        "cpc"
+      ]
+    },
+    {
+      "word": "cei",
+      "num_guesses": 6,
+      "prior": 0.0013348022281855021,
+      "guesses": [
+        "aio",
+        "sue",
+        "nel",
+        "dpr",
+        "bei",
+        "cei"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5107 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:03:48.448395Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "resinato",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 8,
+    "dictionary_length": 35862,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "f20b09acd424764011e417a246ef46e61f8a7621f2c1ccc284a11efc547927bd",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.1019999999999732,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.05800000000000004,
+        "3": 0.7840000000000006,
+        "4": 0.1560000000000001,
+        "5": 0.002
+      }
+    },
+    "prior": {
+      "mean": 3.030950783411778,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.08350371660102407,
+        "3": 0.8035506454767892,
+        "4": 0.11143677583156797,
+        "5": 0.0015088620906189025
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "aiducchi",
+      "num_guesses": 4,
+      "prior": 0.00001729396451420576,
+      "guesses": [
+        "resinato",
+        "pagabili",
+        "diffidai",
+        "aiducchi"
+      ]
+    },
+    {
+      "word": "tumolata",
+      "num_guesses": 3,
+      "prior": 0.000015765439313080365,
+      "guesses": [
+        "resinato",
+        "macolava",
+        "tumolata"
+      ]
+    },
+    {
+      "word": "copierei",
+      "num_guesses": 3,
+      "prior": 0.000015214452566768742,
+      "guesses": [
+        "resinato",
+        "polimeri",
+        "copierei"
+      ]
+    },
+    {
+      "word": "spremete",
+      "num_guesses": 3,
+      "prior": 0.00002414088999037335,
+      "guesses": [
+        "resinato",
+        "sperdete",
+        "spremete"
+      ]
+    },
+    {
+      "word": "ricaricò",
+      "num_guesses": 4,
+      "prior": 0.000022414827733528792,
+      "guesses": [
+        "resinato",
+        "baccagli",
+        "ricacciò",
+        "ricaricò"
+      ]
+    },
+    {
+      "word": "computai",
+      "num_guesses": 3,
+      "prior": 0.000016037147043047307,
+      "guesses": [
+        "resinato",
+        "cattivai",
+        "computai"
+      ]
+    },
+    {
+      "word": "ivoriano",
+      "num_guesses": 4,
+      "prior": 0.000020413686556597756,
+      "guesses": [
+        "resinato",
+        "granduca",
+        "onoriamo",
+        "ivoriano"
+      ]
+    },
+    {
+      "word": "rinforzo",
+      "num_guesses": 3,
+      "prior": 0.000059352794819851086,
+      "guesses": [
+        "resinato",
+        "dolciumi",
+        "rinforzo"
+      ]
+    },
+    {
+      "word": "costasse",
+      "num_guesses": 3,
+      "prior": 0.0000401486095539269,
+      "guesses": [
+        "resinato",
+        "patetica",
+        "costasse"
+      ]
+    },
+    {
+      "word": "trabucca",
+      "num_guesses": 3,
+      "prior": 0.00001169571091735442,
+      "guesses": [
+        "resinato",
+        "accumula",
+        "trabucca"
+      ]
+    },
+    {
+      "word": "brillate",
+      "num_guesses": 4,
+      "prior": 0.00001975491242361435,
+      "guesses": [
+        "resinato",
+        "gracidai",
+        "perfetta",
+        "brillate"
+      ]
+    },
+    {
+      "word": "abbonano",
+      "num_guesses": 3,
+      "prior": 0.000020823987175343396,
+      "guesses": [
+        "resinato",
+        "favolosa",
+        "abbonano"
+      ]
+    },
+    {
+      "word": "sgozzata",
+      "num_guesses": 4,
+      "prior": 0.000026543288920312025,
+      "guesses": [
+        "resinato",
+        "scoltata",
+        "zampogna",
+        "sgozzata"
+      ]
+    },
+    {
+      "word": "shoccati",
+      "num_guesses": 4,
+      "prior": 0.0000128040042681318,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "abitanti",
+        "shoccati"
+      ]
+    },
+    {
+      "word": "esalerai",
+      "num_guesses": 4,
+      "prior": 0.000012925969189486124,
+      "guesses": [
+        "resinato",
+        "scurirsi",
+        "esagerai",
+        "esalerai"
+      ]
+    },
+    {
+      "word": "ritmasse",
+      "num_guesses": 3,
+      "prior": 0.000010516482687026458,
+      "guesses": [
+        "resinato",
+        "ritrasse",
+        "ritmasse"
+      ]
+    },
+    {
+      "word": "spanderò",
+      "num_guesses": 3,
+      "prior": 0.000022958290716861987,
+      "guesses": [
+        "resinato",
+        "prenderò",
+        "spanderò"
+      ]
+    },
+    {
+      "word": "logoravo",
+      "num_guesses": 3,
+      "prior": 0.0000133727387168469,
+      "guesses": [
+        "resinato",
+        "malgrado",
+        "logoravo"
+      ]
+    },
+    {
+      "word": "disterra",
+      "num_guesses": 3,
+      "prior": 0.000011210720864645214,
+      "guesses": [
+        "resinato",
+        "tastiera",
+        "disterra"
+      ]
+    },
+    {
+      "word": "alemanna",
+      "num_guesses": 3,
+      "prior": 0.000043907332492194494,
+      "guesses": [
+        "resinato",
+        "cannacee",
+        "alemanna"
+      ]
+    },
+    {
+      "word": "vivificò",
+      "num_guesses": 3,
+      "prior": 0.000022872261346845797,
+      "guesses": [
+        "resinato",
+        "lipidici",
+        "vivificò"
+      ]
+    },
+    {
+      "word": "rinumerò",
+      "num_guesses": 3,
+      "prior": 0.000011659778714460237,
+      "guesses": [
+        "resinato",
+        "preverrò",
+        "rinumerò"
+      ]
+    },
+    {
+      "word": "orzarono",
+      "num_guesses": 4,
+      "prior": 0.000010849778399398507,
+      "guesses": [
+        "resinato",
+        "corrompo",
+        "bellezza",
+        "orzarono"
+      ]
+    },
+    {
+      "word": "evocasti",
+      "num_guesses": 3,
+      "prior": 0.000014128574511290293,
+      "guesses": [
+        "resinato",
+        "giocaste",
+        "evocasti"
+      ]
+    },
+    {
+      "word": "baldanze",
+      "num_guesses": 3,
+      "prior": 0.00002317195342961599,
+      "guesses": [
+        "resinato",
+        "cannacee",
+        "baldanze"
+      ]
+    },
+    {
+      "word": "antismog",
+      "num_guesses": 3,
+      "prior": 0.000021750551619828916,
+      "guesses": [
+        "resinato",
+        "vanitosi",
+        "antismog"
+      ]
+    },
+    {
+      "word": "idrogena",
+      "num_guesses": 3,
+      "prior": 0.000018800501333716365,
+      "guesses": [
+        "resinato",
+        "comodini",
+        "idrogena"
+      ]
+    },
+    {
+      "word": "guantoni",
+      "num_guesses": 3,
+      "prior": 0.000029775563774659314,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "guantoni"
+      ]
+    },
+    {
+      "word": "corrotto",
+      "num_guesses": 2,
+      "prior": 0.00006198072428274707,
+      "guesses": [
+        "resinato",
+        "corrotto"
+      ]
+    },
+    {
+      "word": "rispiego",
+      "num_guesses": 2,
+      "prior": 0.000014292427878700674,
+      "guesses": [
+        "resinato",
+        "rispiego"
+      ]
+    },
+    {
+      "word": "attutato",
+      "num_guesses": 3,
+      "prior": 0.000019824619437804166,
+      "guesses": [
+        "resinato",
+        "maculava",
+        "attutato"
+      ]
+    },
+    {
+      "word": "crepiamo",
+      "num_guesses": 3,
+      "prior": 0.000017672919759352688,
+      "guesses": [
+        "resinato",
+        "premendo",
+        "crepiamo"
+      ]
+    },
+    {
+      "word": "appoggiò",
+      "num_guesses": 3,
+      "prior": 0.00006218632527122138,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "appoggiò"
+      ]
+    },
+    {
+      "word": "rimirare",
+      "num_guesses": 3,
+      "prior": 0.000040587682173315553,
+      "guesses": [
+        "resinato",
+        "radicale",
+        "rimirare"
+      ]
+    },
+    {
+      "word": "listiate",
+      "num_guesses": 3,
+      "prior": 9.486891474846524e-6,
+      "guesses": [
+        "resinato",
+        "cambiali",
+        "listiate"
+      ]
+    },
+    {
+      "word": "romboidi",
+      "num_guesses": 3,
+      "prior": 0.00002578350625946187,
+      "guesses": [
+        "resinato",
+        "piccioli",
+        "romboidi"
+      ]
+    },
+    {
+      "word": "risecati",
+      "num_guesses": 3,
+      "prior": 0.00001726397913304328,
+      "guesses": [
+        "resinato",
+        "dichiara",
+        "risecati"
+      ]
+    },
+    {
+      "word": "mordvini",
+      "num_guesses": 3,
+      "prior": 0.000018981510531518848,
+      "guesses": [
+        "resinato",
+        "micologi",
+        "mordvini"
+      ]
+    },
+    {
+      "word": "rinversa",
+      "num_guesses": 2,
+      "prior": 0.000020108393947436248,
+      "guesses": [
+        "resinato",
+        "rinversa"
+      ]
+    },
+    {
+      "word": "inarrato",
+      "num_guesses": 3,
+      "prior": 0.00001149234395073932,
+      "guesses": [
+        "resinato",
+        "granduca",
+        "inarrato"
+      ]
+    },
+    {
+      "word": "dormiste",
+      "num_guesses": 3,
+      "prior": 0.000019585298095145495,
+      "guesses": [
+        "resinato",
+        "dovresti",
+        "dormiste"
+      ]
+    },
+    {
+      "word": "perspira",
+      "num_guesses": 3,
+      "prior": 0.000012651228859588684,
+      "guesses": [
+        "resinato",
+        "servirsi",
+        "perspira"
+      ]
+    },
+    {
+      "word": "cascaste",
+      "num_guesses": 3,
+      "prior": 0.000012095914428843446,
+      "guesses": [
+        "resinato",
+        "cassetta",
+        "cascaste"
+      ]
+    },
+    {
+      "word": "sgannerò",
+      "num_guesses": 2,
+      "prior": 0.000014332240272486514,
+      "guesses": [
+        "resinato",
+        "sgannerò"
+      ]
+    },
+    {
+      "word": "adempire",
+      "num_guesses": 4,
+      "prior": 0.00005005865906966108,
+      "guesses": [
+        "resinato",
+        "carpirai",
+        "regalerò",
+        "adempire"
+      ]
+    },
+    {
+      "word": "svestono",
+      "num_guesses": 3,
+      "prior": 0.00002198432515616394,
+      "guesses": [
+        "resinato",
+        "smettono",
+        "svestono"
+      ]
+    },
+    {
+      "word": "detenete",
+      "num_guesses": 3,
+      "prior": 0.000013766727257468413,
+      "guesses": [
+        "resinato",
+        "detenute",
+        "detenete"
+      ]
+    },
+    {
+      "word": "rigirino",
+      "num_guesses": 3,
+      "prior": 0.000014635837428021956,
+      "guesses": [
+        "resinato",
+        "rodigino",
+        "rigirino"
+      ]
+    },
+    {
+      "word": "effettua",
+      "num_guesses": 3,
+      "prior": 0.00006372943199588488,
+      "guesses": [
+        "resinato",
+        "fattezza",
+        "effettua"
+      ]
+    },
+    {
+      "word": "sessasse",
+      "num_guesses": 3,
+      "prior": 0.000010944550686025291,
+      "guesses": [
+        "resinato",
+        "vascello",
+        "sessasse"
+      ]
+    },
+    {
+      "word": "corriate",
+      "num_guesses": 3,
+      "prior": 0.000021046605440888015,
+      "guesses": [
+        "resinato",
+        "porridge",
+        "corriate"
+      ]
+    },
+    {
+      "word": "mondanti",
+      "num_guesses": 4,
+      "prior": 0.000010070492354192208,
+      "guesses": [
+        "resinato",
+        "compatta",
+        "generale",
+        "mondanti"
+      ]
+    },
+    {
+      "word": "adiuvano",
+      "num_guesses": 3,
+      "prior": 9.402923471005625e-6,
+      "guesses": [
+        "resinato",
+        "colavamo",
+        "adiuvano"
+      ]
+    },
+    {
+      "word": "sbolognò",
+      "num_guesses": 3,
+      "prior": 9.90255668946198e-6,
+      "guesses": [
+        "resinato",
+        "sconsolò",
+        "sbolognò"
+      ]
+    },
+    {
+      "word": "mitriati",
+      "num_guesses": 4,
+      "prior": 0.000015803117474348453,
+      "guesses": [
+        "resinato",
+        "proficui",
+        "avariati",
+        "mitriati"
+      ]
+    },
+    {
+      "word": "strofini",
+      "num_guesses": 3,
+      "prior": 0.000022282233857309312,
+      "guesses": [
+        "resinato",
+        "crostini",
+        "strofini"
+      ]
+    },
+    {
+      "word": "putative",
+      "num_guesses": 3,
+      "prior": 0.00002028706517827306,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "putative"
+      ]
+    },
+    {
+      "word": "striglio",
+      "num_guesses": 3,
+      "prior": 0.00001664144514913212,
+      "guesses": [
+        "resinato",
+        "stridulo",
+        "striglio"
+      ]
+    },
+    {
+      "word": "rasarono",
+      "num_guesses": 3,
+      "prior": 0.00001709521836836228,
+      "guesses": [
+        "resinato",
+        "russando",
+        "rasarono"
+      ]
+    },
+    {
+      "word": "agguanti",
+      "num_guesses": 4,
+      "prior": 0.00001675320043533224,
+      "guesses": [
+        "resinato",
+        "multipli",
+        "attuanti",
+        "agguanti"
+      ]
+    },
+    {
+      "word": "scampano",
+      "num_guesses": 3,
+      "prior": 0.000026722584474964462,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "scampano"
+      ]
+    },
+    {
+      "word": "mettiate",
+      "num_guesses": 3,
+      "prior": 0.000031919378595815916,
+      "guesses": [
+        "resinato",
+        "cablaggi",
+        "mettiate"
+      ]
+    },
+    {
+      "word": "trilogie",
+      "num_guesses": 3,
+      "prior": 0.000026761130279431242,
+      "guesses": [
+        "resinato",
+        "elettivi",
+        "trilogie"
+      ]
+    },
+    {
+      "word": "maturerà",
+      "num_guesses": 3,
+      "prior": 0.00003020264869330603,
+      "guesses": [
+        "resinato",
+        "armature",
+        "maturerà"
+      ]
+    },
+    {
+      "word": "affumico",
+      "num_guesses": 3,
+      "prior": 0.000012841082121502159,
+      "guesses": [
+        "resinato",
+        "dolciumi",
+        "affumico"
+      ]
+    },
+    {
+      "word": "logorrea",
+      "num_guesses": 3,
+      "prior": 0.000027137356993212086,
+      "guesses": [
+        "resinato",
+        "completa",
+        "logorrea"
+      ]
+    },
+    {
+      "word": "eleatici",
+      "num_guesses": 3,
+      "prior": 0.00002724795828252361,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "eleatici"
+      ]
+    },
+    {
+      "word": "medicine",
+      "num_guesses": 2,
+      "prior": 0.00006095875190369947,
+      "guesses": [
+        "resinato",
+        "medicine"
+      ]
+    },
+    {
+      "word": "aombrate",
+      "num_guesses": 3,
+      "prior": 0.000013555716536512485,
+      "guesses": [
+        "resinato",
+        "coltrata",
+        "aombrate"
+      ]
+    },
+    {
+      "word": "setolato",
+      "num_guesses": 3,
+      "prior": 0.000010461275002789667,
+      "guesses": [
+        "resinato",
+        "degasato",
+        "setolato"
+      ]
+    },
+    {
+      "word": "gestioni",
+      "num_guesses": 3,
+      "prior": 0.00005609166060331139,
+      "guesses": [
+        "resinato",
+        "gestione",
+        "gestioni"
+      ]
+    },
+    {
+      "word": "usassero",
+      "num_guesses": 3,
+      "prior": 0.00004333326917775399,
+      "guesses": [
+        "resinato",
+        "acerrime",
+        "usassero"
+      ]
+    },
+    {
+      "word": "potevamo",
+      "num_guesses": 2,
+      "prior": 0.000057581748961257145,
+      "guesses": [
+        "resinato",
+        "potevamo"
+      ]
+    },
+    {
+      "word": "traporto",
+      "num_guesses": 3,
+      "prior": 0.000019967472103720185,
+      "guesses": [
+        "resinato",
+        "alabarde",
+        "traporto"
+      ]
+    },
+    {
+      "word": "oseresti",
+      "num_guesses": 3,
+      "prior": 0.000025518030112031065,
+      "guesses": [
+        "resinato",
+        "dovresti",
+        "oseresti"
+      ]
+    },
+    {
+      "word": "ingiunga",
+      "num_guesses": 3,
+      "prior": 0.000025342274873904964,
+      "guesses": [
+        "resinato",
+        "vilifica",
+        "ingiunga"
+      ]
+    },
+    {
+      "word": "inguanti",
+      "num_guesses": 4,
+      "prior": 0.00001621982711373589,
+      "guesses": [
+        "resinato",
+        "multipli",
+        "inauditi",
+        "inguanti"
+      ]
+    },
+    {
+      "word": "soccorso",
+      "num_guesses": 3,
+      "prior": 0.00009140333141128831,
+      "guesses": [
+        "resinato",
+        "scorporo",
+        "soccorso"
+      ]
+    },
+    {
+      "word": "dribblai",
+      "num_guesses": 3,
+      "prior": 0.000011641645222762952,
+      "guesses": [
+        "resinato",
+        "aramaici",
+        "dribblai"
+      ]
+    },
+    {
+      "word": "auricole",
+      "num_guesses": 3,
+      "prior": 0.000025583097974956163,
+      "guesses": [
+        "resinato",
+        "paragone",
+        "auricole"
+      ]
+    },
+    {
+      "word": "aggiorni",
+      "num_guesses": 3,
+      "prior": 0.000027480931645962072,
+      "guesses": [
+        "resinato",
+        "signoria",
+        "aggiorni"
+      ]
+    },
+    {
+      "word": "ondivaga",
+      "num_guesses": 3,
+      "prior": 0.000023188155180856743,
+      "guesses": [
+        "resinato",
+        "mohicani",
+        "ondivaga"
+      ]
+    },
+    {
+      "word": "assonnai",
+      "num_guesses": 3,
+      "prior": 0.000011080831890722797,
+      "guesses": [
+        "resinato",
+        "opsonica",
+        "assonnai"
+      ]
+    },
+    {
+      "word": "scollate",
+      "num_guesses": 3,
+      "prior": 0.000028062147239409223,
+      "guesses": [
+        "resinato",
+        "plastica",
+        "scollate"
+      ]
+    },
+    {
+      "word": "soldando",
+      "num_guesses": 4,
+      "prior": 0.000019302485680980946,
+      "guesses": [
+        "resinato",
+        "scampolo",
+        "geografi",
+        "soldando"
+      ]
+    },
+    {
+      "word": "slontana",
+      "num_guesses": 3,
+      "prior": 0.000021765459482782015,
+      "guesses": [
+        "resinato",
+        "constava",
+        "slontana"
+      ]
+    },
+    {
+      "word": "milanesi",
+      "num_guesses": 3,
+      "prior": 0.00007606323178518751,
+      "guesses": [
+        "resinato",
+        "milanese",
+        "milanesi"
+      ]
+    },
+    {
+      "word": "sopprima",
+      "num_guesses": 3,
+      "prior": 0.00003299421547417337,
+      "guesses": [
+        "resinato",
+        "scomposi",
+        "sopprima"
+      ]
+    },
+    {
+      "word": "ploranti",
+      "num_guesses": 3,
+      "prior": 0.000020231532247450045,
+      "guesses": [
+        "resinato",
+        "profonda",
+        "ploranti"
+      ]
+    },
+    {
+      "word": "sunteggi",
+      "num_guesses": 3,
+      "prior": 0.0000110361496610092,
+      "guesses": [
+        "resinato",
+        "stupisci",
+        "sunteggi"
+      ]
+    },
+    {
+      "word": "pioverai",
+      "num_guesses": 4,
+      "prior": 0.000012064536796077301,
+      "guesses": [
+        "resinato",
+        "compluvi",
+        "proverai",
+        "pioverai"
+      ]
+    },
+    {
+      "word": "musavano",
+      "num_guesses": 3,
+      "prior": 0.000010070492354192208,
+      "guesses": [
+        "resinato",
+        "adeguata",
+        "musavano"
+      ]
+    },
+    {
+      "word": "vedretta",
+      "num_guesses": 3,
+      "prior": 0.00003321509044473499,
+      "guesses": [
+        "resinato",
+        "permetta",
+        "vedretta"
+      ]
+    },
+    {
+      "word": "mandrino",
+      "num_guesses": 3,
+      "prior": 0.00003560051523835321,
+      "guesses": [
+        "resinato",
+        "giudaica",
+        "mandrino"
+      ]
+    },
+    {
+      "word": "continga",
+      "num_guesses": 4,
+      "prior": 0.000025241846448122444,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "continua",
+        "continga"
+      ]
+    },
+    {
+      "word": "conciono",
+      "num_guesses": 3,
+      "prior": 0.00001744446525169899,
+      "guesses": [
+        "resinato",
+        "cupolini",
+        "conciono"
+      ]
+    },
+    {
+      "word": "sinovite",
+      "num_guesses": 3,
+      "prior": 0.00003072398590660299,
+      "guesses": [
+        "resinato",
+        "connesse",
+        "sinovite"
+      ]
+    },
+    {
+      "word": "salmodia",
+      "num_guesses": 3,
+      "prior": 0.000036726724139299956,
+      "guesses": [
+        "resinato",
+        "scoliosi",
+        "salmodia"
+      ]
+    },
+    {
+      "word": "ennesime",
+      "num_guesses": 3,
+      "prior": 0.000021723614016215312,
+      "guesses": [
+        "resinato",
+        "svilisce",
+        "ennesime"
+      ]
+    },
+    {
+      "word": "esantema",
+      "num_guesses": 3,
+      "prior": 0.000041186674240865845,
+      "guesses": [
+        "resinato",
+        "dantesca",
+        "esantema"
+      ]
+    },
+    {
+      "word": "sfrenata",
+      "num_guesses": 3,
+      "prior": 0.0000534578166319716,
+      "guesses": [
+        "resinato",
+        "strafoga",
+        "sfrenata"
+      ]
+    },
+    {
+      "word": "esecrate",
+      "num_guesses": 3,
+      "prior": 0.00002559089294836395,
+      "guesses": [
+        "resinato",
+        "spetrata",
+        "esecrate"
+      ]
+    },
+    {
+      "word": "deaerati",
+      "num_guesses": 3,
+      "prior": 9.31584436194236e-6,
+      "guesses": [
+        "resinato",
+        "deliberi",
+        "deaerati"
+      ]
+    },
+    {
+      "word": "sdraiata",
+      "num_guesses": 3,
+      "prior": 0.00004640127444335013,
+      "guesses": [
+        "resinato",
+        "sbrucava",
+        "sdraiata"
+      ]
+    },
+    {
+      "word": "decagoni",
+      "num_guesses": 3,
+      "prior": 0.000015444345730764523,
+      "guesses": [
+        "resinato",
+        "confonda",
+        "decagoni"
+      ]
+    },
+    {
+      "word": "serotine",
+      "num_guesses": 2,
+      "prior": 0.000029403819026423132,
+      "guesses": [
+        "resinato",
+        "serotine"
+      ]
+    },
+    {
+      "word": "saggiavo",
+      "num_guesses": 3,
+      "prior": 0.000017448071715776455,
+      "guesses": [
+        "resinato",
+        "scolpivo",
+        "saggiavo"
+      ]
+    },
+    {
+      "word": "dulcimer",
+      "num_guesses": 3,
+      "prior": 0.000017827732883343372,
+      "guesses": [
+        "resinato",
+        "preclude",
+        "dulcimer"
+      ]
+    },
+    {
+      "word": "pagaiata",
+      "num_guesses": 3,
+      "prior": 0.000015132514129471457,
+      "guesses": [
+        "resinato",
+        "calumava",
+        "pagaiata"
+      ]
+    },
+    {
+      "word": "torcesse",
+      "num_guesses": 3,
+      "prior": 0.00002530897561229348,
+      "guesses": [
+        "resinato",
+        "ulcererà",
+        "torcesse"
+      ]
+    },
+    {
+      "word": "riaprivi",
+      "num_guesses": 4,
+      "prior": 0.000010921164680183704,
+      "guesses": [
+        "resinato",
+        "baccagli",
+        "ridurrai",
+        "riaprivi"
+      ]
+    },
+    {
+      "word": "allunghi",
+      "num_guesses": 3,
+      "prior": 0.0000311758211785313,
+      "guesses": [
+        "resinato",
+        "bilancia",
+        "allunghi"
+      ]
+    },
+    {
+      "word": "scherana",
+      "num_guesses": 3,
+      "prior": 0.000019528197128567833,
+      "guesses": [
+        "resinato",
+        "scansare",
+        "scherana"
+      ]
+    },
+    {
+      "word": "magliato",
+      "num_guesses": 3,
+      "prior": 0.00001702023644919085,
+      "guesses": [
+        "resinato",
+        "cambiali",
+        "magliato"
+      ]
+    },
+    {
+      "word": "adergerà",
+      "num_guesses": 3,
+      "prior": 0.000011511434328349916,
+      "guesses": [
+        "resinato",
+        "laureare",
+        "adergerà"
+      ]
+    },
+    {
+      "word": "faticato",
+      "num_guesses": 4,
+      "prior": 0.000043528964811630166,
+      "guesses": [
+        "resinato",
+        "maculava",
+        "capitato",
+        "faticato"
+      ]
+    },
+    {
+      "word": "inattesa",
+      "num_guesses": 3,
+      "prior": 0.00005000533783733837,
+      "guesses": [
+        "resinato",
+        "inattive",
+        "inattesa"
+      ]
+    },
+    {
+      "word": "declasso",
+      "num_guesses": 3,
+      "prior": 9.527784764742302e-6,
+      "guesses": [
+        "resinato",
+        "sellammo",
+        "declasso"
+      ]
+    },
+    {
+      "word": "dirupate",
+      "num_guesses": 3,
+      "prior": 0.00003536422966368467,
+      "guesses": [
+        "resinato",
+        "gracidai",
+        "dirupate"
+      ]
+    },
+    {
+      "word": "disnervi",
+      "num_guesses": 3,
+      "prior": 9.684705109596866e-6,
+      "guesses": [
+        "resinato",
+        "inscrive",
+        "disnervi"
+      ]
+    },
+    {
+      "word": "giovanti",
+      "num_guesses": 4,
+      "prior": 0.000019283192803153063,
+      "guesses": [
+        "resinato",
+        "compatta",
+        "violanti",
+        "giovanti"
+      ]
+    },
+    {
+      "word": "intelata",
+      "num_guesses": 3,
+      "prior": 0.000025261567948678184,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "intelata"
+      ]
+    },
+    {
+      "word": "colpisca",
+      "num_guesses": 3,
+      "prior": 0.00004322480060735703,
+      "guesses": [
+        "resinato",
+        "scoliosi",
+        "colpisca"
+      ]
+    },
+    {
+      "word": "arguiamo",
+      "num_guesses": 3,
+      "prior": 0.00001985695993514146,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "arguiamo"
+      ]
+    },
+    {
+      "word": "amaretto",
+      "num_guesses": 3,
+      "prior": 0.000028936891107410896,
+      "guesses": [
+        "resinato",
+        "campagna",
+        "amaretto"
+      ]
+    },
+    {
+      "word": "ammarata",
+      "num_guesses": 4,
+      "prior": 0.00001663272321291932,
+      "guesses": [
+        "resinato",
+        "gratuito",
+        "apparata",
+        "ammarata"
+      ]
+    },
+    {
+      "word": "anemizzò",
+      "num_guesses": 3,
+      "prior": 0.000011835192502023788,
+      "guesses": [
+        "resinato",
+        "maledica",
+        "anemizzò"
+      ]
+    },
+    {
+      "word": "decorose",
+      "num_guesses": 3,
+      "prior": 0.000034252314553071954,
+      "guesses": [
+        "resinato",
+        "percosse",
+        "decorose"
+      ]
+    },
+    {
+      "word": "moldavia",
+      "num_guesses": 3,
+      "prior": 0.0000484184808544918,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "moldavia"
+      ]
+    },
+    {
+      "word": "rattoppi",
+      "num_guesses": 3,
+      "prior": 0.000027526474594862227,
+      "guesses": [
+        "resinato",
+        "ritrovai",
+        "rattoppi"
+      ]
+    },
+    {
+      "word": "spaccare",
+      "num_guesses": 3,
+      "prior": 0.00004088756103040953,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "spaccare"
+      ]
+    },
+    {
+      "word": "tassello",
+      "num_guesses": 3,
+      "prior": 0.00004497267927693111,
+      "guesses": [
+        "resinato",
+        "tumefece",
+        "tassello"
+      ]
+    },
+    {
+      "word": "sinonimi",
+      "num_guesses": 2,
+      "prior": 0.000056869919592702165,
+      "guesses": [
+        "resinato",
+        "sinonimi"
+      ]
+    },
+    {
+      "word": "cagionai",
+      "num_guesses": 3,
+      "prior": 0.00001669339656122561,
+      "guesses": [
+        "resinato",
+        "filamina",
+        "cagionai"
+      ]
+    },
+    {
+      "word": "imputino",
+      "num_guesses": 3,
+      "prior": 0.000022094776251831696,
+      "guesses": [
+        "resinato",
+        "pinguini",
+        "imputino"
+      ]
+    },
+    {
+      "word": "detratti",
+      "num_guesses": 3,
+      "prior": 0.000038293573149085315,
+      "guesses": [
+        "resinato",
+        "municipi",
+        "detratti"
+      ]
+    },
+    {
+      "word": "declorai",
+      "num_guesses": 3,
+      "prior": 0.000013223165676631944,
+      "guesses": [
+        "resinato",
+        "marcolfa",
+        "declorai"
+      ]
+    },
+    {
+      "word": "latitata",
+      "num_guesses": 4,
+      "prior": 0.000011124804828025292,
+      "guesses": [
+        "resinato",
+        "maculava",
+        "lapidata",
+        "latitata"
+      ]
+    },
+    {
+      "word": "gracchia",
+      "num_guesses": 3,
+      "prior": 0.00002945637310456531,
+      "guesses": [
+        "resinato",
+        "aramaici",
+        "gracchia"
+      ]
+    },
+    {
+      "word": "insaporo",
+      "num_guesses": 3,
+      "prior": 0.000020185455400794183,
+      "guesses": [
+        "resinato",
+        "visarono",
+        "insaporo"
+      ]
+    },
+    {
+      "word": "asinelli",
+      "num_guesses": 3,
+      "prior": 0.000036459338184072405,
+      "guesses": [
+        "resinato",
+        "svilisca",
+        "asinelli"
+      ]
+    },
+    {
+      "word": "sfociamo",
+      "num_guesses": 3,
+      "prior": 0.000013008683239466165,
+      "guesses": [
+        "resinato",
+        "scolpivo",
+        "sfociamo"
+      ]
+    },
+    {
+      "word": "gittiate",
+      "num_guesses": 3,
+      "prior": 0.00001614676185757662,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "gittiate"
+      ]
+    },
+    {
+      "word": "poemetto",
+      "num_guesses": 3,
+      "prior": 0.00006343278349957225,
+      "guesses": [
+        "resinato",
+        "completo",
+        "poemetto"
+      ]
+    },
+    {
+      "word": "rincorri",
+      "num_guesses": 3,
+      "prior": 0.000017958114111558327,
+      "guesses": [
+        "resinato",
+        "rinforzi",
+        "rincorri"
+      ]
+    },
+    {
+      "word": "rivisiti",
+      "num_guesses": 3,
+      "prior": 0.00001901229568136331,
+      "guesses": [
+        "resinato",
+        "rivisitò",
+        "rivisiti"
+      ]
+    },
+    {
+      "word": "felicita",
+      "num_guesses": 2,
+      "prior": 0.000051827179821268306,
+      "guesses": [
+        "resinato",
+        "felicita"
+      ]
+    },
+    {
+      "word": "obligata",
+      "num_guesses": 3,
+      "prior": 0.00003483668440193488,
+      "guesses": [
+        "resinato",
+        "compagni",
+        "obligata"
+      ]
+    },
+    {
+      "word": "ischemie",
+      "num_guesses": 3,
+      "prior": 0.000023318427495906692,
+      "guesses": [
+        "resinato",
+        "pugliese",
+        "ischemie"
+      ]
+    },
+    {
+      "word": "zavorrai",
+      "num_guesses": 3,
+      "prior": 0.000015672405231310786,
+      "guesses": [
+        "resinato",
+        "carpirai",
+        "zavorrai"
+      ]
+    },
+    {
+      "word": "elegismo",
+      "num_guesses": 3,
+      "prior": 0.000015355237786933198,
+      "guesses": [
+        "resinato",
+        "specismo",
+        "elegismo"
+      ]
+    },
+    {
+      "word": "abbaione",
+      "num_guesses": 4,
+      "prior": 0.000013710458095977819,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "zabaione",
+        "abbaione"
+      ]
+    },
+    {
+      "word": "sofferta",
+      "num_guesses": 3,
+      "prior": 0.00005710123828988359,
+      "guesses": [
+        "resinato",
+        "sbottava",
+        "sofferta"
+      ]
+    },
+    {
+      "word": "rivocava",
+      "num_guesses": 2,
+      "prior": 0.000026531162231815862,
+      "guesses": [
+        "resinato",
+        "rivocava"
+      ]
+    },
+    {
+      "word": "molarità",
+      "num_guesses": 3,
+      "prior": 0.000023079669187735976,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "molarità"
+      ]
+    },
+    {
+      "word": "addestrò",
+      "num_guesses": 3,
+      "prior": 0.000028654575746289125,
+      "guesses": [
+        "resinato",
+        "laureerò",
+        "addestrò"
+      ]
+    },
+    {
+      "word": "smontava",
+      "num_guesses": 3,
+      "prior": 0.00002838233264875095,
+      "guesses": [
+        "resinato",
+        "constava",
+        "smontava"
+      ]
+    },
+    {
+      "word": "sombrero",
+      "num_guesses": 4,
+      "prior": 0.000028398275767007203,
+      "guesses": [
+        "resinato",
+        "scompose",
+        "soffermo",
+        "sombrero"
+      ]
+    },
+    {
+      "word": "scalmana",
+      "num_guesses": 3,
+      "prior": 0.00002604574277809314,
+      "guesses": [
+        "resinato",
+        "scombuiò",
+        "scalmana"
+      ]
+    },
+    {
+      "word": "ormeggio",
+      "num_guesses": 3,
+      "prior": 0.000039580321954057426,
+      "guesses": [
+        "resinato",
+        "glicemie",
+        "ormeggio"
+      ]
+    },
+    {
+      "word": "allenano",
+      "num_guesses": 3,
+      "prior": 0.00002775091114039018,
+      "guesses": [
+        "resinato",
+        "balenano",
+        "allenano"
+      ]
+    },
+    {
+      "word": "decorato",
+      "num_guesses": 3,
+      "prior": 0.0000640213340080423,
+      "guesses": [
+        "resinato",
+        "moderavo",
+        "decorato"
+      ]
+    },
+    {
+      "word": "dentella",
+      "num_guesses": 3,
+      "prior": 0.000020694456814304603,
+      "guesses": [
+        "resinato",
+        "tendenza",
+        "dentella"
+      ]
+    },
+    {
+      "word": "monadico",
+      "num_guesses": 3,
+      "prior": 0.000023175429049005848,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "monadico"
+      ]
+    },
+    {
+      "word": "coglierò",
+      "num_guesses": 4,
+      "prior": 0.00002695503458022163,
+      "guesses": [
+        "resinato",
+        "complete",
+        "coglierà",
+        "coglierò"
+      ]
+    },
+    {
+      "word": "denudava",
+      "num_guesses": 2,
+      "prior": 0.00002171460504960349,
+      "guesses": [
+        "resinato",
+        "denudava"
+      ]
+    },
+    {
+      "word": "ronzando",
+      "num_guesses": 4,
+      "prior": 0.00003085853672165963,
+      "guesses": [
+        "resinato",
+        "glaucoma",
+        "giudizio",
+        "ronzando"
+      ]
+    },
+    {
+      "word": "mandrini",
+      "num_guesses": 4,
+      "prior": 0.000027192577032422163,
+      "guesses": [
+        "resinato",
+        "giudaica",
+        "anidridi",
+        "mandrini"
+      ]
+    },
+    {
+      "word": "torceste",
+      "num_guesses": 3,
+      "prior": 0.00001405229100541074,
+      "guesses": [
+        "resinato",
+        "corrompe",
+        "torceste"
+      ]
+    },
+    {
+      "word": "aguagliò",
+      "num_guesses": 4,
+      "prior": 0.000010825559902435602,
+      "guesses": [
+        "resinato",
+        "pagabili",
+        "acquista",
+        "aguagliò"
+      ]
+    },
+    {
+      "word": "scrofula",
+      "num_guesses": 3,
+      "prior": 0.000018351686205059888,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "scrofula"
+      ]
+    },
+    {
+      "word": "insilano",
+      "num_guesses": 3,
+      "prior": 0.000012248112169142957,
+      "guesses": [
+        "resinato",
+        "ansimavo",
+        "insilano"
+      ]
+    },
+    {
+      "word": "salutato",
+      "num_guesses": 3,
+      "prior": 0.00005772168868339574,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "salutato"
+      ]
+    },
+    {
+      "word": "attenete",
+      "num_guesses": 3,
+      "prior": 0.000020343947526495455,
+      "guesses": [
+        "resinato",
+        "avvenuta",
+        "attenete"
+      ]
+    },
+    {
+      "word": "resinosi",
+      "num_guesses": 3,
+      "prior": 0.00003561402508543176,
+      "guesses": [
+        "resinato",
+        "resinose",
+        "resinosi"
+      ]
+    },
+    {
+      "word": "potavate",
+      "num_guesses": 3,
+      "prior": 0.000017067746571500355,
+      "guesses": [
+        "resinato",
+        "collauda",
+        "potavate"
+      ]
+    },
+    {
+      "word": "zeresimo",
+      "num_guesses": 3,
+      "prior": 0.000010037795259965156,
+      "guesses": [
+        "resinato",
+        "servizio",
+        "zeresimo"
+      ]
+    },
+    {
+      "word": "genomica",
+      "num_guesses": 3,
+      "prior": 0.000026994160374599535,
+      "guesses": [
+        "resinato",
+        "confonda",
+        "genomica"
+      ]
+    },
+    {
+      "word": "maliziai",
+      "num_guesses": 3,
+      "prior": 0.000010701095093971593,
+      "guesses": [
+        "resinato",
+        "palifica",
+        "maliziai"
+      ]
+    },
+    {
+      "word": "svisante",
+      "num_guesses": 4,
+      "prior": 0.000013244950252242686,
+      "guesses": [
+        "resinato",
+        "captante",
+        "sfidante",
+        "svisante"
+      ]
+    },
+    {
+      "word": "sestiere",
+      "num_guesses": 3,
+      "prior": 0.000039264101367821284,
+      "guesses": [
+        "resinato",
+        "premesse",
+        "sestiere"
+      ]
+    },
+    {
+      "word": "transige",
+      "num_guesses": 3,
+      "prior": 0.00003160857828387043,
+      "guesses": [
+        "resinato",
+        "smaganti",
+        "transige"
+      ]
+    },
+    {
+      "word": "trespoli",
+      "num_guesses": 3,
+      "prior": 0.00002798086129125815,
+      "guesses": [
+        "resinato",
+        "scorpori",
+        "trespoli"
+      ]
+    },
+    {
+      "word": "ottusero",
+      "num_guesses": 3,
+      "prior": 0.000010037795259965156,
+      "guesses": [
+        "resinato",
+        "aperture",
+        "ottusero"
+      ]
+    },
+    {
+      "word": "commerci",
+      "num_guesses": 3,
+      "prior": 0.00006368852523754994,
+      "guesses": [
+        "resinato",
+        "complete",
+        "commerci"
+      ]
+    },
+    {
+      "word": "adeguati",
+      "num_guesses": 3,
+      "prior": 0.00006313947996356571,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "adeguati"
+      ]
+    },
+    {
+      "word": "dissuoni",
+      "num_guesses": 3,
+      "prior": 0.000012504392120864581,
+      "guesses": [
+        "resinato",
+        "missioni",
+        "dissuoni"
+      ]
+    },
+    {
+      "word": "situassi",
+      "num_guesses": 3,
+      "prior": 0.000010317915674226697,
+      "guesses": [
+        "resinato",
+        "scambiai",
+        "situassi"
+      ]
+    },
+    {
+      "word": "obbliavi",
+      "num_guesses": 3,
+      "prior": 0.000010347228407152302,
+      "guesses": [
+        "resinato",
+        "pigolavi",
+        "obbliavi"
+      ]
+    },
+    {
+      "word": "raccatta",
+      "num_guesses": 2,
+      "prior": 0.000028151019356031635,
+      "guesses": [
+        "resinato",
+        "raccatta"
+      ]
+    },
+    {
+      "word": "dormiate",
+      "num_guesses": 3,
+      "prior": 0.00001859829838605231,
+      "guesses": [
+        "resinato",
+        "porridge",
+        "dormiate"
+      ]
+    },
+    {
+      "word": "condente",
+      "num_guesses": 4,
+      "prior": 0.000017430009491003047,
+      "guesses": [
+        "resinato",
+        "convenne",
+        "contente",
+        "condente"
+      ]
+    },
+    {
+      "word": "gestuale",
+      "num_guesses": 3,
+      "prior": 0.0000388263988966508,
+      "guesses": [
+        "resinato",
+        "testuale",
+        "gestuale"
+      ]
+    },
+    {
+      "word": "clausure",
+      "num_guesses": 3,
+      "prior": 0.000025170666916123388,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "clausure"
+      ]
+    },
+    {
+      "word": "accanite",
+      "num_guesses": 3,
+      "prior": 0.000039322547034237983,
+      "guesses": [
+        "resinato",
+        "avvenuti",
+        "accanite"
+      ]
+    },
+    {
+      "word": "subacido",
+      "num_guesses": 3,
+      "prior": 0.00002204548849697035,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "subacido"
+      ]
+    },
+    {
+      "word": "marpioni",
+      "num_guesses": 3,
+      "prior": 0.000020310680023697363,
+      "guesses": [
+        "resinato",
+        "procioni",
+        "marpioni"
+      ]
+    },
+    {
+      "word": "genitali",
+      "num_guesses": 2,
+      "prior": 0.00006030096795498072,
+      "guesses": [
+        "resinato",
+        "genitali"
+      ]
+    },
+    {
+      "word": "pavesate",
+      "num_guesses": 3,
+      "prior": 0.000025668325205017597,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "pavesate"
+      ]
+    },
+    {
+      "word": "raccatto",
+      "num_guesses": 3,
+      "prior": 0.000020347847075857408,
+      "guesses": [
+        "resinato",
+        "vittoria",
+        "raccatto"
+      ]
+    },
+    {
+      "word": "alticcio",
+      "num_guesses": 3,
+      "prior": 0.000027901376709824477,
+      "guesses": [
+        "resinato",
+        "capitolo",
+        "alticcio"
+      ]
+    },
+    {
+      "word": "rosolata",
+      "num_guesses": 2,
+      "prior": 0.000023910266111456912,
+      "guesses": [
+        "resinato",
+        "rosolata"
+      ]
+    },
+    {
+      "word": "serverei",
+      "num_guesses": 3,
+      "prior": 0.000011818114230991004,
+      "guesses": [
+        "resinato",
+        "servirsi",
+        "serverei"
+      ]
+    },
+    {
+      "word": "sbrucava",
+      "num_guesses": 3,
+      "prior": 0.000010801122723307172,
+      "guesses": [
+        "resinato",
+        "caparbia",
+        "sbrucava"
+      ]
+    },
+    {
+      "word": "riottava",
+      "num_guesses": 3,
+      "prior": 9.867564447669508e-6,
+      "guesses": [
+        "resinato",
+        "rotolavi",
+        "riottava"
+      ]
+    },
+    {
+      "word": "sfangano",
+      "num_guesses": 4,
+      "prior": 0.000013008683239466165,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "sgambano",
+        "sfangano"
+      ]
+    },
+    {
+      "word": "ambrosie",
+      "num_guesses": 4,
+      "prior": 0.000022641810392322244,
+      "guesses": [
+        "resinato",
+        "provarci",
+        "solerzia",
+        "ambrosie"
+      ]
+    },
+    {
+      "word": "compiuta",
+      "num_guesses": 3,
+      "prior": 0.0000871790860767637,
+      "guesses": [
+        "resinato",
+        "pullmini",
+        "compiuta"
+      ]
+    },
+    {
+      "word": "castanea",
+      "num_guesses": 3,
+      "prior": 0.00003449545665161022,
+      "guesses": [
+        "resinato",
+        "castagne",
+        "castanea"
+      ]
+    },
+    {
+      "word": "esigemmo",
+      "num_guesses": 4,
+      "prior": 0.000013545807376403641,
+      "guesses": [
+        "resinato",
+        "specismo",
+        "vigesimo",
+        "esigemmo"
+      ]
+    },
+    {
+      "word": "folclore",
+      "num_guesses": 3,
+      "prior": 0.000043754891653805025,
+      "guesses": [
+        "resinato",
+        "comporrà",
+        "folclore"
+      ]
+    },
+    {
+      "word": "accasava",
+      "num_guesses": 3,
+      "prior": 0.000016680469289730577,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "accasava"
+      ]
+    },
+    {
+      "word": "eliporti",
+      "num_guesses": 3,
+      "prior": 0.000021974303644047267,
+      "guesses": [
+        "resinato",
+        "proterve",
+        "eliporti"
+      ]
+    },
+    {
+      "word": "snellite",
+      "num_guesses": 3,
+      "prior": 0.000018637230571600412,
+      "guesses": [
+        "resinato",
+        "sfingidi",
+        "snellite"
+      ]
+    },
+    {
+      "word": "passioni",
+      "num_guesses": 3,
+      "prior": 0.000088660869524633,
+      "guesses": [
+        "resinato",
+        "indigena",
+        "passioni"
+      ]
+    },
+    {
+      "word": "escavata",
+      "num_guesses": 3,
+      "prior": 0.000028800760129326872,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "escavata"
+      ]
+    },
+    {
+      "word": "rinvolse",
+      "num_guesses": 3,
+      "prior": 0.000018180621989928284,
+      "guesses": [
+        "resinato",
+        "rincorse",
+        "rinvolse"
+      ]
+    },
+    {
+      "word": "rinterra",
+      "num_guesses": 4,
+      "prior": 0.00001201684938687609,
+      "guesses": [
+        "resinato",
+        "rientrai",
+        "rinterza",
+        "rinterra"
+      ]
+    },
+    {
+      "word": "radunati",
+      "num_guesses": 2,
+      "prior": 0.00005142352046787329,
+      "guesses": [
+        "resinato",
+        "radunati"
+      ]
+    },
+    {
+      "word": "ergevano",
+      "num_guesses": 3,
+      "prior": 0.00003634383416432839,
+      "guesses": [
+        "resinato",
+        "cadevamo",
+        "ergevano"
+      ]
+    },
+    {
+      "word": "imbacano",
+      "num_guesses": 3,
+      "prior": 9.402923471005625e-6,
+      "guesses": [
+        "resinato",
+        "colavamo",
+        "imbacano"
+      ]
+    },
+    {
+      "word": "scattavi",
+      "num_guesses": 3,
+      "prior": 0.000011567958001270804,
+      "guesses": [
+        "resinato",
+        "lunatica",
+        "scattavi"
+      ]
+    },
+    {
+      "word": "sessuate",
+      "num_guesses": 3,
+      "prior": 0.00002561499719874018,
+      "guesses": [
+        "resinato",
+        "sessuata",
+        "sessuate"
+      ]
+    },
+    {
+      "word": "scampoli",
+      "num_guesses": 3,
+      "prior": 0.00003521059186769782,
+      "guesses": [
+        "resinato",
+        "scoliosi",
+        "scampoli"
+      ]
+    },
+    {
+      "word": "leggerai",
+      "num_guesses": 3,
+      "prior": 0.000035301202120189075,
+      "guesses": [
+        "resinato",
+        "migrerai",
+        "leggerai"
+      ]
+    },
+    {
+      "word": "ambiento",
+      "num_guesses": 3,
+      "prior": 0.0000207847501957365,
+      "guesses": [
+        "resinato",
+        "anniento",
+        "ambiento"
+      ]
+    },
+    {
+      "word": "vaglierò",
+      "num_guesses": 4,
+      "prior": 0.000012142378977045123,
+      "guesses": [
+        "resinato",
+        "carpirai",
+        "vaglierà",
+        "vaglierò"
+      ]
+    },
+    {
+      "word": "propensa",
+      "num_guesses": 3,
+      "prior": 0.0000414620914911849,
+      "guesses": [
+        "resinato",
+        "conserva",
+        "propensa"
+      ]
+    },
+    {
+      "word": "urbinati",
+      "num_guesses": 3,
+      "prior": 0.000041299148182590336,
+      "guesses": [
+        "resinato",
+        "anatomia",
+        "urbinati"
+      ]
+    },
+    {
+      "word": "satrapie",
+      "num_guesses": 3,
+      "prior": 0.00002841315795374089,
+      "guesses": [
+        "resinato",
+        "spasimai",
+        "satrapie"
+      ]
+    },
+    {
+      "word": "frappato",
+      "num_guesses": 4,
+      "prior": 0.000021611443113351723,
+      "guesses": [
+        "resinato",
+        "clatrata",
+        "guardato",
+        "frappato"
+      ]
+    },
+    {
+      "word": "zecchino",
+      "num_guesses": 3,
+      "prior": 0.000043130015211384854,
+      "guesses": [
+        "resinato",
+        "congloba",
+        "zecchino"
+      ]
+    },
+    {
+      "word": "sdraiare",
+      "num_guesses": 3,
+      "prior": 0.00003282876335896454,
+      "guesses": [
+        "resinato",
+        "scapigli",
+        "sdraiare"
+      ]
+    },
+    {
+      "word": "adottive",
+      "num_guesses": 3,
+      "prior": 0.000027640748945811733,
+      "guesses": [
+        "resinato",
+        "pittrice",
+        "adottive"
+      ]
+    },
+    {
+      "word": "plagiata",
+      "num_guesses": 3,
+      "prior": 0.000024487867653032027,
+      "guesses": [
+        "resinato",
+        "calumava",
+        "plagiata"
+      ]
+    },
+    {
+      "word": "cocorita",
+      "num_guesses": 3,
+      "prior": 0.000018180621989928284,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "cocorita"
+      ]
+    },
+    {
+      "word": "smaccate",
+      "num_guesses": 4,
+      "prior": 0.00002684078176415386,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "staccate",
+        "smaccate"
+      ]
+    },
+    {
+      "word": "collutti",
+      "num_guesses": 3,
+      "prior": 0.0000153250700925494,
+      "guesses": [
+        "resinato",
+        "compiuti",
+        "collutti"
+      ]
+    },
+    {
+      "word": "semitica",
+      "num_guesses": 2,
+      "prior": 0.00004221531486053809,
+      "guesses": [
+        "resinato",
+        "semitica"
+      ]
+    },
+    {
+      "word": "smozzati",
+      "num_guesses": 4,
+      "prior": 0.000016243892244998412,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "gomitata",
+        "smozzati"
+      ]
+    },
+    {
+      "word": "concepii",
+      "num_guesses": 3,
+      "prior": 0.00002883177148435401,
+      "guesses": [
+        "resinato",
+        "ciondoli",
+        "concepii"
+      ]
+    },
+    {
+      "word": "arrapina",
+      "num_guesses": 4,
+      "prior": 0.000013112030873354934,
+      "guesses": [
+        "resinato",
+        "giudaica",
+        "manfrina",
+        "arrapina"
+      ]
+    },
+    {
+      "word": "pedalare",
+      "num_guesses": 3,
+      "prior": 0.00003380533358196856,
+      "guesses": [
+        "resinato",
+        "alberare",
+        "pedalare"
+      ]
+    },
+    {
+      "word": "sfavilla",
+      "num_guesses": 3,
+      "prior": 0.00003880829827793781,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "sfavilla"
+      ]
+    },
+    {
+      "word": "capecchi",
+      "num_guesses": 3,
+      "prior": 0.00003704704549272623,
+      "guesses": [
+        "resinato",
+        "camellia",
+        "capecchi"
+      ]
+    },
+    {
+      "word": "ulcerato",
+      "num_guesses": 3,
+      "prior": 0.00003536294787111415,
+      "guesses": [
+        "resinato",
+        "preclude",
+        "ulcerato"
+      ]
+    },
+    {
+      "word": "instituì",
+      "num_guesses": 3,
+      "prior": 0.000039372725730889875,
+      "guesses": [
+        "resinato",
+        "instilli",
+        "instituì"
+      ]
+    },
+    {
+      "word": "limonano",
+      "num_guesses": 3,
+      "prior": 0.000015582778736607518,
+      "guesses": [
+        "resinato",
+        "dipanano",
+        "limonano"
+      ]
+    },
+    {
+      "word": "gettaste",
+      "num_guesses": 3,
+      "prior": 0.00002136864427034058,
+      "guesses": [
+        "resinato",
+        "sbucando",
+        "gettaste"
+      ]
+    },
+    {
+      "word": "triplica",
+      "num_guesses": 3,
+      "prior": 0.00002944926908417877,
+      "guesses": [
+        "resinato",
+        "campirai",
+        "triplica"
+      ]
+    },
+    {
+      "word": "intasate",
+      "num_guesses": 3,
+      "prior": 0.000026663353930447553,
+      "guesses": [
+        "resinato",
+        "stentavi",
+        "intasate"
+      ]
+    },
+    {
+      "word": "scommisi",
+      "num_guesses": 3,
+      "prior": 0.00001612705259910552,
+      "guesses": [
+        "resinato",
+        "sciccosi",
+        "scommisi"
+      ]
+    },
+    {
+      "word": "amalgami",
+      "num_guesses": 3,
+      "prior": 0.000025200560904105856,
+      "guesses": [
+        "resinato",
+        "dolciumi",
+        "amalgami"
+      ]
+    },
+    {
+      "word": "mareggia",
+      "num_guesses": 4,
+      "prior": 0.000021484362857651176,
+      "guesses": [
+        "resinato",
+        "carpirai",
+        "gareggia",
+        "mareggia"
+      ]
+    },
+    {
+      "word": "inchiavi",
+      "num_guesses": 4,
+      "prior": 9.971093036123437e-6,
+      "guesses": [
+        "resinato",
+        "cangiava",
+        "inchiavò",
+        "inchiavi"
+      ]
+    },
+    {
+      "word": "malandra",
+      "num_guesses": 3,
+      "prior": 0.000023800912652269214,
+      "guesses": [
+        "resinato",
+        "calandra",
+        "malandra"
+      ]
+    },
+    {
+      "word": "reflusso",
+      "num_guesses": 3,
+      "prior": 0.00004238551649701647,
+      "guesses": [
+        "resinato",
+        "regresso",
+        "reflusso"
+      ]
+    },
+    {
+      "word": "vincente",
+      "num_guesses": 3,
+      "prior": 0.00005327964918609401,
+      "guesses": [
+        "resinato",
+        "mungente",
+        "vincente"
+      ]
+    },
+    {
+      "word": "storture",
+      "num_guesses": 3,
+      "prior": 0.0000379826257558102,
+      "guesses": [
+        "resinato",
+        "ulcererà",
+        "storture"
+      ]
+    },
+    {
+      "word": "insultai",
+      "num_guesses": 3,
+      "prior": 0.00001909594186088063,
+      "guesses": [
+        "resinato",
+        "utilizza",
+        "insultai"
+      ]
+    },
+    {
+      "word": "saggista",
+      "num_guesses": 3,
+      "prior": 0.00004344629033596425,
+      "guesses": [
+        "resinato",
+        "placassi",
+        "saggista"
+      ]
+    },
+    {
+      "word": "sfiderai",
+      "num_guesses": 4,
+      "prior": 0.000015087647774535605,
+      "guesses": [
+        "resinato",
+        "scurirsi",
+        "siederai",
+        "sfiderai"
+      ]
+    },
+    {
+      "word": "gioviani",
+      "num_guesses": 3,
+      "prior": 0.000020719897916394805,
+      "guesses": [
+        "resinato",
+        "vinciana",
+        "gioviani"
+      ]
+    },
+    {
+      "word": "sinergia",
+      "num_guesses": 3,
+      "prior": 0.00004275420100696229,
+      "guesses": [
+        "resinato",
+        "sparisci",
+        "sinergia"
+      ]
+    },
+    {
+      "word": "sgraffiò",
+      "num_guesses": 3,
+      "prior": 0.000014244059838755386,
+      "guesses": [
+        "resinato",
+        "burrasca",
+        "sgraffiò"
+      ]
+    },
+    {
+      "word": "deviante",
+      "num_guesses": 3,
+      "prior": 0.00004011253938505496,
+      "guesses": [
+        "resinato",
+        "mediante",
+        "deviante"
+      ]
+    },
+    {
+      "word": "precotta",
+      "num_guesses": 3,
+      "prior": 0.000019541962318789333,
+      "guesses": [
+        "resinato",
+        "promuove",
+        "precotta"
+      ]
+    },
+    {
+      "word": "nucleoli",
+      "num_guesses": 3,
+      "prior": 0.00003917485293851045,
+      "guesses": [
+        "resinato",
+        "ciondoli",
+        "nucleoli"
+      ]
+    },
+    {
+      "word": "adorassi",
+      "num_guesses": 4,
+      "prior": 0.00001843632702718586,
+      "guesses": [
+        "resinato",
+        "scomposi",
+        "drogassi",
+        "adorassi"
+      ]
+    },
+    {
+      "word": "areniamo",
+      "num_guesses": 3,
+      "prior": 0.000012611857051606827,
+      "guesses": [
+        "resinato",
+        "pigliava",
+        "areniamo"
+      ]
+    },
+    {
+      "word": "macererà",
+      "num_guesses": 3,
+      "prior": 0.000012095914428843446,
+      "guesses": [
+        "resinato",
+        "laureare",
+        "macererà"
+      ]
+    },
+    {
+      "word": "incateni",
+      "num_guesses": 3,
+      "prior": 0.00002397634566099339,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "incateni"
+      ]
+    },
+    {
+      "word": "colmanti",
+      "num_guesses": 3,
+      "prior": 0.000018031401967245697,
+      "guesses": [
+        "resinato",
+        "compatta",
+        "colmanti"
+      ]
+    },
+    {
+      "word": "minutini",
+      "num_guesses": 3,
+      "prior": 0.000014449094658185619,
+      "guesses": [
+        "resinato",
+        "tintinnò",
+        "minutini"
+      ]
+    },
+    {
+      "word": "oblitera",
+      "num_guesses": 3,
+      "prior": 0.00003026144339329086,
+      "guesses": [
+        "resinato",
+        "auditore",
+        "oblitera"
+      ]
+    },
+    {
+      "word": "desideri",
+      "num_guesses": 2,
+      "prior": 0.00008049295017435168,
+      "guesses": [
+        "resinato",
+        "desideri"
+      ]
+    },
+    {
+      "word": "sturbato",
+      "num_guesses": 3,
+      "prior": 0.000028255052483826038,
+      "guesses": [
+        "resinato",
+        "sbrucava",
+        "sturbato"
+      ]
+    },
+    {
+      "word": "riceduta",
+      "num_guesses": 3,
+      "prior": 0.000015986315126119425,
+      "guesses": [
+        "resinato",
+        "viperide",
+        "riceduta"
+      ]
+    },
+    {
+      "word": "biscazzo",
+      "num_guesses": 3,
+      "prior": 0.00001149234395073932,
+      "guesses": [
+        "resinato",
+        "databili",
+        "biscazzo"
+      ]
+    },
+    {
+      "word": "tulipano",
+      "num_guesses": 3,
+      "prior": 0.00003590959990759266,
+      "guesses": [
+        "resinato",
+        "licitava",
+        "tulipano"
+      ]
+    },
+    {
+      "word": "sfinenti",
+      "num_guesses": 3,
+      "prior": 0.000013341248401621466,
+      "guesses": [
+        "resinato",
+        "sfingidi",
+        "sfinenti"
+      ]
+    },
+    {
+      "word": "psoriasi",
+      "num_guesses": 3,
+      "prior": 0.00004252987116108153,
+      "guesses": [
+        "resinato",
+        "giuocavi",
+        "psoriasi"
+      ]
+    },
+    {
+      "word": "sovranza",
+      "num_guesses": 3,
+      "prior": 0.000018626140274799257,
+      "guesses": [
+        "resinato",
+        "guardava",
+        "sovranza"
+      ]
+    },
+    {
+      "word": "divorare",
+      "num_guesses": 3,
+      "prior": 0.000046398246985171944,
+      "guesses": [
+        "resinato",
+        "pigolavi",
+        "divorare"
+      ]
+    },
+    {
+      "word": "strinava",
+      "num_guesses": 2,
+      "prior": 0.000012585333458061689,
+      "guesses": [
+        "resinato",
+        "strinava"
+      ]
+    },
+    {
+      "word": "incutano",
+      "num_guesses": 3,
+      "prior": 0.000016522123485737893,
+      "guesses": [
+        "resinato",
+        "linciava",
+        "incutano"
+      ]
+    },
+    {
+      "word": "malgasci",
+      "num_guesses": 3,
+      "prior": 0.00002664084032558897,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "malgasci"
+      ]
+    },
+    {
+      "word": "caricate",
+      "num_guesses": 3,
+      "prior": 0.000048407959248316046,
+      "guesses": [
+        "resinato",
+        "margravi",
+        "caricate"
+      ]
+    },
+    {
+      "word": "busbacca",
+      "num_guesses": 3,
+      "prior": 0.00001908084225696692,
+      "guesses": [
+        "resinato",
+        "vassalla",
+        "busbacca"
+      ]
+    },
+    {
+      "word": "spostata",
+      "num_guesses": 4,
+      "prior": 0.0000525009578237251,
+      "guesses": [
+        "resinato",
+        "scoltata",
+        "campagna",
+        "spostata"
+      ]
+    },
+    {
+      "word": "scontavo",
+      "num_guesses": 3,
+      "prior": 0.000015397078292364117,
+      "guesses": [
+        "resinato",
+        "scolpava",
+        "scontavo"
+      ]
+    },
+    {
+      "word": "smentiti",
+      "num_guesses": 3,
+      "prior": 0.00003767840589144386,
+      "guesses": [
+        "resinato",
+        "sfingidi",
+        "smentiti"
+      ]
+    },
+    {
+      "word": "spettavi",
+      "num_guesses": 3,
+      "prior": 0.000011935647018501395,
+      "guesses": [
+        "resinato",
+        "elastasi",
+        "spettavi"
+      ]
+    },
+    {
+      "word": "arrivino",
+      "num_guesses": 3,
+      "prior": 0.0000450081525218109,
+      "guesses": [
+        "resinato",
+        "paguridi",
+        "arrivino"
+      ]
+    },
+    {
+      "word": "slargano",
+      "num_guesses": 3,
+      "prior": 0.0000239773565960082,
+      "guesses": [
+        "resinato",
+        "corrompe",
+        "slargano"
+      ]
+    },
+    {
+      "word": "confitto",
+      "num_guesses": 3,
+      "prior": 0.00004044684832844599,
+      "guesses": [
+        "resinato",
+        "convinto",
+        "confitto"
+      ]
+    },
+    {
+      "word": "quietati",
+      "num_guesses": 3,
+      "prior": 0.000028119026448996235,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "quietati"
+      ]
+    },
+    {
+      "word": "pussiamo",
+      "num_guesses": 3,
+      "prior": 0.000010347228407152302,
+      "guesses": [
+        "resinato",
+        "copulava",
+        "pussiamo"
+      ]
+    },
+    {
+      "word": "ruffiani",
+      "num_guesses": 3,
+      "prior": 0.00003566166528006143,
+      "guesses": [
+        "resinato",
+        "ruffiana",
+        "ruffiani"
+      ]
+    },
+    {
+      "word": "brancati",
+      "num_guesses": 3,
+      "prior": 0.000043419343880701264,
+      "guesses": [
+        "resinato",
+        "bracieri",
+        "brancati"
+      ]
+    },
+    {
+      "word": "andalusi",
+      "num_guesses": 3,
+      "prior": 0.00003023390282778987,
+      "guesses": [
+        "resinato",
+        "araldici",
+        "andalusi"
+      ]
+    },
+    {
+      "word": "svergino",
+      "num_guesses": 4,
+      "prior": 0.000011294081131882344,
+      "guesses": [
+        "resinato",
+        "incupiva",
+        "sverzino",
+        "svergino"
+      ]
+    },
+    {
+      "word": "esalando",
+      "num_guesses": 3,
+      "prior": 0.00003158779880376683,
+      "guesses": [
+        "resinato",
+        "scaldava",
+        "esalando"
+      ]
+    },
+    {
+      "word": "spiedini",
+      "num_guesses": 3,
+      "prior": 0.0000322256536535864,
+      "guesses": [
+        "resinato",
+        "svilisce",
+        "spiedini"
+      ]
+    },
+    {
+      "word": "spossate",
+      "num_guesses": 3,
+      "prior": 0.000030896761758722965,
+      "guesses": [
+        "resinato",
+        "plastica",
+        "spossate"
+      ]
+    },
+    {
+      "word": "miscelai",
+      "num_guesses": 3,
+      "prior": 0.000010921164680183704,
+      "guesses": [
+        "resinato",
+        "glicemia",
+        "miscelai"
+      ]
+    },
+    {
+      "word": "musicali",
+      "num_guesses": 2,
+      "prior": 0.00007662469141282282,
+      "guesses": [
+        "resinato",
+        "musicali"
+      ]
+    },
+    {
+      "word": "spezzati",
+      "num_guesses": 3,
+      "prior": 0.00005041835153216805,
+      "guesses": [
+        "resinato",
+        "scapigli",
+        "spezzati"
+      ]
+    },
+    {
+      "word": "verziere",
+      "num_guesses": 4,
+      "prior": 0.00003451690261792315,
+      "guesses": [
+        "resinato",
+        "dirigere",
+        "ferriere",
+        "verziere"
+      ]
+    },
+    {
+      "word": "ventitré",
+      "num_guesses": 3,
+      "prior": 0.00004729378040040763,
+      "guesses": [
+        "resinato",
+        "ventenne",
+        "ventitré"
+      ]
+    },
+    {
+      "word": "inculato",
+      "num_guesses": 3,
+      "prior": 0.000020324404793459268,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "inculato"
+      ]
+    },
+    {
+      "word": "nordiche",
+      "num_guesses": 3,
+      "prior": 0.00004385380350995321,
+      "guesses": [
+        "resinato",
+        "criniere",
+        "nordiche"
+      ]
+    },
+    {
+      "word": "fossetta",
+      "num_guesses": 3,
+      "prior": 0.000046657319045610654,
+      "guesses": [
+        "resinato",
+        "sospetta",
+        "fossetta"
+      ]
+    },
+    {
+      "word": "esorbiti",
+      "num_guesses": 3,
+      "prior": 0.000029361683405158356,
+      "guesses": [
+        "resinato",
+        "dovresti",
+        "esorbiti"
+      ]
+    },
+    {
+      "word": "iracondi",
+      "num_guesses": 3,
+      "prior": 0.00003417526447361417,
+      "guesses": [
+        "resinato",
+        "procioni",
+        "iracondi"
+      ]
+    },
+    {
+      "word": "ausavano",
+      "num_guesses": 3,
+      "prior": 0.000012142378977045123,
+      "guesses": [
+        "resinato",
+        "adeguata",
+        "ausavano"
+      ]
+    },
+    {
+      "word": "scaturii",
+      "num_guesses": 3,
+      "prior": 0.000014000499825538661,
+      "guesses": [
+        "resinato",
+        "sfasciai",
+        "scaturii"
+      ]
+    },
+    {
+      "word": "sessante",
+      "num_guesses": 3,
+      "prior": 0.000015819155853927724,
+      "guesses": [
+        "resinato",
+        "sfasciai",
+        "sessante"
+      ]
+    },
+    {
+      "word": "spianino",
+      "num_guesses": 3,
+      "prior": 0.000020596993247428106,
+      "guesses": [
+        "resinato",
+        "ispanico",
+        "spianino"
+      ]
+    },
+    {
+      "word": "troncano",
+      "num_guesses": 3,
+      "prior": 0.00003314977642641048,
+      "guesses": [
+        "resinato",
+        "tabulata",
+        "troncano"
+      ]
+    },
+    {
+      "word": "quotante",
+      "num_guesses": 3,
+      "prior": 0.0000110361496610092,
+      "guesses": [
+        "resinato",
+        "contente",
+        "quotante"
+      ]
+    },
+    {
+      "word": "campendo",
+      "num_guesses": 3,
+      "prior": 0.000012476939842508535,
+      "guesses": [
+        "resinato",
+        "mulcente",
+        "campendo"
+      ]
+    },
+    {
+      "word": "idolatri",
+      "num_guesses": 3,
+      "prior": 0.00004746418418257106,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "idolatri"
+      ]
+    },
+    {
+      "word": "triplani",
+      "num_guesses": 3,
+      "prior": 0.00001684548704428704,
+      "guesses": [
+        "resinato",
+        "naturali",
+        "triplani"
+      ]
+    },
+    {
+      "word": "steroide",
+      "num_guesses": 3,
+      "prior": 0.000029005659386491973,
+      "guesses": [
+        "resinato",
+        "scorpori",
+        "steroide"
+      ]
+    },
+    {
+      "word": "incapata",
+      "num_guesses": 4,
+      "prior": 0.00001417852946877444,
+      "guesses": [
+        "resinato",
+        "glaucoma",
+        "incavata",
+        "incapata"
+      ]
+    },
+    {
+      "word": "fiaccava",
+      "num_guesses": 3,
+      "prior": 0.000025064057510660574,
+      "guesses": [
+        "resinato",
+        "dolciumi",
+        "fiaccava"
+      ]
+    },
+    {
+      "word": "suiformi",
+      "num_guesses": 4,
+      "prior": 0.000011549239524526175,
+      "guesses": [
+        "resinato",
+        "scoliosi",
+        "soffrivi",
+        "suiformi"
+      ]
+    },
+    {
+      "word": "prolabio",
+      "num_guesses": 3,
+      "prior": 0.000019670836499719122,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "prolabio"
+      ]
+    },
+    {
+      "word": "tripudia",
+      "num_guesses": 3,
+      "prior": 0.000028526063498350208,
+      "guesses": [
+        "resinato",
+        "campirai",
+        "tripudia"
+      ]
+    },
+    {
+      "word": "sveltite",
+      "num_guesses": 3,
+      "prior": 0.000015727397478587157,
+      "guesses": [
+        "resinato",
+        "eludesse",
+        "sveltite"
+      ]
+    },
+    {
+      "word": "battisti",
+      "num_guesses": 3,
+      "prior": 0.00005654152276225504,
+      "guesses": [
+        "resinato",
+        "placassi",
+        "battisti"
+      ]
+    },
+    {
+      "word": "succiati",
+      "num_guesses": 4,
+      "prior": 0.000016878550080016337,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "stuccati",
+        "succiati"
+      ]
+    },
+    {
+      "word": "levigati",
+      "num_guesses": 3,
+      "prior": 0.00003746666424447676,
+      "guesses": [
+        "resinato",
+        "modifica",
+        "levigati"
+      ]
+    },
+    {
+      "word": "derubati",
+      "num_guesses": 3,
+      "prior": 0.00003737705042865139,
+      "guesses": [
+        "resinato",
+        "deliberi",
+        "derubati"
+      ]
+    },
+    {
+      "word": "antecedo",
+      "num_guesses": 4,
+      "prior": 0.000011984632168733233,
+      "guesses": [
+        "resinato",
+        "paludoso",
+        "chetando",
+        "antecedo"
+      ]
+    },
+    {
+      "word": "scorbuti",
+      "num_guesses": 3,
+      "prior": 0.000017547862949009613,
+      "guesses": [
+        "resinato",
+        "sfociamo",
+        "scorbuti"
+      ]
+    },
+    {
+      "word": "sperperò",
+      "num_guesses": 3,
+      "prior": 0.000023948985742995773,
+      "guesses": [
+        "resinato",
+        "emergerò",
+        "sperperò"
+      ]
+    },
+    {
+      "word": "buonismo",
+      "num_guesses": 3,
+      "prior": 0.00002732809894852617,
+      "guesses": [
+        "resinato",
+        "pubblici",
+        "buonismo"
+      ]
+    },
+    {
+      "word": "lubrichi",
+      "num_guesses": 3,
+      "prior": 0.00002151095636916185,
+      "guesses": [
+        "resinato",
+        "libererà",
+        "lubrichi"
+      ]
+    },
+    {
+      "word": "briciate",
+      "num_guesses": 3,
+      "prior": 0.000010433228285387565,
+      "guesses": [
+        "resinato",
+        "gracidai",
+        "briciate"
+      ]
+    },
+    {
+      "word": "vociferi",
+      "num_guesses": 3,
+      "prior": 0.00001615658050993002,
+      "guesses": [
+        "resinato",
+        "polimeri",
+        "vociferi"
+      ]
+    },
+    {
+      "word": "affibbia",
+      "num_guesses": 3,
+      "prior": 0.00002829269534881744,
+      "guesses": [
+        "resinato",
+        "palifica",
+        "affibbia"
+      ]
+    },
+    {
+      "word": "binarono",
+      "num_guesses": 4,
+      "prior": 0.000010516482687026458,
+      "guesses": [
+        "resinato",
+        "giudaica",
+        "limonene",
+        "binarono"
+      ]
+    },
+    {
+      "word": "coccarda",
+      "num_guesses": 3,
+      "prior": 0.00004050783563722157,
+      "guesses": [
+        "resinato",
+        "arcavola",
+        "coccarda"
+      ]
+    },
+    {
+      "word": "sbarcati",
+      "num_guesses": 3,
+      "prior": 0.00004852289592053777,
+      "guesses": [
+        "resinato",
+        "sbrucava",
+        "sbarcati"
+      ]
+    },
+    {
+      "word": "calmiamo",
+      "num_guesses": 4,
+      "prior": 0.000017737520458133913,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "mancanza",
+        "calmiamo"
+      ]
+    },
+    {
+      "word": "fermenti",
+      "num_guesses": 3,
+      "prior": 0.00005962215572767749,
+      "guesses": [
+        "resinato",
+        "modifica",
+        "fermenti"
+      ]
+    },
+    {
+      "word": "accanerà",
+      "num_guesses": 3,
+      "prior": 9.486891474846524e-6,
+      "guesses": [
+        "resinato",
+        "caducità",
+        "accanerà"
+      ]
+    },
+    {
+      "word": "arenarie",
+      "num_guesses": 3,
+      "prior": 0.00005516513570857212,
+      "guesses": [
+        "resinato",
+        "gradirai",
+        "arenarie"
+      ]
+    },
+    {
+      "word": "celiache",
+      "num_guesses": 3,
+      "prior": 0.00001849380694888363,
+      "guesses": [
+        "resinato",
+        "cediglia",
+        "celiache"
+      ]
+    },
+    {
+      "word": "tignasse",
+      "num_guesses": 4,
+      "prior": 9.937061207669938e-6,
+      "guesses": [
+        "resinato",
+        "inattive",
+        "ateniese",
+        "tignasse"
+      ]
+    },
+    {
+      "word": "rinsegni",
+      "num_guesses": 3,
+      "prior": 0.000013624282185930146,
+      "guesses": [
+        "resinato",
+        "rinversi",
+        "rinsegni"
+      ]
+    },
+    {
+      "word": "alligano",
+      "num_guesses": 3,
+      "prior": 0.000017669493446617524,
+      "guesses": [
+        "resinato",
+        "paludava",
+        "alligano"
+      ]
+    },
+    {
+      "word": "epitomai",
+      "num_guesses": 3,
+      "prior": 0.000011414685862755312,
+      "guesses": [
+        "resinato",
+        "pittrice",
+        "epitomai"
+      ]
+    },
+    {
+      "word": "aderiamo",
+      "num_guesses": 3,
+      "prior": 0.00003129306773330539,
+      "guesses": [
+        "resinato",
+        "premendo",
+        "aderiamo"
+      ]
+    },
+    {
+      "word": "spizzica",
+      "num_guesses": 4,
+      "prior": 0.000017191916949901667,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "spiccica",
+        "spizzica"
+      ]
+    },
+    {
+      "word": "scotterò",
+      "num_guesses": 4,
+      "prior": 0.000011952064751862199,
+      "guesses": [
+        "resinato",
+        "ulcererà",
+        "scosterò",
+        "scotterò"
+      ]
+    },
+    {
+      "word": "rappicco",
+      "num_guesses": 3,
+      "prior": 0.000018684072221137107,
+      "guesses": [
+        "resinato",
+        "baccagli",
+        "rappicco"
+      ]
+    },
+    {
+      "word": "guarisci",
+      "num_guesses": 3,
+      "prior": 0.000027293266079052476,
+      "guesses": [
+        "resinato",
+        "burrasca",
+        "guarisci"
+      ]
+    },
+    {
+      "word": "orbitale",
+      "num_guesses": 3,
+      "prior": 0.00004404695024169819,
+      "guesses": [
+        "resinato",
+        "motivare",
+        "orbitale"
+      ]
+    },
+    {
+      "word": "attuaste",
+      "num_guesses": 3,
+      "prior": 9.759499363672502e-6,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "attuaste"
+      ]
+    },
+    {
+      "word": "sveglino",
+      "num_guesses": 3,
+      "prior": 0.000026643492937129434,
+      "guesses": [
+        "resinato",
+        "scolpivi",
+        "sveglino"
+      ]
+    },
+    {
+      "word": "clemenza",
+      "num_guesses": 3,
+      "prior": 0.00006501647583231362,
+      "guesses": [
+        "resinato",
+        "cannacee",
+        "clemenza"
+      ]
+    },
+    {
+      "word": "conversa",
+      "num_guesses": 3,
+      "prior": 0.00004474570794394858,
+      "guesses": [
+        "resinato",
+        "conserva",
+        "conversa"
+      ]
+    },
+    {
+      "word": "casarche",
+      "num_guesses": 3,
+      "prior": 0.000010570554858221649,
+      "guesses": [
+        "resinato",
+        "desumerò",
+        "casarche"
+      ]
+    },
+    {
+      "word": "sbertate",
+      "num_guesses": 4,
+      "prior": 0.000011902537917363268,
+      "guesses": [
+        "resinato",
+        "spetrata",
+        "sterzate",
+        "sbertate"
+      ]
+    },
+    {
+      "word": "arguisti",
+      "num_guesses": 3,
+      "prior": 0.000010376212694432711,
+      "guesses": [
+        "resinato",
+        "garrisci",
+        "arguisti"
+      ]
+    },
+    {
+      "word": "vigilava",
+      "num_guesses": 3,
+      "prior": 0.0000369042308780567,
+      "guesses": [
+        "resinato",
+        "dilucida",
+        "vigilava"
+      ]
+    },
+    {
+      "word": "spetrata",
+      "num_guesses": 2,
+      "prior": 0.000011355023957692444,
+      "guesses": [
+        "resinato",
+        "spetrata"
+      ]
+    },
+    {
+      "word": "rammonta",
+      "num_guesses": 3,
+      "prior": 0.0000123359212493594,
+      "guesses": [
+        "resinato",
+        "racconta",
+        "rammonta"
+      ]
+    },
+    {
+      "word": "meglioro",
+      "num_guesses": 3,
+      "prior": 0.000011124804828025292,
+      "guesses": [
+        "resinato",
+        "fluviale",
+        "meglioro"
+      ]
+    },
+    {
+      "word": "effimero",
+      "num_guesses": 3,
+      "prior": 0.000048941133513541556,
+      "guesses": [
+        "resinato",
+        "comporre",
+        "effimero"
+      ]
+    },
+    {
+      "word": "paolotte",
+      "num_guesses": 3,
+      "prior": 0.00001983758095227359,
+      "guesses": [
+        "resinato",
+        "ballammo",
+        "paolotte"
+      ]
+    },
+    {
+      "word": "megabyte",
+      "num_guesses": 3,
+      "prior": 0.00002510792768365206,
+      "guesses": [
+        "resinato",
+        "decaduta",
+        "megabyte"
+      ]
+    },
+    {
+      "word": "premiamo",
+      "num_guesses": 3,
+      "prior": 0.000024551646227052457,
+      "guesses": [
+        "resinato",
+        "premendo",
+        "premiamo"
+      ]
+    },
+    {
+      "word": "bollendo",
+      "num_guesses": 4,
+      "prior": 0.00003357766926522695,
+      "guesses": [
+        "resinato",
+        "mungendo",
+        "colpendo",
+        "bollendo"
+      ]
+    },
+    {
+      "word": "mariuoli",
+      "num_guesses": 3,
+      "prior": 0.00003019220184020419,
+      "guesses": [
+        "resinato",
+        "agricoli",
+        "mariuoli"
+      ]
+    },
+    {
+      "word": "prodiere",
+      "num_guesses": 3,
+      "prior": 0.00002509277655463179,
+      "guesses": [
+        "resinato",
+        "complete",
+        "prodiere"
+      ]
+    },
+    {
+      "word": "carchino",
+      "num_guesses": 4,
+      "prior": 0.000011968392770077522,
+      "guesses": [
+        "resinato",
+        "giudaica",
+        "facciamo",
+        "carchino"
+      ]
+    },
+    {
+      "word": "sviolina",
+      "num_guesses": 3,
+      "prior": 0.000012157710312484786,
+      "guesses": [
+        "resinato",
+        "scoliosi",
+        "sviolina"
+      ]
+    },
+    {
+      "word": "rugliava",
+      "num_guesses": 4,
+      "prior": 0.000013983064528803785,
+      "guesses": [
+        "resinato",
+        "malarici",
+        "rialzava",
+        "rugliava"
+      ]
+    },
+    {
+      "word": "cruciano",
+      "num_guesses": 4,
+      "prior": 0.000023074957127484446,
+      "guesses": [
+        "resinato",
+        "granduca",
+        "bruciano",
+        "cruciano"
+      ]
+    },
+    {
+      "word": "cangerai",
+      "num_guesses": 4,
+      "prior": 0.000020924293260894784,
+      "guesses": [
+        "resinato",
+        "gradirai",
+        "migliore",
+        "cangerai"
+      ]
+    },
+    {
+      "word": "attizzai",
+      "num_guesses": 3,
+      "prior": 0.000014743465476076616,
+      "guesses": [
+        "resinato",
+        "additivi",
+        "attizzai"
+      ]
+    },
+    {
+      "word": "dichiaro",
+      "num_guesses": 3,
+      "prior": 0.00005986221986788063,
+      "guesses": [
+        "resinato",
+        "cagliavi",
+        "dichiaro"
+      ]
+    },
+    {
+      "word": "traceurs",
+      "num_guesses": 3,
+      "prior": 9.832068691272307e-6,
+      "guesses": [
+        "resinato",
+        "laureerò",
+        "traceurs"
+      ]
+    },
+    {
+      "word": "distanti",
+      "num_guesses": 3,
+      "prior": 0.00006688612800969243,
+      "guesses": [
+        "resinato",
+        "biascica",
+        "distanti"
+      ]
+    },
+    {
+      "word": "sforasse",
+      "num_guesses": 3,
+      "prior": 0.000010134640806369923,
+      "guesses": [
+        "resinato",
+        "scompose",
+        "sforasse"
+      ]
+    },
+    {
+      "word": "sestetto",
+      "num_guesses": 3,
+      "prior": 0.00003087399654932795,
+      "guesses": [
+        "resinato",
+        "gessetto",
+        "sestetto"
+      ]
+    },
+    {
+      "word": "distorco",
+      "num_guesses": 3,
+      "prior": 0.000012032829296262425,
+      "guesses": [
+        "resinato",
+        "disturbo",
+        "distorco"
+      ]
+    },
+    {
+      "word": "arricciò",
+      "num_guesses": 4,
+      "prior": 0.00003513198870177307,
+      "guesses": [
+        "resinato",
+        "accumula",
+        "arricchì",
+        "arricciò"
+      ]
+    },
+    {
+      "word": "smaltano",
+      "num_guesses": 3,
+      "prior": 0.000021342943353397886,
+      "guesses": [
+        "resinato",
+        "scolpava",
+        "smaltano"
+      ]
+    },
+    {
+      "word": "dormendo",
+      "num_guesses": 3,
+      "prior": 0.000053387673887201604,
+      "guesses": [
+        "resinato",
+        "compongo",
+        "dormendo"
+      ]
+    },
+    {
+      "word": "disperda",
+      "num_guesses": 4,
+      "prior": 0.000035779052886145405,
+      "guesses": [
+        "resinato",
+        "caparrai",
+        "dispersa",
+        "disperda"
+      ]
+    },
+    {
+      "word": "preservo",
+      "num_guesses": 3,
+      "prior": 0.000018499515796073896,
+      "guesses": [
+        "resinato",
+        "scompose",
+        "preservo"
+      ]
+    },
+    {
+      "word": "gioviate",
+      "num_guesses": 4,
+      "prior": 0.000013965541836481762,
+      "guesses": [
+        "resinato",
+        "compluvi",
+        "odiavate",
+        "gioviate"
+      ]
+    },
+    {
+      "word": "mercanti",
+      "num_guesses": 3,
+      "prior": 0.00007674625082788541,
+      "guesses": [
+        "resinato",
+        "micragna",
+        "mercanti"
+      ]
+    },
+    {
+      "word": "componga",
+      "num_guesses": 3,
+      "prior": 0.000038561702616274656,
+      "guesses": [
+        "resinato",
+        "confonda",
+        "componga"
+      ]
+    },
+    {
+      "word": "rapinava",
+      "num_guesses": 3,
+      "prior": 0.000019090913966065223,
+      "guesses": [
+        "resinato",
+        "ruminavi",
+        "rapinava"
+      ]
+    },
+    {
+      "word": "omuncoli",
+      "num_guesses": 3,
+      "prior": 0.000024265514857051885,
+      "guesses": [
+        "resinato",
+        "cinofili",
+        "omuncoli"
+      ]
+    },
+    {
+      "word": "sporcati",
+      "num_guesses": 3,
+      "prior": 0.000023894912760107197,
+      "guesses": [
+        "resinato",
+        "scommisi",
+        "sporcati"
+      ]
+    },
+    {
+      "word": "lestezza",
+      "num_guesses": 3,
+      "prior": 0.00002653453298052482,
+      "guesses": [
+        "resinato",
+        "permette",
+        "lestezza"
+      ]
+    },
+    {
+      "word": "craniale",
+      "num_guesses": 3,
+      "prior": 0.000039970742600071,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "craniale"
+      ]
+    },
+    {
+      "word": "inondavi",
+      "num_guesses": 3,
+      "prior": 0.000010433228285387565,
+      "guesses": [
+        "resinato",
+        "vinciana",
+        "inondavi"
+      ]
+    },
+    {
+      "word": "agguanta",
+      "num_guesses": 3,
+      "prior": 0.000029487372889309874,
+      "guesses": [
+        "resinato",
+        "atalanta",
+        "agguanta"
+      ]
+    },
+    {
+      "word": "irrigavo",
+      "num_guesses": 3,
+      "prior": 9.31584436194236e-6,
+      "guesses": [
+        "resinato",
+        "curavamo",
+        "irrigavo"
+      ]
+    },
+    {
+      "word": "stremate",
+      "num_guesses": 3,
+      "prior": 0.000031801349988910773,
+      "guesses": [
+        "resinato",
+        "spetrata",
+        "stremate"
+      ]
+    },
+    {
+      "word": "rincalcò",
+      "num_guesses": 3,
+      "prior": 0.000011919138453194207,
+      "guesses": [
+        "resinato",
+        "malgasci",
+        "rincalcò"
+      ]
+    },
+    {
+      "word": "svergola",
+      "num_guesses": 3,
+      "prior": 0.000011968392770077522,
+      "guesses": [
+        "resinato",
+        "scompose",
+        "svergola"
+      ]
+    },
+    {
+      "word": "biomorfe",
+      "num_guesses": 4,
+      "prior": 0.00001540894960816299,
+      "guesses": [
+        "resinato",
+        "complete",
+        "difforme",
+        "biomorfe"
+      ]
+    },
+    {
+      "word": "coltrata",
+      "num_guesses": 3,
+      "prior": 0.000012421299096883791,
+      "guesses": [
+        "resinato",
+        "colorire",
+        "coltrata"
+      ]
+    },
+    {
+      "word": "sbavante",
+      "num_guesses": 4,
+      "prior": 0.000018973782949693048,
+      "guesses": [
+        "resinato",
+        "valcando",
+        "svasante",
+        "sbavante"
+      ]
+    },
+    {
+      "word": "calzasti",
+      "num_guesses": 4,
+      "prior": 0.000010489024132815528,
+      "guesses": [
+        "resinato",
+        "placassi",
+        "calmasti",
+        "calzasti"
+      ]
+    },
+    {
+      "word": "mussando",
+      "num_guesses": 3,
+      "prior": 9.359788975024503e-6,
+      "guesses": [
+        "resinato",
+        "placammo",
+        "mussando"
+      ]
+    },
+    {
+      "word": "vaneggia",
+      "num_guesses": 3,
+      "prior": 0.00003654759069360928,
+      "guesses": [
+        "resinato",
+        "maledica",
+        "vaneggia"
+      ]
+    },
+    {
+      "word": "guastavi",
+      "num_guesses": 3,
+      "prior": 0.000012779045005615734,
+      "guesses": [
+        "resinato",
+        "lunatica",
+        "guastavi"
+      ]
+    },
+    {
+      "word": "lustrava",
+      "num_guesses": 3,
+      "prior": 0.000022935395042302066,
+      "guesses": [
+        "resinato",
+        "abstract",
+        "lustrava"
+      ]
+    },
+    {
+      "word": "semiseri",
+      "num_guesses": 2,
+      "prior": 0.00001937178333985051,
+      "guesses": [
+        "resinato",
+        "semiseri"
+      ]
+    },
+    {
+      "word": "sparagna",
+      "num_guesses": 3,
+      "prior": 0.000026982824636960774,
+      "guesses": [
+        "resinato",
+        "mansarda",
+        "sparagna"
+      ]
+    },
+    {
+      "word": "scansata",
+      "num_guesses": 3,
+      "prior": 0.000024819748729837164,
+      "guesses": [
+        "resinato",
+        "scudetto",
+        "scansata"
+      ]
+    },
+    {
+      "word": "pietanza",
+      "num_guesses": 3,
+      "prior": 0.000042193305327311415,
+      "guesses": [
+        "resinato",
+        "canalini",
+        "pietanza"
+      ]
+    },
+    {
+      "word": "riottosi",
+      "num_guesses": 2,
+      "prior": 0.00003756113764915159,
+      "guesses": [
+        "resinato",
+        "riottosi"
+      ]
+    },
+    {
+      "word": "morremmo",
+      "num_guesses": 5,
+      "prior": 0.000020050846495829682,
+      "guesses": [
+        "resinato",
+        "prodromo",
+        "vorremmo",
+        "corremmo",
+        "morremmo"
+      ]
+    },
+    {
+      "word": "scorzate",
+      "num_guesses": 4,
+      "prior": 0.00001694796107094383,
+      "guesses": [
+        "resinato",
+        "scompose",
+        "giudizio",
+        "scorzate"
+      ]
+    },
+    {
+      "word": "spiegavo",
+      "num_guesses": 3,
+      "prior": 0.000030485978659165152,
+      "guesses": [
+        "resinato",
+        "sbadigli",
+        "spiegavo"
+      ]
+    },
+    {
+      "word": "discorro",
+      "num_guesses": 3,
+      "prior": 0.000035642018676844876,
+      "guesses": [
+        "resinato",
+        "discorso",
+        "discorro"
+      ]
+    },
+    {
+      "word": "dosaggio",
+      "num_guesses": 3,
+      "prior": 0.000056683987505020483,
+      "guesses": [
+        "resinato",
+        "databili",
+        "dosaggio"
+      ]
+    },
+    {
+      "word": "fasciste",
+      "num_guesses": 3,
+      "prior": 0.000054256373868979345,
+      "guesses": [
+        "resinato",
+        "compatta",
+        "fasciste"
+      ]
+    },
+    {
+      "word": "moderare",
+      "num_guesses": 3,
+      "prior": 0.000051288214520137176,
+      "guesses": [
+        "resinato",
+        "colorare",
+        "moderare"
+      ]
+    },
+    {
+      "word": "bordella",
+      "num_guesses": 4,
+      "prior": 0.000025665245806547936,
+      "guesses": [
+        "resinato",
+        "completa",
+        "logorrea",
+        "bordella"
+      ]
+    },
+    {
+      "word": "maledite",
+      "num_guesses": 3,
+      "prior": 0.000025711282417872056,
+      "guesses": [
+        "resinato",
+        "allibiva",
+        "maledite"
+      ]
+    },
+    {
+      "word": "diessine",
+      "num_guesses": 3,
+      "prior": 0.000017028191692885168,
+      "guesses": [
+        "resinato",
+        "svilisce",
+        "diessine"
+      ]
+    },
+    {
+      "word": "quadrato",
+      "num_guesses": 3,
+      "prior": 0.00007575128928411973,
+      "guesses": [
+        "resinato",
+        "clatrata",
+        "quadrato"
+      ]
+    },
+    {
+      "word": "dismette",
+      "num_guesses": 3,
+      "prior": 0.000026087716074782602,
+      "guesses": [
+        "resinato",
+        "competei",
+        "dismette"
+      ]
+    },
+    {
+      "word": "gradimmo",
+      "num_guesses": 3,
+      "prior": 0.00001401784870136889,
+      "guesses": [
+        "resinato",
+        "clamidia",
+        "gradimmo"
+      ]
+    },
+    {
+      "word": "consociò",
+      "num_guesses": 3,
+      "prior": 0.000016067339563826568,
+      "guesses": [
+        "resinato",
+        "complici",
+        "consociò"
+      ]
+    },
+    {
+      "word": "silurati",
+      "num_guesses": 4,
+      "prior": 0.000021795153262383193,
+      "guesses": [
+        "resinato",
+        "sbrucava",
+        "suturati",
+        "silurati"
+      ]
+    },
+    {
+      "word": "ducavano",
+      "num_guesses": 4,
+      "prior": 9.796052819353548e-6,
+      "guesses": [
+        "resinato",
+        "maculava",
+        "bucavano",
+        "ducavano"
+      ]
+    },
+    {
+      "word": "completò",
+      "num_guesses": 3,
+      "prior": 0.00004363297664407727,
+      "guesses": [
+        "resinato",
+        "compulsò",
+        "completò"
+      ]
+    },
+    {
+      "word": "aggraffò",
+      "num_guesses": 3,
+      "prior": 0.000012476939842508535,
+      "guesses": [
+        "resinato",
+        "paracula",
+        "aggraffò"
+      ]
+    },
+    {
+      "word": "sensorio",
+      "num_guesses": 3,
+      "prior": 0.00004425411625959101,
+      "guesses": [
+        "resinato",
+        "severino",
+        "sensorio"
+      ]
+    },
+    {
+      "word": "foraggia",
+      "num_guesses": 3,
+      "prior": 0.0000184622816025775,
+      "guesses": [
+        "resinato",
+        "carpirai",
+        "foraggia"
+      ]
+    },
+    {
+      "word": "straluno",
+      "num_guesses": 3,
+      "prior": 0.00001254512390277874,
+      "guesses": [
+        "resinato",
+        "staranno",
+        "straluno"
+      ]
+    },
+    {
+      "word": "bidonate",
+      "num_guesses": 3,
+      "prior": 0.000012421299096883791,
+      "guesses": [
+        "resinato",
+        "timonate",
+        "bidonate"
+      ]
+    },
+    {
+      "word": "celerete",
+      "num_guesses": 3,
+      "prior": 0.00001220324608317653,
+      "guesses": [
+        "resinato",
+        "vedremmo",
+        "celerete"
+      ]
+    },
+    {
+      "word": "spiegati",
+      "num_guesses": 3,
+      "prior": 0.00005308750330657489,
+      "guesses": [
+        "resinato",
+        "scapigli",
+        "spiegati"
+      ]
+    },
+    {
+      "word": "cervello",
+      "num_guesses": 3,
+      "prior": 0.0000892134747550731,
+      "guesses": [
+        "resinato",
+        "vedremmo",
+        "cervello"
+      ]
+    },
+    {
+      "word": "navigate",
+      "num_guesses": 3,
+      "prior": 0.000026500748133226936,
+      "guesses": [
+        "resinato",
+        "valutato",
+        "navigate"
+      ]
+    },
+    {
+      "word": "podologi",
+      "num_guesses": 3,
+      "prior": 0.000015239312916023269,
+      "guesses": [
+        "resinato",
+        "buglioli",
+        "podologi"
+      ]
+    },
+    {
+      "word": "avvierai",
+      "num_guesses": 4,
+      "prior": 0.000012996995275179052,
+      "guesses": [
+        "resinato",
+        "dirigeva",
+        "avvilire",
+        "avvierai"
+      ]
+    },
+    {
+      "word": "discuoia",
+      "num_guesses": 3,
+      "prior": 0.000014517432890429722,
+      "guesses": [
+        "resinato",
+        "dissocia",
+        "discuoia"
+      ]
+    },
+    {
+      "word": "monokini",
+      "num_guesses": 3,
+      "prior": 0.000016403868770560763,
+      "guesses": [
+        "resinato",
+        "cinofili",
+        "monokini"
+      ]
+    },
+    {
+      "word": "comitali",
+      "num_guesses": 3,
+      "prior": 0.00003390831525795363,
+      "guesses": [
+        "resinato",
+        "vomitava",
+        "comitali"
+      ]
+    },
+    {
+      "word": "bronzato",
+      "num_guesses": 3,
+      "prior": 0.000028257673060061427,
+      "guesses": [
+        "resinato",
+        "fototubo",
+        "bronzato"
+      ]
+    },
+    {
+      "word": "turnasse",
+      "num_guesses": 2,
+      "prior": 0.000010570554858221649,
+      "guesses": [
+        "resinato",
+        "turnasse"
+      ]
+    },
+    {
+      "word": "raggiate",
+      "num_guesses": 3,
+      "prior": 0.000031016094349706497,
+      "guesses": [
+        "resinato",
+        "ciarlavi",
+        "raggiate"
+      ]
+    },
+    {
+      "word": "logorata",
+      "num_guesses": 3,
+      "prior": 0.00003605094376838634,
+      "guesses": [
+        "resinato",
+        "colorire",
+        "logorata"
+      ]
+    },
+    {
+      "word": "stupendi",
+      "num_guesses": 3,
+      "prior": 0.000049558175462549305,
+      "guesses": [
+        "resinato",
+        "stupisci",
+        "stupendi"
+      ]
+    },
+    {
+      "word": "astringo",
+      "num_guesses": 3,
+      "prior": 0.00001848523043864769,
+      "guesses": [
+        "resinato",
+        "scaldini",
+        "astringo"
+      ]
+    },
+    {
+      "word": "azionari",
+      "num_guesses": 2,
+      "prior": 0.00005259813777856665,
+      "guesses": [
+        "resinato",
+        "azionari"
+      ]
+    },
+    {
+      "word": "vegetava",
+      "num_guesses": 3,
+      "prior": 0.000027054298337347203,
+      "guesses": [
+        "resinato",
+        "vegetale",
+        "vegetava"
+      ]
+    },
+    {
+      "word": "gestissi",
+      "num_guesses": 3,
+      "prior": 0.000013575448376306415,
+      "guesses": [
+        "resinato",
+        "pugliesi",
+        "gestissi"
+      ]
+    },
+    {
+      "word": "scrutina",
+      "num_guesses": 3,
+      "prior": 0.000020003076171514715,
+      "guesses": [
+        "resinato",
+        "striscia",
+        "scrutina"
+      ]
+    },
+    {
+      "word": "metanolo",
+      "num_guesses": 2,
+      "prior": 0.000037807323315370366,
+      "guesses": [
+        "resinato",
+        "metanolo"
+      ]
+    },
+    {
+      "word": "lambente",
+      "num_guesses": 3,
+      "prior": 0.000023293513379216317,
+      "guesses": [
+        "resinato",
+        "calumava",
+        "lambente"
+      ]
+    },
+    {
+      "word": "cornassi",
+      "num_guesses": 3,
+      "prior": 0.00001208026636294209,
+      "guesses": [
+        "resinato",
+        "sfasciai",
+        "cornassi"
+      ]
+    },
+    {
+      "word": "buffetto",
+      "num_guesses": 3,
+      "prior": 0.00003643548229656247,
+      "guesses": [
+        "resinato",
+        "completo",
+        "buffetto"
+      ]
+    },
+    {
+      "word": "apostata",
+      "num_guesses": 3,
+      "prior": 0.00004762555309541317,
+      "guesses": [
+        "resinato",
+        "scoltata",
+        "apostata"
+      ]
+    },
+    {
+      "word": "auguravi",
+      "num_guesses": 3,
+      "prior": 0.000015776241268620133,
+      "guesses": [
+        "resinato",
+        "amigdala",
+        "auguravi"
+      ]
+    },
+    {
+      "word": "sfollati",
+      "num_guesses": 3,
+      "prior": 0.0000394588252790174,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "sfollati"
+      ]
+    },
+    {
+      "word": "avvistai",
+      "num_guesses": 2,
+      "prior": 0.000020461561582043698,
+      "guesses": [
+        "resinato",
+        "avvistai"
+      ]
+    },
+    {
+      "word": "xiloteca",
+      "num_guesses": 3,
+      "prior": 0.000013112030873354934,
+      "guesses": [
+        "resinato",
+        "pittrice",
+        "xiloteca"
+      ]
+    },
+    {
+      "word": "pirogeni",
+      "num_guesses": 4,
+      "prior": 0.000023799871401383597,
+      "guesses": [
+        "resinato",
+        "criniere",
+        "idrogeni",
+        "pirogeni"
+      ]
+    },
+    {
+      "word": "slittare",
+      "num_guesses": 2,
+      "prior": 0.000034621713193276306,
+      "guesses": [
+        "resinato",
+        "slittare"
+      ]
+    },
+    {
+      "word": "nomavate",
+      "num_guesses": 3,
+      "prior": 0.000010347228407152302,
+      "guesses": [
+        "resinato",
+        "adottavo",
+        "nomavate"
+      ]
+    },
+    {
+      "word": "ricamino",
+      "num_guesses": 3,
+      "prior": 0.00001714190605074254,
+      "guesses": [
+        "resinato",
+        "dinamica",
+        "ricamino"
+      ]
+    },
+    {
+      "word": "scurante",
+      "num_guesses": 3,
+      "prior": 0.000014252166878632681,
+      "guesses": [
+        "resinato",
+        "sparenta",
+        "scurante"
+      ]
+    },
+    {
+      "word": "studiavi",
+      "num_guesses": 3,
+      "prior": 0.00002162826494764245,
+      "guesses": [
+        "resinato",
+        "lunatica",
+        "studiavi"
+      ]
+    },
+    {
+      "word": "scellera",
+      "num_guesses": 4,
+      "prior": 0.000018180621989928284,
+      "guesses": [
+        "resinato",
+        "scapsula",
+        "sclerema",
+        "scellera"
+      ]
+    },
+    {
+      "word": "vagliavi",
+      "num_guesses": 4,
+      "prior": 0.000014750529909351368,
+      "guesses": [
+        "resinato",
+        "dolciumi",
+        "abaziali",
+        "vagliavi"
+      ]
+    },
+    {
+      "word": "borriate",
+      "num_guesses": 4,
+      "prior": 0.0000110361496610092,
+      "guesses": [
+        "resinato",
+        "porridge",
+        "corriate",
+        "borriate"
+      ]
+    },
+    {
+      "word": "sbonzoli",
+      "num_guesses": 3,
+      "prior": 0.0000110361496610092,
+      "guesses": [
+        "resinato",
+        "complici",
+        "sbonzoli"
+      ]
+    },
+    {
+      "word": "ciabatti",
+      "num_guesses": 3,
+      "prior": 0.000028680793594166645,
+      "guesses": [
+        "resinato",
+        "impudica",
+        "ciabatti"
+      ]
+    },
+    {
+      "word": "chiudete",
+      "num_guesses": 3,
+      "prior": 0.00004130649590750923,
+      "guesses": [
+        "resinato",
+        "bucefali",
+        "chiudete"
+      ]
+    },
+    {
+      "word": "fiutiamo",
+      "num_guesses": 3,
+      "prior": 0.000017153498874271998,
+      "guesses": [
+        "resinato",
+        "titubava",
+        "fiutiamo"
+      ]
+    },
+    {
+      "word": "venatura",
+      "num_guesses": 3,
+      "prior": 0.00003686632569185547,
+      "guesses": [
+        "resinato",
+        "vertenza",
+        "venatura"
+      ]
+    },
+    {
+      "word": "pucciano",
+      "num_guesses": 4,
+      "prior": 0.000023978367360559303,
+      "guesses": [
+        "resinato",
+        "colavamo",
+        "inducano",
+        "pucciano"
+      ]
+    },
+    {
+      "word": "sbiecata",
+      "num_guesses": 3,
+      "prior": 0.00001629633912908087,
+      "guesses": [
+        "resinato",
+        "scapigli",
+        "sbiecata"
+      ]
+    },
+    {
+      "word": "faticavo",
+      "num_guesses": 3,
+      "prior": 0.000028124902720781336,
+      "guesses": [
+        "resinato",
+        "valutava",
+        "faticavo"
+      ]
+    },
+    {
+      "word": "rammollì",
+      "num_guesses": 3,
+      "prior": 0.00001692359294557319,
+      "guesses": [
+        "resinato",
+        "dupplica",
+        "rammollì"
+      ]
+    },
+    {
+      "word": "ristagnò",
+      "num_guesses": 3,
+      "prior": 0.00002042713685120678,
+      "guesses": [
+        "resinato",
+        "risatina",
+        "ristagnò"
+      ]
+    },
+    {
+      "word": "macerati",
+      "num_guesses": 4,
+      "prior": 0.00003240821570819965,
+      "guesses": [
+        "resinato",
+        "gracidai",
+        "camerati",
+        "macerati"
+      ]
+    },
+    {
+      "word": "esitiamo",
+      "num_guesses": 2,
+      "prior": 0.00004064880958691853,
+      "guesses": [
+        "resinato",
+        "esitiamo"
+      ]
+    },
+    {
+      "word": "trincavo",
+      "num_guesses": 4,
+      "prior": 9.31584436194236e-6,
+      "guesses": [
+        "resinato",
+        "ciarpami",
+        "trincano",
+        "trincavo"
+      ]
+    },
+    {
+      "word": "sceicchi",
+      "num_guesses": 3,
+      "prior": 0.000030428515409093413,
+      "guesses": [
+        "resinato",
+        "sifilide",
+        "sceicchi"
+      ]
+    },
+    {
+      "word": "perirono",
+      "num_guesses": 2,
+      "prior": 0.00005335646309305818,
+      "guesses": [
+        "resinato",
+        "perirono"
+      ]
+    },
+    {
+      "word": "contingo",
+      "num_guesses": 3,
+      "prior": 0.000015170551930350131,
+      "guesses": [
+        "resinato",
+        "pinguini",
+        "contingo"
+      ]
+    },
+    {
+      "word": "ticonica",
+      "num_guesses": 3,
+      "prior": 0.000018973782949693048,
+      "guesses": [
+        "resinato",
+        "autonomi",
+        "ticonica"
+      ]
+    },
+    {
+      "word": "ordinerò",
+      "num_guesses": 3,
+      "prior": 0.000030513006989979553,
+      "guesses": [
+        "resinato",
+        "ordinerà",
+        "ordinerò"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4972 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:11:48.736099Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sinceriate",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 10,
+    "dictionary_length": 45215,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "6636217856d92fdc28b82efd0a9d975cab6fa3e1deb37c1c08cedf8e42e0c29a",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 2.835999999999976,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.18600000000000014,
+        "3": 0.7920000000000006,
+        "4": 0.022000000000000006
+      }
+    },
+    "prior": {
+      "mean": 2.78619653587352,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.22766651302248309,
+        "3": 0.7584704380815158,
+        "4": 0.013863048896001177
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "faldistori",
+      "num_guesses": 3,
+      "prior": 0.00001405266658965608,
+      "guesses": [
+        "sinceriate",
+        "salpassero",
+        "faldistori"
+      ]
+    },
+    {
+      "word": "sfregiante",
+      "num_guesses": 4,
+      "prior": 0.000012963549513612798,
+      "guesses": [
+        "sinceriate",
+        "seriamente",
+        "spregiante",
+        "sfregiante"
+      ]
+    },
+    {
+      "word": "ricantiamo",
+      "num_guesses": 2,
+      "prior": 0.00001260819894760002,
+      "guesses": [
+        "sinceriate",
+        "ricantiamo"
+      ]
+    },
+    {
+      "word": "mandragole",
+      "num_guesses": 3,
+      "prior": 0.000018949677805333484,
+      "guesses": [
+        "sinceriate",
+        "longobarde",
+        "mandragole"
+      ]
+    },
+    {
+      "word": "rinnovanti",
+      "num_guesses": 3,
+      "prior": 0.00001767524546654095,
+      "guesses": [
+        "sinceriate",
+        "ringhianti",
+        "rinnovanti"
+      ]
+    },
+    {
+      "word": "raggricciò",
+      "num_guesses": 3,
+      "prior": 0.000013131444257144093,
+      "guesses": [
+        "sinceriate",
+        "arrolavamo",
+        "raggricciò"
+      ]
+    },
+    {
+      "word": "macinature",
+      "num_guesses": 3,
+      "prior": 0.00001621666651135117,
+      "guesses": [
+        "sinceriate",
+        "tritacarne",
+        "macinature"
+      ]
+    },
+    {
+      "word": "affettuosi",
+      "num_guesses": 3,
+      "prior": 0.00004639890423899166,
+      "guesses": [
+        "sinceriate",
+        "aspettassi",
+        "affettuosi"
+      ]
+    },
+    {
+      "word": "incorrendo",
+      "num_guesses": 2,
+      "prior": 0.000031356962142853205,
+      "guesses": [
+        "sinceriate",
+        "incorrendo"
+      ]
+    },
+    {
+      "word": "scarcarono",
+      "num_guesses": 4,
+      "prior": 0.00001023624945778055,
+      "guesses": [
+        "sinceriate",
+        "scapolasse",
+        "scannarono",
+        "scarcarono"
+      ]
+    },
+    {
+      "word": "romanzando",
+      "num_guesses": 3,
+      "prior": 0.000015717829796423013,
+      "guesses": [
+        "sinceriate",
+        "arrogavamo",
+        "romanzando"
+      ]
+    },
+    {
+      "word": "usufruiamo",
+      "num_guesses": 3,
+      "prior": 0.0000165293751237059,
+      "guesses": [
+        "sinceriate",
+        "dopoguerra",
+        "usufruiamo"
+      ]
+    },
+    {
+      "word": "tramassero",
+      "num_guesses": 4,
+      "prior": 0.00002063607125193879,
+      "guesses": [
+        "sinceriate",
+        "sottopassa",
+        "tardassero",
+        "tramassero"
+      ]
+    },
+    {
+      "word": "riadagiate",
+      "num_guesses": 3,
+      "prior": 0.0000109680804597518,
+      "guesses": [
+        "sinceriate",
+        "rifiltrato",
+        "riadagiate"
+      ]
+    },
+    {
+      "word": "retrocedei",
+      "num_guesses": 3,
+      "prior": 0.000011046995653682218,
+      "guesses": [
+        "sinceriate",
+        "reciteremo",
+        "retrocedei"
+      ]
+    },
+    {
+      "word": "fodererete",
+      "num_guesses": 4,
+      "prior": 9.448637459310784e-6,
+      "guesses": [
+        "sinceriate",
+        "purgatorio",
+        "modererete",
+        "fodererete"
+      ]
+    },
+    {
+      "word": "tagliavamo",
+      "num_guesses": 3,
+      "prior": 0.00001803537737930929,
+      "guesses": [
+        "sinceriate",
+        "dubitavamo",
+        "tagliavamo"
+      ]
+    },
+    {
+      "word": "congedasti",
+      "num_guesses": 3,
+      "prior": 0.000011355964733788878,
+      "guesses": [
+        "sinceriate",
+        "consentita",
+        "congedasti"
+      ]
+    },
+    {
+      "word": "sviluppavi",
+      "num_guesses": 2,
+      "prior": 9.945860681457598e-6,
+      "guesses": [
+        "sinceriate",
+        "sviluppavi"
+      ]
+    },
+    {
+      "word": "approntati",
+      "num_guesses": 3,
+      "prior": 0.00003456867276560629,
+      "guesses": [
+        "sinceriate",
+        "zampognata",
+        "approntati"
+      ]
+    },
+    {
+      "word": "stringeste",
+      "num_guesses": 3,
+      "prior": 0.000017969190722220264,
+      "guesses": [
+        "sinceriate",
+        "stringente",
+        "stringeste"
+      ]
+    },
+    {
+      "word": "cimenterai",
+      "num_guesses": 2,
+      "prior": 0.000010215056212840485,
+      "guesses": [
+        "sinceriate",
+        "cimenterai"
+      ]
+    },
+    {
+      "word": "sburravano",
+      "num_guesses": 3,
+      "prior": 9.722965996888948e-6,
+      "guesses": [
+        "sinceriate",
+        "naufragano",
+        "sburravano"
+      ]
+    },
+    {
+      "word": "asterreste",
+      "num_guesses": 3,
+      "prior": 0.000011900356131529709,
+      "guesses": [
+        "sinceriate",
+        "oltrepassa",
+        "asterreste"
+      ]
+    },
+    {
+      "word": "alterniamo",
+      "num_guesses": 2,
+      "prior": 0.00001818825968060805,
+      "guesses": [
+        "sinceriate",
+        "alterniamo"
+      ]
+    },
+    {
+      "word": "scoraggiai",
+      "num_guesses": 3,
+      "prior": 0.000017225603388767558,
+      "guesses": [
+        "sinceriate",
+        "arboricola",
+        "scoraggiai"
+      ]
+    },
+    {
+      "word": "implorerei",
+      "num_guesses": 2,
+      "prior": 0.000015075105803089679,
+      "guesses": [
+        "sinceriate",
+        "implorerei"
+      ]
+    },
+    {
+      "word": "rinuncerei",
+      "num_guesses": 2,
+      "prior": 0.000023096654135000754,
+      "guesses": [
+        "sinceriate",
+        "rinuncerei"
+      ]
+    },
+    {
+      "word": "espandersi",
+      "num_guesses": 3,
+      "prior": 0.000048397549564230363,
+      "guesses": [
+        "sinceriate",
+        "assegnerei",
+        "espandersi"
+      ]
+    },
+    {
+      "word": "trassinate",
+      "num_guesses": 3,
+      "prior": 0.000012002568860144048,
+      "guesses": [
+        "sinceriate",
+        "testamento",
+        "trassinate"
+      ]
+    },
+    {
+      "word": "fabbricavo",
+      "num_guesses": 3,
+      "prior": 0.000015763126887208797,
+      "guesses": [
+        "sinceriate",
+        "ubbriacava",
+        "fabbricavo"
+      ]
+    },
+    {
+      "word": "mercedaria",
+      "num_guesses": 3,
+      "prior": 0.000014288253212578815,
+      "guesses": [
+        "sinceriate",
+        "mercedario",
+        "mercedaria"
+      ]
+    },
+    {
+      "word": "parsimonia",
+      "num_guesses": 3,
+      "prior": 0.00004856198824048275,
+      "guesses": [
+        "sinceriate",
+        "ragionassi",
+        "parsimonia"
+      ]
+    },
+    {
+      "word": "frattaglie",
+      "num_guesses": 3,
+      "prior": 0.000031716525412948974,
+      "guesses": [
+        "sinceriate",
+        "ampliabile",
+        "frattaglie"
+      ]
+    },
+    {
+      "word": "romanzeggi",
+      "num_guesses": 4,
+      "prior": 8.739308082003099e-6,
+      "guesses": [
+        "sinceriate",
+        "deflagrano",
+        "agonizzerà",
+        "romanzeggi"
+      ]
+    },
+    {
+      "word": "orripilata",
+      "num_guesses": 3,
+      "prior": 0.000020054790084244585,
+      "guesses": [
+        "sinceriate",
+        "articolato",
+        "orripilata"
+      ]
+    },
+    {
+      "word": "infeudasse",
+      "num_guesses": 3,
+      "prior": 0.00001403479540007594,
+      "guesses": [
+        "sinceriate",
+        "ragionando",
+        "infeudasse"
+      ]
+    },
+    {
+      "word": "increpando",
+      "num_guesses": 3,
+      "prior": 0.000015189993876545538,
+      "guesses": [
+        "sinceriate",
+        "imprecando",
+        "increpando"
+      ]
+    },
+    {
+      "word": "espiantare",
+      "num_guesses": 3,
+      "prior": 0.00001598924001492383,
+      "guesses": [
+        "sinceriate",
+        "destrimane",
+        "espiantare"
+      ]
+    },
+    {
+      "word": "camperemmo",
+      "num_guesses": 3,
+      "prior": 0.000010106360662943373,
+      "guesses": [
+        "sinceriate",
+        "acquerello",
+        "camperemmo"
+      ]
+    },
+    {
+      "word": "rappiccava",
+      "num_guesses": 3,
+      "prior": 0.000015617855054135978,
+      "guesses": [
+        "sinceriate",
+        "ubbriacava",
+        "rappiccava"
+      ]
+    },
+    {
+      "word": "vergassero",
+      "num_guesses": 3,
+      "prior": 0.000010886826468583205,
+      "guesses": [
+        "sinceriate",
+        "regolavamo",
+        "vergassero"
+      ]
+    },
+    {
+      "word": "castigaste",
+      "num_guesses": 3,
+      "prior": 0.000010496996473385317,
+      "guesses": [
+        "sinceriate",
+        "appiccaste",
+        "castigaste"
+      ]
+    },
+    {
+      "word": "afforziamo",
+      "num_guesses": 3,
+      "prior": 0.000012013713325832037,
+      "guesses": [
+        "sinceriate",
+        "fuoribordo",
+        "afforziamo"
+      ]
+    },
+    {
+      "word": "destituiti",
+      "num_guesses": 3,
+      "prior": 0.000039177995041526796,
+      "guesses": [
+        "sinceriate",
+        "destituito",
+        "destituiti"
+      ]
+    },
+    {
+      "word": "coagulasse",
+      "num_guesses": 3,
+      "prior": 0.000017388308491272343,
+      "guesses": [
+        "sinceriate",
+        "diplococco",
+        "coagulasse"
+      ]
+    },
+    {
+      "word": "formatterò",
+      "num_guesses": 3,
+      "prior": 0.00001165974635987962,
+      "guesses": [
+        "sinceriate",
+        "prorogherò",
+        "formatterò"
+      ]
+    },
+    {
+      "word": "fiuterebbe",
+      "num_guesses": 3,
+      "prior": 0.000012228379684164687,
+      "guesses": [
+        "sinceriate",
+        "fortemente",
+        "fiuterebbe"
+      ]
+    },
+    {
+      "word": "richiamava",
+      "num_guesses": 3,
+      "prior": 0.000049428484715411426,
+      "guesses": [
+        "sinceriate",
+        "ricoricava",
+        "richiamava"
+      ]
+    },
+    {
+      "word": "intaccherò",
+      "num_guesses": 3,
+      "prior": 9.774277374943552e-6,
+      "guesses": [
+        "sinceriate",
+        "innoltrerà",
+        "intaccherò"
+      ]
+    },
+    {
+      "word": "vetrofania",
+      "num_guesses": 3,
+      "prior": 0.000016696679808409107,
+      "guesses": [
+        "sinceriate",
+        "arruolando",
+        "vetrofania"
+      ]
+    },
+    {
+      "word": "inebbriavi",
+      "num_guesses": 3,
+      "prior": 9.1711568208671e-6,
+      "guesses": [
+        "sinceriate",
+        "gregoriani",
+        "inebbriavi"
+      ]
+    },
+    {
+      "word": "ravviverei",
+      "num_guesses": 3,
+      "prior": 8.699217821723587e-6,
+      "guesses": [
+        "sinceriate",
+        "immergerai",
+        "ravviverei"
+      ]
+    },
+    {
+      "word": "strozzammo",
+      "num_guesses": 3,
+      "prior": 9.036228053821654e-6,
+      "guesses": [
+        "sinceriate",
+        "strappammo",
+        "strozzammo"
+      ]
+    },
+    {
+      "word": "aumentiate",
+      "num_guesses": 3,
+      "prior": 0.00001298807090489924,
+      "guesses": [
+        "sinceriate",
+        "pedalavamo",
+        "aumentiate"
+      ]
+    },
+    {
+      "word": "scozzonare",
+      "num_guesses": 3,
+      "prior": 0.000017605853568563732,
+      "guesses": [
+        "sinceriate",
+        "spalancare",
+        "scozzonare"
+      ]
+    },
+    {
+      "word": "pestassero",
+      "num_guesses": 4,
+      "prior": 0.00001610800233948384,
+      "guesses": [
+        "sinceriate",
+        "retrogradò",
+        "testamento",
+        "pestassero"
+      ]
+    },
+    {
+      "word": "incuorante",
+      "num_guesses": 2,
+      "prior": 0.000013555200113408901,
+      "guesses": [
+        "sinceriate",
+        "incuorante"
+      ]
+    },
+    {
+      "word": "calcheremo",
+      "num_guesses": 3,
+      "prior": 0.00001390087432745309,
+      "guesses": [
+        "sinceriate",
+        "precludeva",
+        "calcheremo"
+      ]
+    },
+    {
+      "word": "sniffavano",
+      "num_guesses": 3,
+      "prior": 0.000013649953624321966,
+      "guesses": [
+        "sinceriate",
+        "pugnalando",
+        "sniffavano"
+      ]
+    },
+    {
+      "word": "ringhiante",
+      "num_guesses": 2,
+      "prior": 0.000020794615987554578,
+      "guesses": [
+        "sinceriate",
+        "ringhiante"
+      ]
+    },
+    {
+      "word": "insuperate",
+      "num_guesses": 2,
+      "prior": 0.00002468747641685098,
+      "guesses": [
+        "sinceriate",
+        "insuperate"
+      ]
+    },
+    {
+      "word": "stringessi",
+      "num_guesses": 3,
+      "prior": 0.000020825505333497067,
+      "guesses": [
+        "sinceriate",
+        "stringersi",
+        "stringessi"
+      ]
+    },
+    {
+      "word": "profitterò",
+      "num_guesses": 3,
+      "prior": 0.00002342894591881415,
+      "guesses": [
+        "sinceriate",
+        "comproverà",
+        "profitterò"
+      ]
+    },
+    {
+      "word": "assoderete",
+      "num_guesses": 3,
+      "prior": 0.000010999918674647802,
+      "guesses": [
+        "sinceriate",
+        "emorragica",
+        "assoderete"
+      ]
+    },
+    {
+      "word": "interagiva",
+      "num_guesses": 3,
+      "prior": 0.00002110377298941061,
+      "guesses": [
+        "sinceriate",
+        "inalazioni",
+        "interagiva"
+      ]
+    },
+    {
+      "word": "depotenzia",
+      "num_guesses": 3,
+      "prior": 0.000021172251721404564,
+      "guesses": [
+        "sinceriate",
+        "intendenza",
+        "depotenzia"
+      ]
+    },
+    {
+      "word": "diffondono",
+      "num_guesses": 2,
+      "prior": 0.00004764071455277478,
+      "guesses": [
+        "sinceriate",
+        "diffondono"
+      ]
+    },
+    {
+      "word": "detestaste",
+      "num_guesses": 3,
+      "prior": 0.000011505258051836776,
+      "guesses": [
+        "sinceriate",
+        "svaporasse",
+        "detestaste"
+      ]
+    },
+    {
+      "word": "adombrassi",
+      "num_guesses": 3,
+      "prior": 9.419384150090792e-6,
+      "guesses": [
+        "sinceriate",
+        "abbarrarsi",
+        "adombrassi"
+      ]
+    },
+    {
+      "word": "compensate",
+      "num_guesses": 2,
+      "prior": 0.000043992191318526385,
+      "guesses": [
+        "sinceriate",
+        "compensate"
+      ]
+    },
+    {
+      "word": "nevralgici",
+      "num_guesses": 3,
+      "prior": 0.00003405498284534839,
+      "guesses": [
+        "sinceriate",
+        "accompagnò",
+        "nevralgici"
+      ]
+    },
+    {
+      "word": "siniscalco",
+      "num_guesses": 2,
+      "prior": 0.000045085087733492996,
+      "guesses": [
+        "sinceriate",
+        "siniscalco"
+      ]
+    },
+    {
+      "word": "apprettati",
+      "num_guesses": 3,
+      "prior": 0.000015870494889001404,
+      "guesses": [
+        "sinceriate",
+        "autopilota",
+        "apprettati"
+      ]
+    },
+    {
+      "word": "instruendo",
+      "num_guesses": 3,
+      "prior": 0.000019845627029509282,
+      "guesses": [
+        "sinceriate",
+        "persistono",
+        "instruendo"
+      ]
+    },
+    {
+      "word": "simpatizzi",
+      "num_guesses": 3,
+      "prior": 0.000019684691187365287,
+      "guesses": [
+        "sinceriate",
+        "variazioni",
+        "simpatizzi"
+      ]
+    },
+    {
+      "word": "abbruscare",
+      "num_guesses": 3,
+      "prior": 0.000013276283382480374,
+      "guesses": [
+        "sinceriate",
+        "massacrare",
+        "abbruscare"
+      ]
+    },
+    {
+      "word": "principato",
+      "num_guesses": 3,
+      "prior": 0.00007138853634720927,
+      "guesses": [
+        "sinceriate",
+        "bianconeri",
+        "principato"
+      ]
+    },
+    {
+      "word": "convitaste",
+      "num_guesses": 3,
+      "prior": 0.00001019368561509186,
+      "guesses": [
+        "sinceriate",
+        "confidaste",
+        "convitaste"
+      ]
+    },
+    {
+      "word": "necrosante",
+      "num_guesses": 2,
+      "prior": 0.000019878383138111944,
+      "guesses": [
+        "sinceriate",
+        "necrosante"
+      ]
+    },
+    {
+      "word": "accecavano",
+      "num_guesses": 3,
+      "prior": 0.000021381414953322446,
+      "guesses": [
+        "sinceriate",
+        "accadevano",
+        "accecavano"
+      ]
+    },
+    {
+      "word": "rimeditati",
+      "num_guesses": 3,
+      "prior": 0.000018207276257609152,
+      "guesses": [
+        "sinceriate",
+        "compratori",
+        "rimeditati"
+      ]
+    },
+    {
+      "word": "smucciasse",
+      "num_guesses": 3,
+      "prior": 9.849280628386263e-6,
+      "guesses": [
+        "sinceriate",
+        "accompagna",
+        "smucciasse"
+      ]
+    },
+    {
+      "word": "sigillanti",
+      "num_guesses": 2,
+      "prior": 0.000021829041690533347,
+      "guesses": [
+        "sinceriate",
+        "sigillanti"
+      ]
+    },
+    {
+      "word": "suggerenti",
+      "num_guesses": 3,
+      "prior": 0.000015409862619000184,
+      "guesses": [
+        "sinceriate",
+        "sofferenti",
+        "suggerenti"
+      ]
+    },
+    {
+      "word": "cicatrizzi",
+      "num_guesses": 3,
+      "prior": 0.000017241365748586744,
+      "guesses": [
+        "sinceriate",
+        "lavoratori",
+        "cicatrizzi"
+      ]
+    },
+    {
+      "word": "trattenuto",
+      "num_guesses": 3,
+      "prior": 0.000058546264780187554,
+      "guesses": [
+        "sinceriate",
+        "parlamento",
+        "trattenuto"
+      ]
+    },
+    {
+      "word": "estimative",
+      "num_guesses": 2,
+      "prior": 0.000025505963470752362,
+      "guesses": [
+        "sinceriate",
+        "estimative"
+      ]
+    },
+    {
+      "word": "puntazioni",
+      "num_guesses": 3,
+      "prior": 0.000016059525098749397,
+      "guesses": [
+        "sinceriate",
+        "vantazioni",
+        "puntazioni"
+      ]
+    },
+    {
+      "word": "preludiati",
+      "num_guesses": 3,
+      "prior": 9.824533379280365e-6,
+      "guesses": [
+        "sinceriate",
+        "lampadario",
+        "preludiati"
+      ]
+    },
+    {
+      "word": "segnoreggi",
+      "num_guesses": 2,
+      "prior": 0.000010477841242642224,
+      "guesses": [
+        "sinceriate",
+        "segnoreggi"
+      ]
+    },
+    {
+      "word": "imbraccerò",
+      "num_guesses": 3,
+      "prior": 9.13816619282302e-6,
+      "guesses": [
+        "sinceriate",
+        "accalorerà",
+        "imbraccerò"
+      ]
+    },
+    {
+      "word": "stillicidi",
+      "num_guesses": 3,
+      "prior": 0.000025669743475323533,
+      "guesses": [
+        "sinceriate",
+        "stilistico",
+        "stillicidi"
+      ]
+    },
+    {
+      "word": "appellasse",
+      "num_guesses": 3,
+      "prior": 0.000027711570058257922,
+      "guesses": [
+        "sinceriate",
+        "gabellasse",
+        "appellasse"
+      ]
+    },
+    {
+      "word": "verseggiai",
+      "num_guesses": 2,
+      "prior": 0.000019622568634596803,
+      "guesses": [
+        "sinceriate",
+        "verseggiai"
+      ]
+    },
+    {
+      "word": "cantarellò",
+      "num_guesses": 3,
+      "prior": 0.00001414068599941446,
+      "guesses": [
+        "sinceriate",
+        "contorceva",
+        "cantarellò"
+      ]
+    },
+    {
+      "word": "emulatrice",
+      "num_guesses": 3,
+      "prior": 0.000023822336204492834,
+      "guesses": [
+        "sinceriate",
+        "predatrice",
+        "emulatrice"
+      ]
+    },
+    {
+      "word": "conquidere",
+      "num_guesses": 3,
+      "prior": 0.000028581369447391336,
+      "guesses": [
+        "sinceriate",
+        "convincere",
+        "conquidere"
+      ]
+    },
+    {
+      "word": "pemfigoidi",
+      "num_guesses": 2,
+      "prior": 0.00001722033642450823,
+      "guesses": [
+        "sinceriate",
+        "pemfigoidi"
+      ]
+    },
+    {
+      "word": "trevigiani",
+      "num_guesses": 3,
+      "prior": 0.000032275800093871674,
+      "guesses": [
+        "sinceriate",
+        "avverranno",
+        "trevigiani"
+      ]
+    },
+    {
+      "word": "invarianti",
+      "num_guesses": 3,
+      "prior": 0.00004200898868539348,
+      "guesses": [
+        "sinceriate",
+        "marginando",
+        "invarianti"
+      ]
+    },
+    {
+      "word": "svoltavano",
+      "num_guesses": 3,
+      "prior": 0.000019891721362915192,
+      "guesses": [
+        "sinceriate",
+        "manipolano",
+        "svoltavano"
+      ]
+    },
+    {
+      "word": "arpionasse",
+      "num_guesses": 3,
+      "prior": 8.616745888540097e-6,
+      "guesses": [
+        "sinceriate",
+        "ragionasse",
+        "arpionasse"
+      ]
+    },
+    {
+      "word": "strapotere",
+      "num_guesses": 2,
+      "prior": 0.000036587386082392063,
+      "guesses": [
+        "sinceriate",
+        "strapotere"
+      ]
+    },
+    {
+      "word": "assoldammo",
+      "num_guesses": 3,
+      "prior": 0.000012760364628182375,
+      "guesses": [
+        "sinceriate",
+        "abbassammo",
+        "assoldammo"
+      ]
+    },
+    {
+      "word": "sconoscono",
+      "num_guesses": 2,
+      "prior": 0.00002287672496159351,
+      "guesses": [
+        "sinceriate",
+        "sconoscono"
+      ]
+    },
+    {
+      "word": "dimezzasse",
+      "num_guesses": 3,
+      "prior": 0.0000141464766180635,
+      "guesses": [
+        "sinceriate",
+        "disagevole",
+        "dimezzasse"
+      ]
+    },
+    {
+      "word": "marinavano",
+      "num_guesses": 3,
+      "prior": 0.000014413895575713385,
+      "guesses": [
+        "sinceriate",
+        "arrogavamo",
+        "marinavano"
+      ]
+    },
+    {
+      "word": "rituffiamo",
+      "num_guesses": 3,
+      "prior": 0.000012552694815366691,
+      "guesses": [
+        "sinceriate",
+        "rimostrata",
+        "rituffiamo"
+      ]
+    },
+    {
+      "word": "risalivamo",
+      "num_guesses": 2,
+      "prior": 0.000019664587367777185,
+      "guesses": [
+        "sinceriate",
+        "risalivamo"
+      ]
+    },
+    {
+      "word": "frumentati",
+      "num_guesses": 4,
+      "prior": 9.748756720066837e-6,
+      "guesses": [
+        "sinceriate",
+        "tormentati",
+        "rammentati",
+        "frumentati"
+      ]
+    },
+    {
+      "word": "delinquono",
+      "num_guesses": 3,
+      "prior": 0.000024149242329869874,
+      "guesses": [
+        "sinceriate",
+        "indulgendo",
+        "delinquono"
+      ]
+    },
+    {
+      "word": "scuoteremo",
+      "num_guesses": 3,
+      "prior": 0.00001557871206790088,
+      "guesses": [
+        "sinceriate",
+        "professore",
+        "scuoteremo"
+      ]
+    },
+    {
+      "word": "scapsulano",
+      "num_guesses": 3,
+      "prior": 0.0000138508698859871,
+      "guesses": [
+        "sinceriate",
+        "spalancano",
+        "scapsulano"
+      ]
+    },
+    {
+      "word": "impartirei",
+      "num_guesses": 3,
+      "prior": 0.000010128475449246146,
+      "guesses": [
+        "sinceriate",
+        "avvertirai",
+        "impartirei"
+      ]
+    },
+    {
+      "word": "sarcofaghi",
+      "num_guesses": 2,
+      "prior": 0.00003424208131267888,
+      "guesses": [
+        "sinceriate",
+        "sarcofaghi"
+      ]
+    },
+    {
+      "word": "umoristica",
+      "num_guesses": 3,
+      "prior": 0.00003918409111617985,
+      "guesses": [
+        "sinceriate",
+        "plasmatico",
+        "umoristica"
+      ]
+    },
+    {
+      "word": "detronasse",
+      "num_guesses": 3,
+      "prior": 8.778675928679145e-6,
+      "guesses": [
+        "sinceriate",
+        "alternasse",
+        "detronasse"
+      ]
+    },
+    {
+      "word": "svaporando",
+      "num_guesses": 2,
+      "prior": 0.000027530029769520737,
+      "guesses": [
+        "sinceriate",
+        "svaporando"
+      ]
+    },
+    {
+      "word": "subbissino",
+      "num_guesses": 3,
+      "prior": 8.892722940189857e-6,
+      "guesses": [
+        "sinceriate",
+        "subspinosi",
+        "subbissino"
+      ]
+    },
+    {
+      "word": "agganciamo",
+      "num_guesses": 3,
+      "prior": 0.00001539751495680878,
+      "guesses": [
+        "sinceriate",
+        "cavalcammo",
+        "agganciamo"
+      ]
+    },
+    {
+      "word": "aggreghino",
+      "num_guesses": 3,
+      "prior": 0.00001963349695551543,
+      "guesses": [
+        "sinceriate",
+        "anglofobia",
+        "aggreghino"
+      ]
+    },
+    {
+      "word": "avvalorano",
+      "num_guesses": 3,
+      "prior": 0.00003399030416264104,
+      "guesses": [
+        "sinceriate",
+        "paludavano",
+        "avvalorano"
+      ]
+    },
+    {
+      "word": "mareggiato",
+      "num_guesses": 3,
+      "prior": 0.000015796761176541234,
+      "guesses": [
+        "sinceriate",
+        "garantismo",
+        "mareggiato"
+      ]
+    },
+    {
+      "word": "ingrugnato",
+      "num_guesses": 3,
+      "prior": 0.00002253592218904699,
+      "guesses": [
+        "sinceriate",
+        "zampognata",
+        "ingrugnato"
+      ]
+    },
+    {
+      "word": "avvolgesti",
+      "num_guesses": 3,
+      "prior": 0.000013555200113408901,
+      "guesses": [
+        "sinceriate",
+        "assolvesti",
+        "avvolgesti"
+      ]
+    },
+    {
+      "word": "permarrete",
+      "num_guesses": 3,
+      "prior": 0.00001031931308491978,
+      "guesses": [
+        "sinceriate",
+        "tradurrete",
+        "permarrete"
+      ]
+    },
+    {
+      "word": "appresentò",
+      "num_guesses": 3,
+      "prior": 0.000026528749833569728,
+      "guesses": [
+        "sinceriate",
+        "attraverso",
+        "appresentò"
+      ]
+    },
+    {
+      "word": "funzionerà",
+      "num_guesses": 2,
+      "prior": 0.000038091256956343205,
+      "guesses": [
+        "sinceriate",
+        "funzionerà"
+      ]
+    },
+    {
+      "word": "segreganti",
+      "num_guesses": 2,
+      "prior": 0.000021425580400719472,
+      "guesses": [
+        "sinceriate",
+        "segreganti"
+      ]
+    },
+    {
+      "word": "svegliando",
+      "num_guesses": 2,
+      "prior": 0.0000320224534234508,
+      "guesses": [
+        "sinceriate",
+        "svegliando"
+      ]
+    },
+    {
+      "word": "attendente",
+      "num_guesses": 3,
+      "prior": 0.000035521689540761045,
+      "guesses": [
+        "sinceriate",
+        "pugnalando",
+        "attendente"
+      ]
+    },
+    {
+      "word": "raccontate",
+      "num_guesses": 2,
+      "prior": 0.00004456735222559942,
+      "guesses": [
+        "sinceriate",
+        "raccontate"
+      ]
+    },
+    {
+      "word": "perpetuavi",
+      "num_guesses": 3,
+      "prior": 0.000013609667765677312,
+      "guesses": [
+        "sinceriate",
+        "vertebrali",
+        "perpetuavi"
+      ]
+    },
+    {
+      "word": "riappoggia",
+      "num_guesses": 3,
+      "prior": 0.000017483578861048134,
+      "guesses": [
+        "sinceriate",
+        "dopoguerra",
+        "riappoggia"
+      ]
+    },
+    {
+      "word": "riportammo",
+      "num_guesses": 3,
+      "prior": 0.00002986180800032852,
+      "guesses": [
+        "sinceriate",
+        "timbratura",
+        "riportammo"
+      ]
+    },
+    {
+      "word": "spiccavamo",
+      "num_guesses": 2,
+      "prior": 0.000011256708864067354,
+      "guesses": [
+        "sinceriate",
+        "spiccavamo"
+      ]
+    },
+    {
+      "word": "norbertino",
+      "num_guesses": 2,
+      "prior": 9.873781629315942e-6,
+      "guesses": [
+        "sinceriate",
+        "norbertino"
+      ]
+    },
+    {
+      "word": "gestiscano",
+      "num_guesses": 3,
+      "prior": 0.00002292306861498381,
+      "guesses": [
+        "sinceriate",
+        "coesistano",
+        "gestiscano"
+      ]
+    },
+    {
+      "word": "scodellano",
+      "num_guesses": 3,
+      "prior": 0.000016038568709240174,
+      "guesses": [
+        "sinceriate",
+        "scapezzano",
+        "scodellano"
+      ]
+    },
+    {
+      "word": "scostarono",
+      "num_guesses": 3,
+      "prior": 0.00002840061598746221,
+      "guesses": [
+        "sinceriate",
+        "starnutano",
+        "scostarono"
+      ]
+    },
+    {
+      "word": "delineassi",
+      "num_guesses": 3,
+      "prior": 0.000011108542614928104,
+      "guesses": [
+        "sinceriate",
+        "avellinesi",
+        "delineassi"
+      ]
+    },
+    {
+      "word": "svolazzate",
+      "num_guesses": 3,
+      "prior": 0.000013208466809381902,
+      "guesses": [
+        "sinceriate",
+        "poliziotto",
+        "svolazzate"
+      ]
+    },
+    {
+      "word": "assorbente",
+      "num_guesses": 3,
+      "prior": 0.00004938590372497662,
+      "guesses": [
+        "sinceriate",
+        "attergando",
+        "assorbente"
+      ]
+    },
+    {
+      "word": "spaurivano",
+      "num_guesses": 3,
+      "prior": 0.000014493535206604894,
+      "guesses": [
+        "sinceriate",
+        "sbarravamo",
+        "spaurivano"
+      ]
+    },
+    {
+      "word": "ministrerà",
+      "num_guesses": 3,
+      "prior": 0.000015216019147212329,
+      "guesses": [
+        "sinceriate",
+        "conformità",
+        "ministrerà"
+      ]
+    },
+    {
+      "word": "tenderebbe",
+      "num_guesses": 3,
+      "prior": 0.00004069690340982846,
+      "guesses": [
+        "sinceriate",
+        "spettacolo",
+        "tenderebbe"
+      ]
+    },
+    {
+      "word": "teofillina",
+      "num_guesses": 3,
+      "prior": 0.000027056134200433267,
+      "guesses": [
+        "sinceriate",
+        "definitiva",
+        "teofillina"
+      ]
+    },
+    {
+      "word": "sacramente",
+      "num_guesses": 3,
+      "prior": 0.00001830118696398797,
+      "guesses": [
+        "sinceriate",
+        "conoscenza",
+        "sacramente"
+      ]
+    },
+    {
+      "word": "ammattisco",
+      "num_guesses": 3,
+      "prior": 0.000012905600291843419,
+      "guesses": [
+        "sinceriate",
+        "compatisco",
+        "ammattisco"
+      ]
+    },
+    {
+      "word": "costatasse",
+      "num_guesses": 3,
+      "prior": 0.00001270748836954367,
+      "guesses": [
+        "sinceriate",
+        "appaltante",
+        "costatasse"
+      ]
+    },
+    {
+      "word": "invaghisci",
+      "num_guesses": 3,
+      "prior": 0.000011621889241083066,
+      "guesses": [
+        "sinceriate",
+        "insignisca",
+        "invaghisci"
+      ]
+    },
+    {
+      "word": "distillato",
+      "num_guesses": 3,
+      "prior": 0.00004474015555865657,
+      "guesses": [
+        "sinceriate",
+        "assalitori",
+        "distillato"
+      ]
+    },
+    {
+      "word": "rimbeccava",
+      "num_guesses": 2,
+      "prior": 0.000020647558433800162,
+      "guesses": [
+        "sinceriate",
+        "rimbeccava"
+      ]
+    },
+    {
+      "word": "propiziava",
+      "num_guesses": 3,
+      "prior": 0.000018130727715529537,
+      "guesses": [
+        "sinceriate",
+        "orologiaia",
+        "propiziava"
+      ]
+    },
+    {
+      "word": "squagliano",
+      "num_guesses": 3,
+      "prior": 0.000022291716970552942,
+      "guesses": [
+        "sinceriate",
+        "supponiamo",
+        "squagliano"
+      ]
+    },
+    {
+      "word": "infittendo",
+      "num_guesses": 3,
+      "prior": 0.000022090100149795202,
+      "guesses": [
+        "sinceriate",
+        "definitivo",
+        "infittendo"
+      ]
+    },
+    {
+      "word": "tecnopatie",
+      "num_guesses": 2,
+      "prior": 0.00002210176540897501,
+      "guesses": [
+        "sinceriate",
+        "tecnopatie"
+      ]
+    },
+    {
+      "word": "incasinare",
+      "num_guesses": 2,
+      "prior": 0.000020267948163875472,
+      "guesses": [
+        "sinceriate",
+        "incasinare"
+      ]
+    },
+    {
+      "word": "defraudati",
+      "num_guesses": 3,
+      "prior": 0.00003098614263163199,
+      "guesses": [
+        "sinceriate",
+        "reputarono",
+        "defraudati"
+      ]
+    },
+    {
+      "word": "granducati",
+      "num_guesses": 3,
+      "prior": 0.00002160933233897444,
+      "guesses": [
+        "sinceriate",
+        "morfologia",
+        "granducati"
+      ]
+    },
+    {
+      "word": "riscaldato",
+      "num_guesses": 3,
+      "prior": 0.00004980206437710796,
+      "guesses": [
+        "sinceriate",
+        "ostacolata",
+        "riscaldato"
+      ]
+    },
+    {
+      "word": "retrotreni",
+      "num_guesses": 3,
+      "prior": 0.00001645735578411621,
+      "guesses": [
+        "sinceriate",
+        "premetterò",
+        "retrotreni"
+      ]
+    },
+    {
+      "word": "ribosomale",
+      "num_guesses": 3,
+      "prior": 0.000018200946226089912,
+      "guesses": [
+        "sinceriate",
+        "digrossare",
+        "ribosomale"
+      ]
+    },
+    {
+      "word": "equivocata",
+      "num_guesses": 3,
+      "prior": 0.00002097606976216939,
+      "guesses": [
+        "sinceriate",
+        "decapitato",
+        "equivocata"
+      ]
+    },
+    {
+      "word": "tolstoiane",
+      "num_guesses": 2,
+      "prior": 0.000017215063008598024,
+      "guesses": [
+        "sinceriate",
+        "tolstoiane"
+      ]
+    },
+    {
+      "word": "trapasserà",
+      "num_guesses": 3,
+      "prior": 0.00002394200235140227,
+      "guesses": [
+        "sinceriate",
+        "sottopassa",
+        "trapasserà"
+      ]
+    },
+    {
+      "word": "trotskismo",
+      "num_guesses": 3,
+      "prior": 0.000021158395523849763,
+      "guesses": [
+        "sinceriate",
+        "trotzkismo",
+        "trotskismo"
+      ]
+    },
+    {
+      "word": "infastidii",
+      "num_guesses": 3,
+      "prior": 0.000011853777965346735,
+      "guesses": [
+        "sinceriate",
+        "postazioni",
+        "infastidii"
+      ]
+    },
+    {
+      "word": "alterniate",
+      "num_guesses": 3,
+      "prior": 9.696898688692552e-6,
+      "guesses": [
+        "sinceriate",
+        "prenotiate",
+        "alterniate"
+      ]
+    },
+    {
+      "word": "lapidifico",
+      "num_guesses": 3,
+      "prior": 0.000014781209510972237,
+      "guesses": [
+        "sinceriate",
+        "compiaccia",
+        "lapidifico"
+      ]
+    },
+    {
+      "word": "imbrunenti",
+      "num_guesses": 3,
+      "prior": 0.000010609089473237544,
+      "guesses": [
+        "sinceriate",
+        "prominenti",
+        "imbrunenti"
+      ]
+    },
+    {
+      "word": "carburanti",
+      "num_guesses": 2,
+      "prior": 0.000045277540778724196,
+      "guesses": [
+        "sinceriate",
+        "carburanti"
+      ]
+    },
+    {
+      "word": "castravano",
+      "num_guesses": 3,
+      "prior": 0.00001616948505242437,
+      "guesses": [
+        "sinceriate",
+        "trascurano",
+        "castravano"
+      ]
+    },
+    {
+      "word": "permutando",
+      "num_guesses": 3,
+      "prior": 0.00002774606215478275,
+      "guesses": [
+        "sinceriate",
+        "premunendo",
+        "permutando"
+      ]
+    },
+    {
+      "word": "sovveniste",
+      "num_guesses": 2,
+      "prior": 0.000013882207016131734,
+      "guesses": [
+        "sinceriate",
+        "sovveniste"
+      ]
+    },
+    {
+      "word": "assesterei",
+      "num_guesses": 3,
+      "prior": 9.104692156635175e-6,
+      "guesses": [
+        "sinceriate",
+        "osserverei",
+        "assesterei"
+      ]
+    },
+    {
+      "word": "sommuovono",
+      "num_guesses": 3,
+      "prior": 0.00002100590781990753,
+      "guesses": [
+        "sinceriate",
+        "suppongono",
+        "sommuovono"
+      ]
+    },
+    {
+      "word": "instruisco",
+      "num_guesses": 2,
+      "prior": 9.589724314915874e-6,
+      "guesses": [
+        "sinceriate",
+        "instruisco"
+      ]
+    },
+    {
+      "word": "sabbionaia",
+      "num_guesses": 3,
+      "prior": 0.000011271103679484265,
+      "guesses": [
+        "sinceriate",
+        "sminuivano",
+        "sabbionaia"
+      ]
+    },
+    {
+      "word": "prefiggere",
+      "num_guesses": 3,
+      "prior": 0.00003072878562166604,
+      "guesses": [
+        "sinceriate",
+        "progredire",
+        "prefiggere"
+      ]
+    },
+    {
+      "word": "combaciava",
+      "num_guesses": 3,
+      "prior": 0.000024460644271527895,
+      "guesses": [
+        "sinceriate",
+        "incolpammo",
+        "combaciava"
+      ]
+    },
+    {
+      "word": "ecologismo",
+      "num_guesses": 2,
+      "prior": 0.000021798339681933508,
+      "guesses": [
+        "sinceriate",
+        "ecologismo"
+      ]
+    },
+    {
+      "word": "acquisirei",
+      "num_guesses": 3,
+      "prior": 9.104692156635175e-6,
+      "guesses": [
+        "sinceriate",
+        "requisisca",
+        "acquisirei"
+      ]
+    },
+    {
+      "word": "condannate",
+      "num_guesses": 2,
+      "prior": 0.00004957336249001797,
+      "guesses": [
+        "sinceriate",
+        "condannate"
+      ]
+    },
+    {
+      "word": "consacrati",
+      "num_guesses": 2,
+      "prior": 0.000049177105839242075,
+      "guesses": [
+        "sinceriate",
+        "consacrati"
+      ]
+    },
+    {
+      "word": "tramuterei",
+      "num_guesses": 3,
+      "prior": 0.000010786005149305867,
+      "guesses": [
+        "sinceriate",
+        "arrembando",
+        "tramuterei"
+      ]
+    },
+    {
+      "word": "ingrappato",
+      "num_guesses": 3,
+      "prior": 9.298582836498277e-6,
+      "guesses": [
+        "sinceriate",
+        "zampognata",
+        "ingrappato"
+      ]
+    },
+    {
+      "word": "spippolato",
+      "num_guesses": 3,
+      "prior": 9.32937351999144e-6,
+      "guesses": [
+        "sinceriate",
+        "sbolzonava",
+        "spippolato"
+      ]
+    },
+    {
+      "word": "intelaiate",
+      "num_guesses": 3,
+      "prior": 0.000021914100372928,
+      "guesses": [
+        "sinceriate",
+        "intendiate",
+        "intelaiate"
+      ]
+    },
+    {
+      "word": "invertenti",
+      "num_guesses": 3,
+      "prior": 0.00001494733223586679,
+      "guesses": [
+        "sinceriate",
+        "detergenti",
+        "invertenti"
+      ]
+    },
+    {
+      "word": "assolviate",
+      "num_guesses": 3,
+      "prior": 0.000014134885880153385,
+      "guesses": [
+        "sinceriate",
+        "meraviglia",
+        "assolviate"
+      ]
+    },
+    {
+      "word": "connettore",
+      "num_guesses": 3,
+      "prior": 0.000030399277167241017,
+      "guesses": [
+        "sinceriate",
+        "aggiungere",
+        "connettore"
+      ]
+    },
+    {
+      "word": "prevedessi",
+      "num_guesses": 3,
+      "prior": 0.00001958963678255939,
+      "guesses": [
+        "sinceriate",
+        "progredirà",
+        "prevedessi"
+      ]
+    },
+    {
+      "word": "angosciati",
+      "num_guesses": 2,
+      "prior": 0.000030778005813901256,
+      "guesses": [
+        "sinceriate",
+        "angosciati"
+      ]
+    },
+    {
+      "word": "merlettate",
+      "num_guesses": 3,
+      "prior": 0.00001745870880462464,
+      "guesses": [
+        "sinceriate",
+        "rappattumò",
+        "merlettate"
+      ]
+    },
+    {
+      "word": "semilibere",
+      "num_guesses": 3,
+      "prior": 0.00001614227499485973,
+      "guesses": [
+        "sinceriate",
+        "semirigide",
+        "semilibere"
+      ]
+    },
+    {
+      "word": "professano",
+      "num_guesses": 2,
+      "prior": 0.00004738619402880395,
+      "guesses": [
+        "sinceriate",
+        "professano"
+      ]
+    },
+    {
+      "word": "collassano",
+      "num_guesses": 3,
+      "prior": 0.000019965178759135986,
+      "guesses": [
+        "sinceriate",
+        "compulsano",
+        "collassano"
+      ]
+    },
+    {
+      "word": "giubiliamo",
+      "num_guesses": 3,
+      "prior": 0.00001617287346115706,
+      "guesses": [
+        "sinceriate",
+        "giudiziali",
+        "giubiliamo"
+      ]
+    },
+    {
+      "word": "acutizzato",
+      "num_guesses": 3,
+      "prior": 0.00002174678200960672,
+      "guesses": [
+        "sinceriate",
+        "acclamando",
+        "acutizzato"
+      ]
+    },
+    {
+      "word": "concorrerò",
+      "num_guesses": 3,
+      "prior": 0.00001877020122086893,
+      "guesses": [
+        "sinceriate",
+        "concorrerà",
+        "concorrerò"
+      ]
+    },
+    {
+      "word": "translatai",
+      "num_guesses": 3,
+      "prior": 0.00001031931308491978,
+      "guesses": [
+        "sinceriate",
+        "attivarono",
+        "translatai"
+      ]
+    },
+    {
+      "word": "intesserai",
+      "num_guesses": 3,
+      "prior": 9.67054803082466e-6,
+      "guesses": [
+        "sinceriate",
+        "interessai",
+        "intesserai"
+      ]
+    },
+    {
+      "word": "zampettate",
+      "num_guesses": 3,
+      "prior": 9.001202859631988e-6,
+      "guesses": [
+        "sinceriate",
+        "gambettate",
+        "zampettate"
+      ]
+    },
+    {
+      "word": "rifigurata",
+      "num_guesses": 3,
+      "prior": 0.000011108542614928104,
+      "guesses": [
+        "sinceriate",
+        "mobilitino",
+        "rifigurata"
+      ]
+    },
+    {
+      "word": "asteggiano",
+      "num_guesses": 3,
+      "prior": 0.000017847537776431192,
+      "guesses": [
+        "sinceriate",
+        "teodosiano",
+        "asteggiano"
+      ]
+    },
+    {
+      "word": "sottolinea",
+      "num_guesses": 2,
+      "prior": 0.00006896006397907759,
+      "guesses": [
+        "sinceriate",
+        "sottolinea"
+      ]
+    },
+    {
+      "word": "osteggiava",
+      "num_guesses": 3,
+      "prior": 0.000026787962968989006,
+      "guesses": [
+        "sinceriate",
+        "aspettiamo",
+        "osteggiava"
+      ]
+    },
+    {
+      "word": "sapindacea",
+      "num_guesses": 3,
+      "prior": 0.000011505258051836776,
+      "guesses": [
+        "sinceriate",
+        "sconveniva",
+        "sapindacea"
+      ]
+    },
+    {
+      "word": "tarderanno",
+      "num_guesses": 3,
+      "prior": 0.00003452197598212104,
+      "guesses": [
+        "sinceriate",
+        "fruttidoro",
+        "tarderanno"
+      ]
+    },
+    {
+      "word": "inneggiati",
+      "num_guesses": 3,
+      "prior": 0.000013596132514855293,
+      "guesses": [
+        "sinceriate",
+        "maneggiati",
+        "inneggiati"
+      ]
+    },
+    {
+      "word": "immusoniti",
+      "num_guesses": 3,
+      "prior": 0.00001739337501558568,
+      "guesses": [
+        "sinceriate",
+        "instituito",
+        "immusoniti"
+      ]
+    },
+    {
+      "word": "partenendo",
+      "num_guesses": 3,
+      "prior": 0.000014975081187294737,
+      "guesses": [
+        "sinceriate",
+        "proromperà",
+        "partenendo"
+      ]
+    },
+    {
+      "word": "rivolgersi",
+      "num_guesses": 3,
+      "prior": 0.00006991995301698925,
+      "guesses": [
+        "sinceriate",
+        "risolversi",
+        "rivolgersi"
+      ]
+    },
+    {
+      "word": "abbellisca",
+      "num_guesses": 2,
+      "prior": 0.000022426153791998473,
+      "guesses": [
+        "sinceriate",
+        "abbellisca"
+      ]
+    },
+    {
+      "word": "anticodone",
+      "num_guesses": 3,
+      "prior": 0.000014657809857555448,
+      "guesses": [
+        "sinceriate",
+        "tabacchine",
+        "anticodone"
+      ]
+    },
+    {
+      "word": "invieresti",
+      "num_guesses": 2,
+      "prior": 0.000010458544903081231,
+      "guesses": [
+        "sinceriate",
+        "invieresti"
+      ]
+    },
+    {
+      "word": "sottintesi",
+      "num_guesses": 2,
+      "prior": 0.00004041684928666672,
+      "guesses": [
+        "sinceriate",
+        "sottintesi"
+      ]
+    },
+    {
+      "word": "sceverando",
+      "num_guesses": 2,
+      "prior": 0.000028346271291443726,
+      "guesses": [
+        "sinceriate",
+        "sceverando"
+      ]
+    },
+    {
+      "word": "irruvidiva",
+      "num_guesses": 3,
+      "prior": 8.699217821723587e-6,
+      "guesses": [
+        "sinceriate",
+        "auguravamo",
+        "irruvidiva"
+      ]
+    },
+    {
+      "word": "decentrerà",
+      "num_guesses": 2,
+      "prior": 0.000010150398761483136,
+      "guesses": [
+        "sinceriate",
+        "decentrerà"
+      ]
+    },
+    {
+      "word": "abbecedari",
+      "num_guesses": 3,
+      "prior": 0.00001991829098752908,
+      "guesses": [
+        "sinceriate",
+        "ceroferari",
+        "abbecedari"
+      ]
+    },
+    {
+      "word": "protestati",
+      "num_guesses": 3,
+      "prior": 0.00002740957389165037,
+      "guesses": [
+        "sinceriate",
+        "apprestati",
+        "protestati"
+      ]
+    },
+    {
+      "word": "pedantismo",
+      "num_guesses": 2,
+      "prior": 0.000027494844148334876,
+      "guesses": [
+        "sinceriate",
+        "pedantismo"
+      ]
+    },
+    {
+      "word": "mirmilloni",
+      "num_guesses": 3,
+      "prior": 0.0000165293751237059,
+      "guesses": [
+        "sinceriate",
+        "migliorino",
+        "mirmilloni"
+      ]
+    },
+    {
+      "word": "tragettata",
+      "num_guesses": 3,
+      "prior": 0.000010534892753549868,
+      "guesses": [
+        "sinceriate",
+        "talbotipia",
+        "tragettata"
+      ]
+    },
+    {
+      "word": "supportano",
+      "num_guesses": 3,
+      "prior": 0.00003256873273510965,
+      "guesses": [
+        "sinceriate",
+        "sopportano",
+        "supportano"
+      ]
+    },
+    {
+      "word": "estimativa",
+      "num_guesses": 3,
+      "prior": 0.000032419290435963984,
+      "guesses": [
+        "sinceriate",
+        "espositiva",
+        "estimativa"
+      ]
+    },
+    {
+      "word": "impinguata",
+      "num_guesses": 3,
+      "prior": 0.000022123087972721608,
+      "guesses": [
+        "sinceriate",
+        "immaginino",
+        "impinguata"
+      ]
+    },
+    {
+      "word": "compiegate",
+      "num_guesses": 3,
+      "prior": 0.000017143231310228965,
+      "guesses": [
+        "sinceriate",
+        "reputavano",
+        "compiegate"
+      ]
+    },
+    {
+      "word": "rallegrata",
+      "num_guesses": 3,
+      "prior": 0.00003396439874373963,
+      "guesses": [
+        "sinceriate",
+        "talbotipia",
+        "rallegrata"
+      ]
+    },
+    {
+      "word": "borsistica",
+      "num_guesses": 3,
+      "prior": 0.00002542163801295519,
+      "guesses": [
+        "sinceriate",
+        "plasmatico",
+        "borsistica"
+      ]
+    },
+    {
+      "word": "rimuginavo",
+      "num_guesses": 3,
+      "prior": 0.00002153119461119516,
+      "guesses": [
+        "sinceriate",
+        "impaginano",
+        "rimuginavo"
+      ]
+    },
+    {
+      "word": "producemmo",
+      "num_guesses": 3,
+      "prior": 0.000019194835976933687,
+      "guesses": [
+        "sinceriate",
+        "provocherà",
+        "producemmo"
+      ]
+    },
+    {
+      "word": "sigilliamo",
+      "num_guesses": 3,
+      "prior": 0.000014662826220762323,
+      "guesses": [
+        "sinceriate",
+        "simigliava",
+        "sigilliamo"
+      ]
+    },
+    {
+      "word": "immergenti",
+      "num_guesses": 3,
+      "prior": 0.00002089403994697836,
+      "guesses": [
+        "sinceriate",
+        "detergenti",
+        "immergenti"
+      ]
+    },
+    {
+      "word": "respirasti",
+      "num_guesses": 3,
+      "prior": 0.000012680716737610088,
+      "guesses": [
+        "sinceriate",
+        "gradiresti",
+        "respirasti"
+      ]
+    },
+    {
+      "word": "tracotante",
+      "num_guesses": 2,
+      "prior": 0.00003319402537231051,
+      "guesses": [
+        "sinceriate",
+        "tracotante"
+      ]
+    },
+    {
+      "word": "torneavano",
+      "num_guesses": 3,
+      "prior": 0.000013283733602313014,
+      "guesses": [
+        "sinceriate",
+        "tormentava",
+        "torneavano"
+      ]
+    },
+    {
+      "word": "mesolitica",
+      "num_guesses": 3,
+      "prior": 0.00002246358874946319,
+      "guesses": [
+        "sinceriate",
+        "emostatici",
+        "mesolitica"
+      ]
+    },
+    {
+      "word": "verdicanti",
+      "num_guesses": 3,
+      "prior": 0.000011183607166691461,
+      "guesses": [
+        "sinceriate",
+        "prevalenza",
+        "verdicanti"
+      ]
+    },
+    {
+      "word": "percussori",
+      "num_guesses": 2,
+      "prior": 0.000026154847537506425,
+      "guesses": [
+        "sinceriate",
+        "percussori"
+      ]
+    },
+    {
+      "word": "richiamerò",
+      "num_guesses": 3,
+      "prior": 0.000030402261291885475,
+      "guesses": [
+        "sinceriate",
+        "decomporrà",
+        "richiamerò"
+      ]
+    },
+    {
+      "word": "lestamente",
+      "num_guesses": 3,
+      "prior": 0.000028897575937713514,
+      "guesses": [
+        "sinceriate",
+        "assestammo",
+        "lestamente"
+      ]
+    },
+    {
+      "word": "giubilando",
+      "num_guesses": 3,
+      "prior": 0.000027556200960274763,
+      "guesses": [
+        "sinceriate",
+        "ingiuntivo",
+        "giubilando"
+      ]
+    },
+    {
+      "word": "opporranno",
+      "num_guesses": 3,
+      "prior": 0.00003083204327760171,
+      "guesses": [
+        "sinceriate",
+        "mormorando",
+        "opporranno"
+      ]
+    },
+    {
+      "word": "abitereste",
+      "num_guesses": 2,
+      "prior": 0.000012846591155311526,
+      "guesses": [
+        "sinceriate",
+        "abitereste"
+      ]
+    },
+    {
+      "word": "consuocera",
+      "num_guesses": 3,
+      "prior": 0.000016962389762697938,
+      "guesses": [
+        "sinceriate",
+        "consacrerà",
+        "consuocera"
+      ]
+    },
+    {
+      "word": "arruolando",
+      "num_guesses": 3,
+      "prior": 0.000022929778379732238,
+      "guesses": [
+        "sinceriate",
+        "arrogavamo",
+        "arruolando"
+      ]
+    },
+    {
+      "word": "istigarono",
+      "num_guesses": 3,
+      "prior": 0.000020771016732861998,
+      "guesses": [
+        "sinceriate",
+        "dimissiona",
+        "istigarono"
+      ]
+    },
+    {
+      "word": "ricrederai",
+      "num_guesses": 2,
+      "prior": 0.00001319320568622154,
+      "guesses": [
+        "sinceriate",
+        "ricrederai"
+      ]
+    },
+    {
+      "word": "prostrando",
+      "num_guesses": 3,
+      "prior": 0.000019611615914235208,
+      "guesses": [
+        "sinceriate",
+        "frustrando",
+        "prostrando"
+      ]
+    },
+    {
+      "word": "lontananti",
+      "num_guesses": 3,
+      "prior": 0.000017056508017406226,
+      "guesses": [
+        "sinceriate",
+        "dondolanti",
+        "lontananti"
+      ]
+    },
+    {
+      "word": "obiettasti",
+      "num_guesses": 3,
+      "prior": 9.070718476891469e-6,
+      "guesses": [
+        "sinceriate",
+        "assistetti",
+        "obiettasti"
+      ]
+    },
+    {
+      "word": "impiegassi",
+      "num_guesses": 3,
+      "prior": 0.000018691134278025366,
+      "guesses": [
+        "sinceriate",
+        "passeggiai",
+        "impiegassi"
+      ]
+    },
+    {
+      "word": "crisantemi",
+      "num_guesses": 3,
+      "prior": 0.00003338142488910226,
+      "guesses": [
+        "sinceriate",
+        "intrinseca",
+        "crisantemi"
+      ]
+    },
+    {
+      "word": "toglievano",
+      "num_guesses": 3,
+      "prior": 0.000041985003368586225,
+      "guesses": [
+        "sinceriate",
+        "meditavano",
+        "toglievano"
+      ]
+    },
+    {
+      "word": "prescolare",
+      "num_guesses": 2,
+      "prior": 0.00002960869275444633,
+      "guesses": [
+        "sinceriate",
+        "prescolare"
+      ]
+    },
+    {
+      "word": "ingarbugli",
+      "num_guesses": 3,
+      "prior": 0.000015284562549411515,
+      "guesses": [
+        "sinceriate",
+        "malignando",
+        "ingarbugli"
+      ]
+    },
+    {
+      "word": "iniziativa",
+      "num_guesses": 3,
+      "prior": 0.00008507376723277966,
+      "guesses": [
+        "sinceriate",
+        "manipolano",
+        "iniziativa"
+      ]
+    },
+    {
+      "word": "rescindano",
+      "num_guesses": 3,
+      "prior": 0.000012533973337811756,
+      "guesses": [
+        "sinceriate",
+        "descrivano",
+        "rescindano"
+      ]
+    },
+    {
+      "word": "crocchiano",
+      "num_guesses": 3,
+      "prior": 0.000016479408215951435,
+      "guesses": [
+        "sinceriate",
+        "draconiana",
+        "crocchiano"
+      ]
+    },
+    {
+      "word": "sonnolento",
+      "num_guesses": 2,
+      "prior": 0.000033678047024219864,
+      "guesses": [
+        "sinceriate",
+        "sonnolento"
+      ]
+    },
+    {
+      "word": "pavimentai",
+      "num_guesses": 3,
+      "prior": 0.000011980154942962029,
+      "guesses": [
+        "sinceriate",
+        "definitiva",
+        "pavimentai"
+      ]
+    },
+    {
+      "word": "cuoriformi",
+      "num_guesses": 3,
+      "prior": 0.00003141141905719965,
+      "guesses": [
+        "sinceriate",
+        "dolorifici",
+        "cuoriformi"
+      ]
+    },
+    {
+      "word": "ciancicato",
+      "num_guesses": 3,
+      "prior": 0.000015594416446644893,
+      "guesses": [
+        "sinceriate",
+        "ciondolati",
+        "ciancicato"
+      ]
+    },
+    {
+      "word": "adocchiato",
+      "num_guesses": 2,
+      "prior": 0.00003068578443856719,
+      "guesses": [
+        "sinceriate",
+        "adocchiato"
+      ]
+    },
+    {
+      "word": "rechereste",
+      "num_guesses": 3,
+      "prior": 0.000014834224665961948,
+      "guesses": [
+        "sinceriate",
+        "credereste",
+        "rechereste"
+      ]
+    },
+    {
+      "word": "zampognara",
+      "num_guesses": 3,
+      "prior": 0.000010870281063116631,
+      "guesses": [
+        "sinceriate",
+        "paludavano",
+        "zampognara"
+      ]
+    },
+    {
+      "word": "universale",
+      "num_guesses": 2,
+      "prior": 0.0000971336175288024,
+      "guesses": [
+        "sinceriate",
+        "universale"
+      ]
+    },
+    {
+      "word": "anglofobia",
+      "num_guesses": 3,
+      "prior": 0.000018833245893047027,
+      "guesses": [
+        "sinceriate",
+        "alloggiamo",
+        "anglofobia"
+      ]
+    },
+    {
+      "word": "smancerose",
+      "num_guesses": 2,
+      "prior": 0.000014550844287393495,
+      "guesses": [
+        "sinceriate",
+        "smancerose"
+      ]
+    },
+    {
+      "word": "cardiogene",
+      "num_guesses": 3,
+      "prior": 0.000012101413976072924,
+      "guesses": [
+        "sinceriate",
+        "graminacee",
+        "cardiogene"
+      ]
+    },
+    {
+      "word": "rivivevano",
+      "num_guesses": 3,
+      "prior": 0.00002350459128706981,
+      "guesses": [
+        "sinceriate",
+        "divergenze",
+        "rivivevano"
+      ]
+    },
+    {
+      "word": "sorridendo",
+      "num_guesses": 3,
+      "prior": 0.00006289614046559508,
+      "guesses": [
+        "sinceriate",
+        "riconsegnò",
+        "sorridendo"
+      ]
+    },
+    {
+      "word": "redarguita",
+      "num_guesses": 3,
+      "prior": 0.00002199587911993725,
+      "guesses": [
+        "sinceriate",
+        "regolarità",
+        "redarguita"
+      ]
+    },
+    {
+      "word": "carpooling",
+      "num_guesses": 3,
+      "prior": 0.00001310798113353598,
+      "guesses": [
+        "sinceriate",
+        "marinarono",
+        "carpooling"
+      ]
+    },
+    {
+      "word": "scarnivano",
+      "num_guesses": 3,
+      "prior": 0.000010106360662943373,
+      "guesses": [
+        "sinceriate",
+        "scoprivano",
+        "scarnivano"
+      ]
+    },
+    {
+      "word": "annegarono",
+      "num_guesses": 3,
+      "prior": 0.000028017137914640726,
+      "guesses": [
+        "sinceriate",
+        "manodopera",
+        "annegarono"
+      ]
+    },
+    {
+      "word": "rinsavisco",
+      "num_guesses": 3,
+      "prior": 0.000011341996715195162,
+      "guesses": [
+        "sinceriate",
+        "rinvilisca",
+        "rinsavisco"
+      ]
+    },
+    {
+      "word": "caricavano",
+      "num_guesses": 3,
+      "prior": 0.000033483621271909065,
+      "guesses": [
+        "sinceriate",
+        "calciavamo",
+        "caricavano"
+      ]
+    },
+    {
+      "word": "disdegnavo",
+      "num_guesses": 3,
+      "prior": 0.00001497047063186779,
+      "guesses": [
+        "sinceriate",
+        "dissennava",
+        "disdegnavo"
+      ]
+    },
+    {
+      "word": "subconscio",
+      "num_guesses": 2,
+      "prior": 0.00003666259415064169,
+      "guesses": [
+        "sinceriate",
+        "subconscio"
+      ]
+    },
+    {
+      "word": "zeromodale",
+      "num_guesses": 3,
+      "prior": 0.000010836884790975779,
+      "guesses": [
+        "sinceriate",
+        "defraudare",
+        "zeromodale"
+      ]
+    },
+    {
+      "word": "spargevamo",
+      "num_guesses": 3,
+      "prior": 0.000013478847481832822,
+      "guesses": [
+        "sinceriate",
+        "sembravamo",
+        "spargevamo"
+      ]
+    },
+    {
+      "word": "ordinative",
+      "num_guesses": 3,
+      "prior": 0.000020756056498813114,
+      "guesses": [
+        "sinceriate",
+        "iniziatore",
+        "ordinative"
+      ]
+    },
+    {
+      "word": "verniciata",
+      "num_guesses": 3,
+      "prior": 0.000038162752446390756,
+      "guesses": [
+        "sinceriate",
+        "condizioni",
+        "verniciata"
+      ]
+    },
+    {
+      "word": "spoglierei",
+      "num_guesses": 3,
+      "prior": 0.000015271804132167897,
+      "guesses": [
+        "sinceriate",
+        "spiegherei",
+        "spoglierei"
+      ]
+    },
+    {
+      "word": "promulgate",
+      "num_guesses": 3,
+      "prior": 0.000041371884744809215,
+      "guesses": [
+        "sinceriate",
+        "rappattuma",
+        "promulgate"
+      ]
+    },
+    {
+      "word": "rimboccavo",
+      "num_guesses": 3,
+      "prior": 0.000012734036278692009,
+      "guesses": [
+        "sinceriate",
+        "ricomprava",
+        "rimboccavo"
+      ]
+    },
+    {
+      "word": "insulinico",
+      "num_guesses": 3,
+      "prior": 0.00002938711598423311,
+      "guesses": [
+        "sinceriate",
+        "indiscusso",
+        "insulinico"
+      ]
+    },
+    {
+      "word": "pugnalerei",
+      "num_guesses": 3,
+      "prior": 0.000010399785313094457,
+      "guesses": [
+        "sinceriate",
+        "arrembando",
+        "pugnalerei"
+      ]
+    },
+    {
+      "word": "acutissimi",
+      "num_guesses": 3,
+      "prior": 0.00003561881557868269,
+      "guesses": [
+        "sinceriate",
+        "olografica",
+        "acutissimi"
+      ]
+    },
+    {
+      "word": "cingeranno",
+      "num_guesses": 2,
+      "prior": 0.000018838768300181577,
+      "guesses": [
+        "sinceriate",
+        "cingeranno"
+      ]
+    },
+    {
+      "word": "recapitato",
+      "num_guesses": 3,
+      "prior": 0.00003170208578027694,
+      "guesses": [
+        "sinceriate",
+        "recapitata",
+        "recapitato"
+      ]
+    },
+    {
+      "word": "illividito",
+      "num_guesses": 3,
+      "prior": 0.00002190806841485092,
+      "guesses": [
+        "sinceriate",
+        "poliziotti",
+        "illividito"
+      ]
+    },
+    {
+      "word": "bonacciata",
+      "num_guesses": 3,
+      "prior": 9.32937351999144e-6,
+      "guesses": [
+        "sinceriate",
+        "annunciato",
+        "bonacciata"
+      ]
+    },
+    {
+      "word": "palificata",
+      "num_guesses": 3,
+      "prior": 0.000027828459565777606,
+      "guesses": [
+        "sinceriate",
+        "corpuscoli",
+        "palificata"
+      ]
+    },
+    {
+      "word": "romitaggio",
+      "num_guesses": 3,
+      "prior": 0.00003424208131267888,
+      "guesses": [
+        "sinceriate",
+        "adottabili",
+        "romitaggio"
+      ]
+    },
+    {
+      "word": "accelererà",
+      "num_guesses": 2,
+      "prior": 0.000023481009055289017,
+      "guesses": [
+        "sinceriate",
+        "accelererà"
+      ]
+    },
+    {
+      "word": "vocheranno",
+      "num_guesses": 3,
+      "prior": 9.992777201574774e-6,
+      "guesses": [
+        "sinceriate",
+        "gloriavamo",
+        "vocheranno"
+      ]
+    },
+    {
+      "word": "carcinoidi",
+      "num_guesses": 2,
+      "prior": 0.00002446776019061503,
+      "guesses": [
+        "sinceriate",
+        "carcinoidi"
+      ]
+    },
+    {
+      "word": "invaginato",
+      "num_guesses": 3,
+      "prior": 0.000024945285255194187,
+      "guesses": [
+        "sinceriate",
+        "immaginino",
+        "invaginato"
+      ]
+    },
+    {
+      "word": "azzardando",
+      "num_guesses": 3,
+      "prior": 0.000023997456744984093,
+      "guesses": [
+        "sinceriate",
+        "arrogavamo",
+        "azzardando"
+      ]
+    },
+    {
+      "word": "equilibrio",
+      "num_guesses": 3,
+      "prior": 0.00008560120847132099,
+      "guesses": [
+        "sinceriate",
+        "privilegio",
+        "equilibrio"
+      ]
+    },
+    {
+      "word": "management",
+      "num_guesses": 2,
+      "prior": 0.000059731572900751003,
+      "guesses": [
+        "sinceriate",
+        "management"
+      ]
+    },
+    {
+      "word": "autodifesa",
+      "num_guesses": 3,
+      "prior": 0.00003961223349695199,
+      "guesses": [
+        "sinceriate",
+        "aspettassi",
+        "autodifesa"
+      ]
+    },
+    {
+      "word": "dominabile",
+      "num_guesses": 3,
+      "prior": 0.000026829234769305626,
+      "guesses": [
+        "sinceriate",
+        "navigabile",
+        "dominabile"
+      ]
+    },
+    {
+      "word": "bagagliaio",
+      "num_guesses": 3,
+      "prior": 0.000037370157513497515,
+      "guesses": [
+        "sinceriate",
+        "appigliava",
+        "bagagliaio"
+      ]
+    },
+    {
+      "word": "intrigasse",
+      "num_guesses": 3,
+      "prior": 0.000016162699701711646,
+      "guesses": [
+        "sinceriate",
+        "transitive",
+        "intrigasse"
+      ]
+    },
+    {
+      "word": "tremolanti",
+      "num_guesses": 3,
+      "prior": 0.00003466131645261924,
+      "guesses": [
+        "sinceriate",
+        "pentimento",
+        "tremolanti"
+      ]
+    },
+    {
+      "word": "logistiche",
+      "num_guesses": 3,
+      "prior": 0.00003687231268023948,
+      "guesses": [
+        "sinceriate",
+        "istituisce",
+        "logistiche"
+      ]
+    },
+    {
+      "word": "ciabattoni",
+      "num_guesses": 3,
+      "prior": 0.00002287672496159351,
+      "guesses": [
+        "sinceriate",
+        "ciabattino",
+        "ciabattoni"
+      ]
+    },
+    {
+      "word": "richiudono",
+      "num_guesses": 3,
+      "prior": 0.00002651047900471854,
+      "guesses": [
+        "sinceriate",
+        "ricominciò",
+        "richiudono"
+      ]
+    },
+    {
+      "word": "stramoggia",
+      "num_guesses": 3,
+      "prior": 0.000010534892753549868,
+      "guesses": [
+        "sinceriate",
+        "stabulario",
+        "stramoggia"
+      ]
+    },
+    {
+      "word": "sguisciato",
+      "num_guesses": 3,
+      "prior": 0.000011818357676620939,
+      "guesses": [
+        "sinceriate",
+        "attaccando",
+        "sguisciato"
+      ]
+    },
+    {
+      "word": "proferirei",
+      "num_guesses": 3,
+      "prior": 0.000013004316197604974,
+      "guesses": [
+        "sinceriate",
+        "preferirei",
+        "proferirei"
+      ]
+    },
+    {
+      "word": "chopiniani",
+      "num_guesses": 3,
+      "prior": 0.000016393689055540257,
+      "guesses": [
+        "sinceriate",
+        "laminavano",
+        "chopiniani"
+      ]
+    },
+    {
+      "word": "avancarica",
+      "num_guesses": 3,
+      "prior": 0.000025658526512093897,
+      "guesses": [
+        "sinceriate",
+        "marinarono",
+        "avancarica"
+      ]
+    },
+    {
+      "word": "ammortisse",
+      "num_guesses": 3,
+      "prior": 9.824533379280365e-6,
+      "guesses": [
+        "sinceriate",
+        "arrostisse",
+        "ammortisse"
+      ]
+    },
+    {
+      "word": "svantaggiò",
+      "num_guesses": 4,
+      "prior": 0.00001076882989470176,
+      "guesses": [
+        "sinceriate",
+        "mulinavano",
+        "svantaggia",
+        "svantaggiò"
+      ]
+    },
+    {
+      "word": "primigenio",
+      "num_guesses": 3,
+      "prior": 0.00003746261045617006,
+      "guesses": [
+        "sinceriate",
+        "invigilerà",
+        "primigenio"
+      ]
+    },
+    {
+      "word": "dolceamari",
+      "num_guesses": 2,
+      "prior": 0.000013729127347390854,
+      "guesses": [
+        "sinceriate",
+        "dolceamari"
+      ]
+    },
+    {
+      "word": "pernacchie",
+      "num_guesses": 3,
+      "prior": 0.00002258778907203791,
+      "guesses": [
+        "sinceriate",
+        "graminacee",
+        "pernacchie"
+      ]
+    },
+    {
+      "word": "nostomania",
+      "num_guesses": 3,
+      "prior": 0.000011946216281473927,
+      "guesses": [
+        "sinceriate",
+        "annulliamo",
+        "nostomania"
+      ]
+    },
+    {
+      "word": "ringiovanì",
+      "num_guesses": 3,
+      "prior": 0.000019515119169687815,
+      "guesses": [
+        "sinceriate",
+        "rinviavano",
+        "ringiovanì"
+      ]
+    },
+    {
+      "word": "traforiamo",
+      "num_guesses": 3,
+      "prior": 0.000010150398761483136,
+      "guesses": [
+        "sinceriate",
+        "martoriava",
+        "traforiamo"
+      ]
+    },
+    {
+      "word": "infirmante",
+      "num_guesses": 3,
+      "prior": 0.000015679679274044453,
+      "guesses": [
+        "sinceriate",
+        "invariante",
+        "infirmante"
+      ]
+    },
+    {
+      "word": "pioviggina",
+      "num_guesses": 3,
+      "prior": 0.0000222275372034119,
+      "guesses": [
+        "sinceriate",
+        "ingiuntivo",
+        "pioviggina"
+      ]
+    },
+    {
+      "word": "precisassi",
+      "num_guesses": 2,
+      "prior": 0.000012947098255624604,
+      "guesses": [
+        "sinceriate",
+        "precisassi"
+      ]
+    },
+    {
+      "word": "istologica",
+      "num_guesses": 3,
+      "prior": 0.00004448398999651742,
+      "guesses": [
+        "sinceriate",
+        "olografica",
+        "istologica"
+      ]
+    },
+    {
+      "word": "prosimetri",
+      "num_guesses": 3,
+      "prior": 0.000013748638265576365,
+      "guesses": [
+        "sinceriate",
+        "restituirà",
+        "prosimetri"
+      ]
+    },
+    {
+      "word": "sbrigativi",
+      "num_guesses": 3,
+      "prior": 0.00002925734709721195,
+      "guesses": [
+        "sinceriate",
+        "saturabili",
+        "sbrigativi"
+      ]
+    },
+    {
+      "word": "suonassero",
+      "num_guesses": 3,
+      "prior": 0.00002917177830058681,
+      "guesses": [
+        "sinceriate",
+        "spennavamo",
+        "suonassero"
+      ]
+    },
+    {
+      "word": "vitoperati",
+      "num_guesses": 3,
+      "prior": 0.000010419519393046441,
+      "guesses": [
+        "sinceriate",
+        "compratori",
+        "vitoperati"
+      ]
+    },
+    {
+      "word": "reconcilia",
+      "num_guesses": 3,
+      "prior": 0.000014215235516711777,
+      "guesses": [
+        "sinceriate",
+        "locandieri",
+        "reconcilia"
+      ]
+    },
+    {
+      "word": "ricambiavo",
+      "num_guesses": 3,
+      "prior": 0.000018820335027783503,
+      "guesses": [
+        "sinceriate",
+        "accoglieva",
+        "ricambiavo"
+      ]
+    },
+    {
+      "word": "scalcinate",
+      "num_guesses": 3,
+      "prior": 0.000021287461489566245,
+      "guesses": [
+        "sinceriate",
+        "funzionale",
+        "scalcinate"
+      ]
+    },
+    {
+      "word": "salderebbe",
+      "num_guesses": 3,
+      "prior": 0.000017081077352992238,
+      "guesses": [
+        "sinceriate",
+        "vandalismo",
+        "salderebbe"
+      ]
+    },
+    {
+      "word": "resettiamo",
+      "num_guesses": 2,
+      "prior": 9.389762858443122e-6,
+      "guesses": [
+        "sinceriate",
+        "resettiamo"
+      ]
+    },
+    {
+      "word": "rallargato",
+      "num_guesses": 3,
+      "prior": 0.000013223657725691394,
+      "guesses": [
+        "sinceriate",
+        "malformato",
+        "rallargato"
+      ]
+    },
+    {
+      "word": "induttrici",
+      "num_guesses": 3,
+      "prior": 0.00002203140109083787,
+      "guesses": [
+        "sinceriate",
+        "fornitrici",
+        "induttrici"
+      ]
+    },
+    {
+      "word": "lemuroidei",
+      "num_guesses": 3,
+      "prior": 9.448637459310784e-6,
+      "guesses": [
+        "sinceriate",
+        "ferrovieri",
+        "lemuroidei"
+      ]
+    },
+    {
+      "word": "ostacolava",
+      "num_guesses": 2,
+      "prior": 0.00003177334048504389,
+      "guesses": [
+        "sinceriate",
+        "ostacolava"
+      ]
+    },
+    {
+      "word": "reticolata",
+      "num_guesses": 3,
+      "prior": 0.000038295326221354446,
+      "guesses": [
+        "sinceriate",
+        "recapitata",
+        "reticolata"
+      ]
+    },
+    {
+      "word": "stagliasse",
+      "num_guesses": 3,
+      "prior": 0.000014348892269305127,
+      "guesses": [
+        "sinceriate",
+        "spostabile",
+        "stagliasse"
+      ]
+    },
+    {
+      "word": "occorresse",
+      "num_guesses": 2,
+      "prior": 0.00004710007582139305,
+      "guesses": [
+        "sinceriate",
+        "occorresse"
+      ]
+    },
+    {
+      "word": "coalizzerò",
+      "num_guesses": 3,
+      "prior": 8.739308082003099e-6,
+      "guesses": [
+        "sinceriate",
+        "accalorerà",
+        "coalizzerò"
+      ]
+    },
+    {
+      "word": "ripetevano",
+      "num_guesses": 3,
+      "prior": 0.00004358820920403782,
+      "guesses": [
+        "sinceriate",
+        "ritenevano",
+        "ripetevano"
+      ]
+    },
+    {
+      "word": "macchiasti",
+      "num_guesses": 3,
+      "prior": 0.000014881771233170707,
+      "guesses": [
+        "sinceriate",
+        "asocialità",
+        "macchiasti"
+      ]
+    },
+    {
+      "word": "purificavi",
+      "num_guesses": 3,
+      "prior": 9.070718476891469e-6,
+      "guesses": [
+        "sinceriate",
+        "auricolari",
+        "purificavi"
+      ]
+    },
+    {
+      "word": "internante",
+      "num_guesses": 3,
+      "prior": 0.000011557675977097263,
+      "guesses": [
+        "sinceriate",
+        "impugnando",
+        "internante"
+      ]
+    },
+    {
+      "word": "iscriverai",
+      "num_guesses": 3,
+      "prior": 0.000014299355209827003,
+      "guesses": [
+        "sinceriate",
+        "ascriversi",
+        "iscriverai"
+      ]
+    },
+    {
+      "word": "vampirismi",
+      "num_guesses": 3,
+      "prior": 0.000010084050598325804,
+      "guesses": [
+        "sinceriate",
+        "barbarismi",
+        "vampirismi"
+      ]
+    },
+    {
+      "word": "impaginate",
+      "num_guesses": 3,
+      "prior": 0.000024265975969300885,
+      "guesses": [
+        "sinceriate",
+        "limitativa",
+        "impaginate"
+      ]
+    },
+    {
+      "word": "netteranno",
+      "num_guesses": 4,
+      "prior": 0.000013986688713690859,
+      "guesses": [
+        "sinceriate",
+        "termografo",
+        "detteranno",
+        "netteranno"
+      ]
+    },
+    {
+      "word": "risegnante",
+      "num_guesses": 3,
+      "prior": 0.000010399785313094457,
+      "guesses": [
+        "sinceriate",
+        "diserbante",
+        "risegnante"
+      ]
+    },
+    {
+      "word": "scacciammo",
+      "num_guesses": 3,
+      "prior": 0.000015020877397885296,
+      "guesses": [
+        "sinceriate",
+        "scolastica",
+        "scacciammo"
+      ]
+    },
+    {
+      "word": "rassodando",
+      "num_guesses": 3,
+      "prior": 0.00002125236523382981,
+      "guesses": [
+        "sinceriate",
+        "assorbanza",
+        "rassodando"
+      ]
+    },
+    {
+      "word": "ipertermia",
+      "num_guesses": 3,
+      "prior": 0.000034821650237385777,
+      "guesses": [
+        "sinceriate",
+        "ereditario",
+        "ipertermia"
+      ]
+    },
+    {
+      "word": "bazzicherà",
+      "num_guesses": 3,
+      "prior": 8.929470981616819e-6,
+      "guesses": [
+        "sinceriate",
+        "accalorerà",
+        "bazzicherà"
+      ]
+    },
+    {
+      "word": "sgranavano",
+      "num_guesses": 3,
+      "prior": 0.00002076852635250949,
+      "guesses": [
+        "sinceriate",
+        "naufragano",
+        "sgranavano"
+      ]
+    },
+    {
+      "word": "difformità",
+      "num_guesses": 2,
+      "prior": 0.00005082578731614846,
+      "guesses": [
+        "sinceriate",
+        "difformità"
+      ]
+    },
+    {
+      "word": "trapassano",
+      "num_guesses": 3,
+      "prior": 0.00003544304048029856,
+      "guesses": [
+        "sinceriate",
+        "gnaulavano",
+        "trapassano"
+      ]
+    },
+    {
+      "word": "infuturava",
+      "num_guesses": 3,
+      "prior": 9.506080217835863e-6,
+      "guesses": [
+        "sinceriate",
+        "titolavamo",
+        "infuturava"
+      ]
+    },
+    {
+      "word": "spumeranno",
+      "num_guesses": 3,
+      "prior": 0.000010359861733727673,
+      "guesses": [
+        "sinceriate",
+        "pugnalando",
+        "spumeranno"
+      ]
+    },
+    {
+      "word": "smezzarono",
+      "num_guesses": 3,
+      "prior": 9.359763002657934e-6,
+      "guesses": [
+        "sinceriate",
+        "spennavamo",
+        "smezzarono"
+      ]
+    },
+    {
+      "word": "seychelles",
+      "num_guesses": 2,
+      "prior": 0.000028808977548032213,
+      "guesses": [
+        "sinceriate",
+        "seychelles"
+      ]
+    },
+    {
+      "word": "ripassiate",
+      "num_guesses": 3,
+      "prior": 0.000010038828817609253,
+      "guesses": [
+        "sinceriate",
+        "risultiate",
+        "ripassiate"
+      ]
+    },
+    {
+      "word": "allenterei",
+      "num_guesses": 3,
+      "prior": 0.000010663405057927611,
+      "guesses": [
+        "sinceriate",
+        "lamentanti",
+        "allenterei"
+      ]
+    },
+    {
+      "word": "inalzavamo",
+      "num_guesses": 3,
+      "prior": 9.873781629315942e-6,
+      "guesses": [
+        "sinceriate",
+        "annodavamo",
+        "inalzavamo"
+      ]
+    },
+    {
+      "word": "verosimili",
+      "num_guesses": 3,
+      "prior": 0.000038621353135415056,
+      "guesses": [
+        "sinceriate",
+        "permissivo",
+        "verosimili"
+      ]
+    },
+    {
+      "word": "imbiondita",
+      "num_guesses": 3,
+      "prior": 0.000015789311627753486,
+      "guesses": [
+        "sinceriate",
+        "mugliavano",
+        "imbiondita"
+      ]
+    },
+    {
+      "word": "repudiando",
+      "num_guesses": 3,
+      "prior": 0.000019546967758897696,
+      "guesses": [
+        "sinceriate",
+        "deflagrano",
+        "repudiando"
+      ]
+    },
+    {
+      "word": "coabitando",
+      "num_guesses": 3,
+      "prior": 0.000019259266696502505,
+      "guesses": [
+        "sinceriate",
+        "compattino",
+        "coabitando"
+      ]
+    },
+    {
+      "word": "allantoide",
+      "num_guesses": 3,
+      "prior": 0.00002602582719715039,
+      "guesses": [
+        "sinceriate",
+        "autoimmune",
+        "allantoide"
+      ]
+    },
+    {
+      "word": "rimeritata",
+      "num_guesses": 3,
+      "prior": 0.000023461157102355547,
+      "guesses": [
+        "sinceriate",
+        "compratori",
+        "rimeritata"
+      ]
+    },
+    {
+      "word": "sottometti",
+      "num_guesses": 3,
+      "prior": 0.000019537434973206796,
+      "guesses": [
+        "sinceriate",
+        "sottotetti",
+        "sottometti"
+      ]
+    },
+    {
+      "word": "spiralizza",
+      "num_guesses": 3,
+      "prior": 0.000010399785313094457,
+      "guesses": [
+        "sinceriate",
+        "svirilizza",
+        "spiralizza"
+      ]
+    },
+    {
+      "word": "fomentaste",
+      "num_guesses": 3,
+      "prior": 0.000010534892753549868,
+      "guesses": [
+        "sinceriate",
+        "assestammo",
+        "fomentaste"
+      ]
+    },
+    {
+      "word": "suicidiamo",
+      "num_guesses": 3,
+      "prior": 0.000011806455983106412,
+      "guesses": [
+        "sinceriate",
+        "scucchiaia",
+        "suicidiamo"
+      ]
+    },
+    {
+      "word": "denotarono",
+      "num_guesses": 2,
+      "prior": 0.000018145713577773944,
+      "guesses": [
+        "sinceriate",
+        "denotarono"
+      ]
+    },
+    {
+      "word": "titolarono",
+      "num_guesses": 3,
+      "prior": 0.000016630564168019686,
+      "guesses": [
+        "sinceriate",
+        "rappattumò",
+        "titolarono"
+      ]
+    },
+    {
+      "word": "gametangio",
+      "num_guesses": 3,
+      "prior": 0.000012320255974493914,
+      "guesses": [
+        "sinceriate",
+        "infettando",
+        "gametangio"
+      ]
+    },
+    {
+      "word": "telefonato",
+      "num_guesses": 3,
+      "prior": 0.00004734535951680264,
+      "guesses": [
+        "sinceriate",
+        "telefonata",
+        "telefonato"
+      ]
+    },
+    {
+      "word": "deossidata",
+      "num_guesses": 3,
+      "prior": 8.965623868799123e-6,
+      "guesses": [
+        "sinceriate",
+        "depositata",
+        "deossidata"
+      ]
+    },
+    {
+      "word": "significhi",
+      "num_guesses": 2,
+      "prior": 0.00005238794496645621,
+      "guesses": [
+        "sinceriate",
+        "significhi"
+      ]
+    },
+    {
+      "word": "incasinerò",
+      "num_guesses": 4,
+      "prior": 9.203679470067348e-6,
+      "guesses": [
+        "sinceriate",
+        "accingersi",
+        "incasinerà",
+        "incasinerò"
+      ]
+    },
+    {
+      "word": "millefiori",
+      "num_guesses": 2,
+      "prior": 0.000023995360225827042,
+      "guesses": [
+        "sinceriate",
+        "millefiori"
+      ]
+    },
+    {
+      "word": "disascondi",
+      "num_guesses": 3,
+      "prior": 0.000010458544903081231,
+      "guesses": [
+        "sinceriate",
+        "biasciando",
+        "disascondi"
+      ]
+    },
+    {
+      "word": "aggiornano",
+      "num_guesses": 3,
+      "prior": 0.00002737582677257541,
+      "guesses": [
+        "sinceriate",
+        "uniformano",
+        "aggiornano"
+      ]
+    },
+    {
+      "word": "accoglievi",
+      "num_guesses": 2,
+      "prior": 0.000016956787915451127,
+      "guesses": [
+        "sinceriate",
+        "accoglievi"
+      ]
+    },
+    {
+      "word": "proseguite",
+      "num_guesses": 2,
+      "prior": 0.000042190666404014966,
+      "guesses": [
+        "sinceriate",
+        "proseguite"
+      ]
+    },
+    {
+      "word": "campagnole",
+      "num_guesses": 3,
+      "prior": 0.000027963910328479464,
+      "guesses": [
+        "sinceriate",
+        "acquazzone",
+        "campagnole"
+      ]
+    },
+    {
+      "word": "vacilliamo",
+      "num_guesses": 3,
+      "prior": 0.000014881771233170707,
+      "guesses": [
+        "sinceriate",
+        "valichiamo",
+        "vacilliamo"
+      ]
+    },
+    {
+      "word": "incinerata",
+      "num_guesses": 3,
+      "prior": 0.000011794506104376216,
+      "guesses": [
+        "sinceriate",
+        "incamerati",
+        "incinerata"
+      ]
+    },
+    {
+      "word": "cominciata",
+      "num_guesses": 3,
+      "prior": 0.00006025733551623269,
+      "guesses": [
+        "sinceriate",
+        "volontaria",
+        "cominciata"
+      ]
+    },
+    {
+      "word": "stringiamo",
+      "num_guesses": 2,
+      "prior": 0.000030243016686532244,
+      "guesses": [
+        "sinceriate",
+        "stringiamo"
+      ]
+    },
+    {
+      "word": "fluorurate",
+      "num_guesses": 3,
+      "prior": 0.000015284562549411515,
+      "guesses": [
+        "sinceriate",
+        "rappattuma",
+        "fluorurate"
+      ]
+    },
+    {
+      "word": "appropiare",
+      "num_guesses": 3,
+      "prior": 0.00001906156166722822,
+      "guesses": [
+        "sinceriate",
+        "alloggiare",
+        "appropiare"
+      ]
+    },
+    {
+      "word": "pescassero",
+      "num_guesses": 3,
+      "prior": 0.00001878325033552848,
+      "guesses": [
+        "sinceriate",
+        "complicato",
+        "pescassero"
+      ]
+    },
+    {
+      "word": "biliardino",
+      "num_guesses": 3,
+      "prior": 0.000020676798982256265,
+      "guesses": [
+        "sinceriate",
+        "riguardino",
+        "biliardino"
+      ]
+    },
+    {
+      "word": "muoveranno",
+      "num_guesses": 3,
+      "prior": 0.00003134088730071499,
+      "guesses": [
+        "sinceriate",
+        "promulgava",
+        "muoveranno"
+      ]
+    },
+    {
+      "word": "arricciolò",
+      "num_guesses": 3,
+      "prior": 9.389762858443122e-6,
+      "guesses": [
+        "sinceriate",
+        "abbarbichi",
+        "arricciolò"
+      ]
+    },
+    {
+      "word": "intingendo",
+      "num_guesses": 3,
+      "prior": 0.000022979021978540317,
+      "guesses": [
+        "sinceriate",
+        "definitivo",
+        "intingendo"
+      ]
+    },
+    {
+      "word": "disuniremo",
+      "num_guesses": 3,
+      "prior": 8.616745888540097e-6,
+      "guesses": [
+        "sinceriate",
+        "risponderà",
+        "disuniremo"
+      ]
+    },
+    {
+      "word": "predatrici",
+      "num_guesses": 3,
+      "prior": 0.000024641768989701896,
+      "guesses": [
+        "sinceriate",
+        "poliammidi",
+        "predatrici"
+      ]
+    },
+    {
+      "word": "disferrate",
+      "num_guesses": 3,
+      "prior": 0.000010379900300802994,
+      "guesses": [
+        "sinceriate",
+        "dissertate",
+        "disferrate"
+      ]
+    },
+    {
+      "word": "schermirai",
+      "num_guesses": 2,
+      "prior": 0.000010419519393046441,
+      "guesses": [
+        "sinceriate",
+        "schermirai"
+      ]
+    },
+    {
+      "word": "inseguiste",
+      "num_guesses": 3,
+      "prior": 0.000012742836588600804,
+      "guesses": [
+        "sinceriate",
+        "femministe",
+        "inseguiste"
+      ]
+    },
+    {
+      "word": "ingiuriavo",
+      "num_guesses": 3,
+      "prior": 0.0000107341469521592,
+      "guesses": [
+        "sinceriate",
+        "componenti",
+        "ingiuriavo"
+      ]
+    },
+    {
+      "word": "piantavamo",
+      "num_guesses": 3,
+      "prior": 0.000015207363840615754,
+      "guesses": [
+        "sinceriate",
+        "pilotavano",
+        "piantavamo"
+      ]
+    },
+    {
+      "word": "verdeggiai",
+      "num_guesses": 3,
+      "prior": 9.448637459310784e-6,
+      "guesses": [
+        "sinceriate",
+        "permeabili",
+        "verdeggiai"
+      ]
+    },
+    {
+      "word": "incastonai",
+      "num_guesses": 3,
+      "prior": 8.658374618707685e-6,
+      "guesses": [
+        "sinceriate",
+        "accompagno",
+        "incastonai"
+      ]
+    },
+    {
+      "word": "involgendo",
+      "num_guesses": 3,
+      "prior": 0.000028519992065462934,
+      "guesses": [
+        "sinceriate",
+        "indulgendo",
+        "involgendo"
+      ]
+    },
+    {
+      "word": "scapicolli",
+      "num_guesses": 3,
+      "prior": 0.0000109680804597518,
+      "guesses": [
+        "sinceriate",
+        "malavitosi",
+        "scapicolli"
+      ]
+    },
+    {
+      "word": "commerciai",
+      "num_guesses": 2,
+      "prior": 0.0000180550452312745,
+      "guesses": [
+        "sinceriate",
+        "commerciai"
+      ]
+    },
+    {
+      "word": "esaudirete",
+      "num_guesses": 3,
+      "prior": 0.00001548312992963729,
+      "guesses": [
+        "sinceriate",
+        "trasferite",
+        "esaudirete"
+      ]
+    },
+    {
+      "word": "relegarono",
+      "num_guesses": 3,
+      "prior": 0.00002102017007667823,
+      "guesses": [
+        "sinceriate",
+        "profanando",
+        "relegarono"
+      ]
+    },
+    {
+      "word": "strigliati",
+      "num_guesses": 3,
+      "prior": 0.000019393797377385107,
+      "guesses": [
+        "sinceriate",
+        "sbrogliati",
+        "strigliati"
+      ]
+    },
+    {
+      "word": "ingombrare",
+      "num_guesses": 2,
+      "prior": 0.000033271534857551275,
+      "guesses": [
+        "sinceriate",
+        "ingombrare"
+      ]
+    },
+    {
+      "word": "scompaiano",
+      "num_guesses": 2,
+      "prior": 0.00002933003744550356,
+      "guesses": [
+        "sinceriate",
+        "scompaiano"
+      ]
+    },
+    {
+      "word": "luccicasse",
+      "num_guesses": 3,
+      "prior": 0.000015971474148794215,
+      "guesses": [
+        "sinceriate",
+        "macchiasse",
+        "luccicasse"
+      ]
+    },
+    {
+      "word": "riabbracci",
+      "num_guesses": 3,
+      "prior": 0.000013806515777637588,
+      "guesses": [
+        "sinceriate",
+        "picogrammi",
+        "riabbracci"
+      ]
+    },
+    {
+      "word": "disiderata",
+      "num_guesses": 3,
+      "prior": 0.000023689925106079818,
+      "guesses": [
+        "sinceriate",
+        "privilegio",
+        "disiderata"
+      ]
+    },
+    {
+      "word": "turbassero",
+      "num_guesses": 4,
+      "prior": 0.00002784274067295147,
+      "guesses": [
+        "sinceriate",
+        "sottopassa",
+        "tradussero",
+        "turbassero"
+      ]
+    },
+    {
+      "word": "istituendo",
+      "num_guesses": 3,
+      "prior": 0.000044677637555532645,
+      "guesses": [
+        "sinceriate",
+        "promotrici",
+        "istituendo"
+      ]
+    },
+    {
+      "word": "onomastico",
+      "num_guesses": 3,
+      "prior": 0.000042887249102773746,
+      "guesses": [
+        "sinceriate",
+        "masticando",
+        "onomastico"
+      ]
+    },
+    {
+      "word": "svaniscono",
+      "num_guesses": 3,
+      "prior": 0.00004043766908678777,
+      "guesses": [
+        "sinceriate",
+        "scalcinano",
+        "svaniscono"
+      ]
+    },
+    {
+      "word": "mirmillone",
+      "num_guesses": 3,
+      "prior": 0.000019988458436170036,
+      "guesses": [
+        "sinceriate",
+        "pirimidine",
+        "mirmillone"
+      ]
+    },
+    {
+      "word": "sciatalgia",
+      "num_guesses": 3,
+      "prior": 0.00002004044472615138,
+      "guesses": [
+        "sinceriate",
+        "stilistica",
+        "sciatalgia"
+      ]
+    },
+    {
+      "word": "spregiaste",
+      "num_guesses": 3,
+      "prior": 0.000013875962206129142,
+      "guesses": [
+        "sinceriate",
+        "spartirete",
+        "spregiaste"
+      ]
+    },
+    {
+      "word": "automatico",
+      "num_guesses": 3,
+      "prior": 0.00005955967691680559,
+      "guesses": [
+        "sinceriate",
+        "patologica",
+        "automatico"
+      ]
+    },
+    {
+      "word": "metonimici",
+      "num_guesses": 3,
+      "prior": 0.000020348324994073315,
+      "guesses": [
+        "sinceriate",
+        "cotiledoni",
+        "metonimici"
+      ]
+    },
+    {
+      "word": "minaccerei",
+      "num_guesses": 2,
+      "prior": 0.000011830211619894724,
+      "guesses": [
+        "sinceriate",
+        "minaccerei"
+      ]
+    },
+    {
+      "word": "globiformi",
+      "num_guesses": 3,
+      "prior": 0.00001316246987012002,
+      "guesses": [
+        "sinceriate",
+        "improvvido",
+        "globiformi"
+      ]
+    },
+    {
+      "word": "conglobava",
+      "num_guesses": 3,
+      "prior": 0.000017288310110814657,
+      "guesses": [
+        "sinceriate",
+        "condannava",
+        "conglobava"
+      ]
+    },
+    {
+      "word": "negoziaste",
+      "num_guesses": 3,
+      "prior": 8.965623868799123e-6,
+      "guesses": [
+        "sinceriate",
+        "infiggendo",
+        "negoziaste"
+      ]
+    },
+    {
+      "word": "repellente",
+      "num_guesses": 3,
+      "prior": 0.000034495505551557364,
+      "guesses": [
+        "sinceriate",
+        "prepotente",
+        "repellente"
+      ]
+    },
+    {
+      "word": "sfinirebbe",
+      "num_guesses": 2,
+      "prior": 0.00001076882989470176,
+      "guesses": [
+        "sinceriate",
+        "sfinirebbe"
+      ]
+    },
+    {
+      "word": "dispensava",
+      "num_guesses": 3,
+      "prior": 0.00003507100653079821,
+      "guesses": [
+        "sinceriate",
+        "dissennava",
+        "dispensava"
+      ]
+    },
+    {
+      "word": "deambulava",
+      "num_guesses": 3,
+      "prior": 0.000014862825568622634,
+      "guesses": [
+        "sinceriate",
+        "allevavamo",
+        "deambulava"
+      ]
+    },
+    {
+      "word": "accontammo",
+      "num_guesses": 2,
+      "prior": 0.000010820031078294431,
+      "guesses": [
+        "sinceriate",
+        "accontammo"
+      ]
+    },
+    {
+      "word": "smucciando",
+      "num_guesses": 3,
+      "prior": 0.0000107341469521592,
+      "guesses": [
+        "sinceriate",
+        "pubblicata",
+        "smucciando"
+      ]
+    },
+    {
+      "word": "riapparivo",
+      "num_guesses": 3,
+      "prior": 0.000010572251467186351,
+      "guesses": [
+        "sinceriate",
+        "dopoguerra",
+        "riapparivo"
+      ]
+    },
+    {
+      "word": "contusione",
+      "num_guesses": 2,
+      "prior": 0.000041966044529694925,
+      "guesses": [
+        "sinceriate",
+        "contusione"
+      ]
+    },
+    {
+      "word": "scantonerà",
+      "num_guesses": 2,
+      "prior": 0.000010084050598325804,
+      "guesses": [
+        "sinceriate",
+        "scantonerà"
+      ]
+    },
+    {
+      "word": "rigenerava",
+      "num_guesses": 3,
+      "prior": 0.000020661563696900373,
+      "guesses": [
+        "sinceriate",
+        "rigenerano",
+        "rigenerava"
+      ]
+    },
+    {
+      "word": "dispendono",
+      "num_guesses": 3,
+      "prior": 0.000012635588486669097,
+      "guesses": [
+        "sinceriate",
+        "disdegnoso",
+        "dispendono"
+      ]
+    },
+    {
+      "word": "rivomitate",
+      "num_guesses": 3,
+      "prior": 0.000011108542614928104,
+      "guesses": [
+        "sinceriate",
+        "rimaritate",
+        "rivomitate"
+      ]
+    },
+    {
+      "word": "disfiorano",
+      "num_guesses": 3,
+      "prior": 0.000012154962147855317,
+      "guesses": [
+        "sinceriate",
+        "risalivano",
+        "disfiorano"
+      ]
+    },
+    {
+      "word": "renunziate",
+      "num_guesses": 2,
+      "prior": 0.000013393531463276388,
+      "guesses": [
+        "sinceriate",
+        "renunziate"
+      ]
+    },
+    {
+      "word": "travisando",
+      "num_guesses": 3,
+      "prior": 0.000026299317665627625,
+      "guesses": [
+        "sinceriate",
+        "attivarono",
+        "travisando"
+      ]
+    },
+    {
+      "word": "tuziorismo",
+      "num_guesses": 2,
+      "prior": 0.000022030417458318064,
+      "guesses": [
+        "sinceriate",
+        "tuziorismo"
+      ]
+    },
+    {
+      "word": "endocrinia",
+      "num_guesses": 2,
+      "prior": 9.506080217835863e-6,
+      "guesses": [
+        "sinceriate",
+        "endocrinia"
+      ]
+    },
+    {
+      "word": "permanesse",
+      "num_guesses": 3,
+      "prior": 0.000024105479788618656,
+      "guesses": [
+        "sinceriate",
+        "osservanze",
+        "permanesse"
+      ]
+    },
+    {
+      "word": "sgomentava",
+      "num_guesses": 3,
+      "prior": 0.000028192435104991167,
+      "guesses": [
+        "sinceriate",
+        "sostengano",
+        "sgomentava"
+      ]
+    },
+    {
+      "word": "profetiche",
+      "num_guesses": 3,
+      "prior": 0.00003907954047935483,
+      "guesses": [
+        "sinceriate",
+        "teoretiche",
+        "profetiche"
+      ]
+    },
+    {
+      "word": "continuato",
+      "num_guesses": 3,
+      "prior": 0.0000717875099010057,
+      "guesses": [
+        "sinceriate",
+        "condannati",
+        "continuato"
+      ]
+    },
+    {
+      "word": "importasse",
+      "num_guesses": 3,
+      "prior": 0.0000416003018779377,
+      "guesses": [
+        "sinceriate",
+        "gravitasse",
+        "importasse"
+      ]
+    },
+    {
+      "word": "grecizzare",
+      "num_guesses": 2,
+      "prior": 0.000021094418994714685,
+      "guesses": [
+        "sinceriate",
+        "grecizzare"
+      ]
+    },
+    {
+      "word": "detassando",
+      "num_guesses": 3,
+      "prior": 0.000011531586148884573,
+      "guesses": [
+        "sinceriate",
+        "aspettando",
+        "detassando"
+      ]
+    },
+    {
+      "word": "ingiuntive",
+      "num_guesses": 3,
+      "prior": 0.000015939294960181572,
+      "guesses": [
+        "sinceriate",
+        "involutive",
+        "ingiuntive"
+      ]
+    },
+    {
+      "word": "newyorkesi",
+      "num_guesses": 3,
+      "prior": 0.000029536585677066974,
+      "guesses": [
+        "sinceriate",
+        "inespresso",
+        "newyorkesi"
+      ]
+    },
+    {
+      "word": "adombrante",
+      "num_guesses": 3,
+      "prior": 0.000018319739680933547,
+      "guesses": [
+        "sinceriate",
+        "fatturante",
+        "adombrante"
+      ]
+    },
+    {
+      "word": "integrammo",
+      "num_guesses": 3,
+      "prior": 0.000010477841242642224,
+      "guesses": [
+        "sinceriate",
+        "integrando",
+        "integrammo"
+      ]
+    },
+    {
+      "word": "stazionano",
+      "num_guesses": 3,
+      "prior": 0.000028470436399464698,
+      "guesses": [
+        "sinceriate",
+        "figliarono",
+        "stazionano"
+      ]
+    },
+    {
+      "word": "bisognando",
+      "num_guesses": 3,
+      "prior": 0.00003765819966587153,
+      "guesses": [
+        "sinceriate",
+        "dissonanza",
+        "bisognando"
+      ]
+    },
+    {
+      "word": "litighiate",
+      "num_guesses": 2,
+      "prior": 0.00001298807090489924,
+      "guesses": [
+        "sinceriate",
+        "litighiate"
+      ]
+    },
+    {
+      "word": "bonificato",
+      "num_guesses": 3,
+      "prior": 0.0000309667638510046,
+      "guesses": [
+        "sinceriate",
+        "ripetitivo",
+        "bonificato"
+      ]
+    },
+    {
+      "word": "rincarendo",
+      "num_guesses": 3,
+      "prior": 0.00001628313048757645,
+      "guesses": [
+        "sinceriate",
+        "rincorreva",
+        "rincarendo"
+      ]
+    },
+    {
+      "word": "garganelle",
+      "num_guesses": 3,
+      "prior": 0.000011183607166691461,
+      "guesses": [
+        "sinceriate",
+        "perdonanze",
+        "garganelle"
+      ]
+    },
+    {
+      "word": "sgusciante",
+      "num_guesses": 3,
+      "prior": 0.000018710081234610376,
+      "guesses": [
+        "sinceriate",
+        "occupabili",
+        "sgusciante"
+      ]
+    },
+    {
+      "word": "eleverebbe",
+      "num_guesses": 3,
+      "prior": 0.000026951988608991847,
+      "guesses": [
+        "sinceriate",
+        "promulgare",
+        "eleverebbe"
+      ]
+    },
+    {
+      "word": "lenterebbe",
+      "num_guesses": 3,
+      "prior": 9.32937351999144e-6,
+      "guesses": [
+        "sinceriate",
+        "spettacolo",
+        "lenterebbe"
+      ]
+    },
+    {
+      "word": "rifondiamo",
+      "num_guesses": 3,
+      "prior": 0.00001395016944563273,
+      "guesses": [
+        "sinceriate",
+        "pedinavano",
+        "rifondiamo"
+      ]
+    },
+    {
+      "word": "spezzonate",
+      "num_guesses": 3,
+      "prior": 0.000011980154942962029,
+      "guesses": [
+        "sinceriate",
+        "spenzolate",
+        "spezzonate"
+      ]
+    },
+    {
+      "word": "splendesti",
+      "num_guesses": 3,
+      "prior": 0.00001716997595093433,
+      "guesses": [
+        "sinceriate",
+        "splendenti",
+        "splendesti"
+      ]
+    },
+    {
+      "word": "orchidacea",
+      "num_guesses": 3,
+      "prior": 0.000014672838402318675,
+      "guesses": [
+        "sinceriate",
+        "accalorerà",
+        "orchidacea"
+      ]
+    },
+    {
+      "word": "fustellata",
+      "num_guesses": 3,
+      "prior": 0.000012320255974493914,
+      "guesses": [
+        "sinceriate",
+        "tassellato",
+        "fustellata"
+      ]
+    },
+    {
+      "word": "invischino",
+      "num_guesses": 3,
+      "prior": 9.824533379280365e-6,
+      "guesses": [
+        "sinceriate",
+        "indiscusso",
+        "invischino"
+      ]
+    },
+    {
+      "word": "altercaste",
+      "num_guesses": 3,
+      "prior": 9.824533379280365e-6,
+      "guesses": [
+        "sinceriate",
+        "accertaste",
+        "altercaste"
+      ]
+    },
+    {
+      "word": "insediando",
+      "num_guesses": 3,
+      "prior": 0.000022361656800561446,
+      "guesses": [
+        "sinceriate",
+        "insipienza",
+        "insediando"
+      ]
+    },
+    {
+      "word": "inclemenza",
+      "num_guesses": 2,
+      "prior": 0.00003254129536350438,
+      "guesses": [
+        "sinceriate",
+        "inclemenza"
+      ]
+    },
+    {
+      "word": "polverizzo",
+      "num_guesses": 3,
+      "prior": 0.000013962385024292623,
+      "guesses": [
+        "sinceriate",
+        "polverizzò",
+        "polverizzo"
+      ]
+    },
+    {
+      "word": "assistetti",
+      "num_guesses": 2,
+      "prior": 0.000028821077645539785,
+      "guesses": [
+        "sinceriate",
+        "assistetti"
+      ]
+    },
+    {
+      "word": "crogiolano",
+      "num_guesses": 3,
+      "prior": 0.000018857129707662108,
+      "guesses": [
+        "sinceriate",
+        "calciavamo",
+        "crogiolano"
+      ]
+    },
+    {
+      "word": "scomodassi",
+      "num_guesses": 3,
+      "prior": 0.000013335422843877771,
+      "guesses": [
+        "sinceriate",
+        "lampassato",
+        "scomodassi"
+      ]
+    },
+    {
+      "word": "riporterai",
+      "num_guesses": 3,
+      "prior": 0.000021937161565476188,
+      "guesses": [
+        "sinceriate",
+        "riflettori",
+        "riporterai"
+      ]
+    },
+    {
+      "word": "arpeggiano",
+      "num_guesses": 3,
+      "prior": 0.00001379373786052469,
+      "guesses": [
+        "sinceriate",
+        "campagnolo",
+        "arpeggiano"
+      ]
+    },
+    {
+      "word": "coltivanti",
+      "num_guesses": 3,
+      "prior": 0.00001625999155658215,
+      "guesses": [
+        "sinceriate",
+        "implichino",
+        "coltivanti"
+      ]
+    },
+    {
+      "word": "raccapezza",
+      "num_guesses": 3,
+      "prior": 0.000025142610534981404,
+      "guesses": [
+        "sinceriate",
+        "procaccerò",
+        "raccapezza"
+      ]
+    },
+    {
+      "word": "accendesse",
+      "num_guesses": 3,
+      "prior": 0.00003192289201452566,
+      "guesses": [
+        "sinceriate",
+        "ascendenze",
+        "accendesse"
+      ]
+    },
+    {
+      "word": "difformerà",
+      "num_guesses": 3,
+      "prior": 8.616745888540097e-6,
+      "guesses": [
+        "sinceriate",
+        "ridurremmo",
+        "difformerà"
+      ]
+    },
+    {
+      "word": "speleologi",
+      "num_guesses": 2,
+      "prior": 0.000023664857906458577,
+      "guesses": [
+        "sinceriate",
+        "speleologi"
+      ]
+    },
+    {
+      "word": "purificata",
+      "num_guesses": 3,
+      "prior": 0.00004223292408126112,
+      "guesses": [
+        "sinceriate",
+        "farmacopea",
+        "purificata"
+      ]
+    },
+    {
+      "word": "fatturiamo",
+      "num_guesses": 3,
+      "prior": 0.000012589806164741746,
+      "guesses": [
+        "sinceriate",
+        "martoriava",
+        "fatturiamo"
+      ]
+    },
+    {
+      "word": "polifenolo",
+      "num_guesses": 3,
+      "prior": 0.000015211693956306577,
+      "guesses": [
+        "sinceriate",
+        "indulgendo",
+        "polifenolo"
+      ]
+    },
+    {
+      "word": "olografico",
+      "num_guesses": 3,
+      "prior": 0.000023721476564638747,
+      "guesses": [
+        "sinceriate",
+        "corollario",
+        "olografico"
+      ]
+    }
+  ]
+}

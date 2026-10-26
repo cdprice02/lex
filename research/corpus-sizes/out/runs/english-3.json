@@ -1,0 +1,7076 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-25T23:43:09.070288Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "aes",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 3,
+    "dictionary_length": 6972,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "f6bfc25e50c6570d2ee3987a8deb9efaa9bf038d9de837988a0c79438577585a",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 7.019999999999977,
+      "failure_rate": 0.6880000000000005,
+      "histogram": {
+        "2": 0.002,
+        "3": 0.01,
+        "4": 0.03600000000000002,
+        "5": 0.09400000000000007,
+        "6": 0.17000000000000012,
+        "7": 0.2820000000000002,
+        "8": 0.2900000000000002,
+        "9": 0.10200000000000008,
+        "10": 0.014
+      }
+    },
+    "prior": {
+      "mean": 6.664630286273738,
+      "failure_rate": 0.5864960587120838,
+      "histogram": {
+        "2": 0.003067621764869601,
+        "3": 0.019784767197385304,
+        "4": 0.06326687521509272,
+        "5": 0.12437690526092378,
+        "6": 0.20300777184964428,
+        "7": 0.2783205797775434,
+        "8": 0.2243856243395846,
+        "9": 0.07508551622005438,
+        "10": 0.008704338374901642
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "uht",
+      "num_guesses": 6,
+      "prior": 0.00011027343819361814,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "nlr",
+        "mhd",
+        "uht"
+      ]
+    },
+    {
+      "word": "fsf",
+      "num_guesses": 8,
+      "prior": 0.0001046261280200334,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "fnr",
+        "kew",
+        "fsf"
+      ]
+    },
+    {
+      "word": "nfr",
+      "num_guesses": 8,
+      "prior": 0.00010237999760911466,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "lhr",
+        "new",
+        "nfr"
+      ]
+    },
+    {
+      "word": "dsu",
+      "num_guesses": 6,
+      "prior": 0.00012971387863200073,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "lot",
+        "hun",
+        "dsu"
+      ]
+    },
+    {
+      "word": "pba",
+      "num_guesses": 8,
+      "prior": 0.0001255410779388973,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "lhc",
+        "got",
+        "fkn",
+        "bwv",
+        "pba"
+      ]
+    },
+    {
+      "word": "hme",
+      "num_guesses": 8,
+      "prior": 0.00010562773518295984,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "mgm",
+        "esq",
+        "hme"
+      ]
+    },
+    {
+      "word": "bme",
+      "num_guesses": 6,
+      "prior": 0.00011990117987754938,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "bme"
+      ]
+    },
+    {
+      "word": "dod",
+      "num_guesses": 6,
+      "prior": 0.000249354605212256,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "mgd",
+        "dbp",
+        "dod"
+      ]
+    },
+    {
+      "word": "thf",
+      "num_guesses": 7,
+      "prior": 0.00017307107494670665,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "ldh",
+        "gfy",
+        "thf"
+      ]
+    },
+    {
+      "word": "rmv",
+      "num_guesses": 7,
+      "prior": 0.0000845536875411755,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lnb",
+        "vow",
+        "rmv"
+      ]
+    },
+    {
+      "word": "lbc",
+      "num_guesses": 8,
+      "prior": 0.00011777424577588184,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "ndb",
+        "bhm",
+        "wru",
+        "fig",
+        "lbc"
+      ]
+    },
+    {
+      "word": "tsb",
+      "num_guesses": 7,
+      "prior": 0.00012119251604846755,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "rot",
+        "blk",
+        "tsb"
+      ]
+    },
+    {
+      "word": "aal",
+      "num_guesses": 7,
+      "prior": 0.0001352147397368924,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "fim",
+        "gow",
+        "uav",
+        "aal"
+      ]
+    },
+    {
+      "word": "lcg",
+      "num_guesses": 7,
+      "prior": 0.00009141123513835204,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "hlb",
+        "gul",
+        "lcg"
+      ]
+    },
+    {
+      "word": "rcu",
+      "num_guesses": 7,
+      "prior": 0.00009226412125083198,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "wvr",
+        "ugh",
+        "rcu"
+      ]
+    },
+    {
+      "word": "byf",
+      "num_guesses": 8,
+      "prior": 0.00007498332839016135,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "nbf",
+        "bff",
+        "byf"
+      ]
+    },
+    {
+      "word": "apf",
+      "num_guesses": 7,
+      "prior": 0.00012695034591981384,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "iba",
+        "moh",
+        "gfu",
+        "apf"
+      ]
+    },
+    {
+      "word": "uvs",
+      "num_guesses": 8,
+      "prior": 0.0000945757391623964,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "wuv",
+        "uvs"
+      ]
+    },
+    {
+      "word": "eqe",
+      "num_guesses": 10,
+      "prior": 0.00008091341471807777,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "hny",
+        "ewk",
+        "vfx",
+        "eze",
+        "eqe"
+      ]
+    },
+    {
+      "word": "pca",
+      "num_guesses": 5,
+      "prior": 0.00018531057823566082,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "lhc",
+        "pca"
+      ]
+    },
+    {
+      "word": "zin",
+      "num_guesses": 9,
+      "prior": 0.0001266098603930518,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fwk",
+        "gly",
+        "hjr",
+        "viz",
+        "zin"
+      ]
+    },
+    {
+      "word": "ldw",
+      "num_guesses": 7,
+      "prior": 0.00008432463531627654,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "lhf",
+        "gul",
+        "ldw"
+      ]
+    },
+    {
+      "word": "gfo",
+      "num_guesses": 8,
+      "prior": 0.00007778590502413994,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "fnu",
+        "oid",
+        "vol",
+        "gfo"
+      ]
+    },
+    {
+      "word": "zio",
+      "num_guesses": 8,
+      "prior": 0.00009833517199793682,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "fnu",
+        "lid",
+        "viz",
+        "zio"
+      ]
+    },
+    {
+      "word": "haf",
+      "num_guesses": 7,
+      "prior": 0.0001273280472851444,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "haf"
+      ]
+    },
+    {
+      "word": "hyp",
+      "num_guesses": 7,
+      "prior": 0.00012360319512973414,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bhl",
+        "ryu",
+        "hyp"
+      ]
+    },
+    {
+      "word": "rof",
+      "num_guesses": 9,
+      "prior": 0.00011466247540307617,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "wym",
+        "kib",
+        "gho",
+        "pvr",
+        "rox",
+        "rof"
+      ]
+    },
+    {
+      "word": "mpr",
+      "num_guesses": 6,
+      "prior": 0.00014397777261692836,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "hrg",
+        "mpr"
+      ]
+    },
+    {
+      "word": "ana",
+      "num_guesses": 7,
+      "prior": 0.0002579409961197103,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "fyn",
+        "usa",
+        "ana"
+      ]
+    },
+    {
+      "word": "gdf",
+      "num_guesses": 8,
+      "prior": 0.00009879115439068765,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "lhf",
+        "bun",
+        "wig",
+        "gdf"
+      ]
+    },
+    {
+      "word": "eil",
+      "num_guesses": 6,
+      "prior": 0.00011783927446698088,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "fli",
+        "eil"
+      ]
+    },
+    {
+      "word": "xxl",
+      "num_guesses": 8,
+      "prior": 0.0001114911566556253,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "lng",
+        "ylw",
+        "xxl"
+      ]
+    },
+    {
+      "word": "lid",
+      "num_guesses": 6,
+      "prior": 0.00025841270136236236,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dbm",
+        "lhr",
+        "lid"
+      ]
+    },
+    {
+      "word": "tec",
+      "num_guesses": 6,
+      "prior": 0.00017388152268205226,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "xhe",
+        "cwt",
+        "tec"
+      ]
+    },
+    {
+      "word": "ysk",
+      "num_guesses": 9,
+      "prior": 0.000053187550513866776,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "fnr",
+        "wuv",
+        "jsx",
+        "ysk"
+      ]
+    },
+    {
+      "word": "nrm",
+      "num_guesses": 6,
+      "prior": 0.0001331086917149228,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "hnf",
+        "nrm"
+      ]
+    },
+    {
+      "word": "hdb",
+      "num_guesses": 7,
+      "prior": 0.00010996292750110557,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "lhf",
+        "gbv",
+        "hdb"
+      ]
+    },
+    {
+      "word": "bfr",
+      "num_guesses": 6,
+      "prior": 0.00011516069622221729,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "bfr"
+      ]
+    },
+    {
+      "word": "adu",
+      "num_guesses": 8,
+      "prior": 0.00011870545158837559,
+      "guesses": [
+        "aes",
+        "tdr",
+        "jvd",
+        "mpa",
+        "cio",
+        "bfh",
+        "lun",
+        "adu"
+      ]
+    },
+    {
+      "word": "afk",
+      "num_guesses": 7,
+      "prior": 0.00008306363336345595,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "afk"
+      ]
+    },
+    {
+      "word": "opo",
+      "num_guesses": 7,
+      "prior": 0.00011710706382927821,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "gin",
+        "mfb",
+        "ohu",
+        "opo"
+      ]
+    },
+    {
+      "word": "rrv",
+      "num_guesses": 8,
+      "prior": 0.00009059503988437271,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "byf",
+        "nvr",
+        "elk",
+        "rrv"
+      ]
+    },
+    {
+      "word": "gsw",
+      "num_guesses": 7,
+      "prior": 0.00008726161913748357,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lor",
+        "fub",
+        "gsw"
+      ]
+    },
+    {
+      "word": "nrb",
+      "num_guesses": 8,
+      "prior": 0.00009888787801605285,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "vlr",
+        "brn",
+        "nrb"
+      ]
+    },
+    {
+      "word": "zen",
+      "num_guesses": 8,
+      "prior": 0.00020530146056363857,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "gbp",
+        "hwk",
+        "fcy",
+        "euv",
+        "zen"
+      ]
+    },
+    {
+      "word": "odc",
+      "num_guesses": 7,
+      "prior": 0.00012414094174613787,
+      "guesses": [
+        "aes",
+        "cot",
+        "hco",
+        "nfi",
+        "grp",
+        "bmd",
+        "odc"
+      ]
+    },
+    {
+      "word": "rsg",
+      "num_guesses": 6,
+      "prior": 0.00009661339964254112,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "fur",
+        "rsg"
+      ]
+    },
+    {
+      "word": "hfd",
+      "num_guesses": 7,
+      "prior": 0.00009999096497237282,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "rhb",
+        "fyn",
+        "hfd"
+      ]
+    },
+    {
+      "word": "bin",
+      "num_guesses": 5,
+      "prior": 0.0002605921089203214,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "bin"
+      ]
+    },
+    {
+      "word": "ipw",
+      "num_guesses": 7,
+      "prior": 0.00007852099312273412,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "imp",
+        "vlr",
+        "fwi",
+        "ipw"
+      ]
+    },
+    {
+      "word": "pmb",
+      "num_guesses": 5,
+      "prior": 0.00012157783998027883,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "pmb"
+      ]
+    },
+    {
+      "word": "wya",
+      "num_guesses": 9,
+      "prior": 0.00006904552362872905,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "bln",
+        "hug",
+        "wfk",
+        "wwa",
+        "wya"
+      ]
+    },
+    {
+      "word": "yhm",
+      "num_guesses": 8,
+      "prior": 0.00005053564464389066,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "gbl",
+        "fwh",
+        "hmm",
+        "yhm"
+      ]
+    },
+    {
+      "word": "uey",
+      "num_guesses": 7,
+      "prior": 0.00006552175809041702,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "kuh",
+        "uey"
+      ]
+    },
+    {
+      "word": "sff",
+      "num_guesses": 8,
+      "prior": 0.00010453406617098053,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "nbw",
+        "lsj",
+        "sff"
+      ]
+    },
+    {
+      "word": "dmi",
+      "num_guesses": 7,
+      "prior": 0.00012494963445266877,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "fdi",
+        "wru",
+        "van",
+        "dmi"
+      ]
+    },
+    {
+      "word": "bvo",
+      "num_guesses": 6,
+      "prior": 0.00011913540934866377,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "div",
+        "bvo"
+      ]
+    },
+    {
+      "word": "buz",
+      "num_guesses": 8,
+      "prior": 0.00010777059733461269,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "bhk",
+        "xyz",
+        "buz"
+      ]
+    },
+    {
+      "word": "rle",
+      "num_guesses": 6,
+      "prior": 0.00010916769147537153,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "yup",
+        "flc",
+        "rle"
+      ]
+    },
+    {
+      "word": "buk",
+      "num_guesses": 7,
+      "prior": 0.00010818228626272644,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "bhk",
+        "buk"
+      ]
+    },
+    {
+      "word": "oer",
+      "num_guesses": 8,
+      "prior": 0.00013531714145871207,
+      "guesses": [
+        "aes",
+        "tdr",
+        "bhp",
+        "vgm",
+        "fcy",
+        "jwk",
+        "ron",
+        "oer"
+      ]
+    },
+    {
+      "word": "gur",
+      "num_guesses": 7,
+      "prior": 0.00014956791399329153,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bnf",
+        "glh",
+        "gur"
+      ]
+    },
+    {
+      "word": "cfe",
+      "num_guesses": 7,
+      "prior": 0.00013538271008271493,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "mph",
+        "bnf",
+        "cfe"
+      ]
+    },
+    {
+      "word": "dtd",
+      "num_guesses": 7,
+      "prior": 0.0001446713600734074,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "fld",
+        "dug",
+        "dtd"
+      ]
+    },
+    {
+      "word": "nyp",
+      "num_guesses": 7,
+      "prior": 0.00009176533238234594,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "fpl",
+        "guv",
+        "nyp"
+      ]
+    },
+    {
+      "word": "lvs",
+      "num_guesses": 10,
+      "prior": 0.0001361851427837672,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "flu",
+        "ysg",
+        "jwk",
+        "viz",
+        "lvs"
+      ]
+    },
+    {
+      "word": "fld",
+      "num_guesses": 7,
+      "prior": 0.0001364537885314339,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "bfr",
+        "wnl",
+        "fld"
+      ]
+    },
+    {
+      "word": "ira",
+      "num_guesses": 4,
+      "prior": 0.0002476002649960671,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "ira"
+      ]
+    },
+    {
+      "word": "fwp",
+      "num_guesses": 8,
+      "prior": 0.00009546468704992419,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bhl",
+        "gfr",
+        "upw",
+        "fwp"
+      ]
+    },
+    {
+      "word": "mhk",
+      "num_guesses": 7,
+      "prior": 0.00007422541580014422,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "vkh",
+        "mhk"
+      ]
+    },
+    {
+      "word": "bio",
+      "num_guesses": 6,
+      "prior": 0.00022904752657131627,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "div",
+        "bio"
+      ]
+    },
+    {
+      "word": "wel",
+      "num_guesses": 7,
+      "prior": 0.00018167167319155732,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "gol",
+        "ebv",
+        "pwc",
+        "wel"
+      ]
+    },
+    {
+      "word": "wee",
+      "num_guesses": 6,
+      "prior": 0.0002338080559154223,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "bge",
+        "wee"
+      ]
+    },
+    {
+      "word": "fyi",
+      "num_guesses": 8,
+      "prior": 0.00011809235154159993,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "mbu",
+        "gfx",
+        "ylw",
+        "fyi"
+      ]
+    },
+    {
+      "word": "miz",
+      "num_guesses": 8,
+      "prior": 0.0001322343929074787,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "xlr",
+        "ghi",
+        "wuz",
+        "miz"
+      ]
+    },
+    {
+      "word": "bya",
+      "num_guesses": 7,
+      "prior": 0.00013170782387282064,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "bln",
+        "ybg",
+        "bya"
+      ]
+    },
+    {
+      "word": "cvr",
+      "num_guesses": 8,
+      "prior": 0.00010614300276954413,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "fur",
+        "ldh",
+        "mcn",
+        "bwv",
+        "cvr"
+      ]
+    },
+    {
+      "word": "lie",
+      "num_guesses": 5,
+      "prior": 0.0003835143452794179,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "vpl",
+        "lie"
+      ]
+    },
+    {
+      "word": "bwg",
+      "num_guesses": 8,
+      "prior": 0.00008403976631503504,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "nbf",
+        "gvw",
+        "bwg"
+      ]
+    },
+    {
+      "word": "tob",
+      "num_guesses": 8,
+      "prior": 0.00013234476269760102,
+      "guesses": [
+        "aes",
+        "cot",
+        "npo",
+        "myr",
+        "wud",
+        "fil",
+        "gbv",
+        "tob"
+      ]
+    },
+    {
+      "word": "pud",
+      "num_guesses": 6,
+      "prior": 0.00013717709105438635,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "hpf",
+        "luv",
+        "pud"
+      ]
+    },
+    {
+      "word": "cto",
+      "num_guesses": 3,
+      "prior": 0.0001271553293010311,
+      "guesses": [
+        "aes",
+        "cot",
+        "cto"
+      ]
+    },
+    {
+      "word": "miw",
+      "num_guesses": 8,
+      "prior": 0.0000793719217939781,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "xlr",
+        "ghi",
+        "wuz",
+        "miw"
+      ]
+    },
+    {
+      "word": "hil",
+      "num_guesses": 7,
+      "prior": 0.00013869251914838194,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fgr",
+        "lhv",
+        "hil"
+      ]
+    },
+    {
+      "word": "cjs",
+      "num_guesses": 9,
+      "prior": 0.00011575836841506779,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "btn",
+        "fld",
+        "ush",
+        "gvw",
+        "jzk",
+        "cjs"
+      ]
+    },
+    {
+      "word": "bsf",
+      "num_guesses": 7,
+      "prior": 0.00012326916590401992,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "new",
+        "bsf"
+      ]
+    },
+    {
+      "word": "wit",
+      "num_guesses": 6,
+      "prior": 0.0003120569743001415,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "bfh",
+        "lwk",
+        "wit"
+      ]
+    },
+    {
+      "word": "kol",
+      "num_guesses": 7,
+      "prior": 0.00015172482319837782,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "pvf",
+        "wkg",
+        "kol"
+      ]
+    },
+    {
+      "word": "nfp",
+      "num_guesses": 6,
+      "prior": 0.00011876750381099105,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "fpl",
+        "nfp"
+      ]
+    },
+    {
+      "word": "aez",
+      "num_guesses": 6,
+      "prior": 0.00007920133317344611,
+      "guesses": [
+        "aes",
+        "crt",
+        "dle",
+        "bmw",
+        "vol",
+        "aez"
+      ]
+    },
+    {
+      "word": "pya",
+      "num_guesses": 9,
+      "prior": 0.00008697368106674084,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "lhc",
+        "got",
+        "fkn",
+        "bwv",
+        "you",
+        "pya"
+      ]
+    },
+    {
+      "word": "jsx",
+      "num_guesses": 8,
+      "prior": 0.00006871627884704628,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "fnr",
+        "wuv",
+        "jsx"
+      ]
+    },
+    {
+      "word": "kia",
+      "num_guesses": 7,
+      "prior": 0.00015208543910580986,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "vct",
+        "nhl",
+        "jzk",
+        "kia"
+      ]
+    },
+    {
+      "word": "ony",
+      "num_guesses": 6,
+      "prior": 0.00015904962419643055,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "dni",
+        "guy",
+        "ony"
+      ]
+    },
+    {
+      "word": "nso",
+      "num_guesses": 7,
+      "prior": 0.00013141188588345387,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "nuv",
+        "nso"
+      ]
+    },
+    {
+      "word": "aew",
+      "num_guesses": 5,
+      "prior": 0.00011033333914053558,
+      "guesses": [
+        "aes",
+        "crt",
+        "dle",
+        "bmw",
+        "aew"
+      ]
+    },
+    {
+      "word": "ihn",
+      "num_guesses": 6,
+      "prior": 0.00014576750994713762,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "bfh",
+        "ihn"
+      ]
+    },
+    {
+      "word": "baa",
+      "num_guesses": 8,
+      "prior": 0.0001612788282042657,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "hib",
+        "oka",
+        "baa"
+      ]
+    },
+    {
+      "word": "ppf",
+      "num_guesses": 8,
+      "prior": 0.0001231815343958636,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "fun",
+        "vlf",
+        "gph",
+        "ppf"
+      ]
+    },
+    {
+      "word": "nis",
+      "num_guesses": 8,
+      "prior": 0.0001741793595360718,
+      "guesses": [
+        "aes",
+        "iop",
+        "dht",
+        "cvb",
+        "wlm",
+        "sfg",
+        "nkr",
+        "nis"
+      ]
+    },
+    {
+      "word": "aux",
+      "num_guesses": 8,
+      "prior": 0.00021497696537755683,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "via",
+        "aux"
+      ]
+    },
+    {
+      "word": "lrt",
+      "num_guesses": 7,
+      "prior": 0.00013222969480376212,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "rbh",
+        "tgl",
+        "lrt"
+      ]
+    },
+    {
+      "word": "μms",
+      "num_guesses": 10,
+      "prior": 0.00003725049089689658,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "shf",
+        "lkg",
+        "dtv",
+        "wbn",
+        "jux",
+        "qms",
+        "μms"
+      ]
+    },
+    {
+      "word": "amt",
+      "num_guesses": 6,
+      "prior": 0.00019061237408270597,
+      "guesses": [
+        "aes",
+        "tdr",
+        "ptc",
+        "nfl",
+        "ibm",
+        "amt"
+      ]
+    },
+    {
+      "word": "vop",
+      "num_guesses": 9,
+      "prior": 0.00010301105356743931,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "whp",
+        "pgf",
+        "oki",
+        "suv",
+        "vop"
+      ]
+    },
+    {
+      "word": "nne",
+      "num_guesses": 8,
+      "prior": 0.00014209585173468418,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "hny",
+        "ekv",
+        "nne"
+      ]
+    },
+    {
+      "word": "jra",
+      "num_guesses": 8,
+      "prior": 0.0001103294618092377,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "ftb",
+        "pod",
+        "luh",
+        "jwk",
+        "jra"
+      ]
+    },
+    {
+      "word": "anw",
+      "num_guesses": 7,
+      "prior": 0.00011173194080852916,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "fyn",
+        "usa",
+        "anw"
+      ]
+    },
+    {
+      "word": "fpu",
+      "num_guesses": 7,
+      "prior": 0.00010175818572086177,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "lrg",
+        "ufh",
+        "fpu"
+      ]
+    },
+    {
+      "word": "psl",
+      "num_guesses": 6,
+      "prior": 0.00013144693124887688,
+      "guesses": [
+        "aes",
+        "sip",
+        "duc",
+        "tof",
+        "mrl",
+        "psl"
+      ]
+    },
+    {
+      "word": "zod",
+      "num_guesses": 9,
+      "prior": 0.00007819177647293028,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "mgd",
+        "dbp",
+        "oil",
+        "vhf",
+        "zwj",
+        "zod"
+      ]
+    },
+    {
+      "word": "ags",
+      "num_guesses": 8,
+      "prior": 0.00014669927012942658,
+      "guesses": [
+        "aes",
+        "lsd",
+        "bun",
+        "crm",
+        "pat",
+        "whi",
+        "gof",
+        "ags"
+      ]
+    },
+    {
+      "word": "smo",
+      "num_guesses": 7,
+      "prior": 0.00011640148426660941,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "hov",
+        "nrl",
+        "dsm",
+        "smo"
+      ]
+    },
+    {
+      "word": "pft",
+      "num_guesses": 8,
+      "prior": 0.00010878024102065765,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "npr",
+        "ltv",
+        "bmd",
+        "fwk",
+        "pft"
+      ]
+    },
+    {
+      "word": "tfb",
+      "num_guesses": 7,
+      "prior": 0.00008306202404755137,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "lub",
+        "ftv",
+        "tfb"
+      ]
+    },
+    {
+      "word": "seo",
+      "num_guesses": 7,
+      "prior": 0.00018096891679044978,
+      "guesses": [
+        "aes",
+        "tce",
+        "pxr",
+        "dnq",
+        "wim",
+        "luo",
+        "seo"
+      ]
+    },
+    {
+      "word": "jug",
+      "num_guesses": 8,
+      "prior": 0.00020105069422489532,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "lhf",
+        "gvw",
+        "jug"
+      ]
+    },
+    {
+      "word": "dhz",
+      "num_guesses": 8,
+      "prior": 0.00005471288668552547,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "blu",
+        "fwh",
+        "viz",
+        "dhz"
+      ]
+    },
+    {
+      "word": "bef",
+      "num_guesses": 6,
+      "prior": 0.00015787286942843277,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "cbf",
+        "bef"
+      ]
+    },
+    {
+      "word": "oqr",
+      "num_guesses": 6,
+      "prior": 0.00005953410698997732,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "lub",
+        "mkd",
+        "oqr"
+      ]
+    },
+    {
+      "word": "tph",
+      "num_guesses": 7,
+      "prior": 0.0001155999731613831,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "ndp",
+        "vhf",
+        "tph"
+      ]
+    },
+    {
+      "word": "dfa",
+      "num_guesses": 5,
+      "prior": 0.00013128680452332973,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "dnf",
+        "dfa"
+      ]
+    },
+    {
+      "word": "cob",
+      "num_guesses": 7,
+      "prior": 0.00017925145251438253,
+      "guesses": [
+        "aes",
+        "cot",
+        "nwm",
+        "xlr",
+        "pdo",
+        "ybg",
+        "cob"
+      ]
+    },
+    {
+      "word": "mmb",
+      "num_guesses": 8,
+      "prior": 0.00011756396003901775,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "nbg",
+        "bwv",
+        "mmb"
+      ]
+    },
+    {
+      "word": "pki",
+      "num_guesses": 6,
+      "prior": 0.00014066512121369647,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "hpr",
+        "lkm",
+        "pki"
+      ]
+    },
+    {
+      "word": "wun",
+      "num_guesses": 8,
+      "prior": 0.00010748169840161883,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "jfk",
+        "lhx",
+        "wun"
+      ]
+    },
+    {
+      "word": "cfx",
+      "num_guesses": 9,
+      "prior": 0.00008517655355617259,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "nhl",
+        "fuv",
+        "ccf",
+        "kgb",
+        "cfx"
+      ]
+    },
+    {
+      "word": "atr",
+      "num_guesses": 3,
+      "prior": 0.0001546091933003757,
+      "guesses": [
+        "aes",
+        "tdr",
+        "atr"
+      ]
+    },
+    {
+      "word": "pdf",
+      "num_guesses": 5,
+      "prior": 0.0001961854279983006,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rfp",
+        "pdf"
+      ]
+    },
+    {
+      "word": "sli",
+      "num_guesses": 7,
+      "prior": 0.00013671995149942563,
+      "guesses": [
+        "aes",
+        "sip",
+        "hrc",
+        "kou",
+        "tsd",
+        "mln",
+        "sli"
+      ]
+    },
+    {
+      "word": "pra",
+      "num_guesses": 6,
+      "prior": 0.00017248432999812145,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "ftb",
+        "pod",
+        "pra"
+      ]
+    },
+    {
+      "word": "nsc",
+      "num_guesses": 5,
+      "prior": 0.0001852566111251856,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "ngb",
+        "nsc"
+      ]
+    },
+    {
+      "word": "mos",
+      "num_guesses": 5,
+      "prior": 0.00022486350969046437,
+      "guesses": [
+        "aes",
+        "iop",
+        "nld",
+        "cmr",
+        "mos"
+      ]
+    },
+    {
+      "word": "kob",
+      "num_guesses": 8,
+      "prior": 0.00010767801370638654,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "gfj",
+        "bhp",
+        "ykw",
+        "kob"
+      ]
+    },
+    {
+      "word": "vam",
+      "num_guesses": 9,
+      "prior": 0.00012387368299739498,
+      "guesses": [
+        "aes",
+        "mar",
+        "chd",
+        "jnl",
+        "ftp",
+        "biy",
+        "wkg",
+        "viz",
+        "vam"
+      ]
+    },
+    {
+      "word": "pbk",
+      "num_guesses": 6,
+      "prior": 0.00016495993273615527,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "lkg",
+        "pbk"
+      ]
+    },
+    {
+      "word": "drn",
+      "num_guesses": 7,
+      "prior": 0.00009360345663380929,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "vly",
+        "drf",
+        "drn"
+      ]
+    },
+    {
+      "word": "ikt",
+      "num_guesses": 7,
+      "prior": 0.000079629374529401,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "ntr",
+        "mfd",
+        "vkh",
+        "ikt"
+      ]
+    },
+    {
+      "word": "fls",
+      "num_guesses": 7,
+      "prior": 0.0001417797989229043,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "flu",
+        "fls"
+      ]
+    },
+    {
+      "word": "aav",
+      "num_guesses": 10,
+      "prior": 0.00011831318877528373,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "wha",
+        "xyz",
+        "jvm",
+        "aav"
+      ]
+    },
+    {
+      "word": "npt",
+      "num_guesses": 5,
+      "prior": 0.00016005238668724466,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "npr",
+        "npt"
+      ]
+    },
+    {
+      "word": "qra",
+      "num_guesses": 8,
+      "prior": 0.00009241007408179215,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "ftb",
+        "pod",
+        "luh",
+        "jwk",
+        "qra"
+      ]
+    },
+    {
+      "word": "whr",
+      "num_guesses": 8,
+      "prior": 0.00010557737837995017,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "nlr",
+        "whv",
+        "whr"
+      ]
+    },
+    {
+      "word": "yea",
+      "num_guesses": 3,
+      "prior": 0.0002452484854470791,
+      "guesses": [
+        "aes",
+        "pty",
+        "yea"
+      ]
+    },
+    {
+      "word": "gct",
+      "num_guesses": 8,
+      "prior": 0.0001118762034216171,
+      "guesses": [
+        "aes",
+        "cot",
+        "idp",
+        "hrm",
+        "buj",
+        "nfl",
+        "avg",
+        "gct"
+      ]
+    },
+    {
+      "word": "uji",
+      "num_guesses": 7,
+      "prior": 0.00011471737747189346,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "mbu",
+        "uzh",
+        "uji"
+      ]
+    },
+    {
+      "word": "afb",
+      "num_guesses": 7,
+      "prior": 0.00020551786496399808,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "fbw",
+        "afb"
+      ]
+    },
+    {
+      "word": "nhl",
+      "num_guesses": 6,
+      "prior": 0.0001558797547300379,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "nhl"
+      ]
+    },
+    {
+      "word": "bex",
+      "num_guesses": 9,
+      "prior": 0.00012696472095390825,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "boe",
+        "hvc",
+        "khz",
+        "bex"
+      ]
+    },
+    {
+      "word": "sqm",
+      "num_guesses": 9,
+      "prior": 0.00010385420933201952,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "rsv",
+        "bln",
+        "whf",
+        "jug",
+        "sqm"
+      ]
+    },
+    {
+      "word": "rmd",
+      "num_guesses": 7,
+      "prior": 0.00010247083143169491,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "fbw",
+        "dnr",
+        "rmd"
+      ]
+    },
+    {
+      "word": "bpv",
+      "num_guesses": 8,
+      "prior": 0.00009597096394944889,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "lrg",
+        "ufh",
+        "wpb",
+        "bpv"
+      ]
+    },
+    {
+      "word": "ith",
+      "num_guesses": 6,
+      "prior": 0.0002236982533982881,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "ipu",
+        "hym",
+        "ith"
+      ]
+    },
+    {
+      "word": "sga",
+      "num_guesses": 8,
+      "prior": 0.00013417401748823125,
+      "guesses": [
+        "aes",
+        "sat",
+        "bsp",
+        "luh",
+        "mic",
+        "nor",
+        "fdg",
+        "sga"
+      ]
+    },
+    {
+      "word": "gau",
+      "num_guesses": 8,
+      "prior": 0.0001263974804981075,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "zoa",
+        "wfu",
+        "gau"
+      ]
+    },
+    {
+      "word": "ulf",
+      "num_guesses": 7,
+      "prior": 0.00013957803994195907,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "uhf",
+        "ing",
+        "ulf"
+      ]
+    },
+    {
+      "word": "pco",
+      "num_guesses": 5,
+      "prior": 0.0001388832993039359,
+      "guesses": [
+        "aes",
+        "cot",
+        "hco",
+        "pin",
+        "pco"
+      ]
+    },
+    {
+      "word": "jut",
+      "num_guesses": 8,
+      "prior": 0.00013890414098554794,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "nbh",
+        "gmr",
+        "tld",
+        "jfk",
+        "jut"
+      ]
+    },
+    {
+      "word": "moc",
+      "num_guesses": 6,
+      "prior": 0.0001328595829545315,
+      "guesses": [
+        "aes",
+        "cot",
+        "dlr",
+        "vib",
+        "npm",
+        "moc"
+      ]
+    },
+    {
+      "word": "sdi",
+      "num_guesses": 6,
+      "prior": 0.00016831325604451235,
+      "guesses": [
+        "aes",
+        "sip",
+        "hrc",
+        "kou",
+        "tsd",
+        "sdi"
+      ]
+    },
+    {
+      "word": "lsu",
+      "num_guesses": 7,
+      "prior": 0.0001371602121873311,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "url",
+        "lsu"
+      ]
+    },
+    {
+      "word": "pas",
+      "num_guesses": 5,
+      "prior": 0.00024443457697979453,
+      "guesses": [
+        "aes",
+        "hgw",
+        "dlc",
+        "pmn",
+        "pas"
+      ]
+    },
+    {
+      "word": "his",
+      "num_guesses": 4,
+      "prior": 0.0008951317574378653,
+      "guesses": [
+        "aes",
+        "iop",
+        "dht",
+        "his"
+      ]
+    },
+    {
+      "word": "wus",
+      "num_guesses": 8,
+      "prior": 0.00012647691597459613,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "wuv",
+        "wus"
+      ]
+    },
+    {
+      "word": "iru",
+      "num_guesses": 7,
+      "prior": 0.0001350506519200655,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "bli",
+        "muv",
+        "iru"
+      ]
+    },
+    {
+      "word": "stt",
+      "num_guesses": 8,
+      "prior": 0.000122886998317974,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "dur",
+        "mnh",
+        "lyk",
+        "fbg",
+        "stt"
+      ]
+    },
+    {
+      "word": "usu",
+      "num_guesses": 8,
+      "prior": 0.00014512468235751378,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "fnr",
+        "wuv",
+        "usu"
+      ]
+    },
+    {
+      "word": "vot",
+      "num_guesses": 9,
+      "prior": 0.00013548182026282418,
+      "guesses": [
+        "aes",
+        "cot",
+        "lng",
+        "phd",
+        "tbr",
+        "jmi",
+        "ofw",
+        "xyz",
+        "vot"
+      ]
+    },
+    {
+      "word": "nrx",
+      "num_guesses": 8,
+      "prior": 0.00009747793041024584,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "nlr",
+        "hon",
+        "nrx"
+      ]
+    },
+    {
+      "word": "pyg",
+      "num_guesses": 9,
+      "prior": 0.00007731036073822276,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "fun",
+        "lpp",
+        "hvy",
+        "pyx",
+        "pyg"
+      ]
+    },
+    {
+      "word": "amn",
+      "num_guesses": 5,
+      "prior": 0.00011288182534430964,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "amn"
+      ]
+    },
+    {
+      "word": "lsv",
+      "num_guesses": 8,
+      "prior": 0.00008795857073075796,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "url",
+        "lsj",
+        "lsv"
+      ]
+    },
+    {
+      "word": "pus",
+      "num_guesses": 4,
+      "prior": 0.0002244177017278556,
+      "guesses": [
+        "aes",
+        "iop",
+        "pcu",
+        "pus"
+      ]
+    },
+    {
+      "word": "sog",
+      "num_guesses": 9,
+      "prior": 0.00011868499604316268,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "wnl",
+        "dym",
+        "rub",
+        "vfx",
+        "mhz",
+        "sog"
+      ]
+    },
+    {
+      "word": "prs",
+      "num_guesses": 7,
+      "prior": 0.00015755017760209667,
+      "guesses": [
+        "aes",
+        "iop",
+        "pcu",
+        "lbt",
+        "mph",
+        "rsd",
+        "prs"
+      ]
+    },
+    {
+      "word": "wcl",
+      "num_guesses": 8,
+      "prior": 0.00010872437929843763,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "hlb",
+        "gul",
+        "law",
+        "wcl"
+      ]
+    },
+    {
+      "word": "xlb",
+      "num_guesses": 9,
+      "prior": 0.00006804266583703144,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "gwb",
+        "lvl",
+        "jlb",
+        "xlb"
+      ]
+    },
+    {
+      "word": "ahh",
+      "num_guesses": 9,
+      "prior": 0.00013503671629561714,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "wha",
+        "veh",
+        "ahh"
+      ]
+    },
+    {
+      "word": "aaq",
+      "num_guesses": 10,
+      "prior": 0.00007628189746371863,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "wha",
+        "xyz",
+        "jvm",
+        "aaq"
+      ]
+    },
+    {
+      "word": "bmv",
+      "num_guesses": 8,
+      "prior": 0.00009362315748136712,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "nbg",
+        "bwv",
+        "bmv"
+      ]
+    },
+    {
+      "word": "rts",
+      "num_guesses": 6,
+      "prior": 0.0001670912225417918,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "rhd",
+        "ust",
+        "rts"
+      ]
+    },
+    {
+      "word": "rta",
+      "num_guesses": 6,
+      "prior": 0.00014685862491718257,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "nod",
+        "ftp",
+        "rta"
+      ]
+    },
+    {
+      "word": "csl",
+      "num_guesses": 6,
+      "prior": 0.0001376438003958473,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "rfc",
+        "lot",
+        "csl"
+      ]
+    },
+    {
+      "word": "tzd",
+      "num_guesses": 8,
+      "prior": 0.00006767324449789994,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "ldh",
+        "gtn",
+        "khz",
+        "tzd"
+      ]
+    },
+    {
+      "word": "tri",
+      "num_guesses": 4,
+      "prior": 0.00023979885576849944,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "tri"
+      ]
+    },
+    {
+      "word": "hop",
+      "num_guesses": 6,
+      "prior": 0.00023819853927804617,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "whp",
+        "hop"
+      ]
+    },
+    {
+      "word": "sfy",
+      "num_guesses": 8,
+      "prior": 0.00008963794775454789,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "gbx",
+        "wyn",
+        "sfy"
+      ]
+    },
+    {
+      "word": "nfz",
+      "num_guesses": 8,
+      "prior": 0.00007250859376774609,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "nfv",
+        "nfz"
+      ]
+    },
+    {
+      "word": "cxo",
+      "num_guesses": 8,
+      "prior": 0.00007290336342486178,
+      "guesses": [
+        "aes",
+        "cot",
+        "bih",
+        "flr",
+        "ndp",
+        "mcw",
+        "cgo",
+        "cxo"
+      ]
+    },
+    {
+      "word": "eor",
+      "num_guesses": 5,
+      "prior": 0.0001379184449206428,
+      "guesses": [
+        "aes",
+        "ote",
+        "cgo",
+        "fnr",
+        "eor"
+      ]
+    },
+    {
+      "word": "upr",
+      "num_guesses": 8,
+      "prior": 0.00011352865972917164,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "lrg",
+        "rhq",
+        "web",
+        "upr"
+      ]
+    },
+    {
+      "word": "ntd",
+      "num_guesses": 8,
+      "prior": 0.00010969044055372493,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "fld",
+        "dug",
+        "any",
+        "ntd"
+      ]
+    },
+    {
+      "word": "dic",
+      "num_guesses": 7,
+      "prior": 0.0001657881936238024,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "nvm",
+        "lfr",
+        "dhw",
+        "dic"
+      ]
+    },
+    {
+      "word": "cag",
+      "num_guesses": 9,
+      "prior": 0.00013043844660344148,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ibc",
+        "ova",
+        "yuh",
+        "gwf",
+        "cag"
+      ]
+    },
+    {
+      "word": "iia",
+      "num_guesses": 6,
+      "prior": 0.0001669266279290673,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "cnt",
+        "gil",
+        "iia"
+      ]
+    },
+    {
+      "word": "wma",
+      "num_guesses": 7,
+      "prior": 0.00012338639288752215,
+      "guesses": [
+        "aes",
+        "mar",
+        "udc",
+        "ipo",
+        "btl",
+        "hgw",
+        "wma"
+      ]
+    },
+    {
+      "word": "sgd",
+      "num_guesses": 7,
+      "prior": 0.00011835996957227049,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "vsl",
+        "hrg",
+        "sgd"
+      ]
+    },
+    {
+      "word": "mod",
+      "num_guesses": 5,
+      "prior": 0.00023175068062846979,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "mgd",
+        "mod"
+      ]
+    },
+    {
+      "word": "rdt",
+      "num_guesses": 6,
+      "prior": 0.00013168503120175338,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "dnr",
+        "rdt"
+      ]
+    },
+    {
+      "word": "mwf",
+      "num_guesses": 7,
+      "prior": 0.00011856031791663759,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "gwb",
+        "mwf"
+      ]
+    },
+    {
+      "word": "box",
+      "num_guesses": 6,
+      "prior": 0.0004479273515749215,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "pyx",
+        "box"
+      ]
+    },
+    {
+      "word": "cwm",
+      "num_guesses": 7,
+      "prior": 0.00012800600052246768,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "fuh",
+        "wcl",
+        "cwm"
+      ]
+    },
+    {
+      "word": "xts",
+      "num_guesses": 10,
+      "prior": 0.0000850202511767845,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "sfn",
+        "luh",
+        "gvw",
+        "qkd",
+        "joy",
+        "xts"
+      ]
+    },
+    {
+      "word": "whq",
+      "num_guesses": 9,
+      "prior": 0.00007722600691795665,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "gvw",
+        "why",
+        "whf",
+        "whq"
+      ]
+    },
+    {
+      "word": "lcz",
+      "num_guesses": 9,
+      "prior": 0.00006461697753570458,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "hlb",
+        "gul",
+        "xiv",
+        "lcj",
+        "lcz"
+      ]
+    },
+    {
+      "word": "qpp",
+      "num_guesses": 8,
+      "prior": 0.00009226015659617644,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bhl",
+        "gfr",
+        "wuv",
+        "qpp"
+      ]
+    },
+    {
+      "word": "age",
+      "num_guesses": 3,
+      "prior": 0.0005238890386275378,
+      "guesses": [
+        "aes",
+        "grv",
+        "age"
+      ]
+    },
+    {
+      "word": "mom",
+      "num_guesses": 7,
+      "prior": 0.0003029944070951271,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "pvm",
+        "mhk",
+        "mom"
+      ]
+    },
+    {
+      "word": "amr",
+      "num_guesses": 7,
+      "prior": 0.00015424678686961273,
+      "guesses": [
+        "aes",
+        "tdr",
+        "pig",
+        "frl",
+        "bay",
+        "jmc",
+        "amr"
+      ]
+    },
+    {
+      "word": "uen",
+      "num_guesses": 8,
+      "prior": 0.00009496486886061911,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "gbp",
+        "hwk",
+        "fcy",
+        "euv",
+        "uen"
+      ]
+    },
+    {
+      "word": "emu",
+      "num_guesses": 7,
+      "prior": 0.00017833831961051627,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "fgm",
+        "bui",
+        "emu"
+      ]
+    },
+    {
+      "word": "mwr",
+      "num_guesses": 8,
+      "prior": 0.00010723894016217374,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fmr",
+        "lgb",
+        "wry",
+        "mwr"
+      ]
+    },
+    {
+      "word": "wra",
+      "num_guesses": 8,
+      "prior": 0.00012316048233062683,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "ftb",
+        "pod",
+        "luh",
+        "jwk",
+        "wra"
+      ]
+    },
+    {
+      "word": "inm",
+      "num_guesses": 8,
+      "prior": 0.00011356149796041595,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "kgn",
+        "hvy",
+        "inu",
+        "inm"
+      ]
+    },
+    {
+      "word": "jan",
+      "num_guesses": 6,
+      "prior": 0.0003214924565215645,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "fvc",
+        "bjd",
+        "jan"
+      ]
+    },
+    {
+      "word": "zap",
+      "num_guesses": 8,
+      "prior": 0.00013937165817543666,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "cyp",
+        "glh",
+        "pbj",
+        "fzd",
+        "zap"
+      ]
+    },
+    {
+      "word": "feh",
+      "num_guesses": 8,
+      "prior": 0.00011228097551173303,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "cbf",
+        "yue",
+        "hgv",
+        "feh"
+      ]
+    },
+    {
+      "word": "qrm",
+      "num_guesses": 8,
+      "prior": 0.00008635443125852167,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "hnf",
+        "vlj",
+        "mrm",
+        "qrm"
+      ]
+    },
+    {
+      "word": "cha",
+      "num_guesses": 6,
+      "prior": 0.00019992323407610089,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "lhf",
+        "cha"
+      ]
+    },
+    {
+      "word": "dnd",
+      "num_guesses": 8,
+      "prior": 0.0001588144438971753,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "bfr",
+        "nlv",
+        "jug",
+        "dnd"
+      ]
+    },
+    {
+      "word": "nūn",
+      "num_guesses": 8,
+      "prior": 0.000049237333909636035,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "wyn",
+        "nūn"
+      ]
+    },
+    {
+      "word": "rnb",
+      "num_guesses": 7,
+      "prior": 0.0000831919764237079,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "byf",
+        "gnh",
+        "rnb"
+      ]
+    },
+    {
+      "word": "bad",
+      "num_guesses": 6,
+      "prior": 0.00042861375691218896,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "bfh",
+        "bad"
+      ]
+    },
+    {
+      "word": "edf",
+      "num_guesses": 6,
+      "prior": 0.00015585139390969618,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "wui",
+        "fmd",
+        "edf"
+      ]
+    },
+    {
+      "word": "adh",
+      "num_guesses": 7,
+      "prior": 0.00015596442227211498,
+      "guesses": [
+        "aes",
+        "tdr",
+        "jvd",
+        "mpa",
+        "cio",
+        "bfh",
+        "adh"
+      ]
+    },
+    {
+      "word": "imu",
+      "num_guesses": 7,
+      "prior": 0.0001197468671106088,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "gml",
+        "vum",
+        "imu"
+      ]
+    },
+    {
+      "word": "shv",
+      "num_guesses": 9,
+      "prior": 0.00008721003060018004,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "why",
+        "ugh",
+        "nvq",
+        "shv"
+      ]
+    },
+    {
+      "word": "cbd",
+      "num_guesses": 5,
+      "prior": 0.00017180221791791018,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "cbd"
+      ]
+    },
+    {
+      "word": "bib",
+      "num_guesses": 7,
+      "prior": 0.00017134322249645617,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "bgl",
+        "hrb",
+        "bib"
+      ]
+    },
+    {
+      "word": "avp",
+      "num_guesses": 7,
+      "prior": 0.00013828343300923245,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "mpf",
+        "nai",
+        "bvh",
+        "avp"
+      ]
+    },
+    {
+      "word": "nlr",
+      "num_guesses": 6,
+      "prior": 0.0001221856006678345,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "nlr"
+      ]
+    },
+    {
+      "word": "mhd",
+      "num_guesses": 5,
+      "prior": 0.0001761613517810581,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "mhd"
+      ]
+    },
+    {
+      "word": "psu",
+      "num_guesses": 4,
+      "prior": 0.00014982375005772184,
+      "guesses": [
+        "aes",
+        "sip",
+        "duc",
+        "psu"
+      ]
+    },
+    {
+      "word": "ufa",
+      "num_guesses": 8,
+      "prior": 0.00013591492161151635,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "bln",
+        "hug",
+        "few",
+        "ufa"
+      ]
+    },
+    {
+      "word": "srb",
+      "num_guesses": 7,
+      "prior": 0.00012905632552724733,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "bkv",
+        "srb"
+      ]
+    },
+    {
+      "word": "vif",
+      "num_guesses": 8,
+      "prior": 0.00011219831206404508,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fgr",
+        "hwl",
+        "jzk",
+        "vif"
+      ]
+    },
+    {
+      "word": "tbp",
+      "num_guesses": 5,
+      "prior": 0.00013420107107353784,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "tbp"
+      ]
+    },
+    {
+      "word": "aeo",
+      "num_guesses": 6,
+      "prior": 0.00010213319338380908,
+      "guesses": [
+        "aes",
+        "crt",
+        "dle",
+        "bmw",
+        "vol",
+        "aeo"
+      ]
+    },
+    {
+      "word": "tue",
+      "num_guesses": 5,
+      "prior": 0.0001736808360172774,
+      "guesses": [
+        "aes",
+        "ote",
+        "hib",
+        "url",
+        "tue"
+      ]
+    },
+    {
+      "word": "fpp",
+      "num_guesses": 8,
+      "prior": 0.00010555285820651823,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bhl",
+        "gfr",
+        "upw",
+        "fpp"
+      ]
+    },
+    {
+      "word": "haz",
+      "num_guesses": 9,
+      "prior": 0.00013923668346132762,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "voi",
+        "jzk",
+        "haz"
+      ]
+    },
+    {
+      "word": "egi",
+      "num_guesses": 7,
+      "prior": 0.00009253918538698384,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "ngf",
+        "egg",
+        "egi"
+      ]
+    },
+    {
+      "word": "alc",
+      "num_guesses": 4,
+      "prior": 0.00015167245713044954,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "alc"
+      ]
+    },
+    {
+      "word": "tou",
+      "num_guesses": 6,
+      "prior": 0.00016437901266422119,
+      "guesses": [
+        "aes",
+        "cot",
+        "npo",
+        "myr",
+        "wud",
+        "tou"
+      ]
+    },
+    {
+      "word": "wah",
+      "num_guesses": 7,
+      "prior": 0.00015979878390263178,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "wah"
+      ]
+    },
+    {
+      "word": "cav",
+      "num_guesses": 7,
+      "prior": 0.000155901222537511,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ibc",
+        "ova",
+        "cav"
+      ]
+    },
+    {
+      "word": "pye",
+      "num_guesses": 7,
+      "prior": 0.00016603672300505475,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "hny",
+        "pye"
+      ]
+    },
+    {
+      "word": "zil",
+      "num_guesses": 8,
+      "prior": 0.00010301683589944591,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fgr",
+        "lhv",
+        "wil",
+        "zil"
+      ]
+    },
+    {
+      "word": "fus",
+      "num_guesses": 7,
+      "prior": 0.00012137529032869863,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "fus"
+      ]
+    },
+    {
+      "word": "rfa",
+      "num_guesses": 6,
+      "prior": 0.00014062332100382718,
+      "guesses": [
+        "aes",
+        "mar",
+        "irc",
+        "nod",
+        "ftp",
+        "rfa"
+      ]
+    },
+    {
+      "word": "nri",
+      "num_guesses": 5,
+      "prior": 0.00013380024720776405,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "nri"
+      ]
+    },
+    {
+      "word": "sfd",
+      "num_guesses": 9,
+      "prior": 0.0001050857277720393,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "vsl",
+        "hrg",
+        "bdw",
+        "kaj",
+        "sfd"
+      ]
+    },
+    {
+      "word": "apm",
+      "num_guesses": 6,
+      "prior": 0.00013010275504564484,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "iba",
+        "moh",
+        "apm"
+      ]
+    },
+    {
+      "word": "fvc",
+      "num_guesses": 7,
+      "prior": 0.00012174524299998112,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "ndb",
+        "fml",
+        "vcr",
+        "fvc"
+      ]
+    },
+    {
+      "word": "wbw",
+      "num_guesses": 8,
+      "prior": 0.0000663712647802503,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "gfw",
+        "won",
+        "wbw"
+      ]
+    },
+    {
+      "word": "mrl",
+      "num_guesses": 7,
+      "prior": 0.00012740838748070835,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fmr",
+        "bln",
+        "mrl"
+      ]
+    },
+    {
+      "word": "srs",
+      "num_guesses": 6,
+      "prior": 0.0001735994954555955,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "rhd",
+        "sfy",
+        "srs"
+      ]
+    },
+    {
+      "word": "tic",
+      "num_guesses": 5,
+      "prior": 0.00020353174162754707,
+      "guesses": [
+        "aes",
+        "cot",
+        "tcp",
+        "hil",
+        "tic"
+      ]
+    },
+    {
+      "word": "ofc",
+      "num_guesses": 5,
+      "prior": 0.00016181792011567788,
+      "guesses": [
+        "aes",
+        "cot",
+        "hco",
+        "nfi",
+        "ofc"
+      ]
+    },
+    {
+      "word": "cnp",
+      "num_guesses": 8,
+      "prior": 0.00011438279554872574,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "mcu",
+        "hpd",
+        "bfv",
+        "wyn",
+        "cnp"
+      ]
+    },
+    {
+      "word": "mab",
+      "num_guesses": 8,
+      "prior": 0.00017637289640897878,
+      "guesses": [
+        "aes",
+        "mar",
+        "nyp",
+        "dox",
+        "tgc",
+        "lim",
+        "buj",
+        "mab"
+      ]
+    },
+    {
+      "word": "tlo",
+      "num_guesses": 7,
+      "prior": 0.00010103106514930861,
+      "guesses": [
+        "aes",
+        "cot",
+        "two",
+        "hir",
+        "ntp",
+        "vlm",
+        "tlo"
+      ]
+    },
+    {
+      "word": "rsl",
+      "num_guesses": 7,
+      "prior": 0.00011942378409452218,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "nrx",
+        "rsl"
+      ]
+    },
+    {
+      "word": "eos",
+      "num_guesses": 5,
+      "prior": 0.00017426658071487586,
+      "guesses": [
+        "aes",
+        "rid",
+        "qpm",
+        "ost",
+        "eos"
+      ]
+    },
+    {
+      "word": "sbh",
+      "num_guesses": 8,
+      "prior": 0.00009809621731637548,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "why",
+        "blm",
+        "sbh"
+      ]
+    },
+    {
+      "word": "crm",
+      "num_guesses": 7,
+      "prior": 0.00016744082793210177,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "fur",
+        "lyc",
+        "hmd",
+        "crm"
+      ]
+    },
+    {
+      "word": "gaw",
+      "num_guesses": 8,
+      "prior": 0.00011564830025428793,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "zoa",
+        "wfu",
+        "gaw"
+      ]
+    },
+    {
+      "word": "nab",
+      "num_guesses": 7,
+      "prior": 0.0001647590504488824,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "gyn",
+        "hdv",
+        "bic",
+        "nab"
+      ]
+    },
+    {
+      "word": "ahu",
+      "num_guesses": 8,
+      "prior": 0.00011260171369331727,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "hay",
+        "ahu"
+      ]
+    },
+    {
+      "word": "jif",
+      "num_guesses": 8,
+      "prior": 0.00009004538037256366,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fgr",
+        "hwl",
+        "jzk",
+        "jif"
+      ]
+    },
+    {
+      "word": "jws",
+      "num_guesses": 8,
+      "prior": 0.00008651604007362455,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "jwk",
+        "jws"
+      ]
+    },
+    {
+      "word": "faq",
+      "num_guesses": 9,
+      "prior": 0.00012763311993628225,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "fox",
+        "iqa",
+        "faq"
+      ]
+    },
+    {
+      "word": "cxr",
+      "num_guesses": 8,
+      "prior": 0.00011163062288600048,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "fur",
+        "ldh",
+        "mcn",
+        "bwv",
+        "cxr"
+      ]
+    },
+    {
+      "word": "lvt",
+      "num_guesses": 8,
+      "prior": 0.00009868435942808006,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "rbh",
+        "nlg",
+        "wtv",
+        "lvt"
+      ]
+    },
+    {
+      "word": "mfs",
+      "num_guesses": 7,
+      "prior": 0.00014235664689530385,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "ust",
+        "dml",
+        "bfh",
+        "mfs"
+      ]
+    },
+    {
+      "word": "dot",
+      "num_guesses": 5,
+      "prior": 0.0002672640868864076,
+      "guesses": [
+        "aes",
+        "cot",
+        "lng",
+        "phd",
+        "dot"
+      ]
+    },
+    {
+      "word": "nig",
+      "num_guesses": 8,
+      "prior": 0.00013735554140206207,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "lvh",
+        "rxn",
+        "gun",
+        "nig"
+      ]
+    },
+    {
+      "word": "vsl",
+      "num_guesses": 7,
+      "prior": 0.00010445053005832981,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "nrx",
+        "vsl"
+      ]
+    },
+    {
+      "word": "ubx",
+      "num_guesses": 7,
+      "prior": 0.00008246114177772793,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "uhf",
+        "nbg",
+        "ubx"
+      ]
+    },
+    {
+      "word": "fia",
+      "num_guesses": 8,
+      "prior": 0.0001567205979761386,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "vct",
+        "nhl",
+        "jzk",
+        "few",
+        "fia"
+      ]
+    },
+    {
+      "word": "wnp",
+      "num_guesses": 7,
+      "prior": 0.00009377620836018534,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bug",
+        "nfl",
+        "wnp"
+      ]
+    },
+    {
+      "word": "dwt",
+      "num_guesses": 6,
+      "prior": 0.00017326558742922365,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "wtv",
+        "dwt"
+      ]
+    },
+    {
+      "word": "kab",
+      "num_guesses": 9,
+      "prior": 0.00011316619116785167,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "hib",
+        "bof",
+        "kev",
+        "kab"
+      ]
+    },
+    {
+      "word": "vhf",
+      "num_guesses": 8,
+      "prior": 0.00018380789098862402,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "gvw",
+        "hhv",
+        "vhf"
+      ]
+    },
+    {
+      "word": "zun",
+      "num_guesses": 9,
+      "prior": 0.00008976779921075721,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "jfk",
+        "lhx",
+        "wun",
+        "zun"
+      ]
+    },
+    {
+      "word": "awm",
+      "num_guesses": 8,
+      "prior": 0.00010635310495344467,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "fub",
+        "gmv",
+        "who",
+        "awm"
+      ]
+    },
+    {
+      "word": "afi",
+      "num_guesses": 7,
+      "prior": 0.0001332701521708653,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "vib",
+        "gof",
+        "afi"
+      ]
+    },
+    {
+      "word": "bum",
+      "num_guesses": 7,
+      "prior": 0.00018904165464532879,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "mng",
+        "hlb",
+        "bum"
+      ]
+    },
+    {
+      "word": "riz",
+      "num_guesses": 7,
+      "prior": 0.000114219877529857,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "fgr",
+        "khz",
+        "riz"
+      ]
+    },
+    {
+      "word": "ell",
+      "num_guesses": 6,
+      "prior": 0.00019960511058320413,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "fli",
+        "ell"
+      ]
+    },
+    {
+      "word": "fgc",
+      "num_guesses": 8,
+      "prior": 0.00010223490115284784,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "ndb",
+        "fml",
+        "vcr",
+        "ffc",
+        "fgc"
+      ]
+    },
+    {
+      "word": "xrd",
+      "num_guesses": 7,
+      "prior": 0.00016043124865418808,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "bfr",
+        "rlq",
+        "xrd"
+      ]
+    },
+    {
+      "word": "bkv",
+      "num_guesses": 8,
+      "prior": 0.00008550296679241008,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "nbf",
+        "gvw",
+        "bkv"
+      ]
+    },
+    {
+      "word": "edu",
+      "num_guesses": 5,
+      "prior": 0.0001794091145455559,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "wui",
+        "edu"
+      ]
+    },
+    {
+      "word": "ogc",
+      "num_guesses": 6,
+      "prior": 0.00012750280437821842,
+      "guesses": [
+        "aes",
+        "cot",
+        "hco",
+        "nfi",
+        "grp",
+        "ogc"
+      ]
+    },
+    {
+      "word": "fio",
+      "num_guesses": 7,
+      "prior": 0.00016763235945926508,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "fnu",
+        "ild",
+        "fio"
+      ]
+    },
+    {
+      "word": "kem",
+      "num_guesses": 7,
+      "prior": 0.00013662631298513883,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "chg",
+        "fob",
+        "epk",
+        "kem"
+      ]
+    },
+    {
+      "word": "kuf",
+      "num_guesses": 8,
+      "prior": 0.00007277204071399198,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "hwl",
+        "jfk",
+        "kuf"
+      ]
+    },
+    {
+      "word": "smc",
+      "num_guesses": 7,
+      "prior": 0.0001558746941287508,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "rch",
+        "usv",
+        "bfm",
+        "smc"
+      ]
+    },
+    {
+      "word": "jud",
+      "num_guesses": 6,
+      "prior": 0.00017494751154510882,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "lbj",
+        "jud"
+      ]
+    },
+    {
+      "word": "pnc",
+      "num_guesses": 7,
+      "prior": 0.0001420450335775802,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "rlv",
+        "fck",
+        "hnd",
+        "pnc"
+      ]
+    },
+    {
+      "word": "dje",
+      "num_guesses": 8,
+      "prior": 0.0000809714172254943,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "udc",
+        "mly",
+        "bnp",
+        "kev",
+        "dje"
+      ]
+    },
+    {
+      "word": "pkc",
+      "num_guesses": 6,
+      "prior": 0.0001452757858298144,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "rlv",
+        "fck",
+        "pkc"
+      ]
+    },
+    {
+      "word": "epd",
+      "num_guesses": 4,
+      "prior": 0.00014700736882299954,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "epd"
+      ]
+    },
+    {
+      "word": "gyn",
+      "num_guesses": 8,
+      "prior": 0.00014382659165838724,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "ngn",
+        "gyn"
+      ]
+    },
+    {
+      "word": "imx",
+      "num_guesses": 8,
+      "prior": 0.00007780002424224582,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "gml",
+        "vum",
+        "imy",
+        "imx"
+      ]
+    },
+    {
+      "word": "pad",
+      "num_guesses": 6,
+      "prior": 0.00025432230137758383,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "cyp",
+        "wld",
+        "pad"
+      ]
+    },
+    {
+      "word": "vas",
+      "num_guesses": 7,
+      "prior": 0.00019322910729487115,
+      "guesses": [
+        "aes",
+        "hgw",
+        "dlc",
+        "pmn",
+        "sbr",
+        "ijv",
+        "vas"
+      ]
+    },
+    {
+      "word": "isr",
+      "num_guesses": 6,
+      "prior": 0.00015276325356692328,
+      "guesses": [
+        "aes",
+        "sip",
+        "ito",
+        "hmi",
+        "rld",
+        "isr"
+      ]
+    },
+    {
+      "word": "dog",
+      "num_guesses": 5,
+      "prior": 0.0003671602808006039,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "mgd",
+        "dog"
+      ]
+    },
+    {
+      "word": "hdd",
+      "num_guesses": 7,
+      "prior": 0.00011789266161254698,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "rhb",
+        "fyn",
+        "hdd"
+      ]
+    },
+    {
+      "word": "fta",
+      "num_guesses": 6,
+      "prior": 0.00017593277672111127,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "tbf",
+        "fta"
+      ]
+    },
+    {
+      "word": "cip",
+      "num_guesses": 4,
+      "prior": 0.00018336424670213877,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "cip"
+      ]
+    },
+    {
+      "word": "zac",
+      "num_guesses": 9,
+      "prior": 0.00013976790501499736,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ibc",
+        "vwf",
+        "cho",
+        "guz",
+        "zac"
+      ]
+    },
+    {
+      "word": "mad",
+      "num_guesses": 5,
+      "prior": 0.00030352685518594477,
+      "guesses": [
+        "aes",
+        "mar",
+        "nyp",
+        "dox",
+        "mad"
+      ]
+    },
+    {
+      "word": "vjs",
+      "num_guesses": 9,
+      "prior": 0.00008694722361025846,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "jwk",
+        "ivy",
+        "vjs"
+      ]
+    },
+    {
+      "word": "hht",
+      "num_guesses": 8,
+      "prior": 0.0000967790115686581,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "rbh",
+        "thv",
+        "how",
+        "hht"
+      ]
+    },
+    {
+      "word": "ogi",
+      "num_guesses": 7,
+      "prior": 0.00010381862464665584,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "dni",
+        "umb",
+        "wkg",
+        "ogi"
+      ]
+    },
+    {
+      "word": "ltm",
+      "num_guesses": 6,
+      "prior": 0.00011864181944620275,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "mul",
+        "ltm"
+      ]
+    },
+    {
+      "word": "csm",
+      "num_guesses": 4,
+      "prior": 0.00014928757318542475,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "csm"
+      ]
+    },
+    {
+      "word": "zll",
+      "num_guesses": 8,
+      "prior": 0.0000788631074044161,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "lng",
+        "ylw",
+        "zll"
+      ]
+    },
+    {
+      "word": "hru",
+      "num_guesses": 8,
+      "prior": 0.00008897744076483141,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "ulf",
+        "kgb",
+        "who",
+        "hru"
+      ]
+    },
+    {
+      "word": "pao",
+      "num_guesses": 7,
+      "prior": 0.00018500695390147507,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "cyp",
+        "wld",
+        "hok",
+        "pao"
+      ]
+    },
+    {
+      "word": "ray",
+      "num_guesses": 4,
+      "prior": 0.00037421001900397015,
+      "guesses": [
+        "aes",
+        "mar",
+        "wyn",
+        "ray"
+      ]
+    },
+    {
+      "word": "ncp",
+      "num_guesses": 5,
+      "prior": 0.00013882642280386778,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "mnh",
+        "ncp"
+      ]
+    },
+    {
+      "word": "rsb",
+      "num_guesses": 8,
+      "prior": 0.00009758439429421904,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "lob",
+        "fuv",
+        "bsb",
+        "rsb"
+      ]
+    },
+    {
+      "word": "mdp",
+      "num_guesses": 6,
+      "prior": 0.0001294016667179903,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dpn",
+        "lug",
+        "mdp"
+      ]
+    },
+    {
+      "word": "vpu",
+      "num_guesses": 8,
+      "prior": 0.0000827780453583637,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "lrg",
+        "ufh",
+        "xiv",
+        "vpu"
+      ]
+    },
+    {
+      "word": "ftb",
+      "num_guesses": 7,
+      "prior": 0.00011566371363450444,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "hlb",
+        "wnf",
+        "ftb"
+      ]
+    },
+    {
+      "word": "uts",
+      "num_guesses": 7,
+      "prior": 0.00013758965504231995,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "sfn",
+        "luh",
+        "uts"
+      ]
+    },
+    {
+      "word": "aih",
+      "num_guesses": 8,
+      "prior": 0.00010332465102185946,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "vib",
+        "oka",
+        "cqi",
+        "aih"
+      ]
+    },
+    {
+      "word": "ebb",
+      "num_guesses": 7,
+      "prior": 0.00020828346153021015,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "ngf",
+        "iwb",
+        "ebb"
+      ]
+    },
+    {
+      "word": "wui",
+      "num_guesses": 8,
+      "prior": 0.0001075546438819025,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "mbu",
+        "uzh",
+        "vow",
+        "wui"
+      ]
+    },
+    {
+      "word": "npv",
+      "num_guesses": 6,
+      "prior": 0.00015953161727852251,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "lvn",
+        "npv"
+      ]
+    },
+    {
+      "word": "tle",
+      "num_guesses": 5,
+      "prior": 0.00015924082281744645,
+      "guesses": [
+        "aes",
+        "ote",
+        "hib",
+        "url",
+        "tle"
+      ]
+    },
+    {
+      "word": "zax",
+      "num_guesses": 9,
+      "prior": 0.000085742774097235,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "jzk",
+        "oxi",
+        "zax"
+      ]
+    },
+    {
+      "word": "rhd",
+      "num_guesses": 6,
+      "prior": 0.00010947195180805111,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "rhb",
+        "rhd"
+      ]
+    },
+    {
+      "word": "pwd",
+      "num_guesses": 7,
+      "prior": 0.00012728758216004482,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "hpf",
+        "luv",
+        "wdm",
+        "pwd"
+      ]
+    },
+    {
+      "word": "mek",
+      "num_guesses": 9,
+      "prior": 0.00013449453817611406,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "vgm",
+        "xci",
+        "owe",
+        "qpu",
+        "khz",
+        "mek"
+      ]
+    },
+    {
+      "word": "tbm",
+      "num_guesses": 5,
+      "prior": 0.00012129275791440001,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bpm",
+        "tbm"
+      ]
+    },
+    {
+      "word": "lwm",
+      "num_guesses": 7,
+      "prior": 0.00007372142628457094,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "gbl",
+        "wll",
+        "lwm"
+      ]
+    },
+    {
+      "word": "pfo",
+      "num_guesses": 7,
+      "prior": 0.00010490086082515801,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hil",
+        "bpm",
+        "vfd",
+        "pfo"
+      ]
+    },
+    {
+      "word": "igh",
+      "num_guesses": 7,
+      "prior": 0.00013662614809560565,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "gml",
+        "fbg",
+        "igh"
+      ]
+    },
+    {
+      "word": "zyn",
+      "num_guesses": 8,
+      "prior": 0.00007449352025443729,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "wyn",
+        "zyn"
+      ]
+    },
+    {
+      "word": "cry",
+      "num_guesses": 6,
+      "prior": 0.0003290739478572648,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "fur",
+        "lyc",
+        "cry"
+      ]
+    },
+    {
+      "word": "maj",
+      "num_guesses": 8,
+      "prior": 0.0001871896801883977,
+      "guesses": [
+        "aes",
+        "mar",
+        "nyp",
+        "dox",
+        "tgc",
+        "lim",
+        "buj",
+        "maj"
+      ]
+    },
+    {
+      "word": "yac",
+      "num_guesses": 9,
+      "prior": 0.00011017248983713817,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ibc",
+        "vwf",
+        "cho",
+        "guz",
+        "yac"
+      ]
+    },
+    {
+      "word": "sae",
+      "num_guesses": 2,
+      "prior": 0.0002145329160208466,
+      "guesses": [
+        "aes",
+        "sae"
+      ]
+    },
+    {
+      "word": "bér",
+      "num_guesses": 8,
+      "prior": 0.00005349742024861999,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "vlr",
+        "wry",
+        "bér"
+      ]
+    },
+    {
+      "word": "ren",
+      "num_guesses": 6,
+      "prior": 0.00020292987257091463,
+      "guesses": [
+        "aes",
+        "tdr",
+        "pvf",
+        "glc",
+        "mxn",
+        "ren"
+      ]
+    },
+    {
+      "word": "lft",
+      "num_guesses": 6,
+      "prior": 0.00011243287470793707,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "flr",
+        "lft"
+      ]
+    },
+    {
+      "word": "fzs",
+      "num_guesses": 9,
+      "prior": 0.00006559123169591438,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "gfu",
+        "vsw",
+        "jzk",
+        "fzs"
+      ]
+    },
+    {
+      "word": "btg",
+      "num_guesses": 9,
+      "prior": 0.00009494225189250058,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "hlb",
+        "wun",
+        "xiv",
+        "btk",
+        "btg"
+      ]
+    },
+    {
+      "word": "sfp",
+      "num_guesses": 9,
+      "prior": 0.00010981227497546248,
+      "guesses": [
+        "aes",
+        "sip",
+        "upo",
+        "dst",
+        "mnc",
+        "rhb",
+        "lvw",
+        "gfy",
+        "sfp"
+      ]
+    },
+    {
+      "word": "wtm",
+      "num_guesses": 8,
+      "prior": 0.00008190316896004618,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "mul",
+        "ngf",
+        "bwv",
+        "wtm"
+      ]
+    },
+    {
+      "word": "noa",
+      "num_guesses": 7,
+      "prior": 0.0001440821783930587,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "bgl",
+        "hnf",
+        "noa"
+      ]
+    },
+    {
+      "word": "lpo",
+      "num_guesses": 8,
+      "prior": 0.00010849673616462474,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "gin",
+        "mfb",
+        "ohu",
+        "jud",
+        "lpo"
+      ]
+    },
+    {
+      "word": "vok",
+      "num_guesses": 9,
+      "prior": 0.0000854821735284526,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "whp",
+        "gfy",
+        "ijv",
+        "vox",
+        "vok"
+      ]
+    },
+    {
+      "word": "urd",
+      "num_guesses": 6,
+      "prior": 0.00011296744779611298,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "nrl",
+        "urd"
+      ]
+    },
+    {
+      "word": "iat",
+      "num_guesses": 9,
+      "prior": 0.00013420461359568415,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "chf",
+        "blv",
+        "dow",
+        "tyg",
+        "zik",
+        "iat"
+      ]
+    },
+    {
+      "word": "owe",
+      "num_guesses": 5,
+      "prior": 0.0002801031518848328,
+      "guesses": [
+        "aes",
+        "ote",
+        "dnr",
+        "wlm",
+        "owe"
+      ]
+    },
+    {
+      "word": "agé",
+      "num_guesses": 9,
+      "prior": 0.0000612373735259346,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "vug",
+        "hfa",
+        "jaw",
+        "agé"
+      ]
+    },
+    {
+      "word": "hfs",
+      "num_guesses": 8,
+      "prior": 0.00013271969887576542,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "usv",
+        "wyf",
+        "hfs"
+      ]
+    },
+    {
+      "word": "ein",
+      "num_guesses": 7,
+      "prior": 0.00022499331135562847,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "ngf",
+        "ivy",
+        "ein"
+      ]
+    },
+    {
+      "word": "sou",
+      "num_guesses": 7,
+      "prior": 0.00017680982258025995,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "wnl",
+        "dym",
+        "rub",
+        "sou"
+      ]
+    },
+    {
+      "word": "rvv",
+      "num_guesses": 8,
+      "prior": 0.00007490257954138651,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "byf",
+        "nvr",
+        "rvh",
+        "rvv"
+      ]
+    },
+    {
+      "word": "efo",
+      "num_guesses": 7,
+      "prior": 0.00008507442966208815,
+      "guesses": [
+        "aes",
+        "ote",
+        "cgo",
+        "drp",
+        "vlm",
+        "feb",
+        "efo"
+      ]
+    },
+    {
+      "word": "epk",
+      "num_guesses": 8,
+      "prior": 0.00007302903399736361,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "ipr",
+        "hup",
+        "gwb",
+        "epq",
+        "epk"
+      ]
+    },
+    {
+      "word": "coi",
+      "num_guesses": 8,
+      "prior": 0.00015752387201616627,
+      "guesses": [
+        "aes",
+        "cot",
+        "nwm",
+        "xlr",
+        "pdo",
+        "ybg",
+        "qic",
+        "coi"
+      ]
+    },
+    {
+      "word": "mnh",
+      "num_guesses": 8,
+      "prior": 0.00008125588994672083,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "mgb",
+        "mmh",
+        "mnh"
+      ]
+    },
+    {
+      "word": "cal",
+      "num_guesses": 5,
+      "prior": 0.0003423311488017947,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "cal"
+      ]
+    },
+    {
+      "word": "otw",
+      "num_guesses": 4,
+      "prior": 0.00007931780265730234,
+      "guesses": [
+        "aes",
+        "cot",
+        "two",
+        "otw"
+      ]
+    },
+    {
+      "word": "cpr",
+      "num_guesses": 4,
+      "prior": 0.00018724109552067754,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "cpr"
+      ]
+    },
+    {
+      "word": "pfu",
+      "num_guesses": 6,
+      "prior": 0.00011584080518969641,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "fun",
+        "pfu"
+      ]
+    },
+    {
+      "word": "pmo",
+      "num_guesses": 6,
+      "prior": 0.00012921012138067793,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hil",
+        "bpm",
+        "pmo"
+      ]
+    },
+    {
+      "word": "pfi",
+      "num_guesses": 7,
+      "prior": 0.00012820908047990947,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "hpr",
+        "lkm",
+        "fub",
+        "pfi"
+      ]
+    },
+    {
+      "word": "lcc",
+      "num_guesses": 8,
+      "prior": 0.00014970844369358643,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "ndb",
+        "fml",
+        "lvl",
+        "rch",
+        "lcc"
+      ]
+    },
+    {
+      "word": "pem",
+      "num_guesses": 7,
+      "prior": 0.00014094425838173785,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "chg",
+        "fob",
+        "epk",
+        "pem"
+      ]
+    },
+    {
+      "word": "iim",
+      "num_guesses": 9,
+      "prior": 0.0001291347957941239,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "hjr",
+        "flk",
+        "mvw",
+        "aug",
+        "iim"
+      ]
+    },
+    {
+      "word": "cum",
+      "num_guesses": 6,
+      "prior": 0.0002640478943671721,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "fuh",
+        "cum"
+      ]
+    },
+    {
+      "word": "ctz",
+      "num_guesses": 8,
+      "prior": 0.00008683702909619562,
+      "guesses": [
+        "aes",
+        "cot",
+        "lrc",
+        "hid",
+        "fpm",
+        "nvg",
+        "ctx",
+        "ctz"
+      ]
+    },
+    {
+      "word": "oee",
+      "num_guesses": 9,
+      "prior": 0.00009662768343931417,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "vhc",
+        "eek",
+        "doz",
+        "oee"
+      ]
+    },
+    {
+      "word": "bif",
+      "num_guesses": 8,
+      "prior": 0.00012493470218992854,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "nbm",
+        "bgl",
+        "hrb",
+        "vfx",
+        "bif"
+      ]
+    },
+    {
+      "word": "uwb",
+      "num_guesses": 8,
+      "prior": 0.0001191801538239655,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "uhf",
+        "nbg",
+        "xiv",
+        "uwb"
+      ]
+    },
+    {
+      "word": "sdu",
+      "num_guesses": 5,
+      "prior": 0.00009953428490977986,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "sdu"
+      ]
+    },
+    {
+      "word": "ire",
+      "num_guesses": 4,
+      "prior": 0.00021265747118839534,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "ire"
+      ]
+    },
+    {
+      "word": "fmq",
+      "num_guesses": 9,
+      "prior": 0.00006305711923613667,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "nfv",
+        "jzk",
+        "ghq",
+        "fmq"
+      ]
+    },
+    {
+      "word": "roe",
+      "num_guesses": 5,
+      "prior": 0.0002270463587834256,
+      "guesses": [
+        "aes",
+        "ote",
+        "cjd",
+        "wfr",
+        "roe"
+      ]
+    },
+    {
+      "word": "eaz",
+      "num_guesses": 8,
+      "prior": 0.00006956925308809333,
+      "guesses": [
+        "aes",
+        "ear",
+        "nut",
+        "mpd",
+        "ila",
+        "bfv",
+        "eaw",
+        "eaz"
+      ]
+    },
+    {
+      "word": "rit",
+      "num_guesses": 9,
+      "prior": 0.00014248521593213378,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "bfh",
+        "lwk",
+        "tmg",
+        "nvd",
+        "xyr",
+        "rit"
+      ]
+    },
+    {
+      "word": "nvi",
+      "num_guesses": 8,
+      "prior": 0.00008592483782236013,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "muh",
+        "lbf",
+        "ngi",
+        "nvi"
+      ]
+    },
+    {
+      "word": "rbi",
+      "num_guesses": 7,
+      "prior": 0.00015319316734984027,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "frm",
+        "hgb",
+        "rbi"
+      ]
+    },
+    {
+      "word": "pmf",
+      "num_guesses": 7,
+      "prior": 0.00012026737113142757,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "lmn",
+        "gfp",
+        "pmf"
+      ]
+    },
+    {
+      "word": "rcd",
+      "num_guesses": 5,
+      "prior": 0.00019740399465158554,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "rcd"
+      ]
+    },
+    {
+      "word": "taa",
+      "num_guesses": 9,
+      "prior": 0.00015479203205211861,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "gbx",
+        "oui",
+        "dyc",
+        "jfk",
+        "aaw",
+        "taa"
+      ]
+    },
+    {
+      "word": "lre",
+      "num_guesses": 8,
+      "prior": 0.00011233334370797834,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "epu",
+        "gfc",
+        "nmb",
+        "vlh",
+        "lre"
+      ]
+    },
+    {
+      "word": "vaw",
+      "num_guesses": 8,
+      "prior": 0.00009650809844406321,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "wfh",
+        "kiv",
+        "vaw"
+      ]
+    },
+    {
+      "word": "ver",
+      "num_guesses": 5,
+      "prior": 0.0002405940260508291,
+      "guesses": [
+        "aes",
+        "tdr",
+        "bhp",
+        "vgm",
+        "ver"
+      ]
+    },
+    {
+      "word": "eon",
+      "num_guesses": 5,
+      "prior": 0.0001609199109634466,
+      "guesses": [
+        "aes",
+        "ote",
+        "cgo",
+        "fnr",
+        "eon"
+      ]
+    },
+    {
+      "word": "tgr",
+      "num_guesses": 8,
+      "prior": 0.00011379773287211947,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "duh",
+        "fpm",
+        "btl",
+        "kgn",
+        "tgr"
+      ]
+    },
+    {
+      "word": "mre",
+      "num_guesses": 7,
+      "prior": 0.00012748693055702548,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "epu",
+        "gfc",
+        "nmb",
+        "mre"
+      ]
+    },
+    {
+      "word": "mdd",
+      "num_guesses": 6,
+      "prior": 0.000126704448101759,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "muh",
+        "gdl",
+        "mdd"
+      ]
+    },
+    {
+      "word": "cpo",
+      "num_guesses": 6,
+      "prior": 0.000132277021165207,
+      "guesses": [
+        "aes",
+        "cot",
+        "bih",
+        "flr",
+        "ndp",
+        "cpo"
+      ]
+    },
+    {
+      "word": "ope",
+      "num_guesses": 6,
+      "prior": 0.00016411150043322368,
+      "guesses": [
+        "aes",
+        "ote",
+        "dnr",
+        "wlm",
+        "kbp",
+        "ope"
+      ]
+    },
+    {
+      "word": "wub",
+      "num_guesses": 8,
+      "prior": 0.0000734641732860372,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "bhk",
+        "law",
+        "wub"
+      ]
+    },
+    {
+      "word": "ksc",
+      "num_guesses": 7,
+      "prior": 0.00013915812295063607,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "ngb",
+        "orl",
+        "kth",
+        "ksc"
+      ]
+    },
+    {
+      "word": "jân",
+      "num_guesses": 9,
+      "prior": 0.00004243527202066367,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "wyn",
+        "nūn",
+        "jân"
+      ]
+    },
+    {
+      "word": "rns",
+      "num_guesses": 7,
+      "prior": 0.00014449566125029052,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "rhd",
+        "ust",
+        "nrl",
+        "rns"
+      ]
+    },
+    {
+      "word": "fng",
+      "num_guesses": 6,
+      "prior": 0.00008508649120286044,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng"
+      ]
+    },
+    {
+      "word": "wru",
+      "num_guesses": 8,
+      "prior": 0.0000855018917747014,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "ulf",
+        "kgb",
+        "who",
+        "wru"
+      ]
+    },
+    {
+      "word": "umb",
+      "num_guesses": 5,
+      "prior": 0.00010190973947018343,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "umb"
+      ]
+    },
+    {
+      "word": "vnr",
+      "num_guesses": 8,
+      "prior": 0.00008839323838166504,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "fbg",
+        "nlr",
+        "jnr",
+        "vnr"
+      ]
+    },
+    {
+      "word": "bag",
+      "num_guesses": 6,
+      "prior": 0.00033098826574849585,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "bag"
+      ]
+    },
+    {
+      "word": "sbx",
+      "num_guesses": 9,
+      "prior": 0.00007429971944643158,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "ylw",
+        "bsn",
+        "sbk",
+        "sbx"
+      ]
+    },
+    {
+      "word": "phở",
+      "num_guesses": 8,
+      "prior": 0.000044049929164034,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "fun",
+        "lpp",
+        "hvy",
+        "phở"
+      ]
+    },
+    {
+      "word": "oeo",
+      "num_guesses": 9,
+      "prior": 0.00015596254492549424,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "vhc",
+        "eek",
+        "zip",
+        "oeo"
+      ]
+    },
+    {
+      "word": "yst",
+      "num_guesses": 8,
+      "prior": 0.00009041206020514255,
+      "guesses": [
+        "aes",
+        "sip",
+        "cmd",
+        "thg",
+        "luo",
+        "fjb",
+        "qst",
+        "yst"
+      ]
+    },
+    {
+      "word": "etl",
+      "num_guesses": 6,
+      "prior": 0.00012430132205407045,
+      "guesses": [
+        "aes",
+        "ote",
+        "hct",
+        "fyi",
+        "rlv",
+        "etl"
+      ]
+    },
+    {
+      "word": "fuh",
+      "num_guesses": 8,
+      "prior": 0.00011438995518499061,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "hwl",
+        "fly",
+        "fuh"
+      ]
+    },
+    {
+      "word": "tif",
+      "num_guesses": 7,
+      "prior": 0.00013296679131516545,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "mpn",
+        "gld",
+        "bfv",
+        "tif"
+      ]
+    },
+    {
+      "word": "mpl",
+      "num_guesses": 7,
+      "prior": 0.00012835363597231826,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "hrg",
+        "lfm",
+        "mpl"
+      ]
+    },
+    {
+      "word": "imo",
+      "num_guesses": 7,
+      "prior": 0.000169124911857335,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "mng",
+        "oil",
+        "imo"
+      ]
+    },
+    {
+      "word": "soa",
+      "num_guesses": 7,
+      "prior": 0.00015821920514432037,
+      "guesses": [
+        "aes",
+        "sat",
+        "bsp",
+        "luh",
+        "mic",
+        "nor",
+        "soa"
+      ]
+    },
+    {
+      "word": "aab",
+      "num_guesses": 8,
+      "prior": 0.00011636630664250925,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "fbw",
+        "had",
+        "aab"
+      ]
+    },
+    {
+      "word": "xxy",
+      "num_guesses": 8,
+      "prior": 0.00010741474122786199,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "xyz",
+        "xxy"
+      ]
+    },
+    {
+      "word": "aki",
+      "num_guesses": 8,
+      "prior": 0.00014109878139164872,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "vib",
+        "gof",
+        "khu",
+        "aki"
+      ]
+    },
+    {
+      "word": "rcs",
+      "num_guesses": 4,
+      "prior": 0.00015415783823579898,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "rcs"
+      ]
+    },
+    {
+      "word": "lex",
+      "num_guesses": 7,
+      "prior": 0.00020163817055586766,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "gol",
+        "vye",
+        "xci",
+        "lex"
+      ]
+    },
+    {
+      "word": "crc",
+      "num_guesses": 6,
+      "prior": 0.0001974447146530276,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "fur",
+        "lyc",
+        "crc"
+      ]
+    },
+    {
+      "word": "spr",
+      "num_guesses": 4,
+      "prior": 0.00018958833046949162,
+      "guesses": [
+        "aes",
+        "sip",
+        "dry",
+        "spr"
+      ]
+    },
+    {
+      "word": "dpc",
+      "num_guesses": 8,
+      "prior": 0.00012996160888836448,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "mfn",
+        "rug",
+        "klh",
+        "dwb",
+        "dpc"
+      ]
+    },
+    {
+      "word": "kno",
+      "num_guesses": 7,
+      "prior": 0.00013008931663272422,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "fnu",
+        "oak",
+        "kno"
+      ]
+    },
+    {
+      "word": "eat",
+      "num_guesses": 4,
+      "prior": 0.0003642072253575097,
+      "guesses": [
+        "aes",
+        "ear",
+        "nut",
+        "eat"
+      ]
+    },
+    {
+      "word": "atp",
+      "num_guesses": 4,
+      "prior": 0.00023559117342573536,
+      "guesses": [
+        "aes",
+        "tdr",
+        "ptc",
+        "atp"
+      ]
+    },
+    {
+      "word": "otf",
+      "num_guesses": 5,
+      "prior": 0.00013104182756611786,
+      "guesses": [
+        "aes",
+        "cot",
+        "two",
+        "hpf",
+        "otf"
+      ]
+    },
+    {
+      "word": "way",
+      "num_guesses": 7,
+      "prior": 0.0006240885628954392,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "hwk",
+        "way"
+      ]
+    },
+    {
+      "word": "ooc",
+      "num_guesses": 7,
+      "prior": 0.00010415798229887223,
+      "guesses": [
+        "aes",
+        "cot",
+        "dlr",
+        "vib",
+        "npm",
+        "ofw",
+        "ooc"
+      ]
+    },
+    {
+      "word": "efi",
+      "num_guesses": 7,
+      "prior": 0.00012144809279789953,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "mrl",
+        "ngf",
+        "vib",
+        "efi"
+      ]
+    },
+    {
+      "word": "ytp",
+      "num_guesses": 8,
+      "prior": 0.0000621584809147534,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "fng",
+        "luh",
+        "oxy",
+        "ytp"
+      ]
+    },
+    {
+      "word": "cpl",
+      "num_guesses": 5,
+      "prior": 0.00017199843192201264,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "lum",
+        "cpl"
+      ]
+    },
+    {
+      "word": "mvb",
+      "num_guesses": 8,
+      "prior": 0.00008860305482959485,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "lhf",
+        "nbg",
+        "bwv",
+        "mvb"
+      ]
+    },
+    {
+      "word": "que",
+      "num_guesses": 7,
+      "prior": 0.0002989699437208576,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "umb",
+        "ghq",
+        "que"
+      ]
+    },
+    {
+      "word": "ehd",
+      "num_guesses": 6,
+      "prior": 0.0001120468354590081,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "lin",
+        "rbh",
+        "ehd"
+      ]
+    },
+    {
+      "word": "dwl",
+      "num_guesses": 7,
+      "prior": 0.00008912605404296776,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "blu",
+        "hdf",
+        "dwl"
+      ]
+    },
+    {
+      "word": "rdh",
+      "num_guesses": 6,
+      "prior": 0.00008834424493102714,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "lhf",
+        "rdh"
+      ]
+    },
+    {
+      "word": "opb",
+      "num_guesses": 7,
+      "prior": 0.00008704285401760381,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "udp",
+        "inm",
+        "opv",
+        "opb"
+      ]
+    },
+    {
+      "word": "mes",
+      "num_guesses": 5,
+      "prior": 0.00019414756890317143,
+      "guesses": [
+        "aes",
+        "dry",
+        "swl",
+        "mic",
+        "mes"
+      ]
+    },
+    {
+      "word": "pyn",
+      "num_guesses": 8,
+      "prior": 0.00008160219123683649,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "fun",
+        "whv",
+        "pnn",
+        "pyn"
+      ]
+    },
+    {
+      "word": "lta",
+      "num_guesses": 7,
+      "prior": 0.000131852551604479,
+      "guesses": [
+        "aes",
+        "mar",
+        "ipd",
+        "oct",
+        "tbf",
+        "lun",
+        "lta"
+      ]
+    },
+    {
+      "word": "aiv",
+      "num_guesses": 6,
+      "prior": 0.00010102628542449382,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "vib",
+        "aiv"
+      ]
+    },
+    {
+      "word": "zol",
+      "num_guesses": 9,
+      "prior": 0.00009128609103641118,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lmb",
+        "pvf",
+        "wkg",
+        "oqi",
+        "jol",
+        "zol"
+      ]
+    },
+    {
+      "word": "wuh",
+      "num_guesses": 7,
+      "prior": 0.00009854117540898816,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "nbg",
+        "hwl",
+        "wuh"
+      ]
+    },
+    {
+      "word": "btx",
+      "num_guesses": 8,
+      "prior": 0.00010522372441718889,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "hlb",
+        "wun",
+        "xiv",
+        "btx"
+      ]
+    },
+    {
+      "word": "ndt",
+      "num_guesses": 6,
+      "prior": 0.00014940418279980322,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "dnr",
+        "ndt"
+      ]
+    },
+    {
+      "word": "lpc",
+      "num_guesses": 7,
+      "prior": 0.000135495914624387,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "mfn",
+        "rug",
+        "klh",
+        "lpc"
+      ]
+    },
+    {
+      "word": "qor",
+      "num_guesses": 10,
+      "prior": 0.00007477007910057004,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lfp",
+        "ibm",
+        "whv",
+        "kyu",
+        "jug",
+        "xor",
+        "qor"
+      ]
+    },
+    {
+      "word": "reh",
+      "num_guesses": 9,
+      "prior": 0.00014212463679221042,
+      "guesses": [
+        "aes",
+        "tdr",
+        "pvf",
+        "glc",
+        "mxn",
+        "bie",
+        "wqo",
+        "zhu",
+        "reh"
+      ]
+    },
+    {
+      "word": "aip",
+      "num_guesses": 6,
+      "prior": 0.0001544260917239767,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "mpf",
+        "nai",
+        "aip"
+      ]
+    },
+    {
+      "word": "arr",
+      "num_guesses": 5,
+      "prior": 0.00018484650131844098,
+      "guesses": [
+        "aes",
+        "tdr",
+        "pig",
+        "frl",
+        "arr"
+      ]
+    },
+    {
+      "word": "eip",
+      "num_guesses": 5,
+      "prior": 0.00011203747767394686,
+      "guesses": [
+        "aes",
+        "ote",
+        "pdc",
+        "ipr",
+        "eip"
+      ]
+    },
+    {
+      "word": "ado",
+      "num_guesses": 6,
+      "prior": 0.00019175225287414676,
+      "guesses": [
+        "aes",
+        "tdr",
+        "jvd",
+        "mpa",
+        "cio",
+        "ado"
+      ]
+    },
+    {
+      "word": "dtp",
+      "num_guesses": 5,
+      "prior": 0.0001328623488201252,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "dtp"
+      ]
+    },
+    {
+      "word": "idh",
+      "num_guesses": 8,
+      "prior": 0.00009444515593865153,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "fdi",
+        "lbr",
+        "gum",
+        "hnw",
+        "idh"
+      ]
+    },
+    {
+      "word": "mft",
+      "num_guesses": 5,
+      "prior": 0.00011593085494922561,
+      "guesses": [
+        "aes",
+        "cot",
+        "uip",
+        "mdf",
+        "mft"
+      ]
+    },
+    {
+      "word": "fhe",
+      "num_guesses": 8,
+      "prior": 0.00015797540115987773,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "hny",
+        "xgf",
+        "fhe"
+      ]
+    },
+    {
+      "word": "tpi",
+      "num_guesses": 7,
+      "prior": 0.0001249321079639022,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "bum",
+        "ltw",
+        "pvd",
+        "tpi"
+      ]
+    },
+    {
+      "word": "gbv",
+      "num_guesses": 8,
+      "prior": 0.00008597607299805869,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "gfw",
+        "xiv",
+        "gbv"
+      ]
+    },
+    {
+      "word": "aac",
+      "num_guesses": 7,
+      "prior": 0.00015497766311312565,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "mnc",
+        "gcb",
+        "uaf",
+        "aac"
+      ]
+    },
+    {
+      "word": "wor",
+      "num_guesses": 7,
+      "prior": 0.00018005001287034657,
+      "guesses": [
+        "aes",
+        "cot",
+        "rdn",
+        "lfp",
+        "ibm",
+        "whv",
+        "wor"
+      ]
+    },
+    {
+      "word": "ijo",
+      "num_guesses": 8,
+      "prior": 0.00010287940983615557,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "fnu",
+        "lid",
+        "joy",
+        "ijo"
+      ]
+    },
+    {
+      "word": "zee",
+      "num_guesses": 9,
+      "prior": 0.0001613092188096305,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "vhc",
+        "eek",
+        "doz",
+        "zee"
+      ]
+    },
+    {
+      "word": "obc",
+      "num_guesses": 7,
+      "prior": 0.00011746323058064768,
+      "guesses": [
+        "aes",
+        "cot",
+        "hco",
+        "nfi",
+        "grp",
+        "bmd",
+        "obc"
+      ]
+    },
+    {
+      "word": "cvg",
+      "num_guesses": 8,
+      "prior": 0.00009210792791382296,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "nhl",
+        "fuv",
+        "gaz",
+        "cvg"
+      ]
+    },
+    {
+      "word": "gbp",
+      "num_guesses": 7,
+      "prior": 0.00012598572453923786,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mnp",
+        "bhl",
+        "gyr",
+        "gbp"
+      ]
+    },
+    {
+      "word": "imd",
+      "num_guesses": 5,
+      "prior": 0.000150869720119085,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "num",
+        "imd"
+      ]
+    },
+    {
+      "word": "eds",
+      "num_guesses": 3,
+      "prior": 0.0003327378297443625,
+      "guesses": [
+        "aes",
+        "rid",
+        "eds"
+      ]
+    },
+    {
+      "word": "hvo",
+      "num_guesses": 6,
+      "prior": 0.00010784786197707236,
+      "guesses": [
+        "aes",
+        "cot",
+        "pro",
+        "hbm",
+        "div",
+        "hvo"
+      ]
+    },
+    {
+      "word": "pwe",
+      "num_guesses": 8,
+      "prior": 0.00009740293651226998,
+      "guesses": [
+        "aes",
+        "ote",
+        "rid",
+        "clu",
+        "bpm",
+        "hny",
+        "wav",
+        "pwe"
+      ]
+    },
+    {
+      "word": "vwf",
+      "num_guesses": 8,
+      "prior": 0.00012074182447519367,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "wfk",
+        "vwf"
+      ]
+    },
+    {
+      "word": "hef",
+      "num_guesses": 7,
+      "prior": 0.00011131483877477347,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "cbf",
+        "khz",
+        "hef"
+      ]
+    },
+    {
+      "word": "hdf",
+      "num_guesses": 6,
+      "prior": 0.00009923966023454616,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "dmr",
+        "lhf",
+        "hdf"
+      ]
+    },
+    {
+      "word": "oeb",
+      "num_guesses": 7,
+      "prior": 0.00007836215610453391,
+      "guesses": [
+        "aes",
+        "tdr",
+        "mln",
+        "wfp",
+        "ybg",
+        "boe",
+        "oeb"
+      ]
+    },
+    {
+      "word": "shq",
+      "num_guesses": 9,
+      "prior": 0.00007845286091178625,
+      "guesses": [
+        "aes",
+        "sip",
+        "cto",
+        "umd",
+        "hrf",
+        "why",
+        "ugh",
+        "nvq",
+        "shq"
+      ]
+    },
+    {
+      "word": "cws",
+      "num_guesses": 8,
+      "prior": 0.00013621619734451775,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "btn",
+        "fld",
+        "ush",
+        "gvw",
+        "cws"
+      ]
+    },
+    {
+      "word": "uns",
+      "num_guesses": 7,
+      "prior": 0.00016601015425233662,
+      "guesses": [
+        "aes",
+        "iop",
+        "mcr",
+        "tbd",
+        "nhl",
+        "ugf",
+        "uns"
+      ]
+    },
+    {
+      "word": "ist",
+      "num_guesses": 4,
+      "prior": 0.00023946898792332957,
+      "guesses": [
+        "aes",
+        "sip",
+        "ito",
+        "ist"
+      ]
+    },
+    {
+      "word": "fal",
+      "num_guesses": 8,
+      "prior": 0.00015577497010448637,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "hgv",
+        "lbw",
+        "for",
+        "fal"
+      ]
+    },
+    {
+      "word": "cfl",
+      "num_guesses": 7,
+      "prior": 0.00012642050735429985,
+      "guesses": [
+        "aes",
+        "cot",
+        "rip",
+        "bmd",
+        "nhl",
+        "vlf",
+        "cfl"
+      ]
+    },
+    {
+      "word": "gcf",
+      "num_guesses": 8,
+      "prior": 0.00010482102762577914,
+      "guesses": [
+        "aes",
+        "cot",
+        "pic",
+        "drm",
+        "hlb",
+        "fvu",
+        "wcf",
+        "gcf"
+      ]
+    },
+    {
+      "word": "pub",
+      "num_guesses": 6,
+      "prior": 0.0003396785398394185,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "mrb",
+        "hpu",
+        "pub"
+      ]
+    },
+    {
+      "word": "bnb",
+      "num_guesses": 7,
+      "prior": 0.00010694584011910045,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "nbf",
+        "bnb"
+      ]
+    },
+    {
+      "word": "ctt",
+      "num_guesses": 9,
+      "prior": 0.00011716677712142374,
+      "guesses": [
+        "aes",
+        "cot",
+        "wui",
+        "bpr",
+        "mcn",
+        "lfg",
+        "hyd",
+        "ktv",
+        "ctt"
+      ]
+    },
+    {
+      "word": "aoa",
+      "num_guesses": 7,
+      "prior": 0.00014499578893432743,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "uva",
+        "aoa"
+      ]
+    },
+    {
+      "word": "spc",
+      "num_guesses": 5,
+      "prior": 0.00016384829158574401,
+      "guesses": [
+        "aes",
+        "sip",
+        "dry",
+        "mcl",
+        "spc"
+      ]
+    },
+    {
+      "word": "zwj",
+      "num_guesses": 9,
+      "prior": 0.00003730009225895194,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "rum",
+        "bhl",
+        "fng",
+        "xyz",
+        "vzv",
+        "zwj"
+      ]
+    },
+    {
+      "word": "agm",
+      "num_guesses": 7,
+      "prior": 0.00014033272630593012,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "fub",
+        "gmv",
+        "agm"
+      ]
+    },
+    {
+      "word": "kay",
+      "num_guesses": 7,
+      "prior": 0.0002426206285997043,
+      "guesses": [
+        "aes",
+        "mar",
+        "npt",
+        "dcl",
+        "ybg",
+        "hwk",
+        "kay"
+      ]
+    },
+    {
+      "word": "ayu",
+      "num_guesses": 8,
+      "prior": 0.00010055004990393418,
+      "guesses": [
+        "aes",
+        "tdr",
+        "clp",
+        "inm",
+        "gob",
+        "kuf",
+        "hay",
+        "ayu"
+      ]
+    },
+    {
+      "word": "bli",
+      "num_guesses": 7,
+      "prior": 0.00011309896703696031,
+      "guesses": [
+        "aes",
+        "cot",
+        "pid",
+        "inr",
+        "mbu",
+        "vlf",
+        "bli"
+      ]
+    },
+    {
+      "word": "ntp",
+      "num_guesses": 6,
+      "prior": 0.00014044563021889297,
+      "guesses": [
+        "aes",
+        "cot",
+        "tir",
+        "pdm",
+        "fng",
+        "ntp"
+      ]
+    }
+  ]
+}

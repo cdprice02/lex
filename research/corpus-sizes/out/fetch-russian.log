@@ -1,0 +1,25 @@
+[2026-10-25T23:29:48Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for russian from https://kaikki.org/dictionary/downloads/ru/ru-extract.jsonl.gz...
+[2026-10-25T23:31:43Z INFO  lex_data::wiktionary] Cached russian Wiktionary dict (2826518 words, lengths 1–82)
+[2026-10-25T23:31:45Z WARN  lex_data::store] Building russian corpus...
+[2026-10-25T23:34:25Z INFO  lex_data::ngrams]   [1/2] done
+[2026-10-25T23:37:51Z WARN  lex_data::retry] attempt 1/3 failed: reading body: timeout: per read; retrying in 1.18176s
+[2026-10-25T23:42:25Z INFO  lex_data::ngrams]   [2/2] done
+[2026-10-25T23:42:27Z INFO  lex_data::store] Cached russian corpus (31 length buckets)
+[2026-10-25T23:42:29Z INFO  lex::simulate] Simulating 1 games with 5-letter words in russian...
+[2026-10-25T23:43:05Z INFO  lex_core::game] Guess 1: карие -> 🟨🟩⬜⬜⬜
+[2026-10-25T23:43:05Z INFO  lex_core::game] Guess 2: томку -> ⬜🟨🟨🟨⬜
+[2026-10-25T23:43:05Z INFO  lex_core::game] Guess 3: влксм -> 🟨⬜🟨⬜🟨
+[2026-10-25T23:43:05Z INFO  lex_core::game] Guess 4: мавок -> 🟩🟩🟩🟩🟩
+[2026-10-25T23:43:05Z INFO  lex::simulate] Splendid
+[2026-10-25T23:43:05Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter russian words (dictionary: 38297), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: карие
+ngrams sha256: 43af0a83cd76
+dict: 2826518 words, fetched 2026-10-25T23:31:40.979667Z, sha256 613d46349636
+
+uniform: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% (1) ########################################
+
+prior-weighted: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% ########################################

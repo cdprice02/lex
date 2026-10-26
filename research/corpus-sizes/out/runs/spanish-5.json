@@ -1,0 +1,5675 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:38:43.597593Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "rosea",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 5,
+    "dictionary_length": 13431,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "0b2a8b0760312722d48ef0b40ebd1c354eecea9230b739ddedef1cf99aacf060",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.229999999999981,
+      "failure_rate": 0.006,
+      "histogram": {
+        "2": 0.008,
+        "3": 0.16400000000000012,
+        "4": 0.4840000000000004,
+        "5": 0.2840000000000002,
+        "6": 0.054000000000000034,
+        "7": 0.006
+      }
+    },
+    "prior": {
+      "mean": 4.094002973339621,
+      "failure_rate": 0.004980588163381372,
+      "histogram": {
+        "2": 0.011166051310452308,
+        "3": 0.2108700419131677,
+        "4": 0.494954689126338,
+        "5": 0.24379390558978437,
+        "6": 0.03423472389687804,
+        "7": 0.004980588163381372
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "tañar",
+      "num_guesses": 5,
+      "prior": 0.00004504487735321268,
+      "guesses": [
+        "rosea",
+        "talan",
+        "carpa",
+        "vejez",
+        "tañar"
+      ]
+    },
+    {
+      "word": "amaró",
+      "num_guesses": 5,
+      "prior": 0.00004129579686962008,
+      "guesses": [
+        "rosea",
+        "talan",
+        "primá",
+        "amaré",
+        "amaró"
+      ]
+    },
+    {
+      "word": "papús",
+      "num_guesses": 5,
+      "prior": 0.0000399347902207917,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbá",
+        "hippy",
+        "papús"
+      ]
+    },
+    {
+      "word": "itrio",
+      "num_guesses": 4,
+      "prior": 0.00006166119144196159,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "ilion",
+        "itrio"
+      ]
+    },
+    {
+      "word": "güere",
+      "num_guesses": 5,
+      "prior": 0.000057564148537609357,
+      "guesses": [
+        "rosea",
+        "peine",
+        "tumbá",
+        "crece",
+        "güere"
+      ]
+    },
+    {
+      "word": "aturo",
+      "num_guesses": 5,
+      "prior": 0.00004194135659103615,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "aptad",
+        "atoro",
+        "aturo"
+      ]
+    },
+    {
+      "word": "palió",
+      "num_guesses": 4,
+      "prior": 0.000052709555441809706,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tupió",
+        "palió"
+      ]
+    },
+    {
+      "word": "hábil",
+      "num_guesses": 4,
+      "prior": 0.00017031106871262782,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "lápiz",
+        "hábil"
+      ]
+    },
+    {
+      "word": "migas",
+      "num_guesses": 4,
+      "prior": 0.00010464334672666816,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "migas"
+      ]
+    },
+    {
+      "word": "gomea",
+      "num_guesses": 3,
+      "prior": 0.000030009690359977376,
+      "guesses": [
+        "rosea",
+        "lgbti",
+        "gomea"
+      ]
+    },
+    {
+      "word": "chipá",
+      "num_guesses": 3,
+      "prior": 0.000051242267452628175,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "chipá"
+      ]
+    },
+    {
+      "word": "poseé",
+      "num_guesses": 4,
+      "prior": 0.00005372172000854409,
+      "guesses": [
+        "rosea",
+        "depes",
+        "envío",
+        "poseé"
+      ]
+    },
+    {
+      "word": "blunt",
+      "num_guesses": 3,
+      "prior": 0.00006709823135789108,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "blunt"
+      ]
+    },
+    {
+      "word": "moché",
+      "num_guesses": 4,
+      "prior": 0.00003348697722052057,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "plomo",
+        "moché"
+      ]
+    },
+    {
+      "word": "caceo",
+      "num_guesses": 5,
+      "prior": 0.00003377660899867062,
+      "guesses": [
+        "rosea",
+        "palta",
+        "nicab",
+        "maceo",
+        "caceo"
+      ]
+    },
+    {
+      "word": "cintá",
+      "num_guesses": 3,
+      "prior": 0.00002584794728370907,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "cintá"
+      ]
+    },
+    {
+      "word": "wines",
+      "num_guesses": 5,
+      "prior": 0.000058847870190581635,
+      "guesses": [
+        "rosea",
+        "celin",
+        "bifaz",
+        "pymes",
+        "wines"
+      ]
+    },
+    {
+      "word": "sondé",
+      "num_guesses": 4,
+      "prior": 0.00003491387786007467,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "sondó",
+        "sondé"
+      ]
+    },
+    {
+      "word": "ceñan",
+      "num_guesses": 4,
+      "prior": 0.000028544237713282614,
+      "guesses": [
+        "rosea",
+        "calad",
+        "banjo",
+        "ceñan"
+      ]
+    },
+    {
+      "word": "jarra",
+      "num_guesses": 5,
+      "prior": 0.00011755239764485755,
+      "guesses": [
+        "rosea",
+        "curri",
+        "pibón",
+        "juego",
+        "jarra"
+      ]
+    },
+    {
+      "word": "adulo",
+      "num_guesses": 5,
+      "prior": 0.00005867693753369743,
+      "guesses": [
+        "rosea",
+        "cling",
+        "palmo",
+        "ovada",
+        "adulo"
+      ]
+    },
+    {
+      "word": "apuno",
+      "num_guesses": 5,
+      "prior": 0.000029841675933464488,
+      "guesses": [
+        "rosea",
+        "cling",
+        "abuzo",
+        "pujad",
+        "apuno"
+      ]
+    },
+    {
+      "word": "blaos",
+      "num_guesses": 5,
+      "prior": 0.00002711388785855751,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "atoan",
+        "liaos",
+        "blaos"
+      ]
+    },
+    {
+      "word": "liéis",
+      "num_guesses": 4,
+      "prior": 0.00003717469900029649,
+      "guesses": [
+        "rosea",
+        "culis",
+        "liáis",
+        "liéis"
+      ]
+    },
+    {
+      "word": "grané",
+      "num_guesses": 3,
+      "prior": 0.000059305578770063514,
+      "guesses": [
+        "rosea",
+        "talan",
+        "grané"
+      ]
+    },
+    {
+      "word": "cobla",
+      "num_guesses": 4,
+      "prior": 0.000055809821180010486,
+      "guesses": [
+        "rosea",
+        "cling",
+        "milpa",
+        "cobla"
+      ]
+    },
+    {
+      "word": "pichí",
+      "num_guesses": 4,
+      "prior": 0.00004900567057323061,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "pifié",
+        "pichí"
+      ]
+    },
+    {
+      "word": "parés",
+      "num_guesses": 5,
+      "prior": 0.00007501643214531401,
+      "guesses": [
+        "rosea",
+        "arias",
+        "pintá",
+        "parís",
+        "parés"
+      ]
+    },
+    {
+      "word": "solía",
+      "num_guesses": 3,
+      "prior": 0.0001768205162445068,
+      "guesses": [
+        "rosea",
+        "bolsa",
+        "solía"
+      ]
+    },
+    {
+      "word": "migro",
+      "num_guesses": 5,
+      "prior": 0.000037520972525921285,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "libro",
+        "mundo",
+        "migro"
+      ]
+    },
+    {
+      "word": "optas",
+      "num_guesses": 4,
+      "prior": 0.00005135415650921349,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "pitan",
+        "optas"
+      ]
+    },
+    {
+      "word": "migar",
+      "num_guesses": 5,
+      "prior": 0.000045975271852568064,
+      "guesses": [
+        "rosea",
+        "talan",
+        "mirad",
+        "mimar",
+        "migar"
+      ]
+    },
+    {
+      "word": "sumas",
+      "num_guesses": 5,
+      "prior": 0.0001778971481310817,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "hippy",
+        "sumas"
+      ]
+    },
+    {
+      "word": "rigió",
+      "num_guesses": 3,
+      "prior": 0.00010560082827626355,
+      "guesses": [
+        "rosea",
+        "gimió",
+        "rigió"
+      ]
+    },
+    {
+      "word": "zocan",
+      "num_guesses": 4,
+      "prior": 0.000021212701516870875,
+      "guesses": [
+        "rosea",
+        "tacan",
+        "campo",
+        "zocan"
+      ]
+    },
+    {
+      "word": "pesco",
+      "num_guesses": 4,
+      "prior": 0.00006517449780579048,
+      "guesses": [
+        "rosea",
+        "depto",
+        "decir",
+        "pesco"
+      ]
+    },
+    {
+      "word": "asará",
+      "num_guesses": 3,
+      "prior": 0.00004491318899667585,
+      "guesses": [
+        "rosea",
+        "arias",
+        "asará"
+      ]
+    },
+    {
+      "word": "hieda",
+      "num_guesses": 4,
+      "prior": 0.0000494951947907874,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "dieta",
+        "hieda"
+      ]
+    },
+    {
+      "word": "bifaz",
+      "num_guesses": 5,
+      "prior": 0.00005204261249572372,
+      "guesses": [
+        "rosea",
+        "calan",
+        "mitad",
+        "vivaz",
+        "bifaz"
+      ]
+    },
+    {
+      "word": "tajad",
+      "num_guesses": 4,
+      "prior": 0.000029336337075424117,
+      "guesses": [
+        "rosea",
+        "calan",
+        "patay",
+        "tajad"
+      ]
+    },
+    {
+      "word": "orará",
+      "num_guesses": 4,
+      "prior": 0.00005080994917252567,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "gradé",
+        "orará"
+      ]
+    },
+    {
+      "word": "alomé",
+      "num_guesses": 5,
+      "prior": 0.000033046929690792356,
+      "guesses": [
+        "rosea",
+        "cling",
+        "zompo",
+        "alomá",
+        "alomé"
+      ]
+    },
+    {
+      "word": "tunee",
+      "num_guesses": 4,
+      "prior": 0.000031322653857260256,
+      "guesses": [
+        "rosea",
+        "celin",
+        "índex",
+        "tunee"
+      ]
+    },
+    {
+      "word": "uncid",
+      "num_guesses": 3,
+      "prior": 0.000037554905181470164,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "uncid"
+      ]
+    },
+    {
+      "word": "vagos",
+      "num_guesses": 5,
+      "prior": 0.00013770683307841146,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "tapad",
+        "gabán",
+        "vagos"
+      ]
+    },
+    {
+      "word": "gimas",
+      "num_guesses": 5,
+      "prior": 0.000056262507967725545,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "meses",
+        "gimas"
+      ]
+    },
+    {
+      "word": "trové",
+      "num_guesses": 4,
+      "prior": 0.00003610008476947955,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "varón",
+        "trové"
+      ]
+    },
+    {
+      "word": "mizas",
+      "num_guesses": 6,
+      "prior": 0.00003839694544581166,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "migas",
+        "mijas",
+        "mizas"
+      ]
+    },
+    {
+      "word": "mares",
+      "num_guesses": 4,
+      "prior": 0.00018126855813510503,
+      "guesses": [
+        "rosea",
+        "abric",
+        "milpa",
+        "mares"
+      ]
+    },
+    {
+      "word": "chayé",
+      "num_guesses": 6,
+      "prior": 0.000027507445878792732,
+      "guesses": [
+        "rosea",
+        "calan",
+        "ajumó",
+        "frapé",
+        "yesca",
+        "chayé"
+      ]
+    },
+    {
+      "word": "pelen",
+      "num_guesses": 4,
+      "prior": 0.000054165301155189904,
+      "guesses": [
+        "rosea",
+        "celin",
+        "polvo",
+        "pelen"
+      ]
+    },
+    {
+      "word": "normé",
+      "num_guesses": 5,
+      "prior": 0.000023920956183556214,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "morón",
+        "normá",
+        "normé"
+      ]
+    },
+    {
+      "word": "ájese",
+      "num_guesses": 6,
+      "prior": 0.000021043654452682993,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "culís",
+        "úsese",
+        "ámese",
+        "ájese"
+      ]
+    },
+    {
+      "word": "jotea",
+      "num_guesses": 4,
+      "prior": 0.000023094090660063366,
+      "guesses": [
+        "rosea",
+        "lgbti",
+        "tempo",
+        "jotea"
+      ]
+    },
+    {
+      "word": "ahína",
+      "num_guesses": 4,
+      "prior": 0.000041336260354066673,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "mantí",
+        "ahína"
+      ]
+    },
+    {
+      "word": "dotas",
+      "num_guesses": 4,
+      "prior": 0.00005712015606506604,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "dicen",
+        "dotas"
+      ]
+    },
+    {
+      "word": "pecad",
+      "num_guesses": 3,
+      "prior": 0.00005237809199175065,
+      "guesses": [
+        "rosea",
+        "calad",
+        "pecad"
+      ]
+    },
+    {
+      "word": "solee",
+      "num_guesses": 4,
+      "prior": 0.00004336069388542281,
+      "guesses": [
+        "rosea",
+        "tican",
+        "maple",
+        "solee"
+      ]
+    },
+    {
+      "word": "hitar",
+      "num_guesses": 4,
+      "prior": 0.00004435732940941456,
+      "guesses": [
+        "rosea",
+        "talan",
+        "bicho",
+        "hitar"
+      ]
+    },
+    {
+      "word": "horre",
+      "num_guesses": 4,
+      "prior": 0.00004359170000490247,
+      "guesses": [
+        "rosea",
+        "chort",
+        "honre",
+        "horre"
+      ]
+    },
+    {
+      "word": "tizar",
+      "num_guesses": 5,
+      "prior": 0.00006744774164384411,
+      "guesses": [
+        "rosea",
+        "talan",
+        "cirro",
+        "ritmo",
+        "tizar"
+      ]
+    },
+    {
+      "word": "actúo",
+      "num_guesses": 4,
+      "prior": 0.00008012171513254831,
+      "guesses": [
+        "rosea",
+        "cling",
+        "pauto",
+        "actúo"
+      ]
+    },
+    {
+      "word": "taima",
+      "num_guesses": 4,
+      "prior": 0.00006756292113161077,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "manta",
+        "taima"
+      ]
+    },
+    {
+      "word": "amaño",
+      "num_guesses": 5,
+      "prior": 0.00007602151639690066,
+      "guesses": [
+        "rosea",
+        "cling",
+        "atado",
+        "jamba",
+        "amaño"
+      ]
+    },
+    {
+      "word": "rectó",
+      "num_guesses": 4,
+      "prior": 0.00003358022004880254,
+      "guesses": [
+        "rosea",
+        "tinge",
+        "reptó",
+        "rectó"
+      ]
+    },
+    {
+      "word": "orlan",
+      "num_guesses": 5,
+      "prior": 0.00006828766474723843,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "orzar",
+        "ornan",
+        "orlan"
+      ]
+    },
+    {
+      "word": "cries",
+      "num_guesses": 3,
+      "prior": 0.00006852306015518629,
+      "guesses": [
+        "rosea",
+        "tribu",
+        "cries"
+      ]
+    },
+    {
+      "word": "dices",
+      "num_guesses": 4,
+      "prior": 0.00017206849255999205,
+      "guesses": [
+        "rosea",
+        "celin",
+        "votad",
+        "dices"
+      ]
+    },
+    {
+      "word": "toaba",
+      "num_guesses": 5,
+      "prior": 0.000035409699219116376,
+      "guesses": [
+        "rosea",
+        "cling",
+        "podía",
+        "bomba",
+        "toaba"
+      ]
+    },
+    {
+      "word": "trepá",
+      "num_guesses": 5,
+      "prior": 0.000025578237543010884,
+      "guesses": [
+        "rosea",
+        "peine",
+        "trepó",
+        "trepé",
+        "trepá"
+      ]
+    },
+    {
+      "word": "yerba",
+      "num_guesses": 4,
+      "prior": 0.00015759221994481067,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "birlí",
+        "yerba"
+      ]
+    },
+    {
+      "word": "deudo",
+      "num_guesses": 4,
+      "prior": 0.00011464126476733486,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "puffs",
+        "deudo"
+      ]
+    },
+    {
+      "word": "sobra",
+      "num_guesses": 3,
+      "prior": 0.00016226365711007428,
+      "guesses": [
+        "rosea",
+        "deben",
+        "sobra"
+      ]
+    },
+    {
+      "word": "expíe",
+      "num_guesses": 4,
+      "prior": 0.00005163916886976767,
+      "guesses": [
+        "rosea",
+        "lente",
+        "mujic",
+        "expíe"
+      ]
+    },
+    {
+      "word": "chaná",
+      "num_guesses": 3,
+      "prior": 0.0000643344109727155,
+      "guesses": [
+        "rosea",
+        "calan",
+        "chaná"
+      ]
+    },
+    {
+      "word": "futre",
+      "num_guesses": 4,
+      "prior": 0.00006381174452558972,
+      "guesses": [
+        "rosea",
+        "peine",
+        "curte",
+        "futre"
+      ]
+    },
+    {
+      "word": "talad",
+      "num_guesses": 4,
+      "prior": 0.000042352363293656135,
+      "guesses": [
+        "rosea",
+        "calan",
+        "habed",
+        "talad"
+      ]
+    },
+    {
+      "word": "serán",
+      "num_guesses": 3,
+      "prior": 0.00026618221369019516,
+      "guesses": [
+        "rosea",
+        "sirve",
+        "serán"
+      ]
+    },
+    {
+      "word": "ajoto",
+      "num_guesses": 5,
+      "prior": 0.00002977768318718687,
+      "guesses": [
+        "rosea",
+        "cling",
+        "atado",
+        "azoto",
+        "ajoto"
+      ]
+    },
+    {
+      "word": "amias",
+      "num_guesses": 4,
+      "prior": 0.00006446758126880648,
+      "guesses": [
+        "rosea",
+        "calan",
+        "simps",
+        "amias"
+      ]
+    },
+    {
+      "word": "osaré",
+      "num_guesses": 4,
+      "prior": 0.000069136914034714,
+      "guesses": [
+        "rosea",
+        "catos",
+        "osará",
+        "osaré"
+      ]
+    },
+    {
+      "word": "cagón",
+      "num_guesses": 4,
+      "prior": 0.00005920310336420893,
+      "guesses": [
+        "rosea",
+        "calan",
+        "juzgó",
+        "cagón"
+      ]
+    },
+    {
+      "word": "calmá",
+      "num_guesses": 5,
+      "prior": 0.000027851754673600292,
+      "guesses": [
+        "rosea",
+        "calan",
+        "emuló",
+        "calmé",
+        "calmá"
+      ]
+    },
+    {
+      "word": "zafia",
+      "num_guesses": 5,
+      "prior": 0.00007040476183500281,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "timón",
+        "gavia",
+        "zafia"
+      ]
+    },
+    {
+      "word": "liñas",
+      "num_guesses": 6,
+      "prior": 0.00005007103462898072,
+      "guesses": [
+        "rosea",
+        "calan",
+        "mugid",
+        "itzaj",
+        "pobre",
+        "liñas"
+      ]
+    },
+    {
+      "word": "litan",
+      "num_guesses": 5,
+      "prior": 0.00005575066545515682,
+      "guesses": [
+        "rosea",
+        "calan",
+        "jugad",
+        "ambos",
+        "litan"
+      ]
+    },
+    {
+      "word": "exige",
+      "num_guesses": 4,
+      "prior": 0.00021688480069412863,
+      "guesses": [
+        "rosea",
+        "lente",
+        "mujic",
+        "exige"
+      ]
+    },
+    {
+      "word": "seseo",
+      "num_guesses": 3,
+      "prior": 0.0000825339569725352,
+      "guesses": [
+        "rosea",
+        "subid",
+        "seseo"
+      ]
+    },
+    {
+      "word": "buqué",
+      "num_guesses": 4,
+      "prior": 0.000052172840601235105,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "álbum",
+        "buqué"
+      ]
+    },
+    {
+      "word": "redés",
+      "num_guesses": 4,
+      "prior": 0.000027767268521886452,
+      "guesses": [
+        "rosea",
+        "melés",
+        "votad",
+        "redés"
+      ]
+    },
+    {
+      "word": "fluis",
+      "num_guesses": 4,
+      "prior": 0.00003123466748404559,
+      "guesses": [
+        "rosea",
+        "culis",
+        "ultis",
+        "fluis"
+      ]
+    },
+    {
+      "word": "ábsit",
+      "num_guesses": 3,
+      "prior": 0.000023764596661034943,
+      "guesses": [
+        "rosea",
+        "pitió",
+        "ábsit"
+      ]
+    },
+    {
+      "word": "bórax",
+      "num_guesses": 5,
+      "prior": 0.00008310145713043233,
+      "guesses": [
+        "rosea",
+        "talan",
+        "mirad",
+        "curar",
+        "bórax"
+      ]
+    },
+    {
+      "word": "crasa",
+      "num_guesses": 3,
+      "prior": 0.00009003548002906095,
+      "guesses": [
+        "rosea",
+        "cursi",
+        "crasa"
+      ]
+    },
+    {
+      "word": "frate",
+      "num_guesses": 5,
+      "prior": 0.0000634656634132264,
+      "guesses": [
+        "rosea",
+        "capad",
+        "grate",
+        "trate",
+        "frate"
+      ]
+    },
+    {
+      "word": "menan",
+      "num_guesses": 4,
+      "prior": 0.000045331681941902216,
+      "guesses": [
+        "rosea",
+        "calad",
+        "mentí",
+        "menan"
+      ]
+    },
+    {
+      "word": "payan",
+      "num_guesses": 5,
+      "prior": 0.00007709137172572993,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bogey",
+        "hampa",
+        "payan"
+      ]
+    },
+    {
+      "word": "datar",
+      "num_guesses": 5,
+      "prior": 0.00009306930519204844,
+      "guesses": [
+        "rosea",
+        "talan",
+        "matar",
+        "catar",
+        "datar"
+      ]
+    },
+    {
+      "word": "calcó",
+      "num_guesses": 5,
+      "prior": 0.00005568425173360724,
+      "guesses": [
+        "rosea",
+        "calan",
+        "emuló",
+        "pizca",
+        "calcó"
+      ]
+    },
+    {
+      "word": "amara",
+      "num_guesses": 4,
+      "prior": 0.00010714412346447393,
+      "guesses": [
+        "rosea",
+        "curri",
+        "matzá",
+        "amara"
+      ]
+    },
+    {
+      "word": "digas",
+      "num_guesses": 5,
+      "prior": 0.00014824161063473632,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "vidas",
+        "digas"
+      ]
+    },
+    {
+      "word": "reías",
+      "num_guesses": 3,
+      "prior": 0.00006445001888973,
+      "guesses": [
+        "rosea",
+        "tejía",
+        "reías"
+      ]
+    },
+    {
+      "word": "aupad",
+      "num_guesses": 4,
+      "prior": 0.0000205955067004332,
+      "guesses": [
+        "rosea",
+        "calan",
+        "pudín",
+        "aupad"
+      ]
+    },
+    {
+      "word": "macro",
+      "num_guesses": 3,
+      "prior": 0.00012516809025937668,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "macro"
+      ]
+    },
+    {
+      "word": "gateé",
+      "num_guesses": 5,
+      "prior": 0.00004043849188219581,
+      "guesses": [
+        "rosea",
+        "calón",
+        "tempe",
+        "batey",
+        "gateé"
+      ]
+    },
+    {
+      "word": "vacan",
+      "num_guesses": 4,
+      "prior": 0.00007373860804352837,
+      "guesses": [
+        "rosea",
+        "calan",
+        "vamos",
+        "vacan"
+      ]
+    },
+    {
+      "word": "hijos",
+      "num_guesses": 4,
+      "prior": 0.00029282937142974003,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "malvá",
+        "hijos"
+      ]
+    },
+    {
+      "word": "tesan",
+      "num_guesses": 4,
+      "prior": 0.00004630600984493971,
+      "guesses": [
+        "rosea",
+        "pande",
+        "tumba",
+        "tesan"
+      ]
+    },
+    {
+      "word": "tibió",
+      "num_guesses": 4,
+      "prior": 0.00003957744985414349,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "habla",
+        "tibió"
+      ]
+    },
+    {
+      "word": "chalo",
+      "num_guesses": 4,
+      "prior": 0.00006361755126265817,
+      "guesses": [
+        "rosea",
+        "cling",
+        "mazad",
+        "chalo"
+      ]
+    },
+    {
+      "word": "edres",
+      "num_guesses": 5,
+      "prior": 0.000027328617415600857,
+      "guesses": [
+        "rosea",
+        "tribu",
+        "simpa",
+        "veres",
+        "edres"
+      ]
+    },
+    {
+      "word": "junté",
+      "num_guesses": 3,
+      "prior": 0.00007809316585541572,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "junté"
+      ]
+    },
+    {
+      "word": "taime",
+      "num_guesses": 4,
+      "prior": 0.00005054951563501176,
+      "guesses": [
+        "rosea",
+        "calad",
+        "punte",
+        "taime"
+      ]
+    },
+    {
+      "word": "apañé",
+      "num_guesses": 4,
+      "prior": 0.00004412429654497171,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbó",
+        "apañé"
+      ]
+    },
+    {
+      "word": "nipre",
+      "num_guesses": 3,
+      "prior": 0.000029381679389379995,
+      "guesses": [
+        "rosea",
+        "peine",
+        "nipre"
+      ]
+    },
+    {
+      "word": "sones",
+      "num_guesses": 4,
+      "prior": 0.00011477047441960038,
+      "guesses": [
+        "rosea",
+        "tican",
+        "pende",
+        "sones"
+      ]
+    },
+    {
+      "word": "manía",
+      "num_guesses": 4,
+      "prior": 0.00013597391387279643,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "mantí",
+        "manía"
+      ]
+    },
+    {
+      "word": "cedás",
+      "num_guesses": 5,
+      "prior": 0.00002137652562601296,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "culís",
+        "cebús",
+        "cedás"
+      ]
+    },
+    {
+      "word": "peleo",
+      "num_guesses": 3,
+      "prior": 0.00008928804281605242,
+      "guesses": [
+        "rosea",
+        "celin",
+        "peleo"
+      ]
+    },
+    {
+      "word": "dorás",
+      "num_guesses": 5,
+      "prior": 0.000022128402163185748,
+      "guesses": [
+        "rosea",
+        "cobot",
+        "primé",
+        "forks",
+        "dorás"
+      ]
+    },
+    {
+      "word": "tazol",
+      "num_guesses": 4,
+      "prior": 0.00004999307966849272,
+      "guesses": [
+        "rosea",
+        "cling",
+        "palmo",
+        "tazol"
+      ]
+    },
+    {
+      "word": "voceó",
+      "num_guesses": 4,
+      "prior": 0.00006342303966555108,
+      "guesses": [
+        "rosea",
+        "colon",
+        "elevó",
+        "voceó"
+      ]
+    },
+    {
+      "word": "linde",
+      "num_guesses": 3,
+      "prior": 0.00011380283746350166,
+      "guesses": [
+        "rosea",
+        "lente",
+        "linde"
+      ]
+    },
+    {
+      "word": "frese",
+      "num_guesses": 3,
+      "prior": 0.00005132506202482544,
+      "guesses": [
+        "rosea",
+        "sirve",
+        "frese"
+      ]
+    },
+    {
+      "word": "sindi",
+      "num_guesses": 4,
+      "prior": 0.00007244703558643943,
+      "guesses": [
+        "rosea",
+        "culis",
+        "mingó",
+        "sindi"
+      ]
+    },
+    {
+      "word": "talés",
+      "num_guesses": 4,
+      "prior": 0.0000432745841488583,
+      "guesses": [
+        "rosea",
+        "calan",
+        "vités",
+        "talés"
+      ]
+    },
+    {
+      "word": "virás",
+      "num_guesses": 5,
+      "prior": 0.000030433667019765944,
+      "guesses": [
+        "rosea",
+        "curés",
+        "gemid",
+        "pívot",
+        "virás"
+      ]
+    },
+    {
+      "word": "hinca",
+      "num_guesses": 5,
+      "prior": 0.0000857292870509715,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "canté",
+        "finca",
+        "hinca"
+      ]
+    },
+    {
+      "word": "recia",
+      "num_guesses": 3,
+      "prior": 0.00013092426039041963,
+      "guesses": [
+        "rosea",
+        "ungid",
+        "recia"
+      ]
+    },
+    {
+      "word": "rolla",
+      "num_guesses": 4,
+      "prior": 0.00006911699750153427,
+      "guesses": [
+        "rosea",
+        "cundí",
+        "libro",
+        "rolla"
+      ]
+    },
+    {
+      "word": "yunta",
+      "num_guesses": 5,
+      "prior": 0.00010556491031040587,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "tangí",
+        "apoyo",
+        "yunta"
+      ]
+    },
+    {
+      "word": "checa",
+      "num_guesses": 4,
+      "prior": 0.00011985044871449958,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "atece",
+        "checa"
+      ]
+    },
+    {
+      "word": "salva",
+      "num_guesses": 5,
+      "prior": 0.00015797575588742124,
+      "guesses": [
+        "rosea",
+        "cubil",
+        "sumís",
+        "godet",
+        "salva"
+      ]
+    },
+    {
+      "word": "chofe",
+      "num_guesses": 5,
+      "prior": 0.00004340349351308438,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "chote",
+        "época",
+        "chofe"
+      ]
+    },
+    {
+      "word": "nueso",
+      "num_guesses": 4,
+      "prior": 0.00005638135462001333,
+      "guesses": [
+        "rosea",
+        "lento",
+        "sueno",
+        "nueso"
+      ]
+    },
+    {
+      "word": "porro",
+      "num_guesses": 6,
+      "prior": 0.00009745995474613995,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "mugre",
+        "hafiz",
+        "japón",
+        "porro"
+      ]
+    },
+    {
+      "word": "jarré",
+      "num_guesses": 6,
+      "prior": 0.00003448400176036308,
+      "guesses": [
+        "rosea",
+        "talan",
+        "pircó",
+        "ombré",
+        "garré",
+        "jarré"
+      ]
+    },
+    {
+      "word": "nerda",
+      "num_guesses": 4,
+      "prior": 0.000027990327460375298,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "negra",
+        "nerda"
+      ]
+    },
+    {
+      "word": "novos",
+      "num_guesses": 5,
+      "prior": 0.0000737334798677888,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "chomp",
+        "bonzo",
+        "novos"
+      ]
+    },
+    {
+      "word": "hanes",
+      "num_guesses": 5,
+      "prior": 0.000052028828197008665,
+      "guesses": [
+        "rosea",
+        "calón",
+        "pende",
+        "smash",
+        "hanes"
+      ]
+    },
+    {
+      "word": "draga",
+      "num_guesses": 5,
+      "prior": 0.00009199926654742749,
+      "guesses": [
+        "rosea",
+        "curri",
+        "lgbti",
+        "vende",
+        "draga"
+      ]
+    },
+    {
+      "word": "fixis",
+      "num_guesses": 5,
+      "prior": 0.00003390504087637726,
+      "guesses": [
+        "rosea",
+        "culis",
+        "pintá",
+        "kéfir",
+        "fixis"
+      ]
+    },
+    {
+      "word": "reveo",
+      "num_guesses": 3,
+      "prior": 0.00004207656686493988,
+      "guesses": [
+        "rosea",
+        "julio",
+        "reveo"
+      ]
+    },
+    {
+      "word": "vocal",
+      "num_guesses": 4,
+      "prior": 0.0001753703925312852,
+      "guesses": [
+        "rosea",
+        "tacan",
+        "villa",
+        "vocal"
+      ]
+    },
+    {
+      "word": "aceró",
+      "num_guesses": 4,
+      "prior": 0.00004656682364730337,
+      "guesses": [
+        "rosea",
+        "capad",
+        "leerá",
+        "aceró"
+      ]
+    },
+    {
+      "word": "bucos",
+      "num_guesses": 5,
+      "prior": 0.00004939091038307199,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "culpó",
+        "samba",
+        "bucos"
+      ]
+    },
+    {
+      "word": "logre",
+      "num_guesses": 4,
+      "prior": 0.00014117311857754714,
+      "guesses": [
+        "rosea",
+        "chort",
+        "fabla",
+        "logre"
+      ]
+    },
+    {
+      "word": "bolea",
+      "num_guesses": 3,
+      "prior": 0.00008745891179207075,
+      "guesses": [
+        "rosea",
+        "lgbti",
+        "bolea"
+      ]
+    },
+    {
+      "word": "untad",
+      "num_guesses": 4,
+      "prior": 0.00005936401338055012,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumba",
+        "untad"
+      ]
+    },
+    {
+      "word": "melea",
+      "num_guesses": 4,
+      "prior": 0.00004099012968936725,
+      "guesses": [
+        "rosea",
+        "talpa",
+        "hecho",
+        "melea"
+      ]
+    },
+    {
+      "word": "leché",
+      "num_guesses": 4,
+      "prior": 0.00004020270142595402,
+      "guesses": [
+        "rosea",
+        "lente",
+        "legué",
+        "leché"
+      ]
+    },
+    {
+      "word": "ripie",
+      "num_guesses": 4,
+      "prior": 0.00003582824616341604,
+      "guesses": [
+        "rosea",
+        "tinge",
+        "riele",
+        "ripie"
+      ]
+    },
+    {
+      "word": "hacen",
+      "num_guesses": 4,
+      "prior": 0.0002775163268409368,
+      "guesses": [
+        "rosea",
+        "calón",
+        "hippy",
+        "hacen"
+      ]
+    },
+    {
+      "word": "pansa",
+      "num_guesses": 4,
+      "prior": 0.00006663483051901424,
+      "guesses": [
+        "rosea",
+        "cubil",
+        "mansa",
+        "pansa"
+      ]
+    },
+    {
+      "word": "tesos",
+      "num_guesses": 3,
+      "prior": 0.000058807083663272526,
+      "guesses": [
+        "rosea",
+        "depto",
+        "tesos"
+      ]
+    },
+    {
+      "word": "arlas",
+      "num_guesses": 5,
+      "prior": 0.00007161747834386106,
+      "guesses": [
+        "rosea",
+        "arias",
+        "marco",
+        "falda",
+        "arlas"
+      ]
+    },
+    {
+      "word": "grisú",
+      "num_guesses": 4,
+      "prior": 0.00007096145721376343,
+      "guesses": [
+        "rosea",
+        "curés",
+        "pifió",
+        "grisú"
+      ]
+    },
+    {
+      "word": "turna",
+      "num_guesses": 4,
+      "prior": 0.00007099132455422806,
+      "guesses": [
+        "rosea",
+        "curri",
+        "lgbti",
+        "turna"
+      ]
+    },
+    {
+      "word": "caire",
+      "num_guesses": 4,
+      "prior": 0.00006543105814207878,
+      "guesses": [
+        "rosea",
+        "capad",
+        "iteré",
+        "caire"
+      ]
+    },
+    {
+      "word": "sufrí",
+      "num_guesses": 4,
+      "prior": 0.00010120843213281676,
+      "guesses": [
+        "rosea",
+        "curés",
+        "subir",
+        "sufrí"
+      ]
+    },
+    {
+      "word": "mayan",
+      "num_guesses": 5,
+      "prior": 0.00006948143326987539,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bogey",
+        "hampa",
+        "mayan"
+      ]
+    },
+    {
+      "word": "aguda",
+      "num_guesses": 4,
+      "prior": 0.00017612009967052575,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "yagán",
+        "aguda"
+      ]
+    },
+    {
+      "word": "zomas",
+      "num_guesses": 5,
+      "prior": 0.00005311990473771047,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "macad",
+        "plazo",
+        "zomas"
+      ]
+    },
+    {
+      "word": "zurro",
+      "num_guesses": 5,
+      "prior": 0.00005896258971312714,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "bagre",
+        "zarpó",
+        "zurro"
+      ]
+    },
+    {
+      "word": "coyas",
+      "num_guesses": 5,
+      "prior": 0.0000676403462552134,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "macad",
+        "proxy",
+        "coyas"
+      ]
+    },
+    {
+      "word": "tosté",
+      "num_guesses": 3,
+      "prior": 0.00005552213540407139,
+      "guesses": [
+        "rosea",
+        "coito",
+        "tosté"
+      ]
+    },
+    {
+      "word": "talpa",
+      "num_guesses": 4,
+      "prior": 0.00007709137172572993,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "tapín",
+        "talpa"
+      ]
+    },
+    {
+      "word": "nance",
+      "num_guesses": 4,
+      "prior": 0.00006814063587540148,
+      "guesses": [
+        "rosea",
+        "calad",
+        "hiten",
+        "nance"
+      ]
+    },
+    {
+      "word": "jedad",
+      "num_guesses": 4,
+      "prior": 0.000036796664162038766,
+      "guesses": [
+        "rosea",
+        "calad",
+        "tejen",
+        "jedad"
+      ]
+    },
+    {
+      "word": "orsái",
+      "num_guesses": 3,
+      "prior": 0.00002692426163830937,
+      "guesses": [
+        "rosea",
+        "ursos",
+        "orsái"
+      ]
+    },
+    {
+      "word": "posad",
+      "num_guesses": 4,
+      "prior": 0.0000475192872784159,
+      "guesses": [
+        "rosea",
+        "clips",
+        "posan",
+        "posad"
+      ]
+    },
+    {
+      "word": "raizá",
+      "num_guesses": 4,
+      "prior": 0.00003171516250240726,
+      "guesses": [
+        "rosea",
+        "uinal",
+        "óxido",
+        "raizá"
+      ]
+    },
+    {
+      "word": "cerco",
+      "num_guesses": 4,
+      "prior": 0.00015907801306115705,
+      "guesses": [
+        "rosea",
+        "cetro",
+        "cinco",
+        "cerco"
+      ]
+    },
+    {
+      "word": "vesre",
+      "num_guesses": 2,
+      "prior": 0.00005232427185801536,
+      "guesses": [
+        "rosea",
+        "vesre"
+      ]
+    },
+    {
+      "word": "proba",
+      "num_guesses": 4,
+      "prior": 0.00008955201993360445,
+      "guesses": [
+        "rosea",
+        "traga",
+        "bizco",
+        "proba"
+      ]
+    },
+    {
+      "word": "ticen",
+      "num_guesses": 4,
+      "prior": 0.00004419516508383163,
+      "guesses": [
+        "rosea",
+        "celin",
+        "dicen",
+        "ticen"
+      ]
+    },
+    {
+      "word": "fresó",
+      "num_guesses": 4,
+      "prior": 0.000023604010348415185,
+      "guesses": [
+        "rosea",
+        "sirve",
+        "cupés",
+        "fresó"
+      ]
+    },
+    {
+      "word": "repta",
+      "num_guesses": 5,
+      "prior": 0.0000676885575274563,
+      "guesses": [
+        "rosea",
+        "ungid",
+        "malta",
+        "recta",
+        "repta"
+      ]
+    },
+    {
+      "word": "alobo",
+      "num_guesses": 6,
+      "prior": 0.000026595818667679375,
+      "guesses": [
+        "rosea",
+        "cling",
+        "zompo",
+        "tejas",
+        "alolo",
+        "alobo"
+      ]
+    },
+    {
+      "word": "justá",
+      "num_guesses": 4,
+      "prior": 0.00003454335495468254,
+      "guesses": [
+        "rosea",
+        "pitió",
+        "jugué",
+        "justá"
+      ]
+    },
+    {
+      "word": "ingle",
+      "num_guesses": 3,
+      "prior": 0.00009999677454508956,
+      "guesses": [
+        "rosea",
+        "lente",
+        "ingle"
+      ]
+    },
+    {
+      "word": "michi",
+      "num_guesses": 4,
+      "prior": 0.0000787224163415658,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "pifié",
+        "michi"
+      ]
+    },
+    {
+      "word": "colpa",
+      "num_guesses": 4,
+      "prior": 0.00007000398387508207,
+      "guesses": [
+        "rosea",
+        "cling",
+        "milpa",
+        "colpa"
+      ]
+    },
+    {
+      "word": "raíza",
+      "num_guesses": 4,
+      "prior": 0.000023549497040250508,
+      "guesses": [
+        "rosea",
+        "manid",
+        "copla",
+        "raíza"
+      ]
+    },
+    {
+      "word": "coste",
+      "num_guesses": 2,
+      "prior": 0.00017385762297594242,
+      "guesses": [
+        "rosea",
+        "coste"
+      ]
+    },
+    {
+      "word": "crean",
+      "num_guesses": 4,
+      "prior": 0.00017241288032755102,
+      "guesses": [
+        "rosea",
+        "capad",
+        "lenga",
+        "crean"
+      ]
+    },
+    {
+      "word": "playá",
+      "num_guesses": 4,
+      "prior": 0.000032552166015703486,
+      "guesses": [
+        "rosea",
+        "calan",
+        "piuló",
+        "playá"
+      ]
+    },
+    {
+      "word": "fruyo",
+      "num_guesses": 5,
+      "prior": 0.00002487125123642243,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "gnomo",
+        "brujo",
+        "fruyo"
+      ]
+    },
+    {
+      "word": "acipe",
+      "num_guesses": 5,
+      "prior": 0.00002512993342942587,
+      "guesses": [
+        "rosea",
+        "calad",
+        "acete",
+        "punto",
+        "acipe"
+      ]
+    },
+    {
+      "word": "sobar",
+      "num_guesses": 4,
+      "prior": 0.00007030025022325207,
+      "guesses": [
+        "rosea",
+        "hilos",
+        "bañan",
+        "sobar"
+      ]
+    },
+    {
+      "word": "ondeo",
+      "num_guesses": 4,
+      "prior": 0.00004821230883224497,
+      "guesses": [
+        "rosea",
+        "celin",
+        "gedeó",
+        "ondeo"
+      ]
+    },
+    {
+      "word": "chops",
+      "num_guesses": 4,
+      "prior": 0.0000450938659163995,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "culpó",
+        "chops"
+      ]
+    },
+    {
+      "word": "giles",
+      "num_guesses": 5,
+      "prior": 0.00009841791648939969,
+      "guesses": [
+        "rosea",
+        "celin",
+        "moved",
+        "golfo",
+        "giles"
+      ]
+    },
+    {
+      "word": "alona",
+      "num_guesses": 4,
+      "prior": 0.00006305762550873947,
+      "guesses": [
+        "rosea",
+        "placa",
+        "monje",
+        "alona"
+      ]
+    },
+    {
+      "word": "llama",
+      "num_guesses": 4,
+      "prior": 0.00026016775528005806,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "gamín",
+        "llama"
+      ]
+    },
+    {
+      "word": "jardo",
+      "num_guesses": 6,
+      "prior": 0.00005615620508466061,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "pitad",
+        "dilín",
+        "fardo",
+        "jardo"
+      ]
+    },
+    {
+      "word": "girad",
+      "num_guesses": 5,
+      "prior": 0.00005217965879809648,
+      "guesses": [
+        "rosea",
+        "talan",
+        "mirad",
+        "grupo",
+        "girad"
+      ]
+    },
+    {
+      "word": "niñez",
+      "num_guesses": 3,
+      "prior": 0.00016608482614112634,
+      "guesses": [
+        "rosea",
+        "celin",
+        "niñez"
+      ]
+    },
+    {
+      "word": "cacas",
+      "num_guesses": 6,
+      "prior": 0.00006435897359860316,
+      "guesses": [
+        "rosea",
+        "calan",
+        "pívot",
+        "djami",
+        "niñez",
+        "cacas"
+      ]
+    },
+    {
+      "word": "colan",
+      "num_guesses": 4,
+      "prior": 0.00005228601485517799,
+      "guesses": [
+        "rosea",
+        "tacan",
+        "mújol",
+        "colan"
+      ]
+    },
+    {
+      "word": "folle",
+      "num_guesses": 5,
+      "prior": 0.00006969333654213427,
+      "guesses": [
+        "rosea",
+        "mucle",
+        "doble",
+        "falta",
+        "folle"
+      ]
+    },
+    {
+      "word": "fular",
+      "num_guesses": 4,
+      "prior": 0.00006063610418906658,
+      "guesses": [
+        "rosea",
+        "talan",
+        "huifa",
+        "fular"
+      ]
+    },
+    {
+      "word": "moscó",
+      "num_guesses": 3,
+      "prior": 0.000030374533800134534,
+      "guesses": [
+        "rosea",
+        "coito",
+        "moscó"
+      ]
+    },
+    {
+      "word": "jadió",
+      "num_guesses": 5,
+      "prior": 0.00002692426163830937,
+      "guesses": [
+        "rosea",
+        "calan",
+        "metié",
+        "hafiz",
+        "jadió"
+      ]
+    },
+    {
+      "word": "pijeo",
+      "num_guesses": 4,
+      "prior": 0.000022852214390708854,
+      "guesses": [
+        "rosea",
+        "celin",
+        "pívot",
+        "pijeo"
+      ]
+    },
+    {
+      "word": "censé",
+      "num_guesses": 4,
+      "prior": 0.00003386671556262172,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "sensé",
+        "censé"
+      ]
+    },
+    {
+      "word": "vafeo",
+      "num_guesses": 5,
+      "prior": 0.00005763606760569301,
+      "guesses": [
+        "rosea",
+        "palta",
+        "nicab",
+        "fijad",
+        "vafeo"
+      ]
+    },
+    {
+      "word": "torno",
+      "num_guesses": 3,
+      "prior": 0.00023267701773445717,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "torno"
+      ]
+    },
+    {
+      "word": "penca",
+      "num_guesses": 4,
+      "prior": 0.00008604748115711685,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "atece",
+        "penca"
+      ]
+    },
+    {
+      "word": "mizos",
+      "num_guesses": 6,
+      "prior": 0.000035323569407674244,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "malvá",
+        "mimos",
+        "mijos",
+        "mizos"
+      ]
+    },
+    {
+      "word": "friso",
+      "num_guesses": 4,
+      "prior": 0.00011443653136260528,
+      "guesses": [
+        "rosea",
+        "turco",
+        "pidió",
+        "friso"
+      ]
+    },
+    {
+      "word": "macoy",
+      "num_guesses": 4,
+      "prior": 0.000043293778915402135,
+      "guesses": [
+        "rosea",
+        "cling",
+        "pauto",
+        "macoy"
+      ]
+    },
+    {
+      "word": "cifré",
+      "num_guesses": 3,
+      "prior": 0.000055896361867493776,
+      "guesses": [
+        "rosea",
+        "cuitó",
+        "cifré"
+      ]
+    },
+    {
+      "word": "lilos",
+      "num_guesses": 7,
+      "prior": 0.000048296189250581934,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "malvá",
+        "shock",
+        "filos",
+        "pilos",
+        "lilos"
+      ]
+    },
+    {
+      "word": "atrás",
+      "num_guesses": 3,
+      "prior": 0.00023632194520441832,
+      "guesses": [
+        "rosea",
+        "arias",
+        "atrás"
+      ]
+    },
+    {
+      "word": "cures",
+      "num_guesses": 4,
+      "prior": 0.00007172090304767251,
+      "guesses": [
+        "rosea",
+        "tribu",
+        "comed",
+        "cures"
+      ]
+    },
+    {
+      "word": "majen",
+      "num_guesses": 5,
+      "prior": 0.000047050975781012176,
+      "guesses": [
+        "rosea",
+        "calón",
+        "tumba",
+        "junio",
+        "majen"
+      ]
+    },
+    {
+      "word": "liate",
+      "num_guesses": 4,
+      "prior": 0.000031019359182743466,
+      "guesses": [
+        "rosea",
+        "calad",
+        "pille",
+        "liate"
+      ]
+    },
+    {
+      "word": "viaja",
+      "num_guesses": 5,
+      "prior": 0.00013829837814161497,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "manta",
+        "bifaz",
+        "viaja"
+      ]
+    },
+    {
+      "word": "chita",
+      "num_guesses": 4,
+      "prior": 0.00009118751720627276,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "canté",
+        "chita"
+      ]
+    },
+    {
+      "word": "acopó",
+      "num_guesses": 5,
+      "prior": 0.000020957052112276286,
+      "guesses": [
+        "rosea",
+        "cling",
+        "pauto",
+        "opacó",
+        "acopó"
+      ]
+    },
+    {
+      "word": "ñateo",
+      "num_guesses": 6,
+      "prior": 0.000029471533298016024,
+      "guesses": [
+        "rosea",
+        "palta",
+        "comba",
+        "jugad",
+        "hateo",
+        "ñateo"
+      ]
+    },
+    {
+      "word": "bojas",
+      "num_guesses": 5,
+      "prior": 0.00006411164104055822,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "cabed",
+        "joyas",
+        "bojas"
+      ]
+    },
+    {
+      "word": "calmo",
+      "num_guesses": 4,
+      "prior": 0.00008809084007000524,
+      "guesses": [
+        "rosea",
+        "cling",
+        "mazad",
+        "calmo"
+      ]
+    },
+    {
+      "word": "cénit",
+      "num_guesses": 3,
+      "prior": 0.00008830600656253558,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "cénit"
+      ]
+    },
+    {
+      "word": "tobos",
+      "num_guesses": 5,
+      "prior": 0.00005319163733535876,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "ampón",
+        "bizco",
+        "tobos"
+      ]
+    },
+    {
+      "word": "tujes",
+      "num_guesses": 5,
+      "prior": 0.00003140966256996773,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tumay",
+        "japón",
+        "tujes"
+      ]
+    },
+    {
+      "word": "bazar",
+      "num_guesses": 4,
+      "prior": 0.00010653002470842825,
+      "guesses": [
+        "rosea",
+        "talan",
+        "capuz",
+        "bazar"
+      ]
+    },
+    {
+      "word": "tersa",
+      "num_guesses": 3,
+      "prior": 0.0001060376737378345,
+      "guesses": [
+        "rosea",
+        "strip",
+        "tersa"
+      ]
+    },
+    {
+      "word": "proel",
+      "num_guesses": 3,
+      "prior": 0.00007073751521934998,
+      "guesses": [
+        "rosea",
+        "orden",
+        "proel"
+      ]
+    },
+    {
+      "word": "mayes",
+      "num_guesses": 5,
+      "prior": 0.00005521205663227208,
+      "guesses": [
+        "rosea",
+        "calón",
+        "tajad",
+        "pamba",
+        "mayes"
+      ]
+    },
+    {
+      "word": "zarza",
+      "num_guesses": 6,
+      "prior": 0.00011164621511125508,
+      "guesses": [
+        "rosea",
+        "curri",
+        "lambí",
+        "depto",
+        "garza",
+        "zarza"
+      ]
+    },
+    {
+      "word": "untos",
+      "num_guesses": 3,
+      "prior": 0.00008143073213141056,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "untos"
+      ]
+    },
+    {
+      "word": "alelí",
+      "num_guesses": 4,
+      "prior": 0.00006899106676194251,
+      "guesses": [
+        "rosea",
+        "calad",
+        "pille",
+        "alelí"
+      ]
+    },
+    {
+      "word": "votas",
+      "num_guesses": 6,
+      "prior": 0.00006176570253589135,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "dicen",
+        "simpa",
+        "joven",
+        "votas"
+      ]
+    },
+    {
+      "word": "rumie",
+      "num_guesses": 3,
+      "prior": 0.00004703722019445313,
+      "guesses": [
+        "rosea",
+        "tinge",
+        "rumie"
+      ]
+    },
+    {
+      "word": "diete",
+      "num_guesses": 4,
+      "prior": 0.00006711401272942755,
+      "guesses": [
+        "rosea",
+        "lente",
+        "ademá",
+        "diete"
+      ]
+    },
+    {
+      "word": "miché",
+      "num_guesses": 5,
+      "prior": 0.000040013948008143556,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "pifié",
+        "rumbo",
+        "miché"
+      ]
+    },
+    {
+      "word": "sobro",
+      "num_guesses": 3,
+      "prior": 0.00010894393581500611,
+      "guesses": [
+        "rosea",
+        "cobot",
+        "sobro"
+      ]
+    },
+    {
+      "word": "estoá",
+      "num_guesses": 4,
+      "prior": 0.0000421941308608667,
+      "guesses": [
+        "rosea",
+        "lento",
+        "hayás",
+        "estoá"
+      ]
+    },
+    {
+      "word": "fuese",
+      "num_guesses": 4,
+      "prior": 0.00025078752582031403,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "culís",
+        "fuese"
+      ]
+    },
+    {
+      "word": "amalá",
+      "num_guesses": 5,
+      "prior": 0.00003408163918755295,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bulló",
+        "azalá",
+        "amalá"
+      ]
+    },
+    {
+      "word": "capuz",
+      "num_guesses": 4,
+      "prior": 0.00008381114661254338,
+      "guesses": [
+        "rosea",
+        "calan",
+        "guipó",
+        "capuz"
+      ]
+    },
+    {
+      "word": "termo",
+      "num_guesses": 4,
+      "prior": 0.00009804727321246446,
+      "guesses": [
+        "rosea",
+        "cetro",
+        "tiene",
+        "termo"
+      ]
+    },
+    {
+      "word": "probé",
+      "num_guesses": 4,
+      "prior": 0.00009289692632001304,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "probó",
+        "probé"
+      ]
+    },
+    {
+      "word": "vivís",
+      "num_guesses": 5,
+      "prior": 0.00008843553868831442,
+      "guesses": [
+        "rosea",
+        "culis",
+        "minjá",
+        "díver",
+        "vivís"
+      ]
+    },
+    {
+      "word": "canos",
+      "num_guesses": 5,
+      "prior": 0.0000996468012496904,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "bañad",
+        "yapan",
+        "canos"
+      ]
+    },
+    {
+      "word": "acolo",
+      "num_guesses": 5,
+      "prior": 0.00004068736293268429,
+      "guesses": [
+        "rosea",
+        "cling",
+        "pacto",
+        "aculo",
+        "acolo"
+      ]
+    },
+    {
+      "word": "tiíta",
+      "num_guesses": 4,
+      "prior": 0.000054543522538958944,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "manta",
+        "tiíta"
+      ]
+    },
+    {
+      "word": "ánade",
+      "num_guesses": 4,
+      "prior": 0.00007320919885842063,
+      "guesses": [
+        "rosea",
+        "calad",
+        "anude",
+        "ánade"
+      ]
+    },
+    {
+      "word": "vanee",
+      "num_guesses": 4,
+      "prior": 0.00006666982199611532,
+      "guesses": [
+        "rosea",
+        "calón",
+        "nimbe",
+        "vanee"
+      ]
+    },
+    {
+      "word": "ocies",
+      "num_guesses": 3,
+      "prior": 0.000041919560369520666,
+      "guesses": [
+        "rosea",
+        "ocelo",
+        "ocies"
+      ]
+    },
+    {
+      "word": "ornas",
+      "num_guesses": 4,
+      "prior": 0.00006296788165025283,
+      "guesses": [
+        "rosea",
+        "catos",
+        "globo",
+        "ornas"
+      ]
+    },
+    {
+      "word": "gibón",
+      "num_guesses": 5,
+      "prior": 0.000054814859246992236,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "palma",
+        "bidón",
+        "gibón"
+      ]
+    },
+    {
+      "word": "amblé",
+      "num_guesses": 4,
+      "prior": 0.00002332623874436575,
+      "guesses": [
+        "rosea",
+        "calan",
+        "piuló",
+        "amblé"
+      ]
+    },
+    {
+      "word": "sañas",
+      "num_guesses": 7,
+      "prior": 0.00006025377819330716,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tempo",
+        "bogad",
+        "vejez",
+        "yesos",
+        "sañas"
+      ]
+    },
+    {
+      "word": "bajío",
+      "num_guesses": 5,
+      "prior": 0.00010919826971447589,
+      "guesses": [
+        "rosea",
+        "cling",
+        "atado",
+        "mbeyú",
+        "bajío"
+      ]
+    },
+    {
+      "word": "serna",
+      "num_guesses": 4,
+      "prior": 0.00014316497878899347,
+      "guesses": [
+        "rosea",
+        "strip",
+        "sería",
+        "serna"
+      ]
+    },
+    {
+      "word": "rasgó",
+      "num_guesses": 3,
+      "prior": 0.00009535156715359376,
+      "guesses": [
+        "rosea",
+        "cipós",
+        "rasgó"
+      ]
+    },
+    {
+      "word": "raigo",
+      "num_guesses": 3,
+      "prior": 0.00004940788126454384,
+      "guesses": [
+        "rosea",
+        "punid",
+        "raigo"
+      ]
+    },
+    {
+      "word": "light",
+      "num_guesses": 4,
+      "prior": 0.0001127198593606053,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "lábil",
+        "light"
+      ]
+    },
+    {
+      "word": "oblan",
+      "num_guesses": 4,
+      "prior": 0.00003936931850623039,
+      "guesses": [
+        "rosea",
+        "cling",
+        "anulo",
+        "oblan"
+      ]
+    },
+    {
+      "word": "tetón",
+      "num_guesses": 4,
+      "prior": 0.000053022233774600875,
+      "guesses": [
+        "rosea",
+        "lente",
+        "jubón",
+        "tetón"
+      ]
+    },
+    {
+      "word": "leerá",
+      "num_guesses": 3,
+      "prior": 0.00011046373563192739,
+      "guesses": [
+        "rosea",
+        "peine",
+        "leerá"
+      ]
+    },
+    {
+      "word": "líese",
+      "num_guesses": 4,
+      "prior": 0.000037297361526815685,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "culís",
+        "líese"
+      ]
+    },
+    {
+      "word": "leños",
+      "num_guesses": 4,
+      "prior": 0.00010180873741751342,
+      "guesses": [
+        "rosea",
+        "lento",
+        "juego",
+        "leños"
+      ]
+    },
+    {
+      "word": "mirés",
+      "num_guesses": 4,
+      "prior": 0.00005035977740603711,
+      "guesses": [
+        "rosea",
+        "curés",
+        "tempo",
+        "mirés"
+      ]
+    },
+    {
+      "word": "serví",
+      "num_guesses": 3,
+      "prior": 0.00009890375831690729,
+      "guesses": [
+        "rosea",
+        "sirve",
+        "serví"
+      ]
+    },
+    {
+      "word": "depón",
+      "num_guesses": 4,
+      "prior": 0.00004755227536107015,
+      "guesses": [
+        "rosea",
+        "lente",
+        "peñón",
+        "depón"
+      ]
+    },
+    {
+      "word": "rapea",
+      "num_guesses": 4,
+      "prior": 0.000032832321079818135,
+      "guesses": [
+        "rosea",
+        "tamil",
+        "furbo",
+        "rapea"
+      ]
+    },
+    {
+      "word": "sosón",
+      "num_guesses": 4,
+      "prior": 0.00003121695070152251,
+      "guesses": [
+        "rosea",
+        "coito",
+        "posés",
+        "sosón"
+      ]
+    },
+    {
+      "word": "toche",
+      "num_guesses": 5,
+      "prior": 0.00006062114492961773,
+      "guesses": [
+        "rosea",
+        "mucle",
+        "cupón",
+        "junto",
+        "toche"
+      ]
+    },
+    {
+      "word": "hicos",
+      "num_guesses": 4,
+      "prior": 0.000046581143091476934,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "chomp",
+        "hicos"
+      ]
+    },
+    {
+      "word": "clapa",
+      "num_guesses": 5,
+      "prior": 0.000037681072319711553,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "clama",
+        "clava",
+        "clapa"
+      ]
+    },
+    {
+      "word": "emula",
+      "num_guesses": 4,
+      "prior": 0.0000752074655872341,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "eluya",
+        "emula"
+      ]
+    },
+    {
+      "word": "dedos",
+      "num_guesses": 4,
+      "prior": 0.00020907234059013528,
+      "guesses": [
+        "rosea",
+        "lento",
+        "meced",
+        "dedos"
+      ]
+    },
+    {
+      "word": "tinca",
+      "num_guesses": 4,
+      "prior": 0.0000702470687890161,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "canté",
+        "tinca"
+      ]
+    },
+    {
+      "word": "matés",
+      "num_guesses": 4,
+      "prior": 0.00004160392347960198,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbá",
+        "matés"
+      ]
+    },
+    {
+      "word": "sopee",
+      "num_guesses": 4,
+      "prior": 0.000029221738504519853,
+      "guesses": [
+        "rosea",
+        "tican",
+        "maple",
+        "sopee"
+      ]
+    },
+    {
+      "word": "ópalo",
+      "num_guesses": 5,
+      "prior": 0.00008956354064013887,
+      "guesses": [
+        "rosea",
+        "cling",
+        "palmo",
+        "apolo",
+        "ópalo"
+      ]
+    },
+    {
+      "word": "chort",
+      "num_guesses": 3,
+      "prior": 0.00003470740812052134,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "chort"
+      ]
+    },
+    {
+      "word": "urbes",
+      "num_guesses": 3,
+      "prior": 0.00010932614505628232,
+      "guesses": [
+        "rosea",
+        "tribu",
+        "urbes"
+      ]
+    },
+    {
+      "word": "buega",
+      "num_guesses": 5,
+      "prior": 0.00004816858444055787,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "joven",
+        "quema",
+        "buega"
+      ]
+    },
+    {
+      "word": "meten",
+      "num_guesses": 5,
+      "prior": 0.0001221990446296715,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tejed",
+        "pymes",
+        "meten"
+      ]
+    },
+    {
+      "word": "hular",
+      "num_guesses": 4,
+      "prior": 0.000032744883563390134,
+      "guesses": [
+        "rosea",
+        "talan",
+        "huifa",
+        "hular"
+      ]
+    },
+    {
+      "word": "musar",
+      "num_guesses": 4,
+      "prior": 0.00004281839245361828,
+      "guesses": [
+        "rosea",
+        "captá",
+        "vimos",
+        "musar"
+      ]
+    },
+    {
+      "word": "rabió",
+      "num_guesses": 4,
+      "prior": 0.00006648895414419672,
+      "guesses": [
+        "rosea",
+        "uinal",
+        "óxido",
+        "rabió"
+      ]
+    },
+    {
+      "word": "envíe",
+      "num_guesses": 4,
+      "prior": 0.0001282620167780907,
+      "guesses": [
+        "rosea",
+        "lente",
+        "nueve",
+        "envíe"
+      ]
+    },
+    {
+      "word": "copen",
+      "num_guesses": 4,
+      "prior": 0.000049294298726409074,
+      "guesses": [
+        "rosea",
+        "colon",
+        "tempo",
+        "copen"
+      ]
+    },
+    {
+      "word": "yerno",
+      "num_guesses": 4,
+      "prior": 0.00013997985773125065,
+      "guesses": [
+        "rosea",
+        "cetro",
+        "bondi",
+        "yerno"
+      ]
+    },
+    {
+      "word": "empré",
+      "num_guesses": 4,
+      "prior": 0.000040176876640590634,
+      "guesses": [
+        "rosea",
+        "peine",
+        "trepó",
+        "empré"
+      ]
+    },
+    {
+      "word": "sardo",
+      "num_guesses": 4,
+      "prior": 0.00009424906219582935,
+      "guesses": [
+        "rosea",
+        "catos",
+        "mirar",
+        "sardo"
+      ]
+    },
+    {
+      "word": "alezo",
+      "num_guesses": 4,
+      "prior": 0.00003068474018154661,
+      "guesses": [
+        "rosea",
+        "pleno",
+        "juzga",
+        "alezo"
+      ]
+    },
+    {
+      "word": "lisos",
+      "num_guesses": 3,
+      "prior": 0.00011750437262946594,
+      "guesses": [
+        "rosea",
+        "multo",
+        "lisos"
+      ]
+    },
+    {
+      "word": "céreo",
+      "num_guesses": 4,
+      "prior": 0.00006058868245207036,
+      "guesses": [
+        "rosea",
+        "orden",
+        "punzó",
+        "céreo"
+      ]
+    },
+    {
+      "word": "añejo",
+      "num_guesses": 4,
+      "prior": 0.0001027426492651991,
+      "guesses": [
+        "rosea",
+        "pleno",
+        "dictó",
+        "añejo"
+      ]
+    },
+    {
+      "word": "camio",
+      "num_guesses": 4,
+      "prior": 0.00006985890102947024,
+      "guesses": [
+        "rosea",
+        "cling",
+        "ciado",
+        "camio"
+      ]
+    },
+    {
+      "word": "peuca",
+      "num_guesses": 3,
+      "prior": 0.00002504488940231916,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "peuca"
+      ]
+    },
+    {
+      "word": "sores",
+      "num_guesses": 3,
+      "prior": 0.00008887371078117563,
+      "guesses": [
+        "rosea",
+        "salud",
+        "sores"
+      ]
+    },
+    {
+      "word": "fresa",
+      "num_guesses": 3,
+      "prior": 0.00011180296679212627,
+      "guesses": [
+        "rosea",
+        "strip",
+        "fresa"
+      ]
+    },
+    {
+      "word": "alier",
+      "num_guesses": 4,
+      "prior": 0.00007498502490550394,
+      "guesses": [
+        "rosea",
+        "carne",
+        "traed",
+        "alier"
+      ]
+    },
+    {
+      "word": "gomás",
+      "num_guesses": 5,
+      "prior": 0.000028669988124060778,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "nimbé",
+        "comás",
+        "gomás"
+      ]
+    },
+    {
+      "word": "reiki",
+      "num_guesses": 4,
+      "prior": 0.00007812665059260166,
+      "guesses": [
+        "rosea",
+        "tinge",
+        "reirá",
+        "reiki"
+      ]
+    },
+    {
+      "word": "maman",
+      "num_guesses": 5,
+      "prior": 0.00007977207196120487,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bogey",
+        "tempo",
+        "maman"
+      ]
+    },
+    {
+      "word": "apoca",
+      "num_guesses": 3,
+      "prior": 0.00007661091644664417,
+      "guesses": [
+        "rosea",
+        "placa",
+        "apoca"
+      ]
+    },
+    {
+      "word": "pizcó",
+      "num_guesses": 4,
+      "prior": 0.000027267953959367428,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "lápiz",
+        "pizcó"
+      ]
+    },
+    {
+      "word": "banda",
+      "num_guesses": 5,
+      "prior": 0.00019920443035060243,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "matzá",
+        "pibas",
+        "banda"
+      ]
+    },
+    {
+      "word": "diere",
+      "num_guesses": 4,
+      "prior": 0.00013340788509793997,
+      "guesses": [
+        "rosea",
+        "peine",
+        "dicho",
+        "diere"
+      ]
+    },
+    {
+      "word": "sobró",
+      "num_guesses": 3,
+      "prior": 0.00008543508666995215,
+      "guesses": [
+        "rosea",
+        "cobot",
+        "sobró"
+      ]
+    },
+    {
+      "word": "lisas",
+      "num_guesses": 4,
+      "prior": 0.00012453926218789095,
+      "guesses": [
+        "rosea",
+        "macas",
+        "silva",
+        "lisas"
+      ]
+    },
+    {
+      "word": "monea",
+      "num_guesses": 4,
+      "prior": 0.00005206555392517812,
+      "guesses": [
+        "rosea",
+        "lgbti",
+        "chomp",
+        "monea"
+      ]
+    },
+    {
+      "word": "rampa",
+      "num_guesses": 3,
+      "prior": 0.00011358307111087695,
+      "guesses": [
+        "rosea",
+        "manid",
+        "rampa"
+      ]
+    },
+    {
+      "word": "dardo",
+      "num_guesses": 5,
+      "prior": 0.00012249814463836204,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "pitad",
+        "dilín",
+        "dardo"
+      ]
+    },
+    {
+      "word": "parlo",
+      "num_guesses": 5,
+      "prior": 0.00007266220512138752,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "pitad",
+        "vulgo",
+        "parlo"
+      ]
+    },
+    {
+      "word": "pingo",
+      "num_guesses": 5,
+      "prior": 0.00008440917570937124,
+      "guesses": [
+        "rosea",
+        "cinto",
+        "dogma",
+        "pobre",
+        "pingo"
+      ]
+    },
+    {
+      "word": "vitró",
+      "num_guesses": 4,
+      "prior": 0.00003134013302766193,
+      "guesses": [
+        "rosea",
+        "cuitó",
+        "menos",
+        "vitró"
+      ]
+    },
+    {
+      "word": "cocan",
+      "num_guesses": 4,
+      "prior": 0.00003654518274984562,
+      "guesses": [
+        "rosea",
+        "tacan",
+        "campo",
+        "cocan"
+      ]
+    },
+    {
+      "word": "tacle",
+      "num_guesses": 4,
+      "prior": 0.00004114409868522946,
+      "guesses": [
+        "rosea",
+        "calad",
+        "lache",
+        "tacle"
+      ]
+    },
+    {
+      "word": "allén",
+      "num_guesses": 3,
+      "prior": 0.000052586785106619854,
+      "guesses": [
+        "rosea",
+        "calan",
+        "allén"
+      ]
+    },
+    {
+      "word": "tasca",
+      "num_guesses": 3,
+      "prior": 0.00008167784491613225,
+      "guesses": [
+        "rosea",
+        "cutid",
+        "tasca"
+      ]
+    },
+    {
+      "word": "ayuná",
+      "num_guesses": 5,
+      "prior": 0.00002768174142885641,
+      "guesses": [
+        "rosea",
+        "calan",
+        "animó",
+        "ayuné",
+        "ayuná"
+      ]
+    },
+    {
+      "word": "reyar",
+      "num_guesses": 5,
+      "prior": 0.00003232397412448663,
+      "guesses": [
+        "rosea",
+        "mente",
+        "gozad",
+        "colín",
+        "reyar"
+      ]
+    },
+    {
+      "word": "neral",
+      "num_guesses": 4,
+      "prior": 0.00012476078238377817,
+      "guesses": [
+        "rosea",
+        "capad",
+        "velar",
+        "neral"
+      ]
+    },
+    {
+      "word": "pacté",
+      "num_guesses": 4,
+      "prior": 0.000043540266985927026,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tupió",
+        "pacté"
+      ]
+    },
+    {
+      "word": "curve",
+      "num_guesses": 4,
+      "prior": 0.00007182816468492582,
+      "guesses": [
+        "rosea",
+        "peine",
+        "curte",
+        "curve"
+      ]
+    },
+    {
+      "word": "migad",
+      "num_guesses": 4,
+      "prior": 0.000037077172807783265,
+      "guesses": [
+        "rosea",
+        "calan",
+        "mitad",
+        "migad"
+      ]
+    },
+    {
+      "word": "vagué",
+      "num_guesses": 6,
+      "prior": 0.00006247044097239357,
+      "guesses": [
+        "rosea",
+        "calan",
+        "metié",
+        "pagué",
+        "bagué",
+        "vagué"
+      ]
+    },
+    {
+      "word": "asoco",
+      "num_guesses": 4,
+      "prior": 0.000029381679389379995,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "ocaso",
+        "asoco"
+      ]
+    },
+    {
+      "word": "ripas",
+      "num_guesses": 5,
+      "prior": 0.000050557252411401185,
+      "guesses": [
+        "rosea",
+        "matiz",
+        "cabal",
+        "ñufla",
+        "ripas"
+      ]
+    },
+    {
+      "word": "cismo",
+      "num_guesses": 4,
+      "prior": 0.0000706478149809926,
+      "guesses": [
+        "rosea",
+        "multo",
+        "sismo",
+        "cismo"
+      ]
+    },
+    {
+      "word": "mopas",
+      "num_guesses": 6,
+      "prior": 0.00004094827853616499,
+      "guesses": [
+        "rosea",
+        "lgtbi",
+        "macad",
+        "fonzo",
+        "añejo",
+        "mopas"
+      ]
+    },
+    {
+      "word": "dejen",
+      "num_guesses": 4,
+      "prior": 0.0001509283033155017,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tejed",
+        "dejen"
+      ]
+    },
+    {
+      "word": "rutan",
+      "num_guesses": 4,
+      "prior": 0.00004360568515375614,
+      "guesses": [
+        "rosea",
+        "uinal",
+        "jacta",
+        "rutan"
+      ]
+    },
+    {
+      "word": "amino",
+      "num_guesses": 4,
+      "prior": 0.00009349618428721749,
+      "guesses": [
+        "rosea",
+        "cling",
+        "tambo",
+        "amino"
+      ]
+    },
+    {
+      "word": "gneis",
+      "num_guesses": 3,
+      "prior": 0.00009306885619030832,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "gneis"
+      ]
+    },
+    {
+      "word": "tremé",
+      "num_guesses": 5,
+      "prior": 0.00003085386412160712,
+      "guesses": [
+        "rosea",
+        "peine",
+        "cremó",
+        "tremí",
+        "tremé"
+      ]
+    },
+    {
+      "word": "cuzca",
+      "num_guesses": 4,
+      "prior": 0.000045219443664801846,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "nazca",
+        "cuzca"
+      ]
+    },
+    {
+      "word": "balso",
+      "num_guesses": 5,
+      "prior": 0.00006043415913598346,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "votad",
+        "falso",
+        "balso"
+      ]
+    },
+    {
+      "word": "micha",
+      "num_guesses": 4,
+      "prior": 0.0000678530458884104,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "chomp",
+        "micha"
+      ]
+    },
+    {
+      "word": "orlen",
+      "num_guesses": 4,
+      "prior": 0.000054704336964930524,
+      "guesses": [
+        "rosea",
+        "orden",
+        "cielo",
+        "orlen"
+      ]
+    },
+    {
+      "word": "hulte",
+      "num_guesses": 5,
+      "prior": 0.000025499046432613147,
+      "guesses": [
+        "rosea",
+        "lente",
+        "élite",
+        "multe",
+        "hulte"
+      ]
+    },
+    {
+      "word": "grave",
+      "num_guesses": 5,
+      "prior": 0.00024034986898502654,
+      "guesses": [
+        "rosea",
+        "capad",
+        "grate",
+        "nimbo",
+        "grave"
+      ]
+    },
+    {
+      "word": "nanos",
+      "num_guesses": 7,
+      "prior": 0.00007012768882358765,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "tapad",
+        "gabán",
+        "vasos",
+        "fanos",
+        "nanos"
+      ]
+    },
+    {
+      "word": "ulalá",
+      "num_guesses": 5,
+      "prior": 0.00002577203423279147,
+      "guesses": [
+        "rosea",
+        "calan",
+        "piuló",
+        "vualá",
+        "ulalá"
+      ]
+    },
+    {
+      "word": "azada",
+      "num_guesses": 4,
+      "prior": 0.00010246803923569745,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "matzá",
+        "azada"
+      ]
+    },
+    {
+      "word": "dolía",
+      "num_guesses": 4,
+      "prior": 0.00012761358280103917,
+      "guesses": [
+        "rosea",
+        "cling",
+        "dalla",
+        "dolía"
+      ]
+    },
+    {
+      "word": "chapó",
+      "num_guesses": 5,
+      "prior": 0.00004578137269999543,
+      "guesses": [
+        "rosea",
+        "calan",
+        "ajumó",
+        "pizca",
+        "chapó"
+      ]
+    },
+    {
+      "word": "lorca",
+      "num_guesses": 3,
+      "prior": 0.00015892635255202294,
+      "guesses": [
+        "rosea",
+        "chort",
+        "lorca"
+      ]
+    },
+    {
+      "word": "jeteó",
+      "num_guesses": 5,
+      "prior": 0.000021212701516870875,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tejed",
+        "véase",
+        "jeteó"
+      ]
+    },
+    {
+      "word": "túnel",
+      "num_guesses": 4,
+      "prior": 0.00014635468371112728,
+      "guesses": [
+        "rosea",
+        "celin",
+        "ángel",
+        "túnel"
+      ]
+    },
+    {
+      "word": "polco",
+      "num_guesses": 4,
+      "prior": 0.00004761797823747589,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "plomo",
+        "polco"
+      ]
+    },
+    {
+      "word": "mapee",
+      "num_guesses": 4,
+      "prior": 0.000023153004922469865,
+      "guesses": [
+        "rosea",
+        "calón",
+        "tempe",
+        "mapee"
+      ]
+    },
+    {
+      "word": "funan",
+      "num_guesses": 5,
+      "prior": 0.00003542040672008215,
+      "guesses": [
+        "rosea",
+        "calan",
+        "muftí",
+        "fugan",
+        "funan"
+      ]
+    },
+    {
+      "word": "pitis",
+      "num_guesses": 4,
+      "prior": 0.00004555679153242757,
+      "guesses": [
+        "rosea",
+        "culis",
+        "pintá",
+        "pitis"
+      ]
+    },
+    {
+      "word": "ruiná",
+      "num_guesses": 4,
+      "prior": 0.00002901081376532723,
+      "guesses": [
+        "rosea",
+        "gimió",
+        "ruiné",
+        "ruiná"
+      ]
+    },
+    {
+      "word": "coran",
+      "num_guesses": 4,
+      "prior": 0.00007726654559154044,
+      "guesses": [
+        "rosea",
+        "tamal",
+        "digan",
+        "coran"
+      ]
+    },
+    {
+      "word": "abalá",
+      "num_guesses": 4,
+      "prior": 0.00004428749562101735,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bulló",
+        "abalá"
+      ]
+    },
+    {
+      "word": "mazad",
+      "num_guesses": 5,
+      "prior": 0.00003070371653506879,
+      "guesses": [
+        "rosea",
+        "calan",
+        "patay",
+        "jamba",
+        "mazad"
+      ]
+    },
+    {
+      "word": "tupes",
+      "num_guesses": 5,
+      "prior": 0.00004819671118781721,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tumay",
+        "japón",
+        "tupes"
+      ]
+    },
+    {
+      "word": "nesgo",
+      "num_guesses": 4,
+      "prior": 0.0000677494286308365,
+      "guesses": [
+        "rosea",
+        "depto",
+        "singa",
+        "nesgo"
+      ]
+    },
+    {
+      "word": "fémur",
+      "num_guesses": 4,
+      "prior": 0.00011347803266235703,
+      "guesses": [
+        "rosea",
+        "cuitó",
+        "plugo",
+        "fémur"
+      ]
+    },
+    {
+      "word": "vexig",
+      "num_guesses": 5,
+      "prior": 0.00002240252168526591,
+      "guesses": [
+        "rosea",
+        "lente",
+        "chimó",
+        "pedid",
+        "vexig"
+      ]
+    },
+    {
+      "word": "índex",
+      "num_guesses": 3,
+      "prior": 0.00006624498485414378,
+      "guesses": [
+        "rosea",
+        "celin",
+        "índex"
+      ]
+    },
+    {
+      "word": "fruta",
+      "num_guesses": 4,
+      "prior": 0.00017036872785020023,
+      "guesses": [
+        "rosea",
+        "curri",
+        "agutí",
+        "fruta"
+      ]
+    },
+    {
+      "word": "brotó",
+      "num_guesses": 4,
+      "prior": 0.00011545339416284742,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "trabó",
+        "brotó"
+      ]
+    },
+    {
+      "word": "babeé",
+      "num_guesses": 5,
+      "prior": 0.000025922978872259054,
+      "guesses": [
+        "rosea",
+        "calón",
+        "tempe",
+        "jadeé",
+        "babeé"
+      ]
+    },
+    {
+      "word": "clamá",
+      "num_guesses": 5,
+      "prior": 0.000030511803265524114,
+      "guesses": [
+        "rosea",
+        "calan",
+        "clavó",
+        "clamé",
+        "clamá"
+      ]
+    },
+    {
+      "word": "novad",
+      "num_guesses": 4,
+      "prior": 0.000025213841585777755,
+      "guesses": [
+        "rosea",
+        "tacan",
+        "nogal",
+        "novad"
+      ]
+    },
+    {
+      "word": "rascó",
+      "num_guesses": 3,
+      "prior": 0.00009165506120751473,
+      "guesses": [
+        "rosea",
+        "cipós",
+        "rascó"
+      ]
+    },
+    {
+      "word": "frice",
+      "num_guesses": 5,
+      "prior": 0.000028842414576991073,
+      "guesses": [
+        "rosea",
+        "peine",
+        "clubs",
+        "trice",
+        "frice"
+      ]
+    },
+    {
+      "word": "uncís",
+      "num_guesses": 3,
+      "prior": 0.00003184724479438241,
+      "guesses": [
+        "rosea",
+        "culis",
+        "uncís"
+      ]
+    },
+    {
+      "word": "bancá",
+      "num_guesses": 4,
+      "prior": 0.00002790751438874331,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbó",
+        "bancá"
+      ]
+    },
+    {
+      "word": "hongo",
+      "num_guesses": 4,
+      "prior": 0.0001283166763452492,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "humad",
+        "hongo"
+      ]
+    },
+    {
+      "word": "pobos",
+      "num_guesses": 5,
+      "prior": 0.00005083771832712861,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "chomp",
+        "yazgo",
+        "pobos"
+      ]
+    },
+    {
+      "word": "ludio",
+      "num_guesses": 4,
+      "prior": 0.00006243279280718859,
+      "guesses": [
+        "rosea",
+        "cinto",
+        "pulid",
+        "ludio"
+      ]
+    },
+    {
+      "word": "sikhs",
+      "num_guesses": 5,
+      "prior": 0.00006155010000920658,
+      "guesses": [
+        "rosea",
+        "culis",
+        "minjá",
+        "díver",
+        "sikhs"
+      ]
+    },
+    {
+      "word": "mamut",
+      "num_guesses": 4,
+      "prior": 0.00008249944292541181,
+      "guesses": [
+        "rosea",
+        "calan",
+        "metié",
+        "mamut"
+      ]
+    },
+    {
+      "word": "laven",
+      "num_guesses": 4,
+      "prior": 0.00007455060604845119,
+      "guesses": [
+        "rosea",
+        "calón",
+        "mixta",
+        "laven"
+      ]
+    },
+    {
+      "word": "turro",
+      "num_guesses": 4,
+      "prior": 0.00006240283091204912,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "nutro",
+        "turro"
+      ]
+    },
+    {
+      "word": "fuñan",
+      "num_guesses": 6,
+      "prior": 0.00003074152910848308,
+      "guesses": [
+        "rosea",
+        "calan",
+        "muftí",
+        "fugan",
+        "funan",
+        "fuñan"
+      ]
+    },
+    {
+      "word": "saete",
+      "num_guesses": 4,
+      "prior": 0.00003135757329056272,
+      "guesses": [
+        "rosea",
+        "tecle",
+        "atese",
+        "saete"
+      ]
+    },
+    {
+      "word": "acará",
+      "num_guesses": 5,
+      "prior": 0.000036478839916108864,
+      "guesses": [
+        "rosea",
+        "talan",
+        "primá",
+        "vejez",
+        "acará"
+      ]
+    },
+    {
+      "word": "chufa",
+      "num_guesses": 5,
+      "prior": 0.00005828671199647417,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "tañan",
+        "pizca",
+        "chufa"
+      ]
+    },
+    {
+      "word": "neura",
+      "num_guesses": 4,
+      "prior": 0.000053179006740930744,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "negra",
+        "neura"
+      ]
+    },
+    {
+      "word": "medié",
+      "num_guesses": 5,
+      "prior": 0.00003840469145117191,
+      "guesses": [
+        "rosea",
+        "lente",
+        "chimó",
+        "lámed",
+        "medié"
+      ]
+    },
+    {
+      "word": "valen",
+      "num_guesses": 4,
+      "prior": 0.00015877874894688822,
+      "guesses": [
+        "rosea",
+        "calón",
+        "bahts",
+        "valen"
+      ]
+    },
+    {
+      "word": "ñoclo",
+      "num_guesses": 5,
+      "prior": 0.000022663846265211248,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "plomo",
+        "zoclo",
+        "ñoclo"
+      ]
+    },
+    {
+      "word": "salir",
+      "num_guesses": 3,
+      "prior": 0.00025847833325330806,
+      "guesses": [
+        "rosea",
+        "arias",
+        "salir"
+      ]
+    },
+    {
+      "word": "frutá",
+      "num_guesses": 4,
+      "prior": 0.000024073331286958906,
+      "guesses": [
+        "rosea",
+        "cuitó",
+        "fruté",
+        "frutá"
+      ]
+    },
+    {
+      "word": "jiras",
+      "num_guesses": 6,
+      "prior": 0.00007619471080443149,
+      "guesses": [
+        "rosea",
+        "arias",
+        "lgbti",
+        "simpa",
+        "joven",
+        "jiras"
+      ]
+    },
+    {
+      "word": "lomea",
+      "num_guesses": 3,
+      "prior": 0.00003096458657629816,
+      "guesses": [
+        "rosea",
+        "lgbti",
+        "lomea"
+      ]
+    },
+    {
+      "word": "break",
+      "num_guesses": 5,
+      "prior": 0.00008675322972419385,
+      "guesses": [
+        "rosea",
+        "capad",
+        "velar",
+        "brean",
+        "break"
+      ]
+    },
+    {
+      "word": "marza",
+      "num_guesses": 6,
+      "prior": 0.00005424140372307331,
+      "guesses": [
+        "rosea",
+        "curri",
+        "lambí",
+        "marta",
+        "marga",
+        "marza"
+      ]
+    },
+    {
+      "word": "aptos",
+      "num_guesses": 4,
+      "prior": 0.00014046606869418265,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "pitan",
+        "aptos"
+      ]
+    },
+    {
+      "word": "hunda",
+      "num_guesses": 4,
+      "prior": 0.00008857553853501953,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "tahín",
+        "hunda"
+      ]
+    },
+    {
+      "word": "peché",
+      "num_guesses": 4,
+      "prior": 0.000047539091114124024,
+      "guesses": [
+        "rosea",
+        "lente",
+        "chimó",
+        "peché"
+      ]
+    },
+    {
+      "word": "apoyá",
+      "num_guesses": 6,
+      "prior": 0.00003640242376443447,
+      "guesses": [
+        "rosea",
+        "cling",
+        "atado",
+        "apoyó",
+        "apoyé",
+        "apoyá"
+      ]
+    },
+    {
+      "word": "votar",
+      "num_guesses": 4,
+      "prior": 0.00019250070413647083,
+      "guesses": [
+        "rosea",
+        "tamal",
+        "diván",
+        "votar"
+      ]
+    },
+    {
+      "word": "albor",
+      "num_guesses": 4,
+      "prior": 0.00009616603988049988,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "arbol",
+        "albor"
+      ]
+    },
+    {
+      "word": "gafar",
+      "num_guesses": 6,
+      "prior": 0.00004912772131243632,
+      "guesses": [
+        "rosea",
+        "talan",
+        "capuz",
+        "bajad",
+        "goyim",
+        "gafar"
+      ]
+    },
+    {
+      "word": "idean",
+      "num_guesses": 4,
+      "prior": 0.00006094200759542549,
+      "guesses": [
+        "rosea",
+        "calad",
+        "dejan",
+        "idean"
+      ]
+    },
+    {
+      "word": "roían",
+      "num_guesses": 3,
+      "prior": 0.000060124152053967605,
+      "guesses": [
+        "rosea",
+        "budín",
+        "roían"
+      ]
+    },
+    {
+      "word": "cursé",
+      "num_guesses": 3,
+      "prior": 0.00006582152931874237,
+      "guesses": [
+        "rosea",
+        "curés",
+        "cursé"
+      ]
+    },
+    {
+      "word": "viaje",
+      "num_guesses": 4,
+      "prior": 0.0002561700154620533,
+      "guesses": [
+        "rosea",
+        "calad",
+        "atine",
+        "viaje"
+      ]
+    },
+    {
+      "word": "captá",
+      "num_guesses": 5,
+      "prior": 0.00002537838306774969,
+      "guesses": [
+        "rosea",
+        "calan",
+        "guipó",
+        "capté",
+        "captá"
+      ]
+    },
+    {
+      "word": "tabús",
+      "num_guesses": 4,
+      "prior": 0.00007262409840742698,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbá",
+        "tabús"
+      ]
+    },
+    {
+      "word": "jujea",
+      "num_guesses": 5,
+      "prior": 0.0000205955067004332,
+      "guesses": [
+        "rosea",
+        "talpa",
+        "vencí",
+        "hijea",
+        "jujea"
+      ]
+    },
+    {
+      "word": "osase",
+      "num_guesses": 3,
+      "prior": 0.00007815330681217905,
+      "guesses": [
+        "rosea",
+        "aseos",
+        "osase"
+      ]
+    },
+    {
+      "word": "azoló",
+      "num_guesses": 6,
+      "prior": 0.00003056988452982263,
+      "guesses": [
+        "rosea",
+        "cling",
+        "palmo",
+        "ojalá",
+        "abolí",
+        "azoló"
+      ]
+    },
+    {
+      "word": "tipín",
+      "num_guesses": 4,
+      "prior": 0.00003076036584389096,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "tilín",
+        "tipín"
+      ]
+    },
+    {
+      "word": "femes",
+      "num_guesses": 5,
+      "prior": 0.00004008596310580788,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tejed",
+        "feble",
+        "femes"
+      ]
+    },
+    {
+      "word": "alomó",
+      "num_guesses": 6,
+      "prior": 0.000032136666633312325,
+      "guesses": [
+        "rosea",
+        "cling",
+        "zompo",
+        "alomá",
+        "alomé",
+        "alomó"
+      ]
+    },
+    {
+      "word": "guarí",
+      "num_guesses": 4,
+      "prior": 0.00004884989792662165,
+      "guesses": [
+        "rosea",
+        "talan",
+        "gripó",
+        "guarí"
+      ]
+    },
+    {
+      "word": "picuí",
+      "num_guesses": 5,
+      "prior": 0.000025733739807650358,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "pifié",
+        "pichí",
+        "picuí"
+      ]
+    },
+    {
+      "word": "banqi",
+      "num_guesses": 6,
+      "prior": 0.000020688283009769163,
+      "guesses": [
+        "rosea",
+        "calan",
+        "dimió",
+        "kanji",
+        "hanzi",
+        "banqi"
+      ]
+    },
+    {
+      "word": "tanco",
+      "num_guesses": 5,
+      "prior": 0.00009019816781223063,
+      "guesses": [
+        "rosea",
+        "cling",
+        "banco",
+        "matiz",
+        "tanco"
+      ]
+    },
+    {
+      "word": "cazás",
+      "num_guesses": 6,
+      "prior": 0.00003318696407193144,
+      "guesses": [
+        "rosea",
+        "calan",
+        "bidés",
+        "preñá",
+        "yazgo",
+        "cazás"
+      ]
+    },
+    {
+      "word": "bosón",
+      "num_guesses": 4,
+      "prior": 0.0000578557120756416,
+      "guesses": [
+        "rosea",
+        "coito",
+        "posés",
+        "bosón"
+      ]
+    },
+    {
+      "word": "pausó",
+      "num_guesses": 5,
+      "prior": 0.00004981929982087528,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbá",
+        "saqué",
+        "pausó"
+      ]
+    },
+    {
+      "word": "ocelo",
+      "num_guesses": 5,
+      "prior": 0.00006688581946687705,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "muele",
+        "chelo",
+        "ocelo"
+      ]
+    },
+    {
+      "word": "herid",
+      "num_guesses": 4,
+      "prior": 0.00006186491208736014,
+      "guesses": [
+        "rosea",
+        "peine",
+        "decir",
+        "herid"
+      ]
+    },
+    {
+      "word": "short",
+      "num_guesses": 3,
+      "prior": 0.0001067681599620266,
+      "guesses": [
+        "rosea",
+        "turco",
+        "short"
+      ]
+    },
+    {
+      "word": "flúor",
+      "num_guesses": 4,
+      "prior": 0.00009286659979157611,
+      "guesses": [
+        "rosea",
+        "cuito",
+        "probó",
+        "flúor"
+      ]
+    },
+    {
+      "word": "añera",
+      "num_guesses": 5,
+      "prior": 0.00005130805972900227,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "grapa",
+        "mújol",
+        "añera"
+      ]
+    },
+    {
+      "word": "miela",
+      "num_guesses": 5,
+      "prior": 0.0000436799712492311,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "blini",
+        "hiela",
+        "miela"
+      ]
+    },
+    {
+      "word": "jadea",
+      "num_guesses": 5,
+      "prior": 0.00007507749890489221,
+      "guesses": [
+        "rosea",
+        "talpa",
+        "nicab",
+        "fijad",
+        "jadea"
+      ]
+    },
+    {
+      "word": "elevo",
+      "num_guesses": 4,
+      "prior": 0.00008806649135462794,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "muele",
+        "elevo"
+      ]
+    },
+    {
+      "word": "senos",
+      "num_guesses": 4,
+      "prior": 0.00014857528857986486,
+      "guesses": [
+        "rosea",
+        "lento",
+        "smash",
+        "senos"
+      ]
+    },
+    {
+      "word": "reses",
+      "num_guesses": 2,
+      "prior": 0.0001421205256779151,
+      "guesses": [
+        "rosea",
+        "reses"
+      ]
+    },
+    {
+      "word": "huele",
+      "num_guesses": 5,
+      "prior": 0.00013323247617848168,
+      "guesses": [
+        "rosea",
+        "lente",
+        "mugid",
+        "hecho",
+        "huele"
+      ]
+    },
+    {
+      "word": "marzo",
+      "num_guesses": 5,
+      "prior": 0.000287681616105515,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "pitad",
+        "gólem",
+        "marzo"
+      ]
+    },
+    {
+      "word": "ananá",
+      "num_guesses": 4,
+      "prior": 0.00006373230930465603,
+      "guesses": [
+        "rosea",
+        "calan",
+        "ánimo",
+        "ananá"
+      ]
+    },
+    {
+      "word": "amoló",
+      "num_guesses": 4,
+      "prior": 0.000043849848034052133,
+      "guesses": [
+        "rosea",
+        "cling",
+        "palmo",
+        "amoló"
+      ]
+    },
+    {
+      "word": "jugar",
+      "num_guesses": 5,
+      "prior": 0.00018765712999979395,
+      "guesses": [
+        "rosea",
+        "talan",
+        "mirad",
+        "fugaz",
+        "jugar"
+      ]
+    },
+    {
+      "word": "remes",
+      "num_guesses": 4,
+      "prior": 0.00006474313511661223,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "mayad",
+        "remes"
+      ]
+    },
+    {
+      "word": "yetes",
+      "num_guesses": 6,
+      "prior": 0.00003651680912653396,
+      "guesses": [
+        "rosea",
+        "celin",
+        "tejed",
+        "spams",
+        "vetes",
+        "yetes"
+      ]
+    },
+    {
+      "word": "rilar",
+      "num_guesses": 3,
+      "prior": 0.00004161516171016662,
+      "guesses": [
+        "rosea",
+        "uinal",
+        "rilar"
+      ]
+    },
+    {
+      "word": "sabía",
+      "num_guesses": 3,
+      "prior": 0.0002456379727274503,
+      "guesses": [
+        "rosea",
+        "cubil",
+        "sabía"
+      ]
+    },
+    {
+      "word": "atoad",
+      "num_guesses": 4,
+      "prior": 0.000022534699129530308,
+      "guesses": [
+        "rosea",
+        "cling",
+        "atado",
+        "atoad"
+      ]
+    },
+    {
+      "word": "anden",
+      "num_guesses": 4,
+      "prior": 0.00011068468920682861,
+      "guesses": [
+        "rosea",
+        "calón",
+        "penen",
+        "anden"
+      ]
+    },
+    {
+      "word": "aojen",
+      "num_guesses": 2,
+      "prior": 0.00003227755367324345,
+      "guesses": [
+        "rosea",
+        "aojen"
+      ]
+    },
+    {
+      "word": "sirio",
+      "num_guesses": 4,
+      "prior": 0.00011316158923492803,
+      "guesses": [
+        "rosea",
+        "turco",
+        "civil",
+        "sirio"
+      ]
+    },
+    {
+      "word": "siede",
+      "num_guesses": 4,
+      "prior": 0.00004739976544412509,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "dulce",
+        "siede"
+      ]
+    },
+    {
+      "word": "broas",
+      "num_guesses": 4,
+      "prior": 0.00003252210856274949,
+      "guesses": [
+        "rosea",
+        "catos",
+        "globo",
+        "broas"
+      ]
+    },
+    {
+      "word": "coyán",
+      "num_guesses": 5,
+      "prior": 0.0000321050204206186,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "mújol",
+        "copín",
+        "coyán"
+      ]
+    },
+    {
+      "word": "ocluí",
+      "num_guesses": 4,
+      "prior": 0.00003147858185616478,
+      "guesses": [
+        "rosea",
+        "cinto",
+        "ocupó",
+        "ocluí"
+      ]
+    },
+    {
+      "word": "vasca",
+      "num_guesses": 4,
+      "prior": 0.0001385221624275739,
+      "guesses": [
+        "rosea",
+        "cutid",
+        "nivel",
+        "vasca"
+      ]
+    },
+    {
+      "word": "folié",
+      "num_guesses": 5,
+      "prior": 0.000028986995331097215,
+      "guesses": [
+        "rosea",
+        "cintó",
+        "galbo",
+        "foliá",
+        "folié"
+      ]
+    },
+    {
+      "word": "afora",
+      "num_guesses": 5,
+      "prior": 0.00006566101788308476,
+      "guesses": [
+        "rosea",
+        "traga",
+        "choza",
+        "fijad",
+        "afora"
+      ]
+    },
+    {
+      "word": "ñocos",
+      "num_guesses": 6,
+      "prior": 0.00003958431259945889,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "chomp",
+        "focos",
+        "zocos",
+        "ñocos"
+      ]
+    },
+    {
+      "word": "nague",
+      "num_guesses": 4,
+      "prior": 0.0000337506867816311,
+      "guesses": [
+        "rosea",
+        "calad",
+        "punte",
+        "nague"
+      ]
+    },
+    {
+      "word": "corés",
+      "num_guesses": 4,
+      "prior": 0.000037714433215121564,
+      "guesses": [
+        "rosea",
+        "cobot",
+        "iréis",
+        "corés"
+      ]
+    },
+    {
+      "word": "schwa",
+      "num_guesses": 4,
+      "prior": 0.00004236805710847418,
+      "guesses": [
+        "rosea",
+        "cubil",
+        "sacha",
+        "schwa"
+      ]
+    },
+    {
+      "word": "pegas",
+      "num_guesses": 5,
+      "prior": 0.00008288238856298489,
+      "guesses": [
+        "rosea",
+        "tecle",
+        "pudín",
+        "gruñó",
+        "pegas"
+      ]
+    },
+    {
+      "word": "crida",
+      "num_guesses": 4,
+      "prior": 0.00006964901460101263,
+      "guesses": [
+        "rosea",
+        "curri",
+        "deben",
+        "crida"
+      ]
+    },
+    {
+      "word": "zocar",
+      "num_guesses": 5,
+      "prior": 0.000025885571820444572,
+      "guesses": [
+        "rosea",
+        "tamal",
+        "digan",
+        "pizca",
+        "zocar"
+      ]
+    },
+    {
+      "word": "calen",
+      "num_guesses": 3,
+      "prior": 0.00007621568815237943,
+      "guesses": [
+        "rosea",
+        "calón",
+        "calen"
+      ]
+    },
+    {
+      "word": "masía",
+      "num_guesses": 3,
+      "prior": 0.00008885993706085342,
+      "guesses": [
+        "rosea",
+        "cutid",
+        "masía"
+      ]
+    },
+    {
+      "word": "rural",
+      "num_guesses": 3,
+      "prior": 0.00023103254699127174,
+      "guesses": [
+        "rosea",
+        "uinal",
+        "rural"
+      ]
+    },
+    {
+      "word": "xhosa",
+      "num_guesses": 4,
+      "prior": 0.00004741976957255945,
+      "guesses": [
+        "rosea",
+        "alisa",
+        "orujo",
+        "xhosa"
+      ]
+    },
+    {
+      "word": "logia",
+      "num_guesses": 3,
+      "prior": 0.00013699752417927432,
+      "guesses": [
+        "rosea",
+        "cling",
+        "logia"
+      ]
+    },
+    {
+      "word": "sonde",
+      "num_guesses": 3,
+      "prior": 0.00006693959505294473,
+      "guesses": [
+        "rosea",
+        "sople",
+        "sonde"
+      ]
+    },
+    {
+      "word": "yeyés",
+      "num_guesses": 5,
+      "prior": 0.000035258416361303284,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "bedel",
+        "macoy",
+        "yeyés"
+      ]
+    },
+    {
+      "word": "omino",
+      "num_guesses": 5,
+      "prior": 0.000051099782312644203,
+      "guesses": [
+        "rosea",
+        "cinto",
+        "unido",
+        "campo",
+        "omino"
+      ]
+    },
+    {
+      "word": "magín",
+      "num_guesses": 4,
+      "prior": 0.00009325823796260473,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbó",
+        "magín"
+      ]
+    },
+    {
+      "word": "liche",
+      "num_guesses": 4,
+      "prior": 0.00005860143465685633,
+      "guesses": [
+        "rosea",
+        "lente",
+        "cuqui",
+        "liche"
+      ]
+    },
+    {
+      "word": "jarba",
+      "num_guesses": 6,
+      "prior": 0.0000310737476393334,
+      "guesses": [
+        "rosea",
+        "curri",
+        "lambí",
+        "barba",
+        "hijos",
+        "jarba"
+      ]
+    },
+    {
+      "word": "dagas",
+      "num_guesses": 5,
+      "prior": 0.00008967946466370517,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tempo",
+        "bogad",
+        "dagas"
+      ]
+    },
+    {
+      "word": "feudo",
+      "num_guesses": 4,
+      "prior": 0.00012265192796549493,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "puffs",
+        "feudo"
+      ]
+    },
+    {
+      "word": "cenad",
+      "num_guesses": 4,
+      "prior": 0.00004094827853616499,
+      "guesses": [
+        "rosea",
+        "calad",
+        "gabán",
+        "cenad"
+      ]
+    },
+    {
+      "word": "pidas",
+      "num_guesses": 5,
+      "prior": 0.00009785441115468369,
+      "guesses": [
+        "rosea",
+        "calan",
+        "timad",
+        "vidas",
+        "pidas"
+      ]
+    },
+    {
+      "word": "apene",
+      "num_guesses": 5,
+      "prior": 0.00005208616669657602,
+      "guesses": [
+        "rosea",
+        "calad",
+        "atine",
+        "jeeps",
+        "apene"
+      ]
+    },
+    {
+      "word": "enrié",
+      "num_guesses": 4,
+      "prior": 0.00003398117571713777,
+      "guesses": [
+        "rosea",
+        "peine",
+        "enrió",
+        "enrié"
+      ]
+    },
+    {
+      "word": "espío",
+      "num_guesses": 4,
+      "prior": 0.000059683351866928976,
+      "guesses": [
+        "rosea",
+        "lento",
+        "suevo",
+        "espío"
+      ]
+    },
+    {
+      "word": "chama",
+      "num_guesses": 5,
+      "prior": 0.00008474558675691748,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "cantú",
+        "pymes",
+        "chama"
+      ]
+    },
+    {
+      "word": "acamó",
+      "num_guesses": 5,
+      "prior": 0.000025001930505404238,
+      "guesses": [
+        "rosea",
+        "calan",
+        "acabó",
+        "acató",
+        "acamó"
+      ]
+    },
+    {
+      "word": "amble",
+      "num_guesses": 5,
+      "prior": 0.00004402610272041692,
+      "guesses": [
+        "rosea",
+        "calad",
+        "pille",
+        "mundo",
+        "amble"
+      ]
+    },
+    {
+      "word": "relva",
+      "num_guesses": 4,
+      "prior": 0.00003712162997727494,
+      "guesses": [
+        "rosea",
+        "ungid",
+        "malta",
+        "relva"
+      ]
+    },
+    {
+      "word": "sacás",
+      "num_guesses": 4,
+      "prior": 0.00005467797976793246,
+      "guesses": [
+        "rosea",
+        "calan",
+        "pisés",
+        "sacás"
+      ]
+    },
+    {
+      "word": "aproa",
+      "num_guesses": 4,
+      "prior": 0.00004670923249541661,
+      "guesses": [
+        "rosea",
+        "traga",
+        "choza",
+        "aproa"
+      ]
+    },
+    {
+      "word": "oncea",
+      "num_guesses": 3,
+      "prior": 0.000038326948522991954,
+      "guesses": [
+        "rosea",
+        "ondea",
+        "oncea"
+      ]
+    },
+    {
+      "word": "groar",
+      "num_guesses": 4,
+      "prior": 0.00002762413064534859,
+      "guesses": [
+        "rosea",
+        "cabro",
+        "orzar",
+        "groar"
+      ]
+    },
+    {
+      "word": "óbelo",
+      "num_guesses": 5,
+      "prior": 0.00002762413064534859,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "muele",
+        "chelo",
+        "óbelo"
+      ]
+    },
+    {
+      "word": "ferie",
+      "num_guesses": 3,
+      "prior": 0.00007051206374463838,
+      "guesses": [
+        "rosea",
+        "peine",
+        "ferie"
+      ]
+    },
+    {
+      "word": "ganso",
+      "num_guesses": 4,
+      "prior": 0.00010339473695342849,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "santo",
+        "ganso"
+      ]
+    },
+    {
+      "word": "erara",
+      "num_guesses": 5,
+      "prior": 0.000044039544439608945,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "grapa",
+        "sobre",
+        "erara"
+      ]
+    },
+    {
+      "word": "sofás",
+      "num_guesses": 5,
+      "prior": 0.00009068578927749394,
+      "guesses": [
+        "rosea",
+        "toldo",
+        "nimbé",
+        "pizcó",
+        "sofás"
+      ]
+    },
+    {
+      "word": "itera",
+      "num_guesses": 3,
+      "prior": 0.000060104805009719894,
+      "guesses": [
+        "rosea",
+        "cenit",
+        "itera"
+      ]
+    },
+    {
+      "word": "santo",
+      "num_guesses": 3,
+      "prior": 0.0002749287651404124,
+      "guesses": [
+        "rosea",
+        "calmo",
+        "santo"
+      ]
+    },
+    {
+      "word": "casás",
+      "num_guesses": 4,
+      "prior": 0.00006926983955007358,
+      "guesses": [
+        "rosea",
+        "macas",
+        "éxito",
+        "casás"
+      ]
+    },
+    {
+      "word": "ateta",
+      "num_guesses": 5,
+      "prior": 0.00004354495276595227,
+      "guesses": [
+        "rosea",
+        "lucid",
+        "mentí",
+        "theta",
+        "ateta"
+      ]
+    },
+    {
+      "word": "batís",
+      "num_guesses": 4,
+      "prior": 0.00005199660790446105,
+      "guesses": [
+        "rosea",
+        "calan",
+        "tumbá",
+        "batís"
+      ]
+    },
+    {
+      "word": "cubrí",
+      "num_guesses": 4,
+      "prior": 0.00007917548437639028,
+      "guesses": [
+        "rosea",
+        "cuitó",
+        "arrué",
+        "cubrí"
+      ]
+    },
+    {
+      "word": "reído",
+      "num_guesses": 4,
+      "prior": 0.00010098105676006797,
+      "guesses": [
+        "rosea",
+        "dingo",
+        "ruedo",
+        "reído"
+      ]
+    },
+    {
+      "word": "horná",
+      "num_guesses": 5,
+      "prior": 0.0000205955067004332,
+      "guesses": [
+        "rosea",
+        "tinco",
+        "morón",
+        "horné",
+        "horná"
+      ]
+    },
+    {
+      "word": "saldó",
+      "num_guesses": 4,
+      "prior": 0.00007463602209805851,
+      "guesses": [
+        "rosea",
+        "calan",
+        "vités",
+        "saldó"
+      ]
+    },
+    {
+      "word": "telón",
+      "num_guesses": 3,
+      "prior": 0.0001382061676145354,
+      "guesses": [
+        "rosea",
+        "lente",
+        "telón"
+      ]
+    },
+    {
+      "word": "echés",
+      "num_guesses": 4,
+      "prior": 0.00003936931850623039,
+      "guesses": [
+        "rosea",
+        "pinté",
+        "bedel",
+        "echés"
+      ]
+    },
+    {
+      "word": "codeo",
+      "num_guesses": 4,
+      "prior": 0.00004870109863997266,
+      "guesses": [
+        "rosea",
+        "colon",
+        "pecad",
+        "codeo"
+      ]
+    },
+    {
+      "word": "demon",
+      "num_guesses": 3,
+      "prior": 0.00007481805806955974,
+      "guesses": [
+        "rosea",
+        "lindo",
+        "demon"
+      ]
+    }
+  ]
+}

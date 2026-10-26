@@ -1,0 +1,29 @@
+[2026-10-25T22:34:04Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for german from https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz...
+[2026-10-25T22:35:48Z INFO  lex_data::wiktionary] Cached german Wiktionary dict (866751 words, lengths 1–86)
+[2026-10-25T22:35:49Z WARN  lex_data::store] Building german corpus...
+[2026-10-25T22:42:29Z INFO  lex_data::ngrams]   [2/8] done
+[2026-10-25T22:45:10Z INFO  lex_data::ngrams]   [3/8] done
+[2026-10-25T22:45:15Z INFO  lex_data::ngrams]   [1/8] done
+[2026-10-25T22:46:38Z INFO  lex_data::ngrams]   [4/8] done
+[2026-10-25T22:49:35Z INFO  lex_data::ngrams]   [5/8] done
+[2026-10-25T22:53:48Z INFO  lex_data::ngrams]   [6/8] done
+[2026-10-25T22:55:40Z INFO  lex_data::ngrams]   [8/8] done
+[2026-10-25T22:55:48Z INFO  lex_data::ngrams]   [7/8] done
+[2026-10-25T22:55:49Z INFO  lex_data::store] Cached german corpus (44 length buckets)
+[2026-10-25T22:55:49Z INFO  lex::simulate] Simulating 1 games with 5-letter words in german...
+[2026-10-25T22:55:52Z INFO  lex_core::game] Guess 1: rates -> ⬜⬜🟨⬜🟨
+[2026-10-25T22:55:52Z INFO  lex_core::game] Guess 2: sushi -> ⬜⬜🟩⬜🟨
+[2026-10-25T22:55:52Z INFO  lex_core::game] Guess 3: wistg -> 🟩🟩🟩🟩🟩
+[2026-10-25T22:55:52Z INFO  lex::simulate] Impressive
+[2026-10-25T22:55:52Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter german words (dictionary: 10068), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: rates
+ngrams sha256: 8da1b8d16892
+dict: 866751 words, fetched 2026-10-25T22:35:48.100547Z, sha256 09d9e84ec8db
+
+uniform: mean 3.000 guesses, failure rate (>6) 0.00%
+   3 | 100.00% (1) ########################################
+
+prior-weighted: mean 3.000 guesses, failure rate (>6) 0.00%
+   3 | 100.00% ########################################

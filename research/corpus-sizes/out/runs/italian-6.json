@@ -1,0 +1,5282 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:00:42.869567Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sorati",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 6,
+    "dictionary_length": 13601,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "62da04f3560ed8e57fbdca4e862ff1b521a7e02032555d29e4dbf82a336299c0",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.447999999999976,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.012,
+        "3": 0.5560000000000004,
+        "4": 0.4080000000000003,
+        "5": 0.020000000000000004,
+        "6": 0.004
+      }
+    },
+    "prior": {
+      "mean": 3.3581847473476896,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.017144372756204364,
+        "3": 0.6199891750669515,
+        "4": 0.35175621677680746,
+        "5": 0.00975780287302007,
+        "6": 0.00135243252701634
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "bilici",
+      "num_guesses": 4,
+      "prior": 0.00004775206248325349,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "civili",
+        "bilici"
+      ]
+    },
+    {
+      "word": "annidò",
+      "num_guesses": 4,
+      "prior": 0.000043201368880457994,
+      "guesses": [
+        "sorati",
+        "canile",
+        "camuna",
+        "annidò"
+      ]
+    },
+    {
+      "word": "indiai",
+      "num_guesses": 4,
+      "prior": 0.00004169815491574712,
+      "guesses": [
+        "sorati",
+        "canile",
+        "bovini",
+        "indiai"
+      ]
+    },
+    {
+      "word": "mesata",
+      "num_guesses": 3,
+      "prior": 0.0000653052218162307,
+      "guesses": [
+        "sorati",
+        "camuna",
+        "mesata"
+      ]
+    },
+    {
+      "word": "iodati",
+      "num_guesses": 3,
+      "prior": 0.00006118817083966223,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "iodati"
+      ]
+    },
+    {
+      "word": "insidi",
+      "num_guesses": 3,
+      "prior": 0.000043929004471091004,
+      "guesses": [
+        "sorati",
+        "incise",
+        "insidi"
+      ]
+    },
+    {
+      "word": "laverò",
+      "num_guesses": 4,
+      "prior": 0.000056064157556419426,
+      "guesses": [
+        "sorati",
+        "galera",
+        "lacerò",
+        "laverò"
+      ]
+    },
+    {
+      "word": "cerchi",
+      "num_guesses": 3,
+      "prior": 0.00015584358417539858,
+      "guesses": [
+        "sorati",
+        "decime",
+        "cerchi"
+      ]
+    },
+    {
+      "word": "ibridi",
+      "num_guesses": 3,
+      "prior": 0.00010388511713187034,
+      "guesses": [
+        "sorati",
+        "decime",
+        "ibridi"
+      ]
+    },
+    {
+      "word": "dinodo",
+      "num_guesses": 4,
+      "prior": 0.000030105468605775244,
+      "guesses": [
+        "sorati",
+        "incile",
+        "bidono",
+        "dinodo"
+      ]
+    },
+    {
+      "word": "texana",
+      "num_guesses": 4,
+      "prior": 0.0000541707991031411,
+      "guesses": [
+        "sorati",
+        "lamina",
+        "tebana",
+        "texana"
+      ]
+    },
+    {
+      "word": "sturbi",
+      "num_guesses": 3,
+      "prior": 0.000057194156339507395,
+      "guesses": [
+        "sorati",
+        "punire",
+        "sturbi"
+      ]
+    },
+    {
+      "word": "tisica",
+      "num_guesses": 3,
+      "prior": 0.00007091725564463992,
+      "guesses": [
+        "sorati",
+        "minime",
+        "tisica"
+      ]
+    },
+    {
+      "word": "turaco",
+      "num_guesses": 3,
+      "prior": 0.00003403786261281155,
+      "guesses": [
+        "sorati",
+        "turano",
+        "turaco"
+      ]
+    },
+    {
+      "word": "latrai",
+      "num_guesses": 3,
+      "prior": 0.00003449521146121851,
+      "guesses": [
+        "sorati",
+        "amarre",
+        "latrai"
+      ]
+    },
+    {
+      "word": "ringoi",
+      "num_guesses": 3,
+      "prior": 0.000025746820857794156,
+      "guesses": [
+        "sorati",
+        "limone",
+        "ringoi"
+      ]
+    },
+    {
+      "word": "crosti",
+      "num_guesses": 2,
+      "prior": 0.00006242178135968617,
+      "guesses": [
+        "sorati",
+        "crosti"
+      ]
+    },
+    {
+      "word": "onrato",
+      "num_guesses": 3,
+      "prior": 0.000035933386502400664,
+      "guesses": [
+        "sorati",
+        "canape",
+        "onrato"
+      ]
+    },
+    {
+      "word": "invelo",
+      "num_guesses": 3,
+      "prior": 0.00002828830444938163,
+      "guesses": [
+        "sorati",
+        "incile",
+        "invelo"
+      ]
+    },
+    {
+      "word": "guaina",
+      "num_guesses": 4,
+      "prior": 0.00011339259011133023,
+      "guesses": [
+        "sorati",
+        "canile",
+        "fumava",
+        "guaina"
+      ]
+    },
+    {
+      "word": "sviano",
+      "num_guesses": 3,
+      "prior": 0.00006221270653229265,
+      "guesses": [
+        "sorati",
+        "planck",
+        "sviano"
+      ]
+    },
+    {
+      "word": "abrado",
+      "num_guesses": 3,
+      "prior": 0.00002993803650392951,
+      "guesses": [
+        "sorati",
+        "canape",
+        "abrado"
+      ]
+    },
+    {
+      "word": "incaro",
+      "num_guesses": 3,
+      "prior": 0.000026904217343203566,
+      "guesses": [
+        "sorati",
+        "dicono",
+        "incaro"
+      ]
+    },
+    {
+      "word": "immisi",
+      "num_guesses": 3,
+      "prior": 0.00003840862249034192,
+      "guesses": [
+        "sorati",
+        "incise",
+        "immisi"
+      ]
+    },
+    {
+      "word": "eleggo",
+      "num_guesses": 4,
+      "prior": 0.00006285233384316627,
+      "guesses": [
+        "sorati",
+        "ducono",
+        "plebeo",
+        "eleggo"
+      ]
+    },
+    {
+      "word": "cimati",
+      "num_guesses": 4,
+      "prior": 0.00005948918383205883,
+      "guesses": [
+        "sorati",
+        "langue",
+        "mitico",
+        "cimati"
+      ]
+    },
+    {
+      "word": "cimbra",
+      "num_guesses": 4,
+      "prior": 0.00005158476906809548,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "ciurma",
+        "cimbra"
+      ]
+    },
+    {
+      "word": "scarta",
+      "num_guesses": 3,
+      "prior": 0.00007879574138916417,
+      "guesses": [
+        "sorati",
+        "chiesa",
+        "scarta"
+      ]
+    },
+    {
+      "word": "puglia",
+      "num_guesses": 4,
+      "prior": 0.00016091539896671752,
+      "guesses": [
+        "sorati",
+        "canile",
+        "pigmea",
+        "puglia"
+      ]
+    },
+    {
+      "word": "urlavi",
+      "num_guesses": 4,
+      "prior": 0.000038885274629994904,
+      "guesses": [
+        "sorati",
+        "canard",
+        "regali",
+        "urlavi"
+      ]
+    },
+    {
+      "word": "drizzo",
+      "num_guesses": 4,
+      "prior": 0.00005427521931103882,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "drillo",
+        "drizzo"
+      ]
+    },
+    {
+      "word": "aerare",
+      "num_guesses": 3,
+      "prior": 0.00004869613910904908,
+      "guesses": [
+        "sorati",
+        "caluma",
+        "aerare"
+      ]
+    },
+    {
+      "word": "diremo",
+      "num_guesses": 3,
+      "prior": 0.00016146880256675877,
+      "guesses": [
+        "sorati",
+        "demici",
+        "diremo"
+      ]
+    },
+    {
+      "word": "sferza",
+      "num_guesses": 4,
+      "prior": 0.00010461755634691998,
+      "guesses": [
+        "sorati",
+        "scerpa",
+        "alzava",
+        "sferza"
+      ]
+    },
+    {
+      "word": "rifuma",
+      "num_guesses": 4,
+      "prior": 0.000020244447615596025,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "riapra",
+        "rifuma"
+      ]
+    },
+    {
+      "word": "cachet",
+      "num_guesses": 3,
+      "prior": 0.00006900569884474376,
+      "guesses": [
+        "sorati",
+        "canale",
+        "cachet"
+      ]
+    },
+    {
+      "word": "wasabi",
+      "num_guesses": 3,
+      "prior": 0.00004757477218511291,
+      "guesses": [
+        "sorati",
+        "lisine",
+        "wasabi"
+      ]
+    },
+    {
+      "word": "ganghe",
+      "num_guesses": 4,
+      "prior": 0.000052130173034388,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "vanghe",
+        "ganghe"
+      ]
+    },
+    {
+      "word": "butile",
+      "num_guesses": 4,
+      "prior": 0.00005525648381125934,
+      "guesses": [
+        "sorati",
+        "meline",
+        "futile",
+        "butile"
+      ]
+    },
+    {
+      "word": "fonerà",
+      "num_guesses": 4,
+      "prior": 0.000029362182548689473,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "nocivo",
+        "fonerà"
+      ]
+    },
+    {
+      "word": "decimò",
+      "num_guesses": 3,
+      "prior": 0.00005368991275383156,
+      "guesses": [
+        "sorati",
+        "incile",
+        "decimò"
+      ]
+    },
+    {
+      "word": "impili",
+      "num_guesses": 4,
+      "prior": 0.00003350561038541722,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "vinili",
+        "impili"
+      ]
+    },
+    {
+      "word": "sfrati",
+      "num_guesses": 3,
+      "prior": 0.000031390828425704076,
+      "guesses": [
+        "sorati",
+        "strati",
+        "sfrati"
+      ]
+    },
+    {
+      "word": "eburne",
+      "num_guesses": 3,
+      "prior": 0.00003897142396465072,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "eburne"
+      ]
+    },
+    {
+      "word": "notata",
+      "num_guesses": 3,
+      "prior": 0.0001293838397918032,
+      "guesses": [
+        "sorati",
+        "leniva",
+        "notata"
+      ]
+    },
+    {
+      "word": "bascia",
+      "num_guesses": 4,
+      "prior": 0.00005995092313097979,
+      "guesses": [
+        "sorati",
+        "incise",
+        "fibula",
+        "bascia"
+      ]
+    },
+    {
+      "word": "tubava",
+      "num_guesses": 3,
+      "prior": 0.00003723703604871497,
+      "guesses": [
+        "sorati",
+        "lamina",
+        "tubava"
+      ]
+    },
+    {
+      "word": "volavi",
+      "num_guesses": 4,
+      "prior": 0.000039867372151774576,
+      "guesses": [
+        "sorati",
+        "lunedì",
+        "vocali",
+        "volavi"
+      ]
+    },
+    {
+      "word": "temere",
+      "num_guesses": 3,
+      "prior": 0.0001637209348192537,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "temere"
+      ]
+    },
+    {
+      "word": "sfuoco",
+      "num_guesses": 3,
+      "prior": 0.00002731620823540963,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "sfuoco"
+      ]
+    },
+    {
+      "word": "eteria",
+      "num_guesses": 3,
+      "prior": 0.00005768821282533617,
+      "guesses": [
+        "sorati",
+        "antera",
+        "eteria"
+      ]
+    },
+    {
+      "word": "atasti",
+      "num_guesses": 4,
+      "prior": 0.00002350309149102693,
+      "guesses": [
+        "sorati",
+        "alasse",
+        "amasti",
+        "atasti"
+      ]
+    },
+    {
+      "word": "graffì",
+      "num_guesses": 4,
+      "prior": 0.00001994102273082856,
+      "guesses": [
+        "sorati",
+        "galera",
+        "guardò",
+        "graffì"
+      ]
+    },
+    {
+      "word": "ricedi",
+      "num_guesses": 3,
+      "prior": 0.000022582816955841567,
+      "guesses": [
+        "sorati",
+        "cinedi",
+        "ricedi"
+      ]
+    },
+    {
+      "word": "irrigo",
+      "num_guesses": 4,
+      "prior": 0.00004322973021714349,
+      "guesses": [
+        "sorati",
+        "demici",
+        "girino",
+        "irrigo"
+      ]
+    },
+    {
+      "word": "zeloti",
+      "num_guesses": 3,
+      "prior": 0.000060688744153452325,
+      "guesses": [
+        "sorati",
+        "indoli",
+        "zeloti"
+      ]
+    },
+    {
+      "word": "muccia",
+      "num_guesses": 4,
+      "prior": 0.000055617804986702614,
+      "guesses": [
+        "sorati",
+        "canile",
+        "bigama",
+        "muccia"
+      ]
+    },
+    {
+      "word": "sciamò",
+      "num_guesses": 4,
+      "prior": 0.00004570243473381709,
+      "guesses": [
+        "sorati",
+        "svampa",
+        "sciame",
+        "sciamò"
+      ]
+    },
+    {
+      "word": "nunziò",
+      "num_guesses": 4,
+      "prior": 0.00004701630926110267,
+      "guesses": [
+        "sorati",
+        "incile",
+        "ghignò",
+        "nunziò"
+      ]
+    },
+    {
+      "word": "donnea",
+      "num_guesses": 3,
+      "prior": 0.00004603484095797182,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "donnea"
+      ]
+    },
+    {
+      "word": "scaldò",
+      "num_guesses": 4,
+      "prior": 0.00007117255408068651,
+      "guesses": [
+        "sorati",
+        "plance",
+        "fidava",
+        "scaldò"
+      ]
+    },
+    {
+      "word": "regolò",
+      "num_guesses": 4,
+      "prior": 0.0000838484447912804,
+      "guesses": [
+        "sorati",
+        "cedono",
+        "rifare",
+        "regolò"
+      ]
+    },
+    {
+      "word": "vanghe",
+      "num_guesses": 3,
+      "prior": 0.00007133564706961704,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "vanghe"
+      ]
+    },
+    {
+      "word": "ariane",
+      "num_guesses": 3,
+      "prior": 0.00007974330819747925,
+      "guesses": [
+        "sorati",
+        "cimerò",
+        "ariane"
+      ]
+    },
+    {
+      "word": "imbuco",
+      "num_guesses": 3,
+      "prior": 0.00003418399243146723,
+      "guesses": [
+        "sorati",
+        "incile",
+        "imbuco"
+      ]
+    },
+    {
+      "word": "insani",
+      "num_guesses": 3,
+      "prior": 0.00007217970458012049,
+      "guesses": [
+        "sorati",
+        "lisine",
+        "insani"
+      ]
+    },
+    {
+      "word": "corica",
+      "num_guesses": 3,
+      "prior": 0.00007232579925111485,
+      "guesses": [
+        "sorati",
+        "coding",
+        "corica"
+      ]
+    },
+    {
+      "word": "videro",
+      "num_guesses": 3,
+      "prior": 0.0001576659699743513,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "videro"
+      ]
+    },
+    {
+      "word": "inculi",
+      "num_guesses": 3,
+      "prior": 0.000036494106042446735,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "inculi"
+      ]
+    },
+    {
+      "word": "coopti",
+      "num_guesses": 4,
+      "prior": 0.000025370158331747706,
+      "guesses": [
+        "sorati",
+        "movida",
+        "potuti",
+        "coopti"
+      ]
+    },
+    {
+      "word": "spesse",
+      "num_guesses": 3,
+      "prior": 0.00014486645002368006,
+      "guesses": [
+        "sorati",
+        "spende",
+        "spesse"
+      ]
+    },
+    {
+      "word": "scalzi",
+      "num_guesses": 4,
+      "prior": 0.00011144112223591577,
+      "guesses": [
+        "sorati",
+        "plance",
+        "zigava",
+        "scalzi"
+      ]
+    },
+    {
+      "word": "larghi",
+      "num_guesses": 3,
+      "prior": 0.0001484971418494444,
+      "guesses": [
+        "sorati",
+        "capiva",
+        "larghi"
+      ]
+    },
+    {
+      "word": "critto",
+      "num_guesses": 4,
+      "prior": 0.00005479797228396036,
+      "guesses": [
+        "sorati",
+        "reduco",
+        "cripto",
+        "critto"
+      ]
+    },
+    {
+      "word": "tiravo",
+      "num_guesses": 3,
+      "prior": 0.00006828287922366887,
+      "guesses": [
+        "sorati",
+        "tirano",
+        "tiravo"
+      ]
+    },
+    {
+      "word": "numana",
+      "num_guesses": 3,
+      "prior": 0.00006789281045619148,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "numana"
+      ]
+    },
+    {
+      "word": "flotti",
+      "num_guesses": 3,
+      "prior": 0.0000444415292931776,
+      "guesses": [
+        "sorati",
+        "indoli",
+        "flotti"
+      ]
+    },
+    {
+      "word": "ultima",
+      "num_guesses": 3,
+      "prior": 0.00022717062466900048,
+      "guesses": [
+        "sorati",
+        "catena",
+        "ultima"
+      ]
+    },
+    {
+      "word": "gabber",
+      "num_guesses": 3,
+      "prior": 0.00002981387240420265,
+      "guesses": [
+        "sorati",
+        "galera",
+        "gabber"
+      ]
+    },
+    {
+      "word": "covone",
+      "num_guesses": 3,
+      "prior": 0.00006840981469613919,
+      "guesses": [
+        "sorati",
+        "colone",
+        "covone"
+      ]
+    },
+    {
+      "word": "spione",
+      "num_guesses": 3,
+      "prior": 0.00007299910129766033,
+      "guesses": [
+        "sorati",
+        "punico",
+        "spione"
+      ]
+    },
+    {
+      "word": "amanza",
+      "num_guesses": 3,
+      "prior": 0.00006277767677930495,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "amanza"
+      ]
+    },
+    {
+      "word": "ovatti",
+      "num_guesses": 3,
+      "prior": 0.000027704746372860852,
+      "guesses": [
+        "sorati",
+        "adotti",
+        "ovatti"
+      ]
+    },
+    {
+      "word": "macera",
+      "num_guesses": 4,
+      "prior": 0.00007423254391047841,
+      "guesses": [
+        "sorati",
+        "galera",
+        "camera",
+        "macera"
+      ]
+    },
+    {
+      "word": "sputai",
+      "num_guesses": 3,
+      "prior": 0.00005279765925026976,
+      "guesses": [
+        "sorati",
+        "gnaula",
+        "sputai"
+      ]
+    },
+    {
+      "word": "riavrà",
+      "num_guesses": 4,
+      "prior": 0.00005937023424947317,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "riapra",
+        "riavrà"
+      ]
+    },
+    {
+      "word": "grecia",
+      "num_guesses": 4,
+      "prior": 0.00019135829959012726,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "pregia",
+        "grecia"
+      ]
+    },
+    {
+      "word": "fissai",
+      "num_guesses": 4,
+      "prior": 0.00008615886759001883,
+      "guesses": [
+        "sorati",
+        "classe",
+        "bigama",
+        "fissai"
+      ]
+    },
+    {
+      "word": "smilzi",
+      "num_guesses": 3,
+      "prior": 0.00005544355705812193,
+      "guesses": [
+        "sorati",
+        "penici",
+        "smilzi"
+      ]
+    },
+    {
+      "word": "squaws",
+      "num_guesses": 4,
+      "prior": 0.000027662641700446866,
+      "guesses": [
+        "sorati",
+        "melina",
+        "squash",
+        "squaws"
+      ]
+    },
+    {
+      "word": "smezzo",
+      "num_guesses": 4,
+      "prior": 0.00003131404602576974,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "spesso",
+        "smezzo"
+      ]
+    },
+    {
+      "word": "stoccò",
+      "num_guesses": 4,
+      "prior": 0.000023421481563167223,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "scotch",
+        "stoccò"
+      ]
+    },
+    {
+      "word": "impure",
+      "num_guesses": 4,
+      "prior": 0.00008669801055565042,
+      "guesses": [
+        "sorati",
+        "rudere",
+        "figure",
+        "impure"
+      ]
+    },
+    {
+      "word": "steppe",
+      "num_guesses": 3,
+      "prior": 0.00009259604449066047,
+      "guesses": [
+        "sorati",
+        "penale",
+        "steppe"
+      ]
+    },
+    {
+      "word": "scordò",
+      "num_guesses": 3,
+      "prior": 0.00006751678841819866,
+      "guesses": [
+        "sorati",
+        "cipero",
+        "scordò"
+      ]
+    },
+    {
+      "word": "tundre",
+      "num_guesses": 3,
+      "prior": 0.000047987537725390677,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "tundre"
+      ]
+    },
+    {
+      "word": "alluso",
+      "num_guesses": 3,
+      "prior": 0.00008100308022074016,
+      "guesses": [
+        "sorati",
+        "almeno",
+        "alluso"
+      ]
+    },
+    {
+      "word": "gioire",
+      "num_guesses": 4,
+      "prior": 0.0000951912955494883,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "vigore",
+        "gioire"
+      ]
+    },
+    {
+      "word": "aitare",
+      "num_guesses": 3,
+      "prior": 0.00005925533937142323,
+      "guesses": [
+        "sorati",
+        "citare",
+        "aitare"
+      ]
+    },
+    {
+      "word": "acciai",
+      "num_guesses": 3,
+      "prior": 0.00010557293206415566,
+      "guesses": [
+        "sorati",
+        "canile",
+        "acciai"
+      ]
+    },
+    {
+      "word": "scatto",
+      "num_guesses": 3,
+      "prior": 0.00013767355349184637,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "scatto"
+      ]
+    },
+    {
+      "word": "mimare",
+      "num_guesses": 4,
+      "prior": 0.0000683889125720688,
+      "guesses": [
+        "sorati",
+        "cimerò",
+        "limare",
+        "mimare"
+      ]
+    },
+    {
+      "word": "areava",
+      "num_guesses": 4,
+      "prior": 0.000019272013199634888,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "aymara",
+        "areava"
+      ]
+    },
+    {
+      "word": "plebei",
+      "num_guesses": 3,
+      "prior": 0.00011908695633302188,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "plebei"
+      ]
+    },
+    {
+      "word": "boleri",
+      "num_guesses": 4,
+      "prior": 0.000042224581905657856,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "voleri",
+        "boleri"
+      ]
+    },
+    {
+      "word": "eolico",
+      "num_guesses": 3,
+      "prior": 0.00007750029336449734,
+      "guesses": [
+        "sorati",
+        "nemico",
+        "eolico"
+      ]
+    },
+    {
+      "word": "simulo",
+      "num_guesses": 3,
+      "prior": 0.000047987537725390677,
+      "guesses": [
+        "sorati",
+        "punico",
+        "simulo"
+      ]
+    },
+    {
+      "word": "refoli",
+      "num_guesses": 4,
+      "prior": 0.000049104826289372925,
+      "guesses": [
+        "sorati",
+        "limone",
+        "fecero",
+        "refoli"
+      ]
+    },
+    {
+      "word": "criata",
+      "num_guesses": 3,
+      "prior": 0.000041365690719899674,
+      "guesses": [
+        "sorati",
+        "enigmi",
+        "criata"
+      ]
+    },
+    {
+      "word": "bufale",
+      "num_guesses": 4,
+      "prior": 0.0000676040342714639,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "uguale",
+        "bufale"
+      ]
+    },
+    {
+      "word": "tignai",
+      "num_guesses": 4,
+      "prior": 0.000027158949872980727,
+      "guesses": [
+        "sorati",
+        "catena",
+        "puntai",
+        "tignai"
+      ]
+    },
+    {
+      "word": "sedete",
+      "num_guesses": 3,
+      "prior": 0.00008184692729019237,
+      "guesses": [
+        "sorati",
+        "velenò",
+        "sedete"
+      ]
+    },
+    {
+      "word": "ottati",
+      "num_guesses": 3,
+      "prior": 0.000053385897174278233,
+      "guesses": [
+        "sorati",
+        "lepidi",
+        "ottati"
+      ]
+    },
+    {
+      "word": "rewind",
+      "num_guesses": 3,
+      "prior": 0.000046635685243277976,
+      "guesses": [
+        "sorati",
+        "rudere",
+        "rewind"
+      ]
+    },
+    {
+      "word": "meanti",
+      "num_guesses": 4,
+      "prior": 0.000029378799527383016,
+      "guesses": [
+        "sorati",
+        "alcune",
+        "beanti",
+        "meanti"
+      ]
+    },
+    {
+      "word": "drappi",
+      "num_guesses": 4,
+      "prior": 0.00011149374459063521,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "picidi",
+        "drappi"
+      ]
+    },
+    {
+      "word": "madame",
+      "num_guesses": 3,
+      "prior": 0.00012811828584149425,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "madame"
+      ]
+    },
+    {
+      "word": "tarerò",
+      "num_guesses": 4,
+      "prior": 0.000020530701826688912,
+      "guesses": [
+        "sorati",
+        "carter",
+        "tarerà",
+        "tarerò"
+      ]
+    },
+    {
+      "word": "milita",
+      "num_guesses": 4,
+      "prior": 0.00009192104187437452,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "limita",
+        "milita"
+      ]
+    },
+    {
+      "word": "imprua",
+      "num_guesses": 4,
+      "prior": 0.00002130517290233611,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "bacula",
+        "imprua"
+      ]
+    },
+    {
+      "word": "nevicò",
+      "num_guesses": 3,
+      "prior": 0.00005265205466290428,
+      "guesses": [
+        "sorati",
+        "incile",
+        "nevicò"
+      ]
+    },
+    {
+      "word": "pavida",
+      "num_guesses": 4,
+      "prior": 0.00006745060880513316,
+      "guesses": [
+        "sorati",
+        "canile",
+        "madida",
+        "pavida"
+      ]
+    },
+    {
+      "word": "nomadi",
+      "num_guesses": 3,
+      "prior": 0.00011061144058411367,
+      "guesses": [
+        "sorati",
+        "lunedì",
+        "nomadi"
+      ]
+    },
+    {
+      "word": "tifare",
+      "num_guesses": 3,
+      "prior": 0.000054242406490174786,
+      "guesses": [
+        "sorati",
+        "citare",
+        "tifare"
+      ]
+    },
+    {
+      "word": "bifora",
+      "num_guesses": 4,
+      "prior": 0.00007636304741138476,
+      "guesses": [
+        "sorati",
+        "grondo",
+        "rivola",
+        "bifora"
+      ]
+    },
+    {
+      "word": "accani",
+      "num_guesses": 3,
+      "prior": 0.00004560566094481583,
+      "guesses": [
+        "sorati",
+        "canale",
+        "accani"
+      ]
+    },
+    {
+      "word": "stipai",
+      "num_guesses": 5,
+      "prior": 0.00003057244291060607,
+      "guesses": [
+        "sorati",
+        "gnaula",
+        "stimai",
+        "stivai",
+        "stipai"
+      ]
+    },
+    {
+      "word": "calava",
+      "num_guesses": 3,
+      "prior": 0.00008905121650010521,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "calava"
+      ]
+    },
+    {
+      "word": "telaio",
+      "num_guesses": 3,
+      "prior": 0.00012437662281934687,
+      "guesses": [
+        "sorati",
+        "citava",
+        "telaio"
+      ]
+    },
+    {
+      "word": "massai",
+      "num_guesses": 4,
+      "prior": 0.00007291224256586898,
+      "guesses": [
+        "sorati",
+        "classe",
+        "bigama",
+        "massai"
+      ]
+    },
+    {
+      "word": "glosse",
+      "num_guesses": 3,
+      "prior": 0.00010461621440669927,
+      "guesses": [
+        "sorati",
+        "fenolo",
+        "glosse"
+      ]
+    },
+    {
+      "word": "alinea",
+      "num_guesses": 4,
+      "prior": 0.00011478002580052359,
+      "guesses": [
+        "sorati",
+        "canile",
+        "aliena",
+        "alinea"
+      ]
+    },
+    {
+      "word": "pecore",
+      "num_guesses": 3,
+      "prior": 0.00014521125495980906,
+      "guesses": [
+        "sorati",
+        "cedono",
+        "pecore"
+      ]
+    },
+    {
+      "word": "moplen",
+      "num_guesses": 3,
+      "prior": 0.00004577307252813073,
+      "guesses": [
+        "sorati",
+        "colone",
+        "moplen"
+      ]
+    },
+    {
+      "word": "ondosa",
+      "num_guesses": 3,
+      "prior": 0.00006008054383767665,
+      "guesses": [
+        "sorati",
+        "almeno",
+        "ondosa"
+      ]
+    },
+    {
+      "word": "pesato",
+      "num_guesses": 3,
+      "prior": 0.00009852935617758099,
+      "guesses": [
+        "sorati",
+        "catena",
+        "pesato"
+      ]
+    },
+    {
+      "word": "emanai",
+      "num_guesses": 4,
+      "prior": 0.00003537488162546416,
+      "guesses": [
+        "sorati",
+        "canile",
+        "agenzi",
+        "emanai"
+      ]
+    },
+    {
+      "word": "glissi",
+      "num_guesses": 4,
+      "prior": 0.00002785013158846484,
+      "guesses": [
+        "sorati",
+        "incise",
+        "udissi",
+        "glissi"
+      ]
+    },
+    {
+      "word": "dovuto",
+      "num_guesses": 3,
+      "prior": 0.00024191819916698047,
+      "guesses": [
+        "sorati",
+        "cedevo",
+        "dovuto"
+      ]
+    },
+    {
+      "word": "solato",
+      "num_guesses": 3,
+      "prior": 0.000055243213760782464,
+      "guesses": [
+        "sorati",
+        "angelo",
+        "solato"
+      ]
+    },
+    {
+      "word": "sedano",
+      "num_guesses": 3,
+      "prior": 0.00009416981242820843,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "sedano"
+      ]
+    },
+    {
+      "word": "sorabo",
+      "num_guesses": 3,
+      "prior": 0.00003467668426489128,
+      "guesses": [
+        "sorati",
+        "sembra",
+        "sorabo"
+      ]
+    },
+    {
+      "word": "irrigò",
+      "num_guesses": 3,
+      "prior": 0.00004409705462678761,
+      "guesses": [
+        "sorati",
+        "pelide",
+        "irrigò"
+      ]
+    },
+    {
+      "word": "alunni",
+      "num_guesses": 4,
+      "prior": 0.00016005131110714526,
+      "guesses": [
+        "sorati",
+        "canile",
+        "branda",
+        "alunni"
+      ]
+    },
+    {
+      "word": "dafnie",
+      "num_guesses": 3,
+      "prior": 0.00004932194486893907,
+      "guesses": [
+        "sorati",
+        "canile",
+        "dafnie"
+      ]
+    },
+    {
+      "word": "usaste",
+      "num_guesses": 3,
+      "prior": 0.000051981992231887564,
+      "guesses": [
+        "sorati",
+        "astuta",
+        "usaste"
+      ]
+    },
+    {
+      "word": "doppie",
+      "num_guesses": 4,
+      "prior": 0.00013252846182365294,
+      "guesses": [
+        "sorati",
+        "nemico",
+        "fedeli",
+        "doppie"
+      ]
+    },
+    {
+      "word": "scrofa",
+      "num_guesses": 3,
+      "prior": 0.0000903887659049838,
+      "guesses": [
+        "sorati",
+        "sprona",
+        "scrofa"
+      ]
+    },
+    {
+      "word": "cialde",
+      "num_guesses": 3,
+      "prior": 0.00006287687719337764,
+      "guesses": [
+        "sorati",
+        "canile",
+        "cialde"
+      ]
+    },
+    {
+      "word": "unnica",
+      "num_guesses": 4,
+      "prior": 0.0000428257105663439,
+      "guesses": [
+        "sorati",
+        "canile",
+        "punica",
+        "unnica"
+      ]
+    },
+    {
+      "word": "menavo",
+      "num_guesses": 3,
+      "prior": 0.00004198060656456328,
+      "guesses": [
+        "sorati",
+        "celava",
+        "menavo"
+      ]
+    },
+    {
+      "word": "adelfa",
+      "num_guesses": 4,
+      "prior": 0.00003698937539581959,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "avalla",
+        "adelfa"
+      ]
+    },
+    {
+      "word": "mostra",
+      "num_guesses": 3,
+      "prior": 0.0002342666732990801,
+      "guesses": [
+        "sorati",
+        "invece",
+        "mostra"
+      ]
+    },
+    {
+      "word": "pacino",
+      "num_guesses": 4,
+      "prior": 0.00007049976661468482,
+      "guesses": [
+        "sorati",
+        "calino",
+        "bacino",
+        "pacino"
+      ]
+    },
+    {
+      "word": "peccai",
+      "num_guesses": 4,
+      "prior": 0.00006239896071513719,
+      "guesses": [
+        "sorati",
+        "canile",
+        "beccai",
+        "peccai"
+      ]
+    },
+    {
+      "word": "opposi",
+      "num_guesses": 3,
+      "prior": 0.00007557722766682125,
+      "guesses": [
+        "sorati",
+        "pilone",
+        "opposi"
+      ]
+    },
+    {
+      "word": "assolo",
+      "num_guesses": 4,
+      "prior": 0.0000748957433837928,
+      "guesses": [
+        "sorati",
+        "almeno",
+        "avulso",
+        "assolo"
+      ]
+    },
+    {
+      "word": "piazzo",
+      "num_guesses": 4,
+      "prior": 0.00007491655965206208,
+      "guesses": [
+        "sorati",
+        "calino",
+        "giambo",
+        "piazzo"
+      ]
+    },
+    {
+      "word": "ditale",
+      "num_guesses": 4,
+      "prior": 0.00006926925228893016,
+      "guesses": [
+        "sorati",
+        "vitale",
+        "pitale",
+        "ditale"
+      ]
+    },
+    {
+      "word": "storto",
+      "num_guesses": 3,
+      "prior": 0.00010117401773364786,
+      "guesses": [
+        "sorati",
+        "etnico",
+        "storto"
+      ]
+    },
+    {
+      "word": "manche",
+      "num_guesses": 4,
+      "prior": 0.00007335399962935046,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "zambia",
+        "manche"
+      ]
+    },
+    {
+      "word": "flusso",
+      "num_guesses": 3,
+      "prior": 0.000160425297303291,
+      "guesses": [
+        "sorati",
+        "fenolo",
+        "flusso"
+      ]
+    },
+    {
+      "word": "bucano",
+      "num_guesses": 3,
+      "prior": 0.000056579022370698455,
+      "guesses": [
+        "sorati",
+        "celava",
+        "bucano"
+      ]
+    },
+    {
+      "word": "estoni",
+      "num_guesses": 3,
+      "prior": 0.00006255154906260127,
+      "guesses": [
+        "sorati",
+        "ostili",
+        "estoni"
+      ]
+    },
+    {
+      "word": "aspiro",
+      "num_guesses": 3,
+      "prior": 0.00007144513474815341,
+      "guesses": [
+        "sorati",
+        "arpono",
+        "aspiro"
+      ]
+    },
+    {
+      "word": "sgarro",
+      "num_guesses": 4,
+      "prior": 0.000059034042655967325,
+      "guesses": [
+        "sorati",
+        "sbosco",
+        "slargo",
+        "sgarro"
+      ]
+    },
+    {
+      "word": "locate",
+      "num_guesses": 4,
+      "prior": 0.00008098957712091969,
+      "guesses": [
+        "sorati",
+        "leniva",
+        "codice",
+        "locate"
+      ]
+    },
+    {
+      "word": "aironi",
+      "num_guesses": 3,
+      "prior": 0.00007202047198941164,
+      "guesses": [
+        "sorati",
+        "albini",
+        "aironi"
+      ]
+    },
+    {
+      "word": "stozzo",
+      "num_guesses": 3,
+      "prior": 0.00003806149967296439,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "stozzo"
+      ]
+    },
+    {
+      "word": "sdazia",
+      "num_guesses": 3,
+      "prior": 0.000026712708778006414,
+      "guesses": [
+        "sorati",
+        "palina",
+        "sdazia"
+      ]
+    },
+    {
+      "word": "bisomo",
+      "num_guesses": 4,
+      "prior": 0.000050216617780199625,
+      "guesses": [
+        "sorati",
+        "incise",
+        "olismo",
+        "bisomo"
+      ]
+    },
+    {
+      "word": "alleai",
+      "num_guesses": 4,
+      "prior": 0.000031920254937080147,
+      "guesses": [
+        "sorati",
+        "canile",
+        "bellai",
+        "alleai"
+      ]
+    },
+    {
+      "word": "giuste",
+      "num_guesses": 3,
+      "prior": 0.00014614993658743224,
+      "guesses": [
+        "sorati",
+        "uniste",
+        "giuste"
+      ]
+    },
+    {
+      "word": "vimine",
+      "num_guesses": 4,
+      "prior": 0.00005557120649964927,
+      "guesses": [
+        "sorati",
+        "incile",
+        "divine",
+        "vimine"
+      ]
+    },
+    {
+      "word": "traggo",
+      "num_guesses": 3,
+      "prior": 0.00009225802567871321,
+      "guesses": [
+        "sorati",
+        "patena",
+        "traggo"
+      ]
+    },
+    {
+      "word": "sitate",
+      "num_guesses": 3,
+      "prior": 0.00004670085554408622,
+      "guesses": [
+        "sorati",
+        "diceva",
+        "sitate"
+      ]
+    },
+    {
+      "word": "affoco",
+      "num_guesses": 4,
+      "prior": 0.0000232123276908442,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "affocò",
+        "affoco"
+      ]
+    },
+    {
+      "word": "nasino",
+      "num_guesses": 3,
+      "prior": 0.00007149631564022394,
+      "guesses": [
+        "sorati",
+        "cibino",
+        "nasino"
+      ]
+    },
+    {
+      "word": "frodai",
+      "num_guesses": 4,
+      "prior": 0.000026338083218356798,
+      "guesses": [
+        "sorati",
+        "aplomb",
+        "gronda",
+        "frodai"
+      ]
+    },
+    {
+      "word": "fedato",
+      "num_guesses": 4,
+      "prior": 0.00003542213230369362,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "impedì",
+        "fedato"
+      ]
+    },
+    {
+      "word": "valico",
+      "num_guesses": 3,
+      "prior": 0.00010044016187317966,
+      "guesses": [
+        "sorati",
+        "calino",
+        "valico"
+      ]
+    },
+    {
+      "word": "edotti",
+      "num_guesses": 3,
+      "prior": 0.00008240763469258924,
+      "guesses": [
+        "sorati",
+        "indoli",
+        "edotti"
+      ]
+    },
+    {
+      "word": "vagito",
+      "num_guesses": 3,
+      "prior": 0.00007369964522665948,
+      "guesses": [
+        "sorati",
+        "capino",
+        "vagito"
+      ]
+    },
+    {
+      "word": "daterò",
+      "num_guesses": 4,
+      "prior": 0.0000232123276908442,
+      "guesses": [
+        "sorati",
+        "catena",
+        "daterà",
+        "daterò"
+      ]
+    },
+    {
+      "word": "membra",
+      "num_guesses": 3,
+      "prior": 0.00015905826382875198,
+      "guesses": [
+        "sorati",
+        "galera",
+        "membra"
+      ]
+    },
+    {
+      "word": "spinto",
+      "num_guesses": 3,
+      "prior": 0.00015838877348566959,
+      "guesses": [
+        "sorati",
+        "panico",
+        "spinto"
+      ]
+    },
+    {
+      "word": "defecò",
+      "num_guesses": 3,
+      "prior": 0.00003290563766730328,
+      "guesses": [
+        "sorati",
+        "fedele",
+        "defecò"
+      ]
+    },
+    {
+      "word": "ficoni",
+      "num_guesses": 3,
+      "prior": 0.000024709880608357705,
+      "guesses": [
+        "sorati",
+        "cileni",
+        "ficoni"
+      ]
+    },
+    {
+      "word": "sagomò",
+      "num_guesses": 5,
+      "prior": 0.000024873536510593795,
+      "guesses": [
+        "sorati",
+        "plance",
+        "zigomo",
+        "sagoma",
+        "sagomò"
+      ]
+    },
+    {
+      "word": "usurpò",
+      "num_guesses": 3,
+      "prior": 0.00007409357277918568,
+      "guesses": [
+        "sorati",
+        "essere",
+        "usurpò"
+      ]
+    },
+    {
+      "word": "telare",
+      "num_guesses": 4,
+      "prior": 0.000050831396285595,
+      "guesses": [
+        "sorati",
+        "artata",
+        "tubare",
+        "telare"
+      ]
+    },
+    {
+      "word": "vorato",
+      "num_guesses": 3,
+      "prior": 0.00004782082877342707,
+      "guesses": [
+        "sorati",
+        "davamo",
+        "vorato"
+      ]
+    },
+    {
+      "word": "datate",
+      "num_guesses": 4,
+      "prior": 0.00009938386875922732,
+      "guesses": [
+        "sorati",
+        "langue",
+        "cadeva",
+        "datate"
+      ]
+    },
+    {
+      "word": "renate",
+      "num_guesses": 3,
+      "prior": 0.00006705470197826745,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "renate"
+      ]
+    },
+    {
+      "word": "panche",
+      "num_guesses": 4,
+      "prior": 0.00010044915107909873,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "zambia",
+        "panche"
+      ]
+    },
+    {
+      "word": "favini",
+      "num_guesses": 4,
+      "prior": 0.00005981051229143744,
+      "guesses": [
+        "sorati",
+        "canile",
+        "grande",
+        "favini"
+      ]
+    },
+    {
+      "word": "incidi",
+      "num_guesses": 4,
+      "prior": 0.00005545794371621205,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "micidi",
+        "incidi"
+      ]
+    },
+    {
+      "word": "svolte",
+      "num_guesses": 3,
+      "prior": 0.00015258923718385156,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "svolte"
+      ]
+    },
+    {
+      "word": "spanne",
+      "num_guesses": 4,
+      "prior": 0.00006829709297994289,
+      "guesses": [
+        "sorati",
+        "plance",
+        "spande",
+        "spanne"
+      ]
+    },
+    {
+      "word": "sganni",
+      "num_guesses": 4,
+      "prior": 0.00005553875424292573,
+      "guesses": [
+        "sorati",
+        "plance",
+        "giorni",
+        "sganni"
+      ]
+    },
+    {
+      "word": "dividi",
+      "num_guesses": 4,
+      "prior": 0.00007351303372333914,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "vomano",
+        "dividi"
+      ]
+    },
+    {
+      "word": "moderò",
+      "num_guesses": 4,
+      "prior": 0.0000641713036166881,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "romano",
+        "moderò"
+      ]
+    },
+    {
+      "word": "dirivo",
+      "num_guesses": 4,
+      "prior": 0.00003047271706623975,
+      "guesses": [
+        "sorati",
+        "demici",
+        "dirigo",
+        "dirivo"
+      ]
+    },
+    {
+      "word": "imbava",
+      "num_guesses": 4,
+      "prior": 0.00002668838022325908,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "maiala",
+        "imbava"
+      ]
+    },
+    {
+      "word": "smelai",
+      "num_guesses": 4,
+      "prior": 0.00002238935960542777,
+      "guesses": [
+        "sorati",
+        "plance",
+        "svelai",
+        "smelai"
+      ]
+    },
+    {
+      "word": "ostoli",
+      "num_guesses": 3,
+      "prior": 0.00003464241023271883,
+      "guesses": [
+        "sorati",
+        "ostili",
+        "ostoli"
+      ]
+    },
+    {
+      "word": "falcia",
+      "num_guesses": 3,
+      "prior": 0.0000612489163054123,
+      "guesses": [
+        "sorati",
+        "canile",
+        "falcia"
+      ]
+    },
+    {
+      "word": "dicono",
+      "num_guesses": 3,
+      "prior": 0.00020295252887850463,
+      "guesses": [
+        "sorati",
+        "incile",
+        "dicono"
+      ]
+    },
+    {
+      "word": "soffiò",
+      "num_guesses": 3,
+      "prior": 0.00008933373713909563,
+      "guesses": [
+        "sorati",
+        "melino",
+        "soffiò"
+      ]
+    },
+    {
+      "word": "sberta",
+      "num_guesses": 3,
+      "prior": 0.00003640302727571842,
+      "guesses": [
+        "sorati",
+        "chiesa",
+        "sberta"
+      ]
+    },
+    {
+      "word": "brilla",
+      "num_guesses": 4,
+      "prior": 0.00011123076366896439,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "bacula",
+        "brilla"
+      ]
+    },
+    {
+      "word": "fransi",
+      "num_guesses": 4,
+      "prior": 0.000045622798418538665,
+      "guesses": [
+        "sorati",
+        "asepsi",
+        "riarsi",
+        "fransi"
+      ]
+    },
+    {
+      "word": "refolo",
+      "num_guesses": 4,
+      "prior": 0.00005959739141342869,
+      "guesses": [
+        "sorati",
+        "cedono",
+        "regolo",
+        "refolo"
+      ]
+    },
+    {
+      "word": "sanerà",
+      "num_guesses": 3,
+      "prior": 0.000050875769594050146,
+      "guesses": [
+        "sorati",
+        "scerpa",
+        "sanerà"
+      ]
+    },
+    {
+      "word": "regina",
+      "num_guesses": 3,
+      "prior": 0.00020471977530115662,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "regina"
+      ]
+    },
+    {
+      "word": "teiera",
+      "num_guesses": 3,
+      "prior": 0.00007574062432038637,
+      "guesses": [
+        "sorati",
+        "antera",
+        "teiera"
+      ]
+    },
+    {
+      "word": "levavo",
+      "num_guesses": 3,
+      "prior": 0.000049807494745526725,
+      "guesses": [
+        "sorati",
+        "celava",
+        "levavo"
+      ]
+    },
+    {
+      "word": "bucavo",
+      "num_guesses": 3,
+      "prior": 0.00003119744104253989,
+      "guesses": [
+        "sorati",
+        "celava",
+        "bucavo"
+      ]
+    },
+    {
+      "word": "scogli",
+      "num_guesses": 2,
+      "prior": 0.00012980499028814017,
+      "guesses": [
+        "sorati",
+        "scogli"
+      ]
+    },
+    {
+      "word": "sabine",
+      "num_guesses": 3,
+      "prior": 0.00009358345808118219,
+      "guesses": [
+        "sorati",
+        "palina",
+        "sabine"
+      ]
+    },
+    {
+      "word": "slentò",
+      "num_guesses": 3,
+      "prior": 0.000019862201991422734,
+      "guesses": [
+        "sorati",
+        "velenò",
+        "slentò"
+      ]
+    },
+    {
+      "word": "molerò",
+      "num_guesses": 4,
+      "prior": 0.000029542937116501033,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "comune",
+        "molerò"
+      ]
+    },
+    {
+      "word": "feltra",
+      "num_guesses": 4,
+      "prior": 0.00006809586427388514,
+      "guesses": [
+        "sorati",
+        "catena",
+        "tregua",
+        "feltra"
+      ]
+    },
+    {
+      "word": "umilia",
+      "num_guesses": 4,
+      "prior": 0.00009095567451109292,
+      "guesses": [
+        "sorati",
+        "canile",
+        "pigmea",
+        "umilia"
+      ]
+    },
+    {
+      "word": "eroine",
+      "num_guesses": 3,
+      "prior": 0.00009117126922671767,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "eroine"
+      ]
+    },
+    {
+      "word": "lanini",
+      "num_guesses": 3,
+      "prior": 0.000056684809749012764,
+      "guesses": [
+        "sorati",
+        "canile",
+        "lanini"
+      ]
+    },
+    {
+      "word": "botata",
+      "num_guesses": 4,
+      "prior": 0.00003155465939424865,
+      "guesses": [
+        "sorati",
+        "leniva",
+        "putida",
+        "botata"
+      ]
+    },
+    {
+      "word": "pathos",
+      "num_guesses": 3,
+      "prior": 0.00010529224083251157,
+      "guesses": [
+        "sorati",
+        "tutela",
+        "pathos"
+      ]
+    },
+    {
+      "word": "amasse",
+      "num_guesses": 3,
+      "prior": 0.00010490550882111823,
+      "guesses": [
+        "sorati",
+        "macula",
+        "amasse"
+      ]
+    },
+    {
+      "word": "menade",
+      "num_guesses": 3,
+      "prior": 0.00007464890330060552,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "menade"
+      ]
+    },
+    {
+      "word": "staggi",
+      "num_guesses": 3,
+      "prior": 0.00005866393609318122,
+      "guesses": [
+        "sorati",
+        "gnaula",
+        "staggi"
+      ]
+    },
+    {
+      "word": "curano",
+      "num_guesses": 3,
+      "prior": 0.0001096280660606269,
+      "guesses": [
+        "sorati",
+        "canape",
+        "curano"
+      ]
+    },
+    {
+      "word": "novera",
+      "num_guesses": 4,
+      "prior": 0.00008507862183501921,
+      "guesses": [
+        "sorati",
+        "melava",
+        "povera",
+        "novera"
+      ]
+    },
+    {
+      "word": "popone",
+      "num_guesses": 3,
+      "prior": 0.0000728262867665164,
+      "guesses": [
+        "sorati",
+        "colone",
+        "popone"
+      ]
+    },
+    {
+      "word": "gennai",
+      "num_guesses": 3,
+      "prior": 0.00006541836202677388,
+      "guesses": [
+        "sorati",
+        "canile",
+        "gennai"
+      ]
+    },
+    {
+      "word": "rifate",
+      "num_guesses": 4,
+      "prior": 0.000049787386747551515,
+      "guesses": [
+        "sorati",
+        "enigmi",
+        "ridate",
+        "rifate"
+      ]
+    },
+    {
+      "word": "ramati",
+      "num_guesses": 3,
+      "prior": 0.00007092605303846139,
+      "guesses": [
+        "sorati",
+        "camune",
+        "ramati"
+      ]
+    },
+    {
+      "word": "lammia",
+      "num_guesses": 4,
+      "prior": 0.00004181609754852993,
+      "guesses": [
+        "sorati",
+        "canile",
+        "svampa",
+        "lammia"
+      ]
+    },
+    {
+      "word": "venale",
+      "num_guesses": 4,
+      "prior": 0.00010715455429643645,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "penale",
+        "venale"
+      ]
+    },
+    {
+      "word": "uniste",
+      "num_guesses": 2,
+      "prior": 0.00004423032006605211,
+      "guesses": [
+        "sorati",
+        "uniste"
+      ]
+    },
+    {
+      "word": "figlia",
+      "num_guesses": 4,
+      "prior": 0.000214160939121315,
+      "guesses": [
+        "sorati",
+        "canile",
+        "pigmea",
+        "figlia"
+      ]
+    },
+    {
+      "word": "alliso",
+      "num_guesses": 4,
+      "prior": 0.00003493782069345975,
+      "guesses": [
+        "sorati",
+        "cibino",
+        "svolse",
+        "alliso"
+      ]
+    },
+    {
+      "word": "osmosi",
+      "num_guesses": 4,
+      "prior": 0.00008734421978033576,
+      "guesses": [
+        "sorati",
+        "pilone",
+        "oziosi",
+        "osmosi"
+      ]
+    },
+    {
+      "word": "regala",
+      "num_guesses": 3,
+      "prior": 0.00009901188421813602,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "regala"
+      ]
+    },
+    {
+      "word": "osceni",
+      "num_guesses": 3,
+      "prior": 0.00009509668515767544,
+      "guesses": [
+        "sorati",
+        "pilone",
+        "osceni"
+      ]
+    },
+    {
+      "word": "idrici",
+      "num_guesses": 3,
+      "prior": 0.00009123614066900949,
+      "guesses": [
+        "sorati",
+        "decime",
+        "idrici"
+      ]
+    },
+    {
+      "word": "sbalzo",
+      "num_guesses": 4,
+      "prior": 0.00010018776118318729,
+      "guesses": [
+        "sorati",
+        "plance",
+        "mobili",
+        "sbalzo"
+      ]
+    },
+    {
+      "word": "favate",
+      "num_guesses": 4,
+      "prior": 0.00004245543620704545,
+      "guesses": [
+        "sorati",
+        "langue",
+        "cadeva",
+        "favate"
+      ]
+    },
+    {
+      "word": "effuse",
+      "num_guesses": 3,
+      "prior": 0.00005806726575214621,
+      "guesses": [
+        "sorati",
+        "emesse",
+        "effuse"
+      ]
+    },
+    {
+      "word": "fenile",
+      "num_guesses": 4,
+      "prior": 0.00007708595181048841,
+      "guesses": [
+        "sorati",
+        "incile",
+        "nubile",
+        "fenile"
+      ]
+    },
+    {
+      "word": "sfonda",
+      "num_guesses": 3,
+      "prior": 0.00007056222442434503,
+      "guesses": [
+        "sorati",
+        "plance",
+        "sfonda"
+      ]
+    },
+    {
+      "word": "cimano",
+      "num_guesses": 4,
+      "prior": 0.000043902409019791704,
+      "guesses": [
+        "sorati",
+        "ondava",
+        "lumaca",
+        "cimano"
+      ]
+    },
+    {
+      "word": "starna",
+      "num_guesses": 3,
+      "prior": 0.00006696516701561555,
+      "guesses": [
+        "sorati",
+        "patena",
+        "starna"
+      ]
+    },
+    {
+      "word": "ficcai",
+      "num_guesses": 4,
+      "prior": 0.000058290674405354904,
+      "guesses": [
+        "sorati",
+        "canile",
+        "abachi",
+        "ficcai"
+      ]
+    },
+    {
+      "word": "ozierà",
+      "num_guesses": 4,
+      "prior": 0.0000229953519623831,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "oliere",
+        "ozierà"
+      ]
+    },
+    {
+      "word": "creolo",
+      "num_guesses": 3,
+      "prior": 0.0000637718768404567,
+      "guesses": [
+        "sorati",
+        "cedono",
+        "creolo"
+      ]
+    },
+    {
+      "word": "visive",
+      "num_guesses": 3,
+      "prior": 0.00010743213631738851,
+      "guesses": [
+        "sorati",
+        "cinese",
+        "visive"
+      ]
+    },
+    {
+      "word": "totali",
+      "num_guesses": 3,
+      "prior": 0.0001345367158501879,
+      "guesses": [
+        "sorati",
+        "tonali",
+        "totali"
+      ]
+    },
+    {
+      "word": "ottusa",
+      "num_guesses": 3,
+      "prior": 0.00009687205437070063,
+      "guesses": [
+        "sorati",
+        "tutela",
+        "ottusa"
+      ]
+    },
+    {
+      "word": "vespai",
+      "num_guesses": 3,
+      "prior": 0.000052047871548343476,
+      "guesses": [
+        "sorati",
+        "classe",
+        "vespai"
+      ]
+    },
+    {
+      "word": "filari",
+      "num_guesses": 4,
+      "prior": 0.0001100323913493226,
+      "guesses": [
+        "sorati",
+        "canard",
+        "ripari",
+        "filari"
+      ]
+    },
+    {
+      "word": "spezio",
+      "num_guesses": 4,
+      "prior": 0.000041035272064329645,
+      "guesses": [
+        "sorati",
+        "punico",
+        "spiego",
+        "spezio"
+      ]
+    },
+    {
+      "word": "runico",
+      "num_guesses": 3,
+      "prior": 0.000056489448354609984,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "runico"
+      ]
+    },
+    {
+      "word": "storta",
+      "num_guesses": 3,
+      "prior": 0.00010836438415154267,
+      "guesses": [
+        "sorati",
+        "stampa",
+        "storta"
+      ]
+    },
+    {
+      "word": "direta",
+      "num_guesses": 3,
+      "prior": 0.00003860545590413007,
+      "guesses": [
+        "sorati",
+        "patema",
+        "direta"
+      ]
+    },
+    {
+      "word": "fausta",
+      "num_guesses": 4,
+      "prior": 0.00010180811509853906,
+      "guesses": [
+        "sorati",
+        "astuta",
+        "guasta",
+        "fausta"
+      ]
+    },
+    {
+      "word": "ancori",
+      "num_guesses": 3,
+      "prior": 0.000053177244255604155,
+      "guesses": [
+        "sorati",
+        "aplomb",
+        "ancori"
+      ]
+    },
+    {
+      "word": "artico",
+      "num_guesses": 3,
+      "prior": 0.0000996828323124507,
+      "guesses": [
+        "sorati",
+        "tanica",
+        "artico"
+      ]
+    },
+    {
+      "word": "granii",
+      "num_guesses": 4,
+      "prior": 0.00005027288195243232,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "grandi",
+        "granii"
+      ]
+    },
+    {
+      "word": "notaie",
+      "num_guesses": 3,
+      "prior": 0.000033216123226081406,
+      "guesses": [
+        "sorati",
+        "numero",
+        "notaie"
+      ]
+    },
+    {
+      "word": "sbancò",
+      "num_guesses": 4,
+      "prior": 0.00003130117547229342,
+      "guesses": [
+        "sorati",
+        "plance",
+        "sbanca",
+        "sbancò"
+      ]
+    },
+    {
+      "word": "sterpo",
+      "num_guesses": 3,
+      "prior": 0.00006416984519454101,
+      "guesses": [
+        "sorati",
+        "penero",
+        "sterpo"
+      ]
+    },
+    {
+      "word": "irrisi",
+      "num_guesses": 3,
+      "prior": 0.00004933238779701246,
+      "guesses": [
+        "sorati",
+        "derisi",
+        "irrisi"
+      ]
+    },
+    {
+      "word": "arenai",
+      "num_guesses": 3,
+      "prior": 0.00003906744013451804,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "arenai"
+      ]
+    },
+    {
+      "word": "cimici",
+      "num_guesses": 4,
+      "prior": 0.00007909403053203625,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "cimini",
+        "cimici"
+      ]
+    },
+    {
+      "word": "attesa",
+      "num_guesses": 3,
+      "prior": 0.00018677041861398774,
+      "guesses": [
+        "sorati",
+        "attese",
+        "attesa"
+      ]
+    },
+    {
+      "word": "scrofe",
+      "num_guesses": 3,
+      "prior": 0.00007402822391932949,
+      "guesses": [
+        "sorati",
+        "nemico",
+        "scrofe"
+      ]
+    },
+    {
+      "word": "fonerò",
+      "num_guesses": 4,
+      "prior": 0.00004357812121603521,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "nocivi",
+        "fonerò"
+      ]
+    },
+    {
+      "word": "blasma",
+      "num_guesses": 4,
+      "prior": 0.00002922787305031326,
+      "guesses": [
+        "sorati",
+        "macula",
+        "plasma",
+        "blasma"
+      ]
+    },
+    {
+      "word": "scarna",
+      "num_guesses": 4,
+      "prior": 0.00009228122636413157,
+      "guesses": [
+        "sorati",
+        "scerpa",
+        "undici",
+        "scarna"
+      ]
+    },
+    {
+      "word": "barerà",
+      "num_guesses": 4,
+      "prior": 0.00003563169942161478,
+      "guesses": [
+        "sorati",
+        "camere",
+        "piombò",
+        "barerà"
+      ]
+    },
+    {
+      "word": "elegge",
+      "num_guesses": 3,
+      "prior": 0.00010756417831344039,
+      "guesses": [
+        "sorati",
+        "fedele",
+        "elegge"
+      ]
+    },
+    {
+      "word": "catare",
+      "num_guesses": 4,
+      "prior": 0.00005076640615992559,
+      "guesses": [
+        "sorati",
+        "artata",
+        "dicono",
+        "catare"
+      ]
+    },
+    {
+      "word": "crasso",
+      "num_guesses": 2,
+      "prior": 0.00011632194546983133,
+      "guesses": [
+        "sorati",
+        "crasso"
+      ]
+    },
+    {
+      "word": "criano",
+      "num_guesses": 3,
+      "prior": 0.00003308300870707085,
+      "guesses": [
+        "sorati",
+        "dicono",
+        "criano"
+      ]
+    },
+    {
+      "word": "sparlò",
+      "num_guesses": 3,
+      "prior": 0.000045055152060694624,
+      "guesses": [
+        "sorati",
+        "scerpa",
+        "sparlò"
+      ]
+    },
+    {
+      "word": "scepsi",
+      "num_guesses": 3,
+      "prior": 0.00007036006151166733,
+      "guesses": [
+        "sorati",
+        "penici",
+        "scepsi"
+      ]
+    },
+    {
+      "word": "orrori",
+      "num_guesses": 3,
+      "prior": 0.00012182290108818219,
+      "guesses": [
+        "sorati",
+        "penici",
+        "orrori"
+      ]
+    },
+    {
+      "word": "belano",
+      "num_guesses": 4,
+      "prior": 0.000051898744505147125,
+      "guesses": [
+        "sorati",
+        "celava",
+        "grembo",
+        "belano"
+      ]
+    },
+    {
+      "word": "newton",
+      "num_guesses": 3,
+      "prior": 0.0001317601112226292,
+      "guesses": [
+        "sorati",
+        "temolo",
+        "newton"
+      ]
+    },
+    {
+      "word": "pelami",
+      "num_guesses": 4,
+      "prior": 0.000041956692788535526,
+      "guesses": [
+        "sorati",
+        "canale",
+        "legami",
+        "pelami"
+      ]
+    },
+    {
+      "word": "lesene",
+      "num_guesses": 3,
+      "prior": 0.00009597449250470901,
+      "guesses": [
+        "sorati",
+        "emesse",
+        "lesene"
+      ]
+    },
+    {
+      "word": "ascete",
+      "num_guesses": 3,
+      "prior": 0.000030918373080199666,
+      "guesses": [
+        "sorati",
+        "astuta",
+        "ascete"
+      ]
+    },
+    {
+      "word": "siculo",
+      "num_guesses": 3,
+      "prior": 0.00011340732041336725,
+      "guesses": [
+        "sorati",
+        "punico",
+        "siculo"
+      ]
+    },
+    {
+      "word": "belare",
+      "num_guesses": 5,
+      "prior": 0.0000641362648332784,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "gemeva",
+        "pelare",
+        "belare"
+      ]
+    },
+    {
+      "word": "vitreo",
+      "num_guesses": 3,
+      "prior": 0.00010230517955503113,
+      "guesses": [
+        "sorati",
+        "nitide",
+        "vitreo"
+      ]
+    },
+    {
+      "word": "romene",
+      "num_guesses": 3,
+      "prior": 0.0000736585258936143,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "romene"
+      ]
+    },
+    {
+      "word": "viciti",
+      "num_guesses": 4,
+      "prior": 0.000024808591664391916,
+      "guesses": [
+        "sorati",
+        "lumini",
+        "debiti",
+        "viciti"
+      ]
+    },
+    {
+      "word": "scelgo",
+      "num_guesses": 3,
+      "prior": 0.00009160188507610913,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "scelgo"
+      ]
+    },
+    {
+      "word": "appesi",
+      "num_guesses": 4,
+      "prior": 0.00010971055272052719,
+      "guesses": [
+        "sorati",
+        "classe",
+        "danesi",
+        "appesi"
+      ]
+    },
+    {
+      "word": "imparo",
+      "num_guesses": 3,
+      "prior": 0.00007880279693931338,
+      "guesses": [
+        "sorati",
+        "dicono",
+        "imparo"
+      ]
+    },
+    {
+      "word": "aurite",
+      "num_guesses": 3,
+      "prior": 0.000028497588434680144,
+      "guesses": [
+        "sorati",
+        "patema",
+        "aurite"
+      ]
+    },
+    {
+      "word": "spinsi",
+      "num_guesses": 3,
+      "prior": 0.00008186785775698666,
+      "guesses": [
+        "sorati",
+        "penici",
+        "spinsi"
+      ]
+    },
+    {
+      "word": "vedevi",
+      "num_guesses": 3,
+      "prior": 0.00008355394693786992,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "vedevi"
+      ]
+    },
+    {
+      "word": "roveto",
+      "num_guesses": 3,
+      "prior": 0.0000804250769157783,
+      "guesses": [
+        "sorati",
+        "coorte",
+        "roveto"
+      ]
+    },
+    {
+      "word": "siglai",
+      "num_guesses": 4,
+      "prior": 0.00002709042347403553,
+      "guesses": [
+        "sorati",
+        "plance",
+        "viavai",
+        "siglai"
+      ]
+    },
+    {
+      "word": "capaci",
+      "num_guesses": 3,
+      "prior": 0.00017797409819593973,
+      "guesses": [
+        "sorati",
+        "canale",
+        "capaci"
+      ]
+    },
+    {
+      "word": "bionda",
+      "num_guesses": 4,
+      "prior": 0.00012629411123973397,
+      "guesses": [
+        "sorati",
+        "calino",
+        "infide",
+        "bionda"
+      ]
+    },
+    {
+      "word": "mugnai",
+      "num_guesses": 4,
+      "prior": 0.00008889078379313814,
+      "guesses": [
+        "sorati",
+        "canile",
+        "amando",
+        "mugnai"
+      ]
+    },
+    {
+      "word": "pirati",
+      "num_guesses": 4,
+      "prior": 0.00011841335652149533,
+      "guesses": [
+        "sorati",
+        "cadeau",
+        "templi",
+        "pirati"
+      ]
+    },
+    {
+      "word": "riebbi",
+      "num_guesses": 4,
+      "prior": 0.0000553107581681543,
+      "guesses": [
+        "sorati",
+        "cinedi",
+        "riempi",
+        "riebbi"
+      ]
+    },
+    {
+      "word": "oziosi",
+      "num_guesses": 3,
+      "prior": 0.00011045454570193611,
+      "guesses": [
+        "sorati",
+        "pilone",
+        "oziosi"
+      ]
+    },
+    {
+      "word": "agonia",
+      "num_guesses": 4,
+      "prior": 0.00011675800076915695,
+      "guesses": [
+        "sorati",
+        "calino",
+        "infide",
+        "agonia"
+      ]
+    },
+    {
+      "word": "infusi",
+      "num_guesses": 3,
+      "prior": 0.0000766506882357302,
+      "guesses": [
+        "sorati",
+        "incise",
+        "infusi"
+      ]
+    },
+    {
+      "word": "piloto",
+      "num_guesses": 4,
+      "prior": 0.00008787336046578647,
+      "guesses": [
+        "sorati",
+        "numide",
+        "cefalo",
+        "piloto"
+      ]
+    },
+    {
+      "word": "impani",
+      "num_guesses": 4,
+      "prior": 0.00003147946872349346,
+      "guesses": [
+        "sorati",
+        "canale",
+        "dipani",
+        "impani"
+      ]
+    },
+    {
+      "word": "cecene",
+      "num_guesses": 3,
+      "prior": 0.00003780470739425321,
+      "guesses": [
+        "sorati",
+        "fedele",
+        "cecene"
+      ]
+    },
+    {
+      "word": "pomero",
+      "num_guesses": 4,
+      "prior": 0.000042975377882140795,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "nocivo",
+        "pomero"
+      ]
+    },
+    {
+      "word": "tataro",
+      "num_guesses": 3,
+      "prior": 0.00005597879110385475,
+      "guesses": [
+        "sorati",
+        "arcano",
+        "tataro"
+      ]
+    },
+    {
+      "word": "glande",
+      "num_guesses": 3,
+      "prior": 0.00008541973012817995,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "glande"
+      ]
+    },
+    {
+      "word": "vitavi",
+      "num_guesses": 3,
+      "prior": 0.000027491607615822035,
+      "guesses": [
+        "sorati",
+        "vinile",
+        "vitavi"
+      ]
+    },
+    {
+      "word": "rolini",
+      "num_guesses": 3,
+      "prior": 0.00003261581683713901,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "rolini"
+      ]
+    },
+    {
+      "word": "grillo",
+      "num_guesses": 4,
+      "prior": 0.00011851857606191055,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "foglio",
+        "grillo"
+      ]
+    },
+    {
+      "word": "alzaie",
+      "num_guesses": 4,
+      "prior": 0.00004595471741438764,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "gliale",
+        "alzaie"
+      ]
+    },
+    {
+      "word": "feraci",
+      "num_guesses": 3,
+      "prior": 0.00007582086139003454,
+      "guesses": [
+        "sorati",
+        "maglev",
+        "feraci"
+      ]
+    },
+    {
+      "word": "bluffa",
+      "num_guesses": 3,
+      "prior": 0.000038340198143843376,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "bluffa"
+      ]
+    },
+    {
+      "word": "camuso",
+      "num_guesses": 4,
+      "prior": 0.00006640937557924478,
+      "guesses": [
+        "sorati",
+        "almeno",
+        "famoso",
+        "camuso"
+      ]
+    },
+    {
+      "word": "naturò",
+      "num_guesses": 3,
+      "prior": 0.00002941192114425767,
+      "guesses": [
+        "sorati",
+        "catena",
+        "naturò"
+      ]
+    },
+    {
+      "word": "timbra",
+      "num_guesses": 4,
+      "prior": 0.000053405671987752005,
+      "guesses": [
+        "sorati",
+        "antera",
+        "filtra",
+        "timbra"
+      ]
+    },
+    {
+      "word": "letami",
+      "num_guesses": 3,
+      "prior": 0.00007456029237850428,
+      "guesses": [
+        "sorati",
+        "vinile",
+        "letami"
+      ]
+    },
+    {
+      "word": "pirchi",
+      "num_guesses": 4,
+      "prior": 0.00004278150708944945,
+      "guesses": [
+        "sorati",
+        "decime",
+        "circhi",
+        "pirchi"
+      ]
+    },
+    {
+      "word": "contea",
+      "num_guesses": 3,
+      "prior": 0.00013990008408061997,
+      "guesses": [
+        "sorati",
+        "botola",
+        "contea"
+      ]
+    },
+    {
+      "word": "droghi",
+      "num_guesses": 5,
+      "prior": 0.00004604309783539373,
+      "guesses": [
+        "sorati",
+        "limone",
+        "propri",
+        "crochi",
+        "droghi"
+      ]
+    },
+    {
+      "word": "concio",
+      "num_guesses": 3,
+      "prior": 0.00009538850797212936,
+      "guesses": [
+        "sorati",
+        "nemico",
+        "concio"
+      ]
+    },
+    {
+      "word": "veglio",
+      "num_guesses": 4,
+      "prior": 0.0000951926508579651,
+      "guesses": [
+        "sorati",
+        "incile",
+        "meglio",
+        "veglio"
+      ]
+    },
+    {
+      "word": "sdutte",
+      "num_guesses": 3,
+      "prior": 0.000031025871104659355,
+      "guesses": [
+        "sorati",
+        "velenò",
+        "sdutte"
+      ]
+    },
+    {
+      "word": "scindi",
+      "num_guesses": 4,
+      "prior": 0.000047947832222675295,
+      "guesses": [
+        "sorati",
+        "penici",
+        "grande",
+        "scindi"
+      ]
+    },
+    {
+      "word": "saetti",
+      "num_guesses": 3,
+      "prior": 0.00006394660711631913,
+      "guesses": [
+        "sorati",
+        "planck",
+        "saetti"
+      ]
+    },
+    {
+      "word": "obblia",
+      "num_guesses": 4,
+      "prior": 0.00007176077435300624,
+      "guesses": [
+        "sorati",
+        "calino",
+        "giubbe",
+        "obblia"
+      ]
+    },
+    {
+      "word": "vegani",
+      "num_guesses": 4,
+      "prior": 0.000058220890729078984,
+      "guesses": [
+        "sorati",
+        "canale",
+        "demani",
+        "vegani"
+      ]
+    },
+    {
+      "word": "dubnio",
+      "num_guesses": 4,
+      "prior": 0.000025219134750173547,
+      "guesses": [
+        "sorati",
+        "incile",
+        "bidono",
+        "dubnio"
+      ]
+    },
+    {
+      "word": "nobile",
+      "num_guesses": 3,
+      "prior": 0.0002075113288369809,
+      "guesses": [
+        "sorati",
+        "nemico",
+        "nobile"
+      ]
+    },
+    {
+      "word": "scuota",
+      "num_guesses": 3,
+      "prior": 0.00007387317880472363,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "scuota"
+      ]
+    },
+    {
+      "word": "dopano",
+      "num_guesses": 5,
+      "prior": 0.000025633269260611458,
+      "guesses": [
+        "sorati",
+        "lamano",
+        "diceva",
+        "donano",
+        "dopano"
+      ]
+    },
+    {
+      "word": "macina",
+      "num_guesses": 3,
+      "prior": 0.00010212529901227345,
+      "guesses": [
+        "sorati",
+        "canile",
+        "macina"
+      ]
+    },
+    {
+      "word": "chiome",
+      "num_guesses": 3,
+      "prior": 0.00012123919276771158,
+      "guesses": [
+        "sorati",
+        "incile",
+        "chiome"
+      ]
+    },
+    {
+      "word": "succio",
+      "num_guesses": 3,
+      "prior": 0.00004844508034730165,
+      "guesses": [
+        "sorati",
+        "punico",
+        "succio"
+      ]
+    },
+    {
+      "word": "voleva",
+      "num_guesses": 3,
+      "prior": 0.00022411370052218392,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "voleva"
+      ]
+    },
+    {
+      "word": "pazziò",
+      "num_guesses": 4,
+      "prior": 0.00002031753416569276,
+      "guesses": [
+        "sorati",
+        "canile",
+        "gambia",
+        "pazziò"
+      ]
+    },
+    {
+      "word": "lirico",
+      "num_guesses": 3,
+      "prior": 0.00013709589528311056,
+      "guesses": [
+        "sorati",
+        "demici",
+        "lirico"
+      ]
+    },
+    {
+      "word": "avvero",
+      "num_guesses": 4,
+      "prior": 0.0000502825572576048,
+      "guesses": [
+        "sorati",
+        "alacre",
+        "ungeva",
+        "avvero"
+      ]
+    },
+    {
+      "word": "risegò",
+      "num_guesses": 4,
+      "prior": 0.00002272367705165687,
+      "guesses": [
+        "sorati",
+        "misure",
+        "risecò",
+        "risegò"
+      ]
+    },
+    {
+      "word": "inesco",
+      "num_guesses": 3,
+      "prior": 0.000036514995641731465,
+      "guesses": [
+        "sorati",
+        "incise",
+        "inesco"
+      ]
+    },
+    {
+      "word": "oprate",
+      "num_guesses": 3,
+      "prior": 0.00004824361498925929,
+      "guesses": [
+        "sorati",
+        "canape",
+        "oprate"
+      ]
+    },
+    {
+      "word": "cintai",
+      "num_guesses": 3,
+      "prior": 0.00002895160020395018,
+      "guesses": [
+        "sorati",
+        "catena",
+        "cintai"
+      ]
+    },
+    {
+      "word": "dilatò",
+      "num_guesses": 3,
+      "prior": 0.00008123864957428058,
+      "guesses": [
+        "sorati",
+        "dilama",
+        "dilatò"
+      ]
+    },
+    {
+      "word": "nastra",
+      "num_guesses": 4,
+      "prior": 0.00004684296312633444,
+      "guesses": [
+        "sorati",
+        "macera",
+        "lastra",
+        "nastra"
+      ]
+    },
+    {
+      "word": "aggero",
+      "num_guesses": 4,
+      "prior": 0.000030931892269049796,
+      "guesses": [
+        "sorati",
+        "alacre",
+        "ungeva",
+        "aggero"
+      ]
+    },
+    {
+      "word": "posavo",
+      "num_guesses": 3,
+      "prior": 0.000050794299806521137,
+      "guesses": [
+        "sorati",
+        "dicono",
+        "posavo"
+      ]
+    },
+    {
+      "word": "clicca",
+      "num_guesses": 4,
+      "prior": 0.0000715779957115045,
+      "guesses": [
+        "sorati",
+        "canile",
+        "ciglia",
+        "clicca"
+      ]
+    },
+    {
+      "word": "eccoti",
+      "num_guesses": 3,
+      "prior": 0.00011041697091717384,
+      "guesses": [
+        "sorati",
+        "indoli",
+        "eccoti"
+      ]
+    },
+    {
+      "word": "incapò",
+      "num_guesses": 4,
+      "prior": 0.000021653671220464136,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "incavò",
+        "incapò"
+      ]
+    },
+    {
+      "word": "aprirò",
+      "num_guesses": 4,
+      "prior": 0.00007017901283089953,
+      "guesses": [
+        "sorati",
+        "cadeva",
+        "aprirà",
+        "aprirò"
+      ]
+    },
+    {
+      "word": "futuri",
+      "num_guesses": 3,
+      "prior": 0.00015604382595580733,
+      "guesses": [
+        "sorati",
+        "nebule",
+        "futuri"
+      ]
+    },
+    {
+      "word": "posare",
+      "num_guesses": 3,
+      "prior": 0.00011208165524739893,
+      "guesses": [
+        "sorati",
+        "perché",
+        "posare"
+      ]
+    },
+    {
+      "word": "damava",
+      "num_guesses": 4,
+      "prior": 0.00002577489815557151,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "vipoma",
+        "damava"
+      ]
+    },
+    {
+      "word": "efebie",
+      "num_guesses": 4,
+      "prior": 0.00003072657394819757,
+      "guesses": [
+        "sorati",
+        "incile",
+        "bipede",
+        "efebie"
+      ]
+    },
+    {
+      "word": "mesuro",
+      "num_guesses": 3,
+      "prior": 0.000024969699958890858,
+      "guesses": [
+        "sorati",
+        "escuso",
+        "mesuro"
+      ]
+    },
+    {
+      "word": "ammalò",
+      "num_guesses": 4,
+      "prior": 0.00009385497316727864,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "alzava",
+        "ammalò"
+      ]
+    },
+    {
+      "word": "fisino",
+      "num_guesses": 5,
+      "prior": 0.00002866436074420097,
+      "guesses": [
+        "sorati",
+        "incise",
+        "visino",
+        "lisino",
+        "fisino"
+      ]
+    },
+    {
+      "word": "diliga",
+      "num_guesses": 4,
+      "prior": 0.00003209694611214122,
+      "guesses": [
+        "sorati",
+        "canile",
+        "algida",
+        "diliga"
+      ]
+    },
+    {
+      "word": "sgrave",
+      "num_guesses": 3,
+      "prior": 0.000027808902493351317,
+      "guesses": [
+        "sorati",
+        "abnega",
+        "sgrave"
+      ]
+    },
+    {
+      "word": "presti",
+      "num_guesses": 3,
+      "prior": 0.00012190184542834107,
+      "guesses": [
+        "sorati",
+        "irsuti",
+        "presti"
+      ]
+    },
+    {
+      "word": "spreto",
+      "num_guesses": 3,
+      "prior": 0.00005375374820070908,
+      "guesses": [
+        "sorati",
+        "scroto",
+        "spreto"
+      ]
+    },
+    {
+      "word": "timico",
+      "num_guesses": 4,
+      "prior": 0.00006634567953299025,
+      "guesses": [
+        "sorati",
+        "limone",
+        "timido",
+        "timico"
+      ]
+    },
+    {
+      "word": "stazzi",
+      "num_guesses": 4,
+      "prior": 0.00006527187572571484,
+      "guesses": [
+        "sorati",
+        "gnaula",
+        "biopic",
+        "stazzi"
+      ]
+    },
+    {
+      "word": "camera",
+      "num_guesses": 3,
+      "prior": 0.0002504495249861473,
+      "guesses": [
+        "sorati",
+        "galera",
+        "camera"
+      ]
+    },
+    {
+      "word": "frusto",
+      "num_guesses": 3,
+      "prior": 0.0000783053205167994,
+      "guesses": [
+        "sorati",
+        "presto",
+        "frusto"
+      ]
+    },
+    {
+      "word": "plachi",
+      "num_guesses": 3,
+      "prior": 0.00006630094632367324,
+      "guesses": [
+        "sorati",
+        "canile",
+        "plachi"
+      ]
+    },
+    {
+      "word": "svanii",
+      "num_guesses": 4,
+      "prior": 0.00003095885995803986,
+      "guesses": [
+        "sorati",
+        "plance",
+        "giorni",
+        "svanii"
+      ]
+    },
+    {
+      "word": "ergevi",
+      "num_guesses": 4,
+      "prior": 0.00003149205044962407,
+      "guesses": [
+        "sorati",
+        "cinedi",
+        "reveli",
+        "ergevi"
+      ]
+    },
+    {
+      "word": "adonto",
+      "num_guesses": 3,
+      "prior": 0.00003768898274104577,
+      "guesses": [
+        "sorati",
+        "alando",
+        "adonto"
+      ]
+    },
+    {
+      "word": "guitto",
+      "num_guesses": 3,
+      "prior": 0.00006187559897917973,
+      "guesses": [
+        "sorati",
+        "numide",
+        "guitto"
+      ]
+    },
+    {
+      "word": "succia",
+      "num_guesses": 4,
+      "prior": 0.00005665003523724207,
+      "guesses": [
+        "sorati",
+        "palina",
+        "scisma",
+        "succia"
+      ]
+    },
+    {
+      "word": "raserò",
+      "num_guesses": 4,
+      "prior": 0.00003987715675772719,
+      "guesses": [
+        "sorati",
+        "ascesa",
+        "ragunò",
+        "raserò"
+      ]
+    },
+    {
+      "word": "inciso",
+      "num_guesses": 3,
+      "prior": 0.00014582068400284233,
+      "guesses": [
+        "sorati",
+        "incise",
+        "inciso"
+      ]
+    },
+    {
+      "word": "gualmi",
+      "num_guesses": 4,
+      "prior": 0.00002208600562661482,
+      "guesses": [
+        "sorati",
+        "canile",
+        "allumi",
+        "gualmi"
+      ]
+    },
+    {
+      "word": "solita",
+      "num_guesses": 2,
+      "prior": 0.0001584366638954403,
+      "guesses": [
+        "sorati",
+        "solita"
+      ]
+    },
+    {
+      "word": "ibridò",
+      "num_guesses": 3,
+      "prior": 0.000023780140466450065,
+      "guesses": [
+        "sorati",
+        "pelide",
+        "ibridò"
+      ]
+    },
+    {
+      "word": "tifoso",
+      "num_guesses": 3,
+      "prior": 0.00007999188790237458,
+      "guesses": [
+        "sorati",
+        "intime",
+        "tifoso"
+      ]
+    },
+    {
+      "word": "paveso",
+      "num_guesses": 3,
+      "prior": 0.00003113189962086289,
+      "guesses": [
+        "sorati",
+        "almeno",
+        "paveso"
+      ]
+    },
+    {
+      "word": "starai",
+      "num_guesses": 3,
+      "prior": 0.00008991611287564924,
+      "guesses": [
+        "sorati",
+        "cadeau",
+        "starai"
+      ]
+    },
+    {
+      "word": "filler",
+      "num_guesses": 4,
+      "prior": 0.00005777392623968856,
+      "guesses": [
+        "sorati",
+        "rudere",
+        "fregiò",
+        "filler"
+      ]
+    },
+    {
+      "word": "grotte",
+      "num_guesses": 3,
+      "prior": 0.0001320760124158735,
+      "guesses": [
+        "sorati",
+        "fuetto",
+        "grotte"
+      ]
+    },
+    {
+      "word": "clipeo",
+      "num_guesses": 3,
+      "prior": 0.00009135059984982697,
+      "guesses": [
+        "sorati",
+        "incile",
+        "clipeo"
+      ]
+    },
+    {
+      "word": "ornerà",
+      "num_guesses": 4,
+      "prior": 0.00005022827934072039,
+      "guesses": [
+        "sorati",
+        "cedono",
+        "enorme",
+        "ornerà"
+      ]
+    },
+    {
+      "word": "spongo",
+      "num_guesses": 4,
+      "prior": 0.00003759041589182024,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "sfondo",
+        "spongo"
+      ]
+    },
+    {
+      "word": "tranne",
+      "num_guesses": 3,
+      "prior": 0.00017423724414305627,
+      "guesses": [
+        "sorati",
+        "catena",
+        "tranne"
+      ]
+    },
+    {
+      "word": "scendo",
+      "num_guesses": 3,
+      "prior": 0.0000973562434668981,
+      "guesses": [
+        "sorati",
+        "nucleo",
+        "scendo"
+      ]
+    },
+    {
+      "word": "pregiò",
+      "num_guesses": 4,
+      "prior": 0.00005172890165379112,
+      "guesses": [
+        "sorati",
+        "rudere",
+        "fregiò",
+        "pregiò"
+      ]
+    },
+    {
+      "word": "trench",
+      "num_guesses": 3,
+      "prior": 0.00006454251074503588,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "trench"
+      ]
+    },
+    {
+      "word": "sfrega",
+      "num_guesses": 3,
+      "prior": 0.00006367363657672333,
+      "guesses": [
+        "sorati",
+        "nemica",
+        "sfrega"
+      ]
+    },
+    {
+      "word": "coyote",
+      "num_guesses": 3,
+      "prior": 0.00006969577556469728,
+      "guesses": [
+        "sorati",
+        "cedevo",
+        "coyote"
+      ]
+    },
+    {
+      "word": "pranzi",
+      "num_guesses": 4,
+      "prior": 0.00010045413020010831,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "brandi",
+        "pranzi"
+      ]
+    },
+    {
+      "word": "numane",
+      "num_guesses": 3,
+      "prior": 0.000025157698856287073,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "numane"
+      ]
+    },
+    {
+      "word": "apersi",
+      "num_guesses": 3,
+      "prior": 0.00007658825879956102,
+      "guesses": [
+        "sorati",
+        "asepsi",
+        "apersi"
+      ]
+    },
+    {
+      "word": "untavi",
+      "num_guesses": 3,
+      "prior": 0.0000194480425527845,
+      "guesses": [
+        "sorati",
+        "vinile",
+        "untavi"
+      ]
+    },
+    {
+      "word": "grinta",
+      "num_guesses": 3,
+      "prior": 0.00008193738038298626,
+      "guesses": [
+        "sorati",
+        "pruine",
+        "grinta"
+      ]
+    },
+    {
+      "word": "bramii",
+      "num_guesses": 4,
+      "prior": 0.00003076807780141,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "picidi",
+        "bramii"
+      ]
+    },
+    {
+      "word": "codiai",
+      "num_guesses": 3,
+      "prior": 0.00003097230864250549,
+      "guesses": [
+        "sorati",
+        "moplen",
+        "codiai"
+      ]
+    },
+    {
+      "word": "riatta",
+      "num_guesses": 4,
+      "prior": 0.000041888639403034564,
+      "guesses": [
+        "sorati",
+        "pruine",
+        "flirta",
+        "riatta"
+      ]
+    },
+    {
+      "word": "libino",
+      "num_guesses": 4,
+      "prior": 0.00003240551747766426,
+      "guesses": [
+        "sorati",
+        "incile",
+        "aplomb",
+        "libino"
+      ]
+    },
+    {
+      "word": "direni",
+      "num_guesses": 3,
+      "prior": 0.00005137704314131256,
+      "guesses": [
+        "sorati",
+        "decime",
+        "direni"
+      ]
+    },
+    {
+      "word": "mixava",
+      "num_guesses": 4,
+      "prior": 0.000025546765816009693,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "limava",
+        "mixava"
+      ]
+    },
+    {
+      "word": "ducavi",
+      "num_guesses": 5,
+      "prior": 0.0000194480425527845,
+      "guesses": [
+        "sorati",
+        "canale",
+        "vivaci",
+        "bucavi",
+        "ducavi"
+      ]
+    },
+    {
+      "word": "casoni",
+      "num_guesses": 2,
+      "prior": 0.00009281617894713001,
+      "guesses": [
+        "sorati",
+        "casoni"
+      ]
+    },
+    {
+      "word": "ondava",
+      "num_guesses": 3,
+      "prior": 0.000033709159588887344,
+      "guesses": [
+        "sorati",
+        "celava",
+        "ondava"
+      ]
+    },
+    {
+      "word": "oleata",
+      "num_guesses": 4,
+      "prior": 0.00006146008235243907,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "gemeva",
+        "oleata"
+      ]
+    },
+    {
+      "word": "pedalò",
+      "num_guesses": 4,
+      "prior": 0.00005244121261563716,
+      "guesses": [
+        "sorati",
+        "lacune",
+        "vipoma",
+        "pedalò"
+      ]
+    },
+    {
+      "word": "uvetta",
+      "num_guesses": 3,
+      "prior": 0.00007073198791873984,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "uvetta"
+      ]
+    },
+    {
+      "word": "topazi",
+      "num_guesses": 3,
+      "prior": 0.00006553608825885341,
+      "guesses": [
+        "sorati",
+        "tonali",
+        "topazi"
+      ]
+    },
+    {
+      "word": "unendo",
+      "num_guesses": 4,
+      "prior": 0.0001053684880986632,
+      "guesses": [
+        "sorati",
+        "ducono",
+        "udendo",
+        "unendo"
+      ]
+    },
+    {
+      "word": "frasca",
+      "num_guesses": 3,
+      "prior": 0.00009506657843300344,
+      "guesses": [
+        "sorati",
+        "ascesa",
+        "frasca"
+      ]
+    },
+    {
+      "word": "dolora",
+      "num_guesses": 4,
+      "prior": 0.000054232404201740456,
+      "guesses": [
+        "sorati",
+        "melava",
+        "colora",
+        "dolora"
+      ]
+    },
+    {
+      "word": "ferivo",
+      "num_guesses": 4,
+      "prior": 0.0000461389932469011,
+      "guesses": [
+        "sorati",
+        "demici",
+        "ferino",
+        "ferivo"
+      ]
+    },
+    {
+      "word": "cubani",
+      "num_guesses": 3,
+      "prior": 0.00007888758637256383,
+      "guesses": [
+        "sorati",
+        "canale",
+        "cubani"
+      ]
+    },
+    {
+      "word": "volata",
+      "num_guesses": 3,
+      "prior": 0.000090866975068702,
+      "guesses": [
+        "sorati",
+        "leniva",
+        "volata"
+      ]
+    },
+    {
+      "word": "timori",
+      "num_guesses": 3,
+      "prior": 0.0001380444082704193,
+      "guesses": [
+        "sorati",
+        "musone",
+        "timori"
+      ]
+    },
+    {
+      "word": "veglia",
+      "num_guesses": 4,
+      "prior": 0.00013335689702866337,
+      "guesses": [
+        "sorati",
+        "canile",
+        "amelia",
+        "veglia"
+      ]
+    },
+    {
+      "word": "pagare",
+      "num_guesses": 4,
+      "prior": 0.000199022129632053,
+      "guesses": [
+        "sorati",
+        "lacuna",
+        "godeva",
+        "pagare"
+      ]
+    },
+    {
+      "word": "glioma",
+      "num_guesses": 4,
+      "prior": 0.0000677331833447812,
+      "guesses": [
+        "sorati",
+        "calino",
+        "giubbe",
+        "glioma"
+      ]
+    },
+    {
+      "word": "amiate",
+      "num_guesses": 3,
+      "prior": 0.00006784443793064481,
+      "guesses": [
+        "sorati",
+        "dilama",
+        "amiate"
+      ]
+    },
+    {
+      "word": "godevi",
+      "num_guesses": 4,
+      "prior": 0.000046314998040114444,
+      "guesses": [
+        "sorati",
+        "cumini",
+        "volevi",
+        "godevi"
+      ]
+    },
+    {
+      "word": "dovute",
+      "num_guesses": 3,
+      "prior": 0.0001703873563768696,
+      "guesses": [
+        "sorati",
+        "cedevo",
+        "dovute"
+      ]
+    },
+    {
+      "word": "riveda",
+      "num_guesses": 3,
+      "prior": 0.0000686959106398341,
+      "guesses": [
+        "sorati",
+        "rigide",
+        "riveda"
+      ]
+    },
+    {
+      "word": "alasse",
+      "num_guesses": 3,
+      "prior": 0.00003778046193104774,
+      "guesses": [
+        "sorati",
+        "macula",
+        "alasse"
+      ]
+    },
+    {
+      "word": "capati",
+      "num_guesses": 4,
+      "prior": 0.00004360893544317261,
+      "guesses": [
+        "sorati",
+        "langue",
+        "dicevi",
+        "capati"
+      ]
+    },
+    {
+      "word": "ardano",
+      "num_guesses": 4,
+      "prior": 0.000058668111610935414,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "comune",
+        "ardano"
+      ]
+    },
+    {
+      "word": "faxati",
+      "num_guesses": 6,
+      "prior": 0.00002187411026946643,
+      "guesses": [
+        "sorati",
+        "langue",
+        "dicevi",
+        "fatati",
+        "famati",
+        "faxati"
+      ]
+    },
+    {
+      "word": "resine",
+      "num_guesses": 3,
+      "prior": 0.00010875476742520334,
+      "guesses": [
+        "sorati",
+        "misure",
+        "resine"
+      ]
+    },
+    {
+      "word": "suolai",
+      "num_guesses": 4,
+      "prior": 0.000032582971033488197,
+      "guesses": [
+        "sorati",
+        "planck",
+        "guerra",
+        "suolai"
+      ]
+    },
+    {
+      "word": "nociva",
+      "num_guesses": 4,
+      "prior": 0.00011028463687706987,
+      "guesses": [
+        "sorati",
+        "coding",
+        "motivi",
+        "nociva"
+      ]
+    },
+    {
+      "word": "scavai",
+      "num_guesses": 4,
+      "prior": 0.00005011901428639457,
+      "guesses": [
+        "sorati",
+        "plance",
+        "famosa",
+        "scavai"
+      ]
+    },
+    {
+      "word": "desali",
+      "num_guesses": 3,
+      "prior": 0.00003286334236336265,
+      "guesses": [
+        "sorati",
+        "lisine",
+        "desali"
+      ]
+    },
+    {
+      "word": "vessai",
+      "num_guesses": 3,
+      "prior": 0.00003237180847526069,
+      "guesses": [
+        "sorati",
+        "classe",
+        "vessai"
+      ]
+    },
+    {
+      "word": "scorai",
+      "num_guesses": 3,
+      "prior": 0.000031641485634786214,
+      "guesses": [
+        "sorati",
+        "sforai",
+        "scorai"
+      ]
+    },
+    {
+      "word": "affida",
+      "num_guesses": 4,
+      "prior": 0.00013003185442527623,
+      "guesses": [
+        "sorati",
+        "canile",
+        "divaga",
+        "affida"
+      ]
+    },
+    {
+      "word": "rifora",
+      "num_guesses": 5,
+      "prior": 0.00002891631478497863,
+      "guesses": [
+        "sorati",
+        "grondo",
+        "rivola",
+        "rizoma",
+        "rifora"
+      ]
+    },
+    {
+      "word": "digitò",
+      "num_guesses": 3,
+      "prior": 0.00006945249694720702,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "digitò"
+      ]
+    },
+    {
+      "word": "targhi",
+      "num_guesses": 4,
+      "prior": 0.00004137413355981516,
+      "guesses": [
+        "sorati",
+        "tandem",
+        "parola",
+        "targhi"
+      ]
+    },
+    {
+      "word": "mitigo",
+      "num_guesses": 4,
+      "prior": 0.00003448647407117595,
+      "guesses": [
+        "sorati",
+        "limone",
+        "mitico",
+        "mitigo"
+      ]
+    },
+    {
+      "word": "zelino",
+      "num_guesses": 5,
+      "prior": 0.00003914673870365071,
+      "guesses": [
+        "sorati",
+        "incile",
+        "vipoma",
+        "gazebo",
+        "zelino"
+      ]
+    },
+    {
+      "word": "attrai",
+      "num_guesses": 3,
+      "prior": 0.0000444668593348757,
+      "guesses": [
+        "sorati",
+        "amarre",
+        "attrai"
+      ]
+    },
+    {
+      "word": "niceno",
+      "num_guesses": 4,
+      "prior": 0.00008662522793396827,
+      "guesses": [
+        "sorati",
+        "incile",
+        "piceno",
+        "niceno"
+      ]
+    },
+    {
+      "word": "ispidi",
+      "num_guesses": 3,
+      "prior": 0.00007348125207939918,
+      "guesses": [
+        "sorati",
+        "incise",
+        "ispidi"
+      ]
+    },
+    {
+      "word": "figate",
+      "num_guesses": 6,
+      "prior": 0.00002577489815557151,
+      "guesses": [
+        "sorati",
+        "dilama",
+        "citate",
+        "binate",
+        "pipate",
+        "figate"
+      ]
+    },
+    {
+      "word": "lustre",
+      "num_guesses": 3,
+      "prior": 0.00008005310102476443,
+      "guesses": [
+        "sorati",
+        "estere",
+        "lustre"
+      ]
+    },
+    {
+      "word": "calati",
+      "num_guesses": 4,
+      "prior": 0.00009158870962439415,
+      "guesses": [
+        "sorati",
+        "langue",
+        "sempre",
+        "calati"
+      ]
+    },
+    {
+      "word": "durano",
+      "num_guesses": 4,
+      "prior": 0.00012186867784131553,
+      "guesses": [
+        "sorati",
+        "canape",
+        "metodo",
+        "durano"
+      ]
+    },
+    {
+      "word": "campai",
+      "num_guesses": 3,
+      "prior": 0.00005012685058655275,
+      "guesses": [
+        "sorati",
+        "canile",
+        "campai"
+      ]
+    },
+    {
+      "word": "visivo",
+      "num_guesses": 3,
+      "prior": 0.00012887462525530645,
+      "guesses": [
+        "sorati",
+        "incise",
+        "visivo"
+      ]
+    },
+    {
+      "word": "supini",
+      "num_guesses": 3,
+      "prior": 0.0000707744216157813,
+      "guesses": [
+        "sorati",
+        "penici",
+        "supini"
+      ]
+    },
+    {
+      "word": "dogati",
+      "num_guesses": 5,
+      "prior": 0.00003635360482984127,
+      "guesses": [
+        "sorati",
+        "dolmen",
+        "dotati",
+        "dopati",
+        "dogati"
+      ]
+    },
+    {
+      "word": "morula",
+      "num_guesses": 3,
+      "prior": 0.000054055433649117764,
+      "guesses": [
+        "sorati",
+        "morena",
+        "morula"
+      ]
+    },
+    {
+      "word": "scanso",
+      "num_guesses": 3,
+      "prior": 0.00009531176671753092,
+      "guesses": [
+        "sorati",
+        "plance",
+        "scanso"
+      ]
+    },
+    {
+      "word": "somnia",
+      "num_guesses": 3,
+      "prior": 0.00006213575133671894,
+      "guesses": [
+        "sorati",
+        "ladina",
+        "somnia"
+      ]
+    },
+    {
+      "word": "sfibrò",
+      "num_guesses": 3,
+      "prior": 0.000031223504104003294,
+      "guesses": [
+        "sorati",
+        "depurò",
+        "sfibrò"
+      ]
+    },
+    {
+      "word": "titano",
+      "num_guesses": 3,
+      "prior": 0.00009239246975352104,
+      "guesses": [
+        "sorati",
+        "citava",
+        "titano"
+      ]
+    },
+    {
+      "word": "superò",
+      "num_guesses": 3,
+      "prior": 0.00011704178704011124,
+      "guesses": [
+        "sorati",
+        "defecò",
+        "superò"
+      ]
+    },
+    {
+      "word": "frutti",
+      "num_guesses": 3,
+      "prior": 0.00019518465052910237,
+      "guesses": [
+        "sorati",
+        "fenici",
+        "frutti"
+      ]
+    },
+    {
+      "word": "crolla",
+      "num_guesses": 3,
+      "prior": 0.00009885726592353381,
+      "guesses": [
+        "sorati",
+        "alacre",
+        "crolla"
+      ]
+    },
+    {
+      "word": "defili",
+      "num_guesses": 4,
+      "prior": 0.00005532396355539864,
+      "guesses": [
+        "sorati",
+        "lucide",
+        "aplomb",
+        "defili"
+      ]
+    },
+    {
+      "word": "inopie",
+      "num_guesses": 3,
+      "prior": 0.00003480401945845556,
+      "guesses": [
+        "sorati",
+        "incile",
+        "inopie"
+      ]
+    },
+    {
+      "word": "cessai",
+      "num_guesses": 3,
+      "prior": 0.00006329684303137654,
+      "guesses": [
+        "sorati",
+        "classe",
+        "cessai"
+      ]
+    },
+    {
+      "word": "girati",
+      "num_guesses": 4,
+      "prior": 0.00008825329998423133,
+      "guesses": [
+        "sorati",
+        "cadeau",
+        "templi",
+        "girati"
+      ]
+    },
+    {
+      "word": "cibavi",
+      "num_guesses": 4,
+      "prior": 0.000024808591664391916,
+      "guesses": [
+        "sorati",
+        "canale",
+        "chiavi",
+        "cibavi"
+      ]
+    },
+    {
+      "word": "mucido",
+      "num_guesses": 4,
+      "prior": 0.00004657803250034263,
+      "guesses": [
+        "sorati",
+        "incile",
+        "uccido",
+        "mucido"
+      ]
+    },
+    {
+      "word": "disvio",
+      "num_guesses": 3,
+      "prior": 0.000038374471319699986,
+      "guesses": [
+        "sorati",
+        "incise",
+        "disvio"
+      ]
+    },
+    {
+      "word": "scagno",
+      "num_guesses": 3,
+      "prior": 0.00005821981451755974,
+      "guesses": [
+        "sorati",
+        "plance",
+        "scagno"
+      ]
+    },
+    {
+      "word": "cocere",
+      "num_guesses": 4,
+      "prior": 0.00004944668056964243,
+      "guesses": [
+        "sorati",
+        "lederò",
+        "povere",
+        "cocere"
+      ]
+    },
+    {
+      "word": "bigino",
+      "num_guesses": 4,
+      "prior": 0.00003981338437593248,
+      "guesses": [
+        "sorati",
+        "incile",
+        "vipoma",
+        "bigino"
+      ]
+    },
+    {
+      "word": "spansa",
+      "num_guesses": 4,
+      "prior": 0.00002744817673912816,
+      "guesses": [
+        "sorati",
+        "plance",
+        "difesa",
+        "spansa"
+      ]
+    },
+    {
+      "word": "tannai",
+      "num_guesses": 4,
+      "prior": 0.00002746992651028049,
+      "guesses": [
+        "sorati",
+        "catena",
+        "vantai",
+        "tannai"
+      ]
+    },
+    {
+      "word": "vinile",
+      "num_guesses": 3,
+      "prior": 0.0000743866430039357,
+      "guesses": [
+        "sorati",
+        "incile",
+        "vinile"
+      ]
+    },
+    {
+      "word": "rimaso",
+      "num_guesses": 3,
+      "prior": 0.00010287768357316498,
+      "guesses": [
+        "sorati",
+        "risano",
+        "rimaso"
+      ]
+    },
+    {
+      "word": "ritura",
+      "num_guesses": 4,
+      "prior": 0.000046593784290384033,
+      "guesses": [
+        "sorati",
+        "antera",
+        "ritira",
+        "ritura"
+      ]
+    },
+    {
+      "word": "patita",
+      "num_guesses": 4,
+      "prior": 0.00009316460142847869,
+      "guesses": [
+        "sorati",
+        "cinema",
+        "adulta",
+        "patita"
+      ]
+    },
+    {
+      "word": "macule",
+      "num_guesses": 3,
+      "prior": 0.00006366159613071513,
+      "guesses": [
+        "sorati",
+        "alcuna",
+        "macule"
+      ]
+    },
+    {
+      "word": "rianno",
+      "num_guesses": 3,
+      "prior": 0.00004410032422381522,
+      "guesses": [
+        "sorati",
+        "grondo",
+        "rianno"
+      ]
+    },
+    {
+      "word": "recede",
+      "num_guesses": 3,
+      "prior": 0.00007313013251046643,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "recede"
+      ]
+    },
+    {
+      "word": "saturò",
+      "num_guesses": 3,
+      "prior": 0.000045985174866668774,
+      "guesses": [
+        "sorati",
+        "patena",
+        "saturò"
+      ]
+    },
+    {
+      "word": "scaffa",
+      "num_guesses": 4,
+      "prior": 0.00005522062536969082,
+      "guesses": [
+        "sorati",
+        "plance",
+        "difesa",
+        "scaffa"
+      ]
+    },
+    {
+      "word": "terrei",
+      "num_guesses": 3,
+      "prior": 0.00008292526307603358,
+      "guesses": [
+        "sorati",
+        "turchi",
+        "terrei"
+      ]
+    },
+    {
+      "word": "nitido",
+      "num_guesses": 3,
+      "prior": 0.00010114756953766502,
+      "guesses": [
+        "sorati",
+        "limone",
+        "nitido"
+      ]
+    },
+    {
+      "word": "rumavo",
+      "num_guesses": 4,
+      "prior": 0.000019360828084043716,
+      "guesses": [
+        "sorati",
+        "aragne",
+        "rubavo",
+        "rumavo"
+      ]
+    },
+    {
+      "word": "oriolo",
+      "num_guesses": 4,
+      "prior": 0.00007845406395559561,
+      "guesses": [
+        "sorati",
+        "dinego",
+        "copulo",
+        "oriolo"
+      ]
+    },
+    {
+      "word": "nemico",
+      "num_guesses": 3,
+      "prior": 0.00021269287736472655,
+      "guesses": [
+        "sorati",
+        "incile",
+        "nemico"
+      ]
+    },
+    {
+      "word": "fretti",
+      "num_guesses": 3,
+      "prior": 0.000041035272064329645,
+      "guesses": [
+        "sorati",
+        "fenici",
+        "fretti"
+      ]
+    },
+    {
+      "word": "decede",
+      "num_guesses": 3,
+      "prior": 0.000051280850789930725,
+      "guesses": [
+        "sorati",
+        "fedele",
+        "decede"
+      ]
+    },
+    {
+      "word": "incitò",
+      "num_guesses": 3,
+      "prior": 0.00007867250378805364,
+      "guesses": [
+        "sorati",
+        "cumene",
+        "incitò"
+      ]
+    }
+  ]
+}

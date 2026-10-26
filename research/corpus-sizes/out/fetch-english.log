@@ -1,0 +1,46 @@
+[2026-10-25T21:36:58Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for english from https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz...
+[2026-10-25T21:40:43Z INFO  lex_data::wiktionary] Cached english Wiktionary dict (863670 words, lengths 1–100)
+[2026-10-25T21:40:43Z WARN  lex_data::store] Building english corpus...
+[2026-10-25T21:44:33Z INFO  lex_data::ngrams]   [3/24] done
+[2026-10-25T21:45:00Z INFO  lex_data::ngrams]   [1/24] done
+[2026-10-25T21:45:17Z INFO  lex_data::ngrams]   [4/24] done
+[2026-10-25T21:46:15Z INFO  lex_data::ngrams]   [2/24] done
+[2026-10-25T21:47:49Z INFO  lex_data::ngrams]   [5/24] done
+[2026-10-25T21:50:28Z INFO  lex_data::ngrams]   [7/24] done
+[2026-10-25T21:52:27Z INFO  lex_data::ngrams]   [6/24] done
+[2026-10-25T21:52:52Z INFO  lex_data::ngrams]   [9/24] done
+[2026-10-25T21:52:57Z INFO  lex_data::ngrams]   [8/24] done
+[2026-10-25T21:56:43Z INFO  lex_data::ngrams]   [10/24] done
+[2026-10-25T21:57:45Z INFO  lex_data::ngrams]   [12/24] done
+[2026-10-25T21:58:50Z INFO  lex_data::ngrams]   [13/24] done
+[2026-10-25T22:02:01Z INFO  lex_data::ngrams]   [14/24] done
+[2026-10-25T22:02:08Z INFO  lex_data::ngrams]   [11/24] done
+[2026-10-25T22:02:22Z INFO  lex_data::ngrams]   [15/24] done
+[2026-10-25T22:04:05Z INFO  lex_data::ngrams]   [16/24] done
+[2026-10-25T22:07:22Z INFO  lex_data::ngrams]   [19/24] done
+[2026-10-25T22:07:29Z INFO  lex_data::ngrams]   [17/24] done
+[2026-10-25T22:09:00Z INFO  lex_data::ngrams]   [20/24] done
+[2026-10-25T22:12:02Z INFO  lex_data::ngrams]   [21/24] done
+[2026-10-25T22:12:39Z INFO  lex_data::ngrams]   [22/24] done
+[2026-10-25T22:13:07Z INFO  lex_data::ngrams]   [18/24] done
+[2026-10-25T22:14:15Z INFO  lex_data::ngrams]   [23/24] done
+[2026-10-25T22:15:14Z INFO  lex_data::ngrams]   [24/24] done
+[2026-10-25T22:15:15Z INFO  lex_data::store] Cached english corpus (40 length buckets)
+[2026-10-25T22:15:16Z INFO  lex::simulate] Simulating 1 games with 5-letter words in english...
+[2026-10-25T22:15:36Z INFO  lex_core::game] Guess 1: tares -> ⬜⬜⬜🟨🟩
+[2026-10-25T22:15:36Z INFO  lex_core::game] Guess 2: neeld -> ⬜⬜🟩🟨⬜
+[2026-10-25T22:15:36Z INFO  lex_core::game] Guess 3: wocbp -> ⬜⬜⬜⬜🟨
+[2026-10-25T22:15:36Z INFO  lex_core::game] Guess 4: sleps -> 🟩🟩🟩🟩🟩
+[2026-10-25T22:15:36Z INFO  lex::simulate] Splendid
+[2026-10-25T22:15:36Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter english words (dictionary: 27806), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: tares
+ngrams sha256: fd4b35826698
+dict: 863670 words, fetched 2026-10-25T21:40:42.390956Z, sha256 cabb3a13b717
+
+uniform: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% (1) ########################################
+
+prior-weighted: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% ########################################

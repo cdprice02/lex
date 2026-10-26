@@ -1,0 +1,5436 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:39:38.830035Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "coreas",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 6,
+    "dictionary_length": 26939,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "af7f5da94b3c1c0fd7abe5b2a6b43b3f8f3a9c148ef8fec042d936441c126681",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.755999999999979,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.006,
+        "3": 0.36200000000000027,
+        "4": 0.5080000000000003,
+        "5": 0.11800000000000009,
+        "6": 0.006
+      }
+    },
+    "prior": {
+      "mean": 3.652155445773357,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.014194090174959055,
+        "3": 0.41115501529933135,
+        "4": 0.4873489980882007,
+        "5": 0.08290515145241631,
+        "6": 0.004396744985092947
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "parteé",
+      "num_guesses": 5,
+      "prior": 0.000022337598690812806,
+      "guesses": [
+        "coreas",
+        "patina",
+        "empezó",
+        "parteá",
+        "parteé"
+      ]
+    },
+    {
+      "word": "salsea",
+      "num_guesses": 4,
+      "prior": 0.000020620639383378442,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "frases",
+        "salsea"
+      ]
+    },
+    {
+      "word": "variás",
+      "num_guesses": 3,
+      "prior": 0.000019984594945307294,
+      "guesses": [
+        "coreas",
+        "lapidé",
+        "variás"
+      ]
+    },
+    {
+      "word": "varíes",
+      "num_guesses": 4,
+      "prior": 0.000030051022833807776,
+      "guesses": [
+        "coreas",
+        "partir",
+        "blando",
+        "varíes"
+      ]
+    },
+    {
+      "word": "garcas",
+      "num_guesses": 4,
+      "prior": 0.000028046977388514793,
+      "guesses": [
+        "coreas",
+        "zampan",
+        "barcas",
+        "garcas"
+      ]
+    },
+    {
+      "word": "cricrí",
+      "num_guesses": 3,
+      "prior": 0.000020946950990473245,
+      "guesses": [
+        "coreas",
+        "dibujó",
+        "cricrí"
+      ]
+    },
+    {
+      "word": "sosera",
+      "num_guesses": 3,
+      "prior": 0.00002576437351833564,
+      "guesses": [
+        "coreas",
+        "postal",
+        "sosera"
+      ]
+    },
+    {
+      "word": "tejada",
+      "num_guesses": 4,
+      "prior": 0.00008457538898403327,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "jovato",
+        "tejada"
+      ]
+    },
+    {
+      "word": "gatito",
+      "num_guesses": 4,
+      "prior": 0.000052604519990666424,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "patito",
+        "gatito"
+      ]
+    },
+    {
+      "word": "envega",
+      "num_guesses": 4,
+      "prior": 0.00001558562491681866,
+      "guesses": [
+        "coreas",
+        "malita",
+        "enjugó",
+        "envega"
+      ]
+    },
+    {
+      "word": "defeña",
+      "num_guesses": 5,
+      "prior": 0.000025001288151129988,
+      "guesses": [
+        "coreas",
+        "malita",
+        "enjugó",
+        "bípeda",
+        "defeña"
+      ]
+    },
+    {
+      "word": "yernas",
+      "num_guesses": 4,
+      "prior": 0.000026226931998437013,
+      "guesses": [
+        "coreas",
+        "timboy",
+        "fueron",
+        "yernas"
+      ]
+    },
+    {
+      "word": "regajo",
+      "num_guesses": 6,
+      "prior": 0.000032857181803155166,
+      "guesses": [
+        "coreas",
+        "altano",
+        "pegado",
+        "regazo",
+        "regaño",
+        "regajo"
+      ]
+    },
+    {
+      "word": "irupés",
+      "num_guesses": 3,
+      "prior": 0.000017022268808746584,
+      "guesses": [
+        "coreas",
+        "rumbiá",
+        "irupés"
+      ]
+    },
+    {
+      "word": "batíos",
+      "num_guesses": 4,
+      "prior": 0.000017196297520637195,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "fulgía",
+        "batíos"
+      ]
+    },
+    {
+      "word": "zumbad",
+      "num_guesses": 4,
+      "prior": 0.000013949404320081233,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "tumbad",
+        "zumbad"
+      ]
+    },
+    {
+      "word": "brizas",
+      "num_guesses": 4,
+      "prior": 0.000028630706677859366,
+      "guesses": [
+        "coreas",
+        "abatid",
+        "suflés",
+        "brizas"
+      ]
+    },
+    {
+      "word": "sorbás",
+      "num_guesses": 4,
+      "prior": 0.00001780534425028297,
+      "guesses": [
+        "coreas",
+        "tándem",
+        "borrás",
+        "sorbás"
+      ]
+    },
+    {
+      "word": "secutó",
+      "num_guesses": 3,
+      "prior": 0.000014945420077104068,
+      "guesses": [
+        "coreas",
+        "sóbese",
+        "secutó"
+      ]
+    },
+    {
+      "word": "tomare",
+      "num_guesses": 3,
+      "prior": 0.00005902636308106904,
+      "guesses": [
+        "coreas",
+        "tundra",
+        "tomare"
+      ]
+    },
+    {
+      "word": "belena",
+      "num_guesses": 4,
+      "prior": 0.00002849251392733493,
+      "guesses": [
+        "coreas",
+        "malita",
+        "daphne",
+        "belena"
+      ]
+    },
+    {
+      "word": "halaré",
+      "num_guesses": 5,
+      "prior": 0.00001554327204885281,
+      "guesses": [
+        "coreas",
+        "migada",
+        "plantá",
+        "jalaré",
+        "halaré"
+      ]
+    },
+    {
+      "word": "apurre",
+      "num_guesses": 5,
+      "prior": 0.000014410262007514117,
+      "guesses": [
+        "coreas",
+        "litara",
+        "difumó",
+        "aburre",
+        "apurre"
+      ]
+    },
+    {
+      "word": "emboto",
+      "num_guesses": 4,
+      "prior": 0.00001876057727083376,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "devoto",
+        "emboto"
+      ]
+    },
+    {
+      "word": "unirás",
+      "num_guesses": 3,
+      "prior": 0.00002883312197588644,
+      "guesses": [
+        "coreas",
+        "rumbiá",
+        "unirás"
+      ]
+    },
+    {
+      "word": "secuto",
+      "num_guesses": 3,
+      "prior": 0.000027222687755781526,
+      "guesses": [
+        "coreas",
+        "debute",
+        "secuto"
+      ]
+    },
+    {
+      "word": "vetare",
+      "num_guesses": 4,
+      "prior": 0.00002398711669820828,
+      "guesses": [
+        "coreas",
+        "litara",
+        "revené",
+        "vetare"
+      ]
+    },
+    {
+      "word": "difama",
+      "num_guesses": 4,
+      "prior": 0.00003714369145842932,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "viñedo",
+        "difama"
+      ]
+    },
+    {
+      "word": "mágica",
+      "num_guesses": 4,
+      "prior": 0.00008874247967567651,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "templó",
+        "mágica"
+      ]
+    },
+    {
+      "word": "anolan",
+      "num_guesses": 4,
+      "prior": 0.0000189087054854053,
+      "guesses": [
+        "coreas",
+        "planta",
+        "ningún",
+        "anolan"
+      ]
+    },
+    {
+      "word": "tarida",
+      "num_guesses": 3,
+      "prior": 0.00002508658641599732,
+      "guesses": [
+        "coreas",
+        "batida",
+        "tarida"
+      ]
+    },
+    {
+      "word": "trempo",
+      "num_guesses": 4,
+      "prior": 0.00002273268792532525,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "retomo",
+        "trempo"
+      ]
+    },
+    {
+      "word": "esperó",
+      "num_guesses": 3,
+      "prior": 0.00008902454493627286,
+      "guesses": [
+        "coreas",
+        "pósese",
+        "esperó"
+      ]
+    },
+    {
+      "word": "ponche",
+      "num_guesses": 3,
+      "prior": 0.00005326033851564032,
+      "guesses": [
+        "coreas",
+        "hibleo",
+        "ponche"
+      ]
+    },
+    {
+      "word": "placeá",
+      "num_guesses": 5,
+      "prior": 0.000012337394262234673,
+      "guesses": [
+        "coreas",
+        "ancila",
+        "delale",
+        "placeó",
+        "placeá"
+      ]
+    },
+    {
+      "word": "torcas",
+      "num_guesses": 3,
+      "prior": 0.000031816623593987505,
+      "guesses": [
+        "coreas",
+        "humita",
+        "torcas"
+      ]
+    },
+    {
+      "word": "salvás",
+      "num_guesses": 4,
+      "prior": 0.000022307568200796355,
+      "guesses": [
+        "coreas",
+        "ampliá",
+        "salgás",
+        "salvás"
+      ]
+    },
+    {
+      "word": "ficare",
+      "num_guesses": 4,
+      "prior": 0.000024153709911186474,
+      "guesses": [
+        "coreas",
+        "eleata",
+        "bípede",
+        "ficare"
+      ]
+    },
+    {
+      "word": "cerqué",
+      "num_guesses": 4,
+      "prior": 0.00002543747740176443,
+      "guesses": [
+        "coreas",
+        "tendió",
+        "cerque",
+        "cerqué"
+      ]
+    },
+    {
+      "word": "pampeo",
+      "num_guesses": 4,
+      "prior": 0.000015301662929208735,
+      "guesses": [
+        "coreas",
+        "altano",
+        "gambaj",
+        "pampeo"
+      ]
+    },
+    {
+      "word": "canjee",
+      "num_guesses": 4,
+      "prior": 0.00002483691894744469,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "puteen",
+        "canjee"
+      ]
+    },
+    {
+      "word": "enanzo",
+      "num_guesses": 4,
+      "prior": 0.000016840817748897543,
+      "guesses": [
+        "coreas",
+        "altano",
+        "pandeo",
+        "enanzo"
+      ]
+    },
+    {
+      "word": "regazó",
+      "num_guesses": 5,
+      "prior": 0.00001609836340292158,
+      "guesses": [
+        "coreas",
+        "litara",
+        "denegó",
+        "regañó",
+        "regazó"
+      ]
+    },
+    {
+      "word": "asaeta",
+      "num_guesses": 3,
+      "prior": 0.00001894743331738392,
+      "guesses": [
+        "coreas",
+        "patina",
+        "asaeta"
+      ]
+    },
+    {
+      "word": "jabalí",
+      "num_guesses": 3,
+      "prior": 0.00006861037556833629,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "jabalí"
+      ]
+    },
+    {
+      "word": "signas",
+      "num_guesses": 4,
+      "prior": 0.000027488975010285144,
+      "guesses": [
+        "coreas",
+        "malita",
+        "pugnad",
+        "signas"
+      ]
+    },
+    {
+      "word": "gamité",
+      "num_guesses": 4,
+      "prior": 0.000018318904304873815,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "hampón",
+        "gamité"
+      ]
+    },
+    {
+      "word": "posnet",
+      "num_guesses": 4,
+      "prior": 0.000019291480946442216,
+      "guesses": [
+        "coreas",
+        "bólido",
+        "pénese",
+        "posnet"
+      ]
+    },
+    {
+      "word": "aborto",
+      "num_guesses": 3,
+      "prior": 0.00009097823756649027,
+      "guesses": [
+        "coreas",
+        "triara",
+        "aborto"
+      ]
+    },
+    {
+      "word": "flabby",
+      "num_guesses": 4,
+      "prior": 0.000014551566121181707,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "gambón",
+        "flabby"
+      ]
+    },
+    {
+      "word": "vibres",
+      "num_guesses": 4,
+      "prior": 0.000026428681516964707,
+      "guesses": [
+        "coreas",
+        "iteren",
+        "libres",
+        "vibres"
+      ]
+    },
+    {
+      "word": "acusés",
+      "num_guesses": 4,
+      "prior": 0.000013261134025599084,
+      "guesses": [
+        "coreas",
+        "hinchá",
+        "acudís",
+        "acusés"
+      ]
+    },
+    {
+      "word": "aguató",
+      "num_guesses": 4,
+      "prior": 0.000012283280797321651,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "págate",
+        "aguató"
+      ]
+    },
+    {
+      "word": "pisgos",
+      "num_guesses": 4,
+      "prior": 0.000013010743866820154,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "pidgin",
+        "pisgos"
+      ]
+    },
+    {
+      "word": "erguió",
+      "num_guesses": 4,
+      "prior": 0.000020661716679944527,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "urgiré",
+        "erguió"
+      ]
+    },
+    {
+      "word": "guares",
+      "num_guesses": 5,
+      "prior": 0.000027841131932678656,
+      "guesses": [
+        "coreas",
+        "alarmá",
+        "repuje",
+        "usares",
+        "guares"
+      ]
+    },
+    {
+      "word": "limare",
+      "num_guesses": 4,
+      "prior": 0.00002562178383283377,
+      "guesses": [
+        "coreas",
+        "litara",
+        "gambas",
+        "limare"
+      ]
+    },
+    {
+      "word": "hartad",
+      "num_guesses": 4,
+      "prior": 0.00002156175613898183,
+      "guesses": [
+        "coreas",
+        "gandul",
+        "mihrab",
+        "hartad"
+      ]
+    },
+    {
+      "word": "aparre",
+      "num_guesses": 4,
+      "prior": 0.000022087468840381273,
+      "guesses": [
+        "coreas",
+        "litara",
+        "pogrom",
+        "aparre"
+      ]
+    },
+    {
+      "word": "tornee",
+      "num_guesses": 4,
+      "prior": 0.00002169240858843418,
+      "guesses": [
+        "coreas",
+        "butrón",
+        "evento",
+        "tornee"
+      ]
+    },
+    {
+      "word": "burila",
+      "num_guesses": 3,
+      "prior": 0.00003308744536605004,
+      "guesses": [
+        "coreas",
+        "batida",
+        "burila"
+      ]
+    },
+    {
+      "word": "birria",
+      "num_guesses": 3,
+      "prior": 0.00003994578870952532,
+      "guesses": [
+        "coreas",
+        "batida",
+        "birria"
+      ]
+    },
+    {
+      "word": "apodar",
+      "num_guesses": 5,
+      "prior": 0.000033146338581305554,
+      "guesses": [
+        "coreas",
+        "tablan",
+        "fragor",
+        "apoyar",
+        "apodar"
+      ]
+    },
+    {
+      "word": "azoada",
+      "num_guesses": 4,
+      "prior": 0.000037719690255962206,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "adopta",
+        "azoada"
+      ]
+    },
+    {
+      "word": "abolsa",
+      "num_guesses": 4,
+      "prior": 0.000017095643377742712,
+      "guesses": [
+        "coreas",
+        "malita",
+        "algosa",
+        "abolsa"
+      ]
+    },
+    {
+      "word": "ligase",
+      "num_guesses": 4,
+      "prior": 0.00003356005552807706,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "jugaba",
+        "ligase"
+      ]
+    },
+    {
+      "word": "aflojé",
+      "num_guesses": 4,
+      "prior": 0.00003368066979920133,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "émbolo",
+        "aflojé"
+      ]
+    },
+    {
+      "word": "rencor",
+      "num_guesses": 4,
+      "prior": 0.000087012091556346,
+      "guesses": [
+        "coreas",
+        "tecleo",
+        "revocó",
+        "rencor"
+      ]
+    },
+    {
+      "word": "celéis",
+      "num_guesses": 3,
+      "prior": 0.00001804604435731299,
+      "guesses": [
+        "coreas",
+        "piulen",
+        "celéis"
+      ]
+    },
+    {
+      "word": "airaré",
+      "num_guesses": 4,
+      "prior": 0.000013849517637935927,
+      "guesses": [
+        "coreas",
+        "batida",
+        "airará",
+        "airaré"
+      ]
+    },
+    {
+      "word": "diezmo",
+      "num_guesses": 4,
+      "prior": 0.00007896142570434948,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "medido",
+        "diezmo"
+      ]
+    },
+    {
+      "word": "ilusos",
+      "num_guesses": 3,
+      "prior": 0.00005806176548448071,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "ilusos"
+      ]
+    },
+    {
+      "word": "trazos",
+      "num_guesses": 4,
+      "prior": 0.00008173725770680711,
+      "guesses": [
+        "coreas",
+        "gratad",
+        "empezó",
+        "trazos"
+      ]
+    },
+    {
+      "word": "iludir",
+      "num_guesses": 3,
+      "prior": 0.00002526904230352179,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "iludir"
+      ]
+    },
+    {
+      "word": "clareó",
+      "num_guesses": 4,
+      "prior": 0.00003146576043246993,
+      "guesses": [
+        "coreas",
+        "briana",
+        "supere",
+        "clareó"
+      ]
+    },
+    {
+      "word": "labias",
+      "num_guesses": 3,
+      "prior": 0.00003125374232335522,
+      "guesses": [
+        "coreas",
+        "malita",
+        "labias"
+      ]
+    },
+    {
+      "word": "asolen",
+      "num_guesses": 4,
+      "prior": 0.000021130891302234637,
+      "guesses": [
+        "coreas",
+        "delato",
+        "escena",
+        "asolen"
+      ]
+    },
+    {
+      "word": "hierro",
+      "num_guesses": 4,
+      "prior": 0.00013683522598656597,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "hiedra",
+        "hierro"
+      ]
+    },
+    {
+      "word": "rígete",
+      "num_guesses": 3,
+      "prior": 0.000015500452466765234,
+      "guesses": [
+        "coreas",
+        "dentre",
+        "rígete"
+      ]
+    },
+    {
+      "word": "selfie",
+      "num_guesses": 3,
+      "prior": 0.000031546481738382223,
+      "guesses": [
+        "coreas",
+        "entile",
+        "selfie"
+      ]
+    },
+    {
+      "word": "humita",
+      "num_guesses": 4,
+      "prior": 0.00003398605426308872,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "ímpetu",
+        "humita"
+      ]
+    },
+    {
+      "word": "vedara",
+      "num_guesses": 4,
+      "prior": 0.000028851080957101488,
+      "guesses": [
+        "coreas",
+        "litara",
+        "pedían",
+        "vedara"
+      ]
+    },
+    {
+      "word": "jumean",
+      "num_guesses": 4,
+      "prior": 0.000014714193839695141,
+      "guesses": [
+        "coreas",
+        "talmud",
+        "humean",
+        "jumean"
+      ]
+    },
+    {
+      "word": "acechó",
+      "num_guesses": 4,
+      "prior": 0.00003476207213523062,
+      "guesses": [
+        "coreas",
+        "ancila",
+        "échate",
+        "acechó"
+      ]
+    },
+    {
+      "word": "guitos",
+      "num_guesses": 4,
+      "prior": 0.00002451516666396772,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "quitos",
+        "guitos"
+      ]
+    },
+    {
+      "word": "chifón",
+      "num_guesses": 4,
+      "prior": 0.000027227212051819333,
+      "guesses": [
+        "coreas",
+        "juilón",
+        "chitón",
+        "chifón"
+      ]
+    },
+    {
+      "word": "valles",
+      "num_guesses": 4,
+      "prior": 0.00011087785449577344,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "bistés",
+        "valles"
+      ]
+    },
+    {
+      "word": "lapide",
+      "num_guesses": 4,
+      "prior": 0.00004152726265064906,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "valide",
+        "lapide"
+      ]
+    },
+    {
+      "word": "remoce",
+      "num_guesses": 3,
+      "prior": 0.00002553760485942493,
+      "guesses": [
+        "coreas",
+        "tecleo",
+        "remoce"
+      ]
+    },
+    {
+      "word": "aspare",
+      "num_guesses": 3,
+      "prior": 0.000014687585720058255,
+      "guesses": [
+        "coreas",
+        "pitara",
+        "aspare"
+      ]
+    },
+    {
+      "word": "lopepe",
+      "num_guesses": 3,
+      "prior": 0.000016061184337492584,
+      "guesses": [
+        "coreas",
+        "temple",
+        "lopepe"
+      ]
+    },
+    {
+      "word": "aparve",
+      "num_guesses": 4,
+      "prior": 0.000013261134025599084,
+      "guesses": [
+        "coreas",
+        "litara",
+        "empren",
+        "aparve"
+      ]
+    },
+    {
+      "word": "acotan",
+      "num_guesses": 4,
+      "prior": 0.000041821028497853354,
+      "guesses": [
+        "coreas",
+        "placad",
+        "acojan",
+        "acotan"
+      ]
+    },
+    {
+      "word": "texana",
+      "num_guesses": 5,
+      "prior": 0.00004560528263321982,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "tengan",
+        "objeto",
+        "texana"
+      ]
+    },
+    {
+      "word": "alejad",
+      "num_guesses": 4,
+      "prior": 0.000031102496831437985,
+      "guesses": [
+        "coreas",
+        "elegid",
+        "llevad",
+        "alejad"
+      ]
+    },
+    {
+      "word": "emojis",
+      "num_guesses": 4,
+      "prior": 0.000022475647773244872,
+      "guesses": [
+        "coreas",
+        "mielen",
+        "etimos",
+        "emojis"
+      ]
+    },
+    {
+      "word": "apodan",
+      "num_guesses": 4,
+      "prior": 0.000038342772032177215,
+      "guesses": [
+        "coreas",
+        "planta",
+        "apoyan",
+        "apodan"
+      ]
+    },
+    {
+      "word": "baboso",
+      "num_guesses": 4,
+      "prior": 0.00004724004398811647,
+      "guesses": [
+        "coreas",
+        "malita",
+        "deponé",
+        "baboso"
+      ]
+    },
+    {
+      "word": "oricio",
+      "num_guesses": 3,
+      "prior": 0.000027202291113674882,
+      "guesses": [
+        "coreas",
+        "bonito",
+        "oricio"
+      ]
+    },
+    {
+      "word": "cabezo",
+      "num_guesses": 3,
+      "prior": 0.000054348148471482594,
+      "guesses": [
+        "coreas",
+        "faltad",
+        "cabezo"
+      ]
+    },
+    {
+      "word": "regida",
+      "num_guesses": 4,
+      "prior": 0.0000743960180288089,
+      "guesses": [
+        "coreas",
+        "litara",
+        "medían",
+        "regida"
+      ]
+    },
+    {
+      "word": "piedro",
+      "num_guesses": 5,
+      "prior": 0.00003154899100358566,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "hiedra",
+        "diedro",
+        "piedro"
+      ]
+    },
+    {
+      "word": "medrés",
+      "num_guesses": 4,
+      "prior": 0.000012056705381084734,
+      "guesses": [
+        "coreas",
+        "iteren",
+        "mezcla",
+        "medrés"
+      ]
+    },
+    {
+      "word": "émulos",
+      "num_guesses": 3,
+      "prior": 0.00006321437091550104,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "émulos"
+      ]
+    },
+    {
+      "word": "camian",
+      "num_guesses": 3,
+      "prior": 0.000020235335333339745,
+      "guesses": [
+        "coreas",
+        "mandil",
+        "camian"
+      ]
+    },
+    {
+      "word": "dorsos",
+      "num_guesses": 4,
+      "prior": 0.00003665503534700814,
+      "guesses": [
+        "coreas",
+        "tándem",
+        "dorios",
+        "dorsos"
+      ]
+    },
+    {
+      "word": "refalé",
+      "num_guesses": 5,
+      "prior": 0.000022480515793578816,
+      "guesses": [
+        "coreas",
+        "litara",
+        "relejó",
+        "regalé",
+        "refalé"
+      ]
+    },
+    {
+      "word": "chotes",
+      "num_guesses": 4,
+      "prior": 0.000022951794686638873,
+      "guesses": [
+        "coreas",
+        "unicel",
+        "tiempo",
+        "chotes"
+      ]
+    },
+    {
+      "word": "tímalo",
+      "num_guesses": 4,
+      "prior": 0.000019858349734154487,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "tálamo",
+        "tímalo"
+      ]
+    },
+    {
+      "word": "ornare",
+      "num_guesses": 3,
+      "prior": 0.00003118440226440964,
+      "guesses": [
+        "coreas",
+        "altano",
+        "ornare"
+      ]
+    },
+    {
+      "word": "aovara",
+      "num_guesses": 5,
+      "prior": 0.000014495704332937047,
+      "guesses": [
+        "coreas",
+        "datará",
+        "maglev",
+        "novara",
+        "aovara"
+      ]
+    },
+    {
+      "word": "churra",
+      "num_guesses": 3,
+      "prior": 0.00003888223600323369,
+      "guesses": [
+        "coreas",
+        "bitara",
+        "churra"
+      ]
+    },
+    {
+      "word": "dorase",
+      "num_guesses": 3,
+      "prior": 0.000024744793778309263,
+      "guesses": [
+        "coreas",
+        "morase",
+        "dorase"
+      ]
+    },
+    {
+      "word": "volees",
+      "num_guesses": 3,
+      "prior": 0.000022003283564351575,
+      "guesses": [
+        "coreas",
+        "polveo",
+        "volees"
+      ]
+    },
+    {
+      "word": "upupas",
+      "num_guesses": 4,
+      "prior": 0.00001532426518866515,
+      "guesses": [
+        "coreas",
+        "malita",
+        "fungid",
+        "upupas"
+      ]
+    },
+    {
+      "word": "sangra",
+      "num_guesses": 3,
+      "prior": 0.00005830972750183235,
+      "guesses": [
+        "coreas",
+        "satura",
+        "sangra"
+      ]
+    },
+    {
+      "word": "cónica",
+      "num_guesses": 3,
+      "prior": 0.00006837211286965523,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "cónica"
+      ]
+    },
+    {
+      "word": "helear",
+      "num_guesses": 4,
+      "prior": 0.000012442857421161344,
+      "guesses": [
+        "coreas",
+        "paltón",
+        "melear",
+        "helear"
+      ]
+    },
+    {
+      "word": "árnica",
+      "num_guesses": 4,
+      "prior": 0.00004524956338246733,
+      "guesses": [
+        "coreas",
+        "amaina",
+        "rúnica",
+        "árnica"
+      ]
+    },
+    {
+      "word": "rilaos",
+      "num_guesses": 5,
+      "prior": 0.000012691911968309301,
+      "guesses": [
+        "coreas",
+        "gratad",
+        "pulmon",
+        "rallos",
+        "rilaos"
+      ]
+    },
+    {
+      "word": "nitrar",
+      "num_guesses": 4,
+      "prior": 0.000024491034122919506,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "tramad",
+        "nitrar"
+      ]
+    },
+    {
+      "word": "rúnico",
+      "num_guesses": 3,
+      "prior": 0.000031109134155309945,
+      "guesses": [
+        "coreas",
+        "bonito",
+        "rúnico"
+      ]
+    },
+    {
+      "word": "normar",
+      "num_guesses": 3,
+      "prior": 0.00005783384223337533,
+      "guesses": [
+        "coreas",
+        "multan",
+        "normar"
+      ]
+    },
+    {
+      "word": "pirara",
+      "num_guesses": 4,
+      "prior": 0.00002512724560255524,
+      "guesses": [
+        "coreas",
+        "batida",
+        "amparo",
+        "pirara"
+      ]
+    },
+    {
+      "word": "gozque",
+      "num_guesses": 3,
+      "prior": 0.000036059805936011045,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "gozque"
+      ]
+    },
+    {
+      "word": "atoren",
+      "num_guesses": 3,
+      "prior": 0.00002154447906859904,
+      "guesses": [
+        "coreas",
+        "altano",
+        "atoren"
+      ]
+    },
+    {
+      "word": "desvaí",
+      "num_guesses": 4,
+      "prior": 0.0000157505889218812,
+      "guesses": [
+        "coreas",
+        "sentid",
+        "fíjate",
+        "desvaí"
+      ]
+    },
+    {
+      "word": "citase",
+      "num_guesses": 3,
+      "prior": 0.00004341529243659277,
+      "guesses": [
+        "coreas",
+        "basate",
+        "citase"
+      ]
+    },
+    {
+      "word": "espetó",
+      "num_guesses": 3,
+      "prior": 0.00006617113154635034,
+      "guesses": [
+        "coreas",
+        "enjutó",
+        "espetó"
+      ]
+    },
+    {
+      "word": "salteó",
+      "num_guesses": 4,
+      "prior": 0.000034020450351123116,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "enseñó",
+        "salteó"
+      ]
+    },
+    {
+      "word": "rodada",
+      "num_guesses": 4,
+      "prior": 0.00005368473133446118,
+      "guesses": [
+        "coreas",
+        "datará",
+        "bodega",
+        "rodada"
+      ]
+    },
+    {
+      "word": "captan",
+      "num_guesses": 4,
+      "prior": 0.000060884945744031986,
+      "guesses": [
+        "coreas",
+        "mandil",
+        "hombre",
+        "captan"
+      ]
+    },
+    {
+      "word": "éticos",
+      "num_guesses": 3,
+      "prior": 0.00008027532984648025,
+      "guesses": [
+        "coreas",
+        "pinchá",
+        "éticos"
+      ]
+    },
+    {
+      "word": "apenás",
+      "num_guesses": 4,
+      "prior": 0.000021618949929846415,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "instes",
+        "apenás"
+      ]
+    },
+    {
+      "word": "dimití",
+      "num_guesses": 3,
+      "prior": 0.00002759480464785644,
+      "guesses": [
+        "coreas",
+        "militó",
+        "dimití"
+      ]
+    },
+    {
+      "word": "tapial",
+      "num_guesses": 4,
+      "prior": 0.000049598905457275586,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "pellet",
+        "tapial"
+      ]
+    },
+    {
+      "word": "yakuto",
+      "num_guesses": 4,
+      "prior": 0.000017615882572924872,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "potage",
+        "yakuto"
+      ]
+    },
+    {
+      "word": "bascad",
+      "num_guesses": 3,
+      "prior": 0.00001476683988581606,
+      "guesses": [
+        "coreas",
+        "bancal",
+        "bascad"
+      ]
+    },
+    {
+      "word": "trisca",
+      "num_guesses": 3,
+      "prior": 0.000036703783482500087,
+      "guesses": [
+        "coreas",
+        "bética",
+        "trisca"
+      ]
+    },
+    {
+      "word": "marres",
+      "num_guesses": 4,
+      "prior": 0.0000254847922648262,
+      "guesses": [
+        "coreas",
+        "partir",
+        "gambón",
+        "marres"
+      ]
+    },
+    {
+      "word": "cambas",
+      "num_guesses": 4,
+      "prior": 0.00004679425786818835,
+      "guesses": [
+        "coreas",
+        "huilte",
+        "nimbad",
+        "cambas"
+      ]
+    },
+    {
+      "word": "antele",
+      "num_guesses": 3,
+      "prior": 0.000017294648774837788,
+      "guesses": [
+        "coreas",
+        "malita",
+        "antele"
+      ]
+    },
+    {
+      "word": "mamosa",
+      "num_guesses": 4,
+      "prior": 0.00002104922964705545,
+      "guesses": [
+        "coreas",
+        "malita",
+        "mañosa",
+        "mamosa"
+      ]
+    },
+    {
+      "word": "íbamos",
+      "num_guesses": 4,
+      "prior": 0.00009004317522425013,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "glorío",
+        "íbamos"
+      ]
+    },
+    {
+      "word": "timbré",
+      "num_guesses": 4,
+      "prior": 0.000023084600822507507,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "trilby",
+        "timbré"
+      ]
+    },
+    {
+      "word": "acucio",
+      "num_guesses": 4,
+      "prior": 0.00002417193914697263,
+      "guesses": [
+        "coreas",
+        "altica",
+        "acogió",
+        "acucio"
+      ]
+    },
+    {
+      "word": "hostia",
+      "num_guesses": 3,
+      "prior": 0.00007136492465028518,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "hostia"
+      ]
+    },
+    {
+      "word": "pardal",
+      "num_guesses": 3,
+      "prior": 0.00004433338286355496,
+      "guesses": [
+        "coreas",
+        "gandul",
+        "pardal"
+      ]
+    },
+    {
+      "word": "valsar",
+      "num_guesses": 4,
+      "prior": 0.000028954371217854488,
+      "guesses": [
+        "coreas",
+        "pautan",
+        "salvad",
+        "valsar"
+      ]
+    },
+    {
+      "word": "cálate",
+      "num_guesses": 4,
+      "prior": 0.000020516489413119665,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "celaje",
+        "cálate"
+      ]
+    },
+    {
+      "word": "nizarí",
+      "num_guesses": 4,
+      "prior": 0.00002013804555881068,
+      "guesses": [
+        "coreas",
+        "migada",
+        "fletán",
+        "nizarí"
+      ]
+    },
+    {
+      "word": "rifare",
+      "num_guesses": 4,
+      "prior": 0.000018252207493498902,
+      "guesses": [
+        "coreas",
+        "litara",
+        "fandom",
+        "rifare"
+      ]
+    },
+    {
+      "word": "acusan",
+      "num_guesses": 3,
+      "prior": 0.00008062628238960809,
+      "guesses": [
+        "coreas",
+        "bancal",
+        "acusan"
+      ]
+    },
+    {
+      "word": "bracea",
+      "num_guesses": 4,
+      "prior": 0.000032781125175616505,
+      "guesses": [
+        "coreas",
+        "eleata",
+        "reacia",
+        "bracea"
+      ]
+    },
+    {
+      "word": "arropé",
+      "num_guesses": 5,
+      "prior": 0.000028724417194799294,
+      "guesses": [
+        "coreas",
+        "ambita",
+        "grujió",
+        "arroyo",
+        "arropé"
+      ]
+    },
+    {
+      "word": "contás",
+      "num_guesses": 3,
+      "prior": 0.000035544756692818536,
+      "guesses": [
+        "coreas",
+        "mástil",
+        "contás"
+      ]
+    },
+    {
+      "word": "meatos",
+      "num_guesses": 3,
+      "prior": 0.00003520834297142732,
+      "guesses": [
+        "coreas",
+        "mentol",
+        "meatos"
+      ]
+    },
+    {
+      "word": "husmeó",
+      "num_guesses": 4,
+      "prior": 0.00003524143888842455,
+      "guesses": [
+        "coreas",
+        "entile",
+        "desusó",
+        "husmeó"
+      ]
+    },
+    {
+      "word": "pavone",
+      "num_guesses": 4,
+      "prior": 0.000032116530366952195,
+      "guesses": [
+        "coreas",
+        "altano",
+        "cumple",
+        "pavone"
+      ]
+    },
+    {
+      "word": "daphne",
+      "num_guesses": 4,
+      "prior": 0.00005151534315498393,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "empleó",
+        "daphne"
+      ]
+    },
+    {
+      "word": "cubras",
+      "num_guesses": 3,
+      "prior": 0.00003433734703872512,
+      "guesses": [
+        "coreas",
+        "diabla",
+        "cubras"
+      ]
+    },
+    {
+      "word": "lanzar",
+      "num_guesses": 3,
+      "prior": 0.00009093782184632938,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "lanzar"
+      ]
+    },
+    {
+      "word": "amaneo",
+      "num_guesses": 3,
+      "prior": 0.00002607278593928681,
+      "guesses": [
+        "coreas",
+        "altano",
+        "amaneo"
+      ]
+    },
+    {
+      "word": "alesna",
+      "num_guesses": 3,
+      "prior": 0.00002880790398841197,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "alesna"
+      ]
+    },
+    {
+      "word": "insten",
+      "num_guesses": 3,
+      "prior": 0.00003332961932998774,
+      "guesses": [
+        "coreas",
+        "entile",
+        "insten"
+      ]
+    },
+    {
+      "word": "matosa",
+      "num_guesses": 3,
+      "prior": 0.000027177278515792678,
+      "guesses": [
+        "coreas",
+        "malita",
+        "matosa"
+      ]
+    },
+    {
+      "word": "rocían",
+      "num_guesses": 3,
+      "prior": 0.00003843603949141257,
+      "guesses": [
+        "coreas",
+        "pircar",
+        "rocían"
+      ]
+    },
+    {
+      "word": "aviven",
+      "num_guesses": 5,
+      "prior": 0.000033589395560255666,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "gambaj",
+        "apiñen",
+        "aviven"
+      ]
+    },
+    {
+      "word": "embonó",
+      "num_guesses": 3,
+      "prior": 0.000018638613013711577,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "embonó"
+      ]
+    },
+    {
+      "word": "rispar",
+      "num_guesses": 4,
+      "prior": 0.000014352154218892941,
+      "guesses": [
+        "coreas",
+        "pautan",
+        "dispar",
+        "rispar"
+      ]
+    },
+    {
+      "word": "rocías",
+      "num_guesses": 3,
+      "prior": 0.000023555159451247034,
+      "guesses": [
+        "coreas",
+        "habían",
+        "rocías"
+      ]
+    },
+    {
+      "word": "caldrá",
+      "num_guesses": 4,
+      "prior": 0.000016314526214148495,
+      "guesses": [
+        "coreas",
+        "bitara",
+        "cuadré",
+        "caldrá"
+      ]
+    },
+    {
+      "word": "emitió",
+      "num_guesses": 3,
+      "prior": 0.00008171513874791244,
+      "guesses": [
+        "coreas",
+        "enlute",
+        "emitió"
+      ]
+    },
+    {
+      "word": "afamar",
+      "num_guesses": 4,
+      "prior": 0.000025667757947304332,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "amatad",
+        "afamar"
+      ]
+    },
+    {
+      "word": "abisal",
+      "num_guesses": 4,
+      "prior": 0.000045579972554358186,
+      "guesses": [
+        "coreas",
+        "suplid",
+        "basial",
+        "abisal"
+      ]
+    },
+    {
+      "word": "resisa",
+      "num_guesses": 4,
+      "prior": 0.00002204553694061389,
+      "guesses": [
+        "coreas",
+        "pitara",
+        "desván",
+        "resisa"
+      ]
+    },
+    {
+      "word": "enmono",
+      "num_guesses": 5,
+      "prior": 0.000013220702986158508,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "menudo",
+        "embono",
+        "enmono"
+      ]
+    },
+    {
+      "word": "mullos",
+      "num_guesses": 4,
+      "prior": 0.00003336479313591509,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "muslos",
+        "mullos"
+      ]
+    },
+    {
+      "word": "puñara",
+      "num_guesses": 5,
+      "prior": 0.000014202619985636356,
+      "guesses": [
+        "coreas",
+        "migada",
+        "tabulá",
+        "apiñan",
+        "puñara"
+      ]
+    },
+    {
+      "word": "ludirá",
+      "num_guesses": 3,
+      "prior": 0.00001764161808455872,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "ludirá"
+      ]
+    },
+    {
+      "word": "panizo",
+      "num_guesses": 4,
+      "prior": 0.00005107228746172357,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "nativo",
+        "panizo"
+      ]
+    },
+    {
+      "word": "cribar",
+      "num_guesses": 4,
+      "prior": 0.00003941239880226908,
+      "guesses": [
+        "coreas",
+        "maulan",
+        "privad",
+        "cribar"
+      ]
+    },
+    {
+      "word": "laboro",
+      "num_guesses": 4,
+      "prior": 0.000034657615360695305,
+      "guesses": [
+        "coreas",
+        "triara",
+        "maluco",
+        "laboro"
+      ]
+    },
+    {
+      "word": "amocha",
+      "num_guesses": 4,
+      "prior": 0.000013179771231265242,
+      "guesses": [
+        "coreas",
+        "altica",
+        "impíos",
+        "amocha"
+      ]
+    },
+    {
+      "word": "parado",
+      "num_guesses": 4,
+      "prior": 0.00009015605963380824,
+      "guesses": [
+        "coreas",
+        "ambita",
+        "pedazo",
+        "parado"
+      ]
+    },
+    {
+      "word": "eligió",
+      "num_guesses": 3,
+      "prior": 0.00008942796190044956,
+      "guesses": [
+        "coreas",
+        "enlute",
+        "eligió"
+      ]
+    },
+    {
+      "word": "gomitó",
+      "num_guesses": 4,
+      "prior": 0.000016651191721768178,
+      "guesses": [
+        "coreas",
+        "mulito",
+        "vomitó",
+        "gomitó"
+      ]
+    },
+    {
+      "word": "laburá",
+      "num_guesses": 5,
+      "prior": 0.000013640635238186155,
+      "guesses": [
+        "coreas",
+        "migada",
+        "aburró",
+        "laburé",
+        "laburá"
+      ]
+    },
+    {
+      "word": "canoli",
+      "num_guesses": 3,
+      "prior": 0.000013676344196180391,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "canoli"
+      ]
+    },
+    {
+      "word": "enfoco",
+      "num_guesses": 4,
+      "prior": 0.000034853505750319906,
+      "guesses": [
+        "coreas",
+        "lenice",
+        "enfocó",
+        "enfoco"
+      ]
+    },
+    {
+      "word": "rábido",
+      "num_guesses": 4,
+      "prior": 0.00002378477760414637,
+      "guesses": [
+        "coreas",
+        "ortigo",
+        "rápido",
+        "rábido"
+      ]
+    },
+    {
+      "word": "guarís",
+      "num_guesses": 3,
+      "prior": 0.00002245124418931894,
+      "guesses": [
+        "coreas",
+        "grátil",
+        "guarís"
+      ]
+    },
+    {
+      "word": "alista",
+      "num_guesses": 3,
+      "prior": 0.00005043498071462083,
+      "guesses": [
+        "coreas",
+        "balita",
+        "alista"
+      ]
+    },
+    {
+      "word": "copaba",
+      "num_guesses": 3,
+      "prior": 0.00003100897388437207,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "copaba"
+      ]
+    },
+    {
+      "word": "valuar",
+      "num_guesses": 4,
+      "prior": 0.00005111732546544531,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "lumbar",
+        "valuar"
+      ]
+    },
+    {
+      "word": "rieren",
+      "num_guesses": 4,
+      "prior": 0.00002754101319645872,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "hervir",
+        "rieren"
+      ]
+    },
+    {
+      "word": "dotare",
+      "num_guesses": 3,
+      "prior": 0.000025624666896238944,
+      "guesses": [
+        "coreas",
+        "tundra",
+        "dotare"
+      ]
+    },
+    {
+      "word": "jornal",
+      "num_guesses": 3,
+      "prior": 0.00008547153472112585,
+      "guesses": [
+        "coreas",
+        "multan",
+        "jornal"
+      ]
+    },
+    {
+      "word": "soplas",
+      "num_guesses": 4,
+      "prior": 0.000031622657726034935,
+      "guesses": [
+        "coreas",
+        "mandil",
+        "fablas",
+        "soplas"
+      ]
+    },
+    {
+      "word": "mocase",
+      "num_guesses": 3,
+      "prior": 0.000025667757947304332,
+      "guesses": [
+        "coreas",
+        "tocase",
+        "mocase"
+      ]
+    },
+    {
+      "word": "mullas",
+      "num_guesses": 3,
+      "prior": 0.00003456582416973438,
+      "guesses": [
+        "coreas",
+        "malita",
+        "mullas"
+      ]
+    },
+    {
+      "word": "taichí",
+      "num_guesses": 4,
+      "prior": 0.000029661613101623896,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "guachi",
+        "taichí"
+      ]
+    },
+    {
+      "word": "vécese",
+      "num_guesses": 3,
+      "prior": 0.00001573034388203634,
+      "guesses": [
+        "coreas",
+        "excedé",
+        "vécese"
+      ]
+    },
+    {
+      "word": "crujid",
+      "num_guesses": 3,
+      "prior": 0.000014352154218892941,
+      "guesses": [
+        "coreas",
+        "dibujó",
+        "crujid"
+      ]
+    },
+    {
+      "word": "hisopó",
+      "num_guesses": 4,
+      "prior": 0.000012967082667514918,
+      "guesses": [
+        "coreas",
+        "pulido",
+        "obispó",
+        "hisopó"
+      ]
+    },
+    {
+      "word": "luneas",
+      "num_guesses": 4,
+      "prior": 0.000017294648774837788,
+      "guesses": [
+        "coreas",
+        "latina",
+        "líneas",
+        "luneas"
+      ]
+    },
+    {
+      "word": "vacara",
+      "num_guesses": 4,
+      "prior": 0.000028248903226259615,
+      "guesses": [
+        "coreas",
+        "amaina",
+        "último",
+        "vacara"
+      ]
+    },
+    {
+      "word": "amparo",
+      "num_guesses": 3,
+      "prior": 0.00012682223076210234,
+      "guesses": [
+        "coreas",
+        "triara",
+        "amparo"
+      ]
+    },
+    {
+      "word": "asusto",
+      "num_guesses": 5,
+      "prior": 0.0000437751663777237,
+      "guesses": [
+        "coreas",
+        "malita",
+        "enjugo",
+        "adusto",
+        "asusto"
+      ]
+    },
+    {
+      "word": "bambuc",
+      "num_guesses": 4,
+      "prior": 0.00001803431089852211,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "backup",
+        "bambuc"
+      ]
+    },
+    {
+      "word": "repisa",
+      "num_guesses": 3,
+      "prior": 0.000058612523246333123,
+      "guesses": [
+        "coreas",
+        "pitara",
+        "repisa"
+      ]
+    },
+    {
+      "word": "rostió",
+      "num_guesses": 3,
+      "prior": 0.000021584706436980225,
+      "guesses": [
+        "coreas",
+        "óptimo",
+        "rostió"
+      ]
+    },
+    {
+      "word": "adunco",
+      "num_guesses": 3,
+      "prior": 0.000027445306838942203,
+      "guesses": [
+        "coreas",
+        "altica",
+        "adunco"
+      ]
+    },
+    {
+      "word": "entice",
+      "num_guesses": 3,
+      "prior": 0.000023815762601093237,
+      "guesses": [
+        "coreas",
+        "lenice",
+        "entice"
+      ]
+    },
+    {
+      "word": "fueran",
+      "num_guesses": 4,
+      "prior": 0.00012824819689766554,
+      "guesses": [
+        "coreas",
+        "rendir",
+        "trampa",
+        "fueran"
+      ]
+    },
+    {
+      "word": "fisgar",
+      "num_guesses": 4,
+      "prior": 0.00003575556435546767,
+      "guesses": [
+        "coreas",
+        "pautan",
+        "biblia",
+        "fisgar"
+      ]
+    },
+    {
+      "word": "yagana",
+      "num_guesses": 5,
+      "prior": 0.00002332042564908609,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "embate",
+        "pagana",
+        "yagana"
+      ]
+    },
+    {
+      "word": "ateces",
+      "num_guesses": 4,
+      "prior": 0.000016004761920208526,
+      "guesses": [
+        "coreas",
+        "laucha",
+        "activo",
+        "ateces"
+      ]
+    },
+    {
+      "word": "racimo",
+      "num_guesses": 4,
+      "prior": 0.00007046474013219834,
+      "guesses": [
+        "coreas",
+        "acanto",
+        "jícaro",
+        "racimo"
+      ]
+    },
+    {
+      "word": "zumaya",
+      "num_guesses": 4,
+      "prior": 0.000046611400980698804,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "fumaba",
+        "zumaya"
+      ]
+    },
+    {
+      "word": "empepo",
+      "num_guesses": 6,
+      "prior": 0.000012283280797321651,
+      "guesses": [
+        "coreas",
+        "entile",
+        "empeño",
+        "empego",
+        "empedo",
+        "empepo"
+      ]
+    },
+    {
+      "word": "copulé",
+      "num_guesses": 4,
+      "prior": 0.000015391283483536774,
+      "guesses": [
+        "coreas",
+        "molino",
+        "copuló",
+        "copulé"
+      ]
+    },
+    {
+      "word": "vended",
+      "num_guesses": 4,
+      "prior": 0.00003153894914876044,
+      "guesses": [
+        "coreas",
+        "enlute",
+        "vienen",
+        "vended"
+      ]
+    },
+    {
+      "word": "albear",
+      "num_guesses": 3,
+      "prior": 0.00004490371114669094,
+      "guesses": [
+        "coreas",
+        "paltón",
+        "albear"
+      ]
+    },
+    {
+      "word": "amansa",
+      "num_guesses": 3,
+      "prior": 0.000045073598977792896,
+      "guesses": [
+        "coreas",
+        "balita",
+        "amansa"
+      ]
+    },
+    {
+      "word": "sofito",
+      "num_guesses": 3,
+      "prior": 0.00002617948121249272,
+      "guesses": [
+        "coreas",
+        "gélido",
+        "sofito"
+      ]
+    },
+    {
+      "word": "jalono",
+      "num_guesses": 4,
+      "prior": 0.000016171707504015922,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "fulano",
+        "jalono"
+      ]
+    },
+    {
+      "word": "mafias",
+      "num_guesses": 3,
+      "prior": 0.000054682461930217624,
+      "guesses": [
+        "coreas",
+        "malita",
+        "mafias"
+      ]
+    },
+    {
+      "word": "horcas",
+      "num_guesses": 3,
+      "prior": 0.00005437547062560332,
+      "guesses": [
+        "coreas",
+        "humita",
+        "horcas"
+      ]
+    },
+    {
+      "word": "barajo",
+      "num_guesses": 3,
+      "prior": 0.000035235797163024004,
+      "guesses": [
+        "coreas",
+        "ambita",
+        "barajo"
+      ]
+    },
+    {
+      "word": "asalté",
+      "num_guesses": 4,
+      "prior": 0.000027062408475187434,
+      "guesses": [
+        "coreas",
+        "balita",
+        "asaltó",
+        "asalté"
+      ]
+    },
+    {
+      "word": "turcas",
+      "num_guesses": 3,
+      "prior": 0.00005761614630557819,
+      "guesses": [
+        "coreas",
+        "zampan",
+        "turcas"
+      ]
+    },
+    {
+      "word": "púdico",
+      "num_guesses": 5,
+      "prior": 0.000041185711259388496,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "médico",
+        "pueblo",
+        "púdico"
+      ]
+    },
+    {
+      "word": "tuerzo",
+      "num_guesses": 3,
+      "prior": 0.00003414661237078132,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "tuerzo"
+      ]
+    },
+    {
+      "word": "lupina",
+      "num_guesses": 4,
+      "prior": 0.00003035419252084252,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "lámina",
+        "lupina"
+      ]
+    },
+    {
+      "word": "afgani",
+      "num_guesses": 3,
+      "prior": 0.00002332042564908609,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "afgani"
+      ]
+    },
+    {
+      "word": "dorias",
+      "num_guesses": 3,
+      "prior": 0.00003316793096585686,
+      "guesses": [
+        "coreas",
+        "mentid",
+        "dorias"
+      ]
+    },
+    {
+      "word": "boncha",
+      "num_guesses": 3,
+      "prior": 0.000020092501076790957,
+      "guesses": [
+        "coreas",
+        "ticaba",
+        "boncha"
+      ]
+    },
+    {
+      "word": "chivos",
+      "num_guesses": 3,
+      "prior": 0.00005595494053203778,
+      "guesses": [
+        "coreas",
+        "unicel",
+        "chivos"
+      ]
+    },
+    {
+      "word": "chaven",
+      "num_guesses": 5,
+      "prior": 0.000021130891302234637,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "capuce",
+        "motivo",
+        "chaven"
+      ]
+    },
+    {
+      "word": "fictos",
+      "num_guesses": 4,
+      "prior": 0.000035841827274850936,
+      "guesses": [
+        "coreas",
+        "pinchá",
+        "motivo",
+        "fictos"
+      ]
+    },
+    {
+      "word": "bloqué",
+      "num_guesses": 3,
+      "prior": 0.000017431382389702906,
+      "guesses": [
+        "coreas",
+        "mutiló",
+        "bloqué"
+      ]
+    },
+    {
+      "word": "escusó",
+      "num_guesses": 3,
+      "prior": 0.00004265826890959306,
+      "guesses": [
+        "coreas",
+        "sóbese",
+        "escusó"
+      ]
+    },
+    {
+      "word": "cundir",
+      "num_guesses": 3,
+      "prior": 0.000050372209491895665,
+      "guesses": [
+        "coreas",
+        "dibujó",
+        "cundir"
+      ]
+    },
+    {
+      "word": "lodosa",
+      "num_guesses": 3,
+      "prior": 0.00004755814274847943,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "lodosa"
+      ]
+    },
+    {
+      "word": "albero",
+      "num_guesses": 3,
+      "prior": 0.000045154303432040726,
+      "guesses": [
+        "coreas",
+        "adulto",
+        "albero"
+      ]
+    },
+    {
+      "word": "huelos",
+      "num_guesses": 4,
+      "prior": 0.000051150410081772674,
+      "guesses": [
+        "coreas",
+        "mielen",
+        "salvad",
+        "huelos"
+      ]
+    },
+    {
+      "word": "pelaré",
+      "num_guesses": 4,
+      "prior": 0.000020403014138300547,
+      "guesses": [
+        "coreas",
+        "litara",
+        "preveé",
+        "pelaré"
+      ]
+    },
+    {
+      "word": "bagayo",
+      "num_guesses": 5,
+      "prior": 0.000026766379164099072,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "empezó",
+        "hatajo",
+        "bagayo"
+      ]
+    },
+    {
+      "word": "rafees",
+      "num_guesses": 3,
+      "prior": 0.00003665228124472883,
+      "guesses": [
+        "coreas",
+        "falten",
+        "rafees"
+      ]
+    },
+    {
+      "word": "palpen",
+      "num_guesses": 5,
+      "prior": 0.00003294415448184966,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "pellet",
+        "simple",
+        "palpen"
+      ]
+    },
+    {
+      "word": "polcos",
+      "num_guesses": 4,
+      "prior": 0.000021017481041486425,
+      "guesses": [
+        "coreas",
+        "listos",
+        "hazaña",
+        "polcos"
+      ]
+    },
+    {
+      "word": "argots",
+      "num_guesses": 3,
+      "prior": 0.000031018377057873375,
+      "guesses": [
+        "coreas",
+        "gratad",
+        "argots"
+      ]
+    },
+    {
+      "word": "reseñé",
+      "num_guesses": 3,
+      "prior": 0.000026912469003973237,
+      "guesses": [
+        "coreas",
+        "pósese",
+        "reseñé"
+      ]
+    },
+    {
+      "word": "arraló",
+      "num_guesses": 5,
+      "prior": 0.000013138324588759733,
+      "guesses": [
+        "coreas",
+        "batida",
+        "agravó",
+        "arranó",
+        "arraló"
+      ]
+    },
+    {
+      "word": "trizar",
+      "num_guesses": 4,
+      "prior": 0.000029487799443842018,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "trabar",
+        "trizar"
+      ]
+    },
+    {
+      "word": "bentos",
+      "num_guesses": 5,
+      "prior": 0.00005626202479816742,
+      "guesses": [
+        "coreas",
+        "mielen",
+        "devoto",
+        "tensos",
+        "bentos"
+      ]
+    },
+    {
+      "word": "hablen",
+      "num_guesses": 4,
+      "prior": 0.00007360275619206406,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "pellet",
+        "hablen"
+      ]
+    },
+    {
+      "word": "empujé",
+      "num_guesses": 4,
+      "prior": 0.00004894141270985116,
+      "guesses": [
+        "coreas",
+        "enlute",
+        "empujó",
+        "empujé"
+      ]
+    },
+    {
+      "word": "tazado",
+      "num_guesses": 5,
+      "prior": 0.000024240713371132055,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "gambuj",
+        "patiño",
+        "tazado"
+      ]
+    },
+    {
+      "word": "ediles",
+      "num_guesses": 3,
+      "prior": 0.00005802563424281751,
+      "guesses": [
+        "coreas",
+        "tilden",
+        "ediles"
+      ]
+    },
+    {
+      "word": "zapito",
+      "num_guesses": 4,
+      "prior": 0.0000198020928816723,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "patito",
+        "zapito"
+      ]
+    },
+    {
+      "word": "osetas",
+      "num_guesses": 3,
+      "prior": 0.000026083534283015278,
+      "guesses": [
+        "coreas",
+        "gentil",
+        "osetas"
+      ]
+    },
+    {
+      "word": "suplen",
+      "num_guesses": 3,
+      "prior": 0.000056955297504455884,
+      "guesses": [
+        "coreas",
+        "entile",
+        "suplen"
+      ]
+    },
+    {
+      "word": "camben",
+      "num_guesses": 5,
+      "prior": 0.0000188598451279811,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "puteen",
+        "cachen",
+        "camben"
+      ]
+    },
+    {
+      "word": "honoré",
+      "num_guesses": 3,
+      "prior": 0.000052283507362345734,
+      "guesses": [
+        "coreas",
+        "rédito",
+        "honoré"
+      ]
+    },
+    {
+      "word": "licité",
+      "num_guesses": 3,
+      "prior": 0.000024741478115081752,
+      "guesses": [
+        "coreas",
+        "iludió",
+        "licité"
+      ]
+    },
+    {
+      "word": "estofa",
+      "num_guesses": 4,
+      "prior": 0.00005092328167243897,
+      "guesses": [
+        "coreas",
+        "delato",
+        "empave",
+        "estofa"
+      ]
+    },
+    {
+      "word": "aceité",
+      "num_guesses": 5,
+      "prior": 0.00002361140642183186,
+      "guesses": [
+        "coreas",
+        "ancila",
+        "aceite",
+        "aceitó",
+        "aceité"
+      ]
+    },
+    {
+      "word": "delala",
+      "num_guesses": 5,
+      "prior": 0.00001677855793764754,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "habita",
+        "devala",
+        "delala"
+      ]
+    },
+    {
+      "word": "moneen",
+      "num_guesses": 3,
+      "prior": 0.00001609836340292158,
+      "guesses": [
+        "coreas",
+        "temple",
+        "moneen"
+      ]
+    },
+    {
+      "word": "sonate",
+      "num_guesses": 3,
+      "prior": 0.00002973192100576438,
+      "guesses": [
+        "coreas",
+        "planta",
+        "sonate"
+      ]
+    },
+    {
+      "word": "tremés",
+      "num_guesses": 3,
+      "prior": 0.000023141213426924626,
+      "guesses": [
+        "coreas",
+        "iteren",
+        "tremés"
+      ]
+    },
+    {
+      "word": "ajares",
+      "num_guesses": 5,
+      "prior": 0.00001907115886754819,
+      "guesses": [
+        "coreas",
+        "alarmá",
+        "esteza",
+        "primer",
+        "ajares"
+      ]
+    },
+    {
+      "word": "dentra",
+      "num_guesses": 4,
+      "prior": 0.0000377160059728038,
+      "guesses": [
+        "coreas",
+        "litara",
+        "neutra",
+        "dentra"
+      ]
+    },
+    {
+      "word": "cariño",
+      "num_guesses": 3,
+      "prior": 0.00011546687306893505,
+      "guesses": [
+        "coreas",
+        "jitado",
+        "cariño"
+      ]
+    },
+    {
+      "word": "fundad",
+      "num_guesses": 4,
+      "prior": 0.00003495814767762541,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "puntad",
+        "fundad"
+      ]
+    },
+    {
+      "word": "berree",
+      "num_guesses": 4,
+      "prior": 0.000020868909884302503,
+      "guesses": [
+        "coreas",
+        "tendel",
+        "tómese",
+        "berree"
+      ]
+    },
+    {
+      "word": "paginó",
+      "num_guesses": 4,
+      "prior": 0.000015301662929208735,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "matiné",
+        "paginó"
+      ]
+    },
+    {
+      "word": "beberá",
+      "num_guesses": 4,
+      "prior": 0.000045872758994794,
+      "guesses": [
+        "coreas",
+        "dentre",
+        "reveré",
+        "beberá"
+      ]
+    },
+    {
+      "word": "gaznar",
+      "num_guesses": 4,
+      "prior": 0.0000177556078745865,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "granar",
+        "gaznar"
+      ]
+    },
+    {
+      "word": "agripa",
+      "num_guesses": 4,
+      "prior": 0.000056544566546723224,
+      "guesses": [
+        "coreas",
+        "batida",
+        "jumper",
+        "agripa"
+      ]
+    },
+    {
+      "word": "tiñese",
+      "num_guesses": 4,
+      "prior": 0.000023792538995129787,
+      "guesses": [
+        "coreas",
+        "enjutó",
+        "mátese",
+        "tiñese"
+      ]
+    },
+    {
+      "word": "purgar",
+      "num_guesses": 3,
+      "prior": 0.00006290924008886046,
+      "guesses": [
+        "coreas",
+        "gandul",
+        "purgar"
+      ]
+    },
+    {
+      "word": "razase",
+      "num_guesses": 4,
+      "prior": 0.000016731249220270848,
+      "guesses": [
+        "coreas",
+        "pitara",
+        "jagüey",
+        "razase"
+      ]
+    },
+    {
+      "word": "musees",
+      "num_guesses": 3,
+      "prior": 0.00002141014410827682,
+      "guesses": [
+        "coreas",
+        "ultimá",
+        "musees"
+      ]
+    },
+    {
+      "word": "huesas",
+      "num_guesses": 6,
+      "prior": 0.00003289866156142479,
+      "guesses": [
+        "coreas",
+        "melvin",
+        "pautad",
+        "juegas",
+        "sueñas",
+        "huesas"
+      ]
+    },
+    {
+      "word": "pésame",
+      "num_guesses": 4,
+      "prior": 0.00006588586896370097,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "sesgue",
+        "pésame"
+      ]
+    },
+    {
+      "word": "chisca",
+      "num_guesses": 3,
+      "prior": 0.0000242190795005358,
+      "guesses": [
+        "coreas",
+        "muisca",
+        "chisca"
+      ]
+    },
+    {
+      "word": "tiraba",
+      "num_guesses": 3,
+      "prior": 0.00007213164371738699,
+      "guesses": [
+        "coreas",
+        "batida",
+        "tiraba"
+      ]
+    },
+    {
+      "word": "moques",
+      "num_guesses": 4,
+      "prior": 0.0000201681811902127,
+      "guesses": [
+        "coreas",
+        "talmud",
+        "mouses",
+        "moques"
+      ]
+    },
+    {
+      "word": "vírica",
+      "num_guesses": 4,
+      "prior": 0.000048429803155050347,
+      "guesses": [
+        "coreas",
+        "mítica",
+        "lírica",
+        "vírica"
+      ]
+    },
+    {
+      "word": "efigio",
+      "num_guesses": 4,
+      "prior": 0.000015889469514863213,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "exiguo",
+        "efigio"
+      ]
+    },
+    {
+      "word": "previó",
+      "num_guesses": 4,
+      "prior": 0.00006072374832829113,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "premiá",
+        "previó"
+      ]
+    },
+    {
+      "word": "examen",
+      "num_guesses": 4,
+      "prior": 0.0001344843297459175,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "pegate",
+        "examen"
+      ]
+    },
+    {
+      "word": "simios",
+      "num_guesses": 4,
+      "prior": 0.00005279400538503413,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "cisnes",
+        "simios"
+      ]
+    },
+    {
+      "word": "abasta",
+      "num_guesses": 3,
+      "prior": 0.00003477822749701448,
+      "guesses": [
+        "coreas",
+        "balita",
+        "abasta"
+      ]
+    },
+    {
+      "word": "ateten",
+      "num_guesses": 4,
+      "prior": 0.000013676344196180391,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "enjute",
+        "ateten"
+      ]
+    },
+    {
+      "word": "tobera",
+      "num_guesses": 3,
+      "prior": 0.000045574500492185986,
+      "guesses": [
+        "coreas",
+        "templo",
+        "tobera"
+      ]
+    },
+    {
+      "word": "táctil",
+      "num_guesses": 3,
+      "prior": 0.000057970057608375524,
+      "guesses": [
+        "coreas",
+        "iludió",
+        "táctil"
+      ]
+    },
+    {
+      "word": "pachas",
+      "num_guesses": 5,
+      "prior": 0.000037655006427924265,
+      "guesses": [
+        "coreas",
+        "halita",
+        "gambón",
+        "sufrid",
+        "pachas"
+      ]
+    },
+    {
+      "word": "rínico",
+      "num_guesses": 4,
+      "prior": 0.000015043753694142365,
+      "guesses": [
+        "coreas",
+        "bonito",
+        "rúnico",
+        "rínico"
+      ]
+    },
+    {
+      "word": "bájate",
+      "num_guesses": 5,
+      "prior": 0.000039316128463438815,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "imputó",
+        "fíjate",
+        "bájate"
+      ]
+    },
+    {
+      "word": "urente",
+      "num_guesses": 4,
+      "prior": 0.00004024534597405285,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "frente",
+        "urente"
+      ]
+    },
+    {
+      "word": "latera",
+      "num_guesses": 3,
+      "prior": 0.00003842464428054712,
+      "guesses": [
+        "coreas",
+        "lapita",
+        "latera"
+      ]
+    },
+    {
+      "word": "desloo",
+      "num_guesses": 3,
+      "prior": 0.000014495704332937047,
+      "guesses": [
+        "coreas",
+        "peloto",
+        "desloo"
+      ]
+    },
+    {
+      "word": "ejerce",
+      "num_guesses": 3,
+      "prior": 0.00010926783783185483,
+      "guesses": [
+        "coreas",
+        "tecleó",
+        "ejerce"
+      ]
+    },
+    {
+      "word": "tapete",
+      "num_guesses": 4,
+      "prior": 0.00006871643635051918,
+      "guesses": [
+        "coreas",
+        "malita",
+        "pañete",
+        "tapete"
+      ]
+    },
+    {
+      "word": "caraza",
+      "num_guesses": 4,
+      "prior": 0.0000437477185613273,
+      "guesses": [
+        "coreas",
+        "batida",
+        "pajazo",
+        "caraza"
+      ]
+    },
+    {
+      "word": "dañada",
+      "num_guesses": 3,
+      "prior": 0.0000641403687787266,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "dañada"
+      ]
+    },
+    {
+      "word": "evacuo",
+      "num_guesses": 4,
+      "prior": 0.000025627548662719408,
+      "guesses": [
+        "coreas",
+        "entipo",
+        "echado",
+        "evacuo"
+      ]
+    },
+    {
+      "word": "aljibe",
+      "num_guesses": 3,
+      "prior": 0.00005865069733049696,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "aljibe"
+      ]
+    },
+    {
+      "word": "diseña",
+      "num_guesses": 3,
+      "prior": 0.00006321553826612446,
+      "guesses": [
+        "coreas",
+        "patina",
+        "diseña"
+      ]
+    },
+    {
+      "word": "revivo",
+      "num_guesses": 4,
+      "prior": 0.000036518401356998755,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "regido",
+        "revivo"
+      ]
+    },
+    {
+      "word": "hartan",
+      "num_guesses": 4,
+      "prior": 0.00004315831423261604,
+      "guesses": [
+        "coreas",
+        "gandul",
+        "puntín",
+        "hartan"
+      ]
+    },
+    {
+      "word": "gaguea",
+      "num_guesses": 5,
+      "prior": 0.000016171707504015922,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "tapujo",
+        "gambas",
+        "gaguea"
+      ]
+    },
+    {
+      "word": "queseo",
+      "num_guesses": 4,
+      "prior": 0.000018565965873968713,
+      "guesses": [
+        "coreas",
+        "peloto",
+        "siendo",
+        "queseo"
+      ]
+    },
+    {
+      "word": "ataree",
+      "num_guesses": 4,
+      "prior": 0.000020661716679944527,
+      "guesses": [
+        "coreas",
+        "litara",
+        "aparte",
+        "ataree"
+      ]
+    },
+    {
+      "word": "gloses",
+      "num_guesses": 4,
+      "prior": 0.000025912149882798408,
+      "guesses": [
+        "coreas",
+        "mielen",
+        "olotes",
+        "gloses"
+      ]
+    },
+    {
+      "word": "pandeo",
+      "num_guesses": 3,
+      "prior": 0.000041606358807204415,
+      "guesses": [
+        "coreas",
+        "altano",
+        "pandeo"
+      ]
+    },
+    {
+      "word": "orinad",
+      "num_guesses": 4,
+      "prior": 0.000014660783377670121,
+      "guesses": [
+        "coreas",
+        "tablan",
+        "opinar",
+        "orinad"
+      ]
+    },
+    {
+      "word": "tutías",
+      "num_guesses": 4,
+      "prior": 0.000016602408094853945,
+      "guesses": [
+        "coreas",
+        "malita",
+        "juntas",
+        "tutías"
+      ]
+    },
+    {
+      "word": "épicos",
+      "num_guesses": 3,
+      "prior": 0.00006435741749912529,
+      "guesses": [
+        "coreas",
+        "pinchá",
+        "épicos"
+      ]
+    },
+    {
+      "word": "recure",
+      "num_guesses": 5,
+      "prior": 0.00002175934452375054,
+      "guesses": [
+        "coreas",
+        "tecleó",
+        "recibe",
+        "recude",
+        "recure"
+      ]
+    },
+    {
+      "word": "rimaba",
+      "num_guesses": 4,
+      "prior": 0.000036047302022814895,
+      "guesses": [
+        "coreas",
+        "migada",
+        "altura",
+        "rimaba"
+      ]
+    },
+    {
+      "word": "jálate",
+      "num_guesses": 5,
+      "prior": 0.000018790578347294614,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "embute",
+        "lávate",
+        "jálate"
+      ]
+    },
+    {
+      "word": "intrón",
+      "num_guesses": 4,
+      "prior": 0.00003081846993304246,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "gritón",
+        "intrón"
+      ]
+    },
+    {
+      "word": "moldés",
+      "num_guesses": 3,
+      "prior": 0.00001534673488226361,
+      "guesses": [
+        "coreas",
+        "mentid",
+        "moldés"
+      ]
+    },
+    {
+      "word": "alacre",
+      "num_guesses": 3,
+      "prior": 0.00002488895432627032,
+      "guesses": [
+        "coreas",
+        "eleata",
+        "alacre"
+      ]
+    },
+    {
+      "word": "blocao",
+      "num_guesses": 3,
+      "prior": 0.00003533361129793947,
+      "guesses": [
+        "coreas",
+        "placad",
+        "blocao"
+      ]
+    },
+    {
+      "word": "exulto",
+      "num_guesses": 4,
+      "prior": 0.000020544469727719003,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "vuelto",
+        "exulto"
+      ]
+    },
+    {
+      "word": "privar",
+      "num_guesses": 4,
+      "prior": 0.00007880679447056901,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "amprar",
+        "privar"
+      ]
+    },
+    {
+      "word": "ascoso",
+      "num_guesses": 3,
+      "prior": 0.00002179801331605162,
+      "guesses": [
+        "coreas",
+        "tacica",
+        "ascoso"
+      ]
+    },
+    {
+      "word": "afijos",
+      "num_guesses": 4,
+      "prior": 0.00004815261755391145,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "blusas",
+        "afijos"
+      ]
+    },
+    {
+      "word": "planté",
+      "num_guesses": 4,
+      "prior": 0.00004797564100845456,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "platón",
+        "planté"
+      ]
+    },
+    {
+      "word": "despeé",
+      "num_guesses": 3,
+      "prior": 0.00001596670022420835,
+      "guesses": [
+        "coreas",
+        "entile",
+        "despeé"
+      ]
+    },
+    {
+      "word": "paflón",
+      "num_guesses": 4,
+      "prior": 0.00002255303509330338,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "tablón",
+        "paflón"
+      ]
+    },
+    {
+      "word": "fracas",
+      "num_guesses": 4,
+      "prior": 0.00002967123985102056,
+      "guesses": [
+        "coreas",
+        "rancia",
+        "frente",
+        "fracas"
+      ]
+    },
+    {
+      "word": "advera",
+      "num_guesses": 4,
+      "prior": 0.000033704779107936255,
+      "guesses": [
+        "coreas",
+        "lapita",
+        "fragua",
+        "advera"
+      ]
+    },
+    {
+      "word": "cayote",
+      "num_guesses": 4,
+      "prior": 0.000026919572419269724,
+      "guesses": [
+        "coreas",
+        "tablen",
+        "empezó",
+        "cayote"
+      ]
+    },
+    {
+      "word": "numerá",
+      "num_guesses": 5,
+      "prior": 0.000013815572333420458,
+      "guesses": [
+        "coreas",
+        "dentre",
+        "furgón",
+        "numeré",
+        "numerá"
+      ]
+    },
+    {
+      "word": "citate",
+      "num_guesses": 3,
+      "prior": 0.00002104922964705545,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "citate"
+      ]
+    },
+    {
+      "word": "gatico",
+      "num_guesses": 4,
+      "prior": 0.00003496480225340441,
+      "guesses": [
+        "coreas",
+        "altica",
+        "empezó",
+        "gatico"
+      ]
+    },
+    {
+      "word": "emboté",
+      "num_guesses": 4,
+      "prior": 0.000013949404320081233,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "empezó",
+        "emboté"
+      ]
+    },
+    {
+      "word": "tecate",
+      "num_guesses": 4,
+      "prior": 0.000052840157272296513,
+      "guesses": [
+        "coreas",
+        "ancila",
+        "empleó",
+        "tecate"
+      ]
+    },
+    {
+      "word": "soplar",
+      "num_guesses": 3,
+      "prior": 0.00006595910922582261,
+      "guesses": [
+        "coreas",
+        "baldar",
+        "soplar"
+      ]
+    },
+    {
+      "word": "alíate",
+      "num_guesses": 4,
+      "prior": 0.000022783648201993066,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "mírate",
+        "alíate"
+      ]
+    },
+    {
+      "word": "pasear",
+      "num_guesses": 3,
+      "prior": 0.00008404049701143816,
+      "guesses": [
+        "coreas",
+        "suplid",
+        "pasear"
+      ]
+    },
+    {
+      "word": "saetee",
+      "num_guesses": 5,
+      "prior": 0.000012390574657674187,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "peguen",
+        "bastee",
+        "saetee"
+      ]
+    },
+    {
+      "word": "adapta",
+      "num_guesses": 4,
+      "prior": 0.00007644353454457635,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "pujaba",
+        "adapta"
+      ]
+    },
+    {
+      "word": "acusón",
+      "num_guesses": 3,
+      "prior": 0.000023655227454092466,
+      "guesses": [
+        "coreas",
+        "musida",
+        "acusón"
+      ]
+    },
+    {
+      "word": "oxeada",
+      "num_guesses": 4,
+      "prior": 0.000013053826743367903,
+      "guesses": [
+        "coreas",
+        "altano",
+        "ojeada",
+        "oxeada"
+      ]
+    },
+    {
+      "word": "saldad",
+      "num_guesses": 4,
+      "prior": 0.0000181158120742109,
+      "guesses": [
+        "coreas",
+        "suplid",
+        "vegeta",
+        "saldad"
+      ]
+    },
+    {
+      "word": "coitar",
+      "num_guesses": 3,
+      "prior": 0.000022695336829385942,
+      "guesses": [
+        "coreas",
+        "implan",
+        "coitar"
+      ]
+    },
+    {
+      "word": "aballó",
+      "num_guesses": 4,
+      "prior": 0.000015209892212544595,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "jubiló",
+        "aballó"
+      ]
+    },
+    {
+      "word": "taitas",
+      "num_guesses": 4,
+      "prior": 0.00003892726131489059,
+      "guesses": [
+        "coreas",
+        "malita",
+        "gentes",
+        "taitas"
+      ]
+    },
+    {
+      "word": "alelar",
+      "num_guesses": 4,
+      "prior": 0.000022180668223082734,
+      "guesses": [
+        "coreas",
+        "rendir",
+        "agalla",
+        "alelar"
+      ]
+    },
+    {
+      "word": "seerán",
+      "num_guesses": 3,
+      "prior": 0.000015908918128199428,
+      "guesses": [
+        "coreas",
+        "pesien",
+        "seerán"
+      ]
+    },
+    {
+      "word": "manjúa",
+      "num_guesses": 4,
+      "prior": 0.000023850429068996225,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "ganaba",
+        "manjúa"
+      ]
+    },
+    {
+      "word": "mamara",
+      "num_guesses": 4,
+      "prior": 0.00003364292087187749,
+      "guesses": [
+        "coreas",
+        "migada",
+        "tumban",
+        "mamara"
+      ]
+    },
+    {
+      "word": "canino",
+      "num_guesses": 4,
+      "prior": 0.00005881684957360787,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "camino",
+        "canino"
+      ]
+    },
+    {
+      "word": "accedé",
+      "num_guesses": 5,
+      "prior": 0.000012786286022056821,
+      "guesses": [
+        "coreas",
+        "untada",
+        "accede",
+        "accedí",
+        "accedé"
+      ]
+    },
+    {
+      "word": "capara",
+      "num_guesses": 4,
+      "prior": 0.00003287528846560175,
+      "guesses": [
+        "coreas",
+        "bitara",
+        "vapula",
+        "capara"
+      ]
+    },
+    {
+      "word": "ración",
+      "num_guesses": 3,
+      "prior": 0.00009118841480355975,
+      "guesses": [
+        "coreas",
+        "amaina",
+        "ración"
+      ]
+    },
+    {
+      "word": "retiré",
+      "num_guesses": 4,
+      "prior": 0.000059977332503492884,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "petaré",
+        "retiré"
+      ]
+    },
+    {
+      "word": "golfeo",
+      "num_guesses": 4,
+      "prior": 0.000013982073072207056,
+      "guesses": [
+        "coreas",
+        "minuto",
+        "golpeo",
+        "golfeo"
+      ]
+    },
+    {
+      "word": "calmás",
+      "num_guesses": 3,
+      "prior": 0.00001583054526015821,
+      "guesses": [
+        "coreas",
+        "ultimá",
+        "calmás"
+      ]
+    },
+    {
+      "word": "rorado",
+      "num_guesses": 4,
+      "prior": 0.000013711684058189362,
+      "guesses": [
+        "coreas",
+        "difama",
+        "régulo",
+        "rorado"
+      ]
+    },
+    {
+      "word": "bogado",
+      "num_guesses": 5,
+      "prior": 0.000047298045281330674,
+      "guesses": [
+        "coreas",
+        "timada",
+        "pulgón",
+        "gozado",
+        "bogado"
+      ]
+    },
+    {
+      "word": "maginé",
+      "num_guesses": 4,
+      "prior": 0.00001511585166428514,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "matiné",
+        "maginé"
+      ]
+    },
+    {
+      "word": "cébese",
+      "num_guesses": 3,
+      "prior": 0.00001641844879984161,
+      "guesses": [
+        "coreas",
+        "estáis",
+        "cébese"
+      ]
+    },
+    {
+      "word": "kadina",
+      "num_guesses": 4,
+      "prior": 0.00001476683988581606,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "badina",
+        "kadina"
+      ]
+    },
+    {
+      "word": "radicó",
+      "num_guesses": 3,
+      "prior": 0.00006657246631148823,
+      "guesses": [
+        "coreas",
+        "amaina",
+        "radicó"
+      ]
+    },
+    {
+      "word": "caires",
+      "num_guesses": 3,
+      "prior": 0.000025039342038351972,
+      "guesses": [
+        "coreas",
+        "faisán",
+        "caires"
+      ]
+    },
+    {
+      "word": "pastes",
+      "num_guesses": 4,
+      "prior": 0.0000308459741891817,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "puntín",
+        "pastes"
+      ]
+    },
+    {
+      "word": "chimes",
+      "num_guesses": 4,
+      "prior": 0.000030402348541777116,
+      "guesses": [
+        "coreas",
+        "piulen",
+        "motivo",
+        "chimes"
+      ]
+    },
+    {
+      "word": "dirima",
+      "num_guesses": 4,
+      "prior": 0.00004229678688986409,
+      "guesses": [
+        "coreas",
+        "batida",
+        "dirija",
+        "dirima"
+      ]
+    },
+    {
+      "word": "cotona",
+      "num_guesses": 4,
+      "prior": 0.0000375386948245953,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "cotufa",
+        "cotona"
+      ]
+    },
+    {
+      "word": "zampar",
+      "num_guesses": 4,
+      "prior": 0.000030839107319803496,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "raptar",
+        "zampar"
+      ]
+    },
+    {
+      "word": "flejas",
+      "num_guesses": 5,
+      "prior": 0.000015928272100449595,
+      "guesses": [
+        "coreas",
+        "melvin",
+        "tallad",
+        "glebas",
+        "flejas"
+      ]
+    },
+    {
+      "word": "sagrés",
+      "num_guesses": 3,
+      "prior": 0.00001618983726649464,
+      "guesses": [
+        "coreas",
+        "grátil",
+        "sagrés"
+      ]
+    },
+    {
+      "word": "ornear",
+      "num_guesses": 3,
+      "prior": 0.000018544999173509712,
+      "guesses": [
+        "coreas",
+        "ondear",
+        "ornear"
+      ]
+    },
+    {
+      "word": "chutes",
+      "num_guesses": 4,
+      "prior": 0.00002865839600107961,
+      "guesses": [
+        "coreas",
+        "piulen",
+        "efecto",
+        "chutes"
+      ]
+    },
+    {
+      "word": "frenas",
+      "num_guesses": 4,
+      "prior": 0.000026255761512655795,
+      "guesses": [
+        "coreas",
+        "gentil",
+        "arenas",
+        "frenas"
+      ]
+    },
+    {
+      "word": "gomité",
+      "num_guesses": 4,
+      "prior": 0.00001938918681640939,
+      "guesses": [
+        "coreas",
+        "mulito",
+        "vomitó",
+        "gomité"
+      ]
+    },
+    {
+      "word": "pedían",
+      "num_guesses": 3,
+      "prior": 0.00008429060545178048,
+      "guesses": [
+        "coreas",
+        "elegid",
+        "pedían"
+      ]
+    },
+    {
+      "word": "garché",
+      "num_guesses": 4,
+      "prior": 0.000012877953374500712,
+      "guesses": [
+        "coreas",
+        "mítica",
+        "parché",
+        "garché"
+      ]
+    },
+    {
+      "word": "gustos",
+      "num_guesses": 4,
+      "prior": 0.00009357832408928906,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "juegan",
+        "gustos"
+      ]
+    },
+    {
+      "word": "bíbaro",
+      "num_guesses": 4,
+      "prior": 0.000013379555807529968,
+      "guesses": [
+        "coreas",
+        "triara",
+        "pájaro",
+        "bíbaro"
+      ]
+    },
+    {
+      "word": "oigáis",
+      "num_guesses": 3,
+      "prior": 0.00003837147818999638,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "oigáis"
+      ]
+    },
+    {
+      "word": "esposa",
+      "num_guesses": 3,
+      "prior": 0.00013929730791191312,
+      "guesses": [
+        "coreas",
+        "delato",
+        "esposa"
+      ]
+    },
+    {
+      "word": "dipolo",
+      "num_guesses": 4,
+      "prior": 0.00004465302497199399,
+      "guesses": [
+        "coreas",
+        "mutiló",
+        "ovillo",
+        "dipolo"
+      ]
+    },
+    {
+      "word": "árgoma",
+      "num_guesses": 4,
+      "prior": 0.000026710458362881874,
+      "guesses": [
+        "coreas",
+        "triara",
+        "fronda",
+        "árgoma"
+      ]
+    },
+    {
+      "word": "estufa",
+      "num_guesses": 4,
+      "prior": 0.00007347310236875851,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "sentía",
+        "estufa"
+      ]
+    },
+    {
+      "word": "hitita",
+      "num_guesses": 5,
+      "prior": 0.00004568572835329178,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "ímpetu",
+        "hijita",
+        "hitita"
+      ]
+    },
+    {
+      "word": "moreno",
+      "num_guesses": 2,
+      "prior": 0.00012723300756667586,
+      "guesses": [
+        "coreas",
+        "moreno"
+      ]
+    },
+    {
+      "word": "aforme",
+      "num_guesses": 4,
+      "prior": 0.000018523937223433985,
+      "guesses": [
+        "coreas",
+        "altano",
+        "hombre",
+        "aforme"
+      ]
+    },
+    {
+      "word": "limita",
+      "num_guesses": 4,
+      "prior": 0.00010878493176522137,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "mutaba",
+        "limita"
+      ]
+    },
+    {
+      "word": "avizor",
+      "num_guesses": 4,
+      "prior": 0.00004989696507535205,
+      "guesses": [
+        "coreas",
+        "triara",
+        "afirmo",
+        "avizor"
+      ]
+    },
+    {
+      "word": "pilleo",
+      "num_guesses": 3,
+      "prior": 0.00002421546633022718,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "pilleo"
+      ]
+    },
+    {
+      "word": "terree",
+      "num_guesses": 3,
+      "prior": 0.000030069287245291903,
+      "guesses": [
+        "coreas",
+        "tendel",
+        "terree"
+      ]
+    },
+    {
+      "word": "agredo",
+      "num_guesses": 4,
+      "prior": 0.000029563024399861974,
+      "guesses": [
+        "coreas",
+        "zapata",
+        "agrego",
+        "agredo"
+      ]
+    },
+    {
+      "word": "demodé",
+      "num_guesses": 4,
+      "prior": 0.00003271304220861221,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "empezó",
+        "demodé"
+      ]
+    },
+    {
+      "word": "platas",
+      "num_guesses": 3,
+      "prior": 0.00005193580624162514,
+      "guesses": [
+        "coreas",
+        "malita",
+        "platas"
+      ]
+    },
+    {
+      "word": "muñese",
+      "num_guesses": 5,
+      "prior": 0.000013781290093515518,
+      "guesses": [
+        "coreas",
+        "enjutó",
+        "huyese",
+        "guíese",
+        "muñese"
+      ]
+    },
+    {
+      "word": "llamás",
+      "num_guesses": 3,
+      "prior": 0.00003664539236514335,
+      "guesses": [
+        "coreas",
+        "ampliá",
+        "llamás"
+      ]
+    },
+    {
+      "word": "reinás",
+      "num_guesses": 4,
+      "prior": 0.000012114953046910265,
+      "guesses": [
+        "coreas",
+        "iteren",
+        "reinés",
+        "reinás"
+      ]
+    },
+    {
+      "word": "gallen",
+      "num_guesses": 5,
+      "prior": 0.0000395869955623611,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "pellet",
+        "hámago",
+        "gallen"
+      ]
+    },
+    {
+      "word": "cáseos",
+      "num_guesses": 3,
+      "prior": 0.000015850284155985887,
+      "guesses": [
+        "coreas",
+        "báculo",
+        "cáseos"
+      ]
+    },
+    {
+      "word": "némico",
+      "num_guesses": 5,
+      "prior": 0.0000159475324615757,
+      "guesses": [
+        "coreas",
+        "tundió",
+        "invoco",
+        "blinco",
+        "némico"
+      ]
+    },
+    {
+      "word": "sudáis",
+      "num_guesses": 4,
+      "prior": 0.0000201681811902127,
+      "guesses": [
+        "coreas",
+        "limpiá",
+        "sindhi",
+        "sudáis"
+      ]
+    },
+    {
+      "word": "ambita",
+      "num_guesses": 4,
+      "prior": 0.000016536458013088894,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "agüita",
+        "ambita"
+      ]
+    },
+    {
+      "word": "muelos",
+      "num_guesses": 3,
+      "prior": 0.000024095003556920958,
+      "guesses": [
+        "coreas",
+        "mielen",
+        "muelos"
+      ]
+    },
+    {
+      "word": "uparía",
+      "num_guesses": 4,
+      "prior": 0.000013916426635852138,
+      "guesses": [
+        "coreas",
+        "migada",
+        "aburrí",
+        "uparía"
+      ]
+    },
+    {
+      "word": "maquee",
+      "num_guesses": 5,
+      "prior": 0.00001217210158905742,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "imputó",
+        "maguey",
+        "maquee"
+      ]
+    },
+    {
+      "word": "guasca",
+      "num_guesses": 3,
+      "prior": 0.000046730583135267173,
+      "guesses": [
+        "coreas",
+        "musida",
+        "guasca"
+      ]
+    },
+    {
+      "word": "surdir",
+      "num_guesses": 3,
+      "prior": 0.000016977629377168736,
+      "guesses": [
+        "coreas",
+        "digitó",
+        "surdir"
+      ]
+    },
+    {
+      "word": "acoten",
+      "num_guesses": 3,
+      "prior": 0.000028488741583243007,
+      "guesses": [
+        "coreas",
+        "entipo",
+        "acoten"
+      ]
+    },
+    {
+      "word": "aúllos",
+      "num_guesses": 4,
+      "prior": 0.000024552898315000804,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "pulsos",
+        "aúllos"
+      ]
+    },
+    {
+      "word": "domeño",
+      "num_guesses": 4,
+      "prior": 0.00003327708534121681,
+      "guesses": [
+        "coreas",
+        "temple",
+        "código",
+        "domeño"
+      ]
+    },
+    {
+      "word": "sambos",
+      "num_guesses": 5,
+      "prior": 0.000030591982887969594,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "malbec",
+        "zumaya",
+        "sambos"
+      ]
+    },
+    {
+      "word": "dejéis",
+      "num_guesses": 3,
+      "prior": 0.00005571261090443446,
+      "guesses": [
+        "coreas",
+        "tilden",
+        "dejéis"
+      ]
+    },
+    {
+      "word": "farina",
+      "num_guesses": 5,
+      "prior": 0.000048166017284514226,
+      "guesses": [
+        "coreas",
+        "batida",
+        "hampón",
+        "fijeza",
+        "farina"
+      ]
+    },
+    {
+      "word": "rugado",
+      "num_guesses": 4,
+      "prior": 0.00002530854436632138,
+      "guesses": [
+        "coreas",
+        "triara",
+        "delegá",
+        "rugado"
+      ]
+    },
+    {
+      "word": "perdás",
+      "num_guesses": 4,
+      "prior": 0.000021874537813384533,
+      "guesses": [
+        "coreas",
+        "medité",
+        "verdes",
+        "perdás"
+      ]
+    },
+    {
+      "word": "dolado",
+      "num_guesses": 5,
+      "prior": 0.00003790028896637898,
+      "guesses": [
+        "coreas",
+        "timada",
+        "pulgón",
+        "verdad",
+        "dolado"
+      ]
+    },
+    {
+      "word": "bolina",
+      "num_guesses": 4,
+      "prior": 0.00004543304576426283,
+      "guesses": [
+        "coreas",
+        "timada",
+        "albino",
+        "bolina"
+      ]
+    },
+    {
+      "word": "evocar",
+      "num_guesses": 2,
+      "prior": 0.00007866713924842484,
+      "guesses": [
+        "coreas",
+        "evocar"
+      ]
+    },
+    {
+      "word": "cóndor",
+      "num_guesses": 3,
+      "prior": 0.00007490203754540148,
+      "guesses": [
+        "coreas",
+        "urdiré",
+        "cóndor"
+      ]
+    },
+    {
+      "word": "cabrón",
+      "num_guesses": 3,
+      "prior": 0.00006979930102701694,
+      "guesses": [
+        "coreas",
+        "bitara",
+        "cabrón"
+      ]
+    },
+    {
+      "word": "excluí",
+      "num_guesses": 4,
+      "prior": 0.00003155149947074018,
+      "guesses": [
+        "coreas",
+        "lenice",
+        "flechó",
+        "excluí"
+      ]
+    },
+    {
+      "word": "mitzvá",
+      "num_guesses": 3,
+      "prior": 0.00003162141484359876,
+      "guesses": [
+        "coreas",
+        "militó",
+        "mitzvá"
+      ]
+    },
+    {
+      "word": "arcina",
+      "num_guesses": 3,
+      "prior": 0.000021976709472815438,
+      "guesses": [
+        "coreas",
+        "amaina",
+        "arcina"
+      ]
+    },
+    {
+      "word": "fundar",
+      "num_guesses": 4,
+      "prior": 0.00010707877323284592,
+      "guesses": [
+        "coreas",
+        "plugin",
+        "juntar",
+        "fundar"
+      ]
+    },
+    {
+      "word": "afanas",
+      "num_guesses": 5,
+      "prior": 0.0000321013308663573,
+      "guesses": [
+        "coreas",
+        "malita",
+        "pugnad",
+        "estaba",
+        "afanas"
+      ]
+    },
+    {
+      "word": "empeñá",
+      "num_guesses": 5,
+      "prior": 0.000018586838288559345,
+      "guesses": [
+        "coreas",
+        "temple",
+        "cizañó",
+        "empeñé",
+        "empeñá"
+      ]
+    },
+    {
+      "word": "asqueo",
+      "num_guesses": 4,
+      "prior": 0.000020940491861588096,
+      "guesses": [
+        "coreas",
+        "delato",
+        "saqueo",
+        "asqueo"
+      ]
+    },
+    {
+      "word": "tañada",
+      "num_guesses": 5,
+      "prior": 0.000027204560429724955,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "gambuj",
+        "tapiza",
+        "tañada"
+      ]
+    },
+    {
+      "word": "desojé",
+      "num_guesses": 5,
+      "prior": 0.000012832447100474307,
+      "guesses": [
+        "coreas",
+        "peloto",
+        "váyase",
+        "desojó",
+        "desojé"
+      ]
+    },
+    {
+      "word": "arrimo",
+      "num_guesses": 3,
+      "prior": 0.000058091151527165466,
+      "guesses": [
+        "coreas",
+        "ambita",
+        "arrimo"
+      ]
+    },
+    {
+      "word": "pedare",
+      "num_guesses": 5,
+      "prior": 0.000016602408094853945,
+      "guesses": [
+        "coreas",
+        "litara",
+        "renegá",
+        "vedija",
+        "pedare"
+      ]
+    },
+    {
+      "word": "surten",
+      "num_guesses": 3,
+      "prior": 0.00005910661342879438,
+      "guesses": [
+        "coreas",
+        "venteó",
+        "surten"
+      ]
+    },
+    {
+      "word": "lutria",
+      "num_guesses": 4,
+      "prior": 0.000023623389885839296,
+      "guesses": [
+        "coreas",
+        "migada",
+        "ultrón",
+        "lutria"
+      ]
+    },
+    {
+      "word": "enduir",
+      "num_guesses": 4,
+      "prior": 0.00001668339929661587,
+      "guesses": [
+        "coreas",
+        "dieten",
+        "rendir",
+        "enduir"
+      ]
+    },
+    {
+      "word": "bucees",
+      "num_guesses": 3,
+      "prior": 0.000016536458013088894,
+      "guesses": [
+        "coreas",
+        "bíceps",
+        "bucees"
+      ]
+    },
+    {
+      "word": "ajunté",
+      "num_guesses": 4,
+      "prior": 0.00001626155585459387,
+      "guesses": [
+        "coreas",
+        "dalina",
+        "ampayó",
+        "ajunté"
+      ]
+    },
+    {
+      "word": "desató",
+      "num_guesses": 4,
+      "prior": 0.00007279677046934507,
+      "guesses": [
+        "coreas",
+        "dilata",
+        "empezó",
+        "desató"
+      ]
+    },
+    {
+      "word": "mearás",
+      "num_guesses": 3,
+      "prior": 0.000015209892212544595,
+      "guesses": [
+        "coreas",
+        "alarmá",
+        "mearás"
+      ]
+    },
+    {
+      "word": "ulanos",
+      "num_guesses": 4,
+      "prior": 0.00003266406222176959,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "aullad",
+        "ulanos"
+      ]
+    },
+    {
+      "word": "tronad",
+      "num_guesses": 4,
+      "prior": 0.000019984594945307294,
+      "guesses": [
+        "coreas",
+        "tablan",
+        "tronar",
+        "tronad"
+      ]
+    },
+    {
+      "word": "aneáis",
+      "num_guesses": 4,
+      "prior": 0.000017280735121441913,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "instes",
+        "aneáis"
+      ]
+    },
+    {
+      "word": "redros",
+      "num_guesses": 4,
+      "prior": 0.00001914573067949764,
+      "guesses": [
+        "coreas",
+        "iteren",
+        "perder",
+        "redros"
+      ]
+    },
+    {
+      "word": "retaré",
+      "num_guesses": 4,
+      "prior": 0.00002126627792223496,
+      "guesses": [
+        "coreas",
+        "litara",
+        "revené",
+        "retaré"
+      ]
+    },
+    {
+      "word": "bávara",
+      "num_guesses": 4,
+      "prior": 0.000042744612551135936,
+      "guesses": [
+        "coreas",
+        "migada",
+        "tabulá",
+        "bávara"
+      ]
+    },
+    {
+      "word": "azuayo",
+      "num_guesses": 3,
+      "prior": 0.00003488964435242996,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "azuayo"
+      ]
+    },
+    {
+      "word": "pasión",
+      "num_guesses": 3,
+      "prior": 0.00012633843173694552,
+      "guesses": [
+        "coreas",
+        "balita",
+        "pasión"
+      ]
+    },
+    {
+      "word": "nadado",
+      "num_guesses": 3,
+      "prior": 0.000038501301118550656,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "nadado"
+      ]
+    },
+    {
+      "word": "roelas",
+      "num_guesses": 2,
+      "prior": 0.000046034948189150704,
+      "guesses": [
+        "coreas",
+        "roelas"
+      ]
+    },
+    {
+      "word": "arados",
+      "num_guesses": 3,
+      "prior": 0.00006713957155646941,
+      "guesses": [
+        "coreas",
+        "gratad",
+        "arados"
+      ]
+    },
+    {
+      "word": "sisada",
+      "num_guesses": 5,
+      "prior": 0.00002364728412541896,
+      "guesses": [
+        "coreas",
+        "balita",
+        "panamá",
+        "visada",
+        "sisada"
+      ]
+    },
+    {
+      "word": "teñido",
+      "num_guesses": 4,
+      "prior": 0.00007198126692506755,
+      "guesses": [
+        "coreas",
+        "plinto",
+        "mejora",
+        "teñido"
+      ]
+    },
+    {
+      "word": "reates",
+      "num_guesses": 4,
+      "prior": 0.000033354758609848136,
+      "guesses": [
+        "coreas",
+        "alarmá",
+        "gritad",
+        "reates"
+      ]
+    },
+    {
+      "word": "alogue",
+      "num_guesses": 4,
+      "prior": 0.000018057747379058405,
+      "guesses": [
+        "coreas",
+        "altano",
+        "aloque",
+        "alogue"
+      ]
+    },
+    {
+      "word": "rojito",
+      "num_guesses": 3,
+      "prior": 0.000025262943089124437,
+      "guesses": [
+        "coreas",
+        "rédito",
+        "rojito"
+      ]
+    },
+    {
+      "word": "pómulo",
+      "num_guesses": 3,
+      "prior": 0.00004849199482816485,
+      "guesses": [
+        "coreas",
+        "mutiló",
+        "pómulo"
+      ]
+    },
+    {
+      "word": "horrar",
+      "num_guesses": 5,
+      "prior": 0.000028870784327465988,
+      "guesses": [
+        "coreas",
+        "multan",
+        "borraj",
+        "forrar",
+        "horrar"
+      ]
+    },
+    {
+      "word": "iludan",
+      "num_guesses": 3,
+      "prior": 0.000016061184337492584,
+      "guesses": [
+        "coreas",
+        "alamud",
+        "iludan"
+      ]
+    },
+    {
+      "word": "debuta",
+      "num_guesses": 3,
+      "prior": 0.00004656893531211203,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "debuta"
+      ]
+    },
+    {
+      "word": "fresas",
+      "num_guesses": 4,
+      "prior": 0.00006444231346041822,
+      "guesses": [
+        "coreas",
+        "gentil",
+        "puñada",
+        "fresas"
+      ]
+    },
+    {
+      "word": "macoca",
+      "num_guesses": 4,
+      "prior": 0.000020593071585058137,
+      "guesses": [
+        "coreas",
+        "altica",
+        "bajoca",
+        "macoca"
+      ]
+    },
+    {
+      "word": "presea",
+      "num_guesses": 4,
+      "prior": 0.0000510742965853398,
+      "guesses": [
+        "coreas",
+        "pitara",
+        "prensa",
+        "presea"
+      ]
+    },
+    {
+      "word": "acallo",
+      "num_guesses": 4,
+      "prior": 0.000025730439421574403,
+      "guesses": [
+        "coreas",
+        "altica",
+        "diablo",
+        "acallo"
+      ]
+    },
+    {
+      "word": "acolas",
+      "num_guesses": 3,
+      "prior": 0.000017431382389702906,
+      "guesses": [
+        "coreas",
+        "placad",
+        "acolas"
+      ]
+    },
+    {
+      "word": "neuras",
+      "num_guesses": 4,
+      "prior": 0.00002943170094086579,
+      "guesses": [
+        "coreas",
+        "gentil",
+        "reúnas",
+        "neuras"
+      ]
+    },
+    {
+      "word": "raídas",
+      "num_guesses": 4,
+      "prior": 0.000043803895809421976,
+      "guesses": [
+        "coreas",
+        "abatid",
+        "pueden",
+        "raídas"
+      ]
+    },
+    {
+      "word": "aproad",
+      "num_guesses": 3,
+      "prior": 0.000013676344196180391,
+      "guesses": [
+        "coreas",
+        "pueden",
+        "aproad"
+      ]
+    },
+    {
+      "word": "sincho",
+      "num_guesses": 3,
+      "prior": 0.000022097902226632955,
+      "guesses": [
+        "coreas",
+        "sufoco",
+        "sincho"
+      ]
+    },
+    {
+      "word": "pastás",
+      "num_guesses": 3,
+      "prior": 0.00001885001204383921,
+      "guesses": [
+        "coreas",
+        "ampliá",
+        "pastás"
+      ]
+    },
+    {
+      "word": "catare",
+      "num_guesses": 4,
+      "prior": 0.00002703454732295169,
+      "guesses": [
+        "coreas",
+        "briana",
+        "talvez",
+        "catare"
+      ]
+    },
+    {
+      "word": "oidios",
+      "num_guesses": 4,
+      "prior": 0.000023274020671580043,
+      "guesses": [
+        "coreas",
+        "mutilá",
+        "indios",
+        "oidios"
+      ]
+    },
+    {
+      "word": "jetaba",
+      "num_guesses": 4,
+      "prior": 0.00001938918681640939,
+      "guesses": [
+        "coreas",
+        "alinda",
+        "tapujo",
+        "jetaba"
+      ]
+    },
+    {
+      "word": "custra",
+      "num_guesses": 3,
+      "prior": 0.000014660783377670121,
+      "guesses": [
+        "coreas",
+        "támara",
+        "custra"
+      ]
+    },
+    {
+      "word": "jimado",
+      "num_guesses": 5,
+      "prior": 0.000014660783377670121,
+      "guesses": [
+        "coreas",
+        "aldina",
+        "mitiga",
+        "difamo",
+        "jimado"
+      ]
+    },
+    {
+      "word": "amibos",
+      "num_guesses": 4,
+      "prior": 0.00003546734365783281,
+      "guesses": [
+        "coreas",
+        "taiman",
+        "amigos",
+        "amibos"
+      ]
+    },
+    {
+      "word": "lonjas",
+      "num_guesses": 3,
+      "prior": 0.00005403604629820528,
+      "guesses": [
+        "coreas",
+        "mandil",
+        "lonjas"
+      ]
+    },
+    {
+      "word": "rengar",
+      "num_guesses": 4,
+      "prior": 0.00002210831594578439,
+      "guesses": [
+        "coreas",
+        "rendir",
+        "rentar",
+        "rengar"
+      ]
+    },
+    {
+      "word": "rezada",
+      "num_guesses": 5,
+      "prior": 0.000047142569707247723,
+      "guesses": [
+        "coreas",
+        "litara",
+        "negaba",
+        "redada",
+        "rezada"
+      ]
+    },
+    {
+      "word": "aortas",
+      "num_guesses": 4,
+      "prior": 0.000029672843095199763,
+      "guesses": [
+        "coreas",
+        "mentid",
+        "tiempo",
+        "aortas"
+      ]
+    },
+    {
+      "word": "ocupás",
+      "num_guesses": 3,
+      "prior": 0.000021161966276694034,
+      "guesses": [
+        "coreas",
+        "pinchá",
+        "ocupás"
+      ]
+    },
+    {
+      "word": "razias",
+      "num_guesses": 4,
+      "prior": 0.00003473308736203294,
+      "guesses": [
+        "coreas",
+        "abatid",
+        "rufián",
+        "razias"
+      ]
+    },
+    {
+      "word": "abonad",
+      "num_guesses": 4,
+      "prior": 0.00002184187285254453,
+      "guesses": [
+        "coreas",
+        "planta",
+        "abonan",
+        "abonad"
+      ]
+    },
+    {
+      "word": "nivelo",
+      "num_guesses": 3,
+      "prior": 0.00002569347433214962,
+      "guesses": [
+        "coreas",
+        "entile",
+        "nivelo"
+      ]
+    },
+    {
+      "word": "bodrio",
+      "num_guesses": 3,
+      "prior": 0.000040425168673217754,
+      "guesses": [
+        "coreas",
+        "rédito",
+        "bodrio"
+      ]
+    },
+    {
+      "word": "rebajó",
+      "num_guesses": 4,
+      "prior": 0.0000528564077458515,
+      "guesses": [
+        "coreas",
+        "litara",
+        "denegó",
+        "rebajó"
+      ]
+    },
+    {
+      "word": "mazaré",
+      "num_guesses": 5,
+      "prior": 0.000012114953046910265,
+      "guesses": [
+        "coreas",
+        "migada",
+        "inmuté",
+        "majaré",
+        "mazaré"
+      ]
+    },
+    {
+      "word": "cuezan",
+      "num_guesses": 3,
+      "prior": 0.00003782955529283032,
+      "guesses": [
+        "coreas",
+        "desliz",
+        "cuezan"
+      ]
+    },
+    {
+      "word": "empeña",
+      "num_guesses": 4,
+      "prior": 0.00007308029380582988,
+      "guesses": [
+        "coreas",
+        "malita",
+        "pagado",
+        "empeña"
+      ]
+    },
+    {
+      "word": "humeas",
+      "num_guesses": 4,
+      "prior": 0.000019874306644855785,
+      "guesses": [
+        "coreas",
+        "latina",
+        "desván",
+        "humeas"
+      ]
+    },
+    {
+      "word": "cintes",
+      "num_guesses": 4,
+      "prior": 0.0000240839321767401,
+      "guesses": [
+        "coreas",
+        "piulen",
+        "cisnes",
+        "cintes"
+      ]
+    },
+    {
+      "word": "parecí",
+      "num_guesses": 3,
+      "prior": 0.000037906912049354984,
+      "guesses": [
+        "coreas",
+        "bípede",
+        "parecí"
+      ]
+    }
+  ]
+}

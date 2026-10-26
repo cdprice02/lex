@@ -1,0 +1,5082 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:28:43.373243Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "lasierten",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 9,
+    "dictionary_length": 57430,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "b486a2bebb1ccf499a03f706f39bf4b9e2045c2e2effd1aabd9ece1e0a85fb7e",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.0559999999999725,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.07600000000000005,
+        "3": 0.7920000000000006,
+        "4": 0.1320000000000001
+      }
+    },
+    "prior": {
+      "mean": 2.998829419851279,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.09961197384330232,
+        "3": 0.8019466324621127,
+        "4": 0.09844139369458423
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "kaustikum",
+      "num_guesses": 3,
+      "prior": 0.000011417897449400011,
+      "guesses": [
+        "lasierten",
+        "kampfhund",
+        "kaustikum"
+      ]
+    },
+    {
+      "word": "umwerbend",
+      "num_guesses": 3,
+      "prior": 0.000010441798814267977,
+      "guesses": [
+        "lasierten",
+        "herumgebe",
+        "umwerbend"
+      ]
+    },
+    {
+      "word": "faltigere",
+      "num_guesses": 3,
+      "prior": 0.000010095969929351143,
+      "guesses": [
+        "lasierten",
+        "adalhelms",
+        "faltigere"
+      ]
+    },
+    {
+      "word": "lochblech",
+      "num_guesses": 2,
+      "prior": 0.000015236778235012313,
+      "guesses": [
+        "lasierten",
+        "lochblech"
+      ]
+    },
+    {
+      "word": "obstruent",
+      "num_guesses": 2,
+      "prior": 0.000014324372099436884,
+      "guesses": [
+        "lasierten",
+        "obstruent"
+      ]
+    },
+    {
+      "word": "hutkoffer",
+      "num_guesses": 3,
+      "prior": 0.000010623906614110738,
+      "guesses": [
+        "lasierten",
+        "hutträger",
+        "hutkoffer"
+      ]
+    },
+    {
+      "word": "holzriese",
+      "num_guesses": 3,
+      "prior": 0.000013217033241548097,
+      "guesses": [
+        "lasierten",
+        "bergmehle",
+        "holzriese"
+      ]
+    },
+    {
+      "word": "geheiligt",
+      "num_guesses": 3,
+      "prior": 0.000036313744067482205,
+      "guesses": [
+        "lasierten",
+        "bettzeuge",
+        "geheiligt"
+      ]
+    },
+    {
+      "word": "unförmige",
+      "num_guesses": 3,
+      "prior": 0.000024234921905516142,
+      "guesses": [
+        "lasierten",
+        "durchgebe",
+        "unförmige"
+      ]
+    },
+    {
+      "word": "geschilpt",
+      "num_guesses": 3,
+      "prior": 7.767332223002847e-6,
+      "guesses": [
+        "lasierten",
+        "vestibüls",
+        "geschilpt"
+      ]
+    },
+    {
+      "word": "putativer",
+      "num_guesses": 3,
+      "prior": 0.00001282496801317327,
+      "guesses": [
+        "lasierten",
+        "drahtwurm",
+        "putativer"
+      ]
+    },
+    {
+      "word": "karwochen",
+      "num_guesses": 3,
+      "prior": 0.000013447843843213972,
+      "guesses": [
+        "lasierten",
+        "burghofes",
+        "karwochen"
+      ]
+    },
+    {
+      "word": "tragbarem",
+      "num_guesses": 3,
+      "prior": 0.000016455751735900393,
+      "guesses": [
+        "lasierten",
+        "zugführer",
+        "tragbarem"
+      ]
+    },
+    {
+      "word": "zaungasts",
+      "num_guesses": 3,
+      "prior": 8.517683509346322e-6,
+      "guesses": [
+        "lasierten",
+        "dachsbaus",
+        "zaungasts"
+      ]
+    },
+    {
+      "word": "anzufixen",
+      "num_guesses": 3,
+      "prior": 8.610965065337704e-6,
+      "guesses": [
+        "lasierten",
+        "konfidenz",
+        "anzufixen"
+      ]
+    },
+    {
+      "word": "dralleren",
+      "num_guesses": 4,
+      "prior": 6.89272782784764e-6,
+      "guesses": [
+        "lasierten",
+        "vogelflug",
+        "pralleren",
+        "dralleren"
+      ]
+    },
+    {
+      "word": "bekränzet",
+      "num_guesses": 3,
+      "prior": 0.000014602619198073783,
+      "guesses": [
+        "lasierten",
+        "durchbrät",
+        "bekränzet"
+      ]
+    },
+    {
+      "word": "anfließen",
+      "num_guesses": 4,
+      "prior": 8.917036007935313e-6,
+      "guesses": [
+        "lasierten",
+        "hellgelbe",
+        "aufliefen",
+        "anfließen"
+      ]
+    },
+    {
+      "word": "schwampel",
+      "num_guesses": 3,
+      "prior": 7.4370777514326684e-6,
+      "guesses": [
+        "lasierten",
+        "flashmobs",
+        "schwampel"
+      ]
+    },
+    {
+      "word": "beorderte",
+      "num_guesses": 3,
+      "prior": 0.00002661581282820289,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "beorderte"
+      ]
+    },
+    {
+      "word": "herefords",
+      "num_guesses": 3,
+      "prior": 0.000014552982034357335,
+      "guesses": [
+        "lasierten",
+        "verbreche",
+        "herefords"
+      ]
+    },
+    {
+      "word": "entglaset",
+      "num_guesses": 3,
+      "prior": 7.739557975540754e-6,
+      "guesses": [
+        "lasierten",
+        "metallnes",
+        "entglaset"
+      ]
+    },
+    {
+      "word": "ferkelnde",
+      "num_guesses": 3,
+      "prior": 7.153822244040935e-6,
+      "guesses": [
+        "lasierten",
+        "werkzeuge",
+        "ferkelnde"
+      ]
+    },
+    {
+      "word": "hinreisse",
+      "num_guesses": 3,
+      "prior": 9.452133536645671e-6,
+      "guesses": [
+        "lasierten",
+        "bewohners",
+        "hinreisse"
+      ]
+    },
+    {
+      "word": "grundzugs",
+      "num_guesses": 3,
+      "prior": 0.00001470421243551055,
+      "guesses": [
+        "lasierten",
+        "forschung",
+        "grundzugs"
+      ]
+    },
+    {
+      "word": "sedativer",
+      "num_guesses": 3,
+      "prior": 0.00001397473864547527,
+      "guesses": [
+        "lasierten",
+        "servierst",
+        "sedativer"
+      ]
+    },
+    {
+      "word": "amoktaten",
+      "num_guesses": 3,
+      "prior": 0.000012288461197481365,
+      "guesses": [
+        "lasierten",
+        "tabakduft",
+        "amoktaten"
+      ]
+    },
+    {
+      "word": "wimpergen",
+      "num_guesses": 3,
+      "prior": 0.00001818910086328778,
+      "guesses": [
+        "lasierten",
+        "piekfeine",
+        "wimpergen"
+      ]
+    },
+    {
+      "word": "abstellen",
+      "num_guesses": 3,
+      "prior": 0.0000380772418767671,
+      "guesses": [
+        "lasierten",
+        "anstellen",
+        "abstellen"
+      ]
+    },
+    {
+      "word": "faltbarem",
+      "num_guesses": 3,
+      "prior": 9.542601067609118e-6,
+      "guesses": [
+        "lasierten",
+        "haltbarer",
+        "faltbarem"
+      ]
+    },
+    {
+      "word": "bissigste",
+      "num_guesses": 3,
+      "prior": 0.000012867964560486286,
+      "guesses": [
+        "lasierten",
+        "messbuchs",
+        "bissigste"
+      ]
+    },
+    {
+      "word": "zerberste",
+      "num_guesses": 3,
+      "prior": 0.000011635808823042667,
+      "guesses": [
+        "lasierten",
+        "vorderste",
+        "zerberste"
+      ]
+    },
+    {
+      "word": "bevölkert",
+      "num_guesses": 3,
+      "prior": 0.0000382115159974547,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "bevölkert"
+      ]
+    },
+    {
+      "word": "strauches",
+      "num_guesses": 3,
+      "prior": 0.000024531821753977103,
+      "guesses": [
+        "lasierten",
+        "chorraums",
+        "strauches"
+      ]
+    },
+    {
+      "word": "klöppelst",
+      "num_guesses": 3,
+      "prior": 6.038690726888203e-6,
+      "guesses": [
+        "lasierten",
+        "schuftest",
+        "klöppelst"
+      ]
+    },
+    {
+      "word": "perplexen",
+      "num_guesses": 4,
+      "prior": 0.00001604115390443916,
+      "guesses": [
+        "lasierten",
+        "vogelflug",
+        "überleben",
+        "perplexen"
+      ]
+    },
+    {
+      "word": "beweinest",
+      "num_guesses": 3,
+      "prior": 0.000011404083844793197,
+      "guesses": [
+        "lasierten",
+        "eingiesse",
+        "beweinest"
+      ]
+    },
+    {
+      "word": "hutberges",
+      "num_guesses": 3,
+      "prior": 0.000012389495619345196,
+      "guesses": [
+        "lasierten",
+        "schmerzet",
+        "hutberges"
+      ]
+    },
+    {
+      "word": "nebentons",
+      "num_guesses": 3,
+      "prior": 0.000013044857152155452,
+      "guesses": [
+        "lasierten",
+        "geächtete",
+        "nebentons"
+      ]
+    },
+    {
+      "word": "irrealere",
+      "num_guesses": 3,
+      "prior": 7.634153355294938e-6,
+      "guesses": [
+        "lasierten",
+        "alarmiere",
+        "irrealere"
+      ]
+    },
+    {
+      "word": "schlurrte",
+      "num_guesses": 3,
+      "prior": 0.00001274101463886066,
+      "guesses": [
+        "lasierten",
+        "schlurfte",
+        "schlurrte"
+      ]
+    },
+    {
+      "word": "jeckische",
+      "num_guesses": 4,
+      "prior": 8.426772775832397e-6,
+      "guesses": [
+        "lasierten",
+        "messbuchs",
+        "wegwische",
+        "jeckische"
+      ]
+    },
+    {
+      "word": "invertier",
+      "num_guesses": 3,
+      "prior": 8.03342122392246e-6,
+      "guesses": [
+        "lasierten",
+        "vergreift",
+        "invertier"
+      ]
+    },
+    {
+      "word": "zuschösse",
+      "num_guesses": 3,
+      "prior": 9.562690931963186e-6,
+      "guesses": [
+        "lasierten",
+        "zuschüsse",
+        "zuschösse"
+      ]
+    },
+    {
+      "word": "wandelbar",
+      "num_guesses": 3,
+      "prior": 0.000030349088383916492,
+      "guesses": [
+        "lasierten",
+        "jahrelang",
+        "wandelbar"
+      ]
+    },
+    {
+      "word": "wildfangs",
+      "num_guesses": 3,
+      "prior": 0.000014101379575865235,
+      "guesses": [
+        "lasierten",
+        "kingstons",
+        "wildfangs"
+      ]
+    },
+    {
+      "word": "lachsfarm",
+      "num_guesses": 3,
+      "prior": 9.200126197273534e-6,
+      "guesses": [
+        "lasierten",
+        "labradors",
+        "lachsfarm"
+      ]
+    },
+    {
+      "word": "erdnußöls",
+      "num_guesses": 3,
+      "prior": 9.751168547994525e-6,
+      "guesses": [
+        "lasierten",
+        "grundlers",
+        "erdnußöls"
+      ]
+    },
+    {
+      "word": "versäumte",
+      "num_guesses": 4,
+      "prior": 0.00003908209399580586,
+      "guesses": [
+        "lasierten",
+        "gehortete",
+        "verspürte",
+        "versäumte"
+      ]
+    },
+    {
+      "word": "abgehalst",
+      "num_guesses": 3,
+      "prior": 7.228878771201579e-6,
+      "guesses": [
+        "lasierten",
+        "flussaale",
+        "abgehalst"
+      ]
+    },
+    {
+      "word": "verwebend",
+      "num_guesses": 3,
+      "prior": 0.000013575329602326899,
+      "guesses": [
+        "lasierten",
+        "hebezeuge",
+        "verwebend"
+      ]
+    },
+    {
+      "word": "uraufführ",
+      "num_guesses": 3,
+      "prior": 6.548789628303568e-6,
+      "guesses": [
+        "lasierten",
+        "brauchbar",
+        "uraufführ"
+      ]
+    },
+    {
+      "word": "mydriasen",
+      "num_guesses": 3,
+      "prior": 5.9875079978507615e-6,
+      "guesses": [
+        "lasierten",
+        "sparsamen",
+        "mydriasen"
+      ]
+    },
+    {
+      "word": "geläppert",
+      "num_guesses": 4,
+      "prior": 6.396325186640366e-6,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "gelämmert",
+        "geläppert"
+      ]
+    },
+    {
+      "word": "zujubelnd",
+      "num_guesses": 3,
+      "prior": 0.000010467007313048003,
+      "guesses": [
+        "lasierten",
+        "goldzähne",
+        "zujubelnd"
+      ]
+    },
+    {
+      "word": "zurannten",
+      "num_guesses": 3,
+      "prior": 0.00001426103355664611,
+      "guesses": [
+        "lasierten",
+        "mohnanbau",
+        "zurannten"
+      ]
+    },
+    {
+      "word": "durchgibt",
+      "num_guesses": 3,
+      "prior": 0.000013140500840268189,
+      "guesses": [
+        "lasierten",
+        "copyright",
+        "durchgibt"
+      ]
+    },
+    {
+      "word": "gezerrter",
+      "num_guesses": 3,
+      "prior": 0.000011005252286856349,
+      "guesses": [
+        "lasierten",
+        "umgewühlt",
+        "gezerrter"
+      ]
+    },
+    {
+      "word": "holztoren",
+      "num_guesses": 3,
+      "prior": 0.000011289030620533534,
+      "guesses": [
+        "lasierten",
+        "fortholen",
+        "holztoren"
+      ]
+    },
+    {
+      "word": "geseiften",
+      "num_guesses": 3,
+      "prior": 0.000011081731868500378,
+      "guesses": [
+        "lasierten",
+        "zukünftig",
+        "geseiften"
+      ]
+    },
+    {
+      "word": "sexszenen",
+      "num_guesses": 3,
+      "prior": 0.000016574483983933376,
+      "guesses": [
+        "lasierten",
+        "umgewehte",
+        "sexszenen"
+      ]
+    },
+    {
+      "word": "baguettes",
+      "num_guesses": 3,
+      "prior": 0.00001933600212793586,
+      "guesses": [
+        "lasierten",
+        "sattestem",
+        "baguettes"
+      ]
+    },
+    {
+      "word": "realismen",
+      "num_guesses": 3,
+      "prior": 0.000016602761464937492,
+      "guesses": [
+        "lasierten",
+        "verstärkt",
+        "realismen"
+      ]
+    },
+    {
+      "word": "umgedacht",
+      "num_guesses": 4,
+      "prior": 0.000018422963073338276,
+      "guesses": [
+        "lasierten",
+        "parkbaume",
+        "zugemacht",
+        "umgedacht"
+      ]
+    },
+    {
+      "word": "nabatäers",
+      "num_guesses": 3,
+      "prior": 8.555485365692918e-6,
+      "guesses": [
+        "lasierten",
+        "bandwurms",
+        "nabatäers"
+      ]
+    },
+    {
+      "word": "intimerer",
+      "num_guesses": 2,
+      "prior": 0.000016810193949924934,
+      "guesses": [
+        "lasierten",
+        "intimerer"
+      ]
+    },
+    {
+      "word": "patiencen",
+      "num_guesses": 2,
+      "prior": 0.000016862659164360684,
+      "guesses": [
+        "lasierten",
+        "patiencen"
+      ]
+    },
+    {
+      "word": "gestützte",
+      "num_guesses": 3,
+      "prior": 0.000037460909635953947,
+      "guesses": [
+        "lasierten",
+        "gepfuscht",
+        "gestützte"
+      ]
+    },
+    {
+      "word": "wegkönnte",
+      "num_guesses": 4,
+      "prior": 9.055549667753232e-6,
+      "guesses": [
+        "lasierten",
+        "zugehende",
+        "wegkonnte",
+        "wegkönnte"
+      ]
+    },
+    {
+      "word": "circusses",
+      "num_guesses": 4,
+      "prior": 6.8476734569537125e-6,
+      "guesses": [
+        "lasierten",
+        "grossraum",
+        "zirkusses",
+        "circusses"
+      ]
+    },
+    {
+      "word": "hinderten",
+      "num_guesses": 3,
+      "prior": 0.00003426362681402513,
+      "guesses": [
+        "lasierten",
+        "wegnehmen",
+        "hinderten"
+      ]
+    },
+    {
+      "word": "ökonomien",
+      "num_guesses": 3,
+      "prior": 0.00002628373637786063,
+      "guesses": [
+        "lasierten",
+        "mindfucks",
+        "ökonomien"
+      ]
+    },
+    {
+      "word": "patentamt",
+      "num_guesses": 3,
+      "prior": 0.000035256410028061786,
+      "guesses": [
+        "lasierten",
+        "aufhabend",
+        "patentamt"
+      ]
+    },
+    {
+      "word": "aneuploid",
+      "num_guesses": 3,
+      "prior": 0.00001297360143034172,
+      "guesses": [
+        "lasierten",
+        "bodenlang",
+        "aneuploid"
+      ]
+    },
+    {
+      "word": "wegbricht",
+      "num_guesses": 3,
+      "prior": 0.000015887136067389634,
+      "guesses": [
+        "lasierten",
+        "fortwährt",
+        "wegbricht"
+      ]
+    },
+    {
+      "word": "überwögen",
+      "num_guesses": 4,
+      "prior": 0.000015787687413143663,
+      "guesses": [
+        "lasierten",
+        "bedrohung",
+        "zuhörerin",
+        "überwögen"
+      ]
+    },
+    {
+      "word": "rheinarms",
+      "num_guesses": 3,
+      "prior": 0.00001074206468315164,
+      "guesses": [
+        "lasierten",
+        "rheingaus",
+        "rheinarms"
+      ]
+    },
+    {
+      "word": "geschützt",
+      "num_guesses": 2,
+      "prior": 0.00005941846497632453,
+      "guesses": [
+        "lasierten",
+        "geschützt"
+      ]
+    },
+    {
+      "word": "ummünzend",
+      "num_guesses": 3,
+      "prior": 7.73021065601502e-6,
+      "guesses": [
+        "lasierten",
+        "zukommend",
+        "ummünzend"
+      ]
+    },
+    {
+      "word": "bloßfüßig",
+      "num_guesses": 3,
+      "prior": 0.000015919565468723364,
+      "guesses": [
+        "lasierten",
+        "glücklich",
+        "bloßfüßig"
+      ]
+    },
+    {
+      "word": "weltstars",
+      "num_guesses": 3,
+      "prior": 0.000016985012936697694,
+      "guesses": [
+        "lasierten",
+        "mehlkloss",
+        "weltstars"
+      ]
+    },
+    {
+      "word": "abgewinne",
+      "num_guesses": 3,
+      "prior": 0.00001472348594874182,
+      "guesses": [
+        "lasierten",
+        "debunking",
+        "abgewinne"
+      ]
+    },
+    {
+      "word": "achtgebet",
+      "num_guesses": 3,
+      "prior": 7.32434257913484e-6,
+      "guesses": [
+        "lasierten",
+        "abgeatmet",
+        "achtgebet"
+      ]
+    },
+    {
+      "word": "galadiner",
+      "num_guesses": 3,
+      "prior": 0.00001729957745440218,
+      "guesses": [
+        "lasierten",
+        "vordenker",
+        "galadiner"
+      ]
+    },
+    {
+      "word": "reizgasen",
+      "num_guesses": 3,
+      "prior": 0.000012568828332946802,
+      "guesses": [
+        "lasierten",
+        "arsengrün",
+        "reizgasen"
+      ]
+    },
+    {
+      "word": "abspeiste",
+      "num_guesses": 2,
+      "prior": 0.000013990493745982605,
+      "guesses": [
+        "lasierten",
+        "abspeiste"
+      ]
+    },
+    {
+      "word": "überträgt",
+      "num_guesses": 3,
+      "prior": 0.00004714766538361634,
+      "guesses": [
+        "lasierten",
+        "fehlkäufe",
+        "überträgt"
+      ]
+    },
+    {
+      "word": "schmücket",
+      "num_guesses": 3,
+      "prior": 0.000019972249022269054,
+      "guesses": [
+        "lasierten",
+        "schmutzes",
+        "schmücket"
+      ]
+    },
+    {
+      "word": "speditive",
+      "num_guesses": 3,
+      "prior": 0.0000131123262652509,
+      "guesses": [
+        "lasierten",
+        "feststehe",
+        "speditive"
+      ]
+    },
+    {
+      "word": "fußräumen",
+      "num_guesses": 3,
+      "prior": 7.3126795540515975e-6,
+      "guesses": [
+        "lasierten",
+        "burghofes",
+        "fußräumen"
+      ]
+    },
+    {
+      "word": "verjuxten",
+      "num_guesses": 4,
+      "prior": 8.025371687486218e-6,
+      "guesses": [
+        "lasierten",
+        "gehobenen",
+        "verändert",
+        "verjuxten"
+      ]
+    },
+    {
+      "word": "warmmacht",
+      "num_guesses": 3,
+      "prior": 6.5304966339793915e-6,
+      "guesses": [
+        "lasierten",
+        "raumfahrt",
+        "warmmacht"
+      ]
+    },
+    {
+      "word": "heimkamen",
+      "num_guesses": 3,
+      "prior": 0.0000201027963589935,
+      "guesses": [
+        "lasierten",
+        "windbruch",
+        "heimkamen"
+      ]
+    },
+    {
+      "word": "kampieren",
+      "num_guesses": 3,
+      "prior": 0.000021560227654400475,
+      "guesses": [
+        "lasierten",
+        "merkbarer",
+        "kampieren"
+      ]
+    },
+    {
+      "word": "gekehltem",
+      "num_guesses": 3,
+      "prior": 0.000015738917238873834,
+      "guesses": [
+        "lasierten",
+        "bügelecht",
+        "gekehltem"
+      ]
+    },
+    {
+      "word": "außensteg",
+      "num_guesses": 4,
+      "prior": 0.000011510864113013176,
+      "guesses": [
+        "lasierten",
+        "bangendem",
+        "getanztes",
+        "außensteg"
+      ]
+    },
+    {
+      "word": "unartiges",
+      "num_guesses": 3,
+      "prior": 0.000018725389104776853,
+      "guesses": [
+        "lasierten",
+        "angstfrei",
+        "unartiges"
+      ]
+    },
+    {
+      "word": "haarlosen",
+      "num_guesses": 3,
+      "prior": 0.000022178695420826878,
+      "guesses": [
+        "lasierten",
+        "harmlosen",
+        "haarlosen"
+      ]
+    },
+    {
+      "word": "zinkeimer",
+      "num_guesses": 3,
+      "prior": 0.000013972983686403786,
+      "guesses": [
+        "lasierten",
+        "zwergform",
+        "zinkeimer"
+      ]
+    },
+    {
+      "word": "burgmauer",
+      "num_guesses": 3,
+      "prior": 0.000024940180400056132,
+      "guesses": [
+        "lasierten",
+        "uhrmacher",
+        "burgmauer"
+      ]
+    },
+    {
+      "word": "antreiben",
+      "num_guesses": 2,
+      "prior": 0.00003270055304903587,
+      "guesses": [
+        "lasierten",
+        "antreiben"
+      ]
+    },
+    {
+      "word": "erklügelt",
+      "num_guesses": 4,
+      "prior": 0.000015925291558104673,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "gekeltert",
+        "erklügelt"
+      ]
+    },
+    {
+      "word": "strullten",
+      "num_guesses": 3,
+      "prior": 5.879554200841658e-6,
+      "guesses": [
+        "lasierten",
+        "scrollten",
+        "strullten"
+      ]
+    },
+    {
+      "word": "auerbachs",
+      "num_guesses": 3,
+      "prior": 0.000028254554959810078,
+      "guesses": [
+        "lasierten",
+        "abschaums",
+        "auerbachs"
+      ]
+    },
+    {
+      "word": "gewalmten",
+      "num_guesses": 4,
+      "prior": 0.000010252086786386203,
+      "guesses": [
+        "lasierten",
+        "belehnung",
+        "gekrampft",
+        "gewalmten"
+      ]
+    },
+    {
+      "word": "reagenzes",
+      "num_guesses": 3,
+      "prior": 0.000018037739635472305,
+      "guesses": [
+        "lasierten",
+        "grundriss",
+        "reagenzes"
+      ]
+    },
+    {
+      "word": "kernlands",
+      "num_guesses": 3,
+      "prior": 0.000011512769254480174,
+      "guesses": [
+        "lasierten",
+        "orangeade",
+        "kernlands"
+      ]
+    },
+    {
+      "word": "dysmelien",
+      "num_guesses": 3,
+      "prior": 0.000011739796533851661,
+      "guesses": [
+        "lasierten",
+        "dankbarem",
+        "dysmelien"
+      ]
+    },
+    {
+      "word": "schurigel",
+      "num_guesses": 3,
+      "prior": 0.000010040619450625043,
+      "guesses": [
+        "lasierten",
+        "schlumpfs",
+        "schurigel"
+      ]
+    },
+    {
+      "word": "sarajevos",
+      "num_guesses": 3,
+      "prior": 0.000015767710452505135,
+      "guesses": [
+        "lasierten",
+        "durchmuss",
+        "sarajevos"
+      ]
+    },
+    {
+      "word": "nachwiest",
+      "num_guesses": 4,
+      "prior": 7.216584688508385e-6,
+      "guesses": [
+        "lasierten",
+        "kantische",
+        "nachweist",
+        "nachwiest"
+      ]
+    },
+    {
+      "word": "oktanzahl",
+      "num_guesses": 3,
+      "prior": 0.000018955078724171795,
+      "guesses": [
+        "lasierten",
+        "anpflockt",
+        "oktanzahl"
+      ]
+    },
+    {
+      "word": "erahnende",
+      "num_guesses": 3,
+      "prior": 0.000012716799271381762,
+      "guesses": [
+        "lasierten",
+        "bedungene",
+        "erahnende"
+      ]
+    },
+    {
+      "word": "übertraft",
+      "num_guesses": 3,
+      "prior": 0.000011243341358879149,
+      "guesses": [
+        "lasierten",
+        "auftürmte",
+        "übertraft"
+      ]
+    },
+    {
+      "word": "ertrankst",
+      "num_guesses": 4,
+      "prior": 7.643978553015897e-6,
+      "guesses": [
+        "lasierten",
+        "hornburgs",
+        "erkrankst",
+        "ertrankst"
+      ]
+    },
+    {
+      "word": "treubruch",
+      "num_guesses": 3,
+      "prior": 0.000026425083651773617,
+      "guesses": [
+        "lasierten",
+        "fehlkäufe",
+        "treubruch"
+      ]
+    },
+    {
+      "word": "aufstoßen",
+      "num_guesses": 3,
+      "prior": 0.000030384578784377697,
+      "guesses": [
+        "lasierten",
+        "mohnanbau",
+        "aufstoßen"
+      ]
+    },
+    {
+      "word": "zuerwirbt",
+      "num_guesses": 3,
+      "prior": 6.06364484482135e-6,
+      "guesses": [
+        "lasierten",
+        "fortwährt",
+        "zuerwirbt"
+      ]
+    },
+    {
+      "word": "pirouette",
+      "num_guesses": 3,
+      "prior": 0.000021439341461633287,
+      "guesses": [
+        "lasierten",
+        "repetitor",
+        "pirouette"
+      ]
+    },
+    {
+      "word": "konversem",
+      "num_guesses": 4,
+      "prior": 6.20536137474508e-6,
+      "guesses": [
+        "lasierten",
+        "kupfernes",
+        "konverser",
+        "konversem"
+      ]
+    },
+    {
+      "word": "mitkönnen",
+      "num_guesses": 3,
+      "prior": 0.000012562117796107291,
+      "guesses": [
+        "lasierten",
+        "zinnfigur",
+        "mitkönnen"
+      ]
+    },
+    {
+      "word": "versinkst",
+      "num_guesses": 3,
+      "prior": 0.00001574763173623286,
+      "guesses": [
+        "lasierten",
+        "kongruent",
+        "versinkst"
+      ]
+    },
+    {
+      "word": "ergrauten",
+      "num_guesses": 3,
+      "prior": 0.000026239632241782034,
+      "guesses": [
+        "lasierten",
+        "berathung",
+        "ergrauten"
+      ]
+    },
+    {
+      "word": "bergschuh",
+      "num_guesses": 3,
+      "prior": 0.000012905573093175467,
+      "guesses": [
+        "lasierten",
+        "korbwurfs",
+        "bergschuh"
+      ]
+    },
+    {
+      "word": "schulamte",
+      "num_guesses": 3,
+      "prior": 0.000017797206603212537,
+      "guesses": [
+        "lasierten",
+        "flussaale",
+        "schulamte"
+      ]
+    },
+    {
+      "word": "huronisch",
+      "num_guesses": 3,
+      "prior": 0.00001100297045952208,
+      "guesses": [
+        "lasierten",
+        "soldbuchs",
+        "huronisch"
+      ]
+    },
+    {
+      "word": "vertäutem",
+      "num_guesses": 3,
+      "prior": 7.86591123555959e-6,
+      "guesses": [
+        "lasierten",
+        "behütetem",
+        "vertäutem"
+      ]
+    },
+    {
+      "word": "stuhlbein",
+      "num_guesses": 3,
+      "prior": 0.00002070410453931634,
+      "guesses": [
+        "lasierten",
+        "südslawen",
+        "stuhlbein"
+      ]
+    },
+    {
+      "word": "tastenden",
+      "num_guesses": 3,
+      "prior": 0.000029478320641486244,
+      "guesses": [
+        "lasierten",
+        "aufnehmen",
+        "tastenden"
+      ]
+    },
+    {
+      "word": "bietendes",
+      "num_guesses": 3,
+      "prior": 0.000017028607896942243,
+      "guesses": [
+        "lasierten",
+        "fittiches",
+        "bietendes"
+      ]
+    },
+    {
+      "word": "lingualen",
+      "num_guesses": 3,
+      "prior": 0.00002475052592372619,
+      "guesses": [
+        "lasierten",
+        "limonaden",
+        "lingualen"
+      ]
+    },
+    {
+      "word": "lotterien",
+      "num_guesses": 2,
+      "prior": 0.00002741827856013126,
+      "guesses": [
+        "lasierten",
+        "lotterien"
+      ]
+    },
+    {
+      "word": "aufwandes",
+      "num_guesses": 3,
+      "prior": 0.00003488789048165481,
+      "guesses": [
+        "lasierten",
+        "massanzug",
+        "aufwandes"
+      ]
+    },
+    {
+      "word": "schuldend",
+      "num_guesses": 3,
+      "prior": 0.000011041506734484724,
+      "guesses": [
+        "lasierten",
+        "häubchens",
+        "schuldend"
+      ]
+    },
+    {
+      "word": "märzabend",
+      "num_guesses": 3,
+      "prior": 0.000014173410327603351,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "märzabend"
+      ]
+    },
+    {
+      "word": "umstünden",
+      "num_guesses": 3,
+      "prior": 0.000023135656037950812,
+      "guesses": [
+        "lasierten",
+        "umständen",
+        "umstünden"
+      ]
+    },
+    {
+      "word": "heftetest",
+      "num_guesses": 3,
+      "prior": 8.819676926975867e-6,
+      "guesses": [
+        "lasierten",
+        "bettdecke",
+        "heftetest"
+      ]
+    },
+    {
+      "word": "morschere",
+      "num_guesses": 4,
+      "prior": 7.358892898806998e-6,
+      "guesses": [
+        "lasierten",
+        "verbreche",
+        "forschere",
+        "morschere"
+      ]
+    },
+    {
+      "word": "orgelbaus",
+      "num_guesses": 3,
+      "prior": 0.00001806829409860705,
+      "guesses": [
+        "lasierten",
+        "golfclubs",
+        "orgelbaus"
+      ]
+    },
+    {
+      "word": "anbruches",
+      "num_guesses": 3,
+      "prior": 0.000013096442116526042,
+      "guesses": [
+        "lasierten",
+        "burgdorfs",
+        "anbruches"
+      ]
+    },
+    {
+      "word": "wollhaare",
+      "num_guesses": 3,
+      "prior": 0.0000220491436569384,
+      "guesses": [
+        "lasierten",
+        "flugloche",
+        "wollhaare"
+      ]
+    },
+    {
+      "word": "verbeuget",
+      "num_guesses": 4,
+      "prior": 8.670977599408013e-6,
+      "guesses": [
+        "lasierten",
+        "mehrzweck",
+        "vergeudet",
+        "verbeuget"
+      ]
+    },
+    {
+      "word": "zudrehend",
+      "num_guesses": 3,
+      "prior": 0.000010699003853098168,
+      "guesses": [
+        "lasierten",
+        "hebezeuge",
+        "zudrehend"
+      ]
+    },
+    {
+      "word": "schlanker",
+      "num_guesses": 3,
+      "prior": 0.0000391284642910398,
+      "guesses": [
+        "lasierten",
+        "koronales",
+        "schlanker"
+      ]
+    },
+    {
+      "word": "steviosid",
+      "num_guesses": 3,
+      "prior": 0.00001181801083223623,
+      "guesses": [
+        "lasierten",
+        "sikhismus",
+        "steviosid"
+      ]
+    },
+    {
+      "word": "vagilität",
+      "num_guesses": 3,
+      "prior": 0.000012416358865687891,
+      "guesses": [
+        "lasierten",
+        "validität",
+        "vagilität"
+      ]
+    },
+    {
+      "word": "glöckchen",
+      "num_guesses": 3,
+      "prior": 0.00003163519640790717,
+      "guesses": [
+        "lasierten",
+        "zündfähig",
+        "glöckchen"
+      ]
+    },
+    {
+      "word": "teheraner",
+      "num_guesses": 3,
+      "prior": 0.000021100848141776135,
+      "guesses": [
+        "lasierten",
+        "geborener",
+        "teheraner"
+      ]
+    },
+    {
+      "word": "redepause",
+      "num_guesses": 3,
+      "prior": 0.000014799587653664508,
+      "guesses": [
+        "lasierten",
+        "rehbraune",
+        "redepause"
+      ]
+    },
+    {
+      "word": "bucherers",
+      "num_guesses": 3,
+      "prior": 0.00001039923571706329,
+      "guesses": [
+        "lasierten",
+        "ofenbänke",
+        "bucherers"
+      ]
+    },
+    {
+      "word": "sportzeit",
+      "num_guesses": 3,
+      "prior": 0.000010196981306006841,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "sportzeit"
+      ]
+    },
+    {
+      "word": "glubschen",
+      "num_guesses": 3,
+      "prior": 9.171933247575934e-6,
+      "guesses": [
+        "lasierten",
+        "kohldampf",
+        "glubschen"
+      ]
+    },
+    {
+      "word": "nordküste",
+      "num_guesses": 3,
+      "prior": 0.000035028646374155464,
+      "guesses": [
+        "lasierten",
+        "türstocks",
+        "nordküste"
+      ]
+    },
+    {
+      "word": "formstück",
+      "num_guesses": 3,
+      "prior": 0.000016474416841060325,
+      "guesses": [
+        "lasierten",
+        "korbwurfs",
+        "formstück"
+      ]
+    },
+    {
+      "word": "gepochten",
+      "num_guesses": 4,
+      "prior": 0.000014674750599258785,
+      "guesses": [
+        "lasierten",
+        "notenbuch",
+        "bekämpfen",
+        "gepochten"
+      ]
+    },
+    {
+      "word": "südchinas",
+      "num_guesses": 3,
+      "prior": 0.000017638662602524975,
+      "guesses": [
+        "lasierten",
+        "mukositis",
+        "südchinas"
+      ]
+    },
+    {
+      "word": "ladekabel",
+      "num_guesses": 2,
+      "prior": 0.000017493896797094193,
+      "guesses": [
+        "lasierten",
+        "ladekabel"
+      ]
+    },
+    {
+      "word": "tadelnder",
+      "num_guesses": 2,
+      "prior": 0.00001750210554124867,
+      "guesses": [
+        "lasierten",
+        "tadelnder"
+      ]
+    },
+    {
+      "word": "wallkrone",
+      "num_guesses": 2,
+      "prior": 0.00001619823152198518,
+      "guesses": [
+        "lasierten",
+        "wallkrone"
+      ]
+    },
+    {
+      "word": "simplicia",
+      "num_guesses": 3,
+      "prior": 0.000023955114334614188,
+      "guesses": [
+        "lasierten",
+        "prellbock",
+        "simplicia"
+      ]
+    },
+    {
+      "word": "gestankes",
+      "num_guesses": 3,
+      "prior": 0.000017152530985712086,
+      "guesses": [
+        "lasierten",
+        "bestandes",
+        "gestankes"
+      ]
+    },
+    {
+      "word": "angeboren",
+      "num_guesses": 3,
+      "prior": 0.0000395631614142239,
+      "guesses": [
+        "lasierten",
+        "dehnübung",
+        "angeboren"
+      ]
+    },
+    {
+      "word": "verläufst",
+      "num_guesses": 3,
+      "prior": 0.000013399413448215581,
+      "guesses": [
+        "lasierten",
+        "vorfährst",
+        "verläufst"
+      ]
+    },
+    {
+      "word": "aushebelt",
+      "num_guesses": 3,
+      "prior": 0.000014722773912470546,
+      "guesses": [
+        "lasierten",
+        "ausgelegt",
+        "aushebelt"
+      ]
+    },
+    {
+      "word": "realistin",
+      "num_guesses": 2,
+      "prior": 0.000016722980117499856,
+      "guesses": [
+        "lasierten",
+        "realistin"
+      ]
+    },
+    {
+      "word": "nachreist",
+      "num_guesses": 3,
+      "prior": 0.000013972983686403786,
+      "guesses": [
+        "lasierten",
+        "garnierst",
+        "nachreist"
+      ]
+    },
+    {
+      "word": "beflecket",
+      "num_guesses": 2,
+      "prior": 0.000018807663142521654,
+      "guesses": [
+        "lasierten",
+        "beflecket"
+      ]
+    },
+    {
+      "word": "pastorats",
+      "num_guesses": 2,
+      "prior": 0.000016858104821454753,
+      "guesses": [
+        "lasierten",
+        "pastorats"
+      ]
+    },
+    {
+      "word": "trödelnde",
+      "num_guesses": 3,
+      "prior": 9.405569036884853e-6,
+      "guesses": [
+        "lasierten",
+        "turtelnde",
+        "trödelnde"
+      ]
+    },
+    {
+      "word": "präferier",
+      "num_guesses": 3,
+      "prior": 7.12808840333181e-6,
+      "guesses": [
+        "lasierten",
+        "differier",
+        "präferier"
+      ]
+    },
+    {
+      "word": "rhinolith",
+      "num_guesses": 3,
+      "prior": 0.0000120552846851697,
+      "guesses": [
+        "lasierten",
+        "nordlicht",
+        "rhinolith"
+      ]
+    },
+    {
+      "word": "fortzogst",
+      "num_guesses": 4,
+      "prior": 8.142866127865024e-6,
+      "guesses": [
+        "lasierten",
+        "korbwurfs",
+        "fortstößt",
+        "fortzogst"
+      ]
+    },
+    {
+      "word": "verzerrte",
+      "num_guesses": 3,
+      "prior": 0.000035474908427856965,
+      "guesses": [
+        "lasierten",
+        "geheimrat",
+        "verzerrte"
+      ]
+    },
+    {
+      "word": "siebzigen",
+      "num_guesses": 4,
+      "prior": 0.00001318950898499146,
+      "guesses": [
+        "lasierten",
+        "gemeinhin",
+        "pieksigen",
+        "siebzigen"
+      ]
+    },
+    {
+      "word": "verstumme",
+      "num_guesses": 4,
+      "prior": 0.00002159049164303694,
+      "guesses": [
+        "lasierten",
+        "gehortete",
+        "zerstäube",
+        "verstumme"
+      ]
+    },
+    {
+      "word": "amarillos",
+      "num_guesses": 3,
+      "prior": 0.000011280778396345216,
+      "guesses": [
+        "lasierten",
+        "dominicas",
+        "amarillos"
+      ]
+    },
+    {
+      "word": "ankaufend",
+      "num_guesses": 3,
+      "prior": 6.493283403489603e-6,
+      "guesses": [
+        "lasierten",
+        "abmachung",
+        "ankaufend"
+      ]
+    },
+    {
+      "word": "buschiges",
+      "num_guesses": 3,
+      "prior": 0.000016748995284304354,
+      "guesses": [
+        "lasierten",
+        "buschigem",
+        "buschiges"
+      ]
+    },
+    {
+      "word": "überlüden",
+      "num_guesses": 4,
+      "prior": 7.03496571343418e-6,
+      "guesses": [
+        "lasierten",
+        "vogelflug",
+        "überleben",
+        "überlüden"
+      ]
+    },
+    {
+      "word": "ausriefst",
+      "num_guesses": 3,
+      "prior": 8.841685128164389e-6,
+      "guesses": [
+        "lasierten",
+        "abstriche",
+        "ausriefst"
+      ]
+    },
+    {
+      "word": "gelegenem",
+      "num_guesses": 3,
+      "prior": 0.000023762342462166325,
+      "guesses": [
+        "lasierten",
+        "jodhältig",
+        "gelegenem"
+      ]
+    },
+    {
+      "word": "polygamen",
+      "num_guesses": 3,
+      "prior": 0.00001917241328337858,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "polygamen"
+      ]
+    },
+    {
+      "word": "zuliefern",
+      "num_guesses": 3,
+      "prior": 0.00001728198437358561,
+      "guesses": [
+        "lasierten",
+        "beliefern",
+        "zuliefern"
+      ]
+    },
+    {
+      "word": "anadromes",
+      "num_guesses": 3,
+      "prior": 6.493283403489603e-6,
+      "guesses": [
+        "lasierten",
+        "burgdorfs",
+        "anadromes"
+      ]
+    },
+    {
+      "word": "bedürftig",
+      "num_guesses": 3,
+      "prior": 0.00003939515890354217,
+      "guesses": [
+        "lasierten",
+        "huftritte",
+        "bedürftig"
+      ]
+    },
+    {
+      "word": "trompeten",
+      "num_guesses": 3,
+      "prior": 0.00003904709573140313,
+      "guesses": [
+        "lasierten",
+        "gehobenen",
+        "trompeten"
+      ]
+    },
+    {
+      "word": "neuberges",
+      "num_guesses": 3,
+      "prior": 8.33176071227844e-6,
+      "guesses": [
+        "lasierten",
+        "kupfernes",
+        "neuberges"
+      ]
+    },
+    {
+      "word": "bugholzes",
+      "num_guesses": 3,
+      "prior": 6.737676555270014e-6,
+      "guesses": [
+        "lasierten",
+        "poflusses",
+        "bugholzes"
+      ]
+    },
+    {
+      "word": "behacktem",
+      "num_guesses": 4,
+      "prior": 6.769838764690003e-6,
+      "guesses": [
+        "lasierten",
+        "zugedeckt",
+        "bepacktem",
+        "behacktem"
+      ]
+    },
+    {
+      "word": "kremation",
+      "num_guesses": 3,
+      "prior": 0.00001736446196083478,
+      "guesses": [
+        "lasierten",
+        "automarkt",
+        "kremation"
+      ]
+    },
+    {
+      "word": "heikliche",
+      "num_guesses": 4,
+      "prior": 0.00001219005735532313,
+      "guesses": [
+        "lasierten",
+        "gelbliche",
+        "heimliche",
+        "heikliche"
+      ]
+    },
+    {
+      "word": "ziernähte",
+      "num_guesses": 4,
+      "prior": 0.00001150514110846966,
+      "guesses": [
+        "lasierten",
+        "einfriede",
+        "tierzähne",
+        "ziernähte"
+      ]
+    },
+    {
+      "word": "frömmelei",
+      "num_guesses": 3,
+      "prior": 0.000023508146445827168,
+      "guesses": [
+        "lasierten",
+        "begehrter",
+        "frömmelei"
+      ]
+    },
+    {
+      "word": "rührbesen",
+      "num_guesses": 3,
+      "prior": 0.00001571978670468176,
+      "guesses": [
+        "lasierten",
+        "dehnübung",
+        "rührbesen"
+      ]
+    },
+    {
+      "word": "kränkelte",
+      "num_guesses": 3,
+      "prior": 0.000023796768197277454,
+      "guesses": [
+        "lasierten",
+        "umlegende",
+        "kränkelte"
+      ]
+    },
+    {
+      "word": "ortsämter",
+      "num_guesses": 3,
+      "prior": 0.000014157622354051024,
+      "guesses": [
+        "lasierten",
+        "formulars",
+        "ortsämter"
+      ]
+    },
+    {
+      "word": "festzelte",
+      "num_guesses": 3,
+      "prior": 0.00001316620974047176,
+      "guesses": [
+        "lasierten",
+        "gehäutete",
+        "festzelte"
+      ]
+    },
+    {
+      "word": "auftrages",
+      "num_guesses": 3,
+      "prior": 0.000037320079279028236,
+      "guesses": [
+        "lasierten",
+        "chorraums",
+        "auftrages"
+      ]
+    },
+    {
+      "word": "verdautem",
+      "num_guesses": 3,
+      "prior": 0.000015992859266874798,
+      "guesses": [
+        "lasierten",
+        "herbarium",
+        "verdautem"
+      ]
+    },
+    {
+      "word": "rückkehre",
+      "num_guesses": 3,
+      "prior": 0.000013191719393861211,
+      "guesses": [
+        "lasierten",
+        "feuerberg",
+        "rückkehre"
+      ]
+    },
+    {
+      "word": "hetzenden",
+      "num_guesses": 3,
+      "prior": 0.00001724393372585099,
+      "guesses": [
+        "lasierten",
+        "wettkampf",
+        "hetzenden"
+      ]
+    },
+    {
+      "word": "formulier",
+      "num_guesses": 3,
+      "prior": 0.000015125921462134955,
+      "guesses": [
+        "lasierten",
+        "druckform",
+        "formulier"
+      ]
+    },
+    {
+      "word": "luxuswein",
+      "num_guesses": 2,
+      "prior": 7.857151847190852e-6,
+      "guesses": [
+        "lasierten",
+        "luxuswein"
+      ]
+    },
+    {
+      "word": "gülthöfen",
+      "num_guesses": 3,
+      "prior": 7.12808840333181e-6,
+      "guesses": [
+        "lasierten",
+        "potthoffs",
+        "gülthöfen"
+      ]
+    },
+    {
+      "word": "hochrenne",
+      "num_guesses": 3,
+      "prior": 6.3762105580396255e-6,
+      "guesses": [
+        "lasierten",
+        "herumgebe",
+        "hochrenne"
+      ]
+    },
+    {
+      "word": "pfählende",
+      "num_guesses": 3,
+      "prior": 8.676888291742625e-6,
+      "guesses": [
+        "lasierten",
+        "belohnung",
+        "pfählende"
+      ]
+    },
+    {
+      "word": "brünieren",
+      "num_guesses": 4,
+      "prior": 0.00001446081932953553,
+      "guesses": [
+        "lasierten",
+        "befriedig",
+        "brevieren",
+        "brünieren"
+      ]
+    },
+    {
+      "word": "ausgleich",
+      "num_guesses": 3,
+      "prior": 0.00005726270623973979,
+      "guesses": [
+        "lasierten",
+        "ausblicke",
+        "ausgleich"
+      ]
+    },
+    {
+      "word": "gechlorte",
+      "num_guesses": 3,
+      "prior": 0.000020917787229319845,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "gechlorte"
+      ]
+    },
+    {
+      "word": "kämmender",
+      "num_guesses": 4,
+      "prior": 9.055549667753232e-6,
+      "guesses": [
+        "lasierten",
+        "bohrkäfer",
+        "quäkender",
+        "kämmender"
+      ]
+    },
+    {
+      "word": "reformern",
+      "num_guesses": 3,
+      "prior": 0.00002663857569814291,
+      "guesses": [
+        "lasierten",
+        "ermordung",
+        "reformern"
+      ]
+    },
+    {
+      "word": "wulfenits",
+      "num_guesses": 3,
+      "prior": 0.000011034745243353007,
+      "guesses": [
+        "lasierten",
+        "bulletins",
+        "wulfenits"
+      ]
+    },
+    {
+      "word": "rennmäuse",
+      "num_guesses": 3,
+      "prior": 0.000014114049299434388,
+      "guesses": [
+        "lasierten",
+        "gemeckers",
+        "rennmäuse"
+      ]
+    },
+    {
+      "word": "fahrsport",
+      "num_guesses": 3,
+      "prior": 0.000012217210332347857,
+      "guesses": [
+        "lasierten",
+        "frohburgs",
+        "fahrsport"
+      ]
+    },
+    {
+      "word": "schreiber",
+      "num_guesses": 3,
+      "prior": 0.00005877662847714232,
+      "guesses": [
+        "lasierten",
+        "schweizer",
+        "schreiber"
+      ]
+    },
+    {
+      "word": "gepulster",
+      "num_guesses": 3,
+      "prior": 0.00001773440045358046,
+      "guesses": [
+        "lasierten",
+        "geldfluss",
+        "gepulster"
+      ]
+    },
+    {
+      "word": "wundernde",
+      "num_guesses": 3,
+      "prior": 0.000011958701199406391,
+      "guesses": [
+        "lasierten",
+        "funklochs",
+        "wundernde"
+      ]
+    },
+    {
+      "word": "tigerhais",
+      "num_guesses": 3,
+      "prior": 8.00102734085905e-6,
+      "guesses": [
+        "lasierten",
+        "saarburgs",
+        "tigerhais"
+      ]
+    },
+    {
+      "word": "verstrich",
+      "num_guesses": 3,
+      "prior": 0.00003143107607795321,
+      "guesses": [
+        "lasierten",
+        "marktwert",
+        "verstrich"
+      ]
+    },
+    {
+      "word": "fassliche",
+      "num_guesses": 2,
+      "prior": 0.00002201549174105374,
+      "guesses": [
+        "lasierten",
+        "fassliche"
+      ]
+    },
+    {
+      "word": "beangelte",
+      "num_guesses": 4,
+      "prior": 5.961245985218972e-6,
+      "guesses": [
+        "lasierten",
+        "anhebende",
+        "benagelte",
+        "beangelte"
+      ]
+    },
+    {
+      "word": "geküsstes",
+      "num_guesses": 4,
+      "prior": 7.68278246936458e-6,
+      "guesses": [
+        "lasierten",
+        "umhertobt",
+        "gezücktes",
+        "geküsstes"
+      ]
+    },
+    {
+      "word": "getötetes",
+      "num_guesses": 3,
+      "prior": 0.00001595638069978001,
+      "guesses": [
+        "lasierten",
+        "umhertobt",
+        "getötetes"
+      ]
+    },
+    {
+      "word": "lindernde",
+      "num_guesses": 3,
+      "prior": 0.00002136679647670767,
+      "guesses": [
+        "lasierten",
+        "lieferung",
+        "lindernde"
+      ]
+    },
+    {
+      "word": "begradigt",
+      "num_guesses": 3,
+      "prior": 0.000021422687369961486,
+      "guesses": [
+        "lasierten",
+        "abprodukt",
+        "begradigt"
+      ]
+    },
+    {
+      "word": "maiskorns",
+      "num_guesses": 3,
+      "prior": 0.00001345601820916056,
+      "guesses": [
+        "lasierten",
+        "maroquins",
+        "maiskorns"
+      ]
+    },
+    {
+      "word": "grieselte",
+      "num_guesses": 3,
+      "prior": 8.081053542482384e-6,
+      "guesses": [
+        "lasierten",
+        "beflutete",
+        "grieselte"
+      ]
+    },
+    {
+      "word": "weinstube",
+      "num_guesses": 4,
+      "prior": 0.000025195624272565687,
+      "guesses": [
+        "lasierten",
+        "eingiesse",
+        "beistände",
+        "weinstube"
+      ]
+    },
+    {
+      "word": "vorbeugte",
+      "num_guesses": 3,
+      "prior": 0.000025078388141352517,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "vorbeugte"
+      ]
+    },
+    {
+      "word": "anfahrten",
+      "num_guesses": 3,
+      "prior": 0.000017526994364801648,
+      "guesses": [
+        "lasierten",
+        "abfuhrtag",
+        "anfahrten"
+      ]
+    },
+    {
+      "word": "hausgange",
+      "num_guesses": 3,
+      "prior": 0.000013917245681929926,
+      "guesses": [
+        "lasierten",
+        "junghähne",
+        "hausgange"
+      ]
+    },
+    {
+      "word": "pränatale",
+      "num_guesses": 3,
+      "prior": 0.000026242666410586308,
+      "guesses": [
+        "lasierten",
+        "abgemahnt",
+        "pränatale"
+      ]
+    },
+    {
+      "word": "gelaufene",
+      "num_guesses": 3,
+      "prior": 0.000019917912604030454,
+      "guesses": [
+        "lasierten",
+        "ungelenke",
+        "gelaufene"
+      ]
+    },
+    {
+      "word": "ersättigt",
+      "num_guesses": 3,
+      "prior": 0.000017104330394672444,
+      "guesses": [
+        "lasierten",
+        "emporgeht",
+        "ersättigt"
+      ]
+    },
+    {
+      "word": "süffisanz",
+      "num_guesses": 3,
+      "prior": 0.00001543338832842035,
+      "guesses": [
+        "lasierten",
+        "mukositis",
+        "süffisanz"
+      ]
+    },
+    {
+      "word": "schockten",
+      "num_guesses": 3,
+      "prior": 0.000011958701199406391,
+      "guesses": [
+        "lasierten",
+        "putschist",
+        "schockten"
+      ]
+    },
+    {
+      "word": "pfännchen",
+      "num_guesses": 3,
+      "prior": 0.000016664823058803703,
+      "guesses": [
+        "lasierten",
+        "durchkämm",
+        "pfännchen"
+      ]
+    },
+    {
+      "word": "aufreibet",
+      "num_guesses": 3,
+      "prior": 0.000010178345211908977,
+      "guesses": [
+        "lasierten",
+        "beziehung",
+        "aufreibet"
+      ]
+    },
+    {
+      "word": "erwärmter",
+      "num_guesses": 3,
+      "prior": 0.000025701439863439316,
+      "guesses": [
+        "lasierten",
+        "behütetem",
+        "erwärmter"
+      ]
+    },
+    {
+      "word": "klitikons",
+      "num_guesses": 3,
+      "prior": 0.000010759596707644308,
+      "guesses": [
+        "lasierten",
+        "sinfonien",
+        "klitikons"
+      ]
+    },
+    {
+      "word": "waldhonig",
+      "num_guesses": 3,
+      "prior": 0.000017761041967891596,
+      "guesses": [
+        "lasierten",
+        "mandibula",
+        "waldhonig"
+      ]
+    },
+    {
+      "word": "herbergst",
+      "num_guesses": 3,
+      "prior": 8.74086691858365e-6,
+      "guesses": [
+        "lasierten",
+        "vorderste",
+        "herbergst"
+      ]
+    },
+    {
+      "word": "verrennen",
+      "num_guesses": 4,
+      "prior": 0.000020456439396502773,
+      "guesses": [
+        "lasierten",
+        "hemdknopf",
+        "begrenzen",
+        "verrennen"
+      ]
+    },
+    {
+      "word": "gläubigem",
+      "num_guesses": 3,
+      "prior": 0.000023516794864233935,
+      "guesses": [
+        "lasierten",
+        "sumpfigem",
+        "gläubigem"
+      ]
+    },
+    {
+      "word": "abwerbung",
+      "num_guesses": 3,
+      "prior": 0.000022433697733013006,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "abwerbung"
+      ]
+    },
+    {
+      "word": "herstamme",
+      "num_guesses": 3,
+      "prior": 0.00002148224446283802,
+      "guesses": [
+        "lasierten",
+        "getauchte",
+        "herstamme"
+      ]
+    },
+    {
+      "word": "spundwand",
+      "num_guesses": 3,
+      "prior": 0.00002384870855585626,
+      "guesses": [
+        "lasierten",
+        "abschaums",
+        "spundwand"
+      ]
+    },
+    {
+      "word": "kaubonbon",
+      "num_guesses": 3,
+      "prior": 0.000010350139658584157,
+      "guesses": [
+        "lasierten",
+        "hauchdünn",
+        "kaubonbon"
+      ]
+    },
+    {
+      "word": "kuppelnde",
+      "num_guesses": 3,
+      "prior": 0.000013774320378108748,
+      "guesses": [
+        "lasierten",
+        "hundekopf",
+        "kuppelnde"
+      ]
+    },
+    {
+      "word": "unglücken",
+      "num_guesses": 3,
+      "prior": 0.00001808552739406562,
+      "guesses": [
+        "lasierten",
+        "zündfähig",
+        "unglücken"
+      ]
+    },
+    {
+      "word": "geflogene",
+      "num_guesses": 3,
+      "prior": 0.00001657137940027146,
+      "guesses": [
+        "lasierten",
+        "belohnung",
+        "geflogene"
+      ]
+    },
+    {
+      "word": "abgelacht",
+      "num_guesses": 3,
+      "prior": 0.000010691332475331867,
+      "guesses": [
+        "lasierten",
+        "abzahlung",
+        "abgelacht"
+      ]
+    },
+    {
+      "word": "getöpfert",
+      "num_guesses": 3,
+      "prior": 0.000015741642592671698,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "getöpfert"
+      ]
+    },
+    {
+      "word": "weidendem",
+      "num_guesses": 3,
+      "prior": 0.000013849704904711012,
+      "guesses": [
+        "lasierten",
+        "windzügen",
+        "weidendem"
+      ]
+    },
+    {
+      "word": "volllaute",
+      "num_guesses": 4,
+      "prior": 6.455197001704323e-6,
+      "guesses": [
+        "lasierten",
+        "abzahlung",
+        "plattfuße",
+        "volllaute"
+      ]
+    },
+    {
+      "word": "kremlchef",
+      "num_guesses": 3,
+      "prior": 0.000015068602700863162,
+      "guesses": [
+        "lasierten",
+        "regelnder",
+        "kremlchef"
+      ]
+    },
+    {
+      "word": "verknotet",
+      "num_guesses": 3,
+      "prior": 0.000025828235487684603,
+      "guesses": [
+        "lasierten",
+        "gehetztem",
+        "verknotet"
+      ]
+    },
+    {
+      "word": "einsteins",
+      "num_guesses": 3,
+      "prior": 0.00003277900361888123,
+      "guesses": [
+        "lasierten",
+        "eingiesse",
+        "einsteins"
+      ]
+    },
+    {
+      "word": "tränenden",
+      "num_guesses": 3,
+      "prior": 0.000022989118738113362,
+      "guesses": [
+        "lasierten",
+        "bettcouch",
+        "tränenden"
+      ]
+    },
+    {
+      "word": "schragens",
+      "num_guesses": 3,
+      "prior": 0.0000124680140430452,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "schragens"
+      ]
+    },
+    {
+      "word": "musketier",
+      "num_guesses": 2,
+      "prior": 0.000026457460467456575,
+      "guesses": [
+        "lasierten",
+        "musketier"
+      ]
+    },
+    {
+      "word": "mittrügen",
+      "num_guesses": 4,
+      "prior": 0.000010030723945731606,
+      "guesses": [
+        "lasierten",
+        "tiefpunkt",
+        "zittrigen",
+        "mittrügen"
+      ]
+    },
+    {
+      "word": "coiffeurs",
+      "num_guesses": 3,
+      "prior": 0.000013423200762980364,
+      "guesses": [
+        "lasierten",
+        "murrkopfe",
+        "coiffeurs"
+      ]
+    },
+    {
+      "word": "bewohners",
+      "num_guesses": 3,
+      "prior": 0.000026061126931818402,
+      "guesses": [
+        "lasierten",
+        "gemeckers",
+        "bewohners"
+      ]
+    },
+    {
+      "word": "herläufst",
+      "num_guesses": 3,
+      "prior": 9.526406487920865e-6,
+      "guesses": [
+        "lasierten",
+        "vorfährst",
+        "herläufst"
+      ]
+    },
+    {
+      "word": "wahnhafte",
+      "num_guesses": 3,
+      "prior": 0.00002433353300779783,
+      "guesses": [
+        "lasierten",
+        "aufhabend",
+        "wahnhafte"
+      ]
+    },
+    {
+      "word": "schlurren",
+      "num_guesses": 3,
+      "prior": 0.000012735931954630129,
+      "guesses": [
+        "lasierten",
+        "schlurfen",
+        "schlurren"
+      ]
+    },
+    {
+      "word": "totgeburt",
+      "num_guesses": 2,
+      "prior": 0.00002375593760207947,
+      "guesses": [
+        "lasierten",
+        "totgeburt"
+      ]
+    },
+    {
+      "word": "tingelten",
+      "num_guesses": 3,
+      "prior": 0.000012107113641597534,
+      "guesses": [
+        "lasierten",
+        "mittelweg",
+        "tingelten"
+      ]
+    },
+    {
+      "word": "erlegenes",
+      "num_guesses": 3,
+      "prior": 8.40677229839136e-6,
+      "guesses": [
+        "lasierten",
+        "burgdorfs",
+        "erlegenes"
+      ]
+    },
+    {
+      "word": "waldlaufs",
+      "num_guesses": 3,
+      "prior": 8.041438626336398e-6,
+      "guesses": [
+        "lasierten",
+        "waldbaums",
+        "waldlaufs"
+      ]
+    },
+    {
+      "word": "lüftungen",
+      "num_guesses": 3,
+      "prior": 0.000015167873227223985,
+      "guesses": [
+        "lasierten",
+        "luftholen",
+        "lüftungen"
+      ]
+    },
+    {
+      "word": "herholten",
+      "num_guesses": 4,
+      "prior": 0.000011869025725675994,
+      "guesses": [
+        "lasierten",
+        "golfklubs",
+        "verholten",
+        "herholten"
+      ]
+    },
+    {
+      "word": "dingworts",
+      "num_guesses": 3,
+      "prior": 9.637531664310348e-6,
+      "guesses": [
+        "lasierten",
+        "durchgoss",
+        "dingworts"
+      ]
+    },
+    {
+      "word": "trocknern",
+      "num_guesses": 3,
+      "prior": 0.00001850871386714936,
+      "guesses": [
+        "lasierten",
+        "torfstich",
+        "trocknern"
+      ]
+    },
+    {
+      "word": "geführten",
+      "num_guesses": 3,
+      "prior": 0.000051881149283462857,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "geführten"
+      ]
+    },
+    {
+      "word": "weißwurst",
+      "num_guesses": 3,
+      "prior": 0.00001744142638016124,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "weißwurst"
+      ]
+    },
+    {
+      "word": "zykloider",
+      "num_guesses": 3,
+      "prior": 0.000010610741881445594,
+      "guesses": [
+        "lasierten",
+        "druckform",
+        "zykloider"
+      ]
+    },
+    {
+      "word": "memristor",
+      "num_guesses": 3,
+      "prior": 7.634153355294938e-6,
+      "guesses": [
+        "lasierten",
+        "beitritts",
+        "memristor"
+      ]
+    },
+    {
+      "word": "martertod",
+      "num_guesses": 2,
+      "prior": 0.000021779470173399738,
+      "guesses": [
+        "lasierten",
+        "martertod"
+      ]
+    },
+    {
+      "word": "linearere",
+      "num_guesses": 2,
+      "prior": 8.90110314373735e-6,
+      "guesses": [
+        "lasierten",
+        "linearere"
+      ]
+    },
+    {
+      "word": "prokonsul",
+      "num_guesses": 3,
+      "prior": 0.00002593146132628279,
+      "guesses": [
+        "lasierten",
+        "grünkohls",
+        "prokonsul"
+      ]
+    },
+    {
+      "word": "raubzeugs",
+      "num_guesses": 3,
+      "prior": 0.000012217210332347857,
+      "guesses": [
+        "lasierten",
+        "durchmuss",
+        "raubzeugs"
+      ]
+    },
+    {
+      "word": "jubelnden",
+      "num_guesses": 4,
+      "prior": 0.00002837030732591204,
+      "guesses": [
+        "lasierten",
+        "hegemonen",
+        "aufblühen",
+        "jubelnden"
+      ]
+    },
+    {
+      "word": "kaltmache",
+      "num_guesses": 3,
+      "prior": 8.379805351854302e-6,
+      "guesses": [
+        "lasierten",
+        "humboldts",
+        "kaltmache"
+      ]
+    },
+    {
+      "word": "bildrands",
+      "num_guesses": 3,
+      "prior": 0.00001094063321075691,
+      "guesses": [
+        "lasierten",
+        "originals",
+        "bildrands"
+      ]
+    },
+    {
+      "word": "malfarben",
+      "num_guesses": 3,
+      "prior": 0.000016564274459816334,
+      "guesses": [
+        "lasierten",
+        "waldarmen",
+        "malfarben"
+      ]
+    },
+    {
+      "word": "betrauert",
+      "num_guesses": 3,
+      "prior": 0.000029596472249955693,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "betrauert"
+      ]
+    },
+    {
+      "word": "schweizen",
+      "num_guesses": 4,
+      "prior": 0.000012461083514001256,
+      "guesses": [
+        "lasierten",
+        "segnendem",
+        "bezweifle",
+        "schweizen"
+      ]
+    },
+    {
+      "word": "clavicula",
+      "num_guesses": 3,
+      "prior": 0.00003222396017207212,
+      "guesses": [
+        "lasierten",
+        "milchblau",
+        "clavicula"
+      ]
+    },
+    {
+      "word": "hellender",
+      "num_guesses": 4,
+      "prior": 0.000010230797783996576,
+      "guesses": [
+        "lasierten",
+        "bohrkäfer",
+        "heulender",
+        "hellender"
+      ]
+    },
+    {
+      "word": "gesetztem",
+      "num_guesses": 3,
+      "prior": 0.00002279901135778748,
+      "guesses": [
+        "lasierten",
+        "gemutmaßt",
+        "gesetztem"
+      ]
+    },
+    {
+      "word": "enaktives",
+      "num_guesses": 3,
+      "prior": 7.934619587634195e-6,
+      "guesses": [
+        "lasierten",
+        "einsatzes",
+        "enaktives"
+      ]
+    },
+    {
+      "word": "schiebung",
+      "num_guesses": 2,
+      "prior": 0.000027543643196245126,
+      "guesses": [
+        "lasierten",
+        "schiebung"
+      ]
+    },
+    {
+      "word": "taufender",
+      "num_guesses": 3,
+      "prior": 0.000015172926869835865,
+      "guesses": [
+        "lasierten",
+        "kratziger",
+        "taufender"
+      ]
+    },
+    {
+      "word": "volksepos",
+      "num_guesses": 3,
+      "prior": 0.000024578756219964118,
+      "guesses": [
+        "lasierten",
+        "fluglochs",
+        "volksepos"
+      ]
+    },
+    {
+      "word": "unterzöge",
+      "num_guesses": 3,
+      "prior": 0.000017370346101190325,
+      "guesses": [
+        "lasierten",
+        "gebundene",
+        "unterzöge"
+      ]
+    },
+    {
+      "word": "handsamem",
+      "num_guesses": 3,
+      "prior": 6.769838764690003e-6,
+      "guesses": [
+        "lasierten",
+        "wurzbachs",
+        "handsamem"
+      ]
+    },
+    {
+      "word": "plattfuss",
+      "num_guesses": 3,
+      "prior": 0.00002166207607354321,
+      "guesses": [
+        "lasierten",
+        "kohlblatt",
+        "plattfuss"
+      ]
+    },
+    {
+      "word": "herangeht",
+      "num_guesses": 3,
+      "prior": 0.000026464421629002788,
+      "guesses": [
+        "lasierten",
+        "wegbrenne",
+        "herangeht"
+      ]
+    },
+    {
+      "word": "bankkunde",
+      "num_guesses": 3,
+      "prior": 0.000018492148421730803,
+      "guesses": [
+        "lasierten",
+        "hochkämme",
+        "bankkunde"
+      ]
+    },
+    {
+      "word": "expandier",
+      "num_guesses": 4,
+      "prior": 7.490975259561347e-6,
+      "guesses": [
+        "lasierten",
+        "einfacher",
+        "examinier",
+        "expandier"
+      ]
+    },
+    {
+      "word": "schnacken",
+      "num_guesses": 4,
+      "prior": 0.000019186013383867608,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "schnappen",
+        "schnacken"
+      ]
+    },
+    {
+      "word": "laibungen",
+      "num_guesses": 3,
+      "prior": 0.000019569410695812155,
+      "guesses": [
+        "lasierten",
+        "landminen",
+        "laibungen"
+      ]
+    },
+    {
+      "word": "ehrenamts",
+      "num_guesses": 3,
+      "prior": 0.000018851578775691988,
+      "guesses": [
+        "lasierten",
+        "federbett",
+        "ehrenamts"
+      ]
+    },
+    {
+      "word": "eckigerer",
+      "num_guesses": 3,
+      "prior": 7.216584688508385e-6,
+      "guesses": [
+        "lasierten",
+        "rührgerät",
+        "eckigerer"
+      ]
+    },
+    {
+      "word": "sexuellen",
+      "num_guesses": 3,
+      "prior": 0.00004879661172972358,
+      "guesses": [
+        "lasierten",
+        "pullenden",
+        "sexuellen"
+      ]
+    },
+    {
+      "word": "ovulation",
+      "num_guesses": 3,
+      "prior": 0.00003086275803481493,
+      "guesses": [
+        "lasierten",
+        "koalition",
+        "ovulation"
+      ]
+    },
+    {
+      "word": "angostura",
+      "num_guesses": 3,
+      "prior": 0.00002096354820819403,
+      "guesses": [
+        "lasierten",
+        "traumhaft",
+        "angostura"
+      ]
+    },
+    {
+      "word": "hellhörig",
+      "num_guesses": 3,
+      "prior": 0.00002893501592596797,
+      "guesses": [
+        "lasierten",
+        "frühdruck",
+        "hellhörig"
+      ]
+    },
+    {
+      "word": "kopflampe",
+      "num_guesses": 3,
+      "prior": 0.00001318950898499146,
+      "guesses": [
+        "lasierten",
+        "kopfbälle",
+        "kopflampe"
+      ]
+    },
+    {
+      "word": "pfarrerin",
+      "num_guesses": 3,
+      "prior": 0.000026771005105906073,
+      "guesses": [
+        "lasierten",
+        "ukrainern",
+        "pfarrerin"
+      ]
+    },
+    {
+      "word": "ständchen",
+      "num_guesses": 3,
+      "prior": 0.000028545638100646732,
+      "guesses": [
+        "lasierten",
+        "städtchen",
+        "ständchen"
+      ]
+    },
+    {
+      "word": "blasrohre",
+      "num_guesses": 3,
+      "prior": 0.00001805383013755043,
+      "guesses": [
+        "lasierten",
+        "golfclubs",
+        "blasrohre"
+      ]
+    },
+    {
+      "word": "seufzende",
+      "num_guesses": 3,
+      "prior": 0.00002071447305907612,
+      "guesses": [
+        "lasierten",
+        "benehmens",
+        "seufzende"
+      ]
+    },
+    {
+      "word": "zuklappst",
+      "num_guesses": 3,
+      "prior": 8.07319258057222e-6,
+      "guesses": [
+        "lasierten",
+        "kohlblatt",
+        "zuklappst"
+      ]
+    },
+    {
+      "word": "überdehne",
+      "num_guesses": 4,
+      "prior": 9.371115476765181e-6,
+      "guesses": [
+        "lasierten",
+        "herumgebe",
+        "erhebende",
+        "überdehne"
+      ]
+    },
+    {
+      "word": "niedreres",
+      "num_guesses": 3,
+      "prior": 0.00001049473487336962,
+      "guesses": [
+        "lasierten",
+        "seiernder",
+        "niedreres"
+      ]
+    },
+    {
+      "word": "entsaftet",
+      "num_guesses": 3,
+      "prior": 0.000013357637378538194,
+      "guesses": [
+        "lasierten",
+        "bangendem",
+        "entsaftet"
+      ]
+    },
+    {
+      "word": "spucknapf",
+      "num_guesses": 3,
+      "prior": 0.00002011956763141611,
+      "guesses": [
+        "lasierten",
+        "abschaums",
+        "spucknapf"
+      ]
+    },
+    {
+      "word": "zuckernde",
+      "num_guesses": 4,
+      "prior": 7.300941645116813e-6,
+      "guesses": [
+        "lasierten",
+        "funklochs",
+        "puckernde",
+        "zuckernde"
+      ]
+    },
+    {
+      "word": "abtauschs",
+      "num_guesses": 3,
+      "prior": 8.303801152952237e-6,
+      "guesses": [
+        "lasierten",
+        "automarkt",
+        "abtauschs"
+      ]
+    },
+    {
+      "word": "abgefaßte",
+      "num_guesses": 3,
+      "prior": 0.000029029902881603825,
+      "guesses": [
+        "lasierten",
+        "fettbauch",
+        "abgefaßte"
+      ]
+    },
+    {
+      "word": "behaustem",
+      "num_guesses": 3,
+      "prior": 0.000011151833412461961,
+      "guesses": [
+        "lasierten",
+        "backshops",
+        "behaustem"
+      ]
+    },
+    {
+      "word": "sexarbeit",
+      "num_guesses": 3,
+      "prior": 0.000017857164676334054,
+      "guesses": [
+        "lasierten",
+        "servierst",
+        "sexarbeit"
+      ]
+    },
+    {
+      "word": "blastozöl",
+      "num_guesses": 4,
+      "prior": 9.493682978478652e-6,
+      "guesses": [
+        "lasierten",
+        "kohlblatt",
+        "blastocöl",
+        "blastozöl"
+      ]
+    },
+    {
+      "word": "abartiges",
+      "num_guesses": 3,
+      "prior": 0.00001568898277079345,
+      "guesses": [
+        "lasierten",
+        "druckform",
+        "abartiges"
+      ]
+    },
+    {
+      "word": "grilligem",
+      "num_guesses": 3,
+      "prior": 7.67315489215428e-6,
+      "guesses": [
+        "lasierten",
+        "druckform",
+        "grilligem"
+      ]
+    },
+    {
+      "word": "geratenem",
+      "num_guesses": 3,
+      "prior": 0.000012811334947156638,
+      "guesses": [
+        "lasierten",
+        "geborener",
+        "geratenem"
+      ]
+    },
+    {
+      "word": "raucherin",
+      "num_guesses": 3,
+      "prior": 0.00001760291576664261,
+      "guesses": [
+        "lasierten",
+        "anmachend",
+        "raucherin"
+      ]
+    },
+    {
+      "word": "balinesin",
+      "num_guesses": 2,
+      "prior": 0.000010433341622702603,
+      "guesses": [
+        "lasierten",
+        "balinesin"
+      ]
+    },
+    {
+      "word": "komposita",
+      "num_guesses": 3,
+      "prior": 0.00003497742758008582,
+      "guesses": [
+        "lasierten",
+        "staatsamt",
+        "komposita"
+      ]
+    },
+    {
+      "word": "fertigere",
+      "num_guesses": 3,
+      "prior": 0.000011173383009787668,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "fertigere"
+      ]
+    },
+    {
+      "word": "seitenarm",
+      "num_guesses": 2,
+      "prior": 0.000022714426856137628,
+      "guesses": [
+        "lasierten",
+        "seitenarm"
+      ]
+    },
+    {
+      "word": "täuflinge",
+      "num_guesses": 3,
+      "prior": 0.00002266316648226628,
+      "guesses": [
+        "lasierten",
+        "entfliegt",
+        "täuflinge"
+      ]
+    },
+    {
+      "word": "markdorfs",
+      "num_guesses": 3,
+      "prior": 7.976383051155932e-6,
+      "guesses": [
+        "lasierten",
+        "moosburgs",
+        "markdorfs"
+      ]
+    },
+    {
+      "word": "auflesend",
+      "num_guesses": 3,
+      "prior": 0.000011582389048950428,
+      "guesses": [
+        "lasierten",
+        "wendehals",
+        "auflesend"
+      ]
+    },
+    {
+      "word": "vorglühen",
+      "num_guesses": 3,
+      "prior": 0.000015162179816975852,
+      "guesses": [
+        "lasierten",
+        "hotelflur",
+        "vorglühen"
+      ]
+    },
+    {
+      "word": "absegnung",
+      "num_guesses": 3,
+      "prior": 0.000016948271217146517,
+      "guesses": [
+        "lasierten",
+        "ausspanne",
+        "absegnung"
+      ]
+    },
+    {
+      "word": "einlullte",
+      "num_guesses": 4,
+      "prior": 0.000013870557526860686,
+      "guesses": [
+        "lasierten",
+        "kegelhüte",
+        "blinzelte",
+        "einlullte"
+      ]
+    },
+    {
+      "word": "ertrickst",
+      "num_guesses": 4,
+      "prior": 6.832388319072054e-6,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "diktierst",
+        "ertrickst"
+      ]
+    },
+    {
+      "word": "pyrolysen",
+      "num_guesses": 3,
+      "prior": 0.000010716818658500506,
+      "guesses": [
+        "lasierten",
+        "spurlosen",
+        "pyrolysen"
+      ]
+    },
+    {
+      "word": "gedörrtem",
+      "num_guesses": 3,
+      "prior": 0.00001746881840650309,
+      "guesses": [
+        "lasierten",
+        "umgewühlt",
+        "gedörrtem"
+      ]
+    },
+    {
+      "word": "kaprizier",
+      "num_guesses": 3,
+      "prior": 6.89272782784764e-6,
+      "guesses": [
+        "lasierten",
+        "barbadier",
+        "kaprizier"
+      ]
+    },
+    {
+      "word": "glitzernd",
+      "num_guesses": 3,
+      "prior": 0.00002462824576533262,
+      "guesses": [
+        "lasierten",
+        "flatulent",
+        "glitzernd"
+      ]
+    },
+    {
+      "word": "altlasten",
+      "num_guesses": 3,
+      "prior": 0.00002972044671378094,
+      "guesses": [
+        "lasierten",
+        "ballastes",
+        "altlasten"
+      ]
+    },
+    {
+      "word": "anbandelt",
+      "num_guesses": 3,
+      "prior": 0.000011697214919256648,
+      "guesses": [
+        "lasierten",
+        "anbefahlt",
+        "anbandelt"
+      ]
+    },
+    {
+      "word": "temporäre",
+      "num_guesses": 3,
+      "prior": 0.000037151483907542886,
+      "guesses": [
+        "lasierten",
+        "borgkäufe",
+        "temporäre"
+      ]
+    },
+    {
+      "word": "ankettend",
+      "num_guesses": 3,
+      "prior": 6.038690726888203e-6,
+      "guesses": [
+        "lasierten",
+        "abdankung",
+        "ankettend"
+      ]
+    },
+    {
+      "word": "erhaschen",
+      "num_guesses": 3,
+      "prior": 0.00003407842786205397,
+      "guesses": [
+        "lasierten",
+        "verpfusch",
+        "erhaschen"
+      ]
+    },
+    {
+      "word": "heilbutte",
+      "num_guesses": 2,
+      "prior": 0.000012148868633441944,
+      "guesses": [
+        "lasierten",
+        "heilbutte"
+      ]
+    },
+    {
+      "word": "zinsendem",
+      "num_guesses": 4,
+      "prior": 6.435811675557445e-6,
+      "guesses": [
+        "lasierten",
+        "wegnehmen",
+        "sinkendem",
+        "zinsendem"
+      ]
+    },
+    {
+      "word": "degradier",
+      "num_guesses": 3,
+      "prior": 9.109631171975876e-6,
+      "guesses": [
+        "lasierten",
+        "beifahrer",
+        "degradier"
+      ]
+    },
+    {
+      "word": "zugpaaren",
+      "num_guesses": 3,
+      "prior": 0.000011655817366631038,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "zugpaaren"
+      ]
+    },
+    {
+      "word": "landgange",
+      "num_guesses": 3,
+      "prior": 7.59433812847635e-6,
+      "guesses": [
+        "lasierten",
+        "laufgänge",
+        "landgange"
+      ]
+    },
+    {
+      "word": "ölartiger",
+      "num_guesses": 3,
+      "prior": 0.000019066757165274167,
+      "guesses": [
+        "lasierten",
+        "abmachung",
+        "ölartiger"
+      ]
+    },
+    {
+      "word": "fassmaler",
+      "num_guesses": 3,
+      "prior": 0.000011378251014482676,
+      "guesses": [
+        "lasierten",
+        "passabler",
+        "fassmaler"
+      ]
+    },
+    {
+      "word": "umwindest",
+      "num_guesses": 3,
+      "prior": 7.951430373110726e-6,
+      "guesses": [
+        "lasierten",
+        "dummkopfs",
+        "umwindest"
+      ]
+    },
+    {
+      "word": "ablagernd",
+      "num_guesses": 3,
+      "prior": 0.000012261935910875988,
+      "guesses": [
+        "lasierten",
+        "anguckend",
+        "ablagernd"
+      ]
+    },
+    {
+      "word": "hochsitze",
+      "num_guesses": 3,
+      "prior": 0.00001692916925862987,
+      "guesses": [
+        "lasierten",
+        "schöpfung",
+        "hochsitze"
+      ]
+    },
+    {
+      "word": "bergstadt",
+      "num_guesses": 3,
+      "prior": 0.00002690616566603496,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "bergstadt"
+      ]
+    },
+    {
+      "word": "usuellere",
+      "num_guesses": 4,
+      "prior": 6.2716258127132045e-6,
+      "guesses": [
+        "lasierten",
+        "geräuschs",
+        "freudlose",
+        "usuellere"
+      ]
+    },
+    {
+      "word": "anklangen",
+      "num_guesses": 3,
+      "prior": 0.000016574483983933376,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "anklangen"
+      ]
+    },
+    {
+      "word": "albrechts",
+      "num_guesses": 2,
+      "prior": 0.000040704377779487714,
+      "guesses": [
+        "lasierten",
+        "albrechts"
+      ]
+    },
+    {
+      "word": "konzertes",
+      "num_guesses": 2,
+      "prior": 0.000027409333108102907,
+      "guesses": [
+        "lasierten",
+        "konzertes"
+      ]
+    },
+    {
+      "word": "verbohret",
+      "num_guesses": 3,
+      "prior": 6.922122190321455e-6,
+      "guesses": [
+        "lasierten",
+        "durchführ",
+        "verbohret"
+      ]
+    },
+    {
+      "word": "szeklerin",
+      "num_guesses": 3,
+      "prior": 7.909133130744383e-6,
+      "guesses": [
+        "lasierten",
+        "spielerin",
+        "szeklerin"
+      ]
+    },
+    {
+      "word": "rupfender",
+      "num_guesses": 4,
+      "prior": 6.785693361736638e-6,
+      "guesses": [
+        "lasierten",
+        "bohrkäfer",
+        "unreinere",
+        "rupfender"
+      ]
+    },
+    {
+      "word": "paraguays",
+      "num_guesses": 3,
+      "prior": 0.000022389668405434976,
+      "guesses": [
+        "lasierten",
+        "moosburgs",
+        "paraguays"
+      ]
+    },
+    {
+      "word": "gejätetes",
+      "num_guesses": 4,
+      "prior": 7.5330030044384836e-6,
+      "guesses": [
+        "lasierten",
+        "umhertobt",
+        "getötetes",
+        "gejätetes"
+      ]
+    },
+    {
+      "word": "musikhits",
+      "num_guesses": 3,
+      "prior": 8.195453583708774e-6,
+      "guesses": [
+        "lasierten",
+        "positivum",
+        "musikhits"
+      ]
+    },
+    {
+      "word": "zahnarmer",
+      "num_guesses": 3,
+      "prior": 7.358892898806998e-6,
+      "guesses": [
+        "lasierten",
+        "marmorner",
+        "zahnarmer"
+      ]
+    },
+    {
+      "word": "kehlkopfs",
+      "num_guesses": 3,
+      "prior": 0.000030023555968829948,
+      "guesses": [
+        "lasierten",
+        "fluglochs",
+        "kehlkopfs"
+      ]
+    },
+    {
+      "word": "kauerndes",
+      "num_guesses": 3,
+      "prior": 0.00001291159810658231,
+      "guesses": [
+        "lasierten",
+        "dauerndes",
+        "kauerndes"
+      ]
+    },
+    {
+      "word": "holzfunde",
+      "num_guesses": 3,
+      "prior": 0.000015705514928426456,
+      "guesses": [
+        "lasierten",
+        "goldzähne",
+        "holzfunde"
+      ]
+    },
+    {
+      "word": "erdfeucht",
+      "num_guesses": 3,
+      "prior": 0.000015493658550915903,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "erdfeucht"
+      ]
+    },
+    {
+      "word": "zerfällen",
+      "num_guesses": 3,
+      "prior": 0.00002036856169740927,
+      "guesses": [
+        "lasierten",
+        "vogelflug",
+        "zerfällen"
+      ]
+    },
+    {
+      "word": "abzielend",
+      "num_guesses": 3,
+      "prior": 0.00001848441663001264,
+      "guesses": [
+        "lasierten",
+        "anliegend",
+        "abzielend"
+      ]
+    },
+    {
+      "word": "entsperrt",
+      "num_guesses": 3,
+      "prior": 0.00001570166364916764,
+      "guesses": [
+        "lasierten",
+        "beteuerte",
+        "entsperrt"
+      ]
+    },
+    {
+      "word": "yenkurses",
+      "num_guesses": 2,
+      "prior": 7.959782734361679e-6,
+      "guesses": [
+        "lasierten",
+        "yenkurses"
+      ]
+    },
+    {
+      "word": "anpickten",
+      "num_guesses": 2,
+      "prior": 8.088884035418945e-6,
+      "guesses": [
+        "lasierten",
+        "anpickten"
+      ]
+    },
+    {
+      "word": "beblümtes",
+      "num_guesses": 4,
+      "prior": 9.362422404768503e-6,
+      "guesses": [
+        "lasierten",
+        "wohlklang",
+        "edelmutes",
+        "beblümtes"
+      ]
+    },
+    {
+      "word": "besetzend",
+      "num_guesses": 3,
+      "prior": 0.000014697048382200918,
+      "guesses": [
+        "lasierten",
+        "futonbett",
+        "besetzend"
+      ]
+    },
+    {
+      "word": "kohlenden",
+      "num_guesses": 4,
+      "prior": 0.000013531703626597755,
+      "guesses": [
+        "lasierten",
+        "fehlkäufe",
+        "kühlenden",
+        "kohlenden"
+      ]
+    },
+    {
+      "word": "grundbare",
+      "num_guesses": 4,
+      "prior": 9.834834999594609e-6,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "grabfunde",
+        "grundbare"
+      ]
+    },
+    {
+      "word": "krankheit",
+      "num_guesses": 3,
+      "prior": 0.00007825594368351032,
+      "guesses": [
+        "lasierten",
+        "hirnrinde",
+        "krankheit"
+      ]
+    },
+    {
+      "word": "loyalstes",
+      "num_guesses": 3,
+      "prior": 6.335202585502554e-6,
+      "guesses": [
+        "lasierten",
+        "loyalstem",
+        "loyalstes"
+      ]
+    },
+    {
+      "word": "beruflich",
+      "num_guesses": 3,
+      "prior": 0.00004204905905291178,
+      "guesses": [
+        "lasierten",
+        "frühdruck",
+        "beruflich"
+      ]
+    },
+    {
+      "word": "notnägeln",
+      "num_guesses": 3,
+      "prior": 6.584774155769653e-6,
+      "guesses": [
+        "lasierten",
+        "nettolohn",
+        "notnägeln"
+      ]
+    },
+    {
+      "word": "libidinös",
+      "num_guesses": 2,
+      "prior": 0.00001885687416382407,
+      "guesses": [
+        "lasierten",
+        "libidinös"
+      ]
+    },
+    {
+      "word": "sauhunden",
+      "num_guesses": 3,
+      "prior": 8.0091750434319e-6,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "sauhunden"
+      ]
+    },
+    {
+      "word": "peinigten",
+      "num_guesses": 3,
+      "prior": 0.000021365190976710076,
+      "guesses": [
+        "lasierten",
+        "gehetztem",
+        "peinigten"
+      ]
+    },
+    {
+      "word": "nordheims",
+      "num_guesses": 3,
+      "prior": 0.000013775249694024515,
+      "guesses": [
+        "lasierten",
+        "hirnrinde",
+        "nordheims"
+      ]
+    },
+    {
+      "word": "abschieds",
+      "num_guesses": 2,
+      "prior": 0.00003302706903557058,
+      "guesses": [
+        "lasierten",
+        "abschieds"
+      ]
+    },
+    {
+      "word": "wagnisses",
+      "num_guesses": 2,
+      "prior": 0.000021767113990593356,
+      "guesses": [
+        "lasierten",
+        "wagnisses"
+      ]
+    },
+    {
+      "word": "vietcongs",
+      "num_guesses": 3,
+      "prior": 0.000012155005978646685,
+      "guesses": [
+        "lasierten",
+        "shintoist",
+        "vietcongs"
+      ]
+    },
+    {
+      "word": "thermiten",
+      "num_guesses": 3,
+      "prior": 9.349321948949086e-6,
+      "guesses": [
+        "lasierten",
+        "verfremde",
+        "thermiten"
+      ]
+    },
+    {
+      "word": "ausschluß",
+      "num_guesses": 3,
+      "prior": 0.000049534841509417504,
+      "guesses": [
+        "lasierten",
+        "ausschlug",
+        "ausschluß"
+      ]
+    },
+    {
+      "word": "abbildern",
+      "num_guesses": 2,
+      "prior": 0.000023432063137151007,
+      "guesses": [
+        "lasierten",
+        "abbildern"
+      ]
+    },
+    {
+      "word": "trägerlos",
+      "num_guesses": 3,
+      "prior": 0.000012477690969911775,
+      "guesses": [
+        "lasierten",
+        "mutterlos",
+        "trägerlos"
+      ]
+    },
+    {
+      "word": "schaufele",
+      "num_guesses": 3,
+      "prior": 0.000015341480862715173,
+      "guesses": [
+        "lasierten",
+        "kuhstalls",
+        "schaufele"
+      ]
+    },
+    {
+      "word": "bezweckst",
+      "num_guesses": 3,
+      "prior": 0.000015145048083592275,
+      "guesses": [
+        "lasierten",
+        "bettdecke",
+        "bezweckst"
+      ]
+    },
+    {
+      "word": "schlümpfe",
+      "num_guesses": 3,
+      "prior": 0.000016519140743512326,
+      "guesses": [
+        "lasierten",
+        "fluglochs",
+        "schlümpfe"
+      ]
+    },
+    {
+      "word": "redaktors",
+      "num_guesses": 3,
+      "prior": 0.000024301192030766522,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "redaktors"
+      ]
+    },
+    {
+      "word": "dierdorfs",
+      "num_guesses": 3,
+      "prior": 6.8169651632507515e-6,
+      "guesses": [
+        "lasierten",
+        "murrkopfe",
+        "dierdorfs"
+      ]
+    },
+    {
+      "word": "seneszenz",
+      "num_guesses": 3,
+      "prior": 0.00001814178158194497,
+      "guesses": [
+        "lasierten",
+        "benehmens",
+        "seneszenz"
+      ]
+    },
+    {
+      "word": "skatender",
+      "num_guesses": 3,
+      "prior": 5.879554200841658e-6,
+      "guesses": [
+        "lasierten",
+        "auftrages",
+        "skatender"
+      ]
+    },
+    {
+      "word": "auftürmte",
+      "num_guesses": 2,
+      "prior": 0.000019341982212622667,
+      "guesses": [
+        "lasierten",
+        "auftürmte"
+      ]
+    },
+    {
+      "word": "grobziels",
+      "num_guesses": 4,
+      "prior": 7.926160485679237e-6,
+      "guesses": [
+        "lasierten",
+        "mehlkloss",
+        "ciboleros",
+        "grobziels"
+      ]
+    },
+    {
+      "word": "panzernde",
+      "num_guesses": 3,
+      "prior": 7.968100184839903e-6,
+      "guesses": [
+        "lasierten",
+        "gutdünken",
+        "panzernde"
+      ]
+    },
+    {
+      "word": "bahnwägen",
+      "num_guesses": 3,
+      "prior": 0.000010249056313853467,
+      "guesses": [
+        "lasierten",
+        "abmachung",
+        "bahnwägen"
+      ]
+    },
+    {
+      "word": "vorheizte",
+      "num_guesses": 3,
+      "prior": 8.26114238287095e-6,
+      "guesses": [
+        "lasierten",
+        "hetzfilme",
+        "vorheizte"
+      ]
+    },
+    {
+      "word": "herzlosem",
+      "num_guesses": 3,
+      "prior": 0.000012417766297016928,
+      "guesses": [
+        "lasierten",
+        "behelmtes",
+        "herzlosem"
+      ]
+    },
+    {
+      "word": "auspräget",
+      "num_guesses": 3,
+      "prior": 6.8778405876627605e-6,
+      "guesses": [
+        "lasierten",
+        "abdampfes",
+        "auspräget"
+      ]
+    },
+    {
+      "word": "ausschiss",
+      "num_guesses": 3,
+      "prior": 5.907289178414601e-6,
+      "guesses": [
+        "lasierten",
+        "mosambiks",
+        "ausschiss"
+      ]
+    },
+    {
+      "word": "operntext",
+      "num_guesses": 3,
+      "prior": 0.00002218090745616986,
+      "guesses": [
+        "lasierten",
+        "gebundene",
+        "operntext"
+      ]
+    },
+    {
+      "word": "grantigem",
+      "num_guesses": 3,
+      "prior": 8.517683509346322e-6,
+      "guesses": [
+        "lasierten",
+        "knorrigen",
+        "grantigem"
+      ]
+    },
+    {
+      "word": "spezialen",
+      "num_guesses": 3,
+      "prior": 0.00001463193460441524,
+      "guesses": [
+        "lasierten",
+        "anbliesen",
+        "spezialen"
+      ]
+    },
+    {
+      "word": "einhackte",
+      "num_guesses": 3,
+      "prior": 0.00001264956557597381,
+      "guesses": [
+        "lasierten",
+        "hinkniete",
+        "einhackte"
+      ]
+    },
+    {
+      "word": "buschfeld",
+      "num_guesses": 3,
+      "prior": 0.00001678033924718356,
+      "guesses": [
+        "lasierten",
+        "zuschläge",
+        "buschfeld"
+      ]
+    },
+    {
+      "word": "bewohntem",
+      "num_guesses": 3,
+      "prior": 0.000015609769607734775,
+      "guesses": [
+        "lasierten",
+        "behütetem",
+        "bewohntem"
+      ]
+    },
+    {
+      "word": "erblinden",
+      "num_guesses": 4,
+      "prior": 0.000025793104440079247,
+      "guesses": [
+        "lasierten",
+        "hellgelbe",
+        "erblicken",
+        "erblinden"
+      ]
+    },
+    {
+      "word": "eurythmie",
+      "num_guesses": 3,
+      "prior": 0.000022778542085062674,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "eurythmie"
+      ]
+    },
+    {
+      "word": "tidenhubs",
+      "num_guesses": 4,
+      "prior": 0.000013049475619290126,
+      "guesses": [
+        "lasierten",
+        "shintoist",
+        "technisch",
+        "tidenhubs"
+      ]
+    },
+    {
+      "word": "abendmode",
+      "num_guesses": 3,
+      "prior": 0.0000112244342876883,
+      "guesses": [
+        "lasierten",
+        "angenehme",
+        "abendmode"
+      ]
+    },
+    {
+      "word": "bauchiges",
+      "num_guesses": 2,
+      "prior": 0.00001865823690127681,
+      "guesses": [
+        "lasierten",
+        "bauchiges"
+      ]
+    },
+    {
+      "word": "atommacht",
+      "num_guesses": 3,
+      "prior": 0.000021697818269459006,
+      "guesses": [
+        "lasierten",
+        "auftaucht",
+        "atommacht"
+      ]
+    },
+    {
+      "word": "schlichen",
+      "num_guesses": 4,
+      "prior": 0.000035167788051568056,
+      "guesses": [
+        "lasierten",
+        "mohnkopfs",
+        "geschehen",
+        "schlichen"
+      ]
+    },
+    {
+      "word": "thermisch",
+      "num_guesses": 3,
+      "prior": 0.0000336320332075836,
+      "guesses": [
+        "lasierten",
+        "herumtobt",
+        "thermisch"
+      ]
+    },
+    {
+      "word": "automatik",
+      "num_guesses": 2,
+      "prior": 0.00003153325545687443,
+      "guesses": [
+        "lasierten",
+        "automatik"
+      ]
+    },
+    {
+      "word": "eintauche",
+      "num_guesses": 3,
+      "prior": 0.00001602342882919318,
+      "guesses": [
+        "lasierten",
+        "hinkniete",
+        "eintauche"
+      ]
+    },
+    {
+      "word": "schreckst",
+      "num_guesses": 3,
+      "prior": 0.000016056788095507334,
+      "guesses": [
+        "lasierten",
+        "vorrechts",
+        "schreckst"
+      ]
+    },
+    {
+      "word": "jazzcombo",
+      "num_guesses": 3,
+      "prior": 0.00001127457334396652,
+      "guesses": [
+        "lasierten",
+        "pappmaché",
+        "jazzcombo"
+      ]
+    },
+    {
+      "word": "ausgebaut",
+      "num_guesses": 2,
+      "prior": 0.00004893821418515759,
+      "guesses": [
+        "lasierten",
+        "ausgebaut"
+      ]
+    },
+    {
+      "word": "kahlköpfe",
+      "num_guesses": 3,
+      "prior": 0.000016262359161878526,
+      "guesses": [
+        "lasierten",
+        "wollhaube",
+        "kahlköpfe"
+      ]
+    },
+    {
+      "word": "wegfischt",
+      "num_guesses": 4,
+      "prior": 9.39270813775246e-6,
+      "guesses": [
+        "lasierten",
+        "sikhismus",
+        "notwendig",
+        "wegfischt"
+      ]
+    },
+    {
+      "word": "refutiert",
+      "num_guesses": 4,
+      "prior": 0.00001067076712468315,
+      "guesses": [
+        "lasierten",
+        "zerbreche",
+        "reitpferd",
+        "refutiert"
+      ]
+    },
+    {
+      "word": "düsterere",
+      "num_guesses": 3,
+      "prior": 0.000014039922159036722,
+      "guesses": [
+        "lasierten",
+        "äusserste",
+        "düsterere"
+      ]
+    },
+    {
+      "word": "erchtages",
+      "num_guesses": 4,
+      "prior": 6.293104486268925e-6,
+      "guesses": [
+        "lasierten",
+        "wehrturms",
+        "drehtages",
+        "erchtages"
+      ]
+    },
+    {
+      "word": "stimulans",
+      "num_guesses": 3,
+      "prior": 0.000026677266699248398,
+      "guesses": [
+        "lasierten",
+        "alkaloids",
+        "stimulans"
+      ]
+    },
+    {
+      "word": "gelaserte",
+      "num_guesses": 3,
+      "prior": 8.310826375486037e-6,
+      "guesses": [
+        "lasierten",
+        "verblasse",
+        "gelaserte"
+      ]
+    },
+    {
+      "word": "voluminös",
+      "num_guesses": 3,
+      "prior": 0.000027145546828183617,
+      "guesses": [
+        "lasierten",
+        "fluglochs",
+        "voluminös"
+      ]
+    },
+    {
+      "word": "anglophon",
+      "num_guesses": 3,
+      "prior": 0.000012139639297411374,
+      "guesses": [
+        "lasierten",
+        "flachmann",
+        "anglophon"
+      ]
+    },
+    {
+      "word": "gekraucht",
+      "num_guesses": 3,
+      "prior": 8.359349927919514e-6,
+      "guesses": [
+        "lasierten",
+        "bohrturme",
+        "gekraucht"
+      ]
+    },
+    {
+      "word": "walsdorfs",
+      "num_guesses": 3,
+      "prior": 8.26114238287095e-6,
+      "guesses": [
+        "lasierten",
+        "felslochs",
+        "walsdorfs"
+      ]
+    },
+    {
+      "word": "herführst",
+      "num_guesses": 3,
+      "prior": 8.127588597830139e-6,
+      "guesses": [
+        "lasierten",
+        "vorfuhrst",
+        "herführst"
+      ]
+    },
+    {
+      "word": "gewogenen",
+      "num_guesses": 3,
+      "prior": 0.00003287056465674891,
+      "guesses": [
+        "lasierten",
+        "zugebende",
+        "gewogenen"
+      ]
+    },
+    {
+      "word": "kokelndem",
+      "num_guesses": 3,
+      "prior": 7.59433812847635e-6,
+      "guesses": [
+        "lasierten",
+        "jodhältig",
+        "kokelndem"
+      ]
+    },
+    {
+      "word": "grellheit",
+      "num_guesses": 3,
+      "prior": 0.000016508793497254694,
+      "guesses": [
+        "lasierten",
+        "feldbette",
+        "grellheit"
+      ]
+    },
+    {
+      "word": "stopfpilz",
+      "num_guesses": 3,
+      "prior": 0.000010131148377622487,
+      "guesses": [
+        "lasierten",
+        "suchtgift",
+        "stopfpilz"
+      ]
+    },
+    {
+      "word": "schältest",
+      "num_guesses": 3,
+      "prior": 8.676888291742625e-6,
+      "guesses": [
+        "lasierten",
+        "schuftest",
+        "schältest"
+      ]
+    },
+    {
+      "word": "maunzende",
+      "num_guesses": 3,
+      "prior": 9.691225972377863e-6,
+      "guesses": [
+        "lasierten",
+        "dampfbads",
+        "maunzende"
+      ]
+    },
+    {
+      "word": "geografin",
+      "num_guesses": 3,
+      "prior": 0.00001086966094918471,
+      "guesses": [
+        "lasierten",
+        "ukrainern",
+        "geografin"
+      ]
+    },
+    {
+      "word": "bummelten",
+      "num_guesses": 4,
+      "prior": 0.000020595913050234027,
+      "guesses": [
+        "lasierten",
+        "mondflugs",
+        "tummelten",
+        "bummelten"
+      ]
+    },
+    {
+      "word": "zerrenden",
+      "num_guesses": 4,
+      "prior": 0.000017480659008255798,
+      "guesses": [
+        "lasierten",
+        "hemdknopf",
+        "verborgen",
+        "zerrenden"
+      ]
+    },
+    {
+      "word": "heimgehet",
+      "num_guesses": 3,
+      "prior": 6.922122190321455e-6,
+      "guesses": [
+        "lasierten",
+        "demnächst",
+        "heimgehet"
+      ]
+    },
+    {
+      "word": "brotrinde",
+      "num_guesses": 3,
+      "prior": 0.000018954041893516215,
+      "guesses": [
+        "lasierten",
+        "mitkriegt",
+        "brotrinde"
+      ]
+    },
+    {
+      "word": "klebriges",
+      "num_guesses": 3,
+      "prior": 0.000021928352096469755,
+      "guesses": [
+        "lasierten",
+        "herefords",
+        "klebriges"
+      ]
+    },
+    {
+      "word": "buschigen",
+      "num_guesses": 3,
+      "prior": 0.000030443623208404417,
+      "guesses": [
+        "lasierten",
+        "neubeginn",
+        "buschigen"
+      ]
+    },
+    {
+      "word": "bezechter",
+      "num_guesses": 3,
+      "prior": 0.00001215193885587941,
+      "guesses": [
+        "lasierten",
+        "behütetem",
+        "bezechter"
+      ]
+    },
+    {
+      "word": "gefülltes",
+      "num_guesses": 4,
+      "prior": 0.00003252543585464307,
+      "guesses": [
+        "lasierten",
+        "wohlklang",
+        "abgespült",
+        "gefülltes"
+      ]
+    },
+    {
+      "word": "bedachtem",
+      "num_guesses": 3,
+      "prior": 0.000016836091896662652,
+      "guesses": [
+        "lasierten",
+        "zugedeckt",
+        "bedachtem"
+      ]
+    },
+    {
+      "word": "verwirkst",
+      "num_guesses": 3,
+      "prior": 9.085208216738619e-6,
+      "guesses": [
+        "lasierten",
+        "marktwert",
+        "verwirkst"
+      ]
+    },
+    {
+      "word": "mentalist",
+      "num_guesses": 3,
+      "prior": 0.000013022829628113666,
+      "guesses": [
+        "lasierten",
+        "spielfilm",
+        "mentalist"
+      ]
+    },
+    {
+      "word": "windhunde",
+      "num_guesses": 3,
+      "prior": 0.0000229518638999293,
+      "guesses": [
+        "lasierten",
+        "kündigung",
+        "windhunde"
+      ]
+    },
+    {
+      "word": "zugetaner",
+      "num_guesses": 3,
+      "prior": 0.000014824610582424657,
+      "guesses": [
+        "lasierten",
+        "geborener",
+        "zugetaner"
+      ]
+    },
+    {
+      "word": "entkernst",
+      "num_guesses": 3,
+      "prior": 8.03342122392246e-6,
+      "guesses": [
+        "lasierten",
+        "anerkenne",
+        "entkernst"
+      ]
+    },
+    {
+      "word": "wehrloser",
+      "num_guesses": 3,
+      "prior": 0.000022147216678336352,
+      "guesses": [
+        "lasierten",
+        "behelmtes",
+        "wehrloser"
+      ]
+    },
+    {
+      "word": "einblasen",
+      "num_guesses": 3,
+      "prior": 0.000029272167731514157,
+      "guesses": [
+        "lasierten",
+        "anbliesen",
+        "einblasen"
+      ]
+    },
+    {
+      "word": "abgebüßte",
+      "num_guesses": 3,
+      "prior": 0.000010478133575024668,
+      "guesses": [
+        "lasierten",
+        "fettbauch",
+        "abgebüßte"
+      ]
+    },
+    {
+      "word": "hooligans",
+      "num_guesses": 3,
+      "prior": 0.000024002174808045014,
+      "guesses": [
+        "lasierten",
+        "kingstons",
+        "hooligans"
+      ]
+    },
+    {
+      "word": "derischen",
+      "num_guesses": 3,
+      "prior": 0.000013290760912532787,
+      "guesses": [
+        "lasierten",
+        "erwischen",
+        "derischen"
+      ]
+    },
+    {
+      "word": "bemitteln",
+      "num_guesses": 3,
+      "prior": 8.752300400349673e-6,
+      "guesses": [
+        "lasierten",
+        "bewitzeln",
+        "bemitteln"
+      ]
+    },
+    {
+      "word": "punktsieg",
+      "num_guesses": 3,
+      "prior": 0.000015096404739972812,
+      "guesses": [
+        "lasierten",
+        "sinkendes",
+        "punktsieg"
+      ]
+    },
+    {
+      "word": "herabläßt",
+      "num_guesses": 3,
+      "prior": 0.000021070211388065092,
+      "guesses": [
+        "lasierten",
+        "flugblatt",
+        "herabläßt"
+      ]
+    },
+    {
+      "word": "kurzfasst",
+      "num_guesses": 4,
+      "prior": 6.769838764690003e-6,
+      "guesses": [
+        "lasierten",
+        "stadthaus",
+        "aufspürst",
+        "kurzfasst"
+      ]
+    },
+    {
+      "word": "fußlanges",
+      "num_guesses": 3,
+      "prior": 0.000011348149399416316,
+      "guesses": [
+        "lasierten",
+        "konsensus",
+        "fußlanges"
+      ]
+    },
+    {
+      "word": "überholet",
+      "num_guesses": 3,
+      "prior": 9.534517531168178e-6,
+      "guesses": [
+        "lasierten",
+        "bergmolch",
+        "überholet"
+      ]
+    },
+    {
+      "word": "undichtem",
+      "num_guesses": 2,
+      "prior": 0.000013955385414309838,
+      "guesses": [
+        "lasierten",
+        "undichtem"
+      ]
+    },
+    {
+      "word": "mandelöle",
+      "num_guesses": 3,
+      "prior": 0.000011976642593967964,
+      "guesses": [
+        "lasierten",
+        "bandwurms",
+        "mandelöle"
+      ]
+    },
+    {
+      "word": "samischem",
+      "num_guesses": 3,
+      "prior": 9.841977225716209e-6,
+      "guesses": [
+        "lasierten",
+        "demgemäss",
+        "samischem"
+      ]
+    },
+    {
+      "word": "festigtet",
+      "num_guesses": 3,
+      "prior": 7.300941645116813e-6,
+      "guesses": [
+        "lasierten",
+        "gestiftet",
+        "festigtet"
+      ]
+    },
+    {
+      "word": "aufraffet",
+      "num_guesses": 4,
+      "prior": 7.3126795540515975e-6,
+      "guesses": [
+        "lasierten",
+        "zugführer",
+        "aufräumet",
+        "aufraffet"
+      ]
+    },
+    {
+      "word": "mißstande",
+      "num_guesses": 3,
+      "prior": 0.000017713719078422035,
+      "guesses": [
+        "lasierten",
+        "sinnsuche",
+        "mißstande"
+      ]
+    },
+    {
+      "word": "sperrigen",
+      "num_guesses": 3,
+      "prior": 0.00002522015149489733,
+      "guesses": [
+        "lasierten",
+        "parsbergs",
+        "sperrigen"
+      ]
+    },
+    {
+      "word": "verpflanz",
+      "num_guesses": 3,
+      "prior": 0.000011356207741926408,
+      "guesses": [
+        "lasierten",
+        "anguckend",
+        "verpflanz"
+      ]
+    },
+    {
+      "word": "sendenden",
+      "num_guesses": 3,
+      "prior": 0.000022408675280993327,
+      "guesses": [
+        "lasierten",
+        "hemdknopf",
+        "sendenden"
+      ]
+    },
+    {
+      "word": "grashänge",
+      "num_guesses": 3,
+      "prior": 0.000015200602251025793,
+      "guesses": [
+        "lasierten",
+        "abmahnung",
+        "grashänge"
+      ]
+    },
+    {
+      "word": "schmantes",
+      "num_guesses": 3,
+      "prior": 0.000010813965836075795,
+      "guesses": [
+        "lasierten",
+        "anmassung",
+        "schmantes"
+      ]
+    },
+    {
+      "word": "heiermann",
+      "num_guesses": 3,
+      "prior": 0.000017414952599709983,
+      "guesses": [
+        "lasierten",
+        "anregerin",
+        "heiermann"
+      ]
+    },
+    {
+      "word": "umrundend",
+      "num_guesses": 3,
+      "prior": 0.000011215990092091021,
+      "guesses": [
+        "lasierten",
+        "bodenfund",
+        "umrundend"
+      ]
+    },
+    {
+      "word": "leilachen",
+      "num_guesses": 3,
+      "prior": 0.000013273560161306236,
+      "guesses": [
+        "lasierten",
+        "liebhaben",
+        "leilachen"
+      ]
+    },
+    {
+      "word": "futurisch",
+      "num_guesses": 3,
+      "prior": 0.000019739579762352203,
+      "guesses": [
+        "lasierten",
+        "murrkopfs",
+        "futurisch"
+      ]
+    },
+    {
+      "word": "ziellosen",
+      "num_guesses": 3,
+      "prior": 0.00002475854503165596,
+      "guesses": [
+        "lasierten",
+        "felldecke",
+        "ziellosen"
+      ]
+    },
+    {
+      "word": "heimtraut",
+      "num_guesses": 3,
+      "prior": 5.879554200841658e-6,
+      "guesses": [
+        "lasierten",
+        "weißkraut",
+        "heimtraut"
+      ]
+    },
+    {
+      "word": "stickiger",
+      "num_guesses": 3,
+      "prior": 0.000018645243494967636,
+      "guesses": [
+        "lasierten",
+        "murrkopfs",
+        "stickiger"
+      ]
+    },
+    {
+      "word": "trivialen",
+      "num_guesses": 2,
+      "prior": 0.000033119627540783206,
+      "guesses": [
+        "lasierten",
+        "trivialen"
+      ]
+    },
+    {
+      "word": "kammolche",
+      "num_guesses": 3,
+      "prior": 0.000010083055310878656,
+      "guesses": [
+        "lasierten",
+        "wollhaube",
+        "kammolche"
+      ]
+    },
+    {
+      "word": "lammenden",
+      "num_guesses": 3,
+      "prior": 0.000012421984766894406,
+      "guesses": [
+        "lasierten",
+        "schlumpfs",
+        "lammenden"
+      ]
+    },
+    {
+      "word": "trillerte",
+      "num_guesses": 4,
+      "prior": 0.0000186964538481897,
+      "guesses": [
+        "lasierten",
+        "feldbette",
+        "glitzerte",
+        "trillerte"
+      ]
+    }
+  ]
+}

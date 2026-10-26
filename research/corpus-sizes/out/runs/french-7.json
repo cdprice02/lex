@@ -1,0 +1,5269 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T02:22:21.244206Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sartine",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "french",
+    "word_length": 7,
+    "dictionary_length": 48472,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "8c8c61be659af816718a6262bf09788af13b88351554fca892bed636c6c79bb3",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:19:37.50315Z",
+      "source_sha256": "06c31dc9b75bdb515505b0eb001aad1e06a4c51f52b904d3a7cd7256375f4956",
+      "word_count": 1570316
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.4219999999999726,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.020000000000000004,
+        "3": 0.5740000000000004,
+        "4": 0.3720000000000003,
+        "5": 0.032000000000000015,
+        "6": 0.002
+      }
+    },
+    "prior": {
+      "mean": 3.309483026997196,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.027705384512742768,
+        "3": 0.653667628996295,
+        "4": 0.3007837227751492,
+        "5": 0.017125102412635235,
+        "6": 0.0007181613031758397
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "urinées",
+      "num_guesses": 3,
+      "prior": 0.000012058953985255105,
+      "guesses": [
+        "sartine",
+        "uréides",
+        "urinées"
+      ]
+    },
+    {
+      "word": "macines",
+      "num_guesses": 3,
+      "prior": 0.000011116379638864912,
+      "guesses": [
+        "sartine",
+        "calimbé",
+        "macines"
+      ]
+    },
+    {
+      "word": "buriaux",
+      "num_guesses": 4,
+      "prior": 0.000010776503545141568,
+      "guesses": [
+        "sartine",
+        "logifié",
+        "curiaux",
+        "buriaux"
+      ]
+    },
+    {
+      "word": "torisme",
+      "num_guesses": 3,
+      "prior": 0.000016275673428549398,
+      "guesses": [
+        "sartine",
+        "computé",
+        "torisme"
+      ]
+    },
+    {
+      "word": "dotions",
+      "num_guesses": 4,
+      "prior": 0.00001518388711136262,
+      "guesses": [
+        "sartine",
+        "potluck",
+        "vendôme",
+        "dotions"
+      ]
+    },
+    {
+      "word": "gélivée",
+      "num_guesses": 4,
+      "prior": 0.000011288068794039527,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "mélibée",
+        "gélivée"
+      ]
+    },
+    {
+      "word": "mazerie",
+      "num_guesses": 4,
+      "prior": 0.000013910763762439715,
+      "guesses": [
+        "sartine",
+        "colibri",
+        "vaigrée",
+        "mazerie"
+      ]
+    },
+    {
+      "word": "replier",
+      "num_guesses": 3,
+      "prior": 0.000048616158646666784,
+      "guesses": [
+        "sartine",
+        "coupler",
+        "replier"
+      ]
+    },
+    {
+      "word": "biaisée",
+      "num_guesses": 3,
+      "prior": 0.000029124249273175375,
+      "guesses": [
+        "sartine",
+        "picassa",
+        "biaisée"
+      ]
+    },
+    {
+      "word": "éhoupés",
+      "num_guesses": 4,
+      "prior": 8.610131654381606e-6,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "épousés",
+        "éhoupés"
+      ]
+    },
+    {
+      "word": "pétante",
+      "num_guesses": 3,
+      "prior": 0.00001349556074045767,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "pétante"
+      ]
+    },
+    {
+      "word": "ricanes",
+      "num_guesses": 3,
+      "prior": 0.000014156661838448442,
+      "guesses": [
+        "sartine",
+        "dreiges",
+        "ricanes"
+      ]
+    },
+    {
+      "word": "jobbers",
+      "num_guesses": 4,
+      "prior": 0.000017799275017022898,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "jambard",
+        "jobbers"
+      ]
+    },
+    {
+      "word": "bréchée",
+      "num_guesses": 4,
+      "prior": 9.297582246048407e-6,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "exécrée",
+        "bréchée"
+      ]
+    },
+    {
+      "word": "dongles",
+      "num_guesses": 4,
+      "prior": 9.376637896741158e-6,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "jongles",
+        "dongles"
+      ]
+    },
+    {
+      "word": "rostons",
+      "num_guesses": 4,
+      "prior": 7.822662682926165e-6,
+      "guesses": [
+        "sartine",
+        "prêchée",
+        "routons",
+        "rostons"
+      ]
+    },
+    {
+      "word": "crochés",
+      "num_guesses": 4,
+      "prior": 0.000015502328422326286,
+      "guesses": [
+        "sartine",
+        "décloué",
+        "brochés",
+        "crochés"
+      ]
+    },
+    {
+      "word": "graciât",
+      "num_guesses": 3,
+      "prior": 9.65154090707778e-6,
+      "guesses": [
+        "sartine",
+        "clapota",
+        "graciât"
+      ]
+    },
+    {
+      "word": "javelés",
+      "num_guesses": 3,
+      "prior": 8.285950814238259e-6,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "javelés"
+      ]
+    },
+    {
+      "word": "formica",
+      "num_guesses": 3,
+      "prior": 0.00003304581334437603,
+      "guesses": [
+        "sartine",
+        "corrida",
+        "formica"
+      ]
+    },
+    {
+      "word": "méropes",
+      "num_guesses": 3,
+      "prior": 0.00001544995449359082,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "méropes"
+      ]
+    },
+    {
+      "word": "ocrions",
+      "num_guesses": 3,
+      "prior": 8.582622684046888e-6,
+      "guesses": [
+        "sartine",
+        "écidium",
+        "ocrions"
+      ]
+    },
+    {
+      "word": "chenale",
+      "num_guesses": 4,
+      "prior": 8.049783219936473e-6,
+      "guesses": [
+        "sartine",
+        "coagulé",
+        "cendale",
+        "chenale"
+      ]
+    },
+    {
+      "word": "alismes",
+      "num_guesses": 3,
+      "prior": 0.000010143991806395097,
+      "guesses": [
+        "sartine",
+        "clipses",
+        "alismes"
+      ]
+    },
+    {
+      "word": "murrhin",
+      "num_guesses": 3,
+      "prior": 0.00001562143350204884,
+      "guesses": [
+        "sartine",
+        "horizon",
+        "murrhin"
+      ]
+    },
+    {
+      "word": "podales",
+      "num_guesses": 4,
+      "prior": 0.000014767398836648902,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "abdomen",
+        "podales"
+      ]
+    },
+    {
+      "word": "laçages",
+      "num_guesses": 5,
+      "prior": 0.000012926482442930743,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "voyages",
+        "halages",
+        "laçages"
+      ]
+    },
+    {
+      "word": "granula",
+      "num_guesses": 3,
+      "prior": 0.00002018904151084896,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "granula"
+      ]
+    },
+    {
+      "word": "fibreux",
+      "num_guesses": 3,
+      "prior": 0.00005111991708270078,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "fibreux"
+      ]
+    },
+    {
+      "word": "guinnés",
+      "num_guesses": 4,
+      "prior": 0.000010227722494329511,
+      "guesses": [
+        "sartine",
+        "modulés",
+        "guignés",
+        "guinnés"
+      ]
+    },
+    {
+      "word": "viandas",
+      "num_guesses": 3,
+      "prior": 0.000013540546940974057,
+      "guesses": [
+        "sartine",
+        "goannas",
+        "viandas"
+      ]
+    },
+    {
+      "word": "punaisa",
+      "num_guesses": 3,
+      "prior": 0.000012261594666437113,
+      "guesses": [
+        "sartine",
+        "amadoué",
+        "punaisa"
+      ]
+    },
+    {
+      "word": "brûlait",
+      "num_guesses": 3,
+      "prior": 0.00005131995459444258,
+      "guesses": [
+        "sartine",
+        "prolabé",
+        "brûlait"
+      ]
+    },
+    {
+      "word": "sutural",
+      "num_guesses": 3,
+      "prior": 0.00002959045878871807,
+      "guesses": [
+        "sartine",
+        "shâstra",
+        "sutural"
+      ]
+    },
+    {
+      "word": "frisses",
+      "num_guesses": 6,
+      "prior": 7.0689556135672675e-6,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "sigisbé",
+        "drisses",
+        "crisses",
+        "frisses"
+      ]
+    },
+    {
+      "word": "centavo",
+      "num_guesses": 3,
+      "prior": 0.00001728722077784103,
+      "guesses": [
+        "sartine",
+        "mentaux",
+        "centavo"
+      ]
+    },
+    {
+      "word": "éructai",
+      "num_guesses": 4,
+      "prior": 0.000012044712488186043,
+      "guesses": [
+        "sartine",
+        "prolabé",
+        "créatif",
+        "éructai"
+      ]
+    },
+    {
+      "word": "axeront",
+      "num_guesses": 4,
+      "prior": 0.000013034945732082486,
+      "guesses": [
+        "sartine",
+        "crapaud",
+        "avèrent",
+        "axeront"
+      ]
+    },
+    {
+      "word": "creviez",
+      "num_guesses": 4,
+      "prior": 0.000013729588262086472,
+      "guesses": [
+        "sartine",
+        "coupler",
+        "chériez",
+        "creviez"
+      ]
+    },
+    {
+      "word": "ovalées",
+      "num_guesses": 3,
+      "prior": 8.48345685523508e-6,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "ovalées"
+      ]
+    },
+    {
+      "word": "sépions",
+      "num_guesses": 3,
+      "prior": 0.000013401417829694884,
+      "guesses": [
+        "sartine",
+        "humilié",
+        "sépions"
+      ]
+    },
+    {
+      "word": "délover",
+      "num_guesses": 4,
+      "prior": 9.205305722677985e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "déloger",
+        "délover"
+      ]
+    },
+    {
+      "word": "laittes",
+      "num_guesses": 4,
+      "prior": 8.855422438300104e-6,
+      "guesses": [
+        "sartine",
+        "laitues",
+        "laitées",
+        "laittes"
+      ]
+    },
+    {
+      "word": "loquées",
+      "num_guesses": 4,
+      "prior": 0.000010248232797818246,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "loguées",
+        "loquées"
+      ]
+    },
+    {
+      "word": "guelfes",
+      "num_guesses": 4,
+      "prior": 0.00003917862876492622,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "fleuves",
+        "guelfes"
+      ]
+    },
+    {
+      "word": "miroita",
+      "num_guesses": 2,
+      "prior": 0.000014912964355043993,
+      "guesses": [
+        "sartine",
+        "miroita"
+      ]
+    },
+    {
+      "word": "gunites",
+      "num_guesses": 4,
+      "prior": 9.921644826721692e-6,
+      "guesses": [
+        "sartine",
+        "titines",
+        "comblez",
+        "gunites"
+      ]
+    },
+    {
+      "word": "malvacé",
+      "num_guesses": 3,
+      "prior": 0.00001043217497500572,
+      "guesses": [
+        "sartine",
+        "malcoha",
+        "malvacé"
+      ]
+    },
+    {
+      "word": "détient",
+      "num_guesses": 4,
+      "prior": 0.00005266540162291146,
+      "guesses": [
+        "sartine",
+        "volupté",
+        "mitchif",
+        "détient"
+      ]
+    },
+    {
+      "word": "agantes",
+      "num_guesses": 4,
+      "prior": 8.102746890165e-6,
+      "guesses": [
+        "sartine",
+        "encanté",
+        "paquage",
+        "agantes"
+      ]
+    },
+    {
+      "word": "épilent",
+      "num_guesses": 3,
+      "prior": 0.000014299613387800626,
+      "guesses": [
+        "sartine",
+        "volupté",
+        "épilent"
+      ]
+    },
+    {
+      "word": "relécha",
+      "num_guesses": 4,
+      "prior": 7.495554961775699e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "regâché",
+        "relécha"
+      ]
+    },
+    {
+      "word": "baclait",
+      "num_guesses": 3,
+      "prior": 7.007743316527384e-6,
+      "guesses": [
+        "sartine",
+        "cubilot",
+        "baclait"
+      ]
+    },
+    {
+      "word": "spermas",
+      "num_guesses": 3,
+      "prior": 7.372610353905264e-6,
+      "guesses": [
+        "sartine",
+        "lupomes",
+        "spermas"
+      ]
+    },
+    {
+      "word": "badèche",
+      "num_guesses": 4,
+      "prior": 0.000011140865293903197,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "badache",
+        "badèche"
+      ]
+    },
+    {
+      "word": "villois",
+      "num_guesses": 5,
+      "prior": 0.000015112564618537404,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "ligablo",
+        "pillois",
+        "villois"
+      ]
+    },
+    {
+      "word": "bénîmes",
+      "num_guesses": 4,
+      "prior": 0.000013825477507158608,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "pensées",
+        "bénîmes"
+      ]
+    },
+    {
+      "word": "chemisa",
+      "num_guesses": 3,
+      "prior": 0.00001165238670110945,
+      "guesses": [
+        "sartine",
+        "alismas",
+        "chemisa"
+      ]
+    },
+    {
+      "word": "heshvan",
+      "num_guesses": 4,
+      "prior": 0.000011928281446704597,
+      "guesses": [
+        "sartine",
+        "décanal",
+        "envoyas",
+        "heshvan"
+      ]
+    },
+    {
+      "word": "jailles",
+      "num_guesses": 5,
+      "prior": 0.000011728789158379481,
+      "guesses": [
+        "sartine",
+        "criblés",
+        "groumpf",
+        "janvier",
+        "jailles"
+      ]
+    },
+    {
+      "word": "budgété",
+      "num_guesses": 3,
+      "prior": 0.00001795805820997648,
+      "guesses": [
+        "sartine",
+        "bootcut",
+        "budgété"
+      ]
+    },
+    {
+      "word": "remueur",
+      "num_guesses": 3,
+      "prior": 0.000021761605843428875,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "remueur"
+      ]
+    },
+    {
+      "word": "corsait",
+      "num_guesses": 3,
+      "prior": 0.000017991875058255804,
+      "guesses": [
+        "sartine",
+        "acuités",
+        "corsait"
+      ]
+    },
+    {
+      "word": "infixes",
+      "num_guesses": 4,
+      "prior": 0.000020506244853888138,
+      "guesses": [
+        "sartine",
+        "diminué",
+        "incises",
+        "infixes"
+      ]
+    },
+    {
+      "word": "zoomers",
+      "num_guesses": 4,
+      "prior": 9.327542853004468e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "jambard",
+        "zoomers"
+      ]
+    },
+    {
+      "word": "affidée",
+      "num_guesses": 4,
+      "prior": 0.000018242826940908496,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "évidage",
+        "affidée"
+      ]
+    },
+    {
+      "word": "lissais",
+      "num_guesses": 4,
+      "prior": 0.000018308808773298477,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "ballage",
+        "lissais"
+      ]
+    },
+    {
+      "word": "poirier",
+      "num_guesses": 3,
+      "prior": 0.00005021359409502239,
+      "guesses": [
+        "sartine",
+        "coupler",
+        "poirier"
+      ]
+    },
+    {
+      "word": "copiiez",
+      "num_guesses": 3,
+      "prior": 9.77802345138018e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "copiiez"
+      ]
+    },
+    {
+      "word": "xxièmes",
+      "num_guesses": 4,
+      "prior": 7.76154063950888e-6,
+      "guesses": [
+        "sartine",
+        "colisés",
+        "xvièmes",
+        "xxièmes"
+      ]
+    },
+    {
+      "word": "annuité",
+      "num_guesses": 3,
+      "prior": 0.00004536244864441298,
+      "guesses": [
+        "sartine",
+        "inégala",
+        "annuité"
+      ]
+    },
+    {
+      "word": "désarma",
+      "num_guesses": 4,
+      "prior": 0.000032409013364697296,
+      "guesses": [
+        "sartine",
+        "décorum",
+        "désarmé",
+        "désarma"
+      ]
+    },
+    {
+      "word": "opaques",
+      "num_guesses": 3,
+      "prior": 0.000046934211594155,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "opaques"
+      ]
+    },
+    {
+      "word": "jammers",
+      "num_guesses": 4,
+      "prior": 0.00001363311789645747,
+      "guesses": [
+        "sartine",
+        "muscles",
+        "rameras",
+        "jammers"
+      ]
+    },
+    {
+      "word": "niqueur",
+      "num_guesses": 4,
+      "prior": 0.000017080489683044303,
+      "guesses": [
+        "sartine",
+        "croiler",
+        "devenir",
+        "niqueur"
+      ]
+    },
+    {
+      "word": "crapone",
+      "num_guesses": 4,
+      "prior": 0.000016958748685652593,
+      "guesses": [
+        "sartine",
+        "alganon",
+        "profane",
+        "crapone"
+      ]
+    },
+    {
+      "word": "duettos",
+      "num_guesses": 4,
+      "prior": 0.000011396977091320045,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "quottes",
+        "duettos"
+      ]
+    },
+    {
+      "word": "parlant",
+      "num_guesses": 3,
+      "prior": 0.00008174289196137319,
+      "guesses": [
+        "sartine",
+        "déclame",
+        "parlant"
+      ]
+    },
+    {
+      "word": "naqqara",
+      "num_guesses": 4,
+      "prior": 8.56873487229121e-6,
+      "guesses": [
+        "sartine",
+        "bandana",
+        "naggara",
+        "naqqara"
+      ]
+    },
+    {
+      "word": "mancher",
+      "num_guesses": 3,
+      "prior": 0.000017131369758890616,
+      "guesses": [
+        "sartine",
+        "conamer",
+        "mancher"
+      ]
+    },
+    {
+      "word": "garoupe",
+      "num_guesses": 3,
+      "prior": 0.00001850829110329947,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "garoupe"
+      ]
+    },
+    {
+      "word": "plinien",
+      "num_guesses": 3,
+      "prior": 0.000015640307620956583,
+      "guesses": [
+        "sartine",
+        "cinglon",
+        "plinien"
+      ]
+    },
+    {
+      "word": "mâterai",
+      "num_guesses": 5,
+      "prior": 8.188057772573907e-6,
+      "guesses": [
+        "sartine",
+        "fruitir",
+        "pivotât",
+        "ombrage",
+        "mâterai"
+      ]
+    },
+    {
+      "word": "lanciez",
+      "num_guesses": 3,
+      "prior": 0.000018935531005208846,
+      "guesses": [
+        "sartine",
+        "glandez",
+        "lanciez"
+      ]
+    },
+    {
+      "word": "dénudai",
+      "num_guesses": 4,
+      "prior": 0.000013226941577148065,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "aubépin",
+        "dénudai"
+      ]
+    },
+    {
+      "word": "patèque",
+      "num_guesses": 4,
+      "prior": 0.000014784731512118272,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "patauge",
+        "patèque"
+      ]
+    },
+    {
+      "word": "saisons",
+      "num_guesses": 3,
+      "prior": 0.00006514353984034743,
+      "guesses": [
+        "sartine",
+        "pénible",
+        "saisons"
+      ]
+    },
+    {
+      "word": "asiates",
+      "num_guesses": 4,
+      "prior": 0.000022561661981412418,
+      "guesses": [
+        "sartine",
+        "licites",
+        "iodates",
+        "asiates"
+      ]
+    },
+    {
+      "word": "aronien",
+      "num_guesses": 3,
+      "prior": 0.000013798647747101937,
+      "guesses": [
+        "sartine",
+        "clangor",
+        "aronien"
+      ]
+    },
+    {
+      "word": "diabler",
+      "num_guesses": 5,
+      "prior": 8.171278824603084e-6,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "chialer",
+        "affiler",
+        "diabler"
+      ]
+    },
+    {
+      "word": "kusunda",
+      "num_guesses": 4,
+      "prior": 8.84317422758988e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "bushman",
+        "kusunda"
+      ]
+    },
+    {
+      "word": "choyiez",
+      "num_guesses": 3,
+      "prior": 7.495554961775699e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "choyiez"
+      ]
+    },
+    {
+      "word": "varoise",
+      "num_guesses": 3,
+      "prior": 0.000022755986382017824,
+      "guesses": [
+        "sartine",
+        "abdomen",
+        "varoise"
+      ]
+    },
+    {
+      "word": "hantant",
+      "num_guesses": 4,
+      "prior": 0.000024978447853329566,
+      "guesses": [
+        "sartine",
+        "octupla",
+        "vantant",
+        "hantant"
+      ]
+    },
+    {
+      "word": "pinques",
+      "num_guesses": 4,
+      "prior": 0.00001688824121379548,
+      "guesses": [
+        "sartine",
+        "diminué",
+        "pleigez",
+        "pinques"
+      ]
+    },
+    {
+      "word": "feniane",
+      "num_guesses": 3,
+      "prior": 0.000012139564460731821,
+      "guesses": [
+        "sartine",
+        "veidams",
+        "feniane"
+      ]
+    },
+    {
+      "word": "laverez",
+      "num_guesses": 3,
+      "prior": 0.000020912483180416683,
+      "guesses": [
+        "sartine",
+        "copuler",
+        "laverez"
+      ]
+    },
+    {
+      "word": "gigogne",
+      "num_guesses": 4,
+      "prior": 0.00002594163604876219,
+      "guesses": [
+        "sartine",
+        "limogés",
+        "givrage",
+        "gigogne"
+      ]
+    },
+    {
+      "word": "trubles",
+      "num_guesses": 4,
+      "prior": 0.000014761075820484266,
+      "guesses": [
+        "sartine",
+        "proutes",
+        "faculté",
+        "trubles"
+      ]
+    },
+    {
+      "word": "tannées",
+      "num_guesses": 3,
+      "prior": 0.00003032437379631733,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "tannées"
+      ]
+    },
+    {
+      "word": "roberto",
+      "num_guesses": 3,
+      "prior": 0.000042887612120472966,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "roberto"
+      ]
+    },
+    {
+      "word": "cuidons",
+      "num_guesses": 4,
+      "prior": 0.000017139211003482895,
+      "guesses": [
+        "sartine",
+        "diluvié",
+        "guidons",
+        "cuidons"
+      ]
+    },
+    {
+      "word": "regaule",
+      "num_guesses": 3,
+      "prior": 6.91171053119949e-6,
+      "guesses": [
+        "sartine",
+        "procuré",
+        "regaule"
+      ]
+    },
+    {
+      "word": "élurent",
+      "num_guesses": 3,
+      "prior": 0.00003571148537841425,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "élurent"
+      ]
+    },
+    {
+      "word": "affaner",
+      "num_guesses": 4,
+      "prior": 0.000010917562666804658,
+      "guesses": [
+        "sartine",
+        "reloger",
+        "avancer",
+        "affaner"
+      ]
+    },
+    {
+      "word": "nierais",
+      "num_guesses": 3,
+      "prior": 0.000019966261055513817,
+      "guesses": [
+        "sartine",
+        "dreiges",
+        "nierais"
+      ]
+    },
+    {
+      "word": "couviez",
+      "num_guesses": 3,
+      "prior": 0.000012143021057095406,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "couviez"
+      ]
+    },
+    {
+      "word": "dracéna",
+      "num_guesses": 3,
+      "prior": 0.000012366130581130318,
+      "guesses": [
+        "sartine",
+        "acarajé",
+        "dracéna"
+      ]
+    },
+    {
+      "word": "effluer",
+      "num_guesses": 3,
+      "prior": 0.000010725907396026107,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "effluer"
+      ]
+    },
+    {
+      "word": "savater",
+      "num_guesses": 3,
+      "prior": 0.00001693141776405663,
+      "guesses": [
+        "sartine",
+        "zouaves",
+        "savater"
+      ]
+    },
+    {
+      "word": "dracène",
+      "num_guesses": 4,
+      "prior": 8.08524619347075e-6,
+      "guesses": [
+        "sartine",
+        "alganon",
+        "bucrane",
+        "dracène"
+      ]
+    },
+    {
+      "word": "braillé",
+      "num_guesses": 4,
+      "prior": 0.000021219478282858456,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "éraillé",
+        "braillé"
+      ]
+    },
+    {
+      "word": "boralde",
+      "num_guesses": 3,
+      "prior": 0.000013371007596148958,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "boralde"
+      ]
+    },
+    {
+      "word": "maganer",
+      "num_guesses": 3,
+      "prior": 0.000011883422959166788,
+      "guesses": [
+        "sartine",
+        "conamer",
+        "maganer"
+      ]
+    },
+    {
+      "word": "jonchas",
+      "num_guesses": 4,
+      "prior": 8.48345685523508e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "monacos",
+        "jonchas"
+      ]
+    },
+    {
+      "word": "mariner",
+      "num_guesses": 2,
+      "prior": 0.00003265762528746016,
+      "guesses": [
+        "sartine",
+        "mariner"
+      ]
+    },
+    {
+      "word": "epernon",
+      "num_guesses": 4,
+      "prior": 0.00003919971029346549,
+      "guesses": [
+        "sartine",
+        "coudrer",
+        "embryon",
+        "epernon"
+      ]
+    },
+    {
+      "word": "bisotés",
+      "num_guesses": 5,
+      "prior": 7.0987834903733236e-6,
+      "guesses": [
+        "sartine",
+        "limités",
+        "picotés",
+        "gigotés",
+        "bisotés"
+      ]
+    },
+    {
+      "word": "fronçai",
+      "num_guesses": 3,
+      "prior": 0.000024789211708389663,
+      "guesses": [
+        "sartine",
+        "bigoudi",
+        "fronçai"
+      ]
+    },
+    {
+      "word": "accorez",
+      "num_guesses": 3,
+      "prior": 7.213339148779094e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "accorez"
+      ]
+    },
+    {
+      "word": "bliauds",
+      "num_guesses": 4,
+      "prior": 0.000013219571434247162,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "buglais",
+        "bliauds"
+      ]
+    },
+    {
+      "word": "biftons",
+      "num_guesses": 4,
+      "prior": 0.00001690482906319529,
+      "guesses": [
+        "sartine",
+        "clipsés",
+        "bittons",
+        "biftons"
+      ]
+    },
+    {
+      "word": "criarde",
+      "num_guesses": 3,
+      "prior": 0.00003231526555346133,
+      "guesses": [
+        "sartine",
+        "bragard",
+        "criarde"
+      ]
+    },
+    {
+      "word": "éblaïte",
+      "num_guesses": 3,
+      "prior": 0.000013571685189963538,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "éblaïte"
+      ]
+    },
+    {
+      "word": "marades",
+      "num_guesses": 4,
+      "prior": 0.00001961272168779192,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "bâtards",
+        "marades"
+      ]
+    },
+    {
+      "word": "pernais",
+      "num_guesses": 3,
+      "prior": 0.000011648309587899263,
+      "guesses": [
+        "sartine",
+        "bivouac",
+        "pernais"
+      ]
+    },
+    {
+      "word": "flashys",
+      "num_guesses": 4,
+      "prior": 8.690614170431785e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "sebkhas",
+        "flashys"
+      ]
+    },
+    {
+      "word": "codages",
+      "num_guesses": 4,
+      "prior": 0.00002367886030725518,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "cobayes",
+        "codages"
+      ]
+    },
+    {
+      "word": "suivoit",
+      "num_guesses": 3,
+      "prior": 0.000037681669543228654,
+      "guesses": [
+        "sartine",
+        "composé",
+        "suivoit"
+      ]
+    },
+    {
+      "word": "rasette",
+      "num_guesses": 2,
+      "prior": 0.00001855731784615314,
+      "guesses": [
+        "sartine",
+        "rasette"
+      ]
+    },
+    {
+      "word": "hissant",
+      "num_guesses": 4,
+      "prior": 0.00002997338431221969,
+      "guesses": [
+        "sartine",
+        "pulsons",
+        "havette",
+        "hissant"
+      ]
+    },
+    {
+      "word": "bestial",
+      "num_guesses": 2,
+      "prior": 0.00003434059661962962,
+      "guesses": [
+        "sartine",
+        "bestial"
+      ]
+    },
+    {
+      "word": "daignez",
+      "num_guesses": 3,
+      "prior": 0.000046250405650907145,
+      "guesses": [
+        "sartine",
+        "doliman",
+        "daignez"
+      ]
+    },
+    {
+      "word": "mattent",
+      "num_guesses": 4,
+      "prior": 0.000011688826426022488,
+      "guesses": [
+        "sartine",
+        "fanclub",
+        "mangent",
+        "mattent"
+      ]
+    },
+    {
+      "word": "sursalé",
+      "num_guesses": 3,
+      "prior": 0.00001498962241509547,
+      "guesses": [
+        "sartine",
+        "conspué",
+        "sursalé"
+      ]
+    },
+    {
+      "word": "roulais",
+      "num_guesses": 3,
+      "prior": 0.00002739559879996005,
+      "guesses": [
+        "sartine",
+        "aiguail",
+        "roulais"
+      ]
+    },
+    {
+      "word": "mallant",
+      "num_guesses": 4,
+      "prior": 9.563384206749789e-6,
+      "guesses": [
+        "sartine",
+        "columbo",
+        "palmant",
+        "mallant"
+      ]
+    },
+    {
+      "word": "délissé",
+      "num_guesses": 3,
+      "prior": 8.22120888863705e-6,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "délissé"
+      ]
+    },
+    {
+      "word": "allâtes",
+      "num_guesses": 4,
+      "prior": 0.000020002990823519388,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "blastes",
+        "allâtes"
+      ]
+    },
+    {
+      "word": "abymées",
+      "num_guesses": 4,
+      "prior": 0.000013775781528430423,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "égayées",
+        "abymées"
+      ]
+    },
+    {
+      "word": "redirai",
+      "num_guesses": 4,
+      "prior": 0.000025721323801820182,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "diminué",
+        "redirai"
+      ]
+    },
+    {
+      "word": "dilaton",
+      "num_guesses": 4,
+      "prior": 9.434226493098456e-6,
+      "guesses": [
+        "sartine",
+        "pointin",
+        "occitan",
+        "dilaton"
+      ]
+    },
+    {
+      "word": "larcine",
+      "num_guesses": 3,
+      "prior": 0.0000113521057089765,
+      "guesses": [
+        "sartine",
+        "champla",
+        "larcine"
+      ]
+    },
+    {
+      "word": "chèques",
+      "num_guesses": 3,
+      "prior": 0.00005258707049336707,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "chèques"
+      ]
+    },
+    {
+      "word": "almelec",
+      "num_guesses": 3,
+      "prior": 0.000012445407143748281,
+      "guesses": [
+        "sartine",
+        "alpagué",
+        "almelec"
+      ]
+    },
+    {
+      "word": "lékanis",
+      "num_guesses": 4,
+      "prior": 0.000013060860341765639,
+      "guesses": [
+        "sartine",
+        "goannas",
+        "aliénés",
+        "lékanis"
+      ]
+    },
+    {
+      "word": "quesnay",
+      "num_guesses": 3,
+      "prior": 0.000041175551145201456,
+      "guesses": [
+        "sartine",
+        "décanal",
+        "quesnay"
+      ]
+    },
+    {
+      "word": "cyrènes",
+      "num_guesses": 3,
+      "prior": 0.000024269393902726765,
+      "guesses": [
+        "sartine",
+        "bouclés",
+        "cyrènes"
+      ]
+    },
+    {
+      "word": "bandons",
+      "num_guesses": 4,
+      "prior": 0.000015718600060013655,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "basfond",
+        "bandons"
+      ]
+    },
+    {
+      "word": "volanta",
+      "num_guesses": 3,
+      "prior": 0.00001106173884384545,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "volanta"
+      ]
+    },
+    {
+      "word": "crucite",
+      "num_guesses": 4,
+      "prior": 0.000010869559798485228,
+      "guesses": [
+        "sartine",
+        "découpé",
+        "brucite",
+        "crucite"
+      ]
+    },
+    {
+      "word": "mycosés",
+      "num_guesses": 4,
+      "prior": 9.882582019546639e-6,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "écossés",
+        "mycosés"
+      ]
+    },
+    {
+      "word": "forcent",
+      "num_guesses": 3,
+      "prior": 0.00004653304693947125,
+      "guesses": [
+        "sartine",
+        "chomedu",
+        "forcent"
+      ]
+    },
+    {
+      "word": "achèves",
+      "num_guesses": 4,
+      "prior": 0.000017813470821723504,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "ambages",
+        "achèves"
+      ]
+    },
+    {
+      "word": "pichons",
+      "num_guesses": 4,
+      "prior": 0.000015587228429193484,
+      "guesses": [
+        "sartine",
+        "diluvié",
+        "buphage",
+        "pichons"
+      ]
+    },
+    {
+      "word": "endures",
+      "num_guesses": 3,
+      "prior": 0.00001938940813509927,
+      "guesses": [
+        "sartine",
+        "coudées",
+        "endures"
+      ]
+    },
+    {
+      "word": "khoisan",
+      "num_guesses": 3,
+      "prior": 0.000019183674400704927,
+      "guesses": [
+        "sartine",
+        "goannas",
+        "khoisan"
+      ]
+    },
+    {
+      "word": "abkhaze",
+      "num_guesses": 3,
+      "prior": 0.000019196966410276308,
+      "guesses": [
+        "sartine",
+        "coagulé",
+        "abkhaze"
+      ]
+    },
+    {
+      "word": "hominal",
+      "num_guesses": 4,
+      "prior": 0.000017498954102844095,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "nominal",
+        "hominal"
+      ]
+    },
+    {
+      "word": "trivium",
+      "num_guesses": 3,
+      "prior": 0.0000286448897896964,
+      "guesses": [
+        "sartine",
+        "croupal",
+        "trivium"
+      ]
+    },
+    {
+      "word": "célerin",
+      "num_guesses": 3,
+      "prior": 0.00001873197211455342,
+      "guesses": [
+        "sartine",
+        "croiler",
+        "célerin"
+      ]
+    },
+    {
+      "word": "vaincue",
+      "num_guesses": 3,
+      "prior": 0.00005333048958768945,
+      "guesses": [
+        "sartine",
+        "monguls",
+        "vaincue"
+      ]
+    },
+    {
+      "word": "zouzous",
+      "num_guesses": 5,
+      "prior": 0.000014100108784214081,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "grysbok",
+        "famille",
+        "zouzous"
+      ]
+    },
+    {
+      "word": "darknet",
+      "num_guesses": 4,
+      "prior": 0.000015637796331870606,
+      "guesses": [
+        "sartine",
+        "parenté",
+        "baronet",
+        "darknet"
+      ]
+    },
+    {
+      "word": "dinguer",
+      "num_guesses": 4,
+      "prior": 0.000018134394390306213,
+      "guesses": [
+        "sartine",
+        "croiler",
+        "pendage",
+        "dinguer"
+      ]
+    },
+    {
+      "word": "arahant",
+      "num_guesses": 5,
+      "prior": 0.000014761075820484266,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "plafond",
+        "traçant",
+        "arahant"
+      ]
+    },
+    {
+      "word": "caddies",
+      "num_guesses": 3,
+      "prior": 0.000021014763855076643,
+      "guesses": [
+        "sartine",
+        "musclez",
+        "caddies"
+      ]
+    },
+    {
+      "word": "vuidant",
+      "num_guesses": 4,
+      "prior": 0.0000182960905917203,
+      "guesses": [
+        "sartine",
+        "mildiou",
+        "service",
+        "vuidant"
+      ]
+    },
+    {
+      "word": "citâtes",
+      "num_guesses": 3,
+      "prior": 0.000010101067874788313,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "citâtes"
+      ]
+    },
+    {
+      "word": "accorai",
+      "num_guesses": 3,
+      "prior": 8.01368408219036e-6,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "accorai"
+      ]
+    },
+    {
+      "word": "radulas",
+      "num_guesses": 3,
+      "prior": 0.000012686367669219038,
+      "guesses": [
+        "sartine",
+        "déclama",
+        "radulas"
+      ]
+    },
+    {
+      "word": "piolées",
+      "num_guesses": 4,
+      "prior": 8.95104971570232e-6,
+      "guesses": [
+        "sartine",
+        "colisés",
+        "violées",
+        "piolées"
+      ]
+    },
+    {
+      "word": "excités",
+      "num_guesses": 3,
+      "prior": 0.00004727727281952976,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "excités"
+      ]
+    },
+    {
+      "word": "bouzine",
+      "num_guesses": 4,
+      "prior": 0.000013882567397221025,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "voudrez",
+        "bouzine"
+      ]
+    },
+    {
+      "word": "palpait",
+      "num_guesses": 4,
+      "prior": 0.00002502190327417964,
+      "guesses": [
+        "sartine",
+        "cubilot",
+        "fallait",
+        "palpait"
+      ]
+    },
+    {
+      "word": "partils",
+      "num_guesses": 2,
+      "prior": 0.000011913403593778614,
+      "guesses": [
+        "sartine",
+        "partils"
+      ]
+    },
+    {
+      "word": "armillé",
+      "num_guesses": 3,
+      "prior": 7.471607012155116e-6,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "armillé"
+      ]
+    },
+    {
+      "word": "aphylle",
+      "num_guesses": 4,
+      "prior": 0.0000181558741321136,
+      "guesses": [
+        "sartine",
+        "coagulé",
+        "appelle",
+        "aphylle"
+      ]
+    },
+    {
+      "word": "reloque",
+      "num_guesses": 4,
+      "prior": 7.939470517404538e-6,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "relogue",
+        "reloque"
+      ]
+    },
+    {
+      "word": "regante",
+      "num_guesses": 3,
+      "prior": 9.590172817604243e-6,
+      "guesses": [
+        "sartine",
+        "cogente",
+        "regante"
+      ]
+    },
+    {
+      "word": "subaigu",
+      "num_guesses": 3,
+      "prior": 0.00002834539330076186,
+      "guesses": [
+        "sartine",
+        "libérai",
+        "subaigu"
+      ]
+    },
+    {
+      "word": "burelle",
+      "num_guesses": 3,
+      "prior": 0.000021517035153473645,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "burelle"
+      ]
+    },
+    {
+      "word": "grisart",
+      "num_guesses": 4,
+      "prior": 0.000018907403583588597,
+      "guesses": [
+        "sartine",
+        "primois",
+        "cristal",
+        "grisart"
+      ]
+    },
+    {
+      "word": "nosiane",
+      "num_guesses": 3,
+      "prior": 7.471607012155116e-6,
+      "guesses": [
+        "sartine",
+        "assigne",
+        "nosiane"
+      ]
+    },
+    {
+      "word": "heurter",
+      "num_guesses": 3,
+      "prior": 0.00005299666342123337,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "heurter"
+      ]
+    },
+    {
+      "word": "attique",
+      "num_guesses": 3,
+      "prior": 0.00005242538429999638,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "attique"
+      ]
+    },
+    {
+      "word": "fifrons",
+      "num_guesses": 4,
+      "prior": 9.120056722890051e-6,
+      "guesses": [
+        "sartine",
+        "filibus",
+        "ficrons",
+        "fifrons"
+      ]
+    },
+    {
+      "word": "chêmait",
+      "num_guesses": 4,
+      "prior": 7.676925973839449e-6,
+      "guesses": [
+        "sartine",
+        "complut",
+        "chômait",
+        "chêmait"
+      ]
+    },
+    {
+      "word": "recallé",
+      "num_guesses": 3,
+      "prior": 7.69843030515414e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "recallé"
+      ]
+    },
+    {
+      "word": "franger",
+      "num_guesses": 4,
+      "prior": 0.0000190143303817844,
+      "guesses": [
+        "sartine",
+        "reloger",
+        "granger",
+        "franger"
+      ]
+    },
+    {
+      "word": "talards",
+      "num_guesses": 3,
+      "prior": 0.000012836460193110131,
+      "guesses": [
+        "sartine",
+        "modulés",
+        "talards"
+      ]
+    },
+    {
+      "word": "pleuvez",
+      "num_guesses": 3,
+      "prior": 0.00001213610392297984,
+      "guesses": [
+        "sartine",
+        "complut",
+        "pleuvez"
+      ]
+    },
+    {
+      "word": "lorgner",
+      "num_guesses": 3,
+      "prior": 0.00002798838393353546,
+      "guesses": [
+        "sartine",
+        "écrouer",
+        "lorgner"
+      ]
+    },
+    {
+      "word": "meyrand",
+      "num_guesses": 3,
+      "prior": 0.000016856729623234425,
+      "guesses": [
+        "sartine",
+        "recampé",
+        "meyrand"
+      ]
+    },
+    {
+      "word": "engorgé",
+      "num_guesses": 3,
+      "prior": 0.000028388545118971467,
+      "guesses": [
+        "sartine",
+        "coudrer",
+        "engorgé"
+      ]
+    },
+    {
+      "word": "grêlait",
+      "num_guesses": 4,
+      "prior": 0.000014965741584957003,
+      "guesses": [
+        "sartine",
+        "prolabé",
+        "frôlait",
+        "grêlait"
+      ]
+    },
+    {
+      "word": "rasages",
+      "num_guesses": 4,
+      "prior": 0.000013862285984949584,
+      "guesses": [
+        "sartine",
+        "muscles",
+        "rasades",
+        "rasages"
+      ]
+    },
+    {
+      "word": "vitales",
+      "num_guesses": 3,
+      "prior": 0.00004994947695659217,
+      "guesses": [
+        "sartine",
+        "licites",
+        "vitales"
+      ]
+    },
+    {
+      "word": "alaskan",
+      "num_guesses": 4,
+      "prior": 0.0000172168452332043,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "analysa",
+        "alaskan"
+      ]
+    },
+    {
+      "word": "reperce",
+      "num_guesses": 4,
+      "prior": 0.000013886609490611823,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "baptême",
+        "reperce"
+      ]
+    },
+    {
+      "word": "lunatum",
+      "num_guesses": 3,
+      "prior": 0.0000188524255223415,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "lunatum"
+      ]
+    },
+    {
+      "word": "pulsées",
+      "num_guesses": 3,
+      "prior": 0.00001613850848624469,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "pulsées"
+      ]
+    },
+    {
+      "word": "ostiaux",
+      "num_guesses": 4,
+      "prior": 8.67740648905482e-6,
+      "guesses": [
+        "sartine",
+        "licités",
+        "assista",
+        "ostiaux"
+      ]
+    },
+    {
+      "word": "rideras",
+      "num_guesses": 4,
+      "prior": 8.01368408219036e-6,
+      "guesses": [
+        "sartine",
+        "rivures",
+        "rimeras",
+        "rideras"
+      ]
+    },
+    {
+      "word": "brèlent",
+      "num_guesses": 5,
+      "prior": 7.347010394029785e-6,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "brûlent",
+        "brêlent",
+        "brèlent"
+      ]
+    },
+    {
+      "word": "boutane",
+      "num_guesses": 3,
+      "prior": 9.434226493098456e-6,
+      "guesses": [
+        "sartine",
+        "chambre",
+        "boutane"
+      ]
+    },
+    {
+      "word": "charche",
+      "num_guesses": 4,
+      "prior": 0.000015336241165888966,
+      "guesses": [
+        "sartine",
+        "procuré",
+        "râclage",
+        "charche"
+      ]
+    },
+    {
+      "word": "formant",
+      "num_guesses": 3,
+      "prior": 0.00007794321148467761,
+      "guesses": [
+        "sartine",
+        "mondant",
+        "formant"
+      ]
+    },
+    {
+      "word": "planier",
+      "num_guesses": 3,
+      "prior": 0.000023964339807630998,
+      "guesses": [
+        "sartine",
+        "clangor",
+        "planier"
+      ]
+    },
+    {
+      "word": "arramas",
+      "num_guesses": 4,
+      "prior": 9.77802345138018e-6,
+      "guesses": [
+        "sartine",
+        "débogué",
+        "arrasas",
+        "arramas"
+      ]
+    },
+    {
+      "word": "modulée",
+      "num_guesses": 4,
+      "prior": 0.00003301754739371828,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "doublée",
+        "modulée"
+      ]
+    },
+    {
+      "word": "pelleur",
+      "num_guesses": 4,
+      "prior": 0.000011680767937541833,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "empâtée",
+        "pelleur"
+      ]
+    },
+    {
+      "word": "essarta",
+      "num_guesses": 4,
+      "prior": 0.000014917517469373788,
+      "guesses": [
+        "sartine",
+        "arcures",
+        "déserta",
+        "essarta"
+      ]
+    },
+    {
+      "word": "rolfing",
+      "num_guesses": 3,
+      "prior": 0.000012858516096756016,
+      "guesses": [
+        "sartine",
+        "poulopé",
+        "rolfing"
+      ]
+    },
+    {
+      "word": "mercure",
+      "num_guesses": 3,
+      "prior": 0.00007949781458807622,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "mercure"
+      ]
+    },
+    {
+      "word": "piratés",
+      "num_guesses": 3,
+      "prior": 0.000019512716978552543,
+      "guesses": [
+        "sartine",
+        "acuités",
+        "piratés"
+      ]
+    },
+    {
+      "word": "taquées",
+      "num_guesses": 4,
+      "prior": 0.000012589199082329758,
+      "guesses": [
+        "sartine",
+        "copules",
+        "taguées",
+        "taquées"
+      ]
+    },
+    {
+      "word": "fanfics",
+      "num_guesses": 3,
+      "prior": 8.81847223758339e-6,
+      "guesses": [
+        "sartine",
+        "passion",
+        "fanfics"
+      ]
+    },
+    {
+      "word": "sommier",
+      "num_guesses": 3,
+      "prior": 0.000040786526166465655,
+      "guesses": [
+        "sartine",
+        "couplez",
+        "sommier"
+      ]
+    },
+    {
+      "word": "damnent",
+      "num_guesses": 4,
+      "prior": 0.000025663923026889403,
+      "guesses": [
+        "sartine",
+        "glumacé",
+        "mandent",
+        "damnent"
+      ]
+    },
+    {
+      "word": "fonçoir",
+      "num_guesses": 3,
+      "prior": 7.007743316527384e-6,
+      "guesses": [
+        "sartine",
+        "goudron",
+        "fonçoir"
+      ]
+    },
+    {
+      "word": "opinées",
+      "num_guesses": 4,
+      "prior": 8.526522301831386e-6,
+      "guesses": [
+        "sartine",
+        "diminué",
+        "pigoche",
+        "opinées"
+      ]
+    },
+    {
+      "word": "arilles",
+      "num_guesses": 4,
+      "prior": 0.000017166110464629168,
+      "guesses": [
+        "sartine",
+        "rivures",
+        "abigaïl",
+        "arilles"
+      ]
+    },
+    {
+      "word": "arrobes",
+      "num_guesses": 3,
+      "prior": 0.000024654891790091837,
+      "guesses": [
+        "sartine",
+        "loguées",
+        "arrobes"
+      ]
+    },
+    {
+      "word": "envions",
+      "num_guesses": 4,
+      "prior": 0.00002475230353959673,
+      "guesses": [
+        "sartine",
+        "doliums",
+        "espions",
+        "envions"
+      ]
+    },
+    {
+      "word": "vaulier",
+      "num_guesses": 3,
+      "prior": 0.000014158531445201245,
+      "guesses": [
+        "sartine",
+        "bruleur",
+        "vaulier"
+      ]
+    },
+    {
+      "word": "zournas",
+      "num_guesses": 3,
+      "prior": 8.891766023011858e-6,
+      "guesses": [
+        "sartine",
+        "cofondé",
+        "zournas"
+      ]
+    },
+    {
+      "word": "boitant",
+      "num_guesses": 3,
+      "prior": 0.0000306452783134997,
+      "guesses": [
+        "sartine",
+        "ampoulé",
+        "boitant"
+      ]
+    },
+    {
+      "word": "cessais",
+      "num_guesses": 3,
+      "prior": 0.000030500935231166042,
+      "guesses": [
+        "sartine",
+        "clipses",
+        "cessais"
+      ]
+    },
+    {
+      "word": "batcave",
+      "num_guesses": 4,
+      "prior": 0.00001922454044872313,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "patache",
+        "batcave"
+      ]
+    },
+    {
+      "word": "kettles",
+      "num_guesses": 3,
+      "prior": 0.000014687570381364002,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "kettles"
+      ]
+    },
+    {
+      "word": "coûtume",
+      "num_guesses": 3,
+      "prior": 0.00003229844193089781,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "coûtume"
+      ]
+    },
+    {
+      "word": "perpète",
+      "num_guesses": 3,
+      "prior": 0.000022489895432742407,
+      "guesses": [
+        "sartine",
+        "computé",
+        "perpète"
+      ]
+    },
+    {
+      "word": "cuivrer",
+      "num_guesses": 3,
+      "prior": 0.0000186569458821118,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "cuivrer"
+      ]
+    },
+    {
+      "word": "centras",
+      "num_guesses": 3,
+      "prior": 0.000016486371156328424,
+      "guesses": [
+        "sartine",
+        "victime",
+        "centras"
+      ]
+    },
+    {
+      "word": "acatène",
+      "num_guesses": 3,
+      "prior": 0.000012589199082329758,
+      "guesses": [
+        "sartine",
+        "chambre",
+        "acatène"
+      ]
+    },
+    {
+      "word": "ashrams",
+      "num_guesses": 3,
+      "prior": 0.00001805875590720149,
+      "guesses": [
+        "sartine",
+        "décorum",
+        "ashrams"
+      ]
+    },
+    {
+      "word": "exultai",
+      "num_guesses": 3,
+      "prior": 0.000010847950164673022,
+      "guesses": [
+        "sartine",
+        "poulaga",
+        "exultai"
+      ]
+    },
+    {
+      "word": "battons",
+      "num_guesses": 4,
+      "prior": 0.00003138124795453721,
+      "guesses": [
+        "sartine",
+        "consuls",
+        "ngambay",
+        "battons"
+      ]
+    },
+    {
+      "word": "desnois",
+      "num_guesses": 4,
+      "prior": 0.000011410301730715745,
+      "guesses": [
+        "sartine",
+        "diminué",
+        "dessein",
+        "desnois"
+      ]
+    },
+    {
+      "word": "taboues",
+      "num_guesses": 3,
+      "prior": 0.000019543191220528997,
+      "guesses": [
+        "sartine",
+        "copules",
+        "taboues"
+      ]
+    },
+    {
+      "word": "rudoyai",
+      "num_guesses": 4,
+      "prior": 9.499683303330538e-6,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "prouvai",
+        "rudoyai"
+      ]
+    },
+    {
+      "word": "dévêtit",
+      "num_guesses": 3,
+      "prior": 0.00002333575714747268,
+      "guesses": [
+        "sartine",
+        "complié",
+        "dévêtit"
+      ]
+    },
+    {
+      "word": "koulaks",
+      "num_guesses": 4,
+      "prior": 0.000027997069255641704,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "négatif",
+        "koulaks"
+      ]
+    },
+    {
+      "word": "pommard",
+      "num_guesses": 3,
+      "prior": 0.00002629100072546329,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "pommard"
+      ]
+    },
+    {
+      "word": "divergé",
+      "num_guesses": 4,
+      "prior": 0.00002482886671895265,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "immergé",
+        "divergé"
+      ]
+    },
+    {
+      "word": "essayât",
+      "num_guesses": 3,
+      "prior": 0.000028479324129976456,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "essayât"
+      ]
+    },
+    {
+      "word": "émilies",
+      "num_guesses": 3,
+      "prior": 0.000011011110910955648,
+      "guesses": [
+        "sartine",
+        "complus",
+        "émilies"
+      ]
+    },
+    {
+      "word": "baracon",
+      "num_guesses": 3,
+      "prior": 0.000014539347069706827,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "baracon"
+      ]
+    },
+    {
+      "word": "fulcrum",
+      "num_guesses": 3,
+      "prior": 0.000020016578232907617,
+      "guesses": [
+        "sartine",
+        "géocodé",
+        "fulcrum"
+      ]
+    },
+    {
+      "word": "centrez",
+      "num_guesses": 3,
+      "prior": 0.00001793779028657787,
+      "guesses": [
+        "sartine",
+        "recamer",
+        "centrez"
+      ]
+    },
+    {
+      "word": "coresse",
+      "num_guesses": 3,
+      "prior": 0.000011343045756721125,
+      "guesses": [
+        "sartine",
+        "composé",
+        "coresse"
+      ]
+    },
+    {
+      "word": "vomirai",
+      "num_guesses": 4,
+      "prior": 0.00001688454616011844,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "romprai",
+        "vomirai"
+      ]
+    },
+    {
+      "word": "lindois",
+      "num_guesses": 4,
+      "prior": 0.000014617502227190075,
+      "guesses": [
+        "sartine",
+        "modulés",
+        "blondis",
+        "lindois"
+      ]
+    },
+    {
+      "word": "resondé",
+      "num_guesses": 3,
+      "prior": 7.422768792816281e-6,
+      "guesses": [
+        "sartine",
+        "coudées",
+        "resondé"
+      ]
+    },
+    {
+      "word": "réfutai",
+      "num_guesses": 4,
+      "prior": 0.000016068139271780092,
+      "guesses": [
+        "sartine",
+        "prolabé",
+        "réactif",
+        "réfutai"
+      ]
+    },
+    {
+      "word": "restiez",
+      "num_guesses": 3,
+      "prior": 0.00003155610920975485,
+      "guesses": [
+        "sartine",
+        "fibrome",
+        "restiez"
+      ]
+    },
+    {
+      "word": "mutilée",
+      "num_guesses": 3,
+      "prior": 0.00004289242874873658,
+      "guesses": [
+        "sartine",
+        "polités",
+        "mutilée"
+      ]
+    },
+    {
+      "word": "picques",
+      "num_guesses": 3,
+      "prior": 0.000027142540087379688,
+      "guesses": [
+        "sartine",
+        "colisés",
+        "picques"
+      ]
+    },
+    {
+      "word": "égrefin",
+      "num_guesses": 3,
+      "prior": 0.000013117159241111137,
+      "guesses": [
+        "sartine",
+        "buriner",
+        "égrefin"
+      ]
+    },
+    {
+      "word": "camaïeu",
+      "num_guesses": 3,
+      "prior": 0.000032673326361556016,
+      "guesses": [
+        "sartine",
+        "baculum",
+        "camaïeu"
+      ]
+    },
+    {
+      "word": "trépiez",
+      "num_guesses": 4,
+      "prior": 0.000010708827838967046,
+      "guesses": [
+        "sartine",
+        "trémeur",
+        "trépied",
+        "trépiez"
+      ]
+    },
+    {
+      "word": "bernais",
+      "num_guesses": 3,
+      "prior": 0.000014120950207736334,
+      "guesses": [
+        "sartine",
+        "bivouac",
+        "bernais"
+      ]
+    },
+    {
+      "word": "raifort",
+      "num_guesses": 3,
+      "prior": 0.00003195105090610548,
+      "guesses": [
+        "sartine",
+        "raclait",
+        "raifort"
+      ]
+    },
+    {
+      "word": "fongiez",
+      "num_guesses": 3,
+      "prior": 0.00001020704633629217,
+      "guesses": [
+        "sartine",
+        "cinglon",
+        "fongiez"
+      ]
+    },
+    {
+      "word": "gantées",
+      "num_guesses": 3,
+      "prior": 0.000029217915654653657,
+      "guesses": [
+        "sartine",
+        "langhes",
+        "gantées"
+      ]
+    },
+    {
+      "word": "spéléos",
+      "num_guesses": 3,
+      "prior": 0.000013389754262992825,
+      "guesses": [
+        "sartine",
+        "cumulés",
+        "spéléos"
+      ]
+    },
+    {
+      "word": "nymphée",
+      "num_guesses": 4,
+      "prior": 0.000028321033641908397,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "emmenée",
+        "nymphée"
+      ]
+    },
+    {
+      "word": "binerie",
+      "num_guesses": 4,
+      "prior": 0.000012740990352987863,
+      "guesses": [
+        "sartine",
+        "logifié",
+        "victime",
+        "binerie"
+      ]
+    },
+    {
+      "word": "gambine",
+      "num_guesses": 4,
+      "prior": 9.194821292588166e-6,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "bambine",
+        "gambine"
+      ]
+    },
+    {
+      "word": "arigots",
+      "num_guesses": 3,
+      "prior": 8.855422438300104e-6,
+      "guesses": [
+        "sartine",
+        "primois",
+        "arigots"
+      ]
+    },
+    {
+      "word": "templet",
+      "num_guesses": 3,
+      "prior": 0.000016194588323760092,
+      "guesses": [
+        "sartine",
+        "couplet",
+        "templet"
+      ]
+    },
+    {
+      "word": "pricent",
+      "num_guesses": 4,
+      "prior": 0.000012488934487025848,
+      "guesses": [
+        "sartine",
+        "frivolé",
+        "trumper",
+        "pricent"
+      ]
+    },
+    {
+      "word": "fourois",
+      "num_guesses": 4,
+      "prior": 0.000010322065293428987,
+      "guesses": [
+        "sartine",
+        "croulés",
+        "rebrodé",
+        "fourois"
+      ]
+    },
+    {
+      "word": "cardère",
+      "num_guesses": 4,
+      "prior": 0.000020597187074391855,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "carrare",
+        "cardère"
+      ]
+    },
+    {
+      "word": "pouvais",
+      "num_guesses": 3,
+      "prior": 0.00007142997467995358,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "pouvais"
+      ]
+    },
+    {
+      "word": "thulium",
+      "num_guesses": 3,
+      "prior": 0.000019096365413446322,
+      "guesses": [
+        "sartine",
+        "décloué",
+        "thulium"
+      ]
+    },
+    {
+      "word": "liquate",
+      "num_guesses": 3,
+      "prior": 0.000011269502790886635,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "liquate"
+      ]
+    },
+    {
+      "word": "grandes",
+      "num_guesses": 3,
+      "prior": 0.00011482429496232103,
+      "guesses": [
+        "sartine",
+        "codages",
+        "grandes"
+      ]
+    },
+    {
+      "word": "manieur",
+      "num_guesses": 3,
+      "prior": 0.000025291385071089275,
+      "guesses": [
+        "sartine",
+        "gambler",
+        "manieur"
+      ]
+    },
+    {
+      "word": "maquent",
+      "num_guesses": 3,
+      "prior": 9.642869248051189e-6,
+      "guesses": [
+        "sartine",
+        "glumacé",
+        "maquent"
+      ]
+    },
+    {
+      "word": "claveau",
+      "num_guesses": 3,
+      "prior": 0.00003174014022498214,
+      "guesses": [
+        "sartine",
+        "alpagué",
+        "claveau"
+      ]
+    },
+    {
+      "word": "asserti",
+      "num_guesses": 3,
+      "prior": 0.00001285576737566323,
+      "guesses": [
+        "sartine",
+        "titiris",
+        "asserti"
+      ]
+    },
+    {
+      "word": "engagez",
+      "num_guesses": 3,
+      "prior": 0.00003583262847462403,
+      "guesses": [
+        "sartine",
+        "cagadou",
+        "engagez"
+      ]
+    },
+    {
+      "word": "roumies",
+      "num_guesses": 4,
+      "prior": 9.163077768369501e-6,
+      "guesses": [
+        "sartine",
+        "copules",
+        "rougies",
+        "roumies"
+      ]
+    },
+    {
+      "word": "djember",
+      "num_guesses": 3,
+      "prior": 0.000011586456659337623,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "djember"
+      ]
+    },
+    {
+      "word": "colliez",
+      "num_guesses": 3,
+      "prior": 0.0000179203445767389,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "colliez"
+      ]
+    },
+    {
+      "word": "pompier",
+      "num_guesses": 3,
+      "prior": 0.0000378482122020489,
+      "guesses": [
+        "sartine",
+        "coupler",
+        "pompier"
+      ]
+    },
+    {
+      "word": "moundas",
+      "num_guesses": 3,
+      "prior": 0.000013106994828093003,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "moundas"
+      ]
+    },
+    {
+      "word": "escrime",
+      "num_guesses": 3,
+      "prior": 0.00004209649554240766,
+      "guesses": [
+        "sartine",
+        "procuré",
+        "escrime"
+      ]
+    },
+    {
+      "word": "gaverai",
+      "num_guesses": 4,
+      "prior": 0.00001089633243770322,
+      "guesses": [
+        "sartine",
+        "dribler",
+        "voyagez",
+        "gaverai"
+      ]
+    },
+    {
+      "word": "chorizo",
+      "num_guesses": 3,
+      "prior": 0.00002684866960004108,
+      "guesses": [
+        "sartine",
+        "léprome",
+        "chorizo"
+      ]
+    },
+    {
+      "word": "érusses",
+      "num_guesses": 4,
+      "prior": 8.755476698468922e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "remises",
+        "érusses"
+      ]
+    },
+    {
+      "word": "fuyante",
+      "num_guesses": 4,
+      "prior": 0.000034489343209925806,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "fumante",
+        "fuyante"
+      ]
+    },
+    {
+      "word": "sevrait",
+      "num_guesses": 3,
+      "prior": 0.00001620004472268191,
+      "guesses": [
+        "sartine",
+        "situera",
+        "sevrait"
+      ]
+    },
+    {
+      "word": "arrêtât",
+      "num_guesses": 3,
+      "prior": 0.000029601619165817907,
+      "guesses": [
+        "sartine",
+        "tuyauta",
+        "arrêtât"
+      ]
+    },
+    {
+      "word": "chevret",
+      "num_guesses": 3,
+      "prior": 0.000019012031327200295,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "chevret"
+      ]
+    },
+    {
+      "word": "frettas",
+      "num_guesses": 3,
+      "prior": 7.69843030515414e-6,
+      "guesses": [
+        "sartine",
+        "leurres",
+        "frettas"
+      ]
+    },
+    {
+      "word": "impolie",
+      "num_guesses": 3,
+      "prior": 0.000025102625067498942,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "impolie"
+      ]
+    },
+    {
+      "word": "infects",
+      "num_guesses": 3,
+      "prior": 0.0000326753033480689,
+      "guesses": [
+        "sartine",
+        "titines",
+        "infects"
+      ]
+    },
+    {
+      "word": "armille",
+      "num_guesses": 3,
+      "prior": 0.000020575440183627225,
+      "guesses": [
+        "sartine",
+        "bragard",
+        "armille"
+      ]
+    },
+    {
+      "word": "locelle",
+      "num_guesses": 3,
+      "prior": 8.348730348472552e-6,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "locelle"
+      ]
+    },
+    {
+      "word": "upsilon",
+      "num_guesses": 3,
+      "prior": 0.00002152823666151871,
+      "guesses": [
+        "sartine",
+        "modulés",
+        "upsilon"
+      ]
+    },
+    {
+      "word": "tercios",
+      "num_guesses": 3,
+      "prior": 0.000022041349431958562,
+      "guesses": [
+        "sartine",
+        "terrils",
+        "tercios"
+      ]
+    },
+    {
+      "word": "saleurs",
+      "num_guesses": 3,
+      "prior": 0.000021077549323306303,
+      "guesses": [
+        "sartine",
+        "coulpes",
+        "saleurs"
+      ]
+    },
+    {
+      "word": "mendées",
+      "num_guesses": 5,
+      "prior": 8.08524619347075e-6,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "pensées",
+        "vengées",
+        "mendées"
+      ]
+    },
+    {
+      "word": "couteau",
+      "num_guesses": 3,
+      "prior": 0.00006715043763328776,
+      "guesses": [
+        "sartine",
+        "fourchu",
+        "couteau"
+      ]
+    },
+    {
+      "word": "bûchers",
+      "num_guesses": 4,
+      "prior": 0.00003985878585192462,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "bernède",
+        "bûchers"
+      ]
+    },
+    {
+      "word": "lantana",
+      "num_guesses": 3,
+      "prior": 0.00002401829928428911,
+      "guesses": [
+        "sartine",
+        "octupla",
+        "lantana"
+      ]
+    },
+    {
+      "word": "répudie",
+      "num_guesses": 3,
+      "prior": 0.00003679310805648882,
+      "guesses": [
+        "sartine",
+        "complié",
+        "répudie"
+      ]
+    },
+    {
+      "word": "fabiane",
+      "num_guesses": 3,
+      "prior": 0.000013882567397221025,
+      "guesses": [
+        "sartine",
+        "badiane",
+        "fabiane"
+      ]
+    },
+    {
+      "word": "stories",
+      "num_guesses": 2,
+      "prior": 0.00003317486708451773,
+      "guesses": [
+        "sartine",
+        "stories"
+      ]
+    },
+    {
+      "word": "revisée",
+      "num_guesses": 4,
+      "prior": 0.00003607153293216681,
+      "guesses": [
+        "sartine",
+        "rissolé",
+        "révisée",
+        "revisée"
+      ]
+    },
+    {
+      "word": "ignorai",
+      "num_guesses": 3,
+      "prior": 0.000019976176435865324,
+      "guesses": [
+        "sartine",
+        "bigoudi",
+        "ignorai"
+      ]
+    },
+    {
+      "word": "youyous",
+      "num_guesses": 4,
+      "prior": 0.000023662351340123222,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "grysbok",
+        "youyous"
+      ]
+    },
+    {
+      "word": "salinée",
+      "num_guesses": 3,
+      "prior": 8.891766023011858e-6,
+      "guesses": [
+        "sartine",
+        "sanicle",
+        "salinée"
+      ]
+    },
+    {
+      "word": "bastain",
+      "num_guesses": 3,
+      "prior": 0.0000100720413376151,
+      "guesses": [
+        "sartine",
+        "nymphos",
+        "bastain"
+      ]
+    },
+    {
+      "word": "envoles",
+      "num_guesses": 3,
+      "prior": 0.000011155453993347973,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "envoles"
+      ]
+    },
+    {
+      "word": "liviens",
+      "num_guesses": 4,
+      "prior": 0.000014050351458617432,
+      "guesses": [
+        "sartine",
+        "doliums",
+        "bivouac",
+        "liviens"
+      ]
+    },
+    {
+      "word": "décurie",
+      "num_guesses": 3,
+      "prior": 0.00002275654657074338,
+      "guesses": [
+        "sartine",
+        "complié",
+        "décurie"
+      ]
+    },
+    {
+      "word": "banquas",
+      "num_guesses": 3,
+      "prior": 8.171278824603084e-6,
+      "guesses": [
+        "sartine",
+        "monacal",
+        "banquas"
+      ]
+    },
+    {
+      "word": "recoula",
+      "num_guesses": 4,
+      "prior": 9.087249912913668e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "recloua",
+        "recoula"
+      ]
+    },
+    {
+      "word": "préjuge",
+      "num_guesses": 3,
+      "prior": 0.00003691796387046058,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "préjuge"
+      ]
+    },
+    {
+      "word": "soukoun",
+      "num_guesses": 3,
+      "prior": 0.000011791618541647852,
+      "guesses": [
+        "sartine",
+        "souchon",
+        "soukoun"
+      ]
+    },
+    {
+      "word": "éructer",
+      "num_guesses": 3,
+      "prior": 0.000019697772219092217,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "éructer"
+      ]
+    },
+    {
+      "word": "ensucre",
+      "num_guesses": 3,
+      "prior": 0.00001017921484803318,
+      "guesses": [
+        "sartine",
+        "recense",
+        "ensucre"
+      ]
+    },
+    {
+      "word": "dégréer",
+      "num_guesses": 4,
+      "prior": 0.000016795822670136577,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "referma",
+        "dégréer"
+      ]
+    },
+    {
+      "word": "religue",
+      "num_guesses": 5,
+      "prior": 8.512263823521732e-6,
+      "guesses": [
+        "sartine",
+        "complié",
+        "filière",
+        "relique",
+        "religue"
+      ]
+    },
+    {
+      "word": "tabulât",
+      "num_guesses": 3,
+      "prior": 0.000013475119709763694,
+      "guesses": [
+        "sartine",
+        "culotta",
+        "tabulât"
+      ]
+    },
+    {
+      "word": "atriums",
+      "num_guesses": 3,
+      "prior": 0.000019329518578500353,
+      "guesses": [
+        "sartine",
+        "acuités",
+        "atriums"
+      ]
+    },
+    {
+      "word": "clairci",
+      "num_guesses": 4,
+      "prior": 0.000011101584050067093,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "claircé",
+        "clairci"
+      ]
+    },
+    {
+      "word": "piétons",
+      "num_guesses": 3,
+      "prior": 0.00004624263865220521,
+      "guesses": [
+        "sartine",
+        "clipsés",
+        "piétons"
+      ]
+    },
+    {
+      "word": "lémonol",
+      "num_guesses": 4,
+      "prior": 0.000011807118586688116,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "nélombo",
+        "lémonol"
+      ]
+    },
+    {
+      "word": "verrats",
+      "num_guesses": 3,
+      "prior": 0.000026711396281823564,
+      "guesses": [
+        "sartine",
+        "bourcer",
+        "verrats"
+      ]
+    },
+    {
+      "word": "hématie",
+      "num_guesses": 3,
+      "prior": 0.000026630048100719785,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "hématie"
+      ]
+    },
+    {
+      "word": "excisât",
+      "num_guesses": 4,
+      "prior": 8.79349032828935e-6,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "bitches",
+        "excisât"
+      ]
+    },
+    {
+      "word": "crosets",
+      "num_guesses": 4,
+      "prior": 0.000012207960702973286,
+      "guesses": [
+        "sartine",
+        "proutes",
+        "crozets",
+        "crosets"
+      ]
+    },
+    {
+      "word": "négaton",
+      "num_guesses": 4,
+      "prior": 0.00001618146288033855,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "phaéton",
+        "négaton"
+      ]
+    },
+    {
+      "word": "médulla",
+      "num_guesses": 3,
+      "prior": 0.00001843148520811271,
+      "guesses": [
+        "sartine",
+        "décloua",
+        "médulla"
+      ]
+    },
+    {
+      "word": "padanes",
+      "num_guesses": 4,
+      "prior": 0.000014640462626629863,
+      "guesses": [
+        "sartine",
+        "cuménol",
+        "bonyads",
+        "padanes"
+      ]
+    },
+    {
+      "word": "escafes",
+      "num_guesses": 4,
+      "prior": 7.76154063950888e-6,
+      "guesses": [
+        "sartine",
+        "osculés",
+        "peuvent",
+        "escafes"
+      ]
+    },
+    {
+      "word": "smiller",
+      "num_guesses": 4,
+      "prior": 0.000011370139327656086,
+      "guesses": [
+        "sartine",
+        "coupler",
+        "siffler",
+        "smiller"
+      ]
+    },
+    {
+      "word": "fagotin",
+      "num_guesses": 3,
+      "prior": 0.000019130134617230352,
+      "guesses": [
+        "sartine",
+        "gibolin",
+        "fagotin"
+      ]
+    },
+    {
+      "word": "iodlant",
+      "num_guesses": 3,
+      "prior": 7.822662682926165e-6,
+      "guesses": [
+        "sartine",
+        "mildiou",
+        "iodlant"
+      ]
+    },
+    {
+      "word": "croitre",
+      "num_guesses": 3,
+      "prior": 0.000029695133388431593,
+      "guesses": [
+        "sartine",
+        "procuré",
+        "croitre"
+      ]
+    },
+    {
+      "word": "pèchent",
+      "num_guesses": 4,
+      "prior": 0.00003801662193960221,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "tempêté",
+        "pèchent"
+      ]
+    },
+    {
+      "word": "cumulet",
+      "num_guesses": 3,
+      "prior": 0.000012311038185037248,
+      "guesses": [
+        "sartine",
+        "couplet",
+        "cumulet"
+      ]
+    },
+    {
+      "word": "bastion",
+      "num_guesses": 2,
+      "prior": 0.00004955866581609295,
+      "guesses": [
+        "sartine",
+        "bastion"
+      ]
+    },
+    {
+      "word": "suranna",
+      "num_guesses": 3,
+      "prior": 7.0689556135672675e-6,
+      "guesses": [
+        "sartine",
+        "suranné",
+        "suranna"
+      ]
+    },
+    {
+      "word": "débâcle",
+      "num_guesses": 3,
+      "prior": 0.00004497663420344302,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "débâcle"
+      ]
+    },
+    {
+      "word": "gareurs",
+      "num_guesses": 4,
+      "prior": 0.000012786272668947894,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "fleuves",
+        "gareurs"
+      ]
+    },
+    {
+      "word": "revotât",
+      "num_guesses": 4,
+      "prior": 7.397859610760494e-6,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "retombé",
+        "revotât"
+      ]
+    },
+    {
+      "word": "meulais",
+      "num_guesses": 4,
+      "prior": 9.826834647176506e-6,
+      "guesses": [
+        "sartine",
+        "clipses",
+        "vidimus",
+        "meulais"
+      ]
+    },
+    {
+      "word": "mélioré",
+      "num_guesses": 3,
+      "prior": 0.000012274857644634197,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "mélioré"
+      ]
+    },
+    {
+      "word": "appiler",
+      "num_guesses": 3,
+      "prior": 8.439498753768137e-6,
+      "guesses": [
+        "sartine",
+        "pelurer",
+        "appiler"
+      ]
+    },
+    {
+      "word": "quichés",
+      "num_guesses": 3,
+      "prior": 0.000021358430484260975,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "quichés"
+      ]
+    },
+    {
+      "word": "bendirs",
+      "num_guesses": 3,
+      "prior": 0.000012012420568964386,
+      "guesses": [
+        "sartine",
+        "bonnées",
+        "bendirs"
+      ]
+    },
+    {
+      "word": "ricinée",
+      "num_guesses": 3,
+      "prior": 8.768221260002673e-6,
+      "guesses": [
+        "sartine",
+        "logifié",
+        "ricinée"
+      ]
+    },
+    {
+      "word": "abergés",
+      "num_guesses": 3,
+      "prior": 0.00001289131886013965,
+      "guesses": [
+        "sartine",
+        "récures",
+        "abergés"
+      ]
+    },
+    {
+      "word": "puddlés",
+      "num_guesses": 3,
+      "prior": 0.000018401449327911977,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "puddlés"
+      ]
+    },
+    {
+      "word": "alvines",
+      "num_guesses": 3,
+      "prior": 0.00003340711187957239,
+      "guesses": [
+        "sartine",
+        "vigiles",
+        "alvines"
+      ]
+    },
+    {
+      "word": "combugé",
+      "num_guesses": 3,
+      "prior": 7.267991907670226e-6,
+      "guesses": [
+        "sartine",
+        "décloué",
+        "combugé"
+      ]
+    },
+    {
+      "word": "lutites",
+      "num_guesses": 3,
+      "prior": 0.000017937064735862122,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "lutites"
+      ]
+    },
+    {
+      "word": "amènent",
+      "num_guesses": 3,
+      "prior": 0.00005479934604829707,
+      "guesses": [
+        "sartine",
+        "glumacé",
+        "amènent"
+      ]
+    },
+    {
+      "word": "turbans",
+      "num_guesses": 2,
+      "prior": 0.00003425745109858278,
+      "guesses": [
+        "sartine",
+        "turbans"
+      ]
+    },
+    {
+      "word": "rebatta",
+      "num_guesses": 4,
+      "prior": 7.84261871448433e-6,
+      "guesses": [
+        "sartine",
+        "épeurer",
+        "boycott",
+        "rebatta"
+      ]
+    },
+    {
+      "word": "cisoirs",
+      "num_guesses": 3,
+      "prior": 8.729762666282022e-6,
+      "guesses": [
+        "sartine",
+        "décuplé",
+        "cisoirs"
+      ]
+    },
+    {
+      "word": "fraisis",
+      "num_guesses": 3,
+      "prior": 7.719697011342481e-6,
+      "guesses": [
+        "sartine",
+        "aiguail",
+        "fraisis"
+      ]
+    },
+    {
+      "word": "trémolo",
+      "num_guesses": 3,
+      "prior": 0.000026209215953734566,
+      "guesses": [
+        "sartine",
+        "couplât",
+        "trémolo"
+      ]
+    },
+    {
+      "word": "urodeum",
+      "num_guesses": 3,
+      "prior": 8.394605255681835e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "urodeum"
+      ]
+    },
+    {
+      "word": "quêtiez",
+      "num_guesses": 4,
+      "prior": 8.997370687959463e-6,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "luttiez",
+        "quêtiez"
+      ]
+    },
+    {
+      "word": "alliste",
+      "num_guesses": 3,
+      "prior": 8.22120888863705e-6,
+      "guesses": [
+        "sartine",
+        "colisés",
+        "alliste"
+      ]
+    },
+    {
+      "word": "côtoyer",
+      "num_guesses": 3,
+      "prior": 0.000038521429418840926,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "côtoyer"
+      ]
+    },
+    {
+      "word": "tantour",
+      "num_guesses": 3,
+      "prior": 0.000013571685189963538,
+      "guesses": [
+        "sartine",
+        "cantara",
+        "tantour"
+      ]
+    },
+    {
+      "word": "virante",
+      "num_guesses": 3,
+      "prior": 0.000016824980627151886,
+      "guesses": [
+        "sartine",
+        "tirante",
+        "virante"
+      ]
+    },
+    {
+      "word": "dictiez",
+      "num_guesses": 3,
+      "prior": 0.000016539909301698372,
+      "guesses": [
+        "sartine",
+        "combugé",
+        "dictiez"
+      ]
+    },
+    {
+      "word": "saluais",
+      "num_guesses": 3,
+      "prior": 0.000023163789095279074,
+      "guesses": [
+        "sartine",
+        "allumas",
+        "saluais"
+      ]
+    },
+    {
+      "word": "flaveur",
+      "num_guesses": 4,
+      "prior": 0.00002055738747309095,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "ampleur",
+        "flaveur"
+      ]
+    },
+    {
+      "word": "flopées",
+      "num_guesses": 3,
+      "prior": 0.000016817475335605297,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "flopées"
+      ]
+    },
+    {
+      "word": "jasminé",
+      "num_guesses": 3,
+      "prior": 8.78089215285638e-6,
+      "guesses": [
+        "sartine",
+        "musclés",
+        "jasminé"
+      ]
+    },
+    {
+      "word": "pavasse",
+      "num_guesses": 5,
+      "prior": 8.903749578674991e-6,
+      "guesses": [
+        "sartine",
+        "muscals",
+        "bavages",
+        "parfois",
+        "pavasse"
+      ]
+    },
+    {
+      "word": "flammar",
+      "num_guesses": 4,
+      "prior": 0.000010064732156229133,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "gravlax",
+        "flammar"
+      ]
+    },
+    {
+      "word": "passagé",
+      "num_guesses": 4,
+      "prior": 0.000015603734980498567,
+      "guesses": [
+        "sartine",
+        "bouclés",
+        "damassé",
+        "passagé"
+      ]
+    },
+    {
+      "word": "neubles",
+      "num_guesses": 4,
+      "prior": 0.000014245309489255294,
+      "guesses": [
+        "sartine",
+        "conflué",
+        "nuelles",
+        "neubles"
+      ]
+    },
+    {
+      "word": "résillé",
+      "num_guesses": 4,
+      "prior": 0.000010507189354147296,
+      "guesses": [
+        "sartine",
+        "croulés",
+        "résilié",
+        "résillé"
+      ]
+    },
+    {
+      "word": "aqueduc",
+      "num_guesses": 3,
+      "prior": 0.00004996769628120905,
+      "guesses": [
+        "sartine",
+        "alpagué",
+        "aqueduc"
+      ]
+    },
+    {
+      "word": "danchés",
+      "num_guesses": 4,
+      "prior": 7.32104857707465e-6,
+      "guesses": [
+        "sartine",
+        "monacal",
+        "abandon",
+        "danchés"
+      ]
+    },
+    {
+      "word": "souhait",
+      "num_guesses": 3,
+      "prior": 0.00005644943071497702,
+      "guesses": [
+        "sartine",
+        "uploads",
+        "souhait"
+      ]
+    },
+    {
+      "word": "fanâtes",
+      "num_guesses": 3,
+      "prior": 7.542552720218486e-6,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "fanâtes"
+      ]
+    },
+    {
+      "word": "rondels",
+      "num_guesses": 3,
+      "prior": 0.00002108401494711618,
+      "guesses": [
+        "sartine",
+        "coudées",
+        "rondels"
+      ]
+    },
+    {
+      "word": "pucière",
+      "num_guesses": 3,
+      "prior": 8.81847223758339e-6,
+      "guesses": [
+        "sartine",
+        "complié",
+        "pucière"
+      ]
+    },
+    {
+      "word": "khammès",
+      "num_guesses": 3,
+      "prior": 0.000024627591794176417,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "khammès"
+      ]
+    },
+    {
+      "word": "jurasse",
+      "num_guesses": 4,
+      "prior": 0.000014537665831564073,
+      "guesses": [
+        "sartine",
+        "abésodé",
+        "juchées",
+        "jurasse"
+      ]
+    },
+    {
+      "word": "recréer",
+      "num_guesses": 4,
+      "prior": 0.00004318465347961869,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "recéper",
+        "recréer"
+      ]
+    },
+    {
+      "word": "pourvût",
+      "num_guesses": 4,
+      "prior": 0.000025247172313068898,
+      "guesses": [
+        "sartine",
+        "couplât",
+        "pourvut",
+        "pourvût"
+      ]
+    },
+    {
+      "word": "rachant",
+      "num_guesses": 3,
+      "prior": 0.000012791888074130219,
+      "guesses": [
+        "sartine",
+        "columbo",
+        "rachant"
+      ]
+    },
+    {
+      "word": "ovulant",
+      "num_guesses": 3,
+      "prior": 0.000010050049771072809,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "ovulant"
+      ]
+    },
+    {
+      "word": "prisons",
+      "num_guesses": 4,
+      "prior": 0.00006796184133044235,
+      "guesses": [
+        "sartine",
+        "filibus",
+        "prosoma",
+        "prisons"
+      ]
+    },
+    {
+      "word": "malmène",
+      "num_guesses": 3,
+      "prior": 0.000027806467143879275,
+      "guesses": [
+        "sartine",
+        "mélanco",
+        "malmène"
+      ]
+    },
+    {
+      "word": "pinotte",
+      "num_guesses": 3,
+      "prior": 0.000013119695428315654,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "pinotte"
+      ]
+    },
+    {
+      "word": "taqiyya",
+      "num_guesses": 3,
+      "prior": 0.00001636879824305409,
+      "guesses": [
+        "sartine",
+        "cubilot",
+        "taqiyya"
+      ]
+    },
+    {
+      "word": "tallait",
+      "num_guesses": 5,
+      "prior": 0.000016155083504233832,
+      "guesses": [
+        "sartine",
+        "cubilot",
+        "fallait",
+        "demande",
+        "tallait"
+      ]
+    },
+    {
+      "word": "tanevot",
+      "num_guesses": 3,
+      "prior": 0.000017855049899043665,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "tanevot"
+      ]
+    },
+    {
+      "word": "rénovés",
+      "num_guesses": 3,
+      "prior": 0.00002914811711283075,
+      "guesses": [
+        "sartine",
+        "géocodé",
+        "rénovés"
+      ]
+    },
+    {
+      "word": "fidiens",
+      "num_guesses": 5,
+      "prior": 7.740731920030311e-6,
+      "guesses": [
+        "sartine",
+        "doliums",
+        "indiens",
+        "ouvrage",
+        "fidiens"
+      ]
+    },
+    {
+      "word": "rouvrez",
+      "num_guesses": 4,
+      "prior": 0.000020080273282500478,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "improbe",
+        "rouvrez"
+      ]
+    },
+    {
+      "word": "farmera",
+      "num_guesses": 5,
+      "prior": 6.94431438687039e-6,
+      "guesses": [
+        "sartine",
+        "clopeur",
+        "galbord",
+        "marrera",
+        "farmera"
+      ]
+    },
+    {
+      "word": "exténue",
+      "num_guesses": 4,
+      "prior": 0.00002173373596094674,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "étendue",
+        "exténue"
+      ]
+    },
+    {
+      "word": "glénais",
+      "num_guesses": 3,
+      "prior": 8.742657497496707e-6,
+      "guesses": [
+        "sartine",
+        "goannas",
+        "glénais"
+      ]
+    },
+    {
+      "word": "buggait",
+      "num_guesses": 4,
+      "prior": 8.78089215285638e-6,
+      "guesses": [
+        "sartine",
+        "complut",
+        "diguait",
+        "buggait"
+      ]
+    },
+    {
+      "word": "couvets",
+      "num_guesses": 3,
+      "prior": 0.000010906968214365463,
+      "guesses": [
+        "sartine",
+        "copules",
+        "couvets"
+      ]
+    },
+    {
+      "word": "coquent",
+      "num_guesses": 3,
+      "prior": 9.053962388260004e-6,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "coquent"
+      ]
+    },
+    {
+      "word": "sucrera",
+      "num_guesses": 3,
+      "prior": 0.000013055693860582893,
+      "guesses": [
+        "sartine",
+        "lupomes",
+        "sucrera"
+      ]
+    },
+    {
+      "word": "ébotter",
+      "num_guesses": 4,
+      "prior": 7.802500912965296e-6,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "émotter",
+        "ébotter"
+      ]
+    },
+    {
+      "word": "errenés",
+      "num_guesses": 4,
+      "prior": 6.94431438687039e-6,
+      "guesses": [
+        "sartine",
+        "bouclés",
+        "égrenés",
+        "errenés"
+      ]
+    },
+    {
+      "word": "dédions",
+      "num_guesses": 4,
+      "prior": 0.00002590471209139755,
+      "guesses": [
+        "sartine",
+        "diluvié",
+        "enfants",
+        "dédions"
+      ]
+    },
+    {
+      "word": "girasse",
+      "num_guesses": 3,
+      "prior": 9.297582246048407e-6,
+      "guesses": [
+        "sartine",
+        "comiqué",
+        "girasse"
+      ]
+    },
+    {
+      "word": "retiras",
+      "num_guesses": 3,
+      "prior": 0.00001552308127901776,
+      "guesses": [
+        "sartine",
+        "titiris",
+        "retiras"
+      ]
+    },
+    {
+      "word": "rossera",
+      "num_guesses": 3,
+      "prior": 0.000013294950004550383,
+      "guesses": [
+        "sartine",
+        "récures",
+        "rossera"
+      ]
+    },
+    {
+      "word": "otiques",
+      "num_guesses": 3,
+      "prior": 0.000018181378896619277,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "otiques"
+      ]
+    },
+    {
+      "word": "rangiez",
+      "num_guesses": 3,
+      "prior": 0.000016669343805260258,
+      "guesses": [
+        "sartine",
+        "cliveur",
+        "rangiez"
+      ]
+    },
+    {
+      "word": "criants",
+      "num_guesses": 3,
+      "prior": 0.00003147027485781471,
+      "guesses": [
+        "sartine",
+        "crassat",
+        "criants"
+      ]
+    },
+    {
+      "word": "médersa",
+      "num_guesses": 4,
+      "prior": 0.00002679103645216977,
+      "guesses": [
+        "sartine",
+        "récures",
+        "déversa",
+        "médersa"
+      ]
+    },
+    {
+      "word": "ajoutas",
+      "num_guesses": 4,
+      "prior": 0.000013719002599332655,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "autobus",
+        "ajoutas"
+      ]
+    },
+    {
+      "word": "fouîtes",
+      "num_guesses": 4,
+      "prior": 0.000011849329057396717,
+      "guesses": [
+        "sartine",
+        "copules",
+        "truffât",
+        "fouîtes"
+      ]
+    },
+    {
+      "word": "jazzman",
+      "num_guesses": 3,
+      "prior": 0.000020780039522566427,
+      "guesses": [
+        "sartine",
+        "calamba",
+        "jazzman"
+      ]
+    },
+    {
+      "word": "aurique",
+      "num_guesses": 3,
+      "prior": 0.000025139591609472302,
+      "guesses": [
+        "sartine",
+        "humilié",
+        "aurique"
+      ]
+    },
+    {
+      "word": "libellé",
+      "num_guesses": 3,
+      "prior": 0.000046535754004092074,
+      "guesses": [
+        "sartine",
+        "couillé",
+        "libellé"
+      ]
+    },
+    {
+      "word": "pupitre",
+      "num_guesses": 3,
+      "prior": 0.00004412115870915211,
+      "guesses": [
+        "sartine",
+        "procuré",
+        "pupitre"
+      ]
+    },
+    {
+      "word": "ménagés",
+      "num_guesses": 3,
+      "prior": 0.00004086770970772316,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "ménagés"
+      ]
+    },
+    {
+      "word": "pouline",
+      "num_guesses": 3,
+      "prior": 0.000017242414918045904,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "pouline"
+      ]
+    },
+    {
+      "word": "porpris",
+      "num_guesses": 4,
+      "prior": 0.000017283855377132745,
+      "guesses": [
+        "sartine",
+        "humidié",
+        "corrois",
+        "porpris"
+      ]
+    },
+    {
+      "word": "négrils",
+      "num_guesses": 4,
+      "prior": 0.00001190593671007028,
+      "guesses": [
+        "sartine",
+        "inspiré",
+        "érosion",
+        "négrils"
+      ]
+    },
+    {
+      "word": "vouloit",
+      "num_guesses": 3,
+      "prior": 0.00006691258876955054,
+      "guesses": [
+        "sartine",
+        "complié",
+        "vouloit"
+      ]
+    },
+    {
+      "word": "aturien",
+      "num_guesses": 3,
+      "prior": 0.000017575187856080037,
+      "guesses": [
+        "sartine",
+        "atérien",
+        "aturien"
+      ]
+    },
+    {
+      "word": "amadote",
+      "num_guesses": 4,
+      "prior": 0.000010079329363578113,
+      "guesses": [
+        "sartine",
+        "culotté",
+        "agoyate",
+        "amadote"
+      ]
+    },
+    {
+      "word": "wiccane",
+      "num_guesses": 4,
+      "prior": 0.00001131569082620448,
+      "guesses": [
+        "sartine",
+        "veidams",
+        "biplane",
+        "wiccane"
+      ]
+    },
+    {
+      "word": "tityres",
+      "num_guesses": 4,
+      "prior": 0.000014836247504771225,
+      "guesses": [
+        "sartine",
+        "tolites",
+        "titrées",
+        "tityres"
+      ]
+    },
+    {
+      "word": "délises",
+      "num_guesses": 4,
+      "prior": 7.29471318719784e-6,
+      "guesses": [
+        "sartine",
+        "colisés",
+        "églises",
+        "délises"
+      ]
+    },
+    {
+      "word": "projets",
+      "num_guesses": 3,
+      "prior": 0.00009119834682126156,
+      "guesses": [
+        "sartine",
+        "proutes",
+        "projets"
+      ]
+    },
+    {
+      "word": "beloces",
+      "num_guesses": 4,
+      "prior": 9.098238155320758e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "besoins",
+        "beloces"
+      ]
+    },
+    {
+      "word": "rivoire",
+      "num_guesses": 4,
+      "prior": 0.00003379803841930948,
+      "guesses": [
+        "sartine",
+        "dépoché",
+        "reboive",
+        "rivoire"
+      ]
+    },
+    {
+      "word": "mendiât",
+      "num_guesses": 3,
+      "prior": 0.0000127750121735615,
+      "guesses": [
+        "sartine",
+        "hourdez",
+        "mendiât"
+      ]
+    },
+    {
+      "word": "gaziote",
+      "num_guesses": 3,
+      "prior": 9.141668474141195e-6,
+      "guesses": [
+        "sartine",
+        "houillé",
+        "gaziote"
+      ]
+    },
+    {
+      "word": "fautais",
+      "num_guesses": 4,
+      "prior": 9.053962388260004e-6,
+      "guesses": [
+        "sartine",
+        "comptât",
+        "hautais",
+        "fautais"
+      ]
+    },
+    {
+      "word": "collecs",
+      "num_guesses": 4,
+      "prior": 8.927524949521834e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "colleys",
+        "collecs"
+      ]
+    },
+    {
+      "word": "greffer",
+      "num_guesses": 3,
+      "prior": 0.0000429334045833856,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "greffer"
+      ]
+    },
+    {
+      "word": "déléter",
+      "num_guesses": 4,
+      "prior": 8.439498753768137e-6,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "débâclé",
+        "déléter"
+      ]
+    },
+    {
+      "word": "anuries",
+      "num_guesses": 2,
+      "prior": 0.00001783950314489008,
+      "guesses": [
+        "sartine",
+        "anuries"
+      ]
+    },
+    {
+      "word": "intserv",
+      "num_guesses": 3,
+      "prior": 0.000010815209275042837,
+      "guesses": [
+        "sartine",
+        "inornés",
+        "intserv"
+      ]
+    },
+    {
+      "word": "nigiris",
+      "num_guesses": 3,
+      "prior": 9.434226493098456e-6,
+      "guesses": [
+        "sartine",
+        "gourrés",
+        "nigiris"
+      ]
+    },
+    {
+      "word": "folleté",
+      "num_guesses": 4,
+      "prior": 0.000010367972097141306,
+      "guesses": [
+        "sartine",
+        "couplet",
+        "moletté",
+        "folleté"
+      ]
+    },
+    {
+      "word": "buvoter",
+      "num_guesses": 4,
+      "prior": 0.000011518990897329002,
+      "guesses": [
+        "sartine",
+        "crouper",
+        "fluctue",
+        "buvoter"
+      ]
+    },
+    {
+      "word": "nitrées",
+      "num_guesses": 3,
+      "prior": 0.000023492205850145308,
+      "guesses": [
+        "sartine",
+        "inornés",
+        "nitrées"
+      ]
+    },
+    {
+      "word": "lardant",
+      "num_guesses": 3,
+      "prior": 0.00001913237743745933,
+      "guesses": [
+        "sartine",
+        "déclame",
+        "lardant"
+      ]
+    },
+    {
+      "word": "torcéen",
+      "num_guesses": 3,
+      "prior": 7.84261871448433e-6,
+      "guesses": [
+        "sartine",
+        "cureton",
+        "torcéen"
+      ]
+    },
+    {
+      "word": "urcéolé",
+      "num_guesses": 3,
+      "prior": 0.00002119199133857692,
+      "guesses": [
+        "sartine",
+        "géocodé",
+        "urcéolé"
+      ]
+    },
+    {
+      "word": "winters",
+      "num_guesses": 2,
+      "prior": 0.000025495327654794104,
+      "guesses": [
+        "sartine",
+        "winters"
+      ]
+    },
+    {
+      "word": "tenions",
+      "num_guesses": 3,
+      "prior": 0.00003915069439751002,
+      "guesses": [
+        "sartine",
+        "topless",
+        "tenions"
+      ]
+    },
+    {
+      "word": "coudera",
+      "num_guesses": 5,
+      "prior": 0.000012789081604339584,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "coupera",
+        "couvera",
+        "coudera"
+      ]
+    },
+    {
+      "word": "putride",
+      "num_guesses": 3,
+      "prior": 0.00004244002165411518,
+      "guesses": [
+        "sartine",
+        "découpé",
+        "putride"
+      ]
+    },
+    {
+      "word": "voguera",
+      "num_guesses": 4,
+      "prior": 0.000018248926408891642,
+      "guesses": [
+        "sartine",
+        "crouler",
+        "gambade",
+        "voguera"
+      ]
+    },
+    {
+      "word": "voguing",
+      "num_guesses": 3,
+      "prior": 9.80255057431737e-6,
+      "guesses": [
+        "sartine",
+        "coulomb",
+        "voguing"
+      ]
+    },
+    {
+      "word": "nagerez",
+      "num_guesses": 4,
+      "prior": 0.000013687048053608723,
+      "guesses": [
+        "sartine",
+        "conamer",
+        "fauréen",
+        "nagerez"
+      ]
+    },
+    {
+      "word": "sautons",
+      "num_guesses": 3,
+      "prior": 0.000027058712782038336,
+      "guesses": [
+        "sartine",
+        "sautant",
+        "sautons"
+      ]
+    },
+    {
+      "word": "granita",
+      "num_guesses": 4,
+      "prior": 0.00001574435432170463,
+      "guesses": [
+        "sartine",
+        "granité",
+        "granito",
+        "granita"
+      ]
+    },
+    {
+      "word": "édictai",
+      "num_guesses": 4,
+      "prior": 8.855422438300104e-6,
+      "guesses": [
+        "sartine",
+        "complut",
+        "addicta",
+        "édictai"
+      ]
+    },
+    {
+      "word": "lésiner",
+      "num_guesses": 3,
+      "prior": 0.00002583343133268484,
+      "guesses": [
+        "sartine",
+        "uréides",
+        "lésiner"
+      ]
+    },
+    {
+      "word": "régnera",
+      "num_guesses": 3,
+      "prior": 0.00003721444470338567,
+      "guesses": [
+        "sartine",
+        "reloger",
+        "régnera"
+      ]
+    },
+    {
+      "word": "mergent",
+      "num_guesses": 3,
+      "prior": 0.000011140865293903197,
+      "guesses": [
+        "sartine",
+        "chomedu",
+        "mergent"
+      ]
+    },
+    {
+      "word": "pollués",
+      "num_guesses": 3,
+      "prior": 0.000028647343752970433,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "pollués"
+      ]
+    },
+    {
+      "word": "surorne",
+      "num_guesses": 3,
+      "prior": 0.000013972397401120742,
+      "guesses": [
+        "sartine",
+        "surmène",
+        "surorne"
+      ]
+    },
+    {
+      "word": "spliffs",
+      "num_guesses": 3,
+      "prior": 9.499683303330538e-6,
+      "guesses": [
+        "sartine",
+        "loculés",
+        "spliffs"
+      ]
+    },
+    {
+      "word": "dératée",
+      "num_guesses": 3,
+      "prior": 0.00001608612771793261,
+      "guesses": [
+        "sartine",
+        "féodaux",
+        "dératée"
+      ]
+    },
+    {
+      "word": "bâillée",
+      "num_guesses": 4,
+      "prior": 0.00002417117378731215,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "veillée",
+        "bâillée"
+      ]
+    },
+    {
+      "word": "angulon",
+      "num_guesses": 4,
+      "prior": 7.69843030515414e-6,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "onguéal",
+        "angulon"
+      ]
+    },
+    {
+      "word": "vidasse",
+      "num_guesses": 4,
+      "prior": 0.000011979777639019457,
+      "guesses": [
+        "sartine",
+        "picassa",
+        "bulldog",
+        "vidasse"
+      ]
+    },
+    {
+      "word": "chopées",
+      "num_guesses": 3,
+      "prior": 0.00001020704633629217,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "chopées"
+      ]
+    },
+    {
+      "word": "aramide",
+      "num_guesses": 4,
+      "prior": 0.000014729297106170486,
+      "guesses": [
+        "sartine",
+        "lapacho",
+        "avariée",
+        "aramide"
+      ]
+    },
+    {
+      "word": "crabots",
+      "num_guesses": 3,
+      "prior": 0.000012601137651997587,
+      "guesses": [
+        "sartine",
+        "croupés",
+        "crabots"
+      ]
+    },
+    {
+      "word": "jugulât",
+      "num_guesses": 3,
+      "prior": 0.000010513344712415565,
+      "guesses": [
+        "sartine",
+        "bootcut",
+        "jugulât"
+      ]
+    },
+    {
+      "word": "doroirs",
+      "num_guesses": 3,
+      "prior": 8.171278824603084e-6,
+      "guesses": [
+        "sartine",
+        "composé",
+        "doroirs"
+      ]
+    },
+    {
+      "word": "évacuas",
+      "num_guesses": 4,
+      "prior": 8.171278824603084e-6,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "guéchas",
+        "évacuas"
+      ]
+    },
+    {
+      "word": "adoubés",
+      "num_guesses": 3,
+      "prior": 0.000019462721103226462,
+      "guesses": [
+        "sartine",
+        "couplés",
+        "adoubés"
+      ]
+    },
+    {
+      "word": "inermes",
+      "num_guesses": 4,
+      "prior": 0.00003063667195488919,
+      "guesses": [
+        "sartine",
+        "uréides",
+        "engonce",
+        "inermes"
+      ]
+    },
+    {
+      "word": "trierai",
+      "num_guesses": 3,
+      "prior": 0.000011987062398214273,
+      "guesses": [
+        "sartine",
+        "fruitir",
+        "trierai"
+      ]
+    },
+    {
+      "word": "pendard",
+      "num_guesses": 3,
+      "prior": 0.000026224479578525477,
+      "guesses": [
+        "sartine",
+        "reloger",
+        "pendard"
+      ]
+    },
+    {
+      "word": "molochs",
+      "num_guesses": 3,
+      "prior": 0.00001621528365483969,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "molochs"
+      ]
+    },
+    {
+      "word": "bélugue",
+      "num_guesses": 3,
+      "prior": 0.000011458633580322529,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "bélugue"
+      ]
+    },
+    {
+      "word": "lestant",
+      "num_guesses": 3,
+      "prior": 0.000019049253962769465,
+      "guesses": [
+        "sartine",
+        "temples",
+        "lestant"
+      ]
+    },
+    {
+      "word": "limonie",
+      "num_guesses": 4,
+      "prior": 0.000011837876720535847,
+      "guesses": [
+        "sartine",
+        "découlé",
+        "livonie",
+        "limonie"
+      ]
+    },
+    {
+      "word": "comparo",
+      "num_guesses": 4,
+      "prior": 0.000013954615729146814,
+      "guesses": [
+        "sartine",
+        "colludé",
+        "compara",
+        "comparo"
+      ]
+    },
+    {
+      "word": "ripolin",
+      "num_guesses": 3,
+      "prior": 0.00002223337408773236,
+      "guesses": [
+        "sartine",
+        "goudron",
+        "ripolin"
+      ]
+    },
+    {
+      "word": "millard",
+      "num_guesses": 4,
+      "prior": 0.000029901476610150893,
+      "guesses": [
+        "sartine",
+        "coagula",
+        "fimbrié",
+        "millard"
+      ]
+    },
+    {
+      "word": "révéras",
+      "num_guesses": 4,
+      "prior": 6.91171053119949e-6,
+      "guesses": [
+        "sartine",
+        "décorum",
+        "réparés",
+        "révéras"
+      ]
+    },
+    {
+      "word": "ventail",
+      "num_guesses": 3,
+      "prior": 0.000020751359460539878,
+      "guesses": [
+        "sartine",
+        "moldave",
+        "ventail"
+      ]
+    },
+    {
+      "word": "prieure",
+      "num_guesses": 3,
+      "prior": 0.000043282196794602495,
+      "guesses": [
+        "sartine",
+        "complié",
+        "prieure"
+      ]
+    },
+    {
+      "word": "costars",
+      "num_guesses": 3,
+      "prior": 0.000010759743738429355,
+      "guesses": [
+        "sartine",
+        "pucaras",
+        "costars"
+      ]
+    },
+    {
+      "word": "inplano",
+      "num_guesses": 3,
+      "prior": 0.000013060860341765639,
+      "guesses": [
+        "sartine",
+        "décloua",
+        "inplano"
+      ]
+    },
+    {
+      "word": "infusés",
+      "num_guesses": 4,
+      "prior": 0.00002082096675535994,
+      "guesses": [
+        "sartine",
+        "modulés",
+        "incubés",
+        "infusés"
+      ]
+    }
+  ]
+}

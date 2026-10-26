@@ -1,0 +1,5308 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-25T23:52:43.955917Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "carnies",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 7,
+    "dictionary_length": 66879,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "dc7d71ffac53a89e379cc93fca156b4d4b5ec4de9e667fd427ad60b04b0372de",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.5039999999999765,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.006,
+        "3": 0.5220000000000004,
+        "4": 0.43400000000000033,
+        "5": 0.03800000000000002
+      }
+    },
+    "prior": {
+      "mean": 3.3849589951003445,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.01047806205513134,
+        "3": 0.6212937645860572,
+        "4": 0.34101928956214383,
+        "5": 0.02720888379666705
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "tarseal",
+      "num_guesses": 4,
+      "prior": 8.597986881684296e-6,
+      "guesses": [
+        "carnies",
+        "dolmush",
+        "tarsale",
+        "tarseal"
+      ]
+    },
+    {
+      "word": "batises",
+      "num_guesses": 3,
+      "prior": 7.966340537421895e-6,
+      "guesses": [
+        "carnies",
+        "polisht",
+        "batises"
+      ]
+    },
+    {
+      "word": "noncarb",
+      "num_guesses": 3,
+      "prior": 7.730362697592806e-6,
+      "guesses": [
+        "carnies",
+        "butanal",
+        "noncarb"
+      ]
+    },
+    {
+      "word": "cumbric",
+      "num_guesses": 3,
+      "prior": 0.000011326405732754,
+      "guesses": [
+        "carnies",
+        "thiolic",
+        "cumbric"
+      ]
+    },
+    {
+      "word": "farters",
+      "num_guesses": 4,
+      "prior": 0.00001062007175315512,
+      "guesses": [
+        "carnies",
+        "lambert",
+        "pigfeed",
+        "farters"
+      ]
+    },
+    {
+      "word": "zellige",
+      "num_guesses": 4,
+      "prior": 8.074562764550448e-6,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "baglady",
+        "zellige"
+      ]
+    },
+    {
+      "word": "drugery",
+      "num_guesses": 4,
+      "prior": 9.82814115438469e-6,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "margraf",
+        "drugery"
+      ]
+    },
+    {
+      "word": "lessing",
+      "num_guesses": 3,
+      "prior": 0.00003706911643762417,
+      "guesses": [
+        "carnies",
+        "septole",
+        "lessing"
+      ]
+    },
+    {
+      "word": "acequia",
+      "num_guesses": 4,
+      "prior": 0.000020088909137480645,
+      "guesses": [
+        "carnies",
+        "melitid",
+        "zooecia",
+        "acequia"
+      ]
+    },
+    {
+      "word": "ajwayan",
+      "num_guesses": 4,
+      "prior": 6.067567035677643e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "guyanan",
+        "ajwayan"
+      ]
+    },
+    {
+      "word": "omnibox",
+      "num_guesses": 3,
+      "prior": 9.565340028409698e-6,
+      "guesses": [
+        "carnies",
+        "mutilid",
+        "omnibox"
+      ]
+    },
+    {
+      "word": "gyrenes",
+      "num_guesses": 3,
+      "prior": 9.989133889756231e-6,
+      "guesses": [
+        "carnies",
+        "puberty",
+        "gyrenes"
+      ]
+    },
+    {
+      "word": "abidden",
+      "num_guesses": 3,
+      "prior": 0.000012306821428837992,
+      "guesses": [
+        "carnies",
+        "anlagen",
+        "abidden"
+      ]
+    },
+    {
+      "word": "pappaws",
+      "num_guesses": 5,
+      "prior": 6.642745653812167e-6,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "psyllas",
+        "pawpaws",
+        "pappaws"
+      ]
+    },
+    {
+      "word": "airtist",
+      "num_guesses": 3,
+      "prior": 6.701195240772603e-6,
+      "guesses": [
+        "carnies",
+        "quraish",
+        "airtist"
+      ]
+    },
+    {
+      "word": "notekin",
+      "num_guesses": 3,
+      "prior": 5.382398327893993e-6,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "notekin"
+      ]
+    },
+    {
+      "word": "anthora",
+      "num_guesses": 3,
+      "prior": 0.000010826758867330594,
+      "guesses": [
+        "carnies",
+        "autorad",
+        "anthora"
+      ]
+    },
+    {
+      "word": "tigonin",
+      "num_guesses": 4,
+      "prior": 6.916644171393932e-6,
+      "guesses": [
+        "carnies",
+        "mutilid",
+        "wingtip",
+        "tigonin"
+      ]
+    },
+    {
+      "word": "stoaked",
+      "num_guesses": 5,
+      "prior": 5.813589354014338e-6,
+      "guesses": [
+        "carnies",
+        "splasht",
+        "steamed",
+        "stoated",
+        "stoaked"
+      ]
+    },
+    {
+      "word": "gerunds",
+      "num_guesses": 3,
+      "prior": 0.000023085021953301058,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "gerunds"
+      ]
+    },
+    {
+      "word": "domovoy",
+      "num_guesses": 3,
+      "prior": 0.000010788840793508717,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "domovoy"
+      ]
+    },
+    {
+      "word": "akkadic",
+      "num_guesses": 4,
+      "prior": 6.0561295046759e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "aggadic",
+        "akkadic"
+      ]
+    },
+    {
+      "word": "indread",
+      "num_guesses": 4,
+      "prior": 5.602809676067916e-6,
+      "guesses": [
+        "carnies",
+        "detrain",
+        "inbread",
+        "indread"
+      ]
+    },
+    {
+      "word": "printos",
+      "num_guesses": 3,
+      "prior": 7.28379252635891e-6,
+      "guesses": [
+        "carnies",
+        "grouped",
+        "printos"
+      ]
+    },
+    {
+      "word": "edifier",
+      "num_guesses": 3,
+      "prior": 0.000010904864526680929,
+      "guesses": [
+        "carnies",
+        "outfold",
+        "edifier"
+      ]
+    },
+    {
+      "word": "hectics",
+      "num_guesses": 4,
+      "prior": 0.000010361309498078864,
+      "guesses": [
+        "carnies",
+        "peltoid",
+        "sextics",
+        "hectics"
+      ]
+    },
+    {
+      "word": "rosacic",
+      "num_guesses": 3,
+      "prior": 9.194552007576165e-6,
+      "guesses": [
+        "carnies",
+        "sisorid",
+        "rosacic"
+      ]
+    },
+    {
+      "word": "eclosed",
+      "num_guesses": 3,
+      "prior": 0.000013848647946985429,
+      "guesses": [
+        "carnies",
+        "elucted",
+        "eclosed"
+      ]
+    },
+    {
+      "word": "decorum",
+      "num_guesses": 3,
+      "prior": 0.000039284514415179845,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "decorum"
+      ]
+    },
+    {
+      "word": "wendies",
+      "num_guesses": 3,
+      "prior": 7.343171795680451e-6,
+      "guesses": [
+        "carnies",
+        "wingbud",
+        "wendies"
+      ]
+    },
+    {
+      "word": "sammich",
+      "num_guesses": 3,
+      "prior": 9.591941404093394e-6,
+      "guesses": [
+        "carnies",
+        "mushrat",
+        "sammich"
+      ]
+    },
+    {
+      "word": "unsavvy",
+      "num_guesses": 4,
+      "prior": 8.741479703675025e-6,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "provide",
+        "unsavvy"
+      ]
+    },
+    {
+      "word": "canteen",
+      "num_guesses": 3,
+      "prior": 0.00003952724415792872,
+      "guesses": [
+        "carnies",
+        "detuned",
+        "canteen"
+      ]
+    },
+    {
+      "word": "bunking",
+      "num_guesses": 4,
+      "prior": 0.000020431129802900282,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "numbnut",
+        "bunking"
+      ]
+    },
+    {
+      "word": "antmire",
+      "num_guesses": 3,
+      "prior": 4.611236687889923e-6,
+      "guesses": [
+        "carnies",
+        "beermat",
+        "antmire"
+      ]
+    },
+    {
+      "word": "bambuco",
+      "num_guesses": 3,
+      "prior": 0.00001198325103334873,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "bambuco"
+      ]
+    },
+    {
+      "word": "bulbule",
+      "num_guesses": 3,
+      "prior": 8.589492229609445e-6,
+      "guesses": [
+        "carnies",
+        "holdout",
+        "bulbule"
+      ]
+    },
+    {
+      "word": "bidaily",
+      "num_guesses": 3,
+      "prior": 9.259533877745556e-6,
+      "guesses": [
+        "carnies",
+        "tlayuda",
+        "bidaily"
+      ]
+    },
+    {
+      "word": "tautoko",
+      "num_guesses": 3,
+      "prior": 9.715514050105033e-6,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "tautoko"
+      ]
+    },
+    {
+      "word": "codging",
+      "num_guesses": 4,
+      "prior": 5.973541809912356e-6,
+      "guesses": [
+        "carnies",
+        "flopdom",
+        "condign",
+        "codging"
+      ]
+    },
+    {
+      "word": "smugged",
+      "num_guesses": 4,
+      "prior": 9.505563644251531e-6,
+      "guesses": [
+        "carnies",
+        "subplot",
+        "smudged",
+        "smugged"
+      ]
+    },
+    {
+      "word": "laniate",
+      "num_guesses": 3,
+      "prior": 6.57804437879216e-6,
+      "guesses": [
+        "carnies",
+        "splinty",
+        "laniate"
+      ]
+    },
+    {
+      "word": "seabean",
+      "num_guesses": 4,
+      "prior": 6.280045159645176e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "seedman",
+        "seabean"
+      ]
+    },
+    {
+      "word": "bargeer",
+      "num_guesses": 3,
+      "prior": 7.359037637124856e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "bargeer"
+      ]
+    },
+    {
+      "word": "antacid",
+      "num_guesses": 3,
+      "prior": 0.00002830949663128187,
+      "guesses": [
+        "carnies",
+        "motilin",
+        "antacid"
+      ]
+    },
+    {
+      "word": "meropia",
+      "num_guesses": 4,
+      "prior": 0.00001044957086633832,
+      "guesses": [
+        "carnies",
+        "aimable",
+        "mermaid",
+        "meropia"
+      ]
+    },
+    {
+      "word": "sabrage",
+      "num_guesses": 4,
+      "prior": 7.114216249863126e-6,
+      "guesses": [
+        "carnies",
+        "symport",
+        "sabreur",
+        "sabrage"
+      ]
+    },
+    {
+      "word": "shitful",
+      "num_guesses": 4,
+      "prior": 7.488668902912072e-6,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "thistly",
+        "shitful"
+      ]
+    },
+    {
+      "word": "emulate",
+      "num_guesses": 3,
+      "prior": 0.00004067815928166254,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "emulate"
+      ]
+    },
+    {
+      "word": "gantans",
+      "num_guesses": 3,
+      "prior": 5.6566188226481344e-6,
+      "guesses": [
+        "carnies",
+        "bultong",
+        "gantans"
+      ]
+    },
+    {
+      "word": "qantars",
+      "num_guesses": 4,
+      "prior": 0.000010082755580229227,
+      "guesses": [
+        "carnies",
+        "tumpang",
+        "kantars",
+        "qantars"
+      ]
+    },
+    {
+      "word": "mousmée",
+      "num_guesses": 4,
+      "prior": 5.072738944462577e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "gumshoe",
+        "mousmée"
+      ]
+    },
+    {
+      "word": "reckful",
+      "num_guesses": 3,
+      "prior": 4.558822654012103e-6,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "reckful"
+      ]
+    },
+    {
+      "word": "dykiest",
+      "num_guesses": 5,
+      "prior": 4.937434882531963e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "midbass",
+        "guidest",
+        "dykiest"
+      ]
+    },
+    {
+      "word": "warluck",
+      "num_guesses": 3,
+      "prior": 7.981620132903672e-6,
+      "guesses": [
+        "carnies",
+        "kiloohm",
+        "warluck"
+      ]
+    },
+    {
+      "word": "litanic",
+      "num_guesses": 3,
+      "prior": 0.000010566726508429102,
+      "guesses": [
+        "carnies",
+        "motilin",
+        "litanic"
+      ]
+    },
+    {
+      "word": "indures",
+      "num_guesses": 3,
+      "prior": 9.777128732281912e-6,
+      "guesses": [
+        "carnies",
+        "eloined",
+        "indures"
+      ]
+    },
+    {
+      "word": "umpress",
+      "num_guesses": 4,
+      "prior": 8.322288563595158e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "bedford",
+        "umpress"
+      ]
+    },
+    {
+      "word": "goddang",
+      "num_guesses": 4,
+      "prior": 8.515894261945972e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "nonbank",
+        "goddang"
+      ]
+    },
+    {
+      "word": "azonine",
+      "num_guesses": 4,
+      "prior": 8.37474411653988e-6,
+      "guesses": [
+        "carnies",
+        "altmode",
+        "agonize",
+        "azonine"
+      ]
+    },
+    {
+      "word": "bintree",
+      "num_guesses": 3,
+      "prior": 0.000012405863743635562,
+      "guesses": [
+        "carnies",
+        "gentled",
+        "bintree"
+      ]
+    },
+    {
+      "word": "gougers",
+      "num_guesses": 4,
+      "prior": 0.000014893538901995119,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "roughly",
+        "gougers"
+      ]
+    },
+    {
+      "word": "sciurid",
+      "num_guesses": 3,
+      "prior": 0.000012424714269354163,
+      "guesses": [
+        "carnies",
+        "sulphid",
+        "sciurid"
+      ]
+    },
+    {
+      "word": "onesies",
+      "num_guesses": 4,
+      "prior": 0.000014056653022177032,
+      "guesses": [
+        "carnies",
+        "wingbud",
+        "elevate",
+        "onesies"
+      ]
+    },
+    {
+      "word": "gereges",
+      "num_guesses": 4,
+      "prior": 6.666371901889146e-6,
+      "guesses": [
+        "carnies",
+        "toupeed",
+        "vergées",
+        "gereges"
+      ]
+    },
+    {
+      "word": "outgate",
+      "num_guesses": 4,
+      "prior": 0.000012602619815389898,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "looming",
+        "outgate"
+      ]
+    },
+    {
+      "word": "mindest",
+      "num_guesses": 4,
+      "prior": 0.000012645488927767317,
+      "guesses": [
+        "carnies",
+        "histoid",
+        "foambow",
+        "mindest"
+      ]
+    },
+    {
+      "word": "secrete",
+      "num_guesses": 3,
+      "prior": 0.000038474582519756936,
+      "guesses": [
+        "carnies",
+        "sesutho",
+        "secrete"
+      ]
+    },
+    {
+      "word": "rassles",
+      "num_guesses": 4,
+      "prior": 7.015024591568159e-6,
+      "guesses": [
+        "carnies",
+        "fumaryl",
+        "dustbag",
+        "rassles"
+      ]
+    },
+    {
+      "word": "agamies",
+      "num_guesses": 3,
+      "prior": 5.335587753261085e-6,
+      "guesses": [
+        "carnies",
+        "almohad",
+        "agamies"
+      ]
+    },
+    {
+      "word": "rumbled",
+      "num_guesses": 3,
+      "prior": 0.00003422773962820394,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "rumbled"
+      ]
+    },
+    {
+      "word": "halyard",
+      "num_guesses": 4,
+      "prior": 0.00002262859612503184,
+      "guesses": [
+        "carnies",
+        "bumlord",
+        "laggard",
+        "halyard"
+      ]
+    },
+    {
+      "word": "shrieks",
+      "num_guesses": 3,
+      "prior": 0.000035600199413571774,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "shrieks"
+      ]
+    },
+    {
+      "word": "etarras",
+      "num_guesses": 4,
+      "prior": 9.65940193129546e-6,
+      "guesses": [
+        "carnies",
+        "delveth",
+        "estrays",
+        "etarras"
+      ]
+    },
+    {
+      "word": "sention",
+      "num_guesses": 3,
+      "prior": 0.000011860557168789604,
+      "guesses": [
+        "carnies",
+        "septole",
+        "sention"
+      ]
+    },
+    {
+      "word": "mahself",
+      "num_guesses": 4,
+      "prior": 0.000011771831644772104,
+      "guesses": [
+        "carnies",
+        "soldest",
+        "mamsell",
+        "mahself"
+      ]
+    },
+    {
+      "word": "phoront",
+      "num_guesses": 4,
+      "prior": 8.149455613974358e-6,
+      "guesses": [
+        "carnies",
+        "bugwood",
+        "promont",
+        "phoront"
+      ]
+    },
+    {
+      "word": "mounted",
+      "num_guesses": 3,
+      "prior": 0.00007168147836225194,
+      "guesses": [
+        "carnies",
+        "blufted",
+        "mounted"
+      ]
+    },
+    {
+      "word": "illured",
+      "num_guesses": 4,
+      "prior": 6.044604912081895e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "illbred",
+        "illured"
+      ]
+    },
+    {
+      "word": "noodled",
+      "num_guesses": 4,
+      "prior": 0.000011885426360102633,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "handrub",
+        "noodled"
+      ]
+    },
+    {
+      "word": "tremend",
+      "num_guesses": 4,
+      "prior": 0.000012771592898442563,
+      "guesses": [
+        "carnies",
+        "pentone",
+        "querent",
+        "tremend"
+      ]
+    },
+    {
+      "word": "tarmacs",
+      "num_guesses": 3,
+      "prior": 0.000010920111575504136,
+      "guesses": [
+        "carnies",
+        "marcots",
+        "tarmacs"
+      ]
+    },
+    {
+      "word": "upcomes",
+      "num_guesses": 3,
+      "prior": 5.722925434100216e-6,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "upcomes"
+      ]
+    },
+    {
+      "word": "rêverie",
+      "num_guesses": 4,
+      "prior": 0.000013025679776278248,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "freebie",
+        "rêverie"
+      ]
+    },
+    {
+      "word": "noosers",
+      "num_guesses": 4,
+      "prior": 9.387264620643469e-6,
+      "guesses": [
+        "carnies",
+        "denture",
+        "blossom",
+        "noosers"
+      ]
+    },
+    {
+      "word": "zangids",
+      "num_guesses": 4,
+      "prior": 0.000010373341242717706,
+      "guesses": [
+        "carnies",
+        "tankman",
+        "vangids",
+        "zangids"
+      ]
+    },
+    {
+      "word": "orbital",
+      "num_guesses": 3,
+      "prior": 0.00005297764391182585,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "orbital"
+      ]
+    },
+    {
+      "word": "pterion",
+      "num_guesses": 3,
+      "prior": 0.00001546855593880276,
+      "guesses": [
+        "carnies",
+        "deergut",
+        "pterion"
+      ]
+    },
+    {
+      "word": "umayyid",
+      "num_guesses": 3,
+      "prior": 9.755058239083804e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "umayyid"
+      ]
+    },
+    {
+      "word": "gobangs",
+      "num_guesses": 4,
+      "prior": 5.708455146610572e-6,
+      "guesses": [
+        "carnies",
+        "dogmata",
+        "kobangs",
+        "gobangs"
+      ]
+    },
+    {
+      "word": "unsilly",
+      "num_guesses": 4,
+      "prior": 6.270084688938881e-6,
+      "guesses": [
+        "carnies",
+        "sunspot",
+        "insulin",
+        "unsilly"
+      ]
+    },
+    {
+      "word": "qaspeqs",
+      "num_guesses": 3,
+      "prior": 5.061023486909532e-6,
+      "guesses": [
+        "carnies",
+        "pulleth",
+        "qaspeqs"
+      ]
+    },
+    {
+      "word": "drostdy",
+      "num_guesses": 3,
+      "prior": 0.000015615318370074372,
+      "guesses": [
+        "carnies",
+        "subshot",
+        "drostdy"
+      ]
+    },
+    {
+      "word": "saltbox",
+      "num_guesses": 3,
+      "prior": 0.00001715792017330601,
+      "guesses": [
+        "carnies",
+        "bushlot",
+        "saltbox"
+      ]
+    },
+    {
+      "word": "telesia",
+      "num_guesses": 3,
+      "prior": 0.000011730119540450765,
+      "guesses": [
+        "carnies",
+        "seasalt",
+        "telesia"
+      ]
+    },
+    {
+      "word": "kustoms",
+      "num_guesses": 4,
+      "prior": 8.65515382286466e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "buyouts",
+        "kustoms"
+      ]
+    },
+    {
+      "word": "rangaku",
+      "num_guesses": 4,
+      "prior": 0.000014324348167351637,
+      "guesses": [
+        "carnies",
+        "mudwort",
+        "rangpur",
+        "rangaku"
+      ]
+    },
+    {
+      "word": "satyres",
+      "num_guesses": 3,
+      "prior": 0.000017774278674897648,
+      "guesses": [
+        "carnies",
+        "fumaryl",
+        "satyres"
+      ]
+    },
+    {
+      "word": "thought",
+      "num_guesses": 3,
+      "prior": 0.00011264903564375555,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "thought"
+      ]
+    },
+    {
+      "word": "navahos",
+      "num_guesses": 4,
+      "prior": 0.000020951058151238714,
+      "guesses": [
+        "carnies",
+        "bultong",
+        "navajos",
+        "navahos"
+      ]
+    },
+    {
+      "word": "askance",
+      "num_guesses": 3,
+      "prior": 0.00003174724290982363,
+      "guesses": [
+        "carnies",
+        "seconde",
+        "askance"
+      ]
+    },
+    {
+      "word": "centory",
+      "num_guesses": 3,
+      "prior": 0.000011892383461369014,
+      "guesses": [
+        "carnies",
+        "convert",
+        "centory"
+      ]
+    },
+    {
+      "word": "faffled",
+      "num_guesses": 5,
+      "prior": 4.4058768473840075e-6,
+      "guesses": [
+        "carnies",
+        "wembled",
+        "giddyup",
+        "haffled",
+        "faffled"
+      ]
+    },
+    {
+      "word": "manders",
+      "num_guesses": 5,
+      "prior": 0.000025387142193010177,
+      "guesses": [
+        "carnies",
+        "gentled",
+        "showbiz",
+        "daycamp",
+        "manders"
+      ]
+    },
+    {
+      "word": "musemes",
+      "num_guesses": 4,
+      "prior": 7.831475075941324e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "bemused",
+        "musemes"
+      ]
+    },
+    {
+      "word": "heardst",
+      "num_guesses": 3,
+      "prior": 0.00001370372746549038,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "heardst"
+      ]
+    },
+    {
+      "word": "bravoed",
+      "num_guesses": 4,
+      "prior": 8.660650908163672e-6,
+      "guesses": [
+        "carnies",
+        "bleated",
+        "boarded",
+        "bravoed"
+      ]
+    },
+    {
+      "word": "barcamp",
+      "num_guesses": 3,
+      "prior": 8.813034100764362e-6,
+      "guesses": [
+        "carnies",
+        "kiloohm",
+        "barcamp"
+      ]
+    },
+    {
+      "word": "edistow",
+      "num_guesses": 4,
+      "prior": 7.697651949589452e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "zomboid",
+        "edistow"
+      ]
+    },
+    {
+      "word": "outsped",
+      "num_guesses": 3,
+      "prior": 0.000011757723947741789,
+      "guesses": [
+        "carnies",
+        "subplot",
+        "outsped"
+      ]
+    },
+    {
+      "word": "wahabit",
+      "num_guesses": 4,
+      "prior": 5.641453406431863e-6,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "habitat",
+        "wahabit"
+      ]
+    },
+    {
+      "word": "hangest",
+      "num_guesses": 3,
+      "prior": 0.000014546433643011944,
+      "guesses": [
+        "carnies",
+        "santhal",
+        "hangest"
+      ]
+    },
+    {
+      "word": "engrace",
+      "num_guesses": 4,
+      "prior": 9.488477439714362e-6,
+      "guesses": [
+        "carnies",
+        "automap",
+        "endarch",
+        "engrace"
+      ]
+    },
+    {
+      "word": "kahnian",
+      "num_guesses": 3,
+      "prior": 8.483344720891587e-6,
+      "guesses": [
+        "carnies",
+        "minifig",
+        "kahnian"
+      ]
+    },
+    {
+      "word": "algists",
+      "num_guesses": 4,
+      "prior": 5.9856218718306e-6,
+      "guesses": [
+        "carnies",
+        "klamath",
+        "allists",
+        "algists"
+      ]
+    },
+    {
+      "word": "throwed",
+      "num_guesses": 3,
+      "prior": 0.000022826259604094093,
+      "guesses": [
+        "carnies",
+        "toweled",
+        "throwed"
+      ]
+    },
+    {
+      "word": "ugliest",
+      "num_guesses": 4,
+      "prior": 0.00002837827892570039,
+      "guesses": [
+        "carnies",
+        "septole",
+        "willied",
+        "ugliest"
+      ]
+    },
+    {
+      "word": "rewipes",
+      "num_guesses": 4,
+      "prior": 4.6448989241173404e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "repipes",
+        "rewipes"
+      ]
+    },
+    {
+      "word": "hestern",
+      "num_guesses": 5,
+      "prior": 0.000017006662352500032,
+      "guesses": [
+        "carnies",
+        "sequent",
+        "western",
+        "through",
+        "hestern"
+      ]
+    },
+    {
+      "word": "vamouse",
+      "num_guesses": 4,
+      "prior": 4.770618162918736e-6,
+      "guesses": [
+        "carnies",
+        "soldest",
+        "vamoose",
+        "vamouse"
+      ]
+    },
+    {
+      "word": "matweed",
+      "num_guesses": 4,
+      "prior": 9.379295793686065e-6,
+      "guesses": [
+        "carnies",
+        "wembled",
+        "country",
+        "matweed"
+      ]
+    },
+    {
+      "word": "karinya",
+      "num_guesses": 4,
+      "prior": 0.000011741111203653209,
+      "guesses": [
+        "carnies",
+        "abthain",
+        "parangi",
+        "karinya"
+      ]
+    },
+    {
+      "word": "washtub",
+      "num_guesses": 3,
+      "prior": 0.000022580862035324725,
+      "guesses": [
+        "carnies",
+        "bushlot",
+        "washtub"
+      ]
+    },
+    {
+      "word": "gerants",
+      "num_guesses": 3,
+      "prior": 9.612831162901106e-6,
+      "guesses": [
+        "carnies",
+        "destage",
+        "gerants"
+      ]
+    },
+    {
+      "word": "knouted",
+      "num_guesses": 4,
+      "prior": 0.000013487461851955954,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "unnoted",
+        "knouted"
+      ]
+    },
+    {
+      "word": "bishojo",
+      "num_guesses": 4,
+      "prior": 8.322288563595158e-6,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "wishosk",
+        "bishojo"
+      ]
+    },
+    {
+      "word": "failson",
+      "num_guesses": 3,
+      "prior": 6.1398866040301344e-6,
+      "guesses": [
+        "carnies",
+        "solatia",
+        "failson"
+      ]
+    },
+    {
+      "word": "harders",
+      "num_guesses": 4,
+      "prior": 0.000016252915619141422,
+      "guesses": [
+        "carnies",
+        "lambert",
+        "skyphoi",
+        "harders"
+      ]
+    },
+    {
+      "word": "libyans",
+      "num_guesses": 4,
+      "prior": 0.00002718602504838065,
+      "guesses": [
+        "carnies",
+        "nitinol",
+        "gumland",
+        "libyans"
+      ]
+    },
+    {
+      "word": "flattie",
+      "num_guesses": 3,
+      "prior": 0.00001280479631228929,
+      "guesses": [
+        "carnies",
+        "midtale",
+        "flattie"
+      ]
+    },
+    {
+      "word": "violist",
+      "num_guesses": 3,
+      "prior": 0.000020707690348364456,
+      "guesses": [
+        "carnies",
+        "dolmush",
+        "violist"
+      ]
+    },
+    {
+      "word": "lampman",
+      "num_guesses": 4,
+      "prior": 0.00002414609029325787,
+      "guesses": [
+        "carnies",
+        "monadal",
+        "hallman",
+        "lampman"
+      ]
+    },
+    {
+      "word": "dentate",
+      "num_guesses": 3,
+      "prior": 0.000035088214696266896,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "dentate"
+      ]
+    },
+    {
+      "word": "qipchak",
+      "num_guesses": 4,
+      "prior": 8.352651022191728e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "kipchak",
+        "qipchak"
+      ]
+    },
+    {
+      "word": "grunsel",
+      "num_guesses": 3,
+      "prior": 0.000010505317035550638,
+      "guesses": [
+        "carnies",
+        "soulths",
+        "grunsel"
+      ]
+    },
+    {
+      "word": "neoteny",
+      "num_guesses": 3,
+      "prior": 0.00001881962010147959,
+      "guesses": [
+        "carnies",
+        "pentone",
+        "neoteny"
+      ]
+    },
+    {
+      "word": "agonied",
+      "num_guesses": 2,
+      "prior": 6.847808140356643e-6,
+      "guesses": [
+        "carnies",
+        "agonied"
+      ]
+    },
+    {
+      "word": "alhajia",
+      "num_guesses": 4,
+      "prior": 5.751434568676732e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "vidalia",
+        "alhajia"
+      ]
+    },
+    {
+      "word": "camaieu",
+      "num_guesses": 3,
+      "prior": 0.000013740100495723587,
+      "guesses": [
+        "carnies",
+        "caddied",
+        "camaieu"
+      ]
+    },
+    {
+      "word": "emptins",
+      "num_guesses": 3,
+      "prior": 9.747371701418404e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "emptins"
+      ]
+    },
+    {
+      "word": "aryloxy",
+      "num_guesses": 3,
+      "prior": 0.000017644111702326302,
+      "guesses": [
+        "carnies",
+        "armload",
+        "aryloxy"
+      ]
+    },
+    {
+      "word": "nocuity",
+      "num_guesses": 3,
+      "prior": 6.746528768564216e-6,
+      "guesses": [
+        "carnies",
+        "hunkdom",
+        "nocuity"
+      ]
+    },
+    {
+      "word": "lovyers",
+      "num_guesses": 5,
+      "prior": 8.121250029054183e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "wolfdom",
+        "lobbers",
+        "lovyers"
+      ]
+    },
+    {
+      "word": "harshly",
+      "num_guesses": 3,
+      "prior": 0.00004082867159378137,
+      "guesses": [
+        "carnies",
+        "dolmush",
+        "harshly"
+      ]
+    },
+    {
+      "word": "olitory",
+      "num_guesses": 3,
+      "prior": 8.869897104039412e-6,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "olitory"
+      ]
+    },
+    {
+      "word": "lagenas",
+      "num_guesses": 4,
+      "prior": 9.278364855834266e-6,
+      "guesses": [
+        "carnies",
+        "plumeth",
+        "kalends",
+        "lagenas"
+      ]
+    },
+    {
+      "word": "rapping",
+      "num_guesses": 3,
+      "prior": 0.00003022770608797479,
+      "guesses": [
+        "carnies",
+        "pinguid",
+        "rapping"
+      ]
+    },
+    {
+      "word": "dryades",
+      "num_guesses": 4,
+      "prior": 0.00001663571419504526,
+      "guesses": [
+        "carnies",
+        "sealest",
+        "brought",
+        "dryades"
+      ]
+    },
+    {
+      "word": "orarion",
+      "num_guesses": 4,
+      "prior": 0.000010977074209843869,
+      "guesses": [
+        "carnies",
+        "toadbug",
+        "ovarian",
+        "orarion"
+      ]
+    },
+    {
+      "word": "kvelled",
+      "num_guesses": 4,
+      "prior": 7.933476570374555e-6,
+      "guesses": [
+        "carnies",
+        "bedoled",
+        "helpful",
+        "kvelled"
+      ]
+    },
+    {
+      "word": "ebrious",
+      "num_guesses": 3,
+      "prior": 7.798351075431703e-6,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "ebrious"
+      ]
+    },
+    {
+      "word": "dufadar",
+      "num_guesses": 4,
+      "prior": 7.089935081678327e-6,
+      "guesses": [
+        "carnies",
+        "armload",
+        "khaddar",
+        "dufadar"
+      ]
+    },
+    {
+      "word": "gaskets",
+      "num_guesses": 4,
+      "prior": 0.00003532855639449379,
+      "guesses": [
+        "carnies",
+        "pulleth",
+        "skygods",
+        "gaskets"
+      ]
+    },
+    {
+      "word": "stremma",
+      "num_guesses": 3,
+      "prior": 0.000012325949208953005,
+      "guesses": [
+        "carnies",
+        "sexuate",
+        "stremma"
+      ]
+    },
+    {
+      "word": "chauris",
+      "num_guesses": 3,
+      "prior": 0.000010888433214655373,
+      "guesses": [
+        "carnies",
+        "pitched",
+        "chauris"
+      ]
+    },
+    {
+      "word": "sunglow",
+      "num_guesses": 3,
+      "prior": 0.000013337383574348952,
+      "guesses": [
+        "carnies",
+        "synthon",
+        "sunglow"
+      ]
+    },
+    {
+      "word": "almight",
+      "num_guesses": 4,
+      "prior": 0.000013195291758267866,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "militia",
+        "almight"
+      ]
+    },
+    {
+      "word": "flamers",
+      "num_guesses": 4,
+      "prior": 0.000013202415963057044,
+      "guesses": [
+        "carnies",
+        "delveth",
+        "synform",
+        "flamers"
+      ]
+    },
+    {
+      "word": "steales",
+      "num_guesses": 3,
+      "prior": 0.000012115486268116673,
+      "guesses": [
+        "carnies",
+        "petalum",
+        "steales"
+      ]
+    },
+    {
+      "word": "romaunt",
+      "num_guesses": 3,
+      "prior": 0.000019777778009615022,
+      "guesses": [
+        "carnies",
+        "autorad",
+        "romaunt"
+      ]
+    },
+    {
+      "word": "karroid",
+      "num_guesses": 3,
+      "prior": 0.000012905455781268571,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "karroid"
+      ]
+    },
+    {
+      "word": "soprano",
+      "num_guesses": 3,
+      "prior": 0.00004137380107056163,
+      "guesses": [
+        "carnies",
+        "dustpan",
+        "soprano"
+      ]
+    },
+    {
+      "word": "vahines",
+      "num_guesses": 4,
+      "prior": 9.956346090572615e-6,
+      "guesses": [
+        "carnies",
+        "mstings",
+        "develop",
+        "vahines"
+      ]
+    },
+    {
+      "word": "misfeed",
+      "num_guesses": 4,
+      "prior": 0.000010921740146600963,
+      "guesses": [
+        "carnies",
+        "spelted",
+        "museful",
+        "misfeed"
+      ]
+    },
+    {
+      "word": "peavies",
+      "num_guesses": 4,
+      "prior": 0.000012525458910553585,
+      "guesses": [
+        "carnies",
+        "almohad",
+        "escapes",
+        "peavies"
+      ]
+    },
+    {
+      "word": "tincted",
+      "num_guesses": 3,
+      "prior": 0.000010363988050624015,
+      "guesses": [
+        "carnies",
+        "knouted",
+        "tincted"
+      ]
+    },
+    {
+      "word": "anthryl",
+      "num_guesses": 3,
+      "prior": 0.00001440540992614065,
+      "guesses": [
+        "carnies",
+        "autorad",
+        "anthryl"
+      ]
+    },
+    {
+      "word": "effects",
+      "num_guesses": 3,
+      "prior": 0.00010236509145350671,
+      "guesses": [
+        "carnies",
+        "eludeth",
+        "effects"
+      ]
+    },
+    {
+      "word": "sexviri",
+      "num_guesses": 4,
+      "prior": 7.253361641193891e-6,
+      "guesses": [
+        "carnies",
+        "heptose",
+        "reskill",
+        "sexviri"
+      ]
+    },
+    {
+      "word": "thaalis",
+      "num_guesses": 3,
+      "prior": 5.579101591131396e-6,
+      "guesses": [
+        "carnies",
+        "klamath",
+        "thaalis"
+      ]
+    },
+    {
+      "word": "stipate",
+      "num_guesses": 4,
+      "prior": 9.043831491867404e-6,
+      "guesses": [
+        "carnies",
+        "seasalt",
+        "situate",
+        "stipate"
+      ]
+    },
+    {
+      "word": "phlemes",
+      "num_guesses": 3,
+      "prior": 6.371657800587763e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "phlemes"
+      ]
+    },
+    {
+      "word": "hitachi",
+      "num_guesses": 3,
+      "prior": 0.00003601724709160392,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "hitachi"
+      ]
+    },
+    {
+      "word": "calaite",
+      "num_guesses": 3,
+      "prior": 9.813198392387338e-6,
+      "guesses": [
+        "carnies",
+        "plicate",
+        "calaite"
+      ]
+    },
+    {
+      "word": "solaria",
+      "num_guesses": 4,
+      "prior": 0.00001719597376336859,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "rosalia",
+        "solaria"
+      ]
+    },
+    {
+      "word": "javitri",
+      "num_guesses": 3,
+      "prior": 8.50854028356202e-6,
+      "guesses": [
+        "carnies",
+        "mutilid",
+        "javitri"
+      ]
+    },
+    {
+      "word": "kookris",
+      "num_guesses": 4,
+      "prior": 5.037261763271816e-6,
+      "guesses": [
+        "carnies",
+        "sublots",
+        "ripoffs",
+        "kookris"
+      ]
+    },
+    {
+      "word": "firmaun",
+      "num_guesses": 3,
+      "prior": 0.000012551701590717918,
+      "guesses": [
+        "carnies",
+        "dogmata",
+        "firmaun"
+      ]
+    },
+    {
+      "word": "mitosic",
+      "num_guesses": 3,
+      "prior": 5.50545125343847e-6,
+      "guesses": [
+        "carnies",
+        "somitic",
+        "mitosic"
+      ]
+    },
+    {
+      "word": "dooreas",
+      "num_guesses": 4,
+      "prior": 6.865277265754507e-6,
+      "guesses": [
+        "carnies",
+        "delveth",
+        "drawers",
+        "dooreas"
+      ]
+    },
+    {
+      "word": "koumiss",
+      "num_guesses": 3,
+      "prior": 0.00001954310075771879,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "koumiss"
+      ]
+    },
+    {
+      "word": "gopuras",
+      "num_guesses": 3,
+      "prior": 0.00001475654479806478,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "gopuras"
+      ]
+    },
+    {
+      "word": "alibied",
+      "num_guesses": 3,
+      "prior": 0.000013016815837835204,
+      "guesses": [
+        "carnies",
+        "applied",
+        "alibied"
+      ]
+    },
+    {
+      "word": "fillgap",
+      "num_guesses": 4,
+      "prior": 5.025210759699627e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "lilypad",
+        "fillgap"
+      ]
+    },
+    {
+      "word": "curtail",
+      "num_guesses": 2,
+      "prior": 0.000041137982423605353,
+      "guesses": [
+        "carnies",
+        "curtail"
+      ]
+    },
+    {
+      "word": "clicked",
+      "num_guesses": 3,
+      "prior": 0.00004072540320044416,
+      "guesses": [
+        "carnies",
+        "flumpet",
+        "clicked"
+      ]
+    },
+    {
+      "word": "aracing",
+      "num_guesses": 3,
+      "prior": 6.506389390279793e-6,
+      "guesses": [
+        "carnies",
+        "abortal",
+        "aracing"
+      ]
+    },
+    {
+      "word": "epigees",
+      "num_guesses": 4,
+      "prior": 5.246940114632831e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "equipes",
+        "epigees"
+      ]
+    },
+    {
+      "word": "yarming",
+      "num_guesses": 3,
+      "prior": 5.267160136432669e-6,
+      "guesses": [
+        "carnies",
+        "lymphad",
+        "yarming"
+      ]
+    },
+    {
+      "word": "scrumpy",
+      "num_guesses": 3,
+      "prior": 0.000013090745024032245,
+      "guesses": [
+        "carnies",
+        "bagmoth",
+        "scrumpy"
+      ]
+    },
+    {
+      "word": "staffes",
+      "num_guesses": 4,
+      "prior": 9.138776940103143e-6,
+      "guesses": [
+        "carnies",
+        "petalum",
+        "swathes",
+        "staffes"
+      ]
+    },
+    {
+      "word": "takhaar",
+      "num_guesses": 4,
+      "prior": 8.65515382286466e-6,
+      "guesses": [
+        "carnies",
+        "bumlord",
+        "raypath",
+        "takhaar"
+      ]
+    },
+    {
+      "word": "cornick",
+      "num_guesses": 3,
+      "prior": 0.00001925698492171805,
+      "guesses": [
+        "carnies",
+        "looking",
+        "cornick"
+      ]
+    },
+    {
+      "word": "redouts",
+      "num_guesses": 4,
+      "prior": 0.000011717038805875427,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "quoters",
+        "redouts"
+      ]
+    },
+    {
+      "word": "appeale",
+      "num_guesses": 3,
+      "prior": 0.000019587470765147524,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "appeale"
+      ]
+    },
+    {
+      "word": "squealy",
+      "num_guesses": 4,
+      "prior": 0.00001049196923965925,
+      "guesses": [
+        "carnies",
+        "septole",
+        "suavely",
+        "squealy"
+      ]
+    },
+    {
+      "word": "stroams",
+      "num_guesses": 4,
+      "prior": 9.797326106203669e-6,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "stromas",
+        "stroams"
+      ]
+    },
+    {
+      "word": "moorish",
+      "num_guesses": 3,
+      "prior": 0.00003840996241855833,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "moorish"
+      ]
+    },
+    {
+      "word": "kraaled",
+      "num_guesses": 3,
+      "prior": 0.000011945187859078677,
+      "guesses": [
+        "carnies",
+        "bleated",
+        "kraaled"
+      ]
+    },
+    {
+      "word": "momoirs",
+      "num_guesses": 3,
+      "prior": 9.817358291462569e-6,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "momoirs"
+      ]
+    },
+    {
+      "word": "unbored",
+      "num_guesses": 3,
+      "prior": 0.000012984106460801796,
+      "guesses": [
+        "carnies",
+        "tenoned",
+        "unbored"
+      ]
+    },
+    {
+      "word": "jooking",
+      "num_guesses": 5,
+      "prior": 0.000011241145567323128,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "photism",
+        "jewfish",
+        "jooking"
+      ]
+    },
+    {
+      "word": "mosesin",
+      "num_guesses": 4,
+      "prior": 6.134443433587464e-6,
+      "guesses": [
+        "carnies",
+        "histoid",
+        "gossein",
+        "mosesin"
+      ]
+    },
+    {
+      "word": "fanmags",
+      "num_guesses": 4,
+      "prior": 5.579101591131396e-6,
+      "guesses": [
+        "carnies",
+        "bultong",
+        "humpday",
+        "fanmags"
+      ]
+    },
+    {
+      "word": "xylaloe",
+      "num_guesses": 4,
+      "prior": 4.911170440778095e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "bullowa",
+        "xylaloe"
+      ]
+    },
+    {
+      "word": "hickest",
+      "num_guesses": 4,
+      "prior": 6.746528768564216e-6,
+      "guesses": [
+        "carnies",
+        "stomiid",
+        "whipple",
+        "hickest"
+      ]
+    },
+    {
+      "word": "uneared",
+      "num_guesses": 3,
+      "prior": 0.000010720149563338714,
+      "guesses": [
+        "carnies",
+        "metaled",
+        "uneared"
+      ]
+    },
+    {
+      "word": "seventh",
+      "num_guesses": 4,
+      "prior": 0.00006909315605569365,
+      "guesses": [
+        "carnies",
+        "septole",
+        "muhself",
+        "seventh"
+      ]
+    },
+    {
+      "word": "yashiki",
+      "num_guesses": 3,
+      "prior": 0.0000164470801768751,
+      "guesses": [
+        "carnies",
+        "lythrum",
+        "yashiki"
+      ]
+    },
+    {
+      "word": "foyling",
+      "num_guesses": 5,
+      "prior": 7.0118330412968785e-6,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "motlopi",
+        "halfway",
+        "foyling"
+      ]
+    },
+    {
+      "word": "falloff",
+      "num_guesses": 4,
+      "prior": 0.00002313788053999348,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "galloyl",
+        "falloff"
+      ]
+    },
+    {
+      "word": "bogotan",
+      "num_guesses": 4,
+      "prior": 8.346295564175756e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "tobogan",
+        "bogotan"
+      ]
+    },
+    {
+      "word": "gonnabe",
+      "num_guesses": 4,
+      "prior": 0.000010460557513457275,
+      "guesses": [
+        "carnies",
+        "agemate",
+        "dunnage",
+        "gonnabe"
+      ]
+    },
+    {
+      "word": "zutugil",
+      "num_guesses": 3,
+      "prior": 9.153123599364386e-6,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "zutugil"
+      ]
+    },
+    {
+      "word": "closing",
+      "num_guesses": 3,
+      "prior": 0.00007140880382279356,
+      "guesses": [
+        "carnies",
+        "pothunt",
+        "closing"
+      ]
+    },
+    {
+      "word": "fistulæ",
+      "num_guesses": 4,
+      "prior": 0.000013431699406252939,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "cowmilk",
+        "fistulæ"
+      ]
+    },
+    {
+      "word": "sleazes",
+      "num_guesses": 4,
+      "prior": 8.977058430785581e-6,
+      "guesses": [
+        "carnies",
+        "petalum",
+        "gleaves",
+        "sleazes"
+      ]
+    },
+    {
+      "word": "crocose",
+      "num_guesses": 3,
+      "prior": 6.255024263499631e-6,
+      "guesses": [
+        "carnies",
+        "cryedst",
+        "crocose"
+      ]
+    },
+    {
+      "word": "plummet",
+      "num_guesses": 3,
+      "prior": 0.000029920174052872946,
+      "guesses": [
+        "carnies",
+        "bedoled",
+        "plummet"
+      ]
+    },
+    {
+      "word": "peorian",
+      "num_guesses": 3,
+      "prior": 0.000017618301153203313,
+      "guesses": [
+        "carnies",
+        "beermat",
+        "peorian"
+      ]
+    },
+    {
+      "word": "pioneys",
+      "num_guesses": 5,
+      "prior": 4.540803027974881e-6,
+      "guesses": [
+        "carnies",
+        "slights",
+        "kidneys",
+        "winneys",
+        "pioneys"
+      ]
+    },
+    {
+      "word": "crinets",
+      "num_guesses": 3,
+      "prior": 6.009493504531474e-6,
+      "guesses": [
+        "carnies",
+        "coiners",
+        "crinets"
+      ]
+    },
+    {
+      "word": "kashida",
+      "num_guesses": 4,
+      "prior": 0.000011916605968502485,
+      "guesses": [
+        "carnies",
+        "lythrum",
+        "dashiki",
+        "kashida"
+      ]
+    },
+    {
+      "word": "kurgans",
+      "num_guesses": 3,
+      "prior": 0.00001694014263819712,
+      "guesses": [
+        "carnies",
+        "duotang",
+        "kurgans"
+      ]
+    },
+    {
+      "word": "deports",
+      "num_guesses": 4,
+      "prior": 0.00001700075042816439,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "reports",
+        "deports"
+      ]
+    },
+    {
+      "word": "samlors",
+      "num_guesses": 3,
+      "prior": 9.999968116848037e-6,
+      "guesses": [
+        "carnies",
+        "bumlord",
+        "samlors"
+      ]
+    },
+    {
+      "word": "agenest",
+      "num_guesses": 3,
+      "prior": 6.31926785170959e-6,
+      "guesses": [
+        "carnies",
+        "seldome",
+        "agenest"
+      ]
+    },
+    {
+      "word": "projets",
+      "num_guesses": 4,
+      "prior": 0.000021230346037656786,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "reports",
+        "projets"
+      ]
+    },
+    {
+      "word": "subedar",
+      "num_guesses": 3,
+      "prior": 0.00002112194313236604,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "subedar"
+      ]
+    },
+    {
+      "word": "trudgen",
+      "num_guesses": 3,
+      "prior": 0.000013230760079371256,
+      "guesses": [
+        "carnies",
+        "tenoned",
+        "trudgen"
+      ]
+    },
+    {
+      "word": "efreets",
+      "num_guesses": 3,
+      "prior": 0.00001032351565974351,
+      "guesses": [
+        "carnies",
+        "telford",
+        "efreets"
+      ]
+    },
+    {
+      "word": "rowdies",
+      "num_guesses": 3,
+      "prior": 0.000022602057940372553,
+      "guesses": [
+        "carnies",
+        "odorful",
+        "rowdies"
+      ]
+    },
+    {
+      "word": "duumvir",
+      "num_guesses": 3,
+      "prior": 0.00001543087821227571,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "duumvir"
+      ]
+    },
+    {
+      "word": "rephase",
+      "num_guesses": 4,
+      "prior": 0.000012865682155366507,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "reshape",
+        "rephase"
+      ]
+    },
+    {
+      "word": "inpoint",
+      "num_guesses": 3,
+      "prior": 0.000011473165039457634,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "inpoint"
+      ]
+    },
+    {
+      "word": "cahnite",
+      "num_guesses": 3,
+      "prior": 8.979435200626506e-6,
+      "guesses": [
+        "carnies",
+        "cainite",
+        "cahnite"
+      ]
+    },
+    {
+      "word": "dybbuks",
+      "num_guesses": 3,
+      "prior": 0.000012484724334370377,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "dybbuks"
+      ]
+    },
+    {
+      "word": "tidiers",
+      "num_guesses": 4,
+      "prior": 7.787883452350641e-6,
+      "guesses": [
+        "carnies",
+        "mistold",
+        "diverts",
+        "tidiers"
+      ]
+    },
+    {
+      "word": "penaeid",
+      "num_guesses": 3,
+      "prior": 0.000021863692167545245,
+      "guesses": [
+        "carnies",
+        "meltage",
+        "penaeid"
+      ]
+    },
+    {
+      "word": "hooplas",
+      "num_guesses": 4,
+      "prior": 8.159932771723765e-6,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "loofahs",
+        "hooplas"
+      ]
+    },
+    {
+      "word": "mytheme",
+      "num_guesses": 4,
+      "prior": 0.000013455811801083882,
+      "guesses": [
+        "carnies",
+        "holdout",
+        "webpage",
+        "mytheme"
+      ]
+    },
+    {
+      "word": "liangpi",
+      "num_guesses": 3,
+      "prior": 6.797922850881411e-6,
+      "guesses": [
+        "carnies",
+        "dialout",
+        "liangpi"
+      ]
+    },
+    {
+      "word": "flakers",
+      "num_guesses": 5,
+      "prior": 0.000016019915917848842,
+      "guesses": [
+        "carnies",
+        "delveth",
+        "synform",
+        "workers",
+        "flakers"
+      ]
+    },
+    {
+      "word": "alkynyl",
+      "num_guesses": 3,
+      "prior": 0.000019280120303685608,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "alkynyl"
+      ]
+    },
+    {
+      "word": "slaught",
+      "num_guesses": 3,
+      "prior": 0.00001803322917693539,
+      "guesses": [
+        "carnies",
+        "subplot",
+        "slaught"
+      ]
+    },
+    {
+      "word": "priapic",
+      "num_guesses": 3,
+      "prior": 0.00001706132634353359,
+      "guesses": [
+        "carnies",
+        "araphid",
+        "priapic"
+      ]
+    },
+    {
+      "word": "laytime",
+      "num_guesses": 3,
+      "prior": 0.000019673374215181425,
+      "guesses": [
+        "carnies",
+        "mutedly",
+        "laytime"
+      ]
+    },
+    {
+      "word": "midaged",
+      "num_guesses": 4,
+      "prior": 7.898075410775736e-6,
+      "guesses": [
+        "carnies",
+        "alaudid",
+        "ideated",
+        "midaged"
+      ]
+    },
+    {
+      "word": "entatic",
+      "num_guesses": 3,
+      "prior": 0.000010230059134280206,
+      "guesses": [
+        "carnies",
+        "andante",
+        "entatic"
+      ]
+    },
+    {
+      "word": "metrial",
+      "num_guesses": 3,
+      "prior": 0.000013758251286237118,
+      "guesses": [
+        "carnies",
+        "trample",
+        "metrial"
+      ]
+    },
+    {
+      "word": "rootcap",
+      "num_guesses": 3,
+      "prior": 0.00001240749330677384,
+      "guesses": [
+        "carnies",
+        "outhold",
+        "rootcap"
+      ]
+    },
+    {
+      "word": "skeeves",
+      "num_guesses": 4,
+      "prior": 8.11591762128408e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "bossdom",
+        "skeeves"
+      ]
+    },
+    {
+      "word": "sestine",
+      "num_guesses": 4,
+      "prior": 0.000011736638088260316,
+      "guesses": [
+        "carnies",
+        "septole",
+        "express",
+        "sestine"
+      ]
+    },
+    {
+      "word": "jampots",
+      "num_guesses": 4,
+      "prior": 0.00001027825037777655,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "maggots",
+        "jampots"
+      ]
+    },
+    {
+      "word": "kavikas",
+      "num_guesses": 4,
+      "prior": 4.9883470414581474e-6,
+      "guesses": [
+        "carnies",
+        "mutilid",
+        "hawiyas",
+        "kavikas"
+      ]
+    },
+    {
+      "word": "armings",
+      "num_guesses": 3,
+      "prior": 0.000011192364617637866,
+      "guesses": [
+        "carnies",
+        "pintada",
+        "armings"
+      ]
+    },
+    {
+      "word": "baggers",
+      "num_guesses": 4,
+      "prior": 0.00002198504074648057,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "bugweed",
+        "baggers"
+      ]
+    },
+    {
+      "word": "quizzes",
+      "num_guesses": 4,
+      "prior": 0.00003193710155113848,
+      "guesses": [
+        "carnies",
+        "templed",
+        "shouses",
+        "quizzes"
+      ]
+    },
+    {
+      "word": "signets",
+      "num_guesses": 3,
+      "prior": 0.000018652568776638913,
+      "guesses": [
+        "carnies",
+        "slights",
+        "signets"
+      ]
+    },
+    {
+      "word": "entrest",
+      "num_guesses": 3,
+      "prior": 9.318648707772357e-6,
+      "guesses": [
+        "carnies",
+        "sequent",
+        "entrest"
+      ]
+    },
+    {
+      "word": "volubly",
+      "num_guesses": 3,
+      "prior": 0.000022893079436846237,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "volubly"
+      ]
+    },
+    {
+      "word": "selenos",
+      "num_guesses": 4,
+      "prior": 7.68662374962989e-6,
+      "guesses": [
+        "carnies",
+        "lendeth",
+        "newells",
+        "selenos"
+      ]
+    },
+    {
+      "word": "guvment",
+      "num_guesses": 4,
+      "prior": 9.974354698396957e-6,
+      "guesses": [
+        "carnies",
+        "pentone",
+        "numbing",
+        "guvment"
+      ]
+    },
+    {
+      "word": "oldtown",
+      "num_guesses": 3,
+      "prior": 0.000022304188709416785,
+      "guesses": [
+        "carnies",
+        "londony",
+        "oldtown"
+      ]
+    },
+    {
+      "word": "rapcore",
+      "num_guesses": 3,
+      "prior": 7.332517892549929e-6,
+      "guesses": [
+        "carnies",
+        "mytharc",
+        "rapcore"
+      ]
+    },
+    {
+      "word": "oblongs",
+      "num_guesses": 3,
+      "prior": 0.000020206762037834062,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "oblongs"
+      ]
+    },
+    {
+      "word": "insooth",
+      "num_guesses": 4,
+      "prior": 9.503671236447859e-6,
+      "guesses": [
+        "carnies",
+        "sunspot",
+        "tylosin",
+        "insooth"
+      ]
+    },
+    {
+      "word": "bakongo",
+      "num_guesses": 4,
+      "prior": 0.000019542571371108836,
+      "guesses": [
+        "carnies",
+        "monadal",
+        "outtook",
+        "bakongo"
+      ]
+    },
+    {
+      "word": "noncold",
+      "num_guesses": 3,
+      "prior": 9.079334518382869e-6,
+      "guesses": [
+        "carnies",
+        "outbulk",
+        "noncold"
+      ]
+    },
+    {
+      "word": "flukans",
+      "num_guesses": 4,
+      "prior": 6.565625074856033e-6,
+      "guesses": [
+        "carnies",
+        "dogmata",
+        "hunyaks",
+        "flukans"
+      ]
+    },
+    {
+      "word": "unrhyme",
+      "num_guesses": 3,
+      "prior": 6.28500179183205e-6,
+      "guesses": [
+        "carnies",
+        "tempoed",
+        "unrhyme"
+      ]
+    },
+    {
+      "word": "nageire",
+      "num_guesses": 3,
+      "prior": 0.000011275750629421841,
+      "guesses": [
+        "carnies",
+        "thermel",
+        "nageire"
+      ]
+    },
+    {
+      "word": "nosairi",
+      "num_guesses": 3,
+      "prior": 8.907010941029424e-6,
+      "guesses": [
+        "carnies",
+        "southon",
+        "nosairi"
+      ]
+    },
+    {
+      "word": "gaffman",
+      "num_guesses": 4,
+      "prior": 7.413516546707296e-6,
+      "guesses": [
+        "carnies",
+        "monadal",
+        "through",
+        "gaffman"
+      ]
+    },
+    {
+      "word": "arvales",
+      "num_guesses": 4,
+      "prior": 0.00001413991757492357,
+      "guesses": [
+        "carnies",
+        "sealest",
+        "royales",
+        "arvales"
+      ]
+    },
+    {
+      "word": "worried",
+      "num_guesses": 3,
+      "prior": 0.00006082338091299924,
+      "guesses": [
+        "carnies",
+        "bedropt",
+        "worried"
+      ]
+    },
+    {
+      "word": "kookies",
+      "num_guesses": 5,
+      "prior": 0.00001316149727638303,
+      "guesses": [
+        "carnies",
+        "tombful",
+        "pighood",
+        "shikoku",
+        "kookies"
+      ]
+    },
+    {
+      "word": "shoeful",
+      "num_guesses": 4,
+      "prior": 8.06728345339856e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "sleddog",
+        "shoeful"
+      ]
+    },
+    {
+      "word": "apaumee",
+      "num_guesses": 3,
+      "prior": 5.973541809912356e-6,
+      "guesses": [
+        "carnies",
+        "pleated",
+        "apaumee"
+      ]
+    },
+    {
+      "word": "voevoda",
+      "num_guesses": 4,
+      "prior": 0.00001738575804262012,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "bugwood",
+        "voevoda"
+      ]
+    },
+    {
+      "word": "tawning",
+      "num_guesses": 4,
+      "prior": 6.909883020469042e-6,
+      "guesses": [
+        "carnies",
+        "minifig",
+        "ycleped",
+        "tawning"
+      ]
+    },
+    {
+      "word": "georgic",
+      "num_guesses": 4,
+      "prior": 0.000022128459426611736,
+      "guesses": [
+        "carnies",
+        "moietie",
+        "ergodic",
+        "georgic"
+      ]
+    },
+    {
+      "word": "boolies",
+      "num_guesses": 4,
+      "prior": 9.153123599364386e-6,
+      "guesses": [
+        "carnies",
+        "tombful",
+        "boilies",
+        "boolies"
+      ]
+    },
+    {
+      "word": "sulcate",
+      "num_guesses": 3,
+      "prior": 0.00002559330742208063,
+      "guesses": [
+        "carnies",
+        "elocute",
+        "sulcate"
+      ]
+    },
+    {
+      "word": "impaved",
+      "num_guesses": 4,
+      "prior": 6.548918433112639e-6,
+      "guesses": [
+        "carnies",
+        "alaudid",
+        "imports",
+        "impaved"
+      ]
+    },
+    {
+      "word": "plaggic",
+      "num_guesses": 4,
+      "prior": 8.28165044637252e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "phallic",
+        "plaggic"
+      ]
+    },
+    {
+      "word": "shameth",
+      "num_guesses": 4,
+      "prior": 0.000012400969910260649,
+      "guesses": [
+        "carnies",
+        "septole",
+        "thymate",
+        "shameth"
+      ]
+    },
+    {
+      "word": "griping",
+      "num_guesses": 3,
+      "prior": 0.000027418353297447525,
+      "guesses": [
+        "carnies",
+        "goodput",
+        "griping"
+      ]
+    },
+    {
+      "word": "ghurree",
+      "num_guesses": 4,
+      "prior": 9.315574598226616e-6,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "fuckbag",
+        "ghurree"
+      ]
+    },
+    {
+      "word": "tenured",
+      "num_guesses": 3,
+      "prior": 0.00003119814959504132,
+      "guesses": [
+        "carnies",
+        "tenoned",
+        "tenured"
+      ]
+    },
+    {
+      "word": "diarrhe",
+      "num_guesses": 4,
+      "prior": 7.819119281945428e-6,
+      "guesses": [
+        "carnies",
+        "bigtail",
+        "viverra",
+        "diarrhe"
+      ]
+    },
+    {
+      "word": "selenic",
+      "num_guesses": 3,
+      "prior": 0.00001846006590824229,
+      "guesses": [
+        "carnies",
+        "silence",
+        "selenic"
+      ]
+    },
+    {
+      "word": "metagee",
+      "num_guesses": 3,
+      "prior": 6.208951146157143e-6,
+      "guesses": [
+        "carnies",
+        "pleated",
+        "metagee"
+      ]
+    },
+    {
+      "word": "tasters",
+      "num_guesses": 5,
+      "prior": 0.000024381453790897423,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "restems",
+        "twelfth",
+        "tasters"
+      ]
+    },
+    {
+      "word": "cholics",
+      "num_guesses": 3,
+      "prior": 0.000011281953703641394,
+      "guesses": [
+        "carnies",
+        "tombful",
+        "cholics"
+      ]
+    },
+    {
+      "word": "hautboy",
+      "num_guesses": 3,
+      "prior": 0.00002050386330776681,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "hautboy"
+      ]
+    },
+    {
+      "word": "kiddles",
+      "num_guesses": 5,
+      "prior": 0.000013099935206106491,
+      "guesses": [
+        "carnies",
+        "templed",
+        "dwarfed",
+        "looking",
+        "kiddles"
+      ]
+    },
+    {
+      "word": "kinomic",
+      "num_guesses": 3,
+      "prior": 5.267160136432669e-6,
+      "guesses": [
+        "carnies",
+        "limonin",
+        "kinomic"
+      ]
+    },
+    {
+      "word": "euploid",
+      "num_guesses": 3,
+      "prior": 0.000017274208926907754,
+      "guesses": [
+        "carnies",
+        "methode",
+        "euploid"
+      ]
+    },
+    {
+      "word": "sidling",
+      "num_guesses": 4,
+      "prior": 0.000022915385722051623,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "dislimb",
+        "sidling"
+      ]
+    },
+    {
+      "word": "geatish",
+      "num_guesses": 3,
+      "prior": 0.000014127726971808185,
+      "guesses": [
+        "carnies",
+        "sealest",
+        "geatish"
+      ]
+    },
+    {
+      "word": "probeth",
+      "num_guesses": 4,
+      "prior": 5.866690312531947e-6,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "poverty",
+        "probeth"
+      ]
+    },
+    {
+      "word": "propodi",
+      "num_guesses": 4,
+      "prior": 0.000014778464172352617,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "ivoroid",
+        "propodi"
+      ]
+    },
+    {
+      "word": "ustashe",
+      "num_guesses": 4,
+      "prior": 0.000015121102057247191,
+      "guesses": [
+        "carnies",
+        "septole",
+        "auguste",
+        "ustashe"
+      ]
+    },
+    {
+      "word": "ghaghra",
+      "num_guesses": 3,
+      "prior": 0.000014472914650478938,
+      "guesses": [
+        "carnies",
+        "armload",
+        "ghaghra"
+      ]
+    },
+    {
+      "word": "daddish",
+      "num_guesses": 5,
+      "prior": 5.641453406431863e-6,
+      "guesses": [
+        "carnies",
+        "lythrum",
+        "fawking",
+        "debases",
+        "daddish"
+      ]
+    },
+    {
+      "word": "neurons",
+      "num_guesses": 3,
+      "prior": 0.000055838676378463244,
+      "guesses": [
+        "carnies",
+        "denture",
+        "neurons"
+      ]
+    },
+    {
+      "word": "bucolic",
+      "num_guesses": 3,
+      "prior": 0.000029127954325831247,
+      "guesses": [
+        "carnies",
+        "tipulid",
+        "bucolic"
+      ]
+    },
+    {
+      "word": "agented",
+      "num_guesses": 3,
+      "prior": 0.000016504507140165738,
+      "guesses": [
+        "carnies",
+        "pledget",
+        "agented"
+      ]
+    },
+    {
+      "word": "cobourg",
+      "num_guesses": 3,
+      "prior": 0.000026430689813665285,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "cobourg"
+      ]
+    },
+    {
+      "word": "hallmen",
+      "num_guesses": 4,
+      "prior": 9.817358291462569e-6,
+      "guesses": [
+        "carnies",
+        "gentled",
+        "ballpen",
+        "hallmen"
+      ]
+    },
+    {
+      "word": "jellied",
+      "num_guesses": 4,
+      "prior": 0.00002332689026828052,
+      "guesses": [
+        "carnies",
+        "tombful",
+        "willied",
+        "jellied"
+      ]
+    },
+    {
+      "word": "midship",
+      "num_guesses": 3,
+      "prior": 0.00002585393339760856,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "midship"
+      ]
+    },
+    {
+      "word": "countly",
+      "num_guesses": 3,
+      "prior": 0.000013732943511753078,
+      "guesses": [
+        "carnies",
+        "chungju",
+        "countly"
+      ]
+    },
+    {
+      "word": "drumset",
+      "num_guesses": 3,
+      "prior": 0.000016273226583761602,
+      "guesses": [
+        "carnies",
+        "slutdom",
+        "drumset"
+      ]
+    },
+    {
+      "word": "unbrake",
+      "num_guesses": 4,
+      "prior": 6.31926785170959e-6,
+      "guesses": [
+        "carnies",
+        "metulae",
+        "unbrave",
+        "unbrake"
+      ]
+    },
+    {
+      "word": "thomite",
+      "num_guesses": 3,
+      "prior": 7.233727350175303e-6,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "thomite"
+      ]
+    },
+    {
+      "word": "chenite",
+      "num_guesses": 3,
+      "prior": 8.000556573899874e-6,
+      "guesses": [
+        "carnies",
+        "cognite",
+        "chenite"
+      ]
+    },
+    {
+      "word": "elfling",
+      "num_guesses": 4,
+      "prior": 9.931071841304522e-6,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "dullify",
+        "elfling"
+      ]
+    },
+    {
+      "word": "chartre",
+      "num_guesses": 3,
+      "prior": 0.000015660383296590406,
+      "guesses": [
+        "carnies",
+        "mudhole",
+        "chartre"
+      ]
+    },
+    {
+      "word": "dustful",
+      "num_guesses": 5,
+      "prior": 5.708455146610572e-6,
+      "guesses": [
+        "carnies",
+        "shopbot",
+        "lustful",
+        "gustful",
+        "dustful"
+      ]
+    },
+    {
+      "word": "javazon",
+      "num_guesses": 4,
+      "prior": 6.489061875486784e-6,
+      "guesses": [
+        "carnies",
+        "monadal",
+        "patagon",
+        "javazon"
+      ]
+    },
+    {
+      "word": "souring",
+      "num_guesses": 3,
+      "prior": 0.000026550222603616402,
+      "guesses": [
+        "carnies",
+        "sunspot",
+        "souring"
+      ]
+    },
+    {
+      "word": "gharris",
+      "num_guesses": 4,
+      "prior": 8.42285124115843e-6,
+      "guesses": [
+        "carnies",
+        "timbral",
+        "askaris",
+        "gharris"
+      ]
+    },
+    {
+      "word": "vettura",
+      "num_guesses": 4,
+      "prior": 0.000013557436175971039,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "metamor",
+        "vettura"
+      ]
+    },
+    {
+      "word": "trennel",
+      "num_guesses": 3,
+      "prior": 7.311022416972614e-6,
+      "guesses": [
+        "carnies",
+        "boulted",
+        "trennel"
+      ]
+    },
+    {
+      "word": "luigini",
+      "num_guesses": 3,
+      "prior": 0.000011691527382180278,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "luigini"
+      ]
+    },
+    {
+      "word": "tabored",
+      "num_guesses": 3,
+      "prior": 5.997605194764413e-6,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "tabored"
+      ]
+    },
+    {
+      "word": "antitop",
+      "num_guesses": 3,
+      "prior": 9.561647558662644e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "antitop"
+      ]
+    },
+    {
+      "word": "aphesis",
+      "num_guesses": 4,
+      "prior": 0.000013315348308996468,
+      "guesses": [
+        "carnies",
+        "desilts",
+        "asepsis",
+        "aphesis"
+      ]
+    },
+    {
+      "word": "suppest",
+      "num_guesses": 4,
+      "prior": 7.962502260266044e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "suppeth",
+        "suppest"
+      ]
+    },
+    {
+      "word": "stedman",
+      "num_guesses": 3,
+      "prior": 0.000035308547079774625,
+      "guesses": [
+        "carnies",
+        "septole",
+        "stedman"
+      ]
+    },
+    {
+      "word": "aretted",
+      "num_guesses": 4,
+      "prior": 8.438137823150881e-6,
+      "guesses": [
+        "carnies",
+        "bleated",
+        "averted",
+        "aretted"
+      ]
+    },
+    {
+      "word": "pelerin",
+      "num_guesses": 3,
+      "prior": 0.000018372326595235444,
+      "guesses": [
+        "carnies",
+        "demeton",
+        "pelerin"
+      ]
+    },
+    {
+      "word": "dogbane",
+      "num_guesses": 4,
+      "prior": 0.000018288749135683593,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "bondage",
+        "dogbane"
+      ]
+    },
+    {
+      "word": "ekalead",
+      "num_guesses": 3,
+      "prior": 6.234715314290111e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "ekalead"
+      ]
+    },
+    {
+      "word": "ovology",
+      "num_guesses": 4,
+      "prior": 8.70816516817072e-6,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "various",
+        "ovology"
+      ]
+    },
+    {
+      "word": "reflown",
+      "num_guesses": 4,
+      "prior": 0.000011270969728559231,
+      "guesses": [
+        "carnies",
+        "pentone",
+        "reblown",
+        "reflown"
+      ]
+    },
+    {
+      "word": "ruptive",
+      "num_guesses": 3,
+      "prior": 0.000012738333850003919,
+      "guesses": [
+        "carnies",
+        "bedoute",
+        "ruptive"
+      ]
+    },
+    {
+      "word": "perning",
+      "num_guesses": 4,
+      "prior": 0.000010295490076135349,
+      "guesses": [
+        "carnies",
+        "weekold",
+        "specify",
+        "perning"
+      ]
+    },
+    {
+      "word": "nonegos",
+      "num_guesses": 3,
+      "prior": 5.335587753261085e-6,
+      "guesses": [
+        "carnies",
+        "lendeth",
+        "nonegos"
+      ]
+    },
+    {
+      "word": "pettahs",
+      "num_guesses": 4,
+      "prior": 8.135401715930454e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "without",
+        "pettahs"
+      ]
+    },
+    {
+      "word": "midrail",
+      "num_guesses": 3,
+      "prior": 0.00001318176437990599,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "midrail"
+      ]
+    },
+    {
+      "word": "wezands",
+      "num_guesses": 4,
+      "prior": 5.382398327893993e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "wesands",
+        "wezands"
+      ]
+    },
+    {
+      "word": "inupiat",
+      "num_guesses": 3,
+      "prior": 0.000020577173045425618,
+      "guesses": [
+        "carnies",
+        "alamoth",
+        "inupiat"
+      ]
+    },
+    {
+      "word": "aneroid",
+      "num_guesses": 3,
+      "prior": 0.000027590295536317144,
+      "guesses": [
+        "carnies",
+        "detrain",
+        "aneroid"
+      ]
+    },
+    {
+      "word": "crimony",
+      "num_guesses": 3,
+      "prior": 8.78469164100754e-6,
+      "guesses": [
+        "carnies",
+        "hybotid",
+        "crimony"
+      ]
+    },
+    {
+      "word": "moraine",
+      "num_guesses": 3,
+      "prior": 0.0000383096570870678,
+      "guesses": [
+        "carnies",
+        "mitzvah",
+        "moraine"
+      ]
+    },
+    {
+      "word": "groffle",
+      "num_guesses": 4,
+      "prior": 4.611236687889923e-6,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "woodelf",
+        "groffle"
+      ]
+    },
+    {
+      "word": "erudite",
+      "num_guesses": 3,
+      "prior": 0.000034065394969629126,
+      "guesses": [
+        "carnies",
+        "bedoute",
+        "erudite"
+      ]
+    },
+    {
+      "word": "enstamp",
+      "num_guesses": 3,
+      "prior": 9.107566825045406e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "enstamp"
+      ]
+    },
+    {
+      "word": "idolous",
+      "num_guesses": 4,
+      "prior": 4.963152080897073e-6,
+      "guesses": [
+        "carnies",
+        "tipulid",
+        "solidus",
+        "idolous"
+      ]
+    },
+    {
+      "word": "tehasil",
+      "num_guesses": 4,
+      "prior": 7.055995626178645e-6,
+      "guesses": [
+        "carnies",
+        "seasalt",
+        "telesia",
+        "tehasil"
+      ]
+    },
+    {
+      "word": "briefie",
+      "num_guesses": 4,
+      "prior": 8.755978618838799e-6,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "freebie",
+        "briefie"
+      ]
+    },
+    {
+      "word": "taffias",
+      "num_guesses": 4,
+      "prior": 5.949084317620256e-6,
+      "guesses": [
+        "carnies",
+        "tambola",
+        "tawaifs",
+        "taffias"
+      ]
+    },
+    {
+      "word": "saktism",
+      "num_guesses": 4,
+      "prior": 0.0000146750392294571,
+      "guesses": [
+        "carnies",
+        "lythrum",
+        "baptism",
+        "saktism"
+      ]
+    },
+    {
+      "word": "rocklet",
+      "num_guesses": 3,
+      "prior": 8.573830859922318e-6,
+      "guesses": [
+        "carnies",
+        "touched",
+        "rocklet"
+      ]
+    },
+    {
+      "word": "copless",
+      "num_guesses": 4,
+      "prior": 6.21930808638975e-6,
+      "guesses": [
+        "carnies",
+        "boldest",
+        "weeping",
+        "copless"
+      ]
+    },
+    {
+      "word": "acilian",
+      "num_guesses": 3,
+      "prior": 9.180463165305271e-6,
+      "guesses": [
+        "carnies",
+        "clachan",
+        "acilian"
+      ]
+    },
+    {
+      "word": "shammes",
+      "num_guesses": 4,
+      "prior": 0.000012719213761470887,
+      "guesses": [
+        "carnies",
+        "petalum",
+        "shammas",
+        "shammes"
+      ]
+    },
+    {
+      "word": "peltate",
+      "num_guesses": 3,
+      "prior": 0.000023564310683937744,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "peltate"
+      ]
+    },
+    {
+      "word": "turakoo",
+      "num_guesses": 4,
+      "prior": 4.8288136422430396e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "gyrator",
+        "turakoo"
+      ]
+    },
+    {
+      "word": "triffid",
+      "num_guesses": 4,
+      "prior": 0.000012414653233184843,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "timurid",
+        "triffid"
+      ]
+    },
+    {
+      "word": "tankers",
+      "num_guesses": 3,
+      "prior": 0.00004316460060097739,
+      "guesses": [
+        "carnies",
+        "gentled",
+        "tankers"
+      ]
+    },
+    {
+      "word": "squints",
+      "num_guesses": 4,
+      "prior": 0.000024173559777674118,
+      "guesses": [
+        "carnies",
+        "lontong",
+        "insists",
+        "squints"
+      ]
+    },
+    {
+      "word": "boogeys",
+      "num_guesses": 4,
+      "prior": 5.418707849374946e-6,
+      "guesses": [
+        "carnies",
+        "sublots",
+        "bemused",
+        "boogeys"
+      ]
+    },
+    {
+      "word": "hourers",
+      "num_guesses": 4,
+      "prior": 6.182752105190624e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "housers",
+        "hourers"
+      ]
+    },
+    {
+      "word": "antipox",
+      "num_guesses": 4,
+      "prior": 5.296919997881134e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "antitop",
+        "antipox"
+      ]
+    },
+    {
+      "word": "placoid",
+      "num_guesses": 3,
+      "prior": 0.000017993625948702517,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "placoid"
+      ]
+    },
+    {
+      "word": "strunts",
+      "num_guesses": 4,
+      "prior": 5.905290290016594e-6,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "sprunts",
+        "strunts"
+      ]
+    },
+    {
+      "word": "snirtle",
+      "num_guesses": 4,
+      "prior": 6.417834066263378e-6,
+      "guesses": [
+        "carnies",
+        "heptode",
+        "intruse",
+        "snirtle"
+      ]
+    },
+    {
+      "word": "unjoins",
+      "num_guesses": 3,
+      "prior": 5.758474289351491e-6,
+      "guesses": [
+        "carnies",
+        "bultong",
+        "unjoins"
+      ]
+    },
+    {
+      "word": "ichabod",
+      "num_guesses": 4,
+      "prior": 0.000027981411873369793,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "oxoacid",
+        "ichabod"
+      ]
+    },
+    {
+      "word": "dendric",
+      "num_guesses": 3,
+      "prior": 9.624558563133446e-6,
+      "guesses": [
+        "carnies",
+        "enderon",
+        "dendric"
+      ]
+    },
+    {
+      "word": "desmans",
+      "num_guesses": 4,
+      "prior": 0.000011711708030780998,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "kingdom",
+        "desmans"
+      ]
+    },
+    {
+      "word": "ghostie",
+      "num_guesses": 4,
+      "prior": 0.000011520019297508176,
+      "guesses": [
+        "carnies",
+        "septole",
+        "modiste",
+        "ghostie"
+      ]
+    },
+    {
+      "word": "bursten",
+      "num_guesses": 3,
+      "prior": 0.000015942016917093924,
+      "guesses": [
+        "carnies",
+        "related",
+        "bursten"
+      ]
+    },
+    {
+      "word": "alevism",
+      "num_guesses": 4,
+      "prior": 0.000014121907102902835,
+      "guesses": [
+        "carnies",
+        "sealest",
+        "ableism",
+        "alevism"
+      ]
+    },
+    {
+      "word": "nerites",
+      "num_guesses": 3,
+      "prior": 0.000011707600820220935,
+      "guesses": [
+        "carnies",
+        "septole",
+        "nerites"
+      ]
+    },
+    {
+      "word": "fellage",
+      "num_guesses": 4,
+      "prior": 6.224460792786523e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "pellage",
+        "fellage"
+      ]
+    },
+    {
+      "word": "gowpins",
+      "num_guesses": 4,
+      "prior": 6.328923004243135e-6,
+      "guesses": [
+        "carnies",
+        "bultong",
+        "whigged",
+        "gowpins"
+      ]
+    },
+    {
+      "word": "kapists",
+      "num_guesses": 4,
+      "prior": 7.228078200486133e-6,
+      "guesses": [
+        "carnies",
+        "mutilid",
+        "posttax",
+        "kapists"
+      ]
+    },
+    {
+      "word": "siderin",
+      "num_guesses": 3,
+      "prior": 0.000010909774663789557,
+      "guesses": [
+        "carnies",
+        "heptode",
+        "siderin"
+      ]
+    },
+    {
+      "word": "gonimia",
+      "num_guesses": 3,
+      "prior": 0.00001005948685722153,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "gonimia"
+      ]
+    },
+    {
+      "word": "corcula",
+      "num_guesses": 3,
+      "prior": 7.549069219786554e-6,
+      "guesses": [
+        "carnies",
+        "polacca",
+        "corcula"
+      ]
+    },
+    {
+      "word": "moaning",
+      "num_guesses": 3,
+      "prior": 0.000038667096919326644,
+      "guesses": [
+        "carnies",
+        "loadman",
+        "moaning"
+      ]
+    },
+    {
+      "word": "laystow",
+      "num_guesses": 4,
+      "prior": 4.870688238304764e-6,
+      "guesses": [
+        "carnies",
+        "bushlot",
+        "latosol",
+        "laystow"
+      ]
+    },
+    {
+      "word": "groaned",
+      "num_guesses": 4,
+      "prior": 0.00004518624660201828,
+      "guesses": [
+        "carnies",
+        "metaled",
+        "bagplot",
+        "groaned"
+      ]
+    },
+    {
+      "word": "bunnier",
+      "num_guesses": 4,
+      "prior": 5.118549893644625e-6,
+      "guesses": [
+        "carnies",
+        "tunhoof",
+        "bridger",
+        "bunnier"
+      ]
+    },
+    {
+      "word": "aphemia",
+      "num_guesses": 4,
+      "prior": 0.000014481703698467023,
+      "guesses": [
+        "carnies",
+        "midtale",
+        "bohemia",
+        "aphemia"
+      ]
+    },
+    {
+      "word": "coppras",
+      "num_guesses": 4,
+      "prior": 6.260060521446618e-6,
+      "guesses": [
+        "carnies",
+        "klamath",
+        "cowards",
+        "coppras"
+      ]
+    },
+    {
+      "word": "stickup",
+      "num_guesses": 4,
+      "prior": 0.00001695044459014363,
+      "guesses": [
+        "carnies",
+        "somitic",
+        "switchy",
+        "stickup"
+      ]
+    },
+    {
+      "word": "sinulus",
+      "num_guesses": 3,
+      "prior": 0.000010232173365475038,
+      "guesses": [
+        "carnies",
+        "lontong",
+        "sinulus"
+      ]
+    },
+    {
+      "word": "tongued",
+      "num_guesses": 3,
+      "prior": 0.00003233803894409538,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "tongued"
+      ]
+    },
+    {
+      "word": "wargame",
+      "num_guesses": 3,
+      "prior": 0.00001738017627717718,
+      "guesses": [
+        "carnies",
+        "labmate",
+        "wargame"
+      ]
+    },
+    {
+      "word": "timists",
+      "num_guesses": 3,
+      "prior": 9.114290765059942e-6,
+      "guesses": [
+        "carnies",
+        "tipulid",
+        "timists"
+      ]
+    },
+    {
+      "word": "tiglons",
+      "num_guesses": 3,
+      "prior": 7.219571219430893e-6,
+      "guesses": [
+        "carnies",
+        "lontong",
+        "tiglons"
+      ]
+    },
+    {
+      "word": "talents",
+      "num_guesses": 3,
+      "prior": 0.000057529873230657974,
+      "guesses": [
+        "carnies",
+        "plumeth",
+        "talents"
+      ]
+    },
+    {
+      "word": "reviles",
+      "num_guesses": 4,
+      "prior": 0.000019195556348176697,
+      "guesses": [
+        "carnies",
+        "templed",
+        "savings",
+        "reviles"
+      ]
+    },
+    {
+      "word": "osakans",
+      "num_guesses": 3,
+      "prior": 9.325805896480276e-6,
+      "guesses": [
+        "carnies",
+        "dogmata",
+        "osakans"
+      ]
+    },
+    {
+      "word": "topkick",
+      "num_guesses": 3,
+      "prior": 0.000011410995735418573,
+      "guesses": [
+        "carnies",
+        "outpoll",
+        "topkick"
+      ]
+    },
+    {
+      "word": "rengmas",
+      "num_guesses": 3,
+      "prior": 0.000011259942768660541,
+      "guesses": [
+        "carnies",
+        "geomant",
+        "rengmas"
+      ]
+    },
+    {
+      "word": "prenups",
+      "num_guesses": 3,
+      "prior": 0.00001236913510488143,
+      "guesses": [
+        "carnies",
+        "nonduty",
+        "prenups"
+      ]
+    },
+    {
+      "word": "escolar",
+      "num_guesses": 3,
+      "prior": 0.000020196144390834207,
+      "guesses": [
+        "carnies",
+        "secreat",
+        "escolar"
+      ]
+    },
+    {
+      "word": "areding",
+      "num_guesses": 3,
+      "prior": 5.326025706564401e-6,
+      "guesses": [
+        "carnies",
+        "beermat",
+        "areding"
+      ]
+    },
+    {
+      "word": "unteach",
+      "num_guesses": 3,
+      "prior": 0.000013809801789726202,
+      "guesses": [
+        "carnies",
+        "letheon",
+        "unteach"
+      ]
+    },
+    {
+      "word": "tensens",
+      "num_guesses": 4,
+      "prior": 4.446119848645371e-6,
+      "guesses": [
+        "carnies",
+        "lendeth",
+        "tentens",
+        "tensens"
+      ]
+    },
+    {
+      "word": "tuchuns",
+      "num_guesses": 3,
+      "prior": 0.00001491575788765389,
+      "guesses": [
+        "carnies",
+        "pectous",
+        "tuchuns"
+      ]
+    },
+    {
+      "word": "unarray",
+      "num_guesses": 3,
+      "prior": 6.193284963728785e-6,
+      "guesses": [
+        "carnies",
+        "autorad",
+        "unarray"
+      ]
+    },
+    {
+      "word": "muggees",
+      "num_guesses": 5,
+      "prior": 6.229596493499439e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "guesses",
+        "bugeyes",
+        "muggees"
+      ]
+    },
+    {
+      "word": "woodwax",
+      "num_guesses": 4,
+      "prior": 7.829421187624151e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "woodway",
+        "woodwax"
+      ]
+    },
+    {
+      "word": "despike",
+      "num_guesses": 4,
+      "prior": 6.462718399704068e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "despise",
+        "despike"
+      ]
+    },
+    {
+      "word": "mureins",
+      "num_guesses": 3,
+      "prior": 9.282528826929269e-6,
+      "guesses": [
+        "carnies",
+        "pluming",
+        "mureins"
+      ]
+    },
+    {
+      "word": "chinaur",
+      "num_guesses": 3,
+      "prior": 5.373166029391546e-6,
+      "guesses": [
+        "carnies",
+        "chunari",
+        "chinaur"
+      ]
+    },
+    {
+      "word": "bigotly",
+      "num_guesses": 4,
+      "prior": 4.465707038289461e-6,
+      "guesses": [
+        "carnies",
+        "lithoid",
+        "fillpot",
+        "bigotly"
+      ]
+    },
+    {
+      "word": "cellula",
+      "num_guesses": 3,
+      "prior": 0.000017801428764582125,
+      "guesses": [
+        "carnies",
+        "alouate",
+        "cellula"
+      ]
+    },
+    {
+      "word": "pylotes",
+      "num_guesses": 3,
+      "prior": 6.642745653812167e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "pylotes"
+      ]
+    },
+    {
+      "word": "deadset",
+      "num_guesses": 3,
+      "prior": 0.00001086193498952215,
+      "guesses": [
+        "carnies",
+        "splasht",
+        "deadset"
+      ]
+    },
+    {
+      "word": "kerplop",
+      "num_guesses": 3,
+      "prior": 9.44230260787219e-6,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "kerplop"
+      ]
+    },
+    {
+      "word": "unfocus",
+      "num_guesses": 3,
+      "prior": 0.000012591273268536953,
+      "guesses": [
+        "carnies",
+        "pectous",
+        "unfocus"
+      ]
+    },
+    {
+      "word": "dourest",
+      "num_guesses": 4,
+      "prior": 0.00001161235347747029,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "sourest",
+        "dourest"
+      ]
+    },
+    {
+      "word": "makeing",
+      "num_guesses": 3,
+      "prior": 0.00002198041134182774,
+      "guesses": [
+        "carnies",
+        "leptome",
+        "makeing"
+      ]
+    },
+    {
+      "word": "woofter",
+      "num_guesses": 4,
+      "prior": 0.000018451280182558805,
+      "guesses": [
+        "carnies",
+        "moteled",
+        "tougher",
+        "woofter"
+      ]
+    },
+    {
+      "word": "epactal",
+      "num_guesses": 4,
+      "prior": 9.721573267072161e-6,
+      "guesses": [
+        "carnies",
+        "heptode",
+        "ectypal",
+        "epactal"
+      ]
+    },
+    {
+      "word": "trewage",
+      "num_guesses": 4,
+      "prior": 8.469883774619066e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "pretape",
+        "trewage"
+      ]
+    },
+    {
+      "word": "fordone",
+      "num_guesses": 3,
+      "prior": 0.000014281541889097212,
+      "guesses": [
+        "carnies",
+        "tempoed",
+        "fordone"
+      ]
+    },
+    {
+      "word": "ramekin",
+      "num_guesses": 3,
+      "prior": 0.00001731615177523342,
+      "guesses": [
+        "carnies",
+        "raiment",
+        "ramekin"
+      ]
+    },
+    {
+      "word": "chalice",
+      "num_guesses": 3,
+      "prior": 0.00003566379055087456,
+      "guesses": [
+        "carnies",
+        "coalite",
+        "chalice"
+      ]
+    },
+    {
+      "word": "cupping",
+      "num_guesses": 3,
+      "prior": 0.00003337637581073698,
+      "guesses": [
+        "carnies",
+        "flopdom",
+        "cupping"
+      ]
+    },
+    {
+      "word": "hatreds",
+      "num_guesses": 3,
+      "prior": 0.000030173617981663567,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "hatreds"
+      ]
+    },
+    {
+      "word": "grilses",
+      "num_guesses": 4,
+      "prior": 0.000011980253721559601,
+      "guesses": [
+        "carnies",
+        "templed",
+        "silures",
+        "grilses"
+      ]
+    },
+    {
+      "word": "dottles",
+      "num_guesses": 4,
+      "prior": 0.0000120071222406072,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "tempted",
+        "dottles"
+      ]
+    },
+    {
+      "word": "débuted",
+      "num_guesses": 3,
+      "prior": 8.50854028356202e-6,
+      "guesses": [
+        "carnies",
+        "bedoled",
+        "débuted"
+      ]
+    },
+    {
+      "word": "praying",
+      "num_guesses": 4,
+      "prior": 0.000056320892727813605,
+      "guesses": [
+        "carnies",
+        "toadbug",
+        "graymap",
+        "praying"
+      ]
+    },
+    {
+      "word": "admixes",
+      "num_guesses": 3,
+      "prior": 0.000012178267846542503,
+      "guesses": [
+        "carnies",
+        "delists",
+        "admixes"
+      ]
+    },
+    {
+      "word": "gundies",
+      "num_guesses": 3,
+      "prior": 7.244972996950653e-6,
+      "guesses": [
+        "carnies",
+        "wingbud",
+        "gundies"
+      ]
+    },
+    {
+      "word": "egersis",
+      "num_guesses": 4,
+      "prior": 8.103420548481137e-6,
+      "guesses": [
+        "carnies",
+        "mistold",
+        "spivish",
+        "egersis"
+      ]
+    },
+    {
+      "word": "wenched",
+      "num_guesses": 3,
+      "prior": 0.000010418953181910344,
+      "guesses": [
+        "carnies",
+        "doubled",
+        "wenched"
+      ]
+    },
+    {
+      "word": "toraces",
+      "num_guesses": 3,
+      "prior": 4.8568900328457415e-6,
+      "guesses": [
+        "carnies",
+        "sophist",
+        "toraces"
+      ]
+    },
+    {
+      "word": "sluiced",
+      "num_guesses": 3,
+      "prior": 0.00002323465142599069,
+      "guesses": [
+        "carnies",
+        "slicked",
+        "sluiced"
+      ]
+    },
+    {
+      "word": "pedroes",
+      "num_guesses": 4,
+      "prior": 6.493411116574997e-6,
+      "guesses": [
+        "carnies",
+        "brought",
+        "reveled",
+        "pedroes"
+      ]
+    },
+    {
+      "word": "wielder",
+      "num_guesses": 4,
+      "prior": 0.000023861195356254493,
+      "guesses": [
+        "carnies",
+        "templed",
+        "twelfth",
+        "wielder"
+      ]
+    },
+    {
+      "word": "matesol",
+      "num_guesses": 3,
+      "prior": 9.101948334138976e-6,
+      "guesses": [
+        "carnies",
+        "soldest",
+        "matesol"
+      ]
+    },
+    {
+      "word": "cadgily",
+      "num_guesses": 4,
+      "prior": 6.5320395528268894e-6,
+      "guesses": [
+        "carnies",
+        "liftboy",
+        "campily",
+        "cadgily"
+      ]
+    },
+    {
+      "word": "boxwise",
+      "num_guesses": 4,
+      "prior": 6.462718399704068e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "oxidise",
+        "boxwise"
+      ]
+    },
+    {
+      "word": "bluiter",
+      "num_guesses": 4,
+      "prior": 6.357540251629612e-6,
+      "guesses": [
+        "carnies",
+        "templed",
+        "glitter",
+        "bluiter"
+      ]
+    },
+    {
+      "word": "amazons",
+      "num_guesses": 3,
+      "prior": 0.00003214446593303502,
+      "guesses": [
+        "carnies",
+        "dogmata",
+        "amazons"
+      ]
+    },
+    {
+      "word": "metness",
+      "num_guesses": 4,
+      "prior": 5.949084317620256e-6,
+      "guesses": [
+        "carnies",
+        "nonduty",
+        "shawism",
+        "metness"
+      ]
+    },
+    {
+      "word": "cabbing",
+      "num_guesses": 4,
+      "prior": 0.000012361869046293692,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "handbag",
+        "cabbing"
+      ]
+    },
+    {
+      "word": "quinite",
+      "num_guesses": 5,
+      "prior": 7.760401093272589e-6,
+      "guesses": [
+        "carnies",
+        "pentode",
+        "lignite",
+        "thinite",
+        "quinite"
+      ]
+    },
+    {
+      "word": "howbout",
+      "num_guesses": 4,
+      "prior": 6.746528768564216e-6,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "topboot",
+        "howbout"
+      ]
+    },
+    {
+      "word": "gobbies",
+      "num_guesses": 5,
+      "prior": 7.448965305718509e-6,
+      "guesses": [
+        "carnies",
+        "tombful",
+        "boyhood",
+        "passage",
+        "gobbies"
+      ]
+    },
+    {
+      "word": "potamid",
+      "num_guesses": 3,
+      "prior": 8.231807403988836e-6,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "potamid"
+      ]
+    },
+    {
+      "word": "provand",
+      "num_guesses": 4,
+      "prior": 0.000016162500409260187,
+      "guesses": [
+        "carnies",
+        "autorad",
+        "proband",
+        "provand"
+      ]
+    },
+    {
+      "word": "nasales",
+      "num_guesses": 3,
+      "prior": 0.000013194017958479834,
+      "guesses": [
+        "carnies",
+        "longeth",
+        "nasales"
+      ]
+    },
+    {
+      "word": "goloshe",
+      "num_guesses": 4,
+      "prior": 5.418707849374946e-6,
+      "guesses": [
+        "carnies",
+        "septole",
+        "dolosse",
+        "goloshe"
+      ]
+    },
+    {
+      "word": "nidogen",
+      "num_guesses": 3,
+      "prior": 0.00001456587000851525,
+      "guesses": [
+        "carnies",
+        "lenited",
+        "nidogen"
+      ]
+    },
+    {
+      "word": "pugging",
+      "num_guesses": 4,
+      "prior": 0.00001756119064642587,
+      "guesses": [
+        "carnies",
+        "goldbug",
+        "pantham",
+        "pugging"
+      ]
+    },
+    {
+      "word": "rubicon",
+      "num_guesses": 3,
+      "prior": 0.00002855422657078721,
+      "guesses": [
+        "carnies",
+        "biounit",
+        "rubicon"
+      ]
+    },
+    {
+      "word": "piramis",
+      "num_guesses": 4,
+      "prior": 9.113171485796772e-6,
+      "guesses": [
+        "carnies",
+        "amygdal",
+        "muriats",
+        "piramis"
+      ]
+    },
+    {
+      "word": "strewed",
+      "num_guesses": 3,
+      "prior": 0.00003165399647715508,
+      "guesses": [
+        "carnies",
+        "bedoute",
+        "strewed"
+      ]
+    },
+    {
+      "word": "staties",
+      "num_guesses": 4,
+      "prior": 0.000012635810706248283,
+      "guesses": [
+        "carnies",
+        "almohad",
+        "escapes",
+        "staties"
+      ]
+    },
+    {
+      "word": "sunrist",
+      "num_guesses": 3,
+      "prior": 7.037204425520611e-6,
+      "guesses": [
+        "carnies",
+        "sunspot",
+        "sunrist"
+      ]
+    },
+    {
+      "word": "tuleans",
+      "num_guesses": 3,
+      "prior": 9.706831718045084e-6,
+      "guesses": [
+        "carnies",
+        "dealate",
+        "tuleans"
+      ]
+    },
+    {
+      "word": "bergens",
+      "num_guesses": 3,
+      "prior": 0.00001863531294002801,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "bergens"
+      ]
+    },
+    {
+      "word": "chicons",
+      "num_guesses": 4,
+      "prior": 0.000011006696660536025,
+      "guesses": [
+        "carnies",
+        "mutondo",
+        "cosigns",
+        "chicons"
+      ]
+    },
+    {
+      "word": "schetic",
+      "num_guesses": 4,
+      "prior": 6.28500179183205e-6,
+      "guesses": [
+        "carnies",
+        "stomiid",
+        "sceptic",
+        "schetic"
+      ]
+    },
+    {
+      "word": "turkies",
+      "num_guesses": 3,
+      "prior": 0.000017767852574748015,
+      "guesses": [
+        "carnies",
+        "bedropt",
+        "turkies"
+      ]
+    },
+    {
+      "word": "saunter",
+      "num_guesses": 2,
+      "prior": 0.000026938760159814684,
+      "guesses": [
+        "carnies",
+        "saunter"
+      ]
+    },
+    {
+      "word": "cobangs",
+      "num_guesses": 3,
+      "prior": 7.99111079008498e-6,
+      "guesses": [
+        "carnies",
+        "hotplug",
+        "cobangs"
+      ]
+    },
+    {
+      "word": "axoneme",
+      "num_guesses": 3,
+      "prior": 0.000019867301032960323,
+      "guesses": [
+        "carnies",
+        "agemate",
+        "axoneme"
+      ]
+    },
+    {
+      "word": "ferulae",
+      "num_guesses": 3,
+      "prior": 9.887828956345399e-6,
+      "guesses": [
+        "carnies",
+        "bedmate",
+        "ferulae"
+      ]
+    },
+    {
+      "word": "boxbeds",
+      "num_guesses": 4,
+      "prior": 6.801534926698846e-6,
+      "guesses": [
+        "carnies",
+        "sublots",
+        "bemused",
+        "boxbeds"
+      ]
+    },
+    {
+      "word": "jigaboo",
+      "num_guesses": 4,
+      "prior": 0.000011221734882824783,
+      "guesses": [
+        "carnies",
+        "potamal",
+        "judging",
+        "jigaboo"
+      ]
+    },
+    {
+      "word": "krupnik",
+      "num_guesses": 3,
+      "prior": 0.000016631578416256302,
+      "guesses": [
+        "carnies",
+        "litigon",
+        "krupnik"
+      ]
+    },
+    {
+      "word": "gappier",
+      "num_guesses": 4,
+      "prior": 5.267160136432669e-6,
+      "guesses": [
+        "carnies",
+        "tumbled",
+        "pigfish",
+        "gappier"
+      ]
+    },
+    {
+      "word": "precell",
+      "num_guesses": 3,
+      "prior": 8.556614193108837e-6,
+      "guesses": [
+        "carnies",
+        "peelout",
+        "precell"
+      ]
+    },
+    {
+      "word": "deletia",
+      "num_guesses": 3,
+      "prior": 7.340514114276254e-6,
+      "guesses": [
+        "carnies",
+        "midtale",
+        "deletia"
+      ]
+    },
+    {
+      "word": "kidlets",
+      "num_guesses": 4,
+      "prior": 0.000010355272607497331,
+      "guesses": [
+        "carnies",
+        "gildeth",
+        "midlets",
+        "kidlets"
+      ]
+    },
+    {
+      "word": "echoeth",
+      "num_guesses": 4,
+      "prior": 8.99600253693408e-6,
+      "guesses": [
+        "carnies",
+        "deplume",
+        "ecotech",
+        "echoeth"
+      ]
+    },
+    {
+      "word": "queests",
+      "num_guesses": 4,
+      "prior": 7.553818559323389e-6,
+      "guesses": [
+        "carnies",
+        "sublots",
+        "gussets",
+        "queests"
+      ]
+    },
+    {
+      "word": "phwoarr",
+      "num_guesses": 4,
+      "prior": 5.708455146610572e-6,
+      "guesses": [
+        "carnies",
+        "armload",
+        "kouproh",
+        "phwoarr"
+      ]
+    },
+    {
+      "word": "recumbs",
+      "num_guesses": 3,
+      "prior": 5.715708607307075e-6,
+      "guesses": [
+        "carnies",
+        "elopeth",
+        "recumbs"
+      ]
+    },
+    {
+      "word": "foggier",
+      "num_guesses": 3,
+      "prior": 0.000013423861135330595,
+      "guesses": [
+        "carnies",
+        "outfold",
+        "foggier"
+      ]
+    },
+    {
+      "word": "aediles",
+      "num_guesses": 3,
+      "prior": 0.00002132116912497617,
+      "guesses": [
+        "carnies",
+        "delists",
+        "aediles"
+      ]
+    },
+    {
+      "word": "pompoir",
+      "num_guesses": 3,
+      "prior": 8.565239829776959e-6,
+      "guesses": [
+        "carnies",
+        "dogbolt",
+        "pompoir"
+      ]
+    },
+    {
+      "word": "topspin",
+      "num_guesses": 3,
+      "prior": 0.000018034981265886062,
+      "guesses": [
+        "carnies",
+        "sunspot",
+        "topspin"
+      ]
+    },
+    {
+      "word": "swarths",
+      "num_guesses": 3,
+      "prior": 0.000011308519863152446,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "swarths"
+      ]
+    },
+    {
+      "word": "murreys",
+      "num_guesses": 4,
+      "prior": 8.196185223108172e-6,
+      "guesses": [
+        "carnies",
+        "telford",
+        "surveys",
+        "murreys"
+      ]
+    },
+    {
+      "word": "verbage",
+      "num_guesses": 4,
+      "prior": 0.000013146279246382771,
+      "guesses": [
+        "carnies",
+        "bedmate",
+        "herbage",
+        "verbage"
+      ]
+    },
+    {
+      "word": "gournet",
+      "num_guesses": 3,
+      "prior": 8.463873561876603e-6,
+      "guesses": [
+        "carnies",
+        "tenoned",
+        "gournet"
+      ]
+    },
+    {
+      "word": "gyrases",
+      "num_guesses": 3,
+      "prior": 9.87892682056846e-6,
+      "guesses": [
+        "carnies",
+        "abought",
+        "gyrases"
+      ]
+    },
+    {
+      "word": "solutal",
+      "num_guesses": 3,
+      "prior": 0.000015289388418136026,
+      "guesses": [
+        "carnies",
+        "subplot",
+        "solutal"
+      ]
+    },
+    {
+      "word": "quintic",
+      "num_guesses": 3,
+      "prior": 0.00002077283325499491,
+      "guesses": [
+        "carnies",
+        "midfoot",
+        "quintic"
+      ]
+    },
+    {
+      "word": "pheezed",
+      "num_guesses": 4,
+      "prior": 4.426181287759097e-6,
+      "guesses": [
+        "carnies",
+        "bedoled",
+        "phmetry",
+        "pheezed"
+      ]
+    },
+    {
+      "word": "purfled",
+      "num_guesses": 4,
+      "prior": 0.000014271690489447414,
+      "guesses": [
+        "carnies",
+        "toweled",
+        "bagpack",
+        "purfled"
+      ]
+    },
+    {
+      "word": "valency",
+      "num_guesses": 3,
+      "prior": 0.00003254403037646689,
+      "guesses": [
+        "carnies",
+        "paleate",
+        "valency"
+      ]
+    },
+    {
+      "word": "ooparts",
+      "num_guesses": 4,
+      "prior": 7.726033172222543e-6,
+      "guesses": [
+        "carnies",
+        "budmoth",
+        "apports",
+        "ooparts"
+      ]
+    },
+    {
+      "word": "nonspam",
+      "num_guesses": 4,
+      "prior": 9.287723306301924e-6,
+      "guesses": [
+        "carnies",
+        "mouthly",
+        "worship",
+        "nonspam"
+      ]
+    },
+    {
+      "word": "aristae",
+      "num_guesses": 4,
+      "prior": 0.000014315165885336706,
+      "guesses": [
+        "carnies",
+        "midtrip",
+        "artiste",
+        "aristae"
+      ]
+    }
+  ]
+}

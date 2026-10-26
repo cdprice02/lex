@@ -1,0 +1,5070 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:53:50.257102Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "tercianas",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 9,
+    "dictionary_length": 58670,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "9988c9178f5045c6fc11f9dd2108431616ea9a3b1053a27687412d09a879b951",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.0279999999999725,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.08400000000000006,
+        "3": 0.8080000000000006,
+        "4": 0.10400000000000008,
+        "5": 0.004
+      }
+    },
+    "prior": {
+      "mean": 2.9769325828182964,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.10062755462599034,
+        "3": 0.8242566429963475,
+        "4": 0.07267146731104125,
+        "5": 0.0024443350666213236
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "maldichos",
+      "num_guesses": 3,
+      "prior": 0.000010595345494516129,
+      "guesses": [
+        "tercianas",
+        "lambucios",
+        "maldichos"
+      ]
+    },
+    {
+      "word": "desbocará",
+      "num_guesses": 3,
+      "prior": 9.849952342192984e-6,
+      "guesses": [
+        "tercianas",
+        "reverberá",
+        "desbocará"
+      ]
+    },
+    {
+      "word": "turaniano",
+      "num_guesses": 3,
+      "prior": 9.578772349233853e-6,
+      "guesses": [
+        "tercianas",
+        "turmalina",
+        "turaniano"
+      ]
+    },
+    {
+      "word": "almenilla",
+      "num_guesses": 3,
+      "prior": 0.00001407007430976538,
+      "guesses": [
+        "tercianas",
+        "envidiado",
+        "almenilla"
+      ]
+    },
+    {
+      "word": "crupieres",
+      "num_guesses": 3,
+      "prior": 0.000013157817186901631,
+      "guesses": [
+        "tercianas",
+        "cumbieros",
+        "crupieres"
+      ]
+    },
+    {
+      "word": "acumuléis",
+      "num_guesses": 3,
+      "prior": 9.978355830276309e-6,
+      "guesses": [
+        "tercianas",
+        "camélidos",
+        "acumuléis"
+      ]
+    },
+    {
+      "word": "retacados",
+      "num_guesses": 3,
+      "prior": 0.000012122866841612825,
+      "guesses": [
+        "tercianas",
+        "recatados",
+        "retacados"
+      ]
+    },
+    {
+      "word": "cosechada",
+      "num_guesses": 3,
+      "prior": 0.00003715595072382482,
+      "guesses": [
+        "tercianas",
+        "palomeada",
+        "cosechada"
+      ]
+    },
+    {
+      "word": "fastidian",
+      "num_guesses": 2,
+      "prior": 0.00002391366110247467,
+      "guesses": [
+        "tercianas",
+        "fastidian"
+      ]
+    },
+    {
+      "word": "encordela",
+      "num_guesses": 3,
+      "prior": 7.84474334955047e-6,
+      "guesses": [
+        "tercianas",
+        "engordare",
+        "encordela"
+      ]
+    },
+    {
+      "word": "nefrótica",
+      "num_guesses": 3,
+      "prior": 0.000011790753112509486,
+      "guesses": [
+        "tercianas",
+        "currículo",
+        "nefrótica"
+      ]
+    },
+    {
+      "word": "redarguyo",
+      "num_guesses": 3,
+      "prior": 0.000012335934984943241,
+      "guesses": [
+        "tercianas",
+        "empollare",
+        "redarguyo"
+      ]
+    },
+    {
+      "word": "márchense",
+      "num_guesses": 2,
+      "prior": 0.00001534612274110187,
+      "guesses": [
+        "tercianas",
+        "márchense"
+      ]
+    },
+    {
+      "word": "retejados",
+      "num_guesses": 4,
+      "prior": 8.385543291816735e-6,
+      "guesses": [
+        "tercianas",
+        "posábamos",
+        "refutados",
+        "retejados"
+      ]
+    },
+    {
+      "word": "fatigaras",
+      "num_guesses": 3,
+      "prior": 8.43771243889027e-6,
+      "guesses": [
+        "tercianas",
+        "galibadas",
+        "fatigaras"
+      ]
+    },
+    {
+      "word": "abarradas",
+      "num_guesses": 5,
+      "prior": 7.2885069308594125e-6,
+      "guesses": [
+        "tercianas",
+        "alarmador",
+        "agarradas",
+        "aparradas",
+        "abarradas"
+      ]
+    },
+    {
+      "word": "cercenare",
+      "num_guesses": 3,
+      "prior": 0.00001344357944771773,
+      "guesses": [
+        "tercianas",
+        "entenderá",
+        "cercenare"
+      ]
+    },
+    {
+      "word": "isofónica",
+      "num_guesses": 3,
+      "prior": 8.657803304191317e-6,
+      "guesses": [
+        "tercianas",
+        "consolida",
+        "isofónica"
+      ]
+    },
+    {
+      "word": "malsinaba",
+      "num_guesses": 3,
+      "prior": 7.625983819490977e-6,
+      "guesses": [
+        "tercianas",
+        "anquilosa",
+        "malsinaba"
+      ]
+    },
+    {
+      "word": "apacienta",
+      "num_guesses": 3,
+      "prior": 0.00002669335119418639,
+      "guesses": [
+        "tercianas",
+        "provincia",
+        "apacienta"
+      ]
+    },
+    {
+      "word": "ensañaran",
+      "num_guesses": 4,
+      "prior": 0.000013395256209846306,
+      "guesses": [
+        "tercianas",
+        "estupores",
+        "ensayaran",
+        "ensañaran"
+      ]
+    },
+    {
+      "word": "apretujes",
+      "num_guesses": 3,
+      "prior": 7.84474334955047e-6,
+      "guesses": [
+        "tercianas",
+        "parlotees",
+        "apretujes"
+      ]
+    },
+    {
+      "word": "reequipan",
+      "num_guesses": 3,
+      "prior": 7.464867972199902e-6,
+      "guesses": [
+        "tercianas",
+        "deliberan",
+        "reequipan"
+      ]
+    },
+    {
+      "word": "esgrimías",
+      "num_guesses": 3,
+      "prior": 9.069890232104424e-6,
+      "guesses": [
+        "tercianas",
+        "frisuelos",
+        "esgrimías"
+      ]
+    },
+    {
+      "word": "copiarían",
+      "num_guesses": 3,
+      "prior": 0.0000135478972901188,
+      "guesses": [
+        "tercianas",
+        "calofriar",
+        "copiarían"
+      ]
+    },
+    {
+      "word": "cobijador",
+      "num_guesses": 3,
+      "prior": 0.000012813494734090691,
+      "guesses": [
+        "tercianas",
+        "chillador",
+        "cobijador"
+      ]
+    },
+    {
+      "word": "ambularon",
+      "num_guesses": 3,
+      "prior": 0.000011322580898436201,
+      "guesses": [
+        "tercianas",
+        "alarmador",
+        "ambularon"
+      ]
+    },
+    {
+      "word": "enrarecía",
+      "num_guesses": 3,
+      "prior": 0.000017223848545313348,
+      "guesses": [
+        "tercianas",
+        "danzadora",
+        "enrarecía"
+      ]
+    },
+    {
+      "word": "rentables",
+      "num_guesses": 2,
+      "prior": 0.00003885056382096792,
+      "guesses": [
+        "tercianas",
+        "rentables"
+      ]
+    },
+    {
+      "word": "mueblebar",
+      "num_guesses": 3,
+      "prior": 9.145799483412298e-6,
+      "guesses": [
+        "tercianas",
+        "embodegar",
+        "mueblebar"
+      ]
+    },
+    {
+      "word": "saturarán",
+      "num_guesses": 3,
+      "prior": 0.000011821003446945993,
+      "guesses": [
+        "tercianas",
+        "ampulosos",
+        "saturarán"
+      ]
+    },
+    {
+      "word": "acrónicas",
+      "num_guesses": 2,
+      "prior": 0.000010770777519772667,
+      "guesses": [
+        "tercianas",
+        "acrónicas"
+      ]
+    },
+    {
+      "word": "documenta",
+      "num_guesses": 2,
+      "prior": 0.0000390258709414574,
+      "guesses": [
+        "tercianas",
+        "documenta"
+      ]
+    },
+    {
+      "word": "entrecano",
+      "num_guesses": 3,
+      "prior": 0.000024244221915307464,
+      "guesses": [
+        "tercianas",
+        "empeorare",
+        "entrecano"
+      ]
+    },
+    {
+      "word": "actinotas",
+      "num_guesses": 3,
+      "prior": 6.783611949190005e-6,
+      "guesses": [
+        "tercianas",
+        "satánicas",
+        "actinotas"
+      ]
+    },
+    {
+      "word": "acorriese",
+      "num_guesses": 3,
+      "prior": 0.000014929735944399806,
+      "guesses": [
+        "tercianas",
+        "produjere",
+        "acorriese"
+      ]
+    },
+    {
+      "word": "agrediste",
+      "num_guesses": 3,
+      "prior": 0.000010584962970407906,
+      "guesses": [
+        "tercianas",
+        "atreviese",
+        "agrediste"
+      ]
+    },
+    {
+      "word": "hirviesen",
+      "num_guesses": 3,
+      "prior": 0.000011408664335575802,
+      "guesses": [
+        "tercianas",
+        "corruscos",
+        "hirviesen"
+      ]
+    },
+    {
+      "word": "enseñases",
+      "num_guesses": 3,
+      "prior": 0.000011970973142789422,
+      "guesses": [
+        "tercianas",
+        "desolamos",
+        "enseñases"
+      ]
+    },
+    {
+      "word": "exentarán",
+      "num_guesses": 3,
+      "prior": 7.75657777413643e-6,
+      "guesses": [
+        "tercianas",
+        "boleteros",
+        "exentarán"
+      ]
+    },
+    {
+      "word": "abismamos",
+      "num_guesses": 3,
+      "prior": 0.000011718936336588224,
+      "guesses": [
+        "tercianas",
+        "saludamos",
+        "abismamos"
+      ]
+    },
+    {
+      "word": "duopsonio",
+      "num_guesses": 2,
+      "prior": 8.304768586376574e-6,
+      "guesses": [
+        "tercianas",
+        "duopsonio"
+      ]
+    },
+    {
+      "word": "sincopara",
+      "num_guesses": 2,
+      "prior": 8.025839963124581e-6,
+      "guesses": [
+        "tercianas",
+        "sincopara"
+      ]
+    },
+    {
+      "word": "tardeando",
+      "num_guesses": 2,
+      "prior": 9.155112944147676e-6,
+      "guesses": [
+        "tercianas",
+        "tardeando"
+      ]
+    },
+    {
+      "word": "presionan",
+      "num_guesses": 3,
+      "prior": 0.00003064626676070979,
+      "guesses": [
+        "tercianas",
+        "educación",
+        "presionan"
+      ]
+    },
+    {
+      "word": "emergimos",
+      "num_guesses": 3,
+      "prior": 0.000012932378690484828,
+      "guesses": [
+        "tercianas",
+        "superemos",
+        "emergimos"
+      ]
+    },
+    {
+      "word": "abordonar",
+      "num_guesses": 3,
+      "prior": 8.878667701815892e-6,
+      "guesses": [
+        "tercianas",
+        "nombrando",
+        "abordonar"
+      ]
+    },
+    {
+      "word": "desparecí",
+      "num_guesses": 3,
+      "prior": 9.299216993114368e-6,
+      "guesses": [
+        "tercianas",
+        "reverberá",
+        "desparecí"
+      ]
+    },
+    {
+      "word": "detectado",
+      "num_guesses": 3,
+      "prior": 0.000039855987682698707,
+      "guesses": [
+        "tercianas",
+        "hecatombe",
+        "detectado"
+      ]
+    },
+    {
+      "word": "ahijadera",
+      "num_guesses": 3,
+      "prior": 7.5064575549420235e-6,
+      "guesses": [
+        "tercianas",
+        "alumbrara",
+        "ahijadera"
+      ]
+    },
+    {
+      "word": "capaduras",
+      "num_guesses": 3,
+      "prior": 0.000012443991344447512,
+      "guesses": [
+        "tercianas",
+        "columbrar",
+        "capaduras"
+      ]
+    },
+    {
+      "word": "escarpara",
+      "num_guesses": 4,
+      "prior": 7.067229799877995e-6,
+      "guesses": [
+        "tercianas",
+        "ambladora",
+        "escaseara",
+        "escarpara"
+      ]
+    },
+    {
+      "word": "magrearon",
+      "num_guesses": 4,
+      "prior": 6.752493150524665e-6,
+      "guesses": [
+        "tercianas",
+        "algodonen",
+        "vaguearon",
+        "magrearon"
+      ]
+    },
+    {
+      "word": "rutilaran",
+      "num_guesses": 3,
+      "prior": 6.986899500822651e-6,
+      "guesses": [
+        "tercianas",
+        "minutaron",
+        "rutilaran"
+      ]
+    },
+    {
+      "word": "amotinará",
+      "num_guesses": 3,
+      "prior": 9.870674725311135e-6,
+      "guesses": [
+        "tercianas",
+        "pateadora",
+        "amotinará"
+      ]
+    },
+    {
+      "word": "gorrillas",
+      "num_guesses": 2,
+      "prior": 0.000013091804739347722,
+      "guesses": [
+        "tercianas",
+        "gorrillas"
+      ]
+    },
+    {
+      "word": "molturada",
+      "num_guesses": 3,
+      "prior": 0.000012055615320836363,
+      "guesses": [
+        "tercianas",
+        "abozalada",
+        "molturada"
+      ]
+    },
+    {
+      "word": "portareis",
+      "num_guesses": 3,
+      "prior": 0.00001027618429790586,
+      "guesses": [
+        "tercianas",
+        "aprometer",
+        "portareis"
+      ]
+    },
+    {
+      "word": "acañutada",
+      "num_guesses": 3,
+      "prior": 0.000010505764821728436,
+      "guesses": [
+        "tercianas",
+        "atabacado",
+        "acañutada"
+      ]
+    },
+    {
+      "word": "medioevos",
+      "num_guesses": 3,
+      "prior": 0.000010334081959130122,
+      "guesses": [
+        "tercianas",
+        "desplegás",
+        "medioevos"
+      ]
+    },
+    {
+      "word": "herbaceas",
+      "num_guesses": 3,
+      "prior": 0.000015465512608628357,
+      "guesses": [
+        "tercianas",
+        "dirección",
+        "herbaceas"
+      ]
+    },
+    {
+      "word": "ritonavir",
+      "num_guesses": 3,
+      "prior": 0.000018514733230169414,
+      "guesses": [
+        "tercianas",
+        "motilados",
+        "ritonavir"
+      ]
+    },
+    {
+      "word": "quebequés",
+      "num_guesses": 3,
+      "prior": 0.000015490541522723736,
+      "guesses": [
+        "tercianas",
+        "espulgues",
+        "quebequés"
+      ]
+    },
+    {
+      "word": "aporético",
+      "num_guesses": 3,
+      "prior": 0.000017501854063491533,
+      "guesses": [
+        "tercianas",
+        "protruido",
+        "aporético"
+      ]
+    },
+    {
+      "word": "humorosos",
+      "num_guesses": 4,
+      "prior": 8.398707474848729e-6,
+      "guesses": [
+        "tercianas",
+        "subgrupos",
+        "rumorosos",
+        "humorosos"
+      ]
+    },
+    {
+      "word": "buscareis",
+      "num_guesses": 2,
+      "prior": 0.000015698097838589916,
+      "guesses": [
+        "tercianas",
+        "buscareis"
+      ]
+    },
+    {
+      "word": "desgomado",
+      "num_guesses": 3,
+      "prior": 0.000015748310556152533,
+      "guesses": [
+        "tercianas",
+        "ejemplado",
+        "desgomado"
+      ]
+    },
+    {
+      "word": "salinidad",
+      "num_guesses": 2,
+      "prior": 0.000038270387689693755,
+      "guesses": [
+        "tercianas",
+        "salinidad"
+      ]
+    },
+    {
+      "word": "embozamos",
+      "num_guesses": 4,
+      "prior": 8.7710156532564e-6,
+      "guesses": [
+        "tercianas",
+        "desplumes",
+        "bombeamos",
+        "embozamos"
+      ]
+    },
+    {
+      "word": "enmontaba",
+      "num_guesses": 3,
+      "prior": 7.26522049007156e-6,
+      "guesses": [
+        "tercianas",
+        "amueblada",
+        "enmontaba"
+      ]
+    },
+    {
+      "word": "convidado",
+      "num_guesses": 3,
+      "prior": 0.00003495691447348815,
+      "guesses": [
+        "tercianas",
+        "monoplano",
+        "convidado"
+      ]
+    },
+    {
+      "word": "fontanero",
+      "num_guesses": 3,
+      "prior": 0.0000262832867072082,
+      "guesses": [
+        "tercianas",
+        "empeorará",
+        "fontanero"
+      ]
+    },
+    {
+      "word": "destrozos",
+      "num_guesses": 3,
+      "prior": 0.00003606962020096008,
+      "guesses": [
+        "tercianas",
+        "peseteros",
+        "destrozos"
+      ]
+    },
+    {
+      "word": "encobrado",
+      "num_guesses": 4,
+      "prior": 0.000011903445213741736,
+      "guesses": [
+        "tercianas",
+        "engordare",
+        "encofrado",
+        "encobrado"
+      ]
+    },
+    {
+      "word": "culparían",
+      "num_guesses": 3,
+      "prior": 0.000014743797053020833,
+      "guesses": [
+        "tercianas",
+        "columbrar",
+        "culparían"
+      ]
+    },
+    {
+      "word": "trampeado",
+      "num_guesses": 3,
+      "prior": 0.00001463013222003829,
+      "guesses": [
+        "tercianas",
+        "acalambro",
+        "trampeado"
+      ]
+    },
+    {
+      "word": "emaciadas",
+      "num_guesses": 2,
+      "prior": 0.000010068906630857573,
+      "guesses": [
+        "tercianas",
+        "emaciadas"
+      ]
+    },
+    {
+      "word": "peligroso",
+      "num_guesses": 3,
+      "prior": 0.00005973184442390291,
+      "guesses": [
+        "tercianas",
+        "rompedora",
+        "peligroso"
+      ]
+    },
+    {
+      "word": "huelveños",
+      "num_guesses": 3,
+      "prior": 7.82742586634621e-6,
+      "guesses": [
+        "tercianas",
+        "espulgues",
+        "huelveños"
+      ]
+    },
+    {
+      "word": "camiseros",
+      "num_guesses": 3,
+      "prior": 0.000014785019869173343,
+      "guesses": [
+        "tercianas",
+        "aperreado",
+        "camiseros"
+      ]
+    },
+    {
+      "word": "laburando",
+      "num_guesses": 3,
+      "prior": 0.000015883956984751047,
+      "guesses": [
+        "tercianas",
+        "almorzaba",
+        "laburando"
+      ]
+    },
+    {
+      "word": "chándales",
+      "num_guesses": 3,
+      "prior": 0.000013559506473646983,
+      "guesses": [
+        "tercianas",
+        "encolumne",
+        "chándales"
+      ]
+    },
+    {
+      "word": "abracasen",
+      "num_guesses": 3,
+      "prior": 7.5671645804748865e-6,
+      "guesses": [
+        "tercianas",
+        "carneasen",
+        "abracasen"
+      ]
+    },
+    {
+      "word": "numeraban",
+      "num_guesses": 3,
+      "prior": 0.00001621645082672486,
+      "guesses": [
+        "tercianas",
+        "amueblada",
+        "numeraban"
+      ]
+    },
+    {
+      "word": "murmuraré",
+      "num_guesses": 3,
+      "prior": 0.000011566136483484834,
+      "guesses": [
+        "tercianas",
+        "formulará",
+        "murmuraré"
+      ]
+    },
+    {
+      "word": "espoliado",
+      "num_guesses": 3,
+      "prior": 0.00001282558295817686,
+      "guesses": [
+        "tercianas",
+        "espumilla",
+        "espoliado"
+      ]
+    },
+    {
+      "word": "inmunidad",
+      "num_guesses": 3,
+      "prior": 0.00004835515701653305,
+      "guesses": [
+        "tercianas",
+        "infinidad",
+        "inmunidad"
+      ]
+    },
+    {
+      "word": "anunciaré",
+      "num_guesses": 4,
+      "prior": 0.000019151724094385478,
+      "guesses": [
+        "tercianas",
+        "apuradora",
+        "anunciará",
+        "anunciaré"
+      ]
+    },
+    {
+      "word": "perengana",
+      "num_guesses": 3,
+      "prior": 0.000012027665370905205,
+      "guesses": [
+        "tercianas",
+        "aperreada",
+        "perengana"
+      ]
+    },
+    {
+      "word": "fachendea",
+      "num_guesses": 3,
+      "prior": 7.547145345967288e-6,
+      "guesses": [
+        "tercianas",
+        "alcanzado",
+        "fachendea"
+      ]
+    },
+    {
+      "word": "captaréis",
+      "num_guesses": 3,
+      "prior": 8.025839963124581e-6,
+      "guesses": [
+        "tercianas",
+        "actuaréis",
+        "captaréis"
+      ]
+    },
+    {
+      "word": "embanderé",
+      "num_guesses": 3,
+      "prior": 7.067229799877995e-6,
+      "guesses": [
+        "tercianas",
+        "empeoraré",
+        "embanderé"
+      ]
+    },
+    {
+      "word": "xerófilos",
+      "num_guesses": 3,
+      "prior": 0.000019292806979101236,
+      "guesses": [
+        "tercianas",
+        "difinimos",
+        "xerófilos"
+      ]
+    },
+    {
+      "word": "suplicara",
+      "num_guesses": 3,
+      "prior": 0.00002091722036281719,
+      "guesses": [
+        "tercianas",
+        "sacrifica",
+        "suplicara"
+      ]
+    },
+    {
+      "word": "anteojera",
+      "num_guesses": 3,
+      "prior": 0.000014578459707200727,
+      "guesses": [
+        "tercianas",
+        "apedreara",
+        "anteojera"
+      ]
+    },
+    {
+      "word": "subtitule",
+      "num_guesses": 3,
+      "prior": 0.000010671946331256675,
+      "guesses": [
+        "tercianas",
+        "sustituye",
+        "subtitule"
+      ]
+    },
+    {
+      "word": "recuestos",
+      "num_guesses": 3,
+      "prior": 0.000017827699812565634,
+      "guesses": [
+        "tercianas",
+        "recoletos",
+        "recuestos"
+      ]
+    },
+    {
+      "word": "despareja",
+      "num_guesses": 3,
+      "prior": 0.00002164159752611039,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "despareja"
+      ]
+    },
+    {
+      "word": "improbaba",
+      "num_guesses": 3,
+      "prior": 0.000012813494734090691,
+      "guesses": [
+        "tercianas",
+        "malpagado",
+        "improbaba"
+      ]
+    },
+    {
+      "word": "ayudantía",
+      "num_guesses": 3,
+      "prior": 0.000024754668040902423,
+      "guesses": [
+        "tercianas",
+        "aguantaba",
+        "ayudantía"
+      ]
+    },
+    {
+      "word": "cañaveral",
+      "num_guesses": 3,
+      "prior": 0.000033221058073172396,
+      "guesses": [
+        "tercianas",
+        "calquemos",
+        "cañaveral"
+      ]
+    },
+    {
+      "word": "despeñara",
+      "num_guesses": 4,
+      "prior": 0.00001479593536269908,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "despejara",
+        "despeñara"
+      ]
+    },
+    {
+      "word": "abuñuelas",
+      "num_guesses": 3,
+      "prior": 6.688476916497122e-6,
+      "guesses": [
+        "tercianas",
+        "españolas",
+        "abuñuelas"
+      ]
+    },
+    {
+      "word": "padrecito",
+      "num_guesses": 3,
+      "prior": 0.00002853225993284369,
+      "guesses": [
+        "tercianas",
+        "piececito",
+        "padrecito"
+      ]
+    },
+    {
+      "word": "embutiste",
+      "num_guesses": 3,
+      "prior": 9.692386398491275e-6,
+      "guesses": [
+        "tercianas",
+        "pugilismo",
+        "embutiste"
+      ]
+    },
+    {
+      "word": "enchufada",
+      "num_guesses": 3,
+      "prior": 0.00001703113444775717,
+      "guesses": [
+        "tercianas",
+        "alcanzado",
+        "enchufada"
+      ]
+    },
+    {
+      "word": "escudasen",
+      "num_guesses": 3,
+      "prior": 0.000010676975525917464,
+      "guesses": [
+        "tercianas",
+        "escobados",
+        "escudasen"
+      ]
+    },
+    {
+      "word": "masteleos",
+      "num_guesses": 3,
+      "prior": 0.0000108614212922778,
+      "guesses": [
+        "tercianas",
+        "espumeros",
+        "masteleos"
+      ]
+    },
+    {
+      "word": "hebetados",
+      "num_guesses": 2,
+      "prior": 9.539674013801824e-6,
+      "guesses": [
+        "tercianas",
+        "hebetados"
+      ]
+    },
+    {
+      "word": "recalentó",
+      "num_guesses": 2,
+      "prior": 0.000014612989160861874,
+      "guesses": [
+        "tercianas",
+        "recalentó"
+      ]
+    },
+    {
+      "word": "geodesias",
+      "num_guesses": 3,
+      "prior": 7.4857782942013954e-6,
+      "guesses": [
+        "tercianas",
+        "delusivas",
+        "geodesias"
+      ]
+    },
+    {
+      "word": "embargara",
+      "num_guesses": 3,
+      "prior": 0.00001806928065771293,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "embargara"
+      ]
+    },
+    {
+      "word": "vituallar",
+      "num_guesses": 3,
+      "prior": 0.000011691108331470434,
+      "guesses": [
+        "tercianas",
+        "autoridad",
+        "vituallar"
+      ]
+    },
+    {
+      "word": "clamareis",
+      "num_guesses": 3,
+      "prior": 0.000010467973321013542,
+      "guesses": [
+        "tercianas",
+        "machucada",
+        "clamareis"
+      ]
+    },
+    {
+      "word": "algideces",
+      "num_guesses": 4,
+      "prior": 7.774533007480988e-6,
+      "guesses": [
+        "tercianas",
+        "complaced",
+        "valideces",
+        "algideces"
+      ]
+    },
+    {
+      "word": "echaremos",
+      "num_guesses": 3,
+      "prior": 0.00002644078816802557,
+      "guesses": [
+        "tercianas",
+        "coceremos",
+        "echaremos"
+      ]
+    },
+    {
+      "word": "extremeña",
+      "num_guesses": 3,
+      "prior": 0.000030674123086073856,
+      "guesses": [
+        "tercianas",
+        "emperlado",
+        "extremeña"
+      ]
+    },
+    {
+      "word": "sargenteo",
+      "num_guesses": 3,
+      "prior": 6.814169997106346e-6,
+      "guesses": [
+        "tercianas",
+        "afrentoso",
+        "sargenteo"
+      ]
+    },
+    {
+      "word": "engomados",
+      "num_guesses": 3,
+      "prior": 0.000020782471082033257,
+      "guesses": [
+        "tercianas",
+        "desolamos",
+        "engomados"
+      ]
+    },
+    {
+      "word": "apalabren",
+      "num_guesses": 3,
+      "prior": 6.9026953886813e-6,
+      "guesses": [
+        "tercianas",
+        "algarrada",
+        "apalabren"
+      ]
+    },
+    {
+      "word": "agasajase",
+      "num_guesses": 3,
+      "prior": 0.000011562485555836878,
+      "guesses": [
+        "tercianas",
+        "ampollada",
+        "agasajase"
+      ]
+    },
+    {
+      "word": "arcádicas",
+      "num_guesses": 4,
+      "prior": 0.000014590005873314279,
+      "guesses": [
+        "tercianas",
+        "lavarropa",
+        "chaquiras",
+        "arcádicas"
+      ]
+    },
+    {
+      "word": "barbacana",
+      "num_guesses": 3,
+      "prior": 0.00002624004496501432,
+      "guesses": [
+        "tercianas",
+        "abaratará",
+        "barbacana"
+      ]
+    },
+    {
+      "word": "yugulando",
+      "num_guesses": 3,
+      "prior": 0.00001185094726755014,
+      "guesses": [
+        "tercianas",
+        "opugnando",
+        "yugulando"
+      ]
+    },
+    {
+      "word": "sensorias",
+      "num_guesses": 3,
+      "prior": 0.00001678262557687068,
+      "guesses": [
+        "tercianas",
+        "venideras",
+        "sensorias"
+      ]
+    },
+    {
+      "word": "recatonas",
+      "num_guesses": 2,
+      "prior": 0.00001027618429790586,
+      "guesses": [
+        "tercianas",
+        "recatonas"
+      ]
+    },
+    {
+      "word": "filoxenia",
+      "num_guesses": 3,
+      "prior": 7.912526586312291e-6,
+      "guesses": [
+        "tercianas",
+        "paleógeno",
+        "filoxenia"
+      ]
+    },
+    {
+      "word": "enjoyadas",
+      "num_guesses": 3,
+      "prior": 0.00001999362321679688,
+      "guesses": [
+        "tercianas",
+        "embelesos",
+        "enjoyadas"
+      ]
+    },
+    {
+      "word": "dietético",
+      "num_guesses": 3,
+      "prior": 0.00002975641675221236,
+      "guesses": [
+        "tercianas",
+        "empastele",
+        "dietético"
+      ]
+    },
+    {
+      "word": "pestañean",
+      "num_guesses": 3,
+      "prior": 0.000015922746108565082,
+      "guesses": [
+        "tercianas",
+        "desgastan",
+        "pestañean"
+      ]
+    },
+    {
+      "word": "explícate",
+      "num_guesses": 3,
+      "prior": 0.000024521849136277573,
+      "guesses": [
+        "tercianas",
+        "sepultado",
+        "explícate"
+      ]
+    },
+    {
+      "word": "estudiase",
+      "num_guesses": 3,
+      "prior": 0.000027513592340889557,
+      "guesses": [
+        "tercianas",
+        "pugilismo",
+        "estudiase"
+      ]
+    },
+    {
+      "word": "mezclaban",
+      "num_guesses": 2,
+      "prior": 0.000035649297140757255,
+      "guesses": [
+        "tercianas",
+        "mezclaban"
+      ]
+    },
+    {
+      "word": "ensillará",
+      "num_guesses": 4,
+      "prior": 0.000010305295768172995,
+      "guesses": [
+        "tercianas",
+        "deformare",
+        "ensillaré",
+        "ensillará"
+      ]
+    },
+    {
+      "word": "elucubran",
+      "num_guesses": 3,
+      "prior": 0.000013003947456557113,
+      "guesses": [
+        "tercianas",
+        "procedían",
+        "elucubran"
+      ]
+    },
+    {
+      "word": "atentaron",
+      "num_guesses": 3,
+      "prior": 0.000022730185201744773,
+      "guesses": [
+        "tercianas",
+        "alentaron",
+        "atentaron"
+      ]
+    },
+    {
+      "word": "rasurasen",
+      "num_guesses": 4,
+      "prior": 8.58692498039414e-6,
+      "guesses": [
+        "tercianas",
+        "almoneden",
+        "fraguasen",
+        "rasurasen"
+      ]
+    },
+    {
+      "word": "pesasteis",
+      "num_guesses": 4,
+      "prior": 7.586974182991286e-6,
+      "guesses": [
+        "tercianas",
+        "subempleo",
+        "pegasteis",
+        "pesasteis"
+      ]
+    },
+    {
+      "word": "atentaren",
+      "num_guesses": 3,
+      "prior": 0.00001706514597078358,
+      "guesses": [
+        "tercianas",
+        "alentaron",
+        "atentaren"
+      ]
+    },
+    {
+      "word": "encorvará",
+      "num_guesses": 3,
+      "prior": 0.000012015159323188703,
+      "guesses": [
+        "tercianas",
+        "engordare",
+        "encorvará"
+      ]
+    },
+    {
+      "word": "helvético",
+      "num_guesses": 3,
+      "prior": 0.000021489757207086435,
+      "guesses": [
+        "tercianas",
+        "detective",
+        "helvético"
+      ]
+    },
+    {
+      "word": "aguantona",
+      "num_guesses": 3,
+      "prior": 8.476009228403772e-6,
+      "guesses": [
+        "tercianas",
+        "aguantaba",
+        "aguantona"
+      ]
+    },
+    {
+      "word": "encolaban",
+      "num_guesses": 3,
+      "prior": 0.000010036941202565474,
+      "guesses": [
+        "tercianas",
+        "encolumne",
+        "encolaban"
+      ]
+    },
+    {
+      "word": "escuderos",
+      "num_guesses": 3,
+      "prior": 0.00003989204617690474,
+      "guesses": [
+        "tercianas",
+        "escogemos",
+        "escuderos"
+      ]
+    },
+    {
+      "word": "congenias",
+      "num_guesses": 3,
+      "prior": 0.0000109217404559561,
+      "guesses": [
+        "tercianas",
+        "codicilos",
+        "congenias"
+      ]
+    },
+    {
+      "word": "desgañifa",
+      "num_guesses": 3,
+      "prior": 0.000011424039949796146,
+      "guesses": [
+        "tercianas",
+        "vagamunda",
+        "desgañifa"
+      ]
+    },
+    {
+      "word": "amanecido",
+      "num_guesses": 3,
+      "prior": 0.00003203315935936987,
+      "guesses": [
+        "tercianas",
+        "magullada",
+        "amanecido"
+      ]
+    },
+    {
+      "word": "ojeadores",
+      "num_guesses": 3,
+      "prior": 0.000020415142744862158,
+      "guesses": [
+        "tercianas",
+        "golpeemos",
+        "ojeadores"
+      ]
+    },
+    {
+      "word": "piróscafo",
+      "num_guesses": 3,
+      "prior": 0.000013628339994212696,
+      "guesses": [
+        "tercianas",
+        "corrosiva",
+        "piróscafo"
+      ]
+    },
+    {
+      "word": "inviernen",
+      "num_guesses": 3,
+      "prior": 9.815022553127817e-6,
+      "guesses": [
+        "tercianas",
+        "gobiernen",
+        "inviernen"
+      ]
+    },
+    {
+      "word": "dormidora",
+      "num_guesses": 3,
+      "prior": 9.655106884169887e-6,
+      "guesses": [
+        "tercianas",
+        "barrigudo",
+        "dormidora"
+      ]
+    },
+    {
+      "word": "husmeados",
+      "num_guesses": 3,
+      "prior": 8.857552914064731e-6,
+      "guesses": [
+        "tercianas",
+        "desplumes",
+        "husmeados"
+      ]
+    },
+    {
+      "word": "despojada",
+      "num_guesses": 3,
+      "prior": 0.00003585578093046498,
+      "guesses": [
+        "tercianas",
+        "malpagado",
+        "despojada"
+      ]
+    },
+    {
+      "word": "denudaron",
+      "num_guesses": 3,
+      "prior": 0.00001536022441686156,
+      "guesses": [
+        "tercianas",
+        "revelador",
+        "denudaron"
+      ]
+    },
+    {
+      "word": "eludiesen",
+      "num_guesses": 3,
+      "prior": 0.00001352260666785947,
+      "guesses": [
+        "tercianas",
+        "silogismo",
+        "eludiesen"
+      ]
+    },
+    {
+      "word": "apréciese",
+      "num_guesses": 3,
+      "prior": 0.000016604386395297742,
+      "guesses": [
+        "tercianas",
+        "pareciese",
+        "apréciese"
+      ]
+    },
+    {
+      "word": "incautará",
+      "num_guesses": 3,
+      "prior": 0.00001642443379791828,
+      "guesses": [
+        "tercianas",
+        "garrapata",
+        "incautará"
+      ]
+    },
+    {
+      "word": "alentemos",
+      "num_guesses": 3,
+      "prior": 0.0000164316056510092,
+      "guesses": [
+        "tercianas",
+        "pleguemos",
+        "alentemos"
+      ]
+    },
+    {
+      "word": "discursea",
+      "num_guesses": 2,
+      "prior": 0.000015079166121777322,
+      "guesses": [
+        "tercianas",
+        "discursea"
+      ]
+    },
+    {
+      "word": "valentías",
+      "num_guesses": 3,
+      "prior": 0.000023627987319995806,
+      "guesses": [
+        "tercianas",
+        "apeguemos",
+        "valentías"
+      ]
+    },
+    {
+      "word": "poetizaba",
+      "num_guesses": 3,
+      "prior": 0.000016053646561927685,
+      "guesses": [
+        "tercianas",
+        "adagietto",
+        "poetizaba"
+      ]
+    },
+    {
+      "word": "extenderá",
+      "num_guesses": 3,
+      "prior": 0.00004031201384964523,
+      "guesses": [
+        "tercianas",
+        "entontece",
+        "extenderá"
+      ]
+    },
+    {
+      "word": "deparamos",
+      "num_guesses": 4,
+      "prior": 0.000012290487062386932,
+      "guesses": [
+        "tercianas",
+        "desplegás",
+        "deparados",
+        "deparamos"
+      ]
+    },
+    {
+      "word": "audiencia",
+      "num_guesses": 3,
+      "prior": 0.0000796577466612644,
+      "guesses": [
+        "tercianas",
+        "magullada",
+        "audiencia"
+      ]
+    },
+    {
+      "word": "torreadas",
+      "num_guesses": 2,
+      "prior": 0.000015613320543739204,
+      "guesses": [
+        "tercianas",
+        "torreadas"
+      ]
+    },
+    {
+      "word": "acordanza",
+      "num_guesses": 3,
+      "prior": 0.000012813494734090691,
+      "guesses": [
+        "tercianas",
+        "acolchaba",
+        "acordanza"
+      ]
+    },
+    {
+      "word": "jalonados",
+      "num_guesses": 3,
+      "prior": 0.000017910316086137217,
+      "guesses": [
+        "tercianas",
+        "almadraba",
+        "jalonados"
+      ]
+    },
+    {
+      "word": "bicéfalos",
+      "num_guesses": 3,
+      "prior": 0.000015746186854294398,
+      "guesses": [
+        "tercianas",
+        "polimodal",
+        "bicéfalos"
+      ]
+    },
+    {
+      "word": "depurable",
+      "num_guesses": 3,
+      "prior": 9.03096222735385e-6,
+      "guesses": [
+        "tercianas",
+        "memorable",
+        "depurable"
+      ]
+    },
+    {
+      "word": "abalizaba",
+      "num_guesses": 3,
+      "prior": 7.443720697530412e-6,
+      "guesses": [
+        "tercianas",
+        "apalizado",
+        "abalizaba"
+      ]
+    },
+    {
+      "word": "estilicen",
+      "num_guesses": 3,
+      "prior": 0.000011120850587009918,
+      "guesses": [
+        "tercianas",
+        "sonándose",
+        "estilicen"
+      ]
+    },
+    {
+      "word": "sorteaste",
+      "num_guesses": 3,
+      "prior": 8.118115245505876e-6,
+      "guesses": [
+        "tercianas",
+        "portearse",
+        "sorteaste"
+      ]
+    },
+    {
+      "word": "provengan",
+      "num_guesses": 2,
+      "prior": 0.000036357807788977985,
+      "guesses": [
+        "tercianas",
+        "provengan"
+      ]
+    },
+    {
+      "word": "alardosos",
+      "num_guesses": 3,
+      "prior": 0.00001210467336263749,
+      "guesses": [
+        "tercianas",
+        "malogrado",
+        "alardosos"
+      ]
+    },
+    {
+      "word": "carísimas",
+      "num_guesses": 3,
+      "prior": 0.000020965432098341083,
+      "guesses": [
+        "tercianas",
+        "malvivido",
+        "carísimas"
+      ]
+    },
+    {
+      "word": "chibolete",
+      "num_guesses": 3,
+      "prior": 0.000010495022708435481,
+      "guesses": [
+        "tercianas",
+        "empastele",
+        "chibolete"
+      ]
+    },
+    {
+      "word": "encuetada",
+      "num_guesses": 4,
+      "prior": 7.040858803718474e-6,
+      "guesses": [
+        "tercianas",
+        "acolchada",
+        "encentada",
+        "encuetada"
+      ]
+    },
+    {
+      "word": "acefalías",
+      "num_guesses": 3,
+      "prior": 0.000015637418669684827,
+      "guesses": [
+        "tercianas",
+        "alcalaeño",
+        "acefalías"
+      ]
+    },
+    {
+      "word": "congeláis",
+      "num_guesses": 3,
+      "prior": 7.400690526283393e-6,
+      "guesses": [
+        "tercianas",
+        "islámicos",
+        "congeláis"
+      ]
+    },
+    {
+      "word": "sanguillo",
+      "num_guesses": 3,
+      "prior": 8.598901212421651e-6,
+      "guesses": [
+        "tercianas",
+        "bifoliada",
+        "sanguillo"
+      ]
+    },
+    {
+      "word": "asombrará",
+      "num_guesses": 3,
+      "prior": 0.0000234255262276559,
+      "guesses": [
+        "tercianas",
+        "madrugara",
+        "asombrará"
+      ]
+    },
+    {
+      "word": "cerniendo",
+      "num_guesses": 2,
+      "prior": 0.000018341487996478316,
+      "guesses": [
+        "tercianas",
+        "cerniendo"
+      ]
+    },
+    {
+      "word": "embobadas",
+      "num_guesses": 4,
+      "prior": 0.000016200367739002373,
+      "guesses": [
+        "tercianas",
+        "subempleo",
+        "embozadas",
+        "embobadas"
+      ]
+    },
+    {
+      "word": "desnucará",
+      "num_guesses": 3,
+      "prior": 7.040858803718474e-6,
+      "guesses": [
+        "tercianas",
+        "casándose",
+        "desnucará"
+      ]
+    },
+    {
+      "word": "comerciar",
+      "num_guesses": 3,
+      "prior": 0.00004014713647646693,
+      "guesses": [
+        "tercianas",
+        "bolichear",
+        "comerciar"
+      ]
+    },
+    {
+      "word": "obligaban",
+      "num_guesses": 3,
+      "prior": 0.00003982950658393241,
+      "guesses": [
+        "tercianas",
+        "angulando",
+        "obligaban"
+      ]
+    },
+    {
+      "word": "osificaba",
+      "num_guesses": 3,
+      "prior": 8.23497071454479e-6,
+      "guesses": [
+        "tercianas",
+        "salpicado",
+        "osificaba"
+      ]
+    },
+    {
+      "word": "enguataba",
+      "num_guesses": 3,
+      "prior": 7.193510196579129e-6,
+      "guesses": [
+        "tercianas",
+        "amueblada",
+        "enguataba"
+      ]
+    },
+    {
+      "word": "semejadas",
+      "num_guesses": 3,
+      "prior": 7.21773131789456e-6,
+      "guesses": [
+        "tercianas",
+        "despueblo",
+        "semejadas"
+      ]
+    },
+    {
+      "word": "fijábamos",
+      "num_guesses": 4,
+      "prior": 0.000016292218821909613,
+      "guesses": [
+        "tercianas",
+        "sigilados",
+        "ejecutivo",
+        "fijábamos"
+      ]
+    },
+    {
+      "word": "trenzaran",
+      "num_guesses": 3,
+      "prior": 0.000011241984938534172,
+      "guesses": [
+        "tercianas",
+        "preferido",
+        "trenzaran"
+      ]
+    },
+    {
+      "word": "alargabas",
+      "num_guesses": 3,
+      "prior": 0.000010666907638579454,
+      "guesses": [
+        "tercianas",
+        "alarmador",
+        "alargabas"
+      ]
+    },
+    {
+      "word": "enrejadas",
+      "num_guesses": 3,
+      "prior": 0.000023133185050915685,
+      "guesses": [
+        "tercianas",
+        "embadurno",
+        "enrejadas"
+      ]
+    },
+    {
+      "word": "derrumbas",
+      "num_guesses": 3,
+      "prior": 0.000014565426395668658,
+      "guesses": [
+        "tercianas",
+        "cuprífero",
+        "derrumbas"
+      ]
+    },
+    {
+      "word": "saltantes",
+      "num_guesses": 4,
+      "prior": 0.000023463780480749303,
+      "guesses": [
+        "tercianas",
+        "malvenden",
+        "faltantes",
+        "saltantes"
+      ]
+    },
+    {
+      "word": "vivieseis",
+      "num_guesses": 3,
+      "prior": 0.000012987924237269082,
+      "guesses": [
+        "tercianas",
+        "desplumes",
+        "vivieseis"
+      ]
+    },
+    {
+      "word": "almacería",
+      "num_guesses": 3,
+      "prior": 0.000012083308450399661,
+      "guesses": [
+        "tercianas",
+        "alumbrara",
+        "almacería"
+      ]
+    },
+    {
+      "word": "manhattan",
+      "num_guesses": 2,
+      "prior": 0.00003813597162762429,
+      "guesses": [
+        "tercianas",
+        "manhattan"
+      ]
+    },
+    {
+      "word": "abstraigo",
+      "num_guesses": 3,
+      "prior": 0.000014876792284449021,
+      "guesses": [
+        "tercianas",
+        "utilísimo",
+        "abstraigo"
+      ]
+    },
+    {
+      "word": "participá",
+      "num_guesses": 4,
+      "prior": 0.00001210771321067597,
+      "guesses": [
+        "tercianas",
+        "económica",
+        "participé",
+        "participá"
+      ]
+    },
+    {
+      "word": "mariguano",
+      "num_guesses": 3,
+      "prior": 0.000016164184588489855,
+      "guesses": [
+        "tercianas",
+        "marihuana",
+        "mariguano"
+      ]
+    },
+    {
+      "word": "encallara",
+      "num_guesses": 3,
+      "prior": 0.000013954910779590813,
+      "guesses": [
+        "tercianas",
+        "aguardará",
+        "encallara"
+      ]
+    },
+    {
+      "word": "costarías",
+      "num_guesses": 3,
+      "prior": 7.912526586312291e-6,
+      "guesses": [
+        "tercianas",
+        "factorías",
+        "costarías"
+      ]
+    },
+    {
+      "word": "apalancas",
+      "num_guesses": 3,
+      "prior": 7.443720697530412e-6,
+      "guesses": [
+        "tercianas",
+        "vapuladas",
+        "apalancas"
+      ]
+    },
+    {
+      "word": "lunarejas",
+      "num_guesses": 3,
+      "prior": 6.986899500822651e-6,
+      "guesses": [
+        "tercianas",
+        "ganadería",
+        "lunarejas"
+      ]
+    },
+    {
+      "word": "liberaren",
+      "num_guesses": 3,
+      "prior": 8.476009228403772e-6,
+      "guesses": [
+        "tercianas",
+        "enmerdado",
+        "liberaren"
+      ]
+    },
+    {
+      "word": "abstienes",
+      "num_guesses": 3,
+      "prior": 0.000013306891995635244,
+      "guesses": [
+        "tercianas",
+        "bastiones",
+        "abstienes"
+      ]
+    },
+    {
+      "word": "volviendo",
+      "num_guesses": 3,
+      "prior": 0.000057832165141979814,
+      "guesses": [
+        "tercianas",
+        "fulgentes",
+        "volviendo"
+      ]
+    },
+    {
+      "word": "destrocen",
+      "num_guesses": 3,
+      "prior": 0.000020186807108240457,
+      "guesses": [
+        "tercianas",
+        "recuesten",
+        "destrocen"
+      ]
+    },
+    {
+      "word": "evalúense",
+      "num_guesses": 4,
+      "prior": 8.7710156532564e-6,
+      "guesses": [
+        "tercianas",
+        "sanguíneo",
+        "aflójense",
+        "evalúense"
+      ]
+    },
+    {
+      "word": "aquejaban",
+      "num_guesses": 3,
+      "prior": 0.000026725938109688383,
+      "guesses": [
+        "tercianas",
+        "empulgado",
+        "aquejaban"
+      ]
+    },
+    {
+      "word": "profeséis",
+      "num_guesses": 4,
+      "prior": 0.000010299499760136038,
+      "guesses": [
+        "tercianas",
+        "superemos",
+        "profesáis",
+        "profeséis"
+      ]
+    },
+    {
+      "word": "increpare",
+      "num_guesses": 3,
+      "prior": 0.000012948678103206326,
+      "guesses": [
+        "tercianas",
+        "encordeló",
+        "increpare"
+      ]
+    },
+    {
+      "word": "taxqueños",
+      "num_guesses": 3,
+      "prior": 0.000011266406569805038,
+      "guesses": [
+        "tercianas",
+        "tapásemos",
+        "taxqueños"
+      ]
+    },
+    {
+      "word": "poderosos",
+      "num_guesses": 3,
+      "prior": 0.00005918390110911312,
+      "guesses": [
+        "tercianas",
+        "golpeemos",
+        "poderosos"
+      ]
+    },
+    {
+      "word": "embocadas",
+      "num_guesses": 3,
+      "prior": 0.000016712072970473314,
+      "guesses": [
+        "tercianas",
+        "espaldudo",
+        "embocadas"
+      ]
+    },
+    {
+      "word": "gasifican",
+      "num_guesses": 3,
+      "prior": 0.000011038529043101413,
+      "guesses": [
+        "tercianas",
+        "agradable",
+        "gasifican"
+      ]
+    },
+    {
+      "word": "enseriara",
+      "num_guesses": 3,
+      "prior": 8.010040942995306e-6,
+      "guesses": [
+        "tercianas",
+        "endiosara",
+        "enseriara"
+      ]
+    },
+    {
+      "word": "miradores",
+      "num_guesses": 3,
+      "prior": 0.00003178315757430057,
+      "guesses": [
+        "tercianas",
+        "disimulos",
+        "miradores"
+      ]
+    },
+    {
+      "word": "bacinilla",
+      "num_guesses": 3,
+      "prior": 0.000021452582788979307,
+      "guesses": [
+        "tercianas",
+        "amilanado",
+        "bacinilla"
+      ]
+    },
+    {
+      "word": "señoreare",
+      "num_guesses": 3,
+      "prior": 6.752493150524665e-6,
+      "guesses": [
+        "tercianas",
+        "replegare",
+        "señoreare"
+      ]
+    },
+    {
+      "word": "ratonando",
+      "num_guesses": 3,
+      "prior": 7.79232388697279e-6,
+      "guesses": [
+        "tercianas",
+        "aportando",
+        "ratonando"
+      ]
+    },
+    {
+      "word": "agilizara",
+      "num_guesses": 3,
+      "prior": 0.000014829840244849953,
+      "guesses": [
+        "tercianas",
+        "alobadada",
+        "agilizara"
+      ]
+    },
+    {
+      "word": "anilladas",
+      "num_guesses": 3,
+      "prior": 0.00002069493161797702,
+      "guesses": [
+        "tercianas",
+        "almandino",
+        "anilladas"
+      ]
+    },
+    {
+      "word": "rezadores",
+      "num_guesses": 3,
+      "prior": 0.000020767749376180022,
+      "guesses": [
+        "tercianas",
+        "progreses",
+        "rezadores"
+      ]
+    },
+    {
+      "word": "encabadas",
+      "num_guesses": 3,
+      "prior": 0.00001234156912065015,
+      "guesses": [
+        "tercianas",
+        "escabelos",
+        "encabadas"
+      ]
+    },
+    {
+      "word": "encorrear",
+      "num_guesses": 4,
+      "prior": 8.072504969151775e-6,
+      "guesses": [
+        "tercianas",
+        "condecían",
+        "encorozar",
+        "encorrear"
+      ]
+    },
+    {
+      "word": "alborotan",
+      "num_guesses": 3,
+      "prior": 0.00002503713899629172,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "alborotan"
+      ]
+    },
+    {
+      "word": "cimarrona",
+      "num_guesses": 3,
+      "prior": 0.000024894786403058035,
+      "guesses": [
+        "tercianas",
+        "apuradora",
+        "cimarrona"
+      ]
+    },
+    {
+      "word": "canyengue",
+      "num_guesses": 3,
+      "prior": 0.000016464613648775833,
+      "guesses": [
+        "tercianas",
+        "encandece",
+        "canyengue"
+      ]
+    },
+    {
+      "word": "atiplados",
+      "num_guesses": 3,
+      "prior": 0.000012767138529923105,
+      "guesses": [
+        "tercianas",
+        "adultismo",
+        "atiplados"
+      ]
+    },
+    {
+      "word": "flechazos",
+      "num_guesses": 3,
+      "prior": 0.000026248716131436805,
+      "guesses": [
+        "tercianas",
+        "comunidad",
+        "flechazos"
+      ]
+    },
+    {
+      "word": "persignan",
+      "num_guesses": 2,
+      "prior": 0.000019110290859392444,
+      "guesses": [
+        "tercianas",
+        "persignan"
+      ]
+    },
+    {
+      "word": "mástiques",
+      "num_guesses": 3,
+      "prior": 0.000015997215844922288,
+      "guesses": [
+        "tercianas",
+        "exitismos",
+        "mástiques"
+      ]
+    },
+    {
+      "word": "demudadas",
+      "num_guesses": 3,
+      "prior": 0.00001426455324998562,
+      "guesses": [
+        "tercianas",
+        "despueblo",
+        "demudadas"
+      ]
+    },
+    {
+      "word": "colorease",
+      "num_guesses": 4,
+      "prior": 0.000011038529043101413,
+      "guesses": [
+        "tercianas",
+        "encrudece",
+        "cooperase",
+        "colorease"
+      ]
+    },
+    {
+      "word": "rescindan",
+      "num_guesses": 3,
+      "prior": 0.00001556133397788147,
+      "guesses": [
+        "tercianas",
+        "descifran",
+        "rescindan"
+      ]
+    },
+    {
+      "word": "graciolas",
+      "num_guesses": 3,
+      "prior": 9.640032482933567e-6,
+      "guesses": [
+        "tercianas",
+        "graciosas",
+        "graciolas"
+      ]
+    },
+    {
+      "word": "resinosas",
+      "num_guesses": 3,
+      "prior": 0.000025629713875921076,
+      "guesses": [
+        "tercianas",
+        "venideras",
+        "resinosas"
+      ]
+    },
+    {
+      "word": "relumbros",
+      "num_guesses": 3,
+      "prior": 0.000010081579932951297,
+      "guesses": [
+        "tercianas",
+        "remodelen",
+        "relumbros"
+      ]
+    },
+    {
+      "word": "apeadores",
+      "num_guesses": 3,
+      "prior": 0.00001673960536522209,
+      "guesses": [
+        "tercianas",
+        "lampreado",
+        "apeadores"
+      ]
+    },
+    {
+      "word": "escarmenó",
+      "num_guesses": 3,
+      "prior": 8.526018653820758e-6,
+      "guesses": [
+        "tercianas",
+        "deformare",
+        "escarmenó"
+      ]
+    },
+    {
+      "word": "atrancada",
+      "num_guesses": 3,
+      "prior": 0.000019718511577416856,
+      "guesses": [
+        "tercianas",
+        "portadora",
+        "atrancada"
+      ]
+    },
+    {
+      "word": "tubulosas",
+      "num_guesses": 2,
+      "prior": 0.00002315003271555887,
+      "guesses": [
+        "tercianas",
+        "tubulosas"
+      ]
+    },
+    {
+      "word": "regalaría",
+      "num_guesses": 3,
+      "prior": 0.000021919245078751884,
+      "guesses": [
+        "tercianas",
+        "malpagado",
+        "regalaría"
+      ]
+    },
+    {
+      "word": "casáramos",
+      "num_guesses": 4,
+      "prior": 0.000020826387675487056,
+      "guesses": [
+        "tercianas",
+        "aparcados",
+        "sojuzgáis",
+        "casáramos"
+      ]
+    },
+    {
+      "word": "corrediza",
+      "num_guesses": 3,
+      "prior": 0.000023529332362841653,
+      "guesses": [
+        "tercianas",
+        "cosechada",
+        "corrediza"
+      ]
+    },
+    {
+      "word": "desreglar",
+      "num_guesses": 3,
+      "prior": 9.772439503878086e-6,
+      "guesses": [
+        "tercianas",
+        "sombreros",
+        "desreglar"
+      ]
+    },
+    {
+      "word": "relacioná",
+      "num_guesses": 5,
+      "prior": 0.00001263670629797641,
+      "guesses": [
+        "tercianas",
+        "reconoced",
+        "relacionó",
+        "relacioné",
+        "relacioná"
+      ]
+    },
+    {
+      "word": "jazzistas",
+      "num_guesses": 3,
+      "prior": 0.000017082050556662992,
+      "guesses": [
+        "tercianas",
+        "paulistas",
+        "jazzistas"
+      ]
+    },
+    {
+      "word": "captarían",
+      "num_guesses": 3,
+      "prior": 0.000015459801561055495,
+      "guesses": [
+        "tercianas",
+        "chapurreo",
+        "captarían"
+      ]
+    },
+    {
+      "word": "ralenticé",
+      "num_guesses": 3,
+      "prior": 0.000010024040207207512,
+      "guesses": [
+        "tercianas",
+        "interpelé",
+        "ralenticé"
+      ]
+    },
+    {
+      "word": "merecíais",
+      "num_guesses": 3,
+      "prior": 0.00001458279380559052,
+      "guesses": [
+        "tercianas",
+        "cerraréis",
+        "merecíais"
+      ]
+    },
+    {
+      "word": "morcillón",
+      "num_guesses": 2,
+      "prior": 0.000012702592036906853,
+      "guesses": [
+        "tercianas",
+        "morcillón"
+      ]
+    },
+    {
+      "word": "silabease",
+      "num_guesses": 3,
+      "prior": 7.040858803718474e-6,
+      "guesses": [
+        "tercianas",
+        "abiselada",
+        "silabease"
+      ]
+    },
+    {
+      "word": "despueblo",
+      "num_guesses": 3,
+      "prior": 0.000013906364752060328,
+      "guesses": [
+        "tercianas",
+        "promulgué",
+        "despueblo"
+      ]
+    },
+    {
+      "word": "nivelador",
+      "num_guesses": 3,
+      "prior": 0.00002576166448606416,
+      "guesses": [
+        "tercianas",
+        "enmerdado",
+        "nivelador"
+      ]
+    },
+    {
+      "word": "rotatorio",
+      "num_guesses": 3,
+      "prior": 0.00003330532985986469,
+      "guesses": [
+        "tercianas",
+        "polinomio",
+        "rotatorio"
+      ]
+    },
+    {
+      "word": "tarambana",
+      "num_guesses": 3,
+      "prior": 0.000022537370542973073,
+      "guesses": [
+        "tercianas",
+        "tarántula",
+        "tarambana"
+      ]
+    },
+    {
+      "word": "prisieren",
+      "num_guesses": 3,
+      "prior": 0.000011477212646895733,
+      "guesses": [
+        "tercianas",
+        "pudrieses",
+        "prisieren"
+      ]
+    },
+    {
+      "word": "cuzqueños",
+      "num_guesses": 3,
+      "prior": 0.000026483267720259116,
+      "guesses": [
+        "tercianas",
+        "excusemos",
+        "cuzqueños"
+      ]
+    },
+    {
+      "word": "capoteros",
+      "num_guesses": 3,
+      "prior": 9.523853571795141e-6,
+      "guesses": [
+        "tercianas",
+        "maleteros",
+        "capoteros"
+      ]
+    },
+    {
+      "word": "arruinare",
+      "num_guesses": 3,
+      "prior": 0.000012313294896549226,
+      "guesses": [
+        "tercianas",
+        "jardinera",
+        "arruinare"
+      ]
+    },
+    {
+      "word": "examinaré",
+      "num_guesses": 3,
+      "prior": 0.000026032395230014268,
+      "guesses": [
+        "tercianas",
+        "alambrará",
+        "examinaré"
+      ]
+    },
+    {
+      "word": "alterquen",
+      "num_guesses": 3,
+      "prior": 9.136447930634121e-6,
+      "guesses": [
+        "tercianas",
+        "empeorará",
+        "alterquen"
+      ]
+    },
+    {
+      "word": "perihelio",
+      "num_guesses": 2,
+      "prior": 0.00002402836018517403,
+      "guesses": [
+        "tercianas",
+        "perihelio"
+      ]
+    },
+    {
+      "word": "inseridos",
+      "num_guesses": 3,
+      "prior": 0.00001171200410083524,
+      "guesses": [
+        "tercianas",
+        "vigésimos",
+        "inseridos"
+      ]
+    },
+    {
+      "word": "coagulado",
+      "num_guesses": 3,
+      "prior": 0.000023416194988390022,
+      "guesses": [
+        "tercianas",
+        "acumulaba",
+        "coagulado"
+      ]
+    },
+    {
+      "word": "rastrados",
+      "num_guesses": 3,
+      "prior": 0.000011163216959476331,
+      "guesses": [
+        "tercianas",
+        "pelotudos",
+        "rastrados"
+      ]
+    },
+    {
+      "word": "tostonero",
+      "num_guesses": 2,
+      "prior": 8.29099609167606e-6,
+      "guesses": [
+        "tercianas",
+        "tostonero"
+      ]
+    },
+    {
+      "word": "recateada",
+      "num_guesses": 4,
+      "prior": 8.04151555128188e-6,
+      "guesses": [
+        "tercianas",
+        "becerrada",
+        "decretada",
+        "recateada"
+      ]
+    },
+    {
+      "word": "descolada",
+      "num_guesses": 3,
+      "prior": 0.000013997691811723254,
+      "guesses": [
+        "tercianas",
+        "desmoldea",
+        "descolada"
+      ]
+    },
+    {
+      "word": "despeinas",
+      "num_guesses": 3,
+      "prior": 0.000010962732294253617,
+      "guesses": [
+        "tercianas",
+        "venusinas",
+        "despeinas"
+      ]
+    },
+    {
+      "word": "incitabas",
+      "num_guesses": 3,
+      "prior": 9.219269163110675e-6,
+      "guesses": [
+        "tercianas",
+        "intocadas",
+        "incitabas"
+      ]
+    },
+    {
+      "word": "sommelier",
+      "num_guesses": 3,
+      "prior": 0.000017581160433984816,
+      "guesses": [
+        "tercianas",
+        "libérrimo",
+        "sommelier"
+      ]
+    },
+    {
+      "word": "zacatecas",
+      "num_guesses": 3,
+      "prior": 0.00005268904080319031,
+      "guesses": [
+        "tercianas",
+        "complazco",
+        "zacatecas"
+      ]
+    },
+    {
+      "word": "noctiluca",
+      "num_guesses": 3,
+      "prior": 0.000016372059474729268,
+      "guesses": [
+        "tercianas",
+        "cognitiva",
+        "noctiluca"
+      ]
+    },
+    {
+      "word": "azarbetas",
+      "num_guesses": 3,
+      "prior": 9.971760744651022e-6,
+      "guesses": [
+        "tercianas",
+        "pasaduras",
+        "azarbetas"
+      ]
+    },
+    {
+      "word": "amansaras",
+      "num_guesses": 3,
+      "prior": 7.75657777413643e-6,
+      "guesses": [
+        "tercianas",
+        "amarrados",
+        "amansaras"
+      ]
+    },
+    {
+      "word": "estafados",
+      "num_guesses": 3,
+      "prior": 0.000021179345194172856,
+      "guesses": [
+        "tercianas",
+        "espetados",
+        "estafados"
+      ]
+    },
+    {
+      "word": "colegiara",
+      "num_guesses": 3,
+      "prior": 8.646150767594293e-6,
+      "guesses": [
+        "tercianas",
+        "alardeara",
+        "colegiara"
+      ]
+    },
+    {
+      "word": "tehuelche",
+      "num_guesses": 2,
+      "prior": 0.00002588747748308868,
+      "guesses": [
+        "tercianas",
+        "tehuelche"
+      ]
+    },
+    {
+      "word": "preconicé",
+      "num_guesses": 3,
+      "prior": 0.000011266406569805038,
+      "guesses": [
+        "tercianas",
+        "sintético",
+        "preconicé"
+      ]
+    },
+    {
+      "word": "claudicar",
+      "num_guesses": 3,
+      "prior": 0.000028653686091661208,
+      "guesses": [
+        "tercianas",
+        "maravilla",
+        "claudicar"
+      ]
+    },
+    {
+      "word": "anadeaban",
+      "num_guesses": 4,
+      "prior": 8.277131472109745e-6,
+      "guesses": [
+        "tercianas",
+        "empulgado",
+        "bandeaban",
+        "anadeaban"
+      ]
+    },
+    {
+      "word": "utreranos",
+      "num_guesses": 2,
+      "prior": 0.000010222936953130173,
+      "guesses": [
+        "tercianas",
+        "utreranos"
+      ]
+    },
+    {
+      "word": "atuviesen",
+      "num_guesses": 3,
+      "prior": 0.000015455226639321643,
+      "guesses": [
+        "tercianas",
+        "instigase",
+        "atuviesen"
+      ]
+    },
+    {
+      "word": "gasolinas",
+      "num_guesses": 3,
+      "prior": 0.000029886528953706084,
+      "guesses": [
+        "tercianas",
+        "ampulosas",
+        "gasolinas"
+      ]
+    },
+    {
+      "word": "infiramos",
+      "num_guesses": 3,
+      "prior": 0.000011465901311527541,
+      "guesses": [
+        "tercianas",
+        "ignorados",
+        "infiramos"
+      ]
+    },
+    {
+      "word": "mudéjares",
+      "num_guesses": 3,
+      "prior": 0.00003273280791869156,
+      "guesses": [
+        "tercianas",
+        "superemos",
+        "mudéjares"
+      ]
+    },
+    {
+      "word": "estufados",
+      "num_guesses": 3,
+      "prior": 9.677543470628742e-6,
+      "guesses": [
+        "tercianas",
+        "sometemos",
+        "estufados"
+      ]
+    },
+    {
+      "word": "importare",
+      "num_guesses": 3,
+      "prior": 0.000022340868559739928,
+      "guesses": [
+        "tercianas",
+        "retrepado",
+        "importare"
+      ]
+    },
+    {
+      "word": "capialzar",
+      "num_guesses": 3,
+      "prior": 7.961880892077978e-6,
+      "guesses": [
+        "tercianas",
+        "maravilla",
+        "capialzar"
+      ]
+    },
+    {
+      "word": "pavorosos",
+      "num_guesses": 3,
+      "prior": 0.00002767474785897347,
+      "guesses": [
+        "tercianas",
+        "promulgar",
+        "pavorosos"
+      ]
+    },
+    {
+      "word": "alhajeros",
+      "num_guesses": 3,
+      "prior": 0.000014002790535202679,
+      "guesses": [
+        "tercianas",
+        "lampreado",
+        "alhajeros"
+      ]
+    },
+    {
+      "word": "homéricas",
+      "num_guesses": 3,
+      "prior": 0.00002429297503421393,
+      "guesses": [
+        "tercianas",
+        "cuádruplo",
+        "homéricas"
+      ]
+    },
+    {
+      "word": "semivacía",
+      "num_guesses": 2,
+      "prior": 0.000016295924125641037,
+      "guesses": [
+        "tercianas",
+        "semivacía"
+      ]
+    },
+    {
+      "word": "engavilló",
+      "num_guesses": 3,
+      "prior": 7.21773131789456e-6,
+      "guesses": [
+        "tercianas",
+        "endulzado",
+        "engavilló"
+      ]
+    },
+    {
+      "word": "invadiese",
+      "num_guesses": 3,
+      "prior": 0.000021046588008091492,
+      "guesses": [
+        "tercianas",
+        "imponible",
+        "invadiese"
+      ]
+    },
+    {
+      "word": "apedreado",
+      "num_guesses": 3,
+      "prior": 0.000026491757521967193,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "apedreado"
+      ]
+    },
+    {
+      "word": "incesable",
+      "num_guesses": 3,
+      "prior": 0.000017567470590292462,
+      "guesses": [
+        "tercianas",
+        "basilisco",
+        "incesable"
+      ]
+    },
+    {
+      "word": "trillemos",
+      "num_guesses": 3,
+      "prior": 7.683042431415885e-6,
+      "guesses": [
+        "tercianas",
+        "trigueros",
+        "trillemos"
+      ]
+    },
+    {
+      "word": "hacendoso",
+      "num_guesses": 3,
+      "prior": 0.000018361062734745122,
+      "guesses": [
+        "tercianas",
+        "comulgado",
+        "hacendoso"
+      ]
+    },
+    {
+      "word": "secundará",
+      "num_guesses": 3,
+      "prior": 0.00001875406866794867,
+      "guesses": [
+        "tercianas",
+        "casándose",
+        "secundará"
+      ]
+    },
+    {
+      "word": "palmitato",
+      "num_guesses": 3,
+      "prior": 0.000017963304246919705,
+      "guesses": [
+        "tercianas",
+        "utilizada",
+        "palmitato"
+      ]
+    },
+    {
+      "word": "aguachada",
+      "num_guesses": 3,
+      "prior": 7.4857782942013954e-6,
+      "guesses": [
+        "tercianas",
+        "acumulaba",
+        "aguachada"
+      ]
+    },
+    {
+      "word": "orientada",
+      "num_guesses": 3,
+      "prior": 0.0000499961648871336,
+      "guesses": [
+        "tercianas",
+        "advertiré",
+        "orientada"
+      ]
+    },
+    {
+      "word": "halagador",
+      "num_guesses": 3,
+      "prior": 0.00003125371961873318,
+      "guesses": [
+        "tercianas",
+        "amorradas",
+        "halagador"
+      ]
+    },
+    {
+      "word": "respirase",
+      "num_guesses": 3,
+      "prior": 0.00002025088357668732,
+      "guesses": [
+        "tercianas",
+        "replegará",
+        "respirase"
+      ]
+    },
+    {
+      "word": "osamentas",
+      "num_guesses": 3,
+      "prior": 0.000029211734500384856,
+      "guesses": [
+        "tercianas",
+        "apeguemos",
+        "osamentas"
+      ]
+    },
+    {
+      "word": "repellada",
+      "num_guesses": 4,
+      "prior": 0.00001210771321067597,
+      "guesses": [
+        "tercianas",
+        "diplomaba",
+        "repulgada",
+        "repellada"
+      ]
+    },
+    {
+      "word": "obradores",
+      "num_guesses": 3,
+      "prior": 0.000026848315321592738,
+      "guesses": [
+        "tercianas",
+        "aboguemos",
+        "obradores"
+      ]
+    },
+    {
+      "word": "abrigarse",
+      "num_guesses": 2,
+      "prior": 0.000028822645862084852,
+      "guesses": [
+        "tercianas",
+        "abrigarse"
+      ]
+    },
+    {
+      "word": "vermífuga",
+      "num_guesses": 3,
+      "prior": 0.000017050492459155602,
+      "guesses": [
+        "tercianas",
+        "perdurará",
+        "vermífuga"
+      ]
+    },
+    {
+      "word": "recurriré",
+      "num_guesses": 3,
+      "prior": 0.000020006274319341746,
+      "guesses": [
+        "tercianas",
+        "recubrirá",
+        "recurriré"
+      ]
+    },
+    {
+      "word": "pipeteada",
+      "num_guesses": 3,
+      "prior": 8.057069856243014e-6,
+      "guesses": [
+        "tercianas",
+        "piloteaba",
+        "pipeteada"
+      ]
+    },
+    {
+      "word": "tendieres",
+      "num_guesses": 2,
+      "prior": 9.011243781002557e-6,
+      "guesses": [
+        "tercianas",
+        "tendieres"
+      ]
+    },
+    {
+      "word": "derrabado",
+      "num_guesses": 3,
+      "prior": 9.884393575670207e-6,
+      "guesses": [
+        "tercianas",
+        "brumadora",
+        "derrabado"
+      ]
+    },
+    {
+      "word": "polimatía",
+      "num_guesses": 3,
+      "prior": 0.000012250161182453065,
+      "guesses": [
+        "tercianas",
+        "autofagia",
+        "polimatía"
+      ]
+    },
+    {
+      "word": "enfangado",
+      "num_guesses": 3,
+      "prior": 0.000019314438376744402,
+      "guesses": [
+        "tercianas",
+        "empulgado",
+        "enfangado"
+      ]
+    },
+    {
+      "word": "bugineses",
+      "num_guesses": 3,
+      "prior": 7.547145345967288e-6,
+      "guesses": [
+        "tercianas",
+        "diminutos",
+        "bugineses"
+      ]
+    },
+    {
+      "word": "vitalizas",
+      "num_guesses": 3,
+      "prior": 8.220723275000546e-6,
+      "guesses": [
+        "tercianas",
+        "dilusivos",
+        "vitalizas"
+      ]
+    },
+    {
+      "word": "pleuresía",
+      "num_guesses": 3,
+      "prior": 0.00002930334014115386,
+      "guesses": [
+        "tercianas",
+        "empeorará",
+        "pleuresía"
+      ]
+    },
+    {
+      "word": "fulanitos",
+      "num_guesses": 3,
+      "prior": 0.00001039630588870477,
+      "guesses": [
+        "tercianas",
+        "autolisis",
+        "fulanitos"
+      ]
+    },
+    {
+      "word": "moralizan",
+      "num_guesses": 3,
+      "prior": 0.000016847150909876422,
+      "guesses": [
+        "tercianas",
+        "paradigma",
+        "moralizan"
+      ]
+    },
+    {
+      "word": "regurgito",
+      "num_guesses": 3,
+      "prior": 9.098653675164546e-6,
+      "guesses": [
+        "tercianas",
+        "impróvido",
+        "regurgito"
+      ]
+    },
+    {
+      "word": "halándose",
+      "num_guesses": 4,
+      "prior": 0.000014524577200597606,
+      "guesses": [
+        "tercianas",
+        "despueblo",
+        "javaneses",
+        "halándose"
+      ]
+    },
+    {
+      "word": "desmayaos",
+      "num_guesses": 3,
+      "prior": 7.79232388697279e-6,
+      "guesses": [
+        "tercianas",
+        "desalmaos",
+        "desmayaos"
+      ]
+    },
+    {
+      "word": "domeñaban",
+      "num_guesses": 3,
+      "prior": 0.000011777208271326093,
+      "guesses": [
+        "tercianas",
+        "empulgado",
+        "domeñaban"
+      ]
+    },
+    {
+      "word": "displaced",
+      "num_guesses": 2,
+      "prior": 0.000016557739270217827,
+      "guesses": [
+        "tercianas",
+        "displaced"
+      ]
+    },
+    {
+      "word": "brujuleos",
+      "num_guesses": 3,
+      "prior": 9.843005965505337e-6,
+      "guesses": [
+        "tercianas",
+        "golpeemos",
+        "brujuleos"
+      ]
+    },
+    {
+      "word": "delegadas",
+      "num_guesses": 3,
+      "prior": 0.00003576677122132916,
+      "guesses": [
+        "tercianas",
+        "despueblo",
+        "delegadas"
+      ]
+    },
+    {
+      "word": "jeringuen",
+      "num_guesses": 3,
+      "prior": 0.000010413020293190028,
+      "guesses": [
+        "tercianas",
+        "opónganse",
+        "jeringuen"
+      ]
+    },
+    {
+      "word": "gentílica",
+      "num_guesses": 3,
+      "prior": 0.00002223395814875732,
+      "guesses": [
+        "tercianas",
+        "neolítica",
+        "gentílica"
+      ]
+    },
+    {
+      "word": "arrullaba",
+      "num_guesses": 3,
+      "prior": 0.000022153217802766924,
+      "guesses": [
+        "tercianas",
+        "madrugaba",
+        "arrullaba"
+      ]
+    },
+    {
+      "word": "ensalsaba",
+      "num_guesses": 3,
+      "prior": 7.994116282309138e-6,
+      "guesses": [
+        "tercianas",
+        "embalsado",
+        "ensalsaba"
+      ]
+    },
+    {
+      "word": "agramador",
+      "num_guesses": 3,
+      "prior": 0.000010726753794430789,
+      "guesses": [
+        "tercianas",
+        "aguadaban",
+        "agramador"
+      ]
+    },
+    {
+      "word": "ahogadora",
+      "num_guesses": 3,
+      "prior": 0.00001399088193653992,
+      "guesses": [
+        "tercianas",
+        "alumbrara",
+        "ahogadora"
+      ]
+    },
+    {
+      "word": "vacilemos",
+      "num_guesses": 3,
+      "prior": 0.000015837526955727024,
+      "guesses": [
+        "tercianas",
+        "complaced",
+        "vacilemos"
+      ]
+    },
+    {
+      "word": "amainados",
+      "num_guesses": 3,
+      "prior": 0.000012725083487728322,
+      "guesses": [
+        "tercianas",
+        "agramados",
+        "amainados"
+      ]
+    },
+    {
+      "word": "subsanéis",
+      "num_guesses": 3,
+      "prior": 7.26522049007156e-6,
+      "guesses": [
+        "tercianas",
+        "saludamos",
+        "subsanéis"
+      ]
+    },
+    {
+      "word": "recóbrese",
+      "num_guesses": 3,
+      "prior": 0.000010049776207690511,
+      "guesses": [
+        "tercianas",
+        "comulgase",
+        "recóbrese"
+      ]
+    },
+    {
+      "word": "empalmará",
+      "num_guesses": 3,
+      "prior": 0.00001640194065159056,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "empalmará"
+      ]
+    },
+    {
+      "word": "maternado",
+      "num_guesses": 3,
+      "prior": 7.2885069308594125e-6,
+      "guesses": [
+        "tercianas",
+        "apedreara",
+        "maternado"
+      ]
+    },
+    {
+      "word": "desgajada",
+      "num_guesses": 3,
+      "prior": 0.000024367694248638767,
+      "guesses": [
+        "tercianas",
+        "malpagado",
+        "desgajada"
+      ]
+    },
+    {
+      "word": "estadales",
+      "num_guesses": 3,
+      "prior": 0.000030012241391615813,
+      "guesses": [
+        "tercianas",
+        "espetados",
+        "estadales"
+      ]
+    },
+    {
+      "word": "perpetúas",
+      "num_guesses": 3,
+      "prior": 0.00001082362508592539,
+      "guesses": [
+        "tercianas",
+        "perturbas",
+        "perpetúas"
+      ]
+    },
+    {
+      "word": "guardadas",
+      "num_guesses": 3,
+      "prior": 0.000037993806783261414,
+      "guesses": [
+        "tercianas",
+        "alarmador",
+        "guardadas"
+      ]
+    },
+    {
+      "word": "editarías",
+      "num_guesses": 4,
+      "prior": 6.783611949190005e-6,
+      "guesses": [
+        "tercianas",
+        "asertivas",
+        "batideras",
+        "editarías"
+      ]
+    },
+    {
+      "word": "nutritiva",
+      "num_guesses": 3,
+      "prior": 0.00003476374804933229,
+      "guesses": [
+        "tercianas",
+        "intrigado",
+        "nutritiva"
+      ]
+    },
+    {
+      "word": "descolgad",
+      "num_guesses": 2,
+      "prior": 0.000011200804399384948,
+      "guesses": [
+        "tercianas",
+        "descolgad"
+      ]
+    },
+    {
+      "word": "galvanicé",
+      "num_guesses": 3,
+      "prior": 7.014086701868578e-6,
+      "guesses": [
+        "tercianas",
+        "amilanado",
+        "galvanicé"
+      ]
+    },
+    {
+      "word": "renegones",
+      "num_guesses": 3,
+      "prior": 8.814709052464689e-6,
+      "guesses": [
+        "tercianas",
+        "golpismos",
+        "renegones"
+      ]
+    },
+    {
+      "word": "salivosas",
+      "num_guesses": 3,
+      "prior": 0.000010790114767333585,
+      "guesses": [
+        "tercianas",
+        "mallugado",
+        "salivosas"
+      ]
+    },
+    {
+      "word": "aviaremos",
+      "num_guesses": 3,
+      "prior": 7.738454730769445e-6,
+      "guesses": [
+        "tercianas",
+        "malpagado",
+        "aviaremos"
+      ]
+    },
+    {
+      "word": "enclítica",
+      "num_guesses": 3,
+      "prior": 0.000018214543056761786,
+      "guesses": [
+        "tercianas",
+        "infundido",
+        "enclítica"
+      ]
+    },
+    {
+      "word": "desatascó",
+      "num_guesses": 3,
+      "prior": 0.00001056931238989708,
+      "guesses": [
+        "tercianas",
+        "población",
+        "desatascó"
+      ]
+    },
+    {
+      "word": "piloneras",
+      "num_guesses": 4,
+      "prior": 7.97806371039008e-6,
+      "guesses": [
+        "tercianas",
+        "minijuego",
+        "riñoneras",
+        "piloneras"
+      ]
+    },
+    {
+      "word": "vacacione",
+      "num_guesses": 3,
+      "prior": 0.000011302646653450918,
+      "guesses": [
+        "tercianas",
+        "magullada",
+        "vacacione"
+      ]
+    },
+    {
+      "word": "fatigarán",
+      "num_guesses": 3,
+      "prior": 0.00001581984413490159,
+      "guesses": [
+        "tercianas",
+        "antinomia",
+        "fatigarán"
+      ]
+    },
+    {
+      "word": "igualados",
+      "num_guesses": 3,
+      "prior": 0.000026997938913103816,
+      "guesses": [
+        "tercianas",
+        "saludamos",
+        "igualados"
+      ]
+    },
+    {
+      "word": "embozaran",
+      "num_guesses": 4,
+      "prior": 6.931219895495131e-6,
+      "guesses": [
+        "tercianas",
+        "amueblada",
+        "embonaran",
+        "embozaran"
+      ]
+    },
+    {
+      "word": "enrabiado",
+      "num_guesses": 3,
+      "prior": 0.000015467794667545586,
+      "guesses": [
+        "tercianas",
+        "enrabiada",
+        "enrabiado"
+      ]
+    },
+    {
+      "word": "kilogramo",
+      "num_guesses": 3,
+      "prior": 0.000041694255188616065,
+      "guesses": [
+        "tercianas",
+        "audiófilo",
+        "kilogramo"
+      ]
+    },
+    {
+      "word": "absorbían",
+      "num_guesses": 3,
+      "prior": 0.000027511313074639697,
+      "guesses": [
+        "tercianas",
+        "ampliadas",
+        "absorbían"
+      ]
+    },
+    {
+      "word": "detalléis",
+      "num_guesses": 3,
+      "prior": 7.311499523188932e-6,
+      "guesses": [
+        "tercianas",
+        "subempleo",
+        "detalléis"
+      ]
+    },
+    {
+      "word": "domeñaran",
+      "num_guesses": 4,
+      "prior": 7.94556542521775e-6,
+      "guesses": [
+        "tercianas",
+        "amueblada",
+        "moderaran",
+        "domeñaran"
+      ]
+    },
+    {
+      "word": "derelinco",
+      "num_guesses": 2,
+      "prior": 7.21773131789456e-6,
+      "guesses": [
+        "tercianas",
+        "derelinco"
+      ]
+    },
+    {
+      "word": "avaluador",
+      "num_guesses": 3,
+      "prior": 0.000021873798539986406,
+      "guesses": [
+        "tercianas",
+        "amorradas",
+        "avaluador"
+      ]
+    },
+    {
+      "word": "humanaran",
+      "num_guesses": 3,
+      "prior": 7.701690812116574e-6,
+      "guesses": [
+        "tercianas",
+        "aburrimos",
+        "humanaran"
+      ]
+    },
+    {
+      "word": "livideció",
+      "num_guesses": 3,
+      "prior": 8.162722960458603e-6,
+      "guesses": [
+        "tercianas",
+        "compelido",
+        "livideció"
+      ]
+    },
+    {
+      "word": "garnuchos",
+      "num_guesses": 3,
+      "prior": 7.586974182991286e-6,
+      "guesses": [
+        "tercianas",
+        "hornachos",
+        "garnuchos"
+      ]
+    },
+    {
+      "word": "devastado",
+      "num_guesses": 3,
+      "prior": 0.000030315805993372538,
+      "guesses": [
+        "tercianas",
+        "posdatada",
+        "devastado"
+      ]
+    },
+    {
+      "word": "esputando",
+      "num_guesses": 3,
+      "prior": 0.00001185425574022311,
+      "guesses": [
+        "tercianas",
+        "espumante",
+        "esputando"
+      ]
+    },
+    {
+      "word": "forestado",
+      "num_guesses": 3,
+      "prior": 0.000014553801938399946,
+      "guesses": [
+        "tercianas",
+        "forastero",
+        "forestado"
+      ]
+    },
+    {
+      "word": "irrogadas",
+      "num_guesses": 3,
+      "prior": 0.000014322433040979099,
+      "guesses": [
+        "tercianas",
+        "arrumbado",
+        "irrogadas"
+      ]
+    },
+    {
+      "word": "archivera",
+      "num_guesses": 3,
+      "prior": 0.000019624325138762865,
+      "guesses": [
+        "tercianas",
+        "trebolada",
+        "archivera"
+      ]
+    },
+    {
+      "word": "bifenilos",
+      "num_guesses": 3,
+      "prior": 0.000017560609635029658,
+      "guesses": [
+        "tercianas",
+        "diminutos",
+        "bifenilos"
+      ]
+    },
+    {
+      "word": "sumadores",
+      "num_guesses": 4,
+      "prior": 0.000014547975754811468,
+      "guesses": [
+        "tercianas",
+        "golpeemos",
+        "fumadores",
+        "sumadores"
+      ]
+    },
+    {
+      "word": "traspinta",
+      "num_guesses": 2,
+      "prior": 7.97806371039008e-6,
+      "guesses": [
+        "tercianas",
+        "traspinta"
+      ]
+    },
+    {
+      "word": "rumbeados",
+      "num_guesses": 3,
+      "prior": 8.072504969151775e-6,
+      "guesses": [
+        "tercianas",
+        "superemos",
+        "rumbeados"
+      ]
+    },
+    {
+      "word": "irritabas",
+      "num_guesses": 3,
+      "prior": 9.011243781002557e-6,
+      "guesses": [
+        "tercianas",
+        "irritadas",
+        "irritabas"
+      ]
+    },
+    {
+      "word": "cotolengo",
+      "num_guesses": 3,
+      "prior": 0.000013545958552590885,
+      "guesses": [
+        "tercianas",
+        "deletéreo",
+        "cotolengo"
+      ]
+    },
+    {
+      "word": "tarjetera",
+      "num_guesses": 3,
+      "prior": 0.000012411142690697264,
+      "guesses": [
+        "tercianas",
+        "abaratará",
+        "tarjetera"
+      ]
+    },
+    {
+      "word": "chifletes",
+      "num_guesses": 4,
+      "prior": 9.368043872246731e-6,
+      "guesses": [
+        "tercianas",
+        "citásemos",
+        "cubiletes",
+        "chifletes"
+      ]
+    },
+    {
+      "word": "agresivos",
+      "num_guesses": 3,
+      "prior": 0.00003829995913411325,
+      "guesses": [
+        "tercianas",
+        "disimulos",
+        "agresivos"
+      ]
+    },
+    {
+      "word": "instabais",
+      "num_guesses": 3,
+      "prior": 6.959282432618937e-6,
+      "guesses": [
+        "tercianas",
+        "concluiré",
+        "instabais"
+      ]
+    },
+    {
+      "word": "peregrina",
+      "num_guesses": 3,
+      "prior": 0.000043170239198766366,
+      "guesses": [
+        "tercianas",
+        "prodigios",
+        "peregrina"
+      ]
+    },
+    {
+      "word": "ablucionó",
+      "num_guesses": 4,
+      "prior": 7.118820896822048e-6,
+      "guesses": [
+        "tercianas",
+        "ciclamino",
+        "poluciona",
+        "ablucionó"
+      ]
+    },
+    {
+      "word": "parecerás",
+      "num_guesses": 4,
+      "prior": 0.000017972075089849896,
+      "guesses": [
+        "tercianas",
+        "cambuches",
+        "farsescos",
+        "parecerás"
+      ]
+    },
+    {
+      "word": "lotizaron",
+      "num_guesses": 3,
+      "prior": 8.010040942995306e-6,
+      "guesses": [
+        "tercianas",
+        "motilados",
+        "lotizaron"
+      ]
+    },
+    {
+      "word": "compendió",
+      "num_guesses": 3,
+      "prior": 0.00002069172680022153,
+      "guesses": [
+        "tercianas",
+        "ciclópico",
+        "compendió"
+      ]
+    },
+    {
+      "word": "engordase",
+      "num_guesses": 3,
+      "prior": 0.00001263670629797641,
+      "guesses": [
+        "tercianas",
+        "emperrado",
+        "engordase"
+      ]
+    },
+    {
+      "word": "oralmente",
+      "num_guesses": 3,
+      "prior": 0.000033584006721352915,
+      "guesses": [
+        "tercianas",
+        "prolongue",
+        "oralmente"
+      ]
+    },
+    {
+      "word": "pataleaba",
+      "num_guesses": 3,
+      "prior": 0.00002116862541703521,
+      "guesses": [
+        "tercianas",
+        "palomeada",
+        "pataleaba"
+      ]
+    },
+    {
+      "word": "cañarejos",
+      "num_guesses": 3,
+      "prior": 0.000011209089027084823,
+      "guesses": [
+        "tercianas",
+        "calambres",
+        "cañarejos"
+      ]
+    },
+    {
+      "word": "descerado",
+      "num_guesses": 3,
+      "prior": 9.001319479622838e-6,
+      "guesses": [
+        "tercianas",
+        "obscurece",
+        "descerado"
+      ]
+    },
+    {
+      "word": "destruido",
+      "num_guesses": 3,
+      "prior": 0.00005074796782120282,
+      "guesses": [
+        "tercianas",
+        "remorderá",
+        "destruido"
+      ]
+    },
+    {
+      "word": "acaparaba",
+      "num_guesses": 3,
+      "prior": 0.000023058142781866268,
+      "guesses": [
+        "tercianas",
+        "clorurada",
+        "acaparaba"
+      ]
+    },
+    {
+      "word": "suscribes",
+      "num_guesses": 3,
+      "prior": 0.000011480973202305568,
+      "guesses": [
+        "tercianas",
+        "deplorará",
+        "suscribes"
+      ]
+    },
+    {
+      "word": "desreguló",
+      "num_guesses": 3,
+      "prior": 0.000014183200272757123,
+      "guesses": [
+        "tercianas",
+        "moléstese",
+        "desreguló"
+      ]
+    },
+    {
+      "word": "dispenser",
+      "num_guesses": 4,
+      "prior": 0.000013973799001645298,
+      "guesses": [
+        "tercianas",
+        "impeliese",
+        "dispersen",
+        "dispenser"
+      ]
+    },
+    {
+      "word": "aburrirás",
+      "num_guesses": 3,
+      "prior": 0.00001540570071220702,
+      "guesses": [
+        "tercianas",
+        "lombardos",
+        "aburrirás"
+      ]
+    },
+    {
+      "word": "turolense",
+      "num_guesses": 2,
+      "prior": 0.000023994377295855187,
+      "guesses": [
+        "tercianas",
+        "turolense"
+      ]
+    },
+    {
+      "word": "matricera",
+      "num_guesses": 3,
+      "prior": 7.241631613719819e-6,
+      "guesses": [
+        "tercianas",
+        "crepitaba",
+        "matricera"
+      ]
+    },
+    {
+      "word": "desenredó",
+      "num_guesses": 4,
+      "prior": 0.00001716031775612603,
+      "guesses": [
+        "tercianas",
+        "remuerden",
+        "obsérvese",
+        "desenredó"
+      ]
+    },
+    {
+      "word": "revezasen",
+      "num_guesses": 4,
+      "prior": 6.688476916497122e-6,
+      "guesses": [
+        "tercianas",
+        "reservaos",
+        "revelasen",
+        "revezasen"
+      ]
+    },
+    {
+      "word": "inocentón",
+      "num_guesses": 3,
+      "prior": 0.000018524169898287236,
+      "guesses": [
+        "tercianas",
+        "boicoteen",
+        "inocentón"
+      ]
+    },
+    {
+      "word": "respectés",
+      "num_guesses": 4,
+      "prior": 7.961880892077978e-6,
+      "guesses": [
+        "tercianas",
+        "recoletos",
+        "respectes",
+        "respectés"
+      ]
+    },
+    {
+      "word": "arrugable",
+      "num_guesses": 4,
+      "prior": 7.97806371039008e-6,
+      "guesses": [
+        "tercianas",
+        "agradable",
+        "abrogable",
+        "arrugable"
+      ]
+    },
+    {
+      "word": "bufonizar",
+      "num_guesses": 3,
+      "prior": 9.684976308481148e-6,
+      "guesses": [
+        "tercianas",
+        "minimizar",
+        "bufonizar"
+      ]
+    },
+    {
+      "word": "cachondee",
+      "num_guesses": 3,
+      "prior": 8.206376375532092e-6,
+      "guesses": [
+        "tercianas",
+        "encandece",
+        "cachondee"
+      ]
+    },
+    {
+      "word": "exigiréis",
+      "num_guesses": 3,
+      "prior": 0.000011427870949970118,
+      "guesses": [
+        "tercianas",
+        "progreses",
+        "exigiréis"
+      ]
+    },
+    {
+      "word": "laborosas",
+      "num_guesses": 3,
+      "prior": 7.2885069308594125e-6,
+      "guesses": [
+        "tercianas",
+        "ampulosos",
+        "laborosas"
+      ]
+    },
+    {
+      "word": "lamisteis",
+      "num_guesses": 3,
+      "prior": 6.720789903834871e-6,
+      "guesses": [
+        "tercianas",
+        "leitmotiv",
+        "lamisteis"
+      ]
+    },
+    {
+      "word": "adjuntará",
+      "num_guesses": 3,
+      "prior": 0.000021650817224143535,
+      "guesses": [
+        "tercianas",
+        "alcándora",
+        "adjuntará"
+      ]
+    },
+    {
+      "word": "tesineses",
+      "num_guesses": 3,
+      "prior": 8.385543291816735e-6,
+      "guesses": [
+        "tercianas",
+        "tenientes",
+        "tesineses"
+      ]
+    },
+    {
+      "word": "irrespetó",
+      "num_guesses": 3,
+      "prior": 0.000013473432249825788,
+      "guesses": [
+        "tercianas",
+        "oprimiste",
+        "irrespetó"
+      ]
+    },
+    {
+      "word": "arpegiada",
+      "num_guesses": 3,
+      "prior": 0.00001163820521746774,
+      "guesses": [
+        "tercianas",
+        "alumbrara",
+        "arpegiada"
+      ]
+    },
+    {
+      "word": "premiador",
+      "num_guesses": 3,
+      "prior": 0.000015671125002492152,
+      "guesses": [
+        "tercianas",
+        "embriague",
+        "premiador"
+      ]
+    },
+    {
+      "word": "enmarcara",
+      "num_guesses": 4,
+      "prior": 0.000014429442841102913,
+      "guesses": [
+        "tercianas",
+        "aguardará",
+        "encarnara",
+        "enmarcara"
+      ]
+    },
+    {
+      "word": "arrepentí",
+      "num_guesses": 3,
+      "prior": 0.00002573879383869445,
+      "guesses": [
+        "tercianas",
+        "pedómetro",
+        "arrepentí"
+      ]
+    },
+    {
+      "word": "conectará",
+      "num_guesses": 3,
+      "prior": 0.000022312752205979988,
+      "guesses": [
+        "tercianas",
+        "empeorare",
+        "conectará"
+      ]
+    },
+    {
+      "word": "deplorase",
+      "num_guesses": 3,
+      "prior": 0.000011974150996473997,
+      "guesses": [
+        "tercianas",
+        "replegare",
+        "deplorase"
+      ]
+    },
+    {
+      "word": "derrocare",
+      "num_guesses": 3,
+      "prior": 0.000010451608509349243,
+      "guesses": [
+        "tercianas",
+        "empeorará",
+        "derrocare"
+      ]
+    },
+    {
+      "word": "negadoras",
+      "num_guesses": 3,
+      "prior": 0.000017742864300580057,
+      "guesses": [
+        "tercianas",
+        "desangras",
+        "negadoras"
+      ]
+    },
+    {
+      "word": "resumiría",
+      "num_guesses": 3,
+      "prior": 0.000021092642251723234,
+      "guesses": [
+        "tercianas",
+        "pedorrera",
+        "resumiría"
+      ]
+    },
+    {
+      "word": "desenfado",
+      "num_guesses": 3,
+      "prior": 0.000036026582647883124,
+      "guesses": [
+        "tercianas",
+        "doblegase",
+        "desenfado"
+      ]
+    },
+    {
+      "word": "monólogos",
+      "num_guesses": 2,
+      "prior": 0.00003428285658296979,
+      "guesses": [
+        "tercianas",
+        "monólogos"
+      ]
+    },
+    {
+      "word": "inscripta",
+      "num_guesses": 2,
+      "prior": 0.00003193325522447102,
+      "guesses": [
+        "tercianas",
+        "inscripta"
+      ]
+    },
+    {
+      "word": "descuajan",
+      "num_guesses": 3,
+      "prior": 0.000014909970116973613,
+      "guesses": [
+        "tercianas",
+        "desclavan",
+        "descuajan"
+      ]
+    },
+    {
+      "word": "serviolas",
+      "num_guesses": 3,
+      "prior": 0.000014945473578734394,
+      "guesses": [
+        "tercianas",
+        "perrillas",
+        "serviolas"
+      ]
+    },
+    {
+      "word": "deshielen",
+      "num_guesses": 3,
+      "prior": 0.000010495022708435481,
+      "guesses": [
+        "tercianas",
+        "pulóveres",
+        "deshielen"
+      ]
+    },
+    {
+      "word": "surgieron",
+      "num_guesses": 3,
+      "prior": 0.00005012951023397059,
+      "guesses": [
+        "tercianas",
+        "corruscos",
+        "surgieron"
+      ]
+    },
+    {
+      "word": "aperreado",
+      "num_guesses": 4,
+      "prior": 0.000015166551247565397,
+      "guesses": [
+        "tercianas",
+        "algarroba",
+        "protegerá",
+        "aperreado"
+      ]
+    },
+    {
+      "word": "estajeros",
+      "num_guesses": 4,
+      "prior": 9.021124554508626e-6,
+      "guesses": [
+        "tercianas",
+        "doleremos",
+        "jefaturas",
+        "estajeros"
+      ]
+    },
+    {
+      "word": "matelassé",
+      "num_guesses": 3,
+      "prior": 0.000010004563297941796,
+      "guesses": [
+        "tercianas",
+        "espeluzos",
+        "matelassé"
+      ]
+    },
+    {
+      "word": "contagies",
+      "num_guesses": 3,
+      "prior": 0.000012880609864490731,
+      "guesses": [
+        "tercianas",
+        "campaneen",
+        "contagies"
+      ]
+    },
+    {
+      "word": "eximíamos",
+      "num_guesses": 4,
+      "prior": 6.931219895495131e-6,
+      "guesses": [
+        "tercianas",
+        "desplomes",
+        "exigíamos",
+        "eximíamos"
+      ]
+    },
+    {
+      "word": "traslucía",
+      "num_guesses": 2,
+      "prior": 0.000026762695810345087,
+      "guesses": [
+        "tercianas",
+        "traslucía"
+      ]
+    },
+    {
+      "word": "acatarras",
+      "num_guesses": 3,
+      "prior": 8.220723275000546e-6,
+      "guesses": [
+        "tercianas",
+        "factorías",
+        "acatarras"
+      ]
+    },
+    {
+      "word": "referirán",
+      "num_guesses": 3,
+      "prior": 0.00002722430685311769,
+      "guesses": [
+        "tercianas",
+        "deferirán",
+        "referirán"
+      ]
+    },
+    {
+      "word": "reinserte",
+      "num_guesses": 3,
+      "prior": 0.000011192495188159295,
+      "guesses": [
+        "tercianas",
+        "enseñoreé",
+        "reinserte"
+      ]
+    },
+    {
+      "word": "fustigaré",
+      "num_guesses": 3,
+      "prior": 8.263173329464844e-6,
+      "guesses": [
+        "tercianas",
+        "fustigará",
+        "fustigaré"
+      ]
+    },
+    {
+      "word": "ajoporros",
+      "num_guesses": 3,
+      "prior": 8.191928440155989e-6,
+      "guesses": [
+        "tercianas",
+        "promulgar",
+        "ajoporros"
+      ]
+    },
+    {
+      "word": "chacalele",
+      "num_guesses": 3,
+      "prior": 8.103025707600775e-6,
+      "guesses": [
+        "tercianas",
+        "eyaculado",
+        "chacalele"
+      ]
+    },
+    {
+      "word": "lacustres",
+      "num_guesses": 3,
+      "prior": 0.00003338859963643675,
+      "guesses": [
+        "tercianas",
+        "maleteros",
+        "lacustres"
+      ]
+    },
+    {
+      "word": "batanando",
+      "num_guesses": 4,
+      "prior": 7.738454730769445e-6,
+      "guesses": [
+        "tercianas",
+        "complejos",
+        "ayuntando",
+        "batanando"
+      ]
+    },
+    {
+      "word": "mazatleco",
+      "num_guesses": 3,
+      "prior": 0.000015394091278735976,
+      "guesses": [
+        "tercianas",
+        "condolece",
+        "mazatleco"
+      ]
+    },
+    {
+      "word": "enucleare",
+      "num_guesses": 3,
+      "prior": 9.60959767643256e-6,
+      "guesses": [
+        "tercianas",
+        "concuerda",
+        "enucleare"
+      ]
+    },
+    {
+      "word": "afieladas",
+      "num_guesses": 3,
+      "prior": 8.476009228403772e-6,
+      "guesses": [
+        "tercianas",
+        "emplazaba",
+        "afieladas"
+      ]
+    },
+    {
+      "word": "engolfaré",
+      "num_guesses": 3,
+      "prior": 9.25514288996255e-6,
+      "guesses": [
+        "tercianas",
+        "empeoraré",
+        "engolfaré"
+      ]
+    },
+    {
+      "word": "apestaran",
+      "num_guesses": 3,
+      "prior": 0.00001016244195291473,
+      "guesses": [
+        "tercianas",
+        "asentaran",
+        "apestaran"
+      ]
+    },
+    {
+      "word": "desplomar",
+      "num_guesses": 3,
+      "prior": 0.000019870344486549046,
+      "guesses": [
+        "tercianas",
+        "sombreros",
+        "desplomar"
+      ]
+    },
+    {
+      "word": "acostemos",
+      "num_guesses": 3,
+      "prior": 0.000016409151883505767,
+      "guesses": [
+        "tercianas",
+        "palustres",
+        "acostemos"
+      ]
+    },
+    {
+      "word": "rescaldan",
+      "num_guesses": 3,
+      "prior": 7.311499523188932e-6,
+      "guesses": [
+        "tercianas",
+        "descansar",
+        "rescaldan"
+      ]
+    },
+    {
+      "word": "serpenteo",
+      "num_guesses": 3,
+      "prior": 0.00001807111783805231,
+      "guesses": [
+        "tercianas",
+        "uniéndose",
+        "serpenteo"
+      ]
+    },
+    {
+      "word": "suscitare",
+      "num_guesses": 2,
+      "prior": 0.000021363990525501904,
+      "guesses": [
+        "tercianas",
+        "suscitare"
+      ]
+    },
+    {
+      "word": "conociste",
+      "num_guesses": 3,
+      "prior": 0.000030792396175946926,
+      "guesses": [
+        "tercianas",
+        "sonándose",
+        "conociste"
+      ]
+    },
+    {
+      "word": "destroncó",
+      "num_guesses": 3,
+      "prior": 0.000011204949775945718,
+      "guesses": [
+        "tercianas",
+        "honorable",
+        "destroncó"
+      ]
+    },
+    {
+      "word": "homicidas",
+      "num_guesses": 3,
+      "prior": 0.000033048479688411645,
+      "guesses": [
+        "tercianas",
+        "modulaban",
+        "homicidas"
+      ]
+    },
+    {
+      "word": "acostabas",
+      "num_guesses": 2,
+      "prior": 0.00001572381850825782,
+      "guesses": [
+        "tercianas",
+        "acostabas"
+      ]
+    },
+    {
+      "word": "zambutido",
+      "num_guesses": 3,
+      "prior": 8.792970910905156e-6,
+      "guesses": [
+        "tercianas",
+        "mitología",
+        "zambutido"
+      ]
+    },
+    {
+      "word": "banqueteo",
+      "num_guesses": 4,
+      "prior": 0.000011955033042094981,
+      "guesses": [
+        "tercianas",
+        "enteógeno",
+        "puenteado",
+        "banqueteo"
+      ]
+    },
+    {
+      "word": "aturdirse",
+      "num_guesses": 3,
+      "prior": 0.000022508698887563712,
+      "guesses": [
+        "tercianas",
+        "estorbare",
+        "aturdirse"
+      ]
+    },
+    {
+      "word": "recuperad",
+      "num_guesses": 3,
+      "prior": 0.000013658491483729371,
+      "guesses": [
+        "tercianas",
+        "recuperar",
+        "recuperad"
+      ]
+    },
+    {
+      "word": "tejisteis",
+      "num_guesses": 3,
+      "prior": 8.025839963124581e-6,
+      "guesses": [
+        "tercianas",
+        "semejante",
+        "tejisteis"
+      ]
+    },
+    {
+      "word": "dormilona",
+      "num_guesses": 2,
+      "prior": 0.000021608755052479985,
+      "guesses": [
+        "tercianas",
+        "dormilona"
+      ]
+    },
+    {
+      "word": "presencié",
+      "num_guesses": 3,
+      "prior": 0.000029528846136790458,
+      "guesses": [
+        "tercianas",
+        "colóquese",
+        "presencié"
+      ]
+    },
+    {
+      "word": "muellajes",
+      "num_guesses": 4,
+      "prior": 9.870674725311135e-6,
+      "guesses": [
+        "tercianas",
+        "desplumes",
+        "mueblajes",
+        "muellajes"
+      ]
+    },
+    {
+      "word": "ofuscados",
+      "num_guesses": 3,
+      "prior": 0.000023682621980955578,
+      "guesses": [
+        "tercianas",
+        "colocados",
+        "ofuscados"
+      ]
+    },
+    {
+      "word": "cimbradas",
+      "num_guesses": 3,
+      "prior": 0.000012188658340928943,
+      "guesses": [
+        "tercianas",
+        "hambreada",
+        "cimbradas"
+      ]
+    },
+    {
+      "word": "unidísima",
+      "num_guesses": 3,
+      "prior": 8.538339541447542e-6,
+      "guesses": [
+        "tercianas",
+        "bifoliada",
+        "unidísima"
+      ]
+    },
+    {
+      "word": "enjambran",
+      "num_guesses": 4,
+      "prior": 0.000013930722352467849,
+      "guesses": [
+        "tercianas",
+        "alargador",
+        "telegrama",
+        "enjambran"
+      ]
+    },
+    {
+      "word": "estrenara",
+      "num_guesses": 3,
+      "prior": 0.00002038119903501193,
+      "guesses": [
+        "tercianas",
+        "enterraba",
+        "estrenara"
+      ]
+    },
+    {
+      "word": "debutarás",
+      "num_guesses": 3,
+      "prior": 7.21773131789456e-6,
+      "guesses": [
+        "tercianas",
+        "posábamos",
+        "debutarás"
+      ]
+    },
+    {
+      "word": "acusareis",
+      "num_guesses": 3,
+      "prior": 0.000010548299674145306,
+      "guesses": [
+        "tercianas",
+        "machucada",
+        "acusareis"
+      ]
+    },
+    {
+      "word": "abdicadas",
+      "num_guesses": 3,
+      "prior": 9.136447930634121e-6,
+      "guesses": [
+        "tercianas",
+        "cabalgado",
+        "abdicadas"
+      ]
+    },
+    {
+      "word": "abochorne",
+      "num_guesses": 3,
+      "prior": 0.0000127989283894099,
+      "guesses": [
+        "tercianas",
+        "concuerda",
+        "abochorne"
+      ]
+    },
+    {
+      "word": "compenses",
+      "num_guesses": 3,
+      "prior": 0.000011056064523183262,
+      "guesses": [
+        "tercianas",
+        "malvenden",
+        "compenses"
+      ]
+    },
+    {
+      "word": "ruginosas",
+      "num_guesses": 3,
+      "prior": 9.376506436975326e-6,
+      "guesses": [
+        "tercianas",
+        "pringosas",
+        "ruginosas"
+      ]
+    },
+    {
+      "word": "lambistón",
+      "num_guesses": 3,
+      "prior": 7.547145345967288e-6,
+      "guesses": [
+        "tercianas",
+        "idolatría",
+        "lambistón"
+      ]
+    },
+    {
+      "word": "rebanaste",
+      "num_guesses": 3,
+      "prior": 7.547145345967288e-6,
+      "guesses": [
+        "tercianas",
+        "empleados",
+        "rebanaste"
+      ]
+    },
+    {
+      "word": "fiscalizó",
+      "num_guesses": 3,
+      "prior": 0.00001669613831076218,
+      "guesses": [
+        "tercianas",
+        "psicóloga",
+        "fiscalizó"
+      ]
+    },
+    {
+      "word": "culminada",
+      "num_guesses": 3,
+      "prior": 0.000025080028925232107,
+      "guesses": [
+        "tercianas",
+        "acuminado",
+        "culminada"
+      ]
+    },
+    {
+      "word": "lendreras",
+      "num_guesses": 3,
+      "prior": 0.00001055356855772995,
+      "guesses": [
+        "tercianas",
+        "repulgado",
+        "lendreras"
+      ]
+    },
+    {
+      "word": "apresuren",
+      "num_guesses": 3,
+      "prior": 0.00002190026023433607,
+      "guesses": [
+        "tercianas",
+        "parándose",
+        "apresuren"
+      ]
+    },
+    {
+      "word": "hermoseen",
+      "num_guesses": 3,
+      "prior": 0.000014033227995514342,
+      "guesses": [
+        "tercianas",
+        "personero",
+        "hermoseen"
+      ]
+    },
+    {
+      "word": "inhumarán",
+      "num_guesses": 3,
+      "prior": 0.000010119222224810836,
+      "guesses": [
+        "tercianas",
+        "obligados",
+        "inhumarán"
+      ]
+    },
+    {
+      "word": "decrepito",
+      "num_guesses": 3,
+      "prior": 0.00001634378916487073,
+      "guesses": [
+        "tercianas",
+        "entorpece",
+        "decrepito"
+      ]
+    },
+    {
+      "word": "campaneen",
+      "num_guesses": 3,
+      "prior": 0.000010446130724101455,
+      "guesses": [
+        "tercianas",
+        "alcanzado",
+        "campaneen"
+      ]
+    },
+    {
+      "word": "acaballas",
+      "num_guesses": 3,
+      "prior": 0.000012176801646940917,
+      "guesses": [
+        "tercianas",
+        "carambolo",
+        "acaballas"
+      ]
+    },
+    {
+      "word": "pretorias",
+      "num_guesses": 3,
+      "prior": 0.000018937814978859638,
+      "guesses": [
+        "tercianas",
+        "videoclip",
+        "pretorias"
+      ]
+    },
+    {
+      "word": "encajadas",
+      "num_guesses": 4,
+      "prior": 0.000024546358959692545,
+      "guesses": [
+        "tercianas",
+        "escabelos",
+        "compunjan",
+        "encajadas"
+      ]
+    },
+    {
+      "word": "contraeos",
+      "num_guesses": 3,
+      "prior": 6.688476916497122e-6,
+      "guesses": [
+        "tercianas",
+        "contrates",
+        "contraeos"
+      ]
+    },
+    {
+      "word": "rogadores",
+      "num_guesses": 3,
+      "prior": 0.00001773429095298705,
+      "guesses": [
+        "tercianas",
+        "golpeemos",
+        "rogadores"
+      ]
+    },
+    {
+      "word": "sulfuroso",
+      "num_guesses": 3,
+      "prior": 0.00003369293391618819,
+      "guesses": [
+        "tercianas",
+        "orgulloso",
+        "sulfuroso"
+      ]
+    },
+    {
+      "word": "entibando",
+      "num_guesses": 4,
+      "prior": 9.5710036671936e-6,
+      "guesses": [
+        "tercianas",
+        "militante",
+        "arzobispo",
+        "entibando"
+      ]
+    },
+    {
+      "word": "revaluaba",
+      "num_guesses": 3,
+      "prior": 0.000011431696819910268,
+      "guesses": [
+        "tercianas",
+        "diplomaba",
+        "revaluaba"
+      ]
+    },
+    {
+      "word": "estorbosa",
+      "num_guesses": 3,
+      "prior": 0.00001777830043890777,
+      "guesses": [
+        "tercianas",
+        "mosquease",
+        "estorbosa"
+      ]
+    }
+  ]
+}

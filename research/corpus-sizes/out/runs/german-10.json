@@ -1,0 +1,5000 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T11:38:31.099714Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "hartbleies",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 10,
+    "dictionary_length": 68901,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "3c896c38636f0016505d003fe60104f015c76fa0b507803eff1b22e8500aee8f",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 2.8919999999999755,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.1580000000000001,
+        "3": 0.7920000000000006,
+        "4": 0.05000000000000003
+      }
+    },
+    "prior": {
+      "mean": 2.8491544173218624,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.1906741304410974,
+        "3": 0.7694973217959379,
+        "4": 0.03982854776296419
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "ätzendsten",
+      "num_guesses": 4,
+      "prior": 9.756954845854823e-6,
+      "guesses": [
+        "hartbleies",
+        "dokumenten",
+        "wütendsten",
+        "ätzendsten"
+      ]
+    },
+    {
+      "word": "zudrängend",
+      "num_guesses": 3,
+      "prior": 8.97598670163725e-6,
+      "guesses": [
+        "hartbleies",
+        "kupfergrün",
+        "zudrängend"
+      ]
+    },
+    {
+      "word": "bärenklaus",
+      "num_guesses": 2,
+      "prior": 8.701255590620917e-6,
+      "guesses": [
+        "hartbleies",
+        "bärenklaus"
+      ]
+    },
+    {
+      "word": "lilafarben",
+      "num_guesses": 3,
+      "prior": 0.000012852217728814617,
+      "guesses": [
+        "hartbleies",
+        "bildmarken",
+        "lilafarben"
+      ]
+    },
+    {
+      "word": "widerriefe",
+      "num_guesses": 3,
+      "prior": 0.000012096757411668485,
+      "guesses": [
+        "hartbleies",
+        "ergreifend",
+        "widerriefe"
+      ]
+    },
+    {
+      "word": "ermordende",
+      "num_guesses": 3,
+      "prior": 9.114595246557085e-6,
+      "guesses": [
+        "hartbleies",
+        "urnengänge",
+        "ermordende"
+      ]
+    },
+    {
+      "word": "stumpfeste",
+      "num_guesses": 3,
+      "prior": 0.000011198735670607606,
+      "guesses": [
+        "hartbleies",
+        "umsetzende",
+        "stumpfeste"
+      ]
+    },
+    {
+      "word": "widerfährt",
+      "num_guesses": 2,
+      "prior": 0.000029418914634932952,
+      "guesses": [
+        "hartbleies",
+        "widerfährt"
+      ]
+    },
+    {
+      "word": "eingeholte",
+      "num_guesses": 3,
+      "prior": 0.000019993028991460908,
+      "guesses": [
+        "hartbleies",
+        "gefächerte",
+        "eingeholte"
+      ]
+    },
+    {
+      "word": "erquicktem",
+      "num_guesses": 3,
+      "prior": 6.749622669094019e-6,
+      "guesses": [
+        "hartbleies",
+        "grenzender",
+        "erquicktem"
+      ]
+    },
+    {
+      "word": "förderland",
+      "num_guesses": 3,
+      "prior": 0.000010880478040411827,
+      "guesses": [
+        "hartbleies",
+        "morgenland",
+        "förderland"
+      ]
+    },
+    {
+      "word": "ideenloser",
+      "num_guesses": 3,
+      "prior": 0.000011372527725875252,
+      "guesses": [
+        "hartbleies",
+        "rempelnden",
+        "ideenloser"
+      ]
+    },
+    {
+      "word": "anleiteten",
+      "num_guesses": 2,
+      "prior": 0.000013884978802984422,
+      "guesses": [
+        "hartbleies",
+        "anleiteten"
+      ]
+    },
+    {
+      "word": "deliriöses",
+      "num_guesses": 3,
+      "prior": 7.37790028192609e-6,
+      "guesses": [
+        "hartbleies",
+        "wildunfall",
+        "deliriöses"
+      ]
+    },
+    {
+      "word": "rindernder",
+      "num_guesses": 4,
+      "prior": 7.44879786043802e-6,
+      "guesses": [
+        "hartbleies",
+        "grenzender",
+        "mindernder",
+        "rindernder"
+      ]
+    },
+    {
+      "word": "schiefstes",
+      "num_guesses": 3,
+      "prior": 6.05212435023612e-6,
+      "guesses": [
+        "hartbleies",
+        "messwertes",
+        "schiefstes"
+      ]
+    },
+    {
+      "word": "abgewöhnte",
+      "num_guesses": 3,
+      "prior": 0.000012338579707896022,
+      "guesses": [
+        "hartbleies",
+        "mondgöttin",
+        "abgewöhnte"
+      ]
+    },
+    {
+      "word": "büralisten",
+      "num_guesses": 2,
+      "prior": 7.70325511439476e-6,
+      "guesses": [
+        "hartbleies",
+        "büralisten"
+      ]
+    },
+    {
+      "word": "hineinlaßt",
+      "num_guesses": 3,
+      "prior": 6.479500954222401e-6,
+      "guesses": [
+        "hartbleies",
+        "heimatland",
+        "hineinlaßt"
+      ]
+    },
+    {
+      "word": "herbivoren",
+      "num_guesses": 2,
+      "prior": 0.00002181086342113713,
+      "guesses": [
+        "hartbleies",
+        "herbivoren"
+      ]
+    },
+    {
+      "word": "waldtümpel",
+      "num_guesses": 3,
+      "prior": 0.000012292032339507539,
+      "guesses": [
+        "hartbleies",
+        "fakultäten",
+        "waldtümpel"
+      ]
+    },
+    {
+      "word": "erdnattern",
+      "num_guesses": 3,
+      "prior": 6.73233787700691e-6,
+      "guesses": [
+        "hartbleies",
+        "aufgetankt",
+        "erdnattern"
+      ]
+    },
+    {
+      "word": "untermaure",
+      "num_guesses": 4,
+      "prior": 6.263027452410483e-6,
+      "guesses": [
+        "hartbleies",
+        "aufgetankt",
+        "unverdaute",
+        "untermaure"
+      ]
+    },
+    {
+      "word": "tierlichem",
+      "num_guesses": 3,
+      "prior": 8.158129010842759e-6,
+      "guesses": [
+        "hartbleies",
+        "teilnehmer",
+        "tierlichem"
+      ]
+    },
+    {
+      "word": "nofretetes",
+      "num_guesses": 3,
+      "prior": 0.00001242662919415175,
+      "guesses": [
+        "hartbleies",
+        "dunkelgrün",
+        "nofretetes"
+      ]
+    },
+    {
+      "word": "heitereren",
+      "num_guesses": 3,
+      "prior": 0.000011798190094302376,
+      "guesses": [
+        "hartbleies",
+        "bestimmten",
+        "heitereren"
+      ]
+    },
+    {
+      "word": "bikonvexer",
+      "num_guesses": 3,
+      "prior": 0.000010459504194791248,
+      "guesses": [
+        "hartbleies",
+        "überwiegen",
+        "bikonvexer"
+      ]
+    },
+    {
+      "word": "reponierte",
+      "num_guesses": 4,
+      "prior": 0.00001528977591770107,
+      "guesses": [
+        "hartbleies",
+        "moderieren",
+        "renovierte",
+        "reponierte"
+      ]
+    },
+    {
+      "word": "anschlusse",
+      "num_guesses": 3,
+      "prior": 0.000030690257422947304,
+      "guesses": [
+        "hartbleies",
+        "anzuführen",
+        "anschlusse"
+      ]
+    },
+    {
+      "word": "rückblickt",
+      "num_guesses": 2,
+      "prior": 8.237157123946321e-6,
+      "guesses": [
+        "hartbleies",
+        "rückblickt"
+      ]
+    },
+    {
+      "word": "eisenblüte",
+      "num_guesses": 3,
+      "prior": 0.00001091338458878167,
+      "guesses": [
+        "hartbleies",
+        "gestundete",
+        "eisenblüte"
+      ]
+    },
+    {
+      "word": "steinwegen",
+      "num_guesses": 3,
+      "prior": 9.92990323462246e-6,
+      "guesses": [
+        "hartbleies",
+        "gesitteten",
+        "steinwegen"
+      ]
+    },
+    {
+      "word": "anfechtbar",
+      "num_guesses": 3,
+      "prior": 0.000030833482748999034,
+      "guesses": [
+        "hartbleies",
+        "autowracks",
+        "anfechtbar"
+      ]
+    },
+    {
+      "word": "erweisende",
+      "num_guesses": 3,
+      "prior": 0.000020200551493714397,
+      "guesses": [
+        "hartbleies",
+        "eingepunzt",
+        "erweisende"
+      ]
+    },
+    {
+      "word": "berghonigs",
+      "num_guesses": 2,
+      "prior": 5.302969579768859e-6,
+      "guesses": [
+        "hartbleies",
+        "berghonigs"
+      ]
+    },
+    {
+      "word": "bildmarken",
+      "num_guesses": 2,
+      "prior": 0.000013547267582294802,
+      "guesses": [
+        "hartbleies",
+        "bildmarken"
+      ]
+    },
+    {
+      "word": "gelittener",
+      "num_guesses": 3,
+      "prior": 9.7470893506006e-6,
+      "guesses": [
+        "hartbleies",
+        "meditieren",
+        "gelittener"
+      ]
+    },
+    {
+      "word": "füchsleins",
+      "num_guesses": 2,
+      "prior": 0.000010533014622310008,
+      "guesses": [
+        "hartbleies",
+        "füchsleins"
+      ]
+    },
+    {
+      "word": "pappellaub",
+      "num_guesses": 3,
+      "prior": 0.000011061528906819334,
+      "guesses": [
+        "hartbleies",
+        "mandelbaum",
+        "pappellaub"
+      ]
+    },
+    {
+      "word": "suchhundes",
+      "num_guesses": 3,
+      "prior": 6.643136323586304e-6,
+      "guesses": [
+        "hartbleies",
+        "zuschusses",
+        "suchhundes"
+      ]
+    },
+    {
+      "word": "herumhuren",
+      "num_guesses": 3,
+      "prior": 0.000010813444757559808,
+      "guesses": [
+        "hartbleies",
+        "herzformen",
+        "herumhuren"
+      ]
+    },
+    {
+      "word": "knüppelnde",
+      "num_guesses": 3,
+      "prior": 7.2915852914360186e-6,
+      "guesses": [
+        "hartbleies",
+        "zuknöpfend",
+        "knüppelnde"
+      ]
+    },
+    {
+      "word": "abformende",
+      "num_guesses": 3,
+      "prior": 6.967277827561159e-6,
+      "guesses": [
+        "hartbleies",
+        "beworbener",
+        "abformende"
+      ]
+    },
+    {
+      "word": "entkrautet",
+      "num_guesses": 3,
+      "prior": 8.252604315706336e-6,
+      "guesses": [
+        "hartbleies",
+        "unterarmen",
+        "entkrautet"
+      ]
+    },
+    {
+      "word": "überfällen",
+      "num_guesses": 3,
+      "prior": 0.00002469191533081697,
+      "guesses": [
+        "hartbleies",
+        "menüfolgen",
+        "überfällen"
+      ]
+    },
+    {
+      "word": "wolfsfelle",
+      "num_guesses": 3,
+      "prior": 0.000011904921143201427,
+      "guesses": [
+        "hartbleies",
+        "volksseele",
+        "wolfsfelle"
+      ]
+    },
+    {
+      "word": "ausklammer",
+      "num_guesses": 3,
+      "prior": 7.959323737585616e-6,
+      "guesses": [
+        "hartbleies",
+        "plusgraden",
+        "ausklammer"
+      ]
+    },
+    {
+      "word": "abfragerei",
+      "num_guesses": 3,
+      "prior": 8.404640386804036e-6,
+      "guesses": [
+        "hartbleies",
+        "überzeugen",
+        "abfragerei"
+      ]
+    },
+    {
+      "word": "separation",
+      "num_guesses": 3,
+      "prior": 0.000031571772249182895,
+      "guesses": [
+        "hartbleies",
+        "stoßartige",
+        "separation"
+      ]
+    },
+    {
+      "word": "hüpfspiels",
+      "num_guesses": 3,
+      "prior": 6.319973436849383e-6,
+      "guesses": [
+        "hartbleies",
+        "holzspiess",
+        "hüpfspiels"
+      ]
+    },
+    {
+      "word": "robusterer",
+      "num_guesses": 3,
+      "prior": 0.000011475207221110565,
+      "guesses": [
+        "hartbleies",
+        "allgemeine",
+        "robusterer"
+      ]
+    },
+    {
+      "word": "schmauchst",
+      "num_guesses": 3,
+      "prior": 5.742740237953346e-6,
+      "guesses": [
+        "hartbleies",
+        "sumpfhuhns",
+        "schmauchst"
+      ]
+    },
+    {
+      "word": "transchier",
+      "num_guesses": 3,
+      "prior": 5.280209213357512e-6,
+      "guesses": [
+        "hartbleies",
+        "phantasier",
+        "transchier"
+      ]
+    },
+    {
+      "word": "schönendes",
+      "num_guesses": 3,
+      "prior": 5.6229946994565064e-6,
+      "guesses": [
+        "hartbleies",
+        "ungehorsam",
+        "schönendes"
+      ]
+    },
+    {
+      "word": "vorquollen",
+      "num_guesses": 3,
+      "prior": 8.992421331167908e-6,
+      "guesses": [
+        "hartbleies",
+        "korporälen",
+        "vorquollen"
+      ]
+    },
+    {
+      "word": "zureisende",
+      "num_guesses": 2,
+      "prior": 0.000012043791604336863,
+      "guesses": [
+        "hartbleies",
+        "zureisende"
+      ]
+    },
+    {
+      "word": "seufzendem",
+      "num_guesses": 3,
+      "prior": 0.000011139103542167949,
+      "guesses": [
+        "hartbleies",
+        "zuerkennen",
+        "seufzendem"
+      ]
+    },
+    {
+      "word": "witzbücher",
+      "num_guesses": 2,
+      "prior": 9.423854333428982e-6,
+      "guesses": [
+        "hartbleies",
+        "witzbücher"
+      ]
+    },
+    {
+      "word": "grosszehen",
+      "num_guesses": 3,
+      "prior": 9.664645438399036e-6,
+      "guesses": [
+        "hartbleies",
+        "errungener",
+        "grosszehen"
+      ]
+    },
+    {
+      "word": "milchtritt",
+      "num_guesses": 3,
+      "prior": 9.486372947594704e-6,
+      "guesses": [
+        "hartbleies",
+        "zuträglich",
+        "milchtritt"
+      ]
+    },
+    {
+      "word": "grüngrauer",
+      "num_guesses": 3,
+      "prior": 0.000013981569394523534,
+      "guesses": [
+        "hartbleies",
+        "münzwaagen",
+        "grüngrauer"
+      ]
+    },
+    {
+      "word": "umgeordnet",
+      "num_guesses": 3,
+      "prior": 0.000016216080336705684,
+      "guesses": [
+        "hartbleies",
+        "knurrendem",
+        "umgeordnet"
+      ]
+    },
+    {
+      "word": "themavokal",
+      "num_guesses": 3,
+      "prior": 0.000014002520891235987,
+      "guesses": [
+        "hartbleies",
+        "aufgezählt",
+        "themavokal"
+      ]
+    },
+    {
+      "word": "dichotomer",
+      "num_guesses": 3,
+      "prior": 0.000015484274164204146,
+      "guesses": [
+        "hartbleies",
+        "tierärztin",
+        "dichotomer"
+      ]
+    },
+    {
+      "word": "obstdieben",
+      "num_guesses": 3,
+      "prior": 7.4077713008345885e-6,
+      "guesses": [
+        "hartbleies",
+        "obstwiesen",
+        "obstdieben"
+      ]
+    },
+    {
+      "word": "nachstelle",
+      "num_guesses": 3,
+      "prior": 0.000014169323952718694,
+      "guesses": [
+        "hartbleies",
+        "latschende",
+        "nachstelle"
+      ]
+    },
+    {
+      "word": "pummelchen",
+      "num_guesses": 3,
+      "prior": 0.000014205880774838296,
+      "guesses": [
+        "hartbleies",
+        "lächelnden",
+        "pummelchen"
+      ]
+    },
+    {
+      "word": "gebildetes",
+      "num_guesses": 2,
+      "prior": 0.000030237303118603482,
+      "guesses": [
+        "hartbleies",
+        "gebildetes"
+      ]
+    },
+    {
+      "word": "höllentief",
+      "num_guesses": 2,
+      "prior": 7.825980182575217e-6,
+      "guesses": [
+        "hartbleies",
+        "höllentief"
+      ]
+    },
+    {
+      "word": "ehrloseren",
+      "num_guesses": 2,
+      "prior": 6.011683370620023e-6,
+      "guesses": [
+        "hartbleies",
+        "ehrloseren"
+      ]
+    },
+    {
+      "word": "grundstoff",
+      "num_guesses": 3,
+      "prior": 0.000027752050173653787,
+      "guesses": [
+        "hartbleies",
+        "grundstück",
+        "grundstoff"
+      ]
+    },
+    {
+      "word": "betrügerei",
+      "num_guesses": 3,
+      "prior": 0.00002154195916892078,
+      "guesses": [
+        "hartbleies",
+        "bewirteten",
+        "betrügerei"
+      ]
+    },
+    {
+      "word": "vermieters",
+      "num_guesses": 2,
+      "prior": 0.000028605676110664523,
+      "guesses": [
+        "hartbleies",
+        "vermieters"
+      ]
+    },
+    {
+      "word": "geträumtem",
+      "num_guesses": 3,
+      "prior": 0.000010993957790989288,
+      "guesses": [
+        "hartbleies",
+        "knurrendem",
+        "geträumtem"
+      ]
+    },
+    {
+      "word": "pachtgutes",
+      "num_guesses": 3,
+      "prior": 0.000013418757472267677,
+      "guesses": [
+        "hartbleies",
+        "mannhaftes",
+        "pachtgutes"
+      ]
+    },
+    {
+      "word": "kinderauge",
+      "num_guesses": 3,
+      "prior": 0.000013333468932832202,
+      "guesses": [
+        "hartbleies",
+        "empfangene",
+        "kinderauge"
+      ]
+    },
+    {
+      "word": "ferienorts",
+      "num_guesses": 3,
+      "prior": 9.210799463190256e-6,
+      "guesses": [
+        "hartbleies",
+        "vermieters",
+        "ferienorts"
+      ]
+    },
+    {
+      "word": "nachahmung",
+      "num_guesses": 2,
+      "prior": 0.00004765543515304926,
+      "guesses": [
+        "hartbleies",
+        "nachahmung"
+      ]
+    },
+    {
+      "word": "kehrwochen",
+      "num_guesses": 3,
+      "prior": 6.714873730182379e-6,
+      "guesses": [
+        "hartbleies",
+        "rumorenden",
+        "kehrwochen"
+      ]
+    },
+    {
+      "word": "tafelweine",
+      "num_guesses": 2,
+      "prior": 0.000013454888788266719,
+      "guesses": [
+        "hartbleies",
+        "tafelweine"
+      ]
+    },
+    {
+      "word": "spannendem",
+      "num_guesses": 3,
+      "prior": 0.00001432184318509168,
+      "guesses": [
+        "hartbleies",
+        "wesenlosem",
+        "spannendem"
+      ]
+    },
+    {
+      "word": "weiterflog",
+      "num_guesses": 3,
+      "prior": 0.00001244304980778409,
+      "guesses": [
+        "hartbleies",
+        "gekugelten",
+        "weiterflog"
+      ]
+    },
+    {
+      "word": "zimmergroß",
+      "num_guesses": 3,
+      "prior": 6.385706542627898e-6,
+      "guesses": [
+        "hartbleies",
+        "mitwirkend",
+        "zimmergroß"
+      ]
+    },
+    {
+      "word": "papierlose",
+      "num_guesses": 3,
+      "prior": 0.000014572105949048597,
+      "guesses": [
+        "hartbleies",
+        "laserdiode",
+        "papierlose"
+      ]
+    },
+    {
+      "word": "gangspills",
+      "num_guesses": 3,
+      "prior": 0.00001067691149982212,
+      "guesses": [
+        "hartbleies",
+        "palladiums",
+        "gangspills"
+      ]
+    },
+    {
+      "word": "zerrissest",
+      "num_guesses": 3,
+      "prior": 0.000011811973064254218,
+      "guesses": [
+        "hartbleies",
+        "zertretend",
+        "zerrissest"
+      ]
+    },
+    {
+      "word": "steinernen",
+      "num_guesses": 3,
+      "prior": 0.000038063371208577255,
+      "guesses": [
+        "hartbleies",
+        "iterierten",
+        "steinernen"
+      ]
+    },
+    {
+      "word": "adsorptive",
+      "num_guesses": 3,
+      "prior": 0.00001671935983291726,
+      "guesses": [
+        "hartbleies",
+        "stoßartige",
+        "adsorptive"
+      ]
+    },
+    {
+      "word": "zeitnähere",
+      "num_guesses": 3,
+      "prior": 0.000011113485428716584,
+      "guesses": [
+        "hartbleies",
+        "weitergeht",
+        "zeitnähere"
+      ]
+    },
+    {
+      "word": "bhikschuni",
+      "num_guesses": 3,
+      "prior": 6.374938004866861e-6,
+      "guesses": [
+        "hartbleies",
+        "schwäbisch",
+        "bhikschuni"
+      ]
+    },
+    {
+      "word": "buckelndes",
+      "num_guesses": 3,
+      "prior": 6.95206528535373e-6,
+      "guesses": [
+        "hartbleies",
+        "möbelstück",
+        "buckelndes"
+      ]
+    },
+    {
+      "word": "fäkalwitze",
+      "num_guesses": 3,
+      "prior": 5.726237837904229e-6,
+      "guesses": [
+        "hartbleies",
+        "anklingelt",
+        "fäkalwitze"
+      ]
+    },
+    {
+      "word": "kampfstoff",
+      "num_guesses": 3,
+      "prior": 0.00001681932750192637,
+      "guesses": [
+        "hartbleies",
+        "tagsatzung",
+        "kampfstoff"
+      ]
+    },
+    {
+      "word": "landplagen",
+      "num_guesses": 2,
+      "prior": 0.000017922668124255945,
+      "guesses": [
+        "hartbleies",
+        "landplagen"
+      ]
+    },
+    {
+      "word": "pekingente",
+      "num_guesses": 3,
+      "prior": 0.000013296565003626775,
+      "guesses": [
+        "hartbleies",
+        "defiziente",
+        "pekingente"
+      ]
+    },
+    {
+      "word": "seegfrörne",
+      "num_guesses": 3,
+      "prior": 9.830659166704698e-6,
+      "guesses": [
+        "hartbleies",
+        "kupfergrün",
+        "seegfrörne"
+      ]
+    },
+    {
+      "word": "illiberale",
+      "num_guesses": 2,
+      "prior": 0.00001571946633490746,
+      "guesses": [
+        "hartbleies",
+        "illiberale"
+      ]
+    },
+    {
+      "word": "gespenstig",
+      "num_guesses": 3,
+      "prior": 0.000018426709756993903,
+      "guesses": [
+        "hartbleies",
+        "sinfonisch",
+        "gespenstig"
+      ]
+    },
+    {
+      "word": "gegenstand",
+      "num_guesses": 3,
+      "prior": 0.00007156257335057258,
+      "guesses": [
+        "hartbleies",
+        "angedampft",
+        "gegenstand"
+      ]
+    },
+    {
+      "word": "entlohnten",
+      "num_guesses": 3,
+      "prior": 0.000020521154363013405,
+      "guesses": [
+        "hartbleies",
+        "fehldeuten",
+        "entlohnten"
+      ]
+    },
+    {
+      "word": "unterlasse",
+      "num_guesses": 2,
+      "prior": 0.000026496263728983363,
+      "guesses": [
+        "hartbleies",
+        "unterlasse"
+      ]
+    },
+    {
+      "word": "eurotunnel",
+      "num_guesses": 3,
+      "prior": 0.000013461416593775324,
+      "guesses": [
+        "hartbleies",
+        "zugekommen",
+        "eurotunnel"
+      ]
+    },
+    {
+      "word": "lebzeltens",
+      "num_guesses": 2,
+      "prior": 5.1850078985886625e-6,
+      "guesses": [
+        "hartbleies",
+        "lebzeltens"
+      ]
+    },
+    {
+      "word": "gelöschten",
+      "num_guesses": 3,
+      "prior": 0.00002311007816996165,
+      "guesses": [
+        "hartbleies",
+        "neuneckige",
+        "gelöschten"
+      ]
+    },
+    {
+      "word": "entriegele",
+      "num_guesses": 4,
+      "prior": 8.828246656793415e-6,
+      "guesses": [
+        "hartbleies",
+        "gekletzelt",
+        "entriegeln",
+        "entriegele"
+      ]
+    },
+    {
+      "word": "zischelten",
+      "num_guesses": 3,
+      "prior": 0.000015155182346986507,
+      "guesses": [
+        "hartbleies",
+        "flottestem",
+        "zischelten"
+      ]
+    },
+    {
+      "word": "verbauende",
+      "num_guesses": 3,
+      "prior": 9.834477641023016e-6,
+      "guesses": [
+        "hartbleies",
+        "organismus",
+        "verbauende"
+      ]
+    },
+    {
+      "word": "anredewort",
+      "num_guesses": 3,
+      "prior": 0.000010025331373508524,
+      "guesses": [
+        "hartbleies",
+        "zugezogene",
+        "anredewort"
+      ]
+    },
+    {
+      "word": "redseligem",
+      "num_guesses": 3,
+      "prior": 8.660402820192123e-6,
+      "guesses": [
+        "hartbleies",
+        "rempelnden",
+        "redseligem"
+      ]
+    },
+    {
+      "word": "abschworen",
+      "num_guesses": 4,
+      "prior": 0.000013322157384044545,
+      "guesses": [
+        "hartbleies",
+        "münzhaufen",
+        "abschwören",
+        "abschworen"
+      ]
+    },
+    {
+      "word": "apfelsafte",
+      "num_guesses": 4,
+      "prior": 6.297441763477686e-6,
+      "guesses": [
+        "hartbleies",
+        "gefressene",
+        "apfelsäfte",
+        "apfelsafte"
+      ]
+    },
+    {
+      "word": "glomerulum",
+      "num_guesses": 3,
+      "prior": 0.000015898587508414123,
+      "guesses": [
+        "hartbleies",
+        "plünderung",
+        "glomerulum"
+      ]
+    },
+    {
+      "word": "einklopfen",
+      "num_guesses": 3,
+      "prior": 0.00001079379572746176,
+      "guesses": [
+        "hartbleies",
+        "fliegendem",
+        "einklopfen"
+      ]
+    },
+    {
+      "word": "davontragt",
+      "num_guesses": 3,
+      "prior": 9.633767345550688e-6,
+      "guesses": [
+        "hartbleies",
+        "manufaktur",
+        "davontragt"
+      ]
+    },
+    {
+      "word": "detachiere",
+      "num_guesses": 3,
+      "prior": 6.6522740972378725e-6,
+      "guesses": [
+        "hartbleies",
+        "gefochtene",
+        "detachiere"
+      ]
+    },
+    {
+      "word": "kauffahrer",
+      "num_guesses": 3,
+      "prior": 0.000021656420108577192,
+      "guesses": [
+        "hartbleies",
+        "mahnwachen",
+        "kauffahrer"
+      ]
+    },
+    {
+      "word": "exaltation",
+      "num_guesses": 3,
+      "prior": 0.00002472877088586177,
+      "guesses": [
+        "hartbleies",
+        "deputation",
+        "exaltation"
+      ]
+    },
+    {
+      "word": "mitkämpfet",
+      "num_guesses": 3,
+      "prior": 5.347352084981968e-6,
+      "guesses": [
+        "hartbleies",
+        "dummköpfen",
+        "mitkämpfet"
+      ]
+    },
+    {
+      "word": "pastinaken",
+      "num_guesses": 3,
+      "prior": 0.000017824045671477746,
+      "guesses": [
+        "hartbleies",
+        "samtkissen",
+        "pastinaken"
+      ]
+    },
+    {
+      "word": "knopfauges",
+      "num_guesses": 3,
+      "prior": 5.472327772238993e-6,
+      "guesses": [
+        "hartbleies",
+        "sumpfgases",
+        "knopfauges"
+      ]
+    },
+    {
+      "word": "weißensees",
+      "num_guesses": 3,
+      "prior": 0.000010671412894355489,
+      "guesses": [
+        "hartbleies",
+        "genesendes",
+        "weißensees"
+      ]
+    },
+    {
+      "word": "ruiniertes",
+      "num_guesses": 3,
+      "prior": 0.000013306256387829307,
+      "guesses": [
+        "hartbleies",
+        "erigierten",
+        "ruiniertes"
+      ]
+    },
+    {
+      "word": "pietätvoll",
+      "num_guesses": 3,
+      "prior": 0.000021513043571688374,
+      "guesses": [
+        "hartbleies",
+        "mitteilung",
+        "pietätvoll"
+      ]
+    },
+    {
+      "word": "mißversteh",
+      "num_guesses": 3,
+      "prior": 0.000010947141836316684,
+      "guesses": [
+        "hartbleies",
+        "steinmetze",
+        "mißversteh"
+      ]
+    },
+    {
+      "word": "tapferster",
+      "num_guesses": 3,
+      "prior": 0.00001497184706059825,
+      "guesses": [
+        "hartbleies",
+        "ringfinger",
+        "tapferster"
+      ]
+    },
+    {
+      "word": "metergenau",
+      "num_guesses": 3,
+      "prior": 9.423854333428982e-6,
+      "guesses": [
+        "hartbleies",
+        "unterwerfe",
+        "metergenau"
+      ]
+    },
+    {
+      "word": "greisesten",
+      "num_guesses": 3,
+      "prior": 6.817048017595367e-6,
+      "guesses": [
+        "hartbleies",
+        "iterierten",
+        "greisesten"
+      ]
+    },
+    {
+      "word": "versklavte",
+      "num_guesses": 3,
+      "prior": 0.000017275562773347915,
+      "guesses": [
+        "hartbleies",
+        "verwaltest",
+        "versklavte"
+      ]
+    },
+    {
+      "word": "frauenarzt",
+      "num_guesses": 3,
+      "prior": 0.000024071180905108785,
+      "guesses": [
+        "hartbleies",
+        "unkrautart",
+        "frauenarzt"
+      ]
+    },
+    {
+      "word": "anbiedernd",
+      "num_guesses": 2,
+      "prior": 0.000014348887250070239,
+      "guesses": [
+        "hartbleies",
+        "anbiedernd"
+      ]
+    },
+    {
+      "word": "bergabhang",
+      "num_guesses": 3,
+      "prior": 0.00002038688104403465,
+      "guesses": [
+        "hartbleies",
+        "abrechnung",
+        "bergabhang"
+      ]
+    },
+    {
+      "word": "hinreissen",
+      "num_guesses": 3,
+      "prior": 0.000022430561165923348,
+      "guesses": [
+        "hartbleies",
+        "hesperiden",
+        "hinreissen"
+      ]
+    },
+    {
+      "word": "kritischem",
+      "num_guesses": 3,
+      "prior": 0.000028298467768598953,
+      "guesses": [
+        "hartbleies",
+        "zyklometer",
+        "kritischem"
+      ]
+    },
+    {
+      "word": "hauswartin",
+      "num_guesses": 3,
+      "prior": 9.457551931375684e-6,
+      "guesses": [
+        "hartbleies",
+        "hauswirtin",
+        "hauswartin"
+      ]
+    },
+    {
+      "word": "bekümmernd",
+      "num_guesses": 3,
+      "prior": 0.000011972557113120908,
+      "guesses": [
+        "hartbleies",
+        "nebenberuf",
+        "bekümmernd"
+      ]
+    },
+    {
+      "word": "kreissägen",
+      "num_guesses": 3,
+      "prior": 0.000019155927003854774,
+      "guesses": [
+        "hartbleies",
+        "priemenden",
+        "kreissägen"
+      ]
+    },
+    {
+      "word": "unsteteren",
+      "num_guesses": 3,
+      "prior": 7.630959766924638e-6,
+      "guesses": [
+        "hartbleies",
+        "gustometer",
+        "unsteteren"
+      ]
+    },
+    {
+      "word": "kampfhunds",
+      "num_guesses": 3,
+      "prior": 6.417583534322581e-6,
+      "guesses": [
+        "hartbleies",
+        "nachschuss",
+        "kampfhunds"
+      ]
+    },
+    {
+      "word": "steckender",
+      "num_guesses": 3,
+      "prior": 0.000015184835189567322,
+      "guesses": [
+        "hartbleies",
+        "entkernter",
+        "steckender"
+      ]
+    },
+    {
+      "word": "kandiertem",
+      "num_guesses": 3,
+      "prior": 0.000011100587278343728,
+      "guesses": [
+        "hartbleies",
+        "thematiken",
+        "kandiertem"
+      ]
+    },
+    {
+      "word": "holzkästen",
+      "num_guesses": 3,
+      "prior": 0.000018326562915224776,
+      "guesses": [
+        "hartbleies",
+        "holzstufen",
+        "holzkästen"
+      ]
+    },
+    {
+      "word": "erneuendem",
+      "num_guesses": 3,
+      "prior": 7.50588345032288e-6,
+      "guesses": [
+        "hartbleies",
+        "knurrendem",
+        "erneuendem"
+      ]
+    },
+    {
+      "word": "toupiertem",
+      "num_guesses": 3,
+      "prior": 9.175823895457152e-6,
+      "guesses": [
+        "hartbleies",
+        "grenzender",
+        "toupiertem"
+      ]
+    },
+    {
+      "word": "atomwaffen",
+      "num_guesses": 3,
+      "prior": 0.000031625989767754724,
+      "guesses": [
+        "hartbleies",
+        "ankämpften",
+        "atomwaffen"
+      ]
+    },
+    {
+      "word": "gesamtwort",
+      "num_guesses": 4,
+      "prior": 0.000010089858751473976,
+      "guesses": [
+        "hartbleies",
+        "ausposaunt",
+        "ersatzwort",
+        "gesamtwort"
+      ]
+    },
+    {
+      "word": "aufkündige",
+      "num_guesses": 3,
+      "prior": 0.000010553234461950296,
+      "guesses": [
+        "hartbleies",
+        "aufwändige",
+        "aufkündige"
+      ]
+    },
+    {
+      "word": "eingedeckt",
+      "num_guesses": 3,
+      "prior": 0.000025696254540803676,
+      "guesses": [
+        "hartbleies",
+        "defiziente",
+        "eingedeckt"
+      ]
+    },
+    {
+      "word": "geldbörsen",
+      "num_guesses": 2,
+      "prior": 0.000017569337702819827,
+      "guesses": [
+        "hartbleies",
+        "geldbörsen"
+      ]
+    },
+    {
+      "word": "umzulaufen",
+      "num_guesses": 3,
+      "prior": 0.00001250569195819954,
+      "guesses": [
+        "hartbleies",
+        "amoklaufen",
+        "umzulaufen"
+      ]
+    },
+    {
+      "word": "demaskiere",
+      "num_guesses": 3,
+      "prior": 8.93995965800689e-6,
+      "guesses": [
+        "hartbleies",
+        "erpressern",
+        "demaskiere"
+      ]
+    },
+    {
+      "word": "hochgräser",
+      "num_guesses": 3,
+      "prior": 8.789719772761858e-6,
+      "guesses": [
+        "hartbleies",
+        "hochhäuser",
+        "hochgräser"
+      ]
+    },
+    {
+      "word": "toskischer",
+      "num_guesses": 3,
+      "prior": 7.927951552479273e-6,
+      "guesses": [
+        "hartbleies",
+        "graskonsum",
+        "toskischer"
+      ]
+    },
+    {
+      "word": "binnenland",
+      "num_guesses": 3,
+      "prior": 0.000028459880530241267,
+      "guesses": [
+        "hartbleies",
+        "lindenbaum",
+        "binnenland"
+      ]
+    },
+    {
+      "word": "andromedas",
+      "num_guesses": 3,
+      "prior": 0.000013903653060898974,
+      "guesses": [
+        "hartbleies",
+        "akkordeons",
+        "andromedas"
+      ]
+    },
+    {
+      "word": "schlemmten",
+      "num_guesses": 4,
+      "prior": 0.000012405603898891816,
+      "guesses": [
+        "hartbleies",
+        "neuneckige",
+        "schleppten",
+        "schlemmten"
+      ]
+    },
+    {
+      "word": "zueigneten",
+      "num_guesses": 3,
+      "prior": 0.000014848728569797572,
+      "guesses": [
+        "hartbleies",
+        "genieteten",
+        "zueigneten"
+      ]
+    },
+    {
+      "word": "podcasting",
+      "num_guesses": 3,
+      "prior": 0.000014726321984808566,
+      "guesses": [
+        "hartbleies",
+        "apposition",
+        "podcasting"
+      ]
+    },
+    {
+      "word": "verhaspelt",
+      "num_guesses": 2,
+      "prior": 0.000014731630408552234,
+      "guesses": [
+        "hartbleies",
+        "verhaspelt"
+      ]
+    },
+    {
+      "word": "musikbogen",
+      "num_guesses": 2,
+      "prior": 0.000013677713718548998,
+      "guesses": [
+        "hartbleies",
+        "musikbogen"
+      ]
+    },
+    {
+      "word": "milliontel",
+      "num_guesses": 3,
+      "prior": 0.000019804318392816603,
+      "guesses": [
+        "hartbleies",
+        "konflikten",
+        "milliontel"
+      ]
+    },
+    {
+      "word": "alpenraums",
+      "num_guesses": 3,
+      "prior": 0.000014458750004109178,
+      "guesses": [
+        "hartbleies",
+        "aufsaugend",
+        "alpenraums"
+      ]
+    },
+    {
+      "word": "amtsträger",
+      "num_guesses": 3,
+      "prior": 0.00003198314033001023,
+      "guesses": [
+        "hartbleies",
+        "aufstauten",
+        "amtsträger"
+      ]
+    },
+    {
+      "word": "reinwäscht",
+      "num_guesses": 3,
+      "prior": 0.000011337101946231139,
+      "guesses": [
+        "hartbleies",
+        "unterfickt",
+        "reinwäscht"
+      ]
+    },
+    {
+      "word": "bezieherin",
+      "num_guesses": 3,
+      "prior": 0.000012444538299938398,
+      "guesses": [
+        "hartbleies",
+        "bewohnerin",
+        "bezieherin"
+      ]
+    },
+    {
+      "word": "kursbücher",
+      "num_guesses": 2,
+      "prior": 0.00001409912442170232,
+      "guesses": [
+        "hartbleies",
+        "kursbücher"
+      ]
+    },
+    {
+      "word": "ergossener",
+      "num_guesses": 3,
+      "prior": 0.000011800031547504979,
+      "guesses": [
+        "hartbleies",
+        "umgangston",
+        "ergossener"
+      ]
+    },
+    {
+      "word": "ungesundem",
+      "num_guesses": 3,
+      "prior": 0.000015790427658943302,
+      "guesses": [
+        "hartbleies",
+        "zuerkennen",
+        "ungesundem"
+      ]
+    },
+    {
+      "word": "meeräschen",
+      "num_guesses": 3,
+      "prior": 0.000014205880774838296,
+      "guesses": [
+        "hartbleies",
+        "emporgehen",
+        "meeräschen"
+      ]
+    },
+    {
+      "word": "manteltier",
+      "num_guesses": 2,
+      "prior": 8.12154399794656e-6,
+      "guesses": [
+        "hartbleies",
+        "manteltier"
+      ]
+    },
+    {
+      "word": "heilbuttes",
+      "num_guesses": 2,
+      "prior": 6.239657294997842e-6,
+      "guesses": [
+        "hartbleies",
+        "heilbuttes"
+      ]
+    },
+    {
+      "word": "holzfreier",
+      "num_guesses": 3,
+      "prior": 0.00001028212162728755,
+      "guesses": [
+        "hartbleies",
+        "bestimmung",
+        "holzfreier"
+      ]
+    },
+    {
+      "word": "phallokrat",
+      "num_guesses": 3,
+      "prior": 7.055873377821637e-6,
+      "guesses": [
+        "hartbleies",
+        "prachtvoll",
+        "phallokrat"
+      ]
+    },
+    {
+      "word": "patrouille",
+      "num_guesses": 2,
+      "prior": 0.000028876038487738722,
+      "guesses": [
+        "hartbleies",
+        "patrouille"
+      ]
+    },
+    {
+      "word": "tanzlokals",
+      "num_guesses": 3,
+      "prior": 0.00001118394655319104,
+      "guesses": [
+        "hartbleies",
+        "salzstocks",
+        "tanzlokals"
+      ]
+    },
+    {
+      "word": "provitamin",
+      "num_guesses": 3,
+      "prior": 0.00001796004178634053,
+      "guesses": [
+        "hartbleies",
+        "informatik",
+        "provitamin"
+      ]
+    },
+    {
+      "word": "rechtlosem",
+      "num_guesses": 3,
+      "prior": 9.660551115624979e-6,
+      "guesses": [
+        "hartbleies",
+        "enthülster",
+        "rechtlosem"
+      ]
+    },
+    {
+      "word": "nachtankte",
+      "num_guesses": 3,
+      "prior": 5.709542982722067e-6,
+      "guesses": [
+        "hartbleies",
+        "machohafte",
+        "nachtankte"
+      ]
+    },
+    {
+      "word": "jagdgruppe",
+      "num_guesses": 3,
+      "prior": 0.000014122530069369108,
+      "guesses": [
+        "hartbleies",
+        "dauerkrank",
+        "jagdgruppe"
+      ]
+    },
+    {
+      "word": "gefächelte",
+      "num_guesses": 3,
+      "prior": 6.167363756209383e-6,
+      "guesses": [
+        "hartbleies",
+        "beseufzten",
+        "gefächelte"
+      ]
+    },
+    {
+      "word": "pfeffriges",
+      "num_guesses": 4,
+      "prior": 7.646683031679513e-6,
+      "guesses": [
+        "hartbleies",
+        "genesendes",
+        "eiförmiges",
+        "pfeffriges"
+      ]
+    },
+    {
+      "word": "trauerflor",
+      "num_guesses": 3,
+      "prior": 0.000019662154202740426,
+      "guesses": [
+        "hartbleies",
+        "aufgetankt",
+        "trauerflor"
+      ]
+    },
+    {
+      "word": "zulässigem",
+      "num_guesses": 3,
+      "prior": 0.00001609319524587499,
+      "guesses": [
+        "hartbleies",
+        "sumpfinsel",
+        "zulässigem"
+      ]
+    },
+    {
+      "word": "gehäckselt",
+      "num_guesses": 3,
+      "prior": 0.000014562595157119128,
+      "guesses": [
+        "hartbleies",
+        "aufgetankt",
+        "gehäckselt"
+      ]
+    },
+    {
+      "word": "fortbliese",
+      "num_guesses": 2,
+      "prior": 5.709542982722067e-6,
+      "guesses": [
+        "hartbleies",
+        "fortbliese"
+      ]
+    },
+    {
+      "word": "abgestoßen",
+      "num_guesses": 3,
+      "prior": 0.00003185213189595304,
+      "guesses": [
+        "hartbleies",
+        "mordsangst",
+        "abgestoßen"
+      ]
+    },
+    {
+      "word": "stilisiert",
+      "num_guesses": 2,
+      "prior": 0.00003159906176604498,
+      "guesses": [
+        "hartbleies",
+        "stilisiert"
+      ]
+    },
+    {
+      "word": "watzmannes",
+      "num_guesses": 3,
+      "prior": 7.214203472724128e-6,
+      "guesses": [
+        "hartbleies",
+        "zaungastes",
+        "watzmannes"
+      ]
+    },
+    {
+      "word": "abprotzend",
+      "num_guesses": 3,
+      "prior": 5.898173745365315e-6,
+      "guesses": [
+        "hartbleies",
+        "zugeknüpft",
+        "abprotzend"
+      ]
+    },
+    {
+      "word": "festgastes",
+      "num_guesses": 3,
+      "prior": 5.9273740530636876e-6,
+      "guesses": [
+        "hartbleies",
+        "gestanztes",
+        "festgastes"
+      ]
+    },
+    {
+      "word": "büffeljagd",
+      "num_guesses": 3,
+      "prior": 0.00001463605212221485,
+      "guesses": [
+        "hartbleies",
+        "dunkelblau",
+        "büffeljagd"
+      ]
+    },
+    {
+      "word": "überkommet",
+      "num_guesses": 3,
+      "prior": 0.00001039306050407789,
+      "guesses": [
+        "hartbleies",
+        "geträumter",
+        "überkommet"
+      ]
+    },
+    {
+      "word": "verleimtes",
+      "num_guesses": 3,
+      "prior": 9.826834750387676e-6,
+      "guesses": [
+        "hartbleies",
+        "mitgewirkt",
+        "verleimtes"
+      ]
+    },
+    {
+      "word": "hintergeht",
+      "num_guesses": 3,
+      "prior": 0.000019454350777877984,
+      "guesses": [
+        "hartbleies",
+        "dazugehört",
+        "hintergeht"
+      ]
+    },
+    {
+      "word": "zulächelnd",
+      "num_guesses": 3,
+      "prior": 0.000013281688010936677,
+      "guesses": [
+        "hartbleies",
+        "lymphgefäß",
+        "zulächelnd"
+      ]
+    },
+    {
+      "word": "urerlebnis",
+      "num_guesses": 3,
+      "prior": 0.000019696895940528736,
+      "guesses": [
+        "hartbleies",
+        "eilenburgs",
+        "urerlebnis"
+      ]
+    },
+    {
+      "word": "getestetes",
+      "num_guesses": 3,
+      "prior": 0.000011957755710062117,
+      "guesses": [
+        "hartbleies",
+        "käsefondue",
+        "getestetes"
+      ]
+    },
+    {
+      "word": "ballotiert",
+      "num_guesses": 3,
+      "prior": 0.000011164488130975487,
+      "guesses": [
+        "hartbleies",
+        "balanciert",
+        "ballotiert"
+      ]
+    },
+    {
+      "word": "klinisches",
+      "num_guesses": 3,
+      "prior": 0.00003019485115527829,
+      "guesses": [
+        "hartbleies",
+        "wildpilzen",
+        "klinisches"
+      ]
+    },
+    {
+      "word": "besuchtest",
+      "num_guesses": 3,
+      "prior": 0.000013511582744260402,
+      "guesses": [
+        "hartbleies",
+        "bemäntelte",
+        "besuchtest"
+      ]
+    },
+    {
+      "word": "timbrierte",
+      "num_guesses": 3,
+      "prior": 0.000011188505383423997,
+      "guesses": [
+        "hartbleies",
+        "gebieterin",
+        "timbrierte"
+      ]
+    },
+    {
+      "word": "endkampfes",
+      "num_guesses": 3,
+      "prior": 0.000014535112354479533,
+      "guesses": [
+        "hartbleies",
+        "anschauung",
+        "endkampfes"
+      ]
+    },
+    {
+      "word": "mitmischte",
+      "num_guesses": 3,
+      "prior": 0.000012762008499879493,
+      "guesses": [
+        "hartbleies",
+        "semitisten",
+        "mitmischte"
+      ]
+    },
+    {
+      "word": "klitschend",
+      "num_guesses": 3,
+      "prior": 6.817048017595367e-6,
+      "guesses": [
+        "hartbleies",
+        "glitschend",
+        "klitschend"
+      ]
+    },
+    {
+      "word": "friedendes",
+      "num_guesses": 4,
+      "prior": 6.227839677381557e-6,
+      "guesses": [
+        "hartbleies",
+        "genesendes",
+        "frierendes",
+        "friedendes"
+      ]
+    },
+    {
+      "word": "bestrebtem",
+      "num_guesses": 3,
+      "prior": 5.5868309608044535e-6,
+      "guesses": [
+        "hartbleies",
+        "büroräumen",
+        "bestrebtem"
+      ]
+    },
+    {
+      "word": "hauptflurs",
+      "num_guesses": 2,
+      "prior": 7.50588345032288e-6,
+      "guesses": [
+        "hartbleies",
+        "hauptflurs"
+      ]
+    },
+    {
+      "word": "sackkarren",
+      "num_guesses": 3,
+      "prior": 0.000012218459962972403,
+      "guesses": [
+        "hartbleies",
+        "maueranker",
+        "sackkarren"
+      ]
+    },
+    {
+      "word": "angegebene",
+      "num_guesses": 3,
+      "prior": 0.00004631157488335891,
+      "guesses": [
+        "hartbleies",
+        "erwägenden",
+        "angegebene"
+      ]
+    },
+    {
+      "word": "hirntumors",
+      "num_guesses": 2,
+      "prior": 0.000017434111430910996,
+      "guesses": [
+        "hartbleies",
+        "hirntumors"
+      ]
+    },
+    {
+      "word": "anschüttet",
+      "num_guesses": 3,
+      "prior": 7.825980182575217e-6,
+      "guesses": [
+        "hartbleies",
+        "aufmachtet",
+        "anschüttet"
+      ]
+    },
+    {
+      "word": "fabulieren",
+      "num_guesses": 2,
+      "prior": 0.000021844980155958068,
+      "guesses": [
+        "hartbleies",
+        "fabulieren"
+      ]
+    },
+    {
+      "word": "centmünzen",
+      "num_guesses": 3,
+      "prior": 9.450850777787388e-6,
+      "guesses": [
+        "hartbleies",
+        "fettmengen",
+        "centmünzen"
+      ]
+    },
+    {
+      "word": "bohnenbrei",
+      "num_guesses": 3,
+      "prior": 0.000011922636878066886,
+      "guesses": [
+        "hartbleies",
+        "plärrenden",
+        "bohnenbrei"
+      ]
+    },
+    {
+      "word": "anpackende",
+      "num_guesses": 3,
+      "prior": 0.000010414386031121669,
+      "guesses": [
+        "hartbleies",
+        "zuwankende",
+        "anpackende"
+      ]
+    },
+    {
+      "word": "befürchten",
+      "num_guesses": 3,
+      "prior": 0.00004741832885177328,
+      "guesses": [
+        "hartbleies",
+        "leerrohren",
+        "befürchten"
+      ]
+    },
+    {
+      "word": "nackenhaut",
+      "num_guesses": 3,
+      "prior": 0.000014925028967297592,
+      "guesses": [
+        "hartbleies",
+        "machohafte",
+        "nackenhaut"
+      ]
+    },
+    {
+      "word": "hufkratzer",
+      "num_guesses": 3,
+      "prior": 0.000010204316051524818,
+      "guesses": [
+        "hartbleies",
+        "hochtragen",
+        "hufkratzer"
+      ]
+    },
+    {
+      "word": "imprimaten",
+      "num_guesses": 3,
+      "prior": 6.936718413129934e-6,
+      "guesses": [
+        "hartbleies",
+        "mitkonnten",
+        "imprimaten"
+      ]
+    },
+    {
+      "word": "emporstieg",
+      "num_guesses": 3,
+      "prior": 0.000025517117615207907,
+      "guesses": [
+        "hartbleies",
+        "respektier",
+        "emporstieg"
+      ]
+    },
+    {
+      "word": "verseuchen",
+      "num_guesses": 3,
+      "prior": 0.00001830054450717613,
+      "guesses": [
+        "hartbleies",
+        "vorwarnung",
+        "verseuchen"
+      ]
+    },
+    {
+      "word": "schummelnd",
+      "num_guesses": 3,
+      "prior": 5.25704950799938e-6,
+      "guesses": [
+        "hartbleies",
+        "schunkelnd",
+        "schummelnd"
+      ]
+    },
+    {
+      "word": "anpeilende",
+      "num_guesses": 2,
+      "prior": 6.679390244150382e-6,
+      "guesses": [
+        "hartbleies",
+        "anpeilende"
+      ]
+    },
+    {
+      "word": "vermaschte",
+      "num_guesses": 3,
+      "prior": 0.000013485244175976656,
+      "guesses": [
+        "hartbleies",
+        "farnkraute",
+        "vermaschte"
+      ]
+    },
+    {
+      "word": "geldspende",
+      "num_guesses": 3,
+      "prior": 0.000017774619603622386,
+      "guesses": [
+        "hartbleies",
+        "volksseele",
+        "geldspende"
+      ]
+    },
+    {
+      "word": "solothurns",
+      "num_guesses": 3,
+      "prior": 0.00001781820717356816,
+      "guesses": [
+        "hartbleies",
+        "rollstuhls",
+        "solothurns"
+      ]
+    },
+    {
+      "word": "chilipaste",
+      "num_guesses": 3,
+      "prior": 0.000011384238835233329,
+      "guesses": [
+        "hartbleies",
+        "umgesteckt",
+        "chilipaste"
+      ]
+    },
+    {
+      "word": "konimetern",
+      "num_guesses": 3,
+      "prior": 6.997310311093022e-6,
+      "guesses": [
+        "hartbleies",
+        "penetriert",
+        "konimetern"
+      ]
+    },
+    {
+      "word": "acetanilid",
+      "num_guesses": 3,
+      "prior": 0.00002072892827048289,
+      "guesses": [
+        "hartbleies",
+        "aufteilung",
+        "acetanilid"
+      ]
+    },
+    {
+      "word": "stahlrohre",
+      "num_guesses": 3,
+      "prior": 0.000020655337076651118,
+      "guesses": [
+        "hartbleies",
+        "stocksaure",
+        "stahlrohre"
+      ]
+    },
+    {
+      "word": "dickliches",
+      "num_guesses": 3,
+      "prior": 0.000014756176968132142,
+      "guesses": [
+        "hartbleies",
+        "wildpilzen",
+        "dickliches"
+      ]
+    },
+    {
+      "word": "homophonem",
+      "num_guesses": 3,
+      "prior": 0.000011760184449336712,
+      "guesses": [
+        "hartbleies",
+        "hochkommen",
+        "homophonem"
+      ]
+    },
+    {
+      "word": "messingene",
+      "num_guesses": 3,
+      "prior": 0.000021532254869900077,
+      "guesses": [
+        "hartbleies",
+        "einsendung",
+        "messingene"
+      ]
+    },
+    {
+      "word": "versorgter",
+      "num_guesses": 3,
+      "prior": 0.00001668979503800503,
+      "guesses": [
+        "hartbleies",
+        "vorturnten",
+        "versorgter"
+      ]
+    },
+    {
+      "word": "miethauses",
+      "num_guesses": 2,
+      "prior": 0.000014419749400328458,
+      "guesses": [
+        "hartbleies",
+        "miethauses"
+      ]
+    },
+    {
+      "word": "dankopfern",
+      "num_guesses": 3,
+      "prior": 0.000013029727988489747,
+      "guesses": [
+        "hartbleies",
+        "dauerkrank",
+        "dankopfern"
+      ]
+    },
+    {
+      "word": "frontfahrt",
+      "num_guesses": 3,
+      "prior": 0.000010205961378287488,
+      "guesses": [
+        "hartbleies",
+        "krampfhaft",
+        "frontfahrt"
+      ]
+    },
+    {
+      "word": "formstabil",
+      "num_guesses": 2,
+      "prior": 0.00001406052720550267,
+      "guesses": [
+        "hartbleies",
+        "formstabil"
+      ]
+    },
+    {
+      "word": "postiertes",
+      "num_guesses": 3,
+      "prior": 8.774720163529894e-6,
+      "guesses": [
+        "hartbleies",
+        "seufzendes",
+        "postiertes"
+      ]
+    },
+    {
+      "word": "fehlurteil",
+      "num_guesses": 3,
+      "prior": 0.000021103590638109105,
+      "guesses": [
+        "hartbleies",
+        "erträumend",
+        "fehlurteil"
+      ]
+    },
+    {
+      "word": "spitzbarte",
+      "num_guesses": 3,
+      "prior": 9.225627765581001e-6,
+      "guesses": [
+        "hartbleies",
+        "bestimmbar",
+        "spitzbarte"
+      ]
+    },
+    {
+      "word": "abstrahlte",
+      "num_guesses": 2,
+      "prior": 0.000014945114631230318,
+      "guesses": [
+        "hartbleies",
+        "abstrahlte"
+      ]
+    },
+    {
+      "word": "berüschten",
+      "num_guesses": 2,
+      "prior": 7.566734981082843e-6,
+      "guesses": [
+        "hartbleies",
+        "berüschten"
+      ]
+    },
+    {
+      "word": "dünkelhaft",
+      "num_guesses": 3,
+      "prior": 0.00001710180099372274,
+      "guesses": [
+        "hartbleies",
+        "kochplatte",
+        "dünkelhaft"
+      ]
+    },
+    {
+      "word": "mauerwerke",
+      "num_guesses": 2,
+      "prior": 0.000019471761290037927,
+      "guesses": [
+        "hartbleies",
+        "mauerwerke"
+      ]
+    },
+    {
+      "word": "augenstern",
+      "num_guesses": 3,
+      "prior": 0.00001862160045677666,
+      "guesses": [
+        "hartbleies",
+        "aufgetankt",
+        "augenstern"
+      ]
+    },
+    {
+      "word": "wettkampfs",
+      "num_guesses": 2,
+      "prior": 0.00001786662932139205,
+      "guesses": [
+        "hartbleies",
+        "wettkampfs"
+      ]
+    },
+    {
+      "word": "billigster",
+      "num_guesses": 2,
+      "prior": 0.00001974374074306673,
+      "guesses": [
+        "hartbleies",
+        "billigster"
+      ]
+    },
+    {
+      "word": "stirnbands",
+      "num_guesses": 3,
+      "prior": 8.9033423350542e-6,
+      "guesses": [
+        "hartbleies",
+        "bräutigams",
+        "stirnbands"
+      ]
+    },
+    {
+      "word": "rauchwerks",
+      "num_guesses": 2,
+      "prior": 0.000011648941301893268,
+      "guesses": [
+        "hartbleies",
+        "rauchwerks"
+      ]
+    },
+    {
+      "word": "zerfetztem",
+      "num_guesses": 3,
+      "prior": 0.000015201580747686625,
+      "guesses": [
+        "hartbleies",
+        "kümmernder",
+        "zerfetztem"
+      ]
+    },
+    {
+      "word": "eisenbaues",
+      "num_guesses": 2,
+      "prior": 0.000013983903546472417,
+      "guesses": [
+        "hartbleies",
+        "eisenbaues"
+      ]
+    },
+    {
+      "word": "kreppsohle",
+      "num_guesses": 3,
+      "prior": 9.168259314770318e-6,
+      "guesses": [
+        "hartbleies",
+        "meckernden",
+        "kreppsohle"
+      ]
+    },
+    {
+      "word": "regenwinde",
+      "num_guesses": 3,
+      "prior": 0.00001330397860169198,
+      "guesses": [
+        "hartbleies",
+        "ergreifend",
+        "regenwinde"
+      ]
+    },
+    {
+      "word": "linksufrig",
+      "num_guesses": 3,
+      "prior": 0.00001170936635477562,
+      "guesses": [
+        "hartbleies",
+        "illusionär",
+        "linksufrig"
+      ]
+    },
+    {
+      "word": "holzärmste",
+      "num_guesses": 3,
+      "prior": 5.675555192061604e-6,
+      "guesses": [
+        "hartbleies",
+        "holzgerüst",
+        "holzärmste"
+      ]
+    },
+    {
+      "word": "färberwaid",
+      "num_guesses": 3,
+      "prior": 0.000012717977165714444,
+      "guesses": [
+        "hartbleies",
+        "birkenbaum",
+        "färberwaid"
+      ]
+    },
+    {
+      "word": "tamponiert",
+      "num_guesses": 3,
+      "prior": 0.00002119156546635847,
+      "guesses": [
+        "hartbleies",
+        "pontifikat",
+        "tamponiert"
+      ]
+    },
+    {
+      "word": "radiologie",
+      "num_guesses": 2,
+      "prior": 0.000026580951273041048,
+      "guesses": [
+        "hartbleies",
+        "radiologie"
+      ]
+    },
+    {
+      "word": "weißlichem",
+      "num_guesses": 3,
+      "prior": 0.000019047489247923078,
+      "guesses": [
+        "hartbleies",
+        "weidlichem",
+        "weißlichem"
+      ]
+    },
+    {
+      "word": "waldteiche",
+      "num_guesses": 3,
+      "prior": 0.000010598877942117545,
+      "guesses": [
+        "hartbleies",
+        "dahineilte",
+        "waldteiche"
+      ]
+    },
+    {
+      "word": "steckdosen",
+      "num_guesses": 3,
+      "prior": 0.000021708658556568486,
+      "guesses": [
+        "hartbleies",
+        "dokumenten",
+        "steckdosen"
+      ]
+    },
+    {
+      "word": "verführtet",
+      "num_guesses": 4,
+      "prior": 8.64448285437659e-6,
+      "guesses": [
+        "hartbleies",
+        "kurzformen",
+        "verführter",
+        "verführtet"
+      ]
+    },
+    {
+      "word": "blaßgelbem",
+      "num_guesses": 3,
+      "prior": 0.000011359696710423612,
+      "guesses": [
+        "hartbleies",
+        "abmalenden",
+        "blaßgelbem"
+      ]
+    },
+    {
+      "word": "marmoriert",
+      "num_guesses": 3,
+      "prior": 0.00002137592065132875,
+      "guesses": [
+        "hartbleies",
+        "karfreitag",
+        "marmoriert"
+      ]
+    },
+    {
+      "word": "belebterem",
+      "num_guesses": 3,
+      "prior": 8.225495221867403e-6,
+      "guesses": [
+        "hartbleies",
+        "bestimmten",
+        "belebterem"
+      ]
+    },
+    {
+      "word": "baumrinden",
+      "num_guesses": 2,
+      "prior": 0.00002008707633354371,
+      "guesses": [
+        "hartbleies",
+        "baumrinden"
+      ]
+    },
+    {
+      "word": "naturdämon",
+      "num_guesses": 3,
+      "prior": 0.000010810833129490923,
+      "guesses": [
+        "hartbleies",
+        "manufaktur",
+        "naturdämon"
+      ]
+    },
+    {
+      "word": "ersatzteil",
+      "num_guesses": 3,
+      "prior": 0.000019663228683069773,
+      "guesses": [
+        "hartbleies",
+        "grossstadt",
+        "ersatzteil"
+      ]
+    },
+    {
+      "word": "diasysteme",
+      "num_guesses": 3,
+      "prior": 0.000010328011651866334,
+      "guesses": [
+        "hartbleies",
+        "sendepause",
+        "diasysteme"
+      ]
+    },
+    {
+      "word": "shortboard",
+      "num_guesses": 3,
+      "prior": 7.278915214352634e-6,
+      "guesses": [
+        "hartbleies",
+        "anschraubt",
+        "shortboard"
+      ]
+    },
+    {
+      "word": "verwirkend",
+      "num_guesses": 4,
+      "prior": 6.974834545794047e-6,
+      "guesses": [
+        "hartbleies",
+        "metzingens",
+        "verwirrend",
+        "verwirkend"
+      ]
+    },
+    {
+      "word": "anfälliges",
+      "num_guesses": 2,
+      "prior": 0.000012802784656794548,
+      "guesses": [
+        "hartbleies",
+        "anfälliges"
+      ]
+    },
+    {
+      "word": "verworrnem",
+      "num_guesses": 3,
+      "prior": 0.000010135925291508519,
+      "guesses": [
+        "hartbleies",
+        "rumorender",
+        "verworrnem"
+      ]
+    },
+    {
+      "word": "nackichten",
+      "num_guesses": 3,
+      "prior": 8.31699683034838e-6,
+      "guesses": [
+        "hartbleies",
+        "mainächten",
+        "nackichten"
+      ]
+    },
+    {
+      "word": "aussenraum",
+      "num_guesses": 3,
+      "prior": 0.000015562636768958066,
+      "guesses": [
+        "hartbleies",
+        "kopfanhang",
+        "aussenraum"
+      ]
+    },
+    {
+      "word": "veranlaßte",
+      "num_guesses": 2,
+      "prior": 0.000041994390688551055,
+      "guesses": [
+        "hartbleies",
+        "veranlaßte"
+      ]
+    },
+    {
+      "word": "aufzeichne",
+      "num_guesses": 3,
+      "prior": 0.000014689713553369403,
+      "guesses": [
+        "hartbleies",
+        "geheimfach",
+        "aufzeichne"
+      ]
+    },
+    {
+      "word": "geärgerter",
+      "num_guesses": 4,
+      "prior": 9.106824906829131e-6,
+      "guesses": [
+        "hartbleies",
+        "knurrendem",
+        "erörterter",
+        "geärgerter"
+      ]
+    },
+    {
+      "word": "abgeätzter",
+      "num_guesses": 4,
+      "prior": 6.643136323586304e-6,
+      "guesses": [
+        "hartbleies",
+        "geknurrten",
+        "waffengang",
+        "abgeätzter"
+      ]
+    },
+    {
+      "word": "entzogener",
+      "num_guesses": 3,
+      "prior": 0.000018120432286921855,
+      "guesses": [
+        "hartbleies",
+        "getrennter",
+        "entzogener"
+      ]
+    },
+    {
+      "word": "sportsocke",
+      "num_guesses": 3,
+      "prior": 7.693092473304353e-6,
+      "guesses": [
+        "hartbleies",
+        "grossräume",
+        "sportsocke"
+      ]
+    },
+    {
+      "word": "präziseren",
+      "num_guesses": 3,
+      "prior": 0.000021275490913627063,
+      "guesses": [
+        "hartbleies",
+        "ruminieren",
+        "präziseren"
+      ]
+    },
+    {
+      "word": "umzufahren",
+      "num_guesses": 3,
+      "prior": 0.000010414386031121669,
+      "guesses": [
+        "hartbleies",
+        "amokfahrer",
+        "umzufahren"
+      ]
+    },
+    {
+      "word": "entgangene",
+      "num_guesses": 3,
+      "prior": 0.000023229951374355426,
+      "guesses": [
+        "hartbleies",
+        "angedampft",
+        "entgangene"
+      ]
+    },
+    {
+      "word": "weinküfers",
+      "num_guesses": 3,
+      "prior": 7.259743090533844e-6,
+      "guesses": [
+        "hartbleies",
+        "kindermund",
+        "weinküfers"
+      ]
+    },
+    {
+      "word": "gegenwände",
+      "num_guesses": 3,
+      "prior": 9.375852578326029e-6,
+      "guesses": [
+        "hartbleies",
+        "empfundene",
+        "gegenwände"
+      ]
+    },
+    {
+      "word": "einpflegen",
+      "num_guesses": 3,
+      "prior": 0.000013979233682833759,
+      "guesses": [
+        "hartbleies",
+        "einzulegen",
+        "einpflegen"
+      ]
+    },
+    {
+      "word": "hedonismus",
+      "num_guesses": 2,
+      "prior": 0.000024187678228924283,
+      "guesses": [
+        "hartbleies",
+        "hedonismus"
+      ]
+    },
+    {
+      "word": "erbrausend",
+      "num_guesses": 3,
+      "prior": 0.000010594632162436248,
+      "guesses": [
+        "hartbleies",
+        "erfassbare",
+        "erbrausend"
+      ]
+    },
+    {
+      "word": "fleischige",
+      "num_guesses": 3,
+      "prior": 0.00002622485808257714,
+      "guesses": [
+        "hartbleies",
+        "schleimige",
+        "fleischige"
+      ]
+    },
+    {
+      "word": "vertrinket",
+      "num_guesses": 3,
+      "prior": 8.813508266295723e-6,
+      "guesses": [
+        "hartbleies",
+        "montierter",
+        "vertrinket"
+      ]
+    },
+    {
+      "word": "prosodisch",
+      "num_guesses": 3,
+      "prior": 0.000018913988453859145,
+      "guesses": [
+        "hartbleies",
+        "fischgrund",
+        "prosodisch"
+      ]
+    },
+    {
+      "word": "myospasmen",
+      "num_guesses": 3,
+      "prior": 6.881906769500121e-6,
+      "guesses": [
+        "hartbleies",
+        "auspuffgas",
+        "myospasmen"
+      ]
+    },
+    {
+      "word": "gelderwerb",
+      "num_guesses": 3,
+      "prior": 0.000022552525878935714,
+      "guesses": [
+        "hartbleies",
+        "befremdung",
+        "gelderwerb"
+      ]
+    },
+    {
+      "word": "zuzufassen",
+      "num_guesses": 3,
+      "prior": 0.000012807430803105841,
+      "guesses": [
+        "hartbleies",
+        "auspuffgas",
+        "zuzufassen"
+      ]
+    },
+    {
+      "word": "erstauntes",
+      "num_guesses": 3,
+      "prior": 0.000020260319374993536,
+      "guesses": [
+        "hartbleies",
+        "erstarrtes",
+        "erstauntes"
+      ]
+    },
+    {
+      "word": "stoffstück",
+      "num_guesses": 3,
+      "prior": 0.000014643821762755867,
+      "guesses": [
+        "hartbleies",
+        "kunststoff",
+        "stoffstück"
+      ]
+    },
+    {
+      "word": "anbequemst",
+      "num_guesses": 3,
+      "prior": 5.9273740530636876e-6,
+      "guesses": [
+        "hartbleies",
+        "abgesteckt",
+        "anbequemst"
+      ]
+    },
+    {
+      "word": "geendigten",
+      "num_guesses": 4,
+      "prior": 0.00001802643931615946,
+      "guesses": [
+        "hartbleies",
+        "entkeimten",
+        "geeinigten",
+        "geendigten"
+      ]
+    },
+    {
+      "word": "bösewichte",
+      "num_guesses": 3,
+      "prior": 0.000021719174455593814,
+      "guesses": [
+        "hartbleies",
+        "geschnackt",
+        "bösewichte"
+      ]
+    },
+    {
+      "word": "sämtlichem",
+      "num_guesses": 3,
+      "prior": 0.000015553499291219285,
+      "guesses": [
+        "hartbleies",
+        "sittlichen",
+        "sämtlichem"
+      ]
+    },
+    {
+      "word": "vorschlaft",
+      "num_guesses": 3,
+      "prior": 6.5293491464164155e-6,
+      "guesses": [
+        "hartbleies",
+        "lordschaft",
+        "vorschlaft"
+      ]
+    },
+    {
+      "word": "kalkuliere",
+      "num_guesses": 2,
+      "prior": 0.000016108331437399755,
+      "guesses": [
+        "hartbleies",
+        "kalkuliere"
+      ]
+    },
+    {
+      "word": "quadrillen",
+      "num_guesses": 3,
+      "prior": 0.000016420421274424045,
+      "guesses": [
+        "hartbleies",
+        "originärem",
+        "quadrillen"
+      ]
+    },
+    {
+      "word": "einschoben",
+      "num_guesses": 3,
+      "prior": 0.000015833251722287592,
+      "guesses": [
+        "hartbleies",
+        "südindiens",
+        "einschoben"
+      ]
+    },
+    {
+      "word": "wetterndes",
+      "num_guesses": 3,
+      "prior": 6.297441763477686e-6,
+      "guesses": [
+        "hartbleies",
+        "zustürmten",
+        "wetterndes"
+      ]
+    },
+    {
+      "word": "nützlichen",
+      "num_guesses": 2,
+      "prior": 0.00003953421397610723,
+      "guesses": [
+        "hartbleies",
+        "nützlichen"
+      ]
+    },
+    {
+      "word": "psychogene",
+      "num_guesses": 3,
+      "prior": 0.000025116115674627467,
+      "guesses": [
+        "hartbleies",
+        "konsensehe",
+        "psychogene"
+      ]
+    },
+    {
+      "word": "einlenkend",
+      "num_guesses": 3,
+      "prior": 0.00001747161689907876,
+      "guesses": [
+        "hartbleies",
+        "empfangene",
+        "einlenkend"
+      ]
+    },
+    {
+      "word": "aufgefaßte",
+      "num_guesses": 3,
+      "prior": 0.00002366505533223754,
+      "guesses": [
+        "hartbleies",
+        "angedampft",
+        "aufgefaßte"
+      ]
+    },
+    {
+      "word": "rumpsteaks",
+      "num_guesses": 3,
+      "prior": 0.000011188505383423997,
+      "guesses": [
+        "hartbleies",
+        "apartments",
+        "rumpsteaks"
+      ]
+    },
+    {
+      "word": "myeloische",
+      "num_guesses": 3,
+      "prior": 0.00002195252958781262,
+      "guesses": [
+        "hartbleies",
+        "vollendung",
+        "myeloische"
+      ]
+    },
+    {
+      "word": "unsagbaren",
+      "num_guesses": 3,
+      "prior": 0.000023356581853088685,
+      "guesses": [
+        "hartbleies",
+        "anzumassen",
+        "unsagbaren"
+      ]
+    },
+    {
+      "word": "vertrittst",
+      "num_guesses": 2,
+      "prior": 0.000015181141235680434,
+      "guesses": [
+        "hartbleies",
+        "vertrittst"
+      ]
+    },
+    {
+      "word": "maulhelden",
+      "num_guesses": 3,
+      "prior": 0.000017298940886006892,
+      "guesses": [
+        "hartbleies",
+        "nachhelfen",
+        "maulhelden"
+      ]
+    },
+    {
+      "word": "rasanteres",
+      "num_guesses": 3,
+      "prior": 6.997310311093022e-6,
+      "guesses": [
+        "hartbleies",
+        "tapfereres",
+        "rasanteres"
+      ]
+    },
+    {
+      "word": "versatilem",
+      "num_guesses": 3,
+      "prior": 8.096782732049877e-6,
+      "guesses": [
+        "hartbleies",
+        "bestimmten",
+        "versatilem"
+      ]
+    },
+    {
+      "word": "schlämmten",
+      "num_guesses": 3,
+      "prior": 9.01954828365355e-6,
+      "guesses": [
+        "hartbleies",
+        "umflochten",
+        "schlämmten"
+      ]
+    },
+    {
+      "word": "begeiferte",
+      "num_guesses": 3,
+      "prior": 0.000011309966398121007,
+      "guesses": [
+        "hartbleies",
+        "gebieterin",
+        "begeiferte"
+      ]
+    },
+    {
+      "word": "potpourris",
+      "num_guesses": 3,
+      "prior": 0.000016842233415566483,
+      "guesses": [
+        "hartbleies",
+        "präputiums",
+        "potpourris"
+      ]
+    },
+    {
+      "word": "bockbieren",
+      "num_guesses": 3,
+      "prior": 6.374938004866861e-6,
+      "guesses": [
+        "hartbleies",
+        "weinbeeren",
+        "bockbieren"
+      ]
+    },
+    {
+      "word": "reinhängte",
+      "num_guesses": 3,
+      "prior": 7.187655545503523e-6,
+      "guesses": [
+        "hartbleies",
+        "niedrigere",
+        "reinhängte"
+      ]
+    },
+    {
+      "word": "tröstenden",
+      "num_guesses": 3,
+      "prior": 0.000023734854622893768,
+      "guesses": [
+        "hartbleies",
+        "entkernter",
+        "tröstenden"
+      ]
+    },
+    {
+      "word": "einnickten",
+      "num_guesses": 3,
+      "prior": 9.549432550414823e-6,
+      "guesses": [
+        "hartbleies",
+        "entkeimten",
+        "einnickten"
+      ]
+    },
+    {
+      "word": "indolenter",
+      "num_guesses": 3,
+      "prior": 0.000015030694657918099,
+      "guesses": [
+        "hartbleies",
+        "urinierend",
+        "indolenter"
+      ]
+    },
+    {
+      "word": "verliesset",
+      "num_guesses": 3,
+      "prior": 8.201971017953578e-6,
+      "guesses": [
+        "hartbleies",
+        "kursleiter",
+        "verliesset"
+      ]
+    },
+    {
+      "word": "turnbeutel",
+      "num_guesses": 3,
+      "prior": 0.000013256936491692347,
+      "guesses": [
+        "hartbleies",
+        "namentlich",
+        "turnbeutel"
+      ]
+    },
+    {
+      "word": "zerknickst",
+      "num_guesses": 3,
+      "prior": 6.670400453492043e-6,
+      "guesses": [
+        "hartbleies",
+        "zerspringt",
+        "zerknickst"
+      ]
+    },
+    {
+      "word": "bergflachs",
+      "num_guesses": 2,
+      "prior": 0.00001087793021715137,
+      "guesses": [
+        "hartbleies",
+        "bergflachs"
+      ]
+    },
+    {
+      "word": "forsythien",
+      "num_guesses": 3,
+      "prior": 0.000014828852653431412,
+      "guesses": [
+        "hartbleies",
+        "durchstieß",
+        "forsythien"
+      ]
+    },
+    {
+      "word": "hitzkopfes",
+      "num_guesses": 3,
+      "prior": 8.97323586241323e-6,
+      "guesses": [
+        "hartbleies",
+        "häufigstes",
+        "hitzkopfes"
+      ]
+    },
+    {
+      "word": "amendement",
+      "num_guesses": 3,
+      "prior": 0.00002845520030437503,
+      "guesses": [
+        "hartbleies",
+        "angedampft",
+        "amendement"
+      ]
+    },
+    {
+      "word": "verladenes",
+      "num_guesses": 2,
+      "prior": 9.564407092605436e-6,
+      "guesses": [
+        "hartbleies",
+        "verladenes"
+      ]
+    },
+    {
+      "word": "züngelnden",
+      "num_guesses": 3,
+      "prior": 0.000018842473427241905,
+      "guesses": [
+        "hartbleies",
+        "gummiknopf",
+        "züngelnden"
+      ]
+    },
+    {
+      "word": "preisenden",
+      "num_guesses": 3,
+      "prior": 0.000018788079936783836,
+      "guesses": [
+        "hartbleies",
+        "priemenden",
+        "preisenden"
+      ]
+    },
+    {
+      "word": "sprödestem",
+      "num_guesses": 3,
+      "prior": 6.913440309413489e-6,
+      "guesses": [
+        "hartbleies",
+        "vorturnten",
+        "sprödestem"
+      ]
+    },
+    {
+      "word": "hybridauto",
+      "num_guesses": 2,
+      "prior": 9.891055551398651e-6,
+      "guesses": [
+        "hartbleies",
+        "hybridauto"
+      ]
+    },
+    {
+      "word": "hockergrab",
+      "num_guesses": 2,
+      "prior": 0.000012799461846936826,
+      "guesses": [
+        "hartbleies",
+        "hockergrab"
+      ]
+    },
+    {
+      "word": "wüstenluft",
+      "num_guesses": 3,
+      "prior": 0.000014295020673836835,
+      "guesses": [
+        "hartbleies",
+        "kultstätte",
+        "wüstenluft"
+      ]
+    },
+    {
+      "word": "strammsten",
+      "num_guesses": 3,
+      "prior": 0.000011730176410971729,
+      "guesses": [
+        "hartbleies",
+        "straftaten",
+        "strammsten"
+      ]
+    },
+    {
+      "word": "repetierst",
+      "num_guesses": 3,
+      "prior": 5.99795792286645e-6,
+      "guesses": [
+        "hartbleies",
+        "resistente",
+        "repetierst"
+      ]
+    },
+    {
+      "word": "lachsroter",
+      "num_guesses": 3,
+      "prior": 9.193378210019535e-6,
+      "guesses": [
+        "hartbleies",
+        "raushalten",
+        "lachsroter"
+      ]
+    },
+    {
+      "word": "unübliches",
+      "num_guesses": 3,
+      "prior": 0.00001471644312840921,
+      "guesses": [
+        "hartbleies",
+        "biblisches",
+        "unübliches"
+      ]
+    },
+    {
+      "word": "einmaische",
+      "num_guesses": 3,
+      "prior": 6.05212435023612e-6,
+      "guesses": [
+        "hartbleies",
+        "dämpfungen",
+        "einmaische"
+      ]
+    },
+    {
+      "word": "stuhldrang",
+      "num_guesses": 3,
+      "prior": 0.000020310693897106434,
+      "guesses": [
+        "hartbleies",
+        "schlagwort",
+        "stuhldrang"
+      ]
+    },
+    {
+      "word": "kalkfelsen",
+      "num_guesses": 3,
+      "prior": 0.000024282397432164976,
+      "guesses": [
+        "hartbleies",
+        "salzlecken",
+        "kalkfelsen"
+      ]
+    },
+    {
+      "word": "kalkigeren",
+      "num_guesses": 3,
+      "prior": 9.989748110277557e-6,
+      "guesses": [
+        "hartbleies",
+        "gebundener",
+        "kalkigeren"
+      ]
+    },
+    {
+      "word": "geflochten",
+      "num_guesses": 3,
+      "prior": 0.000030162040877097368,
+      "guesses": [
+        "hartbleies",
+        "fehldeuten",
+        "geflochten"
+      ]
+    },
+    {
+      "word": "otologikum",
+      "num_guesses": 3,
+      "prior": 5.325345773930841e-6,
+      "guesses": [
+        "hartbleies",
+        "liquidität",
+        "otologikum"
+      ]
+    },
+    {
+      "word": "attackiert",
+      "num_guesses": 3,
+      "prior": 0.000027690343152316252,
+      "guesses": [
+        "hartbleies",
+        "kompetitiv",
+        "attackiert"
+      ]
+    },
+    {
+      "word": "klackernde",
+      "num_guesses": 3,
+      "prior": 0.000010362288504094194,
+      "guesses": [
+        "hartbleies",
+        "feldkaplan",
+        "klackernde"
+      ]
+    },
+    {
+      "word": "hinabgingt",
+      "num_guesses": 3,
+      "prior": 5.640733205576084e-6,
+      "guesses": [
+        "hartbleies",
+        "hinabkommt",
+        "hinabgingt"
+      ]
+    },
+    {
+      "word": "urinierend",
+      "num_guesses": 3,
+      "prior": 7.882254262139328e-6,
+      "guesses": [
+        "hartbleies",
+        "ergreifend",
+        "urinierend"
+      ]
+    },
+    {
+      "word": "geschlupft",
+      "num_guesses": 3,
+      "prior": 9.955467869740284e-6,
+      "guesses": [
+        "hartbleies",
+        "dokumenten",
+        "geschlupft"
+      ]
+    },
+    {
+      "word": "vermiziden",
+      "num_guesses": 3,
+      "prior": 6.606073277357964e-6,
+      "guesses": [
+        "hartbleies",
+        "verengernd",
+        "vermiziden"
+      ]
+    },
+    {
+      "word": "postgebühr",
+      "num_guesses": 3,
+      "prior": 0.0000160185447761231,
+      "guesses": [
+        "hartbleies",
+        "spätherbst",
+        "postgebühr"
+      ]
+    },
+    {
+      "word": "kenternden",
+      "num_guesses": 3,
+      "prior": 9.731220989085986e-6,
+      "guesses": [
+        "hartbleies",
+        "entzerrtem",
+        "kenternden"
+      ]
+    },
+    {
+      "word": "besegeltes",
+      "num_guesses": 3,
+      "prior": 6.889844399338124e-6,
+      "guesses": [
+        "hartbleies",
+        "bocksprung",
+        "besegeltes"
+      ]
+    },
+    {
+      "word": "enzianblau",
+      "num_guesses": 3,
+      "prior": 0.000010444551304185675,
+      "guesses": [
+        "hartbleies",
+        "lindenbaum",
+        "enzianblau"
+      ]
+    },
+    {
+      "word": "sternekoch",
+      "num_guesses": 3,
+      "prior": 0.000014279173446317574,
+      "guesses": [
+        "hartbleies",
+        "essenräume",
+        "sternekoch"
+      ]
+    },
+    {
+      "word": "simonisten",
+      "num_guesses": 4,
+      "prior": 0.00002208042974020977,
+      "guesses": [
+        "hartbleies",
+        "fungizidem",
+        "optimisten",
+        "simonisten"
+      ]
+    },
+    {
+      "word": "zielsensor",
+      "num_guesses": 3,
+      "prior": 5.511559946282413e-6,
+      "guesses": [
+        "hartbleies",
+        "aussendete",
+        "zielsensor"
+      ]
+    },
+    {
+      "word": "erklärtest",
+      "num_guesses": 3,
+      "prior": 0.000013996016083952353,
+      "guesses": [
+        "hartbleies",
+        "entfesselt",
+        "erklärtest"
+      ]
+    },
+    {
+      "word": "vorschlägt",
+      "num_guesses": 2,
+      "prior": 0.000033104366913065205,
+      "guesses": [
+        "hartbleies",
+        "vorschlägt"
+      ]
+    },
+    {
+      "word": "holzkasten",
+      "num_guesses": 2,
+      "prior": 0.00002246079303753721,
+      "guesses": [
+        "hartbleies",
+        "holzkasten"
+      ]
+    },
+    {
+      "word": "abolierten",
+      "num_guesses": 3,
+      "prior": 6.0784962616886626e-6,
+      "guesses": [
+        "hartbleies",
+        "aburteilen",
+        "abolierten"
+      ]
+    },
+    {
+      "word": "beschörest",
+      "num_guesses": 3,
+      "prior": 6.857871583414696e-6,
+      "guesses": [
+        "hartbleies",
+        "begehrtest",
+        "beschörest"
+      ]
+    },
+    {
+      "word": "sperrholze",
+      "num_guesses": 3,
+      "prior": 5.95601004375543e-6,
+      "guesses": [
+        "hartbleies",
+        "meckernden",
+        "sperrholze"
+      ]
+    },
+    {
+      "word": "biozönosen",
+      "num_guesses": 3,
+      "prior": 0.00001860032945198926,
+      "guesses": [
+        "hartbleies",
+        "musikbogen",
+        "biozönosen"
+      ]
+    },
+    {
+      "word": "hinreitest",
+      "num_guesses": 4,
+      "prior": 6.5681593047838365e-6,
+      "guesses": [
+        "hartbleies",
+        "heiserkeit",
+        "wenigstens",
+        "hinreitest"
+      ]
+    },
+    {
+      "word": "fristender",
+      "num_guesses": 3,
+      "prior": 7.105567539063995e-6,
+      "guesses": [
+        "hartbleies",
+        "iterierten",
+        "fristender"
+      ]
+    },
+    {
+      "word": "anbeginnes",
+      "num_guesses": 3,
+      "prior": 6.417583534322581e-6,
+      "guesses": [
+        "hartbleies",
+        "eisenbaues",
+        "anbeginnes"
+      ]
+    },
+    {
+      "word": "stadtteils",
+      "num_guesses": 2,
+      "prior": 0.00002450831302807282,
+      "guesses": [
+        "hartbleies",
+        "stadtteils"
+      ]
+    },
+    {
+      "word": "fiedelnden",
+      "num_guesses": 3,
+      "prior": 0.000010958302289559211,
+      "guesses": [
+        "hartbleies",
+        "kampfwägen",
+        "fiedelnden"
+      ]
+    },
+    {
+      "word": "entenpfuhl",
+      "num_guesses": 3,
+      "prior": 0.000013274799164899904,
+      "guesses": [
+        "hartbleies",
+        "umweltzone",
+        "entenpfuhl"
+      ]
+    },
+    {
+      "word": "teepflanze",
+      "num_guesses": 3,
+      "prior": 0.000013089846042429492,
+      "guesses": [
+        "hartbleies",
+        "entfallene",
+        "teepflanze"
+      ]
+    },
+    {
+      "word": "obstschale",
+      "num_guesses": 2,
+      "prior": 0.000017051858072185612,
+      "guesses": [
+        "hartbleies",
+        "obstschale"
+      ]
+    },
+    {
+      "word": "anwendende",
+      "num_guesses": 3,
+      "prior": 0.00001554892248828103,
+      "guesses": [
+        "hartbleies",
+        "zuwankende",
+        "anwendende"
+      ]
+    },
+    {
+      "word": "geldstücks",
+      "num_guesses": 3,
+      "prior": 0.000013271924587071844,
+      "guesses": [
+        "hartbleies",
+        "ostflügels",
+        "geldstücks"
+      ]
+    },
+    {
+      "word": "axtschlage",
+      "num_guesses": 3,
+      "prior": 6.8977456178141035e-6,
+      "guesses": [
+        "hartbleies",
+        "ausschanke",
+        "axtschlage"
+      ]
+    },
+    {
+      "word": "gasbränden",
+      "num_guesses": 3,
+      "prior": 7.012135254022335e-6,
+      "guesses": [
+        "hartbleies",
+        "sandgruben",
+        "gasbränden"
+      ]
+    },
+    {
+      "word": "samtröcken",
+      "num_guesses": 3,
+      "prior": 8.092626270550615e-6,
+      "guesses": [
+        "hartbleies",
+        "emigranten",
+        "samtröcken"
+      ]
+    },
+    {
+      "word": "rückkehrte",
+      "num_guesses": 3,
+      "prior": 0.000012431863349950394,
+      "guesses": [
+        "hartbleies",
+        "ungeborene",
+        "rückkehrte"
+      ]
+    },
+    {
+      "word": "verfallung",
+      "num_guesses": 3,
+      "prior": 0.000011451438125902333,
+      "guesses": [
+        "hartbleies",
+        "verkalkung",
+        "verfallung"
+      ]
+    },
+    {
+      "word": "fortsegelt",
+      "num_guesses": 3,
+      "prior": 8.48188900207968e-6,
+      "guesses": [
+        "hartbleies",
+        "fortsegeln",
+        "fortsegelt"
+      ]
+    },
+    {
+      "word": "schnellste",
+      "num_guesses": 2,
+      "prior": 0.000030362534450268565,
+      "guesses": [
+        "hartbleies",
+        "schnellste"
+      ]
+    },
+    {
+      "word": "hörbarerer",
+      "num_guesses": 3,
+      "prior": 5.568392172446873e-6,
+      "guesses": [
+        "hartbleies",
+        "hörbareren",
+        "hörbarerer"
+      ]
+    },
+    {
+      "word": "gesprungen",
+      "num_guesses": 3,
+      "prior": 0.00003414307023440377,
+      "guesses": [
+        "hartbleies",
+        "supererden",
+        "gesprungen"
+      ]
+    },
+    {
+      "word": "onyxfarben",
+      "num_guesses": 3,
+      "prior": 5.775187163694959e-6,
+      "guesses": [
+        "hartbleies",
+        "mondflügen",
+        "onyxfarben"
+      ]
+    },
+    {
+      "word": "salzreiche",
+      "num_guesses": 3,
+      "prior": 0.00001584062764007254,
+      "guesses": [
+        "hartbleies",
+        "malerische",
+        "salzreiche"
+      ]
+    },
+    {
+      "word": "tapezieret",
+      "num_guesses": 3,
+      "prior": 6.944408807204867e-6,
+      "guesses": [
+        "hartbleies",
+        "koreanerin",
+        "tapezieret"
+      ]
+    },
+    {
+      "word": "verleihend",
+      "num_guesses": 3,
+      "prior": 0.000017783192919851524,
+      "guesses": [
+        "hartbleies",
+        "verleihung",
+        "verleihend"
+      ]
+    },
+    {
+      "word": "zerreichen",
+      "num_guesses": 3,
+      "prior": 0.0000116537829250544,
+      "guesses": [
+        "hartbleies",
+        "kichernder",
+        "zerreichen"
+      ]
+    },
+    {
+      "word": "redigierte",
+      "num_guesses": 4,
+      "prior": 0.00002681176878304653,
+      "guesses": [
+        "hartbleies",
+        "moderieren",
+        "reduzierte",
+        "redigierte"
+      ]
+    },
+    {
+      "word": "offizinell",
+      "num_guesses": 3,
+      "prior": 0.000018118445597054506,
+      "guesses": [
+        "hartbleies",
+        "zwölfeckig",
+        "offizinell"
+      ]
+    },
+    {
+      "word": "rennmäusen",
+      "num_guesses": 3,
+      "prior": 0.000010366927644218202,
+      "guesses": [
+        "hartbleies",
+        "supererden",
+        "rennmäusen"
+      ]
+    },
+    {
+      "word": "melsungens",
+      "num_guesses": 3,
+      "prior": 8.080105386004372e-6,
+      "guesses": [
+        "hartbleies",
+        "flugwesens",
+        "melsungens"
+      ]
+    },
+    {
+      "word": "aufgerufen",
+      "num_guesses": 3,
+      "prior": 0.00004032925133603903,
+      "guesses": [
+        "hartbleies",
+        "knurrendem",
+        "aufgerufen"
+      ]
+    },
+    {
+      "word": "angebrüllt",
+      "num_guesses": 2,
+      "prior": 0.000019418337617623124,
+      "guesses": [
+        "hartbleies",
+        "angebrüllt"
+      ]
+    },
+    {
+      "word": "generikums",
+      "num_guesses": 3,
+      "prior": 0.000010605939159537715,
+      "guesses": [
+        "hartbleies",
+        "kindermund",
+        "generikums"
+      ]
+    },
+    {
+      "word": "aktmalerei",
+      "num_guesses": 2,
+      "prior": 0.00001295456953110742,
+      "guesses": [
+        "hartbleies",
+        "aktmalerei"
+      ]
+    },
+    {
+      "word": "bierbänken",
+      "num_guesses": 3,
+      "prior": 0.000012786803599433523,
+      "guesses": [
+        "hartbleies",
+        "beurteilen",
+        "bierbänken"
+      ]
+    },
+    {
+      "word": "quirlenden",
+      "num_guesses": 3,
+      "prior": 0.000013952024658944904,
+      "guesses": [
+        "hartbleies",
+        "ungelenkem",
+        "quirlenden"
+      ]
+    },
+    {
+      "word": "imputation",
+      "num_guesses": 3,
+      "prior": 0.000020081263496869685,
+      "guesses": [
+        "hartbleies",
+        "motivation",
+        "imputation"
+      ]
+    },
+    {
+      "word": "berussende",
+      "num_guesses": 2,
+      "prior": 5.98410567810882e-6,
+      "guesses": [
+        "hartbleies",
+        "berussende"
+      ]
+    },
+    {
+      "word": "straßenkot",
+      "num_guesses": 3,
+      "prior": 0.00001526060362423031,
+      "guesses": [
+        "hartbleies",
+        "konzertant",
+        "straßenkot"
+      ]
+    },
+    {
+      "word": "wegkippend",
+      "num_guesses": 3,
+      "prior": 5.209466568901167e-6,
+      "guesses": [
+        "hartbleies",
+        "epigenetik",
+        "wegkippend"
+      ]
+    },
+    {
+      "word": "destruktor",
+      "num_guesses": 3,
+      "prior": 0.000016240267035668067,
+      "guesses": [
+        "hartbleies",
+        "verkümmern",
+        "destruktor"
+      ]
+    },
+    {
+      "word": "gemantelte",
+      "num_guesses": 3,
+      "prior": 6.873932348572018e-6,
+      "guesses": [
+        "hartbleies",
+        "totenhemde",
+        "gemantelte"
+      ]
+    },
+    {
+      "word": "plinkerten",
+      "num_guesses": 4,
+      "prior": 6.905610798594249e-6,
+      "guesses": [
+        "hartbleies",
+        "urinierend",
+        "klinkerten",
+        "plinkerten"
+      ]
+    },
+    {
+      "word": "ausborgten",
+      "num_guesses": 3,
+      "prior": 8.828246656793415e-6,
+      "guesses": [
+        "hartbleies",
+        "abstraktum",
+        "ausborgten"
+      ]
+    },
+    {
+      "word": "finstreres",
+      "num_guesses": 3,
+      "prior": 7.1607094987862484e-6,
+      "guesses": [
+        "hartbleies",
+        "jungtieres",
+        "finstreres"
+      ]
+    },
+    {
+      "word": "hellwaches",
+      "num_guesses": 2,
+      "prior": 0.000010558983197193846,
+      "guesses": [
+        "hartbleies",
+        "hellwaches"
+      ]
+    },
+    {
+      "word": "verdutzend",
+      "num_guesses": 3,
+      "prior": 6.0387641219768605e-6,
+      "guesses": [
+        "hartbleies",
+        "wundertüte",
+        "verdutzend"
+      ]
+    },
+    {
+      "word": "epilierend",
+      "num_guesses": 3,
+      "prior": 5.209466568901167e-6,
+      "guesses": [
+        "hartbleies",
+        "empfundene",
+        "epilierend"
+      ]
+    },
+    {
+      "word": "umgehender",
+      "num_guesses": 3,
+      "prior": 0.000018448483314753904,
+      "guesses": [
+        "hartbleies",
+        "rumorenden",
+        "umgehender"
+      ]
+    },
+    {
+      "word": "kammgarnes",
+      "num_guesses": 3,
+      "prior": 7.37790028192609e-6,
+      "guesses": [
+        "hartbleies",
+        "gasdruckes",
+        "kammgarnes"
+      ]
+    },
+    {
+      "word": "gradierter",
+      "num_guesses": 4,
+      "prior": 0.000012376079029209395,
+      "guesses": [
+        "hartbleies",
+        "geenterter",
+        "gravierter",
+        "gradierter"
+      ]
+    },
+    {
+      "word": "schnüffele",
+      "num_guesses": 3,
+      "prior": 0.000010743367625069824,
+      "guesses": [
+        "hartbleies",
+        "mackensens",
+        "schnüffele"
+      ]
+    },
+    {
+      "word": "kehllauten",
+      "num_guesses": 3,
+      "prior": 0.000014157794427766145,
+      "guesses": [
+        "hartbleies",
+        "ungehalten",
+        "kehllauten"
+      ]
+    },
+    {
+      "word": "wepsischen",
+      "num_guesses": 3,
+      "prior": 0.000013189227027114173,
+      "guesses": [
+        "hartbleies",
+        "spezifikum",
+        "wepsischen"
+      ]
+    },
+    {
+      "word": "umgebogene",
+      "num_guesses": 2,
+      "prior": 0.00002118811337917381,
+      "guesses": [
+        "hartbleies",
+        "umgebogene"
+      ]
+    },
+    {
+      "word": "hilfsfonds",
+      "num_guesses": 2,
+      "prior": 0.000018907988618611048,
+      "guesses": [
+        "hartbleies",
+        "hilfsfonds"
+      ]
+    },
+    {
+      "word": "gastrechte",
+      "num_guesses": 2,
+      "prior": 0.000011072235934849125,
+      "guesses": [
+        "hartbleies",
+        "gastrechte"
+      ]
+    },
+    {
+      "word": "fehlgreife",
+      "num_guesses": 3,
+      "prior": 9.617135796444308e-6,
+      "guesses": [
+        "hartbleies",
+        "logenreihe",
+        "fehlgreife"
+      ]
+    },
+    {
+      "word": "ochsentour",
+      "num_guesses": 3,
+      "prior": 0.000015685416417542494,
+      "guesses": [
+        "hartbleies",
+        "fungosität",
+        "ochsentour"
+      ]
+    },
+    {
+      "word": "obsiegende",
+      "num_guesses": 2,
+      "prior": 0.00001806195817652985,
+      "guesses": [
+        "hartbleies",
+        "obsiegende"
+      ]
+    },
+    {
+      "word": "unterhalts",
+      "num_guesses": 2,
+      "prior": 0.00002866898534400644,
+      "guesses": [
+        "hartbleies",
+        "unterhalts"
+      ]
+    },
+    {
+      "word": "belauschen",
+      "num_guesses": 2,
+      "prior": 0.000027317399021222618,
+      "guesses": [
+        "hartbleies",
+        "belauschen"
+      ]
+    },
+    {
+      "word": "augenlicht",
+      "num_guesses": 3,
+      "prior": 0.000025680887181984488,
+      "guesses": [
+        "hartbleies",
+        "einhaltung",
+        "augenlicht"
+      ]
+    },
+    {
+      "word": "durchrührt",
+      "num_guesses": 3,
+      "prior": 0.000013545147674893845,
+      "guesses": [
+        "hartbleies",
+        "klärgruben",
+        "durchrührt"
+      ]
+    },
+    {
+      "word": "metallurge",
+      "num_guesses": 3,
+      "prior": 0.000013572603567196105,
+      "guesses": [
+        "hartbleies",
+        "metallware",
+        "metallurge"
+      ]
+    },
+    {
+      "word": "beschäumte",
+      "num_guesses": 3,
+      "prior": 9.658501348600667e-6,
+      "guesses": [
+        "hartbleies",
+        "bemäntelte",
+        "beschäumte"
+      ]
+    },
+    {
+      "word": "päpstliche",
+      "num_guesses": 3,
+      "prior": 0.00003980374484366727,
+      "guesses": [
+        "hartbleies",
+        "punktsiege",
+        "päpstliche"
+      ]
+    },
+    {
+      "word": "songtexten",
+      "num_guesses": 3,
+      "prior": 0.000013751858847933587,
+      "guesses": [
+        "hartbleies",
+        "dokumenten",
+        "songtexten"
+      ]
+    },
+    {
+      "word": "antäuschte",
+      "num_guesses": 3,
+      "prior": 8.109201168854127e-6,
+      "guesses": [
+        "hartbleies",
+        "aussandtet",
+        "antäuschte"
+      ]
+    },
+    {
+      "word": "umgliedern",
+      "num_guesses": 3,
+      "prior": 9.150510892014216e-6,
+      "guesses": [
+        "hartbleies",
+        "empfundene",
+        "umgliedern"
+      ]
+    },
+    {
+      "word": "mischender",
+      "num_guesses": 3,
+      "prior": 0.000011867371079175212,
+      "guesses": [
+        "hartbleies",
+        "modegecken",
+        "mischender"
+      ]
+    },
+    {
+      "word": "chinaäpfel",
+      "num_guesses": 3,
+      "prior": 5.549705871114713e-6,
+      "guesses": [
+        "hartbleies",
+        "chinaapfel",
+        "chinaäpfel"
+      ]
+    },
+    {
+      "word": "autoptisch",
+      "num_guesses": 3,
+      "prior": 0.000021902432045448555,
+      "guesses": [
+        "hartbleies",
+        "pontifikat",
+        "autoptisch"
+      ]
+    },
+    {
+      "word": "marktvogts",
+      "num_guesses": 3,
+      "prior": 7.194329331885193e-6,
+      "guesses": [
+        "hartbleies",
+        "darmtrakts",
+        "marktvogts"
+      ]
+    },
+    {
+      "word": "adaptierte",
+      "num_guesses": 3,
+      "prior": 0.000022251701759456783,
+      "guesses": [
+        "hartbleies",
+        "ankaufende",
+        "adaptierte"
+      ]
+    },
+    {
+      "word": "abgezäunte",
+      "num_guesses": 3,
+      "prior": 0.000010356090031881324,
+      "guesses": [
+        "hartbleies",
+        "anzukaufen",
+        "abgezäunte"
+      ]
+    },
+    {
+      "word": "benzinofen",
+      "num_guesses": 3,
+      "prior": 7.240366275591861e-6,
+      "guesses": [
+        "hartbleies",
+        "einbezogen",
+        "benzinofen"
+      ]
+    },
+    {
+      "word": "überragtem",
+      "num_guesses": 4,
+      "prior": 7.1607094987862484e-6,
+      "guesses": [
+        "hartbleies",
+        "geknurrten",
+        "überragter",
+        "überragtem"
+      ]
+    },
+    {
+      "word": "flirtendem",
+      "num_guesses": 3,
+      "prior": 7.041414499344773e-6,
+      "guesses": [
+        "hartbleies",
+        "urinierend",
+        "flirtendem"
+      ]
+    },
+    {
+      "word": "abbekommen",
+      "num_guesses": 3,
+      "prior": 0.000026700975004476195,
+      "guesses": [
+        "hartbleies",
+        "anzufangen",
+        "abbekommen"
+      ]
+    },
+    {
+      "word": "osmaninnen",
+      "num_guesses": 3,
+      "prior": 6.606073277357964e-6,
+      "guesses": [
+        "hartbleies",
+        "invasionen",
+        "osmaninnen"
+      ]
+    },
+    {
+      "word": "mitwandern",
+      "num_guesses": 3,
+      "prior": 0.000013944953178038153,
+      "guesses": [
+        "hartbleies",
+        "kompetitiv",
+        "mitwandern"
+      ]
+    },
+    {
+      "word": "haselieren",
+      "num_guesses": 2,
+      "prior": 8.741355241938472e-6,
+      "guesses": [
+        "hartbleies",
+        "haselieren"
+      ]
+    },
+    {
+      "word": "vermachend",
+      "num_guesses": 3,
+      "prior": 7.50588345032288e-6,
+      "guesses": [
+        "hartbleies",
+        "verfahrene",
+        "vermachend"
+      ]
+    },
+    {
+      "word": "tapferstes",
+      "num_guesses": 3,
+      "prior": 8.364925961299647e-6,
+      "guesses": [
+        "hartbleies",
+        "tagewerkes",
+        "tapferstes"
+      ]
+    },
+    {
+      "word": "lämmerlein",
+      "num_guesses": 4,
+      "prior": 9.317395073330305e-6,
+      "guesses": [
+        "hartbleies",
+        "empfundene",
+        "kämmerlein",
+        "lämmerlein"
+      ]
+    },
+    {
+      "word": "julihälfte",
+      "num_guesses": 3,
+      "prior": 0.000017216049581456727,
+      "guesses": [
+        "hartbleies",
+        "mitfühlend",
+        "julihälfte"
+      ]
+    },
+    {
+      "word": "eichbäumen",
+      "num_guesses": 3,
+      "prior": 0.000014726321984808566,
+      "guesses": [
+        "hartbleies",
+        "weißbuchen",
+        "eichbäumen"
+      ]
+    },
+    {
+      "word": "xylotheken",
+      "num_guesses": 3,
+      "prior": 6.0784962616886626e-6,
+      "guesses": [
+        "hartbleies",
+        "leuchteten",
+        "xylotheken"
+      ]
+    },
+    {
+      "word": "proximalem",
+      "num_guesses": 3,
+      "prior": 0.000015914198439407566,
+      "guesses": [
+        "hartbleies",
+        "originärem",
+        "proximalem"
+      ]
+    },
+    {
+      "word": "durchsägen",
+      "num_guesses": 2,
+      "prior": 0.000018262520890757647,
+      "guesses": [
+        "hartbleies",
+        "durchsägen"
+      ]
+    },
+    {
+      "word": "zersetzend",
+      "num_guesses": 3,
+      "prior": 0.000024844318331312724,
+      "guesses": [
+        "hartbleies",
+        "vorsprunge",
+        "zersetzend"
+      ]
+    },
+    {
+      "word": "nachhalles",
+      "num_guesses": 3,
+      "prior": 0.000010366927644218202,
+      "guesses": [
+        "hartbleies",
+        "filmmoguln",
+        "nachhalles"
+      ]
+    },
+    {
+      "word": "verwöhnten",
+      "num_guesses": 4,
+      "prior": 0.000026462323600153508,
+      "guesses": [
+        "hartbleies",
+        "kurzformen",
+        "verhängten",
+        "verwöhnten"
+      ]
+    },
+    {
+      "word": "waschbaren",
+      "num_guesses": 3,
+      "prior": 0.000014200179826836547,
+      "guesses": [
+        "hartbleies",
+        "baumhäuser",
+        "waschbaren"
+      ]
+    },
+    {
+      "word": "energiepaß",
+      "num_guesses": 3,
+      "prior": 7.854318812790884e-6,
+      "guesses": [
+        "hartbleies",
+        "armenierin",
+        "energiepaß"
+      ]
+    },
+    {
+      "word": "rollstuhle",
+      "num_guesses": 3,
+      "prior": 0.000011051976622353122,
+      "guesses": [
+        "hartbleies",
+        "schlummert",
+        "rollstuhle"
+      ]
+    },
+    {
+      "word": "grabenrand",
+      "num_guesses": 3,
+      "prior": 0.00001904342028555901,
+      "guesses": [
+        "hartbleies",
+        "frauenhand",
+        "grabenrand"
+      ]
+    },
+    {
+      "word": "knochenjob",
+      "num_guesses": 3,
+      "prior": 0.000012533295403822662,
+      "guesses": [
+        "hartbleies",
+        "jugendbuch",
+        "knochenjob"
+      ]
+    },
+    {
+      "word": "scheißboot",
+      "num_guesses": 3,
+      "prior": 6.967277827561159e-6,
+      "guesses": [
+        "hartbleies",
+        "beschimpft",
+        "scheißboot"
+      ]
+    },
+    {
+      "word": "geringelte",
+      "num_guesses": 3,
+      "prior": 0.000018428102636307446,
+      "guesses": [
+        "hartbleies",
+        "geriegelte",
+        "geringelte"
+      ]
+    },
+    {
+      "word": "entschlief",
+      "num_guesses": 2,
+      "prior": 0.000023965868430995706,
+      "guesses": [
+        "hartbleies",
+        "entschlief"
+      ]
+    },
+    {
+      "word": "laufstalls",
+      "num_guesses": 3,
+      "prior": 9.006025661671823e-6,
+      "guesses": [
+        "hartbleies",
+        "salzstocks",
+        "laufstalls"
+      ]
+    },
+    {
+      "word": "zollwesens",
+      "num_guesses": 3,
+      "prior": 0.00001986244425937062,
+      "guesses": [
+        "hartbleies",
+        "flugwesens",
+        "zollwesens"
+      ]
+    },
+    {
+      "word": "spotpreise",
+      "num_guesses": 3,
+      "prior": 0.000011259345718515603,
+      "guesses": [
+        "hartbleies",
+        "mietpreise",
+        "spotpreise"
+      ]
+    },
+    {
+      "word": "wegbliesen",
+      "num_guesses": 3,
+      "prior": 7.577591173493254e-6,
+      "guesses": [
+        "hartbleies",
+        "beispielen",
+        "wegbliesen"
+      ]
+    },
+    {
+      "word": "nachtregen",
+      "num_guesses": 3,
+      "prior": 0.000012743115732331521,
+      "guesses": [
+        "hartbleies",
+        "tachometer",
+        "nachtregen"
+      ]
+    },
+    {
+      "word": "verimpften",
+      "num_guesses": 3,
+      "prior": 0.000017569899526103883,
+      "guesses": [
+        "hartbleies",
+        "meckernder",
+        "verimpften"
+      ]
+    },
+    {
+      "word": "kohlblatts",
+      "num_guesses": 2,
+      "prior": 5.941761052599829e-6,
+      "guesses": [
+        "hartbleies",
+        "kohlblatts"
+      ]
+    },
+    {
+      "word": "umkränzend",
+      "num_guesses": 3,
+      "prior": 9.713244472830018e-6,
+      "guesses": [
+        "hartbleies",
+        "kupfergrün",
+        "umkränzend"
+      ]
+    },
+    {
+      "word": "schäfflern",
+      "num_guesses": 4,
+      "prior": 8.233277161261451e-6,
+      "guesses": [
+        "hartbleies",
+        "sonderkurs",
+        "schlüpfern",
+        "schäfflern"
+      ]
+    },
+    {
+      "word": "buchsbaums",
+      "num_guesses": 3,
+      "prior": 0.000011791735938308022,
+      "guesses": [
+        "hartbleies",
+        "buschmanns",
+        "buchsbaums"
+      ]
+    },
+    {
+      "word": "hallstatts",
+      "num_guesses": 2,
+      "prior": 0.000010223990328858526,
+      "guesses": [
+        "hartbleies",
+        "hallstatts"
+      ]
+    },
+    {
+      "word": "juridicums",
+      "num_guesses": 3,
+      "prior": 8.488773661311785e-6,
+      "guesses": [
+        "hartbleies",
+        "zirkoniums",
+        "juridicums"
+      ]
+    },
+    {
+      "word": "riechhirne",
+      "num_guesses": 3,
+      "prior": 6.374938004866861e-6,
+      "guesses": [
+        "hartbleies",
+        "wiederkehr",
+        "riechhirne"
+      ]
+    },
+    {
+      "word": "blankaales",
+      "num_guesses": 3,
+      "prior": 6.385706542627898e-6,
+      "guesses": [
+        "hartbleies",
+        "blackboxes",
+        "blankaales"
+      ]
+    },
+    {
+      "word": "orakelhaft",
+      "num_guesses": 3,
+      "prior": 0.000014920350725152945,
+      "guesses": [
+        "hartbleies",
+        "metallrohr",
+        "orakelhaft"
+      ]
+    },
+    {
+      "word": "dysarthrie",
+      "num_guesses": 3,
+      "prior": 0.00002078267845728653,
+      "guesses": [
+        "hartbleies",
+        "ausspracht",
+        "dysarthrie"
+      ]
+    },
+    {
+      "word": "sabotierst",
+      "num_guesses": 2,
+      "prior": 9.719251431333598e-6,
+      "guesses": [
+        "hartbleies",
+        "sabotierst"
+      ]
+    },
+    {
+      "word": "todtenkopf",
+      "num_guesses": 2,
+      "prior": 0.00001862501260963765,
+      "guesses": [
+        "hartbleies",
+        "todtenkopf"
+      ]
+    },
+    {
+      "word": "opportuner",
+      "num_guesses": 3,
+      "prior": 0.000012837796148560275,
+      "guesses": [
+        "hartbleies",
+        "rundtürmen",
+        "opportuner"
+      ]
+    },
+    {
+      "word": "pappwänden",
+      "num_guesses": 3,
+      "prior": 9.271965526484256e-6,
+      "guesses": [
+        "hartbleies",
+        "davonjagen",
+        "pappwänden"
+      ]
+    },
+    {
+      "word": "thetischer",
+      "num_guesses": 3,
+      "prior": 0.000014676275476127442,
+      "guesses": [
+        "hartbleies",
+        "rheinstrom",
+        "thetischer"
+      ]
+    },
+    {
+      "word": "holzstalle",
+      "num_guesses": 3,
+      "prior": 9.6087766914169e-6,
+      "guesses": [
+        "hartbleies",
+        "jedenfalls",
+        "holzstalle"
+      ]
+    },
+    {
+      "word": "symmachien",
+      "num_guesses": 3,
+      "prior": 0.000011250448555508733,
+      "guesses": [
+        "hartbleies",
+        "dysphagien",
+        "symmachien"
+      ]
+    },
+    {
+      "word": "nachmieter",
+      "num_guesses": 2,
+      "prior": 0.000016564890579141726,
+      "guesses": [
+        "hartbleies",
+        "nachmieter"
+      ]
+    },
+    {
+      "word": "demotische",
+      "num_guesses": 3,
+      "prior": 0.00002042239757705286,
+      "guesses": [
+        "hartbleies",
+        "einstichst",
+        "demotische"
+      ]
+    },
+    {
+      "word": "dekuvriere",
+      "num_guesses": 3,
+      "prior": 5.1850078985886625e-6,
+      "guesses": [
+        "hartbleies",
+        "ergreifend",
+        "dekuvriere"
+      ]
+    },
+    {
+      "word": "knackarsch",
+      "num_guesses": 3,
+      "prior": 0.000015680401425655502,
+      "guesses": [
+        "hartbleies",
+        "ausführung",
+        "knackarsch"
+      ]
+    },
+    {
+      "word": "schrumpfte",
+      "num_guesses": 3,
+      "prior": 0.00002688481990615881,
+      "guesses": [
+        "hartbleies",
+        "fungosität",
+        "schrumpfte"
+      ]
+    },
+    {
+      "word": "gummilitze",
+      "num_guesses": 3,
+      "prior": 8.698140210090353e-6,
+      "guesses": [
+        "hartbleies",
+        "geopolitik",
+        "gummilitze"
+      ]
+    },
+    {
+      "word": "anräuchern",
+      "num_guesses": 3,
+      "prior": 0.000010566151556275244,
+      "guesses": [
+        "hartbleies",
+        "verwahrung",
+        "anräuchern"
+      ]
+    },
+    {
+      "word": "zerlassene",
+      "num_guesses": 3,
+      "prior": 0.00001571507991444892,
+      "guesses": [
+        "hartbleies",
+        "verlassene",
+        "zerlassene"
+      ]
+    }
+  ]
+}

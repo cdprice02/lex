@@ -1,0 +1,4993 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:00:24.800933Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "declinaras",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "spanish",
+    "word_length": 10,
+    "dictionary_length": 55247,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "4d5658dec28cf2e1fd6a0d7c17e1fe523f309a429f265f489bdd6899e559486b",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/es/es-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:56:30.342377Z",
+      "source_sha256": "f348077dec293b11c2dc3e13cf20d25d44403b519369b382e33f0aef7792b1ad",
+      "word_count": 883133
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 2.8779999999999752,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.17000000000000012,
+        "3": 0.7820000000000006,
+        "4": 0.04800000000000003
+      }
+    },
+    "prior": {
+      "mean": 2.8269390503600285,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.2052790898848878,
+        "3": 0.7625027698701978,
+        "4": 0.03221814024491494
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "colocasias",
+      "num_guesses": 3,
+      "prior": 0.000011386499310257182,
+      "guesses": [
+        "declinaras",
+        "cismáticos",
+        "colocasias"
+      ]
+    },
+    {
+      "word": "degustaran",
+      "num_guesses": 3,
+      "prior": 0.000010609151024316204,
+      "guesses": [
+        "declinaras",
+        "pertiguero",
+        "degustaran"
+      ]
+    },
+    {
+      "word": "desjarreté",
+      "num_guesses": 4,
+      "prior": 0.000010330718096276768,
+      "guesses": [
+        "declinaras",
+        "postergare",
+        "desjarretó",
+        "desjarreté"
+      ]
+    },
+    {
+      "word": "erradicara",
+      "num_guesses": 3,
+      "prior": 0.00001507959007477501,
+      "guesses": [
+        "declinaras",
+        "embarazare",
+        "erradicara"
+      ]
+    },
+    {
+      "word": "ciclonales",
+      "num_guesses": 2,
+      "prior": 0.000014129836864748785,
+      "guesses": [
+        "declinaras",
+        "ciclonales"
+      ]
+    },
+    {
+      "word": "ductilizar",
+      "num_guesses": 2,
+      "prior": 0.000010738077560034199,
+      "guesses": [
+        "declinaras",
+        "ductilizar"
+      ]
+    },
+    {
+      "word": "petarderos",
+      "num_guesses": 3,
+      "prior": 0.000013021967633396801,
+      "guesses": [
+        "declinaras",
+        "serradores",
+        "petarderos"
+      ]
+    },
+    {
+      "word": "semblantes",
+      "num_guesses": 2,
+      "prior": 0.00003894116713054637,
+      "guesses": [
+        "declinaras",
+        "semblantes"
+      ]
+    },
+    {
+      "word": "pegamentos",
+      "num_guesses": 3,
+      "prior": 0.00002518840161713637,
+      "guesses": [
+        "declinaras",
+        "semejantes",
+        "pegamentos"
+      ]
+    },
+    {
+      "word": "entrecogió",
+      "num_guesses": 3,
+      "prior": 8.581673918207785e-6,
+      "guesses": [
+        "declinaras",
+        "condecente",
+        "entrecogió"
+      ]
+    },
+    {
+      "word": "cunaguaros",
+      "num_guesses": 3,
+      "prior": 0.000012648299388239541,
+      "guesses": [
+        "declinaras",
+        "arrancarás",
+        "cunaguaros"
+      ]
+    },
+    {
+      "word": "alumbremos",
+      "num_guesses": 3,
+      "prior": 0.00001325364572968937,
+      "guesses": [
+        "declinaras",
+        "llegaremos",
+        "alumbremos"
+      ]
+    },
+    {
+      "word": "atrancaron",
+      "num_guesses": 3,
+      "prior": 0.000016378902189928018,
+      "guesses": [
+        "declinaras",
+        "correctora",
+        "atrancaron"
+      ]
+    },
+    {
+      "word": "capturarás",
+      "num_guesses": 3,
+      "prior": 9.125382578552488e-6,
+      "guesses": [
+        "declinaras",
+        "compararás",
+        "capturarás"
+      ]
+    },
+    {
+      "word": "estrumpido",
+      "num_guesses": 3,
+      "prior": 9.184933360131239e-6,
+      "guesses": [
+        "declinaras",
+        "proseguido",
+        "estrumpido"
+      ]
+    },
+    {
+      "word": "catalogáis",
+      "num_guesses": 3,
+      "prior": 8.008701684912628e-6,
+      "guesses": [
+        "declinaras",
+        "caballitos",
+        "catalogáis"
+      ]
+    },
+    {
+      "word": "alumbrarás",
+      "num_guesses": 2,
+      "prior": 0.000014412203244347672,
+      "guesses": [
+        "declinaras",
+        "alumbrarás"
+      ]
+    },
+    {
+      "word": "enamórense",
+      "num_guesses": 4,
+      "prior": 9.422186059290583e-6,
+      "guesses": [
+        "declinaras",
+        "prográmate",
+        "asómbrense",
+        "enamórense"
+      ]
+    },
+    {
+      "word": "competíais",
+      "num_guesses": 2,
+      "prior": 8.336661198118158e-6,
+      "guesses": [
+        "declinaras",
+        "competíais"
+      ]
+    },
+    {
+      "word": "desheredar",
+      "num_guesses": 3,
+      "prior": 0.000027899149554275256,
+      "guesses": [
+        "declinaras",
+        "desempeñar",
+        "desheredar"
+      ]
+    },
+    {
+      "word": "macheteada",
+      "num_guesses": 3,
+      "prior": 0.00001436584510364615,
+      "guesses": [
+        "declinaras",
+        "macheteado",
+        "macheteada"
+      ]
+    },
+    {
+      "word": "concretéis",
+      "num_guesses": 4,
+      "prior": 8.562301996140845e-6,
+      "guesses": [
+        "declinaras",
+        "frustráneo",
+        "entrópicos",
+        "concretéis"
+      ]
+    },
+    {
+      "word": "desparejan",
+      "num_guesses": 3,
+      "prior": 8.179252494077205e-6,
+      "guesses": [
+        "declinaras",
+        "prosternen",
+        "desparejan"
+      ]
+    },
+    {
+      "word": "respirases",
+      "num_guesses": 3,
+      "prior": 9.824300022339691e-6,
+      "guesses": [
+        "declinaras",
+        "respiramos",
+        "respirases"
+      ]
+    },
+    {
+      "word": "curtidoras",
+      "num_guesses": 3,
+      "prior": 0.000014522032307730417,
+      "guesses": [
+        "declinaras",
+        "zurcidoras",
+        "curtidoras"
+      ]
+    },
+    {
+      "word": "compostado",
+      "num_guesses": 2,
+      "prior": 0.000013773860321542907,
+      "guesses": [
+        "declinaras",
+        "compostado"
+      ]
+    },
+    {
+      "word": "gobiérnate",
+      "num_guesses": 3,
+      "prior": 0.000012162911971345995,
+      "guesses": [
+        "declinaras",
+        "optimizará",
+        "gobiérnate"
+      ]
+    },
+    {
+      "word": "apelándose",
+      "num_guesses": 3,
+      "prior": 0.000018295792263335628,
+      "guesses": [
+        "declinaras",
+        "apostillas",
+        "apelándose"
+      ]
+    },
+    {
+      "word": "locomoción",
+      "num_guesses": 2,
+      "prior": 0.00004064231012716812,
+      "guesses": [
+        "declinaras",
+        "locomoción"
+      ]
+    },
+    {
+      "word": "repastadas",
+      "num_guesses": 3,
+      "prior": 9.901666272211941e-6,
+      "guesses": [
+        "declinaras",
+        "respetamos",
+        "repastadas"
+      ]
+    },
+    {
+      "word": "descayendo",
+      "num_guesses": 3,
+      "prior": 0.000012684867520193556,
+      "guesses": [
+        "declinaras",
+        "descoyunta",
+        "descayendo"
+      ]
+    },
+    {
+      "word": "subyugaran",
+      "num_guesses": 3,
+      "prior": 0.00001157316402712603,
+      "guesses": [
+        "declinaras",
+        "sufragaran",
+        "subyugaran"
+      ]
+    },
+    {
+      "word": "imperantes",
+      "num_guesses": 3,
+      "prior": 0.00004080605250639994,
+      "guesses": [
+        "declinaras",
+        "interrompe",
+        "imperantes"
+      ]
+    },
+    {
+      "word": "distraídas",
+      "num_guesses": 3,
+      "prior": 0.000025539393233291867,
+      "guesses": [
+        "declinaras",
+        "distraigas",
+        "distraídas"
+      ]
+    },
+    {
+      "word": "engarbulla",
+      "num_guesses": 3,
+      "prior": 7.453916825851941e-6,
+      "guesses": [
+        "declinaras",
+        "jugueteaba",
+        "engarbulla"
+      ]
+    },
+    {
+      "word": "malgastara",
+      "num_guesses": 3,
+      "prior": 0.000015969446211222728,
+      "guesses": [
+        "declinaras",
+        "avasallará",
+        "malgastara"
+      ]
+    },
+    {
+      "word": "biografían",
+      "num_guesses": 3,
+      "prior": 0.000011367771413931265,
+      "guesses": [
+        "declinaras",
+        "inmigraron",
+        "biografían"
+      ]
+    },
+    {
+      "word": "destrocada",
+      "num_guesses": 3,
+      "prior": 0.000012252389419563355,
+      "guesses": [
+        "declinaras",
+        "bancarrota",
+        "destrocada"
+      ]
+    },
+    {
+      "word": "remendamos",
+      "num_guesses": 3,
+      "prior": 0.000012854006379856617,
+      "guesses": [
+        "declinaras",
+        "revertimos",
+        "remendamos"
+      ]
+    },
+    {
+      "word": "apuntaréis",
+      "num_guesses": 3,
+      "prior": 8.483007760507248e-6,
+      "guesses": [
+        "declinaras",
+        "sanitarios",
+        "apuntaréis"
+      ]
+    },
+    {
+      "word": "cuerpeando",
+      "num_guesses": 3,
+      "prior": 0.000012565488342115033,
+      "guesses": [
+        "declinaras",
+        "cooperando",
+        "cuerpeando"
+      ]
+    },
+    {
+      "word": "titularice",
+      "num_guesses": 3,
+      "prior": 9.048687812526297e-6,
+      "guesses": [
+        "declinaras",
+        "solicitará",
+        "titularice"
+      ]
+    },
+    {
+      "word": "auscultáis",
+      "num_guesses": 3,
+      "prior": 8.766395214528166e-6,
+      "guesses": [
+        "declinaras",
+        "pasotismos",
+        "auscultáis"
+      ]
+    },
+    {
+      "word": "rempujados",
+      "num_guesses": 3,
+      "prior": 9.912523388515319e-6,
+      "guesses": [
+        "declinaras",
+        "reprograme",
+        "rempujados"
+      ]
+    },
+    {
+      "word": "caballadas",
+      "num_guesses": 3,
+      "prior": 0.00003225405046404169,
+      "guesses": [
+        "declinaras",
+        "casquillos",
+        "caballadas"
+      ]
+    },
+    {
+      "word": "matronales",
+      "num_guesses": 3,
+      "prior": 0.000013896605792846775,
+      "guesses": [
+        "declinaras",
+        "maternales",
+        "matronales"
+      ]
+    },
+    {
+      "word": "encielados",
+      "num_guesses": 2,
+      "prior": 9.637700630181997e-6,
+      "guesses": [
+        "declinaras",
+        "encielados"
+      ]
+    },
+    {
+      "word": "profundaba",
+      "num_guesses": 3,
+      "prior": 0.000010059751490517614,
+      "guesses": [
+        "declinaras",
+        "anaranjado",
+        "profundaba"
+      ]
+    },
+    {
+      "word": "funcionará",
+      "num_guesses": 2,
+      "prior": 0.000041662844852694276,
+      "guesses": [
+        "declinaras",
+        "funcionará"
+      ]
+    },
+    {
+      "word": "adularemos",
+      "num_guesses": 2,
+      "prior": 8.225465902189114e-6,
+      "guesses": [
+        "declinaras",
+        "adularemos"
+      ]
+    },
+    {
+      "word": "evaporizar",
+      "num_guesses": 3,
+      "prior": 0.000013376755448525706,
+      "guesses": [
+        "declinaras",
+        "atemorizar",
+        "evaporizar"
+      ]
+    },
+    {
+      "word": "militarías",
+      "num_guesses": 4,
+      "prior": 7.765559632838795e-6,
+      "guesses": [
+        "declinaras",
+        "potabiliza",
+        "limitarías",
+        "militarías"
+      ]
+    },
+    {
+      "word": "pirrábamos",
+      "num_guesses": 4,
+      "prior": 7.419723104467333e-6,
+      "guesses": [
+        "declinaras",
+        "subvirtáis",
+        "firmábamos",
+        "pirrábamos"
+      ]
+    },
+    {
+      "word": "nuclearizó",
+      "num_guesses": 2,
+      "prior": 7.677291705333621e-6,
+      "guesses": [
+        "declinaras",
+        "nuclearizó"
+      ]
+    },
+    {
+      "word": "alquiceres",
+      "num_guesses": 3,
+      "prior": 0.000010625612160184008,
+      "guesses": [
+        "declinaras",
+        "acemileros",
+        "alquiceres"
+      ]
+    },
+    {
+      "word": "digitalizó",
+      "num_guesses": 2,
+      "prior": 0.000014058269575469769,
+      "guesses": [
+        "declinaras",
+        "digitalizó"
+      ]
+    },
+    {
+      "word": "trasgredan",
+      "num_guesses": 3,
+      "prior": 0.000012944669541623561,
+      "guesses": [
+        "declinaras",
+        "gobernador",
+        "trasgredan"
+      ]
+    },
+    {
+      "word": "ingresivas",
+      "num_guesses": 3,
+      "prior": 0.000011049843264468362,
+      "guesses": [
+        "declinaras",
+        "esternones",
+        "ingresivas"
+      ]
+    },
+    {
+      "word": "aspirabais",
+      "num_guesses": 3,
+      "prior": 0.000011272230370985864,
+      "guesses": [
+        "declinaras",
+        "programaba",
+        "aspirabais"
+      ]
+    },
+    {
+      "word": "apaciguare",
+      "num_guesses": 3,
+      "prior": 0.000011105407818459476,
+      "guesses": [
+        "declinaras",
+        "arquitecta",
+        "apaciguare"
+      ]
+    },
+    {
+      "word": "constables",
+      "num_guesses": 3,
+      "prior": 0.00001650766050220938,
+      "guesses": [
+        "declinaras",
+        "paleocenos",
+        "constables"
+      ]
+    },
+    {
+      "word": "enajenarán",
+      "num_guesses": 3,
+      "prior": 0.000019631729441621694,
+      "guesses": [
+        "declinaras",
+        "retrotraen",
+        "enajenarán"
+      ]
+    },
+    {
+      "word": "destapamos",
+      "num_guesses": 3,
+      "prior": 0.000016527332608359216,
+      "guesses": [
+        "declinaras",
+        "portagomas",
+        "destapamos"
+      ]
+    },
+    {
+      "word": "exploraran",
+      "num_guesses": 3,
+      "prior": 0.000018556177131144787,
+      "guesses": [
+        "declinaras",
+        "explotaran",
+        "exploraran"
+      ]
+    },
+    {
+      "word": "amostazase",
+      "num_guesses": 3,
+      "prior": 9.140416239297641e-6,
+      "guesses": [
+        "declinaras",
+        "majestuosa",
+        "amostazase"
+      ]
+    },
+    {
+      "word": "nefelibata",
+      "num_guesses": 3,
+      "prior": 0.000016735116938713004,
+      "guesses": [
+        "declinaras",
+        "melatonina",
+        "nefelibata"
+      ]
+    },
+    {
+      "word": "engrosaran",
+      "num_guesses": 3,
+      "prior": 0.000016788119162422188,
+      "guesses": [
+        "declinaras",
+        "enterraron",
+        "engrosaran"
+      ]
+    },
+    {
+      "word": "descontado",
+      "num_guesses": 3,
+      "prior": 0.00004006975271260144,
+      "guesses": [
+        "declinaras",
+        "desconocía",
+        "descontado"
+      ]
+    },
+    {
+      "word": "desollemos",
+      "num_guesses": 3,
+      "prior": 9.52603688786426e-6,
+      "guesses": [
+        "declinaras",
+        "esqueletos",
+        "desollemos"
+      ]
+    },
+    {
+      "word": "borboneaba",
+      "num_guesses": 3,
+      "prior": 7.9571945058816e-6,
+      "guesses": [
+        "declinaras",
+        "forcejeara",
+        "borboneaba"
+      ]
+    },
+    {
+      "word": "inclinaban",
+      "num_guesses": 2,
+      "prior": 0.00003668052974508579,
+      "guesses": [
+        "declinaras",
+        "inclinaban"
+      ]
+    },
+    {
+      "word": "generalice",
+      "num_guesses": 3,
+      "prior": 0.00002750819642420878,
+      "guesses": [
+        "declinaras",
+        "oscureceré",
+        "generalice"
+      ]
+    },
+    {
+      "word": "congregado",
+      "num_guesses": 3,
+      "prior": 0.00003775512262634548,
+      "guesses": [
+        "declinaras",
+        "concretado",
+        "congregado"
+      ]
+    },
+    {
+      "word": "mariconera",
+      "num_guesses": 3,
+      "prior": 0.000012776450150053349,
+      "guesses": [
+        "declinaras",
+        "tempranera",
+        "mariconera"
+      ]
+    },
+    {
+      "word": "aldabillas",
+      "num_guesses": 3,
+      "prior": 0.000015798575534370115,
+      "guesses": [
+        "declinaras",
+        "salvavidas",
+        "aldabillas"
+      ]
+    },
+    {
+      "word": "coprología",
+      "num_guesses": 2,
+      "prior": 0.000015687906510344346,
+      "guesses": [
+        "declinaras",
+        "coprología"
+      ]
+    },
+    {
+      "word": "politizará",
+      "num_guesses": 3,
+      "prior": 0.000010838450880009357,
+      "guesses": [
+        "declinaras",
+        "soviéticos",
+        "politizará"
+      ]
+    },
+    {
+      "word": "enseñanzas",
+      "num_guesses": 3,
+      "prior": 0.00006349454503779887,
+      "guesses": [
+        "declinaras",
+        "panteístas",
+        "enseñanzas"
+      ]
+    },
+    {
+      "word": "despenamos",
+      "num_guesses": 3,
+      "prior": 8.542753157412463e-6,
+      "guesses": [
+        "declinaras",
+        "desvenados",
+        "despenamos"
+      ]
+    },
+    {
+      "word": "degollamos",
+      "num_guesses": 3,
+      "prior": 0.00001584198804320097,
+      "guesses": [
+        "declinaras",
+        "desvelados",
+        "degollamos"
+      ]
+    },
+    {
+      "word": "garantimos",
+      "num_guesses": 4,
+      "prior": 0.000016945769621408837,
+      "guesses": [
+        "declinaras",
+        "sanitarios",
+        "narrativos",
+        "garantimos"
+      ]
+    },
+    {
+      "word": "paleocenas",
+      "num_guesses": 3,
+      "prior": 0.00001453845733375893,
+      "guesses": [
+        "declinaras",
+        "chancletas",
+        "paleocenas"
+      ]
+    },
+    {
+      "word": "deleitares",
+      "num_guesses": 3,
+      "prior": 8.270663491435135e-6,
+      "guesses": [
+        "declinaras",
+        "deleitarás",
+        "deleitares"
+      ]
+    },
+    {
+      "word": "centilitro",
+      "num_guesses": 3,
+      "prior": 0.000017281046319410146,
+      "guesses": [
+        "declinaras",
+        "fertilicen",
+        "centilitro"
+      ]
+    },
+    {
+      "word": "cantonesas",
+      "num_guesses": 2,
+      "prior": 0.000012406271189623937,
+      "guesses": [
+        "declinaras",
+        "cantonesas"
+      ]
+    },
+    {
+      "word": "lengüetear",
+      "num_guesses": 3,
+      "prior": 0.000013785464264141938,
+      "guesses": [
+        "declinaras",
+        "revolotean",
+        "lengüetear"
+      ]
+    },
+    {
+      "word": "examinando",
+      "num_guesses": 2,
+      "prior": 0.00005025746208198402,
+      "guesses": [
+        "declinaras",
+        "examinando"
+      ]
+    },
+    {
+      "word": "calculosas",
+      "num_guesses": 3,
+      "prior": 0.000020308681141580814,
+      "guesses": [
+        "declinaras",
+        "complazcas",
+        "calculosas"
+      ]
+    },
+    {
+      "word": "codiciemos",
+      "num_guesses": 3,
+      "prior": 0.00001291848825619061,
+      "guesses": [
+        "declinaras",
+        "obedecidos",
+        "codiciemos"
+      ]
+    },
+    {
+      "word": "azacaneaba",
+      "num_guesses": 3,
+      "prior": 8.270663491435135e-6,
+      "guesses": [
+        "declinaras",
+        "contentaba",
+        "azacaneaba"
+      ]
+    },
+    {
+      "word": "soterraran",
+      "num_guesses": 3,
+      "prior": 8.766395214528166e-6,
+      "guesses": [
+        "declinaras",
+        "enterraron",
+        "soterraran"
+      ]
+    },
+    {
+      "word": "cizallando",
+      "num_guesses": 3,
+      "prior": 7.765559632838795e-6,
+      "guesses": [
+        "declinaras",
+        "acicalando",
+        "cizallando"
+      ]
+    },
+    {
+      "word": "emborraché",
+      "num_guesses": 3,
+      "prior": 0.00002044697198683504,
+      "guesses": [
+        "declinaras",
+        "hiperbóreo",
+        "emborraché"
+      ]
+    },
+    {
+      "word": "trasladaré",
+      "num_guesses": 4,
+      "prior": 0.00002212767862190086,
+      "guesses": [
+        "declinaras",
+        "parrillada",
+        "trasladará",
+        "trasladaré"
+      ]
+    },
+    {
+      "word": "calcinaron",
+      "num_guesses": 3,
+      "prior": 0.000015628751135156576,
+      "guesses": [
+        "declinaras",
+        "alucinaron",
+        "calcinaron"
+      ]
+    },
+    {
+      "word": "encausaban",
+      "num_guesses": 3,
+      "prior": 0.000011466261684823177,
+      "guesses": [
+        "declinaras",
+        "escaseaban",
+        "encausaban"
+      ]
+    },
+    {
+      "word": "nicolaítas",
+      "num_guesses": 3,
+      "prior": 0.000018895517638670762,
+      "guesses": [
+        "declinaras",
+        "ascalonias",
+        "nicolaítas"
+      ]
+    },
+    {
+      "word": "engolfados",
+      "num_guesses": 3,
+      "prior": 0.0000228816224810958,
+      "guesses": [
+        "declinaras",
+        "voluntades",
+        "engolfados"
+      ]
+    },
+    {
+      "word": "atendieren",
+      "num_guesses": 3,
+      "prior": 0.000013773860321542907,
+      "guesses": [
+        "declinaras",
+        "aturdieron",
+        "atendieren"
+      ]
+    },
+    {
+      "word": "arrendaron",
+      "num_guesses": 3,
+      "prior": 0.000026037566665917726,
+      "guesses": [
+        "declinaras",
+        "emponzoñen",
+        "arrendaron"
+      ]
+    },
+    {
+      "word": "uniformado",
+      "num_guesses": 3,
+      "prior": 0.00003496777069173686,
+      "guesses": [
+        "declinaras",
+        "intimidará",
+        "uniformado"
+      ]
+    },
+    {
+      "word": "encubrimos",
+      "num_guesses": 3,
+      "prior": 0.00001584862482309323,
+      "guesses": [
+        "declinaras",
+        "encontráis",
+        "encubrimos"
+      ]
+    },
+    {
+      "word": "enlozanado",
+      "num_guesses": 3,
+      "prior": 7.349381273666924e-6,
+      "guesses": [
+        "declinaras",
+        "engalanaba",
+        "enlozanado"
+      ]
+    },
+    {
+      "word": "destruyera",
+      "num_guesses": 3,
+      "prior": 0.000029809576744361842,
+      "guesses": [
+        "declinaras",
+        "postergare",
+        "destruyera"
+      ]
+    },
+    {
+      "word": "enzarzasen",
+      "num_guesses": 3,
+      "prior": 0.00001045619291447159,
+      "guesses": [
+        "declinaras",
+        "engarroten",
+        "enzarzasen"
+      ]
+    },
+    {
+      "word": "cloríticas",
+      "num_guesses": 3,
+      "prior": 0.000018103222290808186,
+      "guesses": [
+        "declinaras",
+        "pulsímetro",
+        "cloríticas"
+      ]
+    },
+    {
+      "word": "estelífera",
+      "num_guesses": 3,
+      "prior": 0.000011466261684823177,
+      "guesses": [
+        "declinaras",
+        "consuélese",
+        "estelífera"
+      ]
+    },
+    {
+      "word": "peluqueada",
+      "num_guesses": 2,
+      "prior": 0.000011664980507869452,
+      "guesses": [
+        "declinaras",
+        "peluqueada"
+      ]
+    },
+    {
+      "word": "abonábamos",
+      "num_guesses": 3,
+      "prior": 0.000010293722631495296,
+      "guesses": [
+        "declinaras",
+        "aguantamos",
+        "abonábamos"
+      ]
+    },
+    {
+      "word": "desembuchó",
+      "num_guesses": 3,
+      "prior": 0.00001566886563200905,
+      "guesses": [
+        "declinaras",
+        "compórtate",
+        "desembuchó"
+      ]
+    },
+    {
+      "word": "hipotetizo",
+      "num_guesses": 3,
+      "prior": 8.202489381396305e-6,
+      "guesses": [
+        "declinaras",
+        "hipotetizó",
+        "hipotetizo"
+      ]
+    },
+    {
+      "word": "quimerista",
+      "num_guesses": 3,
+      "prior": 0.000019154949334694413,
+      "guesses": [
+        "declinaras",
+        "substráete",
+        "quimerista"
+      ]
+    },
+    {
+      "word": "exacerbare",
+      "num_guesses": 4,
+      "prior": 0.000012535981670000964,
+      "guesses": [
+        "declinaras",
+        "carreteara",
+        "exacerbará",
+        "exacerbare"
+      ]
+    },
+    {
+      "word": "enemistase",
+      "num_guesses": 3,
+      "prior": 0.000011239651125420937,
+      "guesses": [
+        "declinaras",
+        "asosieguen",
+        "enemistase"
+      ]
+    },
+    {
+      "word": "requeríais",
+      "num_guesses": 3,
+      "prior": 8.503109900126786e-6,
+      "guesses": [
+        "declinaras",
+        "mostraréis",
+        "requeríais"
+      ]
+    },
+    {
+      "word": "inadaptado",
+      "num_guesses": 3,
+      "prior": 0.000027660128762886942,
+      "guesses": [
+        "declinaras",
+        "paganizado",
+        "inadaptado"
+      ]
+    },
+    {
+      "word": "ejecutoras",
+      "num_guesses": 3,
+      "prior": 0.000032289632528493344,
+      "guesses": [
+        "declinaras",
+        "correteras",
+        "ejecutoras"
+      ]
+    },
+    {
+      "word": "prologares",
+      "num_guesses": 3,
+      "prior": 7.453916825851941e-6,
+      "guesses": [
+        "declinaras",
+        "explotarás",
+        "prologares"
+      ]
+    },
+    {
+      "word": "publicable",
+      "num_guesses": 2,
+      "prior": 0.000021964299666584937,
+      "guesses": [
+        "declinaras",
+        "publicable"
+      ]
+    },
+    {
+      "word": "trincharía",
+      "num_guesses": 3,
+      "prior": 7.5528972866789704e-6,
+      "guesses": [
+        "declinaras",
+        "construían",
+        "trincharía"
+      ]
+    },
+    {
+      "word": "ventaneros",
+      "num_guesses": 3,
+      "prior": 0.00001239742850694431,
+      "guesses": [
+        "declinaras",
+        "refraneros",
+        "ventaneros"
+      ]
+    },
+    {
+      "word": "trasbordan",
+      "num_guesses": 2,
+      "prior": 0.000015641003502988252,
+      "guesses": [
+        "declinaras",
+        "trasbordan"
+      ]
+    },
+    {
+      "word": "falangismo",
+      "num_guesses": 2,
+      "prior": 0.000027452625338219487,
+      "guesses": [
+        "declinaras",
+        "falangismo"
+      ]
+    },
+    {
+      "word": "calcógrafo",
+      "num_guesses": 3,
+      "prior": 0.000012717022223186052,
+      "guesses": [
+        "declinaras",
+        "antecámara",
+        "calcógrafo"
+      ]
+    },
+    {
+      "word": "hanseático",
+      "num_guesses": 3,
+      "prior": 0.000017827129185339062,
+      "guesses": [
+        "declinaras",
+        "bonitísimo",
+        "hanseático"
+      ]
+    },
+    {
+      "word": "sulfuraron",
+      "num_guesses": 3,
+      "prior": 0.00001104281856504121,
+      "guesses": [
+        "declinaras",
+        "postularon",
+        "sulfuraron"
+      ]
+    },
+    {
+      "word": "expoliarán",
+      "num_guesses": 3,
+      "prior": 8.638763259397511e-6,
+      "guesses": [
+        "declinaras",
+        "pilotearán",
+        "expoliarán"
+      ]
+    },
+    {
+      "word": "metalizada",
+      "num_guesses": 3,
+      "prior": 0.000021134041984922474,
+      "guesses": [
+        "declinaras",
+        "legalizada",
+        "metalizada"
+      ]
+    },
+    {
+      "word": "inusitadas",
+      "num_guesses": 3,
+      "prior": 0.000031226982882389006,
+      "guesses": [
+        "declinaras",
+        "instigadas",
+        "inusitadas"
+      ]
+    },
+    {
+      "word": "timpánicas",
+      "num_guesses": 3,
+      "prior": 0.000016981136770981644,
+      "guesses": [
+        "declinaras",
+        "isotónicas",
+        "timpánicas"
+      ]
+    },
+    {
+      "word": "derribaban",
+      "num_guesses": 2,
+      "prior": 0.000025818407679447058,
+      "guesses": [
+        "declinaras",
+        "derribaban"
+      ]
+    },
+    {
+      "word": "estudiaría",
+      "num_guesses": 3,
+      "prior": 0.000028830464582229387,
+      "guesses": [
+        "declinaras",
+        "adversario",
+        "estudiaría"
+      ]
+    },
+    {
+      "word": "desechando",
+      "num_guesses": 3,
+      "prior": 0.00003735865854640608,
+      "guesses": [
+        "declinaras",
+        "concebiste",
+        "desechando"
+      ]
+    },
+    {
+      "word": "enchichado",
+      "num_guesses": 2,
+      "prior": 0.000011084701506889632,
+      "guesses": [
+        "declinaras",
+        "enchichado"
+      ]
+    },
+    {
+      "word": "barruntada",
+      "num_guesses": 3,
+      "prior": 0.000013971516973458888,
+      "guesses": [
+        "declinaras",
+        "anaranjado",
+        "barruntada"
+      ]
+    },
+    {
+      "word": "tepalcates",
+      "num_guesses": 3,
+      "prior": 0.000023976622160285343,
+      "guesses": [
+        "declinaras",
+        "peñascales",
+        "tepalcates"
+      ]
+    },
+    {
+      "word": "amurallara",
+      "num_guesses": 3,
+      "prior": 9.341181031674913e-6,
+      "guesses": [
+        "declinaras",
+        "abarrotaba",
+        "amurallara"
+      ]
+    },
+    {
+      "word": "misionemos",
+      "num_guesses": 3,
+      "prior": 8.292896778709888e-6,
+      "guesses": [
+        "declinaras",
+        "biogénesis",
+        "misionemos"
+      ]
+    },
+    {
+      "word": "escarbaron",
+      "num_guesses": 3,
+      "prior": 0.000018142973750941398,
+      "guesses": [
+        "declinaras",
+        "entorpecen",
+        "escarbaron"
+      ]
+    },
+    {
+      "word": "ranchearse",
+      "num_guesses": 3,
+      "prior": 0.000012899656560564755,
+      "guesses": [
+        "declinaras",
+        "ajetrearon",
+        "ranchearse"
+      ]
+    },
+    {
+      "word": "presumidas",
+      "num_guesses": 3,
+      "prior": 0.00002270571429576675,
+      "guesses": [
+        "declinaras",
+        "protegidas",
+        "presumidas"
+      ]
+    },
+    {
+      "word": "remaríamos",
+      "num_guesses": 4,
+      "prior": 9.228603792653337e-6,
+      "guesses": [
+        "declinaras",
+        "tesorerías",
+        "hemorragia",
+        "remaríamos"
+      ]
+    },
+    {
+      "word": "trenzarían",
+      "num_guesses": 3,
+      "prior": 0.000010800286372531594,
+      "guesses": [
+        "declinaras",
+        "arrejunten",
+        "trenzarían"
+      ]
+    },
+    {
+      "word": "indecisión",
+      "num_guesses": 3,
+      "prior": 0.00004169040597374363,
+      "guesses": [
+        "declinaras",
+        "concediese",
+        "indecisión"
+      ]
+    },
+    {
+      "word": "acobardare",
+      "num_guesses": 3,
+      "prior": 0.000011731992943869435,
+      "guesses": [
+        "declinaras",
+        "chacoteaba",
+        "acobardare"
+      ]
+    },
+    {
+      "word": "tolemaicas",
+      "num_guesses": 3,
+      "prior": 0.000012275507299893806,
+      "guesses": [
+        "declinaras",
+        "capilletas",
+        "tolemaicas"
+      ]
+    },
+    {
+      "word": "conducirán",
+      "num_guesses": 3,
+      "prior": 0.0000337185488151702,
+      "guesses": [
+        "declinaras",
+        "producirán",
+        "conducirán"
+      ]
+    },
+    {
+      "word": "peligraría",
+      "num_guesses": 3,
+      "prior": 0.000021585658530760376,
+      "guesses": [
+        "declinaras",
+        "herbolaria",
+        "peligraría"
+      ]
+    },
+    {
+      "word": "abominadas",
+      "num_guesses": 3,
+      "prior": 0.000014610318645177341,
+      "guesses": [
+        "declinaras",
+        "embestidos",
+        "abominadas"
+      ]
+    },
+    {
+      "word": "solapadora",
+      "num_guesses": 3,
+      "prior": 0.000010567545228262421,
+      "guesses": [
+        "declinaras",
+        "parrillada",
+        "solapadora"
+      ]
+    },
+    {
+      "word": "pertrechen",
+      "num_guesses": 3,
+      "prior": 0.000010412072382666527,
+      "guesses": [
+        "declinaras",
+        "centímetro",
+        "pertrechen"
+      ]
+    },
+    {
+      "word": "olvidabais",
+      "num_guesses": 3,
+      "prior": 9.613331922173521e-6,
+      "guesses": [
+        "declinaras",
+        "aplaudidos",
+        "olvidabais"
+      ]
+    },
+    {
+      "word": "inservible",
+      "num_guesses": 3,
+      "prior": 0.000037500778050035664,
+      "guesses": [
+        "declinaras",
+        "insufrible",
+        "inservible"
+      ]
+    },
+    {
+      "word": "eucarionte",
+      "num_guesses": 3,
+      "prior": 0.00001640208954479673,
+      "guesses": [
+        "declinaras",
+        "empodérate",
+        "eucarionte"
+      ]
+    },
+    {
+      "word": "inscribiré",
+      "num_guesses": 3,
+      "prior": 0.000014493701025741495,
+      "guesses": [
+        "declinaras",
+        "monotético",
+        "inscribiré"
+      ]
+    },
+    {
+      "word": "enconchado",
+      "num_guesses": 3,
+      "prior": 0.000017664720971405826,
+      "guesses": [
+        "declinaras",
+        "desenchufó",
+        "enconchado"
+      ]
+    },
+    {
+      "word": "adventismo",
+      "num_guesses": 3,
+      "prior": 0.000017506144727717534,
+      "guesses": [
+        "declinaras",
+        "asistiendo",
+        "adventismo"
+      ]
+    },
+    {
+      "word": "escogieren",
+      "num_guesses": 3,
+      "prior": 0.000017516155873070842,
+      "guesses": [
+        "declinaras",
+        "escogieron",
+        "escogieren"
+      ]
+    },
+    {
+      "word": "mistifican",
+      "num_guesses": 3,
+      "prior": 0.000016125575351099085,
+      "guesses": [
+        "declinaras",
+        "significan",
+        "mistifican"
+      ]
+    },
+    {
+      "word": "aprehenden",
+      "num_guesses": 3,
+      "prior": 0.00002487923634651846,
+      "guesses": [
+        "declinaras",
+        "prográmate",
+        "aprehenden"
+      ]
+    },
+    {
+      "word": "sarcopenia",
+      "num_guesses": 3,
+      "prior": 0.000017109984217979812,
+      "guesses": [
+        "declinaras",
+        "prestancia",
+        "sarcopenia"
+      ]
+    },
+    {
+      "word": "generadora",
+      "num_guesses": 3,
+      "prior": 0.00004211679639019126,
+      "guesses": [
+        "declinaras",
+        "regenerada",
+        "generadora"
+      ]
+    },
+    {
+      "word": "reponíamos",
+      "num_guesses": 3,
+      "prior": 0.000013202405873924137,
+      "guesses": [
+        "declinaras",
+        "regostarse",
+        "reponíamos"
+      ]
+    },
+    {
+      "word": "chequeadas",
+      "num_guesses": 3,
+      "prior": 0.00001453611544295863,
+      "guesses": [
+        "declinaras",
+        "abstuvimos",
+        "chequeadas"
+      ]
+    },
+    {
+      "word": "apropiaría",
+      "num_guesses": 3,
+      "prior": 0.00001664752898775405,
+      "guesses": [
+        "declinaras",
+        "arbitrario",
+        "apropiaría"
+      ]
+    },
+    {
+      "word": "refrenamos",
+      "num_guesses": 3,
+      "prior": 0.000013773860321542907,
+      "guesses": [
+        "declinaras",
+        "personajes",
+        "refrenamos"
+      ]
+    },
+    {
+      "word": "respondías",
+      "num_guesses": 2,
+      "prior": 0.000018985724839496007,
+      "guesses": [
+        "declinaras",
+        "respondías"
+      ]
+    },
+    {
+      "word": "tripularon",
+      "num_guesses": 3,
+      "prior": 0.000016784167156531584,
+      "guesses": [
+        "declinaras",
+        "voluntario",
+        "tripularon"
+      ]
+    },
+    {
+      "word": "maquetados",
+      "num_guesses": 3,
+      "prior": 9.778972597886145e-6,
+      "guesses": [
+        "declinaras",
+        "asemejabas",
+        "maquetados"
+      ]
+    },
+    {
+      "word": "embudistas",
+      "num_guesses": 3,
+      "prior": 8.155748506230437e-6,
+      "guesses": [
+        "declinaras",
+        "embestidas",
+        "embudistas"
+      ]
+    },
+    {
+      "word": "chinchando",
+      "num_guesses": 3,
+      "prior": 0.000011960330418079098,
+      "guesses": [
+        "declinaras",
+        "codiciando",
+        "chinchando"
+      ]
+    },
+    {
+      "word": "enriscando",
+      "num_guesses": 3,
+      "prior": 8.853208146094696e-6,
+      "guesses": [
+        "declinaras",
+        "sincerando",
+        "enriscando"
+      ]
+    },
+    {
+      "word": "resaltando",
+      "num_guesses": 2,
+      "prior": 0.000037968430480728626,
+      "guesses": [
+        "declinaras",
+        "resaltando"
+      ]
+    },
+    {
+      "word": "separaréis",
+      "num_guesses": 3,
+      "prior": 0.00001299640552553913,
+      "guesses": [
+        "declinaras",
+        "reporteara",
+        "separaréis"
+      ]
+    },
+    {
+      "word": "alardeaban",
+      "num_guesses": 2,
+      "prior": 0.000022168970000711747,
+      "guesses": [
+        "declinaras",
+        "alardeaban"
+      ]
+    },
+    {
+      "word": "zarandease",
+      "num_guesses": 3,
+      "prior": 0.000011265744618490692,
+      "guesses": [
+        "declinaras",
+        "artesonada",
+        "zarandease"
+      ]
+    },
+    {
+      "word": "codificare",
+      "num_guesses": 3,
+      "prior": 7.736582855649855e-6,
+      "guesses": [
+        "declinaras",
+        "amortecido",
+        "codificare"
+      ]
+    },
+    {
+      "word": "trasegados",
+      "num_guesses": 3,
+      "prior": 0.000016667905461240672,
+      "guesses": [
+        "declinaras",
+        "soterremos",
+        "trasegados"
+      ]
+    },
+    {
+      "word": "fosforezca",
+      "num_guesses": 3,
+      "prior": 8.083562382491979e-6,
+      "guesses": [
+        "declinaras",
+        "retuérzase",
+        "fosforezca"
+      ]
+    },
+    {
+      "word": "refrigeres",
+      "num_guesses": 3,
+      "prior": 9.35487783690801e-6,
+      "guesses": [
+        "declinaras",
+        "requiebros",
+        "refrigeres"
+      ]
+    },
+    {
+      "word": "sulfurados",
+      "num_guesses": 3,
+      "prior": 0.000024665951890005216,
+      "guesses": [
+        "declinaras",
+        "formulados",
+        "sulfurados"
+      ]
+    },
+    {
+      "word": "mongólicas",
+      "num_guesses": 3,
+      "prior": 0.000019442941536222117,
+      "guesses": [
+        "declinaras",
+        "minúsculas",
+        "mongólicas"
+      ]
+    },
+    {
+      "word": "gitanerías",
+      "num_guesses": 3,
+      "prior": 0.000017265773088512503,
+      "guesses": [
+        "declinaras",
+        "aguantamos",
+        "gitanerías"
+      ]
+    },
+    {
+      "word": "placieseis",
+      "num_guesses": 3,
+      "prior": 7.736582855649855e-6,
+      "guesses": [
+        "declinaras",
+        "alquiceles",
+        "placieseis"
+      ]
+    },
+    {
+      "word": "tenazmente",
+      "num_guesses": 2,
+      "prior": 0.00004192288395496269,
+      "guesses": [
+        "declinaras",
+        "tenazmente"
+      ]
+    },
+    {
+      "word": "condenamos",
+      "num_guesses": 3,
+      "prior": 0.00004157552105699728,
+      "guesses": [
+        "declinaras",
+        "condenados",
+        "condenamos"
+      ]
+    },
+    {
+      "word": "discursado",
+      "num_guesses": 3,
+      "prior": 8.985404063731368e-6,
+      "guesses": [
+        "declinaras",
+        "discursiva",
+        "discursado"
+      ]
+    },
+    {
+      "word": "espinochar",
+      "num_guesses": 3,
+      "prior": 7.877340272285537e-6,
+      "guesses": [
+        "declinaras",
+        "cuestionar",
+        "espinochar"
+      ]
+    },
+    {
+      "word": "desmatonas",
+      "num_guesses": 3,
+      "prior": 7.904318096736224e-6,
+      "guesses": [
+        "declinaras",
+        "desatentas",
+        "desmatonas"
+      ]
+    },
+    {
+      "word": "inmodestos",
+      "num_guesses": 3,
+      "prior": 0.000017356613818548633,
+      "guesses": [
+        "declinaras",
+        "investidos",
+        "inmodestos"
+      ]
+    },
+    {
+      "word": "comentaren",
+      "num_guesses": 3,
+      "prior": 0.000012075644120709785,
+      "guesses": [
+        "declinaras",
+        "premuertos",
+        "comentaren"
+      ]
+    },
+    {
+      "word": "pampanosas",
+      "num_guesses": 3,
+      "prior": 0.00001146020449090554,
+      "guesses": [
+        "declinaras",
+        "pantanosas",
+        "pampanosas"
+      ]
+    },
+    {
+      "word": "referendos",
+      "num_guesses": 3,
+      "prior": 0.00002438763781876479,
+      "guesses": [
+        "declinaras",
+        "reverendos",
+        "referendos"
+      ]
+    },
+    {
+      "word": "mimetizaba",
+      "num_guesses": 3,
+      "prior": 0.000015607657253999806,
+      "guesses": [
+        "declinaras",
+        "equitativa",
+        "mimetizaba"
+      ]
+    },
+    {
+      "word": "invalidaba",
+      "num_guesses": 3,
+      "prior": 0.000024703137335681744,
+      "guesses": [
+        "declinaras",
+        "intitulada",
+        "invalidaba"
+      ]
+    },
+    {
+      "word": "parcelares",
+      "num_guesses": 3,
+      "prior": 0.000013955008636308781,
+      "guesses": [
+        "declinaras",
+        "basculares",
+        "parcelares"
+      ]
+    },
+    {
+      "word": "perifonear",
+      "num_guesses": 3,
+      "prior": 0.000012970640712603953,
+      "guesses": [
+        "declinaras",
+        "batiportar",
+        "perifonear"
+      ]
+    },
+    {
+      "word": "devuélvase",
+      "num_guesses": 3,
+      "prior": 0.0000399007270988379,
+      "guesses": [
+        "declinaras",
+        "subempleos",
+        "devuélvase"
+      ]
+    },
+    {
+      "word": "litaciones",
+      "num_guesses": 3,
+      "prior": 0.000015912758104882076,
+      "guesses": [
+        "declinaras",
+        "contribuir",
+        "litaciones"
+      ]
+    },
+    {
+      "word": "extinguiré",
+      "num_guesses": 4,
+      "prior": 0.00001300006958180957,
+      "guesses": [
+        "declinaras",
+        "interrompe",
+        "extinguirá",
+        "extinguiré"
+      ]
+    },
+    {
+      "word": "soltábamos",
+      "num_guesses": 3,
+      "prior": 0.000017213674071161874,
+      "guesses": [
+        "declinaras",
+        "yugoslavos",
+        "soltábamos"
+      ]
+    },
+    {
+      "word": "congratule",
+      "num_guesses": 3,
+      "prior": 0.000014954132163439314,
+      "guesses": [
+        "declinaras",
+        "confortaba",
+        "congratule"
+      ]
+    },
+    {
+      "word": "pordioseos",
+      "num_guesses": 3,
+      "prior": 8.638763259397511e-6,
+      "guesses": [
+        "declinaras",
+        "presididos",
+        "pordioseos"
+      ]
+    },
+    {
+      "word": "menstruara",
+      "num_guesses": 3,
+      "prior": 8.155748506230437e-6,
+      "guesses": [
+        "declinaras",
+        "membranosa",
+        "menstruara"
+      ]
+    },
+    {
+      "word": "valorizaré",
+      "num_guesses": 4,
+      "prior": 7.646945728749725e-6,
+      "guesses": [
+        "declinaras",
+        "habilitara",
+        "valorizará",
+        "valorizaré"
+      ]
+    },
+    {
+      "word": "albugíneos",
+      "num_guesses": 3,
+      "prior": 9.228603792653337e-6,
+      "guesses": [
+        "declinaras",
+        "teleología",
+        "albugíneos"
+      ]
+    },
+    {
+      "word": "consultáis",
+      "num_guesses": 3,
+      "prior": 0.000014268769688238678,
+      "guesses": [
+        "declinaras",
+        "comunicará",
+        "consultáis"
+      ]
+    },
+    {
+      "word": "participan",
+      "num_guesses": 3,
+      "prior": 0.00006082332800622095,
+      "guesses": [
+        "declinaras",
+        "confiarían",
+        "participan"
+      ]
+    },
+    {
+      "word": "programaba",
+      "num_guesses": 3,
+      "prior": 0.000021338705993018744,
+      "guesses": [
+        "declinaras",
+        "abarrotará",
+        "programaba"
+      ]
+    },
+    {
+      "word": "elucubrara",
+      "num_guesses": 3,
+      "prior": 9.52603688786426e-6,
+      "guesses": [
+        "declinaras",
+        "calorífera",
+        "elucubrara"
+      ]
+    },
+    {
+      "word": "ascenderán",
+      "num_guesses": 2,
+      "prior": 0.000027907776113407068,
+      "guesses": [
+        "declinaras",
+        "ascenderán"
+      ]
+    },
+    {
+      "word": "rodeáramos",
+      "num_guesses": 3,
+      "prior": 0.000011070810859843946,
+      "guesses": [
+        "declinaras",
+        "reportemos",
+        "rodeáramos"
+      ]
+    },
+    {
+      "word": "hipoglosos",
+      "num_guesses": 3,
+      "prior": 0.00001390780597325337,
+      "guesses": [
+        "declinaras",
+        "bisulfitos",
+        "hipoglosos"
+      ]
+    },
+    {
+      "word": "desmintáis",
+      "num_guesses": 3,
+      "prior": 0.000012100138529207758,
+      "guesses": [
+        "declinaras",
+        "destinemos",
+        "desmintáis"
+      ]
+    },
+    {
+      "word": "colocación",
+      "num_guesses": 3,
+      "prior": 0.00006285649459921726,
+      "guesses": [
+        "declinaras",
+        "homilética",
+        "colocación"
+      ]
+    },
+    {
+      "word": "minimizará",
+      "num_guesses": 3,
+      "prior": 0.00001775720034720846,
+      "guesses": [
+        "declinaras",
+        "inoportuna",
+        "minimizará"
+      ]
+    },
+    {
+      "word": "acrescento",
+      "num_guesses": 4,
+      "prior": 0.000011866878883131224,
+      "guesses": [
+        "declinaras",
+        "preséntese",
+        "acrescentó",
+        "acrescento"
+      ]
+    },
+    {
+      "word": "desenhadar",
+      "num_guesses": 4,
+      "prior": 8.748613333340125e-6,
+      "guesses": [
+        "declinaras",
+        "desagradan",
+        "desenfadar",
+        "desenhadar"
+      ]
+    },
+    {
+      "word": "autopartes",
+      "num_guesses": 3,
+      "prior": 0.00003344076221936168,
+      "guesses": [
+        "declinaras",
+        "garrapatee",
+        "autopartes"
+      ]
+    },
+    {
+      "word": "atesoraban",
+      "num_guesses": 3,
+      "prior": 0.00002266424419798751,
+      "guesses": [
+        "declinaras",
+        "postergare",
+        "atesoraban"
+      ]
+    },
+    {
+      "word": "remendaras",
+      "num_guesses": 3,
+      "prior": 7.419723104467333e-6,
+      "guesses": [
+        "declinaras",
+        "merendaras",
+        "remendaras"
+      ]
+    },
+    {
+      "word": "enyerbando",
+      "num_guesses": 4,
+      "prior": 8.523023724635118e-6,
+      "guesses": [
+        "declinaras",
+        "autoempleo",
+        "enhebrando",
+        "enyerbando"
+      ]
+    },
+    {
+      "word": "aljofarado",
+      "num_guesses": 3,
+      "prior": 0.000015876707824176386,
+      "guesses": [
+        "declinaras",
+        "abarrotado",
+        "aljofarado"
+      ]
+    },
+    {
+      "word": "entibiarse",
+      "num_guesses": 3,
+      "prior": 0.00002187824243770481,
+      "guesses": [
+        "declinaras",
+        "entreverán",
+        "entibiarse"
+      ]
+    },
+    {
+      "word": "aplaudirán",
+      "num_guesses": 2,
+      "prior": 0.000021950350639910114,
+      "guesses": [
+        "declinaras",
+        "aplaudirán"
+      ]
+    },
+    {
+      "word": "vendimiaba",
+      "num_guesses": 3,
+      "prior": 0.000013257033676381992,
+      "guesses": [
+        "declinaras",
+        "vendimiada",
+        "vendimiaba"
+      ]
+    },
+    {
+      "word": "mentalizas",
+      "num_guesses": 3,
+      "prior": 8.801532193757756e-6,
+      "guesses": [
+        "declinaras",
+        "penalistas",
+        "mentalizas"
+      ]
+    },
+    {
+      "word": "auxiliaron",
+      "num_guesses": 3,
+      "prior": 0.000026321231353755975,
+      "guesses": [
+        "declinaras",
+        "voluntaria",
+        "auxiliaron"
+      ]
+    },
+    {
+      "word": "contentará",
+      "num_guesses": 3,
+      "prior": 0.000026188500288153563,
+      "guesses": [
+        "declinaras",
+        "cupresácea",
+        "contentará"
+      ]
+    },
+    {
+      "word": "insértense",
+      "num_guesses": 3,
+      "prior": 0.00001753832127887273,
+      "guesses": [
+        "declinaras",
+        "sopórtense",
+        "insértense"
+      ]
+    },
+    {
+      "word": "entallando",
+      "num_guesses": 3,
+      "prior": 0.000013721152676851254,
+      "guesses": [
+        "declinaras",
+        "tangueaban",
+        "entallando"
+      ]
+    },
+    {
+      "word": "existentes",
+      "num_guesses": 3,
+      "prior": 0.00007848266594282915,
+      "guesses": [
+        "declinaras",
+        "montesinos",
+        "existentes"
+      ]
+    },
+    {
+      "word": "quisicosas",
+      "num_guesses": 2,
+      "prior": 0.00002025676855142809,
+      "guesses": [
+        "declinaras",
+        "quisicosas"
+      ]
+    },
+    {
+      "word": "traslapado",
+      "num_guesses": 3,
+      "prior": 0.00001705965264160389,
+      "guesses": [
+        "declinaras",
+        "parrillada",
+        "traslapado"
+      ]
+    },
+    {
+      "word": "infiltrará",
+      "num_guesses": 3,
+      "prior": 0.000015286236853334443,
+      "guesses": [
+        "declinaras",
+        "intitulará",
+        "infiltrará"
+      ]
+    },
+    {
+      "word": "enlucieron",
+      "num_guesses": 3,
+      "prior": 0.000011866878883131224,
+      "guesses": [
+        "declinaras",
+        "cumplieron",
+        "enlucieron"
+      ]
+    },
+    {
+      "word": "concentrad",
+      "num_guesses": 2,
+      "prior": 0.00001658855693537349,
+      "guesses": [
+        "declinaras",
+        "concentrad"
+      ]
+    },
+    {
+      "word": "abuchearan",
+      "num_guesses": 3,
+      "prior": 0.000010394212805130672,
+      "guesses": [
+        "declinaras",
+        "conmutaban",
+        "abuchearan"
+      ]
+    },
+    {
+      "word": "enamoraron",
+      "num_guesses": 3,
+      "prior": 0.000026868081618433438,
+      "guesses": [
+        "declinaras",
+        "enterraron",
+        "enamoraron"
+      ]
+    },
+    {
+      "word": "descuernos",
+      "num_guesses": 2,
+      "prior": 0.000010853567327731239,
+      "guesses": [
+        "declinaras",
+        "descuernos"
+      ]
+    },
+    {
+      "word": "embarullar",
+      "num_guesses": 3,
+      "prior": 0.000017781329918001482,
+      "guesses": [
+        "declinaras",
+        "atropellar",
+        "embarullar"
+      ]
+    },
+    {
+      "word": "rechinaría",
+      "num_guesses": 2,
+      "prior": 9.271462930224687e-6,
+      "guesses": [
+        "declinaras",
+        "rechinaría"
+      ]
+    },
+    {
+      "word": "encriptado",
+      "num_guesses": 2,
+      "prior": 0.000020849113835605797,
+      "guesses": [
+        "declinaras",
+        "encriptado"
+      ]
+    },
+    {
+      "word": "sojuzgadas",
+      "num_guesses": 2,
+      "prior": 0.000024398863297587845,
+      "guesses": [
+        "declinaras",
+        "sojuzgadas"
+      ]
+    },
+    {
+      "word": "competirán",
+      "num_guesses": 3,
+      "prior": 0.00002317141681586112,
+      "guesses": [
+        "declinaras",
+        "ofrecieron",
+        "competirán"
+      ]
+    },
+    {
+      "word": "lazarillos",
+      "num_guesses": 3,
+      "prior": 0.000022007719212586565,
+      "guesses": [
+        "declinaras",
+        "latinismos",
+        "lazarillos"
+      ]
+    },
+    {
+      "word": "antepasada",
+      "num_guesses": 3,
+      "prior": 0.000024763229402290847,
+      "guesses": [
+        "declinaras",
+        "fantaseada",
+        "antepasada"
+      ]
+    },
+    {
+      "word": "descarando",
+      "num_guesses": 3,
+      "prior": 0.000010533782412562953,
+      "guesses": [
+        "declinaras",
+        "kilómetros",
+        "descarando"
+      ]
+    },
+    {
+      "word": "destrabada",
+      "num_guesses": 3,
+      "prior": 0.000013582648443560018,
+      "guesses": [
+        "declinaras",
+        "tamborrada",
+        "destrabada"
+      ]
+    },
+    {
+      "word": "remansarse",
+      "num_guesses": 3,
+      "prior": 0.000018159354390188392,
+      "guesses": [
+        "declinaras",
+        "respetuosa",
+        "remansarse"
+      ]
+    },
+    {
+      "word": "protónicas",
+      "num_guesses": 3,
+      "prior": 0.000016499200815238877,
+      "guesses": [
+        "declinaras",
+        "británicas",
+        "protónicas"
+      ]
+    },
+    {
+      "word": "ceñiríamos",
+      "num_guesses": 2,
+      "prior": 0.000010792588370143797,
+      "guesses": [
+        "declinaras",
+        "ceñiríamos"
+      ]
+    },
+    {
+      "word": "alardeamos",
+      "num_guesses": 3,
+      "prior": 0.00001563050382681613,
+      "guesses": [
+        "declinaras",
+        "laboreados",
+        "alardeamos"
+      ]
+    },
+    {
+      "word": "pospondrán",
+      "num_guesses": 2,
+      "prior": 0.000013652603088585715,
+      "guesses": [
+        "declinaras",
+        "pospondrán"
+      ]
+    },
+    {
+      "word": "ajuiciando",
+      "num_guesses": 3,
+      "prior": 7.707165338560574e-6,
+      "guesses": [
+        "declinaras",
+        "anunciando",
+        "ajuiciando"
+      ]
+    },
+    {
+      "word": "barbáricos",
+      "num_guesses": 3,
+      "prior": 0.000014897230629840708,
+      "guesses": [
+        "declinaras",
+        "arregostos",
+        "barbáricos"
+      ]
+    },
+    {
+      "word": "censuraban",
+      "num_guesses": 3,
+      "prior": 0.000026978954241029542,
+      "guesses": [
+        "declinaras",
+        "menoscabar",
+        "censuraban"
+      ]
+    },
+    {
+      "word": "contentaba",
+      "num_guesses": 2,
+      "prior": 0.000035010201164268144,
+      "guesses": [
+        "declinaras",
+        "contentaba"
+      ]
+    },
+    {
+      "word": "acantilada",
+      "num_guesses": 3,
+      "prior": 0.00002379051262480403,
+      "guesses": [
+        "declinaras",
+        "talaverana",
+        "acantilada"
+      ]
+    },
+    {
+      "word": "susurrarán",
+      "num_guesses": 3,
+      "prior": 0.000012321227401324153,
+      "guesses": [
+        "declinaras",
+        "susurraron",
+        "susurrarán"
+      ]
+    },
+    {
+      "word": "ultrajados",
+      "num_guesses": 3,
+      "prior": 0.00002770128189765666,
+      "guesses": [
+        "declinaras",
+        "matarrubia",
+        "ultrajados"
+      ]
+    },
+    {
+      "word": "amancillas",
+      "num_guesses": 3,
+      "prior": 0.00001027502364761124,
+      "guesses": [
+        "declinaras",
+        "saludables",
+        "amancillas"
+      ]
+    },
+    {
+      "word": "amontonaos",
+      "num_guesses": 2,
+      "prior": 0.000013229832557295567,
+      "guesses": [
+        "declinaras",
+        "amontonaos"
+      ]
+    },
+    {
+      "word": "cinceladas",
+      "num_guesses": 3,
+      "prior": 0.000027214287822074006,
+      "guesses": [
+        "declinaras",
+        "pinceladas",
+        "cinceladas"
+      ]
+    },
+    {
+      "word": "pluralices",
+      "num_guesses": 3,
+      "prior": 9.879808076000462e-6,
+      "guesses": [
+        "declinaras",
+        "carretiles",
+        "pluralices"
+      ]
+    },
+    {
+      "word": "condecorar",
+      "num_guesses": 3,
+      "prior": 0.00002529455510229046,
+      "guesses": [
+        "declinaras",
+        "produjeron",
+        "condecorar"
+      ]
+    },
+    {
+      "word": "conoscería",
+      "num_guesses": 3,
+      "prior": 0.000012557086135774325,
+      "guesses": [
+        "declinaras",
+        "transcurre",
+        "conoscería"
+      ]
+    },
+    {
+      "word": "residieran",
+      "num_guesses": 2,
+      "prior": 0.00002465209094976465,
+      "guesses": [
+        "declinaras",
+        "residieran"
+      ]
+    },
+    {
+      "word": "fulminarán",
+      "num_guesses": 3,
+      "prior": 0.000012000943680447359,
+      "guesses": [
+        "declinaras",
+        "iluminaron",
+        "fulminarán"
+      ]
+    },
+    {
+      "word": "laborearán",
+      "num_guesses": 3,
+      "prior": 9.048687812526297e-6,
+      "guesses": [
+        "declinaras",
+        "apagábamos",
+        "laborearán"
+      ]
+    },
+    {
+      "word": "segundaría",
+      "num_guesses": 3,
+      "prior": 8.784033979366414e-6,
+      "guesses": [
+        "declinaras",
+        "reanudarse",
+        "segundaría"
+      ]
+    },
+    {
+      "word": "paleadores",
+      "num_guesses": 4,
+      "prior": 0.000015006057483363386,
+      "guesses": [
+        "declinaras",
+        "salvábamos",
+        "jaleadores",
+        "paleadores"
+      ]
+    },
+    {
+      "word": "chapuceaba",
+      "num_guesses": 3,
+      "prior": 0.000011775831598527983,
+      "guesses": [
+        "declinaras",
+        "chapoteaba",
+        "chapuceaba"
+      ]
+    },
+    {
+      "word": "vaporeando",
+      "num_guesses": 3,
+      "prior": 9.976687475046587e-6,
+      "guesses": [
+        "declinaras",
+        "maturranga",
+        "vaporeando"
+      ]
+    },
+    {
+      "word": "capitulase",
+      "num_guesses": 3,
+      "prior": 0.000018645297013102845,
+      "guesses": [
+        "declinaras",
+        "catalepsia",
+        "capitulase"
+      ]
+    },
+    {
+      "word": "declarados",
+      "num_guesses": 2,
+      "prior": 0.000054737052411037236,
+      "guesses": [
+        "declinaras",
+        "declarados"
+      ]
+    },
+    {
+      "word": "toqueteaba",
+      "num_guesses": 3,
+      "prior": 0.00001744107266258605,
+      "guesses": [
+        "declinaras",
+        "hamaqueaba",
+        "toqueteaba"
+      ]
+    },
+    {
+      "word": "euritermas",
+      "num_guesses": 3,
+      "prior": 0.000010722297804014731,
+      "guesses": [
+        "declinaras",
+        "metaversos",
+        "euritermas"
+      ]
+    },
+    {
+      "word": "resallaban",
+      "num_guesses": 3,
+      "prior": 8.483007760507248e-6,
+      "guesses": [
+        "declinaras",
+        "resaltaban",
+        "resallaban"
+      ]
+    },
+    {
+      "word": "proseguiré",
+      "num_guesses": 4,
+      "prior": 0.000022389705882305175,
+      "guesses": [
+        "declinaras",
+        "socorrismo",
+        "proseguirá",
+        "proseguiré"
+      ]
+    },
+    {
+      "word": "unisexuado",
+      "num_guesses": 3,
+      "prior": 9.408877833754086e-6,
+      "guesses": [
+        "declinaras",
+        "asistiendo",
+        "unisexuado"
+      ]
+    },
+    {
+      "word": "desbloqueo",
+      "num_guesses": 3,
+      "prior": 0.000027095799764782622,
+      "guesses": [
+        "declinaras",
+        "comiéndose",
+        "desbloqueo"
+      ]
+    },
+    {
+      "word": "entrapajar",
+      "num_guesses": 3,
+      "prior": 0.000012095255501576158,
+      "guesses": [
+        "declinaras",
+        "empernaron",
+        "entrapajar"
+      ]
+    },
+    {
+      "word": "estacionar",
+      "num_guesses": 2,
+      "prior": 0.000029921324709293857,
+      "guesses": [
+        "declinaras",
+        "estacionar"
+      ]
+    },
+    {
+      "word": "elucidemos",
+      "num_guesses": 3,
+      "prior": 9.017267998673841e-6,
+      "guesses": [
+        "declinaras",
+        "liquideces",
+        "elucidemos"
+      ]
+    },
+    {
+      "word": "apestillar",
+      "num_guesses": 3,
+      "prior": 0.000010993138059840449,
+      "guesses": [
+        "declinaras",
+        "espartizal",
+        "apestillar"
+      ]
+    },
+    {
+      "word": "golpearían",
+      "num_guesses": 3,
+      "prior": 0.00001649213779860204,
+      "guesses": [
+        "declinaras",
+        "entorpecen",
+        "golpearían"
+      ]
+    },
+    {
+      "word": "metralleta",
+      "num_guesses": 3,
+      "prior": 0.00003138584358453843,
+      "guesses": [
+        "declinaras",
+        "equilátera",
+        "metralleta"
+      ]
+    },
+    {
+      "word": "reprograme",
+      "num_guesses": 3,
+      "prior": 0.000012316685849260043,
+      "guesses": [
+        "declinaras",
+        "resuélvete",
+        "reprograme"
+      ]
+    },
+    {
+      "word": "inyectados",
+      "num_guesses": 3,
+      "prior": 0.000034426007873037134,
+      "guesses": [
+        "declinaras",
+        "disyuntiva",
+        "inyectados"
+      ]
+    },
+    {
+      "word": "consignáis",
+      "num_guesses": 3,
+      "prior": 0.000010438634137081417,
+      "guesses": [
+        "declinaras",
+        "funcionáis",
+        "consignáis"
+      ]
+    },
+    {
+      "word": "macartismo",
+      "num_guesses": 2,
+      "prior": 0.00002359130356005201,
+      "guesses": [
+        "declinaras",
+        "macartismo"
+      ]
+    },
+    {
+      "word": "pronunciás",
+      "num_guesses": 3,
+      "prior": 8.712609587332783e-6,
+      "guesses": [
+        "declinaras",
+        "británicos",
+        "pronunciás"
+      ]
+    },
+    {
+      "word": "machetazos",
+      "num_guesses": 2,
+      "prior": 0.00002897657999015479,
+      "guesses": [
+        "declinaras",
+        "machetazos"
+      ]
+    },
+    {
+      "word": "demostréis",
+      "num_guesses": 3,
+      "prior": 0.000015010180593611719,
+      "guesses": [
+        "declinaras",
+        "restáramos",
+        "demostréis"
+      ]
+    },
+    {
+      "word": "fomentaría",
+      "num_guesses": 3,
+      "prior": 0.000025580317638201297,
+      "guesses": [
+        "declinaras",
+        "enterraron",
+        "fomentaría"
+      ]
+    },
+    {
+      "word": "refacciona",
+      "num_guesses": 3,
+      "prior": 0.00001735891820177094,
+      "guesses": [
+        "declinaras",
+        "reparación",
+        "refacciona"
+      ]
+    },
+    {
+      "word": "secularicé",
+      "num_guesses": 4,
+      "prior": 7.904318096736224e-6,
+      "guesses": [
+        "declinaras",
+        "secularizó",
+        "secularice",
+        "secularicé"
+      ]
+    },
+    {
+      "word": "arrumbadas",
+      "num_guesses": 3,
+      "prior": 0.00002225703863763658,
+      "guesses": [
+        "declinaras",
+        "abusaremos",
+        "arrumbadas"
+      ]
+    },
+    {
+      "word": "sismicidad",
+      "num_guesses": 2,
+      "prior": 0.00002770731846709811,
+      "guesses": [
+        "declinaras",
+        "sismicidad"
+      ]
+    },
+    {
+      "word": "revistados",
+      "num_guesses": 3,
+      "prior": 0.000018627087833707555,
+      "guesses": [
+        "declinaras",
+        "desprendés",
+        "revistados"
+      ]
+    },
+    {
+      "word": "anieblados",
+      "num_guesses": 3,
+      "prior": 8.379525469844395e-6,
+      "guesses": [
+        "declinaras",
+        "anivelados",
+        "anieblados"
+      ]
+    },
+    {
+      "word": "polvorosas",
+      "num_guesses": 3,
+      "prior": 0.000019456827799648214,
+      "guesses": [
+        "declinaras",
+        "orgullosas",
+        "polvorosas"
+      ]
+    },
+    {
+      "word": "colóquense",
+      "num_guesses": 3,
+      "prior": 0.00001988828799676483,
+      "guesses": [
+        "declinaras",
+        "concluyese",
+        "colóquense"
+      ]
+    },
+    {
+      "word": "masturbado",
+      "num_guesses": 3,
+      "prior": 0.000019043333559706976,
+      "guesses": [
+        "declinaras",
+        "portabusto",
+        "masturbado"
+      ]
+    },
+    {
+      "word": "empernaron",
+      "num_guesses": 3,
+      "prior": 8.202489381396305e-6,
+      "guesses": [
+        "declinaras",
+        "externaron",
+        "empernaron"
+      ]
+    },
+    {
+      "word": "proclamado",
+      "num_guesses": 3,
+      "prior": 0.00005175464653425036,
+      "guesses": [
+        "declinaras",
+        "acorralado",
+        "proclamado"
+      ]
+    },
+    {
+      "word": "desmerecer",
+      "num_guesses": 3,
+      "prior": 0.00003282051071764538,
+      "guesses": [
+        "declinaras",
+        "motorizará",
+        "desmerecer"
+      ]
+    },
+    {
+      "word": "historizar",
+      "num_guesses": 3,
+      "prior": 0.000021389914656929973,
+      "guesses": [
+        "declinaras",
+        "improvisar",
+        "historizar"
+      ]
+    },
+    {
+      "word": "expeditivo",
+      "num_guesses": 2,
+      "prior": 0.00003056876139120674,
+      "guesses": [
+        "declinaras",
+        "expeditivo"
+      ]
+    },
+    {
+      "word": "delegarían",
+      "num_guesses": 3,
+      "prior": 0.00001299640552553913,
+      "guesses": [
+        "declinaras",
+        "delatarían",
+        "delegarían"
+      ]
+    },
+    {
+      "word": "farolillos",
+      "num_guesses": 3,
+      "prior": 0.000028056535946824017,
+      "guesses": [
+        "declinaras",
+        "soltábamos",
+        "farolillos"
+      ]
+    },
+    {
+      "word": "felicitaba",
+      "num_guesses": 3,
+      "prior": 0.000030091111508453394,
+      "guesses": [
+        "declinaras",
+        "metabólica",
+        "felicitaba"
+      ]
+    },
+    {
+      "word": "replegaran",
+      "num_guesses": 2,
+      "prior": 0.00001811780600115585,
+      "guesses": [
+        "declinaras",
+        "replegaran"
+      ]
+    },
+    {
+      "word": "pentágonos",
+      "num_guesses": 3,
+      "prior": 0.000021140853334656488,
+      "guesses": [
+        "declinaras",
+        "tungstenos",
+        "pentágonos"
+      ]
+    },
+    {
+      "word": "macuelizos",
+      "num_guesses": 3,
+      "prior": 8.801532193757756e-6,
+      "guesses": [
+        "declinaras",
+        "eucaliptos",
+        "macuelizos"
+      ]
+    },
+    {
+      "word": "despoticen",
+      "num_guesses": 3,
+      "prior": 9.767508354634643e-6,
+      "guesses": [
+        "declinaras",
+        "acomódense",
+        "despoticen"
+      ]
+    },
+    {
+      "word": "rembolsará",
+      "num_guesses": 3,
+      "prior": 0.000010641971917686852,
+      "guesses": [
+        "declinaras",
+        "resuélvase",
+        "rembolsará"
+      ]
+    },
+    {
+      "word": "condonaran",
+      "num_guesses": 2,
+      "prior": 0.000013153853551648734,
+      "guesses": [
+        "declinaras",
+        "condonaran"
+      ]
+    },
+    {
+      "word": "mostrencas",
+      "num_guesses": 3,
+      "prior": 0.000020464892235200154,
+      "guesses": [
+        "declinaras",
+        "incorrecto",
+        "mostrencas"
+      ]
+    },
+    {
+      "word": "masacrasen",
+      "num_guesses": 3,
+      "prior": 8.24818853000675e-6,
+      "guesses": [
+        "declinaras",
+        "amanerarse",
+        "masacrasen"
+      ]
+    },
+    {
+      "word": "desenredes",
+      "num_guesses": 3,
+      "prior": 8.9693010855368e-6,
+      "guesses": [
+        "declinaras",
+        "desórdenes",
+        "desenredes"
+      ]
+    },
+    {
+      "word": "plasmático",
+      "num_guesses": 3,
+      "prior": 0.00003067203136178923,
+      "guesses": [
+        "declinaras",
+        "biográfico",
+        "plasmático"
+      ]
+    },
+    {
+      "word": "medicinase",
+      "num_guesses": 2,
+      "prior": 0.000011166617081276247,
+      "guesses": [
+        "declinaras",
+        "medicinase"
+      ]
+    },
+    {
+      "word": "fumigadora",
+      "num_guesses": 4,
+      "prior": 0.000017895977719336103,
+      "guesses": [
+        "declinaras",
+        "optimizaba",
+        "admiradora",
+        "fumigadora"
+      ]
+    },
+    {
+      "word": "entapujado",
+      "num_guesses": 3,
+      "prior": 9.857754712966243e-6,
+      "guesses": [
+        "declinaras",
+        "empegotada",
+        "entapujado"
+      ]
+    },
+    {
+      "word": "encostrada",
+      "num_guesses": 3,
+      "prior": 0.00001556334178192543,
+      "guesses": [
+        "declinaras",
+        "encastrado",
+        "encostrada"
+      ]
+    },
+    {
+      "word": "explanaran",
+      "num_guesses": 2,
+      "prior": 8.503109900126786e-6,
+      "guesses": [
+        "declinaras",
+        "explanaran"
+      ]
+    },
+    {
+      "word": "cotorreaba",
+      "num_guesses": 3,
+      "prior": 0.00001263601548737211,
+      "guesses": [
+        "declinaras",
+        "carreteara",
+        "cotorreaba"
+      ]
+    },
+    {
+      "word": "sociólogas",
+      "num_guesses": 2,
+      "prior": 0.000017628047240209196,
+      "guesses": [
+        "declinaras",
+        "sociólogas"
+      ]
+    },
+    {
+      "word": "agonizaran",
+      "num_guesses": 3,
+      "prior": 0.000010600881995540291,
+      "guesses": [
+        "declinaras",
+        "progresiva",
+        "agonizaran"
+      ]
+    },
+    {
+      "word": "recibirían",
+      "num_guesses": 2,
+      "prior": 0.00003740028679117833,
+      "guesses": [
+        "declinaras",
+        "recibirían"
+      ]
+    },
+    {
+      "word": "barahustar",
+      "num_guesses": 4,
+      "prior": 0.000011180038534791975,
+      "guesses": [
+        "declinaras",
+        "trasportar",
+        "barajustar",
+        "barahustar"
+      ]
+    },
+    {
+      "word": "esquineros",
+      "num_guesses": 2,
+      "prior": 0.000023497018377877147,
+      "guesses": [
+        "declinaras",
+        "esquineros"
+      ]
+    },
+    {
+      "word": "vitoreaban",
+      "num_guesses": 3,
+      "prior": 0.00002343527585053536,
+      "guesses": [
+        "declinaras",
+        "merenguito",
+        "vitoreaban"
+      ]
+    },
+    {
+      "word": "abarajando",
+      "num_guesses": 3,
+      "prior": 8.730685696284527e-6,
+      "guesses": [
+        "declinaras",
+        "formateaba",
+        "abarajando"
+      ]
+    },
+    {
+      "word": "alopécicos",
+      "num_guesses": 3,
+      "prior": 0.000011526140982240536,
+      "guesses": [
+        "declinaras",
+        "pasotismos",
+        "alopécicos"
+      ]
+    },
+    {
+      "word": "desaniméis",
+      "num_guesses": 3,
+      "prior": 0.000014995729835941581,
+      "guesses": [
+        "declinaras",
+        "ocupémonos",
+        "desaniméis"
+      ]
+    },
+    {
+      "word": "despicarse",
+      "num_guesses": 2,
+      "prior": 0.000016887017422488656,
+      "guesses": [
+        "declinaras",
+        "despicarse"
+      ]
+    },
+    {
+      "word": "gurruminos",
+      "num_guesses": 3,
+      "prior": 0.00001367361181003414,
+      "guesses": [
+        "declinaras",
+        "instruimos",
+        "gurruminos"
+      ]
+    },
+    {
+      "word": "fisgoneada",
+      "num_guesses": 2,
+      "prior": 7.9571945058816e-6,
+      "guesses": [
+        "declinaras",
+        "fisgoneada"
+      ]
+    },
+    {
+      "word": "apodadores",
+      "num_guesses": 4,
+      "prior": 0.000010815616862046753,
+      "guesses": [
+        "declinaras",
+        "garroteaba",
+        "unanimidad",
+        "apodadores"
+      ]
+    },
+    {
+      "word": "entrecalle",
+      "num_guesses": 3,
+      "prior": 0.00001747485162329326,
+      "guesses": [
+        "declinaras",
+        "entrelacen",
+        "entrecalle"
+      ]
+    },
+    {
+      "word": "engarrados",
+      "num_guesses": 3,
+      "prior": 8.008701684912628e-6,
+      "guesses": [
+        "declinaras",
+        "apagaremos",
+        "engarrados"
+      ]
+    },
+    {
+      "word": "esquiroles",
+      "num_guesses": 2,
+      "prior": 0.000025652941862904883,
+      "guesses": [
+        "declinaras",
+        "esquiroles"
+      ]
+    },
+    {
+      "word": "amurallada",
+      "num_guesses": 3,
+      "prior": 0.000031517315053609276,
+      "guesses": [
+        "declinaras",
+        "abarrotado",
+        "amurallada"
+      ]
+    },
+    {
+      "word": "trompicaba",
+      "num_guesses": 3,
+      "prior": 0.000011625167358586922,
+      "guesses": [
+        "declinaras",
+        "capacitaré",
+        "trompicaba"
+      ]
+    },
+    {
+      "word": "puntualiza",
+      "num_guesses": 3,
+      "prior": 0.00003971559632846012,
+      "guesses": [
+        "declinaras",
+        "intitulaba",
+        "puntualiza"
+      ]
+    },
+    {
+      "word": "sepultases",
+      "num_guesses": 3,
+      "prior": 7.453916825851941e-6,
+      "guesses": [
+        "declinaras",
+        "peleábamos",
+        "sepultases"
+      ]
+    },
+    {
+      "word": "explosivas",
+      "num_guesses": 2,
+      "prior": 0.00003644603684788694,
+      "guesses": [
+        "declinaras",
+        "explosivas"
+      ]
+    },
+    {
+      "word": "explayaran",
+      "num_guesses": 3,
+      "prior": 0.00001203603475820973,
+      "guesses": [
+        "declinaras",
+        "explotaran",
+        "explayaran"
+      ]
+    },
+    {
+      "word": "reunionesa",
+      "num_guesses": 3,
+      "prior": 7.707165338560574e-6,
+      "guesses": [
+        "declinaras",
+        "presentará",
+        "reunionesa"
+      ]
+    },
+    {
+      "word": "cascareros",
+      "num_guesses": 3,
+      "prior": 9.576309004445938e-6,
+      "guesses": [
+        "declinaras",
+        "caracteres",
+        "cascareros"
+      ]
+    },
+    {
+      "word": "empecieron",
+      "num_guesses": 3,
+      "prior": 0.000011584801219100397,
+      "guesses": [
+        "declinaras",
+        "ofrecieron",
+        "empecieron"
+      ]
+    },
+    {
+      "word": "acullicada",
+      "num_guesses": 3,
+      "prior": 8.462713250984202e-6,
+      "guesses": [
+        "declinaras",
+        "acullicado",
+        "acullicada"
+      ]
+    },
+    {
+      "word": "lubricados",
+      "num_guesses": 2,
+      "prior": 0.00001930937691417481,
+      "guesses": [
+        "declinaras",
+        "lubricados"
+      ]
+    },
+    {
+      "word": "reiniciase",
+      "num_guesses": 3,
+      "prior": 0.00001134891928458815,
+      "guesses": [
+        "declinaras",
+        "perniciosa",
+        "reiniciase"
+      ]
+    },
+    {
+      "word": "destilemos",
+      "num_guesses": 3,
+      "prior": 8.712609587332783e-6,
+      "guesses": [
+        "declinaras",
+        "deleitosos",
+        "destilemos"
+      ]
+    },
+    {
+      "word": "resabiarse",
+      "num_guesses": 2,
+      "prior": 0.000012134100959994321,
+      "guesses": [
+        "declinaras",
+        "resabiarse"
+      ]
+    },
+    {
+      "word": "devolutiva",
+      "num_guesses": 3,
+      "prior": 0.000016858627044590923,
+      "guesses": [
+        "declinaras",
+        "debilitado",
+        "devolutiva"
+      ]
+    },
+    {
+      "word": "salchichón",
+      "num_guesses": 3,
+      "prior": 0.00002823108074167544,
+      "guesses": [
+        "declinaras",
+        "costumbres",
+        "salchichón"
+      ]
+    },
+    {
+      "word": "nodocentes",
+      "num_guesses": 3,
+      "prior": 7.584767184031766e-6,
+      "guesses": [
+        "declinaras",
+        "concedemos",
+        "nodocentes"
+      ]
+    },
+    {
+      "word": "congelaran",
+      "num_guesses": 3,
+      "prior": 0.000016506251758333064,
+      "guesses": [
+        "declinaras",
+        "cancelaran",
+        "congelaran"
+      ]
+    },
+    {
+      "word": "distensión",
+      "num_guesses": 2,
+      "prior": 0.000043372469319809135,
+      "guesses": [
+        "declinaras",
+        "distensión"
+      ]
+    },
+    {
+      "word": "esmerilado",
+      "num_guesses": 2,
+      "prior": 0.000028812275000184182,
+      "guesses": [
+        "declinaras",
+        "esmerilado"
+      ]
+    },
+    {
+      "word": "caleteaban",
+      "num_guesses": 3,
+      "prior": 8.008701684912628e-6,
+      "guesses": [
+        "declinaras",
+        "colectaban",
+        "caleteaban"
+      ]
+    },
+    {
+      "word": "comarcasen",
+      "num_guesses": 3,
+      "prior": 8.676000688669699e-6,
+      "guesses": [
+        "declinaras",
+        "amanerarse",
+        "comarcasen"
+      ]
+    },
+    {
+      "word": "churretera",
+      "num_guesses": 3,
+      "prior": 7.930932564819948e-6,
+      "guesses": [
+        "declinaras",
+        "correteará",
+        "churretera"
+      ]
+    },
+    {
+      "word": "albéitares",
+      "num_guesses": 3,
+      "prior": 0.000023102801734963723,
+      "guesses": [
+        "declinaras",
+        "alféizares",
+        "albéitares"
+      ]
+    },
+    {
+      "word": "acañutados",
+      "num_guesses": 4,
+      "prior": 8.421530209366037e-6,
+      "guesses": [
+        "declinaras",
+        "acomodados",
+        "achuchados",
+        "acañutados"
+      ]
+    },
+    {
+      "word": "manipuláis",
+      "num_guesses": 3,
+      "prior": 8.903705004736918e-6,
+      "guesses": [
+        "declinaras",
+        "postulamos",
+        "manipuláis"
+      ]
+    },
+    {
+      "word": "rebelarías",
+      "num_guesses": 3,
+      "prior": 8.292896778709888e-6,
+      "guesses": [
+        "declinaras",
+        "resaltaban",
+        "rebelarías"
+      ]
+    },
+    {
+      "word": "extrangera",
+      "num_guesses": 3,
+      "prior": 0.00003190171682183603,
+      "guesses": [
+        "declinaras",
+        "forcejeara",
+        "extrangera"
+      ]
+    },
+    {
+      "word": "desnúdense",
+      "num_guesses": 3,
+      "prior": 0.00001272101877401407,
+      "guesses": [
+        "declinaras",
+        "sopórtense",
+        "desnúdense"
+      ]
+    },
+    {
+      "word": "cortapluma",
+      "num_guesses": 3,
+      "prior": 0.00001559176167780507,
+      "guesses": [
+        "declinaras",
+        "antecámara",
+        "cortapluma"
+      ]
+    },
+    {
+      "word": "recomprado",
+      "num_guesses": 3,
+      "prior": 0.000015348934187868006,
+      "guesses": [
+        "declinaras",
+        "recuperado",
+        "recomprado"
+      ]
+    },
+    {
+      "word": "tropezarán",
+      "num_guesses": 3,
+      "prior": 0.00002074738144645521,
+      "guesses": [
+        "declinaras",
+        "autoempleo",
+        "tropezarán"
+      ]
+    },
+    {
+      "word": "cebollines",
+      "num_guesses": 3,
+      "prior": 0.000018620132235115583,
+      "guesses": [
+        "declinaras",
+        "gentílicos",
+        "cebollines"
+      ]
+    },
+    {
+      "word": "holgáramos",
+      "num_guesses": 3,
+      "prior": 0.0000155829027165848,
+      "guesses": [
+        "declinaras",
+        "bolígrafos",
+        "holgáramos"
+      ]
+    },
+    {
+      "word": "asolapadas",
+      "num_guesses": 3,
+      "prior": 8.712609587332783e-6,
+      "guesses": [
+        "declinaras",
+        "salvajismo",
+        "asolapadas"
+      ]
+    },
+    {
+      "word": "taragontía",
+      "num_guesses": 3,
+      "prior": 8.818892352749108e-6,
+      "guesses": [
+        "declinaras",
+        "abalanzaré",
+        "taragontía"
+      ]
+    },
+    {
+      "word": "ajerezados",
+      "num_guesses": 4,
+      "prior": 9.755990034426418e-6,
+      "guesses": [
+        "declinaras",
+        "soterremos",
+        "aderezados",
+        "ajerezados"
+      ]
+    },
+    {
+      "word": "enlistando",
+      "num_guesses": 3,
+      "prior": 0.000014512613112315762,
+      "guesses": [
+        "declinaras",
+        "insondable",
+        "enlistando"
+      ]
+    },
+    {
+      "word": "desinstala",
+      "num_guesses": 3,
+      "prior": 0.000013343928658927819,
+      "guesses": [
+        "declinaras",
+        "obteniendo",
+        "desinstala"
+      ]
+    },
+    {
+      "word": "destrabará",
+      "num_guesses": 3,
+      "prior": 0.000010110305552422983,
+      "guesses": [
+        "declinaras",
+        "tamborrada",
+        "destrabará"
+      ]
+    },
+    {
+      "word": "traicionar",
+      "num_guesses": 3,
+      "prior": 0.00004000229709541684,
+      "guesses": [
+        "declinaras",
+        "traccionan",
+        "traicionar"
+      ]
+    },
+    {
+      "word": "adecuarías",
+      "num_guesses": 3,
+      "prior": 7.616110265399227e-6,
+      "guesses": [
+        "declinaras",
+        "agradezcas",
+        "adecuarías"
+      ]
+    },
+    {
+      "word": "metrópolis",
+      "num_guesses": 3,
+      "prior": 0.00004473458013322906,
+      "guesses": [
+        "declinaras",
+        "pituitosos",
+        "metrópolis"
+      ]
+    },
+    {
+      "word": "tostoneras",
+      "num_guesses": 3,
+      "prior": 7.794110254836386e-6,
+      "guesses": [
+        "declinaras",
+        "montoneras",
+        "tostoneras"
+      ]
+    },
+    {
+      "word": "trepidando",
+      "num_guesses": 3,
+      "prior": 0.0000190512798731599,
+      "guesses": [
+        "declinaras",
+        "trepidante",
+        "trepidando"
+      ]
+    },
+    {
+      "word": "solventaré",
+      "num_guesses": 3,
+      "prior": 8.748613333340125e-6,
+      "guesses": [
+        "declinaras",
+        "gobiérnese",
+        "solventaré"
+      ]
+    },
+    {
+      "word": "comunísimo",
+      "num_guesses": 3,
+      "prior": 0.00002187093339552424,
+      "guesses": [
+        "declinaras",
+        "imposición",
+        "comunísimo"
+      ]
+    },
+    {
+      "word": "regulación",
+      "num_guesses": 3,
+      "prior": 0.00007012277172433914,
+      "guesses": [
+        "declinaras",
+        "oscureceré",
+        "regulación"
+      ]
+    },
+    {
+      "word": "cuchillada",
+      "num_guesses": 2,
+      "prior": 0.00003526326734078297,
+      "guesses": [
+        "declinaras",
+        "cuchillada"
+      ]
+    },
+    {
+      "word": "mistificar",
+      "num_guesses": 3,
+      "prior": 0.000022372615438440426,
+      "guesses": [
+        "declinaras",
+        "justificar",
+        "mistificar"
+      ]
+    },
+    {
+      "word": "descocarse",
+      "num_guesses": 3,
+      "prior": 0.00001204101450122916,
+      "guesses": [
+        "declinaras",
+        "obstáculos",
+        "descocarse"
+      ]
+    },
+    {
+      "word": "arreciadas",
+      "num_guesses": 3,
+      "prior": 9.744417059921758e-6,
+      "guesses": [
+        "declinaras",
+        "apreciadas",
+        "arreciadas"
+      ]
+    },
+    {
+      "word": "demandados",
+      "num_guesses": 2,
+      "prior": 0.00005247837896159961,
+      "guesses": [
+        "declinaras",
+        "demandados"
+      ]
+    },
+    {
+      "word": "remendando",
+      "num_guesses": 3,
+      "prior": 0.000024297081258281775,
+      "guesses": [
+        "declinaras",
+        "protegemos",
+        "remendando"
+      ]
+    },
+    {
+      "word": "impelieran",
+      "num_guesses": 3,
+      "prior": 0.000012330290469164818,
+      "guesses": [
+        "declinaras",
+        "equilibran",
+        "impelieran"
+      ]
+    },
+    {
+      "word": "paleógenas",
+      "num_guesses": 3,
+      "prior": 0.000015195125474775096,
+      "guesses": [
+        "declinaras",
+        "manteletas",
+        "paleógenas"
+      ]
+    },
+    {
+      "word": "doctoraron",
+      "num_guesses": 2,
+      "prior": 0.000014972908337205468,
+      "guesses": [
+        "declinaras",
+        "doctoraron"
+      ]
+    },
+    {
+      "word": "insumiendo",
+      "num_guesses": 3,
+      "prior": 0.000016443785436865383,
+      "guesses": [
+        "declinaras",
+        "impónganse",
+        "insumiendo"
+      ]
+    },
+    {
+      "word": "panteístas",
+      "num_guesses": 2,
+      "prior": 0.000025267927039650415,
+      "guesses": [
+        "declinaras",
+        "panteístas"
+      ]
+    },
+    {
+      "word": "univocando",
+      "num_guesses": 3,
+      "prior": 7.9571945058816e-6,
+      "guesses": [
+        "declinaras",
+        "codiciando",
+        "univocando"
+      ]
+    },
+    {
+      "word": "fustigaban",
+      "num_guesses": 3,
+      "prior": 0.000018216700861809614,
+      "guesses": [
+        "declinaras",
+        "venturosos",
+        "fustigaban"
+      ]
+    },
+    {
+      "word": "escandiera",
+      "num_guesses": 3,
+      "prior": 7.349381273666924e-6,
+      "guesses": [
+        "declinaras",
+        "ascendiera",
+        "escandiera"
+      ]
+    },
+    {
+      "word": "municionar",
+      "num_guesses": 3,
+      "prior": 0.000019633137541581782,
+      "guesses": [
+        "declinaras",
+        "principian",
+        "municionar"
+      ]
+    },
+    {
+      "word": "subtenderá",
+      "num_guesses": 3,
+      "prior": 8.694382210904087e-6,
+      "guesses": [
+        "declinaras",
+        "portáramos",
+        "subtenderá"
+      ]
+    },
+    {
+      "word": "estregamos",
+      "num_guesses": 3,
+      "prior": 8.730685696284527e-6,
+      "guesses": [
+        "declinaras",
+        "postergues",
+        "estregamos"
+      ]
+    },
+    {
+      "word": "descabulle",
+      "num_guesses": 3,
+      "prior": 0.000010447428281098505,
+      "guesses": [
+        "declinaras",
+        "embellezco",
+        "descabulle"
+      ]
+    },
+    {
+      "word": "sollozados",
+      "num_guesses": 2,
+      "prior": 8.953081628396077e-6,
+      "guesses": [
+        "declinaras",
+        "sollozados"
+      ]
+    },
+    {
+      "word": "otoplastia",
+      "num_guesses": 3,
+      "prior": 0.000012275507299893806,
+      "guesses": [
+        "declinaras",
+        "filosofaba",
+        "otoplastia"
+      ]
+    },
+    {
+      "word": "dependiste",
+      "num_guesses": 3,
+      "prior": 7.98311425536877e-6,
+      "guesses": [
+        "declinaras",
+        "definieses",
+        "dependiste"
+      ]
+    },
+    {
+      "word": "ilusionaré",
+      "num_guesses": 3,
+      "prior": 7.3848871843549774e-6,
+      "guesses": [
+        "declinaras",
+        "ilusionará",
+        "ilusionaré"
+      ]
+    },
+    {
+      "word": "disuasoria",
+      "num_guesses": 2,
+      "prior": 0.000022875514402549965,
+      "guesses": [
+        "declinaras",
+        "disuasoria"
+      ]
+    },
+    {
+      "word": "excrementó",
+      "num_guesses": 3,
+      "prior": 9.125382578552488e-6,
+      "guesses": [
+        "declinaras",
+        "excremento",
+        "excrementó"
+      ]
+    },
+    {
+      "word": "agusanarse",
+      "num_guesses": 3,
+      "prior": 0.000014445984101511283,
+      "guesses": [
+        "declinaras",
+        "progenitor",
+        "agusanarse"
+      ]
+    },
+    {
+      "word": "santiguará",
+      "num_guesses": 3,
+      "prior": 0.000012467474935214433,
+      "guesses": [
+        "declinaras",
+        "espontánea",
+        "santiguará"
+      ]
+    },
+    {
+      "word": "desperdiga",
+      "num_guesses": 3,
+      "prior": 0.000016702990417380596,
+      "guesses": [
+        "declinaras",
+        "emprestará",
+        "desperdiga"
+      ]
+    },
+    {
+      "word": "hablaríais",
+      "num_guesses": 3,
+      "prior": 0.000015462202191280888,
+      "guesses": [
+        "declinaras",
+        "hallaríais",
+        "hablaríais"
+      ]
+    },
+    {
+      "word": "compartirá",
+      "num_guesses": 3,
+      "prior": 0.00002693299559661353,
+      "guesses": [
+        "declinaras",
+        "pragmático",
+        "compartirá"
+      ]
+    },
+    {
+      "word": "perduraban",
+      "num_guesses": 3,
+      "prior": 0.000023562192196088054,
+      "guesses": [
+        "declinaras",
+        "redundaban",
+        "perduraban"
+      ]
+    },
+    {
+      "word": "bamboleara",
+      "num_guesses": 3,
+      "prior": 0.000012854006379856617,
+      "guesses": [
+        "declinaras",
+        "programaba",
+        "bamboleara"
+      ]
+    },
+    {
+      "word": "continuate",
+      "num_guesses": 2,
+      "prior": 0.00001121992077938861,
+      "guesses": [
+        "declinaras",
+        "continuate"
+      ]
+    },
+    {
+      "word": "alegrísimo",
+      "num_guesses": 3,
+      "prior": 0.000018821924421942,
+      "guesses": [
+        "declinaras",
+        "demeritará",
+        "alegrísimo"
+      ]
+    },
+    {
+      "word": "cordoneros",
+      "num_guesses": 3,
+      "prior": 0.000022288913465595757,
+      "guesses": [
+        "declinaras",
+        "convendrás",
+        "cordoneros"
+      ]
+    },
+    {
+      "word": "aprovechen",
+      "num_guesses": 3,
+      "prior": 0.000037632174261782875,
+      "guesses": [
+        "declinaras",
+        "enfrentaré",
+        "aprovechen"
+      ]
+    },
+    {
+      "word": "informador",
+      "num_guesses": 2,
+      "prior": 0.00003592329584385978,
+      "guesses": [
+        "declinaras",
+        "informador"
+      ]
+    },
+    {
+      "word": "madrugadas",
+      "num_guesses": 3,
+      "prior": 0.00003354011560437593,
+      "guesses": [
+        "declinaras",
+        "abusaremos",
+        "madrugadas"
+      ]
+    },
+    {
+      "word": "desecadora",
+      "num_guesses": 3,
+      "prior": 0.000015942012683605703,
+      "guesses": [
+        "declinaras",
+        "bancarrota",
+        "desecadora"
+      ]
+    },
+    {
+      "word": "jamaicanas",
+      "num_guesses": 2,
+      "prior": 0.00001598068778747248,
+      "guesses": [
+        "declinaras",
+        "jamaicanas"
+      ]
+    },
+    {
+      "word": "picaneados",
+      "num_guesses": 2,
+      "prior": 0.000011265744618490692,
+      "guesses": [
+        "declinaras",
+        "picaneados"
+      ]
+    },
+    {
+      "word": "escrutinio",
+      "num_guesses": 3,
+      "prior": 0.000051817906684222,
+      "guesses": [
+        "declinaras",
+        "incurriese",
+        "escrutinio"
+      ]
+    },
+    {
+      "word": "chichonera",
+      "num_guesses": 4,
+      "prior": 0.000016194588895214742,
+      "guesses": [
+        "declinaras",
+        "entorpecen",
+        "comunicare",
+        "chichonera"
+      ]
+    },
+    {
+      "word": "detraerían",
+      "num_guesses": 3,
+      "prior": 9.778972597886145e-6,
+      "guesses": [
+        "declinaras",
+        "cumanagoto",
+        "detraerían"
+      ]
+    },
+    {
+      "word": "carilindos",
+      "num_guesses": 2,
+      "prior": 0.000010769361637467639,
+      "guesses": [
+        "declinaras",
+        "carilindos"
+      ]
+    },
+    {
+      "word": "pelopincho",
+      "num_guesses": 3,
+      "prior": 0.00001383435011650303,
+      "guesses": [
+        "declinaras",
+        "fenológico",
+        "pelopincho"
+      ]
+    },
+    {
+      "word": "espabiléis",
+      "num_guesses": 3,
+      "prior": 7.616110265399227e-6,
+      "guesses": [
+        "declinaras",
+        "pusiésemos",
+        "espabiléis"
+      ]
+    },
+    {
+      "word": "intérvalos",
+      "num_guesses": 3,
+      "prior": 0.00002795040696108639,
+      "guesses": [
+        "declinaras",
+        "lorquianos",
+        "intérvalos"
+      ]
+    },
+    {
+      "word": "jesuseando",
+      "num_guesses": 3,
+      "prior": 8.9693010855368e-6,
+      "guesses": [
+        "declinaras",
+        "segundando",
+        "jesuseando"
+      ]
+    },
+    {
+      "word": "entumecido",
+      "num_guesses": 3,
+      "prior": 0.0000285010171257923,
+      "guesses": [
+        "declinaras",
+        "himenóforo",
+        "entumecido"
+      ]
+    },
+    {
+      "word": "palpitares",
+      "num_guesses": 3,
+      "prior": 0.000012026050476725162,
+      "guesses": [
+        "declinaras",
+        "alféizares",
+        "palpitares"
+      ]
+    },
+    {
+      "word": "revacunará",
+      "num_guesses": 3,
+      "prior": 9.017267998673841e-6,
+      "guesses": [
+        "declinaras",
+        "reaparecen",
+        "revacunará"
+      ]
+    },
+    {
+      "word": "respectase",
+      "num_guesses": 3,
+      "prior": 8.936743779289573e-6,
+      "guesses": [
+        "declinaras",
+        "conténtese",
+        "respectase"
+      ]
+    },
+    {
+      "word": "templistas",
+      "num_guesses": 3,
+      "prior": 8.836116883160927e-6,
+      "guesses": [
+        "declinaras",
+        "pelotillas",
+        "templistas"
+      ]
+    },
+    {
+      "word": "normalista",
+      "num_guesses": 2,
+      "prior": 0.00003507961301195392,
+      "guesses": [
+        "declinaras",
+        "normalista"
+      ]
+    },
+    {
+      "word": "aligeraste",
+      "num_guesses": 2,
+      "prior": 8.462713250984202e-6,
+      "guesses": [
+        "declinaras",
+        "aligeraste"
+      ]
+    },
+    {
+      "word": "desharemos",
+      "num_guesses": 3,
+      "prior": 0.00001643662662464448,
+      "guesses": [
+        "declinaras",
+        "apertreche",
+        "desharemos"
+      ]
+    },
+    {
+      "word": "entrabaran",
+      "num_guesses": 4,
+      "prior": 0.000010358120916644044,
+      "guesses": [
+        "declinaras",
+        "interrogue",
+        "entrañaran",
+        "entrabaran"
+      ]
+    },
+    {
+      "word": "interesado",
+      "num_guesses": 3,
+      "prior": 0.0000720607990070713,
+      "guesses": [
+        "declinaras",
+        "aprendiste",
+        "interesado"
+      ]
+    },
+    {
+      "word": "destruecan",
+      "num_guesses": 3,
+      "prior": 0.000010008160300700563,
+      "guesses": [
+        "declinaras",
+        "contuercen",
+        "destruecan"
+      ]
+    },
+    {
+      "word": "pintasteis",
+      "num_guesses": 3,
+      "prior": 0.00001093523812792521,
+      "guesses": [
+        "declinaras",
+        "tuviésemos",
+        "pintasteis"
+      ]
+    },
+    {
+      "word": "desengañen",
+      "num_guesses": 3,
+      "prior": 0.00002100077561332189,
+      "guesses": [
+        "declinaras",
+        "postergues",
+        "desengañen"
+      ]
+    },
+    {
+      "word": "legalismos",
+      "num_guesses": 2,
+      "prior": 0.000017481576170547373,
+      "guesses": [
+        "declinaras",
+        "legalismos"
+      ]
+    },
+    {
+      "word": "apropincuo",
+      "num_guesses": 3,
+      "prior": 8.008701684912628e-6,
+      "guesses": [
+        "declinaras",
+        "motorizará",
+        "apropincuo"
+      ]
+    },
+    {
+      "word": "pasearemos",
+      "num_guesses": 3,
+      "prior": 0.000019147951949053637,
+      "guesses": [
+        "declinaras",
+        "garrapatee",
+        "pasearemos"
+      ]
+    },
+    {
+      "word": "doblegaron",
+      "num_guesses": 2,
+      "prior": 0.000022575551655674436,
+      "guesses": [
+        "declinaras",
+        "doblegaron"
+      ]
+    },
+    {
+      "word": "trasladase",
+      "num_guesses": 3,
+      "prior": 0.000032339797420083615,
+      "guesses": [
+        "declinaras",
+        "aversarios",
+        "trasladase"
+      ]
+    },
+    {
+      "word": "tropezaras",
+      "num_guesses": 3,
+      "prior": 0.00001203603475820973,
+      "guesses": [
+        "declinaras",
+        "trabajador",
+        "tropezaras"
+      ]
+    },
+    {
+      "word": "tomografía",
+      "num_guesses": 3,
+      "prior": 0.00003472035578793557,
+      "guesses": [
+        "declinaras",
+        "topografía",
+        "tomografía"
+      ]
+    },
+    {
+      "word": "barreneros",
+      "num_guesses": 3,
+      "prior": 0.000016753744082722,
+      "guesses": [
+        "declinaras",
+        "fontaneros",
+        "barreneros"
+      ]
+    },
+    {
+      "word": "pontifiqué",
+      "num_guesses": 2,
+      "prior": 9.551305245321836e-6,
+      "guesses": [
+        "declinaras",
+        "pontifiqué"
+      ]
+    },
+    {
+      "word": "añadisteis",
+      "num_guesses": 2,
+      "prior": 0.000012834792532526967,
+      "guesses": [
+        "declinaras",
+        "añadisteis"
+      ]
+    },
+    {
+      "word": "aguardasen",
+      "num_guesses": 3,
+      "prior": 0.000023745283809186676,
+      "guesses": [
+        "declinaras",
+        "paporreteo",
+        "aguardasen"
+      ]
+    },
+    {
+      "word": "encargaras",
+      "num_guesses": 2,
+      "prior": 0.000014635481391017992,
+      "guesses": [
+        "declinaras",
+        "encargaras"
+      ]
+    },
+    {
+      "word": "amarcigada",
+      "num_guesses": 3,
+      "prior": 8.766395214528166e-6,
+      "guesses": [
+        "declinaras",
+        "arrematado",
+        "amarcigada"
+      ]
+    },
+    {
+      "word": "vandálicas",
+      "num_guesses": 2,
+      "prior": 0.000022814071810884115,
+      "guesses": [
+        "declinaras",
+        "vandálicas"
+      ]
+    },
+    {
+      "word": "palaciegas",
+      "num_guesses": 3,
+      "prior": 0.0000309333197418321,
+      "guesses": [
+        "declinaras",
+        "capilletas",
+        "palaciegas"
+      ]
+    },
+    {
+      "word": "arderíamos",
+      "num_guesses": 3,
+      "prior": 0.000010625612160184008,
+      "guesses": [
+        "declinaras",
+        "soterremos",
+        "arderíamos"
+      ]
+    },
+    {
+      "word": "deliberaba",
+      "num_guesses": 3,
+      "prior": 0.00002491109485643551,
+      "guesses": [
+        "declinaras",
+        "deliberada",
+        "deliberaba"
+      ]
+    },
+    {
+      "word": "perfumaran",
+      "num_guesses": 3,
+      "prior": 0.000013086792579716103,
+      "guesses": [
+        "declinaras",
+        "pegamentos",
+        "perfumaran"
+      ]
+    },
+    {
+      "word": "alumbrosas",
+      "num_guesses": 3,
+      "prior": 9.285574811284449e-6,
+      "guesses": [
+        "declinaras",
+        "marímbulas",
+        "alumbrosas"
+      ]
+    },
+    {
+      "word": "calibramos",
+      "num_guesses": 2,
+      "prior": 0.000014926843419189508,
+      "guesses": [
+        "declinaras",
+        "calibramos"
+      ]
+    },
+    {
+      "word": "telepático",
+      "num_guesses": 2,
+      "prior": 0.00002153872327493527,
+      "guesses": [
+        "declinaras",
+        "telepático"
+      ]
+    },
+    {
+      "word": "calibrasen",
+      "num_guesses": 2,
+      "prior": 7.904318096736224e-6,
+      "guesses": [
+        "declinaras",
+        "calibrasen"
+      ]
+    },
+    {
+      "word": "canturreas",
+      "num_guesses": 3,
+      "prior": 0.000011323586622748592,
+      "guesses": [
+        "declinaras",
+        "rancherías",
+        "canturreas"
+      ]
+    },
+    {
+      "word": "agigantase",
+      "num_guesses": 3,
+      "prior": 9.890761326941906e-6,
+      "guesses": [
+        "declinaras",
+        "piamontesa",
+        "agigantase"
+      ]
+    },
+    {
+      "word": "manuelinos",
+      "num_guesses": 3,
+      "prior": 0.000013750534429260542,
+      "guesses": [
+        "declinaras",
+        "latinismos",
+        "manuelinos"
+      ]
+    },
+    {
+      "word": "peticionas",
+      "num_guesses": 3,
+      "prior": 0.000011887900943889224,
+      "guesses": [
+        "declinaras",
+        "centésimas",
+        "peticionas"
+      ]
+    },
+    {
+      "word": "acudiríais",
+      "num_guesses": 2,
+      "prior": 0.000010120295992429558,
+      "guesses": [
+        "declinaras",
+        "acudiríais"
+      ]
+    },
+    {
+      "word": "abanicarán",
+      "num_guesses": 3,
+      "prior": 8.270663491435135e-6,
+      "guesses": [
+        "declinaras",
+        "fontículos",
+        "abanicarán"
+      ]
+    },
+    {
+      "word": "perforarás",
+      "num_guesses": 3,
+      "prior": 8.270663491435135e-6,
+      "guesses": [
+        "declinaras",
+        "reformarás",
+        "perforarás"
+      ]
+    },
+    {
+      "word": "atañederas",
+      "num_guesses": 3,
+      "prior": 0.00001773505387089986,
+      "guesses": [
+        "declinaras",
+        "purgatorio",
+        "atañederas"
+      ]
+    },
+    {
+      "word": "aparatosos",
+      "num_guesses": 3,
+      "prior": 0.000026343203451664778,
+      "guesses": [
+        "declinaras",
+        "trabajosos",
+        "aparatosos"
+      ]
+    },
+    {
+      "word": "hidratamos",
+      "num_guesses": 3,
+      "prior": 0.000011329941052463823,
+      "guesses": [
+        "declinaras",
+        "amortizado",
+        "hidratamos"
+      ]
+    },
+    {
+      "word": "banderizos",
+      "num_guesses": 3,
+      "prior": 0.000023138670708470016,
+      "guesses": [
+        "declinaras",
+        "benemérito",
+        "banderizos"
+      ]
+    },
+    {
+      "word": "mazorrales",
+      "num_guesses": 3,
+      "prior": 0.000015034824612956523,
+      "guesses": [
+        "declinaras",
+        "gastábamos",
+        "mazorrales"
+      ]
+    },
+    {
+      "word": "acorralará",
+      "num_guesses": 3,
+      "prior": 0.000010890994310509261,
+      "guesses": [
+        "declinaras",
+        "antecámara",
+        "acorralará"
+      ]
+    },
+    {
+      "word": "comulgaran",
+      "num_guesses": 3,
+      "prior": 0.000017408169025392295,
+      "guesses": [
+        "declinaras",
+        "calcularan",
+        "comulgaran"
+      ]
+    },
+    {
+      "word": "rebrincaba",
+      "num_guesses": 2,
+      "prior": 0.000011213313047607308,
+      "guesses": [
+        "declinaras",
+        "rebrincaba"
+      ]
+    },
+    {
+      "word": "absolvamos",
+      "num_guesses": 3,
+      "prior": 0.000013072497851343538,
+      "guesses": [
+        "declinaras",
+        "apagasteis",
+        "absolvamos"
+      ]
+    },
+    {
+      "word": "adoptación",
+      "num_guesses": 3,
+      "prior": 0.00002006753214369129,
+      "guesses": [
+        "declinaras",
+        "autorizada",
+        "adoptación"
+      ]
+    },
+    {
+      "word": "científica",
+      "num_guesses": 3,
+      "prior": 0.00007819652374117667,
+      "guesses": [
+        "declinaras",
+        "interponga",
+        "científica"
+      ]
+    },
+    {
+      "word": "acotejaban",
+      "num_guesses": 3,
+      "prior": 7.349381273666924e-6,
+      "guesses": [
+        "declinaras",
+        "cincuentas",
+        "acotejaban"
+      ]
+    },
+    {
+      "word": "perseverad",
+      "num_guesses": 2,
+      "prior": 0.000018806899583965027,
+      "guesses": [
+        "declinaras",
+        "perseverad"
+      ]
+    },
+    {
+      "word": "estrechaba",
+      "num_guesses": 3,
+      "prior": 0.0000353556530440577,
+      "guesses": [
+        "declinaras",
+        "estoqueará",
+        "estrechaba"
+      ]
+    },
+    {
+      "word": "reñiríamos",
+      "num_guesses": 3,
+      "prior": 0.000010321518866991903,
+      "guesses": [
+        "declinaras",
+        "restringís",
+        "reñiríamos"
+      ]
+    },
+    {
+      "word": "propiciare",
+      "num_guesses": 3,
+      "prior": 0.000012280110041082735,
+      "guesses": [
+        "declinaras",
+        "arquitecto",
+        "propiciare"
+      ]
+    },
+    {
+      "word": "embarrancó",
+      "num_guesses": 3,
+      "prior": 0.000018859278038884742,
+      "guesses": [
+        "declinaras",
+        "biblioteca",
+        "embarrancó"
+      ]
+    }
+  ]
+}

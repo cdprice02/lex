@@ -1,0 +1,5734 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-25T23:44:08.946164Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "tares",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 5,
+    "dictionary_length": 27806,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "fd4b35826698ceb74c03cdf8fa7d4b9300e14ba852e36a2022cfa29c59da9f6c",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.34799999999998,
+      "failure_rate": 0.004,
+      "histogram": {
+        "2": 0.002,
+        "3": 0.11600000000000009,
+        "4": 0.4840000000000004,
+        "5": 0.33200000000000024,
+        "6": 0.06200000000000004,
+        "7": 0.004
+      }
+    },
+    "prior": {
+      "mean": 4.204895871959193,
+      "failure_rate": 0.0015436932246015004,
+      "histogram": {
+        "2": 0.001420356523874603,
+        "3": 0.15875692461885788,
+        "4": 0.5205622064845975,
+        "5": 0.27357120834413434,
+        "6": 0.044145610803933255,
+        "7": 0.0015436932246015004
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "sleps",
+      "num_guesses": 4,
+      "prior": 0.00002182180040327141,
+      "guesses": [
+        "tares",
+        "neeld",
+        "wocbp",
+        "sleps"
+      ]
+    },
+    {
+      "word": "ovulo",
+      "num_guesses": 4,
+      "prior": 0.00002012027218875731,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "ovulo"
+      ]
+    },
+    {
+      "word": "zorch",
+      "num_guesses": 5,
+      "prior": 0.0000194626691592866,
+      "guesses": [
+        "tares",
+        "comin",
+        "porch",
+        "lorch",
+        "zorch"
+      ]
+    },
+    {
+      "word": "nanai",
+      "num_guesses": 5,
+      "prior": 0.00002865302941420025,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bphil",
+        "nivkh",
+        "nanai"
+      ]
+    },
+    {
+      "word": "daown",
+      "num_guesses": 4,
+      "prior": 0.00002699280759585284,
+      "guesses": [
+        "tares",
+        "mindy",
+        "nudan",
+        "daown"
+      ]
+    },
+    {
+      "word": "béret",
+      "num_guesses": 3,
+      "prior": 0.000020412946582395207,
+      "guesses": [
+        "tares",
+        "begum",
+        "béret"
+      ]
+    },
+    {
+      "word": "kilij",
+      "num_guesses": 5,
+      "prior": 0.00002489142326311047,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumky",
+        "legal",
+        "kilij"
+      ]
+    },
+    {
+      "word": "attic",
+      "num_guesses": 4,
+      "prior": 0.00008535266120536958,
+      "guesses": [
+        "tares",
+        "anoia",
+        "cumyl",
+        "attic"
+      ]
+    },
+    {
+      "word": "admon",
+      "num_guesses": 4,
+      "prior": 0.000048248959845467684,
+      "guesses": [
+        "tares",
+        "colin",
+        "ondol",
+        "admon"
+      ]
+    },
+    {
+      "word": "bameh",
+      "num_guesses": 4,
+      "prior": 0.000014863168124891121,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "zomby",
+        "bameh"
+      ]
+    },
+    {
+      "word": "focks",
+      "num_guesses": 5,
+      "prior": 0.000024211755827850156,
+      "guesses": [
+        "tares",
+        "colin",
+        "shmuk",
+        "egbdf",
+        "focks"
+      ]
+    },
+    {
+      "word": "papis",
+      "num_guesses": 4,
+      "prior": 0.000025338603393634757,
+      "guesses": [
+        "tares",
+        "plink",
+        "mcpyv",
+        "papis"
+      ]
+    },
+    {
+      "word": "neons",
+      "num_guesses": 4,
+      "prior": 0.00003098205560366894,
+      "guesses": [
+        "tares",
+        "neeld",
+        "choux",
+        "neons"
+      ]
+    },
+    {
+      "word": "jubus",
+      "num_guesses": 5,
+      "prior": 0.000016495625765878948,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "jugum",
+        "jubus"
+      ]
+    },
+    {
+      "word": "leois",
+      "num_guesses": 4,
+      "prior": 0.000016654341222398478,
+      "guesses": [
+        "tares",
+        "neeld",
+        "polki",
+        "leois"
+      ]
+    },
+    {
+      "word": "lugow",
+      "num_guesses": 4,
+      "prior": 0.000012653134795810828,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "lugow"
+      ]
+    },
+    {
+      "word": "chous",
+      "num_guesses": 4,
+      "prior": 0.000027490648794633736,
+      "guesses": [
+        "tares",
+        "colin",
+        "upbow",
+        "chous"
+      ]
+    },
+    {
+      "word": "sigep",
+      "num_guesses": 4,
+      "prior": 0.000017284639395871406,
+      "guesses": [
+        "tares",
+        "solid",
+        "kynge",
+        "sigep"
+      ]
+    },
+    {
+      "word": "adoze",
+      "num_guesses": 4,
+      "prior": 0.000014040599806690018,
+      "guesses": [
+        "tares",
+        "neeld",
+        "zombi",
+        "adoze"
+      ]
+    },
+    {
+      "word": "dyads",
+      "num_guesses": 5,
+      "prior": 0.00005457845443668551,
+      "guesses": [
+        "tares",
+        "alani",
+        "compd",
+        "khudd",
+        "dyads"
+      ]
+    },
+    {
+      "word": "ranid",
+      "num_guesses": 3,
+      "prior": 0.000027411666157153053,
+      "guesses": [
+        "tares",
+        "nomid",
+        "ranid"
+      ]
+    },
+    {
+      "word": "zonky",
+      "num_guesses": 6,
+      "prior": 0.000014808888519407824,
+      "guesses": [
+        "tares",
+        "colin",
+        "bundy",
+        "whang",
+        "monky",
+        "zonky"
+      ]
+    },
+    {
+      "word": "sahui",
+      "num_guesses": 5,
+      "prior": 0.000013402502039727124,
+      "guesses": [
+        "tares",
+        "lysin",
+        "sucka",
+        "saudi",
+        "sahui"
+      ]
+    },
+    {
+      "word": "shugs",
+      "num_guesses": 5,
+      "prior": 0.000018249410733016698,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "skegs",
+        "shugs"
+      ]
+    },
+    {
+      "word": "derat",
+      "num_guesses": 3,
+      "prior": 0.00002769230715325164,
+      "guesses": [
+        "tares",
+        "berta",
+        "derat"
+      ]
+    },
+    {
+      "word": "fubar",
+      "num_guesses": 5,
+      "prior": 0.00002629527485604025,
+      "guesses": [
+        "tares",
+        "arain",
+        "domal",
+        "ubykh",
+        "fubar"
+      ]
+    },
+    {
+      "word": "cyles",
+      "num_guesses": 5,
+      "prior": 0.00002328612712484453,
+      "guesses": [
+        "tares",
+        "limon",
+        "gulfy",
+        "subak",
+        "cyles"
+      ]
+    },
+    {
+      "word": "malty",
+      "num_guesses": 3,
+      "prior": 0.000034462743480688354,
+      "guesses": [
+        "tares",
+        "lithy",
+        "malty"
+      ]
+    },
+    {
+      "word": "thigh",
+      "num_guesses": 4,
+      "prior": 0.00009070854060235944,
+      "guesses": [
+        "tares",
+        "hoyin",
+        "lickt",
+        "thigh"
+      ]
+    },
+    {
+      "word": "bhong",
+      "num_guesses": 4,
+      "prior": 0.00001842259344156989,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "bhong"
+      ]
+    },
+    {
+      "word": "aidis",
+      "num_guesses": 4,
+      "prior": 0.000024271826967428633,
+      "guesses": [
+        "tares",
+        "alani",
+        "cimid",
+        "aidis"
+      ]
+    },
+    {
+      "word": "rithe",
+      "num_guesses": 4,
+      "prior": 0.000022177873433251104,
+      "guesses": [
+        "tares",
+        "betie",
+        "month",
+        "rithe"
+      ]
+    },
+    {
+      "word": "papal",
+      "num_guesses": 4,
+      "prior": 0.00009128846586400945,
+      "guesses": [
+        "tares",
+        "mindy",
+        "holup",
+        "papal"
+      ]
+    },
+    {
+      "word": "codec",
+      "num_guesses": 4,
+      "prior": 0.000048917825085815926,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mspec",
+        "codec"
+      ]
+    },
+    {
+      "word": "wahps",
+      "num_guesses": 6,
+      "prior": 9.31484831738469e-6,
+      "guesses": [
+        "tares",
+        "plink",
+        "scmps",
+        "wagyu",
+        "wapps",
+        "wahps"
+      ]
+    },
+    {
+      "word": "allls",
+      "num_guesses": 5,
+      "prior": 0.000030168920606659698,
+      "guesses": [
+        "tares",
+        "alani",
+        "coomb",
+        "allus",
+        "allls"
+      ]
+    },
+    {
+      "word": "saola",
+      "num_guesses": 5,
+      "prior": 0.00002179467323665275,
+      "guesses": [
+        "tares",
+        "lysin",
+        "bhapa",
+        "salsa",
+        "saola"
+      ]
+    },
+    {
+      "word": "yonks",
+      "num_guesses": 5,
+      "prior": 0.00002346713551005244,
+      "guesses": [
+        "tares",
+        "colin",
+        "gundy",
+        "sonys",
+        "yonks"
+      ]
+    },
+    {
+      "word": "goodt",
+      "num_guesses": 4,
+      "prior": 0.000024606788258602547,
+      "guesses": [
+        "tares",
+        "nilot",
+        "chump",
+        "goodt"
+      ]
+    },
+    {
+      "word": "fwump",
+      "num_guesses": 5,
+      "prior": 0.00001453463512550365,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumpy",
+        "whump",
+        "fwump"
+      ]
+    },
+    {
+      "word": "nades",
+      "num_guesses": 3,
+      "prior": 0.000024071110310796827,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "nades"
+      ]
+    },
+    {
+      "word": "bousy",
+      "num_guesses": 4,
+      "prior": 0.000016278875773817756,
+      "guesses": [
+        "tares",
+        "noily",
+        "subsp",
+        "bousy"
+      ]
+    },
+    {
+      "word": "vaxin",
+      "num_guesses": 5,
+      "prior": 0.000015462460909803256,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bling",
+        "fvrcp",
+        "vaxin"
+      ]
+    },
+    {
+      "word": "htlvs",
+      "num_guesses": 4,
+      "prior": 0.000018459229211383876,
+      "guesses": [
+        "tares",
+        "liuto",
+        "scfvs",
+        "htlvs"
+      ]
+    },
+    {
+      "word": "garry",
+      "num_guesses": 5,
+      "prior": 0.00006536942457926491,
+      "guesses": [
+        "tares",
+        "combi",
+        "duply",
+        "whang",
+        "garry"
+      ]
+    },
+    {
+      "word": "motos",
+      "num_guesses": 4,
+      "prior": 0.000026514657918039473,
+      "guesses": [
+        "tares",
+        "liuto",
+        "compo",
+        "motos"
+      ]
+    },
+    {
+      "word": "doees",
+      "num_guesses": 6,
+      "prior": 0.000017818586365774327,
+      "guesses": [
+        "tares",
+        "limon",
+        "dsphs",
+        "cvbgs",
+        "ozeki",
+        "doees"
+      ]
+    },
+    {
+      "word": "womby",
+      "num_guesses": 5,
+      "prior": 0.000018808174603795256,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhoby",
+        "bumpf",
+        "womby"
+      ]
+    },
+    {
+      "word": "sunny",
+      "num_guesses": 3,
+      "prior": 0.0000933296283260432,
+      "guesses": [
+        "tares",
+        "noily",
+        "sunny"
+      ]
+    },
+    {
+      "word": "seffs",
+      "num_guesses": 5,
+      "prior": 0.00001356599553338156,
+      "guesses": [
+        "tares",
+        "neeld",
+        "mucho",
+        "spifs",
+        "seffs"
+      ]
+    },
+    {
+      "word": "dming",
+      "num_guesses": 5,
+      "prior": 0.000025557705761735308,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "impex",
+        "dming"
+      ]
+    },
+    {
+      "word": "squeg",
+      "num_guesses": 5,
+      "prior": 0.000011555037581474601,
+      "guesses": [
+        "tares",
+        "solid",
+        "humyn",
+        "squee",
+        "squeg"
+      ]
+    },
+    {
+      "word": "rarfs",
+      "num_guesses": 6,
+      "prior": 9.090867455014753e-6,
+      "guesses": [
+        "tares",
+        "klimp",
+        "bownd",
+        "achua",
+        "garry",
+        "rarfs"
+      ]
+    },
+    {
+      "word": "eefis",
+      "num_guesses": 3,
+      "prior": 0.000011044804786890275,
+      "guesses": [
+        "tares",
+        "neeld",
+        "eefis"
+      ]
+    },
+    {
+      "word": "foxer",
+      "num_guesses": 6,
+      "prior": 0.000020146945201830507,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mcpyv",
+        "wkbks",
+        "hofer",
+        "foxer"
+      ]
+    },
+    {
+      "word": "zeese",
+      "num_guesses": 5,
+      "prior": 0.000026844787686261376,
+      "guesses": [
+        "tares",
+        "seine",
+        "flegm",
+        "weese",
+        "zeese"
+      ]
+    },
+    {
+      "word": "kecap",
+      "num_guesses": 4,
+      "prior": 0.000024759106641503365,
+      "guesses": [
+        "tares",
+        "neeld",
+        "bumph",
+        "kecap"
+      ]
+    },
+    {
+      "word": "scids",
+      "num_guesses": 5,
+      "prior": 0.000021103401665755003,
+      "guesses": [
+        "tares",
+        "colin",
+        "khipu",
+        "fssgs",
+        "scids"
+      ]
+    },
+    {
+      "word": "boxty",
+      "num_guesses": 5,
+      "prior": 0.000021598209624337493,
+      "guesses": [
+        "tares",
+        "nilot",
+        "hoopy",
+        "dftba",
+        "boxty"
+      ]
+    },
+    {
+      "word": "jezzy",
+      "num_guesses": 5,
+      "prior": 0.000021219961890528665,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "becue",
+        "mjpeg",
+        "jezzy"
+      ]
+    },
+    {
+      "word": "bouge",
+      "num_guesses": 5,
+      "prior": 0.00003119414094757323,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "bogue",
+        "bouge"
+      ]
+    },
+    {
+      "word": "morto",
+      "num_guesses": 4,
+      "prior": 0.000036818910712544235,
+      "guesses": [
+        "tares",
+        "fuyoh",
+        "porto",
+        "morto"
+      ]
+    },
+    {
+      "word": "biros",
+      "num_guesses": 4,
+      "prior": 0.0000312355356950643,
+      "guesses": [
+        "tares",
+        "dubok",
+        "boros",
+        "biros"
+      ]
+    },
+    {
+      "word": "metas",
+      "num_guesses": 3,
+      "prior": 0.000034954161353028816,
+      "guesses": [
+        "tares",
+        "beman",
+        "metas"
+      ]
+    },
+    {
+      "word": "tping",
+      "num_guesses": 4,
+      "prior": 0.00001654856028617522,
+      "guesses": [
+        "tares",
+        "hoyin",
+        "glift",
+        "tping"
+      ]
+    },
+    {
+      "word": "begge",
+      "num_guesses": 5,
+      "prior": 0.00003157669984043703,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "becue",
+        "seems",
+        "begge"
+      ]
+    },
+    {
+      "word": "coshh",
+      "num_guesses": 5,
+      "prior": 0.00003168426691560471,
+      "guesses": [
+        "tares",
+        "noily",
+        "mosso",
+        "bosch",
+        "coshh"
+      ]
+    },
+    {
+      "word": "tides",
+      "num_guesses": 4,
+      "prior": 0.00008856431270681827,
+      "guesses": [
+        "tares",
+        "onium",
+        "gluck",
+        "tides"
+      ]
+    },
+    {
+      "word": "myons",
+      "num_guesses": 5,
+      "prior": 0.000017545105830826794,
+      "guesses": [
+        "tares",
+        "colin",
+        "dubok",
+        "hswms",
+        "myons"
+      ]
+    },
+    {
+      "word": "yarfa",
+      "num_guesses": 5,
+      "prior": 0.000012477328489659042,
+      "guesses": [
+        "tares",
+        "combi",
+        "duply",
+        "karyn",
+        "yarfa"
+      ]
+    },
+    {
+      "word": "shank",
+      "num_guesses": 4,
+      "prior": 0.00007758016055946533,
+      "guesses": [
+        "tares",
+        "shail",
+        "dunky",
+        "shank"
+      ]
+    },
+    {
+      "word": "dayan",
+      "num_guesses": 3,
+      "prior": 0.000053585471525279904,
+      "guesses": [
+        "tares",
+        "mindy",
+        "dayan"
+      ]
+    },
+    {
+      "word": "spurs",
+      "num_guesses": 3,
+      "prior": 0.00008081785641977855,
+      "guesses": [
+        "tares",
+        "coipu",
+        "spurs"
+      ]
+    },
+    {
+      "word": "fuzee",
+      "num_guesses": 4,
+      "prior": 0.000024446104141458894,
+      "guesses": [
+        "tares",
+        "nolid",
+        "becke",
+        "fuzee"
+      ]
+    },
+    {
+      "word": "scoby",
+      "num_guesses": 4,
+      "prior": 0.000029871595510668107,
+      "guesses": [
+        "tares",
+        "noily",
+        "bkpyv",
+        "scoby"
+      ]
+    },
+    {
+      "word": "kaito",
+      "num_guesses": 5,
+      "prior": 0.000029714352236109868,
+      "guesses": [
+        "tares",
+        "lithy",
+        "pfund",
+        "boric",
+        "kaito"
+      ]
+    },
+    {
+      "word": "yogee",
+      "num_guesses": 4,
+      "prior": 0.00002063523672773158,
+      "guesses": [
+        "tares",
+        "nolid",
+        "choky",
+        "yogee"
+      ]
+    },
+    {
+      "word": "style",
+      "num_guesses": 4,
+      "prior": 0.00015510168220610933,
+      "guesses": [
+        "tares",
+        "seine",
+        "klomp",
+        "style"
+      ]
+    },
+    {
+      "word": "āšipu",
+      "num_guesses": 5,
+      "prior": 0.000014759962771447329,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumby",
+        "pichi",
+        "āšipu"
+      ]
+    },
+    {
+      "word": "unfix",
+      "num_guesses": 5,
+      "prior": 0.00002993135599277979,
+      "guesses": [
+        "tares",
+        "colin",
+        "muddy",
+        "fight",
+        "unfix"
+      ]
+    },
+    {
+      "word": "hexes",
+      "num_guesses": 5,
+      "prior": 0.000031956153659987265,
+      "guesses": [
+        "tares",
+        "limon",
+        "pucky",
+        "dehex",
+        "hexes"
+      ]
+    },
+    {
+      "word": "towan",
+      "num_guesses": 4,
+      "prior": 0.000027710170931755177,
+      "guesses": [
+        "tares",
+        "holin",
+        "toman",
+        "towan"
+      ]
+    },
+    {
+      "word": "shouq",
+      "num_guesses": 5,
+      "prior": 0.000013795351194656483,
+      "guesses": [
+        "tares",
+        "noily",
+        "chook",
+        "shoup",
+        "shouq"
+      ]
+    },
+    {
+      "word": "ridgy",
+      "num_guesses": 4,
+      "prior": 0.00003253926730951816,
+      "guesses": [
+        "tares",
+        "coion",
+        "dumby",
+        "ridgy"
+      ]
+    },
+    {
+      "word": "ipson",
+      "num_guesses": 4,
+      "prior": 0.000023771761713006983,
+      "guesses": [
+        "tares",
+        "noily",
+        "bison",
+        "ipson"
+      ]
+    },
+    {
+      "word": "kanat",
+      "num_guesses": 5,
+      "prior": 0.000026296191536164354,
+      "guesses": [
+        "tares",
+        "lithy",
+        "magna",
+        "black",
+        "kanat"
+      ]
+    },
+    {
+      "word": "pairs",
+      "num_guesses": 3,
+      "prior": 0.00012025311931831017,
+      "guesses": [
+        "tares",
+        "rping",
+        "pairs"
+      ]
+    },
+    {
+      "word": "aying",
+      "num_guesses": 5,
+      "prior": 0.00003805483164176562,
+      "guesses": [
+        "tares",
+        "colin",
+        "ngana",
+        "pawky",
+        "aying"
+      ]
+    },
+    {
+      "word": "germy",
+      "num_guesses": 5,
+      "prior": 0.000024694230973204055,
+      "guesses": [
+        "tares",
+        "niobe",
+        "pucky",
+        "fjord",
+        "germy"
+      ]
+    },
+    {
+      "word": "khafd",
+      "num_guesses": 5,
+      "prior": 0.000013754775929281118,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumba",
+        "addax",
+        "khafd"
+      ]
+    },
+    {
+      "word": "finif",
+      "num_guesses": 5,
+      "prior": 0.000015423932704274266,
+      "guesses": [
+        "tares",
+        "colin",
+        "muddy",
+        "infix",
+        "finif"
+      ]
+    },
+    {
+      "word": "birgs",
+      "num_guesses": 4,
+      "prior": 0.000011480322019415922,
+      "guesses": [
+        "tares",
+        "dubok",
+        "fgirl",
+        "birgs"
+      ]
+    },
+    {
+      "word": "potch",
+      "num_guesses": 4,
+      "prior": 0.00003834402963349964,
+      "guesses": [
+        "tares",
+        "nilot",
+        "hoopy",
+        "potch"
+      ]
+    },
+    {
+      "word": "kebab",
+      "num_guesses": 5,
+      "prior": 0.0000416111243808111,
+      "guesses": [
+        "tares",
+        "neeld",
+        "bumph",
+        "ceiba",
+        "kebab"
+      ]
+    },
+    {
+      "word": "allos",
+      "num_guesses": 4,
+      "prior": 0.00002960618666074543,
+      "guesses": [
+        "tares",
+        "alani",
+        "coomb",
+        "allos"
+      ]
+    },
+    {
+      "word": "kartu",
+      "num_guesses": 3,
+      "prior": 0.00002194916125952428,
+      "guesses": [
+        "tares",
+        "humpy",
+        "kartu"
+      ]
+    },
+    {
+      "word": "pudge",
+      "num_guesses": 5,
+      "prior": 0.00003550880747810856,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "gumby",
+        "pujah",
+        "pudge"
+      ]
+    },
+    {
+      "word": "homed",
+      "num_guesses": 5,
+      "prior": 0.00004305794386778272,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mcpyv",
+        "domed",
+        "homed"
+      ]
+    },
+    {
+      "word": "goute",
+      "num_guesses": 4,
+      "prior": 0.00002626525943852854,
+      "guesses": [
+        "tares",
+        "elite",
+        "notum",
+        "goute"
+      ]
+    },
+    {
+      "word": "knits",
+      "num_guesses": 4,
+      "prior": 0.00004988282049839147,
+      "guesses": [
+        "tares",
+        "liuto",
+        "shink",
+        "knits"
+      ]
+    },
+    {
+      "word": "swain",
+      "num_guesses": 4,
+      "prior": 0.0000722543080334395,
+      "guesses": [
+        "tares",
+        "shail",
+        "spain",
+        "swain"
+      ]
+    },
+    {
+      "word": "leban",
+      "num_guesses": 5,
+      "prior": 0.00002993208405918646,
+      "guesses": [
+        "tares",
+        "neeld",
+        "vanga",
+        "leman",
+        "leban"
+      ]
+    },
+    {
+      "word": "derps",
+      "num_guesses": 5,
+      "prior": 8.302335753075214e-6,
+      "guesses": [
+        "tares",
+        "phonk",
+        "serps",
+        "lerps",
+        "derps"
+      ]
+    },
+    {
+      "word": "wilks",
+      "num_guesses": 5,
+      "prior": 0.0000586922995318722,
+      "guesses": [
+        "tares",
+        "colin",
+        "fwump",
+        "would",
+        "wilks"
+      ]
+    },
+    {
+      "word": "rbmks",
+      "num_guesses": 4,
+      "prior": 0.000019751291953110855,
+      "guesses": [
+        "tares",
+        "coipu",
+        "sldmb",
+        "rbmks"
+      ]
+    },
+    {
+      "word": "elemi",
+      "num_guesses": 4,
+      "prior": 0.00003407602340641454,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "meech",
+        "elemi"
+      ]
+    },
+    {
+      "word": "esths",
+      "num_guesses": 4,
+      "prior": 0.000021957338104307613,
+      "guesses": [
+        "tares",
+        "neeld",
+        "chimo",
+        "esths"
+      ]
+    },
+    {
+      "word": "escin",
+      "num_guesses": 4,
+      "prior": 0.00002234561386983019,
+      "guesses": [
+        "tares",
+        "seine",
+        "aslop",
+        "escin"
+      ]
+    },
+    {
+      "word": "sacds",
+      "num_guesses": 4,
+      "prior": 0.000019355606143991164,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "sacds"
+      ]
+    },
+    {
+      "word": "kitan",
+      "num_guesses": 4,
+      "prior": 0.000029659428385677173,
+      "guesses": [
+        "tares",
+        "anoia",
+        "zikat",
+        "kitan"
+      ]
+    },
+    {
+      "word": "egbos",
+      "num_guesses": 4,
+      "prior": 0.00001350066667505157,
+      "guesses": [
+        "tares",
+        "neeld",
+        "chomp",
+        "egbos"
+      ]
+    },
+    {
+      "word": "preta",
+      "num_guesses": 3,
+      "prior": 0.00003595823293768066,
+      "guesses": [
+        "tares",
+        "peart",
+        "preta"
+      ]
+    },
+    {
+      "word": "kutki",
+      "num_guesses": 4,
+      "prior": 0.000024001517958244962,
+      "guesses": [
+        "tares",
+        "nilot",
+        "mufti",
+        "kutki"
+      ]
+    },
+    {
+      "word": "resed",
+      "num_guesses": 4,
+      "prior": 0.000021499970280739853,
+      "guesses": [
+        "tares",
+        "spoil",
+        "ducky",
+        "resed"
+      ]
+    },
+    {
+      "word": "agush",
+      "num_guesses": 5,
+      "prior": 0.00001457370728924405,
+      "guesses": [
+        "tares",
+        "shail",
+        "kombu",
+        "ayush",
+        "agush"
+      ]
+    },
+    {
+      "word": "ghats",
+      "num_guesses": 5,
+      "prior": 0.0000538338873467078,
+      "guesses": [
+        "tares",
+        "attom",
+        "shlck",
+        "bowge",
+        "ghats"
+      ]
+    },
+    {
+      "word": "hoary",
+      "num_guesses": 4,
+      "prior": 0.00006506908377132154,
+      "guesses": [
+        "tares",
+        "arain",
+        "chmod",
+        "hoary"
+      ]
+    },
+    {
+      "word": "lutby",
+      "num_guesses": 4,
+      "prior": 9.501293058404762e-6,
+      "guesses": [
+        "tares",
+        "nilot",
+        "bludy",
+        "lutby"
+      ]
+    },
+    {
+      "word": "raver",
+      "num_guesses": 5,
+      "prior": 0.000041241577126297836,
+      "guesses": [
+        "tares",
+        "cymwd",
+        "pelve",
+        "raven",
+        "raver"
+      ]
+    },
+    {
+      "word": "inorb",
+      "num_guesses": 4,
+      "prior": 0.000010224917835117805,
+      "guesses": [
+        "tares",
+        "coion",
+        "inorg",
+        "inorb"
+      ]
+    },
+    {
+      "word": "ridic",
+      "num_guesses": 3,
+      "prior": 0.00002374608624310364,
+      "guesses": [
+        "tares",
+        "coion",
+        "ridic"
+      ]
+    },
+    {
+      "word": "nibby",
+      "num_guesses": 5,
+      "prior": 0.00002961644791671426,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "nimby",
+        "nibby"
+      ]
+    },
+    {
+      "word": "croak",
+      "num_guesses": 4,
+      "prior": 0.00005325886136262879,
+      "guesses": [
+        "tares",
+        "arain",
+        "polab",
+        "croak"
+      ]
+    },
+    {
+      "word": "calid",
+      "num_guesses": 4,
+      "prior": 0.000024303316210578664,
+      "guesses": [
+        "tares",
+        "mindy",
+        "divil",
+        "calid"
+      ]
+    },
+    {
+      "word": "zaida",
+      "num_guesses": 4,
+      "prior": 0.00003356372460073004,
+      "guesses": [
+        "tares",
+        "mindy",
+        "gobhi",
+        "zaida"
+      ]
+    },
+    {
+      "word": "copsy",
+      "num_guesses": 5,
+      "prior": 0.000021072373635759076,
+      "guesses": [
+        "tares",
+        "noily",
+        "subsp",
+        "ppmcc",
+        "copsy"
+      ]
+    },
+    {
+      "word": "bnsls",
+      "num_guesses": 5,
+      "prior": 0.000015064212869958838,
+      "guesses": [
+        "tares",
+        "colin",
+        "lungs",
+        "plmns",
+        "bnsls"
+      ]
+    },
+    {
+      "word": "tofts",
+      "num_guesses": 4,
+      "prior": 0.00003975627521595832,
+      "guesses": [
+        "tares",
+        "coion",
+        "flutd",
+        "tofts"
+      ]
+    },
+    {
+      "word": "curia",
+      "num_guesses": 3,
+      "prior": 0.00006243463580035139,
+      "guesses": [
+        "tares",
+        "nomia",
+        "curia"
+      ]
+    },
+    {
+      "word": "duits",
+      "num_guesses": 4,
+      "prior": 0.000031988589567383153,
+      "guesses": [
+        "tares",
+        "liuto",
+        "spend",
+        "duits"
+      ]
+    },
+    {
+      "word": "staph",
+      "num_guesses": 4,
+      "prior": 0.000049301972346029764,
+      "guesses": [
+        "tares",
+        "slant",
+        "ophic",
+        "staph"
+      ]
+    },
+    {
+      "word": "peary",
+      "num_guesses": 5,
+      "prior": 0.00005627455011218387,
+      "guesses": [
+        "tares",
+        "beard",
+        "hymne",
+        "newly",
+        "peary"
+      ]
+    },
+    {
+      "word": "curls",
+      "num_guesses": 5,
+      "prior": 0.0000790160769081757,
+      "guesses": [
+        "tares",
+        "dubok",
+        "pling",
+        "charv",
+        "curls"
+      ]
+    },
+    {
+      "word": "yamna",
+      "num_guesses": 4,
+      "prior": 0.00002114668278233833,
+      "guesses": [
+        "tares",
+        "mindy",
+        "yamun",
+        "yamna"
+      ]
+    },
+    {
+      "word": "appie",
+      "num_guesses": 4,
+      "prior": 0.000026627205943461833,
+      "guesses": [
+        "tares",
+        "neeld",
+        "ampao",
+        "appie"
+      ]
+    },
+    {
+      "word": "zahir",
+      "num_guesses": 4,
+      "prior": 0.000045283197497380226,
+      "guesses": [
+        "tares",
+        "nomid",
+        "zefir",
+        "zahir"
+      ]
+    },
+    {
+      "word": "doxin",
+      "num_guesses": 5,
+      "prior": 0.000017057794361420337,
+      "guesses": [
+        "tares",
+        "colin",
+        "migid",
+        "dojin",
+        "doxin"
+      ]
+    },
+    {
+      "word": "hdris",
+      "num_guesses": 4,
+      "prior": 0.000013863252846561057,
+      "guesses": [
+        "tares",
+        "dubok",
+        "hingy",
+        "hdris"
+      ]
+    },
+    {
+      "word": "sakta",
+      "num_guesses": 4,
+      "prior": 0.000034128844153555416,
+      "guesses": [
+        "tares",
+        "synth",
+        "pulau",
+        "sakta"
+      ]
+    },
+    {
+      "word": "baiza",
+      "num_guesses": 5,
+      "prior": 0.000024659955732250514,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bilic",
+        "bahai",
+        "baiza"
+      ]
+    },
+    {
+      "word": "casta",
+      "num_guesses": 4,
+      "prior": 0.00004272461075185378,
+      "guesses": [
+        "tares",
+        "synth",
+        "pubic",
+        "casta"
+      ]
+    },
+    {
+      "word": "guiba",
+      "num_guesses": 5,
+      "prior": 0.000016751939267409238,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhaba",
+        "vimba",
+        "guiba"
+      ]
+    },
+    {
+      "word": "poupe",
+      "num_guesses": 5,
+      "prior": 0.000020550749808701952,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "gopuz",
+        "poupe"
+      ]
+    },
+    {
+      "word": "flags",
+      "num_guesses": 5,
+      "prior": 0.00009249808198948404,
+      "guesses": [
+        "tares",
+        "alani",
+        "scmps",
+        "bowgy",
+        "flags"
+      ]
+    },
+    {
+      "word": "flegm",
+      "num_guesses": 4,
+      "prior": 0.000022464464805892946,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "geech",
+        "flegm"
+      ]
+    },
+    {
+      "word": "thold",
+      "num_guesses": 4,
+      "prior": 0.00002348733307867087,
+      "guesses": [
+        "tares",
+        "hoyin",
+        "flowk",
+        "thold"
+      ]
+    },
+    {
+      "word": "husky",
+      "num_guesses": 4,
+      "prior": 0.00006878080706601875,
+      "guesses": [
+        "tares",
+        "noily",
+        "smbhs",
+        "husky"
+      ]
+    },
+    {
+      "word": "raion",
+      "num_guesses": 3,
+      "prior": 0.00004049608052187315,
+      "guesses": [
+        "tares",
+        "nomid",
+        "raion"
+      ]
+    },
+    {
+      "word": "spack",
+      "num_guesses": 4,
+      "prior": 0.00002781761794450012,
+      "guesses": [
+        "tares",
+        "shail",
+        "mcpon",
+        "spack"
+      ]
+    },
+    {
+      "word": "migod",
+      "num_guesses": 4,
+      "prior": 0.00002001122989506304,
+      "guesses": [
+        "tares",
+        "colin",
+        "humod",
+        "migod"
+      ]
+    },
+    {
+      "word": "mohos",
+      "num_guesses": 5,
+      "prior": 0.000019644548186360787,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "hamza",
+        "mohos"
+      ]
+    },
+    {
+      "word": "phynx",
+      "num_guesses": 5,
+      "prior": 0.000017745526969684903,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "nymph",
+        "phynx"
+      ]
+    },
+    {
+      "word": "stair",
+      "num_guesses": 3,
+      "prior": 0.00007931491701245682,
+      "guesses": [
+        "tares",
+        "stuit",
+        "stair"
+      ]
+    },
+    {
+      "word": "cfids",
+      "num_guesses": 4,
+      "prior": 0.00003093210660783563,
+      "guesses": [
+        "tares",
+        "colin",
+        "diphe",
+        "cfids"
+      ]
+    },
+    {
+      "word": "mneme",
+      "num_guesses": 5,
+      "prior": 0.00002759952053177373,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "geeky",
+        "clump",
+        "mneme"
+      ]
+    },
+    {
+      "word": "gater",
+      "num_guesses": 5,
+      "prior": 0.00003320946312624324,
+      "guesses": [
+        "tares",
+        "rewle",
+        "chomp",
+        "djing",
+        "gater"
+      ]
+    },
+    {
+      "word": "dinks",
+      "num_guesses": 6,
+      "prior": 0.00003290471964878726,
+      "guesses": [
+        "tares",
+        "colin",
+        "kfing",
+        "sumph",
+        "wajib",
+        "dinks"
+      ]
+    },
+    {
+      "word": "amors",
+      "num_guesses": 3,
+      "prior": 0.00003291679939425357,
+      "guesses": [
+        "tares",
+        "coarb",
+        "amors"
+      ]
+    },
+    {
+      "word": "plwha",
+      "num_guesses": 5,
+      "prior": 0.000030414781799925918,
+      "guesses": [
+        "tares",
+        "colin",
+        "guama",
+        "phyla",
+        "plwha"
+      ]
+    },
+    {
+      "word": "crony",
+      "num_guesses": 3,
+      "prior": 0.00004716661845030519,
+      "guesses": [
+        "tares",
+        "coion",
+        "crony"
+      ]
+    },
+    {
+      "word": "ruing",
+      "num_guesses": 4,
+      "prior": 0.00003222749181228596,
+      "guesses": [
+        "tares",
+        "coion",
+        "brung",
+        "ruing"
+      ]
+    },
+    {
+      "word": "knots",
+      "num_guesses": 5,
+      "prior": 0.00009331349223845806,
+      "guesses": [
+        "tares",
+        "liuto",
+        "pooch",
+        "stand",
+        "knots"
+      ]
+    },
+    {
+      "word": "dinor",
+      "num_guesses": 4,
+      "prior": 0.000025196313160641418,
+      "guesses": [
+        "tares",
+        "coion",
+        "minor",
+        "dinor"
+      ]
+    },
+    {
+      "word": "ameli",
+      "num_guesses": 4,
+      "prior": 0.00002766791825456133,
+      "guesses": [
+        "tares",
+        "neeld",
+        "skimp",
+        "ameli"
+      ]
+    },
+    {
+      "word": "alkin",
+      "num_guesses": 4,
+      "prior": 0.000031378639803814634,
+      "guesses": [
+        "tares",
+        "colin",
+        "gfaps",
+        "alkin"
+      ]
+    },
+    {
+      "word": "povos",
+      "num_guesses": 5,
+      "prior": 0.00002624619899795342,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "mjpeg",
+        "povos"
+      ]
+    },
+    {
+      "word": "haust",
+      "num_guesses": 4,
+      "prior": 0.000035604322838847344,
+      "guesses": [
+        "tares",
+        "synth",
+        "hadst",
+        "haust"
+      ]
+    },
+    {
+      "word": "sorra",
+      "num_guesses": 4,
+      "prior": 0.000031607206518785076,
+      "guesses": [
+        "tares",
+        "uncap",
+        "smirk",
+        "sorra"
+      ]
+    },
+    {
+      "word": "desex",
+      "num_guesses": 4,
+      "prior": 0.000018156262684671138,
+      "guesses": [
+        "tares",
+        "solid",
+        "deseg",
+        "desex"
+      ]
+    },
+    {
+      "word": "stulm",
+      "num_guesses": 4,
+      "prior": 0.000013315346274523665,
+      "guesses": [
+        "tares",
+        "chiot",
+        "mugly",
+        "stulm"
+      ]
+    },
+    {
+      "word": "choop",
+      "num_guesses": 4,
+      "prior": 0.00002283844949773843,
+      "guesses": [
+        "tares",
+        "colin",
+        "kpomo",
+        "choop"
+      ]
+    },
+    {
+      "word": "glomp",
+      "num_guesses": 5,
+      "prior": 0.000015697975356977583,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "gloom",
+        "glomp"
+      ]
+    },
+    {
+      "word": "flaws",
+      "num_guesses": 5,
+      "prior": 0.00008080057197931679,
+      "guesses": [
+        "tares",
+        "alani",
+        "scmps",
+        "bowgy",
+        "flaws"
+      ]
+    },
+    {
+      "word": "onodi",
+      "num_guesses": 5,
+      "prior": 0.000024809442249336913,
+      "guesses": [
+        "tares",
+        "colin",
+        "dping",
+        "indow",
+        "onodi"
+      ]
+    },
+    {
+      "word": "surra",
+      "num_guesses": 4,
+      "prior": 0.0000415746589226274,
+      "guesses": [
+        "tares",
+        "uncap",
+        "alarm",
+        "surra"
+      ]
+    },
+    {
+      "word": "owsen",
+      "num_guesses": 4,
+      "prior": 0.00002155845226094307,
+      "guesses": [
+        "tares",
+        "solid",
+        "onsen",
+        "owsen"
+      ]
+    },
+    {
+      "word": "khloy",
+      "num_guesses": 4,
+      "prior": 0.000011394956991598759,
+      "guesses": [
+        "tares",
+        "colin",
+        "mugly",
+        "khloy"
+      ]
+    },
+    {
+      "word": "línea",
+      "num_guesses": 4,
+      "prior": 0.00003140031005190635,
+      "guesses": [
+        "tares",
+        "indol",
+        "allen",
+        "línea"
+      ]
+    },
+    {
+      "word": "ngeos",
+      "num_guesses": 4,
+      "prior": 0.000013114158999555382,
+      "guesses": [
+        "tares",
+        "neeld",
+        "until",
+        "ngeos"
+      ]
+    },
+    {
+      "word": "awent",
+      "num_guesses": 4,
+      "prior": 0.000017093879471155116,
+      "guesses": [
+        "tares",
+        "leane",
+        "nming",
+        "awent"
+      ]
+    },
+    {
+      "word": "umbel",
+      "num_guesses": 4,
+      "prior": 0.000046706473579471276,
+      "guesses": [
+        "tares",
+        "nolid",
+        "becke",
+        "umbel"
+      ]
+    },
+    {
+      "word": "tosyl",
+      "num_guesses": 3,
+      "prior": 0.000036348501019197584,
+      "guesses": [
+        "tares",
+        "yusho",
+        "tosyl"
+      ]
+    },
+    {
+      "word": "umiak",
+      "num_guesses": 5,
+      "prior": 0.000032457407303826006,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhaba",
+        "kimry",
+        "umiak"
+      ]
+    },
+    {
+      "word": "qsoed",
+      "num_guesses": 4,
+      "prior": 0.000011377573299650962,
+      "guesses": [
+        "tares",
+        "solid",
+        "oused",
+        "qsoed"
+      ]
+    },
+    {
+      "word": "pests",
+      "num_guesses": 4,
+      "prior": 0.0000926961644596271,
+      "guesses": [
+        "tares",
+        "neeld",
+        "hpscs",
+        "pests"
+      ]
+    },
+    {
+      "word": "piers",
+      "num_guesses": 4,
+      "prior": 0.00009193470941470164,
+      "guesses": [
+        "tares",
+        "deori",
+        "pilch",
+        "piers"
+      ]
+    },
+    {
+      "word": "blaks",
+      "num_guesses": 6,
+      "prior": 0.000016076259489639367,
+      "guesses": [
+        "tares",
+        "alani",
+        "scmps",
+        "bowgy",
+        "dhobi",
+        "blaks"
+      ]
+    },
+    {
+      "word": "lakao",
+      "num_guesses": 5,
+      "prior": 0.000012160230785882994,
+      "guesses": [
+        "tares",
+        "mindy",
+        "holup",
+        "lazzo",
+        "lakao"
+      ]
+    },
+    {
+      "word": "moofs",
+      "num_guesses": 6,
+      "prior": 0.000012252364282935303,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "mbuga",
+        "mooks",
+        "moofs"
+      ]
+    },
+    {
+      "word": "crine",
+      "num_guesses": 5,
+      "prior": 0.00003261308296583546,
+      "guesses": [
+        "tares",
+        "deice",
+        "crime",
+        "think",
+        "crine"
+      ]
+    },
+    {
+      "word": "futed",
+      "num_guesses": 4,
+      "prior": 0.000023074109998355242,
+      "guesses": [
+        "tares",
+        "nolid",
+        "femur",
+        "futed"
+      ]
+    },
+    {
+      "word": "lletz",
+      "num_guesses": 3,
+      "prior": 0.000021924557343637044,
+      "guesses": [
+        "tares",
+        "elite",
+        "lletz"
+      ]
+    },
+    {
+      "word": "talib",
+      "num_guesses": 3,
+      "prior": 0.0000460952062077401,
+      "guesses": [
+        "tares",
+        "kylin",
+        "talib"
+      ]
+    },
+    {
+      "word": "mailo",
+      "num_guesses": 5,
+      "prior": 0.000029521079777142487,
+      "guesses": [
+        "tares",
+        "mindy",
+        "folic",
+        "maoli",
+        "mailo"
+      ]
+    },
+    {
+      "word": "omani",
+      "num_guesses": 4,
+      "prior": 0.00004674971025927757,
+      "guesses": [
+        "tares",
+        "colin",
+        "amino",
+        "omani"
+      ]
+    },
+    {
+      "word": "bohor",
+      "num_guesses": 4,
+      "prior": 0.000026563252252367008,
+      "guesses": [
+        "tares",
+        "coion",
+        "rbmks",
+        "bohor"
+      ]
+    },
+    {
+      "word": "bhand",
+      "num_guesses": 5,
+      "prior": 0.0000247711469362438,
+      "guesses": [
+        "tares",
+        "colin",
+        "gunny",
+        "makwa",
+        "bhand"
+      ]
+    },
+    {
+      "word": "chick",
+      "num_guesses": 5,
+      "prior": 0.00008667878452836576,
+      "guesses": [
+        "tares",
+        "colin",
+        "gumph",
+        "fancy",
+        "chick"
+      ]
+    },
+    {
+      "word": "betle",
+      "num_guesses": 4,
+      "prior": 0.000030004535565952558,
+      "guesses": [
+        "tares",
+        "elite",
+        "lethe",
+        "betle"
+      ]
+    },
+    {
+      "word": "voice",
+      "num_guesses": 4,
+      "prior": 0.00016757257848529287,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "comix",
+        "voice"
+      ]
+    },
+    {
+      "word": "cuffy",
+      "num_guesses": 4,
+      "prior": 0.00003237404807062939,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumpf",
+        "cuffy"
+      ]
+    },
+    {
+      "word": "maars",
+      "num_guesses": 4,
+      "prior": 0.00002839189985126253,
+      "guesses": [
+        "tares",
+        "rping",
+        "shams",
+        "maars"
+      ]
+    },
+    {
+      "word": "mobos",
+      "num_guesses": 7,
+      "prior": 0.000015050001323074972,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "hamza",
+        "jerky",
+        "fixed",
+        "mobos"
+      ]
+    },
+    {
+      "word": "twunt",
+      "num_guesses": 4,
+      "prior": 0.000013301374211971472,
+      "guesses": [
+        "tares",
+        "hoyin",
+        "tunku",
+        "twunt"
+      ]
+    },
+    {
+      "word": "unpry",
+      "num_guesses": 5,
+      "prior": 0.000010883054345613227,
+      "guesses": [
+        "tares",
+        "coion",
+        "fudgy",
+        "pruny",
+        "unpry"
+      ]
+    },
+    {
+      "word": "hecka",
+      "num_guesses": 5,
+      "prior": 0.000016746370137432215,
+      "guesses": [
+        "tares",
+        "neeld",
+        "bumph",
+        "heavy",
+        "hecka"
+      ]
+    },
+    {
+      "word": "ceili",
+      "num_guesses": 5,
+      "prior": 0.00002717097011097929,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "euche",
+        "celli",
+        "ceili"
+      ]
+    },
+    {
+      "word": "sheet",
+      "num_guesses": 4,
+      "prior": 0.00014321830855192373,
+      "guesses": [
+        "tares",
+        "olent",
+        "hawks",
+        "sheet"
+      ]
+    },
+    {
+      "word": "pally",
+      "num_guesses": 5,
+      "prior": 0.00004005741718358807,
+      "guesses": [
+        "tares",
+        "mindy",
+        "gulph",
+        "palay",
+        "pally"
+      ]
+    },
+    {
+      "word": "pudus",
+      "num_guesses": 4,
+      "prior": 0.00001752036818452794,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "pudus"
+      ]
+    },
+    {
+      "word": "drawl",
+      "num_guesses": 5,
+      "prior": 0.000054129054742058654,
+      "guesses": [
+        "tares",
+        "arain",
+        "coypu",
+        "blawg",
+        "drawl"
+      ]
+    },
+    {
+      "word": "futes",
+      "num_guesses": 5,
+      "prior": 0.000021124719761641316,
+      "guesses": [
+        "tares",
+        "coiny",
+        "eptfe",
+        "fêtes",
+        "futes"
+      ]
+    },
+    {
+      "word": "whoof",
+      "num_guesses": 5,
+      "prior": 0.00002647136021852225,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumbo",
+        "whoop",
+        "whoof"
+      ]
+    },
+    {
+      "word": "cabré",
+      "num_guesses": 4,
+      "prior": 0.00002311365939066937,
+      "guesses": [
+        "tares",
+        "nomid",
+        "bakla",
+        "cabré"
+      ]
+    },
+    {
+      "word": "loans",
+      "num_guesses": 3,
+      "prior": 0.00014581350076626706,
+      "guesses": [
+        "tares",
+        "alani",
+        "loans"
+      ]
+    },
+    {
+      "word": "eccho",
+      "num_guesses": 4,
+      "prior": 0.000033365105282745104,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "becke",
+        "eccho"
+      ]
+    },
+    {
+      "word": "lerot",
+      "num_guesses": 4,
+      "prior": 0.00002266451858725983,
+      "guesses": [
+        "tares",
+        "feith",
+        "lernt",
+        "lerot"
+      ]
+    },
+    {
+      "word": "sojia",
+      "num_guesses": 4,
+      "prior": 0.00001536147504450881,
+      "guesses": [
+        "tares",
+        "shail",
+        "sofia",
+        "sojia"
+      ]
+    },
+    {
+      "word": "eases",
+      "num_guesses": 6,
+      "prior": 0.00006766302202240031,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "gimpy",
+        "bosks",
+        "shewe",
+        "eases"
+      ]
+    },
+    {
+      "word": "nadar",
+      "num_guesses": 3,
+      "prior": 0.000042553118945386944,
+      "guesses": [
+        "tares",
+        "nomid",
+        "nadar"
+      ]
+    },
+    {
+      "word": "nirks",
+      "num_guesses": 5,
+      "prior": 9.003648759215462e-6,
+      "guesses": [
+        "tares",
+        "dubok",
+        "klimp",
+        "young",
+        "nirks"
+      ]
+    },
+    {
+      "word": "shraf",
+      "num_guesses": 5,
+      "prior": 0.000014644269911705764,
+      "guesses": [
+        "tares",
+        "uncap",
+        "chogm",
+        "shrab",
+        "shraf"
+      ]
+    },
+    {
+      "word": "brabb",
+      "num_guesses": 5,
+      "prior": 0.0000299302637603279,
+      "guesses": [
+        "tares",
+        "arain",
+        "coypu",
+        "blawg",
+        "brabb"
+      ]
+    },
+    {
+      "word": "kopje",
+      "num_guesses": 5,
+      "prior": 0.00004095709810695352,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "gopuz",
+        "kopje"
+      ]
+    },
+    {
+      "word": "riuer",
+      "num_guesses": 5,
+      "prior": 0.00004111403415227458,
+      "guesses": [
+        "tares",
+        "nolid",
+        "brbpr",
+        "vmpfc",
+        "riuer"
+      ]
+    },
+    {
+      "word": "tarse",
+      "num_guesses": 2,
+      "prior": 0.000025294503208753484,
+      "guesses": [
+        "tares",
+        "tarse"
+      ]
+    },
+    {
+      "word": "rejoy",
+      "num_guesses": 5,
+      "prior": 0.000015545896299616555,
+      "guesses": [
+        "tares",
+        "deice",
+        "fungo",
+        "bkpyv",
+        "rejoy"
+      ]
+    },
+    {
+      "word": "sorte",
+      "num_guesses": 3,
+      "prior": 0.00005013485878421819,
+      "guesses": [
+        "tares",
+        "swype",
+        "sorte"
+      ]
+    },
+    {
+      "word": "mache",
+      "num_guesses": 5,
+      "prior": 0.000049919034538643275,
+      "guesses": [
+        "tares",
+        "blind",
+        "cough",
+        "enemy",
+        "mache"
+      ]
+    },
+    {
+      "word": "proas",
+      "num_guesses": 4,
+      "prior": 0.00003291206923558317,
+      "guesses": [
+        "tares",
+        "coarb",
+        "agood",
+        "proas"
+      ]
+    },
+    {
+      "word": "quære",
+      "num_guesses": 5,
+      "prior": 0.000026148806666612967,
+      "guesses": [
+        "tares",
+        "deice",
+        "bourg",
+        "œuvre",
+        "quære"
+      ]
+    },
+    {
+      "word": "scrum",
+      "num_guesses": 4,
+      "prior": 0.00005296002172829734,
+      "guesses": [
+        "tares",
+        "yogic",
+        "scrub",
+        "scrum"
+      ]
+    },
+    {
+      "word": "caner",
+      "num_guesses": 4,
+      "prior": 0.00003780131866704989,
+      "guesses": [
+        "tares",
+        "cymwd",
+        "pbing",
+        "caner"
+      ]
+    },
+    {
+      "word": "bathy",
+      "num_guesses": 4,
+      "prior": 0.000032076564270148594,
+      "guesses": [
+        "tares",
+        "lithy",
+        "maybe",
+        "bathy"
+      ]
+    },
+    {
+      "word": "bunia",
+      "num_guesses": 4,
+      "prior": 0.000028902251510866203,
+      "guesses": [
+        "tares",
+        "colin",
+        "mungo",
+        "bunia"
+      ]
+    },
+    {
+      "word": "kruft",
+      "num_guesses": 4,
+      "prior": 0.00002266230347068443,
+      "guesses": [
+        "tares",
+        "froot",
+        "ducks",
+        "kruft"
+      ]
+    },
+    {
+      "word": "piman",
+      "num_guesses": 4,
+      "prior": 0.000031254237419049524,
+      "guesses": [
+        "tares",
+        "colin",
+        "midgy",
+        "piman"
+      ]
+    },
+    {
+      "word": "tocos",
+      "num_guesses": 3,
+      "prior": 0.000019583345951900504,
+      "guesses": [
+        "tares",
+        "coion",
+        "tocos"
+      ]
+    },
+    {
+      "word": "ronde",
+      "num_guesses": 4,
+      "prior": 0.000051401362012014764,
+      "guesses": [
+        "tares",
+        "deice",
+        "group",
+        "ronde"
+      ]
+    },
+    {
+      "word": "fasds",
+      "num_guesses": 6,
+      "prior": 0.00002063604241400328,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "swabs",
+        "fully",
+        "fasds"
+      ]
+    },
+    {
+      "word": "gayne",
+      "num_guesses": 4,
+      "prior": 0.000033391470378938165,
+      "guesses": [
+        "tares",
+        "blind",
+        "pungy",
+        "gayne"
+      ]
+    },
+    {
+      "word": "bezzo",
+      "num_guesses": 4,
+      "prior": 0.000016890615062949613,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "becke",
+        "bezzo"
+      ]
+    },
+    {
+      "word": "tined",
+      "num_guesses": 3,
+      "prior": 0.000039024424122206455,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "tined"
+      ]
+    },
+    {
+      "word": "bolsa",
+      "num_guesses": 4,
+      "prior": 0.00004603423985119065,
+      "guesses": [
+        "tares",
+        "shail",
+        "boula",
+        "bolsa"
+      ]
+    },
+    {
+      "word": "weake",
+      "num_guesses": 4,
+      "prior": 0.00004340462744519531,
+      "guesses": [
+        "tares",
+        "neeld",
+        "whack",
+        "weake"
+      ]
+    },
+    {
+      "word": "lense",
+      "num_guesses": 4,
+      "prior": 0.000041194402758242934,
+      "guesses": [
+        "tares",
+        "seine",
+        "mucid",
+        "lense"
+      ]
+    },
+    {
+      "word": "bayan",
+      "num_guesses": 4,
+      "prior": 0.000046805122831183155,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bloak",
+        "bayan"
+      ]
+    },
+    {
+      "word": "poped",
+      "num_guesses": 5,
+      "prior": 0.00001990348289691617,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mcpyv",
+        "dooth",
+        "poped"
+      ]
+    },
+    {
+      "word": "belta",
+      "num_guesses": 5,
+      "prior": 0.000025888044157972526,
+      "guesses": [
+        "tares",
+        "leane",
+        "demap",
+        "celta",
+        "belta"
+      ]
+    },
+    {
+      "word": "issue",
+      "num_guesses": 4,
+      "prior": 0.0001844884686206613,
+      "guesses": [
+        "tares",
+        "seine",
+        "lisus",
+        "issue"
+      ]
+    },
+    {
+      "word": "patis",
+      "num_guesses": 3,
+      "prior": 0.000031058421807564524,
+      "guesses": [
+        "tares",
+        "lithp",
+        "patis"
+      ]
+    },
+    {
+      "word": "śloka",
+      "num_guesses": 4,
+      "prior": 0.0000205079799272913,
+      "guesses": [
+        "tares",
+        "colin",
+        "alula",
+        "śloka"
+      ]
+    },
+    {
+      "word": "rotto",
+      "num_guesses": 3,
+      "prior": 0.000029530883487458597,
+      "guesses": [
+        "tares",
+        "froot",
+        "rotto"
+      ]
+    },
+    {
+      "word": "ancas",
+      "num_guesses": 4,
+      "prior": 0.000026035649149367466,
+      "guesses": [
+        "tares",
+        "alani",
+        "bonds",
+        "ancas"
+      ]
+    },
+    {
+      "word": "welcs",
+      "num_guesses": 5,
+      "prior": 0.000011225340048151528,
+      "guesses": [
+        "tares",
+        "neeld",
+        "polki",
+        "charm",
+        "welcs"
+      ]
+    },
+    {
+      "word": "fealy",
+      "num_guesses": 4,
+      "prior": 0.00002829250470539083,
+      "guesses": [
+        "tares",
+        "neeld",
+        "halfy",
+        "fealy"
+      ]
+    },
+    {
+      "word": "dione",
+      "num_guesses": 3,
+      "prior": 0.00005170539378715307,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "dione"
+      ]
+    },
+    {
+      "word": "zonal",
+      "num_guesses": 4,
+      "prior": 0.0000714997854476982,
+      "guesses": [
+        "tares",
+        "colin",
+        "danza",
+        "zonal"
+      ]
+    },
+    {
+      "word": "binks",
+      "num_guesses": 6,
+      "prior": 0.00004468928657599635,
+      "guesses": [
+        "tares",
+        "colin",
+        "kfing",
+        "sumph",
+        "wajib",
+        "binks"
+      ]
+    },
+    {
+      "word": "troul",
+      "num_guesses": 3,
+      "prior": 0.000023546086776556197,
+      "guesses": [
+        "tares",
+        "philo",
+        "troul"
+      ]
+    },
+    {
+      "word": "hallo",
+      "num_guesses": 4,
+      "prior": 0.00005356640959313283,
+      "guesses": [
+        "tares",
+        "mindy",
+        "holup",
+        "hallo"
+      ]
+    },
+    {
+      "word": "sérac",
+      "num_guesses": 5,
+      "prior": 0.00001931063882760717,
+      "guesses": [
+        "tares",
+        "uncap",
+        "gumby",
+        "scraw",
+        "sérac"
+      ]
+    },
+    {
+      "word": "firee",
+      "num_guesses": 5,
+      "prior": 0.000025218024794042807,
+      "guesses": [
+        "tares",
+        "dimbo",
+        "fnhtr",
+        "firey",
+        "firee"
+      ]
+    },
+    {
+      "word": "coble",
+      "num_guesses": 4,
+      "prior": 0.00005231552992225928,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "coble"
+      ]
+    },
+    {
+      "word": "atrin",
+      "num_guesses": 3,
+      "prior": 0.000018361306859654764,
+      "guesses": [
+        "tares",
+        "anoia",
+        "atrin"
+      ]
+    },
+    {
+      "word": "picky",
+      "num_guesses": 5,
+      "prior": 0.00004791203097337204,
+      "guesses": [
+        "tares",
+        "colin",
+        "ubykh",
+        "mvpds",
+        "picky"
+      ]
+    },
+    {
+      "word": "kofer",
+      "num_guesses": 6,
+      "prior": 0.000023999756766711598,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mcpyv",
+        "wkbks",
+        "joker",
+        "kofer"
+      ]
+    },
+    {
+      "word": "fices",
+      "num_guesses": 5,
+      "prior": 0.00004656747082882634,
+      "guesses": [
+        "tares",
+        "limon",
+        "svcds",
+        "proof",
+        "fices"
+      ]
+    },
+    {
+      "word": "otoro",
+      "num_guesses": 4,
+      "prior": 0.000022904652107978445,
+      "guesses": [
+        "tares",
+        "froot",
+        "rooty",
+        "otoro"
+      ]
+    },
+    {
+      "word": "sfrps",
+      "num_guesses": 5,
+      "prior": 0.000016226531037664217,
+      "guesses": [
+        "tares",
+        "dubok",
+        "mingi",
+        "scifs",
+        "sfrps"
+      ]
+    },
+    {
+      "word": "loced",
+      "num_guesses": 6,
+      "prior": 0.000015452224250108917,
+      "guesses": [
+        "tares",
+        "nolid",
+        "upbow",
+        "loved",
+        "xmooc",
+        "loced"
+      ]
+    },
+    {
+      "word": "poots",
+      "num_guesses": 4,
+      "prior": 0.000028442307944880455,
+      "guesses": [
+        "tares",
+        "liuto",
+        "pooch",
+        "poots"
+      ]
+    },
+    {
+      "word": "lackt",
+      "num_guesses": 4,
+      "prior": 0.000022513584159755242,
+      "guesses": [
+        "tares",
+        "lithy",
+        "empty",
+        "lackt"
+      ]
+    },
+    {
+      "word": "whoas",
+      "num_guesses": 5,
+      "prior": 0.000018574794805584665,
+      "guesses": [
+        "tares",
+        "alani",
+        "compy",
+        "ojhas",
+        "whoas"
+      ]
+    },
+    {
+      "word": "semed",
+      "num_guesses": 5,
+      "prior": 0.00003495572710593667,
+      "guesses": [
+        "tares",
+        "solid",
+        "weepy",
+        "sexed",
+        "semed"
+      ]
+    },
+    {
+      "word": "saved",
+      "num_guesses": 4,
+      "prior": 0.00012707034239984886,
+      "guesses": [
+        "tares",
+        "dnsbl",
+        "viewy",
+        "saved"
+      ]
+    },
+    {
+      "word": "neele",
+      "num_guesses": 4,
+      "prior": 0.000032704007676469524,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "weeks",
+        "neele"
+      ]
+    },
+    {
+      "word": "psnrs",
+      "num_guesses": 3,
+      "prior": 0.000020347741695077534,
+      "guesses": [
+        "tares",
+        "coipu",
+        "psnrs"
+      ]
+    },
+    {
+      "word": "achma",
+      "num_guesses": 5,
+      "prior": 0.000014521517202385607,
+      "guesses": [
+        "tares",
+        "colin",
+        "bucca",
+        "acada",
+        "achma"
+      ]
+    },
+    {
+      "word": "sidle",
+      "num_guesses": 4,
+      "prior": 0.00004193289536251509,
+      "guesses": [
+        "tares",
+        "seine",
+        "kulch",
+        "sidle"
+      ]
+    },
+    {
+      "word": "ghira",
+      "num_guesses": 5,
+      "prior": 0.000017212012290785533,
+      "guesses": [
+        "tares",
+        "arain",
+        "bocal",
+        "haiku",
+        "ghira"
+      ]
+    },
+    {
+      "word": "biker",
+      "num_guesses": 4,
+      "prior": 0.00005188191566292755,
+      "guesses": [
+        "tares",
+        "nolid",
+        "brbpr",
+        "biker"
+      ]
+    },
+    {
+      "word": "steth",
+      "num_guesses": 5,
+      "prior": 0.000023091606778804783,
+      "guesses": [
+        "tares",
+        "seine",
+        "lowpt",
+        "zhmud",
+        "steth"
+      ]
+    },
+    {
+      "word": "clang",
+      "num_guesses": 3,
+      "prior": 0.000058447819646743074,
+      "guesses": [
+        "tares",
+        "colin",
+        "clang"
+      ]
+    },
+    {
+      "word": "raiat",
+      "num_guesses": 5,
+      "prior": 0.00001619267256612746,
+      "guesses": [
+        "tares",
+        "rotty",
+        "rabat",
+        "ragat",
+        "raiat"
+      ]
+    },
+    {
+      "word": "cupan",
+      "num_guesses": 5,
+      "prior": 0.000020925105021474756,
+      "guesses": [
+        "tares",
+        "colin",
+        "cuban",
+        "cuman",
+        "cupan"
+      ]
+    },
+    {
+      "word": "serts",
+      "num_guesses": 3,
+      "prior": 0.00003102348766274381,
+      "guesses": [
+        "tares",
+        "csnps",
+        "serts"
+      ]
+    },
+    {
+      "word": "morel",
+      "num_guesses": 3,
+      "prior": 0.00006219627242230872,
+      "guesses": [
+        "tares",
+        "dimbo",
+        "morel"
+      ]
+    },
+    {
+      "word": "bahur",
+      "num_guesses": 4,
+      "prior": 0.0000235227511404649,
+      "guesses": [
+        "tares",
+        "nomid",
+        "bakla",
+        "bahur"
+      ]
+    },
+    {
+      "word": "argus",
+      "num_guesses": 4,
+      "prior": 0.00006976819573178674,
+      "guesses": [
+        "tares",
+        "coarb",
+        "aumin",
+        "argus"
+      ]
+    },
+    {
+      "word": "hirne",
+      "num_guesses": 3,
+      "prior": 0.000019676815051386967,
+      "guesses": [
+        "tares",
+        "niobe",
+        "hirne"
+      ]
+    },
+    {
+      "word": "tants",
+      "num_guesses": 4,
+      "prior": 0.00004419251859374739,
+      "guesses": [
+        "tares",
+        "clink",
+        "great",
+        "tants"
+      ]
+    },
+    {
+      "word": "poshy",
+      "num_guesses": 4,
+      "prior": 0.000015241552934748264,
+      "guesses": [
+        "tares",
+        "noily",
+        "subsp",
+        "poshy"
+      ]
+    },
+    {
+      "word": "mears",
+      "num_guesses": 6,
+      "prior": 0.00005615026470107154,
+      "guesses": [
+        "tares",
+        "begry",
+        "wshps",
+        "nafld",
+        "roman",
+        "mears"
+      ]
+    },
+    {
+      "word": "broad",
+      "num_guesses": 4,
+      "prior": 0.00015295939148069965,
+      "guesses": [
+        "tares",
+        "arain",
+        "polab",
+        "broad"
+      ]
+    },
+    {
+      "word": "sacre",
+      "num_guesses": 3,
+      "prior": 0.000048482832673744985,
+      "guesses": [
+        "tares",
+        "basis",
+        "sacre"
+      ]
+    },
+    {
+      "word": "etail",
+      "num_guesses": 4,
+      "prior": 0.00003255228875004369,
+      "guesses": [
+        "tares",
+        "leane",
+        "exalt",
+        "etail"
+      ]
+    },
+    {
+      "word": "wsprs",
+      "num_guesses": 4,
+      "prior": 0.000012245874679567008,
+      "guesses": [
+        "tares",
+        "coipu",
+        "psnrs",
+        "wsprs"
+      ]
+    },
+    {
+      "word": "ictus",
+      "num_guesses": 4,
+      "prior": 0.000041591174530798704,
+      "guesses": [
+        "tares",
+        "liuto",
+        "cutis",
+        "ictus"
+      ]
+    },
+    {
+      "word": "rills",
+      "num_guesses": 5,
+      "prior": 0.00005345885406065697,
+      "guesses": [
+        "tares",
+        "coipu",
+        "ginks",
+        "films",
+        "rills"
+      ]
+    },
+    {
+      "word": "ernes",
+      "num_guesses": 5,
+      "prior": 0.00003490469591338466,
+      "guesses": [
+        "tares",
+        "uroid",
+        "flegm",
+        "seven",
+        "ernes"
+      ]
+    },
+    {
+      "word": "kypes",
+      "num_guesses": 4,
+      "prior": 0.000014166147108572507,
+      "guesses": [
+        "tares",
+        "limon",
+        "pucky",
+        "kypes"
+      ]
+    },
+    {
+      "word": "rusks",
+      "num_guesses": 5,
+      "prior": 0.00003629073659335422,
+      "guesses": [
+        "tares",
+        "coipu",
+        "bundh",
+        "ruffs",
+        "rusks"
+      ]
+    },
+    {
+      "word": "gatha",
+      "num_guesses": 5,
+      "prior": 0.000037098131853149035,
+      "guesses": [
+        "tares",
+        "lithy",
+        "hakam",
+        "lgfvs",
+        "gatha"
+      ]
+    },
+    {
+      "word": "lints",
+      "num_guesses": 4,
+      "prior": 0.00003559668285490531,
+      "guesses": [
+        "tares",
+        "liuto",
+        "nilfs",
+        "lints"
+      ]
+    },
+    {
+      "word": "gursh",
+      "num_guesses": 4,
+      "prior": 0.000013491859970440796,
+      "guesses": [
+        "tares",
+        "yogic",
+        "shrug",
+        "gursh"
+      ]
+    },
+    {
+      "word": "mercy",
+      "num_guesses": 4,
+      "prior": 0.00011840198688751783,
+      "guesses": [
+        "tares",
+        "niobe",
+        "pucky",
+        "mercy"
+      ]
+    },
+    {
+      "word": "dials",
+      "num_guesses": 4,
+      "prior": 0.00006550121108436033,
+      "guesses": [
+        "tares",
+        "alani",
+        "vapid",
+        "dials"
+      ]
+    },
+    {
+      "word": "campy",
+      "num_guesses": 4,
+      "prior": 0.00004004543742284283,
+      "guesses": [
+        "tares",
+        "mindy",
+        "plumb",
+        "campy"
+      ]
+    },
+    {
+      "word": "boson",
+      "num_guesses": 4,
+      "prior": 0.00006003034879392151,
+      "guesses": [
+        "tares",
+        "noily",
+        "duomo",
+        "boson"
+      ]
+    },
+    {
+      "word": "litty",
+      "num_guesses": 4,
+      "prior": 0.000024777352134150777,
+      "guesses": [
+        "tares",
+        "nilot",
+        "lyeth",
+        "litty"
+      ]
+    },
+    {
+      "word": "savin",
+      "num_guesses": 4,
+      "prior": 0.0000541924184797558,
+      "guesses": [
+        "tares",
+        "lysin",
+        "sabin",
+        "savin"
+      ]
+    },
+    {
+      "word": "folia",
+      "num_guesses": 4,
+      "prior": 0.00005874781804219554,
+      "guesses": [
+        "tares",
+        "colin",
+        "defib",
+        "folia"
+      ]
+    },
+    {
+      "word": "fitte",
+      "num_guesses": 4,
+      "prior": 0.00003394829612855669,
+      "guesses": [
+        "tares",
+        "elite",
+        "bumpf",
+        "fitte"
+      ]
+    },
+    {
+      "word": "shoyu",
+      "num_guesses": 4,
+      "prior": 0.0000395441349102752,
+      "guesses": [
+        "tares",
+        "noily",
+        "sysop",
+        "shoyu"
+      ]
+    },
+    {
+      "word": "leint",
+      "num_guesses": 3,
+      "prior": 0.000015528347266944768,
+      "guesses": [
+        "tares",
+        "elite",
+        "leint"
+      ]
+    },
+    {
+      "word": "daxen",
+      "num_guesses": 5,
+      "prior": 0.000018070763364916487,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "pwned",
+        "dzong",
+        "daxen"
+      ]
+    },
+    {
+      "word": "whole",
+      "num_guesses": 4,
+      "prior": 0.00020454079237775566,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "whole"
+      ]
+    },
+    {
+      "word": "glome",
+      "num_guesses": 5,
+      "prior": 0.000025063334960194056,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "bolge",
+        "mvpds",
+        "glome"
+      ]
+    },
+    {
+      "word": "kanga",
+      "num_guesses": 4,
+      "prior": 0.000038159238417537454,
+      "guesses": [
+        "tares",
+        "mindy",
+        "glock",
+        "kanga"
+      ]
+    },
+    {
+      "word": "cloky",
+      "num_guesses": 4,
+      "prior": 0.000013721967503216207,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumky",
+        "cloky"
+      ]
+    },
+    {
+      "word": "pauas",
+      "num_guesses": 4,
+      "prior": 0.00001602120251276818,
+      "guesses": [
+        "tares",
+        "plink",
+        "mouch",
+        "pauas"
+      ]
+    },
+    {
+      "word": "glean",
+      "num_guesses": 4,
+      "prior": 0.000060209401934962,
+      "guesses": [
+        "tares",
+        "neeld",
+        "clean",
+        "glean"
+      ]
+    },
+    {
+      "word": "enode",
+      "num_guesses": 4,
+      "prior": 0.00002129010968924326,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "epoch",
+        "enode"
+      ]
+    },
+    {
+      "word": "clomb",
+      "num_guesses": 4,
+      "prior": 0.000033557390518296104,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumky",
+        "clomb"
+      ]
+    },
+    {
+      "word": "faffs",
+      "num_guesses": 6,
+      "prior": 0.00001829919092925031,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "fubby",
+        "favas",
+        "faffs"
+      ]
+    },
+    {
+      "word": "xacml",
+      "num_guesses": 5,
+      "prior": 0.000029389885310016725,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bakla",
+        "palmo",
+        "xacml"
+      ]
+    },
+    {
+      "word": "yetes",
+      "num_guesses": 5,
+      "prior": 0.000014615567942460446,
+      "guesses": [
+        "tares",
+        "coiny",
+        "ubykh",
+        "wytes",
+        "yetes"
+      ]
+    },
+    {
+      "word": "dokka",
+      "num_guesses": 4,
+      "prior": 0.000024122673473667622,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumka",
+        "dokka"
+      ]
+    },
+    {
+      "word": "kapos",
+      "num_guesses": 4,
+      "prior": 0.000033015018517761436,
+      "guesses": [
+        "tares",
+        "plink",
+        "youah",
+        "kapos"
+      ]
+    },
+    {
+      "word": "boilt",
+      "num_guesses": 4,
+      "prior": 0.000020043920738563058,
+      "guesses": [
+        "tares",
+        "nilot",
+        "logit",
+        "boilt"
+      ]
+    },
+    {
+      "word": "randy",
+      "num_guesses": 3,
+      "prior": 0.00007758282623089423,
+      "guesses": [
+        "tares",
+        "nomid",
+        "randy"
+      ]
+    },
+    {
+      "word": "shapt",
+      "num_guesses": 5,
+      "prior": 0.000021324839728605455,
+      "guesses": [
+        "tares",
+        "slant",
+        "khoti",
+        "shaft",
+        "shapt"
+      ]
+    },
+    {
+      "word": "arish",
+      "num_guesses": 4,
+      "prior": 0.000043901783985935855,
+      "guesses": [
+        "tares",
+        "shoup",
+        "abcde",
+        "arish"
+      ]
+    },
+    {
+      "word": "tarai",
+      "num_guesses": 3,
+      "prior": 0.00004374648146934842,
+      "guesses": [
+        "tares",
+        "kindo",
+        "tarai"
+      ]
+    },
+    {
+      "word": "hupia",
+      "num_guesses": 5,
+      "prior": 0.000015305978844314295,
+      "guesses": [
+        "tares",
+        "colin",
+        "bifid",
+        "gshpx",
+        "hupia"
+      ]
+    },
+    {
+      "word": "cerge",
+      "num_guesses": 5,
+      "prior": 0.00002202604396162794,
+      "guesses": [
+        "tares",
+        "niobe",
+        "gumpf",
+        "verge",
+        "cerge"
+      ]
+    },
+    {
+      "word": "dslrs",
+      "num_guesses": 4,
+      "prior": 0.000028403806005593298,
+      "guesses": [
+        "tares",
+        "coipu",
+        "sldmb",
+        "dslrs"
+      ]
+    },
+    {
+      "word": "soyed",
+      "num_guesses": 4,
+      "prior": 0.000031713784717641215,
+      "guesses": [
+        "tares",
+        "solid",
+        "sowed",
+        "soyed"
+      ]
+    },
+    {
+      "word": "saabs",
+      "num_guesses": 5,
+      "prior": 0.00002605025862049793,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "fubby",
+        "saabs"
+      ]
+    },
+    {
+      "word": "zawns",
+      "num_guesses": 7,
+      "prior": 0.000012440950819347086,
+      "guesses": [
+        "tares",
+        "plink",
+        "womby",
+        "hafod",
+        "jacob",
+        "gawns",
+        "zawns"
+      ]
+    },
+    {
+      "word": "amock",
+      "num_guesses": 4,
+      "prior": 0.00002054583296872387,
+      "guesses": [
+        "tares",
+        "colin",
+        "khama",
+        "amock"
+      ]
+    },
+    {
+      "word": "nubby",
+      "num_guesses": 4,
+      "prior": 0.000032720848388581675,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "nubby"
+      ]
+    },
+    {
+      "word": "jubés",
+      "num_guesses": 5,
+      "prior": 0.00001263025375128358,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "jugum",
+        "jubés"
+      ]
+    },
+    {
+      "word": "doles",
+      "num_guesses": 6,
+      "prior": 0.0000485389436718434,
+      "guesses": [
+        "tares",
+        "limon",
+        "sophy",
+        "cvbgs",
+        "found",
+        "doles"
+      ]
+    },
+    {
+      "word": "hooke",
+      "num_guesses": 5,
+      "prior": 0.00006225078087618418,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "vozhd",
+        "hooke"
+      ]
+    },
+    {
+      "word": "trods",
+      "num_guesses": 4,
+      "prior": 0.00002220438116740735,
+      "guesses": [
+        "tares",
+        "group",
+        "drawn",
+        "trods"
+      ]
+    },
+    {
+      "word": "badge",
+      "num_guesses": 3,
+      "prior": 0.0000843893109944253,
+      "guesses": [
+        "tares",
+        "blind",
+        "badge"
+      ]
+    },
+    {
+      "word": "ruibe",
+      "num_guesses": 5,
+      "prior": 9.391209753219243e-6,
+      "guesses": [
+        "tares",
+        "deice",
+        "grump",
+        "ruine",
+        "ruibe"
+      ]
+    },
+    {
+      "word": "heron",
+      "num_guesses": 3,
+      "prior": 0.00007499764151288253,
+      "guesses": [
+        "tares",
+        "niobe",
+        "heron"
+      ]
+    },
+    {
+      "word": "patée",
+      "num_guesses": 4,
+      "prior": 0.000022946960689396314,
+      "guesses": [
+        "tares",
+        "lihtc",
+        "matje",
+        "patée"
+      ]
+    },
+    {
+      "word": "coipu",
+      "num_guesses": 4,
+      "prior": 0.000011122251848090986,
+      "guesses": [
+        "tares",
+        "colin",
+        "quick",
+        "coipu"
+      ]
+    },
+    {
+      "word": "mahus",
+      "num_guesses": 5,
+      "prior": 0.000017620009251014282,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "hswms",
+        "mahus"
+      ]
+    },
+    {
+      "word": "lyzes",
+      "num_guesses": 5,
+      "prior": 0.000022145774462222575,
+      "guesses": [
+        "tares",
+        "limon",
+        "budgy",
+        "kvass",
+        "lyzes"
+      ]
+    },
+    {
+      "word": "ebays",
+      "num_guesses": 5,
+      "prior": 0.000014401267291894345,
+      "guesses": [
+        "tares",
+        "delam",
+        "spacy",
+        "eyass",
+        "ebays"
+      ]
+    },
+    {
+      "word": "vastu",
+      "num_guesses": 4,
+      "prior": 0.000036009209299922365,
+      "guesses": [
+        "tares",
+        "synth",
+        "pubic",
+        "vastu"
+      ]
+    },
+    {
+      "word": "kavas",
+      "num_guesses": 6,
+      "prior": 0.000021681487117324936,
+      "guesses": [
+        "tares",
+        "plink",
+        "mucky",
+        "sokah",
+        "kazas",
+        "kavas"
+      ]
+    },
+    {
+      "word": "tiins",
+      "num_guesses": 4,
+      "prior": 0.000015257761641651003,
+      "guesses": [
+        "tares",
+        "coion",
+        "width",
+        "tiins"
+      ]
+    },
+    {
+      "word": "hipes",
+      "num_guesses": 6,
+      "prior": 0.00002314836244247472,
+      "guesses": [
+        "tares",
+        "limon",
+        "svcds",
+        "bkpyv",
+        "weigh",
+        "hipes"
+      ]
+    },
+    {
+      "word": "clost",
+      "num_guesses": 4,
+      "prior": 0.00003166481774787792,
+      "guesses": [
+        "tares",
+        "chiot",
+        "const",
+        "clost"
+      ]
+    },
+    {
+      "word": "chafe",
+      "num_guesses": 6,
+      "prior": 0.00005437355017488958,
+      "guesses": [
+        "tares",
+        "neeld",
+        "ampao",
+        "gulch",
+        "views",
+        "chafe"
+      ]
+    },
+    {
+      "word": "bipoc",
+      "num_guesses": 4,
+      "prior": 0.000010479263511805235,
+      "guesses": [
+        "tares",
+        "colin",
+        "bioch",
+        "bipoc"
+      ]
+    },
+    {
+      "word": "deest",
+      "num_guesses": 4,
+      "prior": 0.000031004064312452,
+      "guesses": [
+        "tares",
+        "seine",
+        "wedge",
+        "deest"
+      ]
+    },
+    {
+      "word": "tapes",
+      "num_guesses": 3,
+      "prior": 0.00009391812403709952,
+      "guesses": [
+        "tares",
+        "klomp",
+        "tapes"
+      ]
+    },
+    {
+      "word": "annot",
+      "num_guesses": 3,
+      "prior": 0.000055632018002976746,
+      "guesses": [
+        "tares",
+        "anoia",
+        "annot"
+      ]
+    },
+    {
+      "word": "fizbo",
+      "num_guesses": 5,
+      "prior": 0.000012737496502232762,
+      "guesses": [
+        "tares",
+        "colin",
+        "humod",
+        "pizzo",
+        "fizbo"
+      ]
+    },
+    {
+      "word": "pahmi",
+      "num_guesses": 5,
+      "prior": 0.000015153920517781453,
+      "guesses": [
+        "tares",
+        "mindy",
+        "lumbi",
+        "being",
+        "pahmi"
+      ]
+    },
+    {
+      "word": "youee",
+      "num_guesses": 5,
+      "prior": 0.000012316516295019006,
+      "guesses": [
+        "tares",
+        "nolid",
+        "choky",
+        "yogee",
+        "youee"
+      ]
+    },
+    {
+      "word": "coned",
+      "num_guesses": 4,
+      "prior": 0.00004313907423623906,
+      "guesses": [
+        "tares",
+        "nolid",
+        "mbbch",
+        "coned"
+      ]
+    },
+    {
+      "word": "huxen",
+      "num_guesses": 5,
+      "prior": 0.000014266296471797541,
+      "guesses": [
+        "tares",
+        "nolid",
+        "humyn",
+        "hugen",
+        "huxen"
+      ]
+    },
+    {
+      "word": "towss",
+      "num_guesses": 5,
+      "prior": 0.000015797743560614062,
+      "guesses": [
+        "tares",
+        "coion",
+        "flutd",
+        "tombs",
+        "towss"
+      ]
+    },
+    {
+      "word": "pukus",
+      "num_guesses": 5,
+      "prior": 0.00001386720587054183,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "pudus",
+        "pukus"
+      ]
+    },
+    {
+      "word": "slats",
+      "num_guesses": 4,
+      "prior": 0.00006301531588976788,
+      "guesses": [
+        "tares",
+        "attom",
+        "shlck",
+        "slats"
+      ]
+    },
+    {
+      "word": "bodig",
+      "num_guesses": 4,
+      "prior": 0.00002424694008821538,
+      "guesses": [
+        "tares",
+        "colin",
+        "gombo",
+        "bodig"
+      ]
+    },
+    {
+      "word": "zuppa",
+      "num_guesses": 5,
+      "prior": 0.000029412955242953354,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumba",
+        "zakah",
+        "zuppa"
+      ]
+    },
+    {
+      "word": "meths",
+      "num_guesses": 4,
+      "prior": 0.000028931920838048656,
+      "guesses": [
+        "tares",
+        "neeld",
+        "hpscs",
+        "meths"
+      ]
+    },
+    {
+      "word": "slipt",
+      "num_guesses": 4,
+      "prior": 0.000038701839616308914,
+      "guesses": [
+        "tares",
+        "chiot",
+        "plunk",
+        "slipt"
+      ]
+    },
+    {
+      "word": "butty",
+      "num_guesses": 4,
+      "prior": 0.000034827684317800793,
+      "guesses": [
+        "tares",
+        "nilot",
+        "cupid",
+        "butty"
+      ]
+    },
+    {
+      "word": "crase",
+      "num_guesses": 4,
+      "prior": 0.0000294059246303049,
+      "guesses": [
+        "tares",
+        "shape",
+        "clung",
+        "crase"
+      ]
+    },
+    {
+      "word": "fpoon",
+      "num_guesses": 5,
+      "prior": 0.000015271216478830094,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumpy",
+        "vppon",
+        "fpoon"
+      ]
+    },
+    {
+      "word": "pupes",
+      "num_guesses": 5,
+      "prior": 0.000015550895784908305,
+      "guesses": [
+        "tares",
+        "limon",
+        "pucky",
+        "pubes",
+        "pupes"
+      ]
+    },
+    {
+      "word": "omdah",
+      "num_guesses": 4,
+      "prior": 0.000018055667779060217,
+      "guesses": [
+        "tares",
+        "colin",
+        "admag",
+        "omdah"
+      ]
+    },
+    {
+      "word": "dekko",
+      "num_guesses": 4,
+      "prior": 0.000027543903917351722,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "fence",
+        "dekko"
+      ]
+    },
+    {
+      "word": "caces",
+      "num_guesses": 6,
+      "prior": 0.00002536971505410714,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "mscps",
+        "faces",
+        "child",
+        "caces"
+      ]
+    },
+    {
+      "word": "asity",
+      "num_guesses": 4,
+      "prior": 0.00001890180399555693,
+      "guesses": [
+        "tares",
+        "slant",
+        "visco",
+        "asity"
+      ]
+    },
+    {
+      "word": "elmer",
+      "num_guesses": 5,
+      "prior": 0.00008490078923638111,
+      "guesses": [
+        "tares",
+        "nolid",
+        "gebur",
+        "fleme",
+        "elmer"
+      ]
+    },
+    {
+      "word": "dohyō",
+      "num_guesses": 5,
+      "prior": 0.000010699950939226689,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhoby",
+        "dohyo",
+        "dohyō"
+      ]
+    },
+    {
+      "word": "jimmy",
+      "num_guesses": 4,
+      "prior": 0.00009705144988917682,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumby",
+        "jimmy"
+      ]
+    },
+    {
+      "word": "uptie",
+      "num_guesses": 4,
+      "prior": 0.000011691110849750327,
+      "guesses": [
+        "tares",
+        "elite",
+        "wunch",
+        "uptie"
+      ]
+    },
+    {
+      "word": "encik",
+      "num_guesses": 5,
+      "prior": 0.00003554558125111915,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "meige",
+        "iceni",
+        "encik"
+      ]
+    },
+    {
+      "word": "forth",
+      "num_guesses": 3,
+      "prior": 0.0001606573168323376,
+      "guesses": [
+        "tares",
+        "fuyoh",
+        "forth"
+      ]
+    },
+    {
+      "word": "huzza",
+      "num_guesses": 5,
+      "prior": 0.00004077876993967103,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumba",
+        "zakah",
+        "huzza"
+      ]
+    },
+    {
+      "word": "pavee",
+      "num_guesses": 4,
+      "prior": 0.000025850529823415082,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "wavey",
+        "pavee"
+      ]
+    },
+    {
+      "word": "mommy",
+      "num_guesses": 5,
+      "prior": 0.00007131446613660231,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhoby",
+        "gumpf",
+        "mommy"
+      ]
+    },
+    {
+      "word": "abele",
+      "num_guesses": 3,
+      "prior": 0.00004174153533104236,
+      "guesses": [
+        "tares",
+        "neeld",
+        "abele"
+      ]
+    },
+    {
+      "word": "greek",
+      "num_guesses": 5,
+      "prior": 0.00014414598201838172,
+      "guesses": [
+        "tares",
+        "nolid",
+        "beepy",
+        "creek",
+        "greek"
+      ]
+    },
+    {
+      "word": "dimbo",
+      "num_guesses": 4,
+      "prior": 0.00001802394015084033,
+      "guesses": [
+        "tares",
+        "colin",
+        "humod",
+        "dimbo"
+      ]
+    },
+    {
+      "word": "laugh",
+      "num_guesses": 4,
+      "prior": 0.00011781890558450402,
+      "guesses": [
+        "tares",
+        "mindy",
+        "holup",
+        "laugh"
+      ]
+    },
+    {
+      "word": "elven",
+      "num_guesses": 4,
+      "prior": 0.000045535908841060905,
+      "guesses": [
+        "tares",
+        "nolid",
+        "befel",
+        "elven"
+      ]
+    },
+    {
+      "word": "guaje",
+      "num_guesses": 6,
+      "prior": 0.0000235227511404649,
+      "guesses": [
+        "tares",
+        "neeld",
+        "ampao",
+        "gulch",
+        "guage",
+        "guaje"
+      ]
+    },
+    {
+      "word": "congs",
+      "num_guesses": 5,
+      "prior": 0.00002867467151707054,
+      "guesses": [
+        "tares",
+        "colin",
+        "funny",
+        "gudok",
+        "congs"
+      ]
+    },
+    {
+      "word": "diyne",
+      "num_guesses": 4,
+      "prior": 0.000028352444585021933,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "great",
+        "diyne"
+      ]
+    },
+    {
+      "word": "wangs",
+      "num_guesses": 6,
+      "prior": 0.000030874922720799334,
+      "guesses": [
+        "tares",
+        "plink",
+        "gomad",
+        "hbfcs",
+        "swyve",
+        "wangs"
+      ]
+    },
+    {
+      "word": "kochi",
+      "num_guesses": 3,
+      "prior": 0.00004757188323990817,
+      "guesses": [
+        "tares",
+        "colin",
+        "kochi"
+      ]
+    },
+    {
+      "word": "negia",
+      "num_guesses": 5,
+      "prior": 0.000012410307711075495,
+      "guesses": [
+        "tares",
+        "neeld",
+        "whiba",
+        "nenia",
+        "negia"
+      ]
+    },
+    {
+      "word": "named",
+      "num_guesses": 4,
+      "prior": 0.00015519716757465008,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "skimp",
+        "named"
+      ]
+    },
+    {
+      "word": "dhaps",
+      "num_guesses": 4,
+      "prior": 8.479139701624141e-6,
+      "guesses": [
+        "tares",
+        "alani",
+        "compd",
+        "dhaps"
+      ]
+    },
+    {
+      "word": "keyer",
+      "num_guesses": 5,
+      "prior": 0.00003654275847758455,
+      "guesses": [
+        "tares",
+        "nolid",
+        "beepy",
+        "flegm",
+        "keyer"
+      ]
+    },
+    {
+      "word": "fvrcp",
+      "num_guesses": 4,
+      "prior": 0.000015187020040795355,
+      "guesses": [
+        "tares",
+        "comin",
+        "lurch",
+        "fvrcp"
+      ]
+    },
+    {
+      "word": "sofms",
+      "num_guesses": 6,
+      "prior": 0.00001529264608988725,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "bhumi",
+        "flows",
+        "sofms"
+      ]
+    },
+    {
+      "word": "woofy",
+      "num_guesses": 5,
+      "prior": 0.000019693355119048608,
+      "guesses": [
+        "tares",
+        "colin",
+        "dhoby",
+        "gumpf",
+        "woofy"
+      ]
+    },
+    {
+      "word": "pbars",
+      "num_guesses": 4,
+      "prior": 0.000015945088843257574,
+      "guesses": [
+        "tares",
+        "coarb",
+        "shape",
+        "pbars"
+      ]
+    },
+    {
+      "word": "mamis",
+      "num_guesses": 5,
+      "prior": 0.000023417306884929876,
+      "guesses": [
+        "tares",
+        "plink",
+        "comdg",
+        "sabzi",
+        "mamis"
+      ]
+    },
+    {
+      "word": "ijits",
+      "num_guesses": 6,
+      "prior": 0.000012601417254533803,
+      "guesses": [
+        "tares",
+        "liuto",
+        "shink",
+        "mbits",
+        "cfits",
+        "ijits"
+      ]
+    },
+    {
+      "word": "kawed",
+      "num_guesses": 4,
+      "prior": 8.615970671684191e-6,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "gawky",
+        "kawed"
+      ]
+    },
+    {
+      "word": "fifes",
+      "num_guesses": 6,
+      "prior": 0.000042667502957221115,
+      "guesses": [
+        "tares",
+        "limon",
+        "svcds",
+        "bkpyv",
+        "ziffs",
+        "fifes"
+      ]
+    },
+    {
+      "word": "paipo",
+      "num_guesses": 6,
+      "prior": 0.00001642999122034237,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bilic",
+        "pukka",
+        "pappi",
+        "paipo"
+      ]
+    },
+    {
+      "word": "judds",
+      "num_guesses": 6,
+      "prior": 0.000027414770565483853,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "fyked",
+        "sudds",
+        "judds"
+      ]
+    },
+    {
+      "word": "aheer",
+      "num_guesses": 4,
+      "prior": 0.000023811431693793803,
+      "guesses": [
+        "tares",
+        "blind",
+        "creme",
+        "aheer"
+      ]
+    },
+    {
+      "word": "conds",
+      "num_guesses": 5,
+      "prior": 0.000031357362856371284,
+      "guesses": [
+        "tares",
+        "colin",
+        "funny",
+        "gudok",
+        "conds"
+      ]
+    },
+    {
+      "word": "lazzi",
+      "num_guesses": 5,
+      "prior": 0.000029127348120584013,
+      "guesses": [
+        "tares",
+        "mindy",
+        "bilic",
+        "paoli",
+        "lazzi"
+      ]
+    },
+    {
+      "word": "maund",
+      "num_guesses": 4,
+      "prior": 0.00005115462181149157,
+      "guesses": [
+        "tares",
+        "mindy",
+        "madan",
+        "maund"
+      ]
+    },
+    {
+      "word": "hilus",
+      "num_guesses": 5,
+      "prior": 0.000043926336912614383,
+      "guesses": [
+        "tares",
+        "colin",
+        "fwump",
+        "illus",
+        "hilus"
+      ]
+    },
+    {
+      "word": "gleem",
+      "num_guesses": 5,
+      "prior": 0.00002449215537599971,
+      "guesses": [
+        "tares",
+        "nolid",
+        "becke",
+        "gwelf",
+        "gleem"
+      ]
+    },
+    {
+      "word": "quoil",
+      "num_guesses": 4,
+      "prior": 0.0000213936286991813,
+      "guesses": [
+        "tares",
+        "colin",
+        "using",
+        "quoil"
+      ]
+    },
+    {
+      "word": "puris",
+      "num_guesses": 4,
+      "prior": 0.0000351279994032653,
+      "guesses": [
+        "tares",
+        "dubok",
+        "pling",
+        "puris"
+      ]
+    },
+    {
+      "word": "karas",
+      "num_guesses": 3,
+      "prior": 0.00004148098240765669,
+      "guesses": [
+        "tares",
+        "klimp",
+        "karas"
+      ]
+    },
+    {
+      "word": "idiom",
+      "num_guesses": 4,
+      "prior": 0.00007741220394328443,
+      "guesses": [
+        "tares",
+        "colin",
+        "humod",
+        "idiom"
+      ]
+    },
+    {
+      "word": "benny",
+      "num_guesses": 4,
+      "prior": 0.00007287764370808274,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "buche",
+        "benny"
+      ]
+    },
+    {
+      "word": "beige",
+      "num_guesses": 5,
+      "prior": 0.0000668086128612219,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "meche",
+        "bewig",
+        "beige"
+      ]
+    },
+    {
+      "word": "flong",
+      "num_guesses": 4,
+      "prior": 0.00002994572220648654,
+      "guesses": [
+        "tares",
+        "colin",
+        "klong",
+        "flong"
+      ]
+    },
+    {
+      "word": "kunbi",
+      "num_guesses": 4,
+      "prior": 0.000030007959650992768,
+      "guesses": [
+        "tares",
+        "colin",
+        "budgy",
+        "kunbi"
+      ]
+    },
+    {
+      "word": "thrap",
+      "num_guesses": 3,
+      "prior": 0.000021486963634628223,
+      "guesses": [
+        "tares",
+        "ochna",
+        "thrap"
+      ]
+    },
+    {
+      "word": "buyer",
+      "num_guesses": 4,
+      "prior": 0.00011512962791389415,
+      "guesses": [
+        "tares",
+        "nolid",
+        "beepy",
+        "buyer"
+      ]
+    },
+    {
+      "word": "mazal",
+      "num_guesses": 5,
+      "prior": 0.000030409658303346744,
+      "guesses": [
+        "tares",
+        "mindy",
+        "khula",
+        "malam",
+        "mazal"
+      ]
+    },
+    {
+      "word": "bimmy",
+      "num_guesses": 4,
+      "prior": 0.0000180939941568051,
+      "guesses": [
+        "tares",
+        "colin",
+        "dumby",
+        "bimmy"
+      ]
+    },
+    {
+      "word": "laged",
+      "num_guesses": 5,
+      "prior": 0.00002041042168581645,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "muddy",
+        "kangz",
+        "laged"
+      ]
+    },
+    {
+      "word": "hoove",
+      "num_guesses": 5,
+      "prior": 0.00002627231619920289,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "coomb",
+        "vozhd",
+        "hoove"
+      ]
+    },
+    {
+      "word": "nifhs",
+      "num_guesses": 6,
+      "prior": 0.000010586095760461311,
+      "guesses": [
+        "tares",
+        "colin",
+        "kfing",
+        "finds",
+        "niffs",
+        "nifhs"
+      ]
+    },
+    {
+      "word": "salar",
+      "num_guesses": 4,
+      "prior": 0.00005368950504279255,
+      "guesses": [
+        "tares",
+        "ousia",
+        "canal",
+        "salar"
+      ]
+    },
+    {
+      "word": "iswas",
+      "num_guesses": 6,
+      "prior": 0.000016027849397580908,
+      "guesses": [
+        "tares",
+        "alani",
+        "disps",
+        "shias",
+        "isbas",
+        "iswas"
+      ]
+    },
+    {
+      "word": "timur",
+      "num_guesses": 3,
+      "prior": 0.00005475249201666889,
+      "guesses": [
+        "tares",
+        "philo",
+        "timur"
+      ]
+    },
+    {
+      "word": "ngapi",
+      "num_guesses": 4,
+      "prior": 0.000022911018343855533,
+      "guesses": [
+        "tares",
+        "colin",
+        "ngana",
+        "ngapi"
+      ]
+    },
+    {
+      "word": "vmdks",
+      "num_guesses": 5,
+      "prior": 0.000016119768270898033,
+      "guesses": [
+        "tares",
+        "colin",
+        "bumph",
+        "smsfs",
+        "vmdks"
+      ]
+    },
+    {
+      "word": "luged",
+      "num_guesses": 4,
+      "prior": 0.000015936038127139583,
+      "guesses": [
+        "tares",
+        "nolid",
+        "gumby",
+        "luged"
+      ]
+    },
+    {
+      "word": "rcpos",
+      "num_guesses": 4,
+      "prior": 0.000015632473869687978,
+      "guesses": [
+        "tares",
+        "coipu",
+        "procs",
+        "rcpos"
+      ]
+    },
+    {
+      "word": "quill",
+      "num_guesses": 4,
+      "prior": 0.00007049018216625594,
+      "guesses": [
+        "tares",
+        "colin",
+        "gumby",
+        "quill"
+      ]
+    },
+    {
+      "word": "laldy",
+      "num_guesses": 5,
+      "prior": 0.000014397869163320556,
+      "guesses": [
+        "tares",
+        "mindy",
+        "blawg",
+        "laddy",
+        "laldy"
+      ]
+    },
+    {
+      "word": "aitia",
+      "num_guesses": 3,
+      "prior": 0.00003082249360849857,
+      "guesses": [
+        "tares",
+        "anoia",
+        "aitia"
+      ]
+    },
+    {
+      "word": "cursy",
+      "num_guesses": 3,
+      "prior": 0.00001946775743950084,
+      "guesses": [
+        "tares",
+        "yogic",
+        "cursy"
+      ]
+    },
+    {
+      "word": "cleys",
+      "num_guesses": 6,
+      "prior": 0.00001672215123398175,
+      "guesses": [
+        "tares",
+        "neeld",
+        "wocbp",
+        "mfccs",
+        "clegs",
+        "cleys"
+      ]
+    },
+    {
+      "word": "ghayn",
+      "num_guesses": 4,
+      "prior": 0.000018645437334229823,
+      "guesses": [
+        "tares",
+        "colin",
+        "gumph",
+        "ghayn"
+      ]
+    },
+    {
+      "word": "mvacs",
+      "num_guesses": 5,
+      "prior": 0.000020759429669345824,
+      "guesses": [
+        "tares",
+        "alani",
+        "compd",
+        "smacs",
+        "mvacs"
+      ]
+    },
+    {
+      "word": "milpa",
+      "num_guesses": 4,
+      "prior": 0.00003908752758902075,
+      "guesses": [
+        "tares",
+        "colin",
+        "wumph",
+        "milpa"
+      ]
+    },
+    {
+      "word": "agrin",
+      "num_guesses": 4,
+      "prior": 0.00003266188184203812,
+      "guesses": [
+        "tares",
+        "nomia",
+        "about",
+        "agrin"
+      ]
+    },
+    {
+      "word": "plups",
+      "num_guesses": 5,
+      "prior": 0.000012731941551797338,
+      "guesses": [
+        "tares",
+        "colin",
+        "glump",
+        "pluss",
+        "plups"
+      ]
+    },
+    {
+      "word": "seede",
+      "num_guesses": 5,
+      "prior": 0.00003566854814727015,
+      "guesses": [
+        "tares",
+        "seine",
+        "flegm",
+        "seeke",
+        "seede"
+      ]
+    },
+    {
+      "word": "cator",
+      "num_guesses": 4,
+      "prior": 0.0000420435873946577,
+      "guesses": [
+        "tares",
+        "rotty",
+        "grace",
+        "cator"
+      ]
+    },
+    {
+      "word": "hydra",
+      "num_guesses": 4,
+      "prior": 0.00006386965307659223,
+      "guesses": [
+        "tares",
+        "arain",
+        "domal",
+        "hydra"
+      ]
+    },
+    {
+      "word": "orchi",
+      "num_guesses": 4,
+      "prior": 0.00002293060315387919,
+      "guesses": [
+        "tares",
+        "coion",
+        "micro",
+        "orchi"
+      ]
+    },
+    {
+      "word": "rarer",
+      "num_guesses": 5,
+      "prior": 0.00006961485149765314,
+      "guesses": [
+        "tares",
+        "dlpfc",
+        "monke",
+        "rugby",
+        "rarer"
+      ]
+    },
+    {
+      "word": "beroe",
+      "num_guesses": 3,
+      "prior": 0.00003140031005190635,
+      "guesses": [
+        "tares",
+        "niobe",
+        "beroe"
+      ]
+    },
+    {
+      "word": "flusk",
+      "num_guesses": 4,
+      "prior": 0.00001755126849684693,
+      "guesses": [
+        "tares",
+        "noily",
+        "shmup",
+        "flusk"
+      ]
+    },
+    {
+      "word": "tooro",
+      "num_guesses": 3,
+      "prior": 0.000024444058442338908,
+      "guesses": [
+        "tares",
+        "philo",
+        "tooro"
+      ]
+    },
+    {
+      "word": "tokay",
+      "num_guesses": 4,
+      "prior": 0.00004426715016580734,
+      "guesses": [
+        "tares",
+        "holin",
+        "today",
+        "tokay"
+      ]
+    },
+    {
+      "word": "coars",
+      "num_guesses": 3,
+      "prior": 0.00002774477476747355,
+      "guesses": [
+        "tares",
+        "coarb",
+        "coars"
+      ]
+    },
+    {
+      "word": "trubs",
+      "num_guesses": 4,
+      "prior": 0.00001542651325196837,
+      "guesses": [
+        "tares",
+        "group",
+        "truss",
+        "trubs"
+      ]
+    },
+    {
+      "word": "scurf",
+      "num_guesses": 4,
+      "prior": 0.000042521615369109945,
+      "guesses": [
+        "tares",
+        "shiok",
+        "flump",
+        "scurf"
+      ]
+    },
+    {
+      "word": "macho",
+      "num_guesses": 4,
+      "prior": 0.00006028342445342493,
+      "guesses": [
+        "tares",
+        "mindy",
+        "khula",
+        "macho"
+      ]
+    },
+    {
+      "word": "laiks",
+      "num_guesses": 4,
+      "prior": 0.00002008987078530754,
+      "guesses": [
+        "tares",
+        "plink",
+        "kails",
+        "laiks"
+      ]
+    },
+    {
+      "word": "dooms",
+      "num_guesses": 5,
+      "prior": 0.000046733917241164466,
+      "guesses": [
+        "tares",
+        "colin",
+        "podom",
+        "moods",
+        "dooms"
+      ]
+    },
+    {
+      "word": "debel",
+      "num_guesses": 4,
+      "prior": 0.000024875418599346224,
+      "guesses": [
+        "tares",
+        "nolid",
+        "digby",
+        "debel"
+      ]
+    },
+    {
+      "word": "tawns",
+      "num_guesses": 4,
+      "prior": 0.000016885226732930027,
+      "guesses": [
+        "tares",
+        "clink",
+        "taans",
+        "tawns"
+      ]
+    },
+    {
+      "word": "purry",
+      "num_guesses": 5,
+      "prior": 0.000028252490092345694,
+      "guesses": [
+        "tares",
+        "comin",
+        "bugly",
+        "dhprs",
+        "purry"
+      ]
+    },
+    {
+      "word": "mease",
+      "num_guesses": 4,
+      "prior": 0.000040087106038735746,
+      "guesses": [
+        "tares",
+        "spele",
+        "mfvsg",
+        "mease"
+      ]
+    },
+    {
+      "word": "awwed",
+      "num_guesses": 5,
+      "prior": 0.000012245874679567008,
+      "guesses": [
+        "tares",
+        "indol",
+        "chemy",
+        "wbgts",
+        "awwed"
+      ]
+    },
+    {
+      "word": "cooth",
+      "num_guesses": 6,
+      "prior": 0.000021614298692748253,
+      "guesses": [
+        "tares",
+        "nilot",
+        "hoopy",
+        "booth",
+        "dooth",
+        "cooth"
+      ]
+    },
+    {
+      "word": "ureic",
+      "num_guesses": 4,
+      "prior": 0.000018356162554900925,
+      "guesses": [
+        "tares",
+        "deice",
+        "rheic",
+        "ureic"
+      ]
+    },
+    {
+      "word": "aucas",
+      "num_guesses": 4,
+      "prior": 0.000026132223903212756,
+      "guesses": [
+        "tares",
+        "alani",
+        "mcgue",
+        "aucas"
+      ]
+    },
+    {
+      "word": "chely",
+      "num_guesses": 5,
+      "prior": 0.000022638436091808653,
+      "guesses": [
+        "tares",
+        "dinlo",
+        "pecke",
+        "chell",
+        "chely"
+      ]
+    },
+    {
+      "word": "raise",
+      "num_guesses": 3,
+      "prior": 0.00014110882635111991,
+      "guesses": [
+        "tares",
+        "basis",
+        "raise"
+      ]
+    },
+    {
+      "word": "block",
+      "num_guesses": 4,
+      "prior": 0.00014733347755408187,
+      "guesses": [
+        "tares",
+        "colin",
+        "gumbo",
+        "block"
+      ]
+    },
+    {
+      "word": "skeyn",
+      "num_guesses": 4,
+      "prior": 0.000013734307421999806,
+      "guesses": [
+        "tares",
+        "seine",
+        "dhawk",
+        "skeyn"
+      ]
+    },
+    {
+      "word": "roils",
+      "num_guesses": 4,
+      "prior": 0.000033148825213957316,
+      "guesses": [
+        "tares",
+        "coipu",
+        "loans",
+        "roils"
+      ]
+    },
+    {
+      "word": "ender",
+      "num_guesses": 5,
+      "prior": 0.00004974439680626117,
+      "guesses": [
+        "tares",
+        "nolid",
+        "under",
+        "civil",
+        "ender"
+      ]
+    },
+    {
+      "word": "impet",
+      "num_guesses": 5,
+      "prior": 0.000021624998183761448,
+      "guesses": [
+        "tares",
+        "nolid",
+        "butch",
+        "pipet",
+        "impet"
+      ]
+    },
+    {
+      "word": "boyar",
+      "num_guesses": 5,
+      "prior": 0.00004302222422827681,
+      "guesses": [
+        "tares",
+        "arain",
+        "domal",
+        "kgber",
+        "boyar"
+      ]
+    },
+    {
+      "word": "prief",
+      "num_guesses": 4,
+      "prior": 0.000028413226913242164,
+      "guesses": [
+        "tares",
+        "nolid",
+        "brbpr",
+        "prief"
+      ]
+    },
+    {
+      "word": "fluyt",
+      "num_guesses": 4,
+      "prior": 0.000020668967737708656,
+      "guesses": [
+        "tares",
+        "nilot",
+        "bluft",
+        "fluyt"
+      ]
+    },
+    {
+      "word": "gorno",
+      "num_guesses": 4,
+      "prior": 0.00003252322229810944,
+      "guesses": [
+        "tares",
+        "comin",
+        "porno",
+        "gorno"
+      ]
+    },
+    {
+      "word": "acoel",
+      "num_guesses": 4,
+      "prior": 0.000021367060497615964,
+      "guesses": [
+        "tares",
+        "indol",
+        "loael",
+        "acoel"
+      ]
+    },
+    {
+      "word": "sattu",
+      "num_guesses": 4,
+      "prior": 0.000024852483099465246,
+      "guesses": [
+        "tares",
+        "synth",
+        "pulau",
+        "sattu"
+      ]
+    },
+    {
+      "word": "glatt",
+      "num_guesses": 5,
+      "prior": 0.00003726545565080172,
+      "guesses": [
+        "tares",
+        "anoia",
+        "clapt",
+        "being",
+        "glatt"
+      ]
+    },
+    {
+      "word": "teale",
+      "num_guesses": 4,
+      "prior": 0.000048589293447017166,
+      "guesses": [
+        "tares",
+        "khana",
+        "loved",
+        "teale"
+      ]
+    },
+    {
+      "word": "kangz",
+      "num_guesses": 5,
+      "prior": 8.33285986994386e-6,
+      "guesses": [
+        "tares",
+        "mindy",
+        "glock",
+        "kanga",
+        "kangz"
+      ]
+    },
+    {
+      "word": "pluma",
+      "num_guesses": 4,
+      "prior": 0.00003505980582642927,
+      "guesses": [
+        "tares",
+        "colin",
+        "guama",
+        "pluma"
+      ]
+    },
+    {
+      "word": "tonne",
+      "num_guesses": 3,
+      "prior": 0.00007088502125168685,
+      "guesses": [
+        "tares",
+        "honie",
+        "tonne"
+      ]
+    },
+    {
+      "word": "jabem",
+      "num_guesses": 4,
+      "prior": 0.00001936496522295393,
+      "guesses": [
+        "tares",
+        "ncldv",
+        "zomby",
+        "jabem"
+      ]
+    },
+    {
+      "word": "gamps",
+      "num_guesses": 5,
+      "prior": 0.000023409528339155628,
+      "guesses": [
+        "tares",
+        "plink",
+        "scmps",
+        "dvigu",
+        "gamps"
+      ]
+    },
+    {
+      "word": "dlbcl",
+      "num_guesses": 4,
+      "prior": 0.00003513241178178277,
+      "guesses": [
+        "tares",
+        "colin",
+        "pluck",
+        "dlbcl"
+      ]
+    }
+  ]
+}

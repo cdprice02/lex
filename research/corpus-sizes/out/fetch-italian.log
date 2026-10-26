@@ -1,0 +1,27 @@
+[2026-10-25T23:05:44Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for italian from https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz...
+[2026-10-25T23:06:06Z INFO  lex_data::wiktionary] Cached italian Wiktionary dict (553586 words, lengths 1–30)
+[2026-10-25T23:06:06Z WARN  lex_data::store] Building italian corpus...
+[2026-10-25T23:14:10Z WARN  lex_data::retry] attempt 1/3 failed: reading body: timeout: per read; retrying in 1.1567415s
+[2026-10-25T23:14:11Z WARN  lex_data::retry] attempt 1/3 failed: reading body: timeout: per read; retrying in 1.471387s
+[2026-10-25T23:23:57Z WARN  lex_data::retry] attempt 2/3 failed: reading body: timeout: per read; retrying in 2.044491s
+[2026-10-25T23:23:57Z WARN  lex_data::retry] attempt 2/3 failed: reading body: timeout: per read; retrying in 2.065295s
+[2026-10-25T23:29:01Z INFO  lex_data::ngrams]   [1/2] done
+[2026-10-25T23:29:47Z INFO  lex_data::ngrams]   [2/2] done
+[2026-10-25T23:29:47Z INFO  lex_data::store] Cached italian corpus (25 length buckets)
+[2026-10-25T23:29:47Z INFO  lex::simulate] Simulating 1 games with 5-letter words in italian...
+[2026-10-25T23:29:48Z INFO  lex_core::game] Guess 1: sarti -> 🟩🟩⬜⬜🟨
+[2026-10-25T23:29:48Z INFO  lex_core::game] Guess 2: evoca -> 🟨⬜⬜⬜🟨
+[2026-10-25T23:29:48Z INFO  lex_core::game] Guess 3: sazie -> 🟩🟩🟩🟩🟩
+[2026-10-25T23:29:48Z INFO  lex::simulate] Impressive
+[2026-10-25T23:29:48Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter italian words (dictionary: 6452), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: sarti
+ngrams sha256: fb769bde826a
+dict: 553586 words, fetched 2026-10-25T23:06:06.067613Z, sha256 0f9370359485
+
+uniform: mean 3.000 guesses, failure rate (>6) 0.00%
+   3 | 100.00% (1) ########################################
+
+prior-weighted: mean 3.000 guesses, failure rate (>6) 0.00%
+   3 | 100.00% ########################################

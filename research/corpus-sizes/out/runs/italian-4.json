@@ -1,0 +1,5674 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:00:25.646871Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "aeri",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 4,
+    "dictionary_length": 2259,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "5aaa8beb2b4810680afa72a23affbca196f5b105bbcf2cb291aaacf31ed576aa",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.231999999999978,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.004,
+        "3": 0.18200000000000013,
+        "4": 0.44800000000000034,
+        "5": 0.3100000000000002,
+        "6": 0.056000000000000036
+      }
+    },
+    "prior": {
+      "mean": 4.152242235724079,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.0032045036802104757,
+        "3": 0.20093578331924283,
+        "4": 0.4797096534621056,
+        "5": 0.2727130926731436,
+        "6": 0.04343696686529741
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "dami",
+      "num_guesses": 5,
+      "prior": 0.00031429295410277745,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "dolo",
+        "dami"
+      ]
+    },
+    {
+      "word": "fidò",
+      "num_guesses": 5,
+      "prior": 0.0002912939490780787,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "nome",
+        "fidò"
+      ]
+    },
+    {
+      "word": "sars",
+      "num_guesses": 5,
+      "prior": 0.00028249932637436446,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "fisò",
+        "sarà",
+        "sars"
+      ]
+    },
+    {
+      "word": "davo",
+      "num_guesses": 5,
+      "prior": 0.0004067823900065092,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "vada",
+        "davo"
+      ]
+    },
+    {
+      "word": "isso",
+      "num_guesses": 3,
+      "prior": 0.00038268368206883065,
+      "guesses": [
+        "aeri",
+        "silo",
+        "isso"
+      ]
+    },
+    {
+      "word": "udrà",
+      "num_guesses": 3,
+      "prior": 0.0002953944603967589,
+      "guesses": [
+        "aeri",
+        "domo",
+        "udrà"
+      ]
+    },
+    {
+      "word": "asce",
+      "num_guesses": 3,
+      "prior": 0.0003583165050199775,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "asce"
+      ]
+    },
+    {
+      "word": "tipi",
+      "num_guesses": 5,
+      "prior": 0.0008437881266000878,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vamp",
+        "tipi"
+      ]
+    },
+    {
+      "word": "tele",
+      "num_guesses": 3,
+      "prior": 0.0006021524460030534,
+      "guesses": [
+        "aeri",
+        "slot",
+        "tele"
+      ]
+    },
+    {
+      "word": "dorò",
+      "num_guesses": 3,
+      "prior": 0.00020344625661362713,
+      "guesses": [
+        "aeri",
+        "domo",
+        "dorò"
+      ]
+    },
+    {
+      "word": "else",
+      "num_guesses": 4,
+      "prior": 0.0003475011068501338,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lume",
+        "else"
+      ]
+    },
+    {
+      "word": "lavò",
+      "num_guesses": 5,
+      "prior": 0.0003613484838447048,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "lady",
+        "lavò"
+      ]
+    },
+    {
+      "word": "coke",
+      "num_guesses": 6,
+      "prior": 0.0004328963339442615,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "come",
+        "lode",
+        "vago",
+        "coke"
+      ]
+    },
+    {
+      "word": "scii",
+      "num_guesses": 3,
+      "prior": 0.0002330852584790867,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "scii"
+      ]
+    },
+    {
+      "word": "uste",
+      "num_guesses": 4,
+      "prior": 0.00023692688108574905,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lume",
+        "uste"
+      ]
+    },
+    {
+      "word": "rodò",
+      "num_guesses": 4,
+      "prior": 0.00016263426389904732,
+      "guesses": [
+        "aeri",
+        "osto",
+        "rogò",
+        "rodò"
+      ]
+    },
+    {
+      "word": "bond",
+      "num_guesses": 5,
+      "prior": 0.00038980422347300773,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "body",
+        "bond"
+      ]
+    },
+    {
+      "word": "ciac",
+      "num_guesses": 4,
+      "prior": 0.0002474688693483597,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dock",
+        "ciac"
+      ]
+    },
+    {
+      "word": "nocs",
+      "num_guesses": 4,
+      "prior": 0.00018382327577111317,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "nocs"
+      ]
+    },
+    {
+      "word": "riti",
+      "num_guesses": 3,
+      "prior": 0.0006525145843059462,
+      "guesses": [
+        "aeri",
+        "urto",
+        "riti"
+      ]
+    },
+    {
+      "word": "irto",
+      "num_guesses": 3,
+      "prior": 0.0003874911925780521,
+      "guesses": [
+        "aeri",
+        "sito",
+        "irto"
+      ]
+    },
+    {
+      "word": "idii",
+      "num_guesses": 5,
+      "prior": 0.0002018734930634054,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "pubi",
+        "idii"
+      ]
+    },
+    {
+      "word": "rotò",
+      "num_guesses": 3,
+      "prior": 0.00017184513585670008,
+      "guesses": [
+        "aeri",
+        "osto",
+        "rotò"
+      ]
+    },
+    {
+      "word": "liba",
+      "num_guesses": 6,
+      "prior": 0.0002623034434765685,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "golf",
+        "lina",
+        "liba"
+      ]
+    },
+    {
+      "word": "alea",
+      "num_guesses": 4,
+      "prior": 0.0003917313377557558,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "pule",
+        "alea"
+      ]
+    },
+    {
+      "word": "cedo",
+      "num_guesses": 4,
+      "prior": 0.00037263516208843047,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "cedo"
+      ]
+    },
+    {
+      "word": "ulti",
+      "num_guesses": 4,
+      "prior": 0.00033431205799432784,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "ulti"
+      ]
+    },
+    {
+      "word": "muco",
+      "num_guesses": 5,
+      "prior": 0.00046826929397051666,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "fumo",
+        "muco"
+      ]
+    },
+    {
+      "word": "solo",
+      "num_guesses": 4,
+      "prior": 0.001519649426432707,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "solo"
+      ]
+    },
+    {
+      "word": "asci",
+      "num_guesses": 3,
+      "prior": 0.00026456048158368797,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "asci"
+      ]
+    },
+    {
+      "word": "parò",
+      "num_guesses": 3,
+      "prior": 0.00034697030881936314,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "parò"
+      ]
+    },
+    {
+      "word": "bina",
+      "num_guesses": 6,
+      "prior": 0.0003183684748530545,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "golf",
+        "viva",
+        "bina"
+      ]
+    },
+    {
+      "word": "soci",
+      "num_guesses": 3,
+      "prior": 0.0008434170107001609,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "soci"
+      ]
+    },
+    {
+      "word": "tira",
+      "num_guesses": 3,
+      "prior": 0.0005983303360403999,
+      "guesses": [
+        "aeri",
+        "iptv",
+        "tira"
+      ]
+    },
+    {
+      "word": "cecò",
+      "num_guesses": 5,
+      "prior": 0.00010432140579001092,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "cedé",
+        "cecò"
+      ]
+    },
+    {
+      "word": "chef",
+      "num_guesses": 4,
+      "prior": 0.00042042167340351153,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pube",
+        "chef"
+      ]
+    },
+    {
+      "word": "orci",
+      "num_guesses": 5,
+      "prior": 0.00031100884789328866,
+      "guesses": [
+        "aeri",
+        "urto",
+        "selz",
+        "bene",
+        "orci"
+      ]
+    },
+    {
+      "word": "libi",
+      "num_guesses": 5,
+      "prior": 0.0003361498726021422,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "bdsm",
+        "libi"
+      ]
+    },
+    {
+      "word": "afta",
+      "num_guesses": 4,
+      "prior": 0.0003500026041893753,
+      "guesses": [
+        "aeri",
+        "slot",
+        "fina",
+        "afta"
+      ]
+    },
+    {
+      "word": "aoni",
+      "num_guesses": 4,
+      "prior": 0.0001953596027829048,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "unno",
+        "aoni"
+      ]
+    },
+    {
+      "word": "erti",
+      "num_guesses": 3,
+      "prior": 0.00034146021511984487,
+      "guesses": [
+        "aeri",
+        "cmos",
+        "erti"
+      ]
+    },
+    {
+      "word": "caga",
+      "num_guesses": 5,
+      "prior": 0.00022950479686168593,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pala",
+        "dove",
+        "caga"
+      ]
+    },
+    {
+      "word": "doso",
+      "num_guesses": 5,
+      "prior": 0.00021355050831270455,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "isdn",
+        "doso"
+      ]
+    },
+    {
+      "word": "zebù",
+      "num_guesses": 5,
+      "prior": 0.00026455119702228805,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "bigi",
+        "zebù"
+      ]
+    },
+    {
+      "word": "arme",
+      "num_guesses": 3,
+      "prior": 0.0007047671556149272,
+      "guesses": [
+        "aeri",
+        "teme",
+        "arme"
+      ]
+    },
+    {
+      "word": "mone",
+      "num_guesses": 5,
+      "prior": 0.0003732815918995445,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "zeep",
+        "bone",
+        "mone"
+      ]
+    },
+    {
+      "word": "irai",
+      "num_guesses": 4,
+      "prior": 0.00025543242145043677,
+      "guesses": [
+        "aeri",
+        "rtms",
+        "orai",
+        "irai"
+      ]
+    },
+    {
+      "word": "elce",
+      "num_guesses": 4,
+      "prior": 0.0002702889130336034,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "luce",
+        "elce"
+      ]
+    },
+    {
+      "word": "giro",
+      "num_guesses": 3,
+      "prior": 0.0008330120981519887,
+      "guesses": [
+        "aeri",
+        "vogò",
+        "giro"
+      ]
+    },
+    {
+      "word": "vimo",
+      "num_guesses": 6,
+      "prior": 0.00017458971843552847,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "mito",
+        "fimo",
+        "vimo"
+      ]
+    },
+    {
+      "word": "aggi",
+      "num_guesses": 6,
+      "prior": 0.0003604270201628125,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "pala",
+        "goim",
+        "aghi",
+        "aggi"
+      ]
+    },
+    {
+      "word": "pilò",
+      "num_guesses": 4,
+      "prior": 0.00014822802045749958,
+      "guesses": [
+        "aeri",
+        "silo",
+        "tifò",
+        "pilò"
+      ]
+    },
+    {
+      "word": "rugò",
+      "num_guesses": 6,
+      "prior": 0.00009589868797009815,
+      "guesses": [
+        "aeri",
+        "osto",
+        "urlò",
+        "rubò",
+        "rumò",
+        "rugò"
+      ]
+    },
+    {
+      "word": "iglù",
+      "num_guesses": 3,
+      "prior": 0.00013432939926424374,
+      "guesses": [
+        "aeri",
+        "silo",
+        "iglù"
+      ]
+    },
+    {
+      "word": "boot",
+      "num_guesses": 3,
+      "prior": 0.0002897080748250658,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "boot"
+      ]
+    },
+    {
+      "word": "bigi",
+      "num_guesses": 6,
+      "prior": 0.00037572315077216223,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vamp",
+        "kiwi",
+        "bigi"
+      ]
+    },
+    {
+      "word": "anas",
+      "num_guesses": 4,
+      "prior": 0.0003501600598536945,
+      "guesses": [
+        "aeri",
+        "slot",
+        "ansa",
+        "anas"
+      ]
+    },
+    {
+      "word": "pupo",
+      "num_guesses": 6,
+      "prior": 0.00029964676759083213,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "fugo",
+        "cupo",
+        "pupo"
+      ]
+    },
+    {
+      "word": "acro",
+      "num_guesses": 4,
+      "prior": 0.00030745441775374997,
+      "guesses": [
+        "aeri",
+        "poga",
+        "cute",
+        "acro"
+      ]
+    },
+    {
+      "word": "roto",
+      "num_guesses": 3,
+      "prior": 0.0003019193942530792,
+      "guesses": [
+        "aeri",
+        "osto",
+        "roto"
+      ]
+    },
+    {
+      "word": "iris",
+      "num_guesses": 3,
+      "prior": 0.0004301360866710698,
+      "guesses": [
+        "aeri",
+        "sito",
+        "iris"
+      ]
+    },
+    {
+      "word": "okay",
+      "num_guesses": 5,
+      "prior": 0.0004867739442577285,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "vada",
+        "okay"
+      ]
+    },
+    {
+      "word": "tini",
+      "num_guesses": 6,
+      "prior": 0.00043039176714377913,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fini",
+        "vamp",
+        "tale",
+        "tini"
+      ]
+    },
+    {
+      "word": "gaia",
+      "num_guesses": 5,
+      "prior": 0.00046679993774728266,
+      "guesses": [
+        "aeri",
+        "sita",
+        "band",
+        "vago",
+        "gaia"
+      ]
+    },
+    {
+      "word": "mimò",
+      "num_guesses": 5,
+      "prior": 0.00023230966920914027,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "nome",
+        "mimò"
+      ]
+    },
+    {
+      "word": "volò",
+      "num_guesses": 5,
+      "prior": 0.00043268805812632225,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "fisò",
+        "dpcm",
+        "volò"
+      ]
+    },
+    {
+      "word": "stop",
+      "num_guesses": 3,
+      "prior": 0.0004337537246057178,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "stop"
+      ]
+    },
+    {
+      "word": "lati",
+      "num_guesses": 4,
+      "prior": 0.0007919139259287688,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tali",
+        "lati"
+      ]
+    },
+    {
+      "word": "uosa",
+      "num_guesses": 6,
+      "prior": 0.0002501740035173465,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "adsl",
+        "posa",
+        "tosa",
+        "uosa"
+      ]
+    },
+    {
+      "word": "arcò",
+      "num_guesses": 3,
+      "prior": 0.00016058985594767636,
+      "guesses": [
+        "aeri",
+        "moca",
+        "arcò"
+      ]
+    },
+    {
+      "word": "ossa",
+      "num_guesses": 4,
+      "prior": 0.0007445430765535234,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "vaso",
+        "ossa"
+      ]
+    },
+    {
+      "word": "vani",
+      "num_guesses": 4,
+      "prior": 0.0006140181804856574,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "ampi",
+        "vani"
+      ]
+    },
+    {
+      "word": "fasi",
+      "num_guesses": 4,
+      "prior": 0.0007535541570790936,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "bovi",
+        "fasi"
+      ]
+    },
+    {
+      "word": "quiz",
+      "num_guesses": 4,
+      "prior": 0.0003458437751449862,
+      "guesses": [
+        "aeri",
+        "silo",
+        "cucù",
+        "quiz"
+      ]
+    },
+    {
+      "word": "covo",
+      "num_guesses": 5,
+      "prior": 0.00041287062429239444,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "snob",
+        "covo"
+      ]
+    },
+    {
+      "word": "watt",
+      "num_guesses": 5,
+      "prior": 0.0004109782246350998,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "watt"
+      ]
+    },
+    {
+      "word": "gemo",
+      "num_guesses": 5,
+      "prior": 0.0002949170389913651,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "meno",
+        "gemo"
+      ]
+    },
+    {
+      "word": "idea",
+      "num_guesses": 3,
+      "prior": 0.0010111823762530118,
+      "guesses": [
+        "aeri",
+        "vaga",
+        "idea"
+      ]
+    },
+    {
+      "word": "tomò",
+      "num_guesses": 4,
+      "prior": 0.00019828877934863204,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "muse",
+        "tomò"
+      ]
+    },
+    {
+      "word": "olla",
+      "num_guesses": 4,
+      "prior": 0.000413262228726383,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "olla"
+      ]
+    },
+    {
+      "word": "etna",
+      "num_guesses": 3,
+      "prior": 0.0004344304474092076,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "etna"
+      ]
+    },
+    {
+      "word": "neon",
+      "num_guesses": 3,
+      "prior": 0.0003838834973320685,
+      "guesses": [
+        "aeri",
+        "slot",
+        "neon"
+      ]
+    },
+    {
+      "word": "rrna",
+      "num_guesses": 4,
+      "prior": 0.00017638010107738866,
+      "guesses": [
+        "aeri",
+        "urto",
+        "gran",
+        "rrna"
+      ]
+    },
+    {
+      "word": "pope",
+      "num_guesses": 4,
+      "prior": 0.00044009444800841203,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dpcm",
+        "pope"
+      ]
+    },
+    {
+      "word": "fimo",
+      "num_guesses": 5,
+      "prior": 0.00033636332385217544,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "mito",
+        "fimo"
+      ]
+    },
+    {
+      "word": "guru",
+      "num_guesses": 4,
+      "prior": 0.0003681480566312284,
+      "guesses": [
+        "aeri",
+        "domo",
+        "fpga",
+        "guru"
+      ]
+    },
+    {
+      "word": "viva",
+      "num_guesses": 5,
+      "prior": 0.0008659526854856982,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "golf",
+        "viva"
+      ]
+    },
+    {
+      "word": "tana",
+      "num_guesses": 4,
+      "prior": 0.000493539311530215,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "ulta",
+        "tana"
+      ]
+    },
+    {
+      "word": "peti",
+      "num_guesses": 5,
+      "prior": 0.000347412692105441,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "tvtb",
+        "play",
+        "peti"
+      ]
+    },
+    {
+      "word": "aitò",
+      "num_guesses": 3,
+      "prior": 0.00017578079860396584,
+      "guesses": [
+        "aeri",
+        "gota",
+        "aitò"
+      ]
+    },
+    {
+      "word": "bidè",
+      "num_guesses": 5,
+      "prior": 0.0002119371694913849,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "finì",
+        "bidè"
+      ]
+    },
+    {
+      "word": "dolò",
+      "num_guesses": 5,
+      "prior": 0.0001449797183436697,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "fisò",
+        "dpcm",
+        "dolò"
+      ]
+    },
+    {
+      "word": "inde",
+      "num_guesses": 4,
+      "prior": 0.0004942143313432205,
+      "guesses": [
+        "aeri",
+        "simd",
+        "idee",
+        "inde"
+      ]
+    },
+    {
+      "word": "tare",
+      "num_guesses": 4,
+      "prior": 0.0005200469583142806,
+      "guesses": [
+        "aeri",
+        "fpga",
+        "rndt",
+        "tare"
+      ]
+    },
+    {
+      "word": "godi",
+      "num_guesses": 5,
+      "prior": 0.00040705885531820663,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "glbt",
+        "godi"
+      ]
+    },
+    {
+      "word": "caci",
+      "num_guesses": 5,
+      "prior": 0.00031028768000995434,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "clip",
+        "voce",
+        "caci"
+      ]
+    },
+    {
+      "word": "dare",
+      "num_guesses": 4,
+      "prior": 0.0010992953724743523,
+      "guesses": [
+        "aeri",
+        "fpga",
+        "rndt",
+        "dare"
+      ]
+    },
+    {
+      "word": "nuca",
+      "num_guesses": 3,
+      "prior": 0.0005297122630243228,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "nuca"
+      ]
+    },
+    {
+      "word": "comò",
+      "num_guesses": 4,
+      "prior": 0.0003647217129331406,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "comò"
+      ]
+    },
+    {
+      "word": "urto",
+      "num_guesses": 3,
+      "prior": 0.000582021301757384,
+      "guesses": [
+        "aeri",
+        "osto",
+        "urto"
+      ]
+    },
+    {
+      "word": "cani",
+      "num_guesses": 3,
+      "prior": 0.0007044521235538804,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "cani"
+      ]
+    },
+    {
+      "word": "meni",
+      "num_guesses": 4,
+      "prior": 0.0004106977861509304,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "onde",
+        "meni"
+      ]
+    },
+    {
+      "word": "famò",
+      "num_guesses": 5,
+      "prior": 0.0000875866049490114,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "damò",
+        "famò"
+      ]
+    },
+    {
+      "word": "mole",
+      "num_guesses": 5,
+      "prior": 0.0006421393381564507,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dpcm",
+        "tome",
+        "mole"
+      ]
+    },
+    {
+      "word": "eone",
+      "num_guesses": 4,
+      "prior": 0.0002814417048377939,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "zeep",
+        "eone"
+      ]
+    },
+    {
+      "word": "bini",
+      "num_guesses": 6,
+      "prior": 0.0004497661011723705,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fini",
+        "vamp",
+        "tale",
+        "bini"
+      ]
+    },
+    {
+      "word": "egro",
+      "num_guesses": 4,
+      "prior": 0.0003097361940394746,
+      "guesses": [
+        "aeri",
+        "muco",
+        "erro",
+        "egro"
+      ]
+    },
+    {
+      "word": "cool",
+      "num_guesses": 4,
+      "prior": 0.0003145845108256747,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "pool",
+        "cool"
+      ]
+    },
+    {
+      "word": "somi",
+      "num_guesses": 5,
+      "prior": 0.00027538496645073134,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "spid",
+        "soli",
+        "somi"
+      ]
+    },
+    {
+      "word": "bolo",
+      "num_guesses": 4,
+      "prior": 0.00040560623030314996,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "bolo"
+      ]
+    },
+    {
+      "word": "fare",
+      "num_guesses": 3,
+      "prior": 0.0013123142781479062,
+      "guesses": [
+        "aeri",
+        "fpga",
+        "fare"
+      ]
+    },
+    {
+      "word": "fuse",
+      "num_guesses": 4,
+      "prior": 0.0004684243199091311,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lume",
+        "fuse"
+      ]
+    },
+    {
+      "word": "tizi",
+      "num_guesses": 6,
+      "prior": 0.00033676975214134297,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vamp",
+        "diti",
+        "tizi"
+      ]
+    },
+    {
+      "word": "trap",
+      "num_guesses": 4,
+      "prior": 0.0003021889395524461,
+      "guesses": [
+        "aeri",
+        "urto",
+        "tram",
+        "trap"
+      ]
+    },
+    {
+      "word": "zelò",
+      "num_guesses": 6,
+      "prior": 0.00019313418791161715,
+      "guesses": [
+        "aeri",
+        "slot",
+        "levò",
+        "mpeg",
+        "cibo",
+        "zelò"
+      ]
+    },
+    {
+      "word": "duri",
+      "num_guesses": 4,
+      "prior": 0.0006020046556661186,
+      "guesses": [
+        "aeri",
+        "timo",
+        "dpcm",
+        "duri"
+      ]
+    },
+    {
+      "word": "papà",
+      "num_guesses": 5,
+      "prior": 0.0006671267314021825,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "papà"
+      ]
+    },
+    {
+      "word": "onro",
+      "num_guesses": 4,
+      "prior": 0.0001060548571140596,
+      "guesses": [
+        "aeri",
+        "domo",
+        "opro",
+        "onro"
+      ]
+    },
+    {
+      "word": "topo",
+      "num_guesses": 4,
+      "prior": 0.0005117078587801643,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "nmos",
+        "topo"
+      ]
+    },
+    {
+      "word": "faxi",
+      "num_guesses": 5,
+      "prior": 0.00011840323955611545,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "dazi",
+        "faxi"
+      ]
+    },
+    {
+      "word": "vori",
+      "num_guesses": 6,
+      "prior": 0.000333606368874958,
+      "guesses": [
+        "aeri",
+        "timo",
+        "colf",
+        "spid",
+        "vino",
+        "vori"
+      ]
+    },
+    {
+      "word": "poma",
+      "num_guesses": 5,
+      "prior": 0.0004031099883431767,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "dpcm",
+        "poma"
+      ]
+    },
+    {
+      "word": "sere",
+      "num_guesses": 4,
+      "prior": 0.0005934974236986938,
+      "guesses": [
+        "aeri",
+        "pone",
+        "bdsm",
+        "sere"
+      ]
+    },
+    {
+      "word": "atea",
+      "num_guesses": 4,
+      "prior": 0.0003394151392332688,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "nota",
+        "atea"
+      ]
+    },
+    {
+      "word": "goda",
+      "num_guesses": 4,
+      "prior": 0.00044309359567465634,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "goda"
+      ]
+    },
+    {
+      "word": "sudi",
+      "num_guesses": 5,
+      "prior": 0.00029621422664139185,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "siti",
+        "modo",
+        "sudi"
+      ]
+    },
+    {
+      "word": "orze",
+      "num_guesses": 4,
+      "prior": 0.0002032600801037869,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "bdsm",
+        "orze"
+      ]
+    },
+    {
+      "word": "cela",
+      "num_guesses": 4,
+      "prior": 0.0004976876009516685,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "dock",
+        "cela"
+      ]
+    },
+    {
+      "word": "gode",
+      "num_guesses": 5,
+      "prior": 0.0006474726415456923,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dpcm",
+        "lode",
+        "gode"
+      ]
+    },
+    {
+      "word": "sexy",
+      "num_guesses": 4,
+      "prior": 0.00042921851894380105,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dyne",
+        "sexy"
+      ]
+    },
+    {
+      "word": "pala",
+      "num_guesses": 4,
+      "prior": 0.000567573228426366,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "pala"
+      ]
+    },
+    {
+      "word": "cono",
+      "num_guesses": 5,
+      "prior": 0.0006080934795794034,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "snob",
+        "cono"
+      ]
+    },
+    {
+      "word": "alzò",
+      "num_guesses": 4,
+      "prior": 0.0007095285385869341,
+      "guesses": [
+        "aeri",
+        "slot",
+        "bela",
+        "alzò"
+      ]
+    },
+    {
+      "word": "feta",
+      "num_guesses": 5,
+      "prior": 0.00029622800963380384,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tema",
+        "zebù",
+        "feta"
+      ]
+    },
+    {
+      "word": "mati",
+      "num_guesses": 6,
+      "prior": 0.00036599452258074004,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tali",
+        "fidi",
+        "vati",
+        "mati"
+      ]
+    },
+    {
+      "word": "orso",
+      "num_guesses": 3,
+      "prior": 0.0005352312986695988,
+      "guesses": [
+        "aeri",
+        "osto",
+        "orso"
+      ]
+    },
+    {
+      "word": "figc",
+      "num_guesses": 4,
+      "prior": 0.00023850776812828095,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "figc"
+      ]
+    },
+    {
+      "word": "alto",
+      "num_guesses": 3,
+      "prior": 0.0010301152491333004,
+      "guesses": [
+        "aeri",
+        "slot",
+        "alto"
+      ]
+    },
+    {
+      "word": "tute",
+      "num_guesses": 5,
+      "prior": 0.0004454606347364069,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "pube",
+        "tute"
+      ]
+    },
+    {
+      "word": "otri",
+      "num_guesses": 3,
+      "prior": 0.0003412435934657328,
+      "guesses": [
+        "aeri",
+        "timo",
+        "otri"
+      ]
+    },
+    {
+      "word": "aere",
+      "num_guesses": 3,
+      "prior": 0.0005158894775016492,
+      "guesses": [
+        "aeri",
+        "come",
+        "aere"
+      ]
+    },
+    {
+      "word": "hyle",
+      "num_guesses": 5,
+      "prior": 0.000232997875898304,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "elle",
+        "hyle"
+      ]
+    },
+    {
+      "word": "edui",
+      "num_guesses": 5,
+      "prior": 0.0002897876596492617,
+      "guesses": [
+        "aeri",
+        "else",
+        "unto",
+        "equi",
+        "edui"
+      ]
+    },
+    {
+      "word": "coro",
+      "num_guesses": 4,
+      "prior": 0.0007375194901998412,
+      "guesses": [
+        "aeri",
+        "domo",
+        "colf",
+        "coro"
+      ]
+    },
+    {
+      "word": "rumi",
+      "num_guesses": 4,
+      "prior": 0.0003141047294439972,
+      "guesses": [
+        "aeri",
+        "urto",
+        "dpcm",
+        "rumi"
+      ]
+    },
+    {
+      "word": "tilt",
+      "num_guesses": 4,
+      "prior": 0.0003280092689387038,
+      "guesses": [
+        "aeri",
+        "silo",
+        "tifò",
+        "tilt"
+      ]
+    },
+    {
+      "word": "pesi",
+      "num_guesses": 3,
+      "prior": 0.0006671171638983867,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "pesi"
+      ]
+    },
+    {
+      "word": "culo",
+      "num_guesses": 3,
+      "prior": 0.0005006297352389076,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "culo"
+      ]
+    },
+    {
+      "word": "unti",
+      "num_guesses": 4,
+      "prior": 0.0003778071605200116,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fini",
+        "unti"
+      ]
+    },
+    {
+      "word": "sono",
+      "num_guesses": 5,
+      "prior": 0.0018272559634375937,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "nuts",
+        "sono"
+      ]
+    },
+    {
+      "word": "aede",
+      "num_guesses": 3,
+      "prior": 0.00027659476710879393,
+      "guesses": [
+        "aeri",
+        "come",
+        "aede"
+      ]
+    },
+    {
+      "word": "fumò",
+      "num_guesses": 4,
+      "prior": 0.00024988305761801806,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "fumò"
+      ]
+    },
+    {
+      "word": "file",
+      "num_guesses": 5,
+      "prior": 0.0006952401293006974,
+      "guesses": [
+        "aeri",
+        "simd",
+        "volt",
+        "flop",
+        "file"
+      ]
+    },
+    {
+      "word": "tria",
+      "num_guesses": 3,
+      "prior": 0.0004147847935841048,
+      "guesses": [
+        "aeri",
+        "tipa",
+        "tria"
+      ]
+    },
+    {
+      "word": "rapa",
+      "num_guesses": 5,
+      "prior": 0.0003741930576947279,
+      "guesses": [
+        "aeri",
+        "urto",
+        "cdma",
+        "sono",
+        "rapa"
+      ]
+    },
+    {
+      "word": "osti",
+      "num_guesses": 5,
+      "prior": 0.00043651172692534646,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "suoi",
+        "ossi",
+        "osti"
+      ]
+    },
+    {
+      "word": "suoi",
+      "num_guesses": 3,
+      "prior": 0.0014246116055789486,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "suoi"
+      ]
+    },
+    {
+      "word": "muro",
+      "num_guesses": 3,
+      "prior": 0.0008241347372015088,
+      "guesses": [
+        "aeri",
+        "domo",
+        "muro"
+      ]
+    },
+    {
+      "word": "ileo",
+      "num_guesses": 4,
+      "prior": 0.0004085122686314904,
+      "guesses": [
+        "aeri",
+        "simd",
+        "igne",
+        "ileo"
+      ]
+    },
+    {
+      "word": "ozio",
+      "num_guesses": 4,
+      "prior": 0.0005418760803910468,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dono",
+        "ozio"
+      ]
+    },
+    {
+      "word": "trio",
+      "num_guesses": 3,
+      "prior": 0.00042727673495795786,
+      "guesses": [
+        "aeri",
+        "sito",
+        "trio"
+      ]
+    },
+    {
+      "word": "feci",
+      "num_guesses": 4,
+      "prior": 0.0007284245642572766,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "colf",
+        "feci"
+      ]
+    },
+    {
+      "word": "pipì",
+      "num_guesses": 5,
+      "prior": 0.000347266871319532,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "finì",
+        "pipì"
+      ]
+    },
+    {
+      "word": "lega",
+      "num_guesses": 4,
+      "prior": 0.0008260920809380522,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "lega"
+      ]
+    },
+    {
+      "word": "limo",
+      "num_guesses": 4,
+      "prior": 0.00041815252545657347,
+      "guesses": [
+        "aeri",
+        "silo",
+        "rndt",
+        "limo"
+      ]
+    },
+    {
+      "word": "suto",
+      "num_guesses": 4,
+      "prior": 0.0003591723189289204,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "muto",
+        "suto"
+      ]
+    },
+    {
+      "word": "mulo",
+      "num_guesses": 4,
+      "prior": 0.0004539855843358002,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "culo",
+        "mulo"
+      ]
+    },
+    {
+      "word": "mate",
+      "num_guesses": 5,
+      "prior": 0.0004192054033856244,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "golf",
+        "dpcm",
+        "mate"
+      ]
+    },
+    {
+      "word": "data",
+      "num_guesses": 5,
+      "prior": 0.0011802333453524438,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "hdtv",
+        "data"
+      ]
+    },
+    {
+      "word": "vogò",
+      "num_guesses": 5,
+      "prior": 0.00016861408393379195,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "sonò",
+        "vogò"
+      ]
+    },
+    {
+      "word": "fino",
+      "num_guesses": 5,
+      "prior": 0.00127305767864372,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "font",
+        "fino"
+      ]
+    },
+    {
+      "word": "gaso",
+      "num_guesses": 5,
+      "prior": 0.00021347026179697467,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "vaso",
+        "ambo",
+        "gaso"
+      ]
+    },
+    {
+      "word": "polo",
+      "num_guesses": 5,
+      "prior": 0.0006898524774003947,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "piva",
+        "polo"
+      ]
+    },
+    {
+      "word": "arpe",
+      "num_guesses": 4,
+      "prior": 0.00034059040711807524,
+      "guesses": [
+        "aeri",
+        "teme",
+        "pcus",
+        "arpe"
+      ]
+    },
+    {
+      "word": "fune",
+      "num_guesses": 4,
+      "prior": 0.0005030759059148107,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dune",
+        "fune"
+      ]
+    },
+    {
+      "word": "bebè",
+      "num_guesses": 5,
+      "prior": 0.00029894963029170193,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "bigi",
+        "bebè"
+      ]
+    },
+    {
+      "word": "thud",
+      "num_guesses": 4,
+      "prior": 0.0001406446556410786,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "tutù",
+        "thud"
+      ]
+    },
+    {
+      "word": "ilei",
+      "num_guesses": 3,
+      "prior": 0.00041650973276102646,
+      "guesses": [
+        "aeri",
+        "else",
+        "ilei"
+      ]
+    },
+    {
+      "word": "iptv",
+      "num_guesses": 4,
+      "prior": 0.0001659824282365748,
+      "guesses": [
+        "aeri",
+        "silo",
+        "cucù",
+        "iptv"
+      ]
+    },
+    {
+      "word": "fluì",
+      "num_guesses": 4,
+      "prior": 0.00023762043081131635,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "subì",
+        "fluì"
+      ]
+    },
+    {
+      "word": "posò",
+      "num_guesses": 4,
+      "prior": 0.0005342556855435849,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "posò"
+      ]
+    },
+    {
+      "word": "erro",
+      "num_guesses": 3,
+      "prior": 0.00045796145901192954,
+      "guesses": [
+        "aeri",
+        "muco",
+        "erro"
+      ]
+    },
+    {
+      "word": "soia",
+      "num_guesses": 4,
+      "prior": 0.000426996176345293,
+      "guesses": [
+        "aeri",
+        "sita",
+        "poco",
+        "soia"
+      ]
+    },
+    {
+      "word": "lutò",
+      "num_guesses": 4,
+      "prior": 0.00013811429012526314,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "lgbt",
+        "lutò"
+      ]
+    },
+    {
+      "word": "vili",
+      "num_guesses": 4,
+      "prior": 0.0007108411588664163,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vili"
+      ]
+    },
+    {
+      "word": "rime",
+      "num_guesses": 3,
+      "prior": 0.0007069732692615386,
+      "guesses": [
+        "aeri",
+        "rtms",
+        "rime"
+      ]
+    },
+    {
+      "word": "irco",
+      "num_guesses": 4,
+      "prior": 0.0002199169384898843,
+      "guesses": [
+        "aeri",
+        "sito",
+        "brio",
+        "irco"
+      ]
+    },
+    {
+      "word": "boxi",
+      "num_guesses": 6,
+      "prior": 0.00015515038146639968,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "glbt",
+        "bovi",
+        "boxi"
+      ]
+    },
+    {
+      "word": "ceke",
+      "num_guesses": 5,
+      "prior": 0.00015648763923280026,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "dock",
+        "ceke"
+      ]
+    },
+    {
+      "word": "mura",
+      "num_guesses": 4,
+      "prior": 0.000818510103185778,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "cast",
+        "mura"
+      ]
+    },
+    {
+      "word": "goal",
+      "num_guesses": 5,
+      "prior": 0.00032029151175556154,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "gola",
+        "goal"
+      ]
+    },
+    {
+      "word": "culi",
+      "num_guesses": 5,
+      "prior": 0.000302459338092321,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "tubo",
+        "cupi",
+        "culi"
+      ]
+    },
+    {
+      "word": "face",
+      "num_guesses": 4,
+      "prior": 0.0005258935823277855,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "dpcm",
+        "face"
+      ]
+    },
+    {
+      "word": "tane",
+      "num_guesses": 3,
+      "prior": 0.000393623786190448,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tane"
+      ]
+    },
+    {
+      "word": "nube",
+      "num_guesses": 4,
+      "prior": 0.0005311565970395459,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "modo",
+        "nube"
+      ]
+    },
+    {
+      "word": "belo",
+      "num_guesses": 5,
+      "prior": 0.0003599306702769556,
+      "guesses": [
+        "aeri",
+        "slot",
+        "vamp",
+        "lgbt",
+        "belo"
+      ]
+    },
+    {
+      "word": "zoom",
+      "num_guesses": 4,
+      "prior": 0.0003390407783382291,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "boom",
+        "zoom"
+      ]
+    },
+    {
+      "word": "loco",
+      "num_guesses": 4,
+      "prior": 0.0006894252741186755,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "baci",
+        "loco"
+      ]
+    },
+    {
+      "word": "pool",
+      "num_guesses": 3,
+      "prior": 0.0003997502941374318,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "pool"
+      ]
+    },
+    {
+      "word": "caco",
+      "num_guesses": 4,
+      "prior": 0.00033923331694131345,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "tvtb",
+        "caco"
+      ]
+    },
+    {
+      "word": "play",
+      "num_guesses": 5,
+      "prior": 0.0004229986145828487,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "lady",
+        "play"
+      ]
+    },
+    {
+      "word": "vara",
+      "num_guesses": 6,
+      "prior": 0.00037867081848981136,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "cast",
+        "riga",
+        "bara",
+        "vara"
+      ]
+    },
+    {
+      "word": "svio",
+      "num_guesses": 4,
+      "prior": 0.00019970029871856565,
+      "guesses": [
+        "aeri",
+        "silo",
+        "poco",
+        "svio"
+      ]
+    },
+    {
+      "word": "maye",
+      "num_guesses": 4,
+      "prior": 0.0001680856210675091,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "mele",
+        "maye"
+      ]
+    },
+    {
+      "word": "litò",
+      "num_guesses": 4,
+      "prior": 0.00013120771822421358,
+      "guesses": [
+        "aeri",
+        "silo",
+        "mutò",
+        "litò"
+      ]
+    },
+    {
+      "word": "dace",
+      "num_guesses": 4,
+      "prior": 0.00023039942100642726,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "dpcm",
+        "dace"
+      ]
+    },
+    {
+      "word": "baba",
+      "num_guesses": 6,
+      "prior": 0.0003645038337853189,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "hdtv",
+        "gaba",
+        "baba"
+      ]
+    },
+    {
+      "word": "lume",
+      "num_guesses": 4,
+      "prior": 0.0007526332034421981,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "lume"
+      ]
+    },
+    {
+      "word": "viri",
+      "num_guesses": 4,
+      "prior": 0.0004843535422286217,
+      "guesses": [
+        "aeri",
+        "timo",
+        "giri",
+        "viri"
+      ]
+    },
+    {
+      "word": "ambì",
+      "num_guesses": 5,
+      "prior": 0.00024264380042549608,
+      "guesses": [
+        "aeri",
+        "slot",
+        "anda",
+        "acuì",
+        "ambì"
+      ]
+    },
+    {
+      "word": "lava",
+      "num_guesses": 4,
+      "prior": 0.0005689520352328468,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "lava"
+      ]
+    },
+    {
+      "word": "rori",
+      "num_guesses": 6,
+      "prior": 0.00029318535727369664,
+      "guesses": [
+        "aeri",
+        "timo",
+        "colf",
+        "spid",
+        "vino",
+        "rori"
+      ]
+    },
+    {
+      "word": "irap",
+      "num_guesses": 3,
+      "prior": 0.000358378103185045,
+      "guesses": [
+        "aeri",
+        "tipa",
+        "irap"
+      ]
+    },
+    {
+      "word": "frac",
+      "num_guesses": 5,
+      "prior": 0.0003188876901440641,
+      "guesses": [
+        "aeri",
+        "urto",
+        "gran",
+        "dpcm",
+        "frac"
+      ]
+    },
+    {
+      "word": "mira",
+      "num_guesses": 4,
+      "prior": 0.0007476325052693903,
+      "guesses": [
+        "aeri",
+        "iptv",
+        "film",
+        "mira"
+      ]
+    },
+    {
+      "word": "ebbe",
+      "num_guesses": 5,
+      "prior": 0.0011060224226745214,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "lgbt",
+        "ebbe"
+      ]
+    },
+    {
+      "word": "cuce",
+      "num_guesses": 5,
+      "prior": 0.00031107039820626873,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "luce",
+        "duce",
+        "cuce"
+      ]
+    },
+    {
+      "word": "fiqh",
+      "num_guesses": 5,
+      "prior": 0.00020538245282382444,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò",
+        "finì",
+        "fiqh"
+      ]
+    },
+    {
+      "word": "sani",
+      "num_guesses": 3,
+      "prior": 0.0006245215126944825,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "sani"
+      ]
+    },
+    {
+      "word": "lisa",
+      "num_guesses": 4,
+      "prior": 0.0004995751985949247,
+      "guesses": [
+        "aeri",
+        "sita",
+        "vale",
+        "lisa"
+      ]
+    },
+    {
+      "word": "vanò",
+      "num_guesses": 6,
+      "prior": 0.00009222155574525581,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "ulta",
+        "gode",
+        "panò",
+        "vanò"
+      ]
+    },
+    {
+      "word": "ormò",
+      "num_guesses": 4,
+      "prior": 0.00018958470691540937,
+      "guesses": [
+        "aeri",
+        "osto",
+        "menò",
+        "ormò"
+      ]
+    },
+    {
+      "word": "mach",
+      "num_guesses": 5,
+      "prior": 0.0003961722100385361,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "cubò",
+        "pack",
+        "mach"
+      ]
+    },
+    {
+      "word": "sora",
+      "num_guesses": 5,
+      "prior": 0.00048808831801282833,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "mmhg",
+        "self",
+        "sora"
+      ]
+    },
+    {
+      "word": "raso",
+      "num_guesses": 4,
+      "prior": 0.0004889160003612239,
+      "guesses": [
+        "aeri",
+        "urto",
+        "spam",
+        "raso"
+      ]
+    },
+    {
+      "word": "viso",
+      "num_guesses": 3,
+      "prior": 0.0008489758880125744,
+      "guesses": [
+        "aeri",
+        "silo",
+        "viso"
+      ]
+    },
+    {
+      "word": "zigo",
+      "num_guesses": 6,
+      "prior": 0.00020847453810488896,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "font",
+        "vivo",
+        "zigo"
+      ]
+    },
+    {
+      "word": "fido",
+      "num_guesses": 5,
+      "prior": 0.0005383624285219353,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "nido",
+        "fido"
+      ]
+    },
+    {
+      "word": "pago",
+      "num_guesses": 5,
+      "prior": 0.000537388693376327,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "vamp",
+        "pago"
+      ]
+    },
+    {
+      "word": "ario",
+      "num_guesses": 3,
+      "prior": 0.00042365337998937825,
+      "guesses": [
+        "aeri",
+        "aria",
+        "ario"
+      ]
+    },
+    {
+      "word": "geno",
+      "num_guesses": 5,
+      "prior": 0.0003519319881199992,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "nego",
+        "geno"
+      ]
+    },
+    {
+      "word": "buco",
+      "num_guesses": 4,
+      "prior": 0.0005538107573129603,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "buco"
+      ]
+    },
+    {
+      "word": "tari",
+      "num_guesses": 5,
+      "prior": 0.0004623071108471186,
+      "guesses": [
+        "aeri",
+        "vamp",
+        "risc",
+        "fate",
+        "tari"
+      ]
+    },
+    {
+      "word": "sena",
+      "num_guesses": 3,
+      "prior": 0.0004156808053039535,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "sena"
+      ]
+    },
+    {
+      "word": "tube",
+      "num_guesses": 5,
+      "prior": 0.0003810265884773307,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "pube",
+        "tube"
+      ]
+    },
+    {
+      "word": "labe",
+      "num_guesses": 4,
+      "prior": 0.00031069548249028285,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "mele",
+        "labe"
+      ]
+    },
+    {
+      "word": "loro",
+      "num_guesses": 4,
+      "prior": 0.0016866182381863487,
+      "guesses": [
+        "aeri",
+        "domo",
+        "colf",
+        "loro"
+      ]
+    },
+    {
+      "word": "spam",
+      "num_guesses": 4,
+      "prior": 0.0002715161805131935,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "sula",
+        "spam"
+      ]
+    },
+    {
+      "word": "mina",
+      "num_guesses": 5,
+      "prior": 0.0005433908614055864,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "lima",
+        "mina"
+      ]
+    },
+    {
+      "word": "cove",
+      "num_guesses": 6,
+      "prior": 0.00028687704411420155,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "come",
+        "lode",
+        "vago",
+        "cove"
+      ]
+    },
+    {
+      "word": "poni",
+      "num_guesses": 5,
+      "prior": 0.0004270518000976415,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "diti",
+        "pube",
+        "poni"
+      ]
+    },
+    {
+      "word": "crie",
+      "num_guesses": 4,
+      "prior": 0.00023169743816695473,
+      "guesses": [
+        "aeri",
+        "rtms",
+        "luce",
+        "crie"
+      ]
+    },
+    {
+      "word": "orli",
+      "num_guesses": 4,
+      "prior": 0.00046885397861248264,
+      "guesses": [
+        "aeri",
+        "urto",
+        "selz",
+        "orli"
+      ]
+    },
+    {
+      "word": "code",
+      "num_guesses": 5,
+      "prior": 0.0005128499022274968,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "come",
+        "lode",
+        "code"
+      ]
+    },
+    {
+      "word": "urss",
+      "num_guesses": 3,
+      "prior": 0.000499704615999672,
+      "guesses": [
+        "aeri",
+        "osto",
+        "urss"
+      ]
+    },
+    {
+      "word": "sega",
+      "num_guesses": 3,
+      "prior": 0.00048482037371868334,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "sega"
+      ]
+    },
+    {
+      "word": "calo",
+      "num_guesses": 4,
+      "prior": 0.0005164292110007726,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "plug",
+        "calo"
+      ]
+    },
+    {
+      "word": "gioì",
+      "num_guesses": 4,
+      "prior": 0.00027549032658351184,
+      "guesses": [
+        "aeri",
+        "silo",
+        "cioè",
+        "gioì"
+      ]
+    },
+    {
+      "word": "issa",
+      "num_guesses": 3,
+      "prior": 0.00034731481088050737,
+      "guesses": [
+        "aeri",
+        "sita",
+        "issa"
+      ]
+    },
+    {
+      "word": "feti",
+      "num_guesses": 5,
+      "prior": 0.00043096945145226675,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "tvtb",
+        "play",
+        "feti"
+      ]
+    },
+    {
+      "word": "sodi",
+      "num_guesses": 4,
+      "prior": 0.0004029468014516072,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "spid",
+        "sodi"
+      ]
+    },
+    {
+      "word": "dike",
+      "num_guesses": 5,
+      "prior": 0.0002837988847529054,
+      "guesses": [
+        "aeri",
+        "simd",
+        "dect",
+        "dive",
+        "dike"
+      ]
+    },
+    {
+      "word": "rote",
+      "num_guesses": 4,
+      "prior": 0.0003857637935291532,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "bdsm",
+        "rote"
+      ]
+    },
+    {
+      "word": "capa",
+      "num_guesses": 4,
+      "prior": 0.00034859107257139956,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pala",
+        "capa"
+      ]
+    },
+    {
+      "word": "fûro",
+      "num_guesses": 4,
+      "prior": 0.0001349293139651706,
+      "guesses": [
+        "aeri",
+        "domo",
+        "puff",
+        "fûro"
+      ]
+    },
+    {
+      "word": "lego",
+      "num_guesses": 5,
+      "prior": 0.0003723351086587752,
+      "guesses": [
+        "aeri",
+        "slot",
+        "vamp",
+        "lgbt",
+        "lego"
+      ]
+    },
+    {
+      "word": "aura",
+      "num_guesses": 4,
+      "prior": 0.0005378291602887371,
+      "guesses": [
+        "aeri",
+        "poga",
+        "cute",
+        "aura"
+      ]
+    },
+    {
+      "word": "elle",
+      "num_guesses": 4,
+      "prior": 0.0006165373268626933,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "elle"
+      ]
+    },
+    {
+      "word": "tiri",
+      "num_guesses": 3,
+      "prior": 0.0005044344724380842,
+      "guesses": [
+        "aeri",
+        "timo",
+        "tiri"
+      ]
+    },
+    {
+      "word": "dock",
+      "num_guesses": 4,
+      "prior": 0.00032095286767240604,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "dock"
+      ]
+    },
+    {
+      "word": "para",
+      "num_guesses": 4,
+      "prior": 0.0005456738250318795,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "pura",
+        "para"
+      ]
+    },
+    {
+      "word": "olia",
+      "num_guesses": 5,
+      "prior": 0.0002659265098083157,
+      "guesses": [
+        "aeri",
+        "sita",
+        "band",
+        "glia",
+        "olia"
+      ]
+    },
+    {
+      "word": "urbi",
+      "num_guesses": 4,
+      "prior": 0.000338006447055754,
+      "guesses": [
+        "aeri",
+        "urto",
+        "urli",
+        "urbi"
+      ]
+    },
+    {
+      "word": "lode",
+      "num_guesses": 4,
+      "prior": 0.0007445611320838423,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dpcm",
+        "lode"
+      ]
+    },
+    {
+      "word": "piai",
+      "num_guesses": 4,
+      "prior": 0.0002546224528789195,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "piai"
+      ]
+    },
+    {
+      "word": "osta",
+      "num_guesses": 4,
+      "prior": 0.0005180322764671204,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "vaso",
+        "osta"
+      ]
+    },
+    {
+      "word": "pire",
+      "num_guesses": 3,
+      "prior": 0.0003263382033454869,
+      "guesses": [
+        "aeri",
+        "mpls",
+        "pire"
+      ]
+    },
+    {
+      "word": "lobi",
+      "num_guesses": 5,
+      "prior": 0.0005108387984248638,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "lodi",
+        "lobi"
+      ]
+    },
+    {
+      "word": "orca",
+      "num_guesses": 5,
+      "prior": 0.00031091318627050093,
+      "guesses": [
+        "aeri",
+        "urto",
+        "bdsm",
+        "clan",
+        "orca"
+      ]
+    },
+    {
+      "word": "zono",
+      "num_guesses": 6,
+      "prior": 0.00021810491321885695,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "nuts",
+        "zebù",
+        "zono"
+      ]
+    },
+    {
+      "word": "buba",
+      "num_guesses": 5,
+      "prior": 0.00020499759855183156,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "buba"
+      ]
+    },
+    {
+      "word": "cima",
+      "num_guesses": 4,
+      "prior": 0.0007246017596820507,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "cima"
+      ]
+    },
+    {
+      "word": "idei",
+      "num_guesses": 4,
+      "prior": 0.00030499952902642545,
+      "guesses": [
+        "aeri",
+        "else",
+        "miei",
+        "idei"
+      ]
+    },
+    {
+      "word": "puah",
+      "num_guesses": 4,
+      "prior": 0.0002570152564214488,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "puah"
+      ]
+    },
+    {
+      "word": "olio",
+      "num_guesses": 3,
+      "prior": 0.0008203322478862659,
+      "guesses": [
+        "aeri",
+        "silo",
+        "olio"
+      ]
+    },
+    {
+      "word": "fumo",
+      "num_guesses": 4,
+      "prior": 0.0006918945347161019,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "fumo"
+      ]
+    },
+    {
+      "word": "pose",
+      "num_guesses": 4,
+      "prior": 0.0007390627944536638,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "simd",
+        "pose"
+      ]
+    },
+    {
+      "word": "babà",
+      "num_guesses": 6,
+      "prior": 0.00028075453685897885,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "baby",
+        "babà"
+      ]
+    },
+    {
+      "word": "obla",
+      "num_guesses": 4,
+      "prior": 0.0001839558567065246,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "obla"
+      ]
+    },
+    {
+      "word": "eros",
+      "num_guesses": 4,
+      "prior": 0.0004819767946656141,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "eroe",
+        "eros"
+      ]
+    },
+    {
+      "word": "luma",
+      "num_guesses": 4,
+      "prior": 0.00023380501773729117,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "luma"
+      ]
+    },
+    {
+      "word": "mine",
+      "num_guesses": 4,
+      "prior": 0.0005338947502414192,
+      "guesses": [
+        "aeri",
+        "simd",
+        "mite",
+        "mine"
+      ]
+    },
+    {
+      "word": "smog",
+      "num_guesses": 5,
+      "prior": 0.0003124886940645487,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "snob",
+        "show",
+        "smog"
+      ]
+    },
+    {
+      "word": "remo",
+      "num_guesses": 4,
+      "prior": 0.000564471315540521,
+      "guesses": [
+        "aeri",
+        "tosò",
+        "come",
+        "remo"
+      ]
+    },
+    {
+      "word": "trna",
+      "num_guesses": 4,
+      "prior": 0.0002162236535936582,
+      "guesses": [
+        "aeri",
+        "urto",
+        "tram",
+        "trna"
+      ]
+    },
+    {
+      "word": "teda",
+      "num_guesses": 5,
+      "prior": 0.0002877204023688324,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tema",
+        "tela",
+        "teda"
+      ]
+    },
+    {
+      "word": "dori",
+      "num_guesses": 5,
+      "prior": 0.0003986482968577807,
+      "guesses": [
+        "aeri",
+        "timo",
+        "colf",
+        "spid",
+        "dori"
+      ]
+    },
+    {
+      "word": "girò",
+      "num_guesses": 3,
+      "prior": 0.0005760945474418988,
+      "guesses": [
+        "aeri",
+        "vogò",
+        "girò"
+      ]
+    },
+    {
+      "word": "agii",
+      "num_guesses": 5,
+      "prior": 0.0003182074640213952,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "pala",
+        "goim",
+        "agii"
+      ]
+    },
+    {
+      "word": "fine",
+      "num_guesses": 4,
+      "prior": 0.0012616658009296422,
+      "guesses": [
+        "aeri",
+        "simd",
+        "volt",
+        "fine"
+      ]
+    },
+    {
+      "word": "oggi",
+      "num_guesses": 4,
+      "prior": 0.0011719155691211202,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "plot",
+        "oggi"
+      ]
+    },
+    {
+      "word": "arto",
+      "num_guesses": 4,
+      "prior": 0.0004939833696407176,
+      "guesses": [
+        "aeri",
+        "moca",
+        "lgbt",
+        "arto"
+      ]
+    },
+    {
+      "word": "basi",
+      "num_guesses": 4,
+      "prior": 0.0007630209133951527,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "bovi",
+        "basi"
+      ]
+    },
+    {
+      "word": "capì",
+      "num_guesses": 4,
+      "prior": 0.0005475474741238894,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pala",
+        "capì"
+      ]
+    },
+    {
+      "word": "sori",
+      "num_guesses": 5,
+      "prior": 0.0003701781019097029,
+      "guesses": [
+        "aeri",
+        "timo",
+        "colf",
+        "spid",
+        "sori"
+      ]
+    },
+    {
+      "word": "volo",
+      "num_guesses": 5,
+      "prior": 0.0007326171612739489,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "piva",
+        "volo"
+      ]
+    },
+    {
+      "word": "ocra",
+      "num_guesses": 3,
+      "prior": 0.00041104409904837,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "ocra"
+      ]
+    },
+    {
+      "word": "secò",
+      "num_guesses": 5,
+      "prior": 0.00015352051351025332,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dyne",
+        "segò",
+        "secò"
+      ]
+    },
+    {
+      "word": "foga",
+      "num_guesses": 5,
+      "prior": 0.00047556496587254524,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "fava",
+        "foga"
+      ]
+    },
+    {
+      "word": "tufo",
+      "num_guesses": 4,
+      "prior": 0.000534770707193762,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "tubo",
+        "tufo"
+      ]
+    },
+    {
+      "word": "dati",
+      "num_guesses": 5,
+      "prior": 0.0010536119041112183,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tali",
+        "fidi",
+        "dati"
+      ]
+    },
+    {
+      "word": "rasò",
+      "num_guesses": 5,
+      "prior": 0.00017875870772976978,
+      "guesses": [
+        "aeri",
+        "urto",
+        "cdma",
+        "pagò",
+        "rasò"
+      ]
+    },
+    {
+      "word": "egeo",
+      "num_guesses": 4,
+      "prior": 0.0004391238909036267,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "elfe",
+        "egeo"
+      ]
+    },
+    {
+      "word": "baco",
+      "num_guesses": 4,
+      "prior": 0.00044429178614296565,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "tvtb",
+        "baco"
+      ]
+    },
+    {
+      "word": "lami",
+      "num_guesses": 5,
+      "prior": 0.00043406208206452106,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "dolo",
+        "lami"
+      ]
+    },
+    {
+      "word": "stoe",
+      "num_guesses": 4,
+      "prior": 0.00016861408393379195,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "esso",
+        "stoe"
+      ]
+    },
+    {
+      "word": "meta",
+      "num_guesses": 4,
+      "prior": 0.0006699643909527505,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tema",
+        "meta"
+      ]
+    },
+    {
+      "word": "uovo",
+      "num_guesses": 5,
+      "prior": 0.000579929060201141,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "nuts",
+        "uovo"
+      ]
+    },
+    {
+      "word": "funi",
+      "num_guesses": 4,
+      "prior": 0.00046390434928683444,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fini",
+        "funi"
+      ]
+    },
+    {
+      "word": "baci",
+      "num_guesses": 4,
+      "prior": 0.0005598649311401373,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "clip",
+        "baci"
+      ]
+    },
+    {
+      "word": "stoa",
+      "num_guesses": 5,
+      "prior": 0.00032996729765567834,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "vaso",
+        "osta",
+        "stoa"
+      ]
+    },
+    {
+      "word": "mala",
+      "num_guesses": 4,
+      "prior": 0.0006903234918383003,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "mala"
+      ]
+    },
+    {
+      "word": "gelo",
+      "num_guesses": 5,
+      "prior": 0.0005538046330025057,
+      "guesses": [
+        "aeri",
+        "slot",
+        "vamp",
+        "lgbt",
+        "gelo"
+      ]
+    },
+    {
+      "word": "domi",
+      "num_guesses": 5,
+      "prior": 0.00041947848435267167,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "vita",
+        "domi"
+      ]
+    },
+    {
+      "word": "tisi",
+      "num_guesses": 4,
+      "prior": 0.0004563680648965779,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "siti",
+        "tisi"
+      ]
+    },
+    {
+      "word": "bucò",
+      "num_guesses": 4,
+      "prior": 0.00020472215570434662,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "bucò"
+      ]
+    },
+    {
+      "word": "ledi",
+      "num_guesses": 4,
+      "prior": 0.0002470551751390966,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "levi",
+        "ledi"
+      ]
+    },
+    {
+      "word": "tutù",
+      "num_guesses": 3,
+      "prior": 0.0002753506896643693,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "tutù"
+      ]
+    },
+    {
+      "word": "fans",
+      "num_guesses": 3,
+      "prior": 0.0003335720905578481,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fans"
+      ]
+    },
+    {
+      "word": "cere",
+      "num_guesses": 5,
+      "prior": 0.00044843264677350283,
+      "guesses": [
+        "aeri",
+        "pone",
+        "bdsm",
+        "fece",
+        "cere"
+      ]
+    },
+    {
+      "word": "bcci",
+      "num_guesses": 5,
+      "prior": 0.00016990700490968313,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lido",
+        "cuci",
+        "bcci"
+      ]
+    },
+    {
+      "word": "poca",
+      "num_guesses": 4,
+      "prior": 0.0008035235449324577,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "clip",
+        "poca"
+      ]
+    },
+    {
+      "word": "oste",
+      "num_guesses": 4,
+      "prior": 0.0005553165076092039,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "esso",
+        "oste"
+      ]
+    },
+    {
+      "word": "raia",
+      "num_guesses": 4,
+      "prior": 0.0002892936833794266,
+      "guesses": [
+        "aeri",
+        "tipa",
+        "uria",
+        "raia"
+      ]
+    },
+    {
+      "word": "sona",
+      "num_guesses": 3,
+      "prior": 0.0004156965450770337,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "sona"
+      ]
+    },
+    {
+      "word": "alno",
+      "num_guesses": 4,
+      "prior": 0.0002503749343365688,
+      "guesses": [
+        "aeri",
+        "slot",
+        "ezln",
+        "alno"
+      ]
+    },
+    {
+      "word": "arci",
+      "num_guesses": 3,
+      "prior": 0.00037441394966719594,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "arci"
+      ]
+    },
+    {
+      "word": "alpi",
+      "num_guesses": 4,
+      "prior": 0.0007055516077866772,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "pala",
+        "alpi"
+      ]
+    },
+    {
+      "word": "gufi",
+      "num_guesses": 4,
+      "prior": 0.0003222833510193231,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "gufi"
+      ]
+    },
+    {
+      "word": "citò",
+      "num_guesses": 3,
+      "prior": 0.00040966146876729394,
+      "guesses": [
+        "aeri",
+        "silo",
+        "citò"
+      ]
+    },
+    {
+      "word": "rodo",
+      "num_guesses": 5,
+      "prior": 0.00027260919819827343,
+      "guesses": [
+        "aeri",
+        "osto",
+        "cgil",
+        "rovo",
+        "rodo"
+      ]
+    },
+    {
+      "word": "basa",
+      "num_guesses": 4,
+      "prior": 0.0005988414182631856,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "sula",
+        "basa"
+      ]
+    },
+    {
+      "word": "crea",
+      "num_guesses": 4,
+      "prior": 0.0006781880847735338,
+      "guesses": [
+        "aeri",
+        "muta",
+        "erba",
+        "crea"
+      ]
+    },
+    {
+      "word": "domo",
+      "num_guesses": 4,
+      "prior": 0.00048224198575425834,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "domo"
+      ]
+    },
+    {
+      "word": "fave",
+      "num_guesses": 4,
+      "prior": 0.00048186886750471947,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "mele",
+        "fave"
+      ]
+    },
+    {
+      "word": "uree",
+      "num_guesses": 5,
+      "prior": 0.00019930793838109296,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "untò",
+        "urbe",
+        "uree"
+      ]
+    },
+    {
+      "word": "ermi",
+      "num_guesses": 3,
+      "prior": 0.0002960348138607106,
+      "guesses": [
+        "aeri",
+        "cmos",
+        "ermi"
+      ]
+    },
+    {
+      "word": "limi",
+      "num_guesses": 5,
+      "prior": 0.0003641536225434575,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "bdsm",
+        "limi"
+      ]
+    },
+    {
+      "word": "tuba",
+      "num_guesses": 5,
+      "prior": 0.00039850593015305246,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "tuba"
+      ]
+    },
+    {
+      "word": "arei",
+      "num_guesses": 2,
+      "prior": 0.00033981287285374874,
+      "guesses": [
+        "aeri",
+        "arei"
+      ]
+    },
+    {
+      "word": "tosò",
+      "num_guesses": 4,
+      "prior": 0.00015686502538372118,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "muse",
+        "tosò"
+      ]
+    },
+    {
+      "word": "trii",
+      "num_guesses": 3,
+      "prior": 0.000277730275003023,
+      "guesses": [
+        "aeri",
+        "urto",
+        "trii"
+      ]
+    },
+    {
+      "word": "elmi",
+      "num_guesses": 4,
+      "prior": 0.0004060589263115251,
+      "guesses": [
+        "aeri",
+        "else",
+        "film",
+        "elmi"
+      ]
+    },
+    {
+      "word": "opas",
+      "num_guesses": 3,
+      "prior": 0.00015889023286824876,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "opas"
+      ]
+    },
+    {
+      "word": "fata",
+      "num_guesses": 5,
+      "prior": 0.0005042423247224446,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "hdtv",
+        "fata"
+      ]
+    },
+    {
+      "word": "edit",
+      "num_guesses": 4,
+      "prior": 0.0005531867821001165,
+      "guesses": [
+        "aeri",
+        "simd",
+        "idee",
+        "edit"
+      ]
+    },
+    {
+      "word": "ridà",
+      "num_guesses": 4,
+      "prior": 0.0002970425451868562,
+      "guesses": [
+        "aeri",
+        "sito",
+        "dogò",
+        "ridà"
+      ]
+    },
+    {
+      "word": "eius",
+      "num_guesses": 4,
+      "prior": 0.000604419005890641,
+      "guesses": [
+        "aeri",
+        "simd",
+        "lise",
+        "eius"
+      ]
+    },
+    {
+      "word": "zeep",
+      "num_guesses": 5,
+      "prior": 0.00010162559876183358,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "jeep",
+        "zeep"
+      ]
+    },
+    {
+      "word": "homo",
+      "num_guesses": 6,
+      "prior": 0.0005859069100262194,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "uomo",
+        "vino",
+        "homo"
+      ]
+    },
+    {
+      "word": "dima",
+      "num_guesses": 4,
+      "prior": 0.0003055441776302732,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "dima"
+      ]
+    },
+    {
+      "word": "xché",
+      "num_guesses": 4,
+      "prior": 0.00013270762467305273,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "xché"
+      ]
+    },
+    {
+      "word": "alfe",
+      "num_guesses": 5,
+      "prior": 0.00023784350886989949,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "pule",
+        "fumo",
+        "alfe"
+      ]
+    },
+    {
+      "word": "pepo",
+      "num_guesses": 4,
+      "prior": 0.0002960762554209506,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "pepo"
+      ]
+    },
+    {
+      "word": "ceko",
+      "num_guesses": 5,
+      "prior": 0.00018218788998015166,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "bene",
+        "ceko"
+      ]
+    },
+    {
+      "word": "sali",
+      "num_guesses": 4,
+      "prior": 0.0006901690130203796,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lavo",
+        "sali"
+      ]
+    },
+    {
+      "word": "alla",
+      "num_guesses": 4,
+      "prior": 0.00195076012341149,
+      "guesses": [
+        "aeri",
+        "slot",
+        "bela",
+        "alla"
+      ]
+    },
+    {
+      "word": "geek",
+      "num_guesses": 5,
+      "prior": 0.0001965218049845523,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "jeep",
+        "geek"
+      ]
+    },
+    {
+      "word": "dime",
+      "num_guesses": 3,
+      "prior": 0.0003080627913832374,
+      "guesses": [
+        "aeri",
+        "simd",
+        "dime"
+      ]
+    },
+    {
+      "word": "geli",
+      "num_guesses": 5,
+      "prior": 0.00039468343273555806,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "levi",
+        "paga",
+        "geli"
+      ]
+    },
+    {
+      "word": "ansa",
+      "num_guesses": 3,
+      "prior": 0.0005219796468275843,
+      "guesses": [
+        "aeri",
+        "slot",
+        "ansa"
+      ]
+    },
+    {
+      "word": "colé",
+      "num_guesses": 5,
+      "prior": 0.0001185571104322972,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "fisò",
+        "colà",
+        "colé"
+      ]
+    },
+    {
+      "word": "lede",
+      "num_guesses": 4,
+      "prior": 0.0003869003241547304,
+      "guesses": [
+        "aeri",
+        "slot",
+        "levò",
+        "lede"
+      ]
+    },
+    {
+      "word": "dazi",
+      "num_guesses": 4,
+      "prior": 0.0006091357711005431,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "dazi"
+      ]
+    },
+    {
+      "word": "elmo",
+      "num_guesses": 4,
+      "prior": 0.0005249722670008885,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "elfe",
+        "elmo"
+      ]
+    },
+    {
+      "word": "uopi",
+      "num_guesses": 5,
+      "prior": 0.00015936312883129512,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "hdtv",
+        "uopi"
+      ]
+    },
+    {
+      "word": "sarà",
+      "num_guesses": 4,
+      "prior": 0.0012397921661178913,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "fisò",
+        "sarà"
+      ]
+    },
+    {
+      "word": "tené",
+      "num_guesses": 4,
+      "prior": 0.00015346588958127684,
+      "guesses": [
+        "aeri",
+        "slot",
+        "teme",
+        "tené"
+      ]
+    },
+    {
+      "word": "rude",
+      "num_guesses": 4,
+      "prior": 0.00046950722861485364,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "dopo",
+        "rude"
+      ]
+    },
+    {
+      "word": "vopo",
+      "num_guesses": 5,
+      "prior": 0.00017819092369667928,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "uopo",
+        "vopo"
+      ]
+    },
+    {
+      "word": "pelò",
+      "num_guesses": 5,
+      "prior": 0.00020685231983899997,
+      "guesses": [
+        "aeri",
+        "slot",
+        "levò",
+        "mpeg",
+        "pelò"
+      ]
+    },
+    {
+      "word": "sram",
+      "num_guesses": 5,
+      "prior": 0.00017084259349134422,
+      "guesses": [
+        "aeri",
+        "urto",
+        "gran",
+        "dpcm",
+        "sram"
+      ]
+    },
+    {
+      "word": "baia",
+      "num_guesses": 4,
+      "prior": 0.0005448863579554168,
+      "guesses": [
+        "aeri",
+        "sita",
+        "band",
+        "baia"
+      ]
+    },
+    {
+      "word": "nove",
+      "num_guesses": 4,
+      "prior": 0.000787151400609055,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "metà",
+        "nove"
+      ]
+    },
+    {
+      "word": "musi",
+      "num_guesses": 5,
+      "prior": 0.0003708666350271465,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "siti",
+        "fusi",
+        "musi"
+      ]
+    },
+    {
+      "word": "moto",
+      "num_guesses": 4,
+      "prior": 0.0008579892776350667,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "vamp",
+        "moto"
+      ]
+    },
+    {
+      "word": "atri",
+      "num_guesses": 3,
+      "prior": 0.0004416020134753791,
+      "guesses": [
+        "aeri",
+        "capo",
+        "atri"
+      ]
+    },
+    {
+      "word": "arso",
+      "num_guesses": 4,
+      "prior": 0.00041771872902312895,
+      "guesses": [
+        "aeri",
+        "moca",
+        "lgbt",
+        "arso"
+      ]
+    },
+    {
+      "word": "lord",
+      "num_guesses": 4,
+      "prior": 0.0006930733279359009,
+      "guesses": [
+        "aeri",
+        "domo",
+        "nord",
+        "lord"
+      ]
+    },
+    {
+      "word": "girà",
+      "num_guesses": 4,
+      "prior": 0.0001963487115764081,
+      "guesses": [
+        "aeri",
+        "vogò",
+        "girl",
+        "girà"
+      ]
+    },
+    {
+      "word": "acni",
+      "num_guesses": 4,
+      "prior": 0.0002024994553362943,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "anci",
+        "acni"
+      ]
+    },
+    {
+      "word": "vaie",
+      "num_guesses": 3,
+      "prior": 0.00024305352678893538,
+      "guesses": [
+        "aeri",
+        "vaga",
+        "vaie"
+      ]
+    },
+    {
+      "word": "task",
+      "num_guesses": 5,
+      "prior": 0.00035197743669129706,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "sula",
+        "tubò",
+        "task"
+      ]
+    },
+    {
+      "word": "cece",
+      "num_guesses": 5,
+      "prior": 0.0003304607417932195,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "dock",
+        "cece"
+      ]
+    },
+    {
+      "word": "alca",
+      "num_guesses": 5,
+      "prior": 0.0002563306457632882,
+      "guesses": [
+        "aeri",
+        "slot",
+        "bela",
+        "figc",
+        "alca"
+      ]
+    },
+    {
+      "word": "atte",
+      "num_guesses": 4,
+      "prior": 0.0005872791623534615,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "nota",
+        "atte"
+      ]
+    },
+    {
+      "word": "iglò",
+      "num_guesses": 4,
+      "prior": 0.00012362915618863005,
+      "guesses": [
+        "aeri",
+        "silo",
+        "iglù",
+        "iglò"
+      ]
+    },
+    {
+      "word": "vela",
+      "num_guesses": 5,
+      "prior": 0.0006052765923910047,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "vamp",
+        "vela"
+      ]
+    },
+    {
+      "word": "cudù",
+      "num_guesses": 5,
+      "prior": 0.00014144904846240022,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "andò",
+        "cudù"
+      ]
+    },
+    {
+      "word": "erta",
+      "num_guesses": 3,
+      "prior": 0.000420280369525416,
+      "guesses": [
+        "aeri",
+        "muta",
+        "erta"
+      ]
+    },
+    {
+      "word": "elfe",
+      "num_guesses": 4,
+      "prior": 0.00019792460113080443,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mule",
+        "elfe"
+      ]
+    },
+    {
+      "word": "alzo",
+      "num_guesses": 4,
+      "prior": 0.00045135200916595133,
+      "guesses": [
+        "aeri",
+        "slot",
+        "ezln",
+        "alzo"
+      ]
+    },
+    {
+      "word": "maiz",
+      "num_guesses": 4,
+      "prior": 0.0003349757237835427,
+      "guesses": [
+        "aeri",
+        "sita",
+        "goim",
+        "maiz"
+      ]
+    },
+    {
+      "word": "elio",
+      "num_guesses": 4,
+      "prior": 0.0005616540305590516,
+      "guesses": [
+        "aeri",
+        "simd",
+        "igne",
+        "elio"
+      ]
+    },
+    {
+      "word": "gela",
+      "num_guesses": 4,
+      "prior": 0.00045536478922457197,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "gela"
+      ]
+    },
+    {
+      "word": "mime",
+      "num_guesses": 4,
+      "prior": 0.0003022125699331002,
+      "guesses": [
+        "aeri",
+        "simd",
+        "luce",
+        "mime"
+      ]
+    },
+    {
+      "word": "apio",
+      "num_guesses": 4,
+      "prior": 0.0002418779863117648,
+      "guesses": [
+        "aeri",
+        "gota",
+        "avio",
+        "apio"
+      ]
+    },
+    {
+      "word": "duro",
+      "num_guesses": 3,
+      "prior": 0.0007230377695046446,
+      "guesses": [
+        "aeri",
+        "domo",
+        "duro"
+      ]
+    },
+    {
+      "word": "arde",
+      "num_guesses": 4,
+      "prior": 0.00047660431434379296,
+      "guesses": [
+        "aeri",
+        "teme",
+        "pcus",
+        "arde"
+      ]
+    },
+    {
+      "word": "liso",
+      "num_guesses": 3,
+      "prior": 0.0003090396040210777,
+      "guesses": [
+        "aeri",
+        "silo",
+        "liso"
+      ]
+    },
+    {
+      "word": "orbi",
+      "num_guesses": 5,
+      "prior": 0.0003603847883414598,
+      "guesses": [
+        "aeri",
+        "urto",
+        "selz",
+        "bene",
+        "orbi"
+      ]
+    },
+    {
+      "word": "tani",
+      "num_guesses": 3,
+      "prior": 0.00035849199416521256,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tani"
+      ]
+    },
+    {
+      "word": "roso",
+      "num_guesses": 3,
+      "prior": 0.0003796683188304768,
+      "guesses": [
+        "aeri",
+        "osto",
+        "roso"
+      ]
+    },
+    {
+      "word": "pale",
+      "num_guesses": 5,
+      "prior": 0.0004854222856613112,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "mele",
+        "vale",
+        "pale"
+      ]
+    },
+    {
+      "word": "pene",
+      "num_guesses": 5,
+      "prior": 0.0007901993200449177,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "pube",
+        "pene"
+      ]
+    },
+    {
+      "word": "rode",
+      "num_guesses": 4,
+      "prior": 0.00040723374604989684,
+      "guesses": [
+        "aeri",
+        "ergo",
+        "bdsm",
+        "rode"
+      ]
+    },
+    {
+      "word": "scmt",
+      "num_guesses": 4,
+      "prior": 0.00008784271050596158,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "must",
+        "scmt"
+      ]
+    },
+    {
+      "word": "curi",
+      "num_guesses": 4,
+      "prior": 0.00042617073078642613,
+      "guesses": [
+        "aeri",
+        "timo",
+        "dpcm",
+        "curi"
+      ]
+    },
+    {
+      "word": "vilo",
+      "num_guesses": 5,
+      "prior": 0.00019430752435066102,
+      "guesses": [
+        "aeri",
+        "silo",
+        "filo",
+        "pilo",
+        "vilo"
+      ]
+    },
+    {
+      "word": "temé",
+      "num_guesses": 4,
+      "prior": 0.00019589784869574844,
+      "guesses": [
+        "aeri",
+        "slot",
+        "teme",
+        "temé"
+      ]
+    },
+    {
+      "word": "cube",
+      "num_guesses": 4,
+      "prior": 0.00026379791221222505,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pube",
+        "cube"
+      ]
+    },
+    {
+      "word": "pipo",
+      "num_guesses": 5,
+      "prior": 0.0002076738402212802,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dpcm",
+        "tipo",
+        "pipo"
+      ]
+    },
+    {
+      "word": "pela",
+      "num_guesses": 5,
+      "prior": 0.0003059657008281128,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "vamp",
+        "pela"
+      ]
+    },
+    {
+      "word": "cdma",
+      "num_guesses": 5,
+      "prior": 0.00015741203986198194,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "pala",
+        "cuba",
+        "cdma"
+      ]
+    },
+    {
+      "word": "gufò",
+      "num_guesses": 5,
+      "prior": 0.00008883834962376224,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "fumò",
+        "gufò"
+      ]
+    },
+    {
+      "word": "cole",
+      "num_guesses": 5,
+      "prior": 0.0004558650737689222,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "come",
+        "lode",
+        "cole"
+      ]
+    },
+    {
+      "word": "naïf",
+      "num_guesses": 5,
+      "prior": 0.0002153566895538674,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "nata",
+        "modo",
+        "naïf"
+      ]
+    },
+    {
+      "word": "pure",
+      "num_guesses": 4,
+      "prior": 0.0012759899736179716,
+      "guesses": [
+        "aeri",
+        "muco",
+        "bdsm",
+        "pure"
+      ]
+    },
+    {
+      "word": "alce",
+      "num_guesses": 4,
+      "prior": 0.0003105114210562561,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "acme",
+        "alce"
+      ]
+    },
+    {
+      "word": "irta",
+      "num_guesses": 3,
+      "prior": 0.00038188011881773763,
+      "guesses": [
+        "aeri",
+        "tipa",
+        "irta"
+      ]
+    },
+    {
+      "word": "aire",
+      "num_guesses": 2,
+      "prior": 0.00036236094041284487,
+      "guesses": [
+        "aeri",
+        "aire"
+      ]
+    },
+    {
+      "word": "urna",
+      "num_guesses": 4,
+      "prior": 0.0004957202224038165,
+      "guesses": [
+        "aeri",
+        "urto",
+        "luce",
+        "urna"
+      ]
+    },
+    {
+      "word": "vene",
+      "num_guesses": 5,
+      "prior": 0.0006881541054068528,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "pube",
+        "vene"
+      ]
+    },
+    {
+      "word": "aree",
+      "num_guesses": 3,
+      "prior": 0.0008041573052019242,
+      "guesses": [
+        "aeri",
+        "teme",
+        "aree"
+      ]
+    },
+    {
+      "word": "kiwi",
+      "num_guesses": 5,
+      "prior": 0.000284900396571464,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vamp",
+        "kiwi"
+      ]
+    },
+    {
+      "word": "teti",
+      "num_guesses": 4,
+      "prior": 0.0004124298579138591,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "tvtb",
+        "teti"
+      ]
+    },
+    {
+      "word": "logo",
+      "num_guesses": 5,
+      "prior": 0.0004490499124374248,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "baci",
+        "lodo",
+        "logo"
+      ]
+    },
+    {
+      "word": "cime",
+      "num_guesses": 4,
+      "prior": 0.0005608480902766134,
+      "guesses": [
+        "aeri",
+        "simd",
+        "luce",
+        "cime"
+      ]
+    },
+    {
+      "word": "line",
+      "num_guesses": 4,
+      "prior": 0.0005496772593923349,
+      "guesses": [
+        "aeri",
+        "simd",
+        "volt",
+        "line"
+      ]
+    },
+    {
+      "word": "mini",
+      "num_guesses": 5,
+      "prior": 0.0005356210705482654,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "fini",
+        "vamp",
+        "mini"
+      ]
+    },
+    {
+      "word": "tarì",
+      "num_guesses": 5,
+      "prior": 0.0003698310949699751,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "fisò",
+        "vita",
+        "tarì"
+      ]
+    },
+    {
+      "word": "dota",
+      "num_guesses": 5,
+      "prior": 0.0003699946496949513,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "vamp",
+        "dota"
+      ]
+    },
+    {
+      "word": "bega",
+      "num_guesses": 4,
+      "prior": 0.00028540028122393026,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "bega"
+      ]
+    },
+    {
+      "word": "lama",
+      "num_guesses": 4,
+      "prior": 0.0005987500287250297,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "lama"
+      ]
+    },
+    {
+      "word": "deve",
+      "num_guesses": 4,
+      "prior": 0.0012969680236738338,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene",
+        "deve"
+      ]
+    },
+    {
+      "word": "isdn",
+      "num_guesses": 4,
+      "prior": 0.00024073784520548796,
+      "guesses": [
+        "aeri",
+        "silo",
+        "inps",
+        "isdn"
+      ]
+    },
+    {
+      "word": "voco",
+      "num_guesses": 5,
+      "prior": 0.00027091939893616676,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "foco",
+        "voco"
+      ]
+    },
+    {
+      "word": "peni",
+      "num_guesses": 6,
+      "prior": 0.0003352161947590748,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "levi",
+        "beni",
+        "geni",
+        "peni"
+      ]
+    },
+    {
+      "word": "musò",
+      "num_guesses": 5,
+      "prior": 0.00011990725486729417,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "uscì",
+        "sudò",
+        "musò"
+      ]
+    },
+    {
+      "word": "urlo",
+      "num_guesses": 4,
+      "prior": 0.0005002270027044046,
+      "guesses": [
+        "aeri",
+        "osto",
+        "lgbt",
+        "urlo"
+      ]
+    },
+    {
+      "word": "noia",
+      "num_guesses": 4,
+      "prior": 0.0006218501994428968,
+      "guesses": [
+        "aeri",
+        "sita",
+        "band",
+        "noia"
+      ]
+    },
+    {
+      "word": "dono",
+      "num_guesses": 5,
+      "prior": 0.000801244917766842,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "dpcm",
+        "isdn",
+        "dono"
+      ]
+    },
+    {
+      "word": "rimi",
+      "num_guesses": 4,
+      "prior": 0.0002983646307374563,
+      "guesses": [
+        "aeri",
+        "urto",
+        "modo",
+        "rimi"
+      ]
+    },
+    {
+      "word": "zuma",
+      "num_guesses": 5,
+      "prior": 0.00020994643685156664,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "dpef",
+        "zuma"
+      ]
+    },
+    {
+      "word": "zine",
+      "num_guesses": 5,
+      "prior": 0.0002060175374693762,
+      "guesses": [
+        "aeri",
+        "simd",
+        "volt",
+        "fine",
+        "zine"
+      ]
+    },
+    {
+      "word": "melò",
+      "num_guesses": 5,
+      "prior": 0.00020165393556570739,
+      "guesses": [
+        "aeri",
+        "slot",
+        "levò",
+        "mpeg",
+        "melò"
+      ]
+    },
+    {
+      "word": "spia",
+      "num_guesses": 4,
+      "prior": 0.0005378117650060732,
+      "guesses": [
+        "aeri",
+        "sita",
+        "poco",
+        "spia"
+      ]
+    },
+    {
+      "word": "mila",
+      "num_guesses": 5,
+      "prior": 0.0008525889818972075,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "lima",
+        "mila"
+      ]
+    },
+    {
+      "word": "game",
+      "num_guesses": 5,
+      "prior": 0.00037351710885015493,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "mele",
+        "gode",
+        "game"
+      ]
+    },
+    {
+      "word": "cuci",
+      "num_guesses": 4,
+      "prior": 0.0002602672908080933,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lido",
+        "cuci"
+      ]
+    },
+    {
+      "word": "segò",
+      "num_guesses": 4,
+      "prior": 0.00021892940429403494,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dyne",
+        "segò"
+      ]
+    },
+    {
+      "word": "mmol",
+      "num_guesses": 4,
+      "prior": 0.0002489033243972933,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "blog",
+        "mmol"
+      ]
+    },
+    {
+      "word": "muri",
+      "num_guesses": 3,
+      "prior": 0.0006804056229117175,
+      "guesses": [
+        "aeri",
+        "timo",
+        "muri"
+      ]
+    },
+    {
+      "word": "sede",
+      "num_guesses": 4,
+      "prior": 0.0010856803050769022,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dyne",
+        "sede"
+      ]
+    },
+    {
+      "word": "tale",
+      "num_guesses": 4,
+      "prior": 0.0013826573295976563,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "golf",
+        "tale"
+      ]
+    },
+    {
+      "word": "admo",
+      "num_guesses": 5,
+      "prior": 0.00015812168299757332,
+      "guesses": [
+        "aeri",
+        "slot",
+        "anno",
+        "ambo",
+        "admo"
+      ]
+    },
+    {
+      "word": "beat",
+      "num_guesses": 4,
+      "prior": 0.0004120629483361578,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tema",
+        "beat"
+      ]
+    },
+    {
+      "word": "cene",
+      "num_guesses": 3,
+      "prior": 0.0004455503060006961,
+      "guesses": [
+        "aeri",
+        "slot",
+        "cene"
+      ]
+    },
+    {
+      "word": "urla",
+      "num_guesses": 4,
+      "prior": 0.0005216811464827213,
+      "guesses": [
+        "aeri",
+        "urto",
+        "luce",
+        "urla"
+      ]
+    },
+    {
+      "word": "oblò",
+      "num_guesses": 3,
+      "prior": 0.0002976881863572893,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "oblò"
+      ]
+    },
+    {
+      "word": "sane",
+      "num_guesses": 3,
+      "prior": 0.0005335438744800298,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "sane"
+      ]
+    },
+    {
+      "word": "idra",
+      "num_guesses": 3,
+      "prior": 0.0003774866560358127,
+      "guesses": [
+        "aeri",
+        "iptv",
+        "idra"
+      ]
+    },
+    {
+      "word": "leva",
+      "num_guesses": 4,
+      "prior": 0.0007358036707001358,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "lgbt",
+        "leva"
+      ]
+    },
+    {
+      "word": "ugna",
+      "num_guesses": 4,
+      "prior": 0.0003137425689244834,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "ulta",
+        "ugna"
+      ]
+    },
+    {
+      "word": "ruba",
+      "num_guesses": 4,
+      "prior": 0.00045483891998807416,
+      "guesses": [
+        "aeri",
+        "urto",
+        "gaba",
+        "ruba"
+      ]
+    },
+    {
+      "word": "otta",
+      "num_guesses": 5,
+      "prior": 0.00034568997952989637,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "dato",
+        "otta"
+      ]
+    },
+    {
+      "word": "noio",
+      "num_guesses": 4,
+      "prior": 0.0001963487115764081,
+      "guesses": [
+        "aeri",
+        "silo",
+        "dono",
+        "noio"
+      ]
+    },
+    {
+      "word": "volt",
+      "num_guesses": 3,
+      "prior": 0.00044572559137825193,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "volt"
+      ]
+    },
+    {
+      "word": "pani",
+      "num_guesses": 4,
+      "prior": 0.0005106764015373698,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "ampi",
+        "pani"
+      ]
+    },
+    {
+      "word": "zulu",
+      "num_guesses": 4,
+      "prior": 0.0002647829210539245,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "ipzs",
+        "zulu"
+      ]
+    },
+    {
+      "word": "meri",
+      "num_guesses": 4,
+      "prior": 0.00046679259382810816,
+      "guesses": [
+        "aeri",
+        "inps",
+        "scmt",
+        "meri"
+      ]
+    },
+    {
+      "word": "dram",
+      "num_guesses": 5,
+      "prior": 0.00031847170480383863,
+      "guesses": [
+        "aeri",
+        "urto",
+        "gran",
+        "dpcm",
+        "dram"
+      ]
+    },
+    {
+      "word": "lgbt",
+      "num_guesses": 3,
+      "prior": 0.0002211348567143757,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "lgbt"
+      ]
+    },
+    {
+      "word": "aero",
+      "num_guesses": 3,
+      "prior": 0.0003496249707592912,
+      "guesses": [
+        "aeri",
+        "come",
+        "aero"
+      ]
+    },
+    {
+      "word": "papa",
+      "num_guesses": 6,
+      "prior": 0.0010326768955590865,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "hdtv",
+        "gaba",
+        "papa"
+      ]
+    },
+    {
+      "word": "oled",
+      "num_guesses": 4,
+      "prior": 0.00015083542622775504,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "elfe",
+        "oled"
+      ]
+    },
+    {
+      "word": "lodi",
+      "num_guesses": 4,
+      "prior": 0.0007283804033767116,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mpls",
+        "lodi"
+      ]
+    },
+    {
+      "word": "mali",
+      "num_guesses": 4,
+      "prior": 0.0007584037277505373,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "vamp",
+        "mali"
+      ]
+    },
+    {
+      "word": "boxe",
+      "num_guesses": 5,
+      "prior": 0.0003294876081062272,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "dpcm",
+        "volt",
+        "boxe"
+      ]
+    },
+    {
+      "word": "tofu",
+      "num_guesses": 4,
+      "prior": 0.00029500916803844757,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "muse",
+        "tofu"
+      ]
+    },
+    {
+      "word": "marò",
+      "num_guesses": 5,
+      "prior": 0.0002513016502179213,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "fisò",
+        "tvtb",
+        "marò"
+      ]
+    },
+    {
+      "word": "dika",
+      "num_guesses": 5,
+      "prior": 0.00016778063267310967,
+      "guesses": [
+        "aeri",
+        "sita",
+        "dpcm",
+        "vago",
+        "dika"
+      ]
+    },
+    {
+      "word": "apud",
+      "num_guesses": 4,
+      "prior": 0.0005856023466233441,
+      "guesses": [
+        "aeri",
+        "slot",
+        "anda",
+        "apud"
+      ]
+    },
+    {
+      "word": "gore",
+      "num_guesses": 3,
+      "prior": 0.0003889713431245843,
+      "guesses": [
+        "aeri",
+        "muco",
+        "gore"
+      ]
+    },
+    {
+      "word": "vota",
+      "num_guesses": 5,
+      "prior": 0.0004751846768097346,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "glbt",
+        "vamp",
+        "vota"
+      ]
+    },
+    {
+      "word": "goth",
+      "num_guesses": 5,
+      "prior": 0.0002830116194721584,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "penò",
+        "host",
+        "goth"
+      ]
+    },
+    {
+      "word": "anco",
+      "num_guesses": 4,
+      "prior": 0.0008495596760056296,
+      "guesses": [
+        "aeri",
+        "slot",
+        "anno",
+        "anco"
+      ]
+    },
+    {
+      "word": "pupa",
+      "num_guesses": 5,
+      "prior": 0.00034969190948023636,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "glbt",
+        "pupa"
+      ]
+    },
+    {
+      "word": "vaga",
+      "num_guesses": 6,
+      "prior": 0.0006065151152721965,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "mula",
+        "hdtv",
+        "fava",
+        "vaga"
+      ]
+    },
+    {
+      "word": "gora",
+      "num_guesses": 4,
+      "prior": 0.0003822024974873635,
+      "guesses": [
+        "aeri",
+        "dopa",
+        "mmhg",
+        "gora"
+      ]
+    },
+    {
+      "word": "raio",
+      "num_guesses": 4,
+      "prior": 0.00028070571847020506,
+      "guesses": [
+        "aeri",
+        "tipa",
+        "raid",
+        "raio"
+      ]
+    },
+    {
+      "word": "veti",
+      "num_guesses": 4,
+      "prior": 0.00031651875010196633,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "tvtb",
+        "veti"
+      ]
+    },
+    {
+      "word": "mimi",
+      "num_guesses": 5,
+      "prior": 0.0004164371685051764,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "lift",
+        "vamp",
+        "mimi"
+      ]
+    },
+    {
+      "word": "alta",
+      "num_guesses": 3,
+      "prior": 0.0009345890552950602,
+      "guesses": [
+        "aeri",
+        "slot",
+        "alta"
+      ]
+    },
+    {
+      "word": "tema",
+      "num_guesses": 3,
+      "prior": 0.0009647500732433802,
+      "guesses": [
+        "aeri",
+        "ntsc",
+        "tema"
+      ]
+    },
+    {
+      "word": "citi",
+      "num_guesses": 4,
+      "prior": 0.0004017615360762919,
+      "guesses": [
+        "aeri",
+        "nocs",
+        "tubo",
+        "citi"
+      ]
+    },
+    {
+      "word": "teco",
+      "num_guesses": 4,
+      "prior": 0.0005248222804921525,
+      "guesses": [
+        "aeri",
+        "slot",
+        "dpcm",
+        "teco"
+      ]
+    },
+    {
+      "word": "duco",
+      "num_guesses": 5,
+      "prior": 0.00025641837617118926,
+      "guesses": [
+        "aeri",
+        "tolo",
+        "bdsm",
+        "nudo",
+        "duco"
+      ]
+    },
+    {
+      "word": "aera",
+      "num_guesses": 3,
+      "prior": 0.000299379260729619,
+      "guesses": [
+        "aeri",
+        "come",
+        "aera"
+      ]
+    },
+    {
+      "word": "ceti",
+      "num_guesses": 3,
+      "prior": 0.0005803800476883976,
+      "guesses": [
+        "aeri",
+        "scmt",
+        "ceti"
+      ]
+    }
+  ]
+}

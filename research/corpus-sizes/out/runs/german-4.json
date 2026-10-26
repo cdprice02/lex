@@ -1,0 +1,5814 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T04:38:32.39798Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "raes",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 4,
+    "dictionary_length": 4293,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "543f314a9e864cab0dba1b88bed6c88be45475ed834532149ef5cad8c45f3d0c",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 4.50799999999997,
+      "failure_rate": 0.002,
+      "histogram": {
+        "2": 0.008,
+        "3": 0.11400000000000009,
+        "4": 0.34200000000000025,
+        "5": 0.43600000000000033,
+        "6": 0.09800000000000007,
+        "7": 0.002
+      }
+    },
+    "prior": {
+      "mean": 4.28907534694665,
+      "failure_rate": 0.0009567268573195084,
+      "histogram": {
+        "2": 0.01781404642114929,
+        "3": 0.1718581785963754,
+        "4": 0.37743100919327294,
+        "5": 0.3701886400504008,
+        "6": 0.06175139888148163,
+        "7": 0.0009567268573195084
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "krym",
+      "num_guesses": 5,
+      "prior": 0.0001575703281035111,
+      "guesses": [
+        "raes",
+        "gout",
+        "find",
+        "wärm",
+        "krym"
+      ]
+    },
+    {
+      "word": "etas",
+      "num_guesses": 3,
+      "prior": 0.00014543219026022592,
+      "guesses": [
+        "raes",
+        "eakv",
+        "etas"
+      ]
+    },
+    {
+      "word": "hdmi",
+      "num_guesses": 4,
+      "prior": 0.00014010619625335043,
+      "guesses": [
+        "raes",
+        "holt",
+        "fing",
+        "hdmi"
+      ]
+    },
+    {
+      "word": "shit",
+      "num_guesses": 3,
+      "prior": 0.00020451252774027947,
+      "guesses": [
+        "raes",
+        "silt",
+        "shit"
+      ]
+    },
+    {
+      "word": "raid",
+      "num_guesses": 4,
+      "prior": 0.00019237137025586513,
+      "guesses": [
+        "raes",
+        "munt",
+        "cidp",
+        "raid"
+      ]
+    },
+    {
+      "word": "liek",
+      "num_guesses": 4,
+      "prior": 0.00014711769255034446,
+      "guesses": [
+        "raes",
+        "lind",
+        "kfbg",
+        "liek"
+      ]
+    },
+    {
+      "word": "dune",
+      "num_guesses": 5,
+      "prior": 0.00017873361115005042,
+      "guesses": [
+        "raes",
+        "hint",
+        "weed",
+        "räum",
+        "dune"
+      ]
+    },
+    {
+      "word": "löst",
+      "num_guesses": 4,
+      "prior": 0.00047536469060479236,
+      "guesses": [
+        "raes",
+        "silt",
+        "lust",
+        "löst"
+      ]
+    },
+    {
+      "word": "hain",
+      "num_guesses": 5,
+      "prior": 0.000315631648980989,
+      "guesses": [
+        "raes",
+        "html",
+        "fund",
+        "hahn",
+        "hain"
+      ]
+    },
+    {
+      "word": "doxe",
+      "num_guesses": 6,
+      "prior": 0.0001050409932927816,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "dome",
+        "dope",
+        "doxe"
+      ]
+    },
+    {
+      "word": "hemm",
+      "num_guesses": 6,
+      "prior": 0.00017441171520886343,
+      "guesses": [
+        "raes",
+        "hint",
+        "fehl",
+        "bude",
+        "heck",
+        "hemm"
+      ]
+    },
+    {
+      "word": "ards",
+      "num_guesses": 4,
+      "prior": 0.00018164014845116635,
+      "guesses": [
+        "raes",
+        "grit",
+        "grad",
+        "ards"
+      ]
+    },
+    {
+      "word": "axis",
+      "num_guesses": 6,
+      "prior": 0.0002160979811792077,
+      "guesses": [
+        "raes",
+        "blau",
+        "mint",
+        "svcd",
+        "fuss",
+        "axis"
+      ]
+    },
+    {
+      "word": "godl",
+      "num_guesses": 5,
+      "prior": 0.000116547767921543,
+      "guesses": [
+        "raes",
+        "holt",
+        "look",
+        "dobl",
+        "godl"
+      ]
+    },
+    {
+      "word": "japs",
+      "num_guesses": 6,
+      "prior": 0.00011833550800315975,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "pick",
+        "soja",
+        "japs"
+      ]
+    },
+    {
+      "word": "sods",
+      "num_guesses": 5,
+      "prior": 0.00008602336560329972,
+      "guesses": [
+        "raes",
+        "moin",
+        "lgbt",
+        "kpch",
+        "sods"
+      ]
+    },
+    {
+      "word": "dice",
+      "num_guesses": 5,
+      "prior": 0.00019544269316994456,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmkv",
+        "epdm",
+        "dice"
+      ]
+    },
+    {
+      "word": "vesa",
+      "num_guesses": 4,
+      "prior": 0.00012293777110440132,
+      "guesses": [
+        "raes",
+        "gesa",
+        "mesa",
+        "vesa"
+      ]
+    },
+    {
+      "word": "zähm",
+      "num_guesses": 5,
+      "prior": 0.00009787907687699655,
+      "guesses": [
+        "raes",
+        "holt",
+        "mick",
+        "gmbh",
+        "zähm"
+      ]
+    },
+    {
+      "word": "beil",
+      "num_guesses": 5,
+      "prior": 0.00034101012753405666,
+      "guesses": [
+        "raes",
+        "hint",
+        "gwdl",
+        "beck",
+        "beil"
+      ]
+    },
+    {
+      "word": "tels",
+      "num_guesses": 4,
+      "prior": 0.00019485774882148807,
+      "guesses": [
+        "raes",
+        "lenk",
+        "wogt",
+        "tels"
+      ]
+    },
+    {
+      "word": "fbas",
+      "num_guesses": 4,
+      "prior": 0.00010488780652909107,
+      "guesses": [
+        "raes",
+        "blau",
+        "also",
+        "fbas"
+      ]
+    },
+    {
+      "word": "fäht",
+      "num_guesses": 5,
+      "prior": 0.00009193135377071397,
+      "guesses": [
+        "raes",
+        "holt",
+        "bäum",
+        "näht",
+        "fäht"
+      ]
+    },
+    {
+      "word": "ahns",
+      "num_guesses": 5,
+      "prior": 0.00013026349634121534,
+      "guesses": [
+        "raes",
+        "blau",
+        "mint",
+        "anns",
+        "ahns"
+      ]
+    },
+    {
+      "word": "kars",
+      "num_guesses": 4,
+      "prior": 0.00019617632747764006,
+      "guesses": [
+        "raes",
+        "ambl",
+        "spuk",
+        "kars"
+      ]
+    },
+    {
+      "word": "rewe",
+      "num_guesses": 5,
+      "prior": 0.0001877079286599474,
+      "guesses": [
+        "raes",
+        "tein",
+        "bude",
+        "wphg",
+        "rewe"
+      ]
+    },
+    {
+      "word": "pstg",
+      "num_guesses": 5,
+      "prior": 0.00016744289382194432,
+      "guesses": [
+        "raes",
+        "silt",
+        "guck",
+        "bvwg",
+        "pstg"
+      ]
+    },
+    {
+      "word": "reck",
+      "num_guesses": 5,
+      "prior": 0.00023794745488186039,
+      "guesses": [
+        "raes",
+        "tein",
+        "bude",
+        "rech",
+        "reck"
+      ]
+    },
+    {
+      "word": "ober",
+      "num_guesses": 4,
+      "prior": 0.0004872943454885213,
+      "guesses": [
+        "raes",
+        "brif",
+        "über",
+        "ober"
+      ]
+    },
+    {
+      "word": "adle",
+      "num_guesses": 4,
+      "prior": 0.0001313146571372388,
+      "guesses": [
+        "raes",
+        "almt",
+        "duce",
+        "adle"
+      ]
+    },
+    {
+      "word": "gags",
+      "num_guesses": 6,
+      "prior": 0.0001744627600180775,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "body",
+        "kjhg",
+        "gags"
+      ]
+    },
+    {
+      "word": "ldap",
+      "num_guesses": 5,
+      "prior": 0.00015930751724264178,
+      "guesses": [
+        "raes",
+        "anal",
+        "fkpg",
+        "olap",
+        "ldap"
+      ]
+    },
+    {
+      "word": "zwei",
+      "num_guesses": 3,
+      "prior": 0.0009147702188157876,
+      "guesses": [
+        "raes",
+        "lind",
+        "zwei"
+      ]
+    },
+    {
+      "word": "sera",
+      "num_guesses": 2,
+      "prior": 0.0003160958611918798,
+      "guesses": [
+        "raes",
+        "sera"
+      ]
+    },
+    {
+      "word": "bowu",
+      "num_guesses": 6,
+      "prior": 0.0000582423561421503,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "pogo",
+        "baum",
+        "bowu"
+      ]
+    },
+    {
+      "word": "peck",
+      "num_guesses": 6,
+      "prior": 0.00021206061854308738,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "webe",
+        "kopf",
+        "peck"
+      ]
+    },
+    {
+      "word": "salb",
+      "num_guesses": 5,
+      "prior": 0.00015670239575791013,
+      "guesses": [
+        "raes",
+        "stgh",
+        "mild",
+        "salz",
+        "salb"
+      ]
+    },
+    {
+      "word": "tutu",
+      "num_guesses": 5,
+      "prior": 0.0001682424482192191,
+      "guesses": [
+        "raes",
+        "holt",
+        "tupi",
+        "fibu",
+        "tutu"
+      ]
+    },
+    {
+      "word": "nerz",
+      "num_guesses": 5,
+      "prior": 0.00017587077631359921,
+      "guesses": [
+        "raes",
+        "hete",
+        "nkwd",
+        "nerv",
+        "nerz"
+      ]
+    },
+    {
+      "word": "irta",
+      "num_guesses": 3,
+      "prior": 0.0001023973781971403,
+      "guesses": [
+        "raes",
+        "grat",
+        "irta"
+      ]
+    },
+    {
+      "word": "kitz",
+      "num_guesses": 5,
+      "prior": 0.00017301727695240567,
+      "guesses": [
+        "raes",
+        "holt",
+        "tupi",
+        "fckw",
+        "kitz"
+      ]
+    },
+    {
+      "word": "damu",
+      "num_guesses": 4,
+      "prior": 0.0001153081179768583,
+      "guesses": [
+        "raes",
+        "html",
+        "mdma",
+        "damu"
+      ]
+    },
+    {
+      "word": "kwaß",
+      "num_guesses": 5,
+      "prior": 0.00010998764940649063,
+      "guesses": [
+        "raes",
+        "anal",
+        "tupi",
+        "boah",
+        "kwaß"
+      ]
+    },
+    {
+      "word": "tabi",
+      "num_guesses": 6,
+      "prior": 0.00013144208926274052,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "pica",
+        "taxi",
+        "tabi"
+      ]
+    },
+    {
+      "word": "flog",
+      "num_guesses": 5,
+      "prior": 0.00038164702501327253,
+      "guesses": [
+        "raes",
+        "holt",
+        "bloß",
+        "gupf",
+        "flog"
+      ]
+    },
+    {
+      "word": "dons",
+      "num_guesses": 5,
+      "prior": 0.00018840975622574303,
+      "guesses": [
+        "raes",
+        "moin",
+        "stgb",
+        "kdvg",
+        "dons"
+      ]
+    },
+    {
+      "word": "teff",
+      "num_guesses": 5,
+      "prior": 0.00012658495955891478,
+      "guesses": [
+        "raes",
+        "hint",
+        "tobe",
+        "poft",
+        "teff"
+      ]
+    },
+    {
+      "word": "vars",
+      "num_guesses": 4,
+      "prior": 0.00013391679563667507,
+      "guesses": [
+        "raes",
+        "ambl",
+        "spuk",
+        "vars"
+      ]
+    },
+    {
+      "word": "lief",
+      "num_guesses": 4,
+      "prior": 0.0004890771926907622,
+      "guesses": [
+        "raes",
+        "lind",
+        "kfbg",
+        "lief"
+      ]
+    },
+    {
+      "word": "acab",
+      "num_guesses": 4,
+      "prior": 0.00009308442527717587,
+      "guesses": [
+        "raes",
+        "anal",
+        "svcd",
+        "acab"
+      ]
+    },
+    {
+      "word": "velo",
+      "num_guesses": 5,
+      "prior": 0.00018228397787356746,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "olle",
+        "velo"
+      ]
+    },
+    {
+      "word": "mtla",
+      "num_guesses": 4,
+      "prior": 0.000077094035597451,
+      "guesses": [
+        "raes",
+        "anal",
+        "gumo",
+        "mtla"
+      ]
+    },
+    {
+      "word": "bahö",
+      "num_guesses": 5,
+      "prior": 0.0000556679889433269,
+      "guesses": [
+        "raes",
+        "html",
+        "ndbz",
+        "bach",
+        "bahö"
+      ]
+    },
+    {
+      "word": "mdbb",
+      "num_guesses": 5,
+      "prior": 0.00007272129025020099,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "jump",
+        "mdbb"
+      ]
+    },
+    {
+      "word": "whip",
+      "num_guesses": 5,
+      "prior": 0.00014478211766864784,
+      "guesses": [
+        "raes",
+        "holt",
+        "mick",
+        "whig",
+        "whip"
+      ]
+    },
+    {
+      "word": "glos",
+      "num_guesses": 5,
+      "prior": 0.0001900270734669245,
+      "guesses": [
+        "raes",
+        "moin",
+        "luft",
+        "klos",
+        "glos"
+      ]
+    },
+    {
+      "word": "zage",
+      "num_guesses": 6,
+      "prior": 0.00017650515385637824,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "nggw",
+        "hpvs",
+        "jage",
+        "zage"
+      ]
+    },
+    {
+      "word": "flan",
+      "num_guesses": 5,
+      "prior": 0.0001514363426254708,
+      "guesses": [
+        "raes",
+        "anal",
+        "puck",
+        "wlan",
+        "flan"
+      ]
+    },
+    {
+      "word": "kiek",
+      "num_guesses": 6,
+      "prior": 0.00015517868900464705,
+      "guesses": [
+        "raes",
+        "lind",
+        "gmbh",
+        "piek",
+        "wiek",
+        "kiek"
+      ]
+    },
+    {
+      "word": "sums",
+      "num_guesses": 4,
+      "prior": 0.00015235759341480012,
+      "guesses": [
+        "raes",
+        "moin",
+        "buch",
+        "sums"
+      ]
+    },
+    {
+      "word": "kris",
+      "num_guesses": 3,
+      "prior": 0.00021555092320624654,
+      "guesses": [
+        "raes",
+        "korb",
+        "kris"
+      ]
+    },
+    {
+      "word": "soul",
+      "num_guesses": 4,
+      "prior": 0.00024890620649395623,
+      "guesses": [
+        "raes",
+        "silt",
+        "spul",
+        "soul"
+      ]
+    },
+    {
+      "word": "offb",
+      "num_guesses": 5,
+      "prior": 0.0002158719032534705,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ovum",
+        "offb"
+      ]
+    },
+    {
+      "word": "demo",
+      "num_guesses": 4,
+      "prior": 0.00023984957569795967,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "demo"
+      ]
+    },
+    {
+      "word": "agof",
+      "num_guesses": 4,
+      "prior": 0.00011675280421733081,
+      "guesses": [
+        "raes",
+        "anal",
+        "hugo",
+        "agof"
+      ]
+    },
+    {
+      "word": "laib",
+      "num_guesses": 4,
+      "prior": 0.00021823188963706437,
+      "guesses": [
+        "raes",
+        "html",
+        "bild",
+        "laib"
+      ]
+    },
+    {
+      "word": "zugs",
+      "num_guesses": 5,
+      "prior": 0.00021849122288416657,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "bfsg",
+        "zugs"
+      ]
+    },
+    {
+      "word": "norm",
+      "num_guesses": 4,
+      "prior": 0.00046103564868077445,
+      "guesses": [
+        "raes",
+        "gout",
+        "mund",
+        "norm"
+      ]
+    },
+    {
+      "word": "wadl",
+      "num_guesses": 5,
+      "prior": 0.00012455980141403138,
+      "guesses": [
+        "raes",
+        "html",
+        "wolf",
+        "waal",
+        "wadl"
+      ]
+    },
+    {
+      "word": "sküs",
+      "num_guesses": 5,
+      "prior": 0.00008396008231332273,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "küss",
+        "sküs"
+      ]
+    },
+    {
+      "word": "gase",
+      "num_guesses": 3,
+      "prior": 0.00042721354576305293,
+      "guesses": [
+        "raes",
+        "bfsg",
+        "gase"
+      ]
+    },
+    {
+      "word": "cent",
+      "num_guesses": 3,
+      "prior": 0.00033055793556124717,
+      "guesses": [
+        "raes",
+        "hint",
+        "cent"
+      ]
+    },
+    {
+      "word": "töne",
+      "num_guesses": 4,
+      "prior": 0.0004388910862047183,
+      "guesses": [
+        "raes",
+        "hint",
+        "oute",
+        "töne"
+      ]
+    },
+    {
+      "word": "wifo",
+      "num_guesses": 5,
+      "prior": 0.00017453712823503996,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "bmbf",
+        "wifo"
+      ]
+    },
+    {
+      "word": "agra",
+      "num_guesses": 3,
+      "prior": 0.00020920680838922595,
+      "guesses": [
+        "raes",
+        "grat",
+        "agra"
+      ]
+    },
+    {
+      "word": "taft",
+      "num_guesses": 5,
+      "prior": 0.00020808459128363155,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "fkpg",
+        "taft"
+      ]
+    },
+    {
+      "word": "hptm",
+      "num_guesses": 4,
+      "prior": 0.00014753868409111496,
+      "guesses": [
+        "raes",
+        "holt",
+        "iptv",
+        "hptm"
+      ]
+    },
+    {
+      "word": "rede",
+      "num_guesses": 4,
+      "prior": 0.0006585657214019096,
+      "guesses": [
+        "raes",
+        "tein",
+        "bude",
+        "rede"
+      ]
+    },
+    {
+      "word": "smok",
+      "num_guesses": 5,
+      "prior": 0.00010378960507384246,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "smog",
+        "smok"
+      ]
+    },
+    {
+      "word": "paps",
+      "num_guesses": 6,
+      "prior": 0.00020939857489038266,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "pick",
+        "grad",
+        "paps"
+      ]
+    },
+    {
+      "word": "kipp",
+      "num_guesses": 5,
+      "prior": 0.00022015138076408947,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "fckw",
+        "kipp"
+      ]
+    },
+    {
+      "word": "tims",
+      "num_guesses": 4,
+      "prior": 0.00019536350888542186,
+      "guesses": [
+        "raes",
+        "moin",
+        "sekt",
+        "tims"
+      ]
+    },
+    {
+      "word": "wawe",
+      "num_guesses": 6,
+      "prior": 0.00009487199836957758,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "kpch",
+        "faxe",
+        "wawe"
+      ]
+    },
+    {
+      "word": "bmbf",
+      "num_guesses": 5,
+      "prior": 0.00022452086195662017,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "bmbf"
+      ]
+    },
+    {
+      "word": "jein",
+      "num_guesses": 5,
+      "prior": 0.0001698123302230465,
+      "guesses": [
+        "raes",
+        "hint",
+        "nkwd",
+        "bpjm",
+        "jein"
+      ]
+    },
+    {
+      "word": "offs",
+      "num_guesses": 4,
+      "prior": 0.00018650560290683934,
+      "guesses": [
+        "raes",
+        "moin",
+        "luft",
+        "offs"
+      ]
+    },
+    {
+      "word": "legt",
+      "num_guesses": 4,
+      "prior": 0.0005490249752682019,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmbg",
+        "legt"
+      ]
+    },
+    {
+      "word": "pfui",
+      "num_guesses": 5,
+      "prior": 0.00025524998422675775,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "bubi",
+        "pfui"
+      ]
+    },
+    {
+      "word": "kett",
+      "num_guesses": 6,
+      "prior": 0.0001757255738436806,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmbg",
+        "fett",
+        "pkws",
+        "kett"
+      ]
+    },
+    {
+      "word": "blöß",
+      "num_guesses": 5,
+      "prior": 0.00009430090524785079,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "blök",
+        "blöß"
+      ]
+    },
+    {
+      "word": "dgse",
+      "num_guesses": 7,
+      "prior": 0.00010955543307239986,
+      "guesses": [
+        "raes",
+        "seit",
+        "esbo",
+        "mädl",
+        "düse",
+        "döse",
+        "dgse"
+      ]
+    },
+    {
+      "word": "scnr",
+      "num_guesses": 4,
+      "prior": 0.00007605763009135638,
+      "guesses": [
+        "raes",
+        "stur",
+        "phon",
+        "scnr"
+      ]
+    },
+    {
+      "word": "zank",
+      "num_guesses": 5,
+      "prior": 0.00025625270051302606,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "bank",
+        "zank"
+      ]
+    },
+    {
+      "word": "lama",
+      "num_guesses": 4,
+      "prior": 0.00027340407466063275,
+      "guesses": [
+        "raes",
+        "html",
+        "pmma",
+        "lama"
+      ]
+    },
+    {
+      "word": "hüls",
+      "num_guesses": 5,
+      "prior": 0.00020709540176105305,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "dsls",
+        "hüls"
+      ]
+    },
+    {
+      "word": "pips",
+      "num_guesses": 5,
+      "prior": 0.00015702996288647337,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "also",
+        "pips"
+      ]
+    },
+    {
+      "word": "bear",
+      "num_guesses": 3,
+      "prior": 0.0002415085579894826,
+      "guesses": [
+        "raes",
+        "germ",
+        "bear"
+      ]
+    },
+    {
+      "word": "stad",
+      "num_guesses": 4,
+      "prior": 0.0002808168871729282,
+      "guesses": [
+        "raes",
+        "spot",
+        "fdgb",
+        "stad"
+      ]
+    },
+    {
+      "word": "tobe",
+      "num_guesses": 3,
+      "prior": 0.00018596458713634038,
+      "guesses": [
+        "raes",
+        "hint",
+        "tobe"
+      ]
+    },
+    {
+      "word": "ergo",
+      "num_guesses": 4,
+      "prior": 0.00031394779296521017,
+      "guesses": [
+        "raes",
+        "hete",
+        "gurr",
+        "ergo"
+      ]
+    },
+    {
+      "word": "mußt",
+      "num_guesses": 5,
+      "prior": 0.00039487210946989354,
+      "guesses": [
+        "raes",
+        "holt",
+        "fibu",
+        "mund",
+        "mußt"
+      ]
+    },
+    {
+      "word": "bubi",
+      "num_guesses": 4,
+      "prior": 0.00020877957533298503,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "bubi"
+      ]
+    },
+    {
+      "word": "ighs",
+      "num_guesses": 5,
+      "prior": 0.00004680748574820187,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "ichs",
+        "ighs"
+      ]
+    },
+    {
+      "word": "well",
+      "num_guesses": 5,
+      "prior": 0.00034657406132555644,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "wölb",
+        "well"
+      ]
+    },
+    {
+      "word": "digi",
+      "num_guesses": 5,
+      "prior": 0.00014098582557296345,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "dixi",
+        "digi"
+      ]
+    },
+    {
+      "word": "gala",
+      "num_guesses": 5,
+      "prior": 0.0002321896385156929,
+      "guesses": [
+        "raes",
+        "html",
+        "bild",
+        "fckw",
+        "gala"
+      ]
+    },
+    {
+      "word": "mähl",
+      "num_guesses": 5,
+      "prior": 0.00015684348265348477,
+      "guesses": [
+        "raes",
+        "holt",
+        "bühl",
+        "zwäg",
+        "mähl"
+      ]
+    },
+    {
+      "word": "stuf",
+      "num_guesses": 5,
+      "prior": 0.00015922201883953815,
+      "guesses": [
+        "raes",
+        "silt",
+        "uvpg",
+        "kopf",
+        "stuf"
+      ]
+    },
+    {
+      "word": "jodo",
+      "num_guesses": 5,
+      "prior": 0.00013787687010414292,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "judo",
+        "jodo"
+      ]
+    },
+    {
+      "word": "labt",
+      "num_guesses": 5,
+      "prior": 0.00020680564328308843,
+      "guesses": [
+        "raes",
+        "html",
+        "lugt",
+        "laßt",
+        "labt"
+      ]
+    },
+    {
+      "word": "goje",
+      "num_guesses": 4,
+      "prior": 0.00009239312776768595,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "goje"
+      ]
+    },
+    {
+      "word": "pony",
+      "num_guesses": 5,
+      "prior": 0.00024271309524704357,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gvbl",
+        "pony"
+      ]
+    },
+    {
+      "word": "hone",
+      "num_guesses": 4,
+      "prior": 0.0001710854411690985,
+      "guesses": [
+        "raes",
+        "hint",
+        "hüne",
+        "hone"
+      ]
+    },
+    {
+      "word": "juhu",
+      "num_guesses": 6,
+      "prior": 0.0001538701066919421,
+      "guesses": [
+        "raes",
+        "holt",
+        "mick",
+        "wägt",
+        "föhn",
+        "juhu"
+      ]
+    },
+    {
+      "word": "wobt",
+      "num_guesses": 5,
+      "prior": 0.0001019566678573505,
+      "guesses": [
+        "raes",
+        "holt",
+        "bmgf",
+        "tobt",
+        "wobt"
+      ]
+    },
+    {
+      "word": "klee",
+      "num_guesses": 4,
+      "prior": 0.00032689953382467876,
+      "guesses": [
+        "raes",
+        "lind",
+        "blök",
+        "klee"
+      ]
+    },
+    {
+      "word": "zart",
+      "num_guesses": 4,
+      "prior": 0.000368434742958226,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "tkbg",
+        "zart"
+      ]
+    },
+    {
+      "word": "eakv",
+      "num_guesses": 6,
+      "prior": 0.000060370362568383634,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "kpch",
+        "affe",
+        "eakv"
+      ]
+    },
+    {
+      "word": "woge",
+      "num_guesses": 4,
+      "prior": 0.00027093106807511165,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "woge"
+      ]
+    },
+    {
+      "word": "kofr",
+      "num_guesses": 5,
+      "prior": 0.00006570026655430047,
+      "guesses": [
+        "raes",
+        "gout",
+        "mund",
+        "korb",
+        "kofr"
+      ]
+    },
+    {
+      "word": "bfhe",
+      "num_guesses": 5,
+      "prior": 0.00016898910146986965,
+      "guesses": [
+        "raes",
+        "hint",
+        "lege",
+        "bäum",
+        "bfhe"
+      ]
+    },
+    {
+      "word": "wake",
+      "num_guesses": 6,
+      "prior": 0.00020649039190248492,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "kpch",
+        "affe",
+        "wake"
+      ]
+    },
+    {
+      "word": "brav",
+      "num_guesses": 5,
+      "prior": 0.00032355230283928014,
+      "guesses": [
+        "raes",
+        "grat",
+        "funk",
+        "pädo",
+        "brav"
+      ]
+    },
+    {
+      "word": "anns",
+      "num_guesses": 4,
+      "prior": 0.00017311573047765986,
+      "guesses": [
+        "raes",
+        "blau",
+        "mint",
+        "anns"
+      ]
+    },
+    {
+      "word": "beut",
+      "num_guesses": 5,
+      "prior": 0.00022901981098612608,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmbg",
+        "bett",
+        "beut"
+      ]
+    },
+    {
+      "word": "kors",
+      "num_guesses": 3,
+      "prior": 0.0001504966443367697,
+      "guesses": [
+        "raes",
+        "korb",
+        "kors"
+      ]
+    },
+    {
+      "word": "eiße",
+      "num_guesses": 6,
+      "prior": 0.0001056884735119035,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmkv",
+        "epdm",
+        "eibe",
+        "eiße"
+      ]
+    },
+    {
+      "word": "pott",
+      "num_guesses": 5,
+      "prior": 0.0002615592931698199,
+      "guesses": [
+        "raes",
+        "holt",
+        "bmgf",
+        "todt",
+        "pott"
+      ]
+    },
+    {
+      "word": "übte",
+      "num_guesses": 5,
+      "prior": 0.0003582713801463783,
+      "guesses": [
+        "raes",
+        "hint",
+        "tobe",
+        "besä",
+        "übte"
+      ]
+    },
+    {
+      "word": "bald",
+      "num_guesses": 4,
+      "prior": 0.000746588889953687,
+      "guesses": [
+        "raes",
+        "html",
+        "bild",
+        "bald"
+      ]
+    },
+    {
+      "word": "sold",
+      "num_guesses": 4,
+      "prior": 0.0003071997035487204,
+      "guesses": [
+        "raes",
+        "silt",
+        "düdo",
+        "sold"
+      ]
+    },
+    {
+      "word": "dung",
+      "num_guesses": 5,
+      "prior": 0.0003339756187587264,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "dünn",
+        "dung"
+      ]
+    },
+    {
+      "word": "lege",
+      "num_guesses": 5,
+      "prior": 0.0004092789054671948,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "eure",
+        "lege"
+      ]
+    },
+    {
+      "word": "ymca",
+      "num_guesses": 5,
+      "prior": 0.0001506954815422344,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "bmwa",
+        "ymca"
+      ]
+    },
+    {
+      "word": "magi",
+      "num_guesses": 4,
+      "prior": 0.00018728917145190266,
+      "guesses": [
+        "raes",
+        "html",
+        "idun",
+        "magi"
+      ]
+    },
+    {
+      "word": "lima",
+      "num_guesses": 4,
+      "prior": 0.00028806319855584204,
+      "guesses": [
+        "raes",
+        "anal",
+        "gumo",
+        "lima"
+      ]
+    },
+    {
+      "word": "bäre",
+      "num_guesses": 5,
+      "prior": 0.00012008472704919277,
+      "guesses": [
+        "raes",
+        "hete",
+        "gumo",
+        "wirk",
+        "bäre"
+      ]
+    },
+    {
+      "word": "zück",
+      "num_guesses": 6,
+      "prior": 0.00009553220521358844,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "bück",
+        "zück"
+      ]
+    },
+    {
+      "word": "myom",
+      "num_guesses": 5,
+      "prior": 0.0002311530734418858,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ovum",
+        "myom"
+      ]
+    },
+    {
+      "word": "bane",
+      "num_guesses": 4,
+      "prior": 0.00017461220337711757,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "kund",
+        "bane"
+      ]
+    },
+    {
+      "word": "igel",
+      "num_guesses": 4,
+      "prior": 0.00027570521646036017,
+      "guesses": [
+        "raes",
+        "lind",
+        "igbo",
+        "igel"
+      ]
+    },
+    {
+      "word": "apsu",
+      "num_guesses": 3,
+      "prior": 0.00011809350295991266,
+      "guesses": [
+        "raes",
+        "spot",
+        "apsu"
+      ]
+    },
+    {
+      "word": "hupt",
+      "num_guesses": 5,
+      "prior": 0.00014641469868172447,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "kopf",
+        "hupt"
+      ]
+    },
+    {
+      "word": "erbe",
+      "num_guesses": 4,
+      "prior": 0.00044579260649691365,
+      "guesses": [
+        "raes",
+        "hete",
+        "budl",
+        "erbe"
+      ]
+    },
+    {
+      "word": "iban",
+      "num_guesses": 4,
+      "prior": 0.00015957845199917944,
+      "guesses": [
+        "raes",
+        "anal",
+        "wich",
+        "iban"
+      ]
+    },
+    {
+      "word": "wurz",
+      "num_guesses": 5,
+      "prior": 0.00016639596305978392,
+      "guesses": [
+        "raes",
+        "gout",
+        "firm",
+        "kurz",
+        "wurz"
+      ]
+    },
+    {
+      "word": "pars",
+      "num_guesses": 4,
+      "prior": 0.000373422875592778,
+      "guesses": [
+        "raes",
+        "ambl",
+        "spuk",
+        "pars"
+      ]
+    },
+    {
+      "word": "doms",
+      "num_guesses": 3,
+      "prior": 0.0002642745950944619,
+      "guesses": [
+        "raes",
+        "moin",
+        "doms"
+      ]
+    },
+    {
+      "word": "ipod",
+      "num_guesses": 4,
+      "prior": 0.0001939929332830926,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ipod"
+      ]
+    },
+    {
+      "word": "puja",
+      "num_guesses": 5,
+      "prior": 0.00014223424516390798,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "guck",
+        "puja"
+      ]
+    },
+    {
+      "word": "ehst",
+      "num_guesses": 4,
+      "prior": 0.00013948748972121992,
+      "guesses": [
+        "raes",
+        "seit",
+        "esst",
+        "ehst"
+      ]
+    },
+    {
+      "word": "kiba",
+      "num_guesses": 5,
+      "prior": 0.00012509272775423547,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "bvfg",
+        "kiba"
+      ]
+    },
+    {
+      "word": "sang",
+      "num_guesses": 3,
+      "prior": 0.00040474189522009886,
+      "guesses": [
+        "raes",
+        "stgh",
+        "sang"
+      ]
+    },
+    {
+      "word": "syph",
+      "num_guesses": 4,
+      "prior": 0.00021232431692929244,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "syph"
+      ]
+    },
+    {
+      "word": "aber",
+      "num_guesses": 2,
+      "prior": 0.0012399689811524617,
+      "guesses": [
+        "raes",
+        "aber"
+      ]
+    },
+    {
+      "word": "crux",
+      "num_guesses": 4,
+      "prior": 0.00022547766811168915,
+      "guesses": [
+        "raes",
+        "gout",
+        "drum",
+        "crux"
+      ]
+    },
+    {
+      "word": "flak",
+      "num_guesses": 4,
+      "prior": 0.00022357444675876327,
+      "guesses": [
+        "raes",
+        "anal",
+        "fkpg",
+        "flak"
+      ]
+    },
+    {
+      "word": "thun",
+      "num_guesses": 3,
+      "prior": 0.000576456944222288,
+      "guesses": [
+        "raes",
+        "holt",
+        "thun"
+      ]
+    },
+    {
+      "word": "ebro",
+      "num_guesses": 5,
+      "prior": 0.00020999560121416104,
+      "guesses": [
+        "raes",
+        "hete",
+        "gurr",
+        "emrk",
+        "ebro"
+      ]
+    },
+    {
+      "word": "hanf",
+      "num_guesses": 4,
+      "prior": 0.00029555024512981884,
+      "guesses": [
+        "raes",
+        "html",
+        "fund",
+        "hanf"
+      ]
+    },
+    {
+      "word": "kode",
+      "num_guesses": 5,
+      "prior": 0.00021828958790508378,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "mick",
+        "kode"
+      ]
+    },
+    {
+      "word": "hofe",
+      "num_guesses": 5,
+      "prior": 0.000442245871760779,
+      "guesses": [
+        "raes",
+        "hint",
+        "fehl",
+        "wozu",
+        "hofe"
+      ]
+    },
+    {
+      "word": "lüde",
+      "num_guesses": 5,
+      "prior": 0.00017689853935021319,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "lude",
+        "lüde"
+      ]
+    },
+    {
+      "word": "saßt",
+      "num_guesses": 5,
+      "prior": 0.00019258756217083113,
+      "guesses": [
+        "raes",
+        "stgh",
+        "mutz",
+        "fraß",
+        "saßt"
+      ]
+    },
+    {
+      "word": "gesa",
+      "num_guesses": 2,
+      "prior": 0.0002139957625895351,
+      "guesses": [
+        "raes",
+        "gesa"
+      ]
+    },
+    {
+      "word": "dant",
+      "num_guesses": 6,
+      "prior": 0.0001842085197095468,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "wikg",
+        "fant",
+        "dant"
+      ]
+    },
+    {
+      "word": "habe",
+      "num_guesses": 3,
+      "prior": 0.0009342982068459273,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "habe"
+      ]
+    },
+    {
+      "word": "czar",
+      "num_guesses": 4,
+      "prior": 0.000214711755957641,
+      "guesses": [
+        "raes",
+        "grat",
+        "zock",
+        "czar"
+      ]
+    },
+    {
+      "word": "juju",
+      "num_guesses": 6,
+      "prior": 0.00012807339012052836,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "cvjm",
+        "juju"
+      ]
+    },
+    {
+      "word": "gufe",
+      "num_guesses": 5,
+      "prior": 0.00009018490646624555,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "gebe",
+        "gufe"
+      ]
+    },
+    {
+      "word": "bies",
+      "num_guesses": 5,
+      "prior": 0.00016222966748011486,
+      "guesses": [
+        "raes",
+        "wild",
+        "emrk",
+        "senf",
+        "bies"
+      ]
+    },
+    {
+      "word": "töre",
+      "num_guesses": 4,
+      "prior": 0.00011070873610660118,
+      "guesses": [
+        "raes",
+        "hete",
+        "büro",
+        "töre"
+      ]
+    },
+    {
+      "word": "gift",
+      "num_guesses": 4,
+      "prior": 0.00040270362691462516,
+      "guesses": [
+        "raes",
+        "holt",
+        "fibu",
+        "gift"
+      ]
+    },
+    {
+      "word": "kaue",
+      "num_guesses": 5,
+      "prior": 0.00017480596700889772,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "haue",
+        "kaue"
+      ]
+    },
+    {
+      "word": "togo",
+      "num_guesses": 4,
+      "prior": 0.000268991010440842,
+      "guesses": [
+        "raes",
+        "holt",
+        "fkpg",
+        "togo"
+      ]
+    },
+    {
+      "word": "neos",
+      "num_guesses": 5,
+      "prior": 0.00015332724325946436,
+      "guesses": [
+        "raes",
+        "lenk",
+        "news",
+        "nets",
+        "neos"
+      ]
+    },
+    {
+      "word": "fläz",
+      "num_guesses": 5,
+      "prior": 0.00007513242561259536,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "köpf",
+        "fläz"
+      ]
+    },
+    {
+      "word": "kore",
+      "num_guesses": 5,
+      "prior": 0.00021378587205162227,
+      "guesses": [
+        "raes",
+        "hete",
+        "gumo",
+        "kopf",
+        "kore"
+      ]
+    },
+    {
+      "word": "isbi",
+      "num_guesses": 4,
+      "prior": 0.00008832987345538307,
+      "guesses": [
+        "raes",
+        "silt",
+        "isbn",
+        "isbi"
+      ]
+    },
+    {
+      "word": "kstz",
+      "num_guesses": 4,
+      "prior": 0.00012006236351290011,
+      "guesses": [
+        "raes",
+        "silt",
+        "guck",
+        "kstz"
+      ]
+    },
+    {
+      "word": "huld",
+      "num_guesses": 4,
+      "prior": 0.0002915176337656715,
+      "guesses": [
+        "raes",
+        "holt",
+        "dick",
+        "huld"
+      ]
+    },
+    {
+      "word": "wlan",
+      "num_guesses": 4,
+      "prior": 0.00024189064160867182,
+      "guesses": [
+        "raes",
+        "anal",
+        "puck",
+        "wlan"
+      ]
+    },
+    {
+      "word": "mumm",
+      "num_guesses": 6,
+      "prior": 0.0002186328074096913,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "cvjm",
+        "mumm"
+      ]
+    },
+    {
+      "word": "jwst",
+      "num_guesses": 5,
+      "prior": 0.00007498596752846296,
+      "guesses": [
+        "raes",
+        "silt",
+        "wodu",
+        "mwst",
+        "jwst"
+      ]
+    },
+    {
+      "word": "höre",
+      "num_guesses": 3,
+      "prior": 0.00043352628028328627,
+      "guesses": [
+        "raes",
+        "hete",
+        "höre"
+      ]
+    },
+    {
+      "word": "bord",
+      "num_guesses": 5,
+      "prior": 0.0004297423597458696,
+      "guesses": [
+        "raes",
+        "gout",
+        "mund",
+        "falb",
+        "bord"
+      ]
+    },
+    {
+      "word": "iths",
+      "num_guesses": 5,
+      "prior": 0.00011273253852682433,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "ists",
+        "iths"
+      ]
+    },
+    {
+      "word": "äbis",
+      "num_guesses": 5,
+      "prior": 0.00008085421889548523,
+      "guesses": [
+        "raes",
+        "moin",
+        "uspd",
+        "säht",
+        "äbis"
+      ]
+    },
+    {
+      "word": "funz",
+      "num_guesses": 5,
+      "prior": 0.00008160167816888947,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "funz"
+      ]
+    },
+    {
+      "word": "räum",
+      "num_guesses": 3,
+      "prior": 0.00021966005157678805,
+      "guesses": [
+        "raes",
+        "hunt",
+        "räum"
+      ]
+    },
+    {
+      "word": "voip",
+      "num_guesses": 5,
+      "prior": 0.0001634939105146589,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "yogi",
+        "voip"
+      ]
+    },
+    {
+      "word": "klob",
+      "num_guesses": 4,
+      "prior": 0.00015558673083144355,
+      "guesses": [
+        "raes",
+        "holt",
+        "bloß",
+        "klob"
+      ]
+    },
+    {
+      "word": "cava",
+      "num_guesses": 6,
+      "prior": 0.0002860277396852568,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "biga",
+        "capa",
+        "cava"
+      ]
+    },
+    {
+      "word": "deli",
+      "num_guesses": 5,
+      "prior": 0.00020415385716033657,
+      "guesses": [
+        "raes",
+        "hint",
+        "gwdl",
+        "leid",
+        "deli"
+      ]
+    },
+    {
+      "word": "talk",
+      "num_guesses": 4,
+      "prior": 0.0002906146589406173,
+      "guesses": [
+        "raes",
+        "html",
+        "lugt",
+        "talk"
+      ]
+    },
+    {
+      "word": "zens",
+      "num_guesses": 5,
+      "prior": 0.00018545127524935922,
+      "guesses": [
+        "raes",
+        "lenk",
+        "smog",
+        "zwey",
+        "zens"
+      ]
+    },
+    {
+      "word": "nage",
+      "num_guesses": 4,
+      "prior": 0.0001743203549249765,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "nggw",
+        "nage"
+      ]
+    },
+    {
+      "word": "lebe",
+      "num_guesses": 5,
+      "prior": 0.00040979978004663923,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "eule",
+        "lebe"
+      ]
+    },
+    {
+      "word": "oxid",
+      "num_guesses": 5,
+      "prior": 0.00020650999183438782,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ovid",
+        "oxid"
+      ]
+    },
+    {
+      "word": "dies",
+      "num_guesses": 3,
+      "prior": 0.0008935032920889212,
+      "guesses": [
+        "raes",
+        "wild",
+        "dies"
+      ]
+    },
+    {
+      "word": "stvo",
+      "num_guesses": 4,
+      "prior": 0.0002180323779444439,
+      "guesses": [
+        "raes",
+        "silt",
+        "uvpg",
+        "stvo"
+      ]
+    },
+    {
+      "word": "thar",
+      "num_guesses": 3,
+      "prior": 0.00019573915671471228,
+      "guesses": [
+        "raes",
+        "grat",
+        "thar"
+      ]
+    },
+    {
+      "word": "dhal",
+      "num_guesses": 4,
+      "prior": 0.00010512994121597628,
+      "guesses": [
+        "raes",
+        "anal",
+        "doch",
+        "dhal"
+      ]
+    },
+    {
+      "word": "mizo",
+      "num_guesses": 5,
+      "prior": 0.0000899967255740052,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "bmbf",
+        "mizo"
+      ]
+    },
+    {
+      "word": "bikt",
+      "num_guesses": 6,
+      "prior": 0.00007163668940096381,
+      "guesses": [
+        "raes",
+        "holt",
+        "fibu",
+        "bitt",
+        "bißt",
+        "bikt"
+      ]
+    },
+    {
+      "word": "zerg",
+      "num_guesses": 5,
+      "prior": 0.00011739207538536218,
+      "guesses": [
+        "raes",
+        "hete",
+        "nkwd",
+        "gmlz",
+        "zerg"
+      ]
+    },
+    {
+      "word": "dart",
+      "num_guesses": 3,
+      "prior": 0.0001884060670165837,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "dart"
+      ]
+    },
+    {
+      "word": "sitz",
+      "num_guesses": 3,
+      "prior": 0.0004960808593234648,
+      "guesses": [
+        "raes",
+        "silt",
+        "sitz"
+      ]
+    },
+    {
+      "word": "mala",
+      "num_guesses": 4,
+      "prior": 0.00025753072490645486,
+      "guesses": [
+        "raes",
+        "html",
+        "mama",
+        "mala"
+      ]
+    },
+    {
+      "word": "ihre",
+      "num_guesses": 3,
+      "prior": 0.00101891339094651,
+      "guesses": [
+        "raes",
+        "hete",
+        "ihre"
+      ]
+    },
+    {
+      "word": "malt",
+      "num_guesses": 3,
+      "prior": 0.00031729645107218764,
+      "guesses": [
+        "raes",
+        "html",
+        "malt"
+      ]
+    },
+    {
+      "word": "wehs",
+      "num_guesses": 5,
+      "prior": 0.0001492919023787876,
+      "guesses": [
+        "raes",
+        "lenk",
+        "gmbh",
+        "wurf",
+        "wehs"
+      ]
+    },
+    {
+      "word": "bage",
+      "num_guesses": 3,
+      "prior": 0.00018434960890098366,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "bage"
+      ]
+    },
+    {
+      "word": "bise",
+      "num_guesses": 4,
+      "prior": 0.00016335814059595562,
+      "guesses": [
+        "raes",
+        "seit",
+        "etwa",
+        "bise"
+      ]
+    },
+    {
+      "word": "main",
+      "num_guesses": 4,
+      "prior": 0.0004943371131023309,
+      "guesses": [
+        "raes",
+        "html",
+        "idun",
+        "main"
+      ]
+    },
+    {
+      "word": "owig",
+      "num_guesses": 5,
+      "prior": 0.00022369896478017685,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "bmbf",
+        "owig"
+      ]
+    },
+    {
+      "word": "nävi",
+      "num_guesses": 5,
+      "prior": 0.00015990685201872437,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "unix",
+        "nävi"
+      ]
+    },
+    {
+      "word": "gürt",
+      "num_guesses": 5,
+      "prior": 0.00010788077354414165,
+      "guesses": [
+        "raes",
+        "gout",
+        "gärt",
+        "gört",
+        "gürt"
+      ]
+    },
+    {
+      "word": "pass",
+      "num_guesses": 4,
+      "prior": 0.0003607399918744118,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "pass"
+      ]
+    },
+    {
+      "word": "anal",
+      "num_guesses": 2,
+      "prior": 0.0002698377793435078,
+      "guesses": [
+        "raes",
+        "anal"
+      ]
+    },
+    {
+      "word": "öset",
+      "num_guesses": 4,
+      "prior": 0.00005404295744361096,
+      "guesses": [
+        "raes",
+        "gilt",
+        "säet",
+        "öset"
+      ]
+    },
+    {
+      "word": "emvg",
+      "num_guesses": 6,
+      "prior": 0.00010177678552998548,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "zebu",
+        "möwe",
+        "emvg"
+      ]
+    },
+    {
+      "word": "banz",
+      "num_guesses": 5,
+      "prior": 0.00020556589284823675,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "bghz",
+        "banz"
+      ]
+    },
+    {
+      "word": "ions",
+      "num_guesses": 3,
+      "prior": 0.00026169704123792835,
+      "guesses": [
+        "raes",
+        "moin",
+        "ions"
+      ]
+    },
+    {
+      "word": "trab",
+      "num_guesses": 4,
+      "prior": 0.00026211347886963125,
+      "guesses": [
+        "raes",
+        "grat",
+        "fibu",
+        "trab"
+      ]
+    },
+    {
+      "word": "konf",
+      "num_guesses": 4,
+      "prior": 0.0001762208541512588,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "konf"
+      ]
+    },
+    {
+      "word": "irpa",
+      "num_guesses": 5,
+      "prior": 0.00010951237304805949,
+      "guesses": [
+        "raes",
+        "grat",
+        "noma",
+        "arra",
+        "irpa"
+      ]
+    },
+    {
+      "word": "gera",
+      "num_guesses": 3,
+      "prior": 0.0003012816801554192,
+      "guesses": [
+        "raes",
+        "germ",
+        "gera"
+      ]
+    },
+    {
+      "word": "nils",
+      "num_guesses": 4,
+      "prior": 0.0002998195179336503,
+      "guesses": [
+        "raes",
+        "moin",
+        "lind",
+        "nils"
+      ]
+    },
+    {
+      "word": "lust",
+      "num_guesses": 3,
+      "prior": 0.0005299151843630189,
+      "guesses": [
+        "raes",
+        "silt",
+        "lust"
+      ]
+    },
+    {
+      "word": "leas",
+      "num_guesses": 3,
+      "prior": 0.00018169634240034364,
+      "guesses": [
+        "raes",
+        "eakv",
+        "leas"
+      ]
+    },
+    {
+      "word": "flor",
+      "num_guesses": 5,
+      "prior": 0.000310292799130106,
+      "guesses": [
+        "raes",
+        "gout",
+        "brod",
+        "chor",
+        "flor"
+      ]
+    },
+    {
+      "word": "zahm",
+      "num_guesses": 4,
+      "prior": 0.00024575055254898154,
+      "guesses": [
+        "raes",
+        "html",
+        "nahm",
+        "zahm"
+      ]
+    },
+    {
+      "word": "köpf",
+      "num_guesses": 5,
+      "prior": 0.0002149176949613602,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "kgkg",
+        "köpf"
+      ]
+    },
+    {
+      "word": "taro",
+      "num_guesses": 5,
+      "prior": 0.00019834379037560914,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "tkbg",
+        "noch",
+        "taro"
+      ]
+    },
+    {
+      "word": "otts",
+      "num_guesses": 4,
+      "prior": 0.00015960592207734278,
+      "guesses": [
+        "raes",
+        "moin",
+        "luft",
+        "otts"
+      ]
+    },
+    {
+      "word": "unis",
+      "num_guesses": 3,
+      "prior": 0.00021154086059094264,
+      "guesses": [
+        "raes",
+        "moin",
+        "unis"
+      ]
+    },
+    {
+      "word": "gssd",
+      "num_guesses": 5,
+      "prior": 0.00013797107470594434,
+      "guesses": [
+        "raes",
+        "silt",
+        "umso",
+        "bdsg",
+        "gssd"
+      ]
+    },
+    {
+      "word": "bang",
+      "num_guesses": 5,
+      "prior": 0.0003052253603414303,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "bghz",
+        "bang"
+      ]
+    },
+    {
+      "word": "miez",
+      "num_guesses": 5,
+      "prior": 0.00014587118035607312,
+      "guesses": [
+        "raes",
+        "lind",
+        "gmbh",
+        "zeit",
+        "miez"
+      ]
+    },
+    {
+      "word": "reha",
+      "num_guesses": 3,
+      "prior": 0.00022263191740436842,
+      "guesses": [
+        "raes",
+        "real",
+        "reha"
+      ]
+    },
+    {
+      "word": "bawa",
+      "num_guesses": 6,
+      "prior": 0.00011817704006514955,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "biga",
+        "baba",
+        "bawa"
+      ]
+    },
+    {
+      "word": "jeep",
+      "num_guesses": 5,
+      "prior": 0.0002500286360458573,
+      "guesses": [
+        "raes",
+        "lind",
+        "hete",
+        "kjhg",
+        "jeep"
+      ]
+    },
+    {
+      "word": "malz",
+      "num_guesses": 4,
+      "prior": 0.00028255471476938346,
+      "guesses": [
+        "raes",
+        "html",
+        "mama",
+        "malz"
+      ]
+    },
+    {
+      "word": "lost",
+      "num_guesses": 5,
+      "prior": 0.0002715207862683142,
+      "guesses": [
+        "raes",
+        "silt",
+        "lust",
+        "löst",
+        "lost"
+      ]
+    },
+    {
+      "word": "rein",
+      "num_guesses": 3,
+      "prior": 0.0006266919235319748,
+      "guesses": [
+        "raes",
+        "tein",
+        "rein"
+      ]
+    },
+    {
+      "word": "fick",
+      "num_guesses": 5,
+      "prior": 0.0002852018058213312,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "camp",
+        "fick"
+      ]
+    },
+    {
+      "word": "bzrg",
+      "num_guesses": 5,
+      "prior": 0.00014008004727873014,
+      "guesses": [
+        "raes",
+        "gout",
+        "birg",
+        "früh",
+        "bzrg"
+      ]
+    },
+    {
+      "word": "ahle",
+      "num_guesses": 4,
+      "prior": 0.00017952449540829978,
+      "guesses": [
+        "raes",
+        "almt",
+        "duce",
+        "ahle"
+      ]
+    },
+    {
+      "word": "fock",
+      "num_guesses": 5,
+      "prior": 0.00022635242967759253,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "bock",
+        "fock"
+      ]
+    },
+    {
+      "word": "waal",
+      "num_guesses": 4,
+      "prior": 0.00021017299520233564,
+      "guesses": [
+        "raes",
+        "html",
+        "wolf",
+        "waal"
+      ]
+    },
+    {
+      "word": "törn",
+      "num_guesses": 4,
+      "prior": 0.00014465316945522742,
+      "guesses": [
+        "raes",
+        "gout",
+        "prüf",
+        "törn"
+      ]
+    },
+    {
+      "word": "tein",
+      "num_guesses": 3,
+      "prior": 0.00020214743829869835,
+      "guesses": [
+        "raes",
+        "hint",
+        "tein"
+      ]
+    },
+    {
+      "word": "iglu",
+      "num_guesses": 5,
+      "prior": 0.00018051816881341253,
+      "guesses": [
+        "raes",
+        "holt",
+        "mibk",
+        "juli",
+        "iglu"
+      ]
+    },
+    {
+      "word": "ihrz",
+      "num_guesses": 6,
+      "prior": 0.00007395319416784736,
+      "guesses": [
+        "raes",
+        "gout",
+        "find",
+        "prim",
+        "ikrk",
+        "ihrz"
+      ]
+    },
+    {
+      "word": "cube",
+      "num_guesses": 6,
+      "prior": 0.00019397870763786771,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "webe",
+        "bube",
+        "cube"
+      ]
+    },
+    {
+      "word": "lund",
+      "num_guesses": 4,
+      "prior": 0.00030466862128716317,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "lund"
+      ]
+    },
+    {
+      "word": "rohe",
+      "num_guesses": 4,
+      "prior": 0.00036284865998772314,
+      "guesses": [
+        "raes",
+        "tein",
+        "obdh",
+        "rohe"
+      ]
+    },
+    {
+      "word": "goss",
+      "num_guesses": 4,
+      "prior": 0.00027574502989617954,
+      "guesses": [
+        "raes",
+        "moin",
+        "lgbt",
+        "goss"
+      ]
+    },
+    {
+      "word": "hops",
+      "num_guesses": 5,
+      "prior": 0.0001649552887677981,
+      "guesses": [
+        "raes",
+        "moin",
+        "lgbt",
+        "kpch",
+        "hops"
+      ]
+    },
+    {
+      "word": "page",
+      "num_guesses": 5,
+      "prior": 0.0003098063569994091,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "nggw",
+        "hpvs",
+        "page"
+      ]
+    },
+    {
+      "word": "ghul",
+      "num_guesses": 5,
+      "prior": 0.00013516293496715015,
+      "guesses": [
+        "raes",
+        "holt",
+        "bühl",
+        "phil",
+        "ghul"
+      ]
+    },
+    {
+      "word": "spül",
+      "num_guesses": 4,
+      "prior": 0.0001753411949511812,
+      "guesses": [
+        "raes",
+        "silt",
+        "spul",
+        "spül"
+      ]
+    },
+    {
+      "word": "asyl",
+      "num_guesses": 4,
+      "prior": 0.00030539905672240865,
+      "guesses": [
+        "raes",
+        "spot",
+        "cisg",
+        "asyl"
+      ]
+    },
+    {
+      "word": "bmws",
+      "num_guesses": 5,
+      "prior": 0.0001283828951102654,
+      "guesses": [
+        "raes",
+        "moin",
+        "buch",
+        "bmgs",
+        "bmws"
+      ]
+    },
+    {
+      "word": "isch",
+      "num_guesses": 4,
+      "prior": 0.00028810403152482097,
+      "guesses": [
+        "raes",
+        "silt",
+        "isbn",
+        "isch"
+      ]
+    },
+    {
+      "word": "babu",
+      "num_guesses": 5,
+      "prior": 0.0001677864498541999,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "bauo",
+        "babu"
+      ]
+    },
+    {
+      "word": "arms",
+      "num_guesses": 4,
+      "prior": 0.0002829024738296412,
+      "guesses": [
+        "raes",
+        "grit",
+        "grad",
+        "arms"
+      ]
+    },
+    {
+      "word": "loht",
+      "num_guesses": 3,
+      "prior": 0.00016054051319904894,
+      "guesses": [
+        "raes",
+        "holt",
+        "loht"
+      ]
+    },
+    {
+      "word": "nurz",
+      "num_guesses": 6,
+      "prior": 0.00011320822014869768,
+      "guesses": [
+        "raes",
+        "gout",
+        "firm",
+        "kurz",
+        "wurz",
+        "nurz"
+      ]
+    },
+    {
+      "word": "urds",
+      "num_guesses": 5,
+      "prior": 0.0001080575160617326,
+      "guesses": [
+        "raes",
+        "korb",
+        "urig",
+        "urls",
+        "urds"
+      ]
+    },
+    {
+      "word": "zuck",
+      "num_guesses": 6,
+      "prior": 0.00019473344802694475,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "märz",
+        "zuck"
+      ]
+    },
+    {
+      "word": "omme",
+      "num_guesses": 5,
+      "prior": 0.0001579916251011139,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "memo",
+        "omme"
+      ]
+    },
+    {
+      "word": "hobo",
+      "num_guesses": 5,
+      "prior": 0.0001299199525570626,
+      "guesses": [
+        "raes",
+        "holt",
+        "hoho",
+        "homo",
+        "hobo"
+      ]
+    },
+    {
+      "word": "karo",
+      "num_guesses": 5,
+      "prior": 0.00022947117874516372,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "pkgr",
+        "kara",
+        "karo"
+      ]
+    },
+    {
+      "word": "wild",
+      "num_guesses": 5,
+      "prior": 0.0004505261722306168,
+      "guesses": [
+        "raes",
+        "holt",
+        "mibk",
+        "fwdl",
+        "wild"
+      ]
+    },
+    {
+      "word": "reut",
+      "num_guesses": 4,
+      "prior": 0.00021657479530032427,
+      "guesses": [
+        "raes",
+        "tein",
+        "regt",
+        "reut"
+      ]
+    },
+    {
+      "word": "bubu",
+      "num_guesses": 6,
+      "prior": 0.00014310566271425208,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "cvjm",
+        "bubu"
+      ]
+    },
+    {
+      "word": "wums",
+      "num_guesses": 5,
+      "prior": 0.00009998157720682612,
+      "guesses": [
+        "raes",
+        "moin",
+        "buch",
+        "sums",
+        "wums"
+      ]
+    },
+    {
+      "word": "gest",
+      "num_guesses": 4,
+      "prior": 0.00026201639874248825,
+      "guesses": [
+        "raes",
+        "seit",
+        "fkpg",
+        "gest"
+      ]
+    },
+    {
+      "word": "hool",
+      "num_guesses": 4,
+      "prior": 0.00012003625164363693,
+      "guesses": [
+        "raes",
+        "holt",
+        "hohl",
+        "hool"
+      ]
+    },
+    {
+      "word": "gnad",
+      "num_guesses": 3,
+      "prior": 0.000302777236197396,
+      "guesses": [
+        "raes",
+        "anal",
+        "gnad"
+      ]
+    },
+    {
+      "word": "tapa",
+      "num_guesses": 5,
+      "prior": 0.00016195356466233222,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "pica",
+        "tapa"
+      ]
+    },
+    {
+      "word": "wohn",
+      "num_guesses": 4,
+      "prior": 0.0003230588198342926,
+      "guesses": [
+        "raes",
+        "holt",
+        "nkwd",
+        "wohn"
+      ]
+    },
+    {
+      "word": "kern",
+      "num_guesses": 4,
+      "prior": 0.0005321585022028061,
+      "guesses": [
+        "raes",
+        "hete",
+        "nkwd",
+        "kern"
+      ]
+    },
+    {
+      "word": "mopp",
+      "num_guesses": 6,
+      "prior": 0.0001468904019624742,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "pogo",
+        "zopf",
+        "mopp"
+      ]
+    },
+    {
+      "word": "boje",
+      "num_guesses": 5,
+      "prior": 0.00020879058424738564,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "kopf",
+        "boje"
+      ]
+    },
+    {
+      "word": "dieb",
+      "num_guesses": 4,
+      "prior": 0.00033257599534483676,
+      "guesses": [
+        "raes",
+        "lind",
+        "dieß",
+        "dieb"
+      ]
+    },
+    {
+      "word": "teen",
+      "num_guesses": 6,
+      "prior": 0.00016446579856568234,
+      "guesses": [
+        "raes",
+        "lind",
+        "ebon",
+        "fußt",
+        "twen",
+        "teen"
+      ]
+    },
+    {
+      "word": "räte",
+      "num_guesses": 4,
+      "prior": 0.00035105475621208915,
+      "guesses": [
+        "raes",
+        "tein",
+        "äsop",
+        "räte"
+      ]
+    },
+    {
+      "word": "hast",
+      "num_guesses": 3,
+      "prior": 0.0006517577359030918,
+      "guesses": [
+        "raes",
+        "stgh",
+        "hast"
+      ]
+    },
+    {
+      "word": "welt",
+      "num_guesses": 4,
+      "prior": 0.0008071172373485937,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmbg",
+        "welt"
+      ]
+    },
+    {
+      "word": "gosa",
+      "num_guesses": 4,
+      "prior": 0.00010610739642982123,
+      "guesses": [
+        "raes",
+        "spot",
+        "gold",
+        "gosa"
+      ]
+    },
+    {
+      "word": "loth",
+      "num_guesses": 3,
+      "prior": 0.00031625138858527814,
+      "guesses": [
+        "raes",
+        "holt",
+        "loth"
+      ]
+    },
+    {
+      "word": "sink",
+      "num_guesses": 4,
+      "prior": 0.0001938329280472562,
+      "guesses": [
+        "raes",
+        "silt",
+        "kühn",
+        "sink"
+      ]
+    },
+    {
+      "word": "fraß",
+      "num_guesses": 5,
+      "prior": 0.00028723218768509875,
+      "guesses": [
+        "raes",
+        "grat",
+        "funk",
+        "weiß",
+        "fraß"
+      ]
+    },
+    {
+      "word": "zürn",
+      "num_guesses": 5,
+      "prior": 0.00021513586977493093,
+      "guesses": [
+        "raes",
+        "gout",
+        "find",
+        "hörn",
+        "zürn"
+      ]
+    },
+    {
+      "word": "twis",
+      "num_guesses": 5,
+      "prior": 0.00008090853212332222,
+      "guesses": [
+        "raes",
+        "moin",
+        "uspd",
+        "säht",
+        "twis"
+      ]
+    },
+    {
+      "word": "timm",
+      "num_guesses": 5,
+      "prior": 0.00025926492969904555,
+      "guesses": [
+        "raes",
+        "holt",
+        "tupi",
+        "nach",
+        "timm"
+      ]
+    },
+    {
+      "word": "weib",
+      "num_guesses": 5,
+      "prior": 0.00047548617923587783,
+      "guesses": [
+        "raes",
+        "hint",
+        "gwdl",
+        "weiß",
+        "weib"
+      ]
+    },
+    {
+      "word": "kaut",
+      "num_guesses": 5,
+      "prior": 0.00022858472498992892,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "baut",
+        "kaut"
+      ]
+    },
+    {
+      "word": "depv",
+      "num_guesses": 6,
+      "prior": 0.00009718555775723693,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "ecke",
+        "depp",
+        "depv"
+      ]
+    },
+    {
+      "word": "guru",
+      "num_guesses": 4,
+      "prior": 0.00023508070553511368,
+      "guesses": [
+        "raes",
+        "gout",
+        "klar",
+        "guru"
+      ]
+    },
+    {
+      "word": "vati",
+      "num_guesses": 5,
+      "prior": 0.00023957550784219994,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "kiga",
+        "vati"
+      ]
+    },
+    {
+      "word": "expo",
+      "num_guesses": 5,
+      "prior": 0.00023166210887307274,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "memo",
+        "expo"
+      ]
+    },
+    {
+      "word": "ösis",
+      "num_guesses": 5,
+      "prior": 0.00009144903556014223,
+      "guesses": [
+        "raes",
+        "moin",
+        "uspd",
+        "isis",
+        "ösis"
+      ]
+    },
+    {
+      "word": "fügt",
+      "num_guesses": 4,
+      "prior": 0.00043163089515690266,
+      "guesses": [
+        "raes",
+        "holt",
+        "fibu",
+        "fügt"
+      ]
+    },
+    {
+      "word": "hilf",
+      "num_guesses": 4,
+      "prior": 0.0003379567054564941,
+      "guesses": [
+        "raes",
+        "holt",
+        "dick",
+        "hilf"
+      ]
+    },
+    {
+      "word": "rott",
+      "num_guesses": 4,
+      "prior": 0.00025174285367352895,
+      "guesses": [
+        "raes",
+        "hunt",
+        "ritt",
+        "rott"
+      ]
+    },
+    {
+      "word": "lind",
+      "num_guesses": 4,
+      "prior": 0.00032419604751488706,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "lind"
+      ]
+    },
+    {
+      "word": "bans",
+      "num_guesses": 5,
+      "prior": 0.00017222762907724687,
+      "guesses": [
+        "raes",
+        "munt",
+        "flhg",
+        "bsds",
+        "bans"
+      ]
+    },
+    {
+      "word": "body",
+      "num_guesses": 5,
+      "prior": 0.0003062581418666422,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "judo",
+        "body"
+      ]
+    },
+    {
+      "word": "kate",
+      "num_guesses": 5,
+      "prior": 0.0003211447874637377,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "dump",
+        "takt",
+        "kate"
+      ]
+    },
+    {
+      "word": "coda",
+      "num_guesses": 5,
+      "prior": 0.00022259311261138925,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "dock",
+        "coda"
+      ]
+    },
+    {
+      "word": "spie",
+      "num_guesses": 3,
+      "prior": 0.00024853672909934394,
+      "guesses": [
+        "raes",
+        "seit",
+        "spie"
+      ]
+    },
+    {
+      "word": "yolo",
+      "num_guesses": 6,
+      "prior": 0.00010843560528503839,
+      "guesses": [
+        "raes",
+        "holt",
+        "kdvg",
+        "zoom",
+        "polo",
+        "yolo"
+      ]
+    },
+    {
+      "word": "saps",
+      "num_guesses": 6,
+      "prior": 0.00012601558426028243,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "pick",
+        "soja",
+        "saps"
+      ]
+    },
+    {
+      "word": "ddsg",
+      "num_guesses": 5,
+      "prior": 0.00014110133492365484,
+      "guesses": [
+        "raes",
+        "silt",
+        "umso",
+        "bdsg",
+        "ddsg"
+      ]
+    },
+    {
+      "word": "tuet",
+      "num_guesses": 5,
+      "prior": 0.0001735004817009374,
+      "guesses": [
+        "raes",
+        "lind",
+        "hete",
+        "buße",
+        "tuet"
+      ]
+    },
+    {
+      "word": "gsta",
+      "num_guesses": 3,
+      "prior": 0.00024304706093096747,
+      "guesses": [
+        "raes",
+        "spot",
+        "gsta"
+      ]
+    },
+    {
+      "word": "nggw",
+      "num_guesses": 5,
+      "prior": 0.0000927832084775328,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "zäun",
+        "nggw"
+      ]
+    },
+    {
+      "word": "imos",
+      "num_guesses": 3,
+      "prior": 0.00011150188159722723,
+      "guesses": [
+        "raes",
+        "moin",
+        "imos"
+      ]
+    },
+    {
+      "word": "leer",
+      "num_guesses": 5,
+      "prior": 0.0004638187501493541,
+      "guesses": [
+        "raes",
+        "brif",
+        "dehu",
+        "lump",
+        "leer"
+      ]
+    },
+    {
+      "word": "neig",
+      "num_guesses": 5,
+      "prior": 0.00014856109418113494,
+      "guesses": [
+        "raes",
+        "hint",
+        "nkwd",
+        "nein",
+        "neig"
+      ]
+    },
+    {
+      "word": "scan",
+      "num_guesses": 4,
+      "prior": 0.00021872868624967306,
+      "guesses": [
+        "raes",
+        "spot",
+        "sima",
+        "scan"
+      ]
+    },
+    {
+      "word": "soot",
+      "num_guesses": 4,
+      "prior": 0.00012727150162121465,
+      "guesses": [
+        "raes",
+        "silt",
+        "äsop",
+        "soot"
+      ]
+    },
+    {
+      "word": "krön",
+      "num_guesses": 5,
+      "prior": 0.00019821145145019448,
+      "guesses": [
+        "raes",
+        "gout",
+        "find",
+        "hörn",
+        "krön"
+      ]
+    },
+    {
+      "word": "iada",
+      "num_guesses": 5,
+      "prior": 0.00010020542456066146,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "wadi",
+        "iada"
+      ]
+    },
+    {
+      "word": "koka",
+      "num_guesses": 5,
+      "prior": 0.00016734026309387972,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "dock",
+        "koka"
+      ]
+    },
+    {
+      "word": "kata",
+      "num_guesses": 5,
+      "prior": 0.00021598488252338747,
+      "guesses": [
+        "raes",
+        "html",
+        "tunt",
+        "kiga",
+        "kata"
+      ]
+    },
+    {
+      "word": "nypd",
+      "num_guesses": 5,
+      "prior": 0.00014006797193289502,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "ndpd",
+        "nypd"
+      ]
+    },
+    {
+      "word": "dame",
+      "num_guesses": 4,
+      "prior": 0.0004790401924796355,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "dame"
+      ]
+    },
+    {
+      "word": "json",
+      "num_guesses": 5,
+      "prior": 0.00014870238766134008,
+      "guesses": [
+        "raes",
+        "silt",
+        "umso",
+        "cyan",
+        "json"
+      ]
+    },
+    {
+      "word": "mari",
+      "num_guesses": 5,
+      "prior": 0.00026775012734299886,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "mark",
+        "viel",
+        "mari"
+      ]
+    },
+    {
+      "word": "feil",
+      "num_guesses": 5,
+      "prior": 0.0002670041370056856,
+      "guesses": [
+        "raes",
+        "hint",
+        "gwdl",
+        "beck",
+        "feil"
+      ]
+    },
+    {
+      "word": "fuas",
+      "num_guesses": 4,
+      "prior": 0.00010648367323972023,
+      "guesses": [
+        "raes",
+        "blau",
+        "aufs",
+        "fuas"
+      ]
+    },
+    {
+      "word": "blüh",
+      "num_guesses": 4,
+      "prior": 0.00015402597582554183,
+      "guesses": [
+        "raes",
+        "holt",
+        "bühl",
+        "blüh"
+      ]
+    },
+    {
+      "word": "ruhe",
+      "num_guesses": 4,
+      "prior": 0.0005823806779597325,
+      "guesses": [
+        "raes",
+        "tein",
+        "obdh",
+        "ruhe"
+      ]
+    },
+    {
+      "word": "oliv",
+      "num_guesses": 4,
+      "prior": 0.00021067133606026333,
+      "guesses": [
+        "raes",
+        "holt",
+        "bloß",
+        "oliv"
+      ]
+    },
+    {
+      "word": "pile",
+      "num_guesses": 5,
+      "prior": 0.00017785807401294543,
+      "guesses": [
+        "raes",
+        "hint",
+        "lmkv",
+        "eile",
+        "pile"
+      ]
+    },
+    {
+      "word": "öres",
+      "num_guesses": 3,
+      "prior": 0.00008290485158018551,
+      "guesses": [
+        "raes",
+        "ures",
+        "öres"
+      ]
+    },
+    {
+      "word": "kürt",
+      "num_guesses": 4,
+      "prior": 0.0001435371818183529,
+      "guesses": [
+        "raes",
+        "gout",
+        "wirk",
+        "kürt"
+      ]
+    },
+    {
+      "word": "gode",
+      "num_guesses": 4,
+      "prior": 0.00021452697666776187,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "gode"
+      ]
+    },
+    {
+      "word": "owvo",
+      "num_guesses": 5,
+      "prior": 0.00008383497826353829,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ovum",
+        "owvo"
+      ]
+    },
+    {
+      "word": "tora",
+      "num_guesses": 4,
+      "prior": 0.00028385594122348713,
+      "guesses": [
+        "raes",
+        "grat",
+        "mund",
+        "tora"
+      ]
+    },
+    {
+      "word": "rats",
+      "num_guesses": 3,
+      "prior": 0.00032550982502925545,
+      "guesses": [
+        "raes",
+        "tupi",
+        "rats"
+      ]
+    },
+    {
+      "word": "oute",
+      "num_guesses": 4,
+      "prior": 0.00015501265337217987,
+      "guesses": [
+        "raes",
+        "hint",
+        "tobe",
+        "oute"
+      ]
+    },
+    {
+      "word": "helm",
+      "num_guesses": 5,
+      "prior": 0.00037083628721007087,
+      "guesses": [
+        "raes",
+        "hint",
+        "fehl",
+        "held",
+        "helm"
+      ]
+    },
+    {
+      "word": "düdo",
+      "num_guesses": 4,
+      "prior": 0.0000582423561421503,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "düdo"
+      ]
+    },
+    {
+      "word": "laub",
+      "num_guesses": 4,
+      "prior": 0.0003531584118744893,
+      "guesses": [
+        "raes",
+        "html",
+        "bild",
+        "laub"
+      ]
+    },
+    {
+      "word": "gern",
+      "num_guesses": 5,
+      "prior": 0.000595151624699486,
+      "guesses": [
+        "raes",
+        "hete",
+        "nkwd",
+        "flog",
+        "gern"
+      ]
+    },
+    {
+      "word": "wogv",
+      "num_guesses": 6,
+      "prior": 0.00007255430504238242,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "pogo",
+        "wogg",
+        "wogv"
+      ]
+    },
+    {
+      "word": "kogo",
+      "num_guesses": 6,
+      "prior": 0.00012248674908116325,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "myop",
+        "koku",
+        "kogo"
+      ]
+    },
+    {
+      "word": "säst",
+      "num_guesses": 5,
+      "prior": 0.00015444901013046786,
+      "guesses": [
+        "raes",
+        "silt",
+        "äsop",
+        "geht",
+        "säst"
+      ]
+    },
+    {
+      "word": "yins",
+      "num_guesses": 5,
+      "prior": 0.00009882302344880885,
+      "guesses": [
+        "raes",
+        "moin",
+        "lind",
+        "syph",
+        "yins"
+      ]
+    },
+    {
+      "word": "itzo",
+      "num_guesses": 4,
+      "prior": 0.0002312991631747966,
+      "guesses": [
+        "raes",
+        "holt",
+        "dito",
+        "itzo"
+      ]
+    },
+    {
+      "word": "ices",
+      "num_guesses": 3,
+      "prior": 0.00015106624107151414,
+      "guesses": [
+        "raes",
+        "wild",
+        "ices"
+      ]
+    },
+    {
+      "word": "höke",
+      "num_guesses": 6,
+      "prior": 0.00010548275532861677,
+      "guesses": [
+        "raes",
+        "hint",
+        "fehl",
+        "dump",
+        "höbe",
+        "höke"
+      ]
+    },
+    {
+      "word": "auto",
+      "num_guesses": 4,
+      "prior": 0.00047329133592277856,
+      "guesses": [
+        "raes",
+        "anal",
+        "hugo",
+        "auto"
+      ]
+    },
+    {
+      "word": "pore",
+      "num_guesses": 5,
+      "prior": 0.0002100019754979889,
+      "guesses": [
+        "raes",
+        "hete",
+        "gumo",
+        "kopf",
+        "pore"
+      ]
+    },
+    {
+      "word": "ozon",
+      "num_guesses": 4,
+      "prior": 0.00030280184703239296,
+      "guesses": [
+        "raes",
+        "holt",
+        "idun",
+        "ozon"
+      ]
+    },
+    {
+      "word": "lpkf",
+      "num_guesses": 5,
+      "prior": 0.00006690289869163948,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "köpf",
+        "lpkf"
+      ]
+    },
+    {
+      "word": "gams",
+      "num_guesses": 4,
+      "prior": 0.00020668648181925155,
+      "guesses": [
+        "raes",
+        "munt",
+        "gewo",
+        "gams"
+      ]
+    },
+    {
+      "word": "roms",
+      "num_guesses": 3,
+      "prior": 0.000380874610468821,
+      "guesses": [
+        "raes",
+        "miso",
+        "roms"
+      ]
+    },
+    {
+      "word": "tale",
+      "num_guesses": 3,
+      "prior": 0.00030570269888471955,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "tale"
+      ]
+    },
+    {
+      "word": "powi",
+      "num_guesses": 6,
+      "prior": 0.00008446840834931178,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "yogi",
+        "vofi",
+        "powi"
+      ]
+    },
+    {
+      "word": "esim",
+      "num_guesses": 3,
+      "prior": 0.00010497089367767798,
+      "guesses": [
+        "raes",
+        "seit",
+        "esim"
+      ]
+    },
+    {
+      "word": "uppp",
+      "num_guesses": 5,
+      "prior": 0.00008137324611344686,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "uppp"
+      ]
+    },
+    {
+      "word": "lach",
+      "num_guesses": 3,
+      "prior": 0.0002616076124374186,
+      "guesses": [
+        "raes",
+        "html",
+        "lach"
+      ]
+    },
+    {
+      "word": "cpan",
+      "num_guesses": 5,
+      "prior": 0.00009747907073921244,
+      "guesses": [
+        "raes",
+        "anal",
+        "wich",
+        "cyan",
+        "cpan"
+      ]
+    },
+    {
+      "word": "cfos",
+      "num_guesses": 4,
+      "prior": 0.00011017758459974924,
+      "guesses": [
+        "raes",
+        "moin",
+        "luft",
+        "cfos"
+      ]
+    },
+    {
+      "word": "ulkt",
+      "num_guesses": 4,
+      "prior": 0.00009374574727289363,
+      "guesses": [
+        "raes",
+        "holt",
+        "flug",
+        "ulkt"
+      ]
+    },
+    {
+      "word": "nazi",
+      "num_guesses": 5,
+      "prior": 0.00032390487688814117,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "priv",
+        "nazi"
+      ]
+    },
+    {
+      "word": "müde",
+      "num_guesses": 5,
+      "prior": 0.00044505584712379513,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "jede",
+        "müde"
+      ]
+    },
+    {
+      "word": "ödes",
+      "num_guesses": 4,
+      "prior": 0.0001970987461659311,
+      "guesses": [
+        "raes",
+        "wild",
+        "euch",
+        "ödes"
+      ]
+    },
+    {
+      "word": "kiki",
+      "num_guesses": 5,
+      "prior": 0.00019481635046424524,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "fckw",
+        "kiki"
+      ]
+    },
+    {
+      "word": "trip",
+      "num_guesses": 4,
+      "prior": 0.00024252862775986418,
+      "guesses": [
+        "raes",
+        "gout",
+        "prüf",
+        "trip"
+      ]
+    },
+    {
+      "word": "birk",
+      "num_guesses": 5,
+      "prior": 0.00022434924824133348,
+      "guesses": [
+        "raes",
+        "gout",
+        "find",
+        "bhkw",
+        "birk"
+      ]
+    },
+    {
+      "word": "tics",
+      "num_guesses": 5,
+      "prior": 0.00019669045725762238,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "hdtv",
+        "tics"
+      ]
+    },
+    {
+      "word": "besä",
+      "num_guesses": 5,
+      "prior": 0.00010545771045006914,
+      "guesses": [
+        "raes",
+        "seit",
+        "lupe",
+        "ganz",
+        "besä"
+      ]
+    },
+    {
+      "word": "gifs",
+      "num_guesses": 6,
+      "prior": 0.00010792078443862718,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "bdsg",
+        "gigs",
+        "gifs"
+      ]
+    },
+    {
+      "word": "hiwi",
+      "num_guesses": 5,
+      "prior": 0.0001251906614187083,
+      "guesses": [
+        "raes",
+        "holt",
+        "fing",
+        "hihi",
+        "hiwi"
+      ]
+    },
+    {
+      "word": "tiro",
+      "num_guesses": 4,
+      "prior": 0.00018652992950276843,
+      "guesses": [
+        "raes",
+        "gout",
+        "trio",
+        "tiro"
+      ]
+    },
+    {
+      "word": "kapo",
+      "num_guesses": 5,
+      "prior": 0.00017408816027613438,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "grip",
+        "kapo"
+      ]
+    },
+    {
+      "word": "funs",
+      "num_guesses": 4,
+      "prior": 0.00013103465482125563,
+      "guesses": [
+        "raes",
+        "moin",
+        "fugt",
+        "funs"
+      ]
+    },
+    {
+      "word": "sees",
+      "num_guesses": 4,
+      "prior": 0.0003656342859753475,
+      "guesses": [
+        "raes",
+        "wild",
+        "souk",
+        "sees"
+      ]
+    },
+    {
+      "word": "grzs",
+      "num_guesses": 4,
+      "prior": 0.00007026097447683654,
+      "guesses": [
+        "raes",
+        "korb",
+        "urig",
+        "grzs"
+      ]
+    },
+    {
+      "word": "duft",
+      "num_guesses": 4,
+      "prior": 0.00038075152475388485,
+      "guesses": [
+        "raes",
+        "holt",
+        "fibu",
+        "duft"
+      ]
+    },
+    {
+      "word": "uzet",
+      "num_guesses": 5,
+      "prior": 0.00007687344818764897,
+      "guesses": [
+        "raes",
+        "lind",
+        "hete",
+        "buße",
+        "uzet"
+      ]
+    },
+    {
+      "word": "zapf",
+      "num_guesses": 6,
+      "prior": 0.00022793744472357944,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "biga",
+        "prof",
+        "zapf"
+      ]
+    },
+    {
+      "word": "kadm",
+      "num_guesses": 6,
+      "prior": 0.00010654987950870954,
+      "guesses": [
+        "raes",
+        "html",
+        "idun",
+        "magd",
+        "vadm",
+        "kadm"
+      ]
+    },
+    {
+      "word": "niet",
+      "num_guesses": 4,
+      "prior": 0.00024925564116443614,
+      "guesses": [
+        "raes",
+        "lind",
+        "bien",
+        "niet"
+      ]
+    },
+    {
+      "word": "adde",
+      "num_guesses": 4,
+      "prior": 0.00017584890496158406,
+      "guesses": [
+        "raes",
+        "almt",
+        "hund",
+        "adde"
+      ]
+    },
+    {
+      "word": "opus",
+      "num_guesses": 5,
+      "prior": 0.0003390218334937043,
+      "guesses": [
+        "raes",
+        "moin",
+        "luft",
+        "uspd",
+        "opus"
+      ]
+    },
+    {
+      "word": "apex",
+      "num_guesses": 4,
+      "prior": 0.00025384021030162347,
+      "guesses": [
+        "raes",
+        "almt",
+        "hupe",
+        "apex"
+      ]
+    },
+    {
+      "word": "lall",
+      "num_guesses": 5,
+      "prior": 0.00015893771359497508,
+      "guesses": [
+        "raes",
+        "html",
+        "wolf",
+        "lmbg",
+        "lall"
+      ]
+    },
+    {
+      "word": "kaik",
+      "num_guesses": 5,
+      "prior": 0.00012504206111370458,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "grip",
+        "kaik"
+      ]
+    },
+    {
+      "word": "list",
+      "num_guesses": 3,
+      "prior": 0.0003995168671299061,
+      "guesses": [
+        "raes",
+        "silt",
+        "list"
+      ]
+    },
+    {
+      "word": "löse",
+      "num_guesses": 5,
+      "prior": 0.00026962627649821443,
+      "guesses": [
+        "raes",
+        "seit",
+        "esbo",
+        "mädl",
+        "löse"
+      ]
+    },
+    {
+      "word": "arni",
+      "num_guesses": 4,
+      "prior": 0.00016258714483353385,
+      "guesses": [
+        "raes",
+        "grat",
+        "noma",
+        "arni"
+      ]
+    },
+    {
+      "word": "hatz",
+      "num_guesses": 4,
+      "prior": 0.00019206717312955326,
+      "guesses": [
+        "raes",
+        "html",
+        "fußt",
+        "hatz"
+      ]
+    },
+    {
+      "word": "snob",
+      "num_guesses": 4,
+      "prior": 0.00019007339676963572,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "snob"
+      ]
+    },
+    {
+      "word": "maat",
+      "num_guesses": 4,
+      "prior": 0.00020494648895843015,
+      "guesses": [
+        "raes",
+        "html",
+        "thut",
+        "maat"
+      ]
+    },
+    {
+      "word": "that",
+      "num_guesses": 4,
+      "prior": 0.0006010823703277826,
+      "guesses": [
+        "raes",
+        "anal",
+        "tupi",
+        "that"
+      ]
+    },
+    {
+      "word": "lüpf",
+      "num_guesses": 5,
+      "prior": 0.00008206810256849729,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "köpf",
+        "lüpf"
+      ]
+    },
+    {
+      "word": "arme",
+      "num_guesses": 3,
+      "prior": 0.0005696507967684572,
+      "guesses": [
+        "raes",
+        "germ",
+        "arme"
+      ]
+    },
+    {
+      "word": "btsm",
+      "num_guesses": 5,
+      "prior": 0.00004803286616225009,
+      "guesses": [
+        "raes",
+        "silt",
+        "guck",
+        "ostd",
+        "btsm"
+      ]
+    },
+    {
+      "word": "fluß",
+      "num_guesses": 4,
+      "prior": 0.00043470602993688916,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "fluß"
+      ]
+    },
+    {
+      "word": "glbt",
+      "num_guesses": 4,
+      "prior": 0.00010496451169236343,
+      "guesses": [
+        "raes",
+        "holt",
+        "flug",
+        "glbt"
+      ]
+    },
+    {
+      "word": "lcds",
+      "num_guesses": 5,
+      "prior": 0.00010544517908372982,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "löss",
+        "lcds"
+      ]
+    },
+    {
+      "word": "paya",
+      "num_guesses": 6,
+      "prior": 0.00013611963647683521,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "biga",
+        "capa",
+        "paya"
+      ]
+    },
+    {
+      "word": "fuhr",
+      "num_guesses": 4,
+      "prior": 0.0005498593276365737,
+      "guesses": [
+        "raes",
+        "gout",
+        "firm",
+        "fuhr"
+      ]
+    },
+    {
+      "word": "bims",
+      "num_guesses": 4,
+      "prior": 0.00016161201389065864,
+      "guesses": [
+        "raes",
+        "moin",
+        "sekt",
+        "bims"
+      ]
+    },
+    {
+      "word": "efbv",
+      "num_guesses": 5,
+      "prior": 0.00008332694627476315,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "webe",
+        "efbv"
+      ]
+    },
+    {
+      "word": "tkbg",
+      "num_guesses": 5,
+      "prior": 0.00004860146081215083,
+      "guesses": [
+        "raes",
+        "holt",
+        "tupi",
+        "töff",
+        "tkbg"
+      ]
+    },
+    {
+      "word": "feen",
+      "num_guesses": 5,
+      "prior": 0.0002559600494564358,
+      "guesses": [
+        "raes",
+        "lind",
+        "ebon",
+        "fußt",
+        "feen"
+      ]
+    },
+    {
+      "word": "räts",
+      "num_guesses": 4,
+      "prior": 0.00011342437555550098,
+      "guesses": [
+        "raes",
+        "miso",
+        "rufs",
+        "räts"
+      ]
+    },
+    {
+      "word": "soko",
+      "num_guesses": 5,
+      "prior": 0.0001848048580005682,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "souk",
+        "soko"
+      ]
+    },
+    {
+      "word": "esus",
+      "num_guesses": 4,
+      "prior": 0.00016374471067610096,
+      "guesses": [
+        "raes",
+        "lenk",
+        "coup",
+        "esus"
+      ]
+    },
+    {
+      "word": "vorn",
+      "num_guesses": 5,
+      "prior": 0.0005214238915573074,
+      "guesses": [
+        "raes",
+        "gout",
+        "mund",
+        "zivi",
+        "vorn"
+      ]
+    },
+    {
+      "word": "laas",
+      "num_guesses": 5,
+      "prior": 0.00019447684929959074,
+      "guesses": [
+        "raes",
+        "munt",
+        "lisp",
+        "blau",
+        "laas"
+      ]
+    },
+    {
+      "word": "earl",
+      "num_guesses": 4,
+      "prior": 0.0002853516577161895,
+      "guesses": [
+        "raes",
+        "bmwk",
+        "aare",
+        "earl"
+      ]
+    },
+    {
+      "word": "talg",
+      "num_guesses": 4,
+      "prior": 0.0002612897387514255,
+      "guesses": [
+        "raes",
+        "html",
+        "lugt",
+        "talg"
+      ]
+    },
+    {
+      "word": "jung",
+      "num_guesses": 5,
+      "prior": 0.0004739947541244781,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "jung"
+      ]
+    },
+    {
+      "word": "vips",
+      "num_guesses": 5,
+      "prior": 0.00014784806049811955,
+      "guesses": [
+        "raes",
+        "moin",
+        "pikt",
+        "kdvg",
+        "vips"
+      ]
+    },
+    {
+      "word": "gmbh",
+      "num_guesses": 4,
+      "prior": 0.0005045875385513355,
+      "guesses": [
+        "raes",
+        "holt",
+        "mick",
+        "gmbh"
+      ]
+    },
+    {
+      "word": "ufer",
+      "num_guesses": 3,
+      "prior": 0.0004896505913328065,
+      "guesses": [
+        "raes",
+        "brif",
+        "ufer"
+      ]
+    },
+    {
+      "word": "hoff",
+      "num_guesses": 5,
+      "prior": 0.0003441994009741962,
+      "guesses": [
+        "raes",
+        "holt",
+        "hoho",
+        "impf",
+        "hoff"
+      ]
+    },
+    {
+      "word": "axel",
+      "num_guesses": 4,
+      "prior": 0.000336637305994058,
+      "guesses": [
+        "raes",
+        "almt",
+        "adel",
+        "axel"
+      ]
+    },
+    {
+      "word": "hing",
+      "num_guesses": 4,
+      "prior": 0.000440387021987609,
+      "guesses": [
+        "raes",
+        "holt",
+        "fing",
+        "hing"
+      ]
+    },
+    {
+      "word": "hplc",
+      "num_guesses": 4,
+      "prior": 0.00019830121980334096,
+      "guesses": [
+        "raes",
+        "holt",
+        "dick",
+        "hplc"
+      ]
+    },
+    {
+      "word": "jota",
+      "num_guesses": 5,
+      "prior": 0.00019857951981725472,
+      "guesses": [
+        "raes",
+        "anal",
+        "timo",
+        "vota",
+        "jota"
+      ]
+    },
+    {
+      "word": "sinh",
+      "num_guesses": 4,
+      "prior": 0.00014822395298525127,
+      "guesses": [
+        "raes",
+        "silt",
+        "kühn",
+        "sinh"
+      ]
+    },
+    {
+      "word": "lese",
+      "num_guesses": 4,
+      "prior": 0.0003856409976267907,
+      "guesses": [
+        "raes",
+        "seit",
+        "lupe",
+        "lese"
+      ]
+    },
+    {
+      "word": "dodo",
+      "num_guesses": 5,
+      "prior": 0.00020141837905242706,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "judo",
+        "dodo"
+      ]
+    },
+    {
+      "word": "gofs",
+      "num_guesses": 5,
+      "prior": 0.00012504523018538443,
+      "guesses": [
+        "raes",
+        "moin",
+        "lgbt",
+        "goss",
+        "gofs"
+      ]
+    },
+    {
+      "word": "rout",
+      "num_guesses": 3,
+      "prior": 0.00014124373177196913,
+      "guesses": [
+        "raes",
+        "hunt",
+        "rout"
+      ]
+    },
+    {
+      "word": "stgt",
+      "num_guesses": 5,
+      "prior": 0.0001773292188829164,
+      "guesses": [
+        "raes",
+        "silt",
+        "äsop",
+        "möge",
+        "stgt"
+      ]
+    },
+    {
+      "word": "ambg",
+      "num_guesses": 5,
+      "prior": 0.00006859412624849111,
+      "guesses": [
+        "raes",
+        "anal",
+        "hugo",
+        "bmbf",
+        "ambg"
+      ]
+    },
+    {
+      "word": "pick",
+      "num_guesses": 5,
+      "prior": 0.00029262796776655055,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "camp",
+        "pick"
+      ]
+    },
+    {
+      "word": "juls",
+      "num_guesses": 5,
+      "prior": 0.0001110827087067638,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "fuls",
+        "juls"
+      ]
+    },
+    {
+      "word": "uran",
+      "num_guesses": 4,
+      "prior": 0.00029542615603313596,
+      "guesses": [
+        "raes",
+        "grat",
+        "funk",
+        "uran"
+      ]
+    },
+    {
+      "word": "stgh",
+      "num_guesses": 5,
+      "prior": 0.00015795679202421615,
+      "guesses": [
+        "raes",
+        "silt",
+        "uvpg",
+        "stgb",
+        "stgh"
+      ]
+    },
+    {
+      "word": "fhtw",
+      "num_guesses": 4,
+      "prior": 0.00011145673302731208,
+      "guesses": [
+        "raes",
+        "holt",
+        "thun",
+        "fhtw"
+      ]
+    },
+    {
+      "word": "skyr",
+      "num_guesses": 5,
+      "prior": 0.00011028777814659302,
+      "guesses": [
+        "raes",
+        "stur",
+        "phon",
+        "sirr",
+        "skyr"
+      ]
+    },
+    {
+      "word": "grün",
+      "num_guesses": 4,
+      "prior": 0.0004709505689191054,
+      "guesses": [
+        "raes",
+        "gout",
+        "mini",
+        "grün"
+      ]
+    },
+    {
+      "word": "hamm",
+      "num_guesses": 3,
+      "prior": 0.00033066454849464206,
+      "guesses": [
+        "raes",
+        "html",
+        "hamm"
+      ]
+    },
+    {
+      "word": "aoks",
+      "num_guesses": 5,
+      "prior": 0.0000980137695025423,
+      "guesses": [
+        "raes",
+        "blau",
+        "mint",
+        "dock",
+        "aoks"
+      ]
+    },
+    {
+      "word": "rios",
+      "num_guesses": 3,
+      "prior": 0.0002034238833092042,
+      "guesses": [
+        "raes",
+        "miso",
+        "rios"
+      ]
+    },
+    {
+      "word": "naib",
+      "num_guesses": 6,
+      "prior": 0.00013393365445257257,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "priv",
+        "zain",
+        "naib"
+      ]
+    },
+    {
+      "word": "brüt",
+      "num_guesses": 5,
+      "prior": 0.00011528619627984065,
+      "guesses": [
+        "raes",
+        "gout",
+        "wirk",
+        "brät",
+        "brüt"
+      ]
+    },
+    {
+      "word": "auva",
+      "num_guesses": 4,
+      "prior": 0.0001285705777307717,
+      "guesses": [
+        "raes",
+        "anal",
+        "wikg",
+        "auva"
+      ]
+    },
+    {
+      "word": "sühn",
+      "num_guesses": 5,
+      "prior": 0.00014359554214738961,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "söhn",
+        "sühn"
+      ]
+    },
+    {
+      "word": "robe",
+      "num_guesses": 4,
+      "prior": 0.00024074858837155825,
+      "guesses": [
+        "raes",
+        "tein",
+        "obdh",
+        "robe"
+      ]
+    },
+    {
+      "word": "thot",
+      "num_guesses": 3,
+      "prior": 0.00021112719478197207,
+      "guesses": [
+        "raes",
+        "holt",
+        "thot"
+      ]
+    },
+    {
+      "word": "pvcs",
+      "num_guesses": 5,
+      "prior": 0.00008409993886166927,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "doch",
+        "pvcs"
+      ]
+    },
+    {
+      "word": "gaus",
+      "num_guesses": 4,
+      "prior": 0.00022479733073560112,
+      "guesses": [
+        "raes",
+        "munt",
+        "bghz",
+        "gaus"
+      ]
+    },
+    {
+      "word": "hofs",
+      "num_guesses": 5,
+      "prior": 0.0002500557907950921,
+      "guesses": [
+        "raes",
+        "moin",
+        "lgbt",
+        "kpch",
+        "hofs"
+      ]
+    },
+    {
+      "word": "benz",
+      "num_guesses": 6,
+      "prior": 0.00031646209473069697,
+      "guesses": [
+        "raes",
+        "hint",
+        "weed",
+        "gmlz",
+        "zopf",
+        "benz"
+      ]
+    },
+    {
+      "word": "fege",
+      "num_guesses": 6,
+      "prior": 0.0001578034102017035,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "zebu",
+        "wege",
+        "fege"
+      ]
+    },
+    {
+      "word": "wink",
+      "num_guesses": 5,
+      "prior": 0.00032776633309070346,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "zopf",
+        "wink"
+      ]
+    },
+    {
+      "word": "soor",
+      "num_guesses": 4,
+      "prior": 0.0002057218545059578,
+      "guesses": [
+        "raes",
+        "stur",
+        "phon",
+        "soor"
+      ]
+    },
+    {
+      "word": "düst",
+      "num_guesses": 5,
+      "prior": 0.00012034810581968874,
+      "guesses": [
+        "raes",
+        "silt",
+        "wodu",
+        "döst",
+        "düst"
+      ]
+    },
+    {
+      "word": "dbms",
+      "num_guesses": 4,
+      "prior": 0.00016641213056524458,
+      "guesses": [
+        "raes",
+        "moin",
+        "buch",
+        "dbms"
+      ]
+    },
+    {
+      "word": "ever",
+      "num_guesses": 5,
+      "prior": 0.0002589539845633375,
+      "guesses": [
+        "raes",
+        "brif",
+        "dehu",
+        "voip",
+        "ever"
+      ]
+    },
+    {
+      "word": "fuji",
+      "num_guesses": 5,
+      "prior": 0.00018540015495961202,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "bubi",
+        "fuji"
+      ]
+    },
+    {
+      "word": "fing",
+      "num_guesses": 5,
+      "prior": 0.0004422500441272438,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "gupf",
+        "fing"
+      ]
+    },
+    {
+      "word": "pfau",
+      "num_guesses": 4,
+      "prior": 0.000252086447947731,
+      "guesses": [
+        "raes",
+        "anal",
+        "tupi",
+        "pfau"
+      ]
+    },
+    {
+      "word": "groß",
+      "num_guesses": 3,
+      "prior": 0.0006226617518499658,
+      "guesses": [
+        "raes",
+        "gout",
+        "groß"
+      ]
+    },
+    {
+      "word": "gaur",
+      "num_guesses": 4,
+      "prior": 0.00013824579239474197,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "pkgr",
+        "gaur"
+      ]
+    },
+    {
+      "word": "wade",
+      "num_guesses": 5,
+      "prior": 0.0002681289460950617,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "mund",
+        "fwdl",
+        "wade"
+      ]
+    },
+    {
+      "word": "nigs",
+      "num_guesses": 5,
+      "prior": 0.00016930711711775717,
+      "guesses": [
+        "raes",
+        "moin",
+        "lind",
+        "klug",
+        "nigs"
+      ]
+    },
+    {
+      "word": "hext",
+      "num_guesses": 5,
+      "prior": 0.00011573445555895193,
+      "guesses": [
+        "raes",
+        "hint",
+        "buff",
+        "hegt",
+        "hext"
+      ]
+    },
+    {
+      "word": "lode",
+      "num_guesses": 4,
+      "prior": 0.0001880077811227063,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "lode"
+      ]
+    },
+    {
+      "word": "mors",
+      "num_guesses": 4,
+      "prior": 0.00024280991166086597,
+      "guesses": [
+        "raes",
+        "korb",
+        "samt",
+        "mors"
+      ]
+    },
+    {
+      "word": "odle",
+      "num_guesses": 4,
+      "prior": 0.000080488347684771,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "odle"
+      ]
+    },
+    {
+      "word": "ecus",
+      "num_guesses": 4,
+      "prior": 0.00014826405904474737,
+      "guesses": [
+        "raes",
+        "lenk",
+        "coup",
+        "ecus"
+      ]
+    },
+    {
+      "word": "ampa",
+      "num_guesses": 5,
+      "prior": 0.00012619328314758868,
+      "guesses": [
+        "raes",
+        "anal",
+        "wikg",
+        "auva",
+        "ampa"
+      ]
+    },
+    {
+      "word": "nabu",
+      "num_guesses": 5,
+      "prior": 0.00017571013308581595,
+      "guesses": [
+        "raes",
+        "html",
+        "kund",
+        "zaun",
+        "nabu"
+      ]
+    },
+    {
+      "word": "aues",
+      "num_guesses": 4,
+      "prior": 0.00015582399724994433,
+      "guesses": [
+        "raes",
+        "gvbl",
+        "oxyd",
+        "aues"
+      ]
+    },
+    {
+      "word": "löße",
+      "num_guesses": 6,
+      "prior": 0.00013000143267918648,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "eule",
+        "löwe",
+        "löße"
+      ]
+    },
+    {
+      "word": "ohne",
+      "num_guesses": 3,
+      "prior": 0.0009657886462683451,
+      "guesses": [
+        "raes",
+        "hint",
+        "ohne"
+      ]
+    },
+    {
+      "word": "gpus",
+      "num_guesses": 5,
+      "prior": 0.00009199634595567865,
+      "guesses": [
+        "raes",
+        "moin",
+        "pulk",
+        "cpus",
+        "gpus"
+      ]
+    },
+    {
+      "word": "impf",
+      "num_guesses": 5,
+      "prior": 0.0002122300711026273,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "bubi",
+        "impf"
+      ]
+    },
+    {
+      "word": "warb",
+      "num_guesses": 5,
+      "prior": 0.0002758063806668067,
+      "guesses": [
+        "raes",
+        "hmtd",
+        "pkgr",
+        "flan",
+        "warb"
+      ]
+    },
+    {
+      "word": "flur",
+      "num_guesses": 4,
+      "prior": 0.0004022122993108252,
+      "guesses": [
+        "raes",
+        "gout",
+        "drum",
+        "flur"
+      ]
+    },
+    {
+      "word": "äbte",
+      "num_guesses": 5,
+      "prior": 0.00025317350232127375,
+      "guesses": [
+        "raes",
+        "hint",
+        "tobe",
+        "besä",
+        "äbte"
+      ]
+    },
+    {
+      "word": "rais",
+      "num_guesses": 3,
+      "prior": 0.0001882638122465046,
+      "guesses": [
+        "raes",
+        "tupi",
+        "rais"
+      ]
+    },
+    {
+      "word": "wöge",
+      "num_guesses": 6,
+      "prior": 0.00014220962700499322,
+      "guesses": [
+        "raes",
+        "hint",
+        "godl",
+        "zebu",
+        "möwe",
+        "wöge"
+      ]
+    },
+    {
+      "word": "hage",
+      "num_guesses": 5,
+      "prior": 0.0002095506802608846,
+      "guesses": [
+        "raes",
+        "lgbt",
+        "nggw",
+        "hpvs",
+        "hage"
+      ]
+    },
+    {
+      "word": "erzt",
+      "num_guesses": 4,
+      "prior": 0.00014673363312093973,
+      "guesses": [
+        "raes",
+        "hete",
+        "ganz",
+        "erzt"
+      ]
+    },
+    {
+      "word": "heia",
+      "num_guesses": 4,
+      "prior": 0.00016843059617710287,
+      "guesses": [
+        "raes",
+        "almt",
+        "dehn",
+        "heia"
+      ]
+    },
+    {
+      "word": "doof",
+      "num_guesses": 5,
+      "prior": 0.0002303474453313237,
+      "guesses": [
+        "raes",
+        "holt",
+        "kind",
+        "judo",
+        "doof"
+      ]
+    },
+    {
+      "word": "bgbl",
+      "num_guesses": 5,
+      "prior": 0.0002717454999506059,
+      "guesses": [
+        "raes",
+        "holt",
+        "bund",
+        "blök",
+        "bgbl"
+      ]
+    },
+    {
+      "word": "qats",
+      "num_guesses": 5,
+      "prior": 0.00004680748574820187,
+      "guesses": [
+        "raes",
+        "munt",
+        "tkbg",
+        "wats",
+        "qats"
+      ]
+    },
+    {
+      "word": "neon",
+      "num_guesses": 5,
+      "prior": 0.00021878079005055386,
+      "guesses": [
+        "raes",
+        "hint",
+        "nude",
+        "kopf",
+        "neon"
+      ]
+    },
+    {
+      "word": "sonn",
+      "num_guesses": 4,
+      "prior": 0.00032477798607903223,
+      "guesses": [
+        "raes",
+        "silt",
+        "phon",
+        "sonn"
+      ]
+    },
+    {
+      "word": "küre",
+      "num_guesses": 6,
+      "prior": 0.00013303314974735445,
+      "guesses": [
+        "raes",
+        "hete",
+        "gumo",
+        "wirk",
+        "köre",
+        "küre"
+      ]
+    },
+    {
+      "word": "kiel",
+      "num_guesses": 4,
+      "prior": 0.0004374332730463701,
+      "guesses": [
+        "raes",
+        "lind",
+        "kfzs",
+        "kiel"
+      ]
+    },
+    {
+      "word": "wogt",
+      "num_guesses": 5,
+      "prior": 0.00021888687415284302,
+      "guesses": [
+        "raes",
+        "holt",
+        "bmgf",
+        "vwzg",
+        "wogt"
+      ]
+    }
+  ]
+}

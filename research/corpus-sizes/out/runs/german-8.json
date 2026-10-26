@@ -1,0 +1,5151 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T09:58:46.93657Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "gentiles",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "german",
+    "word_length": 8,
+    "dictionary_length": 41864,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "f6a17505d78c361ec35d5098edac4e3972815f4d10dba4477db5177a6bfc977d",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/de/de-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T22:35:48.100547Z",
+      "source_sha256": "09d9e84ec8dbef04ad2ec5362a4107c28c5d16cf01c0e9890c40f8d4533438fc",
+      "word_count": 866751
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.189999999999974,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.03600000000000002,
+        "3": 0.7420000000000005,
+        "4": 0.21800000000000017,
+        "5": 0.004
+      }
+    },
+    "prior": {
+      "mean": 3.133768625031043,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.04627357745791231,
+        "3": 0.7752320531052539,
+        "4": 0.17694653638471008,
+        "5": 0.001547833052122797
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "weglockt",
+      "num_guesses": 3,
+      "prior": 0.00001537767404228276,
+      "guesses": [
+        "gentiles",
+        "wehklagt",
+        "weglockt"
+      ]
+    },
+    {
+      "word": "abtretet",
+      "num_guesses": 3,
+      "prior": 0.000013994068519286975,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "abtretet"
+      ]
+    },
+    {
+      "word": "ziselier",
+      "num_guesses": 3,
+      "prior": 0.000013520047216837315,
+      "guesses": [
+        "gentiles",
+        "speichel",
+        "ziselier"
+      ]
+    },
+    {
+      "word": "abschält",
+      "num_guesses": 3,
+      "prior": 0.000020825015364508275,
+      "guesses": [
+        "gentiles",
+        "aufbahrt",
+        "abschält"
+      ]
+    },
+    {
+      "word": "ganymeds",
+      "num_guesses": 2,
+      "prior": 0.00001953367733994073,
+      "guesses": [
+        "gentiles",
+        "ganymeds"
+      ]
+    },
+    {
+      "word": "harlands",
+      "num_guesses": 3,
+      "prior": 0.000014243872608794281,
+      "guesses": [
+        "gentiles",
+        "rauhbank",
+        "harlands"
+      ]
+    },
+    {
+      "word": "besprang",
+      "num_guesses": 3,
+      "prior": 0.000017919685750911235,
+      "guesses": [
+        "gentiles",
+        "begasung",
+        "besprang"
+      ]
+    },
+    {
+      "word": "ungestüm",
+      "num_guesses": 3,
+      "prior": 0.00005078245734788863,
+      "guesses": [
+        "gentiles",
+        "aufprägt",
+        "ungestüm"
+      ]
+    },
+    {
+      "word": "eisbären",
+      "num_guesses": 3,
+      "prior": 0.000033552986104680706,
+      "guesses": [
+        "gentiles",
+        "sedieren",
+        "eisbären"
+      ]
+    },
+    {
+      "word": "ausufere",
+      "num_guesses": 3,
+      "prior": 0.00001020846959122507,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "ausufere"
+      ]
+    },
+    {
+      "word": "türzarge",
+      "num_guesses": 4,
+      "prior": 0.0000173823864218472,
+      "guesses": [
+        "gentiles",
+        "aufbrach",
+        "vorwagte",
+        "türzarge"
+      ]
+    },
+    {
+      "word": "grünstem",
+      "num_guesses": 3,
+      "prior": 0.00001825958873964552,
+      "guesses": [
+        "gentiles",
+        "grössten",
+        "grünstem"
+      ]
+    },
+    {
+      "word": "isomatte",
+      "num_guesses": 3,
+      "prior": 0.000022620703531762222,
+      "guesses": [
+        "gentiles",
+        "strickst",
+        "isomatte"
+      ]
+    },
+    {
+      "word": "fusssack",
+      "num_guesses": 3,
+      "prior": 0.000011272603096352394,
+      "guesses": [
+        "gentiles",
+        "ausschau",
+        "fusssack"
+      ]
+    },
+    {
+      "word": "ausbüßen",
+      "num_guesses": 4,
+      "prior": 0.000011373267318815774,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "judaskuß",
+        "ausbüßen"
+      ]
+    },
+    {
+      "word": "abialbon",
+      "num_guesses": 3,
+      "prior": 8.982197519626565e-6,
+      "guesses": [
+        "gentiles",
+        "prodekan",
+        "abialbon"
+      ]
+    },
+    {
+      "word": "mißfiele",
+      "num_guesses": 3,
+      "prior": 0.000019914091836578408,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "mißfiele"
+      ]
+    },
+    {
+      "word": "bewandte",
+      "num_guesses": 4,
+      "prior": 0.00001180701443211828,
+      "guesses": [
+        "gentiles",
+        "harkende",
+        "demantne",
+        "bewandte"
+      ]
+    },
+    {
+      "word": "zuließet",
+      "num_guesses": 3,
+      "prior": 9.740939653356997e-6,
+      "guesses": [
+        "gentiles",
+        "erlebter",
+        "zuließet"
+      ]
+    },
+    {
+      "word": "erschaut",
+      "num_guesses": 3,
+      "prior": 0.00003698284586092384,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "erschaut"
+      ]
+    },
+    {
+      "word": "tatnacht",
+      "num_guesses": 3,
+      "prior": 0.000019845581668061882,
+      "guesses": [
+        "gentiles",
+        "hornhaut",
+        "tatnacht"
+      ]
+    },
+    {
+      "word": "lotender",
+      "num_guesses": 3,
+      "prior": 0.000010177812972622389,
+      "guesses": [
+        "gentiles",
+        "abduktor",
+        "lotender"
+      ]
+    },
+    {
+      "word": "inkugeln",
+      "num_guesses": 3,
+      "prior": 9.356428398377194e-6,
+      "guesses": [
+        "gentiles",
+        "kollernd",
+        "inkugeln"
+      ]
+    },
+    {
+      "word": "arbitern",
+      "num_guesses": 3,
+      "prior": 0.000012556965880687566,
+      "guesses": [
+        "gentiles",
+        "knarrend",
+        "arbitern"
+      ]
+    },
+    {
+      "word": "salontür",
+      "num_guesses": 3,
+      "prior": 0.000020062669374059316,
+      "guesses": [
+        "gentiles",
+        "facharzt",
+        "salontür"
+      ]
+    },
+    {
+      "word": "aussauge",
+      "num_guesses": 3,
+      "prior": 0.000019020174396242467,
+      "guesses": [
+        "gentiles",
+        "fussraum",
+        "aussauge"
+      ]
+    },
+    {
+      "word": "kämmerin",
+      "num_guesses": 4,
+      "prior": 0.000016624266479988682,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "krämerin",
+        "kämmerin"
+      ]
+    },
+    {
+      "word": "unitären",
+      "num_guesses": 3,
+      "prior": 0.00002513054884589922,
+      "guesses": [
+        "gentiles",
+        "nordmann",
+        "unitären"
+      ]
+    },
+    {
+      "word": "latenten",
+      "num_guesses": 4,
+      "prior": 0.00005297502347590086,
+      "guesses": [
+        "gentiles",
+        "abduktor",
+        "talenten",
+        "latenten"
+      ]
+    },
+    {
+      "word": "coupétür",
+      "num_guesses": 3,
+      "prior": 0.000012691597608616909,
+      "guesses": [
+        "gentiles",
+        "baumarkt",
+        "coupétür"
+      ]
+    },
+    {
+      "word": "montagus",
+      "num_guesses": 2,
+      "prior": 0.00001743642597180445,
+      "guesses": [
+        "gentiles",
+        "montagus"
+      ]
+    },
+    {
+      "word": "aalhamen",
+      "num_guesses": 4,
+      "prior": 0.000015668310883536775,
+      "guesses": [
+        "gentiles",
+        "kolabaum",
+        "palmaren",
+        "aalhamen"
+      ]
+    },
+    {
+      "word": "reizende",
+      "num_guesses": 4,
+      "prior": 0.00005316119718235219,
+      "guesses": [
+        "gentiles",
+        "fürnehme",
+        "dezember",
+        "reizende"
+      ]
+    },
+    {
+      "word": "querlage",
+      "num_guesses": 3,
+      "prior": 0.00003394072975033682,
+      "guesses": [
+        "gentiles",
+        "fuhrwerk",
+        "querlage"
+      ]
+    },
+    {
+      "word": "aufmesse",
+      "num_guesses": 3,
+      "prior": 7.697694018035262e-6,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "aufmesse"
+      ]
+    },
+    {
+      "word": "ballerte",
+      "num_guesses": 3,
+      "prior": 0.00002201531722442011,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "ballerte"
+      ]
+    },
+    {
+      "word": "fliesses",
+      "num_guesses": 3,
+      "prior": 0.00001535789561790702,
+      "guesses": [
+        "gentiles",
+        "tieferem",
+        "fliesses"
+      ]
+    },
+    {
+      "word": "finnigem",
+      "num_guesses": 3,
+      "prior": 0.000016781581728712233,
+      "guesses": [
+        "gentiles",
+        "mitdürfe",
+        "finnigem"
+      ]
+    },
+    {
+      "word": "laminats",
+      "num_guesses": 3,
+      "prior": 0.000017680143216012217,
+      "guesses": [
+        "gentiles",
+        "facepalm",
+        "laminats"
+      ]
+    },
+    {
+      "word": "biertest",
+      "num_guesses": 4,
+      "prior": 0.000010018706312336885,
+      "guesses": [
+        "gentiles",
+        "ethikrat",
+        "triebest",
+        "biertest"
+      ]
+    },
+    {
+      "word": "gekautem",
+      "num_guesses": 3,
+      "prior": 0.00001726356113793289,
+      "guesses": [
+        "gentiles",
+        "aufbrüht",
+        "gekautem"
+      ]
+    },
+    {
+      "word": "anzüchte",
+      "num_guesses": 4,
+      "prior": 0.000011132527246714073,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "andachte",
+        "anzüchte"
+      ]
+    },
+    {
+      "word": "knattere",
+      "num_guesses": 4,
+      "prior": 0.000010594598454130133,
+      "guesses": [
+        "gentiles",
+        "dorfbach",
+        "quaterne",
+        "knattere"
+      ]
+    },
+    {
+      "word": "äffender",
+      "num_guesses": 4,
+      "prior": 0.000012721221533317846,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "ökonomen",
+        "äffender"
+      ]
+    },
+    {
+      "word": "nominale",
+      "num_guesses": 3,
+      "prior": 0.00004222137326983798,
+      "guesses": [
+        "gentiles",
+        "backherd",
+        "nominale"
+      ]
+    },
+    {
+      "word": "gebleckt",
+      "num_guesses": 4,
+      "prior": 0.00001919722912794688,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "gebügelt",
+        "gebleckt"
+      ]
+    },
+    {
+      "word": "lohfarbe",
+      "num_guesses": 3,
+      "prior": 0.00001221987652854457,
+      "guesses": [
+        "gentiles",
+        "baumharz",
+        "lohfarbe"
+      ]
+    },
+    {
+      "word": "dieburgs",
+      "num_guesses": 3,
+      "prior": 0.000012983944532744247,
+      "guesses": [
+        "gentiles",
+        "mauspads",
+        "dieburgs"
+      ]
+    },
+    {
+      "word": "verwahrt",
+      "num_guesses": 3,
+      "prior": 0.00005424465236706909,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "verwahrt"
+      ]
+    },
+    {
+      "word": "fankerln",
+      "num_guesses": 3,
+      "prior": 9.455087263083725e-6,
+      "guesses": [
+        "gentiles",
+        "kündbare",
+        "fankerln"
+      ]
+    },
+    {
+      "word": "kleckert",
+      "num_guesses": 3,
+      "prior": 0.000018448172516806647,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "kleckert"
+      ]
+    },
+    {
+      "word": "anmaßtet",
+      "num_guesses": 4,
+      "prior": 8.469286924092892e-6,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "anhaftet",
+        "anmaßtet"
+      ]
+    },
+    {
+      "word": "reinnahm",
+      "num_guesses": 3,
+      "prior": 7.666015189664667e-6,
+      "guesses": [
+        "gentiles",
+        "wurfbahn",
+        "reinnahm"
+      ]
+    },
+    {
+      "word": "umsackte",
+      "num_guesses": 3,
+      "prior": 8.243112862247824e-6,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "umsackte"
+      ]
+    },
+    {
+      "word": "randalen",
+      "num_guesses": 4,
+      "prior": 0.000014028417229284235,
+      "guesses": [
+        "gentiles",
+        "vandalen",
+        "wandalen",
+        "randalen"
+      ]
+    },
+    {
+      "word": "magerste",
+      "num_guesses": 3,
+      "prior": 0.00001943416675242647,
+      "guesses": [
+        "gentiles",
+        "sägerauh",
+        "magerste"
+      ]
+    },
+    {
+      "word": "erwünsch",
+      "num_guesses": 3,
+      "prior": 0.000017798229268559674,
+      "guesses": [
+        "gentiles",
+        "fuhrmann",
+        "erwünsch"
+      ]
+    },
+    {
+      "word": "ansässen",
+      "num_guesses": 4,
+      "prior": 0.000014783028762889904,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "anpassen",
+        "ansässen"
+      ]
+    },
+    {
+      "word": "zusteuer",
+      "num_guesses": 3,
+      "prior": 0.000015206207927525683,
+      "guesses": [
+        "gentiles",
+        "drahttür",
+        "zusteuer"
+      ]
+    },
+    {
+      "word": "krempels",
+      "num_guesses": 4,
+      "prior": 0.000014892274852334291,
+      "guesses": [
+        "gentiles",
+        "breslaus",
+        "drempels",
+        "krempels"
+      ]
+    },
+    {
+      "word": "genadelt",
+      "num_guesses": 3,
+      "prior": 0.000022770795250728497,
+      "guesses": [
+        "gentiles",
+        "bewegung",
+        "genadelt"
+      ]
+    },
+    {
+      "word": "leidiger",
+      "num_guesses": 3,
+      "prior": 0.000026816883269322776,
+      "guesses": [
+        "gentiles",
+        "heiligem",
+        "leidiger"
+      ]
+    },
+    {
+      "word": "abduzens",
+      "num_guesses": 4,
+      "prior": 0.000022807197297096575,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "abducens",
+        "abduzens"
+      ]
+    },
+    {
+      "word": "vorkasse",
+      "num_guesses": 3,
+      "prior": 0.000025476052751979598,
+      "guesses": [
+        "gentiles",
+        "hofraume",
+        "vorkasse"
+      ]
+    },
+    {
+      "word": "hohleres",
+      "num_guesses": 3,
+      "prior": 0.000011313299473283287,
+      "guesses": [
+        "gentiles",
+        "rollback",
+        "hohleres"
+      ]
+    },
+    {
+      "word": "erleucht",
+      "num_guesses": 3,
+      "prior": 0.00002308454214144383,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "erleucht"
+      ]
+    },
+    {
+      "word": "textende",
+      "num_guesses": 3,
+      "prior": 0.00002316439999996283,
+      "guesses": [
+        "gentiles",
+        "korbwurf",
+        "textende"
+      ]
+    },
+    {
+      "word": "arabisch",
+      "num_guesses": 3,
+      "prior": 0.0000521375484450609,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "arabisch"
+      ]
+    },
+    {
+      "word": "kälteten",
+      "num_guesses": 3,
+      "prior": 0.000012015244106759923,
+      "guesses": [
+        "gentiles",
+        "lautform",
+        "kälteten"
+      ]
+    },
+    {
+      "word": "jammeret",
+      "num_guesses": 3,
+      "prior": 8.9133603038631e-6,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "jammeret"
+      ]
+    },
+    {
+      "word": "harnisch",
+      "num_guesses": 3,
+      "prior": 0.00004784765829373509,
+      "guesses": [
+        "gentiles",
+        "prodekan",
+        "harnisch"
+      ]
+    },
+    {
+      "word": "stärkten",
+      "num_guesses": 4,
+      "prior": 0.00003645681776754843,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "stürzten",
+        "stärkten"
+      ]
+    },
+    {
+      "word": "sergeant",
+      "num_guesses": 3,
+      "prior": 0.00004929030151416589,
+      "guesses": [
+        "gentiles",
+        "segmente",
+        "sergeant"
+      ]
+    },
+    {
+      "word": "ummodelt",
+      "num_guesses": 3,
+      "prior": 0.000017555332416608563,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "ummodelt"
+      ]
+    },
+    {
+      "word": "stutzuhr",
+      "num_guesses": 3,
+      "prior": 0.000021785141383723196,
+      "guesses": [
+        "gentiles",
+        "autokrat",
+        "stutzuhr"
+      ]
+    },
+    {
+      "word": "winzerin",
+      "num_guesses": 3,
+      "prior": 0.00002164875656798492,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "winzerin"
+      ]
+    },
+    {
+      "word": "autosoms",
+      "num_guesses": 3,
+      "prior": 0.000014406282686932516,
+      "guesses": [
+        "gentiles",
+        "hatamoto",
+        "autosoms"
+      ]
+    },
+    {
+      "word": "brauchte",
+      "num_guesses": 3,
+      "prior": 0.0000809309145838531,
+      "guesses": [
+        "gentiles",
+        "aufbahre",
+        "brauchte"
+      ]
+    },
+    {
+      "word": "bräsiger",
+      "num_guesses": 3,
+      "prior": 0.000010157168151506714,
+      "guesses": [
+        "gentiles",
+        "büroraum",
+        "bräsiger"
+      ]
+    },
+    {
+      "word": "akinesie",
+      "num_guesses": 3,
+      "prior": 0.00002183098676316584,
+      "guesses": [
+        "gentiles",
+        "pissoire",
+        "akinesie"
+      ]
+    },
+    {
+      "word": "quentins",
+      "num_guesses": 3,
+      "prior": 0.000023387638338554244,
+      "guesses": [
+        "gentiles",
+        "trampend",
+        "quentins"
+      ]
+    },
+    {
+      "word": "kuration",
+      "num_guesses": 3,
+      "prior": 0.0000200769479006295,
+      "guesses": [
+        "gentiles",
+        "katadrom",
+        "kuration"
+      ]
+    },
+    {
+      "word": "berapple",
+      "num_guesses": 4,
+      "prior": 9.576173349133714e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "deverbal",
+        "berapple"
+      ]
+    },
+    {
+      "word": "schieles",
+      "num_guesses": 3,
+      "prior": 0.00002383068846377052,
+      "guesses": [
+        "gentiles",
+        "greifbar",
+        "schieles"
+      ]
+    },
+    {
+      "word": "rückpass",
+      "num_guesses": 3,
+      "prior": 0.00001701954078979301,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "rückpass"
+      ]
+    },
+    {
+      "word": "gebrückt",
+      "num_guesses": 4,
+      "prior": 0.000019032801210463975,
+      "guesses": [
+        "gentiles",
+        "futharks",
+        "gedrückt",
+        "gebrückt"
+      ]
+    },
+    {
+      "word": "begrüßen",
+      "num_guesses": 3,
+      "prior": 0.00006549967438677871,
+      "guesses": [
+        "gentiles",
+        "herumgab",
+        "begrüßen"
+      ]
+    },
+    {
+      "word": "andocken",
+      "num_guesses": 3,
+      "prior": 0.000027579609472123697,
+      "guesses": [
+        "gentiles",
+        "aufbrach",
+        "andocken"
+      ]
+    },
+    {
+      "word": "nebeltag",
+      "num_guesses": 3,
+      "prior": 0.000017757366682728556,
+      "guesses": [
+        "gentiles",
+        "leugnete",
+        "nebeltag"
+      ]
+    },
+    {
+      "word": "korkenen",
+      "num_guesses": 4,
+      "prior": 9.563019215188913e-6,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "ökonomen",
+        "korkenen"
+      ]
+    },
+    {
+      "word": "hörnende",
+      "num_guesses": 4,
+      "prior": 0.000010577028542392566,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "umrechne",
+        "hörnende"
+      ]
+    },
+    {
+      "word": "scheqeln",
+      "num_guesses": 5,
+      "prior": 8.42596349040345e-6,
+      "guesses": [
+        "gentiles",
+        "ausbohre",
+        "schemeln",
+        "schekeln",
+        "scheqeln"
+      ]
+    },
+    {
+      "word": "eilandes",
+      "num_guesses": 2,
+      "prior": 0.000027773076554189603,
+      "guesses": [
+        "gentiles",
+        "eilandes"
+      ]
+    },
+    {
+      "word": "auslaute",
+      "num_guesses": 3,
+      "prior": 0.00002981406822646323,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "auslaute"
+      ]
+    },
+    {
+      "word": "geilsten",
+      "num_guesses": 2,
+      "prior": 0.0000215830688505439,
+      "guesses": [
+        "gentiles",
+        "geilsten"
+      ]
+    },
+    {
+      "word": "salafist",
+      "num_guesses": 4,
+      "prior": 0.000015488512095794516,
+      "guesses": [
+        "gentiles",
+        "vorblatt",
+        "islamist",
+        "salafist"
+      ]
+    },
+    {
+      "word": "jovialer",
+      "num_guesses": 3,
+      "prior": 0.00002589371619199171,
+      "guesses": [
+        "gentiles",
+        "rammbock",
+        "jovialer"
+      ]
+    },
+    {
+      "word": "melanome",
+      "num_guesses": 3,
+      "prior": 0.00003073052523414834,
+      "guesses": [
+        "gentiles",
+        "rollbahn",
+        "melanome"
+      ]
+    },
+    {
+      "word": "marinier",
+      "num_guesses": 3,
+      "prior": 0.000019010048748659758,
+      "guesses": [
+        "gentiles",
+        "marodier",
+        "marinier"
+      ]
+    },
+    {
+      "word": "lotrecht",
+      "num_guesses": 3,
+      "prior": 0.000034472379340483875,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "lotrecht"
+      ]
+    },
+    {
+      "word": "vermacht",
+      "num_guesses": 4,
+      "prior": 0.00004558024891230334,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "verdacht",
+        "vermacht"
+      ]
+    },
+    {
+      "word": "schurren",
+      "num_guesses": 4,
+      "prior": 0.00002184020675286172,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "verwirkt",
+        "schurren"
+      ]
+    },
+    {
+      "word": "verzupfe",
+      "num_guesses": 4,
+      "prior": 7.463994075970058e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "verpuffe",
+        "verzupfe"
+      ]
+    },
+    {
+      "word": "tatenlos",
+      "num_guesses": 2,
+      "prior": 0.00003922509933769237,
+      "guesses": [
+        "gentiles",
+        "tatenlos"
+      ]
+    },
+    {
+      "word": "erbellen",
+      "num_guesses": 3,
+      "prior": 0.000013718815316763918,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "erbellen"
+      ]
+    },
+    {
+      "word": "blutlose",
+      "num_guesses": 3,
+      "prior": 0.00002490154930903633,
+      "guesses": [
+        "gentiles",
+        "abstufst",
+        "blutlose"
+      ]
+    },
+    {
+      "word": "hochgehe",
+      "num_guesses": 3,
+      "prior": 0.000015496172095631605,
+      "guesses": [
+        "gentiles",
+        "fahrwege",
+        "hochgehe"
+      ]
+    },
+    {
+      "word": "nährtest",
+      "num_guesses": 3,
+      "prior": 0.000015822655243959557,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "nährtest"
+      ]
+    },
+    {
+      "word": "furtados",
+      "num_guesses": 3,
+      "prior": 0.000013436480570070888,
+      "guesses": [
+        "gentiles",
+        "radbruch",
+        "furtados"
+      ]
+    },
+    {
+      "word": "kühlfach",
+      "num_guesses": 3,
+      "prior": 0.000021626613059995706,
+      "guesses": [
+        "gentiles",
+        "rollback",
+        "kühlfach"
+      ]
+    },
+    {
+      "word": "bluejean",
+      "num_guesses": 3,
+      "prior": 9.427318538822779e-6,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "bluejean"
+      ]
+    },
+    {
+      "word": "hügelzug",
+      "num_guesses": 3,
+      "prior": 0.000026219397790492533,
+      "guesses": [
+        "gentiles",
+        "holzarme",
+        "hügelzug"
+      ]
+    },
+    {
+      "word": "einrenkt",
+      "num_guesses": 4,
+      "prior": 0.000017221125613024753,
+      "guesses": [
+        "gentiles",
+        "biarchie",
+        "einrennt",
+        "einrenkt"
+      ]
+    },
+    {
+      "word": "baunähte",
+      "num_guesses": 3,
+      "prior": 0.000015135400814131552,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "baunähte"
+      ]
+    },
+    {
+      "word": "grimmend",
+      "num_guesses": 3,
+      "prior": 0.000010040510014429988,
+      "guesses": [
+        "gentiles",
+        "brauchte",
+        "grimmend"
+      ]
+    },
+    {
+      "word": "geklärte",
+      "num_guesses": 3,
+      "prior": 0.000036649607314335575,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "geklärte"
+      ]
+    },
+    {
+      "word": "arkadien",
+      "num_guesses": 3,
+      "prior": 0.00004221672053575812,
+      "guesses": [
+        "gentiles",
+        "marodier",
+        "arkadien"
+      ]
+    },
+    {
+      "word": "andauret",
+      "num_guesses": 3,
+      "prior": 7.759530833389337e-6,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "andauret"
+      ]
+    },
+    {
+      "word": "krönende",
+      "num_guesses": 4,
+      "prior": 0.000029654741793806994,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "erdkunde",
+        "krönende"
+      ]
+    },
+    {
+      "word": "togoerin",
+      "num_guesses": 3,
+      "prior": 7.961722320051271e-6,
+      "guesses": [
+        "gentiles",
+        "argument",
+        "togoerin"
+      ]
+    },
+    {
+      "word": "gegische",
+      "num_guesses": 3,
+      "prior": 0.000017002414504587583,
+      "guesses": [
+        "gentiles",
+        "gemische",
+        "gegische"
+      ]
+    },
+    {
+      "word": "geäderte",
+      "num_guesses": 4,
+      "prior": 0.0000215972846170981,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "umstürzt",
+        "geäderte"
+      ]
+    },
+    {
+      "word": "sulfaten",
+      "num_guesses": 3,
+      "prior": 0.000036365688076461505,
+      "guesses": [
+        "gentiles",
+        "auslosch",
+        "sulfaten"
+      ]
+    },
+    {
+      "word": "schlucks",
+      "num_guesses": 3,
+      "prior": 0.000017469715449708946,
+      "guesses": [
+        "gentiles",
+        "kolabaum",
+        "schlucks"
+      ]
+    },
+    {
+      "word": "furniert",
+      "num_guesses": 3,
+      "prior": 0.000024559171219360494,
+      "guesses": [
+        "gentiles",
+        "murrtest",
+        "furniert"
+      ]
+    },
+    {
+      "word": "fünfling",
+      "num_guesses": 3,
+      "prior": 0.000014776092712558463,
+      "guesses": [
+        "gentiles",
+        "dinglich",
+        "fünfling"
+      ]
+    },
+    {
+      "word": "perkuhns",
+      "num_guesses": 3,
+      "prior": 0.000010337230079637899,
+      "guesses": [
+        "gentiles",
+        "haubarem",
+        "perkuhns"
+      ]
+    },
+    {
+      "word": "nubische",
+      "num_guesses": 4,
+      "prior": 0.00002861803250776455,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "chinesin",
+        "nubische"
+      ]
+    },
+    {
+      "word": "gierigen",
+      "num_guesses": 2,
+      "prior": 0.000040949087474866344,
+      "guesses": [
+        "gentiles",
+        "gierigen"
+      ]
+    },
+    {
+      "word": "erigiert",
+      "num_guesses": 3,
+      "prior": 0.00002342329487471892,
+      "guesses": [
+        "gentiles",
+        "predigte",
+        "erigiert"
+      ]
+    },
+    {
+      "word": "griechin",
+      "num_guesses": 3,
+      "prior": 0.00003419589406924912,
+      "guesses": [
+        "gentiles",
+        "brauchte",
+        "griechin"
+      ]
+    },
+    {
+      "word": "grösstem",
+      "num_guesses": 3,
+      "prior": 0.00003801613712541608,
+      "guesses": [
+        "gentiles",
+        "grösster",
+        "grösstem"
+      ]
+    },
+    {
+      "word": "kläglich",
+      "num_guesses": 3,
+      "prior": 0.00004858774659227579,
+      "guesses": [
+        "gentiles",
+        "fraglich",
+        "kläglich"
+      ]
+    },
+    {
+      "word": "havarist",
+      "num_guesses": 3,
+      "prior": 0.000014835777491420032,
+      "guesses": [
+        "gentiles",
+        "sprachst",
+        "havarist"
+      ]
+    },
+    {
+      "word": "ponieren",
+      "num_guesses": 3,
+      "prior": 0.000019290537190977282,
+      "guesses": [
+        "gentiles",
+        "raubmord",
+        "ponieren"
+      ]
+    },
+    {
+      "word": "erdwärme",
+      "num_guesses": 3,
+      "prior": 0.00003199910647450217,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "erdwärme"
+      ]
+    },
+    {
+      "word": "aalborgs",
+      "num_guesses": 3,
+      "prior": 0.000011667522347064034,
+      "guesses": [
+        "gentiles",
+        "vollzugs",
+        "aalborgs"
+      ]
+    },
+    {
+      "word": "gutedeln",
+      "num_guesses": 2,
+      "prior": 9.62807976933251e-6,
+      "guesses": [
+        "gentiles",
+        "gutedeln"
+      ]
+    },
+    {
+      "word": "hartmuts",
+      "num_guesses": 3,
+      "prior": 0.0000249398758473403,
+      "guesses": [
+        "gentiles",
+        "radbruch",
+        "hartmuts"
+      ]
+    },
+    {
+      "word": "diäresen",
+      "num_guesses": 3,
+      "prior": 0.000017730658734492807,
+      "guesses": [
+        "gentiles",
+        "sedieren",
+        "diäresen"
+      ]
+    },
+    {
+      "word": "metriken",
+      "num_guesses": 3,
+      "prior": 0.00003052404096381932,
+      "guesses": [
+        "gentiles",
+        "biermann",
+        "metriken"
+      ]
+    },
+    {
+      "word": "unicodes",
+      "num_guesses": 3,
+      "prior": 0.000011464109291183709,
+      "guesses": [
+        "gentiles",
+        "anrisses",
+        "unicodes"
+      ]
+    },
+    {
+      "word": "hauchest",
+      "num_guesses": 3,
+      "prior": 0.000014344284548328195,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "hauchest"
+      ]
+    },
+    {
+      "word": "ladungen",
+      "num_guesses": 3,
+      "prior": 0.00005412090740914696,
+      "guesses": [
+        "gentiles",
+        "koalabär",
+        "ladungen"
+      ]
+    },
+    {
+      "word": "posament",
+      "num_guesses": 3,
+      "prior": 0.000015947394922962115,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "posament"
+      ]
+    },
+    {
+      "word": "entlaufe",
+      "num_guesses": 3,
+      "prior": 0.000016802394006495053,
+      "guesses": [
+        "gentiles",
+        "abdrehte",
+        "entlaufe"
+      ]
+    },
+    {
+      "word": "pflaumen",
+      "num_guesses": 3,
+      "prior": 0.00004392647641515712,
+      "guesses": [
+        "gentiles",
+        "kolabaum",
+        "pflaumen"
+      ]
+    },
+    {
+      "word": "teetisch",
+      "num_guesses": 3,
+      "prior": 0.000029153359814688597,
+      "guesses": [
+        "gentiles",
+        "bestimmt",
+        "teetisch"
+      ]
+    },
+    {
+      "word": "umwarfen",
+      "num_guesses": 3,
+      "prior": 0.000020170448856474604,
+      "guesses": [
+        "gentiles",
+        "aufbrach",
+        "umwarfen"
+      ]
+    },
+    {
+      "word": "wagendem",
+      "num_guesses": 4,
+      "prior": 0.000013918467630697174,
+      "guesses": [
+        "gentiles",
+        "errangen",
+        "schwarze",
+        "wagendem"
+      ]
+    },
+    {
+      "word": "vesperte",
+      "num_guesses": 3,
+      "prior": 0.000013646424775370297,
+      "guesses": [
+        "gentiles",
+        "vorhatte",
+        "vesperte"
+      ]
+    },
+    {
+      "word": "gedorrte",
+      "num_guesses": 3,
+      "prior": 0.000012169997816113414,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gedorrte"
+      ]
+    },
+    {
+      "word": "konntest",
+      "num_guesses": 3,
+      "prior": 0.00004881198994267522,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "konntest"
+      ]
+    },
+    {
+      "word": "gehascht",
+      "num_guesses": 4,
+      "prior": 0.00002262744064729603,
+      "guesses": [
+        "gentiles",
+        "abfuhrst",
+        "republik",
+        "gehascht"
+      ]
+    },
+    {
+      "word": "kreutzes",
+      "num_guesses": 4,
+      "prior": 0.000020014090911811664,
+      "guesses": [
+        "gentiles",
+        "abprotzt",
+        "creutzes",
+        "kreutzes"
+      ]
+    },
+    {
+      "word": "geradelt",
+      "num_guesses": 3,
+      "prior": 0.00002431227346956535,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "geradelt"
+      ]
+    },
+    {
+      "word": "hausrind",
+      "num_guesses": 3,
+      "prior": 0.000024084498736477903,
+      "guesses": [
+        "gentiles",
+        "pornofan",
+        "hausrind"
+      ]
+    },
+    {
+      "word": "bezwinge",
+      "num_guesses": 3,
+      "prior": 0.00002409694449693055,
+      "guesses": [
+        "gentiles",
+        "burghofe",
+        "bezwinge"
+      ]
+    },
+    {
+      "word": "bezirzen",
+      "num_guesses": 4,
+      "prior": 0.000022237153334950488,
+      "guesses": [
+        "gentiles",
+        "fernbahn",
+        "bezirken",
+        "bezirzen"
+      ]
+    },
+    {
+      "word": "weltruhm",
+      "num_guesses": 3,
+      "prior": 0.00003309078444466372,
+      "guesses": [
+        "gentiles",
+        "wettlauf",
+        "weltruhm"
+      ]
+    },
+    {
+      "word": "dorfbach",
+      "num_guesses": 3,
+      "prior": 0.000023622537404349938,
+      "guesses": [
+        "gentiles",
+        "backform",
+        "dorfbach"
+      ]
+    },
+    {
+      "word": "kataloge",
+      "num_guesses": 3,
+      "prior": 0.00005463463076897301,
+      "guesses": [
+        "gentiles",
+        "rauhbauz",
+        "kataloge"
+      ]
+    },
+    {
+      "word": "rühmanns",
+      "num_guesses": 3,
+      "prior": 0.000018178489651510457,
+      "guesses": [
+        "gentiles",
+        "bahncard",
+        "rühmanns"
+      ]
+    },
+    {
+      "word": "erstehet",
+      "num_guesses": 3,
+      "prior": 0.000020070153669665083,
+      "guesses": [
+        "gentiles",
+        "drahttür",
+        "erstehet"
+      ]
+    },
+    {
+      "word": "feudalem",
+      "num_guesses": 3,
+      "prior": 0.00002296601474050679,
+      "guesses": [
+        "gentiles",
+        "verbaler",
+        "feudalem"
+      ]
+    },
+    {
+      "word": "rehkeule",
+      "num_guesses": 3,
+      "prior": 0.00001900666873355539,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "rehkeule"
+      ]
+    },
+    {
+      "word": "minuziös",
+      "num_guesses": 3,
+      "prior": 0.000025996452941104877,
+      "guesses": [
+        "gentiles",
+        "musasirs",
+        "minuziös"
+      ]
+    },
+    {
+      "word": "entbleit",
+      "num_guesses": 3,
+      "prior": 0.000023133282497287224,
+      "guesses": [
+        "gentiles",
+        "drahtete",
+        "entbleit"
+      ]
+    },
+    {
+      "word": "gruschel",
+      "num_guesses": 2,
+      "prior": 0.000012494222724923966,
+      "guesses": [
+        "gentiles",
+        "gruschel"
+      ]
+    },
+    {
+      "word": "muckende",
+      "num_guesses": 5,
+      "prior": 9.31284065556e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "juckreiz",
+        "probleme",
+        "muckende"
+      ]
+    },
+    {
+      "word": "ausräume",
+      "num_guesses": 3,
+      "prior": 0.00001628578613264273,
+      "guesses": [
+        "gentiles",
+        "hofraume",
+        "ausräume"
+      ]
+    },
+    {
+      "word": "zustürze",
+      "num_guesses": 3,
+      "prior": 0.000010755968692186896,
+      "guesses": [
+        "gentiles",
+        "ausformt",
+        "zustürze"
+      ]
+    },
+    {
+      "word": "pfändung",
+      "num_guesses": 3,
+      "prior": 0.000049533705026307525,
+      "guesses": [
+        "gentiles",
+        "fahrdamm",
+        "pfändung"
+      ]
+    },
+    {
+      "word": "leitdamm",
+      "num_guesses": 3,
+      "prior": 0.00001786695455761844,
+      "guesses": [
+        "gentiles",
+        "leitbild",
+        "leitdamm"
+      ]
+    },
+    {
+      "word": "vesikeln",
+      "num_guesses": 3,
+      "prior": 0.00002983609584345213,
+      "guesses": [
+        "gentiles",
+        "weinlese",
+        "vesikeln"
+      ]
+    },
+    {
+      "word": "antrinkt",
+      "num_guesses": 3,
+      "prior": 0.000015183444041097274,
+      "guesses": [
+        "gentiles",
+        "anrückst",
+        "antrinkt"
+      ]
+    },
+    {
+      "word": "ventnors",
+      "num_guesses": 3,
+      "prior": 8.403963285376157e-6,
+      "guesses": [
+        "gentiles",
+        "zentrums",
+        "ventnors"
+      ]
+    },
+    {
+      "word": "rosalies",
+      "num_guesses": 3,
+      "prior": 0.00002298501751957238,
+      "guesses": [
+        "gentiles",
+        "absurdes",
+        "rosalies"
+      ]
+    },
+    {
+      "word": "linkerer",
+      "num_guesses": 3,
+      "prior": 9.19244034672184e-6,
+      "guesses": [
+        "gentiles",
+        "umranden",
+        "linkerer"
+      ]
+    },
+    {
+      "word": "loszögen",
+      "num_guesses": 4,
+      "prior": 0.000011703022564248228,
+      "guesses": [
+        "gentiles",
+        "müllauto",
+        "loszogen",
+        "loszögen"
+      ]
+    },
+    {
+      "word": "abonnent",
+      "num_guesses": 3,
+      "prior": 0.000032844625526529065,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "abonnent"
+      ]
+    },
+    {
+      "word": "verbiegt",
+      "num_guesses": 3,
+      "prior": 0.000026536780661630983,
+      "guesses": [
+        "gentiles",
+        "beruhigt",
+        "verbiegt"
+      ]
+    },
+    {
+      "word": "zierende",
+      "num_guesses": 3,
+      "prior": 0.00002379156641745464,
+      "guesses": [
+        "gentiles",
+        "kieferne",
+        "zierende"
+      ]
+    },
+    {
+      "word": "auswellt",
+      "num_guesses": 3,
+      "prior": 8.381730266652435e-6,
+      "guesses": [
+        "gentiles",
+        "baumhopf",
+        "auswellt"
+      ]
+    },
+    {
+      "word": "verwehrt",
+      "num_guesses": 4,
+      "prior": 0.00005437991171831082,
+      "guesses": [
+        "gentiles",
+        "ohrmarke",
+        "verzehrt",
+        "verwehrt"
+      ]
+    },
+    {
+      "word": "abwesend",
+      "num_guesses": 3,
+      "prior": 0.000053870359839413235,
+      "guesses": [
+        "gentiles",
+        "fuhrmann",
+        "abwesend"
+      ]
+    },
+    {
+      "word": "umnahmen",
+      "num_guesses": 3,
+      "prior": 0.000011000134573316346,
+      "guesses": [
+        "gentiles",
+        "kämmbare",
+        "umnahmen"
+      ]
+    },
+    {
+      "word": "hinkönnt",
+      "num_guesses": 3,
+      "prior": 8.731301668149004e-6,
+      "guesses": [
+        "gentiles",
+        "flakturm",
+        "hinkönnt"
+      ]
+    },
+    {
+      "word": "tölteten",
+      "num_guesses": 4,
+      "prior": 8.787516409714215e-6,
+      "guesses": [
+        "gentiles",
+        "lautform",
+        "kälteten",
+        "tölteten"
+      ]
+    },
+    {
+      "word": "fuselöle",
+      "num_guesses": 3,
+      "prior": 0.000023911883459400537,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "fuselöle"
+      ]
+    },
+    {
+      "word": "anstifte",
+      "num_guesses": 3,
+      "prior": 0.000016484732136346052,
+      "guesses": [
+        "gentiles",
+        "erstinkt",
+        "anstifte"
+      ]
+    },
+    {
+      "word": "höfchens",
+      "num_guesses": 4,
+      "prior": 0.00001547699360603178,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "fußbälle",
+        "höfchens"
+      ]
+    },
+    {
+      "word": "umstoßen",
+      "num_guesses": 3,
+      "prior": 0.00003250988510184177,
+      "guesses": [
+        "gentiles",
+        "ausborgt",
+        "umstoßen"
+      ]
+    },
+    {
+      "word": "hemdlein",
+      "num_guesses": 3,
+      "prior": 0.0000215453172520782,
+      "guesses": [
+        "gentiles",
+        "wahlrede",
+        "hemdlein"
+      ]
+    },
+    {
+      "word": "gieriger",
+      "num_guesses": 2,
+      "prior": 0.00003288528605781315,
+      "guesses": [
+        "gentiles",
+        "gieriger"
+      ]
+    },
+    {
+      "word": "umfliegt",
+      "num_guesses": 3,
+      "prior": 0.00001926257398363884,
+      "guesses": [
+        "gentiles",
+        "abräumte",
+        "umfliegt"
+      ]
+    },
+    {
+      "word": "popanzen",
+      "num_guesses": 4,
+      "prior": 0.000017828904719603544,
+      "guesses": [
+        "gentiles",
+        "aufbrach",
+        "madonnen",
+        "popanzen"
+      ]
+    },
+    {
+      "word": "telephon",
+      "num_guesses": 3,
+      "prior": 0.00005185164223285493,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "telephon"
+      ]
+    },
+    {
+      "word": "famrändg",
+      "num_guesses": 3,
+      "prior": 0.000021918194003176756,
+      "guesses": [
+        "gentiles",
+        "fahrdamm",
+        "famrändg"
+      ]
+    },
+    {
+      "word": "zinkende",
+      "num_guesses": 3,
+      "prior": 0.000017870200930776436,
+      "guesses": [
+        "gentiles",
+        "hauwerke",
+        "zinkende"
+      ]
+    },
+    {
+      "word": "erhabnes",
+      "num_guesses": 3,
+      "prior": 0.00002373239645545066,
+      "guesses": [
+        "gentiles",
+        "radbruch",
+        "erhabnes"
+      ]
+    },
+    {
+      "word": "tarbusch",
+      "num_guesses": 3,
+      "prior": 0.00002064539566733293,
+      "guesses": [
+        "gentiles",
+        "aufbahrt",
+        "tarbusch"
+      ]
+    },
+    {
+      "word": "coelomen",
+      "num_guesses": 4,
+      "prior": 0.000010327551008276711,
+      "guesses": [
+        "gentiles",
+        "baedeker",
+        "myelomen",
+        "coelomen"
+      ]
+    },
+    {
+      "word": "gekarrte",
+      "num_guesses": 3,
+      "prior": 9.31284065556e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gekarrte"
+      ]
+    },
+    {
+      "word": "pedikeur",
+      "num_guesses": 3,
+      "prior": 8.194762822841831e-6,
+      "guesses": [
+        "gentiles",
+        "kurzform",
+        "pedikeur"
+      ]
+    },
+    {
+      "word": "schampon",
+      "num_guesses": 3,
+      "prior": 0.000011464109291183709,
+      "guesses": [
+        "gentiles",
+        "aufmacht",
+        "schampon"
+      ]
+    },
+    {
+      "word": "walisern",
+      "num_guesses": 3,
+      "prior": 0.0000196997963605457,
+      "guesses": [
+        "gentiles",
+        "knuspern",
+        "walisern"
+      ]
+    },
+    {
+      "word": "bewirken",
+      "num_guesses": 4,
+      "prior": 0.0000774548829589025,
+      "guesses": [
+        "gentiles",
+        "fernbahn",
+        "bezirken",
+        "bewirken"
+      ]
+    },
+    {
+      "word": "kamillen",
+      "num_guesses": 3,
+      "prior": 0.000028870596552205586,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "kamillen"
+      ]
+    },
+    {
+      "word": "beschuhe",
+      "num_guesses": 3,
+      "prior": 0.000012004639285193334,
+      "guesses": [
+        "gentiles",
+        "masseure",
+        "beschuhe"
+      ]
+    },
+    {
+      "word": "entgelts",
+      "num_guesses": 2,
+      "prior": 0.00003690651829881598,
+      "guesses": [
+        "gentiles",
+        "entgelts"
+      ]
+    },
+    {
+      "word": "wachfrau",
+      "num_guesses": 4,
+      "prior": 0.000014817515208017102,
+      "guesses": [
+        "gentiles",
+        "backform",
+        "fachfrau",
+        "wachfrau"
+      ]
+    },
+    {
+      "word": "waldigem",
+      "num_guesses": 3,
+      "prior": 0.00001919804129654682,
+      "guesses": [
+        "gentiles",
+        "bollwerk",
+        "waldigem"
+      ]
+    },
+    {
+      "word": "blachere",
+      "num_guesses": 4,
+      "prior": 0.000016514501598304394,
+      "guesses": [
+        "gentiles",
+        "croupade",
+        "flachere",
+        "blachere"
+      ]
+    },
+    {
+      "word": "brachten",
+      "num_guesses": 4,
+      "prior": 0.00007906016474088855,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "bildhaft",
+        "brachten"
+      ]
+    },
+    {
+      "word": "birkhahn",
+      "num_guesses": 3,
+      "prior": 0.00002444408042801356,
+      "guesses": [
+        "gentiles",
+        "kuration",
+        "birkhahn"
+      ]
+    },
+    {
+      "word": "auszogst",
+      "num_guesses": 3,
+      "prior": 0.000016138885119428892,
+      "guesses": [
+        "gentiles",
+        "aufbarst",
+        "auszogst"
+      ]
+    },
+    {
+      "word": "gekotzte",
+      "num_guesses": 4,
+      "prior": 0.000010541534357281115,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gedockte",
+        "gekotzte"
+      ]
+    },
+    {
+      "word": "exponent",
+      "num_guesses": 3,
+      "prior": 0.00004357848339207691,
+      "guesses": [
+        "gentiles",
+        "abtrennt",
+        "exponent"
+      ]
+    },
+    {
+      "word": "anriefen",
+      "num_guesses": 3,
+      "prior": 0.000030458954407240727,
+      "guesses": [
+        "gentiles",
+        "ankirren",
+        "anriefen"
+      ]
+    },
+    {
+      "word": "gebudert",
+      "num_guesses": 4,
+      "prior": 7.633803902057325e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "geübtere",
+        "gebudert"
+      ]
+    },
+    {
+      "word": "beutelst",
+      "num_guesses": 4,
+      "prior": 0.000010083557724390142,
+      "guesses": [
+        "gentiles",
+        "bestellt",
+        "bettelst",
+        "beutelst"
+      ]
+    },
+    {
+      "word": "melierte",
+      "num_guesses": 3,
+      "prior": 0.000021869703010497798,
+      "guesses": [
+        "gentiles",
+        "herleite",
+        "melierte"
+      ]
+    },
+    {
+      "word": "inhumane",
+      "num_guesses": 3,
+      "prior": 0.000029534228656430015,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "inhumane"
+      ]
+    },
+    {
+      "word": "benennet",
+      "num_guesses": 3,
+      "prior": 0.000029607374789060226,
+      "guesses": [
+        "gentiles",
+        "umwertet",
+        "benennet"
+      ]
+    },
+    {
+      "word": "ausgieße",
+      "num_guesses": 3,
+      "prior": 0.000018253630638940113,
+      "guesses": [
+        "gentiles",
+        "auswiege",
+        "ausgieße"
+      ]
+    },
+    {
+      "word": "pudriges",
+      "num_guesses": 3,
+      "prior": 0.000010655192430505853,
+      "guesses": [
+        "gentiles",
+        "durchkam",
+        "pudriges"
+      ]
+    },
+    {
+      "word": "bleiweiß",
+      "num_guesses": 3,
+      "prior": 0.00003475532733051786,
+      "guesses": [
+        "gentiles",
+        "himbeere",
+        "bleiweiß"
+      ]
+    },
+    {
+      "word": "kürzerem",
+      "num_guesses": 3,
+      "prior": 0.0000346446953036662,
+      "guesses": [
+        "gentiles",
+        "bürokram",
+        "kürzerem"
+      ]
+    },
+    {
+      "word": "aufreizt",
+      "num_guesses": 3,
+      "prior": 0.00002411491268321829,
+      "guesses": [
+        "gentiles",
+        "abtrotzt",
+        "aufreizt"
+      ]
+    },
+    {
+      "word": "gekrakel",
+      "num_guesses": 3,
+      "prior": 0.000018920515495452685,
+      "guesses": [
+        "gentiles",
+        "strafbar",
+        "gekrakel"
+      ]
+    },
+    {
+      "word": "historik",
+      "num_guesses": 3,
+      "prior": 0.00003632484881725774,
+      "guesses": [
+        "gentiles",
+        "pausback",
+        "historik"
+      ]
+    },
+    {
+      "word": "nörgelte",
+      "num_guesses": 3,
+      "prior": 0.000027499444309703072,
+      "guesses": [
+        "gentiles",
+        "entgelte",
+        "nörgelte"
+      ]
+    },
+    {
+      "word": "ringbuch",
+      "num_guesses": 3,
+      "prior": 0.000023527901368787234,
+      "guesses": [
+        "gentiles",
+        "windfang",
+        "ringbuch"
+      ]
+    },
+    {
+      "word": "hinbekam",
+      "num_guesses": 3,
+      "prior": 0.000021094780918048832,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "hinbekam"
+      ]
+    },
+    {
+      "word": "spannung",
+      "num_guesses": 3,
+      "prior": 0.00008748673935201557,
+      "guesses": [
+        "gentiles",
+        "ausübung",
+        "spannung"
+      ]
+    },
+    {
+      "word": "indienne",
+      "num_guesses": 3,
+      "prior": 0.00002287568739548778,
+      "guesses": [
+        "gentiles",
+        "kieferne",
+        "indienne"
+      ]
+    },
+    {
+      "word": "quanteln",
+      "num_guesses": 4,
+      "prior": 0.000013617675029498309,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "blautöne",
+        "quanteln"
+      ]
+    },
+    {
+      "word": "absenden",
+      "num_guesses": 3,
+      "prior": 0.00003552782953867978,
+      "guesses": [
+        "gentiles",
+        "bussards",
+        "absenden"
+      ]
+    },
+    {
+      "word": "knitters",
+      "num_guesses": 3,
+      "prior": 0.00001442925933114236,
+      "guesses": [
+        "gentiles",
+        "zitternd",
+        "knitters"
+      ]
+    },
+    {
+      "word": "knockout",
+      "num_guesses": 3,
+      "prior": 0.000024465671447555722,
+      "guesses": [
+        "gentiles",
+        "hornhaut",
+        "knockout"
+      ]
+    },
+    {
+      "word": "anhäufet",
+      "num_guesses": 3,
+      "prior": 0.000011564521863267577,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "anhäufet"
+      ]
+    },
+    {
+      "word": "deutbare",
+      "num_guesses": 3,
+      "prior": 0.000028240798935802553,
+      "guesses": [
+        "gentiles",
+        "verteure",
+        "deutbare"
+      ]
+    },
+    {
+      "word": "ausgaben",
+      "num_guesses": 3,
+      "prior": 0.0000894007210517997,
+      "guesses": [
+        "gentiles",
+        "absaloms",
+        "ausgaben"
+      ]
+    },
+    {
+      "word": "telegraf",
+      "num_guesses": 3,
+      "prior": 0.000031000112296093026,
+      "guesses": [
+        "gentiles",
+        "zugfahrt",
+        "telegraf"
+      ]
+    },
+    {
+      "word": "treibern",
+      "num_guesses": 4,
+      "prior": 0.000029675681209848,
+      "guesses": [
+        "gentiles",
+        "dreiecke",
+        "breitern",
+        "treibern"
+      ]
+    },
+    {
+      "word": "erzeigte",
+      "num_guesses": 3,
+      "prior": 0.00003293400228789453,
+      "guesses": [
+        "gentiles",
+        "predigte",
+        "erzeigte"
+      ]
+    },
+    {
+      "word": "freitest",
+      "num_guesses": 4,
+      "prior": 0.000013841187568194555,
+      "guesses": [
+        "gentiles",
+        "ethikrat",
+        "breitest",
+        "freitest"
+      ]
+    },
+    {
+      "word": "chagrins",
+      "num_guesses": 3,
+      "prior": 0.000018726332223684892,
+      "guesses": [
+        "gentiles",
+        "arginins",
+        "chagrins"
+      ]
+    },
+    {
+      "word": "masculin",
+      "num_guesses": 3,
+      "prior": 0.000024943866546936164,
+      "guesses": [
+        "gentiles",
+        "maskulin",
+        "masculin"
+      ]
+    },
+    {
+      "word": "ruländer",
+      "num_guesses": 3,
+      "prior": 0.00002273993761371485,
+      "guesses": [
+        "gentiles",
+        "kolabaum",
+        "ruländer"
+      ]
+    },
+    {
+      "word": "armloser",
+      "num_guesses": 3,
+      "prior": 0.000014325998203689558,
+      "guesses": [
+        "gentiles",
+        "wahlfrau",
+        "armloser"
+      ]
+    },
+    {
+      "word": "dioptern",
+      "num_guesses": 4,
+      "prior": 0.000021569325228183505,
+      "guesses": [
+        "gentiles",
+        "knarrend",
+        "dichtern",
+        "dioptern"
+      ]
+    },
+    {
+      "word": "knittrig",
+      "num_guesses": 3,
+      "prior": 0.00001882310740771784,
+      "guesses": [
+        "gentiles",
+        "fortging",
+        "knittrig"
+      ]
+    },
+    {
+      "word": "erhübest",
+      "num_guesses": 4,
+      "prior": 8.336543103309686e-6,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "überrest",
+        "erhübest"
+      ]
+    },
+    {
+      "word": "unierter",
+      "num_guesses": 3,
+      "prior": 0.000020560911020861078,
+      "guesses": [
+        "gentiles",
+        "traumtor",
+        "unierter"
+      ]
+    },
+    {
+      "word": "graviden",
+      "num_guesses": 3,
+      "prior": 0.00003567451179490009,
+      "guesses": [
+        "gentiles",
+        "ghoriden",
+        "graviden"
+      ]
+    },
+    {
+      "word": "sicherem",
+      "num_guesses": 3,
+      "prior": 0.000045484541279043654,
+      "guesses": [
+        "gentiles",
+        "mieserer",
+        "sicherem"
+      ]
+    },
+    {
+      "word": "heißeste",
+      "num_guesses": 3,
+      "prior": 0.000031727602713353885,
+      "guesses": [
+        "gentiles",
+        "hersetzt",
+        "heißeste"
+      ]
+    },
+    {
+      "word": "gequiekt",
+      "num_guesses": 3,
+      "prior": 0.000016866946547421658,
+      "guesses": [
+        "gentiles",
+        "zerfährt",
+        "gequiekt"
+      ]
+    },
+    {
+      "word": "laderaum",
+      "num_guesses": 3,
+      "prior": 0.00003662609755225776,
+      "guesses": [
+        "gentiles",
+        "baumharz",
+        "laderaum"
+      ]
+    },
+    {
+      "word": "anklicke",
+      "num_guesses": 3,
+      "prior": 0.00001340929475177937,
+      "guesses": [
+        "gentiles",
+        "facebook",
+        "anklicke"
+      ]
+    },
+    {
+      "word": "hofzwerg",
+      "num_guesses": 3,
+      "prior": 0.000018200659836182375,
+      "guesses": [
+        "gentiles",
+        "büroraum",
+        "hofzwerg"
+      ]
+    },
+    {
+      "word": "arteriae",
+      "num_guesses": 3,
+      "prior": 0.00003597310174048284,
+      "guesses": [
+        "gentiles",
+        "tierarzt",
+        "arteriae"
+      ]
+    },
+    {
+      "word": "kumulier",
+      "num_guesses": 3,
+      "prior": 0.000012653098625209268,
+      "guesses": [
+        "gentiles",
+        "mobiliar",
+        "kumulier"
+      ]
+    },
+    {
+      "word": "melodram",
+      "num_guesses": 3,
+      "prior": 0.00003358322103537149,
+      "guesses": [
+        "gentiles",
+        "lehmpfad",
+        "melodram"
+      ]
+    },
+    {
+      "word": "tapperts",
+      "num_guesses": 3,
+      "prior": 0.000017237400331886976,
+      "guesses": [
+        "gentiles",
+        "parkours",
+        "tapperts"
+      ]
+    },
+    {
+      "word": "sinister",
+      "num_guesses": 3,
+      "prior": 0.00003278430511014527,
+      "guesses": [
+        "gentiles",
+        "minister",
+        "sinister"
+      ]
+    },
+    {
+      "word": "amaretti",
+      "num_guesses": 3,
+      "prior": 0.000016349580694858415,
+      "guesses": [
+        "gentiles",
+        "abtrotzt",
+        "amaretti"
+      ]
+    },
+    {
+      "word": "fortfloß",
+      "num_guesses": 3,
+      "prior": 0.000011103648706463033,
+      "guesses": [
+        "gentiles",
+        "blutfluß",
+        "fortfloß"
+      ]
+    },
+    {
+      "word": "begrünst",
+      "num_guesses": 3,
+      "prior": 0.000010594598454130133,
+      "guesses": [
+        "gentiles",
+        "behängst",
+        "begrünst"
+      ]
+    },
+    {
+      "word": "baritons",
+      "num_guesses": 3,
+      "prior": 0.000020710562463352878,
+      "guesses": [
+        "gentiles",
+        "aktinium",
+        "baritons"
+      ]
+    },
+    {
+      "word": "anglühen",
+      "num_guesses": 4,
+      "prior": 0.000016010008650512575,
+      "guesses": [
+        "gentiles",
+        "koalabär",
+        "anflügen",
+        "anglühen"
+      ]
+    },
+    {
+      "word": "celesten",
+      "num_guesses": 3,
+      "prior": 0.000012820747786881644,
+      "guesses": [
+        "gentiles",
+        "realsten",
+        "celesten"
+      ]
+    },
+    {
+      "word": "melissas",
+      "num_guesses": 3,
+      "prior": 0.00002555051495403336,
+      "guesses": [
+        "gentiles",
+        "mehrmals",
+        "melissas"
+      ]
+    },
+    {
+      "word": "gerettet",
+      "num_guesses": 3,
+      "prior": 0.00007043351007375553,
+      "guesses": [
+        "gentiles",
+        "aufbrüht",
+        "gerettet"
+      ]
+    },
+    {
+      "word": "ambosses",
+      "num_guesses": 3,
+      "prior": 0.000023996982474087568,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "ambosses"
+      ]
+    },
+    {
+      "word": "holzkrug",
+      "num_guesses": 3,
+      "prior": 0.000014214270501568662,
+      "guesses": [
+        "gentiles",
+        "blaugrau",
+        "holzkrug"
+      ]
+    },
+    {
+      "word": "hartzens",
+      "num_guesses": 3,
+      "prior": 0.00001000773289463293,
+      "guesses": [
+        "gentiles",
+        "knattern",
+        "hartzens"
+      ]
+    },
+    {
+      "word": "entfiele",
+      "num_guesses": 3,
+      "prior": 0.000030093066716722924,
+      "guesses": [
+        "gentiles",
+        "fußballe",
+        "entfiele"
+      ]
+    },
+    {
+      "word": "dußligen",
+      "num_guesses": 3,
+      "prior": 0.000011778494740388002,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "dußligen"
+      ]
+    },
+    {
+      "word": "zwölftes",
+      "num_guesses": 3,
+      "prior": 0.00003581674274385699,
+      "guesses": [
+        "gentiles",
+        "tabascos",
+        "zwölftes"
+      ]
+    },
+    {
+      "word": "hauptjob",
+      "num_guesses": 3,
+      "prior": 0.000016507079347395855,
+      "guesses": [
+        "gentiles",
+        "baumarkt",
+        "hauptjob"
+      ]
+    },
+    {
+      "word": "klitoris",
+      "num_guesses": 3,
+      "prior": 0.0000392649540078436,
+      "guesses": [
+        "gentiles",
+        "chitrals",
+        "klitoris"
+      ]
+    },
+    {
+      "word": "figurier",
+      "num_guesses": 3,
+      "prior": 0.00001107446657164463,
+      "guesses": [
+        "gentiles",
+        "raubgier",
+        "figurier"
+      ]
+    },
+    {
+      "word": "tuwörter",
+      "num_guesses": 3,
+      "prior": 0.00001467759227867108,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "tuwörter"
+      ]
+    },
+    {
+      "word": "schlotes",
+      "num_guesses": 3,
+      "prior": 0.000022722583909000938,
+      "guesses": [
+        "gentiles",
+        "tabascos",
+        "schlotes"
+      ]
+    },
+    {
+      "word": "oberlauf",
+      "num_guesses": 3,
+      "prior": 0.00004102250479443678,
+      "guesses": [
+        "gentiles",
+        "baumharz",
+        "oberlauf"
+      ]
+    },
+    {
+      "word": "einfädle",
+      "num_guesses": 3,
+      "prior": 0.00001685192698080689,
+      "guesses": [
+        "gentiles",
+        "harfende",
+        "einfädle"
+      ]
+    },
+    {
+      "word": "kribbeln",
+      "num_guesses": 3,
+      "prior": 0.00004475642330485247,
+      "guesses": [
+        "gentiles",
+        "backherd",
+        "kribbeln"
+      ]
+    },
+    {
+      "word": "geläppte",
+      "num_guesses": 4,
+      "prior": 0.000013678087354332108,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "gewelkte",
+        "geläppte"
+      ]
+    },
+    {
+      "word": "hearings",
+      "num_guesses": 3,
+      "prior": 0.00003148978682857519,
+      "guesses": [
+        "gentiles",
+        "bandwurm",
+        "hearings"
+      ]
+    },
+    {
+      "word": "topfitte",
+      "num_guesses": 3,
+      "prior": 0.000010450645491891837,
+      "guesses": [
+        "gentiles",
+        "raubmord",
+        "topfitte"
+      ]
+    },
+    {
+      "word": "rüsteten",
+      "num_guesses": 3,
+      "prior": 0.00003810163048675639,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "rüsteten"
+      ]
+    },
+    {
+      "word": "postsack",
+      "num_guesses": 3,
+      "prior": 0.000020712960351857978,
+      "guesses": [
+        "gentiles",
+        "autokrat",
+        "postsack"
+      ]
+    },
+    {
+      "word": "pfuscher",
+      "num_guesses": 3,
+      "prior": 0.000033885435367120486,
+      "guesses": [
+        "gentiles",
+        "muharram",
+        "pfuscher"
+      ]
+    },
+    {
+      "word": "gemecker",
+      "num_guesses": 3,
+      "prior": 0.00002390377968015439,
+      "guesses": [
+        "gentiles",
+        "scharfer",
+        "gemecker"
+      ]
+    },
+    {
+      "word": "endigtet",
+      "num_guesses": 4,
+      "prior": 8.787516409714215e-6,
+      "guesses": [
+        "gentiles",
+        "birngrün",
+        "zueignet",
+        "endigtet"
+      ]
+    },
+    {
+      "word": "klappten",
+      "num_guesses": 4,
+      "prior": 0.000029910617408310146,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "plackten",
+        "klappten"
+      ]
+    },
+    {
+      "word": "galliern",
+      "num_guesses": 2,
+      "prior": 0.000036624994050017945,
+      "guesses": [
+        "gentiles",
+        "galliern"
+      ]
+    },
+    {
+      "word": "dünnbier",
+      "num_guesses": 3,
+      "prior": 0.000025520158129077313,
+      "guesses": [
+        "gentiles",
+        "hakenden",
+        "dünnbier"
+      ]
+    },
+    {
+      "word": "steintet",
+      "num_guesses": 3,
+      "prior": 9.82523723852967e-6,
+      "guesses": [
+        "gentiles",
+        "kreistet",
+        "steintet"
+      ]
+    },
+    {
+      "word": "otitiden",
+      "num_guesses": 3,
+      "prior": 0.000026536558201864155,
+      "guesses": [
+        "gentiles",
+        "darboten",
+        "otitiden"
+      ]
+    },
+    {
+      "word": "marterte",
+      "num_guesses": 3,
+      "prior": 0.000027043395226550538,
+      "guesses": [
+        "gentiles",
+        "rufmorde",
+        "marterte"
+      ]
+    },
+    {
+      "word": "nitrates",
+      "num_guesses": 3,
+      "prior": 0.00002603858484649591,
+      "guesses": [
+        "gentiles",
+        "trinkbar",
+        "nitrates"
+      ]
+    },
+    {
+      "word": "spleisst",
+      "num_guesses": 3,
+      "prior": 9.427318538822779e-6,
+      "guesses": [
+        "gentiles",
+        "schlurft",
+        "spleisst"
+      ]
+    },
+    {
+      "word": "schlegel",
+      "num_guesses": 2,
+      "prior": 0.00006669433538742276,
+      "guesses": [
+        "gentiles",
+        "schlegel"
+      ]
+    },
+    {
+      "word": "taktisch",
+      "num_guesses": 3,
+      "prior": 0.00004274266272552931,
+      "guesses": [
+        "gentiles",
+        "abkratzt",
+        "taktisch"
+      ]
+    },
+    {
+      "word": "amateurs",
+      "num_guesses": 3,
+      "prior": 0.000028899279892419472,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "amateurs"
+      ]
+    },
+    {
+      "word": "cannabis",
+      "num_guesses": 3,
+      "prior": 0.00004002500147732525,
+      "guesses": [
+        "gentiles",
+        "musasirs",
+        "cannabis"
+      ]
+    },
+    {
+      "word": "lümpchen",
+      "num_guesses": 4,
+      "prior": 0.00001785937049801124,
+      "guesses": [
+        "gentiles",
+        "kolabaum",
+        "lämpchen",
+        "lümpchen"
+      ]
+    },
+    {
+      "word": "anbraten",
+      "num_guesses": 4,
+      "prior": 0.00003706100472209586,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "antraten",
+        "anbraten"
+      ]
+    },
+    {
+      "word": "bekränzt",
+      "num_guesses": 3,
+      "prior": 0.00003948455829498244,
+      "guesses": [
+        "gentiles",
+        "holzbank",
+        "bekränzt"
+      ]
+    },
+    {
+      "word": "abbüßung",
+      "num_guesses": 4,
+      "prior": 0.00002489236170835286,
+      "guesses": [
+        "gentiles",
+        "fahrdamm",
+        "abwägung",
+        "abbüßung"
+      ]
+    },
+    {
+      "word": "seraphin",
+      "num_guesses": 3,
+      "prior": 0.00002859892887986813,
+      "guesses": [
+        "gentiles",
+        "revision",
+        "seraphin"
+      ]
+    },
+    {
+      "word": "patschet",
+      "num_guesses": 3,
+      "prior": 0.000010655192430505853,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "patschet"
+      ]
+    },
+    {
+      "word": "erblühst",
+      "num_guesses": 4,
+      "prior": 0.000012444025173511174,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "erlöscht",
+        "erblühst"
+      ]
+    },
+    {
+      "word": "fransten",
+      "num_guesses": 4,
+      "prior": 0.000014062432784721772,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "befassen",
+        "fransten"
+      ]
+    },
+    {
+      "word": "freigäbe",
+      "num_guesses": 4,
+      "prior": 0.000018090770238916486,
+      "guesses": [
+        "gentiles",
+        "burggraf",
+        "freigebe",
+        "freigäbe"
+      ]
+    },
+    {
+      "word": "zauderer",
+      "num_guesses": 4,
+      "prior": 0.00002775488221591904,
+      "guesses": [
+        "gentiles",
+        "bürokram",
+        "wacherer",
+        "zauderer"
+      ]
+    },
+    {
+      "word": "tolltest",
+      "num_guesses": 4,
+      "prior": 9.549792305327796e-6,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "schwarze",
+        "tolltest"
+      ]
+    },
+    {
+      "word": "önologin",
+      "num_guesses": 3,
+      "prior": 0.000010969830711693386,
+      "guesses": [
+        "gentiles",
+        "borgkauf",
+        "önologin"
+      ]
+    },
+    {
+      "word": "erbetene",
+      "num_guesses": 3,
+      "prior": 0.00004013384636883686,
+      "guesses": [
+        "gentiles",
+        "abtrennt",
+        "erbetene"
+      ]
+    },
+    {
+      "word": "flennten",
+      "num_guesses": 4,
+      "prior": 0.000014991860603012003,
+      "guesses": [
+        "gentiles",
+        "abduktor",
+        "flechten",
+        "flennten"
+      ]
+    },
+    {
+      "word": "orakelte",
+      "num_guesses": 3,
+      "prior": 0.000024618920726588603,
+      "guesses": [
+        "gentiles",
+        "durchkam",
+        "orakelte"
+      ]
+    },
+    {
+      "word": "laufbuch",
+      "num_guesses": 3,
+      "prior": 0.000012605398814258607,
+      "guesses": [
+        "gentiles",
+        "rollback",
+        "laufbuch"
+      ]
+    },
+    {
+      "word": "gereckte",
+      "num_guesses": 4,
+      "prior": 0.000021460695721380118,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gekürzte",
+        "gereckte"
+      ]
+    },
+    {
+      "word": "übergieß",
+      "num_guesses": 3,
+      "prior": 0.000010062125951969094,
+      "guesses": [
+        "gentiles",
+        "ewigerer",
+        "übergieß"
+      ]
+    },
+    {
+      "word": "geklafft",
+      "num_guesses": 3,
+      "prior": 0.000017337444984694664,
+      "guesses": [
+        "gentiles",
+        "aufbäckt",
+        "geklafft"
+      ]
+    },
+    {
+      "word": "ruiniere",
+      "num_guesses": 3,
+      "prior": 0.00002423218005138667,
+      "guesses": [
+        "gentiles",
+        "frommere",
+        "ruiniere"
+      ]
+    },
+    {
+      "word": "erflehst",
+      "num_guesses": 3,
+      "prior": 0.000013968083892515179,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "erflehst"
+      ]
+    },
+    {
+      "word": "ebenbild",
+      "num_guesses": 3,
+      "prior": 0.000048415450791578304,
+      "guesses": [
+        "gentiles",
+        "freibade",
+        "ebenbild"
+      ]
+    },
+    {
+      "word": "filmstab",
+      "num_guesses": 3,
+      "prior": 0.000015022310012316138,
+      "guesses": [
+        "gentiles",
+        "vorblatt",
+        "filmstab"
+      ]
+    },
+    {
+      "word": "bekehret",
+      "num_guesses": 3,
+      "prior": 0.000031360266988188805,
+      "guesses": [
+        "gentiles",
+        "darthuet",
+        "bekehret"
+      ]
+    },
+    {
+      "word": "kemenate",
+      "num_guesses": 3,
+      "prior": 0.000031275868721027095,
+      "guesses": [
+        "gentiles",
+        "harkende",
+        "kemenate"
+      ]
+    },
+    {
+      "word": "scannend",
+      "num_guesses": 4,
+      "prior": 0.000010505555584684773,
+      "guesses": [
+        "gentiles",
+        "fuhrmann",
+        "spannend",
+        "scannend"
+      ]
+    },
+    {
+      "word": "varietee",
+      "num_guesses": 4,
+      "prior": 0.000015579448945789803,
+      "guesses": [
+        "gentiles",
+        "tierarzt",
+        "cafetier",
+        "varietee"
+      ]
+    },
+    {
+      "word": "ergiesse",
+      "num_guesses": 3,
+      "prior": 0.000020688329173202523,
+      "guesses": [
+        "gentiles",
+        "kompress",
+        "ergiesse"
+      ]
+    },
+    {
+      "word": "trillert",
+      "num_guesses": 3,
+      "prior": 0.000023260909011769442,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "trillert"
+      ]
+    },
+    {
+      "word": "umspanne",
+      "num_guesses": 3,
+      "prior": 0.000018851144184282846,
+      "guesses": [
+        "gentiles",
+        "fuhrmann",
+        "umspanne"
+      ]
+    },
+    {
+      "word": "urlaubet",
+      "num_guesses": 3,
+      "prior": 8.89581418289542e-6,
+      "guesses": [
+        "gentiles",
+        "autokrat",
+        "urlaubet"
+      ]
+    },
+    {
+      "word": "entsühne",
+      "num_guesses": 3,
+      "prior": 0.000014359884677160958,
+      "guesses": [
+        "gentiles",
+        "anheuere",
+        "entsühne"
+      ]
+    },
+    {
+      "word": "fundbüro",
+      "num_guesses": 3,
+      "prior": 0.000024022543373272627,
+      "guesses": [
+        "gentiles",
+        "buchform",
+        "fundbüro"
+      ]
+    },
+    {
+      "word": "sukkaden",
+      "num_guesses": 4,
+      "prior": 8.982197519626565e-6,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "zusammen",
+        "sukkaden"
+      ]
+    },
+    {
+      "word": "dentalen",
+      "num_guesses": 3,
+      "prior": 0.00003395667552371152,
+      "guesses": [
+        "gentiles",
+        "mehreren",
+        "dentalen"
+      ]
+    },
+    {
+      "word": "ernstere",
+      "num_guesses": 3,
+      "prior": 0.00004112560206062083,
+      "guesses": [
+        "gentiles",
+        "erneuest",
+        "ernstere"
+      ]
+    },
+    {
+      "word": "pikkolos",
+      "num_guesses": 3,
+      "prior": 0.00001573365828552053,
+      "guesses": [
+        "gentiles",
+        "blicklos",
+        "pikkolos"
+      ]
+    },
+    {
+      "word": "bewohnte",
+      "num_guesses": 3,
+      "prior": 0.00005137472220533462,
+      "guesses": [
+        "gentiles",
+        "harkende",
+        "bewohnte"
+      ]
+    },
+    {
+      "word": "getappte",
+      "num_guesses": 4,
+      "prior": 7.728859790786063e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "getaggte",
+        "getappte"
+      ]
+    },
+    {
+      "word": "besserte",
+      "num_guesses": 3,
+      "prior": 0.00004723355550854708,
+      "guesses": [
+        "gentiles",
+        "vorhatte",
+        "besserte"
+      ]
+    },
+    {
+      "word": "einfahre",
+      "num_guesses": 3,
+      "prior": 0.00001640173842052702,
+      "guesses": [
+        "gentiles",
+        "hauwerke",
+        "einfahre"
+      ]
+    },
+    {
+      "word": "ekelster",
+      "num_guesses": 4,
+      "prior": 8.290354425542492e-6,
+      "guesses": [
+        "gentiles",
+        "seeotter",
+        "edelster",
+        "ekelster"
+      ]
+    },
+    {
+      "word": "croydons",
+      "num_guesses": 3,
+      "prior": 0.000012083279020188362,
+      "guesses": [
+        "gentiles",
+        "bahncard",
+        "croydons"
+      ]
+    },
+    {
+      "word": "logismen",
+      "num_guesses": 3,
+      "prior": 0.000015675625691058638,
+      "guesses": [
+        "gentiles",
+        "solinger",
+        "logismen"
+      ]
+    },
+    {
+      "word": "deichend",
+      "num_guesses": 4,
+      "prior": 9.952130936595234e-6,
+      "guesses": [
+        "gentiles",
+        "fürnehme",
+        "weichend",
+        "deichend"
+      ]
+    },
+    {
+      "word": "tapferem",
+      "num_guesses": 3,
+      "prior": 0.000026365061100796168,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "tapferem"
+      ]
+    },
+    {
+      "word": "werteres",
+      "num_guesses": 3,
+      "prior": 0.000015293910491444854,
+      "guesses": [
+        "gentiles",
+        "festeres",
+        "werteres"
+      ]
+    },
+    {
+      "word": "zahmster",
+      "num_guesses": 4,
+      "prior": 0.000010469077079985953,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "wahrster",
+        "zahmster"
+      ]
+    },
+    {
+      "word": "darleiht",
+      "num_guesses": 3,
+      "prior": 0.00001655875726192259,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "darleiht"
+      ]
+    },
+    {
+      "word": "perserin",
+      "num_guesses": 3,
+      "prior": 0.00002322727518078301,
+      "guesses": [
+        "gentiles",
+        "wirbelnd",
+        "perserin"
+      ]
+    },
+    {
+      "word": "sinnigen",
+      "num_guesses": 3,
+      "prior": 0.00003721266978489301,
+      "guesses": [
+        "gentiles",
+        "vornahme",
+        "sinnigen"
+      ]
+    },
+    {
+      "word": "paphisch",
+      "num_guesses": 3,
+      "prior": 8.06862935375621e-6,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "paphisch"
+      ]
+    },
+    {
+      "word": "regenlos",
+      "num_guesses": 2,
+      "prior": 0.0000227341589313705,
+      "guesses": [
+        "gentiles",
+        "regenlos"
+      ]
+    },
+    {
+      "word": "kühnheit",
+      "num_guesses": 3,
+      "prior": 0.000055639979263622496,
+      "guesses": [
+        "gentiles",
+        "knarrend",
+        "kühnheit"
+      ]
+    },
+    {
+      "word": "visionär",
+      "num_guesses": 3,
+      "prior": 0.00003787679437638443,
+      "guesses": [
+        "gentiles",
+        "pornofan",
+        "visionär"
+      ]
+    },
+    {
+      "word": "fußsacke",
+      "num_guesses": 4,
+      "prior": 9.032474154567032e-6,
+      "guesses": [
+        "gentiles",
+        "hofraume",
+        "ausfasse",
+        "fußsacke"
+      ]
+    },
+    {
+      "word": "erklömme",
+      "num_guesses": 3,
+      "prior": 0.000010403988960580256,
+      "guesses": [
+        "gentiles",
+        "croupade",
+        "erklömme"
+      ]
+    },
+    {
+      "word": "quaasens",
+      "num_guesses": 3,
+      "prior": 8.824208777932204e-6,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "quaasens"
+      ]
+    },
+    {
+      "word": "südmauer",
+      "num_guesses": 3,
+      "prior": 0.00003091785405453155,
+      "guesses": [
+        "gentiles",
+        "muharram",
+        "südmauer"
+      ]
+    },
+    {
+      "word": "anhakten",
+      "num_guesses": 3,
+      "prior": 9.883724925998438e-6,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "anhakten"
+      ]
+    },
+    {
+      "word": "stillege",
+      "num_guesses": 3,
+      "prior": 0.000010829145297578782,
+      "guesses": [
+        "gentiles",
+        "spiegelt",
+        "stillege"
+      ]
+    },
+    {
+      "word": "holendem",
+      "num_guesses": 4,
+      "prior": 9.640883112149335e-6,
+      "guesses": [
+        "gentiles",
+        "baedeker",
+        "polenden",
+        "holendem"
+      ]
+    },
+    {
+      "word": "schlingt",
+      "num_guesses": 2,
+      "prior": 0.000041501460377463604,
+      "guesses": [
+        "gentiles",
+        "schlingt"
+      ]
+    },
+    {
+      "word": "gutteils",
+      "num_guesses": 3,
+      "prior": 0.00001746141685691919,
+      "guesses": [
+        "gentiles",
+        "glatteis",
+        "gutteils"
+      ]
+    },
+    {
+      "word": "gestoben",
+      "num_guesses": 3,
+      "prior": 0.00002149387744505429,
+      "guesses": [
+        "gentiles",
+        "bürowand",
+        "gestoben"
+      ]
+    },
+    {
+      "word": "farbtopf",
+      "num_guesses": 4,
+      "prior": 0.000021158462344868296,
+      "guesses": [
+        "gentiles",
+        "baumarkt",
+        "farbfoto",
+        "farbtopf"
+      ]
+    },
+    {
+      "word": "koheleth",
+      "num_guesses": 3,
+      "prior": 0.000028116927169190683,
+      "guesses": [
+        "gentiles",
+        "maulkorb",
+        "koheleth"
+      ]
+    },
+    {
+      "word": "kurhause",
+      "num_guesses": 3,
+      "prior": 0.00002550166580764778,
+      "guesses": [
+        "gentiles",
+        "hofraume",
+        "kurhause"
+      ]
+    },
+    {
+      "word": "seehasen",
+      "num_guesses": 3,
+      "prior": 0.000021485601216114936,
+      "guesses": [
+        "gentiles",
+        "nashorns",
+        "seehasen"
+      ]
+    },
+    {
+      "word": "spleißes",
+      "num_guesses": 2,
+      "prior": 0.000010478244411971812,
+      "guesses": [
+        "gentiles",
+        "spleißes"
+      ]
+    },
+    {
+      "word": "entwände",
+      "num_guesses": 4,
+      "prior": 0.000010663737102622448,
+      "guesses": [
+        "gentiles",
+        "abtrennt",
+        "entzünde",
+        "entwände"
+      ]
+    },
+    {
+      "word": "reimtest",
+      "num_guesses": 3,
+      "prior": 0.000012430193321781444,
+      "guesses": [
+        "gentiles",
+        "hersetzt",
+        "reimtest"
+      ]
+    },
+    {
+      "word": "heiligst",
+      "num_guesses": 2,
+      "prior": 0.000020025765348298333,
+      "guesses": [
+        "gentiles",
+        "heiligst"
+      ]
+    },
+    {
+      "word": "erhörest",
+      "num_guesses": 4,
+      "prior": 0.00001836455837327478,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "tomahawk",
+        "erhörest"
+      ]
+    },
+    {
+      "word": "hohleren",
+      "num_guesses": 4,
+      "prior": 0.000013102103806335146,
+      "guesses": [
+        "gentiles",
+        "baedeker",
+        "zwischen",
+        "hohleren"
+      ]
+    },
+    {
+      "word": "bewenden",
+      "num_guesses": 4,
+      "prior": 0.00005169840241767919,
+      "guesses": [
+        "gentiles",
+        "backrohr",
+        "maulwurf",
+        "bewenden"
+      ]
+    },
+    {
+      "word": "linsende",
+      "num_guesses": 3,
+      "prior": 8.145244012647115e-6,
+      "guesses": [
+        "gentiles",
+        "einlasse",
+        "linsende"
+      ]
+    },
+    {
+      "word": "normales",
+      "num_guesses": 3,
+      "prior": 0.000057345111595166824,
+      "guesses": [
+        "gentiles",
+        "anaboles",
+        "normales"
+      ]
+    },
+    {
+      "word": "updatete",
+      "num_guesses": 3,
+      "prior": 8.532655240538486e-6,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "updatete"
+      ]
+    },
+    {
+      "word": "zoonosen",
+      "num_guesses": 3,
+      "prior": 0.000026034984212362378,
+      "guesses": [
+        "gentiles",
+        "aufbohrt",
+        "zoonosen"
+      ]
+    },
+    {
+      "word": "touchpen",
+      "num_guesses": 3,
+      "prior": 0.00001055045275782365,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "touchpen"
+      ]
+    },
+    {
+      "word": "seemeile",
+      "num_guesses": 3,
+      "prior": 0.00002948972816878497,
+      "guesses": [
+        "gentiles",
+        "oberhemd",
+        "seemeile"
+      ]
+    },
+    {
+      "word": "thymians",
+      "num_guesses": 3,
+      "prior": 0.00001871645403977238,
+      "guesses": [
+        "gentiles",
+        "natriums",
+        "thymians"
+      ]
+    },
+    {
+      "word": "abstehen",
+      "num_guesses": 4,
+      "prior": 0.00004570993239206176,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "anstehen",
+        "abstehen"
+      ]
+    },
+    {
+      "word": "kredenzt",
+      "num_guesses": 3,
+      "prior": 0.000030044213858909947,
+      "guesses": [
+        "gentiles",
+        "abtrennt",
+        "kredenzt"
+      ]
+    },
+    {
+      "word": "splissen",
+      "num_guesses": 3,
+      "prior": 0.000016409352972750337,
+      "guesses": [
+        "gentiles",
+        "uploaden",
+        "splissen"
+      ]
+    },
+    {
+      "word": "gelostem",
+      "num_guesses": 3,
+      "prior": 0.000012416299628340903,
+      "guesses": [
+        "gentiles",
+        "kombinat",
+        "gelostem"
+      ]
+    },
+    {
+      "word": "verleiht",
+      "num_guesses": 3,
+      "prior": 0.00006722428055161889,
+      "guesses": [
+        "gentiles",
+        "herleite",
+        "verleiht"
+      ]
+    },
+    {
+      "word": "abgängen",
+      "num_guesses": 3,
+      "prior": 0.00003234950651995139,
+      "guesses": [
+        "gentiles",
+        "aufbrach",
+        "abgängen"
+      ]
+    },
+    {
+      "word": "schlupfe",
+      "num_guesses": 4,
+      "prior": 0.000016868309312774143,
+      "guesses": [
+        "gentiles",
+        "ruhmasse",
+        "schluffe",
+        "schlupfe"
+      ]
+    },
+    {
+      "word": "ratzfatz",
+      "num_guesses": 3,
+      "prior": 0.000020945610360955368,
+      "guesses": [
+        "gentiles",
+        "baumarkt",
+        "ratzfatz"
+      ]
+    },
+    {
+      "word": "herztons",
+      "num_guesses": 3,
+      "prior": 0.00002065025112310689,
+      "guesses": [
+        "gentiles",
+        "neuraths",
+        "herztons"
+      ]
+    },
+    {
+      "word": "heizöfen",
+      "num_guesses": 4,
+      "prior": 0.00002265179566709316,
+      "guesses": [
+        "gentiles",
+        "fernbahn",
+        "heizofen",
+        "heizöfen"
+      ]
+    },
+    {
+      "word": "sensorik",
+      "num_guesses": 3,
+      "prior": 0.000033503576893703924,
+      "guesses": [
+        "gentiles",
+        "censorin",
+        "sensorik"
+      ]
+    },
+    {
+      "word": "foutiere",
+      "num_guesses": 3,
+      "prior": 8.860300816439024e-6,
+      "guesses": [
+        "gentiles",
+        "fortkämt",
+        "foutiere"
+      ]
+    },
+    {
+      "word": "salzarme",
+      "num_guesses": 3,
+      "prior": 0.000024995232100889686,
+      "guesses": [
+        "gentiles",
+        "ruhmasse",
+        "salzarme"
+      ]
+    },
+    {
+      "word": "gebürgte",
+      "num_guesses": 4,
+      "prior": 7.533763162800687e-6,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gegerbte",
+        "gebürgte"
+      ]
+    },
+    {
+      "word": "erogenen",
+      "num_guesses": 3,
+      "prior": 0.000026737922887115096,
+      "guesses": [
+        "gentiles",
+        "errangen",
+        "erogenen"
+      ]
+    },
+    {
+      "word": "vertanem",
+      "num_guesses": 4,
+      "prior": 0.000010422751912023328,
+      "guesses": [
+        "gentiles",
+        "aktuator",
+        "vertanen",
+        "vertanem"
+      ]
+    },
+    {
+      "word": "fährdend",
+      "num_guesses": 4,
+      "prior": 0.000010496483416066335,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "dröhnend",
+        "fährdend"
+      ]
+    },
+    {
+      "word": "chatters",
+      "num_guesses": 3,
+      "prior": 0.000013696945083168624,
+      "guesses": [
+        "gentiles",
+        "hauptort",
+        "chatters"
+      ]
+    },
+    {
+      "word": "haarkalk",
+      "num_guesses": 3,
+      "prior": 0.000010923737355064685,
+      "guesses": [
+        "gentiles",
+        "rollback",
+        "haarkalk"
+      ]
+    },
+    {
+      "word": "rollouts",
+      "num_guesses": 3,
+      "prior": 0.000016788530626220435,
+      "guesses": [
+        "gentiles",
+        "hohlraum",
+        "rollouts"
+      ]
+    },
+    {
+      "word": "bängeren",
+      "num_guesses": 3,
+      "prior": 8.965185659740289e-6,
+      "guesses": [
+        "gentiles",
+        "abkommen",
+        "bängeren"
+      ]
+    },
+    {
+      "word": "bremstet",
+      "num_guesses": 4,
+      "prior": 7.5677004070657745e-6,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "erbostem",
+        "bremstet"
+      ]
+    },
+    {
+      "word": "jagdhaus",
+      "num_guesses": 3,
+      "prior": 0.00003062967130499602,
+      "guesses": [
+        "gentiles",
+        "hamburgs",
+        "jagdhaus"
+      ]
+    },
+    {
+      "word": "ratetest",
+      "num_guesses": 3,
+      "prior": 0.000011258906089788326,
+      "guesses": [
+        "gentiles",
+        "substrat",
+        "ratetest"
+      ]
+    },
+    {
+      "word": "reissaus",
+      "num_guesses": 3,
+      "prior": 0.000019922502098676882,
+      "guesses": [
+        "gentiles",
+        "showstar",
+        "reissaus"
+      ]
+    },
+    {
+      "word": "vidieren",
+      "num_guesses": 4,
+      "prior": 0.000017102865405353627,
+      "guesses": [
+        "gentiles",
+        "ankirren",
+        "modische",
+        "vidieren"
+      ]
+    },
+    {
+      "word": "perfides",
+      "num_guesses": 3,
+      "prior": 0.000022997256830204544,
+      "guesses": [
+        "gentiles",
+        "services",
+        "perfides"
+      ]
+    },
+    {
+      "word": "vermouth",
+      "num_guesses": 4,
+      "prior": 0.00002130663925002279,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "vermocht",
+        "vermouth"
+      ]
+    },
+    {
+      "word": "föderale",
+      "num_guesses": 3,
+      "prior": 0.000035561417028501806,
+      "guesses": [
+        "gentiles",
+        "croupade",
+        "föderale"
+      ]
+    },
+    {
+      "word": "kehrreim",
+      "num_guesses": 3,
+      "prior": 0.00003143834773503383,
+      "guesses": [
+        "gentiles",
+        "kurzform",
+        "kehrreim"
+      ]
+    },
+    {
+      "word": "freshmen",
+      "num_guesses": 4,
+      "prior": 0.000017655235128419945,
+      "guesses": [
+        "gentiles",
+        "bussards",
+        "vorsehen",
+        "freshmen"
+      ]
+    },
+    {
+      "word": "rumkommt",
+      "num_guesses": 3,
+      "prior": 0.000015086739725665073,
+      "guesses": [
+        "gentiles",
+        "baumarkt",
+        "rumkommt"
+      ]
+    },
+    {
+      "word": "badegast",
+      "num_guesses": 3,
+      "prior": 0.000025739502054217412,
+      "guesses": [
+        "gentiles",
+        "aufgrabe",
+        "badegast"
+      ]
+    },
+    {
+      "word": "anstarrt",
+      "num_guesses": 3,
+      "prior": 0.00002992535042100784,
+      "guesses": [
+        "gentiles",
+        "moskauer",
+        "anstarrt"
+      ]
+    },
+    {
+      "word": "einräumt",
+      "num_guesses": 3,
+      "prior": 0.00004863251685728206,
+      "guesses": [
+        "gentiles",
+        "hofraume",
+        "einräumt"
+      ]
+    },
+    {
+      "word": "mürrisch",
+      "num_guesses": 3,
+      "prior": 0.00004659221074882285,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "mürrisch"
+      ]
+    },
+    {
+      "word": "renditen",
+      "num_guesses": 2,
+      "prior": 0.00004355656045844401,
+      "guesses": [
+        "gentiles",
+        "renditen"
+      ]
+    },
+    {
+      "word": "mattgrau",
+      "num_guesses": 3,
+      "prior": 0.000021932514952350986,
+      "guesses": [
+        "gentiles",
+        "spätkauf",
+        "mattgrau"
+      ]
+    },
+    {
+      "word": "subtilem",
+      "num_guesses": 3,
+      "prior": 0.000021990843149535228,
+      "guesses": [
+        "gentiles",
+        "subtiler",
+        "subtilem"
+      ]
+    },
+    {
+      "word": "portagen",
+      "num_guesses": 3,
+      "prior": 0.00001516054281458576,
+      "guesses": [
+        "gentiles",
+        "produkte",
+        "portagen"
+      ]
+    },
+    {
+      "word": "vierzehn",
+      "num_guesses": 3,
+      "prior": 0.00006622105491079474,
+      "guesses": [
+        "gentiles",
+        "kieferne",
+        "vierzehn"
+      ]
+    },
+    {
+      "word": "zwilchen",
+      "num_guesses": 3,
+      "prior": 0.000022299512374244017,
+      "guesses": [
+        "gentiles",
+        "mobiliar",
+        "zwilchen"
+      ]
+    },
+    {
+      "word": "streikst",
+      "num_guesses": 4,
+      "prior": 0.000012462372507437941,
+      "guesses": [
+        "gentiles",
+        "haustest",
+        "streifst",
+        "streikst"
+      ]
+    },
+    {
+      "word": "werlichs",
+      "num_guesses": 3,
+      "prior": 0.000014278542621025482,
+      "guesses": [
+        "gentiles",
+        "redlichs",
+        "werlichs"
+      ]
+    },
+    {
+      "word": "erotikon",
+      "num_guesses": 3,
+      "prior": 0.000019085471192716953,
+      "guesses": [
+        "gentiles",
+        "böotiern",
+        "erotikon"
+      ]
+    },
+    {
+      "word": "becherst",
+      "num_guesses": 4,
+      "prior": 8.09449087577638e-6,
+      "guesses": [
+        "gentiles",
+        "vorhatte",
+        "beehrest",
+        "becherst"
+      ]
+    },
+    {
+      "word": "zusprach",
+      "num_guesses": 3,
+      "prior": 0.0000368652202048644,
+      "guesses": [
+        "gentiles",
+        "ausschau",
+        "zusprach"
+      ]
+    },
+    {
+      "word": "verpißte",
+      "num_guesses": 4,
+      "prior": 0.000010977438091207386,
+      "guesses": [
+        "gentiles",
+        "himbeere",
+        "verdikte",
+        "verpißte"
+      ]
+    },
+    {
+      "word": "ärmliche",
+      "num_guesses": 3,
+      "prior": 0.00003747858749453551,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "ärmliche"
+      ]
+    },
+    {
+      "word": "ebbenden",
+      "num_guesses": 4,
+      "prior": 0.000016375742620124172,
+      "guesses": [
+        "gentiles",
+        "armbruch",
+        "büßenden",
+        "ebbenden"
+      ]
+    },
+    {
+      "word": "vertusch",
+      "num_guesses": 4,
+      "prior": 0.000011037550861338723,
+      "guesses": [
+        "gentiles",
+        "zuvorkam",
+        "vertäust",
+        "vertusch"
+      ]
+    },
+    {
+      "word": "holzzahn",
+      "num_guesses": 4,
+      "prior": 0.000010923737355064685,
+      "guesses": [
+        "gentiles",
+        "waldlauf",
+        "holzbank",
+        "holzzahn"
+      ]
+    },
+    {
+      "word": "ringstem",
+      "num_guesses": 4,
+      "prior": 0.00001072279622149492,
+      "guesses": [
+        "gentiles",
+        "ringsten",
+        "ringster",
+        "ringstem"
+      ]
+    },
+    {
+      "word": "anhaften",
+      "num_guesses": 4,
+      "prior": 0.00004539295902934743,
+      "guesses": [
+        "gentiles",
+        "urkanton",
+        "postfach",
+        "anhaften"
+      ]
+    },
+    {
+      "word": "verkälte",
+      "num_guesses": 3,
+      "prior": 9.952130936595234e-6,
+      "guesses": [
+        "gentiles",
+        "hauwerke",
+        "verkälte"
+      ]
+    },
+    {
+      "word": "armreife",
+      "num_guesses": 3,
+      "prior": 0.000022628702963614918,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "armreife"
+      ]
+    },
+    {
+      "word": "adelnder",
+      "num_guesses": 4,
+      "prior": 0.000013556171248892662,
+      "guesses": [
+        "gentiles",
+        "baedeker",
+        "oleander",
+        "adelnder"
+      ]
+    },
+    {
+      "word": "gedroppt",
+      "num_guesses": 4,
+      "prior": 0.000011464109291183709,
+      "guesses": [
+        "gentiles",
+        "futharks",
+        "geprotzt",
+        "gedroppt"
+      ]
+    },
+    {
+      "word": "zwirnene",
+      "num_guesses": 3,
+      "prior": 0.000012893414110929118,
+      "guesses": [
+        "gentiles",
+        "kieferne",
+        "zwirnene"
+      ]
+    },
+    {
+      "word": "auslasen",
+      "num_guesses": 3,
+      "prior": 0.000014573929993736132,
+      "guesses": [
+        "gentiles",
+        "kassabon",
+        "auslasen"
+      ]
+    },
+    {
+      "word": "kratzern",
+      "num_guesses": 3,
+      "prior": 0.000028379221497286547,
+      "guesses": [
+        "gentiles",
+        "knattern",
+        "kratzern"
+      ]
+    },
+    {
+      "word": "aramäern",
+      "num_guesses": 4,
+      "prior": 0.000024017240968303136,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "zumauern",
+        "aramäern"
+      ]
+    },
+    {
+      "word": "zacherer",
+      "num_guesses": 4,
+      "prior": 9.032474154567032e-6,
+      "guesses": [
+        "gentiles",
+        "bürokram",
+        "wacherer",
+        "zacherer"
+      ]
+    },
+    {
+      "word": "bankraub",
+      "num_guesses": 3,
+      "prior": 0.000026158660117586298,
+      "guesses": [
+        "gentiles",
+        "buchform",
+        "bankraub"
+      ]
+    },
+    {
+      "word": "kantisch",
+      "num_guesses": 2,
+      "prior": 0.00003028419091454594,
+      "guesses": [
+        "gentiles",
+        "kantisch"
+      ]
+    },
+    {
+      "word": "gekochte",
+      "num_guesses": 3,
+      "prior": 0.000041994308197843234,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "gekochte"
+      ]
+    },
+    {
+      "word": "bachisch",
+      "num_guesses": 3,
+      "prior": 0.000016400213811984172,
+      "guesses": [
+        "gentiles",
+        "parkbaum",
+        "bachisch"
+      ]
+    },
+    {
+      "word": "weiteste",
+      "num_guesses": 3,
+      "prior": 0.00004498891940607327,
+      "guesses": [
+        "gentiles",
+        "wirbelst",
+        "weiteste"
+      ]
+    },
+    {
+      "word": "vernicht",
+      "num_guesses": 3,
+      "prior": 0.000023059236485866938,
+      "guesses": [
+        "gentiles",
+        "zahnkrem",
+        "vernicht"
+      ]
+    },
+    {
+      "word": "geclickt",
+      "num_guesses": 3,
+      "prior": 0.000012041593579455003,
+      "guesses": [
+        "gentiles",
+        "backform",
+        "geclickt"
+      ]
+    },
+    {
+      "word": "igelball",
+      "num_guesses": 3,
+      "prior": 0.000017610731319527728,
+      "guesses": [
+        "gentiles",
+        "homiliar",
+        "igelball"
+      ]
+    },
+    {
+      "word": "anfeuern",
+      "num_guesses": 3,
+      "prior": 0.00003163353153263178,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "anfeuern"
+      ]
+    },
+    {
+      "word": "hochnahm",
+      "num_guesses": 3,
+      "prior": 0.00002017977069335408,
+      "guesses": [
+        "gentiles",
+        "dorfbach",
+        "hochnahm"
+      ]
+    },
+    {
+      "word": "zinnenes",
+      "num_guesses": 3,
+      "prior": 0.000010585828079146153,
+      "guesses": [
+        "gentiles",
+        "minderes",
+        "zinnenes"
+      ]
+    },
+    {
+      "word": "erobernd",
+      "num_guesses": 3,
+      "prior": 0.00003056510348060724,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "erobernd"
+      ]
+    },
+    {
+      "word": "speichen",
+      "num_guesses": 3,
+      "prior": 0.00004037416585789492,
+      "guesses": [
+        "gentiles",
+        "sedieren",
+        "speichen"
+      ]
+    },
+    {
+      "word": "ranggeln",
+      "num_guesses": 3,
+      "prior": 0.000014017005038269726,
+      "guesses": [
+        "gentiles",
+        "quadrate",
+        "ranggeln"
+      ]
+    },
+    {
+      "word": "eichbaum",
+      "num_guesses": 3,
+      "prior": 0.00003303854524374432,
+      "guesses": [
+        "gentiles",
+        "chorraum",
+        "eichbaum"
+      ]
+    },
+    {
+      "word": "pissoire",
+      "num_guesses": 3,
+      "prior": 0.000017985529680122183,
+      "guesses": [
+        "gentiles",
+        "daoismus",
+        "pissoire"
+      ]
+    },
+    {
+      "word": "zunickst",
+      "num_guesses": 3,
+      "prior": 0.000011570683039840001,
+      "guesses": [
+        "gentiles",
+        "kinnbart",
+        "zunickst"
+      ]
+    },
+    {
+      "word": "kandiert",
+      "num_guesses": 3,
+      "prior": 0.00002057077769735949,
+      "guesses": [
+        "gentiles",
+        "kuhdorfs",
+        "kandiert"
+      ]
+    },
+    {
+      "word": "regenguß",
+      "num_guesses": 3,
+      "prior": 0.000029020202919224694,
+      "guesses": [
+        "gentiles",
+        "harnende",
+        "regenguß"
+      ]
+    },
+    {
+      "word": "blauhais",
+      "num_guesses": 4,
+      "prior": 8.787516409714215e-6,
+      "guesses": [
+        "gentiles",
+        "mobiliar",
+        "laibachs",
+        "blauhais"
+      ]
+    },
+    {
+      "word": "biogenie",
+      "num_guesses": 3,
+      "prior": 0.000015253369402753669,
+      "guesses": [
+        "gentiles",
+        "brandend",
+        "biogenie"
+      ]
+    },
+    {
+      "word": "fuchsten",
+      "num_guesses": 4,
+      "prior": 0.000012661694488185093,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "funktion",
+        "fuchsten"
+      ]
+    },
+    {
+      "word": "norikern",
+      "num_guesses": 3,
+      "prior": 0.000018952258626447096,
+      "guesses": [
+        "gentiles",
+        "karohemd",
+        "norikern"
+      ]
+    },
+    {
+      "word": "geknüllt",
+      "num_guesses": 3,
+      "prior": 0.00001614538421954074,
+      "guesses": [
+        "gentiles",
+        "geknallt",
+        "geknüllt"
+      ]
+    },
+    {
+      "word": "erdmöbel",
+      "num_guesses": 3,
+      "prior": 0.000013113314978312682,
+      "guesses": [
+        "gentiles",
+        "backrohr",
+        "erdmöbel"
+      ]
+    },
+    {
+      "word": "vertatet",
+      "num_guesses": 3,
+      "prior": 9.563019215188913e-6,
+      "guesses": [
+        "gentiles",
+        "umwarbst",
+        "vertatet"
+      ]
+    },
+    {
+      "word": "zechwein",
+      "num_guesses": 4,
+      "prior": 9.563019215188913e-6,
+      "guesses": [
+        "gentiles",
+        "fürnehme",
+        "weichend",
+        "zechwein"
+      ]
+    },
+    {
+      "word": "beseelet",
+      "num_guesses": 3,
+      "prior": 0.00002436634039592356,
+      "guesses": [
+        "gentiles",
+        "zugleich",
+        "beseelet"
+      ]
+    },
+    {
+      "word": "fittiche",
+      "num_guesses": 3,
+      "prior": 0.000034709465314726504,
+      "guesses": [
+        "gentiles",
+        "torfkahn",
+        "fittiche"
+      ]
+    },
+    {
+      "word": "kriegend",
+      "num_guesses": 3,
+      "prior": 0.00001526151213762308,
+      "guesses": [
+        "gentiles",
+        "brandend",
+        "kriegend"
+      ]
+    },
+    {
+      "word": "aufrisse",
+      "num_guesses": 3,
+      "prior": 0.00003091543916314424,
+      "guesses": [
+        "gentiles",
+        "bismarks",
+        "aufrisse"
+      ]
+    },
+    {
+      "word": "schnäuzt",
+      "num_guesses": 3,
+      "prior": 0.000020729714559405384,
+      "guesses": [
+        "gentiles",
+        "aufrauht",
+        "schnäuzt"
+      ]
+    },
+    {
+      "word": "abmagere",
+      "num_guesses": 3,
+      "prior": 0.000014489824983616988,
+      "guesses": [
+        "gentiles",
+        "fahrwege",
+        "abmagere"
+      ]
+    },
+    {
+      "word": "darbende",
+      "num_guesses": 3,
+      "prior": 0.00002393108602796931,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "darbende"
+      ]
+    },
+    {
+      "word": "fahlblau",
+      "num_guesses": 3,
+      "prior": 0.000015071804442794623,
+      "guesses": [
+        "gentiles",
+        "bachlauf",
+        "fahlblau"
+      ]
+    },
+    {
+      "word": "ästuaren",
+      "num_guesses": 4,
+      "prior": 0.00001796015615368449,
+      "guesses": [
+        "gentiles",
+        "haupttor",
+        "straußen",
+        "ästuaren"
+      ]
+    },
+    {
+      "word": "altamira",
+      "num_guesses": 3,
+      "prior": 0.0000272385572364359,
+      "guesses": [
+        "gentiles",
+        "machorka",
+        "altamira"
+      ]
+    },
+    {
+      "word": "weiseste",
+      "num_guesses": 4,
+      "prior": 0.000034077451645872115,
+      "guesses": [
+        "gentiles",
+        "hersetzt",
+        "beiseite",
+        "weiseste"
+      ]
+    },
+    {
+      "word": "abbadete",
+      "num_guesses": 4,
+      "prior": 7.499203158364767e-6,
+      "guesses": [
+        "gentiles",
+        "fuhrpark",
+        "abtötete",
+        "abbadete"
+      ]
+    },
+    {
+      "word": "adenitis",
+      "num_guesses": 3,
+      "prior": 0.000025710282028005885,
+      "guesses": [
+        "gentiles",
+        "antriebs",
+        "adenitis"
+      ]
+    },
+    {
+      "word": "pantheon",
+      "num_guesses": 3,
+      "prior": 0.000045717636959402557,
+      "guesses": [
+        "gentiles",
+        "kontakte",
+        "pantheon"
+      ]
+    },
+    {
+      "word": "fodernde",
+      "num_guesses": 4,
+      "prior": 0.000013483532929612749,
+      "guesses": [
+        "gentiles",
+        "fahrkorb",
+        "formende",
+        "fodernde"
+      ]
+    },
+    {
+      "word": "umkippst",
+      "num_guesses": 3,
+      "prior": 0.000016788530626220435,
+      "guesses": [
+        "gentiles",
+        "sprachst",
+        "umkippst"
+      ]
+    },
+    {
+      "word": "beschlug",
+      "num_guesses": 3,
+      "prior": 0.000025766838408504864,
+      "guesses": [
+        "gentiles",
+        "beschlag",
+        "beschlug"
+      ]
+    }
+  ]
+}

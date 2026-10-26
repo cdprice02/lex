@@ -1,0 +1,28 @@
+[2026-10-25T22:15:37Z INFO  lex_data::wiktionary] Fetching Wiktionary dict for french from https://kaikki.org/dictionary/downloads/fr/fr-extract.jsonl.gz...
+[2026-10-25T22:19:38Z INFO  lex_data::wiktionary] Cached french Wiktionary dict (1570316 words, lengths 1–52)
+[2026-10-25T22:19:39Z WARN  lex_data::store] Building french corpus...
+[2026-10-25T22:25:36Z INFO  lex_data::ngrams]   [3/6] done
+[2026-10-25T22:27:08Z INFO  lex_data::ngrams]   [4/6] done
+[2026-10-25T22:29:47Z INFO  lex_data::ngrams]   [1/6] done
+[2026-10-25T22:31:45Z INFO  lex_data::ngrams]   [5/6] done
+[2026-10-25T22:32:24Z INFO  lex_data::ngrams]   [2/6] done
+[2026-10-25T22:33:56Z INFO  lex_data::ngrams]   [6/6] done
+[2026-10-25T22:33:57Z INFO  lex_data::store] Cached french corpus (30 length buckets)
+[2026-10-25T22:33:57Z INFO  lex::simulate] Simulating 1 games with 5-letter words in french...
+[2026-10-25T22:34:04Z INFO  lex_core::game] Guess 1: raies -> 🟨⬜🟨⬜⬜
+[2026-10-25T22:34:04Z INFO  lex_core::game] Guess 2: cotin -> ⬜🟨⬜🟩⬜
+[2026-10-25T22:34:04Z INFO  lex_core::game] Guess 3: obéir -> 🟩⬜⬜🟩🟩
+[2026-10-25T22:34:04Z INFO  lex_core::game] Guess 4: ovoir -> 🟩🟩🟩🟩🟩
+[2026-10-25T22:34:04Z INFO  lex::simulate] Splendid
+[2026-10-25T22:34:04Z INFO  lex::simulate] Completed 1 games
+1 games, 5-letter french words (dictionary: 16978), seed 0
+strategy: unconstrained, temperature 5, win weight 1, endgame threshold 0, aversion 0
+first guess: raies
+ngrams sha256: f9b3b9b80904
+dict: 1570316 words, fetched 2026-10-25T22:19:37.50315Z, sha256 06c31dc9b75b
+
+uniform: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% (1) ########################################
+
+prior-weighted: mean 4.000 guesses, failure rate (>6) 0.00%
+   4 | 100.00% ########################################

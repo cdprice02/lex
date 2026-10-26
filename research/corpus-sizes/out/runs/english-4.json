@@ -1,0 +1,6232 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-25T23:43:24.401529Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "taes",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "english",
+    "word_length": 4,
+    "dictionary_length": 16603,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "6664f7bcd84cb1429d0709a04c94266fc198721d6e76a75a3e1004090083264e",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "fetched_at": "2026-10-25T21:40:42.390956Z",
+      "source_sha256": "cabb3a13b7179d5f8c5909e06b1dcd2e2ae6465d05f35de56509a5b4e2bf0a49",
+      "word_count": 863670
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 5.33999999999996,
+      "failure_rate": 0.10000000000000007,
+      "histogram": {
+        "1": 0.002,
+        "3": 0.020000000000000004,
+        "4": 0.1560000000000001,
+        "5": 0.3880000000000003,
+        "6": 0.33400000000000024,
+        "7": 0.09000000000000007,
+        "8": 0.01
+      }
+    },
+    "prior": {
+      "mean": 5.116632683955696,
+      "failure_rate": 0.068962689441146,
+      "histogram": {
+        "1": 0.0015233121966897216,
+        "3": 0.049152959997036824,
+        "4": 0.21684358041002577,
+        "5": 0.36759012903958077,
+        "6": 0.29592732891552115,
+        "7": 0.06493996409240983,
+        "8": 0.004022725348736165
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "esvs",
+      "num_guesses": 6,
+      "prior": 0.000039075517336680386,
+      "guesses": [
+        "taes",
+        "merd",
+        "copi",
+        "gflv",
+        "bank",
+        "esvs"
+      ]
+    },
+    {
+      "word": "yawk",
+      "num_guesses": 5,
+      "prior": 0.00003644592645215271,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "hyuk",
+        "yawk"
+      ]
+    },
+    {
+      "word": "gger",
+      "num_guesses": 7,
+      "prior": 0.00003549262395201034,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "fick",
+        "rnwy",
+        "guru",
+        "gger"
+      ]
+    },
+    {
+      "word": "lvot",
+      "num_guesses": 4,
+      "prior": 0.00004904454626141883,
+      "guesses": [
+        "taes",
+        "riot",
+        "loph",
+        "lvot"
+      ]
+    },
+    {
+      "word": "geco",
+      "num_guesses": 5,
+      "prior": 0.000046494186797688604,
+      "guesses": [
+        "taes",
+        "lore",
+        "nemo",
+        "bpdc",
+        "geco"
+      ]
+    },
+    {
+      "word": "hefa",
+      "num_guesses": 5,
+      "prior": 0.00003689845349762893,
+      "guesses": [
+        "taes",
+        "lenr",
+        "dmab",
+        "cfwh",
+        "hefa"
+      ]
+    },
+    {
+      "word": "wawe",
+      "num_guesses": 5,
+      "prior": 0.000043673245830016764,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "pkwy",
+        "wawe"
+      ]
+    },
+    {
+      "word": "wade",
+      "num_guesses": 5,
+      "prior": 0.00013538081570440771,
+      "guesses": [
+        "taes",
+        "rdml",
+        "dncb",
+        "hfgw",
+        "wade"
+      ]
+    },
+    {
+      "word": "errs",
+      "num_guesses": 4,
+      "prior": 0.00007660140262130306,
+      "guesses": [
+        "taes",
+        "merd",
+        "irhp",
+        "errs"
+      ]
+    },
+    {
+      "word": "dmhs",
+      "num_guesses": 7,
+      "prior": 0.000027719566164924808,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "svms",
+        "fedn",
+        "dmzs",
+        "dmhs"
+      ]
+    },
+    {
+      "word": "otos",
+      "num_guesses": 5,
+      "prior": 0.0000427517550097239,
+      "guesses": [
+        "taes",
+        "pito",
+        "flor",
+        "odbc",
+        "otos"
+      ]
+    },
+    {
+      "word": "taes",
+      "num_guesses": 1,
+      "prior": 0.00004422055735394251,
+      "guesses": [
+        "taes"
+      ]
+    },
+    {
+      "word": "sukh",
+      "num_guesses": 6,
+      "prior": 0.0000524281738424269,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "lysm",
+        "hadj",
+        "sukh"
+      ]
+    },
+    {
+      "word": "yogh",
+      "num_guesses": 6,
+      "prior": 0.00003059456326304159,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "mybp",
+        "fogo",
+        "yogh"
+      ]
+    },
+    {
+      "word": "lóng",
+      "num_guesses": 5,
+      "prior": 0.000030894059167466695,
+      "guesses": [
+        "taes",
+        "diol",
+        "gulp",
+        "bank",
+        "lóng"
+      ]
+    },
+    {
+      "word": "xyzs",
+      "num_guesses": 6,
+      "prior": 0.000023775532986878948,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "ssbn",
+        "xyzs"
+      ]
+    },
+    {
+      "word": "vadi",
+      "num_guesses": 6,
+      "prior": 0.000047301800588952784,
+      "guesses": [
+        "taes",
+        "miln",
+        "dhpr",
+        "kwic",
+        "gnvq",
+        "vadi"
+      ]
+    },
+    {
+      "word": "bbns",
+      "num_guesses": 7,
+      "prior": 0.00003193009872646708,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "ssbn",
+        "wbns",
+        "bbns"
+      ]
+    },
+    {
+      "word": "mrws",
+      "num_guesses": 5,
+      "prior": 0.000026224250698037462,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "mlwn",
+        "mrws"
+      ]
+    },
+    {
+      "word": "putt",
+      "num_guesses": 5,
+      "prior": 0.0000862984159604711,
+      "guesses": [
+        "taes",
+        "riot",
+        "culm",
+        "pngb",
+        "putt"
+      ]
+    },
+    {
+      "word": "boku",
+      "num_guesses": 6,
+      "prior": 0.00004715440182297599,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "fpkm",
+        "koku",
+        "boku"
+      ]
+    },
+    {
+      "word": "yepa",
+      "num_guesses": 6,
+      "prior": 0.00002762800229566458,
+      "guesses": [
+        "taes",
+        "lenr",
+        "dmab",
+        "cfwh",
+        "vega",
+        "yepa"
+      ]
+    },
+    {
+      "word": "ayoo",
+      "num_guesses": 5,
+      "prior": 0.000025088514894457906,
+      "guesses": [
+        "taes",
+        "aran",
+        "olid",
+        "myob",
+        "ayoo"
+      ]
+    },
+    {
+      "word": "lhcs",
+      "num_guesses": 6,
+      "prior": 0.00003359400156576057,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "slsn",
+        "bury",
+        "lhcs"
+      ]
+    },
+    {
+      "word": "nlos",
+      "num_guesses": 6,
+      "prior": 0.00004758939849240251,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "mung",
+        "slfs",
+        "nlos"
+      ]
+    },
+    {
+      "word": "fufu",
+      "num_guesses": 6,
+      "prior": 0.000045582118503969805,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "nbfc",
+        "hapu",
+        "fufu"
+      ]
+    },
+    {
+      "word": "meep",
+      "num_guesses": 6,
+      "prior": 0.000041379197466271624,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "pbzk",
+        "jvms",
+        "meep"
+      ]
+    },
+    {
+      "word": "neta",
+      "num_guesses": 3,
+      "prior": 0.000057289353792453585,
+      "guesses": [
+        "taes",
+        "mena",
+        "neta"
+      ]
+    },
+    {
+      "word": "rude",
+      "num_guesses": 4,
+      "prior": 0.0001429435842332216,
+      "guesses": [
+        "taes",
+        "lore",
+        "udic",
+        "rude"
+      ]
+    },
+    {
+      "word": "hyen",
+      "num_guesses": 4,
+      "prior": 0.00003388621081774953,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "hyen"
+      ]
+    },
+    {
+      "word": "csec",
+      "num_guesses": 5,
+      "prior": 0.00004283788642654965,
+      "guesses": [
+        "taes",
+        "send",
+        "muir",
+        "cook",
+        "csec"
+      ]
+    },
+    {
+      "word": "fvii",
+      "num_guesses": 6,
+      "prior": 0.00003961484312220876,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "fumy",
+        "waxi",
+        "fvii"
+      ]
+    },
+    {
+      "word": "ribs",
+      "num_guesses": 5,
+      "prior": 0.00014327240073871238,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "mbsf",
+        "ribs"
+      ]
+    },
+    {
+      "word": "yoon",
+      "num_guesses": 7,
+      "prior": 0.00007743508219886307,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bonk",
+        "nwfz",
+        "they",
+        "yoon"
+      ]
+    },
+    {
+      "word": "zavs",
+      "num_guesses": 8,
+      "prior": 0.000016145749660976713,
+      "guesses": [
+        "taes",
+        "mrlp",
+        "wynd",
+        "chbg",
+        "skiv",
+        "vrou",
+        "afro",
+        "zavs"
+      ]
+    },
+    {
+      "word": "jick",
+      "num_guesses": 7,
+      "prior": 0.00005117101719864436,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "hbfc",
+        "kype",
+        "wick",
+        "jick"
+      ]
+    },
+    {
+      "word": "csom",
+      "num_guesses": 5,
+      "prior": 0.00003902375095437015,
+      "guesses": [
+        "taes",
+        "sion",
+        "wrpg",
+        "bsod",
+        "csom"
+      ]
+    },
+    {
+      "word": "hoka",
+      "num_guesses": 6,
+      "prior": 0.000041653154692775085,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "hdcp",
+        "kyiv",
+        "hoka"
+      ]
+    },
+    {
+      "word": "rifa",
+      "num_guesses": 5,
+      "prior": 0.0000432380956861743,
+      "guesses": [
+        "taes",
+        "aran",
+        "miro",
+        "bfvs",
+        "rifa"
+      ]
+    },
+    {
+      "word": "ehds",
+      "num_guesses": 7,
+      "prior": 0.0000270962017954124,
+      "guesses": [
+        "taes",
+        "merd",
+        "indc",
+        "pslv",
+        "odbc",
+        "egds",
+        "ehds"
+      ]
+    },
+    {
+      "word": "hhhh",
+      "num_guesses": 6,
+      "prior": 0.00004252994114287267,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "pcnb",
+        "hivy",
+        "hhhh"
+      ]
+    },
+    {
+      "word": "socg",
+      "num_guesses": 5,
+      "prior": 0.00003027845372829948,
+      "guesses": [
+        "taes",
+        "sion",
+        "culo",
+        "rbgh",
+        "socg"
+      ]
+    },
+    {
+      "word": "udhs",
+      "num_guesses": 5,
+      "prior": 0.000028800319062290188,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "luhf",
+        "udhs"
+      ]
+    },
+    {
+      "word": "scbu",
+      "num_guesses": 5,
+      "prior": 0.00003392334763223012,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "such",
+        "scbu"
+      ]
+    },
+    {
+      "word": "mens",
+      "num_guesses": 4,
+      "prior": 0.00010318178097971605,
+      "guesses": [
+        "taes",
+        "merd",
+        "insp",
+        "mens"
+      ]
+    },
+    {
+      "word": "skud",
+      "num_guesses": 6,
+      "prior": 0.00004592065561490844,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "hklm",
+        "dogz",
+        "skud"
+      ]
+    },
+    {
+      "word": "hcgs",
+      "num_guesses": 7,
+      "prior": 0.00003281259902456477,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "nrfb",
+        "suvs",
+        "hcws",
+        "hcgs"
+      ]
+    },
+    {
+      "word": "wems",
+      "num_guesses": 7,
+      "prior": 0.000034442754935835206,
+      "guesses": [
+        "taes",
+        "merd",
+        "glhf",
+        "scon",
+        "bipv",
+        "wkly",
+        "wems"
+      ]
+    },
+    {
+      "word": "noun",
+      "num_guesses": 4,
+      "prior": 0.0001473169881703616,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "noun"
+      ]
+    },
+    {
+      "word": "huqa",
+      "num_guesses": 7,
+      "prior": 0.00002537630774258593,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "puck",
+        "bygg",
+        "zuza",
+        "huqa"
+      ]
+    },
+    {
+      "word": "bhut",
+      "num_guesses": 5,
+      "prior": 0.000044461988992068084,
+      "guesses": [
+        "taes",
+        "riot",
+        "culm",
+        "pkwy",
+        "bhut"
+      ]
+    },
+    {
+      "word": "nrho",
+      "num_guesses": 5,
+      "prior": 0.00002139800578984694,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "rong",
+        "nrho"
+      ]
+    },
+    {
+      "word": "zoed",
+      "num_guesses": 6,
+      "prior": 0.000015789766855801957,
+      "guesses": [
+        "taes",
+        "drol",
+        "pown",
+        "chyk",
+        "goed",
+        "zoed"
+      ]
+    },
+    {
+      "word": "udox",
+      "num_guesses": 6,
+      "prior": 0.000020323799827655138,
+      "guesses": [
+        "taes",
+        "diol",
+        "gorp",
+        "bdcm",
+        "udon",
+        "udox"
+      ]
+    },
+    {
+      "word": "bual",
+      "num_guesses": 6,
+      "prior": 0.000036456415999566525,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "guid",
+        "qual",
+        "bual"
+      ]
+    },
+    {
+      "word": "vrom",
+      "num_guesses": 6,
+      "prior": 0.00004629191404226444,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "from",
+        "grom",
+        "vrom"
+      ]
+    },
+    {
+      "word": "blit",
+      "num_guesses": 5,
+      "prior": 0.00004346303999040375,
+      "guesses": [
+        "taes",
+        "riot",
+        "guhl",
+        "icbw",
+        "blit"
+      ]
+    },
+    {
+      "word": "rmis",
+      "num_guesses": 5,
+      "prior": 0.00003793408013048411,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "bshm",
+        "rmis"
+      ]
+    },
+    {
+      "word": "pban",
+      "num_guesses": 5,
+      "prior": 0.00003874634117248884,
+      "guesses": [
+        "taes",
+        "aran",
+        "loup",
+        "bikh",
+        "pban"
+      ]
+    },
+    {
+      "word": "magr",
+      "num_guesses": 5,
+      "prior": 0.00003814282547842728,
+      "guesses": [
+        "taes",
+        "miln",
+        "cory",
+        "what",
+        "magr"
+      ]
+    },
+    {
+      "word": "wunt",
+      "num_guesses": 6,
+      "prior": 0.000052617731275851154,
+      "guesses": [
+        "taes",
+        "riot",
+        "culm",
+        "pngb",
+        "whnf",
+        "wunt"
+      ]
+    },
+    {
+      "word": "faze",
+      "num_guesses": 6,
+      "prior": 0.00006062251899957539,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "pkwy",
+        "funj",
+        "faze"
+      ]
+    },
+    {
+      "word": "gled",
+      "num_guesses": 5,
+      "prior": 0.00005272635853732348,
+      "guesses": [
+        "taes",
+        "drol",
+        "flub",
+        "pcgs",
+        "gled"
+      ]
+    },
+    {
+      "word": "pirn",
+      "num_guesses": 5,
+      "prior": 0.00005798508371895182,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "khaf",
+        "pirn"
+      ]
+    },
+    {
+      "word": "wgsr",
+      "num_guesses": 7,
+      "prior": 0.00003068073465602779,
+      "guesses": [
+        "taes",
+        "sion",
+        "dmsp",
+        "hclk",
+        "busy",
+        "fssg",
+        "wgsr"
+      ]
+    },
+    {
+      "word": "uppe",
+      "num_guesses": 5,
+      "prior": 0.00005330543670825991,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "puky",
+        "uppe"
+      ]
+    },
+    {
+      "word": "inro",
+      "num_guesses": 4,
+      "prior": 0.00005341883023189779,
+      "guesses": [
+        "taes",
+        "diol",
+        "corn",
+        "inro"
+      ]
+    },
+    {
+      "word": "sess",
+      "num_guesses": 6,
+      "prior": 0.00013837832346739993,
+      "guesses": [
+        "taes",
+        "merd",
+        "pcnl",
+        "sgbv",
+        "youi",
+        "sess"
+      ]
+    },
+    {
+      "word": "lbam",
+      "num_guesses": 5,
+      "prior": 0.00003233989348830972,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "flab",
+        "lbam"
+      ]
+    },
+    {
+      "word": "jdfr",
+      "num_guesses": 5,
+      "prior": 0.000023364587206403357,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "fdvr",
+        "jdfr"
+      ]
+    },
+    {
+      "word": "jung",
+      "num_guesses": 6,
+      "prior": 0.00012283144940883735,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "whnf",
+        "gbps",
+        "jung"
+      ]
+    },
+    {
+      "word": "fifo",
+      "num_guesses": 5,
+      "prior": 0.00008434082887257683,
+      "guesses": [
+        "taes",
+        "diol",
+        "nbmr",
+        "fgcc",
+        "fifo"
+      ]
+    },
+    {
+      "word": "gore",
+      "num_guesses": 5,
+      "prior": 0.0001279094769510502,
+      "guesses": [
+        "taes",
+        "lore",
+        "cmfb",
+        "pkwy",
+        "gore"
+      ]
+    },
+    {
+      "word": "lrcs",
+      "num_guesses": 6,
+      "prior": 0.00004301675647687534,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "slsn",
+        "bury",
+        "lrcs"
+      ]
+    },
+    {
+      "word": "dmus",
+      "num_guesses": 4,
+      "prior": 0.000050684891358503424,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "dmus"
+      ]
+    },
+    {
+      "word": "kufr",
+      "num_guesses": 5,
+      "prior": 0.00005038217670482945,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "bcnf",
+        "kufr"
+      ]
+    },
+    {
+      "word": "cnls",
+      "num_guesses": 6,
+      "prior": 0.00003719775702477148,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "gflv",
+        "hsan",
+        "cnls"
+      ]
+    },
+    {
+      "word": "door",
+      "num_guesses": 4,
+      "prior": 0.0002480842264732504,
+      "guesses": [
+        "taes",
+        "diol",
+        "ponr",
+        "door"
+      ]
+    },
+    {
+      "word": "apks",
+      "num_guesses": 5,
+      "prior": 0.000027520696509947686,
+      "guesses": [
+        "taes",
+        "acir",
+        "fpdl",
+        "kupo",
+        "apks"
+      ]
+    },
+    {
+      "word": "nerf",
+      "num_guesses": 6,
+      "prior": 0.000050799279832422946,
+      "guesses": [
+        "taes",
+        "lore",
+        "mvpd",
+        "kyng",
+        "when",
+        "nerf"
+      ]
+    },
+    {
+      "word": "cyma",
+      "num_guesses": 5,
+      "prior": 0.000053761779697112364,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "umpy",
+        "cyma"
+      ]
+    },
+    {
+      "word": "ætna",
+      "num_guesses": 5,
+      "prior": 0.00004756265108074245,
+      "guesses": [
+        "taes",
+        "ailt",
+        "copa",
+        "bumf",
+        "ætna"
+      ]
+    },
+    {
+      "word": "bgrs",
+      "num_guesses": 7,
+      "prior": 0.00002574291230296807,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "nlrg",
+        "swfs",
+        "bevy",
+        "bgrs"
+      ]
+    },
+    {
+      "word": "pano",
+      "num_guesses": 6,
+      "prior": 0.00005457233317499456,
+      "guesses": [
+        "taes",
+        "miln",
+        "kynd",
+        "gbca",
+        "prof",
+        "pano"
+      ]
+    },
+    {
+      "word": "tchi",
+      "num_guesses": 5,
+      "prior": 0.000042060961064766195,
+      "guesses": [
+        "taes",
+        "noir",
+        "puli",
+        "with",
+        "tchi"
+      ]
+    },
+    {
+      "word": "micu",
+      "num_guesses": 5,
+      "prior": 0.000045513923359888335,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "hkcu",
+        "micu"
+      ]
+    },
+    {
+      "word": "ward",
+      "num_guesses": 6,
+      "prior": 0.00019008648938906208,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "ghrd",
+        "bwoy",
+        "ward"
+      ]
+    },
+    {
+      "word": "vada",
+      "num_guesses": 7,
+      "prior": 0.00006231649897491213,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "hudd",
+        "vegf",
+        "vada"
+      ]
+    },
+    {
+      "word": "syam",
+      "num_guesses": 6,
+      "prior": 0.00004334485771644904,
+      "guesses": [
+        "taes",
+        "soia",
+        "wlnp",
+        "gmbh",
+        "city",
+        "syam"
+      ]
+    },
+    {
+      "word": "fewl",
+      "num_guesses": 6,
+      "prior": 0.00002566656025387435,
+      "guesses": [
+        "taes",
+        "lore",
+        "phil",
+        "cgwb",
+        "from",
+        "fewl"
+      ]
+    },
+    {
+      "word": "qaus",
+      "num_guesses": 8,
+      "prior": 0.00002875306090008606,
+      "guesses": [
+        "taes",
+        "mrlp",
+        "wynd",
+        "chbg",
+        "skiv",
+        "qaaf",
+        "qass",
+        "qaus"
+      ]
+    },
+    {
+      "word": "hhos",
+      "num_guesses": 7,
+      "prior": 0.000021263838432231103,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "mung",
+        "slvs",
+        "whos",
+        "hhos"
+      ]
+    },
+    {
+      "word": "tras",
+      "num_guesses": 4,
+      "prior": 0.00006272816794882119,
+      "guesses": [
+        "taes",
+        "ciwh",
+        "lrbm",
+        "tras"
+      ]
+    },
+    {
+      "word": "lanc",
+      "num_guesses": 4,
+      "prior": 0.00006717618546009972,
+      "guesses": [
+        "taes",
+        "miln",
+        "cdna",
+        "lanc"
+      ]
+    },
+    {
+      "word": "reem",
+      "num_guesses": 5,
+      "prior": 0.0000502216469572835,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "mvfr",
+        "reem"
+      ]
+    },
+    {
+      "word": "opat",
+      "num_guesses": 5,
+      "prior": 0.00003921745616006331,
+      "guesses": [
+        "taes",
+        "ailt",
+        "chog",
+        "womb",
+        "opat"
+      ]
+    },
+    {
+      "word": "élan",
+      "num_guesses": 6,
+      "prior": 0.0000587829328167211,
+      "guesses": [
+        "taes",
+        "aran",
+        "loup",
+        "vcfs",
+        "blow",
+        "élan"
+      ]
+    },
+    {
+      "word": "yagi",
+      "num_guesses": 6,
+      "prior": 0.00006915556253412754,
+      "guesses": [
+        "taes",
+        "miln",
+        "dhpr",
+        "kogi",
+        "very",
+        "yagi"
+      ]
+    },
+    {
+      "word": "uezd",
+      "num_guesses": 5,
+      "prior": 0.00004546722080382615,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "fugh",
+        "uezd"
+      ]
+    },
+    {
+      "word": "lala",
+      "num_guesses": 6,
+      "prior": 0.00007861858525864957,
+      "guesses": [
+        "taes",
+        "miln",
+        "fckd",
+        "lphl",
+        "more",
+        "lala"
+      ]
+    },
+    {
+      "word": "toby",
+      "num_guesses": 5,
+      "prior": 0.00011389167900852471,
+      "guesses": [
+        "taes",
+        "noir",
+        "mool",
+        "bduf",
+        "toby"
+      ]
+    },
+    {
+      "word": "supa",
+      "num_guesses": 5,
+      "prior": 0.00005078091316030202,
+      "guesses": [
+        "taes",
+        "soia",
+        "brum",
+        "play",
+        "supa"
+      ]
+    },
+    {
+      "word": "ckbo",
+      "num_guesses": 6,
+      "prior": 0.000013504014392087197,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "mybp",
+        "cobb",
+        "ckbo"
+      ]
+    },
+    {
+      "word": "gott",
+      "num_guesses": 6,
+      "prior": 0.00009279608745490674,
+      "guesses": [
+        "taes",
+        "riot",
+        "pcnl",
+        "bumf",
+        "wgta",
+        "gott"
+      ]
+    },
+    {
+      "word": "blns",
+      "num_guesses": 6,
+      "prior": 0.00003583543734757004,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "nwbw",
+        "blns"
+      ]
+    },
+    {
+      "word": "msrp",
+      "num_guesses": 5,
+      "prior": 0.00005670625359249057,
+      "guesses": [
+        "taes",
+        "sion",
+        "dmsp",
+        "club",
+        "msrp"
+      ]
+    },
+    {
+      "word": "ephi",
+      "num_guesses": 5,
+      "prior": 0.00003921902175842995,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "heck",
+        "ephi"
+      ]
+    },
+    {
+      "word": "jarr",
+      "num_guesses": 7,
+      "prior": 0.000039833112765697594,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "ghrd",
+        "boyf",
+        "warr",
+        "jarr"
+      ]
+    },
+    {
+      "word": "agab",
+      "num_guesses": 5,
+      "prior": 0.000035253706156431557,
+      "guesses": [
+        "taes",
+        "aran",
+        "wyld",
+        "chbg",
+        "agab"
+      ]
+    },
+    {
+      "word": "puso",
+      "num_guesses": 5,
+      "prior": 0.000050270166448259165,
+      "guesses": [
+        "taes",
+        "sion",
+        "ooph",
+        "vcug",
+        "puso"
+      ]
+    },
+    {
+      "word": "lsfe",
+      "num_guesses": 4,
+      "prior": 0.000025261396538579446,
+      "guesses": [
+        "taes",
+        "slie",
+        "lose",
+        "lsfe"
+      ]
+    },
+    {
+      "word": "beja",
+      "num_guesses": 6,
+      "prior": 0.00005941054962556579,
+      "guesses": [
+        "taes",
+        "lenr",
+        "dmab",
+        "kybp",
+        "bega",
+        "beja"
+      ]
+    },
+    {
+      "word": "jito",
+      "num_guesses": 4,
+      "prior": 0.00004239350939298272,
+      "guesses": [
+        "taes",
+        "riot",
+        "mpkc",
+        "jito"
+      ]
+    },
+    {
+      "word": "hayk",
+      "num_guesses": 5,
+      "prior": 0.000038573494617896525,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "hyuk",
+        "hayk"
+      ]
+    },
+    {
+      "word": "raky",
+      "num_guesses": 5,
+      "prior": 0.00002714071465609526,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "your",
+        "raky"
+      ]
+    },
+    {
+      "word": "adit",
+      "num_guesses": 4,
+      "prior": 0.00008455130917327826,
+      "guesses": [
+        "taes",
+        "ailt",
+        "damp",
+        "adit"
+      ]
+    },
+    {
+      "word": "ecol",
+      "num_guesses": 4,
+      "prior": 0.00010208113538962635,
+      "guesses": [
+        "taes",
+        "lore",
+        "clom",
+        "ecol"
+      ]
+    },
+    {
+      "word": "lcjs",
+      "num_guesses": 8,
+      "prior": 0.000016584500793938696,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "gflv",
+        "bush",
+        "lccs",
+        "lczs",
+        "lcjs"
+      ]
+    },
+    {
+      "word": "socs",
+      "num_guesses": 6,
+      "prior": 0.0000667394094304164,
+      "guesses": [
+        "taes",
+        "copi",
+        "vldb",
+        "mrng",
+        "roof",
+        "socs"
+      ]
+    },
+    {
+      "word": "nisq",
+      "num_guesses": 4,
+      "prior": 0.000018523059710464975,
+      "guesses": [
+        "taes",
+        "sion",
+        "aqhi",
+        "nisq"
+      ]
+    },
+    {
+      "word": "rgba",
+      "num_guesses": 5,
+      "prior": 0.00004199894804877229,
+      "guesses": [
+        "taes",
+        "aran",
+        "miro",
+        "vcug",
+        "rgba"
+      ]
+    },
+    {
+      "word": "ddvp",
+      "num_guesses": 4,
+      "prior": 0.000050211891391870206,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "ddvp"
+      ]
+    },
+    {
+      "word": "tobe",
+      "num_guesses": 5,
+      "prior": 0.00008359327384242824,
+      "guesses": [
+        "taes",
+        "meri",
+        "upon",
+        "bkgd",
+        "tobe"
+      ]
+    },
+    {
+      "word": "each",
+      "num_guesses": 5,
+      "prior": 0.00036093757043835083,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "face",
+        "each"
+      ]
+    },
+    {
+      "word": "tdrs",
+      "num_guesses": 4,
+      "prior": 0.00005593128766134151,
+      "guesses": [
+        "taes",
+        "roin",
+        "durc",
+        "tdrs"
+      ]
+    },
+    {
+      "word": "hihi",
+      "num_guesses": 7,
+      "prior": 0.000037860011483730606,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "hbfc",
+        "pkwy",
+        "hiii",
+        "hihi"
+      ]
+    },
+    {
+      "word": "zetz",
+      "num_guesses": 6,
+      "prior": 0.000028042846831242814,
+      "guesses": [
+        "taes",
+        "neti",
+        "hope",
+        "mult",
+        "jury",
+        "zetz"
+      ]
+    },
+    {
+      "word": "mapa",
+      "num_guesses": 5,
+      "prior": 0.00006450178915959459,
+      "guesses": [
+        "taes",
+        "miln",
+        "cory",
+        "puha",
+        "mapa"
+      ]
+    },
+    {
+      "word": "sift",
+      "num_guesses": 5,
+      "prior": 0.0000981103976752742,
+      "guesses": [
+        "taes",
+        "sout",
+        "lpir",
+        "fish",
+        "sift"
+      ]
+    },
+    {
+      "word": "nooo",
+      "num_guesses": 7,
+      "prior": 0.000053770643599279565,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bonk",
+        "nwfz",
+        "noon",
+        "nooo"
+      ]
+    },
+    {
+      "word": "neer",
+      "num_guesses": 7,
+      "prior": 0.00007764900867599798,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "mvfr",
+        "hgwy",
+        "zanj",
+        "neer"
+      ]
+    },
+    {
+      "word": "dada",
+      "num_guesses": 6,
+      "prior": 0.00008857096159035957,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "hudd",
+        "dada"
+      ]
+    },
+    {
+      "word": "zion",
+      "num_guesses": 4,
+      "prior": 0.00012386006325737592,
+      "guesses": [
+        "taes",
+        "diol",
+        "pcnb",
+        "zion"
+      ]
+    },
+    {
+      "word": "pigm",
+      "num_guesses": 5,
+      "prior": 0.00003800535598787331,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "gimp",
+        "pigm"
+      ]
+    },
+    {
+      "word": "pfos",
+      "num_guesses": 6,
+      "prior": 0.00004600550696337122,
+      "guesses": [
+        "taes",
+        "copi",
+        "pron",
+        "hpmv",
+        "fsdu",
+        "pfos"
+      ]
+    },
+    {
+      "word": "sibs",
+      "num_guesses": 6,
+      "prior": 0.00007189011443993504,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "glbm",
+        "bsfs",
+        "sibs"
+      ]
+    },
+    {
+      "word": "gnow",
+      "num_guesses": 6,
+      "prior": 0.00003154968532770738,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bonk",
+        "jnov",
+        "gnow"
+      ]
+    },
+    {
+      "word": "naij",
+      "num_guesses": 5,
+      "prior": 0.00002588264630207973,
+      "guesses": [
+        "taes",
+        "miln",
+        "boni",
+        "jdfr",
+        "naij"
+      ]
+    },
+    {
+      "word": "doke",
+      "num_guesses": 6,
+      "prior": 0.00005672522476495541,
+      "guesses": [
+        "taes",
+        "lore",
+        "dhmn",
+        "pbgv",
+        "doze",
+        "doke"
+      ]
+    },
+    {
+      "word": "gdrs",
+      "num_guesses": 6,
+      "prior": 0.00004325186249488282,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "hndl",
+        "fsgs",
+        "gdrs"
+      ]
+    },
+    {
+      "word": "yawl",
+      "num_guesses": 4,
+      "prior": 0.0000685653419000238,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "yawl"
+      ]
+    },
+    {
+      "word": "snye",
+      "num_guesses": 5,
+      "prior": 0.000031041050934994134,
+      "guesses": [
+        "taes",
+        "slie",
+        "coyr",
+        "neph",
+        "snye"
+      ]
+    },
+    {
+      "word": "pfui",
+      "num_guesses": 5,
+      "prior": 0.000037021014397857686,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "fvii",
+        "pfui"
+      ]
+    },
+    {
+      "word": "same",
+      "num_guesses": 3,
+      "prior": 0.0003611571105873786,
+      "guesses": [
+        "taes",
+        "vlsm",
+        "same"
+      ]
+    },
+    {
+      "word": "alip",
+      "num_guesses": 5,
+      "prior": 0.00004003625503399268,
+      "guesses": [
+        "taes",
+        "aran",
+        "olid",
+        "impf",
+        "alip"
+      ]
+    },
+    {
+      "word": "wung",
+      "num_guesses": 5,
+      "prior": 0.00004161710357313844,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "whnf",
+        "wung"
+      ]
+    },
+    {
+      "word": "anil",
+      "num_guesses": 4,
+      "prior": 0.0001074566563467376,
+      "guesses": [
+        "taes",
+        "aran",
+        "dino",
+        "anil"
+      ]
+    },
+    {
+      "word": "waka",
+      "num_guesses": 6,
+      "prior": 0.00006564241203616026,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "hoya",
+        "womb",
+        "waka"
+      ]
+    },
+    {
+      "word": "zemi",
+      "num_guesses": 5,
+      "prior": 0.000047656723229997475,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "each",
+        "zemi"
+      ]
+    },
+    {
+      "word": "frak",
+      "num_guesses": 6,
+      "prior": 0.00003628390990239114,
+      "guesses": [
+        "taes",
+        "aran",
+        "cgbd",
+        "lfmp",
+        "duty",
+        "frak"
+      ]
+    },
+    {
+      "word": "cbfs",
+      "num_guesses": 6,
+      "prior": 0.00003566939685014835,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "gflv",
+        "been",
+        "cbfs"
+      ]
+    },
+    {
+      "word": "rcse",
+      "num_guesses": 4,
+      "prior": 0.00003267486146783864,
+      "guesses": [
+        "taes",
+        "slie",
+        "orch",
+        "rcse"
+      ]
+    },
+    {
+      "word": "nave",
+      "num_guesses": 5,
+      "prior": 0.00012405355541854804,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "whnf",
+        "nave"
+      ]
+    },
+    {
+      "word": "ults",
+      "num_guesses": 5,
+      "prior": 0.00005218724194072802,
+      "guesses": [
+        "taes",
+        "pito",
+        "crum",
+        "lung",
+        "ults"
+      ]
+    },
+    {
+      "word": "rles",
+      "num_guesses": 5,
+      "prior": 0.00004733006464313019,
+      "guesses": [
+        "taes",
+        "oird",
+        "crup",
+        "yelk",
+        "rles"
+      ]
+    },
+    {
+      "word": "ecec",
+      "num_guesses": 6,
+      "prior": 0.00005545137920131294,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "impv",
+        "exec",
+        "ecec"
+      ]
+    },
+    {
+      "word": "dsps",
+      "num_guesses": 5,
+      "prior": 0.00005494745412486453,
+      "guesses": [
+        "taes",
+        "copi",
+        "bdrm",
+        "nsfl",
+        "dsps"
+      ]
+    },
+    {
+      "word": "lbos",
+      "num_guesses": 5,
+      "prior": 0.00005500310539128062,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "sluf",
+        "lbos"
+      ]
+    },
+    {
+      "word": "mibk",
+      "num_guesses": 5,
+      "prior": 0.00005138183283760447,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "hkcu",
+        "mibk"
+      ]
+    },
+    {
+      "word": "bevy",
+      "num_guesses": 6,
+      "prior": 0.00007483282607801882,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "pech",
+        "juvy",
+        "bevy"
+      ]
+    },
+    {
+      "word": "fian",
+      "num_guesses": 6,
+      "prior": 0.00005405558939590765,
+      "guesses": [
+        "taes",
+        "aran",
+        "loup",
+        "yigh",
+        "xian",
+        "fian"
+      ]
+    },
+    {
+      "word": "hind",
+      "num_guesses": 5,
+      "prior": 0.00014378250372374635,
+      "guesses": [
+        "taes",
+        "diol",
+        "nbmr",
+        "whnf",
+        "hind"
+      ]
+    },
+    {
+      "word": "gpfs",
+      "num_guesses": 6,
+      "prior": 0.000043960850795419575,
+      "guesses": [
+        "taes",
+        "copi",
+        "purl",
+        "dhmn",
+        "gwss",
+        "gpfs"
+      ]
+    },
+    {
+      "word": "ponv",
+      "num_guesses": 6,
+      "prior": 0.00004746363328111501,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "kyng",
+        "mvno",
+        "ponv"
+      ]
+    },
+    {
+      "word": "fogy",
+      "num_guesses": 6,
+      "prior": 0.0000528834377655888,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "mybp",
+        "fogo",
+        "fogy"
+      ]
+    },
+    {
+      "word": "engo",
+      "num_guesses": 5,
+      "prior": 0.00004540007478015301,
+      "guesses": [
+        "taes",
+        "lore",
+        "nemo",
+        "endo",
+        "engo"
+      ]
+    },
+    {
+      "word": "crie",
+      "num_guesses": 4,
+      "prior": 0.00005882289295325593,
+      "guesses": [
+        "taes",
+        "lore",
+        "udic",
+        "crie"
+      ]
+    },
+    {
+      "word": "gire",
+      "num_guesses": 7,
+      "prior": 0.000053251312752212165,
+      "guesses": [
+        "taes",
+        "lore",
+        "mewp",
+        "cdfi",
+        "hire",
+        "vire",
+        "gire"
+      ]
+    },
+    {
+      "word": "hifs",
+      "num_guesses": 6,
+      "prior": 0.000033385697390781835,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "glbm",
+        "fwsh",
+        "hifs"
+      ]
+    },
+    {
+      "word": "avvy",
+      "num_guesses": 6,
+      "prior": 0.00002492514273095458,
+      "guesses": [
+        "taes",
+        "aran",
+        "olid",
+        "mybp",
+        "hfgw",
+        "avvy"
+      ]
+    },
+    {
+      "word": "vscs",
+      "num_guesses": 6,
+      "prior": 0.000040657431183174886,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "nrfb",
+        "vugh",
+        "vscs"
+      ]
+    },
+    {
+      "word": "noug",
+      "num_guesses": 5,
+      "prior": 0.000029193195851554284,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "honu",
+        "noug"
+      ]
+    },
+    {
+      "word": "teen",
+      "num_guesses": 4,
+      "prior": 0.00012569517464234735,
+      "guesses": [
+        "taes",
+        "heyr",
+        "mdnt",
+        "teen"
+      ]
+    },
+    {
+      "word": "welp",
+      "num_guesses": 5,
+      "prior": 0.000043472117755776694,
+      "guesses": [
+        "taes",
+        "lore",
+        "phil",
+        "ewyk",
+        "welp"
+      ]
+    },
+    {
+      "word": "csis",
+      "num_guesses": 5,
+      "prior": 0.0000669513437267828,
+      "guesses": [
+        "taes",
+        "copi",
+        "gril",
+        "msud",
+        "csis"
+      ]
+    },
+    {
+      "word": "nyuk",
+      "num_guesses": 5,
+      "prior": 0.00003864474848032498,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "uhpc",
+        "nyuk"
+      ]
+    },
+    {
+      "word": "xrct",
+      "num_guesses": 4,
+      "prior": 0.000021027669306985093,
+      "guesses": [
+        "taes",
+        "riot",
+        "chub",
+        "xrct"
+      ]
+    },
+    {
+      "word": "hyar",
+      "num_guesses": 5,
+      "prior": 0.00005292834744740802,
+      "guesses": [
+        "taes",
+        "aran",
+        "bohr",
+        "hpmc",
+        "hyar"
+      ]
+    },
+    {
+      "word": "hbic",
+      "num_guesses": 6,
+      "prior": 0.000024495569523667974,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "umbi",
+        "fugh",
+        "hbic"
+      ]
+    },
+    {
+      "word": "brap",
+      "num_guesses": 6,
+      "prior": 0.00003160277448869168,
+      "guesses": [
+        "taes",
+        "aran",
+        "cgbd",
+        "byok",
+        "phiz",
+        "brap"
+      ]
+    },
+    {
+      "word": "frus",
+      "num_guesses": 5,
+      "prior": 0.00007394832129764567,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "sglf",
+        "frus"
+      ]
+    },
+    {
+      "word": "scad",
+      "num_guesses": 6,
+      "prior": 0.0000598843177824059,
+      "guesses": [
+        "taes",
+        "soia",
+        "wlnp",
+        "gmbh",
+        "curd",
+        "scad"
+      ]
+    },
+    {
+      "word": "kepi",
+      "num_guesses": 5,
+      "prior": 0.00005431594053907633,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "heck",
+        "kepi"
+      ]
+    },
+    {
+      "word": "sopv",
+      "num_guesses": 6,
+      "prior": 0.000020984871796071962,
+      "guesses": [
+        "taes",
+        "sion",
+        "culo",
+        "dfmr",
+        "soph",
+        "sopv"
+      ]
+    },
+    {
+      "word": "lump",
+      "num_guesses": 4,
+      "prior": 0.00014236057875946625,
+      "guesses": [
+        "taes",
+        "diol",
+        "gulp",
+        "lump"
+      ]
+    },
+    {
+      "word": "cork",
+      "num_guesses": 5,
+      "prior": 0.00014060353671738762,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "poky",
+        "cork"
+      ]
+    },
+    {
+      "word": "mlsb",
+      "num_guesses": 5,
+      "prior": 0.00002988731186014796,
+      "guesses": [
+        "taes",
+        "sion",
+        "dmsp",
+        "bluh",
+        "mlsb"
+      ]
+    },
+    {
+      "word": "txes",
+      "num_guesses": 5,
+      "prior": 0.000022689784728726728,
+      "guesses": [
+        "taes",
+        "roil",
+        "demu",
+        "cpxv",
+        "txes"
+      ]
+    },
+    {
+      "word": "lgfv",
+      "num_guesses": 5,
+      "prior": 0.00002287536880263692,
+      "guesses": [
+        "taes",
+        "diol",
+        "gulp",
+        "bank",
+        "lgfv"
+      ]
+    },
+    {
+      "word": "pung",
+      "num_guesses": 6,
+      "prior": 0.00005456178513193867,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "whnf",
+        "gbps",
+        "pung"
+      ]
+    },
+    {
+      "word": "doru",
+      "num_guesses": 5,
+      "prior": 0.00004101697814109884,
+      "guesses": [
+        "taes",
+        "diol",
+        "rukn",
+        "dour",
+        "doru"
+      ]
+    },
+    {
+      "word": "mros",
+      "num_guesses": 5,
+      "prior": 0.000039140039238185585,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "smug",
+        "mros"
+      ]
+    },
+    {
+      "word": "mims",
+      "num_guesses": 7,
+      "prior": 0.00007299696437492659,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "glbm",
+        "msws",
+        "mmhg",
+        "mims"
+      ]
+    },
+    {
+      "word": "kyat",
+      "num_guesses": 5,
+      "prior": 0.00005000984086433638,
+      "guesses": [
+        "taes",
+        "ailt",
+        "chog",
+        "bdrf",
+        "kyat"
+      ]
+    },
+    {
+      "word": "marv",
+      "num_guesses": 6,
+      "prior": 0.0000739871096539839,
+      "guesses": [
+        "taes",
+        "miln",
+        "cory",
+        "kuza",
+        "vadm",
+        "marv"
+      ]
+    },
+    {
+      "word": "favo",
+      "num_guesses": 6,
+      "prior": 0.00004589793622643636,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "gtfo",
+        "favo"
+      ]
+    },
+    {
+      "word": "hech",
+      "num_guesses": 5,
+      "prior": 0.000043393277610654363,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "pech",
+        "hech"
+      ]
+    },
+    {
+      "word": "swan",
+      "num_guesses": 4,
+      "prior": 0.00013379420944369688,
+      "guesses": [
+        "taes",
+        "soia",
+        "wlnp",
+        "swan"
+      ]
+    },
+    {
+      "word": "sumn",
+      "num_guesses": 4,
+      "prior": 0.000050791352028338787,
+      "guesses": [
+        "taes",
+        "sion",
+        "bump",
+        "sumn"
+      ]
+    },
+    {
+      "word": "msgs",
+      "num_guesses": 6,
+      "prior": 0.00004346278051421532,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "mmhg",
+        "bdnf",
+        "msgs"
+      ]
+    },
+    {
+      "word": "ceus",
+      "num_guesses": 6,
+      "prior": 0.000054178332884896415,
+      "guesses": [
+        "taes",
+        "merd",
+        "pcnl",
+        "csos",
+        "hbcu",
+        "ceus"
+      ]
+    },
+    {
+      "word": "riah",
+      "num_guesses": 4,
+      "prior": 0.0000484486819443826,
+      "guesses": [
+        "taes",
+        "aran",
+        "bohr",
+        "riah"
+      ]
+    },
+    {
+      "word": "yday",
+      "num_guesses": 7,
+      "prior": 0.00002796152692823442,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "phud",
+        "diaf",
+        "bday",
+        "yday"
+      ]
+    },
+    {
+      "word": "wotl",
+      "num_guesses": 5,
+      "prior": 0.000024903514633911175,
+      "guesses": [
+        "taes",
+        "riot",
+        "boco",
+        "lmhd",
+        "wotl"
+      ]
+    },
+    {
+      "word": "hker",
+      "num_guesses": 6,
+      "prior": 0.000020016145042344474,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "fick",
+        "uker",
+        "hker"
+      ]
+    },
+    {
+      "word": "fmer",
+      "num_guesses": 6,
+      "prior": 0.000031014076919302774,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "fick",
+        "fwer",
+        "fmer"
+      ]
+    },
+    {
+      "word": "nyah",
+      "num_guesses": 5,
+      "prior": 0.00004663422020127366,
+      "guesses": [
+        "taes",
+        "aran",
+        "ingo",
+        "msfc",
+        "nyah"
+      ]
+    },
+    {
+      "word": "pure",
+      "num_guesses": 5,
+      "prior": 0.0002144328822482561,
+      "guesses": [
+        "taes",
+        "lore",
+        "mewp",
+        "yuri",
+        "pure"
+      ]
+    },
+    {
+      "word": "kerf",
+      "num_guesses": 6,
+      "prior": 0.00006480867838272079,
+      "guesses": [
+        "taes",
+        "lore",
+        "mvpd",
+        "kyng",
+        "life",
+        "kerf"
+      ]
+    },
+    {
+      "word": "ersp",
+      "num_guesses": 5,
+      "prior": 0.00003227786270419927,
+      "guesses": [
+        "taes",
+        "slie",
+        "hedp",
+        "pspo",
+        "ersp"
+      ]
+    },
+    {
+      "word": "kami",
+      "num_guesses": 4,
+      "prior": 0.00008456329936675928,
+      "guesses": [
+        "taes",
+        "miln",
+        "brik",
+        "kami"
+      ]
+    },
+    {
+      "word": "slgs",
+      "num_guesses": 6,
+      "prior": 0.00003790407355971643,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "long",
+        "slgs"
+      ]
+    },
+    {
+      "word": "pcus",
+      "num_guesses": 6,
+      "prior": 0.00004576446641963987,
+      "guesses": [
+        "taes",
+        "copi",
+        "prcv",
+        "glbm",
+        "land",
+        "pcus"
+      ]
+    },
+    {
+      "word": "yids",
+      "num_guesses": 8,
+      "prior": 0.00004106397678323348,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "bldg",
+        "skum",
+        "dhva",
+        "iffy",
+        "yids"
+      ]
+    },
+    {
+      "word": "gain",
+      "num_guesses": 4,
+      "prior": 0.000217989541062342,
+      "guesses": [
+        "taes",
+        "miln",
+        "crpg",
+        "gain"
+      ]
+    },
+    {
+      "word": "qsos",
+      "num_guesses": 7,
+      "prior": 0.00005560351147240517,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "mung",
+        "slvs",
+        "owly",
+        "qsos"
+      ]
+    },
+    {
+      "word": "drps",
+      "num_guesses": 4,
+      "prior": 0.000040377086540833856,
+      "guesses": [
+        "taes",
+        "copi",
+        "bdrm",
+        "drps"
+      ]
+    },
+    {
+      "word": "ricy",
+      "num_guesses": 5,
+      "prior": 0.000028605243529386565,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "bkcy",
+        "ricy"
+      ]
+    },
+    {
+      "word": "mona",
+      "num_guesses": 5,
+      "prior": 0.00010506806948641326,
+      "guesses": [
+        "taes",
+        "aran",
+        "dino",
+        "zomb",
+        "mona"
+      ]
+    },
+    {
+      "word": "daud",
+      "num_guesses": 6,
+      "prior": 0.00006808448562531198,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "dawa",
+        "daud"
+      ]
+    },
+    {
+      "word": "tyop",
+      "num_guesses": 5,
+      "prior": 0.00001549601425002572,
+      "guesses": [
+        "taes",
+        "noir",
+        "whup",
+        "tpop",
+        "tyop"
+      ]
+    },
+    {
+      "word": "brrm",
+      "num_guesses": 5,
+      "prior": 0.000027242336400466143,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "navy",
+        "brrm"
+      ]
+    },
+    {
+      "word": "moco",
+      "num_guesses": 5,
+      "prior": 0.00005062202134246784,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "kmph",
+        "moco"
+      ]
+    },
+    {
+      "word": "cron",
+      "num_guesses": 5,
+      "prior": 0.00006614695487763366,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "wynn",
+        "cron"
+      ]
+    },
+    {
+      "word": "woon",
+      "num_guesses": 6,
+      "prior": 0.00006631417644494683,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bonk",
+        "nwfz",
+        "woon"
+      ]
+    },
+    {
+      "word": "aecs",
+      "num_guesses": 4,
+      "prior": 0.00004403842285599589,
+      "guesses": [
+        "taes",
+        "real",
+        "bdcm",
+        "aecs"
+      ]
+    },
+    {
+      "word": "teuk",
+      "num_guesses": 5,
+      "prior": 0.000028895243721438817,
+      "guesses": [
+        "taes",
+        "meri",
+        "nclt",
+        "puke",
+        "teuk"
+      ]
+    },
+    {
+      "word": "swig",
+      "num_guesses": 6,
+      "prior": 0.0000785492919409922,
+      "guesses": [
+        "taes",
+        "sion",
+        "hump",
+        "dslr",
+        "cgwb",
+        "swig"
+      ]
+    },
+    {
+      "word": "wkly",
+      "num_guesses": 5,
+      "prior": 0.0000781664429526645,
+      "guesses": [
+        "taes",
+        "diol",
+        "gulp",
+        "yrbk",
+        "wkly"
+      ]
+    },
+    {
+      "word": "kwic",
+      "num_guesses": 6,
+      "prior": 0.00005489147449582191,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "umbi",
+        "wyif",
+        "kwic"
+      ]
+    },
+    {
+      "word": "bfgs",
+      "num_guesses": 6,
+      "prior": 0.00004523210877890044,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "sbfs",
+        "bfgs"
+      ]
+    },
+    {
+      "word": "crum",
+      "num_guesses": 5,
+      "prior": 0.00008250465871138704,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "chub",
+        "crum"
+      ]
+    },
+    {
+      "word": "basa",
+      "num_guesses": 6,
+      "prior": 0.00006171297487589462,
+      "guesses": [
+        "taes",
+        "sidh",
+        "mpkc",
+        "lrna",
+        "vasa",
+        "basa"
+      ]
+    },
+    {
+      "word": "nole",
+      "num_guesses": 5,
+      "prior": 0.00005377440898850594,
+      "guesses": [
+        "taes",
+        "lore",
+        "hpmc",
+        "bdnf",
+        "nole"
+      ]
+    },
+    {
+      "word": "bccs",
+      "num_guesses": 6,
+      "prior": 0.00004921033612708373,
+      "guesses": [
+        "taes",
+        "copi",
+        "lcdm",
+        "nrfb",
+        "buck",
+        "bccs"
+      ]
+    },
+    {
+      "word": "arff",
+      "num_guesses": 6,
+      "prior": 0.000040353719146487306,
+      "guesses": [
+        "taes",
+        "aran",
+        "coym",
+        "bldg",
+        "hifu",
+        "arff"
+      ]
+    },
+    {
+      "word": "seds",
+      "num_guesses": 6,
+      "prior": 0.00005253630629865501,
+      "guesses": [
+        "taes",
+        "merd",
+        "dinb",
+        "plgf",
+        "skew",
+        "seds"
+      ]
+    },
+    {
+      "word": "mccp",
+      "num_guesses": 6,
+      "prior": 0.00003559587949817189,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "hpmc",
+        "once",
+        "mccp"
+      ]
+    },
+    {
+      "word": "fere",
+      "num_guesses": 6,
+      "prior": 0.00008043740842898154,
+      "guesses": [
+        "taes",
+        "lore",
+        "mewp",
+        "hbcd",
+        "fyke",
+        "fere"
+      ]
+    },
+    {
+      "word": "rirs",
+      "num_guesses": 6,
+      "prior": 0.00003712151654527978,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "mbsf",
+        "gurk",
+        "rirs"
+      ]
+    },
+    {
+      "word": "sond",
+      "num_guesses": 4,
+      "prior": 0.00005561725940620907,
+      "guesses": [
+        "taes",
+        "sion",
+        "body",
+        "sond"
+      ]
+    },
+    {
+      "word": "dfps",
+      "num_guesses": 5,
+      "prior": 0.00003126614498966886,
+      "guesses": [
+        "taes",
+        "copi",
+        "bdrm",
+        "nsfl",
+        "dfps"
+      ]
+    },
+    {
+      "word": "cors",
+      "num_guesses": 6,
+      "prior": 0.00006336418019779362,
+      "guesses": [
+        "taes",
+        "copi",
+        "gnow",
+        "mlsb",
+        "durf",
+        "cors"
+      ]
+    },
+    {
+      "word": "rast",
+      "num_guesses": 4,
+      "prior": 0.0000727602162715695,
+      "guesses": [
+        "taes",
+        "slph",
+        "cvrf",
+        "rast"
+      ]
+    },
+    {
+      "word": "recs",
+      "num_guesses": 5,
+      "prior": 0.00006921125724383508,
+      "guesses": [
+        "taes",
+        "merd",
+        "ipsf",
+        "vcug",
+        "recs"
+      ]
+    },
+    {
+      "word": "ampa",
+      "num_guesses": 5,
+      "prior": 0.0000663716753668168,
+      "guesses": [
+        "taes",
+        "aran",
+        "milc",
+        "mmph",
+        "ampa"
+      ]
+    },
+    {
+      "word": "raga",
+      "num_guesses": 6,
+      "prior": 0.00007384545119324295,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "ghrd",
+        "guga",
+        "raga"
+      ]
+    },
+    {
+      "word": "azat",
+      "num_guesses": 6,
+      "prior": 0.00003603916499535485,
+      "guesses": [
+        "taes",
+        "ailt",
+        "pudo",
+        "frac",
+        "ayat",
+        "azat"
+      ]
+    },
+    {
+      "word": "fyle",
+      "num_guesses": 5,
+      "prior": 0.00004485102842699115,
+      "guesses": [
+        "taes",
+        "lore",
+        "film",
+        "very",
+        "fyle"
+      ]
+    },
+    {
+      "word": "bies",
+      "num_guesses": 4,
+      "prior": 0.000056451908610503174,
+      "guesses": [
+        "taes",
+        "oird",
+        "bnpl",
+        "bies"
+      ]
+    },
+    {
+      "word": "mool",
+      "num_guesses": 6,
+      "prior": 0.00005229167942494597,
+      "guesses": [
+        "taes",
+        "diol",
+        "cowp",
+        "frzb",
+        "khim",
+        "mool"
+      ]
+    },
+    {
+      "word": "perq",
+      "num_guesses": 6,
+      "prior": 0.0000369383276455481,
+      "guesses": [
+        "taes",
+        "lore",
+        "mvpd",
+        "infp",
+        "koch",
+        "perq"
+      ]
+    },
+    {
+      "word": "rboc",
+      "num_guesses": 5,
+      "prior": 0.000049986281848857044,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "chor",
+        "rboc"
+      ]
+    },
+    {
+      "word": "klau",
+      "num_guesses": 6,
+      "prior": 0.00004506093643315319,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "pdgf",
+        "hyuk",
+        "klau"
+      ]
+    },
+    {
+      "word": "xpon",
+      "num_guesses": 6,
+      "prior": 0.00002069528043504529,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "honu",
+        "sgbv",
+        "xpon"
+      ]
+    },
+    {
+      "word": "kroo",
+      "num_guesses": 6,
+      "prior": 0.00004818397954630398,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "whfg",
+        "kybo",
+        "kroo"
+      ]
+    },
+    {
+      "word": "cctv",
+      "num_guesses": 5,
+      "prior": 0.00008067664408794964,
+      "guesses": [
+        "taes",
+        "riot",
+        "hump",
+        "ctld",
+        "cctv"
+      ]
+    },
+    {
+      "word": "sped",
+      "num_guesses": 4,
+      "prior": 0.00011025964362962257,
+      "guesses": [
+        "taes",
+        "send",
+        "pluh",
+        "sped"
+      ]
+    },
+    {
+      "word": "vlan",
+      "num_guesses": 5,
+      "prior": 0.00007078759299109548,
+      "guesses": [
+        "taes",
+        "aran",
+        "loup",
+        "vcfs",
+        "vlan"
+      ]
+    },
+    {
+      "word": "spui",
+      "num_guesses": 4,
+      "prior": 0.00004167067294095248,
+      "guesses": [
+        "taes",
+        "sion",
+        "hump",
+        "spui"
+      ]
+    },
+    {
+      "word": "cers",
+      "num_guesses": 5,
+      "prior": 0.00008301944873932639,
+      "guesses": [
+        "taes",
+        "merd",
+        "spgh",
+        "ecfv",
+        "cers"
+      ]
+    },
+    {
+      "word": "pkas",
+      "num_guesses": 6,
+      "prior": 0.000035153024421990526,
+      "guesses": [
+        "taes",
+        "acir",
+        "pmol",
+        "usnh",
+        "bkgd",
+        "pkas"
+      ]
+    },
+    {
+      "word": "kyrk",
+      "num_guesses": 5,
+      "prior": 0.00004393851547525053,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "hbfc",
+        "kyrk"
+      ]
+    },
+    {
+      "word": "pepe",
+      "num_guesses": 6,
+      "prior": 0.00008151653672857045,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "puky",
+        "pgce",
+        "pepe"
+      ]
+    },
+    {
+      "word": "zupa",
+      "num_guesses": 6,
+      "prior": 0.00003371812249487461,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "puck",
+        "half",
+        "zupa"
+      ]
+    },
+    {
+      "word": "zhen",
+      "num_guesses": 5,
+      "prior": 0.00007533972312443238,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "chen",
+        "zhen"
+      ]
+    },
+    {
+      "word": "naat",
+      "num_guesses": 6,
+      "prior": 0.00004229935249334375,
+      "guesses": [
+        "taes",
+        "hrct",
+        "lnwi",
+        "pbgv",
+        "kant",
+        "naat"
+      ]
+    },
+    {
+      "word": "curs",
+      "num_guesses": 4,
+      "prior": 0.00007346482009752292,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "curs"
+      ]
+    },
+    {
+      "word": "shus",
+      "num_guesses": 6,
+      "prior": 0.00004071184090040501,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "slsn",
+        "have",
+        "shus"
+      ]
+    },
+    {
+      "word": "yoom",
+      "num_guesses": 7,
+      "prior": 0.00003013386680721209,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bozo",
+        "gflv",
+        "joom",
+        "yoom"
+      ]
+    },
+    {
+      "word": "next",
+      "num_guesses": 3,
+      "prior": 0.00028930068783634993,
+      "guesses": [
+        "taes",
+        "neti",
+        "next"
+      ]
+    },
+    {
+      "word": "lavy",
+      "num_guesses": 5,
+      "prior": 0.00004849129225051879,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "kidz",
+        "lavy"
+      ]
+    },
+    {
+      "word": "evoe",
+      "num_guesses": 5,
+      "prior": 0.000040060371325906403,
+      "guesses": [
+        "taes",
+        "lore",
+        "bing",
+        "whup",
+        "evoe"
+      ]
+    },
+    {
+      "word": "raah",
+      "num_guesses": 5,
+      "prior": 0.000034026198083114116,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "ghrd",
+        "raah"
+      ]
+    },
+    {
+      "word": "thao",
+      "num_guesses": 3,
+      "prior": 0.00005767932093868457,
+      "guesses": [
+        "taes",
+        "horn",
+        "thao"
+      ]
+    },
+    {
+      "word": "wing",
+      "num_guesses": 5,
+      "prior": 0.00018881010240935034,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "pkwy",
+        "wing"
+      ]
+    },
+    {
+      "word": "oyez",
+      "num_guesses": 5,
+      "prior": 0.000054583498945425065,
+      "guesses": [
+        "taes",
+        "drol",
+        "opmn",
+        "gybe",
+        "oyez"
+      ]
+    },
+    {
+      "word": "gpds",
+      "num_guesses": 6,
+      "prior": 0.000036694409132131824,
+      "guesses": [
+        "taes",
+        "copi",
+        "purl",
+        "dhmn",
+        "skeg",
+        "gpds"
+      ]
+    },
+    {
+      "word": "ayce",
+      "num_guesses": 4,
+      "prior": 0.000027032347861601837,
+      "guesses": [
+        "taes",
+        "lenr",
+        "acdm",
+        "ayce"
+      ]
+    },
+    {
+      "word": "mele",
+      "num_guesses": 5,
+      "prior": 0.00006714532943152299,
+      "guesses": [
+        "taes",
+        "lore",
+        "film",
+        "well",
+        "mele"
+      ]
+    },
+    {
+      "word": "vdss",
+      "num_guesses": 7,
+      "prior": 0.00003177357550344092,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bdfl",
+        "gwss",
+        "skin",
+        "vdss"
+      ]
+    },
+    {
+      "word": "gove",
+      "num_guesses": 6,
+      "prior": 0.00008088454025008589,
+      "guesses": [
+        "taes",
+        "lore",
+        "dhmn",
+        "pkwy",
+        "cvbg",
+        "gove"
+      ]
+    },
+    {
+      "word": "dahs",
+      "num_guesses": 7,
+      "prior": 0.000041003229539977534,
+      "guesses": [
+        "taes",
+        "mrlp",
+        "wynd",
+        "disc",
+        "budg",
+        "khaf",
+        "dahs"
+      ]
+    },
+    {
+      "word": "ploy",
+      "num_guesses": 6,
+      "prior": 0.00009084312570814514,
+      "guesses": [
+        "taes",
+        "diol",
+        "cgwb",
+        "fopk",
+        "pipy",
+        "ploy"
+      ]
+    },
+    {
+      "word": "omad",
+      "num_guesses": 5,
+      "prior": 0.000030057117507182235,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "imao",
+        "omad"
+      ]
+    },
+    {
+      "word": "scrm",
+      "num_guesses": 5,
+      "prior": 0.00003760652298462917,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "scry",
+        "scrm"
+      ]
+    },
+    {
+      "word": "crue",
+      "num_guesses": 4,
+      "prior": 0.000052180249645680144,
+      "guesses": [
+        "taes",
+        "lore",
+        "udic",
+        "crue"
+      ]
+    },
+    {
+      "word": "goss",
+      "num_guesses": 6,
+      "prior": 0.00009600454211619248,
+      "guesses": [
+        "taes",
+        "copi",
+        "bldg",
+        "hfgw",
+        "rvsm",
+        "goss"
+      ]
+    },
+    {
+      "word": "ecdl",
+      "num_guesses": 6,
+      "prior": 0.00004162142396542203,
+      "guesses": [
+        "taes",
+        "lore",
+        "phil",
+        "cgwb",
+        "xdcc",
+        "ecdl"
+      ]
+    },
+    {
+      "word": "lark",
+      "num_guesses": 6,
+      "prior": 0.00010742375411415033,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "drop",
+        "bfgs",
+        "lark"
+      ]
+    },
+    {
+      "word": "jibb",
+      "num_guesses": 6,
+      "prior": 0.00003567911541020974,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrng",
+        "hbfc",
+        "bubi",
+        "jibb"
+      ]
+    },
+    {
+      "word": "eave",
+      "num_guesses": 6,
+      "prior": 0.00007009916925402365,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "whnf",
+        "espy",
+        "eave"
+      ]
+    },
+    {
+      "word": "naïs",
+      "num_guesses": 7,
+      "prior": 0.00002831739732973045,
+      "guesses": [
+        "taes",
+        "mrlp",
+        "wynd",
+        "figo",
+        "bruv",
+        "naks",
+        "naïs"
+      ]
+    },
+    {
+      "word": "divi",
+      "num_guesses": 5,
+      "prior": 0.00008725944971334828,
+      "guesses": [
+        "taes",
+        "diol",
+        "ngci",
+        "ddvp",
+        "divi"
+      ]
+    },
+    {
+      "word": "moru",
+      "num_guesses": 5,
+      "prior": 0.00004846027201707449,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "mktg",
+        "moru"
+      ]
+    },
+    {
+      "word": "divs",
+      "num_guesses": 6,
+      "prior": 0.00007597136666526738,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "bldg",
+        "rvsm",
+        "divs"
+      ]
+    },
+    {
+      "word": "fout",
+      "num_guesses": 5,
+      "prior": 0.0000543399613584426,
+      "guesses": [
+        "taes",
+        "riot",
+        "pcnl",
+        "bumf",
+        "fout"
+      ]
+    },
+    {
+      "word": "ootd",
+      "num_guesses": 5,
+      "prior": 0.000022783332594342728,
+      "guesses": [
+        "taes",
+        "riot",
+        "boco",
+        "ootl",
+        "ootd"
+      ]
+    },
+    {
+      "word": "mind",
+      "num_guesses": 4,
+      "prior": 0.0002754455109099886,
+      "guesses": [
+        "taes",
+        "diol",
+        "nbmr",
+        "mind"
+      ]
+    },
+    {
+      "word": "tows",
+      "num_guesses": 5,
+      "prior": 0.00008275817780273453,
+      "guesses": [
+        "taes",
+        "roin",
+        "gymp",
+        "dwsl",
+        "tows"
+      ]
+    },
+    {
+      "word": "gerr",
+      "num_guesses": 6,
+      "prior": 0.0000575302317939547,
+      "guesses": [
+        "taes",
+        "lore",
+        "mvpd",
+        "kyng",
+        "burr",
+        "gerr"
+      ]
+    },
+    {
+      "word": "onça",
+      "num_guesses": 6,
+      "prior": 0.000026441837266005506,
+      "guesses": [
+        "taes",
+        "aran",
+        "dino",
+        "lovc",
+        "lazy",
+        "onça"
+      ]
+    },
+    {
+      "word": "sots",
+      "num_guesses": 6,
+      "prior": 0.00005957956011397274,
+      "guesses": [
+        "taes",
+        "pito",
+        "dolr",
+        "chmn",
+        "sgbv",
+        "sots"
+      ]
+    },
+    {
+      "word": "adcs",
+      "num_guesses": 5,
+      "prior": 0.000060608870483397556,
+      "guesses": [
+        "taes",
+        "acir",
+        "msbp",
+        "fold",
+        "adcs"
+      ]
+    },
+    {
+      "word": "crip",
+      "num_guesses": 4,
+      "prior": 0.00005857102415193248,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "crip"
+      ]
+    },
+    {
+      "word": "fucc",
+      "num_guesses": 5,
+      "prior": 0.00002523405236852574,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "nbfc",
+        "fucc"
+      ]
+    },
+    {
+      "word": "bare",
+      "num_guesses": 4,
+      "prior": 0.00017296336393805975,
+      "guesses": [
+        "taes",
+        "rdml",
+        "nbfc",
+        "bare"
+      ]
+    },
+    {
+      "word": "agra",
+      "num_guesses": 4,
+      "prior": 0.00010095981966856197,
+      "guesses": [
+        "taes",
+        "aran",
+        "guck",
+        "agra"
+      ]
+    },
+    {
+      "word": "yueh",
+      "num_guesses": 5,
+      "prior": 0.00006454873988511495,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "cyme",
+        "yueh"
+      ]
+    },
+    {
+      "word": "pali",
+      "num_guesses": 4,
+      "prior": 0.00009299541897780025,
+      "guesses": [
+        "taes",
+        "miln",
+        "pkwy",
+        "pali"
+      ]
+    },
+    {
+      "word": "ajaw",
+      "num_guesses": 5,
+      "prior": 0.00004333278452292335,
+      "guesses": [
+        "taes",
+        "aran",
+        "wyld",
+        "agaw",
+        "ajaw"
+      ]
+    },
+    {
+      "word": "racy",
+      "num_guesses": 5,
+      "prior": 0.0000840622072901863,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "yhad",
+        "racy"
+      ]
+    },
+    {
+      "word": "zeno",
+      "num_guesses": 5,
+      "prior": 0.00009116985311308558,
+      "guesses": [
+        "taes",
+        "lore",
+        "nemo",
+        "kebz",
+        "zeno"
+      ]
+    },
+    {
+      "word": "munt",
+      "num_guesses": 5,
+      "prior": 0.000056241194445565754,
+      "guesses": [
+        "taes",
+        "riot",
+        "culm",
+        "mutt",
+        "munt"
+      ]
+    },
+    {
+      "word": "gond",
+      "num_guesses": 7,
+      "prior": 0.00006385602136381495,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "boyf",
+        "pond",
+        "mond",
+        "gond"
+      ]
+    },
+    {
+      "word": "lowk",
+      "num_guesses": 6,
+      "prior": 0.000028856622480532807,
+      "guesses": [
+        "taes",
+        "diol",
+        "yolo",
+        "rukn",
+        "lock",
+        "lowk"
+      ]
+    },
+    {
+      "word": "yern",
+      "num_guesses": 5,
+      "prior": 0.00003319039307527329,
+      "guesses": [
+        "taes",
+        "lore",
+        "mvpd",
+        "kyng",
+        "yern"
+      ]
+    },
+    {
+      "word": "beej",
+      "num_guesses": 7,
+      "prior": 0.00003639171313332017,
+      "guesses": [
+        "taes",
+        "drol",
+        "hewn",
+        "pbzk",
+        "fogy",
+        "beeb",
+        "beej"
+      ]
+    },
+    {
+      "word": "smbs",
+      "num_guesses": 6,
+      "prior": 0.000043706790045034586,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "mmhg",
+        "sbfs",
+        "smbs"
+      ]
+    },
+    {
+      "word": "vsed",
+      "num_guesses": 5,
+      "prior": 0.00006204265831906818,
+      "guesses": [
+        "taes",
+        "send",
+        "bumf",
+        "kshv",
+        "vsed"
+      ]
+    },
+    {
+      "word": "ujts",
+      "num_guesses": 6,
+      "prior": 0.000025569824233219723,
+      "guesses": [
+        "taes",
+        "pito",
+        "crum",
+        "lung",
+        "used",
+        "ujts"
+      ]
+    },
+    {
+      "word": "ftbs",
+      "num_guesses": 5,
+      "prior": 0.000029728982875899115,
+      "guesses": [
+        "taes",
+        "pito",
+        "rdml",
+        "nbfc",
+        "ftbs"
+      ]
+    },
+    {
+      "word": "waxy",
+      "num_guesses": 6,
+      "prior": 0.00009321360834028471,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "whvs",
+        "waxy"
+      ]
+    },
+    {
+      "word": "cgms",
+      "num_guesses": 7,
+      "prior": 0.000038172961374852034,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "lcmv",
+        "nsfw",
+        "gmbh",
+        "cgms"
+      ]
+    },
+    {
+      "word": "gibs",
+      "num_guesses": 5,
+      "prior": 0.000055685025612449695,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "glbm",
+        "gibs"
+      ]
+    },
+    {
+      "word": "koms",
+      "num_guesses": 7,
+      "prior": 0.000033580905619730195,
+      "guesses": [
+        "taes",
+        "copi",
+        "bldg",
+        "nvrm",
+        "uhmw",
+        "mook",
+        "koms"
+      ]
+    },
+    {
+      "word": "rits",
+      "num_guesses": 6,
+      "prior": 0.000049732329705685514,
+      "guesses": [
+        "taes",
+        "pito",
+        "smbh",
+        "nfkc",
+        "wlrg",
+        "rits"
+      ]
+    },
+    {
+      "word": "foob",
+      "num_guesses": 5,
+      "prior": 0.000027167962714666164,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "bonk",
+        "foob"
+      ]
+    },
+    {
+      "word": "ldhs",
+      "num_guesses": 6,
+      "prior": 0.00004246892028855365,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bdfl",
+        "shlw",
+        "ldhs"
+      ]
+    },
+    {
+      "word": "dahn",
+      "num_guesses": 4,
+      "prior": 0.00005490391151100982,
+      "guesses": [
+        "taes",
+        "miln",
+        "wyrd",
+        "dahn"
+      ]
+    },
+    {
+      "word": "etem",
+      "num_guesses": 4,
+      "prior": 0.0000362871146286293,
+      "guesses": [
+        "taes",
+        "derm",
+        "item",
+        "etem"
+      ]
+    },
+    {
+      "word": "lame",
+      "num_guesses": 3,
+      "prior": 0.000118454352357806,
+      "guesses": [
+        "taes",
+        "rdml",
+        "lame"
+      ]
+    },
+    {
+      "word": "yart",
+      "num_guesses": 7,
+      "prior": 0.0000382160343055531,
+      "guesses": [
+        "taes",
+        "hrct",
+        "rnmp",
+        "bduf",
+        "gowk",
+        "levy",
+        "yart"
+      ]
+    },
+    {
+      "word": "sapp",
+      "num_guesses": 6,
+      "prior": 0.00006959113519938857,
+      "guesses": [
+        "taes",
+        "sidh",
+        "rukn",
+        "pcba",
+        "lppm",
+        "sapp"
+      ]
+    },
+    {
+      "word": "illy",
+      "num_guesses": 4,
+      "prior": 0.00006944854911696642,
+      "guesses": [
+        "taes",
+        "diol",
+        "clip",
+        "illy"
+      ]
+    },
+    {
+      "word": "yeyo",
+      "num_guesses": 6,
+      "prior": 0.000028464186533410175,
+      "guesses": [
+        "taes",
+        "lore",
+        "nemo",
+        "bpdc",
+        "yang",
+        "yeyo"
+      ]
+    },
+    {
+      "word": "slpm",
+      "num_guesses": 5,
+      "prior": 0.00003922958301412527,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "fpdl",
+        "slpm"
+      ]
+    },
+    {
+      "word": "katu",
+      "num_guesses": 6,
+      "prior": 0.00004834793651502168,
+      "guesses": [
+        "taes",
+        "hrct",
+        "odia",
+        "yump",
+        "verb",
+        "katu"
+      ]
+    },
+    {
+      "word": "soko",
+      "num_guesses": 5,
+      "prior": 0.000053198586406330186,
+      "guesses": [
+        "taes",
+        "sion",
+        "culo",
+        "koph",
+        "soko"
+      ]
+    },
+    {
+      "word": "avos",
+      "num_guesses": 6,
+      "prior": 0.000045029451207376914,
+      "guesses": [
+        "taes",
+        "acir",
+        "fpdl",
+        "ombu",
+        "novy",
+        "avos"
+      ]
+    },
+    {
+      "word": "pnne",
+      "num_guesses": 5,
+      "prior": 0.000023270624695089788,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "dewy",
+        "pnne"
+      ]
+    },
+    {
+      "word": "ghet",
+      "num_guesses": 5,
+      "prior": 0.000036960681410491283,
+      "guesses": [
+        "taes",
+        "derm",
+        "clip",
+        "ftgh",
+        "ghet"
+      ]
+    },
+    {
+      "word": "lorm",
+      "num_guesses": 5,
+      "prior": 0.000054532500304762285,
+      "guesses": [
+        "taes",
+        "diol",
+        "yolo",
+        "rukn",
+        "lorm"
+      ]
+    },
+    {
+      "word": "mgns",
+      "num_guesses": 6,
+      "prior": 0.00002363775400527284,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "mmhg",
+        "bdnf",
+        "mgns"
+      ]
+    },
+    {
+      "word": "fips",
+      "num_guesses": 7,
+      "prior": 0.0000758698370042091,
+      "guesses": [
+        "taes",
+        "copi",
+        "hild",
+        "snrk",
+        "pbgm",
+        "fyve",
+        "fips"
+      ]
+    },
+    {
+      "word": "seta",
+      "num_guesses": 3,
+      "prior": 0.00009565598375747859,
+      "guesses": [
+        "taes",
+        "seat",
+        "seta"
+      ]
+    },
+    {
+      "word": "tbtf",
+      "num_guesses": 4,
+      "prior": 0.00003956320222279463,
+      "guesses": [
+        "taes",
+        "noir",
+        "humf",
+        "tbtf"
+      ]
+    },
+    {
+      "word": "auth",
+      "num_guesses": 4,
+      "prior": 0.00012775344114183759,
+      "guesses": [
+        "taes",
+        "ailt",
+        "unto",
+        "auth"
+      ]
+    },
+    {
+      "word": "pazf",
+      "num_guesses": 7,
+      "prior": 0.000016266554279233022,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "hupa",
+        "goby",
+        "pavé",
+        "pazf"
+      ]
+    },
+    {
+      "word": "rees",
+      "num_guesses": 5,
+      "prior": 0.00011426893259299915,
+      "guesses": [
+        "taes",
+        "oird",
+        "crup",
+        "yelk",
+        "rees"
+      ]
+    },
+    {
+      "word": "fabe",
+      "num_guesses": 5,
+      "prior": 0.00004074884866750387,
+      "guesses": [
+        "taes",
+        "rdml",
+        "cvbg",
+        "bofh",
+        "fabe"
+      ]
+    },
+    {
+      "word": "mpbr",
+      "num_guesses": 5,
+      "prior": 0.000020515517509289415,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "hrbp",
+        "mpbr"
+      ]
+    },
+    {
+      "word": "toze",
+      "num_guesses": 6,
+      "prior": 0.000032383791283975665,
+      "guesses": [
+        "taes",
+        "meri",
+        "upon",
+        "bkgd",
+        "late",
+        "toze"
+      ]
+    },
+    {
+      "word": "updo",
+      "num_guesses": 5,
+      "prior": 0.000039432332679530494,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "undo",
+        "updo"
+      ]
+    },
+    {
+      "word": "lgvs",
+      "num_guesses": 6,
+      "prior": 0.00002684064715078956,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "boln",
+        "lgvs"
+      ]
+    },
+    {
+      "word": "laic",
+      "num_guesses": 5,
+      "prior": 0.0000591357775818147,
+      "guesses": [
+        "taes",
+        "miln",
+        "vril",
+        "fdcs",
+        "laic"
+      ]
+    },
+    {
+      "word": "boco",
+      "num_guesses": 6,
+      "prior": 0.00003874962716260703,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "kmph",
+        "ybco",
+        "boco"
+      ]
+    },
+    {
+      "word": "ahbs",
+      "num_guesses": 6,
+      "prior": 0.000028331782603767273,
+      "guesses": [
+        "taes",
+        "acir",
+        "fpdl",
+        "ombu",
+        "sbhs",
+        "ahbs"
+      ]
+    },
+    {
+      "word": "kiap",
+      "num_guesses": 6,
+      "prior": 0.00004104246245908495,
+      "guesses": [
+        "taes",
+        "aran",
+        "coml",
+        "phud",
+        "ifap",
+        "kiap"
+      ]
+    },
+    {
+      "word": "egcg",
+      "num_guesses": 6,
+      "prior": 0.000053098210999648396,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "pech",
+        "excy",
+        "egcg"
+      ]
+    },
+    {
+      "word": "loup",
+      "num_guesses": 5,
+      "prior": 0.00008416197021317396,
+      "guesses": [
+        "taes",
+        "diol",
+        "yolo",
+        "rukn",
+        "loup"
+      ]
+    },
+    {
+      "word": "pbgm",
+      "num_guesses": 5,
+      "prior": 0.000019078625088377384,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "gmbh",
+        "pbgm"
+      ]
+    },
+    {
+      "word": "tlds",
+      "num_guesses": 5,
+      "prior": 0.000052114011773190146,
+      "guesses": [
+        "taes",
+        "roin",
+        "bump",
+        "dglc",
+        "tlds"
+      ]
+    },
+    {
+      "word": "tort",
+      "num_guesses": 4,
+      "prior": 0.0001400485600928029,
+      "guesses": [
+        "taes",
+        "noir",
+        "yoot",
+        "tort"
+      ]
+    },
+    {
+      "word": "sade",
+      "num_guesses": 4,
+      "prior": 0.00008584551903358639,
+      "guesses": [
+        "taes",
+        "vlsm",
+        "nfkd",
+        "sade"
+      ]
+    },
+    {
+      "word": "twym",
+      "num_guesses": 5,
+      "prior": 0.000023887483585236495,
+      "guesses": [
+        "taes",
+        "noir",
+        "humf",
+        "myth",
+        "twym"
+      ]
+    },
+    {
+      "word": "mrow",
+      "num_guesses": 4,
+      "prior": 0.000028129152460042635,
+      "guesses": [
+        "taes",
+        "diol",
+        "mrcp",
+        "mrow"
+      ]
+    },
+    {
+      "word": "tfhs",
+      "num_guesses": 6,
+      "prior": 0.000022979245411971213,
+      "guesses": [
+        "taes",
+        "roin",
+        "bump",
+        "dglc",
+        "ftth",
+        "tfhs"
+      ]
+    },
+    {
+      "word": "nono",
+      "num_guesses": 6,
+      "prior": 0.00006858916315490096,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "kyng",
+        "mvno",
+        "nono"
+      ]
+    },
+    {
+      "word": "pnls",
+      "num_guesses": 6,
+      "prior": 0.000026595361509638253,
+      "guesses": [
+        "taes",
+        "copi",
+        "purl",
+        "dsls",
+        "nlfs",
+        "pnls"
+      ]
+    },
+    {
+      "word": "qazf",
+      "num_guesses": 7,
+      "prior": 0.00002928566942597767,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "body",
+        "whfg",
+        "faja",
+        "qazf"
+      ]
+    },
+    {
+      "word": "lkms",
+      "num_guesses": 7,
+      "prior": 0.000025845401952875864,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "mmhg",
+        "lsbs",
+        "will",
+        "lkms"
+      ]
+    },
+    {
+      "word": "bers",
+      "num_guesses": 6,
+      "prior": 0.00009666286983147186,
+      "guesses": [
+        "taes",
+        "merd",
+        "spgh",
+        "ecfv",
+        "bawk",
+        "bers"
+      ]
+    },
+    {
+      "word": "yume",
+      "num_guesses": 6,
+      "prior": 0.00004262937574714302,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "humf",
+        "cume",
+        "yume"
+      ]
+    },
+    {
+      "word": "pios",
+      "num_guesses": 4,
+      "prior": 0.00004972884788699482,
+      "guesses": [
+        "taes",
+        "copi",
+        "ipos",
+        "pios"
+      ]
+    },
+    {
+      "word": "nosh",
+      "num_guesses": 4,
+      "prior": 0.000049135427694343554,
+      "guesses": [
+        "taes",
+        "sion",
+        "your",
+        "nosh"
+      ]
+    },
+    {
+      "word": "lere",
+      "num_guesses": 4,
+      "prior": 0.00006265581914049083,
+      "guesses": [
+        "taes",
+        "lore",
+        "yuri",
+        "lere"
+      ]
+    },
+    {
+      "word": "work",
+      "num_guesses": 6,
+      "prior": 0.0003633329405606668,
+      "guesses": [
+        "taes",
+        "diol",
+        "curn",
+        "kybo",
+        "hfgw",
+        "work"
+      ]
+    },
+    {
+      "word": "ompa",
+      "num_guesses": 4,
+      "prior": 0.00004970869474442266,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "ompa"
+      ]
+    },
+    {
+      "word": "fioa",
+      "num_guesses": 4,
+      "prior": 0.000028360465813741816,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "fioa"
+      ]
+    },
+    {
+      "word": "awoo",
+      "num_guesses": 6,
+      "prior": 0.00002886729727212692,
+      "guesses": [
+        "taes",
+        "aran",
+        "olid",
+        "myob",
+        "sgaw",
+        "awoo"
+      ]
+    },
+    {
+      "word": "otif",
+      "num_guesses": 5,
+      "prior": 0.000033139114032693426,
+      "guesses": [
+        "taes",
+        "riot",
+        "into",
+        "otic",
+        "otif"
+      ]
+    },
+    {
+      "word": "ambr",
+      "num_guesses": 5,
+      "prior": 0.00004707057892983108,
+      "guesses": [
+        "taes",
+        "aran",
+        "mico",
+        "amur",
+        "ambr"
+      ]
+    },
+    {
+      "word": "shig",
+      "num_guesses": 6,
+      "prior": 0.000044068415445737794,
+      "guesses": [
+        "taes",
+        "sion",
+        "hump",
+        "viri",
+        "good",
+        "shig"
+      ]
+    },
+    {
+      "word": "vpps",
+      "num_guesses": 7,
+      "prior": 0.000034510909632306205,
+      "guesses": [
+        "taes",
+        "copi",
+        "bdrm",
+        "snug",
+        "plwh",
+        "vkss",
+        "vpps"
+      ]
+    },
+    {
+      "word": "heed",
+      "num_guesses": 5,
+      "prior": 0.00012754264206623093,
+      "guesses": [
+        "taes",
+        "drol",
+        "fein",
+        "hbpm",
+        "heed"
+      ]
+    },
+    {
+      "word": "ucgc",
+      "num_guesses": 5,
+      "prior": 0.000019576131123686504,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "ungh",
+        "ucgc"
+      ]
+    },
+    {
+      "word": "mold",
+      "num_guesses": 4,
+      "prior": 0.00014340734551853595,
+      "guesses": [
+        "taes",
+        "diol",
+        "culm",
+        "mold"
+      ]
+    },
+    {
+      "word": "btdt",
+      "num_guesses": 6,
+      "prior": 0.000021686052077495266,
+      "guesses": [
+        "taes",
+        "riot",
+        "culm",
+        "wfpb",
+        "bond",
+        "btdt"
+      ]
+    },
+    {
+      "word": "cloy",
+      "num_guesses": 5,
+      "prior": 0.000058388224130401376,
+      "guesses": [
+        "taes",
+        "diol",
+        "cgwb",
+        "umpy",
+        "cloy"
+      ]
+    },
+    {
+      "word": "spox",
+      "num_guesses": 6,
+      "prior": 0.0000285705872081422,
+      "guesses": [
+        "taes",
+        "sion",
+        "plwh",
+        "fpdc",
+        "good",
+        "spox"
+      ]
+    },
+    {
+      "word": "saic",
+      "num_guesses": 5,
+      "prior": 0.0000654579584794657,
+      "guesses": [
+        "taes",
+        "sidh",
+        "flim",
+        "sain",
+        "saic"
+      ]
+    },
+    {
+      "word": "bioi",
+      "num_guesses": 5,
+      "prior": 0.00004467948338016777,
+      "guesses": [
+        "taes",
+        "diol",
+        "pcnb",
+        "biog",
+        "bioi"
+      ]
+    },
+    {
+      "word": "lull",
+      "num_guesses": 6,
+      "prior": 0.00010837022321420846,
+      "guesses": [
+        "taes",
+        "diol",
+        "buhr",
+        "fmnp",
+        "lcgs",
+        "lull"
+      ]
+    },
+    {
+      "word": "imes",
+      "num_guesses": 4,
+      "prior": 0.00006667740914056287,
+      "guesses": [
+        "taes",
+        "oird",
+        "lmhc",
+        "imes"
+      ]
+    },
+    {
+      "word": "taig",
+      "num_guesses": 4,
+      "prior": 0.000040730025157263,
+      "guesses": [
+        "taes",
+        "krin",
+        "dclg",
+        "taig"
+      ]
+    },
+    {
+      "word": "cvls",
+      "num_guesses": 5,
+      "prior": 0.00003309600909994772,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "gflv",
+        "cvls"
+      ]
+    },
+    {
+      "word": "mild",
+      "num_guesses": 4,
+      "prior": 0.00016882769738612959,
+      "guesses": [
+        "taes",
+        "diol",
+        "mglw",
+        "mild"
+      ]
+    },
+    {
+      "word": "busk",
+      "num_guesses": 6,
+      "prior": 0.00007141153837332576,
+      "guesses": [
+        "taes",
+        "sion",
+        "dmsp",
+        "hclk",
+        "rusk",
+        "busk"
+      ]
+    },
+    {
+      "word": "plmn",
+      "num_guesses": 5,
+      "prior": 0.00004154742132242402,
+      "guesses": [
+        "taes",
+        "diol",
+        "gulp",
+        "lcmv",
+        "plmn"
+      ]
+    },
+    {
+      "word": "prca",
+      "num_guesses": 5,
+      "prior": 0.000048748452070969866,
+      "guesses": [
+        "taes",
+        "aran",
+        "cdom",
+        "brca",
+        "prca"
+      ]
+    },
+    {
+      "word": "dles",
+      "num_guesses": 5,
+      "prior": 0.00004817882516872736,
+      "guesses": [
+        "taes",
+        "oird",
+        "duny",
+        "lsvc",
+        "dles"
+      ]
+    },
+    {
+      "word": "arva",
+      "num_guesses": 5,
+      "prior": 0.000051869322340055636,
+      "guesses": [
+        "taes",
+        "aran",
+        "miry",
+        "arba",
+        "arva"
+      ]
+    },
+    {
+      "word": "hame",
+      "num_guesses": 5,
+      "prior": 0.00007449532531967197,
+      "guesses": [
+        "taes",
+        "rdml",
+        "nfkc",
+        "gmbh",
+        "hame"
+      ]
+    },
+    {
+      "word": "hrbp",
+      "num_guesses": 6,
+      "prior": 0.000023191146660537256,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "frcp",
+        "prpp",
+        "hrbp"
+      ]
+    },
+    {
+      "word": "asar",
+      "num_guesses": 5,
+      "prior": 0.00005625996861224718,
+      "guesses": [
+        "taes",
+        "soia",
+        "pram",
+        "quck",
+        "asar"
+      ]
+    },
+    {
+      "word": "çeng",
+      "num_guesses": 7,
+      "prior": 0.000013667087982694133,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "ghuz",
+        "wfpb",
+        "keng",
+        "çeng"
+      ]
+    },
+    {
+      "word": "tiss",
+      "num_guesses": 5,
+      "prior": 0.00005972282159377913,
+      "guesses": [
+        "taes",
+        "roin",
+        "cbtp",
+        "lmdf",
+        "tiss"
+      ]
+    },
+    {
+      "word": "dahk",
+      "num_guesses": 5,
+      "prior": 0.000028173380905694382,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "hyuk",
+        "dahk"
+      ]
+    },
+    {
+      "word": "naei",
+      "num_guesses": 5,
+      "prior": 0.000028400428382006106,
+      "guesses": [
+        "taes",
+        "rbmk",
+        "dhpg",
+        "faex",
+        "naei"
+      ]
+    },
+    {
+      "word": "lnav",
+      "num_guesses": 5,
+      "prior": 0.00003565164745450018,
+      "guesses": [
+        "taes",
+        "aran",
+        "ingo",
+        "publ",
+        "lnav"
+      ]
+    },
+    {
+      "word": "gsws",
+      "num_guesses": 6,
+      "prior": 0.00002953928965207582,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "bsws",
+        "gsws"
+      ]
+    },
+    {
+      "word": "noys",
+      "num_guesses": 7,
+      "prior": 0.000041366873009737096,
+      "guesses": [
+        "taes",
+        "copi",
+        "bldg",
+        "nvrm",
+        "wunt",
+        "they",
+        "noys"
+      ]
+    },
+    {
+      "word": "pdrn",
+      "num_guesses": 5,
+      "prior": 0.00002357214227016103,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "camp",
+        "pdrn"
+      ]
+    },
+    {
+      "word": "xlbs",
+      "num_guesses": 8,
+      "prior": 0.000014229271118304125,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "nwbw",
+        "love",
+        "jlbs",
+        "xlbs"
+      ]
+    },
+    {
+      "word": "larg",
+      "num_guesses": 6,
+      "prior": 0.00006774633118772289,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "drop",
+        "bfgs",
+        "larg"
+      ]
+    },
+    {
+      "word": "srub",
+      "num_guesses": 4,
+      "prior": 0.00003044084614289119,
+      "guesses": [
+        "taes",
+        "sion",
+        "crup",
+        "srub"
+      ]
+    },
+    {
+      "word": "ppcs",
+      "num_guesses": 7,
+      "prior": 0.00004684049451271884,
+      "guesses": [
+        "taes",
+        "copi",
+        "prcv",
+        "lsfm",
+        "nbhd",
+        "gpws",
+        "ppcs"
+      ]
+    },
+    {
+      "word": "vsos",
+      "num_guesses": 6,
+      "prior": 0.00004195212204003705,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "mung",
+        "slvs",
+        "vsos"
+      ]
+    },
+    {
+      "word": "gids",
+      "num_guesses": 5,
+      "prior": 0.00005250405749352191,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "bldg",
+        "gids"
+      ]
+    },
+    {
+      "word": "iper",
+      "num_guesses": 5,
+      "prior": 0.00004935848708036333,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "puxi",
+        "iper"
+      ]
+    },
+    {
+      "word": "abut",
+      "num_guesses": 4,
+      "prior": 0.00007916812127766028,
+      "guesses": [
+        "taes",
+        "ailt",
+        "pudo",
+        "abut"
+      ]
+    },
+    {
+      "word": "arba",
+      "num_guesses": 4,
+      "prior": 0.00006941041542208909,
+      "guesses": [
+        "taes",
+        "aran",
+        "miry",
+        "arba"
+      ]
+    },
+    {
+      "word": "culo",
+      "num_guesses": 5,
+      "prior": 0.000042909410272470435,
+      "guesses": [
+        "taes",
+        "diol",
+        "yolo",
+        "cump",
+        "culo"
+      ]
+    },
+    {
+      "word": "lvds",
+      "num_guesses": 6,
+      "prior": 0.000038278772542955045,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bdfl",
+        "svgs",
+        "lvds"
+      ]
+    },
+    {
+      "word": "ecgs",
+      "num_guesses": 5,
+      "prior": 0.00005771633259640626,
+      "guesses": [
+        "taes",
+        "merd",
+        "copi",
+        "vcug",
+        "ecgs"
+      ]
+    },
+    {
+      "word": "suvs",
+      "num_guesses": 7,
+      "prior": 0.00006633632972437695,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bung",
+        "fwsh",
+        "slav",
+        "suvs"
+      ]
+    },
+    {
+      "word": "bois",
+      "num_guesses": 4,
+      "prior": 0.00011639600831404935,
+      "guesses": [
+        "taes",
+        "copi",
+        "lnib",
+        "bois"
+      ]
+    },
+    {
+      "word": "carp",
+      "num_guesses": 4,
+      "prior": 0.00011015872754253914,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "carp"
+      ]
+    },
+    {
+      "word": "snug",
+      "num_guesses": 4,
+      "prior": 0.00010159736909942894,
+      "guesses": [
+        "taes",
+        "sion",
+        "burk",
+        "snug"
+      ]
+    },
+    {
+      "word": "idbs",
+      "num_guesses": 6,
+      "prior": 0.00005047110163845729,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "iddm",
+        "vbsl",
+        "idbs"
+      ]
+    },
+    {
+      "word": "cyte",
+      "num_guesses": 5,
+      "prior": 0.00005055288443908434,
+      "guesses": [
+        "taes",
+        "neti",
+        "culo",
+        "cmte",
+        "cyte"
+      ]
+    },
+    {
+      "word": "wbns",
+      "num_guesses": 6,
+      "prior": 0.0000384009002930803,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "ssbn",
+        "wbns"
+      ]
+    },
+    {
+      "word": "kiss",
+      "num_guesses": 7,
+      "prior": 0.00016352028017208871,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "glbm",
+        "fwsh",
+        "skye",
+        "kiss"
+      ]
+    },
+    {
+      "word": "arke",
+      "num_guesses": 5,
+      "prior": 0.00005111742749546679,
+      "guesses": [
+        "taes",
+        "lenr",
+        "arci",
+        "more",
+        "arke"
+      ]
+    },
+    {
+      "word": "mere",
+      "num_guesses": 4,
+      "prior": 0.00021031403990762266,
+      "guesses": [
+        "taes",
+        "lore",
+        "mewp",
+        "mere"
+      ]
+    },
+    {
+      "word": "lfss",
+      "num_guesses": 6,
+      "prior": 0.000036742290614083574,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "nbsk",
+        "lfss"
+      ]
+    },
+    {
+      "word": "manc",
+      "num_guesses": 5,
+      "prior": 0.00004530157313509686,
+      "guesses": [
+        "taes",
+        "miln",
+        "yuga",
+        "dock",
+        "manc"
+      ]
+    },
+    {
+      "word": "afjs",
+      "num_guesses": 7,
+      "prior": 0.000019376661284835276,
+      "guesses": [
+        "taes",
+        "acir",
+        "fpdl",
+        "nsfm",
+        "sovs",
+        "jobs",
+        "afjs"
+      ]
+    },
+    {
+      "word": "bask",
+      "num_guesses": 5,
+      "prior": 0.00008240249313636902,
+      "guesses": [
+        "taes",
+        "sidh",
+        "mpkc",
+        "bulk",
+        "bask"
+      ]
+    },
+    {
+      "word": "fwds",
+      "num_guesses": 6,
+      "prior": 0.000029706426717236917,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bdfl",
+        "sfns",
+        "fwds"
+      ]
+    },
+    {
+      "word": "ager",
+      "num_guesses": 4,
+      "prior": 0.00008423144842523272,
+      "guesses": [
+        "taes",
+        "arld",
+        "vcug",
+        "ager"
+      ]
+    },
+    {
+      "word": "cadr",
+      "num_guesses": 5,
+      "prior": 0.00004065539785410651,
+      "guesses": [
+        "taes",
+        "miln",
+        "crkp",
+        "fyrd",
+        "cadr"
+      ]
+    },
+    {
+      "word": "brrs",
+      "num_guesses": 5,
+      "prior": 0.00002991164160316304,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "blrg",
+        "brrs"
+      ]
+    },
+    {
+      "word": "phud",
+      "num_guesses": 5,
+      "prior": 0.000029521025444175176,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "pwud",
+        "phud"
+      ]
+    },
+    {
+      "word": "heyo",
+      "num_guesses": 6,
+      "prior": 0.00002903468188506133,
+      "guesses": [
+        "taes",
+        "lore",
+        "nemo",
+        "bpdc",
+        "yang",
+        "heyo"
+      ]
+    },
+    {
+      "word": "ohms",
+      "num_guesses": 5,
+      "prior": 0.00010693043506846816,
+      "guesses": [
+        "taes",
+        "copi",
+        "brod",
+        "lmwh",
+        "ohms"
+      ]
+    },
+    {
+      "word": "ajcs",
+      "num_guesses": 6,
+      "prior": 0.0000268245716867773,
+      "guesses": [
+        "taes",
+        "acir",
+        "msbp",
+        "fold",
+        "anju",
+        "ajcs"
+      ]
+    },
+    {
+      "word": "frig",
+      "num_guesses": 5,
+      "prior": 0.000051735083295972244,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "bumf",
+        "frig"
+      ]
+    },
+    {
+      "word": "lufs",
+      "num_guesses": 6,
+      "prior": 0.00003533723254343138,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "bung",
+        "fwsh",
+        "lufs"
+      ]
+    },
+    {
+      "word": "eyah",
+      "num_guesses": 6,
+      "prior": 0.00003093359817747694,
+      "guesses": [
+        "taes",
+        "lenr",
+        "acdm",
+        "hpab",
+        "evah",
+        "eyah"
+      ]
+    },
+    {
+      "word": "acpt",
+      "num_guesses": 5,
+      "prior": 0.00003408951075765098,
+      "guesses": [
+        "taes",
+        "ailt",
+        "pudo",
+        "appt",
+        "acpt"
+      ]
+    },
+    {
+      "word": "adrp",
+      "num_guesses": 6,
+      "prior": 0.00003730402844566861,
+      "guesses": [
+        "taes",
+        "aran",
+        "mico",
+        "plur",
+        "afrp",
+        "adrp"
+      ]
+    },
+    {
+      "word": "emps",
+      "num_guesses": 4,
+      "prior": 0.00006300716733611654,
+      "guesses": [
+        "taes",
+        "merd",
+        "lump",
+        "emps"
+      ]
+    },
+    {
+      "word": "cccs",
+      "num_guesses": 6,
+      "prior": 0.00005430487241957679,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "gflv",
+        "bsch",
+        "cccs"
+      ]
+    },
+    {
+      "word": "tshd",
+      "num_guesses": 4,
+      "prior": 0.000023881793378877153,
+      "guesses": [
+        "taes",
+        "huso",
+        "tshi",
+        "tshd"
+      ]
+    },
+    {
+      "word": "addo",
+      "num_guesses": 5,
+      "prior": 0.000058459747863177355,
+      "guesses": [
+        "taes",
+        "aran",
+        "olid",
+        "abdo",
+        "addo"
+      ]
+    },
+    {
+      "word": "zebu",
+      "num_guesses": 6,
+      "prior": 0.00006687156946123875,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "pech",
+        "juvy",
+        "zebu"
+      ]
+    },
+    {
+      "word": "viva",
+      "num_guesses": 5,
+      "prior": 0.00009713431153266197,
+      "guesses": [
+        "taes",
+        "aran",
+        "moil",
+        "vdpv",
+        "viva"
+      ]
+    },
+    {
+      "word": "uhmw",
+      "num_guesses": 6,
+      "prior": 0.000040678080309214986,
+      "guesses": [
+        "taes",
+        "diol",
+        "murg",
+        "chup",
+        "khmu",
+        "uhmw"
+      ]
+    },
+    {
+      "word": "mins",
+      "num_guesses": 5,
+      "prior": 0.00010521133049663099,
+      "guesses": [
+        "taes",
+        "copi",
+        "rind",
+        "slbm",
+        "mins"
+      ]
+    },
+    {
+      "word": "laam",
+      "num_guesses": 4,
+      "prior": 0.00005254760505714249,
+      "guesses": [
+        "taes",
+        "miln",
+        "paba",
+        "laam"
+      ]
+    },
+    {
+      "word": "kews",
+      "num_guesses": 7,
+      "prior": 0.00003224623946599989,
+      "guesses": [
+        "taes",
+        "merd",
+        "pcnl",
+        "sgbv",
+        "whyo",
+        "jews",
+        "kews"
+      ]
+    },
+    {
+      "word": "gsls",
+      "num_guesses": 6,
+      "prior": 0.000042824955768585304,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "isbn",
+        "gsls"
+      ]
+    },
+    {
+      "word": "gyre",
+      "num_guesses": 6,
+      "prior": 0.00006968056001091292,
+      "guesses": [
+        "taes",
+        "lore",
+        "mewp",
+        "cdfi",
+        "gybe",
+        "gyre"
+      ]
+    },
+    {
+      "word": "baes",
+      "num_guesses": 5,
+      "prior": 0.00004731326213635834,
+      "guesses": [
+        "taes",
+        "scmp",
+        "whnf",
+        "boul",
+        "baes"
+      ]
+    },
+    {
+      "word": "yaal",
+      "num_guesses": 6,
+      "prior": 0.00002868090163839907,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "yawl",
+        "yarl",
+        "yaal"
+      ]
+    },
+    {
+      "word": "kier",
+      "num_guesses": 5,
+      "prior": 0.00006741442727900154,
+      "guesses": [
+        "taes",
+        "drol",
+        "beep",
+        "fick",
+        "kier"
+      ]
+    },
+    {
+      "word": "tass",
+      "num_guesses": 4,
+      "prior": 0.00009212963575968247,
+      "guesses": [
+        "taes",
+        "pngb",
+        "rosc",
+        "tass"
+      ]
+    },
+    {
+      "word": "hwat",
+      "num_guesses": 4,
+      "prior": 0.000036307384984319966,
+      "guesses": [
+        "taes",
+        "ailt",
+        "chog",
+        "hwat"
+      ]
+    },
+    {
+      "word": "hout",
+      "num_guesses": 6,
+      "prior": 0.00007301456539537504,
+      "guesses": [
+        "taes",
+        "riot",
+        "pcnl",
+        "bumf",
+        "hyde",
+        "hout"
+      ]
+    },
+    {
+      "word": "spaz",
+      "num_guesses": 6,
+      "prior": 0.000043420663322314523,
+      "guesses": [
+        "taes",
+        "soia",
+        "wlnp",
+        "cmdr",
+        "gray",
+        "spaz"
+      ]
+    },
+    {
+      "word": "ikra",
+      "num_guesses": 4,
+      "prior": 0.00003118922497876104,
+      "guesses": [
+        "taes",
+        "aran",
+        "miro",
+        "ikra"
+      ]
+    },
+    {
+      "word": "lmas",
+      "num_guesses": 4,
+      "prior": 0.00004794946694866343,
+      "guesses": [
+        "taes",
+        "acir",
+        "pmol",
+        "lmas"
+      ]
+    },
+    {
+      "word": "resh",
+      "num_guesses": 5,
+      "prior": 0.0000642663721336797,
+      "guesses": [
+        "taes",
+        "slie",
+        "hedp",
+        "erky",
+        "resh"
+      ]
+    },
+    {
+      "word": "arts",
+      "num_guesses": 3,
+      "prior": 0.00021471350312108088,
+      "guesses": [
+        "taes",
+        "acpr",
+        "arts"
+      ]
+    },
+    {
+      "word": "ttos",
+      "num_guesses": 5,
+      "prior": 0.000038585197997045263,
+      "guesses": [
+        "taes",
+        "roin",
+        "mswl",
+        "ptca",
+        "ttos"
+      ]
+    },
+    {
+      "word": "mrdd",
+      "num_guesses": 5,
+      "prior": 0.000033620857058932654,
+      "guesses": [
+        "taes",
+        "diol",
+        "curd",
+        "mrhd",
+        "mrdd"
+      ]
+    },
+    {
+      "word": "petc",
+      "num_guesses": 5,
+      "prior": 0.000045073730249573525,
+      "guesses": [
+        "taes",
+        "neti",
+        "hope",
+        "cetp",
+        "petc"
+      ]
+    },
+    {
+      "word": "buki",
+      "num_guesses": 5,
+      "prior": 0.00004016729300131861,
+      "guesses": [
+        "taes",
+        "diol",
+        "cnrp",
+        "fumy",
+        "buki"
+      ]
+    },
+    {
+      "word": "gsgs",
+      "num_guesses": 6,
+      "prior": 0.00003448410526383751,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "bsws",
+        "gsgs"
+      ]
+    },
+    {
+      "word": "iluy",
+      "num_guesses": 5,
+      "prior": 0.000025543779030959393,
+      "guesses": [
+        "taes",
+        "diol",
+        "clip",
+        "illy",
+        "iluy"
+      ]
+    },
+    {
+      "word": "lqas",
+      "num_guesses": 7,
+      "prior": 0.00002555030029273122,
+      "guesses": [
+        "taes",
+        "acir",
+        "pmol",
+        "bluh",
+        "wknd",
+        "usgs",
+        "lqas"
+      ]
+    },
+    {
+      "word": "maiz",
+      "num_guesses": 5,
+      "prior": 0.00005488719029108751,
+      "guesses": [
+        "taes",
+        "miln",
+        "grid",
+        "maim",
+        "maiz"
+      ]
+    },
+    {
+      "word": "gare",
+      "num_guesses": 6,
+      "prior": 0.00007688441442540101,
+      "guesses": [
+        "taes",
+        "rdml",
+        "nbfc",
+        "howp",
+        "evry",
+        "gare"
+      ]
+    },
+    {
+      "word": "taho",
+      "num_guesses": 6,
+      "prior": 0.000038622720140583326,
+      "guesses": [
+        "taes",
+        "krin",
+        "pula",
+        "coft",
+        "tayo",
+        "taho"
+      ]
+    },
+    {
+      "word": "asea",
+      "num_guesses": 3,
+      "prior": 0.00006813929442397816,
+      "guesses": [
+        "taes",
+        "asci",
+        "asea"
+      ]
+    },
+    {
+      "word": "chge",
+      "num_guesses": 6,
+      "prior": 0.00004820560388289352,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "humf",
+        "eche",
+        "chge"
+      ]
+    },
+    {
+      "word": "cank",
+      "num_guesses": 7,
+      "prior": 0.0000370897678333467,
+      "guesses": [
+        "taes",
+        "miln",
+        "kynd",
+        "hrbp",
+        "newf",
+        "jack",
+        "cank"
+      ]
+    },
+    {
+      "word": "flim",
+      "num_guesses": 5,
+      "prior": 0.00005409338388009388,
+      "guesses": [
+        "taes",
+        "diol",
+        "clip",
+        "bfcm",
+        "flim"
+      ]
+    },
+    {
+      "word": "mebs",
+      "num_guesses": 6,
+      "prior": 0.000038217336518194756,
+      "guesses": [
+        "taes",
+        "merd",
+        "insp",
+        "ugmo",
+        "vlbw",
+        "mebs"
+      ]
+    },
+    {
+      "word": "bldr",
+      "num_guesses": 5,
+      "prior": 0.00004336032323524034,
+      "guesses": [
+        "taes",
+        "diol",
+        "culd",
+        "bldg",
+        "bldr"
+      ]
+    },
+    {
+      "word": "faal",
+      "num_guesses": 6,
+      "prior": 0.000060500481281436986,
+      "guesses": [
+        "taes",
+        "miln",
+        "lucy",
+        "whad",
+        "baal",
+        "faal"
+      ]
+    },
+    {
+      "word": "zeng",
+      "num_guesses": 5,
+      "prior": 0.00007537096559323668,
+      "guesses": [
+        "taes",
+        "lore",
+        "mind",
+        "ghuz",
+        "zeng"
+      ]
+    },
+    {
+      "word": "jwks",
+      "num_guesses": 7,
+      "prior": 0.000013531743608008675,
+      "guesses": [
+        "taes",
+        "copi",
+        "drum",
+        "glhf",
+        "ssbn",
+        "xyzs",
+        "jwks"
+      ]
+    },
+    {
+      "word": "dozy",
+      "num_guesses": 6,
+      "prior": 0.00005743533510521039,
+      "guesses": [
+        "taes",
+        "diol",
+        "rukn",
+        "hypo",
+        "ibzm",
+        "dozy"
+      ]
+    },
+    {
+      "word": "apes",
+      "num_guesses": 3,
+      "prior": 0.00010687706002449354,
+      "guesses": [
+        "taes",
+        "gymp",
+        "apes"
+      ]
+    },
+    {
+      "word": "famm",
+      "num_guesses": 5,
+      "prior": 0.00003518268537713804,
+      "guesses": [
+        "taes",
+        "miln",
+        "cfrp",
+        "bamf",
+        "famm"
+      ]
+    },
+    {
+      "word": "zeme",
+      "num_guesses": 6,
+      "prior": 0.00004131996915728877,
+      "guesses": [
+        "taes",
+        "lore",
+        "dinp",
+        "humf",
+        "myza",
+        "zeme"
+      ]
+    },
+    {
+      "word": "oled",
+      "num_guesses": 3,
+      "prior": 0.000057605179514807074,
+      "guesses": [
+        "taes",
+        "drol",
+        "oled"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5451 @@
+{
+  "schema_version": 1,
+  "run": {
+    "lex_version": "0.1.0",
+    "timestamp": "2026-10-26T12:00:28.524264Z",
+    "seed": 0,
+    "num_games": 500,
+    "targets_file": null,
+    "first_guess": "sarti",
+    "strategy": {
+      "hard_mode": false,
+      "temperature": 5.0,
+      "win_weight": 1.0,
+      "endgame_threshold": 0,
+      "endgame_aversion": 0.0
+    }
+  },
+  "corpus": {
+    "language": "italian",
+    "word_length": 5,
+    "dictionary_length": 6452,
+    "ngrams_snapshot": "20200217",
+    "ngrams_sha256": "fb769bde826a025f25c023d63a92b99c45db142ed637f9a8fcc5a6ad1b6dba5a",
+    "dict": {
+      "source_url": "https://kaikki.org/dictionary/downloads/it/it-extract.jsonl.gz",
+      "fetched_at": "2026-10-25T23:06:06.067613Z",
+      "source_sha256": "0f93703594850bc8ec1cd764b3b193e0a153a83e24c809938f7183777d406314",
+      "word_count": 553586
+    }
+  },
+  "summary": {
+    "max_guesses": 6,
+    "uniform": {
+      "mean": 3.7859999999999796,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.012,
+        "3": 0.32600000000000023,
+        "4": 0.5340000000000004,
+        "5": 0.12000000000000009,
+        "6": 0.008
+      }
+    },
+    "prior": {
+      "mean": 3.6856460563938263,
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.01602440519080271,
+        "3": 0.38149339043694747,
+        "4": 0.5078887875003677,
+        "5": 0.0899985765313858,
+        "6": 0.004594840340496004
+      }
+    }
+  },
+  "games": [
+    {
+      "word": "sazie",
+      "num_guesses": 3,
+      "prior": 0.00010468868554520913,
+      "guesses": [
+        "sarti",
+        "evoca",
+        "sazie"
+      ]
+    },
+    {
+      "word": "mogia",
+      "num_guesses": 3,
+      "prior": 0.00009569693993522736,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "mogia"
+      ]
+    },
+    {
+      "word": "sedei",
+      "num_guesses": 4,
+      "prior": 0.00009162127181650973,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spese",
+        "sedei"
+      ]
+    },
+    {
+      "word": "cheta",
+      "num_guesses": 4,
+      "prior": 0.00014070729835269672,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "curva",
+        "cheta"
+      ]
+    },
+    {
+      "word": "causi",
+      "num_guesses": 3,
+      "prior": 0.00013239420836897242,
+      "guesses": [
+        "sarti",
+        "pulce",
+        "causi"
+      ]
+    },
+    {
+      "word": "aqueo",
+      "num_guesses": 4,
+      "prior": 0.00009726879644097505,
+      "guesses": [
+        "sarti",
+        "clone",
+        "ameba",
+        "aqueo"
+      ]
+    },
+    {
+      "word": "locai",
+      "num_guesses": 4,
+      "prior": 0.00012281232185297735,
+      "guesses": [
+        "sarti",
+        "anale",
+        "colmo",
+        "locai"
+      ]
+    },
+    {
+      "word": "suono",
+      "num_guesses": 3,
+      "prior": 0.00031644020296635545,
+      "guesses": [
+        "sarti",
+        "clone",
+        "suono"
+      ]
+    },
+    {
+      "word": "speso",
+      "num_guesses": 3,
+      "prior": 0.00021714646130096876,
+      "guesses": [
+        "sarti",
+        "clone",
+        "speso"
+      ]
+    },
+    {
+      "word": "snort",
+      "num_guesses": 3,
+      "prior": 0.00006516177878872346,
+      "guesses": [
+        "sarti",
+        "erano",
+        "snort"
+      ]
+    },
+    {
+      "word": "bisca",
+      "num_guesses": 4,
+      "prior": 0.00011921890537897048,
+      "guesses": [
+        "sarti",
+        "asilo",
+        "fasce",
+        "bisca"
+      ]
+    },
+    {
+      "word": "zonzo",
+      "num_guesses": 5,
+      "prior": 0.00012484828846648493,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "manzo",
+        "gambe",
+        "zonzo"
+      ]
+    },
+    {
+      "word": "userà",
+      "num_guesses": 3,
+      "prior": 0.00015104172962102945,
+      "guesses": [
+        "sarti",
+        "preso",
+        "userà"
+      ]
+    },
+    {
+      "word": "suase",
+      "num_guesses": 4,
+      "prior": 0.0000747247894958146,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spade",
+        "suase"
+      ]
+    },
+    {
+      "word": "tonai",
+      "num_guesses": 3,
+      "prior": 0.00007555852382531564,
+      "guesses": [
+        "sarti",
+        "totem",
+        "tonai"
+      ]
+    },
+    {
+      "word": "zambe",
+      "num_guesses": 4,
+      "prior": 0.000053383095345613776,
+      "guesses": [
+        "sarti",
+        "colme",
+        "zampe",
+        "zambe"
+      ]
+    },
+    {
+      "word": "polle",
+      "num_guesses": 3,
+      "prior": 0.00013493128493488455,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "polle"
+      ]
+    },
+    {
+      "word": "minai",
+      "num_guesses": 4,
+      "prior": 0.00007881007074340626,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umido",
+        "minai"
+      ]
+    },
+    {
+      "word": "aguri",
+      "num_guesses": 5,
+      "prior": 0.0000604697007809604,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "danze",
+        "ambri",
+        "aguri"
+      ]
+    },
+    {
+      "word": "molli",
+      "num_guesses": 4,
+      "prior": 0.0002357867864576898,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "gambe",
+        "molli"
+      ]
+    },
+    {
+      "word": "elite",
+      "num_guesses": 4,
+      "prior": 0.0001343773500519155,
+      "guesses": [
+        "sarti",
+        "ovine",
+        "edite",
+        "elite"
+      ]
+    },
+    {
+      "word": "qubit",
+      "num_guesses": 3,
+      "prior": 0.00006488742228834847,
+      "guesses": [
+        "sarti",
+        "leone",
+        "qubit"
+      ]
+    },
+    {
+      "word": "sfinì",
+      "num_guesses": 3,
+      "prior": 0.000056991535599505885,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "sfinì"
+      ]
+    },
+    {
+      "word": "oltri",
+      "num_guesses": 3,
+      "prior": 0.00008451366602801174,
+      "guesses": [
+        "sarti",
+        "entro",
+        "oltri"
+      ]
+    },
+    {
+      "word": "pioli",
+      "num_guesses": 3,
+      "prior": 0.00013569537716120206,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "pioli"
+      ]
+    },
+    {
+      "word": "foyer",
+      "num_guesses": 5,
+      "prior": 0.0001295801344337635,
+      "guesses": [
+        "sarti",
+        "drone",
+        "lombo",
+        "corpo",
+        "foyer"
+      ]
+    },
+    {
+      "word": "macho",
+      "num_guesses": 4,
+      "prior": 0.00011339780266418891,
+      "guesses": [
+        "sarti",
+        "colme",
+        "occhi",
+        "macho"
+      ]
+    },
+    {
+      "word": "snoda",
+      "num_guesses": 3,
+      "prior": 0.00016586690532635747,
+      "guesses": [
+        "sarti",
+        "clone",
+        "snoda"
+      ]
+    },
+    {
+      "word": "pezzo",
+      "num_guesses": 3,
+      "prior": 0.0003269633141817066,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "pezzo"
+      ]
+    },
+    {
+      "word": "snodò",
+      "num_guesses": 4,
+      "prior": 0.0000855693557495371,
+      "guesses": [
+        "sarti",
+        "clone",
+        "snodo",
+        "snodò"
+      ]
+    },
+    {
+      "word": "sushi",
+      "num_guesses": 4,
+      "prior": 0.00011935565603155139,
+      "guesses": [
+        "sarti",
+        "clone",
+        "smisi",
+        "sushi"
+      ]
+    },
+    {
+      "word": "ghiri",
+      "num_guesses": 4,
+      "prior": 0.00010663313232350481,
+      "guesses": [
+        "sarti",
+        "prone",
+        "rugli",
+        "ghiri"
+      ]
+    },
+    {
+      "word": "gioia",
+      "num_guesses": 3,
+      "prior": 0.0003275333296045425,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "gioia"
+      ]
+    },
+    {
+      "word": "mazza",
+      "num_guesses": 4,
+      "prior": 0.00021895157661086092,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugna",
+        "mazza"
+      ]
+    },
+    {
+      "word": "riusò",
+      "num_guesses": 3,
+      "prior": 0.00003605336335284476,
+      "guesses": [
+        "sarti",
+        "rosse",
+        "riusò"
+      ]
+    },
+    {
+      "word": "zanni",
+      "num_guesses": 6,
+      "prior": 0.00014711982980028624,
+      "guesses": [
+        "sarti",
+        "calma",
+        "punge",
+        "danni",
+        "vanni",
+        "zanni"
+      ]
+    },
+    {
+      "word": "tarma",
+      "num_guesses": 4,
+      "prior": 0.00010435060953036217,
+      "guesses": [
+        "sarti",
+        "dolga",
+        "prima",
+        "tarma"
+      ]
+    },
+    {
+      "word": "blusa",
+      "num_guesses": 4,
+      "prior": 0.00011428238788069862,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "flash",
+        "blusa"
+      ]
+    },
+    {
+      "word": "sauri",
+      "num_guesses": 4,
+      "prior": 0.00012129234356161562,
+      "guesses": [
+        "sarti",
+        "sacri",
+        "sagri",
+        "sauri"
+      ]
+    },
+    {
+      "word": "pattò",
+      "num_guesses": 4,
+      "prior": 0.00006333310975045015,
+      "guesses": [
+        "sarti",
+        "monca",
+        "plebe",
+        "pattò"
+      ]
+    },
+    {
+      "word": "plagi",
+      "num_guesses": 4,
+      "prior": 0.00011799980541216424,
+      "guesses": [
+        "sarti",
+        "anale",
+        "gladi",
+        "plagi"
+      ]
+    },
+    {
+      "word": "zillo",
+      "num_guesses": 6,
+      "prior": 0.00007331237934147854,
+      "guesses": [
+        "sarti",
+        "clone",
+        "oblio",
+        "vampa",
+        "dildo",
+        "zillo"
+      ]
+    },
+    {
+      "word": "skiff",
+      "num_guesses": 4,
+      "prior": 0.00006820716023890294,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "sfilò",
+        "skiff"
+      ]
+    },
+    {
+      "word": "rifai",
+      "num_guesses": 4,
+      "prior": 0.00008570761353432804,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "munge",
+        "rifai"
+      ]
+    },
+    {
+      "word": "marca",
+      "num_guesses": 3,
+      "prior": 0.00026251591120983724,
+      "guesses": [
+        "sarti",
+        "colma",
+        "marca"
+      ]
+    },
+    {
+      "word": "verni",
+      "num_guesses": 4,
+      "prior": 0.0001304707710687968,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "venga",
+        "verni"
+      ]
+    },
+    {
+      "word": "denta",
+      "num_guesses": 4,
+      "prior": 0.0000815817203996139,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "gendo",
+        "denta"
+      ]
+    },
+    {
+      "word": "tingo",
+      "num_guesses": 3,
+      "prior": 0.00008792134769292929,
+      "guesses": [
+        "sarti",
+        "leone",
+        "tingo"
+      ]
+    },
+    {
+      "word": "carne",
+      "num_guesses": 4,
+      "prior": 0.0003315314746369712,
+      "guesses": [
+        "sarti",
+        "colma",
+        "padre",
+        "carne"
+      ]
+    },
+    {
+      "word": "sgoli",
+      "num_guesses": 5,
+      "prior": 0.000057892459961473376,
+      "guesses": [
+        "sarti",
+        "clone",
+        "suoli",
+        "svoli",
+        "sgoli"
+      ]
+    },
+    {
+      "word": "nomea",
+      "num_guesses": 3,
+      "prior": 0.00012567793316655844,
+      "guesses": [
+        "sarti",
+        "clone",
+        "nomea"
+      ]
+    },
+    {
+      "word": "tallì",
+      "num_guesses": 3,
+      "prior": 0.000047665013269343955,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "tallì"
+      ]
+    },
+    {
+      "word": "trinò",
+      "num_guesses": 3,
+      "prior": 0.00003506409231167388,
+      "guesses": [
+        "sarti",
+        "entro",
+        "trinò"
+      ]
+    },
+    {
+      "word": "pannò",
+      "num_guesses": 4,
+      "prior": 0.000043938144171505556,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugna",
+        "pannò"
+      ]
+    },
+    {
+      "word": "renio",
+      "num_guesses": 3,
+      "prior": 0.00009557778884686391,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "renio"
+      ]
+    },
+    {
+      "word": "busso",
+      "num_guesses": 4,
+      "prior": 0.00013135952700910015,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "lusso",
+        "busso"
+      ]
+    },
+    {
+      "word": "brado",
+      "num_guesses": 3,
+      "prior": 0.00012174223180249074,
+      "guesses": [
+        "sarti",
+        "brode",
+        "brado"
+      ]
+    },
+    {
+      "word": "felpe",
+      "num_guesses": 3,
+      "prior": 0.0001003917960313588,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "felpe"
+      ]
+    },
+    {
+      "word": "stani",
+      "num_guesses": 3,
+      "prior": 0.0001032201573654146,
+      "guesses": [
+        "sarti",
+        "vinse",
+        "stani"
+      ]
+    },
+    {
+      "word": "bleso",
+      "num_guesses": 4,
+      "prior": 0.00010089148188268974,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "pulci",
+        "bleso"
+      ]
+    },
+    {
+      "word": "eviti",
+      "num_guesses": 4,
+      "prior": 0.00015127116314934125,
+      "guesses": [
+        "sarti",
+        "tonte",
+        "lieve",
+        "eviti"
+      ]
+    },
+    {
+      "word": "dardo",
+      "num_guesses": 4,
+      "prior": 0.00017539776463341286,
+      "guesses": [
+        "sarti",
+        "colma",
+        "bande",
+        "dardo"
+      ]
+    },
+    {
+      "word": "orafo",
+      "num_guesses": 4,
+      "prior": 0.00015135688070308864,
+      "guesses": [
+        "sarti",
+        "brode",
+        "fogno",
+        "orafo"
+      ]
+    },
+    {
+      "word": "lacca",
+      "num_guesses": 3,
+      "prior": 0.00016721749597230763,
+      "guesses": [
+        "sarti",
+        "colme",
+        "lacca"
+      ]
+    },
+    {
+      "word": "alleo",
+      "num_guesses": 4,
+      "prior": 0.00007485626791131195,
+      "guesses": [
+        "sarti",
+        "clone",
+        "alveo",
+        "alleo"
+      ]
+    },
+    {
+      "word": "yemen",
+      "num_guesses": 4,
+      "prior": 0.00015293272611838763,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fendé",
+        "yemen"
+      ]
+    },
+    {
+      "word": "sigma",
+      "num_guesses": 4,
+      "prior": 0.00015348921901879622,
+      "guesses": [
+        "sarti",
+        "pegno",
+        "sigla",
+        "sigma"
+      ]
+    },
+    {
+      "word": "varia",
+      "num_guesses": 3,
+      "prior": 0.00031339561322594117,
+      "guesses": [
+        "sarti",
+        "coeva",
+        "varia"
+      ]
+    },
+    {
+      "word": "adulo",
+      "num_guesses": 4,
+      "prior": 0.00008003467525938118,
+      "guesses": [
+        "sarti",
+        "clone",
+        "polla",
+        "adulo"
+      ]
+    },
+    {
+      "word": "fruca",
+      "num_guesses": 5,
+      "prior": 0.00005247606211579396,
+      "guesses": [
+        "sarti",
+        "brode",
+        "pugna",
+        "arcua",
+        "fruca"
+      ]
+    },
+    {
+      "word": "trovi",
+      "num_guesses": 3,
+      "prior": 0.0002908705607236231,
+      "guesses": [
+        "sarti",
+        "entro",
+        "trovi"
+      ]
+    },
+    {
+      "word": "fieno",
+      "num_guesses": 4,
+      "prior": 0.00023064453452473218,
+      "guesses": [
+        "sarti",
+        "clone",
+        "pieno",
+        "fieno"
+      ]
+    },
+    {
+      "word": "spazi",
+      "num_guesses": 4,
+      "prior": 0.0002966091320760783,
+      "guesses": [
+        "sarti",
+        "clave",
+        "punse",
+        "spazi"
+      ]
+    },
+    {
+      "word": "orcio",
+      "num_guesses": 4,
+      "prior": 0.00011988346391415722,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "rodio",
+        "orcio"
+      ]
+    },
+    {
+      "word": "etile",
+      "num_guesses": 3,
+      "prior": 0.00014548362262294096,
+      "guesses": [
+        "sarti",
+        "leone",
+        "etile"
+      ]
+    },
+    {
+      "word": "rezzo",
+      "num_guesses": 4,
+      "prior": 0.00014473099214286475,
+      "guesses": [
+        "sarti",
+        "drone",
+        "lombo",
+        "rezzo"
+      ]
+    },
+    {
+      "word": "moina",
+      "num_guesses": 4,
+      "prior": 0.0000979485764667769,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "opina",
+        "moina"
+      ]
+    },
+    {
+      "word": "forte",
+      "num_guesses": 4,
+      "prior": 0.000425165094981034,
+      "guesses": [
+        "sarti",
+        "mosce",
+        "tonfo",
+        "forte"
+      ]
+    },
+    {
+      "word": "biomi",
+      "num_guesses": 5,
+      "prior": 0.00006446239840350799,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "muovo",
+        "gnomi",
+        "biomi"
+      ]
+    },
+    {
+      "word": "gazza",
+      "num_guesses": 5,
+      "prior": 0.00014569667928674101,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugna",
+        "forza",
+        "gazza"
+      ]
+    },
+    {
+      "word": "siedo",
+      "num_guesses": 3,
+      "prior": 0.0001545755415542645,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "siedo"
+      ]
+    },
+    {
+      "word": "nenia",
+      "num_guesses": 4,
+      "prior": 0.00013509983767474827,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "meava",
+        "nenia"
+      ]
+    },
+    {
+      "word": "lungò",
+      "num_guesses": 4,
+      "prior": 0.00005872726574071242,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "bluff",
+        "lungò"
+      ]
+    },
+    {
+      "word": "casca",
+      "num_guesses": 4,
+      "prior": 0.0001571303112527689,
+      "guesses": [
+        "sarti",
+        "losca",
+        "viene",
+        "casca"
+      ]
+    },
+    {
+      "word": "faide",
+      "num_guesses": 4,
+      "prior": 0.00011568615126348927,
+      "guesses": [
+        "sarti",
+        "colma",
+        "badie",
+        "faide"
+      ]
+    },
+    {
+      "word": "boero",
+      "num_guesses": 4,
+      "prior": 0.00012901629781953677,
+      "guesses": [
+        "sarti",
+        "drone",
+        "lombo",
+        "boero"
+      ]
+    },
+    {
+      "word": "tardi",
+      "num_guesses": 3,
+      "prior": 0.00037091450371609533,
+      "guesses": [
+        "sarti",
+        "modal",
+        "tardi"
+      ]
+    },
+    {
+      "word": "ranno",
+      "num_guesses": 4,
+      "prior": 0.00017947613902830428,
+      "guesses": [
+        "sarti",
+        "monca",
+        "rango",
+        "ranno"
+      ]
+    },
+    {
+      "word": "dovei",
+      "num_guesses": 4,
+      "prior": 0.00012131791879146137,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "green",
+        "dovei"
+      ]
+    },
+    {
+      "word": "smela",
+      "num_guesses": 5,
+      "prior": 0.00005860705882120954,
+      "guesses": [
+        "sarti",
+        "clone",
+        "selva",
+        "sgela",
+        "smela"
+      ]
+    },
+    {
+      "word": "crews",
+      "num_guesses": 3,
+      "prior": 0.00006790475931417731,
+      "guesses": [
+        "sarti",
+        "preso",
+        "crews"
+      ]
+    },
+    {
+      "word": "spumo",
+      "num_guesses": 4,
+      "prior": 0.00004722793211513139,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfumo",
+        "spumo"
+      ]
+    },
+    {
+      "word": "coeva",
+      "num_guesses": 3,
+      "prior": 0.00018042491181283898,
+      "guesses": [
+        "sarti",
+        "clone",
+        "coeva"
+      ]
+    },
+    {
+      "word": "tolga",
+      "num_guesses": 3,
+      "prior": 0.0001917436217500339,
+      "guesses": [
+        "sarti",
+        "mungo",
+        "tolga"
+      ]
+    },
+    {
+      "word": "muori",
+      "num_guesses": 5,
+      "prior": 0.00014395316247745745,
+      "guesses": [
+        "sarti",
+        "prone",
+        "fuoco",
+        "ruoli",
+        "muori"
+      ]
+    },
+    {
+      "word": "emulò",
+      "num_guesses": 4,
+      "prior": 0.00010473737859026001,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "lumen",
+        "emulò"
+      ]
+    },
+    {
+      "word": "gobbo",
+      "num_guesses": 4,
+      "prior": 0.00016905620415471668,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "manzo",
+        "gobbo"
+      ]
+    },
+    {
+      "word": "scalo",
+      "num_guesses": 3,
+      "prior": 0.0001966599049757567,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scalo"
+      ]
+    },
+    {
+      "word": "saghe",
+      "num_guesses": 3,
+      "prior": 0.00012864179179225202,
+      "guesses": [
+        "sarti",
+        "volga",
+        "saghe"
+      ]
+    },
+    {
+      "word": "farai",
+      "num_guesses": 4,
+      "prior": 0.00021970138384347097,
+      "guesses": [
+        "sarti",
+        "manda",
+        "irpef",
+        "farai"
+      ]
+    },
+    {
+      "word": "calda",
+      "num_guesses": 4,
+      "prior": 0.00027389199636297597,
+      "guesses": [
+        "sarti",
+        "colme",
+        "zecca",
+        "calda"
+      ]
+    },
+    {
+      "word": "hobby",
+      "num_guesses": 4,
+      "prior": 0.00014541256149629484,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "manzo",
+        "hobby"
+      ]
+    },
+    {
+      "word": "iridò",
+      "num_guesses": 3,
+      "prior": 0.00003307056702272269,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "iridò"
+      ]
+    },
+    {
+      "word": "prive",
+      "num_guesses": 5,
+      "prior": 0.000242504632309231,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "drupe",
+        "prime",
+        "prive"
+      ]
+    },
+    {
+      "word": "guppy",
+      "num_guesses": 3,
+      "prior": 0.00009295596555097685,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "guppy"
+      ]
+    },
+    {
+      "word": "lorde",
+      "num_guesses": 4,
+      "prior": 0.00016261596045912119,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "dorme",
+        "lorde"
+      ]
+    },
+    {
+      "word": "della",
+      "num_guesses": 3,
+      "prior": 0.0009347213190304682,
+      "guesses": [
+        "sarti",
+        "clone",
+        "della"
+      ]
+    },
+    {
+      "word": "zilli",
+      "num_guesses": 5,
+      "prior": 0.00010708934908383743,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "bulli",
+        "villi",
+        "zilli"
+      ]
+    },
+    {
+      "word": "proso",
+      "num_guesses": 3,
+      "prior": 0.00009049599496623586,
+      "guesses": [
+        "sarti",
+        "preso",
+        "proso"
+      ]
+    },
+    {
+      "word": "fatta",
+      "num_guesses": 4,
+      "prior": 0.0004463285789352312,
+      "guesses": [
+        "sarti",
+        "monca",
+        "bluff",
+        "fatta"
+      ]
+    },
+    {
+      "word": "largò",
+      "num_guesses": 3,
+      "prior": 0.000057492572419514374,
+      "guesses": [
+        "sarti",
+        "colma",
+        "largò"
+      ]
+    },
+    {
+      "word": "putto",
+      "num_guesses": 3,
+      "prior": 0.00017080652377950915,
+      "guesses": [
+        "sarti",
+        "tolte",
+        "putto"
+      ]
+    },
+    {
+      "word": "pitta",
+      "num_guesses": 5,
+      "prior": 0.00011685315094583866,
+      "guesses": [
+        "sarti",
+        "evada",
+        "finca",
+        "puzzo",
+        "pitta"
+      ]
+    },
+    {
+      "word": "cuoci",
+      "num_guesses": 3,
+      "prior": 0.0001023021648531549,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "cuoci"
+      ]
+    },
+    {
+      "word": "tandu",
+      "num_guesses": 4,
+      "prior": 0.0000632838615495391,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "tuona",
+        "tandu"
+      ]
+    },
+    {
+      "word": "terrà",
+      "num_guesses": 3,
+      "prior": 0.00022908101324828318,
+      "guesses": [
+        "sarti",
+        "bonze",
+        "terrà"
+      ]
+    },
+    {
+      "word": "prati",
+      "num_guesses": 3,
+      "prior": 0.000257589531949247,
+      "guesses": [
+        "sarti",
+        "irpef",
+        "prati"
+      ]
+    },
+    {
+      "word": "auggi",
+      "num_guesses": 5,
+      "prior": 0.00003694464442040384,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umidi",
+        "abbui",
+        "auggi"
+      ]
+    },
+    {
+      "word": "balle",
+      "num_guesses": 4,
+      "prior": 0.00019008702878873154,
+      "guesses": [
+        "sarti",
+        "colme",
+        "dobla",
+        "balle"
+      ]
+    },
+    {
+      "word": "cuttì",
+      "num_guesses": 4,
+      "prior": 0.00004074790728576004,
+      "guesses": [
+        "sarti",
+        "tolte",
+        "buttò",
+        "cuttì"
+      ]
+    },
+    {
+      "word": "clock",
+      "num_guesses": 4,
+      "prior": 0.00011520784265793429,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "danno",
+        "clock"
+      ]
+    },
+    {
+      "word": "grevi",
+      "num_guesses": 4,
+      "prior": 0.0001435835521805695,
+      "guesses": [
+        "sarti",
+        "prone",
+        "greve",
+        "grevi"
+      ]
+    },
+    {
+      "word": "hotel",
+      "num_guesses": 3,
+      "prior": 0.00022719185455206655,
+      "guesses": [
+        "sarti",
+        "tonde",
+        "hotel"
+      ]
+    },
+    {
+      "word": "cullo",
+      "num_guesses": 3,
+      "prior": 0.00011855120772814195,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "cullo"
+      ]
+    },
+    {
+      "word": "cedri",
+      "num_guesses": 4,
+      "prior": 0.00016044787022560992,
+      "guesses": [
+        "sarti",
+        "prone",
+        "iberi",
+        "cedri"
+      ]
+    },
+    {
+      "word": "sfidi",
+      "num_guesses": 4,
+      "prior": 0.00009984696066751984,
+      "guesses": [
+        "sarti",
+        "clone",
+        "smisi",
+        "sfidi"
+      ]
+    },
+    {
+      "word": "ratea",
+      "num_guesses": 3,
+      "prior": 0.00006594150927422827,
+      "guesses": [
+        "sarti",
+        "lotta",
+        "ratea"
+      ]
+    },
+    {
+      "word": "versò",
+      "num_guesses": 3,
+      "prior": 0.000184725803908447,
+      "guesses": [
+        "sarti",
+        "pomfo",
+        "versò"
+      ]
+    },
+    {
+      "word": "regge",
+      "num_guesses": 4,
+      "prior": 0.0002494203719831784,
+      "guesses": [
+        "sarti",
+        "drone",
+        "plebe",
+        "regge"
+      ]
+    },
+    {
+      "word": "fesso",
+      "num_guesses": 5,
+      "prior": 0.0001537650322575213,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "ganci",
+        "figli",
+        "fesso"
+      ]
+    },
+    {
+      "word": "perse",
+      "num_guesses": 3,
+      "prior": 0.00021584758191488192,
+      "guesses": [
+        "sarti",
+        "pomfo",
+        "perse"
+      ]
+    },
+    {
+      "word": "unire",
+      "num_guesses": 4,
+      "prior": 0.00023481910329530183,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "drupe",
+        "unire"
+      ]
+    },
+    {
+      "word": "rocca",
+      "num_guesses": 4,
+      "prior": 0.0002856506519531072,
+      "guesses": [
+        "sarti",
+        "brode",
+        "monca",
+        "rocca"
+      ]
+    },
+    {
+      "word": "fremi",
+      "num_guesses": 5,
+      "prior": 0.00010015390552271209,
+      "guesses": [
+        "sarti",
+        "prone",
+        "greve",
+        "credi",
+        "fremi"
+      ]
+    },
+    {
+      "word": "pravo",
+      "num_guesses": 4,
+      "prior": 0.00013007247605305398,
+      "guesses": [
+        "sarti",
+        "brode",
+        "fogno",
+        "pravo"
+      ]
+    },
+    {
+      "word": "bimbi",
+      "num_guesses": 4,
+      "prior": 0.00020255853658934293,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fingi",
+        "bimbi"
+      ]
+    },
+    {
+      "word": "agute",
+      "num_guesses": 4,
+      "prior": 0.00007713683189114827,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "curva",
+        "agute"
+      ]
+    },
+    {
+      "word": "lunai",
+      "num_guesses": 3,
+      "prior": 0.00005930121441753384,
+      "guesses": [
+        "sarti",
+        "anale",
+        "lunai"
+      ]
+    },
+    {
+      "word": "verna",
+      "num_guesses": 4,
+      "prior": 0.00016232803991046702,
+      "guesses": [
+        "sarti",
+        "colme",
+        "degne",
+        "verna"
+      ]
+    },
+    {
+      "word": "avvii",
+      "num_guesses": 4,
+      "prior": 0.00012043975813616983,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umidi",
+        "avvii"
+      ]
+    },
+    {
+      "word": "vedrò",
+      "num_guesses": 4,
+      "prior": 0.00019397972018767793,
+      "guesses": [
+        "sarti",
+        "drone",
+        "vedrà",
+        "vedrò"
+      ]
+    },
+    {
+      "word": "atati",
+      "num_guesses": 5,
+      "prior": 0.00007567949550458942,
+      "guesses": [
+        "sarti",
+        "abile",
+        "giace",
+        "amati",
+        "atati"
+      ]
+    },
+    {
+      "word": "palpò",
+      "num_guesses": 4,
+      "prior": 0.00009710919318012588,
+      "guesses": [
+        "sarti",
+        "colme",
+        "dobla",
+        "palpò"
+      ]
+    },
+    {
+      "word": "falso",
+      "num_guesses": 3,
+      "prior": 0.00030989316722234285,
+      "guesses": [
+        "sarti",
+        "losca",
+        "falso"
+      ]
+    },
+    {
+      "word": "amide",
+      "num_guesses": 3,
+      "prior": 0.0001074442937248082,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "amide"
+      ]
+    },
+    {
+      "word": "ogiva",
+      "num_guesses": 4,
+      "prior": 0.00011336333465856278,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "golia",
+        "ogiva"
+      ]
+    },
+    {
+      "word": "ferri",
+      "num_guesses": 3,
+      "prior": 0.0002623823803774719,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "ferri"
+      ]
+    },
+    {
+      "word": "arida",
+      "num_guesses": 3,
+      "prior": 0.00018700272902819181,
+      "guesses": [
+        "sarti",
+        "gride",
+        "arida"
+      ]
+    },
+    {
+      "word": "agiti",
+      "num_guesses": 4,
+      "prior": 0.00013478490508878985,
+      "guesses": [
+        "sarti",
+        "abile",
+        "venga",
+        "agiti"
+      ]
+    },
+    {
+      "word": "fighi",
+      "num_guesses": 4,
+      "prior": 0.0000941356674886268,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fingi",
+        "fighi"
+      ]
+    },
+    {
+      "word": "duomi",
+      "num_guesses": 4,
+      "prior": 0.00009180465448204215,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "muovo",
+        "duomi"
+      ]
+    },
+    {
+      "word": "muggì",
+      "num_guesses": 4,
+      "prior": 0.00008076916564883057,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fuggì",
+        "muggì"
+      ]
+    },
+    {
+      "word": "teste",
+      "num_guesses": 4,
+      "prior": 0.00028419624409507137,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "élite",
+        "teste"
+      ]
+    },
+    {
+      "word": "cavea",
+      "num_guesses": 3,
+      "prior": 0.0001487422917710378,
+      "guesses": [
+        "sarti",
+        "colme",
+        "cavea"
+      ]
+    },
+    {
+      "word": "bullo",
+      "num_guesses": 4,
+      "prior": 0.00013352070992843647,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "verbo",
+        "bullo"
+      ]
+    },
+    {
+      "word": "fallì",
+      "num_guesses": 4,
+      "prior": 0.0001584631594113901,
+      "guesses": [
+        "sarti",
+        "colme",
+        "dobla",
+        "fallì"
+      ]
+    },
+    {
+      "word": "malte",
+      "num_guesses": 3,
+      "prior": 0.00015723994963542655,
+      "guesses": [
+        "sarti",
+        "monca",
+        "malte"
+      ]
+    },
+    {
+      "word": "licia",
+      "num_guesses": 4,
+      "prior": 0.00015725754621766163,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "piace",
+        "licia"
+      ]
+    },
+    {
+      "word": "tersa",
+      "num_guesses": 2,
+      "prior": 0.0001465901675135234,
+      "guesses": [
+        "sarti",
+        "tersa"
+      ]
+    },
+    {
+      "word": "rotti",
+      "num_guesses": 3,
+      "prior": 0.00020817186688056486,
+      "guesses": [
+        "sarti",
+        "erulo",
+        "rotti"
+      ]
+    },
+    {
+      "word": "gusta",
+      "num_guesses": 4,
+      "prior": 0.0001542856726446605,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "busta",
+        "gusta"
+      ]
+    },
+    {
+      "word": "soldi",
+      "num_guesses": 4,
+      "prior": 0.0003090652074574175,
+      "guesses": [
+        "sarti",
+        "clone",
+        "falde",
+        "soldi"
+      ]
+    },
+    {
+      "word": "satto",
+      "num_guesses": 3,
+      "prior": 0.00012256932633908789,
+      "guesses": [
+        "sarti",
+        "alano",
+        "satto"
+      ]
+    },
+    {
+      "word": "altea",
+      "num_guesses": 3,
+      "prior": 0.0001341059729309046,
+      "guesses": [
+        "sarti",
+        "mungo",
+        "altea"
+      ]
+    },
+    {
+      "word": "boato",
+      "num_guesses": 3,
+      "prior": 0.00015043896040283162,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "boato"
+      ]
+    },
+    {
+      "word": "agorà",
+      "num_guesses": 4,
+      "prior": 0.00012784982704608426,
+      "guesses": [
+        "sarti",
+        "brode",
+        "fauna",
+        "agorà"
+      ]
+    },
+    {
+      "word": "bramo",
+      "num_guesses": 4,
+      "prior": 0.00016796540507211952,
+      "guesses": [
+        "sarti",
+        "brode",
+        "nuovo",
+        "bramo"
+      ]
+    },
+    {
+      "word": "frale",
+      "num_guesses": 4,
+      "prior": 0.00015146315405023335,
+      "guesses": [
+        "sarti",
+        "brode",
+        "angla",
+        "frale"
+      ]
+    },
+    {
+      "word": "svaga",
+      "num_guesses": 4,
+      "prior": 0.00008288929824877645,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfuma",
+        "svaga"
+      ]
+    },
+    {
+      "word": "svilì",
+      "num_guesses": 4,
+      "prior": 0.00005618938671825893,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "giovò",
+        "svilì"
+      ]
+    },
+    {
+      "word": "lucra",
+      "num_guesses": 4,
+      "prior": 0.00010940071259911963,
+      "guesses": [
+        "sarti",
+        "brode",
+        "vulga",
+        "lucra"
+      ]
+    },
+    {
+      "word": "gemei",
+      "num_guesses": 4,
+      "prior": 0.00006936603138001752,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "gemei"
+      ]
+    },
+    {
+      "word": "tocca",
+      "num_guesses": 4,
+      "prior": 0.0002850278330208797,
+      "guesses": [
+        "sarti",
+        "mungo",
+        "colpa",
+        "tocca"
+      ]
+    },
+    {
+      "word": "quoti",
+      "num_guesses": 4,
+      "prior": 0.000121050138594267,
+      "guesses": [
+        "sarti",
+        "tonte",
+        "vibri",
+        "quoti"
+      ]
+    },
+    {
+      "word": "targa",
+      "num_guesses": 3,
+      "prior": 0.0001895833772822948,
+      "guesses": [
+        "sarti",
+        "dolga",
+        "targa"
+      ]
+    },
+    {
+      "word": "circi",
+      "num_guesses": 4,
+      "prior": 0.00010209330029982967,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "curvi",
+        "circi"
+      ]
+    },
+    {
+      "word": "sbafò",
+      "num_guesses": 4,
+      "prior": 0.00004650655597804781,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfuma",
+        "sbafò"
+      ]
+    },
+    {
+      "word": "esdra",
+      "num_guesses": 3,
+      "prior": 0.0001503731057094536,
+      "guesses": [
+        "sarti",
+        "opera",
+        "esdra"
+      ]
+    },
+    {
+      "word": "criai",
+      "num_guesses": 4,
+      "prior": 0.000055014291834411765,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "creai",
+        "criai"
+      ]
+    },
+    {
+      "word": "diesa",
+      "num_guesses": 4,
+      "prior": 0.00007714130048299214,
+      "guesses": [
+        "sarti",
+        "asilo",
+        "fasce",
+        "diesa"
+      ]
+    },
+    {
+      "word": "stime",
+      "num_guesses": 3,
+      "prior": 0.0002056767037404127,
+      "guesses": [
+        "sarti",
+        "emulo",
+        "stime"
+      ]
+    },
+    {
+      "word": "cinse",
+      "num_guesses": 3,
+      "prior": 0.0001710674550588263,
+      "guesses": [
+        "sarti",
+        "cosse",
+        "cinse"
+      ]
+    },
+    {
+      "word": "felci",
+      "num_guesses": 3,
+      "prior": 0.00015509801644079843,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "felci"
+      ]
+    },
+    {
+      "word": "doblo",
+      "num_guesses": 4,
+      "prior": 0.0000464726837236148,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "lombo",
+        "doblo"
+      ]
+    },
+    {
+      "word": "fiore",
+      "num_guesses": 3,
+      "prior": 0.000303955728588558,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "fiore"
+      ]
+    },
+    {
+      "word": "masse",
+      "num_guesses": 4,
+      "prior": 0.0003019186609497287,
+      "guesses": [
+        "sarti",
+        "losca",
+        "enpam",
+        "masse"
+      ]
+    },
+    {
+      "word": "dorai",
+      "num_guesses": 3,
+      "prior": 0.00007145110213085227,
+      "guesses": [
+        "sarti",
+        "video",
+        "dorai"
+      ]
+    },
+    {
+      "word": "novai",
+      "num_guesses": 5,
+      "prior": 0.000051043737027134363,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umido",
+        "fonai",
+        "novai"
+      ]
+    },
+    {
+      "word": "ilote",
+      "num_guesses": 4,
+      "prior": 0.00005136595032269554,
+      "guesses": [
+        "sarti",
+        "ovine",
+        "piote",
+        "ilote"
+      ]
+    },
+    {
+      "word": "avito",
+      "num_guesses": 3,
+      "prior": 0.00015571217457845406,
+      "guesses": [
+        "sarti",
+        "evada",
+        "avito"
+      ]
+    },
+    {
+      "word": "guati",
+      "num_guesses": 4,
+      "prior": 0.00011085699113166698,
+      "guesses": [
+        "sarti",
+        "abile",
+        "fuoco",
+        "guati"
+      ]
+    },
+    {
+      "word": "ferza",
+      "num_guesses": 5,
+      "prior": 0.00010406616884930955,
+      "guesses": [
+        "sarti",
+        "colme",
+        "degne",
+        "ferra",
+        "ferza"
+      ]
+    },
+    {
+      "word": "chili",
+      "num_guesses": 4,
+      "prior": 0.00020323029980381024,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "miche",
+        "chili"
+      ]
+    },
+    {
+      "word": "orgia",
+      "num_guesses": 3,
+      "prior": 0.00014196264433525286,
+      "guesses": [
+        "sarti",
+        "gride",
+        "orgia"
+      ]
+    },
+    {
+      "word": "fonde",
+      "num_guesses": 4,
+      "prior": 0.0002052468031199112,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "degne",
+        "fonde"
+      ]
+    },
+    {
+      "word": "punch",
+      "num_guesses": 3,
+      "prior": 0.00012909443979397203,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "punch"
+      ]
+    },
+    {
+      "word": "ciuco",
+      "num_guesses": 4,
+      "prior": 0.0001204780831643012,
+      "guesses": [
+        "sarti",
+        "clone",
+        "picco",
+        "ciuco"
+      ]
+    },
+    {
+      "word": "gesto",
+      "num_guesses": 4,
+      "prior": 0.00029277325331850053,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "gladi",
+        "gesto"
+      ]
+    },
+    {
+      "word": "grafo",
+      "num_guesses": 4,
+      "prior": 0.0001444486269045862,
+      "guesses": [
+        "sarti",
+        "brode",
+        "fogno",
+        "grafo"
+      ]
+    },
+    {
+      "word": "segga",
+      "num_guesses": 5,
+      "prior": 0.00012068241006635002,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spesa",
+        "segua",
+        "segga"
+      ]
+    },
+    {
+      "word": "porca",
+      "num_guesses": 4,
+      "prior": 0.0001542574598563981,
+      "guesses": [
+        "sarti",
+        "colme",
+        "forca",
+        "porca"
+      ]
+    },
+    {
+      "word": "malga",
+      "num_guesses": 4,
+      "prior": 0.00013681721062691103,
+      "guesses": [
+        "sarti",
+        "colme",
+        "malva",
+        "malga"
+      ]
+    },
+    {
+      "word": "amolo",
+      "num_guesses": 4,
+      "prior": 0.00006568002920261077,
+      "guesses": [
+        "sarti",
+        "clone",
+        "azolo",
+        "amolo"
+      ]
+    },
+    {
+      "word": "infio",
+      "num_guesses": 5,
+      "prior": 0.000056125751915389824,
+      "guesses": [
+        "sarti",
+        "clone",
+        "bivio",
+        "indio",
+        "infio"
+      ]
+    },
+    {
+      "word": "drogò",
+      "num_guesses": 4,
+      "prior": 0.00004341647527099236,
+      "guesses": [
+        "sarti",
+        "drone",
+        "drogo",
+        "drogò"
+      ]
+    },
+    {
+      "word": "alose",
+      "num_guesses": 3,
+      "prior": 0.00007547581839844822,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "alose"
+      ]
+    },
+    {
+      "word": "zeppi",
+      "num_guesses": 3,
+      "prior": 0.0001311965143961264,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "zeppi"
+      ]
+    },
+    {
+      "word": "diede",
+      "num_guesses": 4,
+      "prior": 0.00036056404432610535,
+      "guesses": [
+        "sarti",
+        "clone",
+        "debug",
+        "diede"
+      ]
+    },
+    {
+      "word": "libra",
+      "num_guesses": 4,
+      "prior": 0.00018382749825182837,
+      "guesses": [
+        "sarti",
+        "gride",
+        "cifra",
+        "libra"
+      ]
+    },
+    {
+      "word": "gechi",
+      "num_guesses": 5,
+      "prior": 0.00007939998999760359,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "dieci",
+        "ecchi",
+        "gechi"
+      ]
+    },
+    {
+      "word": "fugge",
+      "num_guesses": 4,
+      "prior": 0.00022588498381632377,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "bugne",
+        "fugge"
+      ]
+    },
+    {
+      "word": "canni",
+      "num_guesses": 5,
+      "prior": 0.00009950232093485528,
+      "guesses": [
+        "sarti",
+        "calma",
+        "punch",
+        "cangi",
+        "canni"
+      ]
+    },
+    {
+      "word": "bulle",
+      "num_guesses": 4,
+      "prior": 0.00012859900985375566,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "bulle"
+      ]
+    },
+    {
+      "word": "amici",
+      "num_guesses": 4,
+      "prior": 0.000382558530786876,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umidi",
+        "amici"
+      ]
+    },
+    {
+      "word": "canto",
+      "num_guesses": 3,
+      "prior": 0.0003749931993189894,
+      "guesses": [
+        "sarti",
+        "monca",
+        "canto"
+      ]
+    },
+    {
+      "word": "stage",
+      "num_guesses": 3,
+      "prior": 0.00015813762129210235,
+      "guesses": [
+        "sarti",
+        "nuove",
+        "stage"
+      ]
+    },
+    {
+      "word": "cameo",
+      "num_guesses": 3,
+      "prior": 0.00010823743887689542,
+      "guesses": [
+        "sarti",
+        "colme",
+        "cameo"
+      ]
+    },
+    {
+      "word": "tarpi",
+      "num_guesses": 3,
+      "prior": 0.00006730641955018253,
+      "guesses": [
+        "sarti",
+        "modal",
+        "tarpi"
+      ]
+    },
+    {
+      "word": "liceo",
+      "num_guesses": 3,
+      "prior": 0.000254382275439449,
+      "guesses": [
+        "sarti",
+        "clone",
+        "liceo"
+      ]
+    },
+    {
+      "word": "laudi",
+      "num_guesses": 4,
+      "prior": 0.00019109154452139697,
+      "guesses": [
+        "sarti",
+        "calma",
+        "dugli",
+        "laudi"
+      ]
+    },
+    {
+      "word": "irerà",
+      "num_guesses": 4,
+      "prior": 0.000034852209165160836,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "irpef",
+        "irerà"
+      ]
+    },
+    {
+      "word": "cornò",
+      "num_guesses": 4,
+      "prior": 0.00006340180092037929,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "corcò",
+        "cornò"
+      ]
+    },
+    {
+      "word": "stame",
+      "num_guesses": 4,
+      "prior": 0.00014383025758315214,
+      "guesses": [
+        "sarti",
+        "nuove",
+        "stage",
+        "stame"
+      ]
+    },
+    {
+      "word": "bozza",
+      "num_guesses": 4,
+      "prior": 0.0001865603514369224,
+      "guesses": [
+        "sarti",
+        "clone",
+        "zampa",
+        "bozza"
+      ]
+    },
+    {
+      "word": "strie",
+      "num_guesses": 3,
+      "prior": 0.0001870047991065625,
+      "guesses": [
+        "sarti",
+        "opera",
+        "strie"
+      ]
+    },
+    {
+      "word": "tonfi",
+      "num_guesses": 4,
+      "prior": 0.00012246469332093945,
+      "guesses": [
+        "sarti",
+        "leone",
+        "tondi",
+        "tonfi"
+      ]
+    },
+    {
+      "word": "siulp",
+      "num_guesses": 4,
+      "prior": 0.00006807506016319608,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "giovò",
+        "siulp"
+      ]
+    },
+    {
+      "word": "lauro",
+      "num_guesses": 4,
+      "prior": 0.00021394728856101772,
+      "guesses": [
+        "sarti",
+        "monca",
+        "ladro",
+        "lauro"
+      ]
+    },
+    {
+      "word": "dovrò",
+      "num_guesses": 4,
+      "prior": 0.00021328607073237433,
+      "guesses": [
+        "sarti",
+        "drone",
+        "dovrà",
+        "dovrò"
+      ]
+    },
+    {
+      "word": "colgo",
+      "num_guesses": 4,
+      "prior": 0.00015621304084595595,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "mollo",
+        "colgo"
+      ]
+    },
+    {
+      "word": "tinse",
+      "num_guesses": 3,
+      "prior": 0.00012669202411111634,
+      "guesses": [
+        "sarti",
+        "ostie",
+        "tinse"
+      ]
+    },
+    {
+      "word": "tappa",
+      "num_guesses": 3,
+      "prior": 0.00022225590767845882,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "tappa"
+      ]
+    },
+    {
+      "word": "montò",
+      "num_guesses": 4,
+      "prior": 0.00017527840634391347,
+      "guesses": [
+        "sarti",
+        "tolte",
+        "campo",
+        "montò"
+      ]
+    },
+    {
+      "word": "faune",
+      "num_guesses": 4,
+      "prior": 0.00015252883655496243,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugno",
+        "faune"
+      ]
+    },
+    {
+      "word": "cechi",
+      "num_guesses": 4,
+      "prior": 0.0001389857035293198,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "shunt",
+        "cechi"
+      ]
+    },
+    {
+      "word": "evase",
+      "num_guesses": 3,
+      "prior": 0.00010805351791497491,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "evase"
+      ]
+    },
+    {
+      "word": "soffi",
+      "num_guesses": 4,
+      "prior": 0.00014874326149006081,
+      "guesses": [
+        "sarti",
+        "clone",
+        "mafia",
+        "soffi"
+      ]
+    },
+    {
+      "word": "redox",
+      "num_guesses": 4,
+      "prior": 0.00009098607414640997,
+      "guesses": [
+        "sarti",
+        "drone",
+        "cedro",
+        "redox"
+      ]
+    },
+    {
+      "word": "cloro",
+      "num_guesses": 3,
+      "prior": 0.0002168466053665471,
+      "guesses": [
+        "sarti",
+        "drone",
+        "cloro"
+      ]
+    },
+    {
+      "word": "lappa",
+      "num_guesses": 4,
+      "prior": 0.00009698611621988362,
+      "guesses": [
+        "sarti",
+        "colme",
+        "landa",
+        "lappa"
+      ]
+    },
+    {
+      "word": "bacon",
+      "num_guesses": 4,
+      "prior": 0.00015770541137375703,
+      "guesses": [
+        "sarti",
+        "colme",
+        "bacco",
+        "bacon"
+      ]
+    },
+    {
+      "word": "anare",
+      "num_guesses": 4,
+      "prior": 0.00007591438064594145,
+      "guesses": [
+        "sarti",
+        "brode",
+        "malva",
+        "anare"
+      ]
+    },
+    {
+      "word": "tinto",
+      "num_guesses": 4,
+      "prior": 0.00017899921473344294,
+      "guesses": [
+        "sarti",
+        "ovine",
+        "fatto",
+        "tinto"
+      ]
+    },
+    {
+      "word": "calci",
+      "num_guesses": 5,
+      "prior": 0.00020113323723742194,
+      "guesses": [
+        "sarti",
+        "calma",
+        "dovrà",
+        "ciclo",
+        "calci"
+      ]
+    },
+    {
+      "word": "cenci",
+      "num_guesses": 4,
+      "prior": 0.00019318291342401483,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "shunt",
+        "cenci"
+      ]
+    },
+    {
+      "word": "latta",
+      "num_guesses": 4,
+      "prior": 0.00018681669499115718,
+      "guesses": [
+        "sarti",
+        "monca",
+        "bluff",
+        "latta"
+      ]
+    },
+    {
+      "word": "seggi",
+      "num_guesses": 5,
+      "prior": 0.0002034790949137413,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spese",
+        "luogo",
+        "seggi"
+      ]
+    },
+    {
+      "word": "fidai",
+      "num_guesses": 5,
+      "prior": 0.00009295172688948092,
+      "guesses": [
+        "sarti",
+        "anale",
+        "micio",
+        "dovrà",
+        "fidai"
+      ]
+    },
+    {
+      "word": "oblia",
+      "num_guesses": 4,
+      "prior": 0.00012502621900723585,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "ambia",
+        "oblia"
+      ]
+    },
+    {
+      "word": "lombi",
+      "num_guesses": 4,
+      "prior": 0.00016006453002394793,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fogli",
+        "lombi"
+      ]
+    },
+    {
+      "word": "rolli",
+      "num_guesses": 4,
+      "prior": 0.0001478289706179885,
+      "guesses": [
+        "sarti",
+        "prone",
+        "mogli",
+        "rolli"
+      ]
+    },
+    {
+      "word": "garzo",
+      "num_guesses": 5,
+      "prior": 0.00009623789853911051,
+      "guesses": [
+        "sarti",
+        "colma",
+        "bande",
+        "zarro",
+        "garzo"
+      ]
+    },
+    {
+      "word": "alari",
+      "num_guesses": 4,
+      "prior": 0.00014139759039702557,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "molto",
+        "alari"
+      ]
+    },
+    {
+      "word": "trite",
+      "num_guesses": 3,
+      "prior": 0.00012570455864092028,
+      "guesses": [
+        "sarti",
+        "ritto",
+        "trite"
+      ]
+    },
+    {
+      "word": "glosi",
+      "num_guesses": 4,
+      "prior": 0.00004475615939645237,
+      "guesses": [
+        "sarti",
+        "messo",
+        "volpe",
+        "glosi"
+      ]
+    },
+    {
+      "word": "tetre",
+      "num_guesses": 3,
+      "prior": 0.00013556726847506345,
+      "guesses": [
+        "sarti",
+        "onero",
+        "tetre"
+      ]
+    },
+    {
+      "word": "vanni",
+      "num_guesses": 5,
+      "prior": 0.00021683844715024138,
+      "guesses": [
+        "sarti",
+        "calma",
+        "punge",
+        "danni",
+        "vanni"
+      ]
+    },
+    {
+      "word": "india",
+      "num_guesses": 4,
+      "prior": 0.00025923896386135034,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "meava",
+        "india"
+      ]
+    },
+    {
+      "word": "trema",
+      "num_guesses": 3,
+      "prior": 0.00019669120598650824,
+      "guesses": [
+        "sarti",
+        "onera",
+        "trema"
+      ]
+    },
+    {
+      "word": "merse",
+      "num_guesses": 3,
+      "prior": 0.00011275128832947497,
+      "guesses": [
+        "sarti",
+        "pomfo",
+        "merse"
+      ]
+    },
+    {
+      "word": "scena",
+      "num_guesses": 3,
+      "prior": 0.00036592411519013104,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scena"
+      ]
+    },
+    {
+      "word": "wafer",
+      "num_guesses": 4,
+      "prior": 0.00008953202648279242,
+      "guesses": [
+        "sarti",
+        "monca",
+        "ladre",
+        "wafer"
+      ]
+    },
+    {
+      "word": "micio",
+      "num_guesses": 4,
+      "prior": 0.00012191031326413047,
+      "guesses": [
+        "sarti",
+        "clone",
+        "picco",
+        "micio"
+      ]
+    },
+    {
+      "word": "calmo",
+      "num_guesses": 3,
+      "prior": 0.00021826586170182538,
+      "guesses": [
+        "sarti",
+        "colme",
+        "calmo"
+      ]
+    },
+    {
+      "word": "squaw",
+      "num_guesses": 4,
+      "prior": 0.00008369467865434214,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfuma",
+        "squaw"
+      ]
+    },
+    {
+      "word": "epico",
+      "num_guesses": 3,
+      "prior": 0.00020594443488931188,
+      "guesses": [
+        "sarti",
+        "clone",
+        "epico"
+      ]
+    },
+    {
+      "word": "emule",
+      "num_guesses": 5,
+      "prior": 0.00011521592470913058,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "legge",
+        "elude",
+        "emule"
+      ]
+    },
+    {
+      "word": "esitò",
+      "num_guesses": 3,
+      "prior": 0.00020192810984943305,
+      "guesses": [
+        "sarti",
+        "volpe",
+        "esitò"
+      ]
+    },
+    {
+      "word": "lemmo",
+      "num_guesses": 5,
+      "prior": 0.00010894741758993786,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "mungo",
+        "lembo",
+        "lemmo"
+      ]
+    },
+    {
+      "word": "ceppe",
+      "num_guesses": 3,
+      "prior": 0.00007199517855637413,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "ceppe"
+      ]
+    },
+    {
+      "word": "baiai",
+      "num_guesses": 4,
+      "prior": 0.0000674904453177325,
+      "guesses": [
+        "sarti",
+        "calma",
+        "pigli",
+        "baiai"
+      ]
+    },
+    {
+      "word": "dolgo",
+      "num_guesses": 5,
+      "prior": 0.00013612478535621057,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "gambo",
+        "volgo",
+        "dolgo"
+      ]
+    },
+    {
+      "word": "vosco",
+      "num_guesses": 5,
+      "prior": 0.00010666370901383471,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "bluff",
+        "nosco",
+        "vosco"
+      ]
+    },
+    {
+      "word": "adulò",
+      "num_guesses": 4,
+      "prior": 0.00008518822512277383,
+      "guesses": [
+        "sarti",
+        "clone",
+        "vulva",
+        "adulò"
+      ]
+    },
+    {
+      "word": "tarlo",
+      "num_guesses": 3,
+      "prior": 0.00016276411944408787,
+      "guesses": [
+        "sarti",
+        "dolga",
+        "tarlo"
+      ]
+    },
+    {
+      "word": "genio",
+      "num_guesses": 3,
+      "prior": 0.0003336057607065752,
+      "guesses": [
+        "sarti",
+        "clone",
+        "genio"
+      ]
+    },
+    {
+      "word": "abusa",
+      "num_guesses": 3,
+      "prior": 0.00015440249397662774,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "abusa"
+      ]
+    },
+    {
+      "word": "guatò",
+      "num_guesses": 4,
+      "prior": 0.00009528592243221452,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "avana",
+        "guatò"
+      ]
+    },
+    {
+      "word": "ratie",
+      "num_guesses": 4,
+      "prior": 0.00006271128999819878,
+      "guesses": [
+        "sarti",
+        "ratio",
+        "ratia",
+        "ratie"
+      ]
+    },
+    {
+      "word": "merlo",
+      "num_guesses": 5,
+      "prior": 0.0001878513759211097,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "vigna",
+        "fermo",
+        "merlo"
+      ]
+    },
+    {
+      "word": "xhosa",
+      "num_guesses": 4,
+      "prior": 0.00007728375177478031,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "afosa",
+        "xhosa"
+      ]
+    },
+    {
+      "word": "conca",
+      "num_guesses": 3,
+      "prior": 0.00021658414035848511,
+      "guesses": [
+        "sarti",
+        "clone",
+        "conca"
+      ]
+    },
+    {
+      "word": "brasi",
+      "num_guesses": 4,
+      "prior": 0.00010998644863591085,
+      "guesses": [
+        "sarti",
+        "frasi",
+        "crasi",
+        "brasi"
+      ]
+    },
+    {
+      "word": "tengo",
+      "num_guesses": 3,
+      "prior": 0.00023295422573068903,
+      "guesses": [
+        "sarti",
+        "tonde",
+        "tengo"
+      ]
+    },
+    {
+      "word": "acumi",
+      "num_guesses": 4,
+      "prior": 0.00007165031833383441,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umidi",
+        "acumi"
+      ]
+    },
+    {
+      "word": "ambro",
+      "num_guesses": 4,
+      "prior": 0.00009816762641884023,
+      "guesses": [
+        "sarti",
+        "brode",
+        "ombra",
+        "ambro"
+      ]
+    },
+    {
+      "word": "debbi",
+      "num_guesses": 4,
+      "prior": 0.00014710665555546222,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "debbi"
+      ]
+    },
+    {
+      "word": "indie",
+      "num_guesses": 4,
+      "prior": 0.00023898351712992654,
+      "guesses": [
+        "sarti",
+        "clone",
+        "ginni",
+        "indie"
+      ]
+    },
+    {
+      "word": "calai",
+      "num_guesses": 3,
+      "prior": 0.00011241941784042815,
+      "guesses": [
+        "sarti",
+        "calma",
+        "calai"
+      ]
+    },
+    {
+      "word": "abusi",
+      "num_guesses": 3,
+      "prior": 0.0002530262206123175,
+      "guesses": [
+        "sarti",
+        "lusso",
+        "abusi"
+      ]
+    },
+    {
+      "word": "monie",
+      "num_guesses": 3,
+      "prior": 0.00009127056891314312,
+      "guesses": [
+        "sarti",
+        "clone",
+        "monie"
+      ]
+    },
+    {
+      "word": "scesi",
+      "num_guesses": 3,
+      "prior": 0.00019434953693380817,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scesi"
+      ]
+    },
+    {
+      "word": "bazze",
+      "num_guesses": 5,
+      "prior": 0.00006640360711327807,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugno",
+        "baffe",
+        "bazze"
+      ]
+    },
+    {
+      "word": "dotta",
+      "num_guesses": 5,
+      "prior": 0.00022670025754520972,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "punch",
+        "degli",
+        "dotta"
+      ]
+    },
+    {
+      "word": "borro",
+      "num_guesses": 4,
+      "prior": 0.0001358127741799086,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "burro",
+        "borro"
+      ]
+    },
+    {
+      "word": "ritto",
+      "num_guesses": 2,
+      "prior": 0.00020628335736454055,
+      "guesses": [
+        "sarti",
+        "ritto"
+      ]
+    },
+    {
+      "word": "crepe",
+      "num_guesses": 4,
+      "prior": 0.00015342245378538336,
+      "guesses": [
+        "sarti",
+        "drone",
+        "cambi",
+        "crepe"
+      ]
+    },
+    {
+      "word": "onerò",
+      "num_guesses": 4,
+      "prior": 0.00005118282284175555,
+      "guesses": [
+        "sarti",
+        "drone",
+        "negro",
+        "onerò"
+      ]
+    },
+    {
+      "word": "destò",
+      "num_guesses": 4,
+      "prior": 0.00018652690217865652,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "fulve",
+        "destò"
+      ]
+    },
+    {
+      "word": "acuti",
+      "num_guesses": 4,
+      "prior": 0.0002204312423267514,
+      "guesses": [
+        "sarti",
+        "abile",
+        "giace",
+        "acuti"
+      ]
+    },
+    {
+      "word": "birri",
+      "num_guesses": 3,
+      "prior": 0.00016227970192704569,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "birri"
+      ]
+    },
+    {
+      "word": "ugnai",
+      "num_guesses": 4,
+      "prior": 0.000060505159973115407,
+      "guesses": [
+        "sarti",
+        "anale",
+        "umido",
+        "ugnai"
+      ]
+    },
+    {
+      "word": "cagna",
+      "num_guesses": 4,
+      "prior": 0.0001677111827627808,
+      "guesses": [
+        "sarti",
+        "colme",
+        "ponza",
+        "cagna"
+      ]
+    },
+    {
+      "word": "lepri",
+      "num_guesses": 3,
+      "prior": 0.00017106265113226465,
+      "guesses": [
+        "sarti",
+        "prone",
+        "lepri"
+      ]
+    },
+    {
+      "word": "emuli",
+      "num_guesses": 4,
+      "prior": 0.00016453457420373952,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "mende",
+        "emuli"
+      ]
+    },
+    {
+      "word": "pinsa",
+      "num_guesses": 4,
+      "prior": 0.000056991535599505885,
+      "guesses": [
+        "sarti",
+        "asilo",
+        "fasce",
+        "pinsa"
+      ]
+    },
+    {
+      "word": "ferma",
+      "num_guesses": 3,
+      "prior": 0.00031689238877405097,
+      "guesses": [
+        "sarti",
+        "colme",
+        "ferma"
+      ]
+    },
+    {
+      "word": "laghi",
+      "num_guesses": 4,
+      "prior": 0.0002451081061377494,
+      "guesses": [
+        "sarti",
+        "calma",
+        "dugli",
+        "laghi"
+      ]
+    },
+    {
+      "word": "mutue",
+      "num_guesses": 3,
+      "prior": 0.00018092234219392695,
+      "guesses": [
+        "sarti",
+        "tonde",
+        "mutue"
+      ]
+    },
+    {
+      "word": "edito",
+      "num_guesses": 3,
+      "prior": 0.00023417165603854354,
+      "guesses": [
+        "sarti",
+        "ovine",
+        "edito"
+      ]
+    },
+    {
+      "word": "pippi",
+      "num_guesses": 3,
+      "prior": 0.00011913184010216316,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "pippi"
+      ]
+    },
+    {
+      "word": "capra",
+      "num_guesses": 3,
+      "prior": 0.00022139668535627998,
+      "guesses": [
+        "sarti",
+        "monca",
+        "capra"
+      ]
+    },
+    {
+      "word": "giuda",
+      "num_guesses": 4,
+      "prior": 0.00023251979042639278,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "giava",
+        "giuda"
+      ]
+    },
+    {
+      "word": "fogne",
+      "num_guesses": 4,
+      "prior": 0.0001585075493869495,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "degne",
+        "fogne"
+      ]
+    },
+    {
+      "word": "piego",
+      "num_guesses": 4,
+      "prior": 0.00017887574719069205,
+      "guesses": [
+        "sarti",
+        "clone",
+        "medio",
+        "piego"
+      ]
+    },
+    {
+      "word": "lifta",
+      "num_guesses": 4,
+      "prior": 0.00006786005077590946,
+      "guesses": [
+        "sarti",
+        "evada",
+        "finca",
+        "lifta"
+      ]
+    },
+    {
+      "word": "zilla",
+      "num_guesses": 4,
+      "prior": 0.00008186901206814428,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "balza",
+        "zilla"
+      ]
+    },
+    {
+      "word": "lania",
+      "num_guesses": 4,
+      "prior": 0.00009395971551961461,
+      "guesses": [
+        "sarti",
+        "colma",
+        "laida",
+        "lania"
+      ]
+    },
+    {
+      "word": "maini",
+      "num_guesses": 4,
+      "prior": 0.00012073830227727333,
+      "guesses": [
+        "sarti",
+        "calma",
+        "gonzi",
+        "maini"
+      ]
+    },
+    {
+      "word": "parsa",
+      "num_guesses": 3,
+      "prior": 0.0001743743129366639,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "parsa"
+      ]
+    },
+    {
+      "word": "adono",
+      "num_guesses": 4,
+      "prior": 0.000058088330663176856,
+      "guesses": [
+        "sarti",
+        "clone",
+        "afona",
+        "adono"
+      ]
+    },
+    {
+      "word": "sbuco",
+      "num_guesses": 4,
+      "prior": 0.00007052916497487076,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scudo",
+        "sbuco"
+      ]
+    },
+    {
+      "word": "etere",
+      "num_guesses": 3,
+      "prior": 0.00023401728312211925,
+      "guesses": [
+        "sarti",
+        "onero",
+        "etere"
+      ]
+    },
+    {
+      "word": "scolò",
+      "num_guesses": 4,
+      "prior": 0.00009974326892044122,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scolo",
+        "scolò"
+      ]
+    },
+    {
+      "word": "perdi",
+      "num_guesses": 4,
+      "prior": 0.00015701125508079753,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "verdi",
+        "perdi"
+      ]
+    },
+    {
+      "word": "carpì",
+      "num_guesses": 4,
+      "prior": 0.00008305288803543711,
+      "guesses": [
+        "sarti",
+        "colma",
+        "padre",
+        "carpì"
+      ]
+    },
+    {
+      "word": "lesti",
+      "num_guesses": 4,
+      "prior": 0.0001398938832459963,
+      "guesses": [
+        "sarti",
+        "educo",
+        "tagli",
+        "lesti"
+      ]
+    },
+    {
+      "word": "sgura",
+      "num_guesses": 4,
+      "prior": 0.00006302526726068216,
+      "guesses": [
+        "sarti",
+        "epoca",
+        "grado",
+        "sgura"
+      ]
+    },
+    {
+      "word": "tweet",
+      "num_guesses": 4,
+      "prior": 0.00011526078374963585,
+      "guesses": [
+        "sarti",
+        "tonde",
+        "telex",
+        "tweet"
+      ]
+    },
+    {
+      "word": "nembi",
+      "num_guesses": 4,
+      "prior": 0.00015487617938666207,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "nembi"
+      ]
+    },
+    {
+      "word": "sfoci",
+      "num_guesses": 4,
+      "prior": 0.00009320678569375162,
+      "guesses": [
+        "sarti",
+        "clone",
+        "scopi",
+        "sfoci"
+      ]
+    },
+    {
+      "word": "seria",
+      "num_guesses": 2,
+      "prior": 0.0002632065945144509,
+      "guesses": [
+        "sarti",
+        "seria"
+      ]
+    },
+    {
+      "word": "pigiò",
+      "num_guesses": 4,
+      "prior": 0.00009978160530980778,
+      "guesses": [
+        "sarti",
+        "clone",
+        "guidò",
+        "pigiò"
+      ]
+    },
+    {
+      "word": "brune",
+      "num_guesses": 3,
+      "prior": 0.00019200010128093327,
+      "guesses": [
+        "sarti",
+        "drone",
+        "brune"
+      ]
+    },
+    {
+      "word": "nonni",
+      "num_guesses": 4,
+      "prior": 0.00019154997564189654,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "magno",
+        "nonni"
+      ]
+    },
+    {
+      "word": "sturò",
+      "num_guesses": 3,
+      "prior": 0.00006666199471661362,
+      "guesses": [
+        "sarti",
+        "erano",
+        "sturò"
+      ]
+    },
+    {
+      "word": "frani",
+      "num_guesses": 4,
+      "prior": 0.0001035098375479315,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "finge",
+        "frani"
+      ]
+    },
+    {
+      "word": "ahimé",
+      "num_guesses": 5,
+      "prior": 0.00013519800977063228,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "amide",
+        "ahimè",
+        "ahimé"
+      ]
+    },
+    {
+      "word": "rompa",
+      "num_guesses": 4,
+      "prior": 0.00014920902682163644,
+      "guesses": [
+        "sarti",
+        "brode",
+        "monca",
+        "rompa"
+      ]
+    },
+    {
+      "word": "annoi",
+      "num_guesses": 4,
+      "prior": 0.00012479940757012742,
+      "guesses": [
+        "sarti",
+        "anale",
+        "mungo",
+        "annoi"
+      ]
+    },
+    {
+      "word": "sgama",
+      "num_guesses": 4,
+      "prior": 0.000051921988453573596,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfuma",
+        "sgama"
+      ]
+    },
+    {
+      "word": "laudò",
+      "num_guesses": 4,
+      "prior": 0.00009579859921981733,
+      "guesses": [
+        "sarti",
+        "colme",
+        "landa",
+        "laudò"
+      ]
+    },
+    {
+      "word": "malto",
+      "num_guesses": 4,
+      "prior": 0.00015328742730718345,
+      "guesses": [
+        "sarti",
+        "monca",
+        "matto",
+        "malto"
+      ]
+    },
+    {
+      "word": "ereme",
+      "num_guesses": 6,
+      "prior": 0.00005276497650247736,
+      "guesses": [
+        "sarti",
+        "drone",
+        "cambi",
+        "preme",
+        "freme",
+        "ereme"
+      ]
+    },
+    {
+      "word": "venni",
+      "num_guesses": 4,
+      "prior": 0.00020471751035242944,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "venni"
+      ]
+    },
+    {
+      "word": "duchi",
+      "num_guesses": 5,
+      "prior": 0.00023588146422106072,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fichi",
+        "mondo",
+        "duchi"
+      ]
+    },
+    {
+      "word": "causo",
+      "num_guesses": 3,
+      "prior": 0.00010439460783535585,
+      "guesses": [
+        "sarti",
+        "losca",
+        "causo"
+      ]
+    },
+    {
+      "word": "fanti",
+      "num_guesses": 4,
+      "prior": 0.0002712645491478253,
+      "guesses": [
+        "sarti",
+        "punch",
+        "tonfo",
+        "fanti"
+      ]
+    },
+    {
+      "word": "smusa",
+      "num_guesses": 4,
+      "prior": 0.000036146525740948785,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfuma",
+        "smusa"
+      ]
+    },
+    {
+      "word": "tenta",
+      "num_guesses": 4,
+      "prior": 0.00025821782043580717,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "gendo",
+        "tenta"
+      ]
+    },
+    {
+      "word": "theta",
+      "num_guesses": 4,
+      "prior": 0.00010858223133816913,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "curva",
+        "theta"
+      ]
+    },
+    {
+      "word": "toghi",
+      "num_guesses": 5,
+      "prior": 0.00004410665590398753,
+      "guesses": [
+        "sarti",
+        "leone",
+        "tozzi",
+        "toppi",
+        "toghi"
+      ]
+    },
+    {
+      "word": "scurì",
+      "num_guesses": 3,
+      "prior": 0.00007936811684166315,
+      "guesses": [
+        "sarti",
+        "epoca",
+        "scurì"
+      ]
+    },
+    {
+      "word": "radii",
+      "num_guesses": 4,
+      "prior": 0.00010407561052691456,
+      "guesses": [
+        "sarti",
+        "pungo",
+        "ladra",
+        "radii"
+      ]
+    },
+    {
+      "word": "palte",
+      "num_guesses": 4,
+      "prior": 0.00006178401010585696,
+      "guesses": [
+        "sarti",
+        "monca",
+        "plebe",
+        "palte"
+      ]
+    },
+    {
+      "word": "vinca",
+      "num_guesses": 3,
+      "prior": 0.00016510488350327622,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "vinca"
+      ]
+    },
+    {
+      "word": "fotta",
+      "num_guesses": 5,
+      "prior": 0.00010148310202179935,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "punch",
+        "degli",
+        "fotta"
+      ]
+    },
+    {
+      "word": "ratia",
+      "num_guesses": 3,
+      "prior": 0.00006632202995397557,
+      "guesses": [
+        "sarti",
+        "ratio",
+        "ratia"
+      ]
+    },
+    {
+      "word": "rogge",
+      "num_guesses": 5,
+      "prior": 0.00010940292162117316,
+      "guesses": [
+        "sarti",
+        "drone",
+        "compì",
+        "rozze",
+        "rogge"
+      ]
+    },
+    {
+      "word": "morie",
+      "num_guesses": 3,
+      "prior": 0.00014866495610499778,
+      "guesses": [
+        "sarti",
+        "becio",
+        "morie"
+      ]
+    },
+    {
+      "word": "pompe",
+      "num_guesses": 3,
+      "prior": 0.00022008064272186658,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "pompe"
+      ]
+    },
+    {
+      "word": "smelo",
+      "num_guesses": 5,
+      "prior": 0.00004157455132036076,
+      "guesses": [
+        "sarti",
+        "clone",
+        "volge",
+        "spelo",
+        "smelo"
+      ]
+    },
+    {
+      "word": "giare",
+      "num_guesses": 3,
+      "prior": 0.00014605308528053965,
+      "guesses": [
+        "sarti",
+        "gride",
+        "giare"
+      ]
+    },
+    {
+      "word": "dotti",
+      "num_guesses": 4,
+      "prior": 0.00028368510985827546,
+      "guesses": [
+        "sarti",
+        "tonte",
+        "baldo",
+        "dotti"
+      ]
+    },
+    {
+      "word": "diano",
+      "num_guesses": 4,
+      "prior": 0.0002229369048043696,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "piano",
+        "diano"
+      ]
+    },
+    {
+      "word": "indiò",
+      "num_guesses": 4,
+      "prior": 0.00005312737973624091,
+      "guesses": [
+        "sarti",
+        "clone",
+        "inviò",
+        "indiò"
+      ]
+    },
+    {
+      "word": "brici",
+      "num_guesses": 4,
+      "prior": 0.000065756371945624,
+      "guesses": [
+        "sarti",
+        "prone",
+        "gridi",
+        "brici"
+      ]
+    },
+    {
+      "word": "tosai",
+      "num_guesses": 3,
+      "prior": 0.00005136595032269554,
+      "guesses": [
+        "sarti",
+        "tesai",
+        "tosai"
+      ]
+    },
+    {
+      "word": "pegni",
+      "num_guesses": 4,
+      "prior": 0.0001890443458457903,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "venne",
+        "pegni"
+      ]
+    },
+    {
+      "word": "erebi",
+      "num_guesses": 6,
+      "prior": 0.00006101592246337582,
+      "guesses": [
+        "sarti",
+        "prone",
+        "greve",
+        "eredi",
+        "eremi",
+        "erebi"
+      ]
+    },
+    {
+      "word": "raspò",
+      "num_guesses": 3,
+      "prior": 0.0000690904872893595,
+      "guesses": [
+        "sarti",
+        "opera",
+        "raspò"
+      ]
+    },
+    {
+      "word": "lizzò",
+      "num_guesses": 4,
+      "prior": 0.00005859364145285663,
+      "guesses": [
+        "sarti",
+        "clone",
+        "pillò",
+        "lizzò"
+      ]
+    },
+    {
+      "word": "grata",
+      "num_guesses": 3,
+      "prior": 0.00023583994952742652,
+      "guesses": [
+        "sarti",
+        "eroga",
+        "grata"
+      ]
+    },
+    {
+      "word": "porta",
+      "num_guesses": 3,
+      "prior": 0.00045437063561436946,
+      "guesses": [
+        "sarti",
+        "acume",
+        "porta"
+      ]
+    },
+    {
+      "word": "boxer",
+      "num_guesses": 4,
+      "prior": 0.00013915236773454266,
+      "guesses": [
+        "sarti",
+        "drone",
+        "lombo",
+        "boxer"
+      ]
+    },
+    {
+      "word": "daino",
+      "num_guesses": 4,
+      "prior": 0.00013746533600003734,
+      "guesses": [
+        "sarti",
+        "colma",
+        "dazio",
+        "daino"
+      ]
+    },
+    {
+      "word": "crude",
+      "num_guesses": 4,
+      "prior": 0.00017484749248881652,
+      "guesses": [
+        "sarti",
+        "drone",
+        "pulci",
+        "crude"
+      ]
+    },
+    {
+      "word": "onoro",
+      "num_guesses": 4,
+      "prior": 0.00016048485847971198,
+      "guesses": [
+        "sarti",
+        "drone",
+        "onorò",
+        "onoro"
+      ]
+    },
+    {
+      "word": "bigia",
+      "num_guesses": 4,
+      "prior": 0.00013910422717421708,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "libri",
+        "bigia"
+      ]
+    },
+    {
+      "word": "sacro",
+      "num_guesses": 3,
+      "prior": 0.0003265915940524181,
+      "guesses": [
+        "sarti",
+        "gioca",
+        "sacro"
+      ]
+    },
+    {
+      "word": "ereta",
+      "num_guesses": 3,
+      "prior": 0.00006764983748409828,
+      "guesses": [
+        "sarti",
+        "eroga",
+        "ereta"
+      ]
+    },
+    {
+      "word": "speda",
+      "num_guesses": 4,
+      "prior": 0.00008153881273891311,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spesa",
+        "speda"
+      ]
+    },
+    {
+      "word": "eluso",
+      "num_guesses": 4,
+      "prior": 0.0001310809569829765,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "pulci",
+        "eluso"
+      ]
+    },
+    {
+      "word": "tasta",
+      "num_guesses": 4,
+      "prior": 0.00012161592044624828,
+      "guesses": [
+        "sarti",
+        "evoca",
+        "plebe",
+        "tasta"
+      ]
+    },
+    {
+      "word": "pullo",
+      "num_guesses": 3,
+      "prior": 0.00008655283841079856,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "pullo"
+      ]
+    },
+    {
+      "word": "senti",
+      "num_guesses": 3,
+      "prior": 0.0002679926453749461,
+      "guesses": [
+        "sarti",
+        "clone",
+        "senti"
+      ]
+    },
+    {
+      "word": "otriò",
+      "num_guesses": 3,
+      "prior": 0.000042389360146102045,
+      "guesses": [
+        "sarti",
+        "iodio",
+        "otriò"
+      ]
+    },
+    {
+      "word": "merce",
+      "num_guesses": 3,
+      "prior": 0.0002846012080658014,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "merce"
+      ]
+    },
+    {
+      "word": "ubicò",
+      "num_guesses": 4,
+      "prior": 0.00004787767633290313,
+      "guesses": [
+        "sarti",
+        "clone",
+        "ficcò",
+        "ubicò"
+      ]
+    },
+    {
+      "word": "ebano",
+      "num_guesses": 3,
+      "prior": 0.00016290050811382047,
+      "guesses": [
+        "sarti",
+        "clone",
+        "ebano"
+      ]
+    },
+    {
+      "word": "damai",
+      "num_guesses": 3,
+      "prior": 0.0000669637168882145,
+      "guesses": [
+        "sarti",
+        "calma",
+        "damai"
+      ]
+    },
+    {
+      "word": "ossee",
+      "num_guesses": 3,
+      "prior": 0.0001812002923827298,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "ossee"
+      ]
+    },
+    {
+      "word": "dichi",
+      "num_guesses": 5,
+      "prior": 0.00012328577397564776,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "fichi",
+        "vichi",
+        "dichi"
+      ]
+    },
+    {
+      "word": "etico",
+      "num_guesses": 3,
+      "prior": 0.0002491877651797879,
+      "guesses": [
+        "sarti",
+        "leone",
+        "etico"
+      ]
+    },
+    {
+      "word": "gotta",
+      "num_guesses": 5,
+      "prior": 0.00018423512038170484,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "punch",
+        "degli",
+        "gotta"
+      ]
+    },
+    {
+      "word": "disia",
+      "num_guesses": 5,
+      "prior": 0.00010826739538028977,
+      "guesses": [
+        "sarti",
+        "asilo",
+        "fasce",
+        "verso",
+        "disia"
+      ]
+    },
+    {
+      "word": "omaso",
+      "num_guesses": 4,
+      "prior": 0.0000813590517022793,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "abuso",
+        "omaso"
+      ]
+    },
+    {
+      "word": "pensò",
+      "num_guesses": 4,
+      "prior": 0.00030150908521303475,
+      "guesses": [
+        "sarti",
+        "mosse",
+        "bensì",
+        "pensò"
+      ]
+    },
+    {
+      "word": "freni",
+      "num_guesses": 3,
+      "prior": 0.00019477354138703674,
+      "guesses": [
+        "sarti",
+        "prone",
+        "freni"
+      ]
+    },
+    {
+      "word": "stufi",
+      "num_guesses": 4,
+      "prior": 0.00011135947732762072,
+      "guesses": [
+        "sarti",
+        "oleum",
+        "studi",
+        "stufi"
+      ]
+    },
+    {
+      "word": "nappo",
+      "num_guesses": 4,
+      "prior": 0.00013570004351989054,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugno",
+        "nappo"
+      ]
+    },
+    {
+      "word": "efori",
+      "num_guesses": 3,
+      "prior": 0.00013415680991602015,
+      "guesses": [
+        "sarti",
+        "prone",
+        "efori"
+      ]
+    },
+    {
+      "word": "audit",
+      "num_guesses": 3,
+      "prior": 0.0001450823068682862,
+      "guesses": [
+        "sarti",
+        "tenia",
+        "audit"
+      ]
+    },
+    {
+      "word": "paghe",
+      "num_guesses": 4,
+      "prior": 0.00020000467592639848,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugno",
+        "paghe"
+      ]
+    },
+    {
+      "word": "rodai",
+      "num_guesses": 4,
+      "prior": 0.00005172456072467296,
+      "guesses": [
+        "sarti",
+        "aravo",
+        "rogai",
+        "rodai"
+      ]
+    },
+    {
+      "word": "poeta",
+      "num_guesses": 3,
+      "prior": 0.00040162048972698747,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "poeta"
+      ]
+    },
+    {
+      "word": "spulò",
+      "num_guesses": 3,
+      "prior": 0.000033330997358306804,
+      "guesses": [
+        "sarti",
+        "clone",
+        "spulò"
+      ]
+    },
+    {
+      "word": "lande",
+      "num_guesses": 4,
+      "prior": 0.0001662671617334792,
+      "guesses": [
+        "sarti",
+        "colme",
+        "laude",
+        "lande"
+      ]
+    },
+    {
+      "word": "ansai",
+      "num_guesses": 4,
+      "prior": 0.000065756371945624,
+      "guesses": [
+        "sarti",
+        "lusso",
+        "venne",
+        "ansai"
+      ]
+    },
+    {
+      "word": "gremì",
+      "num_guesses": 4,
+      "prior": 0.00006633020574687125,
+      "guesses": [
+        "sarti",
+        "drone",
+        "pregò",
+        "gremì"
+      ]
+    },
+    {
+      "word": "beute",
+      "num_guesses": 4,
+      "prior": 0.00009053606457392246,
+      "guesses": [
+        "sarti",
+        "tolte",
+        "mungo",
+        "beute"
+      ]
+    },
+    {
+      "word": "sfatò",
+      "num_guesses": 4,
+      "prior": 0.00006989771142431606,
+      "guesses": [
+        "sarti",
+        "testo",
+        "sputa",
+        "sfatò"
+      ]
+    },
+    {
+      "word": "neumi",
+      "num_guesses": 5,
+      "prior": 0.0001107288821901766,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "vende",
+        "nembi",
+        "neumi"
+      ]
+    },
+    {
+      "word": "augno",
+      "num_guesses": 4,
+      "prior": 0.00005245518026989734,
+      "guesses": [
+        "sarti",
+        "clone",
+        "guida",
+        "augno"
+      ]
+    },
+    {
+      "word": "frucò",
+      "num_guesses": 4,
+      "prior": 0.000033828695109090034,
+      "guesses": [
+        "sarti",
+        "drone",
+        "frugò",
+        "frucò"
+      ]
+    },
+    {
+      "word": "suite",
+      "num_guesses": 2,
+      "prior": 0.00018646189498896216,
+      "guesses": [
+        "sarti",
+        "suite"
+      ]
+    },
+    {
+      "word": "ardee",
+      "num_guesses": 4,
+      "prior": 0.00007261457075442698,
+      "guesses": [
+        "sarti",
+        "brode",
+        "ardue",
+        "ardee"
+      ]
+    },
+    {
+      "word": "bluff",
+      "num_guesses": 3,
+      "prior": 0.00013029557206999215,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "bluff"
+      ]
+    },
+    {
+      "word": "asole",
+      "num_guesses": 3,
+      "prior": 0.00011270327651832959,
+      "guesses": [
+        "sarti",
+        "lesso",
+        "asole"
+      ]
+    },
+    {
+      "word": "matte",
+      "num_guesses": 4,
+      "prior": 0.00014646076075588041,
+      "guesses": [
+        "sarti",
+        "monca",
+        "malte",
+        "matte"
+      ]
+    },
+    {
+      "word": "iridi",
+      "num_guesses": 4,
+      "prior": 0.00013759050332166366,
+      "guesses": [
+        "sarti",
+        "prone",
+        "gridi",
+        "iridi"
+      ]
+    },
+    {
+      "word": "larva",
+      "num_guesses": 4,
+      "prior": 0.00020882991389829827,
+      "guesses": [
+        "sarti",
+        "colma",
+        "larga",
+        "larva"
+      ]
+    },
+    {
+      "word": "rughe",
+      "num_guesses": 4,
+      "prior": 0.0001896475136879102,
+      "guesses": [
+        "sarti",
+        "drone",
+        "plebe",
+        "rughe"
+      ]
+    },
+    {
+      "word": "cachi",
+      "num_guesses": 4,
+      "prior": 0.00011635762273543875,
+      "guesses": [
+        "sarti",
+        "calma",
+        "punch",
+        "cachi"
+      ]
+    },
+    {
+      "word": "foghe",
+      "num_guesses": 5,
+      "prior": 0.00009954586400190622,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "degne",
+        "fogge",
+        "foghe"
+      ]
+    },
+    {
+      "word": "guarì",
+      "num_guesses": 4,
+      "prior": 0.000160549684593995,
+      "guesses": [
+        "sarti",
+        "brode",
+        "vulga",
+        "guarì"
+      ]
+    },
+    {
+      "word": "desti",
+      "num_guesses": 3,
+      "prior": 0.00018290166946126522,
+      "guesses": [
+        "sarti",
+        "educo",
+        "desti"
+      ]
+    },
+    {
+      "word": "cella",
+      "num_guesses": 3,
+      "prior": 0.0002557300340799512,
+      "guesses": [
+        "sarti",
+        "clone",
+        "cella"
+      ]
+    },
+    {
+      "word": "piace",
+      "num_guesses": 3,
+      "prior": 0.000316682052977671,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "piace"
+      ]
+    },
+    {
+      "word": "lieta",
+      "num_guesses": 3,
+      "prior": 0.0002392119318900256,
+      "guesses": [
+        "sarti",
+        "evada",
+        "lieta"
+      ]
+    },
+    {
+      "word": "mieli",
+      "num_guesses": 4,
+      "prior": 0.00014072465089205475,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "mende",
+        "mieli"
+      ]
+    },
+    {
+      "word": "etnia",
+      "num_guesses": 3,
+      "prior": 0.00014110864917472914,
+      "guesses": [
+        "sarti",
+        "tenia",
+        "etnia"
+      ]
+    },
+    {
+      "word": "balta",
+      "num_guesses": 4,
+      "prior": 0.00009998824361863181,
+      "guesses": [
+        "sarti",
+        "monca",
+        "bluff",
+        "balta"
+      ]
+    },
+    {
+      "word": "giova",
+      "num_guesses": 4,
+      "prior": 0.0002948614871424193,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "gioia",
+        "giova"
+      ]
+    },
+    {
+      "word": "dormì",
+      "num_guesses": 4,
+      "prior": 0.00014294694699779932,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "bordò",
+        "dormì"
+      ]
+    },
+    {
+      "word": "rombò",
+      "num_guesses": 4,
+      "prior": 0.00008153165267445963,
+      "guesses": [
+        "sarti",
+        "drone",
+        "colmo",
+        "rombò"
+      ]
+    },
+    {
+      "word": "cingo",
+      "num_guesses": 4,
+      "prior": 0.0000947541185789696,
+      "guesses": [
+        "sarti",
+        "clone",
+        "conio",
+        "cingo"
+      ]
+    },
+    {
+      "word": "raspa",
+      "num_guesses": 3,
+      "prior": 0.00012496658885739924,
+      "guesses": [
+        "sarti",
+        "opera",
+        "raspa"
+      ]
+    },
+    {
+      "word": "zoomo",
+      "num_guesses": 5,
+      "prior": 0.00004183604710952502,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "manzo",
+        "zombo",
+        "zoomo"
+      ]
+    },
+    {
+      "word": "vaghe",
+      "num_guesses": 4,
+      "prior": 0.00021341451689366327,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugno",
+        "vaghe"
+      ]
+    },
+    {
+      "word": "voghi",
+      "num_guesses": 4,
+      "prior": 0.00007025204071303795,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "magno",
+        "voghi"
+      ]
+    },
+    {
+      "word": "trani",
+      "num_guesses": 3,
+      "prior": 0.00021630008893347067,
+      "guesses": [
+        "sarti",
+        "amano",
+        "trani"
+      ]
+    },
+    {
+      "word": "credé",
+      "num_guesses": 3,
+      "prior": 0.00010771832960749013,
+      "guesses": [
+        "sarti",
+        "drone",
+        "credé"
+      ]
+    },
+    {
+      "word": "nomee",
+      "num_guesses": 4,
+      "prior": 0.00007079570351911035,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "degne",
+        "nomee"
+      ]
+    },
+    {
+      "word": "biodi",
+      "num_guesses": 5,
+      "prior": 0.00006978466154172775,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "muovo",
+        "diodi",
+        "biodi"
+      ]
+    },
+    {
+      "word": "filmò",
+      "num_guesses": 4,
+      "prior": 0.00006786751038373795,
+      "guesses": [
+        "sarti",
+        "clone",
+        "pillò",
+        "filmò"
+      ]
+    },
+    {
+      "word": "siede",
+      "num_guesses": 4,
+      "prior": 0.00024461011869631415,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "slide",
+        "siede"
+      ]
+    },
+    {
+      "word": "dogai",
+      "num_guesses": 5,
+      "prior": 0.00006151013402625746,
+      "guesses": [
+        "sarti",
+        "anale",
+        "micio",
+        "doxai",
+        "dogai"
+      ]
+    },
+    {
+      "word": "avide",
+      "num_guesses": 5,
+      "prior": 0.0001442803329654745,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "amide",
+        "volpe",
+        "avide"
+      ]
+    },
+    {
+      "word": "fallò",
+      "num_guesses": 5,
+      "prior": 0.00008949259373175728,
+      "guesses": [
+        "sarti",
+        "colme",
+        "dobla",
+        "fallì",
+        "fallò"
+      ]
+    },
+    {
+      "word": "evada",
+      "num_guesses": 5,
+      "prior": 0.00007442295429788152,
+      "guesses": [
+        "sarti",
+        "clone",
+        "zamba",
+        "aveva",
+        "evada"
+      ]
+    },
+    {
+      "word": "visai",
+      "num_guesses": 4,
+      "prior": 0.00008465893247601263,
+      "guesses": [
+        "sarti",
+        "lusso",
+        "venne",
+        "visai"
+      ]
+    },
+    {
+      "word": "ancoi",
+      "num_guesses": 5,
+      "prior": 0.00009630972756755143,
+      "guesses": [
+        "sarti",
+        "anale",
+        "mungo",
+        "anodi",
+        "ancoi"
+      ]
+    },
+    {
+      "word": "finti",
+      "num_guesses": 4,
+      "prior": 0.00017428969028510362,
+      "guesses": [
+        "sarti",
+        "tonte",
+        "muove",
+        "finti"
+      ]
+    },
+    {
+      "word": "ruini",
+      "num_guesses": 3,
+      "prior": 0.00015116071188769046,
+      "guesses": [
+        "sarti",
+        "prone",
+        "ruini"
+      ]
+    },
+    {
+      "word": "mestò",
+      "num_guesses": 4,
+      "prior": 0.00005294741834787839,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "meste",
+        "mestò"
+      ]
+    },
+    {
+      "word": "cuoca",
+      "num_guesses": 3,
+      "prior": 0.00016201234882926916,
+      "guesses": [
+        "sarti",
+        "clone",
+        "cuoca"
+      ]
+    },
+    {
+      "word": "alato",
+      "num_guesses": 3,
+      "prior": 0.00018361891386893615,
+      "guesses": [
+        "sarti",
+        "lembo",
+        "alato"
+      ]
+    },
+    {
+      "word": "colmo",
+      "num_guesses": 4,
+      "prior": 0.00023325634916054224,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "mollo",
+        "colmo"
+      ]
+    },
+    {
+      "word": "rebbi",
+      "num_guesses": 4,
+      "prior": 0.00010765597214307863,
+      "guesses": [
+        "sarti",
+        "prone",
+        "iberi",
+        "rebbi"
+      ]
+    },
+    {
+      "word": "fitto",
+      "num_guesses": 4,
+      "prior": 0.0002416733540668423,
+      "guesses": [
+        "sarti",
+        "ovine",
+        "fuoco",
+        "fitto"
+      ]
+    },
+    {
+      "word": "clown",
+      "num_guesses": 4,
+      "prior": 0.00014614129863974176,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "danno",
+        "clown"
+      ]
+    },
+    {
+      "word": "larvi",
+      "num_guesses": 4,
+      "prior": 0.00007834525352366245,
+      "guesses": [
+        "sarti",
+        "manda",
+        "plebe",
+        "larvi"
+      ]
+    },
+    {
+      "word": "clivi",
+      "num_guesses": 4,
+      "prior": 0.00011565875381592324,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "miche",
+        "clivi"
+      ]
+    },
+    {
+      "word": "pinna",
+      "num_guesses": 4,
+      "prior": 0.00018934652118181362,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "panza",
+        "pinna"
+      ]
+    },
+    {
+      "word": "curvò",
+      "num_guesses": 3,
+      "prior": 0.0001309558462023744,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "curvò"
+      ]
+    },
+    {
+      "word": "frinì",
+      "num_guesses": 5,
+      "prior": 0.00006704222087513879,
+      "guesses": [
+        "sarti",
+        "gioie",
+        "ruinò",
+        "drink",
+        "frinì"
+      ]
+    },
+    {
+      "word": "panna",
+      "num_guesses": 4,
+      "prior": 0.00018448985647385695,
+      "guesses": [
+        "sarti",
+        "colme",
+        "pugna",
+        "panna"
+      ]
+    },
+    {
+      "word": "apice",
+      "num_guesses": 3,
+      "prior": 0.00022667491223445744,
+      "guesses": [
+        "sarti",
+        "cigno",
+        "apice"
+      ]
+    },
+    {
+      "word": "bollò",
+      "num_guesses": 4,
+      "prior": 0.00009254548182291311,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "gambo",
+        "bollò"
+      ]
+    },
+    {
+      "word": "furie",
+      "num_guesses": 3,
+      "prior": 0.00019568730824993325,
+      "guesses": [
+        "sarti",
+        "becio",
+        "furie"
+      ]
+    },
+    {
+      "word": "forzo",
+      "num_guesses": 5,
+      "prior": 0.00011800062150022876,
+      "guesses": [
+        "sarti",
+        "cedro",
+        "bugne",
+        "formo",
+        "forzo"
+      ]
+    },
+    {
+      "word": "arial",
+      "num_guesses": 4,
+      "prior": 0.00007517602868079148,
+      "guesses": [
+        "sarti",
+        "gride",
+        "muova",
+        "arial"
+      ]
+    },
+    {
+      "word": "ritte",
+      "num_guesses": 3,
+      "prior": 0.00013259444483884099,
+      "guesses": [
+        "sarti",
+        "ritto",
+        "ritte"
+      ]
+    },
+    {
+      "word": "patri",
+      "num_guesses": 2,
+      "prior": 0.00017719047529364597,
+      "guesses": [
+        "sarti",
+        "patri"
+      ]
+    },
+    {
+      "word": "vacuò",
+      "num_guesses": 4,
+      "prior": 0.000050950164010789235,
+      "guesses": [
+        "sarti",
+        "colme",
+        "banca",
+        "vacuò"
+      ]
+    },
+    {
+      "word": "boeme",
+      "num_guesses": 4,
+      "prior": 0.00010021359016832591,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "degne",
+        "boeme"
+      ]
+    },
+    {
+      "word": "sfumo",
+      "num_guesses": 3,
+      "prior": 0.000082479705954635,
+      "guesses": [
+        "sarti",
+        "clone",
+        "sfumo"
+      ]
+    },
+    {
+      "word": "pinse",
+      "num_guesses": 5,
+      "prior": 0.00012376285512888713,
+      "guesses": [
+        "sarti",
+        "cosse",
+        "fiume",
+        "vinse",
+        "pinse"
+      ]
+    },
+    {
+      "word": "edule",
+      "num_guesses": 5,
+      "prior": 0.0001058293263725878,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "legge",
+        "elude",
+        "edule"
+      ]
+    },
+    {
+      "word": "adite",
+      "num_guesses": 3,
+      "prior": 0.00008604507843245941,
+      "guesses": [
+        "sarti",
+        "evada",
+        "adite"
+      ]
+    },
+    {
+      "word": "azere",
+      "num_guesses": 4,
+      "prior": 0.00005780769757735877,
+      "guesses": [
+        "sarti",
+        "brode",
+        "malva",
+        "azere"
+      ]
+    },
+    {
+      "word": "sdora",
+      "num_guesses": 5,
+      "prior": 0.00005780769757735877,
+      "guesses": [
+        "sarti",
+        "epoca",
+        "suora",
+        "sfora",
+        "sdora"
+      ]
+    },
+    {
+      "word": "litio",
+      "num_guesses": 3,
+      "prior": 0.00015246886355824448,
+      "guesses": [
+        "sarti",
+        "leone",
+        "litio"
+      ]
+    },
+    {
+      "word": "alias",
+      "num_guesses": 3,
+      "prior": 0.00020239822383411643,
+      "guesses": [
+        "sarti",
+        "asilo",
+        "alias"
+      ]
+    },
+    {
+      "word": "banco",
+      "num_guesses": 4,
+      "prior": 0.00029891840363994234,
+      "guesses": [
+        "sarti",
+        "colme",
+        "bacco",
+        "banco"
+      ]
+    },
+    {
+      "word": "estro",
+      "num_guesses": 2,
+      "prior": 0.00018582841506262408,
+      "guesses": [
+        "sarti",
+        "estro"
+      ]
+    },
+    {
+      "word": "pizze",
+      "num_guesses": 5,
+      "prior": 0.00013320308570004104,
+      "guesses": [
+        "sarti",
+        "clone",
+        "debug",
+        "empie",
+        "pizze"
+      ]
+    },
+    {
+      "word": "diadi",
+      "num_guesses": 5,
+      "prior": 0.00009565350911525458,
+      "guesses": [
+        "sarti",
+        "anale",
+        "piaci",
+        "biadi",
+        "diadi"
+      ]
+    },
+    {
+      "word": "patio",
+      "num_guesses": 3,
+      "prior": 0.0001497902466672728,
+      "guesses": [
+        "sarti",
+        "nella",
+        "patio"
+      ]
+    },
+    {
+      "word": "brisa",
+      "num_guesses": 3,
+      "prior": 0.00009904949319792168,
+      "guesses": [
+        "sarti",
+        "fisso",
+        "brisa"
+      ]
+    },
+    {
+      "word": "ignee",
+      "num_guesses": 4,
+      "prior": 0.0001177547761994194,
+      "guesses": [
+        "sarti",
+        "clone",
+        "ginni",
+        "ignee"
+      ]
+    },
+    {
+      "word": "dacia",
+      "num_guesses": 4,
+      "prior": 0.00016683039969277549,
+      "guesses": [
+        "sarti",
+        "colma",
+        "padre",
+        "dacia"
+      ]
+    },
+    {
+      "word": "testé",
+      "num_guesses": 4,
+      "prior": 0.00019927397401963998,
+      "guesses": [
+        "sarti",
+        "tempo",
+        "élite",
+        "testé"
+      ]
+    },
+    {
+      "word": "svivo",
+      "num_guesses": 5,
+      "prior": 0.00003320180355663905,
+      "guesses": [
+        "sarti",
+        "fonde",
+        "gioco",
+        "sviso",
+        "svivo"
+      ]
+    },
+    {
+      "word": "pondo",
+      "num_guesses": 4,
+      "prior": 0.00015888547824349206,
+      "guesses": [
+        "sarti",
+        "colpe",
+        "gonzo",
+        "pondo"
+      ]
+    },
+    {
+      "word": "gatti",
+      "num_guesses": 4,
+      "prior": 0.00024154696908327937,
+      "guesses": [
+        "sarti",
+        "punch",
+        "figli",
+        "gatti"
+      ]
+    },
+    {
+      "word": "alisi",
+      "num_guesses": 4,
+      "prior": 0.00008859668220505184,
+      "guesses": [
+        "sarti",
+        "lusso",
+        "alesi",
+        "alisi"
+      ]
+    },
+    {
+      "word": "boera",
+      "num_guesses": 3,
+      "prior": 0.00010947682096923886,
+      "guesses": [
+        "sarti",
+        "brode",
+        "boera"
+      ]
+    },
+    {
+      "word": "tutor",
+      "num_guesses": 4,
+      "prior": 0.0001592337661250735,
+      "guesses": [
+        "sarti",
+        "onero",
+        "trovò",
+        "tutor"
+      ]
+    }
+  ]
+}
