@@ -27,4 +27,19 @@ pub enum LexDataError {
         index: usize,
         reason: String,
     },
+    #[error("profile list {file}: line {line}: {reason}")]
+    InvalidProfileList {
+        file: String,
+        line: usize,
+        reason: String,
+    },
+    #[error(
+        "profile list {file}: checksum mismatch: expected {expected}, got {actual}; \
+         the stored copy or the pinned source changed"
+    )]
+    ProfileChecksum {
+        file: String,
+        expected: String,
+        actual: String,
+    },
 }
