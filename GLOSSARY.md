@@ -52,6 +52,10 @@ _Avoid_: Default frequency
 A word length at which a language's Corpus holds at least 500 words; a language's maximum length is its largest Supported length.
 _Avoid_: Max length (as a fixed constant)
 
+**Alphabet**:
+The distinct letters that occur in a Corpus's words; each language's differs, and case or diacritic folding (when decided) changes it.
+_Avoid_: Charset, letters
+
 **Answer list**:
 A curated list of the words that can be the answer; when one is set, the Candidate set starts as exactly that list.
 _Avoid_: Target list (targets are the words a simulation plays, possibly a subset)
