@@ -1,9 +1,12 @@
 #!/bin/sh
 # Oracle: the working tree's `simulate` output must be byte-equal to the base
-# commit's on every Oracle track (`games` and `summary`; the run timestamp
+# commit's on every track of the set (`games` and `summary`; the run timestamp
 # differs by design). Exits non-zero on any difference.
 #
-# usage: benchmarks/scripts/oracle.sh <base-ref> [data-dir]
+# usage: benchmarks/scripts/oracle.sh [--full] <base-ref> [data-dir]
+#
+# The sets follow the Tiers of ADR 0007: the fast set (the default) is the
+# headline Tier, and --full is every Tier.
 #
 # Base reports are cached per commit under data/oracle/<sha>/, so later runs
 # against the same base only rebuild and rerun the candidate.
@@ -15,7 +18,13 @@ if command -v caffeinate >/dev/null 2>&1; then
     caffeinate -i -w $$ &
 fi
 
-base_ref=${1:?usage: oracle.sh <base-ref> [data-dir]}
+usage='usage: oracle.sh [--full] <base-ref> [data-dir]'
+set_name=fast
+if [ "${1:-}" = --full ]; then
+    set_name=full
+    shift
+fi
+base_ref=${1:?$usage}
 data_dir=$(cd "${2:-data}" && pwd)
 repo=$(git rev-parse --show-toplevel)
 base_sha=$(git rev-parse --verify "$base_ref^{commit}")
@@ -23,18 +32,29 @@ base_dir="$data_dir/oracle/$base_sha"
 cand_dir=$(mktemp -d)
 trap 'rm -rf "$cand_dir"' EXIT
 
-tracks="english 3
-english 4
-english 5
-english 5 --hard-mode
-english 5 --profile wordle
-english 6
-english 7
-english 8
-english 9
-english 10
-german 10
-russian 6"
+languages="english french german spanish italian russian"
+
+# The lengths the base commit supports; a length only the candidate supports
+# has no base to compare against.
+lengths() {
+    src=$(git -C "$repo" show "$base_sha:lex-data/src/lib.rs")
+    bound() { printf '%s\n' "$src" | sed -n "s/^pub const $1_WORD_LENGTH: usize = \([0-9]*\);/\1/p"; }
+    seq "$(bound MIN)" "$(bound MAX)"
+}
+
+tracks=$(
+    for lang in $languages; do echo "$lang 5"; done
+    echo "english 5 --hard-mode"
+    echo "english 5 --profile wordle"
+    echo "english 5 --profile wordle-all"
+    if [ "$set_name" = full ]; then
+        for lang in $languages; do
+            for len in $(lengths); do
+                [ "$len" -eq 5 ] || echo "$lang $len"
+            done
+        done
+    fi
+)
 
 track_name() { # <lang> <len> [flags]: english-5, english-5-hard-mode
     printf '%s-%s%s' "$1" "$2" "$(printf '%s' "${3:-}" | tr -s ' -' '-')"
@@ -69,8 +89,9 @@ run_tracks() { # <lex binary> <output dir>
     done
 }
 
-# Concurrent runs against one base share its cache: the lock serializes the
-# base build, and per-process temp names keep their report writes apart.
+# Concurrent runs against one base share its cache: the lock is held through
+# the base build and the base reports, so a second run waits and reuses them,
+# and per-process temp names keep report writes apart.
 lock="$data_dir/oracle/build-$base_sha.lock"
 mkdir -p "$data_dir/oracle"
 until mkdir "$lock" 2>/dev/null; do sleep 5; done
@@ -83,9 +104,9 @@ if [ ! -x "$base_dir/lex" ]; then
     cp "$tree/target/release/lex" "$base_dir/lex"
     git -C "$repo" worktree remove --force "$tree"
 fi
+run_tracks "$base_dir/lex" "$base_dir"
 rmdir "$lock"
 trap 'rm -rf "$cand_dir"' EXIT
-run_tracks "$base_dir/lex" "$base_dir"
 
 (cd "$repo" && cargo build --release --locked --bin lex)
 run_tracks "$repo/target/release/lex" "$cand_dir"
