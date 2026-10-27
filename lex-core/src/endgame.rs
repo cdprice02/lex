@@ -26,7 +26,8 @@ struct Solved {
 /// memo is shared by every Endgame root and every game. The memo is keyed by the sorted candidate
 /// indices and the allowed guesses, because the same set costs more when fewer guesses are
 /// permitted; in normal mode and on an ultrahard Corpus run the allowed set is implied, so the
-/// key is the candidates alone. The search is exhaustive, with no bound passed down, so memoized costs are always exact.
+/// key is the candidates alone. The search is exhaustive, with no bound passed down, so memoized
+/// costs are always exact.
 #[derive(Debug)]
 pub(crate) struct Endgame<const N: usize> {
     pool: Arc<Pool<N>>,
