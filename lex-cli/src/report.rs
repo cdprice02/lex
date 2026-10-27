@@ -36,11 +36,23 @@ pub struct Run {
     pub strategy: StrategyReport,
 }
 
+/// Which guesses a run was allowed to play.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum Mode {
+    Unconstrained,
+    /// The official Wordle hard-mode rule.
+    Hard,
+    /// Only words consistent with every feedback so far.
+    Ultrahard,
+}
+
 /// The solver [`Strategy`] a run played. Two reports are a like-for-like solver comparison only
 /// when this matches.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(from = "RawStrategyReport")]
 pub struct StrategyReport {
-    pub hard_mode: bool,
+    pub mode: Mode,
     pub temperature: f64,
     pub win_weight: f64,
     /// Reports from before the endgame search never used one.
@@ -50,16 +62,51 @@ pub struct StrategyReport {
     pub endgame_aversion: f64,
 }
 
+/// The wire shape: reports written before the mode field carry `hard_mode: bool`, and that
+/// bool meant candidates only, which is ultrahard.
+#[derive(Deserialize)]
+struct RawStrategyReport {
+    mode: Option<Mode>,
+    hard_mode: Option<bool>,
+    temperature: f64,
+    win_weight: f64,
+    #[serde(default)]
+    endgame_threshold: usize,
+    #[serde(default)]
+    endgame_aversion: f64,
+}
+
+impl From<RawStrategyReport> for StrategyReport {
+    fn from(raw: RawStrategyReport) -> Self {
+        let mode = raw.mode.unwrap_or(if raw.hard_mode == Some(true) {
+            Mode::Ultrahard
+        } else {
+            Mode::Unconstrained
+        });
+        Self {
+            mode,
+            temperature: raw.temperature,
+            win_weight: raw.win_weight,
+            endgame_threshold: raw.endgame_threshold,
+            endgame_aversion: raw.endgame_aversion,
+        }
+    }
+}
+
 impl StrategyReport {
     fn legacy() -> Self {
-        Strategy::hard_mode().into()
+        Strategy::ultrahard().into()
     }
 }
 
 impl From<Strategy> for StrategyReport {
     fn from(s: Strategy) -> Self {
         Self {
-            hard_mode: s.pool == GuessPool::Candidates,
+            mode: match s.pool {
+                GuessPool::All => Mode::Unconstrained,
+                GuessPool::Hard => Mode::Hard,
+                GuessPool::Ultrahard => Mode::Ultrahard,
+            },
             temperature: s.temperature,
             win_weight: s.win_weight,
             endgame_threshold: s.endgame_threshold,
@@ -73,10 +120,10 @@ impl std::fmt::Display for StrategyReport {
         write!(
             f,
             "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}",
-            if self.hard_mode {
-                "hard mode"
-            } else {
-                "unconstrained"
+            match self.mode {
+                Mode::Unconstrained => "unconstrained",
+                Mode::Hard => "hard mode",
+                Mode::Ultrahard => "ultrahard mode",
             },
             self.temperature,
             self.win_weight,
@@ -258,4 +305,34 @@ impl Report {
 
 fn short(hash: &str) -> &str {
     hash.get(..12).unwrap_or(hash)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn read(json: &str) -> StrategyReport {
+        serde_json::from_str(json).unwrap()
+    }
+
+    #[test]
+    fn the_old_hard_mode_bool_reads_as_ultrahard() {
+        let old = r#"{"hard_mode": true, "temperature": 5.0, "win_weight": 0.0}"#;
+        assert_eq!(read(old).mode, Mode::Ultrahard);
+        let old = r#"{"hard_mode": false, "temperature": 5.0, "win_weight": 1.0}"#;
+        assert_eq!(read(old).mode, Mode::Unconstrained);
+    }
+
+    #[test]
+    fn the_mode_round_trips_and_wins_over_the_old_bool() {
+        for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
+            let report = StrategyReport::from(Strategy {
+                pool,
+                ..Strategy::default()
+            });
+            let json = serde_json::to_string(&report).unwrap();
+            assert!(!json.contains("hard_mode"));
+            assert_eq!(read(&json), report);
+        }
+    }
 }

@@ -44,7 +44,8 @@ lengths() {
 
 tracks=$(
     for lang in $languages; do echo "$lang 5"; done
-    echo "english 5 --hard-mode"
+    echo "english 5 --profile wordle --hard"
+    echo "english 5 --ultrahard"
     echo "english 5 --profile wordle"
     echo "english 5 --profile wordle-all"
     if [ "$set_name" = full ]; then
@@ -60,13 +61,17 @@ track_name() { # <lang> <len> [flags]: english-5, english-5-hard-mode
     printf '%s-%s%s' "$1" "$2" "$(printf '%s' "${3:-}" | tr -s ' -' '-')"
 }
 
-# A track whose flags the base binary lacks (a base from before `--profile`) cannot be compared
-# and is skipped; once a base has the flag, the track is compared like any other.
+# A track with a flag the base binary lacks (a base from before `--profile` or `--hard`) cannot be
+# compared and is skipped; once a base has every flag, the track is compared like any other. The
+# match is on the whole flag, so `--hard` is not satisfied by a base that only has `--hard-mode`.
 base_supports() { # <track flags>
-    case "$1" in
-        *--profile*) "$base_dir/lex" simulate --help | grep -q -- --profile ;;
-        *) true ;;
-    esac
+    help=$("$base_dir/lex" simulate --help)
+    for flag in $1; do
+        case "$flag" in
+            --*) printf '%s\n' "$help" |
+                grep -Eq -- "(^|[^[:alnum:]-])$flag([^[:alnum:]-]|\$)" || return 1 ;;
+        esac
+    done
 }
 
 run_tracks() { # <lex binary> <output dir>

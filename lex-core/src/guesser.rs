@@ -4,9 +4,10 @@ use std::rc::Rc;
 use lex_data::Word;
 use lex_data::WordSet;
 
+use crate::allowed::HardRule;
 use crate::candidates::{Candidates, Suggestion};
 use crate::correctness::WordCorrectness;
-use crate::strategy::{Pool, Strategy};
+use crate::strategy::{GuessPool, Pool, Strategy};
 use crate::tree::{DecisionTree, NodeId};
 
 #[derive(Debug, Clone)]
@@ -95,7 +96,34 @@ impl<const N: usize> Guesser<N> {
     /// [`suggest`](Self::suggest). Not memoized.
     pub fn suggest_top_k(&self, k: usize) -> Vec<Suggestion<N>> {
         let tree = self.tree.borrow();
-        tree.candidates(self.node).suggest_top_k(tree.strategy(), k)
+        tree.candidates(self.node)
+            .suggest_top_k(tree.strategy(), tree.allowed(self.node), k)
+    }
+
+    /// Why `word` may not be played next under the strategy's pool rule and the guesses pushed,
+    /// as a one-line reason, or `None` when it is allowed (always, outside hard and ultrahard
+    /// mode). Independent of the tree, so it also vets a word the solver never scored.
+    pub fn rule_violation(&self, word: Word<N>) -> Option<String> {
+        let letters = |w: &Word<N>| -> [char; N] { std::array::from_fn(|i| w[i]) };
+        let candidate = letters(&word);
+        match self.tree.borrow().strategy().pool {
+            GuessPool::All => None,
+            GuessPool::Hard => self.history.iter().find_map(|guess| {
+                HardRule::new(&letters(&guess.word()), guess.correctness().ordinal())
+                    .violation(&candidate)
+                    .map(|v| format!("hard mode: {v}"))
+            }),
+            GuessPool::Ultrahard => self
+                .history
+                .iter()
+                .find(|g| WordCorrectness::correct(word, g.word()) != g.correctness())
+                .map(|g| {
+                    format!(
+                        "ultrahard mode: must be consistent with the feedback for {}",
+                        g.word()
+                    )
+                }),
+        }
     }
 
     pub fn suggest(&self) -> Option<Word<N>> {
@@ -141,7 +169,7 @@ mod benches {
     fn build_guesser(pairs: &[(Word<5>, u64)]) -> Guesser<5> {
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
         let ws = WordSet::from_frequency_map(frequencies);
-        corpus_guesser(ws, Strategy::hard_mode())
+        corpus_guesser(ws, Strategy::ultrahard())
     }
 
     #[bench]
@@ -175,8 +203,10 @@ mod benches {
 mod tests {
     use lex_data::{Word, WordSet};
 
+    use std::sync::Arc;
+
     use super::*;
-    use crate::strategy::GuessPool;
+    use crate::allowed::Allowed;
 
     fn make_guesser(pairs: &[(&str, u64)]) -> Guesser<5> {
         let frequencies = pairs
@@ -184,7 +214,7 @@ mod tests {
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
         let ws = WordSet::from_frequency_map(frequencies);
-        corpus_guesser(ws, Strategy::hard_mode())
+        corpus_guesser(ws, Strategy::ultrahard())
     }
 
     fn word(s: &str) -> Word<5> {
@@ -354,17 +384,25 @@ mod tests {
         strategy: &Strategy,
         target: Word<5>,
     ) -> Vec<Word<5>> {
-        let mut candidates = Candidates::whole_pool(Pool::new(word_set));
+        let pool = Pool::new(word_set);
+        let mut candidates = Candidates::whole_pool(Arc::clone(&pool));
+        let mut allowed = Allowed::root(strategy.pool, true);
         let mut played = Vec::new();
         loop {
             let guess = candidates
-                .suggest(strategy)
+                .suggest(strategy, &allowed)
                 .expect("target stays a candidate");
             played.push(guess);
             let correctness = WordCorrectness::correct(target, guess);
             if correctness.is_correct() {
                 return played;
             }
+            allowed = allowed.after(
+                strategy.pool,
+                &pool,
+                &pool.encode(&guess),
+                correctness.ordinal(),
+            );
             candidates = candidates.filtered(&Guess::new(guess, correctness));
         }
     }
@@ -378,8 +416,17 @@ mod tests {
             .collect()
     }
 
-    const STRATEGIES: [Strategy; 3] = [
-        Strategy::hard_mode(),
+    const STRATEGIES: [Strategy; 5] = [
+        Strategy::ultrahard(),
+        Strategy {
+            pool: GuessPool::Hard,
+            ..Strategy::ultrahard()
+        },
+        Strategy {
+            pool: GuessPool::Hard,
+            win_weight: 1.0,
+            ..Strategy::ultrahard()
+        },
         Strategy {
             pool: GuessPool::All,
             temperature: 5.0,
@@ -418,13 +465,13 @@ mod tests {
     #[test]
     fn non_suggested_guess_leaves_other_paths_untouched() {
         let ws = dict_set(DICT);
-        let mut shared = corpus_guesser(ws.clone(), Strategy::hard_mode());
+        let mut shared = corpus_guesser(ws.clone(), Strategy::ultrahard());
         // populate the tree along the solver's own path first
         memoized_sequence(&mut shared, word("brace"));
 
         shared.reset();
         shared.push_guess(make_guess("light", "crave"));
-        let mut fresh = corpus_guesser(ws, Strategy::hard_mode());
+        let mut fresh = corpus_guesser(ws, Strategy::ultrahard());
         fresh.push_guess(make_guess("light", "crave"));
         assert_eq!(shared.suggest(), fresh.suggest());
         assert_eq!(shared.num_candidates(), fresh.num_candidates());
@@ -435,13 +482,13 @@ mod tests {
         // "crane" and "stare" both score all-absent against "light"; the edge key must carry
         // the guess word or the two paths would share a node
         let ws = dict_set(DICT);
-        let mut shared = corpus_guesser(ws.clone(), Strategy::hard_mode());
+        let mut shared = corpus_guesser(ws.clone(), Strategy::ultrahard());
         shared.push_guess(make_guess("crane", "light"));
         let after_crane = shared.num_candidates();
         shared.reset();
         shared.push_guess(make_guess("stare", "light"));
 
-        let mut fresh = corpus_guesser(ws, Strategy::hard_mode());
+        let mut fresh = corpus_guesser(ws, Strategy::ultrahard());
         fresh.push_guess(make_guess("stare", "light"));
         assert_eq!(shared.num_candidates(), fresh.num_candidates());
         assert_ne!(after_crane, shared.num_candidates());
@@ -480,9 +527,117 @@ mod tests {
             .num_guesses()
     }
 
+    const CRANE_PAIRS: &[(&str, u64)] = &[
+        ("crane", 500),
+        ("crave", 400),
+        ("crape", 300),
+        ("crate", 250),
+        ("slate", 200),
+    ];
+
+    fn top_words(g: &Guesser<5>) -> Vec<String> {
+        let mut words: Vec<String> = g
+            .suggest_top_k(20)
+            .iter()
+            .map(|s| s.word.to_string())
+            .collect();
+        words.sort();
+        words
+    }
+
+    fn with_strategy(pool: GuessPool, answers: &[&str], pairs: &[(&str, u64)]) -> Guesser<5> {
+        let answers = answers.iter().map(|w| word(w)).collect();
+        Guesser::new(
+            dict_set(pairs),
+            answers,
+            Strategy {
+                pool,
+                ..Strategy::ultrahard()
+            },
+        )
+    }
+
     #[test]
-    fn hard_mode_never_suggests_a_ruled_out_word() {
-        let mut g = corpus_guesser(dict_set(BATCH_FAMILY), Strategy::hard_mode());
+    fn hard_mode_allows_a_replayed_gray_that_ultrahard_forbids() {
+        let all: Vec<&str> = CRANE_PAIRS.iter().map(|p| p.0).collect();
+        let mut hard = with_strategy(GuessPool::Hard, &all, CRANE_PAIRS);
+        let mut ultra = with_strategy(GuessPool::Ultrahard, &all, CRANE_PAIRS);
+        for g in [&mut hard, &mut ultra] {
+            g.push_guess(make_guess("crane", "crave"));
+        }
+        // greens c, r, a, e stay; the gray N may be replayed, so crane itself is playable
+        assert_eq!(top_words(&hard), ["crane", "crape", "crate", "crave"]);
+        assert_eq!(top_words(&ultra), ["crape", "crate", "crave"]);
+    }
+
+    #[test]
+    fn hard_mode_allowed_words_follow_the_rule_for_every_pushed_guess() {
+        let mut g = with_strategy(
+            GuessPool::Hard,
+            &["crane", "crave", "crape", "crate", "slate"],
+            CRANE_PAIRS,
+        );
+        g.push_guess(make_guess("slate", "crate"));
+        // slate scores 0 0 2 2 2 against crate: a, t, e stay in place
+        assert_eq!(top_words(&g), ["crate", "slate"]);
+        assert_eq!(
+            g.rule_violation(word("crane")),
+            Some("hard mode: must keep T in position 4".into())
+        );
+        assert_eq!(g.rule_violation(word("crate")), None);
+    }
+
+    #[test]
+    fn ultrahard_on_a_profile_plays_pool_words_consistent_with_the_feedback() {
+        let mut g = with_strategy(GuessPool::Ultrahard, &["crave", "slate"], CRANE_PAIRS);
+        g.push_guess(make_guess("crane", "crave"));
+        assert_eq!(g.num_candidates(), 1);
+        // crape is no answer here but scores crane exactly as crave does
+        assert_eq!(top_words(&g), ["crape", "crate", "crave"]);
+        assert_eq!(
+            g.rule_violation(word("crane")),
+            Some("ultrahard mode: must be consistent with the feedback for crane".into())
+        );
+        assert_eq!(g.rule_violation(word("crape")), None);
+    }
+
+    #[test]
+    fn unconstrained_play_has_no_rule_violation() {
+        let mut g = with_strategy(GuessPool::All, &["crave"], CRANE_PAIRS);
+        g.push_guess(make_guess("crane", "crave"));
+        assert_eq!(g.rule_violation(word("slate")), None);
+    }
+
+    #[test]
+    fn every_guess_a_solver_plays_obeys_its_mode_and_the_game_is_won() {
+        for pool in [GuessPool::Hard, GuessPool::Ultrahard] {
+            for endgame_threshold in [0, 12] {
+                let strategy = Strategy {
+                    pool,
+                    endgame_threshold,
+                    ..Strategy::default()
+                };
+                let mut guesser = corpus_guesser(dict_set(DICT), strategy);
+                for &(target, _) in DICT {
+                    let target = word(target);
+                    guesser.reset();
+                    loop {
+                        let next = guesser.suggest().unwrap();
+                        assert_eq!(guesser.rule_violation(next), None, "{strategy:?}");
+                        let feedback = WordCorrectness::correct(target, next);
+                        guesser.push_guess(Guess::new(next, feedback));
+                        if next == target {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn ultrahard_never_suggests_a_ruled_out_word() {
+        let mut g = corpus_guesser(dict_set(BATCH_FAMILY), Strategy::ultrahard());
         g.push_guess(make_guess("watch", "batch"));
         let candidates = ["batch", "catch", "hatch", "latch", "match", "patch"];
         assert!(g.suggest_top_k(20).iter().all(|s| s.in_candidates));
@@ -511,7 +666,7 @@ mod tests {
                 .map(|t| guesses_after_watch(strategy, t))
                 .sum::<usize>()
         };
-        let (hard, unconstrained) = (total(Strategy::hard_mode()), total(Strategy::default()));
+        let (hard, unconstrained) = (total(Strategy::ultrahard()), total(Strategy::default()));
         assert!(
             unconstrained < hard,
             "unconstrained {unconstrained} should beat hard mode {hard}"

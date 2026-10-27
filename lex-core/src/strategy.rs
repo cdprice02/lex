@@ -12,10 +12,14 @@ pub const CANONICAL_TEMPERATURE: f64 = 5.0;
 /// Which words the solver may play as a guess.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum GuessPool {
-    /// Only words still consistent with every guess so far (hard mode).
-    Candidates,
     /// Every word in the loaded set, including ones already ruled out as the answer.
     All,
+    /// Words the official Wordle hard-mode rule allows: every earlier green stays in place, and
+    /// every earlier green or yellow letter is used again at least as many times.
+    Hard,
+    /// Words consistent with every feedback so far, as if each could be the answer. On a Corpus
+    /// run these are exactly the candidates; on a Profile they are a superset of the Answers left.
+    Ultrahard,
 }
 
 /// The solver's tunable choices. Fixed for the life of a [`Guesser`](crate::Guesser): the decision
@@ -38,10 +42,11 @@ pub struct Strategy {
 }
 
 impl Strategy {
-    /// The original solver: guesses only from the candidates, scored by entropy alone.
-    pub const fn hard_mode() -> Self {
+    /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
+    /// entropy alone.
+    pub const fn ultrahard() -> Self {
         Self {
-            pool: GuessPool::Candidates,
+            pool: GuessPool::Ultrahard,
             temperature: CANONICAL_TEMPERATURE,
             win_weight: 0.0,
             endgame_threshold: 0,

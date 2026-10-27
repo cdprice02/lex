@@ -83,7 +83,6 @@ pub struct CommonArgs {
     pub lang: Option<Language>,
     #[arg(
         long,
-        conflicts_with = "hard_mode",
         help = "Play a profile: its answer list and guess pool, with its language and word length (wordle, wordle-all)"
     )]
     pub profile: Option<Profile>,
@@ -95,9 +94,15 @@ pub struct CommonArgs {
     pub data_dir: PathBuf,
     #[arg(
         long,
-        help = "Only guess words that are still possible answers (the original solver)"
+        conflicts_with = "ultrahard",
+        help = "Official Wordle hard mode: keep every green in place and reuse every green or yellow letter"
     )]
-    pub hard_mode: bool,
+    pub hard: bool,
+    #[arg(
+        long,
+        help = "Only guess words consistent with every feedback so far (stricter than --hard)"
+    )]
+    pub ultrahard: bool,
     #[arg(
         long,
         default_value_t = Strategy::default().temperature,
@@ -140,8 +145,10 @@ impl CommonArgs {
 
     pub fn strategy(&self) -> Strategy {
         Strategy {
-            pool: if self.hard_mode {
-                GuessPool::Candidates
+            pool: if self.ultrahard {
+                GuessPool::Ultrahard
+            } else if self.hard {
+                GuessPool::Hard
             } else {
                 GuessPool::All
             },
@@ -291,8 +298,25 @@ mod profile_tests {
     }
 
     #[test]
-    fn a_profile_rejects_dictionary_length_and_hard_mode() {
+    fn a_profile_rejects_dictionary_length() {
         assert!(common(&["--profile", "wordle", "--dictionary-length", "10"]).is_err());
+    }
+
+    #[test]
+    fn a_profile_plays_hard_and_ultrahard() {
+        let hard = common(&["--profile", "wordle", "--hard"]).unwrap();
+        assert_eq!(hard.strategy().pool, GuessPool::Hard);
+        let ultra = common(&["--profile", "wordle", "--ultrahard"]).unwrap();
+        assert_eq!(ultra.strategy().pool, GuessPool::Ultrahard);
+    }
+
+    #[test]
+    fn hard_and_ultrahard_conflict_and_the_old_flag_is_gone() {
+        assert!(common(&["--profile", "wordle", "--hard", "--ultrahard"]).is_err());
         assert!(common(&["--profile", "wordle", "--hard-mode"]).is_err());
+        assert_eq!(
+            common(&["--profile", "wordle"]).unwrap().strategy().pool,
+            GuessPool::All
+        );
     }
 }

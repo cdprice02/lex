@@ -3,6 +3,7 @@
 #![feature(non_exhaustive_omitted_patterns_lint)]
 #![warn(non_exhaustive_omitted_patterns)]
 
+mod allowed;
 mod candidates;
 mod correctness;
 mod endgame;

@@ -3,6 +3,7 @@ use std::sync::Arc;
 
 use lex_data::Word;
 
+use crate::allowed::Allowed;
 use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
 use crate::strategy::{GuessPool, Pool};
 
@@ -22,8 +23,11 @@ struct Solved {
 ///
 /// Costs are kept as weighted sums rather than probabilities, with weights taken once from the
 /// whole pool, so a set's cost does not depend on which game position it was reached from and the
-/// memo (keyed by the sorted candidate indices) is shared by every Endgame root and every game.
-/// The search is exhaustive, with no bound passed down, so memoized costs are always exact.
+/// memo is shared by every Endgame root and every game. The memo is keyed by the sorted candidate
+/// indices and the allowed guesses, because the same set costs more when fewer guesses are
+/// permitted; in normal mode and on an ultrahard Corpus run the allowed set is implied, so the
+/// key is the candidates alone. The search is exhaustive, with no bound passed down, so memoized
+/// costs are always exact.
 #[derive(Debug)]
 pub(crate) struct Endgame<const N: usize> {
     pool: Arc<Pool<N>>,
@@ -31,7 +35,10 @@ pub(crate) struct Endgame<const N: usize> {
     /// `a` in the `a^guesses` objective; `None` is plain expected guesses (the `a -> 1` limit).
     growth: Option<f64>,
     weights: Vec<f64>,
-    memo: HashMap<Vec<u32>, Solved>,
+    /// Each distinct allowed-guess list met so far, numbered, so a memo key is small.
+    list_ids: HashMap<Vec<u32>, u32>,
+    /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
+    memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
 }
 
 impl<const N: usize> Endgame<N> {
@@ -47,28 +54,42 @@ impl<const N: usize> Endgame<N> {
             guess_pool,
             growth: (aversion > 0.0).then(|| aversion.exp()),
             weights,
+            list_ids: HashMap::new(),
             memo: HashMap::new(),
         }
     }
 
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
-    pub(crate) fn best_guess(&mut self, set: &[u32]) -> Option<Word<N>> {
+    pub(crate) fn best_guess(&mut self, set: &[u32], allowed: &Allowed) -> Option<Word<N>> {
         if set.is_empty() {
             return None;
         }
-        let guess = self.solve(set).guess;
+        let guess = self.solve(set, allowed).guess;
         Some(self.pool.word(guess))
     }
 
     /// Expected number of guesses to finish from `set` under the answer prior renormalized to it.
     #[cfg(test)]
-    pub(crate) fn expected_guesses(&mut self, set: &[u32]) -> f64 {
+    pub(crate) fn expected_guesses(&mut self, set: &[u32], allowed: &Allowed) -> f64 {
         let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
-        self.solve(set).cost / mass
+        self.solve(set, allowed).cost / mass
     }
 
-    fn solve(&mut self, set: &[u32]) -> Solved {
-        if let Some(&solved) = self.memo.get(set) {
+    fn memo_slot(&mut self, allowed: &Allowed) -> Option<u32> {
+        let Allowed::List(list) = allowed else {
+            return None;
+        };
+        if let Some(&id) = self.list_ids.get(list) {
+            return Some(id);
+        }
+        let id = self.list_ids.len() as u32;
+        self.list_ids.insert(list.clone(), id);
+        Some(id)
+    }
+
+    fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
+        let slot = self.memo_slot(allowed);
+        if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
             return solved;
         }
         let solved = match *set {
@@ -77,9 +98,12 @@ impl<const N: usize> Endgame<N> {
                 cost: self.weights[only as usize] * self.growth.unwrap_or(1.0),
                 guess: only,
             },
-            _ => self.search(set),
+            _ => self.search(set, allowed),
         };
-        self.memo.insert(set.to_vec(), solved);
+        self.memo
+            .entry(slot)
+            .or_default()
+            .insert(set.to_vec(), solved);
         solved
     }
 
@@ -87,7 +111,7 @@ impl<const N: usize> Endgame<N> {
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave. Exact ties go to a candidate, then to the
     /// more frequent word, as in the entropy solver.
-    fn search(&mut self, set: &[u32]) -> Solved {
+    fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
         let mut keyed = Vec::with_capacity(set.len());
         let mut order: Vec<(f64, bool, u32)> = Vec::new();
@@ -100,15 +124,20 @@ impl<const N: usize> Endgame<N> {
         for &g in set {
             consider(self, g, true);
         }
-        if self.guess_pool == GuessPool::All {
+        let mut outside = |this: &Self, guesses: &mut dyn Iterator<Item = u32>| {
             let mut next = 0;
-            for g in 0..self.pool.len() as u32 {
+            for g in guesses {
                 if set.get(next) == Some(&g) {
                     next += 1;
                 } else {
-                    consider(self, g, false);
+                    consider(this, g, false);
                 }
             }
+        };
+        match allowed {
+            Allowed::Candidates => {}
+            Allowed::Whole => outside(self, &mut (0..self.pool.len() as u32)),
+            Allowed::List(list) => outside(self, &mut list.iter().copied()),
         }
         order.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)).then(a.2.cmp(&b.2)));
 
@@ -118,7 +147,7 @@ impl<const N: usize> Endgame<N> {
             if best.is_some_and(|b| floor > b.cost * (1.0 + 1e-9)) {
                 break;
             }
-            self.try_guess(set, g, !outside, mass, &mut best);
+            self.try_guess(set, allowed, g, !outside, mass, &mut best);
         }
         best.expect("a non-empty set has a candidate guess")
     }
@@ -177,6 +206,7 @@ impl<const N: usize> Endgame<N> {
     fn try_guess(
         &mut self,
         set: &[u32],
+        allowed: &Allowed,
         guess: u32,
         in_set: bool,
         mass: f64,
@@ -193,7 +223,13 @@ impl<const N: usize> Endgame<N> {
                 continue;
             }
             let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
-            cost += self.solve(&child).cost;
+            let child_allowed = allowed.after(
+                self.guess_pool,
+                &self.pool,
+                self.pool.code(guess),
+                group[0].0,
+            );
+            cost += self.solve(&child, &child_allowed).cost;
             // costs only grow from here, so this guess can no longer be as cheap
             if best.is_some_and(|b| cost * growth > b.cost) {
                 return;
@@ -255,7 +291,7 @@ mod tests {
             let mut remaining = set.to_vec();
             let mut guesses = 0;
             loop {
-                let guess = endgame.best_guess(&remaining).unwrap();
+                let guess = endgame.best_guess(&remaining, &Allowed::Whole).unwrap();
                 guesses += 1;
                 if guess == target {
                     break;
@@ -277,7 +313,7 @@ mod tests {
         let set = indices_of(&pool, &FAMILY);
         for aversion in [0.0, 0.3, 1.0] {
             let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, aversion);
-            let predicted = endgame.solve(&set).cost;
+            let predicted = endgame.solve(&set, &Allowed::Whole).cost;
             let simulated = simulated_cost(&mut endgame, &set);
             assert!(
                 (predicted - simulated).abs() < 1e-9 * predicted,
@@ -300,7 +336,7 @@ mod tests {
                     let mut remaining = set.clone();
                     let mut guesses = 0;
                     loop {
-                        let guess = endgame.best_guess(&remaining).unwrap();
+                        let guess = endgame.best_guess(&remaining, &Allowed::Whole).unwrap();
                         guesses += 1;
                         if guess == target {
                             return guesses;
@@ -321,19 +357,40 @@ mod tests {
     fn a_probe_word_beats_guessing_candidates() {
         let pool = pool_of(&[&FAMILY[..], &["clamp", "twang", "phlox"]].concat());
         let set = indices_of(&pool, &FAMILY);
-        let all = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0).expected_guesses(&set);
-        let hard =
-            Endgame::new(Arc::clone(&pool), GuessPool::Candidates, 5.0, 0.0).expected_guesses(&set);
+        let all = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0)
+            .expected_guesses(&set, &Allowed::Whole);
+        let hard = Endgame::new(Arc::clone(&pool), GuessPool::Ultrahard, 5.0, 0.0)
+            .expected_guesses(&set, &Allowed::Candidates);
         assert!(all < hard, "{all} !< {hard}");
+    }
+
+    #[test]
+    fn the_memo_never_reuses_a_cost_across_different_allowed_guesses() {
+        let pool = pool_of(&[&FAMILY[..], &["clamp", "twang", "phlox"]].concat());
+        let set = indices_of(&pool, &FAMILY);
+        let restricted = Allowed::List(set.clone());
+        let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0);
+        let limited = endgame.expected_guesses(&set, &restricted);
+        let free = endgame.expected_guesses(&set, &Allowed::Whole);
+        assert!(free < limited, "{free} !< {limited}");
+        // asking again, in either order, returns each allowed set's own cost
+        assert_eq!(endgame.expected_guesses(&set, &restricted), limited);
+        assert_eq!(endgame.expected_guesses(&set, &Allowed::Whole), free);
+        let fresh = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0)
+            .expected_guesses(&set, &restricted);
+        assert_eq!(limited, fresh);
     }
 
     #[test]
     fn a_lone_candidate_is_one_guess() {
         let pool = pool_of(&FAMILY);
         let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0);
-        assert_eq!(endgame.expected_guesses(&[3]), 1.0);
-        assert_eq!(endgame.best_guess(&[3]), Some(pool.word(3)));
-        assert_eq!(endgame.best_guess(&[]), None);
+        assert_eq!(endgame.expected_guesses(&[3], &Allowed::Whole), 1.0);
+        assert_eq!(
+            endgame.best_guess(&[3], &Allowed::Whole),
+            Some(pool.word(3))
+        );
+        assert_eq!(endgame.best_guess(&[], &Allowed::Whole), None);
     }
 
     #[test]
@@ -343,7 +400,7 @@ mod tests {
             (Word::<5>::try_from("crate").unwrap(), 10),
         ]));
         let mut endgame = Endgame::new(pool, GuessPool::All, 5.0, 0.0);
-        assert!((endgame.expected_guesses(&[0, 1]) - 1.5).abs() < 1e-12);
+        assert!((endgame.expected_guesses(&[0, 1], &Allowed::Whole) - 1.5).abs() < 1e-12);
     }
 
     /// Roots reached by real play on the English-5 cache: every 400th target is played with the
@@ -376,7 +433,7 @@ mod tests {
             while candidates.len() > LIMIT {
                 let guess = *suggested
                     .entry(candidates.indices().to_vec())
-                    .or_insert_with(|| candidates.suggest(&strategy).unwrap());
+                    .or_insert_with(|| candidates.suggest(&strategy, &Allowed::Whole).unwrap());
                 let feedback = WordCorrectness::correct(target, guess);
                 candidates = candidates.filtered(&Guess::new(guess, feedback));
             }
@@ -385,7 +442,7 @@ mod tests {
                 continue;
             }
             let started = std::time::Instant::now();
-            let predicted = endgame.solve(&set).cost;
+            let predicted = endgame.solve(&set, &Allowed::Whole).cost;
             eprintln!("root of {} solved in {:?}", set.len(), started.elapsed());
             let simulated = simulated_cost(&mut endgame, &set);
             eprintln!(

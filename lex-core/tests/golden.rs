@@ -40,7 +40,7 @@ fn sequence(strategy: Strategy, target: &str) -> Vec<String> {
 }
 
 #[test]
-fn hard_mode_guess_sequences_are_stable() {
+fn ultrahard_guess_sequences_are_stable() {
     let expected: &[(&str, &[&str])] = &[
         ("bound", &["their", "sound", "bound"]),
         ("found", &["their", "sound", "bound", "found"]),
@@ -95,7 +95,7 @@ fn hard_mode_guess_sequences_are_stable() {
     ];
     for (target, guesses) in expected {
         assert_eq!(
-            &sequence(Strategy::hard_mode(), target),
+            &sequence(Strategy::ultrahard(), target),
             guesses,
             "target {target}"
         );

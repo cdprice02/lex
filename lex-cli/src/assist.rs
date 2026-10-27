@@ -54,7 +54,10 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         }
         let top = suggestions[0].word;
 
-        let Some(word) = prompt_word::<N>(&mut lines, top, |w| source.check_guess(&guess_pool, w))?
+        let Some(word) = prompt_word::<N>(&mut lines, top, |w| {
+            source.check_guess(&guess_pool, w)?;
+            guesser.rule_violation(*w).map_or(Ok(()), Err)
+        })?
         else {
             return Ok(()); // EOF
         };

@@ -5,9 +5,10 @@ use std::sync::Arc;
 
 use lex_data::Word;
 
+use crate::allowed::Allowed;
 use crate::correctness::{Code, LetterCounts, WordCorrectness, pattern_ordinal};
 use crate::guesser::Guess;
-use crate::strategy::{GuessPool, Pool, Strategy};
+use crate::strategy::{Pool, Strategy};
 
 /// A scored guess: how much it is expected to teach, and whether it could itself be the answer.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -98,56 +99,63 @@ impl<const N: usize> Candidates<N> {
         self.indices.len()
     }
 
-    /// Calls `f(pool index, entropy, p_answer, in_candidates)` for every guess the strategy's pool
-    /// allows, in frequency-descending order.
-    fn for_each_guess(&self, strategy: &Strategy, mut f: impl FnMut(u32, f64, f64, bool)) {
-        let probs = self.pool.prior(&self.indices, strategy.temperature);
+    /// Calls `f(pool index, entropy, p_answer, in_candidates)` for every guess `allowed` permits,
+    /// in frequency-descending order.
+    fn for_each_guess(
+        &self,
+        allowed: &Allowed,
+        temperature: f64,
+        mut f: impl FnMut(u32, f64, f64, bool),
+    ) {
+        let probs = self.pool.prior(&self.indices, temperature);
         let words: Vec<Code<N>> = self.indices.iter().map(|&i| *self.pool.code(i)).collect();
-        match strategy.pool {
-            GuessPool::Candidates => {
-                for (pos, &i) in self.indices.iter().enumerate() {
-                    f(
-                        i,
-                        guess_entropy(&words[pos], &words, &probs),
-                        probs[pos],
-                        true,
-                    );
-                }
+        let mut scan = |guesses: &mut dyn Iterator<Item = u32>| {
+            let mut next = 0;
+            for i in guesses {
+                let (p_answer, in_candidates) = match self.indices.get(next) {
+                    Some(&c) if c == i => {
+                        next += 1;
+                        (probs[next - 1], true)
+                    }
+                    _ => (0.0, false),
+                };
+                f(
+                    i,
+                    guess_entropy(self.pool.code(i), &words, &probs),
+                    p_answer,
+                    in_candidates,
+                );
             }
-            GuessPool::All => {
-                let mut next = 0;
-                for i in 0..self.pool.len() as u32 {
-                    let (p_answer, in_candidates) = match self.indices.get(next) {
-                        Some(&c) if c == i => {
-                            next += 1;
-                            (probs[next - 1], true)
-                        }
-                        _ => (0.0, false),
-                    };
-                    f(
-                        i,
-                        guess_entropy(self.pool.code(i), &words, &probs),
-                        p_answer,
-                        in_candidates,
-                    );
-                }
-            }
+        };
+        match allowed {
+            Allowed::Candidates => scan(&mut self.indices.iter().copied()),
+            Allowed::Whole => scan(&mut (0..self.pool.len() as u32)),
+            Allowed::List(list) => scan(&mut list.iter().copied()),
         }
     }
 
     /// The `k` best guesses by score, descending. Equal scores prefer words still in the
     /// candidate set, then frequency order, so the first element agrees with
     /// [`suggest`](Self::suggest).
-    pub(crate) fn suggest_top_k(&self, strategy: &Strategy, k: usize) -> Vec<Suggestion<N>> {
+    pub(crate) fn suggest_top_k(
+        &self,
+        strategy: &Strategy,
+        allowed: &Allowed,
+        k: usize,
+    ) -> Vec<Suggestion<N>> {
         let mut scored = Vec::new();
-        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
-            scored.push(Suggestion {
-                word: self.pool.word(i),
-                entropy_bits,
-                p_answer,
-                in_candidates,
-            });
-        });
+        self.for_each_guess(
+            allowed,
+            strategy.temperature,
+            |i, entropy_bits, p_answer, in_candidates| {
+                scored.push(Suggestion {
+                    word: self.pool.word(i),
+                    entropy_bits,
+                    p_answer,
+                    in_candidates,
+                });
+            },
+        );
         // stable sort: equal keys keep frequency-descending iteration order
         scored.sort_by(|a, b| {
             let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
@@ -159,7 +167,7 @@ impl<const N: usize> Candidates<N> {
         scored
     }
 
-    pub(crate) fn suggest(&self, strategy: &Strategy) -> Option<Word<N>> {
+    pub(crate) fn suggest(&self, strategy: &Strategy, allowed: &Allowed) -> Option<Word<N>> {
         match self.indices.as_slice() {
             [] => {
                 cold_path();
@@ -172,25 +180,30 @@ impl<const N: usize> Candidates<N> {
 
         // (index, score, in_candidates)
         let mut best: Option<(u32, f64, bool)> = None;
-        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
-            let score = entropy_bits + strategy.win_weight * p_answer;
-            log::trace!("{}: {}", self.pool.word(i), score);
-            match best {
-                Some((best_i, best_score, best_in)) => {
-                    if score > best_score || (score == best_score && in_candidates && !best_in) {
-                        log::debug!(
-                            "{} > {}; {} > {}",
-                            self.pool.word(i),
-                            self.pool.word(best_i),
-                            score,
-                            best_score
-                        );
-                        best = Some((i, score, in_candidates));
+        self.for_each_guess(
+            allowed,
+            strategy.temperature,
+            |i, entropy_bits, p_answer, in_candidates| {
+                let score = entropy_bits + strategy.win_weight * p_answer;
+                log::trace!("{}: {}", self.pool.word(i), score);
+                match best {
+                    Some((best_i, best_score, best_in)) => {
+                        if score > best_score || (score == best_score && in_candidates && !best_in)
+                        {
+                            log::debug!(
+                                "{} > {}; {} > {}",
+                                self.pool.word(i),
+                                self.pool.word(best_i),
+                                score,
+                                best_score
+                            );
+                            best = Some((i, score, in_candidates));
+                        }
                     }
+                    None => best = Some((i, score, in_candidates)),
                 }
-                None => best = Some((i, score, in_candidates)),
-            }
-        });
+            },
+        );
         best.map(|(i, _, _)| self.pool.word(i))
     }
 }
@@ -416,7 +429,7 @@ mod benches {
     fn bench_suggest<const N: usize>(b: &mut Bencher, count: usize) {
         let candidates = Candidates::whole_pool(synthetic_pool::<N>(count));
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.suggest(&strategy)));
+        b.iter(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
     }
 
     #[bench]
@@ -449,7 +462,7 @@ mod benches {
             candidates.len()
         );
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.suggest(&strategy)));
+        b.iter(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
     }
 
     #[bench]
