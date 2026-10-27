@@ -339,7 +339,7 @@ mod tests {
     ];
 
     fn dict_set(pairs: &[(&str, u64)]) -> WordSet<5> {
-        WordSet::from_frequency_map(
+        WordSet::from_pairs(
             pairs
                 .iter()
                 .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
