@@ -27,6 +27,11 @@ pub enum LexDataError {
         index: usize,
         reason: String,
     },
+    #[error(
+        "the Corpus Alphabet has {size} letters; the solver encodes a letter in one byte and \
+         supports at most {max}"
+    )]
+    AlphabetTooLarge { size: usize, max: usize },
     #[error("profile list {file}: line {line}: {reason}")]
     InvalidProfileList {
         file: String,

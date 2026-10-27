@@ -8,8 +8,8 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 
 | Module | Responsibility |
 |---|---|
-| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()` |
-| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies and the renormalized prior) |
+| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
+| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
@@ -69,9 +69,11 @@ Uses one thread-local `Patterns { buckets, touched }`, shared by every word leng
 
 ## Correctness algorithm (`pattern_ordinal` in `correctness.rs`)
 
-One generic O(N^2) comparison over `[T; N]` with two `u32` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
+Letter count over the Corpus Alphabet at every length (ADR 0010). `Pool::new` maps each word through `WordSet::alphabet()` (sorted letters, index = position) to a `Code<N> = [u8; N]` stored beside the `Word`; a letter outside the Alphabet encodes as `UNKNOWN_LETTER` (255), which no pool word holds, so an `assist` guess with foreign letters scores as absent for them. An Alphabet over 255 letters is a typed `LexDataError::AlphabetTooLarge` at `DataDir::load`; `Pool::new` panics on one built some other way.
 
-Measured and rejected (numbers in `benchmarks/experiments/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
+`pattern_ordinal(word, guess, counts)`: pass 1 tallies each non-green word letter in `counts` (a `[u8; 256]`); pass 2 walks the guess left to right: green if equal, else misplaced when the letter's tally is positive (spending one), else absent. It then zeroes the entries for the word's letters, so `counts` is all zero between calls and a caller makes one on its stack per scan (`filtered`, each entropy scan, `Endgame::partition`). Linear in N. `WordCorrectness::correct` takes `Word`s, so it indexes letters by first appearance in the pair (at most 2N values) and calls the same function. `compare_ordinal` (test-only) is the old O(N^2) compare, kept as an oracle and as the "old" side of the `ordinal_count_n*` / `ordinal_compare_n*` benches (N = 5, 10, 13, 25).
+
+The earlier rejection of alphabet-indexed `[u8; N]` words (`benchmarks/experiments/micro-opt.md`) was a length-5 speed result; the single-technique decision in ADR 0010 supersedes it, gated on English-5 CPU time in the PR that introduced this.
 
 ## `ordinal()` encoding
 

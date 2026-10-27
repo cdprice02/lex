@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fmt::Display;
 use std::ops::Deref;
 use std::path::Path;
@@ -262,6 +262,24 @@ impl<const N: usize> WordSet<N> {
         None
     }
 
+    /// The Alphabet: every distinct letter in the set's words.
+    pub fn alphabet(&self) -> HashSet<char> {
+        self.words().flat_map(|w| w.into_iter()).collect()
+    }
+
+    /// Fails if the Alphabet exceeds [`MAX_ALPHABET_SIZE`](crate::MAX_ALPHABET_SIZE), the most
+    /// letters the solver can encode.
+    pub(crate) fn ensure_alphabet_fits(&self) -> Result<(), LexDataError> {
+        let size = self.alphabet().len();
+        if size > crate::MAX_ALPHABET_SIZE {
+            return Err(LexDataError::AlphabetTooLarge {
+                size,
+                max: crate::MAX_ALPHABET_SIZE,
+            });
+        }
+        Ok(())
+    }
+
     pub fn len(&self) -> usize {
         self.offsets.len()
     }
@@ -328,6 +346,46 @@ mod tests {
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
         WordSet::from_frequency_map(frequencies)
+    }
+
+    /// `letters` distinct letters, three to a word.
+    fn with_letters(letters: u32) -> WordSet<3> {
+        let chars: Vec<char> = (0x100..0x100 + letters)
+            .filter_map(char::from_u32)
+            .collect();
+        let pairs = chars
+            .chunks(3)
+            .map(|c| {
+                let word = std::array::from_fn(|i| c[i % c.len()]);
+                (Word::from(word), 1)
+            })
+            .collect();
+        WordSet::from_pairs(pairs)
+    }
+
+    #[test]
+    fn alphabet_is_the_distinct_letters() {
+        let a = ws(&[("crane", 3), ("nacre", 2)]).alphabet();
+        let mut letters: Vec<char> = a.into_iter().collect();
+        letters.sort_unstable();
+        assert_eq!(letters, ['a', 'c', 'e', 'n', 'r']);
+    }
+
+    #[test]
+    fn an_alphabet_of_255_letters_fits() {
+        assert!(with_letters(255).ensure_alphabet_fits().is_ok());
+    }
+
+    #[test]
+    fn an_alphabet_of_256_letters_is_a_typed_error() {
+        let e = with_letters(256).ensure_alphabet_fits().unwrap_err();
+        assert!(matches!(
+            e,
+            crate::error::LexDataError::AlphabetTooLarge {
+                size: 256,
+                max: 255
+            }
+        ));
     }
 
     #[test]

@@ -31,6 +31,10 @@ pub use word::{Word, WordSet};
 pub const MIN_WORD_LENGTH: usize = 3;
 pub const MAX_WORD_LENGTH: usize = 10;
 
+/// The most letters a Corpus Alphabet may hold: the solver encodes a letter as one byte and
+/// reserves the last value for a letter outside the Alphabet.
+pub const MAX_ALPHABET_SIZE: usize = 255;
+
 #[doc(hidden)]
 pub use seq_macro;
 

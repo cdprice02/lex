@@ -59,7 +59,17 @@ impl<const N: usize> WordCorrectness<N> {
 
     /// The feedback for playing `guess` against `word`.
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
-        Self::from_ordinal(pattern_ordinal(&word, &guess))
+        // Index each letter by where it first appears in `word`, else in `guess`: at most 2N
+        // distinct values, so no Alphabet is needed to compare a pair.
+        let first = |c: char| {
+            word.iter()
+                .position(|&w| w == c)
+                .or_else(|| guess.iter().position(|&g| g == c).map(|i| N + i))
+                .expect("c came from one of the two words") as u8
+        };
+        let word_code: Code<N> = std::array::from_fn(|i| first(word[i]));
+        let guess_code: Code<N> = std::array::from_fn(|i| first(guess[i]));
+        Self::from_ordinal(pattern_ordinal(&word_code, &guess_code, &mut [0; 256]))
     }
 
     /// Inverse of [`ordinal`](Self::ordinal). The ordinal must be below [`COUNT`](Self::COUNT).
@@ -82,22 +92,71 @@ impl<const N: usize> WordCorrectness<N> {
     }
 }
 
-/// The [`ordinal`](WordCorrectness::ordinal) of the feedback for guessing `guess` against `word`,
-/// over any letter type, so the solver can compare alphabet indices instead of chars.
+/// A word's letters as indices into the Corpus Alphabet, one byte each.
+pub(crate) type Code<const N: usize> = [u8; N];
+
+/// The code of a letter outside the Alphabet. The Alphabet holds at most
+/// `lex_data::MAX_ALPHABET_SIZE` (255) letters, so this value is never an Alphabet index.
+pub(crate) const UNKNOWN_LETTER: u8 = u8::MAX;
+
+/// Per-letter tally of unmatched word letters. All zero between calls to [`pattern_ordinal`],
+/// so a caller makes one on its stack and reuses it across a whole scan.
+pub(crate) type LetterCounts = [u8; 256];
+
+/// The [`ordinal`](WordCorrectness::ordinal) of the feedback for guessing `guess` against `word`.
 ///
 /// A guess letter is `Correct` when it equals the word's letter at its position; otherwise it is
-/// `Misplaced` if an unmatched word letter equal to it is still unclaimed (each word letter is
-/// claimed at most once, left to right), else `Absent`. O(N^2) with two position bitmasks and no
-/// shared state: for N up to 10 that beats a count table, whose scattered cache lines cost more
-/// than the extra compares.
-pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(word: &[T; N], guess: &[T; N]) -> u64 {
+/// `Misplaced` if an unmatched word letter equal to it is still unspent (each is spent at most
+/// once, left to right), else `Absent`. The unmatched word letters are tallied per letter, so the
+/// cost is linear in N at every length. `counts` must be all zero; the call zeroes the entries it
+/// touched before returning.
+pub(crate) fn pattern_ordinal<const N: usize>(
+    word: &Code<N>,
+    guess: &Code<N>,
+    counts: &mut LetterCounts,
+) -> u64 {
+    for (&w, &g) in word.iter().zip(guess) {
+        if w != g {
+            counts[w as usize] += 1;
+        }
+    }
+    let mut ordinal = 0;
+    for (&w, &g) in word.iter().zip(guess) {
+        let digit = if w == g {
+            Correctness::Correct as u64
+        } else if counts[g as usize] > 0 {
+            counts[g as usize] -= 1;
+            Correctness::Misplaced as u64
+        } else {
+            Correctness::Absent as u64
+        };
+        ordinal = ordinal * Correctness::COUNT as u64 + digit;
+    }
+    for &w in word {
+        counts[w as usize] = 0;
+    }
+    ordinal
+}
+
+impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for state in &self.0 {
+            write!(f, "{}", state)?;
+        }
+        Ok(())
+    }
+}
+
+/// The O(N^2) compare that the letter count replaced, kept as an oracle for tests and as the
+/// "old" side of the scaling benches.
+#[cfg(test)]
+fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
     let mut green = 0u32;
     for (i, (w, g)) in word.iter().zip(guess).enumerate() {
         if w == g {
             green |= 1 << i;
         }
     }
-    // word positions no longer available to a misplaced match: the green ones, then each claimed
     let mut claimed = green;
     let mut ordinal = 0;
     for (i, &letter) in guess.iter().enumerate() {
@@ -119,15 +178,6 @@ pub(crate) fn pattern_ordinal<T: Copy + Eq, const N: usize>(word: &[T; N], guess
         ordinal = ordinal * Correctness::COUNT as u64 + digit;
     }
     ordinal
-}
-
-impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        for state in &self.0 {
-            write!(f, "{}", state)?;
-        }
-        Ok(())
-    }
 }
 
 #[cfg(test)]
@@ -152,32 +202,77 @@ mod benches {
         b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
-    #[bench]
-    fn ordinal_no_overlap(b: &mut Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("fling").unwrap();
-        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    /// Reproducible word pairs over a..z, so letters repeat and overlap as in a real corpus.
+    fn pairs<const N: usize>() -> Vec<(Code<N>, Code<N>)> {
+        let mut state = 0x2545_f491_4f6c_dd1d_u64;
+        let mut word = || -> Code<N> {
+            std::array::from_fn(|_| {
+                state = state
+                    .wrapping_mul(6364136223846793005)
+                    .wrapping_add(1442695040888963407);
+                ((state >> 33) % 26) as u8
+            })
+        };
+        (0..256).map(|_| (word(), word())).collect()
+    }
+
+    fn bench_count<const N: usize>(b: &mut Bencher) {
+        let pairs = pairs::<N>();
+        let mut counts: LetterCounts = [0; 256];
+        b.iter(|| {
+            for (w, g) in &pairs {
+                black_box(pattern_ordinal(black_box(w), black_box(g), &mut counts));
+            }
+        });
+    }
+
+    fn bench_compare<const N: usize>(b: &mut Bencher) {
+        let pairs = pairs::<N>();
+        b.iter(|| {
+            for (w, g) in &pairs {
+                black_box(compare_ordinal(black_box(w), black_box(g)));
+            }
+        });
     }
 
     #[bench]
-    fn ordinal_partial_match(b: &mut Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("track").unwrap();
-        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    fn ordinal_count_n5(b: &mut Bencher) {
+        bench_count::<5>(b);
     }
 
     #[bench]
-    fn ordinal_perfect_match(b: &mut Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("crate").unwrap();
-        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    fn ordinal_compare_n5(b: &mut Bencher) {
+        bench_compare::<5>(b);
     }
 
     #[bench]
-    fn ordinal_partial_match_n10(b: &mut Bencher) {
-        let word = Word::<10>::try_from("cartridges").unwrap();
-        let guess = Word::<10>::try_from("registrant").unwrap();
-        b.iter(|| black_box(pattern_ordinal(&word, &guess)));
+    fn ordinal_count_n10(b: &mut Bencher) {
+        bench_count::<10>(b);
+    }
+
+    #[bench]
+    fn ordinal_compare_n10(b: &mut Bencher) {
+        bench_compare::<10>(b);
+    }
+
+    #[bench]
+    fn ordinal_count_n13(b: &mut Bencher) {
+        bench_count::<13>(b);
+    }
+
+    #[bench]
+    fn ordinal_compare_n13(b: &mut Bencher) {
+        bench_compare::<13>(b);
+    }
+
+    #[bench]
+    fn ordinal_count_n25(b: &mut Bencher) {
+        bench_count::<25>(b);
+    }
+
+    #[bench]
+    fn ordinal_compare_n25(b: &mut Bencher) {
+        bench_compare::<25>(b);
     }
 
     #[bench]
@@ -391,10 +486,30 @@ mod prop_tests {
                 }
                 ordinal
             }
-            prop_assert_eq!(pattern_ordinal(&word, &guess), reference(&word, &guess));
+            let mut counts: LetterCounts = [0; 256];
+            prop_assert_eq!(
+                pattern_ordinal(&word, &guess, &mut counts),
+                reference(&word, &guess)
+            );
+            prop_assert_eq!(compare_ordinal(&word, &guess), reference(&word, &guess));
             let (w5, g5): ([u8; 5], [u8; 5]) =
                 (word[..5].try_into().unwrap(), guess[..5].try_into().unwrap());
-            prop_assert_eq!(pattern_ordinal(&w5, &g5), reference(&w5, &g5));
+            prop_assert_eq!(pattern_ordinal(&w5, &g5, &mut counts), reference(&w5, &g5));
+            prop_assert!(counts.iter().all(|&c| c == 0), "the table is left zeroed");
+        }
+
+        /// Wide alphabets and the longest lengths, where one table slot per letter matters.
+        #[test]
+        fn count_matches_compare_n25_over_wide_alphabet(
+            word in proptest::array::uniform25(0u8..=255),
+            guess in proptest::array::uniform25(0u8..=255),
+        ) {
+            let mut counts: LetterCounts = [0; 256];
+            prop_assert_eq!(
+                pattern_ordinal(&word, &guess, &mut counts),
+                compare_ordinal(&word, &guess)
+            );
+            prop_assert!(counts.iter().all(|&c| c == 0));
         }
 
         #[test]
