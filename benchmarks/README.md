@@ -39,12 +39,13 @@ optimum for it is 3.5084 mean guesses on the 2,315 answers. Ultrahard (his `-U`)
 consistent with every feedback so far; no published optimum was found for it. Both are reported,
 never judged (`docs/adr/0007-benchmark-objective.md`).
 
-| Run | Uniform mean | Peak RSS | Selby |
-|---|---|---|---|
-| `--profile wordle --hard` | pending | pending | 3.5084 |
-| `--profile wordle --ultrahard` | pending | pending | none published |
+| Run | Uniform mean | Failure rate (>6) | Peak RSS | Selby |
+|---|---|---|---|---|
+| `--profile wordle --hard` | 3.5806 | 0.48% | 8 MB | 3.5084 (`-H`) |
+| `--profile wordle --ultrahard` | 3.5823 | 0.48% | 6 MB | none published |
 
-Both rows are pending a full run on an idle machine; peak RSS is checked against the 1 GB cap.
+Full 2,315-answer runs on an idle machine, well under the 1 GB cap; timings and the rest of the
+figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/68#issuecomment-6452539442).
 
 ## Experiments
 
