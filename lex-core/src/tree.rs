@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeSet, HashMap};
 
 use lex_data::Word;
 
@@ -174,15 +174,14 @@ impl<const N: usize> DecisionTree<N> {
         let guess = self.suggest(node)?;
         let id = book.push(index_of[&guess]);
         let pool = self.nodes[node].candidates.pool();
-        // one representative answer per feedback, ascending by ordinal
-        let mut groups: BTreeMap<u64, Word<N>> = BTreeMap::new();
-        for &i in self.nodes[node].candidates.indices() {
-            let answer = pool.word(i);
-            let feedback = WordCorrectness::correct(answer, guess);
-            groups.entry(feedback.ordinal()).or_insert(answer);
-        }
-        for (ordinal, answer) in groups {
-            let feedback = WordCorrectness::correct(answer, guess);
+        let ordinals: BTreeSet<u64> = self.nodes[node]
+            .candidates
+            .indices()
+            .iter()
+            .map(|&i| WordCorrectness::correct(pool.word(i), guess).ordinal())
+            .collect();
+        for ordinal in ordinals {
+            let feedback = WordCorrectness::<N>::from_ordinal(ordinal);
             if feedback.is_correct() {
                 continue;
             }

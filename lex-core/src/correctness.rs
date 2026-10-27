@@ -73,7 +73,7 @@ impl<const N: usize> WordCorrectness<N> {
     }
 
     /// Inverse of [`ordinal`](Self::ordinal). The ordinal must be below [`COUNT`](Self::COUNT).
-    fn from_ordinal(mut ordinal: u64) -> Self {
+    pub(crate) fn from_ordinal(mut ordinal: u64) -> Self {
         debug_assert!(ordinal < Self::COUNT);
         let mut result = Self::absent();
         for slot in result.0.iter_mut().rev() {
