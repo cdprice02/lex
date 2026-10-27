@@ -30,6 +30,22 @@ other languages and lengths are not measured yet. The committed
 baselines predate the English corpus rebuild (`cf683dcd1747`), so they must be regenerated before
 the next paired comparison.
 
+## Hard and ultrahard
+
+Hard mode is the official Wordle rule, as in Alex Selby's `-H` (`okhard` in
+[selby_wordle](https://github.com/biorhythmist/selby_wordle)): greens stay in place, and every green
+or yellow letter of each earlier guess reappears with at least that multiplicity. His published
+optimum for it is 3.5084 mean guesses on the 2,315 answers. Ultrahard (his `-U`) plays only words
+consistent with every feedback so far; no published optimum was found for it. Both are reported,
+never judged (`docs/adr/0007-benchmark-objective.md`).
+
+| Run | Uniform mean | Peak RSS | Selby |
+|---|---|---|---|
+| `--profile wordle --hard` | pending | pending | 3.5084 |
+| `--profile wordle --ultrahard` | pending | pending | none published |
+
+Both rows are pending a full run on an idle machine; peak RSS is checked against the 1 GB cap.
+
 ## Experiments
 
 | Topic | Verdict |
@@ -48,13 +64,14 @@ targets are paired by word, a full-dictionary run can be compared against these 
 |---|---|
 | `baselines/english-5.json` | `lex simulate -l 5 --lang english -n 2000 --seed 0 -o benchmarks/baselines/english-5.json` |
 | `baselines/french-5.json` | `lex simulate -l 5 --lang french -n 500 --seed 0 -o benchmarks/baselines/french-5.json` |
-| `baselines/english-5-hard.json` | the same, with `--hard-mode --win-weight 0` (the solver before phase 05) |
-| `baselines/french-5-hard.json` | the same, with `--hard-mode --win-weight 0` |
+| `baselines/english-5-hard.json` | the same, with `--ultrahard --win-weight 0` (the solver before phase 05) |
+| `baselines/french-5-hard.json` | the same, with `--ultrahard --win-weight 0` |
 
 The French baseline keeps the generic (language, length) path honest. The unsuffixed files use the
 default strategy; the `-hard` files are the original solver, kept as the reference that
-`--hard-mode --win-weight 0` must reproduce exactly (0 targets changed). Hard mode alone does not
-reproduce them: the win-weight bonus also applies inside the candidate set.
+`--ultrahard --win-weight 0` must reproduce exactly (0 targets changed). Ultrahard alone does not
+reproduce them: the win-weight bonus also applies inside the candidate set. They were written when
+the flag was `--hard-mode`, which is now `--ultrahard`; `--hard` is the official Wordle rule.
 
 ## Full-dictionary runs
 
@@ -70,7 +87,7 @@ and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.m
 
 | Command | Tracks | Run it |
 |---|---|---|
-| `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, English-5 hard mode, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
+| `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, `--profile wordle --hard`, English-5 `--ultrahard`, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
 | `benchmarks/scripts/oracle.sh --full <base-ref>` | full: the fast set plus every language at every other Supported length | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
 
 Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base

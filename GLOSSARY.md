@@ -88,12 +88,16 @@ The accept-or-reject outcome of judging a candidate solver against a base solver
 _Avoid_: Result, score (that is one Track's mean)
 
 **Strategy**:
-The solver's tunable choices: which Guess pool it draws from (hard mode restricts it to the Candidate set), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.
+The solver's tunable choices: which Guess pool it draws from (normal, hard mode, or ultrahard mode), the Answer prior's temperature, and how much a chance of winning outright adds to a guess's score.
 _Avoid_: Policy, config
 
 **Hard mode**:
-A Strategy whose Guess pool is only the current Candidate set.
-_Avoid_: Constrained mode
+A Strategy whose Guess pool is the official Wordle rule: every earlier green stays in its position, and every earlier green or yellow letter is used again at least as many times as it was scored. Grays may be replayed.
+_Avoid_: Constrained mode, Candidate-only mode
+
+**Ultrahard mode**:
+A Strategy whose Guess pool is the words consistent with every feedback so far. On a Corpus Track that is exactly the Candidate set; on a Profile it is a superset of the Answers left.
+_Avoid_: Candidate-only mode
 
 **Decision tree**:
 The shared record of every game position reached so far, where each position is identified by the sequence of (guess, feedback) steps that led to it and remembers the guess the solver chose there.
