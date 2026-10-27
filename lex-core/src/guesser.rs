@@ -94,7 +94,8 @@ impl<const N: usize> Guesser<N> {
     /// in the candidate set, then frequency order, so the first element always agrees with
     /// [`suggest`](Self::suggest). Not memoized.
     pub fn suggest_top_k(&self, k: usize) -> Vec<Suggestion<N>> {
-        self.tree.borrow_mut().suggest_top_k(self.node, k)
+        let tree = self.tree.borrow();
+        tree.candidates(self.node).suggest_top_k(tree.strategy(), k)
     }
 
     pub fn suggest(&self) -> Option<Word<N>> {
@@ -339,7 +340,7 @@ mod tests {
     ];
 
     fn dict_set(pairs: &[(&str, u64)]) -> WordSet<5> {
-        WordSet::from_frequency_map(
+        WordSet::from_pairs(
             pairs
                 .iter()
                 .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))

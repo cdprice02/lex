@@ -1,14 +1,11 @@
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::collections::hash_map::Entry;
-use std::hash::{BuildHasherDefault, Hasher};
 use std::hint::cold_path;
 use std::sync::Arc;
 
 use lex_data::Word;
 
 use crate::correctness::{Code, LetterCounts, WordCorrectness, pattern_ordinal};
-use crate::groups::Groups;
 use crate::guesser::Guess;
 use crate::strategy::{GuessPool, Pool, Strategy};
 
@@ -32,10 +29,8 @@ impl<const N: usize> Suggestion<N> {
 }
 
 /// The words still consistent with every guess played so far, as indices into the immutable
-/// guess pool, the partition of the pool into [`Groups`] that split them identically, and the
-/// choice of the next guess under a [`Strategy`]. Holds no history: a [`DecisionTree`] node owns
-/// one and memoizes its [`suggest`](Self::suggest). Scoring coarsens the groups, which a child
-/// then inherits.
+/// guess pool, and the choice of the next guess under a [`Strategy`]. Holds no history and caches
+/// nothing: a [`DecisionTree`] node owns one and memoizes its [`suggest`](Self::suggest).
 ///
 /// [`DecisionTree`]: crate::tree::DecisionTree
 #[derive(Debug, Clone)]
@@ -43,31 +38,6 @@ pub(crate) struct Candidates<const N: usize> {
     pool: Arc<Pool<N>>,
     /// Ascending, so frequency-descending.
     indices: Vec<u32>,
-    groups: Groups,
-}
-
-/// Passes an already-mixed `u64` through, so the dedupe map does not hash a hash.
-#[derive(Default)]
-struct PassThrough(u64);
-
-impl Hasher for PassThrough {
-    fn finish(&self) -> u64 {
-        self.0
-    }
-
-    fn write(&mut self, _: &[u8]) {
-        unreachable!("only u64 keys are hashed");
-    }
-
-    fn write_u64(&mut self, n: u64) {
-        self.0 = n;
-    }
-}
-
-fn hash_ordinals(ordinals: &[u64]) -> u64 {
-    ordinals.iter().fold(0xcbf2_9ce4_8422_2325, |h, &x| {
-        (h.rotate_left(5) ^ x).wrapping_mul(0x517c_c1b7_2722_0a95)
-    })
 }
 
 impl<const N: usize> Candidates<N> {
@@ -89,22 +59,14 @@ impl<const N: usize> Candidates<N> {
             })
             .collect();
         indices.sort_unstable();
-        Self {
-            pool,
-            indices,
-            groups: Groups::singletons(),
-        }
+        Self { pool, indices }
     }
 
     /// Every pool word is a candidate.
     #[cfg(test)]
     pub(crate) fn whole_pool(pool: Arc<Pool<N>>) -> Self {
         let indices = (0..pool.len() as u32).collect();
-        Self {
-            pool,
-            indices,
-            groups: Groups::singletons(),
-        }
+        Self { pool, indices }
     }
 
     /// The candidates that remain after `guess` is played.
@@ -121,7 +83,6 @@ impl<const N: usize> Candidates<N> {
         Self {
             pool: Arc::clone(&self.pool),
             indices,
-            groups: self.groups.clone(),
         }
     }
 
@@ -133,99 +94,53 @@ impl<const N: usize> Candidates<N> {
         &self.indices
     }
 
-    pub(crate) fn groups(&self) -> &Groups {
-        &self.groups
-    }
-
     pub(crate) fn len(&self) -> usize {
         self.indices.len()
     }
 
     /// Calls `f(pool index, entropy, p_answer, in_candidates)` for every guess the strategy's pool
-    /// allows, in frequency-descending order, except that a pool word sharing a group with a lower
-    /// one is left out (its score is the representative's). Returns the groups coarsened by any
-    /// merge found while scoring, for the caller to adopt.
-    ///
-    /// Merge detection is exact: a group's feedback vector over the candidates is hashed, and on a
-    /// hash match the earlier representative's vector is recomputed and compared in full. A hash
-    /// collision between different vectors only forgoes a merge.
-    fn for_each_guess(
-        &self,
-        strategy: &Strategy,
-        mut f: impl FnMut(u32, f64, f64, bool),
-    ) -> Option<Groups> {
+    /// allows, in frequency-descending order.
+    fn for_each_guess(&self, strategy: &Strategy, mut f: impl FnMut(u32, f64, f64, bool)) {
         let probs = self.pool.prior(&self.indices, strategy.temperature);
         let words: Vec<Code<N>> = self.indices.iter().map(|&i| *self.pool.code(i)).collect();
-        let entropy_of = |guess: &Code<N>| {
-            let mut counts: LetterCounts = [0; 256];
-            guess_entropy::<N>(
-                words.iter().map(|w| pattern_ordinal(w, guess, &mut counts)),
-                &probs,
-            )
-        };
         match strategy.pool {
-            // every group is a singleton in hard mode, so there is nothing to merge
             GuessPool::Candidates => {
                 for (pos, &i) in self.indices.iter().enumerate() {
-                    f(i, entropy_of(&words[pos]), probs[pos], true);
-                }
-                None
-            }
-            GuessPool::All => {
-                let pool_len = self.pool.len();
-                let vector = |guess: &Code<N>, out: &mut Vec<u64>| {
-                    let mut counts: LetterCounts = [0; 256];
-                    out.clear();
-                    out.extend(words.iter().map(|w| pattern_ordinal(w, guess, &mut counts)));
-                };
-                let (mut ordinals, mut earlier) = (Vec::new(), Vec::new());
-                let mut seen: HashMap<u64, usize, BuildHasherDefault<PassThrough>> =
-                    HashMap::default();
-                let mut merges = Vec::new();
-                let mut next = 0;
-                for (group, (rep, extra)) in self.groups.iter(pool_len).enumerate() {
-                    let guess = self.pool.code(rep);
-                    if self.indices.get(next) == Some(&rep) {
-                        // a candidate gives all-correct against itself and no other word does,
-                        // so it never shares a group
-                        debug_assert!(extra.is_empty());
-                        f(rep, entropy_of(guess), probs[next], true);
-                        next += 1;
-                        continue;
-                    }
-                    vector(guess, &mut ordinals);
-                    match seen.entry(hash_ordinals(&ordinals)) {
-                        Entry::Occupied(e) => {
-                            let kept = *e.get();
-                            vector(self.pool.code(self.groups.group(kept).0), &mut earlier);
-                            if earlier == ordinals {
-                                merges.push((kept, group));
-                                continue;
-                            }
-                        }
-                        Entry::Vacant(e) => {
-                            e.insert(group);
-                        }
-                    }
                     f(
-                        rep,
-                        guess_entropy::<N>(ordinals.iter().copied(), &probs),
-                        0.0,
-                        false,
+                        i,
+                        guess_entropy(&words[pos], &words, &probs),
+                        probs[pos],
+                        true,
                     );
                 }
-                (!merges.is_empty()).then(|| self.groups.coarsened(pool_len, &mut merges))
+            }
+            GuessPool::All => {
+                let mut next = 0;
+                for i in 0..self.pool.len() as u32 {
+                    let (p_answer, in_candidates) = match self.indices.get(next) {
+                        Some(&c) if c == i => {
+                            next += 1;
+                            (probs[next - 1], true)
+                        }
+                        _ => (0.0, false),
+                    };
+                    f(
+                        i,
+                        guess_entropy(self.pool.code(i), &words, &probs),
+                        p_answer,
+                        in_candidates,
+                    );
+                }
             }
         }
     }
 
     /// The `k` best guesses by score, descending. Equal scores prefer words still in the
     /// candidate set, then frequency order, so the first element agrees with
-    /// [`suggest`](Self::suggest). Every pool word is listed: a word that shares a group with a
-    /// lower one carries that representative's score.
-    pub(crate) fn suggest_top_k(&mut self, strategy: &Strategy, k: usize) -> Vec<Suggestion<N>> {
+    /// [`suggest`](Self::suggest).
+    pub(crate) fn suggest_top_k(&self, strategy: &Strategy, k: usize) -> Vec<Suggestion<N>> {
         let mut scored = Vec::new();
-        let merged = self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
+        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
             scored.push(Suggestion {
                 word: self.pool.word(i),
                 entropy_bits,
@@ -233,27 +148,6 @@ impl<const N: usize> Candidates<N> {
                 in_candidates,
             });
         });
-        if let Some(groups) = merged {
-            self.groups = groups;
-        }
-        if strategy.pool == GuessPool::All {
-            // scored holds one entry per group, in group order
-            let mut expanded: Vec<(u32, Suggestion<N>)> = Vec::with_capacity(self.pool.len());
-            for (s, (rep, extra)) in scored.iter().zip(self.groups.iter(self.pool.len())) {
-                expanded.push((rep, *s));
-                expanded.extend(extra.iter().map(|&i| {
-                    let member = Suggestion {
-                        word: self.pool.word(i),
-                        p_answer: 0.0,
-                        in_candidates: false,
-                        ..*s
-                    };
-                    (i, member)
-                }));
-            }
-            expanded.sort_unstable_by_key(|&(i, _)| i);
-            scored = expanded.into_iter().map(|(_, s)| s).collect();
-        }
         // stable sort: equal keys keep frequency-descending iteration order
         scored.sort_by(|a, b| {
             let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
@@ -265,7 +159,7 @@ impl<const N: usize> Candidates<N> {
         scored
     }
 
-    pub(crate) fn suggest(&mut self, strategy: &Strategy) -> Option<Word<N>> {
+    pub(crate) fn suggest(&self, strategy: &Strategy) -> Option<Word<N>> {
         match self.indices.as_slice() {
             [] => {
                 cold_path();
@@ -278,7 +172,7 @@ impl<const N: usize> Candidates<N> {
 
         // (index, score, in_candidates)
         let mut best: Option<(u32, f64, bool)> = None;
-        let merged = self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
+        self.for_each_guess(strategy, |i, entropy_bits, p_answer, in_candidates| {
             let score = entropy_bits + strategy.win_weight * p_answer;
             log::trace!("{}: {}", self.pool.word(i), score);
             match best {
@@ -297,24 +191,20 @@ impl<const N: usize> Candidates<N> {
                 None => best = Some((i, score, in_candidates)),
             }
         });
-        if let Some(groups) = merged {
-            self.groups = groups;
-        }
         best.map(|(i, _, _)| self.pool.word(i))
     }
 }
+
 /// Largest bucket array the dense counter may allocate per thread. Working memory like this sits
 /// outside the 1 GB corpus cap; the bound makes the dense/sorted cut-over a memory rule rather
 /// than a list of word lengths.
 const DENSE_BOUND_BYTES: u64 = 16 * 1024 * 1024;
 
-/// Entropy of the feedback distribution, given each candidate's feedback ordinal against one
-/// guess and its probability.
-fn guess_entropy<const N: usize>(ordinals: impl Iterator<Item = u64>, probs: &[f64]) -> f64 {
+fn guess_entropy<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
     if WordCorrectness::<N>::COUNT * size_of::<f64>() as u64 <= DENSE_BOUND_BYTES {
-        entropy_dense::<N>(ordinals, probs)
+        entropy_dense(guess, words, probs)
     } else {
-        entropy_sorted(ordinals, probs)
+        entropy_sorted(guess, words, probs)
     }
 }
 
@@ -329,7 +219,7 @@ fn entropy_from_masses(masses: impl Iterator<Item = f64>) -> f64 {
     0.0 - acc
 }
 
-fn entropy_dense<const N: usize>(ordinals: impl Iterator<Item = u64>, probs: &[f64]) -> f64 {
+fn entropy_dense<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
     /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
     /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
     struct Patterns {
@@ -347,8 +237,10 @@ fn entropy_dense<const N: usize>(ordinals: impl Iterator<Item = u64>, probs: &[f
         if (buckets.len() as u64) < WordCorrectness::<N>::COUNT {
             buckets.resize(WordCorrectness::<N>::COUNT as usize, 0.0);
         }
-        for (ordinal, &prob) in ordinals.zip(probs) {
+        let mut counts: LetterCounts = [0; 256];
+        for (word, &prob) in words.iter().zip(probs) {
             debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
+            let ordinal = pattern_ordinal(word, guess, &mut counts);
             let slot = ordinal as usize;
             if buckets[slot] == 0.0 {
                 touched.push(ordinal as u32);
@@ -370,14 +262,20 @@ fn entropy_dense<const N: usize>(ordinals: impl Iterator<Item = u64>, probs: &[f
 /// Counts by sorting `(ordinal, probability)` pairs, for lengths whose dense array would exceed
 /// [`DENSE_BOUND_BYTES`]. The sort is stable, so each run's mass accumulates in word order, as in
 /// the dense counter, and runs are summed in ascending ordinal.
-fn entropy_sorted(ordinals: impl Iterator<Item = u64>, probs: &[f64]) -> f64 {
+fn entropy_sorted<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
     thread_local! {
         static SCRATCH: RefCell<Vec<(u64, f64)>> = const { RefCell::new(Vec::new()) };
     }
     SCRATCH.with(|scratch| {
         let scratch = &mut *scratch.borrow_mut();
         scratch.clear();
-        scratch.extend(ordinals.zip(probs.iter().copied()));
+        let mut counts: LetterCounts = [0; 256];
+        scratch.extend(
+            words
+                .iter()
+                .zip(probs)
+                .map(|(word, &prob)| (pattern_ordinal(word, guess, &mut counts), prob)),
+        );
         scratch.sort_by_key(|&(ordinal, _)| ordinal);
         let entropy = entropy_from_masses(
             scratch
@@ -393,22 +291,14 @@ fn entropy_sorted(ordinals: impl Iterator<Item = u64>, probs: &[f64]) -> f64 {
 mod tests {
     use super::*;
 
-    fn entropy_against<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
-        let mut counts: LetterCounts = [0; 256];
-        guess_entropy::<N>(
-            words.iter().map(|w| pattern_ordinal(w, guess, &mut counts)),
-            probs,
-        )
-    }
-
     #[test]
     fn entropy_buffer_serves_every_word_length_on_one_thread() {
         let five: Code<5> = [0, 1, 2, 3, 4];
         let ten: Code<10> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         // N=5 sizes the shared buffer first; N=10 must grow it rather than index past the end
-        assert_eq!(entropy_against(&five, &[five], &[1.0]), 0.0);
-        assert_eq!(entropy_against(&ten, &[ten], &[1.0]), 0.0);
-        assert_eq!(entropy_against(&five, &[five], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&ten, &[ten], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
     }
 
     #[test]
@@ -440,15 +330,9 @@ mod tests {
     ) -> Result<(), TestCaseError> {
         let words: Vec<Code<N>> = pairs.iter().map(|&(w, _)| w).collect();
         let probs: Vec<f64> = pairs.iter().map(|&(_, p)| p).collect();
-        let ordinals = || {
-            let mut counts: LetterCounts = [0; 256];
-            words
-                .iter()
-                .map(move |w| pattern_ordinal(w, &guess, &mut counts))
-        };
         prop_assert_eq!(
-            entropy_dense::<N>(ordinals(), &probs).to_bits(),
-            entropy_sorted(ordinals(), &probs).to_bits()
+            entropy_dense(&guess, &words, &probs).to_bits(),
+            entropy_sorted(&guess, &words, &probs).to_bits()
         );
         Ok(())
     }
@@ -487,102 +371,6 @@ mod tests {
 }
 
 #[cfg(test)]
-mod dedupe_tests {
-    use lex_data::WordSet;
-
-    use super::*;
-    use crate::correctness::WordCorrectness;
-
-    /// A reproducible pool over a six-letter alphabet, so many words split a small candidate set
-    /// identically.
-    fn small_alphabet_pool(count: usize) -> Arc<Pool<5>> {
-        let mut state = 0x9e37_79b9_7f4a_7c15_u64;
-        let mut seen = std::collections::HashSet::new();
-        let mut pairs = Vec::new();
-        while pairs.len() < count {
-            let chars: [char; 5] = std::array::from_fn(|_| {
-                state = state
-                    .wrapping_mul(6364136223846793005)
-                    .wrapping_add(1442695040888963407);
-                char::from(b'a' + ((state >> 33) % 6) as u8)
-            });
-            if seen.insert(chars) {
-                pairs.push((Word::<5>::from(chars), (count - pairs.len()) as u64 * 10));
-            }
-        }
-        Pool::new(&WordSet::from_pairs(pairs))
-    }
-
-    /// Every pool word scored from scratch, one entropy per word, ordered as `suggest_top_k`
-    /// promises.
-    fn reference(c: &Candidates<5>, strategy: &Strategy) -> Vec<Suggestion<5>> {
-        let probs = c.pool.prior(&c.indices, strategy.temperature);
-        let words: Vec<Code<5>> = c.indices.iter().map(|&i| *c.pool.code(i)).collect();
-        let mut all: Vec<Suggestion<5>> = (0..c.pool.len() as u32)
-            .map(|i| {
-                let pos = c.indices.binary_search(&i).ok();
-                Suggestion {
-                    word: c.pool.word(i),
-                    entropy_bits: entropy_dense::<5>(
-                        words
-                            .iter()
-                            .map(|w| pattern_ordinal(w, c.pool.code(i), &mut [0; 256])),
-                        &probs,
-                    ),
-                    p_answer: pos.map_or(0.0, |p| probs[p]),
-                    in_candidates: pos.is_some(),
-                }
-            })
-            .collect();
-        all.sort_by(|a, b| {
-            let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
-            sb.partial_cmp(&sa)
-                .unwrap()
-                .then(b.in_candidates.cmp(&a.in_candidates))
-        });
-        all
-    }
-
-    #[test]
-    fn suggest_and_top_k_are_unchanged_by_dedupe() {
-        let pool = small_alphabet_pool(400);
-        for win_weight in [0.0, 1.5] {
-            let strategy = Strategy {
-                pool: GuessPool::All,
-                win_weight,
-                ..Strategy::default()
-            };
-            let mut merged_somewhere = false;
-            for target in [3, 90, 250] {
-                let target = pool.word(target);
-                let mut c = Candidates::whole_pool(Arc::clone(&pool));
-                while c.len() > 1 {
-                    let expected = reference(&c, &strategy);
-                    let mut for_top_k = c.clone();
-                    assert_eq!(for_top_k.suggest_top_k(&strategy, usize::MAX), expected);
-                    let mut for_suggest = c.clone();
-                    let guess = for_suggest.suggest(&strategy).unwrap();
-                    assert_eq!(guess, expected[0].word);
-                    merged_somewhere |= for_suggest.groups.len(pool.len()) < pool.len();
-                    // the child inherits the coarsened groups
-                    let feedback = WordCorrectness::correct(target, guess);
-                    c = for_suggest.filtered(&Guess::new(guess, feedback));
-                }
-            }
-            assert!(merged_somewhere, "no merge: the test would prove nothing");
-        }
-    }
-
-    #[test]
-    fn hard_mode_groups_stay_singletons() {
-        let pool = small_alphabet_pool(100);
-        let mut c = Candidates::whole_pool(Arc::clone(&pool));
-        c.suggest(&Strategy::hard_mode());
-        assert_eq!(c.groups.len(pool.len()), pool.len());
-    }
-}
-
-#[cfg(test)]
 mod benches {
     extern crate test;
     use std::hint::black_box;
@@ -598,19 +386,11 @@ mod benches {
                 (Word::<5>::try_from(s.as_str()).unwrap(), 10 - i as u64)
             })
             .collect();
-        let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs));
+        let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs.clone()));
         let guess = *pool.code(0);
         let words: Vec<Code<5>> = (0..pool.len() as u32).map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];
-        let mut counts: LetterCounts = [0; 256];
-        b.iter(|| {
-            black_box(guess_entropy::<5>(
-                words
-                    .iter()
-                    .map(|w| pattern_ordinal(w, &guess, &mut counts)),
-                &probs,
-            ))
-        });
+        b.iter(|| black_box(guess_entropy(&guess, &words, &probs)));
     }
 
     /// A reproducible pool of `count` distinct words over a..z, frequency-descending, so every
@@ -636,7 +416,7 @@ mod benches {
     fn bench_suggest<const N: usize>(b: &mut Bencher, count: usize) {
         let candidates = Candidates::whole_pool(synthetic_pool::<N>(count));
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.clone().suggest(&strategy)));
+        b.iter(|| black_box(candidates.suggest(&strategy)));
     }
 
     #[bench]
@@ -669,7 +449,7 @@ mod benches {
             candidates.len()
         );
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.clone().suggest(&strategy)));
+        b.iter(|| black_box(candidates.suggest(&strategy)));
     }
 
     #[bench]

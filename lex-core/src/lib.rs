@@ -7,7 +7,6 @@ mod candidates;
 mod correctness;
 mod endgame;
 mod game;
-mod groups;
 mod guesser;
 mod strategy;
 mod tree;
