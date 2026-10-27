@@ -8,9 +8,10 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 
 | Module | Responsibility |
 |---|---|
-| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()` |
-| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies and the renormalized prior) |
-| `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
+| `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
+| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
+| `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool` plus its `Groups`, `filtered(guess)`, scored `suggest`/`suggest_top_k` (both `&mut self`: scoring coarsens the groups), private `guess_entropy()`; public `Suggestion<N>` |
+| `groups.rs` | `Groups` (crate-private): partition of the guess pool into words that split the candidate set identically; see Partition dedupe below |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
 | `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
@@ -67,11 +68,17 @@ Dense counter: for one guess, iterates the candidate words and accumulates proba
 
 Uses one thread-local `Patterns { buckets, touched }`, shared by every word length: `buckets` grows to the largest `WordCorrectness::<N>::COUNT` (= 3^N) seen and is all zero between calls; `touched` lists the ordinals a call wrote (a bucket is listed when it is 0.0 before the add, so every prior must be positive). The call sorts `touched` ascending, sums `p * log2(p)` in that order while zeroing each bucket, and clears the list. The ascending order makes the floating-point result independent of word order, which keeps guess sequences bit-identical.
 
+## Partition dedupe (`groups.rs`, `candidates.rs`)
+
+Pool words that give identical feedback against every candidate share a group, and a group splits every subset of the candidates identically too, so groups only coarsen as play narrows the set. A `Candidates` carries its `Groups` (flat member list plus offsets, representative = lowest pool index first; `None` inside means all singletons, which is the root and hard mode). `filtered` clones the parent's groups; `suggest`/`suggest_top_k` score one representative per group and, while doing so, hash each non-candidate representative's feedback vector, recompute the earlier representative's vector on a hash match, and merge only on an exact match. A candidate is always its own group (it alone scores all-correct against itself). `suggest_top_k` emits every member with the representative's entropy (`p_answer` 0, `in_candidates` false), so output is byte-equal. `Endgame::best_guess` takes the node's groups, skips non-representatives in its pool scan, and passes them down unchanged; the answer does not depend on them (members tie the representative exactly and lose the lowest-index tie-break). Tests compare against a from-scratch scoring of the whole pool.
+
 ## Correctness algorithm (`pattern_ordinal` in `correctness.rs`)
 
-One generic O(N^2) comparison over `[T; N]` with two `u32` bitmasks and no buffers: pass 1 marks exact matches (`green`); pass 2 walks the non-green guess letters left to right and marks one as misplaced if some unclaimed non-green word letter equals it (`claimed`). It returns the base-3 ordinal directly; `WordCorrectness::correct` decodes it, and a property test checks both against a naive count-based reference. The hot paths (`filtered`, `guess_entropy`) call `pattern_ordinal`.
+Letter count over the Corpus Alphabet at every length (ADR 0010). `Pool::new` maps each word through `WordSet::alphabet()` (sorted letters, index = position) to a `Code<N> = [u8; N]` stored beside the `Word`; a letter outside the Alphabet encodes as `UNKNOWN_LETTER` (255), which no pool word holds, so an `assist` guess with foreign letters scores as absent for them. An Alphabet over 255 letters is a typed `LexDataError::AlphabetTooLarge` at `DataDir::load`; `Pool::new` panics on one built some other way.
 
-Measured and rejected (numbers in `benchmarks/experiments/micro-opt.md`): alphabet-indexed `[u8; N]` words, and reslicing the bucket buffer to bound-check-free indexing.
+`pattern_ordinal(word, guess, counts)`: pass 1 tallies each non-green word letter in `counts` (a `[u8; 256]`); pass 2 walks the guess left to right: green if equal, else misplaced when the letter's tally is positive (spending one), else absent. It then zeroes the entries for the word's letters, so `counts` is all zero between calls and a caller makes one on its stack per scan (`filtered`, each entropy scan, `Endgame::partition`). Linear in N. `WordCorrectness::correct` takes `Word`s, so it indexes letters by first appearance in the pair (at most 2N values) and calls the same function. `compare_ordinal` (test-only) is the old O(N^2) compare, kept as an oracle and as the "old" side of the `ordinal_count_n*` / `ordinal_compare_n*` benches (N = 5, 10, 13, 25).
+
+The earlier rejection of alphabet-indexed `[u8; N]` words (`benchmarks/experiments/micro-opt.md`) was a length-5 speed result; the single-technique decision in ADR 0010 supersedes it, gated on English-5 CPU time in the PR that introduced this.
 
 ## `ordinal()` encoding
 

@@ -4,6 +4,7 @@ use std::sync::Arc;
 use lex_data::Word;
 
 use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
+use crate::groups::Groups;
 use crate::strategy::{GuessPool, Pool};
 
 /// The best guess for a candidate set and what it costs.
@@ -52,11 +53,14 @@ impl<const N: usize> Endgame<N> {
     }
 
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
-    pub(crate) fn best_guess(&mut self, set: &[u32]) -> Option<Word<N>> {
+    /// `groups` are guess groups valid for a superset of `set` (so for `set` and every subset the
+    /// search recurses into); only each group's representative is tried, since the others tie it
+    /// exactly and lose the tie-break. The result does not depend on `groups`.
+    pub(crate) fn best_guess(&mut self, set: &[u32], groups: &Groups) -> Option<Word<N>> {
         if set.is_empty() {
             return None;
         }
-        let guess = self.solve(set).guess;
+        let guess = self.solve(set, groups).guess;
         Some(self.pool.word(guess))
     }
 
@@ -64,10 +68,10 @@ impl<const N: usize> Endgame<N> {
     #[cfg(test)]
     pub(crate) fn expected_guesses(&mut self, set: &[u32]) -> f64 {
         let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
-        self.solve(set).cost / mass
+        self.solve(set, &Groups::singletons()).cost / mass
     }
 
-    fn solve(&mut self, set: &[u32]) -> Solved {
+    fn solve(&mut self, set: &[u32], groups: &Groups) -> Solved {
         if let Some(&solved) = self.memo.get(set) {
             return solved;
         }
@@ -77,7 +81,7 @@ impl<const N: usize> Endgame<N> {
                 cost: self.weights[only as usize] * self.growth.unwrap_or(1.0),
                 guess: only,
             },
-            _ => self.search(set),
+            _ => self.search(set, groups),
         };
         self.memo.insert(set.to_vec(), solved);
         solved
@@ -87,7 +91,7 @@ impl<const N: usize> Endgame<N> {
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave. Exact ties go to a candidate, then to the
     /// more frequent word, as in the entropy solver.
-    fn search(&mut self, set: &[u32]) -> Solved {
+    fn search(&mut self, set: &[u32], groups: &Groups) -> Solved {
         let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
         let mut keyed = Vec::with_capacity(set.len());
         let mut order: Vec<(f64, bool, u32)> = Vec::new();
@@ -101,8 +105,9 @@ impl<const N: usize> Endgame<N> {
             consider(self, g, true);
         }
         if self.guess_pool == GuessPool::All {
+            // every set member is a lone group (see `Candidates`), so it is met in order here
             let mut next = 0;
-            for g in 0..self.pool.len() as u32 {
+            for (g, _) in groups.iter(self.pool.len()) {
                 if set.get(next) == Some(&g) {
                     next += 1;
                 } else {
@@ -118,7 +123,7 @@ impl<const N: usize> Endgame<N> {
             if best.is_some_and(|b| floor > b.cost * (1.0 + 1e-9)) {
                 break;
             }
-            self.try_guess(set, g, !outside, mass, &mut best);
+            self.try_guess(set, groups, g, !outside, mass, &mut best);
         }
         best.expect("a non-empty set has a candidate guess")
     }
@@ -177,6 +182,7 @@ impl<const N: usize> Endgame<N> {
     fn try_guess(
         &mut self,
         set: &[u32],
+        groups: &Groups,
         guess: u32,
         in_set: bool,
         mass: f64,
@@ -193,7 +199,7 @@ impl<const N: usize> Endgame<N> {
                 continue;
             }
             let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
-            cost += self.solve(&child).cost;
+            cost += self.solve(&child, groups).cost;
             // costs only grow from here, so this guess can no longer be as cheap
             if best.is_some_and(|b| cost * growth > b.cost) {
                 return;
@@ -230,8 +236,8 @@ mod tests {
         Pool::new(&WordSet::from_pairs(pairs))
     }
 
-    fn ordinal_of(pool: &Pool<5>, word: Word<5>, guess: Word<5>) -> u64 {
-        pattern_ordinal(&pool.encode(&word), &pool.encode(&guess), &mut [0; 256])
+    fn ordinal_of(word: Word<5>, guess: Word<5>) -> u64 {
+        WordCorrectness::correct(word, guess).ordinal()
     }
 
     fn indices_of(pool: &Pool<5>, words: &[&str]) -> Vec<u32> {
@@ -255,15 +261,15 @@ mod tests {
             let mut remaining = set.to_vec();
             let mut guesses = 0;
             loop {
-                let guess = endgame.best_guess(&remaining).unwrap();
+                let guess = endgame
+                    .best_guess(&remaining, &Groups::singletons())
+                    .unwrap();
                 guesses += 1;
                 if guess == target {
                     break;
                 }
-                let feedback = ordinal_of(&endgame.pool, target, guess);
-                remaining.retain(|&i| {
-                    ordinal_of(&endgame.pool, endgame.pool.word(i), guess) == feedback
-                });
+                let feedback = ordinal_of(target, guess);
+                remaining.retain(|&i| ordinal_of(endgame.pool.word(i), guess) == feedback);
             }
             let objective = endgame.growth.map_or(guesses as f64, |a| a.powi(guesses));
             total += endgame.weights[answer as usize] * objective;
@@ -277,12 +283,75 @@ mod tests {
         let set = indices_of(&pool, &FAMILY);
         for aversion in [0.0, 0.3, 1.0] {
             let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, aversion);
-            let predicted = endgame.solve(&set).cost;
+            let predicted = endgame.solve(&set, &Groups::singletons()).cost;
             let simulated = simulated_cost(&mut endgame, &set);
             assert!(
                 (predicted - simulated).abs() < 1e-9 * predicted,
                 "aversion {aversion}: {predicted} vs {simulated}"
             );
+        }
+    }
+
+    /// The exact groups of non-members over `set`: words whose feedback against every member is
+    /// identical share a group, each member stands alone.
+    fn groups_over(pool: &Pool<5>, set: &[u32]) -> Groups {
+        let vector = |g: u32| -> Vec<u64> {
+            set.iter()
+                .map(|&i| ordinal_of(pool.word(i), pool.word(g)))
+                .collect()
+        };
+        let mut first_with: HashMap<Vec<u64>, usize> = HashMap::new();
+        let mut merges = Vec::new();
+        let mut groups = Vec::new();
+        for g in 0..pool.len() as u32 {
+            groups.push(g);
+            if set.binary_search(&g).is_ok() {
+                continue;
+            }
+            match first_with.entry(vector(g)) {
+                std::collections::hash_map::Entry::Occupied(e) => {
+                    merges.push((*e.get(), g as usize))
+                }
+                std::collections::hash_map::Entry::Vacant(e) => {
+                    e.insert(g as usize);
+                }
+            }
+        }
+        Groups::singletons().coarsened(pool.len(), &mut merges)
+    }
+
+    #[test]
+    fn dedupe_does_not_change_the_search() {
+        // the last four words share no letter with the family, so they split it identically
+        let pool = pool_of(
+            &[
+                &FAMILY[..],
+                &[
+                    "clamp", "twang", "phlox", "qqqqq", "jjjjj", "kkkkk", "vvvvv",
+                ],
+            ]
+            .concat(),
+        );
+        let set = indices_of(&pool, &FAMILY);
+        let groups = groups_over(&pool, &set);
+        assert!(groups.len(pool.len()) < pool.len());
+        for aversion in [0.0, 0.3, 1.0] {
+            let fresh = || Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, aversion);
+            let (mut plain, mut deduped) = (fresh(), fresh());
+            let (a, b) = (
+                plain.solve(&set, &Groups::singletons()),
+                deduped.solve(&set, &groups),
+            );
+            assert_eq!((a.guess, a.cost.to_bits()), (b.guess, b.cost.to_bits()));
+            // every subset the recursion visits was solved the same way
+            assert_eq!(plain.memo.len(), deduped.memo.len());
+            for (key, solved) in &plain.memo {
+                let other = deduped.memo[key];
+                assert_eq!(
+                    (solved.guess, solved.cost.to_bits()),
+                    (other.guess, other.cost.to_bits())
+                );
+            }
         }
     }
 
@@ -300,15 +369,15 @@ mod tests {
                     let mut remaining = set.clone();
                     let mut guesses = 0;
                     loop {
-                        let guess = endgame.best_guess(&remaining).unwrap();
+                        let guess = endgame
+                            .best_guess(&remaining, &Groups::singletons())
+                            .unwrap();
                         guesses += 1;
                         if guess == target {
                             return guesses;
                         }
-                        let feedback = ordinal_of(&endgame.pool, target, guess);
-                        remaining.retain(|&i| {
-                            ordinal_of(&endgame.pool, endgame.pool.word(i), guess) == feedback
-                        });
+                        let feedback = ordinal_of(target, guess);
+                        remaining.retain(|&i| ordinal_of(endgame.pool.word(i), guess) == feedback);
                     }
                 })
                 .max()
@@ -332,8 +401,11 @@ mod tests {
         let pool = pool_of(&FAMILY);
         let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0);
         assert_eq!(endgame.expected_guesses(&[3]), 1.0);
-        assert_eq!(endgame.best_guess(&[3]), Some(pool.word(3)));
-        assert_eq!(endgame.best_guess(&[]), None);
+        assert_eq!(
+            endgame.best_guess(&[3], &Groups::singletons()),
+            Some(pool.word(3))
+        );
+        assert_eq!(endgame.best_guess(&[], &Groups::singletons()), None);
     }
 
     #[test]
@@ -385,7 +457,7 @@ mod tests {
                 continue;
             }
             let started = std::time::Instant::now();
-            let predicted = endgame.solve(&set).cost;
+            let predicted = endgame.solve(&set, &Groups::singletons()).cost;
             eprintln!("root of {} solved in {:?}", set.len(), started.elapsed());
             let simulated = simulated_cost(&mut endgame, &set);
             eprintln!(
