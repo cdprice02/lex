@@ -10,7 +10,7 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 | `README.md` | Methodology and the current results |
 | `baselines/*.json` | Committed `lex simulate` reports that changes are paired against |
 | `experiments/<topic>.md` | The evidence and verdict behind each solver or performance choice |
-| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid; `oracle.sh <base-ref>`: the Oracle, byte-equal `simulate` output against a base commit) |
+| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid; `oracle.sh`: the Oracle) |
 
 ## Current results
 
@@ -60,6 +60,20 @@ reproduce them: the win-weight bonus also applies inside the candidate set.
 Omit `-n` to play every word: exact expected performance with no sampling variance. The decision
 tree makes this affordable (English-5 in about a minute on one core, 41 MB peak RSS; timings are in the experiments). Use it for the
 headline numbers of a change and compare it to the sampled baselines for the paired diff.
+
+## Oracle
+
+A change meant to leave play untouched (a speed change, a refactor) must reproduce the base
+commit's games exactly: `simulate -n 200 --seed 0` on every Track of the set, compared on `games`
+and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.md`.
+
+| Command | Tracks | Run it |
+|---|---|---|
+| `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, English-5 hard mode, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
+| `benchmarks/scripts/oracle.sh --slow <base-ref>` | slow: every language at every other Supported length | also when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
+
+Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
+share them. A track whose flags the base binary lacks prints `skipped`.
 
 ## Comparing a change
 
