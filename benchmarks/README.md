@@ -70,7 +70,7 @@ and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.m
 | Command | Tracks | Run it |
 |---|---|---|
 | `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, English-5 hard mode, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
-| `benchmarks/scripts/oracle.sh --slow <base-ref>` | slow: every language at every other Supported length | also when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
+| `benchmarks/scripts/oracle.sh --full <base-ref>` | full: the fast set plus every language at every other Supported length | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
 
 Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
 share them. A track whose flags the base binary lacks prints `skipped`.
