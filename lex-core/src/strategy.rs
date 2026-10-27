@@ -1,6 +1,9 @@
+use std::collections::HashMap;
 use std::sync::Arc;
 
-use lex_data::{Word, WordSet};
+use lex_data::{MAX_ALPHABET_SIZE, Word, WordSet};
+
+use crate::correctness::{Code, UNKNOWN_LETTER};
 
 /// The temperature the report's evaluation prior is always computed at, so runs with different
 /// solver temperatures stay comparable.
@@ -84,16 +87,51 @@ impl Default for Strategy {
 #[derive(Debug)]
 pub(crate) struct Pool<const N: usize> {
     words: Vec<Word<N>>,
+    /// Each word's letters as indices into the Alphabet, parallel to `words`.
+    codes: Vec<Code<N>>,
+    letters: HashMap<char, u8>,
     ln_freqs: Vec<f64>,
 }
 
 impl<const N: usize> Pool<N> {
+    /// # Panics
+    ///
+    /// If the Alphabet exceeds [`MAX_ALPHABET_SIZE`]: `DataDir::load` rejects such a Corpus.
     pub(crate) fn new(word_set: &WordSet<N>) -> Arc<Self> {
-        let (words, ln_freqs) = word_set
+        let mut alphabet: Vec<char> = word_set.alphabet().into_iter().collect();
+        assert!(
+            alphabet.len() <= MAX_ALPHABET_SIZE,
+            "the Alphabet has {} letters, more than the {MAX_ALPHABET_SIZE} a byte can index",
+            alphabet.len()
+        );
+        alphabet.sort_unstable();
+        let letters: HashMap<char, u8> = alphabet
+            .into_iter()
+            .enumerate()
+            .map(|(i, c)| (c, i as u8))
+            .collect();
+        let (words, ln_freqs): (Vec<_>, _) = word_set
             .word_frequencies()
             .map(|(word, freq)| (word, (freq as f64).ln()))
             .unzip();
-        Arc::new(Self { words, ln_freqs })
+        let codes = words.iter().map(|w| encode(&letters, w)).collect();
+        Arc::new(Self {
+            words,
+            codes,
+            letters,
+            ln_freqs,
+        })
+    }
+
+    /// The pool word's letters as Alphabet indices.
+    pub(crate) fn code(&self, index: u32) -> &Code<N> {
+        &self.codes[index as usize]
+    }
+
+    /// Any word's letters as Alphabet indices; a letter outside the Alphabet becomes
+    /// [`UNKNOWN_LETTER`], which no pool word holds.
+    pub(crate) fn encode(&self, word: &Word<N>) -> Code<N> {
+        encode(&self.letters, word)
     }
 
     pub(crate) fn len(&self) -> usize {
@@ -136,6 +174,10 @@ impl<const N: usize> Pool<N> {
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
     }
+}
+
+fn encode<const N: usize>(letters: &HashMap<char, u8>, word: &Word<N>) -> Code<N> {
+    std::array::from_fn(|i| letters.get(&word[i]).copied().unwrap_or(UNKNOWN_LETTER))
 }
 
 /// The answer prior over a whole word set at `temperature`, in frequency-descending order.
@@ -182,6 +224,17 @@ mod tests {
             p[0].1 - p[1].1
         };
         assert!(spread(20.0) < spread(1.0));
+    }
+
+    #[test]
+    fn codes_index_the_alphabet_and_unknown_letters_get_the_sentinel() {
+        let pool = Pool::new(&set(&[("crane", 300), ("nacre", 200)]));
+        // alphabet in sorted order: a c e n r
+        assert_eq!(pool.code(0), &[1, 4, 0, 3, 2]);
+        assert_eq!(
+            pool.encode(&Word::<5>::try_from("zebra").unwrap()),
+            [UNKNOWN_LETTER, 2, UNKNOWN_LETTER, 4, 0]
+        );
     }
 
     #[test]

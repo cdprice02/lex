@@ -158,10 +158,6 @@ fn read_verified(dir: &Path, file: &str, expected: &str) -> anyhow::Result<Strin
     String::from_utf8(bytes).with_context(|| format!("{path:?} is not UTF-8"))
 }
 
-fn alphabet_of<const N: usize>(corpus: &WordSet<N>) -> HashSet<char> {
-    corpus.words().flat_map(|w| w.into_iter()).collect()
-}
-
 /// Loads a Profile against its Corpus, fetching the lists first if `dir` has no `meta.json`.
 /// Every load re-hashes the stored files; a mismatch is a hard error and is never refetched.
 pub(crate) fn load<const N: usize>(
@@ -178,7 +174,7 @@ pub(crate) fn load<const N: usize>(
         }
         .into());
     }
-    let alphabet = alphabet_of(corpus);
+    let alphabet = corpus.alphabet();
     if !dir.join(META_FILE).exists() {
         log::warn!("Fetching Profile {name}...");
         fetch_into::<N>(dir, name, spec, &alphabet, get)?;

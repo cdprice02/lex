@@ -3,7 +3,7 @@ use std::sync::Arc;
 
 use lex_data::Word;
 
-use crate::correctness::{WordCorrectness, pattern_ordinal};
+use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
 use crate::strategy::{GuessPool, Pool};
 
 /// The best guess for a candidate set and what it costs.
@@ -126,11 +126,12 @@ impl<const N: usize> Endgame<N> {
     /// Fills `out` with `(feedback ordinal, answer)` for every answer in `set` against `guess`,
     /// grouped by ordinal and ascending by index within a group.
     fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
-        let word = self.pool.word(guess);
+        let code = self.pool.code(guess);
+        let mut counts: LetterCounts = [0; 256];
         out.clear();
         out.extend(
             set.iter()
-                .map(|&i| (pattern_ordinal(&self.pool.word(i), &word), i)),
+                .map(|&i| (pattern_ordinal(self.pool.code(i), code, &mut counts), i)),
         );
         // stable sort keeps each group ascending by index
         out.sort_by_key(|&(ordinal, _)| ordinal);
@@ -229,6 +230,10 @@ mod tests {
         Pool::new(&WordSet::from_pairs(pairs))
     }
 
+    fn ordinal_of(pool: &Pool<5>, word: Word<5>, guess: Word<5>) -> u64 {
+        pattern_ordinal(&pool.encode(&word), &pool.encode(&guess), &mut [0; 256])
+    }
+
     fn indices_of(pool: &Pool<5>, words: &[&str]) -> Vec<u32> {
         let mut v: Vec<u32> = words
             .iter()
@@ -255,8 +260,10 @@ mod tests {
                 if guess == target {
                     break;
                 }
-                let feedback = pattern_ordinal(&target, &guess);
-                remaining.retain(|&i| pattern_ordinal(&endgame.pool.word(i), &guess) == feedback);
+                let feedback = ordinal_of(&endgame.pool, target, guess);
+                remaining.retain(|&i| {
+                    ordinal_of(&endgame.pool, endgame.pool.word(i), guess) == feedback
+                });
             }
             let objective = endgame.growth.map_or(guesses as f64, |a| a.powi(guesses));
             total += endgame.weights[answer as usize] * objective;
@@ -298,9 +305,9 @@ mod tests {
                         if guess == target {
                             return guesses;
                         }
-                        let feedback = pattern_ordinal(&target, &guess);
+                        let feedback = ordinal_of(&endgame.pool, target, guess);
                         remaining.retain(|&i| {
-                            pattern_ordinal(&endgame.pool.word(i), &guess) == feedback
+                            ordinal_of(&endgame.pool, endgame.pool.word(i), guess) == feedback
                         });
                     }
                 })
