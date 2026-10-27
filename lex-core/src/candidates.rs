@@ -192,7 +192,31 @@ impl<const N: usize> Candidates<N> {
     }
 }
 
+/// Largest bucket array the dense counter may allocate per thread. Working memory like this sits
+/// outside the 1 GB corpus cap; the bound makes the dense/sorted cut-over a memory rule rather
+/// than a list of word lengths.
+const DENSE_BOUND_BYTES: u64 = 16 * 1024 * 1024;
+
 fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
+    if WordCorrectness::<N>::COUNT * size_of::<f64>() as u64 <= DENSE_BOUND_BYTES {
+        entropy_dense(guess, words, probs)
+    } else {
+        entropy_sorted(guess, words, probs)
+    }
+}
+
+/// Sums `p * log2(p)` over masses already in ascending ordinal order; both counters share it so
+/// their floating-point results agree bit for bit.
+fn entropy_from_masses(masses: impl Iterator<Item = f64>) -> f64 {
+    let mut acc = 0.0_f64;
+    for p in masses {
+        acc += p * p.log2();
+    }
+    // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
+    0.0 - acc
+}
+
+fn entropy_dense<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
     /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
     /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
     struct Patterns {
@@ -221,14 +245,40 @@ fn guess_entropy<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f6
         }
         // ascending ordinal order keeps the floating-point sum independent of word order
         touched.sort_unstable();
-        // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
-        let mut acc = 0.0_f64;
-        for &ordinal in touched.iter() {
-            let p = std::mem::take(&mut buckets[ordinal as usize]);
-            acc += p * p.log2();
-        }
+        let entropy = entropy_from_masses(
+            touched
+                .iter()
+                .map(|&ordinal| std::mem::take(&mut buckets[ordinal as usize])),
+        );
         touched.clear();
-        0.0 - acc
+        entropy
+    })
+}
+
+/// Counts by sorting `(ordinal, probability)` pairs, for lengths whose dense array would exceed
+/// [`DENSE_BOUND_BYTES`]. The sort is stable, so each run's mass accumulates in word order, as in
+/// the dense counter, and runs are summed in ascending ordinal.
+fn entropy_sorted<const N: usize>(guess: &Word<N>, words: &[Word<N>], probs: &[f64]) -> f64 {
+    thread_local! {
+        static SCRATCH: RefCell<Vec<(u64, f64)>> = const { RefCell::new(Vec::new()) };
+    }
+    SCRATCH.with(|scratch| {
+        let scratch = &mut *scratch.borrow_mut();
+        scratch.clear();
+        scratch.extend(
+            words
+                .iter()
+                .zip(probs)
+                .map(|(word, &prob)| (pattern_ordinal(word, guess), prob)),
+        );
+        scratch.sort_by_key(|&(ordinal, _)| ordinal);
+        let entropy = entropy_from_masses(
+            scratch
+                .chunk_by(|a, b| a.0 == b.0)
+                .map(|run| run.iter().fold(0.0, |mass, &(_, prob)| mass + prob)),
+        );
+        scratch.clear();
+        entropy
     })
 }
 
@@ -244,6 +294,56 @@ mod tests {
         assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
         assert_eq!(guess_entropy(&ten, &[ten], &[1.0]), 0.0);
         assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
+    }
+
+    use proptest::prelude::*;
+
+    /// Words over a small alphabet so patterns collide and runs have several members.
+    fn counters_agree<const N: usize>(
+        guess: [u8; N],
+        pairs: Vec<([u8; N], f64)>,
+    ) -> Result<(), TestCaseError> {
+        let word = |bytes: [u8; N]| Word::<N>::from(bytes.map(|b| char::from(b'a' + b)));
+        let guess = word(guess);
+        let words: Vec<Word<N>> = pairs.iter().map(|&(w, _)| word(w)).collect();
+        let probs: Vec<f64> = pairs.iter().map(|&(_, p)| p).collect();
+        prop_assert_eq!(
+            entropy_dense(&guess, &words, &probs).to_bits(),
+            entropy_sorted(&guess, &words, &probs).to_bits()
+        );
+        Ok(())
+    }
+
+    proptest! {
+        #[test]
+        fn dense_and_sorted_agree_n3(
+            guess in prop::array::uniform3(0u8..3),
+            pairs in prop::collection::vec((prop::array::uniform3(0u8..3), 1e-6f64..1.0), 1..60),
+        ) {
+            counters_agree::<3>(guess, pairs)?;
+        }
+
+        #[test]
+        fn dense_and_sorted_agree_n5(
+            guess in prop::array::uniform5(0u8..4),
+            pairs in prop::collection::vec((prop::array::uniform5(0u8..4), 1e-6f64..1.0), 1..80),
+        ) {
+            counters_agree::<5>(guess, pairs)?;
+        }
+
+        #[test]
+        fn dense_and_sorted_agree_n13(
+            guess in prop::array::uniform13(0u8..4),
+            pairs in prop::collection::vec((prop::array::uniform13(0u8..4), 1e-6f64..1.0), 1..80),
+        ) {
+            counters_agree::<13>(guess, pairs)?;
+        }
+    }
+
+    #[test]
+    fn dense_bound_is_a_memory_rule() {
+        const { assert!(WordCorrectness::<13>::COUNT * 8 <= DENSE_BOUND_BYTES) };
+        const { assert!(WordCorrectness::<14>::COUNT * 8 > DENSE_BOUND_BYTES) };
     }
 }
 

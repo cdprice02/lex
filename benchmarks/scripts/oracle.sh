@@ -9,6 +9,12 @@
 # against the same base only rebuild and rerun the candidate.
 set -eu
 
+# Idle sleep freezes a run for as long as the machine sleeps; on macOS, hold
+# the machine awake until this script exits.
+if command -v caffeinate >/dev/null 2>&1; then
+    caffeinate -i -w $$ &
+fi
+
 base_ref=${1:?usage: oracle.sh <base-ref> [data-dir]}
 data_dir=$(cd "${2:-data}" && pwd)
 repo=$(git rev-parse --show-toplevel)
