@@ -10,8 +10,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 |---|---|
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies and the renormalized prior) |
-| `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool` plus its `Groups`, `filtered(guess)`, scored `suggest`/`suggest_top_k` (both `&mut self`: scoring coarsens the groups), private `guess_entropy()`; public `Suggestion<N>` |
-| `groups.rs` | `Groups` (crate-private): partition of the guess pool into words that split the candidate set identically; see Partition dedupe below |
+| `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
 | `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
@@ -67,10 +66,6 @@ per node, the reason memoization matters.
 Dense counter: for one guess, iterates the candidate words and accumulates probability mass per feedback ordinal (`pattern_ordinal`, no `WordCorrectness` built). Returns entropy in bits.
 
 Uses one thread-local `Patterns { buckets, touched }`, shared by every word length: `buckets` grows to the largest `WordCorrectness::<N>::COUNT` (= 3^N) seen and is all zero between calls; `touched` lists the ordinals a call wrote (a bucket is listed when it is 0.0 before the add, so every prior must be positive). The call sorts `touched` ascending, sums `p * log2(p)` in that order while zeroing each bucket, and clears the list. The ascending order makes the floating-point result independent of word order, which keeps guess sequences bit-identical.
-
-## Partition dedupe (`groups.rs`, `candidates.rs`)
-
-Pool words that give identical feedback against every candidate share a group, and a group splits every subset of the candidates identically too, so groups only coarsen as play narrows the set. A `Candidates` carries its `Groups` (flat member list plus offsets, representative = lowest pool index first; `None` inside means all singletons, which is the root and hard mode). `filtered` clones the parent's groups; `suggest`/`suggest_top_k` score one representative per group and, while doing so, hash each non-candidate representative's feedback vector, recompute the earlier representative's vector on a hash match, and merge only on an exact match. A candidate is always its own group (it alone scores all-correct against itself). `suggest_top_k` emits every member with the representative's entropy (`p_answer` 0, `in_candidates` false), so output is byte-equal. `Endgame::best_guess` takes the node's groups, skips non-representatives in its pool scan, and passes them down unchanged; the answer does not depend on them (members tie the representative exactly and lose the lowest-index tie-break). Tests compare against a from-scratch scoring of the whole pool.
 
 ## Correctness algorithm (`pattern_ordinal` in `correctness.rs`)
 
