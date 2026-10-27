@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use lex_data::Word;
 
+use crate::allowed::Allowed;
 use crate::candidates::Candidates;
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
@@ -32,15 +33,18 @@ pub(crate) struct DecisionTree<const N: usize> {
 #[derive(Debug)]
 struct Node<const N: usize> {
     candidates: Candidates<N>,
+    /// The guesses the strategy's pool rule permits here; a function of the guess path.
+    allowed: Allowed,
     suggestion: Option<Option<Word<N>>>,
     // Sparse: fan-out is 3^N per guess, 59,049 at the length cap.
     children: HashMap<(Word<N>, u64), NodeId>,
 }
 
 impl<const N: usize> Node<N> {
-    fn new(candidates: Candidates<N>) -> Self {
+    fn new(candidates: Candidates<N>, allowed: Allowed) -> Self {
         Self {
             candidates,
+            allowed,
             suggestion: None,
             children: HashMap::new(),
         }
@@ -59,15 +63,20 @@ impl<const N: usize> DecisionTree<N> {
                 strategy.endgame_aversion,
             )
         });
+        let allowed = Allowed::root(strategy.pool, candidates.len() == candidates.pool().len());
         Self {
             strategy,
             endgame,
-            nodes: vec![Node::new(candidates)],
+            nodes: vec![Node::new(candidates, allowed)],
         }
     }
 
     pub(crate) fn candidates(&self, node: NodeId) -> &Candidates<N> {
         &self.nodes[node].candidates
+    }
+
+    pub(crate) fn allowed(&self, node: NodeId) -> &Allowed {
+        &self.nodes[node].allowed
     }
 
     pub(crate) fn strategy(&self) -> &Strategy {
@@ -85,9 +94,9 @@ impl<const N: usize> DecisionTree<N> {
         *entry.suggestion.get_or_insert_with(|| match endgame {
             // a lone candidate needs no search; `Candidates::suggest` returns it directly
             Some(endgame) if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) => {
-                endgame.best_guess(entry.candidates.indices())
+                endgame.best_guess(entry.candidates.indices(), &entry.allowed)
             }
-            _ => entry.candidates.suggest(strategy),
+            _ => entry.candidates.suggest(strategy, &entry.allowed),
         })
     }
 
@@ -97,9 +106,17 @@ impl<const N: usize> DecisionTree<N> {
         if let Some(&id) = self.nodes[node].children.get(&key) {
             return id;
         }
-        let candidates = self.nodes[node].candidates.filtered(guess);
+        let parent = &self.nodes[node];
+        let candidates = parent.candidates.filtered(guess);
+        let pool = candidates.pool();
+        let allowed = parent.allowed.after(
+            self.strategy.pool,
+            &pool,
+            &pool.encode(&guess.word()),
+            key.1,
+        );
         let id = self.nodes.len();
-        self.nodes.push(Node::new(candidates));
+        self.nodes.push(Node::new(candidates, allowed));
         self.nodes[node].children.insert(key, id);
         id
     }

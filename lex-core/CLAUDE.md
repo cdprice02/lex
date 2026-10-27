@@ -9,7 +9,8 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | Module | Responsibility |
 |---|---|
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
-| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool`, `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
+| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool` (`All`, `Hard`, `Ultrahard`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
+| `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
@@ -36,8 +37,9 @@ new game on the same tree, and `play` takes `&mut Guesser` for that reason.
 Off unless `Strategy::endgame_threshold > 0`. `DecisionTree::suggest` calls `Endgame::best_guess` for
 nodes with 2 to threshold candidates and otherwise falls back to `Candidates::suggest`; the tree owns the
 `Endgame`, so its memo is shared by every game. Costs are weighted sums using pool-wide prior weights,
-so a set's cost is independent of the position it was reached from and the memo is keyed by the sorted
-candidate indices alone. Plain objective: sum of weight x guesses to finish. With
+so a set's cost is independent of the position it was reached from. The memo is keyed by the sorted
+candidate indices and the allowed guesses (a cost under fewer allowed guesses must not be reused for more); an
+`Allowed::List` is interned to a small id, and in normal mode and on an ultrahard Corpus run the allowed set is implied, so the key is the candidates alone. Plain objective: sum of weight x guesses to finish. With
 `endgame_aversion = L > 0`: sum of weight x a^guesses, a = e^L; the exponential is what keeps the cost
 independent of depth (a penalty past guess 6 would not be).
 
@@ -49,13 +51,17 @@ costs are exact. `win_weight` is ignored here. A top-K entropy probe limit was t
 (`benchmarks/experiments/endgame.md`). The opt-in test `real_corpus_roots_match_simulated_cost` checks predicted
 cost against simulated games on real roots.
 
+## Allowed guesses (`allowed.rs`)
+
+Each tree node stores an `Allowed` beside its candidates, a function of the guess path built by `Allowed::after(mode, pool, guess, feedback ordinal)` from its parent. `GuessPool::All` keeps `Whole` (every pool word). `Hard` filters the parent's allowed words by `HardRule`, Selby's `okhard`: the guess's greens stay in place, and its green and yellow letters reappear with at least the scored multiplicity (grays may be replayed, a yellow may repeat its position). `Ultrahard` keeps the words that score the guess exactly as played; on a Corpus run (the root candidates are the whole pool) the allowed set is the candidates at every depth, so the node stores `Candidates` and nothing extra. Otherwise a node holds a sorted index list that always contains its candidates. `Guesser::rule_violation(word)` re-derives the same rule from the history for `assist`, with a one-line reason.
+
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 
 The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
-(`GuessPool::All`, or only the candidates in hard mode) as
+(see Allowed guesses below) as
 `entropy + win_weight * P(guess is the answer)`, with probabilities renormalized over the surviving
 candidates each time (`Pool::prior`: softmax of ln-frequency over T, relative to the survivors'
-maximum, which keeps hard mode with `win_weight = 0` bit-identical to the pre-strategy solver).
+maximum, which keeps ultrahard with `win_weight = 0` bit-identical to the pre-strategy solver).
 Strict-greater wins; on an exact tie a candidate beats a non-candidate, then frequency order. A
 single candidate is returned without scanning the pool. `answer_prior` exposes the same softmax
 for reports; the CLI fixes the report prior at `CANONICAL_TEMPERATURE`. Cost is O(pool x candidates)
