@@ -37,6 +37,7 @@ the next paired comparison.
 | [Strategy](experiments/strategy.md) | Unconstrained guessing, T=5, win weight 1 |
 | [Micro-optimization](experiments/micro-opt.md) | Generic ordinal and selective reset adopted; byte words, bounds-check removal rejected |
 | [Endgame](experiments/endgame.md) | Exact search below a threshold, off by default |
+| [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
 
 ## Baselines
 
