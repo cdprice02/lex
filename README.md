@@ -25,7 +25,7 @@ Then build and run:
 
 ```bash
 cargo run --release -- simulate -l 5 --lang english -n 100   # batch simulation
-cargo run --release -- assist -l 5                           # assist a live game
+cargo run --release -- assist -l 5 --lang english            # assist a live game
 ```
 
 The first run for a language downloads its Wiktionary word list and all Google Books Ngrams shards, then caches everything to `data/`. Subsequent runs are fully offline.

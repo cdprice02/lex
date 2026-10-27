@@ -12,33 +12,39 @@ use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
 use crate::cli::SimulateArgs;
-use crate::report::{Corpus, DictProvenance, Game, Report, Run, SCHEMA_VERSION, Summary};
+use crate::lists::{GameLists, Source};
+use crate::report::{Game, Report, Run, SCHEMA_VERSION, Summary};
 use crate::targets;
 
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let data_dir = lex_data::DataDir::new(&args.common.data_dir);
-    let lang = args.common.lang;
-    let word_set = data_dir.load::<N>(lang, args.common.dictionary_length)?;
-    let dictionary_length = word_set.len();
+    let (lists, source) = Source::load::<N>(&args.common, &data_dir)?;
 
     // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
-    // taken over the full dictionary before any game narrows the candidate set.
-    let priors: HashMap<_, _> = answer_prior(&word_set, CANONICAL_TEMPERATURE)
+    // taken over the whole pool before any game narrows the candidate set; only the Answer
+    // list's words are ever looked up.
+    let priors: HashMap<_, _> = answer_prior(&lists.pool, CANONICAL_TEMPERATURE)
         .into_iter()
         .collect();
     let targets = targets::select(
-        &word_set,
+        lists.answers.clone(),
+        &source.answer_noun(),
         args.targets.as_deref(),
         args.num_games,
         args.seed,
     )?;
     let num_games = targets.len();
 
-    log::info!("Simulating {num_games} games with {N}-letter words in {lang}...");
+    log::info!(
+        "Simulating {num_games} games with {N}-letter words in {} ({} corpus words)...",
+        source.name(),
+        source.dictionary_length()
+    );
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
     let strategy = args.common.strategy();
-    let mut guesser = Guesser::new(word_set, strategy);
+    let GameLists { pool, answers } = lists;
+    let mut guesser = Guesser::new(pool, answers, strategy);
     let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
@@ -70,18 +76,6 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
 
     log::info!("Completed {num_games} games");
 
-    let dict = match data_dir.dict_metadata(lang) {
-        Ok(meta) => Some(DictProvenance {
-            source_url: meta.source_url().map(str::to_owned),
-            fetched_at: meta.fetched_at().map(str::to_owned),
-            source_sha256: meta.source_sha256().map(str::to_owned),
-            word_count: meta.word_count,
-        }),
-        Err(e) => {
-            log::warn!("no dictionary metadata for the report: {e:#}");
-            None
-        }
-    };
     let report = Report {
         schema_version: SCHEMA_VERSION,
         run: Run {
@@ -93,14 +87,8 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
             first_guess: first_guess.to_string(),
             strategy: strategy.into(),
         },
-        corpus: Corpus {
-            language: lang.to_string(),
-            word_length: N,
-            dictionary_length,
-            ngrams_snapshot: lex_data::NGRAMS_SNAPSHOT.to_owned(),
-            ngrams_sha256: data_dir.ngrams_sha256(lang, N)?,
-            dict,
-        },
+        corpus: source.corpus().clone(),
+        profile: source.profile_report(),
         summary: Summary::from_games(&games),
         games,
     };

@@ -62,22 +62,31 @@ pub struct CommonArgs {
     #[arg(
         short = 'l',
         long,
-        default_value = "5",
         value_parser = parse_word_length,
-        help = format!("Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH})")
+        required_unless_present = "profile",
+        conflicts_with = "profile",
+        help = format!("Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH}); a profile fixes it")
     )]
-    pub word_length: usize,
+    pub word_length: Option<usize>,
     #[arg(
         long,
+        conflicts_with = "profile",
         help = "Number of the words to allow in the guesser's dictionary (default: all words in the corpus)"
     )]
     pub dictionary_length: Option<usize>,
     #[arg(
         long,
-        default_value = "english",
-        help = "Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus)"
+        required_unless_present = "profile",
+        conflicts_with = "profile",
+        help = "Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus); a profile fixes it"
     )]
-    pub lang: Language,
+    pub lang: Option<Language>,
+    #[arg(
+        long,
+        conflicts_with = "hard_mode",
+        help = "Play a profile: its answer list and guess pool, with its language and word length (wordle, wordle-all)"
+    )]
+    pub profile: Option<Profile>,
     #[arg(
         long,
         default_value = "data",
@@ -119,6 +128,16 @@ pub struct CommonArgs {
 }
 
 impl CommonArgs {
+    /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
+    pub fn dispatch_length(&self) -> usize {
+        match self.profile {
+            Some(profile) => profile.spec().word_length,
+            None => self
+                .word_length
+                .expect("clap requires -l without --profile"),
+        }
+    }
+
     pub fn strategy(&self) -> Strategy {
         Strategy {
             pool: if self.hard_mode {
@@ -235,5 +254,45 @@ mod clear_tests {
     fn word_length_goes_only_with_lang() {
         assert!(parse(&["--lang", "english", "-l", "5"]).is_ok());
         assert!(parse(&["--profile", "wordle", "-l", "5"]).is_err());
+    }
+}
+
+#[cfg(test)]
+mod profile_tests {
+    use super::*;
+
+    fn common(args: &[&str]) -> Result<CommonArgs, clap::Error> {
+        match Cli::try_parse_from(["lex", "assist"].into_iter().chain(args.iter().copied()))?
+            .command
+        {
+            Command::Assist(a) => Ok(a.common),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn language_and_length_are_required_without_a_profile() {
+        assert!(common(&[]).is_err());
+        assert!(common(&["--lang", "english"]).is_err());
+        assert!(common(&["-l", "5"]).is_err());
+        assert!(common(&["--lang", "english", "-l", "5"]).is_ok());
+    }
+
+    #[test]
+    fn a_profile_stands_alone() {
+        assert!(common(&["--profile", "wordle"]).is_ok());
+    }
+
+    #[test]
+    fn a_profile_rejects_language_and_length_even_when_they_agree() {
+        assert!(common(&["--profile", "wordle", "-l", "5"]).is_err());
+        assert!(common(&["--profile", "wordle", "-l", "6"]).is_err());
+        assert!(common(&["--profile", "wordle", "--lang", "english"]).is_err());
+    }
+
+    #[test]
+    fn a_profile_rejects_dictionary_length_and_hard_mode() {
+        assert!(common(&["--profile", "wordle", "--dictionary-length", "10"]).is_err());
+        assert!(common(&["--profile", "wordle", "--hard-mode"]).is_err());
     }
 }

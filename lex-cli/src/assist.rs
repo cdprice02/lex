@@ -3,6 +3,8 @@ use std::io::{BufRead, Write};
 use lex_core::{Correctness, Guess, Guesser, WordCorrectness};
 use lex_data::Word;
 
+use crate::lists::Source;
+
 use crate::cli::AssistArgs;
 
 /// Interactive helper for a live Wordle game: suggests guesses, reads the word
@@ -10,9 +12,10 @@ use crate::cli::AssistArgs;
 /// candidate set until solved (or until the candidates are exhausted, e.g.
 /// when the day's target is missing from our corpus).
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
-    let word_set = lex_data::DataDir::new(&args.common.data_dir)
-        .load::<N>(args.common.lang, args.common.dictionary_length)?;
-    let mut guesser = Guesser::new(word_set, args.common.strategy());
+    let (lists, source) =
+        Source::load::<N>(&args.common, &lex_data::DataDir::new(&args.common.data_dir))?;
+    let guess_pool = lists.pool.clone();
+    let mut guesser = Guesser::new(lists.pool, lists.answers, args.common.strategy());
 
     let stdin = std::io::stdin();
     let mut lines = stdin.lock().lines();
@@ -20,7 +23,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     println!(
         "Assisting a {N}-letter game in {}. Feedback formats: letters (g=green, y=yellow, \
          x/b/./- = gray), digits (2=green, 1=yellow, 0=gray), or emoji.",
-        args.common.lang
+        source.name()
     );
 
     let mut turn = 1;
@@ -51,7 +54,8 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         }
         let top = suggestions[0].word;
 
-        let Some(word) = prompt_word::<N>(&mut lines, top)? else {
+        let Some(word) = prompt_word::<N>(&mut lines, top, |w| source.check_guess(&guess_pool, w))?
+        else {
             return Ok(()); // EOF
         };
         let Some(feedback) = prompt_feedback::<N>(&mut lines)? else {
@@ -69,10 +73,11 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
 }
 
 /// Prompts for the word the user played. Empty input accepts `default`;
-/// `Ok(None)` signals EOF. Re-prompts until the input parses as a `Word<N>`.
+/// `Ok(None)` signals EOF. Re-prompts until the input parses as a `Word<N>` that `accept` allows.
 fn prompt_word<const N: usize>(
     lines: &mut impl Iterator<Item = std::io::Result<String>>,
     default: Word<N>,
+    accept: impl Fn(&Word<N>) -> Result<(), String>,
 ) -> anyhow::Result<Option<Word<N>>> {
     loop {
         print!("word played [{default}]: ");
@@ -85,7 +90,10 @@ fn prompt_word<const N: usize>(
             return Ok(Some(default));
         }
         match Word::<N>::try_from(input.as_str()) {
-            Ok(word) => return Ok(Some(word)),
+            Ok(word) => match accept(&word) {
+                Ok(()) => return Ok(Some(word)),
+                Err(e) => println!("  {e}"),
+            },
             Err(e) => println!("  {e}"),
         }
     }

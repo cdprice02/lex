@@ -39,13 +39,16 @@ pub struct Guesser<const N: usize> {
 }
 
 impl<const N: usize> Guesser<N> {
+    /// `pool` is every word the solver may guess; `answers` are the only words the target can
+    /// be, a subset of `pool` (all of it when nothing narrows the answers).
+    ///
     /// # Panics
     ///
-    /// If the strategy's temperature is not positive and finite, or its win weight is negative
-    /// or not finite.
-    pub fn new(word_set: WordSet<N>, strategy: Strategy) -> Self {
+    /// If an answer is not in the pool, if the strategy's temperature is not positive and
+    /// finite, or if its win weight is negative or not finite.
+    pub fn new(pool: WordSet<N>, answers: Vec<Word<N>>, strategy: Strategy) -> Self {
         strategy.assert_valid();
-        let candidates = Candidates::new(Pool::new(&word_set));
+        let candidates = Candidates::new(Pool::new(&pool), &answers);
         Self {
             tree: Rc::new(RefCell::new(DecisionTree::new(candidates, strategy))),
             node: DecisionTree::<N>::ROOT,
@@ -53,8 +56,13 @@ impl<const N: usize> Guesser<N> {
         }
     }
 
-    pub fn with_history(word_set: WordSet<N>, strategy: Strategy, history: Vec<Guess<N>>) -> Self {
-        let mut guesser = Self::new(word_set, strategy);
+    pub fn with_history(
+        pool: WordSet<N>,
+        answers: Vec<Word<N>>,
+        strategy: Strategy,
+        history: Vec<Guess<N>>,
+    ) -> Self {
+        let mut guesser = Self::new(pool, answers, strategy);
         for guess in history {
             guesser.push_guess(guess);
         }
@@ -94,6 +102,13 @@ impl<const N: usize> Guesser<N> {
     }
 }
 
+/// A guesser whose answers are every pool word.
+#[cfg(test)]
+fn corpus_guesser<const N: usize>(pool: WordSet<N>, strategy: Strategy) -> Guesser<N> {
+    let answers = pool.words().collect();
+    Guesser::new(pool, answers, strategy)
+}
+
 #[cfg(test)]
 mod benches {
     extern crate test;
@@ -125,7 +140,7 @@ mod benches {
     fn build_guesser(pairs: &[(Word<5>, u64)]) -> Guesser<5> {
         let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
         let ws = WordSet::from_frequency_map(frequencies);
-        Guesser::<5>::new(ws, Strategy::hard_mode())
+        corpus_guesser(ws, Strategy::hard_mode())
     }
 
     #[bench]
@@ -168,7 +183,7 @@ mod tests {
             .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
             .collect();
         let ws = WordSet::from_frequency_map(frequencies);
-        Guesser::<5>::new(ws, Strategy::hard_mode())
+        corpus_guesser(ws, Strategy::hard_mode())
     }
 
     fn word(s: &str) -> Word<5> {
@@ -338,7 +353,7 @@ mod tests {
         strategy: &Strategy,
         target: Word<5>,
     ) -> Vec<Word<5>> {
-        let mut candidates = Candidates::new(Pool::new(word_set));
+        let mut candidates = Candidates::whole_pool(Pool::new(word_set));
         let mut played = Vec::new();
         loop {
             let guess = candidates
@@ -384,7 +399,7 @@ mod tests {
     fn shared_tree_matches_unmemoized_solver_for_every_target() {
         let ws = dict_set(DICT);
         for strategy in STRATEGIES {
-            let mut guesser = Guesser::new(ws.clone(), strategy);
+            let mut guesser = corpus_guesser(ws.clone(), strategy);
             // two passes: the second replays every game entirely from cached nodes
             for _ in 0..2 {
                 for &(target, _) in DICT {
@@ -402,13 +417,13 @@ mod tests {
     #[test]
     fn non_suggested_guess_leaves_other_paths_untouched() {
         let ws = dict_set(DICT);
-        let mut shared = Guesser::new(ws.clone(), Strategy::hard_mode());
+        let mut shared = corpus_guesser(ws.clone(), Strategy::hard_mode());
         // populate the tree along the solver's own path first
         memoized_sequence(&mut shared, word("brace"));
 
         shared.reset();
         shared.push_guess(make_guess("light", "crave"));
-        let mut fresh = Guesser::new(ws, Strategy::hard_mode());
+        let mut fresh = corpus_guesser(ws, Strategy::hard_mode());
         fresh.push_guess(make_guess("light", "crave"));
         assert_eq!(shared.suggest(), fresh.suggest());
         assert_eq!(shared.num_candidates(), fresh.num_candidates());
@@ -419,13 +434,13 @@ mod tests {
         // "crane" and "stare" both score all-absent against "light"; the edge key must carry
         // the guess word or the two paths would share a node
         let ws = dict_set(DICT);
-        let mut shared = Guesser::new(ws.clone(), Strategy::hard_mode());
+        let mut shared = corpus_guesser(ws.clone(), Strategy::hard_mode());
         shared.push_guess(make_guess("crane", "light"));
         let after_crane = shared.num_candidates();
         shared.reset();
         shared.push_guess(make_guess("stare", "light"));
 
-        let mut fresh = Guesser::new(ws, Strategy::hard_mode());
+        let mut fresh = corpus_guesser(ws, Strategy::hard_mode());
         fresh.push_guess(make_guess("stare", "light"));
         assert_eq!(shared.num_candidates(), fresh.num_candidates());
         assert_ne!(after_crane, shared.num_candidates());
@@ -457,7 +472,7 @@ mod tests {
     /// Guesses to solve `target` after a first guess of "watch", which leaves the six `-atch`
     /// words as candidates and rules the three probe words out as answers.
     fn guesses_after_watch(strategy: Strategy, target: &str) -> usize {
-        let mut guesser = Guesser::new(dict_set(BATCH_FAMILY), strategy);
+        let mut guesser = corpus_guesser(dict_set(BATCH_FAMILY), strategy);
         let history = vec![make_guess("watch", target)];
         crate::play(word(target), &mut guesser, history)
             .unwrap()
@@ -466,7 +481,7 @@ mod tests {
 
     #[test]
     fn hard_mode_never_suggests_a_ruled_out_word() {
-        let mut g = Guesser::new(dict_set(BATCH_FAMILY), Strategy::hard_mode());
+        let mut g = corpus_guesser(dict_set(BATCH_FAMILY), Strategy::hard_mode());
         g.push_guess(make_guess("watch", "batch"));
         let candidates = ["batch", "catch", "hatch", "latch", "match", "patch"];
         assert!(g.suggest_top_k(20).iter().all(|s| s.in_candidates));
@@ -475,7 +490,7 @@ mod tests {
 
     #[test]
     fn unconstrained_probes_with_a_ruled_out_word() {
-        let mut g = Guesser::new(dict_set(BATCH_FAMILY), Strategy::default());
+        let mut g = corpus_guesser(dict_set(BATCH_FAMILY), Strategy::default());
         g.push_guess(make_guess("watch", "batch"));
         let probe = g.suggest().unwrap();
         let top = g.suggest_top_k(1)[0];
@@ -506,7 +521,7 @@ mod tests {
     fn equal_scores_prefer_a_candidate() {
         // crane and stare split {crane, stare} identically; "light" ties at zero entropy against
         // nothing useful. Whichever the pool offers, the winner must be a candidate.
-        let mut g = Guesser::new(
+        let mut g = corpus_guesser(
             dict_set(&[("crane", 100), ("stare", 100), ("light", 100)]),
             Strategy::default(),
         );
@@ -523,14 +538,14 @@ mod tests {
             win_weight: 1.0,
             ..Strategy::default()
         };
-        let g = Guesser::new(dict_set(&[("crane", 1000), ("stare", 10)]), strategy);
+        let g = corpus_guesser(dict_set(&[("crane", 1000), ("stare", 10)]), strategy);
         assert_eq!(g.suggest().unwrap(), word("crane"));
     }
 
     #[test]
     fn top_k_first_agrees_with_suggest_for_every_strategy() {
         for strategy in STRATEGIES {
-            let mut g = Guesser::new(dict_set(DICT), strategy);
+            let mut g = corpus_guesser(dict_set(DICT), strategy);
             g.push_guess(make_guess("crane", "stare"));
             assert_eq!(
                 g.suggest_top_k(1)[0].word,
@@ -553,7 +568,7 @@ mod tests {
             let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
             let ws = dict_set(&borrowed);
             for strategy in STRATEGIES {
-                let mut guesser = Guesser::new(ws.clone(), strategy);
+                let mut guesser = corpus_guesser(ws.clone(), strategy);
                 for (target, _) in &borrowed {
                     let target = word(target);
                     proptest::prop_assert_eq!(
@@ -576,5 +591,60 @@ mod tests {
             // correct(target, guess) == feedback by construction -> target always passes its own filter
             proptest::prop_assert_eq!(g.suggest(), Some(target_word));
         }
+    }
+
+    fn pool_set() -> WordSet<5> {
+        dict_set(&[
+            ("crane", 500),
+            ("stare", 400),
+            ("light", 300),
+            ("mount", 200),
+            ("swipe", 100),
+        ])
+    }
+
+    #[test]
+    fn answer_list_sets_the_starting_candidates_but_not_the_guess_pool() {
+        let answers = vec![word("light"), word("stare")];
+        let g = Guesser::new(pool_set(), answers, Strategy::default());
+        assert_eq!(g.num_candidates(), 2);
+        let top = g.suggest_top_k(5);
+        assert_eq!(top.len(), 5, "every pool word is a legal guess");
+        let in_candidates: Vec<_> = top.iter().filter(|s| s.in_candidates).collect();
+        assert_eq!(in_candidates.len(), 2);
+        assert!(in_candidates.iter().all(|s| s.p_answer > 0.0));
+    }
+
+    #[test]
+    fn answer_list_order_does_not_matter() {
+        let forward = Guesser::new(
+            pool_set(),
+            vec![word("stare"), word("light")],
+            Strategy::default(),
+        );
+        let reverse = Guesser::new(
+            pool_set(),
+            vec![word("light"), word("stare")],
+            Strategy::default(),
+        );
+        assert_eq!(forward.suggest_top_k(5), reverse.suggest_top_k(5));
+    }
+
+    #[test]
+    fn history_narrows_within_the_answer_list() {
+        let g = Guesser::with_history(
+            pool_set(),
+            vec![word("crane"), word("light"), word("stare")],
+            Strategy::default(),
+            vec![make_guess("mount", "stare")],
+        );
+        assert_eq!(g.num_candidates(), 1);
+        assert_eq!(g.suggest(), Some(word("stare")));
+    }
+
+    #[test]
+    #[should_panic(expected = "not in the guess pool")]
+    fn answer_missing_from_the_pool_panics() {
+        Guesser::new(pool_set(), vec![word("zebra")], Strategy::default());
     }
 }
