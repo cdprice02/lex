@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use std::collections::HashMap;
 use std::hint::cold_path;
 use std::sync::Arc;
 
@@ -40,7 +41,30 @@ pub(crate) struct Candidates<const N: usize> {
 }
 
 impl<const N: usize> Candidates<N> {
-    pub(crate) fn new(pool: Arc<Pool<N>>) -> Self {
+    /// Starts from exactly `answers`, as indices into the pool, so a Profile's Answer list and a
+    /// Corpus run's every-word list take the same path.
+    ///
+    /// # Panics
+    ///
+    /// If an answer is not in the pool: `lex-data` guarantees the Answer list is a subset.
+    pub(crate) fn new(pool: Arc<Pool<N>>, answers: &[Word<N>]) -> Self {
+        let by_word: HashMap<Word<N>, u32> =
+            (0..pool.len() as u32).map(|i| (pool.word(i), i)).collect();
+        let mut indices: Vec<u32> = answers
+            .iter()
+            .map(|w| {
+                *by_word
+                    .get(w)
+                    .unwrap_or_else(|| panic!("answer {w} is not in the guess pool"))
+            })
+            .collect();
+        indices.sort_unstable();
+        Self { pool, indices }
+    }
+
+    /// Every pool word is a candidate.
+    #[cfg(test)]
+    pub(crate) fn whole_pool(pool: Arc<Pool<N>>) -> Self {
         let indices = (0..pool.len() as u32).collect();
         Self { pool, indices }
     }
@@ -368,7 +392,7 @@ mod benches {
     }
 
     fn bench_suggest<const N: usize>(b: &mut Bencher, count: usize) {
-        let candidates = Candidates::new(synthetic_pool::<N>(count));
+        let candidates = Candidates::whole_pool(synthetic_pool::<N>(count));
         let strategy = Strategy::default();
         b.iter(|| black_box(candidates.suggest(&strategy)));
     }
@@ -387,7 +411,7 @@ mod benches {
     /// most `limit` candidates remain, then times a full-pool `suggest`. Most nodes of a full run
     /// are deep ones like this: few candidates scored against a large pool.
     fn bench_deep_suggest(b: &mut Bencher, limit: usize) {
-        let mut candidates = Candidates::new(synthetic_pool::<5>(3000));
+        let mut candidates = Candidates::whole_pool(synthetic_pool::<5>(3000));
         let target = candidates.pool.word(1);
         for i in 2..400 {
             if candidates.len() <= limit {
@@ -418,7 +442,7 @@ mod benches {
 
     #[bench]
     fn filtered_1000_n5(b: &mut Bencher) {
-        let candidates = Candidates::new(synthetic_pool::<5>(1000));
+        let candidates = Candidates::whole_pool(synthetic_pool::<5>(1000));
         let target = candidates.pool.word(0);
         let guess = Guess::new(
             candidates.pool.word(1),

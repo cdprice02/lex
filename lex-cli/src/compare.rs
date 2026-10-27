@@ -9,7 +9,7 @@ use crate::report::{MAX_GUESSES, Report};
 pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
     let baseline = load(&args.baseline)?;
     let candidate = load(&args.candidate)?;
-    print!("{}", compare(&baseline, &candidate));
+    print!("{}", compare(&baseline, &candidate)?);
     Ok(())
 }
 
@@ -21,7 +21,28 @@ fn load(path: &Path) -> anyhow::Result<Report> {
 
 /// Paired comparison over the targets both reports played. Pairing removes target-sampling
 /// noise, so a small change is visible without a huge sample.
-pub fn compare(baseline: &Report, candidate: &Report) -> String {
+///
+/// # Errors
+///
+/// If the reports played different Profiles, or only one played a Profile: their targets and
+/// priors are not comparable.
+pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> {
+    match (&baseline.profile, &candidate.profile) {
+        (None, None) => {}
+        (Some(b), Some(c)) if b.same_lists(c) => {}
+        (b, c) => {
+            let name = |p: &Option<crate::report::ProfileReport>| {
+                p.as_ref()
+                    .map_or("no profile", |p| p.name.as_str())
+                    .to_owned()
+            };
+            anyhow::bail!(
+                "reports played different profiles: {} vs {}",
+                name(b),
+                name(c)
+            );
+        }
+    }
     let mut out = String::new();
     let (b, c) = (&baseline.corpus, &candidate.corpus);
     if (&b.language, b.word_length) != (&c.language, c.word_length) {
@@ -64,7 +85,7 @@ pub fn compare(baseline: &Report, candidate: &Report) -> String {
         candidate.games.len()
     );
     if pairs.is_empty() {
-        return out;
+        return Ok(out);
     }
 
     let n = pairs.len() as f64;
@@ -107,5 +128,75 @@ pub fn compare(baseline: &Report, candidate: &Report) -> String {
         pairs.len() - better - worse
     );
     let _ = writeln!(out, "guess sequences changed: {changed}");
-    out
+    Ok(out)
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::report::{Corpus, ProfileReport, Report, Run, SCHEMA_VERSION, Summary};
+    use lex_core::Strategy;
+
+    fn profile(name: &str, answers: &str) -> ProfileReport {
+        ProfileReport {
+            name: name.to_owned(),
+            answers_sha256: answers.to_owned(),
+            guess_only_sha256: "g".to_owned(),
+            answer_count: 1,
+            guess_count: 2,
+            floor: 1,
+            floored: 0,
+        }
+    }
+
+    fn report(profile: Option<ProfileReport>) -> Report {
+        Report {
+            schema_version: SCHEMA_VERSION,
+            run: Run {
+                lex_version: String::new(),
+                timestamp: String::new(),
+                seed: 0,
+                num_games: 0,
+                targets_file: None,
+                first_guess: String::new(),
+                strategy: Strategy::default().into(),
+            },
+            corpus: Corpus {
+                language: "english".to_owned(),
+                word_length: 5,
+                dictionary_length: 0,
+                ngrams_snapshot: String::new(),
+                ngrams_sha256: String::new(),
+                dict: None,
+            },
+            profile,
+            summary: Summary::from_games(&[]),
+            games: Vec::new(),
+        }
+    }
+
+    #[test]
+    fn matching_profiles_or_none_compare() {
+        assert!(compare(&report(None), &report(None)).is_ok());
+        let p = Some(profile("wordle", "a"));
+        assert!(compare(&report(p.clone()), &report(p)).is_ok());
+    }
+
+    #[test]
+    fn differing_or_one_sided_profiles_are_an_error() {
+        let wordle = Some(profile("wordle", "a"));
+        assert!(compare(&report(wordle.clone()), &report(None)).is_err());
+        assert!(compare(&report(None), &report(wordle.clone())).is_err());
+        let other_name = Some(profile("wordle-all", "a"));
+        assert!(compare(&report(wordle.clone()), &report(other_name)).is_err());
+        let other_lists = Some(profile("wordle", "b"));
+        assert!(compare(&report(wordle), &report(other_lists)).is_err());
+    }
+
+    #[test]
+    fn a_report_without_a_profile_field_reads_as_none() {
+        let mut json = serde_json::to_value(report(None)).unwrap();
+        json.as_object_mut().unwrap().remove("profile");
+        let parsed: Report = serde_json::from_value(json).unwrap();
+        assert!(parsed.profile.is_none());
+    }
 }

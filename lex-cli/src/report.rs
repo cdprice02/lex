@@ -15,6 +15,10 @@ pub struct Report {
     pub schema_version: u32,
     pub run: Run,
     pub corpus: Corpus,
+    /// The Profile played, if any. Its `summary.uniform` is the headline: the Report prior of a
+    /// Wordle Profile is uniform over the Answer list.
+    #[serde(default)]
+    pub profile: Option<ProfileReport>,
     pub summary: Summary,
     pub games: Vec<Game>,
 }
@@ -84,7 +88,7 @@ impl std::fmt::Display for StrategyReport {
 
 /// Identity of the data a run was measured against. Two reports are only comparable when
 /// `ngrams_sha256` matches.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Corpus {
     pub language: String,
     pub word_length: usize,
@@ -94,7 +98,42 @@ pub struct Corpus {
     pub dict: Option<DictProvenance>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+/// Identity of the Profile lists a run played. Two reports are only comparable when the name and
+/// both checksums match.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ProfileReport {
+    pub name: String,
+    pub answers_sha256: String,
+    pub guess_only_sha256: String,
+    pub answer_count: usize,
+    pub guess_count: usize,
+    /// Count assigned to Profile words the Corpus lacks (the Unseen-word floor).
+    pub floor: u64,
+    pub floored: usize,
+}
+
+impl ProfileReport {
+    pub fn same_lists(&self, other: &Self) -> bool {
+        (&self.name, &self.answers_sha256, &self.guess_only_sha256)
+            == (&other.name, &other.answers_sha256, &other.guess_only_sha256)
+    }
+}
+
+impl From<lex_data::ProfileStats> for ProfileReport {
+    fn from(s: lex_data::ProfileStats) -> Self {
+        Self {
+            name: s.name,
+            answers_sha256: s.answers_sha256,
+            guess_only_sha256: s.guess_only_sha256,
+            answer_count: s.answer_count,
+            guess_count: s.guess_count,
+            floor: s.floor,
+            floored: s.floored,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictProvenance {
     pub source_url: Option<String>,
     pub fetched_at: Option<String>,
@@ -172,6 +211,13 @@ impl Report {
             "{} games, {}-letter {} words (dictionary: {}), seed {}",
             self.run.num_games, c.word_length, c.language, c.dictionary_length, self.run.seed
         );
+        if let Some(p) = &self.profile {
+            let _ = writeln!(
+                out,
+                "profile: {} ({} answers, {} guesses, {} floored at {}); uniform is the headline",
+                p.name, p.answer_count, p.guess_count, p.floored, p.floor
+            );
+        }
         let _ = writeln!(out, "strategy: {}", self.run.strategy);
         let _ = writeln!(out, "first guess: {}", self.run.first_guess);
         let _ = writeln!(out, "ngrams sha256: {}", short(&c.ngrams_sha256));

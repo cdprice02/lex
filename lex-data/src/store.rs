@@ -353,6 +353,13 @@ mod tests {
     }
 
     #[test]
+    fn ngrams_count_is_the_header_record_count() {
+        let (_tmp, dir, _path, bytes) = cache_bytes();
+        let count = (bytes.len() - 64) / (5 * 4 + 8);
+        assert_eq!(dir.ngrams_count(Language::English, 5).unwrap(), count);
+    }
+
+    #[test]
     fn word_iter_is_exact_size() {
         let (_tmp, dir, _path, _bytes) = cache_bytes();
         let ws: WordSet<5> = read::<5>(&dir, Language::English, Some(3)).unwrap();

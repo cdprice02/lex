@@ -3,6 +3,7 @@ use std::path::{Path, PathBuf};
 use anyhow::Context;
 
 use crate::error::LexDataError;
+use crate::header::Header;
 use crate::language::Language;
 use crate::profile::{Profile, ProfileData};
 use crate::profile_store;
@@ -49,6 +50,12 @@ impl DataDir {
     /// frequencies a run was measured against.
     pub fn ngrams_sha256(&self, lang: Language, n: usize) -> anyhow::Result<String> {
         store::corpus_checksum(&self.ngrams_path(lang, n))
+    }
+
+    /// Number of words in the cached Corpus for `lang` at word length `n`, read from the header
+    /// without loading the records.
+    pub fn ngrams_count(&self, lang: Language, n: usize) -> anyhow::Result<usize> {
+        Ok(Header::read_file(&self.ngrams_path(lang, n))?.record_count as usize)
     }
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire

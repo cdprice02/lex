@@ -21,12 +21,12 @@ All public types are re-exported from `lib.rs`: `use lex_core::{Guesser, Guess, 
 ## Decision tree (`tree.rs`)
 
 A game position is identified by its guess path: the `(guess word, feedback ordinal)` steps from the
-root. For a fixed starting `WordSet` the path determines the candidate set, and `Candidates::suggest`
+root. For a fixed starting (pool, Answer list) the path determines the candidate set, and `Candidates::suggest`
 is deterministic, so a node computes its suggestion once and every later game reaching it reuses
 it. Edges are sparse (`HashMap<(Word<N>, u64), NodeId>`: 59,049 possible patterns at N=10) and
 keyed by the guess word as well as the pattern, because callers may push guesses that were not the
 suggestion (`assist` does). Ordinals are `u64` at every length; a const assertion in `correctness.rs` checks that
-3^`MAX_WORD_LENGTH` fits. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so it is part of the tree's identity.
+3^`MAX_WORD_LENGTH` fits. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so the tree's identity is (pool, Answer list, `Strategy`).
 
 `Guesser` holds the tree behind `Rc<RefCell<..>>`, so it is not `Send`; `Guesser::reset()` starts a
 new game on the same tree, and `play` takes `&mut Guesser` for that reason.
@@ -51,8 +51,7 @@ cost against simulated games on real roots.
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 
-The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, so
-`filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
+The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
 (`GuessPool::All`, or only the candidates in hard mode) as
 `entropy + win_weight * P(guess is the answer)`, with probabilities renormalized over the surviving
 candidates each time (`Pool::prior`: softmax of ln-frequency over T, relative to the survivors'

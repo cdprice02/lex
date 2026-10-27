@@ -27,6 +27,7 @@ tracks="english 3
 english 4
 english 5
 english 5 --hard-mode
+english 5 --profile wordle
 english 6
 english 7
 english 8
@@ -39,15 +40,30 @@ track_name() { # <lang> <len> [flags]: english-5, english-5-hard-mode
     printf '%s-%s%s' "$1" "$2" "$(printf '%s' "${3:-}" | tr -s ' -' '-')"
 }
 
+# A track whose flags the base binary lacks (a base from before `--profile`) cannot be compared
+# and is skipped; once a base has the flag, the track is compared like any other.
+base_supports() { # <track flags>
+    case "$1" in
+        *--profile*) "$base_dir/lex" simulate --help | grep -q -- --profile ;;
+        *) true ;;
+    esac
+}
+
 run_tracks() { # <lex binary> <output dir>
     mkdir -p "$2"
     echo "$tracks" | while read -r lang len flags; do
         out="$2/$(track_name "$lang" "$len" "$flags").json"
         [ -f "$out" ] && continue
+        base_supports "$flags" || continue
         echo "oracle: $(track_name "$lang" "$len" "$flags") ($1)" >&2
-        # $flags is unquoted on purpose: it splits into separate arguments
+        # A Profile fixes the language and length, and rejects both flags.
+        case "$flags" in
+            *--profile*) target="" ;;
+            *) target="-l $len --lang $lang" ;;
+        esac
+        # $target and $flags are unquoted on purpose: they split into separate arguments
         # shellcheck disable=SC2086
-        "$1" simulate -l "$len" --lang "$lang" -n 200 --seed 0 $flags \
+        "$1" simulate $target -n 200 --seed 0 $flags \
             --data-dir "$data_dir" -o "$out.$$.tmp" </dev/null >/dev/null
         mv "$out.$$.tmp" "$out"
     done
@@ -79,7 +95,9 @@ echo "$tracks" | {
     while read -r lang len flags; do
         track=$(track_name "$lang" "$len" "$flags")
         name="$track.json"
-        if [ "$(jq -S '{games, summary}' "$base_dir/$name")" = \
+        if ! base_supports "$flags"; then
+            echo "skipped $track (base has no such flag)"
+        elif [ "$(jq -S '{games, summary}' "$base_dir/$name")" = \
              "$(jq -S '{games, summary}' "$cand_dir/$name")" ]; then
             echo "same    $track"
         else
