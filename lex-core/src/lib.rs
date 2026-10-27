@@ -4,6 +4,7 @@
 #![warn(non_exhaustive_omitted_patterns)]
 
 mod allowed;
+mod book;
 mod candidates;
 mod correctness;
 mod endgame;
@@ -12,6 +13,7 @@ mod guesser;
 mod strategy;
 mod tree;
 
+pub use book::{BOOK_FLOOR, OpeningBook};
 pub use candidates::Suggestion;
 pub use correctness::{Correctness, WordCorrectness};
 pub use game::{GameResult, play};

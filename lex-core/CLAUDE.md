@@ -13,6 +13,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
+| `book.rs` | `OpeningBook<N>` (preorder nodes of guess pool index and `(ordinal, child)` edges), `BOOK_FLOOR` |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
 | `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
 | `game.rs` | `GameResult<N>`, `play()`, private `log_guess()` |
@@ -31,6 +32,10 @@ suggestion (`assist` does). Ordinals are `u64` at every length; a const assertio
 
 `Guesser` holds the tree behind `Rc<RefCell<..>>`, so it is not `Send`; `Guesser::reset()` starts a
 new game on the same tree, and `play` takes `&mut Guesser` for that reason.
+
+## Opening book (`book.rs`, `tree.rs`)
+
+`Guesser::build_book()` books, top-down, every position whose work (guesses its `Allowed` permits x candidate count) exceeds `BOOK_FLOOR` (40 M pattern evaluations, `benchmarks/experiments/book-floor.md`); `build_book_with_floor` takes the floor so tests can lower it. Work never rises along a path, so the booked positions are a subtree. Each booked node stores the guess `DecisionTree::suggest` chose; a child is booked only if its own work exceeds the floor. `Guesser::with_book` seeds a tree: a node created by playing the booked guess with a booked edge takes the booked child's guess as its pre-filled suggestion and stays on the book; any other guess leaves it. The book holds no Candidate sets, so nodes still filter on creation. The test-only `booked_computations` counter proves a seeded run never searches at a booked node. A book is valid only for the pool, Answer list and Strategy it was built for (the key is #46's).
 
 ## Endgame search (`endgame.rs`)
 
