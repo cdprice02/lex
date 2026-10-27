@@ -55,6 +55,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Micro-optimization](experiments/micro-opt.md) | Generic ordinal and selective reset adopted; byte words, bounds-check removal rejected |
 | [Endgame](experiments/endgame.md) | Exact search below a threshold, off by default |
 | [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
+| [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
 
 ## Baselines
 

@@ -5,6 +5,7 @@ use lex_data::Word;
 use lex_data::WordSet;
 
 use crate::allowed::HardRule;
+use crate::book::{BOOK_FLOOR, OpeningBook};
 use crate::candidates::{Candidates, Suggestion};
 use crate::correctness::WordCorrectness;
 use crate::strategy::{GuessPool, Pool, Strategy};
@@ -48,13 +49,58 @@ impl<const N: usize> Guesser<N> {
     /// If an answer is not in the pool, if the strategy's temperature is not positive and
     /// finite, or if its win weight is negative or not finite.
     pub fn new(pool: WordSet<N>, answers: Vec<Word<N>>, strategy: Strategy) -> Self {
+        Self::build(pool, answers, strategy, None)
+    }
+
+    /// Like [`new`](Self::new), seeded with an [`OpeningBook`] built for the same pool, Answer
+    /// list and strategy: a position on the book's path takes its booked guess without a search,
+    /// and a guess off the path leaves the book, with everything below computed online. Play is
+    /// identical to an unseeded guesser's.
+    ///
+    /// # Panics
+    ///
+    /// As [`new`](Self::new), and if the book names a guess outside the pool.
+    pub fn with_book(
+        pool: WordSet<N>,
+        answers: Vec<Word<N>>,
+        strategy: Strategy,
+        book: OpeningBook<N>,
+    ) -> Self {
+        Self::build(pool, answers, strategy, Some(book))
+    }
+
+    fn build(
+        pool: WordSet<N>,
+        answers: Vec<Word<N>>,
+        strategy: Strategy,
+        book: Option<OpeningBook<N>>,
+    ) -> Self {
         strategy.assert_valid();
-        let candidates = Candidates::new(Pool::new(&pool), &answers);
+        let pool = Pool::new(&pool);
+        assert!(
+            book.as_ref()
+                .and_then(OpeningBook::max_guess)
+                .is_none_or(|g| (g as usize) < pool.len()),
+            "the opening book names a guess outside the pool"
+        );
+        let candidates = Candidates::new(pool, &answers);
         Self {
-            tree: Rc::new(RefCell::new(DecisionTree::new(candidates, strategy))),
+            tree: Rc::new(RefCell::new(DecisionTree::new(candidates, strategy, book))),
             node: DecisionTree::<N>::ROOT,
             history: Vec::new(),
         }
+    }
+
+    /// Builds the [`OpeningBook`] of this guesser's starting position: every position on the
+    /// policy's paths whose work exceeds [`BOOK_FLOOR`].
+    pub fn build_book(&self) -> OpeningBook<N> {
+        self.build_book_with_floor(BOOK_FLOOR)
+    }
+
+    /// As [`build_book`](Self::build_book) with a chosen floor, in pattern evaluations (guesses
+    /// the strategy allows times Candidate set size).
+    pub fn build_book_with_floor(&self, floor: u64) -> OpeningBook<N> {
+        self.tree.borrow_mut().build_book(floor)
     }
 
     pub fn with_history(
@@ -708,6 +754,146 @@ mod tests {
                 g.suggest().unwrap(),
                 "{strategy:?}"
             );
+        }
+    }
+
+    /// A floor low enough that the ten-word fixtures book several levels.
+    const LOW_FLOOR: u64 = 4;
+
+    /// Every strategy shape the book must serve: the three pools, with and without an Endgame.
+    fn book_strategies() -> Vec<Strategy> {
+        let mut all = Vec::new();
+        for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
+            for endgame_threshold in [0, 3] {
+                all.push(Strategy {
+                    pool,
+                    endgame_threshold,
+                    ..Strategy::default()
+                });
+            }
+        }
+        all
+    }
+
+    /// The Answer lists to play over: the whole pool (a Corpus run) and a Profile's subset.
+    fn book_answer_lists() -> [Vec<Word<5>>; 2] {
+        let everyone = DICT.iter().map(|&(w, _)| word(w)).collect();
+        let profile = ["crane", "crave", "graze", "stare", "light", "brace"]
+            .iter()
+            .map(|w| word(w))
+            .collect();
+        [everyone, profile]
+    }
+
+    fn games(guesser: &mut Guesser<5>, targets: &[Word<5>]) -> Vec<Vec<Word<5>>> {
+        targets
+            .iter()
+            .map(|&t| memoized_sequence(guesser, t))
+            .collect()
+    }
+
+    fn fresh(strategy: Strategy, answers: &[Word<5>]) -> Guesser<5> {
+        Guesser::new(dict_set(DICT), answers.to_vec(), strategy)
+    }
+
+    fn seeded(strategy: Strategy, answers: &[Word<5>]) -> Guesser<5> {
+        let book = fresh(strategy, answers).build_book_with_floor(LOW_FLOOR);
+        assert!(
+            !book.is_empty(),
+            "{strategy:?}: the book should be non-empty"
+        );
+        Guesser::with_book(dict_set(DICT), answers.to_vec(), strategy, book)
+    }
+
+    #[test]
+    fn a_seeded_guesser_plays_the_same_games_for_every_mode_and_answer_list() {
+        for strategy in book_strategies() {
+            for answers in book_answer_lists() {
+                assert_eq!(
+                    games(&mut seeded(strategy, &answers), &answers),
+                    games(&mut fresh(strategy, &answers), &answers),
+                    "{strategy:?}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn a_seeded_run_computes_no_suggestion_at_a_booked_node() {
+        for strategy in book_strategies() {
+            for answers in book_answer_lists() {
+                let mut guesser = seeded(strategy, &answers);
+                games(&mut guesser, &answers);
+                assert_eq!(
+                    guesser.tree.borrow().booked_computations(),
+                    0,
+                    "{strategy:?}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn an_off_path_guess_leaves_the_book_and_is_computed_online() {
+        let strategy = Strategy::default();
+        let answers = &book_answer_lists()[0];
+        let mut seeded = seeded(strategy, answers);
+        let mut plain = fresh(strategy, answers);
+        assert_eq!(seeded.suggest(), plain.suggest());
+        for g in [&mut seeded, &mut plain] {
+            g.push_guess(make_guess("mount", "crave"));
+        }
+        assert_eq!(seeded.suggest(), plain.suggest());
+        assert_eq!(seeded.num_candidates(), plain.num_candidates());
+    }
+
+    #[test]
+    fn a_higher_floor_books_fewer_positions() {
+        let g = corpus_guesser(dict_set(DICT), Strategy::default());
+        let (low, high) = (g.build_book_with_floor(5), g.build_book_with_floor(50));
+        assert!(!high.is_empty() && high.len() < low.len());
+        assert!(
+            g.build_book_with_floor(100).is_empty(),
+            "work 100 is not above 100"
+        );
+    }
+
+    #[test]
+    fn the_production_floor_books_nothing_on_a_small_pool() {
+        let g = corpus_guesser(dict_set(DICT), Strategy::default());
+        assert!(g.build_book().is_empty());
+    }
+
+    /// The Wordle Profile's root work (12,972 guesses x 2,315 answers, 3.0e7) is below the
+    /// production floor, so that Profile's book is empty; English-5's root (27,524 words each
+    /// way, 7.6e8) is above it, so its top levels are booked.
+    #[test]
+    fn the_production_floor_leaves_the_wordle_profile_unbooked_and_books_english_5() {
+        const { assert!(12_972 * 2_315 < crate::BOOK_FLOOR) };
+        const { assert!(27_524 * 27_524 > crate::BOOK_FLOOR) };
+    }
+
+    /// A Wordle-shaped root (3,000 guesses x 1,400 answers, 4.2e6) has no book at the
+    /// production floor and exactly its root once the floor is lowered below its work.
+    #[test]
+    fn a_profile_shaped_root_is_booked_only_below_its_work() {
+        let letters = |i: usize| -> String {
+            [i, i / 26, i / 676, i / 17576, 7]
+                .iter()
+                .map(|d| char::from(b'a' + (d % 26) as u8))
+                .collect()
+        };
+        let pairs: Vec<(String, u64)> = (0..3000).map(|i| (letters(i), 3000 - i as u64)).collect();
+        let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
+        let answers: Vec<Word<5>> = borrowed[..1400].iter().map(|&(w, _)| word(w)).collect();
+        for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
+            let strategy = Strategy {
+                pool,
+                ..Strategy::default()
+            };
+            let g = Guesser::new(dict_set(&borrowed), answers.clone(), strategy);
+            assert!(g.build_book().is_empty(), "{pool:?}");
+            assert_eq!(g.build_book_with_floor(4_000_000).len(), 1, "{pool:?}");
         }
     }
 

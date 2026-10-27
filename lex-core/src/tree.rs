@@ -1,9 +1,11 @@
-use std::collections::HashMap;
+use std::collections::{BTreeMap, HashMap};
 
 use lex_data::Word;
 
 use crate::allowed::Allowed;
+use crate::book::OpeningBook;
 use crate::candidates::Candidates;
+use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
 use crate::strategy::Strategy;
@@ -28,6 +30,11 @@ pub(crate) struct DecisionTree<const N: usize> {
     /// Present when the strategy has an endgame threshold; owns the memo of exact searches.
     endgame: Option<Endgame<N>>,
     nodes: Vec<Node<N>>,
+    /// Seeds nodes created along booked paths; `None` plays everything online.
+    book: Option<OpeningBook<N>>,
+    /// Suggestions computed at a booked node, which a correctly seeded run never needs.
+    #[cfg(test)]
+    booked_computations: usize,
 }
 
 #[derive(Debug)]
@@ -36,6 +43,8 @@ struct Node<const N: usize> {
     /// The guesses the strategy's pool rule permits here; a function of the guess path.
     allowed: Allowed,
     suggestion: Option<Option<Word<N>>>,
+    /// The book node this position is on, while the game stays on the book's path.
+    book: Option<u32>,
     // Sparse: fan-out is 3^N per guess, 59,049 at the length cap.
     children: HashMap<(Word<N>, u64), NodeId>,
 }
@@ -46,6 +55,7 @@ impl<const N: usize> Node<N> {
             candidates,
             allowed,
             suggestion: None,
+            book: None,
             children: HashMap::new(),
         }
     }
@@ -54,7 +64,11 @@ impl<const N: usize> Node<N> {
 impl<const N: usize> DecisionTree<N> {
     pub(crate) const ROOT: NodeId = 0;
 
-    pub(crate) fn new(candidates: Candidates<N>, strategy: Strategy) -> Self {
+    pub(crate) fn new(
+        candidates: Candidates<N>,
+        strategy: Strategy,
+        book: Option<OpeningBook<N>>,
+    ) -> Self {
         let endgame = (strategy.endgame_threshold > 0).then(|| {
             Endgame::new(
                 candidates.pool(),
@@ -64,11 +78,25 @@ impl<const N: usize> DecisionTree<N> {
             )
         });
         let allowed = Allowed::root(strategy.pool, candidates.len() == candidates.pool().len());
+        let mut root = Node::new(candidates, allowed);
+        let book = book.filter(|b| !b.is_empty());
+        if let Some(book) = &book {
+            Self::seed(&mut root, book, 0);
+        }
         Self {
             strategy,
             endgame,
-            nodes: vec![Node::new(candidates, allowed)],
+            nodes: vec![root],
+            book,
+            #[cfg(test)]
+            booked_computations: 0,
         }
+    }
+
+    /// Puts `node` on book node `id` and takes the booked guess as its suggestion.
+    fn seed(node: &mut Node<N>, book: &OpeningBook<N>, id: u32) {
+        node.book = Some(id);
+        node.suggestion = Some(Some(node.candidates.pool().word(book.guess(id))));
     }
 
     pub(crate) fn candidates(&self, node: NodeId) -> &Candidates<N> {
@@ -89,15 +117,86 @@ impl<const N: usize> DecisionTree<N> {
             strategy,
             endgame,
             nodes,
+            #[cfg(test)]
+            booked_computations,
+            ..
         } = self;
         let entry = &mut nodes[node];
-        *entry.suggestion.get_or_insert_with(|| match endgame {
-            // a lone candidate needs no search; `Candidates::suggest` returns it directly
-            Some(endgame) if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) => {
-                endgame.best_guess(entry.candidates.indices(), &entry.allowed)
+        *entry.suggestion.get_or_insert_with(|| {
+            #[cfg(test)]
+            if entry.book.is_some() {
+                *booked_computations += 1;
             }
-            _ => entry.candidates.suggest(strategy, &entry.allowed),
+            match endgame {
+                // a lone candidate needs no search; `Candidates::suggest` returns it directly
+                Some(endgame)
+                    if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) =>
+                {
+                    endgame.best_guess(entry.candidates.indices(), &entry.allowed)
+                }
+                _ => entry.candidates.suggest(strategy, &entry.allowed),
+            }
         })
+    }
+
+    /// Work at `node`: the guesses its rule allows times its candidates.
+    fn work(&self, node: NodeId) -> u64 {
+        let entry = &self.nodes[node];
+        let allowed = match &entry.allowed {
+            Allowed::Whole => entry.candidates.pool().len(),
+            Allowed::Candidates => entry.candidates.len(),
+            Allowed::List(list) => list.len(),
+        };
+        allowed as u64 * entry.candidates.len() as u64
+    }
+
+    /// Books every position, top-down, whose work exceeds `floor`. Work never rises along a
+    /// path, so the booked positions form a subtree rooted at the start.
+    pub(crate) fn build_book(&mut self, floor: u64) -> OpeningBook<N> {
+        let pool = self.nodes[Self::ROOT].candidates.pool();
+        let index_of: HashMap<Word<N>, u32> =
+            (0..pool.len() as u32).map(|i| (pool.word(i), i)).collect();
+        let mut book = OpeningBook::default();
+        self.book_node(Self::ROOT, floor, &index_of, &mut book);
+        book
+    }
+
+    fn book_node(
+        &mut self,
+        node: NodeId,
+        floor: u64,
+        index_of: &HashMap<Word<N>, u32>,
+        book: &mut OpeningBook<N>,
+    ) -> Option<u32> {
+        if self.work(node) <= floor {
+            return None;
+        }
+        let guess = self.suggest(node)?;
+        let id = book.push(index_of[&guess]);
+        let pool = self.nodes[node].candidates.pool();
+        // one representative answer per feedback, ascending by ordinal
+        let mut groups: BTreeMap<u64, Word<N>> = BTreeMap::new();
+        for &i in self.nodes[node].candidates.indices() {
+            let answer = pool.word(i);
+            let feedback = WordCorrectness::correct(answer, guess);
+            groups.entry(feedback.ordinal()).or_insert(answer);
+        }
+        for (ordinal, answer) in groups {
+            let feedback = WordCorrectness::correct(answer, guess);
+            if feedback.is_correct() {
+                continue;
+            }
+            let child = self.child(node, &Guess::new(guess, feedback));
+            if let Some(booked) = self.book_node(child, floor, index_of, book) {
+                book.add_edge(id, ordinal, booked);
+            }
+        }
+        Some(id)
+    }
+
+    #[cfg(test)]
+    pub(crate) fn booked_computations(&self) -> usize {
+        self.booked_computations
     }
 
     /// The node reached from `node` by playing `guess`, created on first visit.
@@ -107,6 +206,13 @@ impl<const N: usize> DecisionTree<N> {
             return id;
         }
         let parent = &self.nodes[node];
+        let booked = self.book.as_ref().and_then(|book| {
+            let on = parent.book?;
+            let pool = parent.candidates.pool();
+            (pool.word(book.guess(on)) == guess.word())
+                .then(|| book.edge(on, key.1))
+                .flatten()
+        });
         let candidates = parent.candidates.filtered(guess);
         let pool = candidates.pool();
         let allowed = parent.allowed.after(
@@ -116,7 +222,11 @@ impl<const N: usize> DecisionTree<N> {
             key.1,
         );
         let id = self.nodes.len();
-        self.nodes.push(Node::new(candidates, allowed));
+        let mut child = Node::new(candidates, allowed);
+        if let (Some(book), Some(on)) = (&self.book, booked) {
+            Self::seed(&mut child, book, on);
+        }
+        self.nodes.push(child);
         self.nodes[node].children.insert(key, id);
         id
     }
