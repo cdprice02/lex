@@ -63,7 +63,9 @@ pub struct CommonArgs {
         short = 'l',
         long,
         value_parser = parse_word_length,
-        help = format!("Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH}; default 5, or the profile's)")
+        required_unless_present = "profile",
+        conflicts_with = "profile",
+        help = format!("Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH}); a profile fixes it")
     )]
     pub word_length: Option<usize>,
     #[arg(
@@ -74,7 +76,9 @@ pub struct CommonArgs {
     pub dictionary_length: Option<usize>,
     #[arg(
         long,
-        help = "Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus; default english, or the profile's)"
+        required_unless_present = "profile",
+        conflicts_with = "profile",
+        help = "Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus); a profile fixes it"
     )]
     pub lang: Option<Language>,
     #[arg(
@@ -124,33 +128,14 @@ pub struct CommonArgs {
 }
 
 impl CommonArgs {
-    /// The language and word length to play: the profile's, which an explicit `-l` or `--lang`
-    /// may repeat but not contradict, or `-l`/`--lang` with their defaults.
-    pub fn target(&self) -> Result<(Language, usize), CliError> {
-        let Some(profile) = self.profile else {
-            return Ok((
-                self.lang.unwrap_or(Language::English),
-                self.word_length.unwrap_or(5),
-            ));
-        };
-        let spec = profile.spec();
-        if let Some(lang) = self.lang.filter(|&l| l != spec.language) {
-            return Err(CliError::ProfileConflict {
-                profile,
-                flag: "--lang",
-                given: lang.to_string(),
-                expected: spec.language.to_string(),
-            });
+    /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
+    pub fn dispatch_length(&self) -> usize {
+        match self.profile {
+            Some(profile) => profile.spec().word_length,
+            None => self
+                .word_length
+                .expect("clap requires -l without --profile"),
         }
-        if let Some(n) = self.word_length.filter(|&n| n != spec.word_length) {
-            return Err(CliError::ProfileConflict {
-                profile,
-                flag: "-l",
-                given: n.to_string(),
-                expected: spec.word_length.to_string(),
-            });
-        }
-        Ok((spec.language, spec.word_length))
     }
 
     pub fn strategy(&self) -> Strategy {
@@ -286,31 +271,23 @@ mod profile_tests {
     }
 
     #[test]
-    fn without_a_profile_the_defaults_are_english_five() {
-        let c = common(&[]).unwrap();
-        assert_eq!(c.target().unwrap(), (Language::English, 5));
-        let c = common(&["-l", "6", "--lang", "french"]).unwrap();
-        assert_eq!(c.target().unwrap(), (Language::French, 6));
+    fn language_and_length_are_required_without_a_profile() {
+        assert!(common(&[]).is_err());
+        assert!(common(&["--lang", "english"]).is_err());
+        assert!(common(&["-l", "5"]).is_err());
+        assert!(common(&["--lang", "english", "-l", "5"]).is_ok());
     }
 
     #[test]
-    fn a_profile_fixes_language_and_length() {
-        let c = common(&["--profile", "wordle"]).unwrap();
-        assert_eq!(c.target().unwrap(), (Language::English, 5));
+    fn a_profile_stands_alone() {
+        assert!(common(&["--profile", "wordle"]).is_ok());
     }
 
     #[test]
-    fn a_profile_accepts_flags_that_repeat_it() {
-        let c = common(&["--profile", "wordle", "-l", "5", "--lang", "english"]).unwrap();
-        assert_eq!(c.target().unwrap(), (Language::English, 5));
-    }
-
-    #[test]
-    fn a_profile_rejects_a_conflicting_length_or_language() {
-        let c = common(&["--profile", "wordle", "-l", "6"]).unwrap();
-        assert!(c.target().is_err());
-        let c = common(&["--profile", "wordle", "--lang", "french"]).unwrap();
-        assert!(c.target().is_err());
+    fn a_profile_rejects_language_and_length_even_when_they_agree() {
+        assert!(common(&["--profile", "wordle", "-l", "5"]).is_err());
+        assert!(common(&["--profile", "wordle", "-l", "6"]).is_err());
+        assert!(common(&["--profile", "wordle", "--lang", "english"]).is_err());
     }
 
     #[test]

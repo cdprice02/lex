@@ -51,7 +51,7 @@ cost against simulated games on real roots.
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 
-The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as the whole pool or, when `Guesser::new` gets an Answer list (a Profile's), as exactly those words' pool indices (mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
+The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
 (`GuessPool::All`, or only the candidates in hard mode) as
 `entropy + win_weight * P(guess is the answer)`, with probabilities renormalized over the surviving
 candidates each time (`Pool::prior`: softmax of ln-frequency over T, relative to the survivors'

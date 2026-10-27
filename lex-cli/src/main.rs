@@ -19,12 +19,10 @@ fn main() -> anyhow::Result<()> {
 
     match Cli::parse().command {
         Command::Simulate(args) => {
-            let (_, len) = args.common.target()?;
-            lex_data::match_word_length!(simulate, len, &args)
+            lex_data::match_word_length!(simulate, args.common.dispatch_length(), &args)
         }
         Command::Assist(args) => {
-            let (_, len) = args.common.target()?;
-            lex_data::match_word_length!(assist, len, &args)
+            lex_data::match_word_length!(assist, args.common.dispatch_length(), &args)
         }
         Command::Compare(args) => compare_reports(&args),
         Command::Clear(args) => {

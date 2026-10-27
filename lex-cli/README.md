@@ -17,9 +17,9 @@ cargo run --release -- <COMMAND> [OPTIONS]
 
 | Flag | Default | Description |
 |---|---|---|
-| `-l` / `--word-length` | `5` | Word length (3–10) |
+| `-l` / `--word-length` | required | Word length (3–10); not with `--profile` |
 | `--dictionary-length` | all | Cap candidate dictionary to N most-frequent words |
-| `--lang` | `english` | Language: `english`, `french`, `german`, `spanish`, `italian`, `russian` |
+| `--lang` | required | Not with `--profile`. Language: `english`, `french`, `german`, `spanish`, `italian`, `russian` |
 | `--data-dir` | `data` | Root directory for cached word-frequency files |
 
 `simulate` adds `-n` / `--num-games` (default: all words, cycling if > dictionary size).
@@ -52,7 +52,7 @@ RUST_LOG=info cargo run --release -- simulate -l 4 --lang italian
 RUST_LOG=debug cargo run --release -- simulate -l 5 --lang german --dictionary-length 2000 -n 50
 
 # Assist today's Wordle, showing 3 suggestions per turn
-cargo run --release -- assist -l 5 --suggestions 3
+cargo run --release -- assist -l 5 --lang english --suggestions 3
 ```
 
 `RUST_LOG=trace` additionally prints entropy scores for every candidate on every turn.

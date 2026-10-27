@@ -88,7 +88,7 @@ impl std::fmt::Display for StrategyReport {
 
 /// Identity of the data a run was measured against. Two reports are only comparable when
 /// `ngrams_sha256` matches.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Corpus {
     pub language: String,
     pub word_length: usize,
@@ -133,7 +133,7 @@ impl From<lex_data::ProfileStats> for ProfileReport {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictProvenance {
     pub source_url: Option<String>,
     pub fetched_at: Option<String>,

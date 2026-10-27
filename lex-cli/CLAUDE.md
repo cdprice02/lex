@@ -11,9 +11,9 @@ monomorphizes the call chain over word lengths 3–10 at compile time.
 
 | Module | Responsibility |
 |---|---|
-| `cli.rs` | clap `Cli`/`Command`; `CommonArgs` flattened into `SimulateArgs`/`AssistArgs`; `CommonArgs::target()` resolves (language, length) from `--profile` or `--lang`/`-l` (a flag that contradicts the Profile is an error; `--profile` conflicts with `--hard-mode` and `--dictionary-length`) |
+| `cli.rs` | clap `Cli`/`Command`; `CommonArgs` flattened into `SimulateArgs`/`AssistArgs`; `--lang` and `-l` have no defaults: each is required unless `--profile` is given and conflicts with it (the Profile fixes both); `--profile` also conflicts with `--hard-mode` and `--dictionary-length`; `CommonArgs::dispatch_length()` picks the length to monomorphize over |
 | `simulate.rs` | batch simulation loop; builds and emits the `Report` |
-| `lists.rs` | `GameLists<N>` (pool, optional Answer list, optional `ProfileStats`), built by `DataDir::load` or `load_profile`; the one shape `simulate` and `assist` consume |
+| `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary |
 | `compare.rs` | paired per-target comparison of two reports, joined on word |
@@ -30,7 +30,7 @@ in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 
 ## Simulate loop (`simulate.rs`)
 
-1. Load `GameLists<N>` with the shared args; capture the evaluation prior of every pool word (`answer_prior` at `CANONICAL_TEMPERATURE`, whatever the solver's `--temperature`); only targets are looked up, so on a Profile it is restricted to the Answer list. `corpus.dictionary_length` is the Corpus size (`DataDir::ngrams_count` on a Profile, the pool size otherwise)
+1. Load `GameLists<N>` and its `Source` with the shared args; capture the evaluation prior over the whole pool (`answer_prior` at `CANONICAL_TEMPERATURE`, whatever the solver's `--temperature`); only targets are looked up. `corpus.dictionary_length` is `Source::dictionary_length()`, the Corpus size (`DataDir::ngrams_count` on a Profile, the pool size otherwise)
 2. Select targets from the Answer list, or the whole dictionary without a Profile (`--seed`, `--targets`, `-n`); `--targets` words must be in that list
 3. Build one `Guesser` from `CommonArgs::strategy()` (`--hard-mode`, `--temperature`, `--win-weight`) and read `first_guess` from its root suggestion (reported, not replayed)
 4. For each game: call `play(word, &mut guesser, Vec::new())`; games share the guesser's decision tree, so each position is scored once

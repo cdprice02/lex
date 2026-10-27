@@ -56,9 +56,14 @@ run_tracks() { # <lex binary> <output dir>
         [ -f "$out" ] && continue
         base_supports "$flags" || continue
         echo "oracle: $(track_name "$lang" "$len" "$flags") ($1)" >&2
-        # $flags is unquoted on purpose: it splits into separate arguments
+        # A Profile fixes the language and length, and rejects both flags.
+        case "$flags" in
+            *--profile*) target="" ;;
+            *) target="-l $len --lang $lang" ;;
+        esac
+        # $target and $flags are unquoted on purpose: they split into separate arguments
         # shellcheck disable=SC2086
-        "$1" simulate -l "$len" --lang "$lang" -n 200 --seed 0 $flags \
+        "$1" simulate $target -n 200 --seed 0 $flags \
             --data-dir "$data_dir" -o "$out.$$.tmp" </dev/null >/dev/null
         mv "$out.$$.tmp" "$out"
     done

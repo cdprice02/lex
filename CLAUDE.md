@@ -16,7 +16,7 @@ All commands require the nightly toolchain. Either `direnv allow` (Nix + flakes)
 # Build / run
 cargo build --release
 cargo run --release -- simulate -l 5 --lang english -n 100   # simulate 100 five-letter games
-cargo run --release -- assist -l 5                            # interactively assist a live game
+cargo run --release -- assist -l 5 --lang english             # interactively assist a live game
 
 # Test (all crates)
 cargo test --all
