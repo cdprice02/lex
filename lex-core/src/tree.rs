@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use lex_data::Word;
 
-use crate::candidates::Candidates;
+use crate::candidates::{Candidates, Suggestion};
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
 use crate::strategy::Strategy;
@@ -70,10 +70,6 @@ impl<const N: usize> DecisionTree<N> {
         &self.nodes[node].candidates
     }
 
-    pub(crate) fn strategy(&self) -> &Strategy {
-        &self.strategy
-    }
-
     /// The suggestion at `node`, computed on first request.
     pub(crate) fn suggest(&mut self, node: NodeId) -> Option<Word<N>> {
         let Self {
@@ -85,10 +81,15 @@ impl<const N: usize> DecisionTree<N> {
         *entry.suggestion.get_or_insert_with(|| match endgame {
             // a lone candidate needs no search; `Candidates::suggest` returns it directly
             Some(endgame) if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) => {
-                endgame.best_guess(entry.candidates.indices())
+                endgame.best_guess(entry.candidates.indices(), entry.candidates.groups())
             }
             _ => entry.candidates.suggest(strategy),
         })
+    }
+
+    /// The `k` best guesses at `node`; see [`Candidates::suggest_top_k`]. Not memoized.
+    pub(crate) fn suggest_top_k(&mut self, node: NodeId, k: usize) -> Vec<Suggestion<N>> {
+        self.nodes[node].candidates.suggest_top_k(&self.strategy, k)
     }
 
     /// The node reached from `node` by playing `guess`, created on first visit.
