@@ -82,10 +82,14 @@ Uses one thread-local `Patterns { buckets, touched }`, shared by every word leng
 
 Letter count over the Corpus Alphabet at every length (ADR 0010). `Pool::new` maps each word through `WordSet::alphabet()` (sorted letters, index = position) to a `Code<N> = [u8; N]` stored beside the `Word`; a letter outside the Alphabet encodes as `UNKNOWN_LETTER` (255), which no pool word holds, so an `assist` guess with foreign letters scores as absent for them. An Alphabet over 255 letters is a typed `LexDataError::AlphabetTooLarge` at `DataDir::load`; `Pool::new` panics on one built some other way.
 
-`pattern_ordinal(word, guess, counts)`: pass 1 tallies each non-green word letter in `counts` (a `[u8; 256]`); pass 2 walks the guess left to right: green if equal, else misplaced when the letter's tally is positive (spending one), else absent. It then zeroes the entries for the word's letters, so `counts` is all zero between calls and a caller makes one on its stack per scan (`filtered`, each entropy scan, `Endgame::partition`). Linear in N. `WordCorrectness::correct` takes `Word`s, so it indexes letters by first appearance in the pair (at most 2N values) and calls the same function. `compare_ordinal` (test-only) is the old O(N^2) compare, kept as an oracle and as the "old" side of the `ordinal_count_n*` / `ordinal_compare_n*` benches (N = 5, 10, 13, 25).
+`pattern_ordinal(word, guess, counts)`: pass 1 tallies each non-green word letter in `counts` (a `[u8; 256]`); pass 2 walks the guess left to right: green if equal, else misplaced when the letter's tally is positive (spending one), else absent. It then zeroes the entries for the word's letters, so `counts` is all zero between calls and a caller makes one on its stack per scan (`filtered`, each entropy scan, `Endgame::partition`). Linear in N. `WordCorrectness::correct` takes `Word`s, so it indexes letters by first appearance in the pair (at most 2N values) and calls the same function. `compare_ordinal` (test and bench only) is the old O(N^2) compare, kept as an oracle and as the "old" side of the `ordinal_count` / `ordinal_compare` benches (`consts = [5, 10, 13, 25]`).
 
 The earlier rejection of alphabet-indexed `[u8; N]` words (`benchmarks/experiments/micro-opt.md`) was a length-5 speed result; the single-technique decision in ADR 0010 supersedes it, gated on English-5 CPU time in the PR that introduced this.
 
 ## `ordinal()` encoding
 
 `WordCorrectness` is encoded as a base-3 number (position 0 = most significant digit). `Absent = 0, Misplaced = 1, Correct = 2`. All-absent = 0; all-correct = 3^N − 1. This gives a compact index into the pattern probability array.
+
+## Micro-benchmarks
+
+divan benches live in a `#[cfg(feature = "bench")] mod benches` beside the code they time, so they reach crate-private items; `benches/lex-core.rs` is only the `divan::main()` entry. Run `cargo bench -p lex-core --features bench`; a trailing argument filters by bench path (`-- ordinal_count`, `-- --exact correctness::benches::correct_no_overlap`). Fixtures shared with tests are `#[cfg(any(test, feature = "bench"))]`. Micro-benchmarks diagnose; the Speed bar judges (`benchmarks/README.md`).

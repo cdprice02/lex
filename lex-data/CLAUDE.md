@@ -77,3 +77,7 @@ KAIKKI extracts are rolling, so `fetch_dict` hashes the compressed bytes while s
 ## Profiles
 
 `DataDir::load_profile::<N>(Profile)` loads the Corpus of the Profile's language and length, fetches the lists if `meta.json` is absent, then re-hashes both stored files against the compiled-in checksums (a mismatch is a hard error, never a refetch). The Alphabet is derived from the Corpus. `pool` is the Profile's words only: Corpus words in Corpus order, then words the Corpus lacks, alphabetically, at the Unseen-word floor (the Corpus's minimum count). `wordle-all` stores its merged answers (both gists) and an empty `guess-only.txt`. The real-fetch test is `#[ignore]`: `LEX_CORPUS_DIR=<data> cargo test -p lex-data --test profile_fetch -- --ignored`.
+
+## Micro-benchmarks
+
+divan benches live in `#[cfg(feature = "bench")] mod benches` in `parse.rs` and `word.rs`; `benches/lex-data.rs` is only the `divan::main()` entry. Run `cargo bench -p lex-data --features bench`; a trailing argument filters by bench path (`-- parse_ngram_line`).

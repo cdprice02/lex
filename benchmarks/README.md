@@ -95,6 +95,46 @@ and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.m
 Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
 share them. A track whose flags the base binary lacks prints `skipped`.
 
+## Micro-benchmarks
+
+Per-function timings use divan, behind each library crate's `bench` feature:
+
+```bash
+cargo bench -p lex-core --features bench
+cargo bench -p lex-data --features bench
+cargo bench -p lex-core --features bench -- ordinal_count     # substring of the bench path
+cargo bench -p lex-core --features bench -- --exact correctness::benches::ordinal_count
+cargo test --workspace --all-features --benches               # CI: each bench runs once
+```
+
+They diagnose where time goes; there is no saved baseline, and they never judge a change.
+
+## Speed bar
+
+A speed change is judged on end-to-end CPU time with hyperfine, base against head, each built
+`--release` in its own checkout. One round is one invocation per binary with `--runs 1`, and the
+order of base and head alternates between rounds so thermal drift and cache warmth do not favour
+one side. Run at least 3 rounds:
+
+```bash
+# round 1: base first, round 2: head first, round 3: base first, ...
+hyperfine -N --runs 1 --export-json /tmp/round1.json \
+  'base/target/release/lex simulate -l 5 --lang english --seed 0' \
+  'head/target/release/lex simulate -l 5 --lang english --seed 0'
+```
+
+Summarize each command's mean and spread across the round files:
+
+```bash
+jq -s -r '[.[].results[]] | group_by(.command)[] |
+  (map(.mean)) as $m | ($m | add / length) as $a |
+  "\(.[0].command)\tmean \($a)s\tmin \($m | min)s\tmax \($m | max)s"' /tmp/round*.json
+```
+
+Check for stray CPU-heavy processes first, and rerun any figure taken under contention. To see
+where the time goes, profile with `samply record -- ./target/release/lex simulate ...` (the
+`samply` Cargo profile keeps debug info).
+
 ## Comparing a change
 
 Rerun the same command to a scratch path, then:
