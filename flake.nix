@@ -23,7 +23,7 @@
       toolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
     in {
       default = pkgs.mkShell {
-        buildInputs = [toolchain];
+        buildInputs = [toolchain pkgs.cargo-insta];
       };
     });
   };

@@ -18,6 +18,8 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
 | `game.rs` | `GameResult<N>`, `play()`, private `log_guess()` |
 
+`build.rs` hashes every file under `src/` plus `Cargo.toml` (sorted by path, path and contents) into `SOLVER_DIGEST`, which names the solver source in each Track snapshot's header. Any edit to `lex-core`, a comment included, changes it.
+
 All public types are re-exported from `lib.rs`: `use lex_core::{Guesser, Guess, Strategy, GuessPool, Suggestion, WordCorrectness, Correctness, GameResult, play}`.
 
 ## Decision tree (`tree.rs`)

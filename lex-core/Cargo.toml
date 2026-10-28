@@ -13,6 +13,9 @@ divan = { version = "0.1", optional = true }
 [dev-dependencies]
 proptest = { workspace = true }
 
+[build-dependencies]
+sha2 = "0.11.1"
+
 [lib]
 name = "lex_core"
 
