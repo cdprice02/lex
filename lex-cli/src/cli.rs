@@ -44,6 +44,13 @@ pub struct BenchArgs {
     pub calibrate: bool,
     #[arg(
         long,
+        requires = "calibrate",
+        conflicts_with_all = ["track", "tier"],
+        help = "With --calibrate: run only the live Tracks that have no calibration yet (picks up an interrupted run)"
+    )]
+    pub resume: bool,
+    #[arg(
+        long,
         help = "Select this Track by id (repeatable); default every Track"
     )]
     pub track: Vec<String>,

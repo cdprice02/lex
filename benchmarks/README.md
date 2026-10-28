@@ -114,7 +114,10 @@ cargo build --release --locked --bin lex
 target/release/lex bench --calibrate                          # every Track
 target/release/lex bench --calibrate --tier breadth           # one Tier
 target/release/lex bench --calibrate --track german-8 --track french-3
+target/release/lex bench --calibrate --resume                 # only Tracks with no calibration yet
 ```
+
+`--resume` picks up an interrupted run and conflicts with `--track` and `--tier`.
 
 Each Track runs alone as a child `lex simulate`, after a 5 s check that no other process uses over
 half a core and the rest together under one core (`--force` overrides and records `contended:
@@ -124,6 +127,9 @@ over the cutoff keeps its Tier and is flagged `over_budget`. The file records CP
 per Track, the commit, and the CPU model, and is rewritten after every Track, so an interrupted
 run keeps what it measured. Record the exact command, commit, and output path on the PR before a
 long run.
+
+On macOS the screensaver is a common cause of a refused load check; run the calibration under
+`caffeinate -d -i` (`-i` alone does not stop it).
 
 ## Comparing a change
 

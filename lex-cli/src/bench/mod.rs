@@ -66,7 +66,11 @@ pub fn bench(args: &BenchArgs) -> anyhow::Result<()> {
             drift.join("\n  ")
         );
     }
-    let selected = select(&manifest, &args.track, args.tier)?;
+    let selected = if args.resume {
+        calibrate::uncalibrated(&manifest)
+    } else {
+        select(&manifest, &args.track, args.tier)?
+    };
 
     if args.dry_run {
         for &i in &selected {

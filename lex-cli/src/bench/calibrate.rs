@@ -115,6 +115,17 @@ pub fn calibrate_track(
     ))
 }
 
+/// The Tracks a resumed calibration still has to run: live ones with no calibration block.
+pub fn uncalibrated(manifest: &Manifest) -> Vec<usize> {
+    manifest
+        .tracks
+        .iter()
+        .enumerate()
+        .filter(|(_, t)| !t.pending && t.calibration.is_none())
+        .map(|(i, _)| i)
+        .collect()
+}
+
 /// Everything `calibrate` needs from the outside world.
 pub struct Environment<'a> {
     pub runner: &'a mut dyn Runner,
@@ -144,7 +155,10 @@ pub fn calibrate(
         let busy = contention(&env.probe.sample()?);
         if let Some(c) = &busy {
             if !env.force {
-                bail!("refusing to calibrate {id}: {c} (--force overrides)");
+                bail!(
+                    "refusing to calibrate {id}: {c} (--force overrides). On macOS the screensaver \
+                     is a common cause; run under `caffeinate -d -i` (`-i` alone does not stop it)"
+                );
             }
             eprintln!("warning: calibrating {id} anyway: {c}");
         }
@@ -411,6 +425,60 @@ mod tests {
         result.unwrap();
         assert!(!cal(&m, "english-5").unwrap().contended);
         assert!(cal(&m, "german-8").unwrap().contended);
+    }
+
+    #[test]
+    fn resume_runs_only_live_tracks_without_a_calibration() {
+        let mut manifest = Manifest::generated();
+        let live = manifest.tracks.iter().filter(|t| !t.pending).count();
+        let done = Calibration {
+            cpu_s: 1.0,
+            wall_s: 1.0,
+            over_budget: false,
+            contended: false,
+        };
+        for id in ["english-5", "german-8"] {
+            manifest
+                .tracks
+                .iter_mut()
+                .find(|t| t.id == id)
+                .unwrap()
+                .calibration = Some(done.clone());
+        }
+        let todo = uncalibrated(&manifest);
+        assert_eq!(todo.len(), live - 2);
+        assert!(todo.iter().all(|&i| {
+            let t = &manifest.tracks[i];
+            !t.pending && t.id != "english-5" && t.id != "german-8"
+        }));
+
+        let mut runner = FakeRunner::new(10.0, 5.0);
+        let mut probe = FakeProbe(vec![vec![]]);
+        let before = manifest.tracks[0].clone();
+        calibrate(
+            &mut manifest,
+            &todo,
+            &mut Environment {
+                runner: &mut runner,
+                probe: &mut probe,
+                commit: None,
+                cpu_model: "Test CPU".into(),
+                cutoff_s: CUTOFF,
+                force: false,
+            },
+            &mut |_| Ok(()),
+        )
+        .unwrap();
+        // The earlier calibration is untouched, and nothing is left to resume.
+        assert_eq!(manifest.tracks[0], before);
+        assert!(uncalibrated(&manifest).is_empty());
+        assert!(
+            manifest
+                .tracks
+                .iter()
+                .filter(|t| t.pending)
+                .all(|t| t.calibration.is_none())
+        );
     }
 
     #[test]
