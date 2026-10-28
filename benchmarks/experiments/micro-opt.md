@@ -2,7 +2,7 @@
 
 Arbiter: `#[bench]` plus the full English-5 default wall time. An item is adopted if it wins at
 least 10% on its own bench without slowing the full run, or if the code gets simpler. After every
-item the four full-dictionary oracle runs (default and `--hard-mode --win-weight 0`, now `--ultrahard --win-weight 0`, English-5 and
+item the four full-dictionary oracle runs (default and `--hard-mode --win-weight 0`, now `--pool ultrahard --win-weight 0`, English-5 and
 French-5, corpus checksum `cf683dcd1747` for English) produced a `games` array identical to the
 saved reports: 0 targets changed. The golden tests passed throughout.
 

@@ -41,8 +41,8 @@ never judged (`docs/adr/0007-benchmark-objective.md`).
 
 | Run | Uniform mean | Failure rate (>6) | Peak RSS | Selby |
 |---|---|---|---|---|
-| `--profile wordle --hard` | 3.5806 | 0.48% | 8 MB | 3.5084 (`-H`) |
-| `--profile wordle --ultrahard` | 3.5823 | 0.48% | 6 MB | none published |
+| `--profile wordle --pool hard` | 3.5806 | 0.48% | 8 MB | 3.5084 (`-H`) |
+| `--profile wordle --pool ultrahard` | 3.5823 | 0.48% | 6 MB | none published |
 
 Full 2,315-answer runs on an idle machine, well under the 1 GB cap; timings and the rest of the
 figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/68#issuecomment-6452539442).
@@ -56,6 +56,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Endgame](experiments/endgame.md) | Exact search below a threshold, off by default |
 | [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
+| [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
 
 ## Baselines
 
@@ -66,14 +67,31 @@ targets are paired by word, a full-dictionary run can be compared against these 
 |---|---|
 | `baselines/english-5.json` | `lex simulate -l 5 --lang english -n 2000 --seed 0 -o benchmarks/baselines/english-5.json` |
 | `baselines/french-5.json` | `lex simulate -l 5 --lang french -n 500 --seed 0 -o benchmarks/baselines/french-5.json` |
-| `baselines/english-5-hard.json` | the same, with `--ultrahard --win-weight 0` (the solver before phase 05) |
-| `baselines/french-5-hard.json` | the same, with `--ultrahard --win-weight 0` |
+| `baselines/english-5-hard.json` | the same, with `--pool ultrahard --win-weight 0` (the solver before phase 05) |
+| `baselines/french-5-hard.json` | the same, with `--pool ultrahard --win-weight 0` |
 
 The French baseline keeps the generic (language, length) path honest. The unsuffixed files use the
 default strategy; the `-hard` files are the original solver, kept as the reference that
-`--ultrahard --win-weight 0` must reproduce exactly (0 targets changed). Ultrahard alone does not
+`--pool ultrahard --win-weight 0` must reproduce exactly (0 targets changed). Ultrahard alone does not
 reproduce them: the win-weight bonus also applies inside the candidate set. They were written when
-the flag was `--hard-mode`, which is now `--ultrahard`; `--hard` is the official Wordle rule.
+the flag was `--hard-mode`, which is now `--pool ultrahard`; `--pool hard` is the official Wordle rule.
+
+## Tracks
+
+The Tracks are one `const` table in `lex-cli/src/tracks.rs`, built from the supported languages and
+word lengths, the Profiles and the guess pools; adding a language or raising `MAX_WORD_LENGTH` adds
+its Tracks with no table edit. A Track's id is `{language}-{length}` (`english-5`) or the Profile's
+(`wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard`), and `lex simulate --track <id>` (hidden
+from `--help`) plays it.
+
+| Tier | Tracks | Targets | Judged |
+|---|---|---|---|
+| headline | every language at length 5; the four Profile Tracks | full | all but `wordle-all`, `wordle-hard`, `wordle-ultrahard` |
+| breadth | every language at 3, 8, 13 and 21 (those Supported) | full at length 3, else 500 sampled | yes |
+| smoke | every language at the other Supported lengths | 100 sampled | no |
+
+Sampled Tracks draw with seed 0. The evidence for the targets is in
+[experiments/track-targets.md](experiments/track-targets.md).
 
 ## Full-dictionary runs
 
@@ -89,11 +107,11 @@ and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.m
 
 | Command | Tracks | Run it |
 |---|---|---|
-| `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, `--profile wordle --hard`, English-5 `--ultrahard`, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
+| `benchmarks/scripts/oracle.sh <base-ref>` | fast: the headline Tier: every language at length 5, `wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard` | on every behavior-preserving PR |
 | `benchmarks/scripts/oracle.sh --full <base-ref>` | full: the fast set plus every language at every other Supported length | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
 
 Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
-share them. A track whose flags the base binary lacks prints `skipped`.
+share them. A base from before `--pool` is run with `--hard` and `--ultrahard`. A track whose flags the base binary lacks prints `skipped`.
 
 ## Comparing a change
 

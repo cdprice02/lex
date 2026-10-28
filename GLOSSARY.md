@@ -79,12 +79,12 @@ The weight a Track carries in a Verdict: headline Tracks (every language at leng
 The check for a change meant to leave play untouched: on every Track of a set, the candidate's games must equal the base commit's word for word. Its fast set is the headline Tier's Tracks and its full set every Track.
 _Avoid_: Regression suite (judging a change that is meant to move play is the Verdict's job)
 
-**Suite manifest**:
-The committed list of every Track and its Tier; it changes only when the Tiers are deliberately recalibrated.
-_Avoid_: Matrix (informal for the same thing), config
+**Track table**:
+The `const` list of every Track and its Tier, built from the supported languages, word lengths and Profiles, so it grows with them and has no file to edit.
+_Avoid_: Matrix (informal for the same thing), config, manifest
 
 **Verdict**:
-The accept-or-reject outcome of judging a candidate solver against a base solver over the Suite manifest, under the benchmark objective.
+The accept-or-reject outcome of judging a candidate solver against a base solver over the Track table, under the benchmark objective.
 _Avoid_: Result, score (that is one Track's mean)
 
 **Strategy**:
