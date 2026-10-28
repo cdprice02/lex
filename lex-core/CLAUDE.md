@@ -9,7 +9,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | Module | Responsibility |
 |---|---|
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
-| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool` (`All`, `Hard`, `Ultrahard`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
+| `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool` (`All`, `Hard`, `Ultrahard`; strum `EnumString`/`Display`/`VariantNames`/`VariantArray`, serialized `all`/`hard`/`ultrahard`, so a frontend parses it through `FromStr` and `lex-core` needs no clap), `Strategy::DEFAULT` (the `const` behind `Default`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_top_k`, private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |

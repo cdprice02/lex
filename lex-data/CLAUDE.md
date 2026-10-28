@@ -17,10 +17,10 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `wiktionary.rs` | `fetch_dict`, `read_dict` (any `BufRead`), `load_valid_words`, `load_metadata`, `DictMetadata` |
 | `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
 | `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view); `alphabet()` (distinct letters; `ensure_alphabet_fits` rejects more than `MAX_ALPHABET_SIZE` = 255 with `AlphabetTooLarge`, called by `DataDir::load`), exposes raw frequencies only (`word_frequencies`), the answer prior lives in `lex-core` |
-| `profile.rs` | `Profile` enum (`wordle`, `wordle-all`), `spec()` registry (language, length, `ListSpec`s of pinned `Source` URLs plus compiled-in checksums), `ProfileData`, `ProfileStats` |
+| `profile.rs` | `Profile` enum (`wordle`, `wordle-all`; strum `VariantArray`), `spec()` registry (language, length, `ListSpec`s of pinned `Source` URLs plus compiled-in checksums), `ProfileData`, `ProfileStats` |
 | `profile_store.rs` | fetch (temp file then rename; `meta.json` last), re-hash on every load, build the pool and Answer list; `Get` is injected so tests skip the network |
 | `list.rs` | pure list handling: `parse` (normalize, blank lines only at the end), `validate` (length, Alphabet, duplicates, file and line named), `canonicalize` (sorted, `\n` after each; its SHA-256 is the checksum) |
-| `language.rs` | `Language` enum with `lang_code()` and `iso_code()` |
+| `language.rs` | `Language` enum (strum `VariantArray`: `Language::VARIANTS`) with `lang_code()` and `iso_code()` |
 | `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`) |
 | `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=10; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
 

@@ -12,4 +12,6 @@ pub enum CliError {
     InvalidTemperature(f64),
     #[error("invalid win weight: expected a non-negative finite number, got {0}")]
     InvalidWinWeight(f64),
+    #[error("unknown track {0:?}")]
+    UnknownTrack(String),
 }

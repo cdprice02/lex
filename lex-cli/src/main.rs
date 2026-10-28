@@ -1,25 +1,16 @@
 use clap::Parser;
 
-use assist::assist;
-use cli::{Cli, Command};
-use compare::compare_reports;
-use simulate::simulate;
-
-mod assist;
-mod cli;
-mod compare;
-mod error;
-mod lists;
-mod report;
-mod simulate;
-mod targets;
+use lex_cli::assist::assist;
+use lex_cli::cli::{Cli, Command};
+use lex_cli::compare::compare_reports;
+use lex_cli::simulate::simulate;
 
 fn main() -> anyhow::Result<()> {
     env_logger::init();
 
     match Cli::parse().command {
         Command::Simulate(args) => {
-            lex_data::match_word_length!(simulate, args.common.dispatch_length(), &args)
+            lex_data::match_word_length!(simulate, args.dispatch_length(), &args)
         }
         Command::Assist(args) => {
             lex_data::match_word_length!(assist, args.common.dispatch_length(), &args)
