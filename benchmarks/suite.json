@@ -1,6 +1,6 @@
 {
-  "commit": null,
-  "cpu_model": null,
+  "commit": "995e98bb411cca4a83d5d1391324476c4d2d369c-dirty",
+  "cpu_model": "Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz",
   "tracks": [
     {
       "id": "english-5",
@@ -9,7 +9,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 57.13,
+        "wall_s": 58.21,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-5",
@@ -18,7 +24,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 21.56,
+        "wall_s": 21.91,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-5",
@@ -27,7 +39,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 7.48,
+        "wall_s": 7.59,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-5",
@@ -36,7 +54,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 13.79,
+        "wall_s": 13.99,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-5",
@@ -45,7 +69,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 3.06,
+        "wall_s": 3.15,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-5",
@@ -54,7 +84,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 111.11,
+        "wall_s": 112.18,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "wordle",
@@ -64,7 +100,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 2.04,
+        "wall_s": 2.17,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "wordle-all",
@@ -74,7 +116,13 @@
       "mode": "unconstrained",
       "tier": "headline",
       "targets": "full",
-      "reported": true
+      "reported": true,
+      "calibration": {
+        "cpu_s": 12.65,
+        "wall_s": 12.87,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "wordle-hard",
@@ -84,7 +132,13 @@
       "mode": "hard",
       "tier": "headline",
       "targets": "full",
-      "reported": true
+      "reported": true,
+      "calibration": {
+        "cpu_s": 0.92,
+        "wall_s": 0.94,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-5-ultrahard",
@@ -93,7 +147,13 @@
       "mode": "ultrahard",
       "tier": "headline",
       "targets": "full",
-      "reported": true
+      "reported": true,
+      "calibration": {
+        "cpu_s": 17.39,
+        "wall_s": 17.6,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-3",
@@ -101,8 +161,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 3.34,
+        "wall_s": 3.38,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-3",
@@ -110,8 +176,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.64,
+        "wall_s": 0.67,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-3",
@@ -119,8 +191,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.51,
+        "wall_s": 0.57,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-3",
@@ -128,8 +206,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.06,
+        "wall_s": 0.11,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-3",
@@ -137,8 +221,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.03,
+        "wall_s": 0.05,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-3",
@@ -146,8 +236,14 @@
       "length": 3,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.87,
+        "wall_s": 0.94,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-4",
@@ -156,7 +252,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 8.65,
+        "wall_s": 8.77,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-4",
@@ -165,7 +267,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 1.63,
+        "wall_s": 1.68,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-4",
@@ -174,7 +282,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.65,
+        "wall_s": 0.68,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-4",
@@ -183,7 +297,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.66,
+        "wall_s": 0.72,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-4",
@@ -192,7 +312,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 0.19,
+        "wall_s": 0.23,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-4",
@@ -201,7 +327,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 5.8,
+        "wall_s": 5.9,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-6",
@@ -210,7 +342,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 82.84,
+        "wall_s": 83.72,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-6",
@@ -219,7 +357,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 42.15,
+        "wall_s": 42.64,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-6",
@@ -228,7 +372,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 14.76,
+        "wall_s": 14.99,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-6",
@@ -237,7 +387,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 29.2,
+        "wall_s": 30.21,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-6",
@@ -246,7 +402,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 7.7,
+        "wall_s": 7.88,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-6",
@@ -255,7 +417,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 191.65,
+        "wall_s": 196.28,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-7",
@@ -264,7 +432,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 188.27,
+        "wall_s": 190.97,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-7",
@@ -273,7 +447,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 101.37,
+        "wall_s": 102.88,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-7",
@@ -282,7 +462,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 38.27,
+        "wall_s": 38.84,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-7",
@@ -291,7 +477,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 81.81,
+        "wall_s": 83.05,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-7",
@@ -300,7 +492,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 30.83,
+        "wall_s": 31.42,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-7",
@@ -309,7 +507,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 520.98,
+        "wall_s": 529.9,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "english-8",
@@ -318,7 +522,13 @@
       "mode": "unconstrained",
       "tier": "breadth",
       "targets": "500",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 403.51,
+        "wall_s": 408.16,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-8",
@@ -326,8 +536,14 @@
       "length": 8,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 406.72,
+        "wall_s": 411.2,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-8",
@@ -335,8 +551,14 @@
       "length": 8,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 187.0,
+        "wall_s": 188.91,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-8",
@@ -344,8 +566,14 @@
       "length": 8,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 328.46,
+        "wall_s": 332.18,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-8",
@@ -353,8 +581,14 @@
       "length": 8,
       "mode": "unconstrained",
       "tier": "breadth",
-      "targets": "500",
-      "reported": false
+      "targets": "full",
+      "reported": false,
+      "calibration": {
+        "cpu_s": 140.85,
+        "wall_s": 142.56,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-8",
@@ -363,7 +597,13 @@
       "mode": "unconstrained",
       "tier": "breadth",
       "targets": "500",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 601.46,
+        "wall_s": 608.25,
+        "over_budget": true,
+        "contended": false
+      }
     },
     {
       "id": "english-9",
@@ -372,7 +612,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 435.83,
+        "wall_s": 441.56,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-9",
@@ -381,7 +627,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 228.26,
+        "wall_s": 231.17,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-9",
@@ -390,7 +642,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 167.48,
+        "wall_s": 169.32,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-9",
@@ -399,7 +657,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 177.76,
+        "wall_s": 179.67,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-9",
@@ -408,7 +672,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 102.77,
+        "wall_s": 103.88,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-9",
@@ -417,7 +687,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 601.69,
+        "wall_s": 608.21,
+        "over_budget": true,
+        "contended": false
+      }
     },
     {
       "id": "english-10",
@@ -426,7 +702,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 478.47,
+        "wall_s": 483.82,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "french-10",
@@ -435,7 +717,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 234.25,
+        "wall_s": 237.34,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "german-10",
@@ -444,7 +732,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 280.24,
+        "wall_s": 283.37,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "spanish-10",
@@ -453,7 +747,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 189.23,
+        "wall_s": 192.62,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "italian-10",
@@ -462,7 +762,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 127.4,
+        "wall_s": 128.9,
+        "over_budget": false,
+        "contended": false
+      }
     },
     {
       "id": "russian-10",
@@ -471,7 +777,13 @@
       "mode": "unconstrained",
       "tier": "smoke",
       "targets": "100",
-      "reported": false
+      "reported": false,
+      "calibration": {
+        "cpu_s": 601.49,
+        "wall_s": 608.24,
+        "over_budget": true,
+        "contended": false
+      }
     },
     {
       "id": "english-11",
