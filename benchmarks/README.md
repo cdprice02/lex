@@ -8,9 +8,10 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 | Path | Holds |
 |---|---|
 | `README.md` | Methodology and the current results |
-| `baselines/*.json` | Committed `lex simulate` reports that changes are paired against |
+| `snapshots/*.snap` | One committed insta snapshot per Track: the record a change is checked against |
+| `baselines/*.json` | Committed `lex simulate` reports that `lex compare` pairs a change against |
 | `experiments/<topic>.md` | The evidence and verdict behind each solver or performance choice |
-| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid; `oracle.sh`: the Oracle) |
+| `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid) |
 
 ## Current results
 
@@ -99,19 +100,36 @@ Omit `-n` to play every word: exact expected performance with no sampling varian
 tree makes this affordable (English-5 in about a minute on one core, 41 MB peak RSS; timings are in the experiments). Use it for the
 headline numbers of a change and compare it to the sampled baselines for the paired diff.
 
-## Oracle
+## Snapshots
 
-A change meant to leave play untouched (a speed change, a refactor) must reproduce the base
-commit's games exactly: `simulate -n 200 --seed 0` on every Track of the set, compared on `games`
-and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.md`.
+Each Track has one committed insta snapshot in `snapshots/`, named by the Track id, and a change is
+checked against it (`docs/adr/0012-snapshot-benchmark-record.md`). The body holds the Track id, the
+run configuration, the Corpus and Profile checksums, the summary (both means, the failure rate, the
+histogram), the first guess and the SHA-256 of the canonical games array. The header holds the
+solver digest (`lex_core::SOLVER_DIGEST`) and the lex version, which insta never compares.
 
-| Command | Tracks | Run it |
-|---|---|---|
-| `benchmarks/scripts/oracle.sh <base-ref>` | fast: the headline Tier: every language at length 5, `wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard` | on every behavior-preserving PR |
-| `benchmarks/scripts/oracle.sh --full <base-ref>` | full: the fast set plus every language at every other Supported length | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
+The tests are `lex-cli/tests/tracks.rs`, one per Track, named `<tier>::<track-id>` and ignored by
+default, so `cargo test --all` needs no data. They read the Corpus from `LEX_DATA_DIR` (default the
+workspace `data/`) and fail with a download hint when it is missing. They run locally, never in CI.
+Run them with `--release`.
 
-Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
-share them. A base from before `--pool` is run with `--hard` and `--ultrahard`. A track whose flags the base binary lacks prints `skipped`.
+```bash
+cargo test --release -p lex-cli --test tracks -- --ignored headline   # fast set: the headline Tier
+cargo test --release -p lex-cli --test tracks -- --ignored            # full set: every Track
+cargo insta test --release -p lex-cli --test tracks --force-update-snapshots -- --ignored headline
+```
+
+- A behavior-preserving change (a speed change, a refactor) must show no body diff. Because it edits
+  `lex-core/src`, the digest in the headers is stale: refresh it with the third command, so the
+  snapshot diff is only header digest lines. Breadth and smoke headers may lag.
+- A behavior-changing change commits its accepted snapshots in a separate `test(snapshots): ...`
+  commit, reviewed by diff; a Corpus rebuild is likewise one snapshot-update commit.
+- The full set when the change touches word-length-dependent code (pattern ordinals, counting, the
+  length limit), and once at the end of a map.
+- To find which game changed, run `lex simulate` on both builds and `lex compare` the reports.
+- Each Track runs on its own test thread. On a small machine, pass `--test-threads N` after `--`.
+- `cargo-insta` comes with the Nix devshell; with rustup, `cargo install cargo-insta`.
+- `data/oracle/` held the old Oracle's cached base reports and can be removed.
 
 ## Micro-benchmarks
 
