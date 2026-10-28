@@ -7,9 +7,19 @@ edition = "2024"
 anyhow = { workspace = true }
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
+strum = { workspace = true }
+divan = { version = "0.1", optional = true }
 
 [dev-dependencies]
 proptest = { workspace = true }
 
 [lib]
 name = "lex_core"
+
+[features]
+bench = ["dep:divan"]
+
+[[bench]]
+name = "lex-core"
+harness = false
+required-features = ["bench"]

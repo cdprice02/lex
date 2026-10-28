@@ -178,18 +178,17 @@ impl<const N: usize> Guesser<N> {
 }
 
 /// A guesser whose answers are every pool word.
-#[cfg(test)]
+#[cfg(any(test, feature = "bench"))]
 fn corpus_guesser<const N: usize>(pool: WordSet<N>, strategy: Strategy) -> Guesser<N> {
     let answers = pool.words().collect();
     Guesser::new(pool, answers, strategy)
 }
 
-#[cfg(test)]
+#[cfg(feature = "bench")]
 mod benches {
-    extern crate test;
+    use divan::Bencher;
     use std::collections::HashMap;
     use std::hint::black_box;
-    use test::Bencher;
 
     use lex_data::{Word, WordSet};
 
@@ -218,26 +217,26 @@ mod benches {
         corpus_guesser(ws, Strategy::ultrahard())
     }
 
-    #[bench]
-    fn suggest_50_word_dict(b: &mut Bencher) {
+    #[divan::bench]
+    fn suggest_50_word_dict(b: Bencher) {
         let pairs = make_wordset(50);
         let first_guess = pairs[0].0;
         let target = pairs[1].0;
         let initial_guess = Guess::new(first_guess, WordCorrectness::correct(target, first_guess));
-        b.iter(|| {
+        b.bench(|| {
             let mut g = build_guesser(&pairs);
             g.push_guess(initial_guess.clone());
             black_box(g.suggest())
         });
     }
 
-    #[bench]
-    fn suggest_200_word_dict(b: &mut Bencher) {
+    #[divan::bench]
+    fn suggest_200_word_dict(b: Bencher) {
         let pairs = make_wordset(200);
         let first_guess = pairs[0].0;
         let target = pairs[1].0;
         let initial_guess = Guess::new(first_guess, WordCorrectness::correct(target, first_guess));
-        b.iter(|| {
+        b.bench(|| {
             let mut g = build_guesser(&pairs);
             g.push_guess(initial_guess.clone());
             black_box(g.suggest())

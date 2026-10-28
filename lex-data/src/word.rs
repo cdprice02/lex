@@ -297,12 +297,11 @@ impl<const N: usize> WordSet<N> {
     }
 }
 
-#[cfg(test)]
+#[cfg(feature = "bench")]
 mod benches {
-    extern crate test;
+    use divan::Bencher;
     use std::collections::HashMap;
     use std::hint::black_box;
-    use test::Bencher;
 
     use super::*;
 
@@ -324,9 +323,9 @@ mod benches {
         WordSet::from_frequency_map(frequencies)
     }
 
-    #[bench]
-    fn wordset_limit_1000_to_100(b: &mut Bencher) {
-        b.iter(|| {
+    #[divan::bench]
+    fn wordset_limit_1000_to_100(b: Bencher) {
+        b.bench(|| {
             let mut ws = make_wordset(1000);
             ws.limit(100);
             black_box(ws.len())

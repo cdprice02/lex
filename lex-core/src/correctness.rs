@@ -1,6 +1,6 @@
 use lex_data::Word;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::EnumCount)]
 pub enum Correctness {
     Absent,
     Misplaced,
@@ -8,7 +8,7 @@ pub enum Correctness {
 }
 
 impl Correctness {
-    pub const COUNT: usize = std::mem::variant_count::<Self>();
+    pub const COUNT: usize = <Self as strum::EnumCount>::COUNT;
 }
 
 impl std::fmt::Display for Correctness {
@@ -149,7 +149,7 @@ impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
 
 /// The O(N^2) compare that the letter count replaced, kept as an oracle for tests and as the
 /// "old" side of the scaling benches.
-#[cfg(test)]
+#[cfg(any(test, feature = "bench"))]
 fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
     let mut green = 0u32;
     for (i, (w, g)) in word.iter().zip(guess).enumerate() {
@@ -180,26 +180,25 @@ fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
     ordinal
 }
 
-#[cfg(test)]
+#[cfg(feature = "bench")]
 mod benches {
-    extern crate test;
+    use divan::Bencher;
     use std::hint::black_box;
-    use test::Bencher;
 
     use super::*;
 
-    #[bench]
-    fn correct_no_overlap(b: &mut Bencher) {
+    #[divan::bench]
+    fn correct_no_overlap(b: Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("fling").unwrap();
-        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+        b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
-    #[bench]
-    fn correct_partial_match(b: &mut Bencher) {
+    #[divan::bench]
+    fn correct_partial_match(b: Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("track").unwrap();
-        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+        b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
     /// Reproducible word pairs over a..z, so letters repeat and overlap as in a real corpus.
@@ -216,70 +215,32 @@ mod benches {
         (0..256).map(|_| (word(), word())).collect()
     }
 
-    fn bench_count<const N: usize>(b: &mut Bencher) {
+    #[divan::bench(consts = [5, 10, 13, 25])]
+    fn ordinal_count<const N: usize>(b: Bencher) {
         let pairs = pairs::<N>();
         let mut counts: LetterCounts = [0; 256];
-        b.iter(|| {
+        b.bench_local(|| {
             for (w, g) in &pairs {
                 black_box(pattern_ordinal(black_box(w), black_box(g), &mut counts));
             }
         });
     }
 
-    fn bench_compare<const N: usize>(b: &mut Bencher) {
+    #[divan::bench(consts = [5, 10, 13, 25])]
+    fn ordinal_compare<const N: usize>(b: Bencher) {
         let pairs = pairs::<N>();
-        b.iter(|| {
+        b.bench(|| {
             for (w, g) in &pairs {
                 black_box(compare_ordinal(black_box(w), black_box(g)));
             }
         });
     }
 
-    #[bench]
-    fn ordinal_count_n5(b: &mut Bencher) {
-        bench_count::<5>(b);
-    }
-
-    #[bench]
-    fn ordinal_compare_n5(b: &mut Bencher) {
-        bench_compare::<5>(b);
-    }
-
-    #[bench]
-    fn ordinal_count_n10(b: &mut Bencher) {
-        bench_count::<10>(b);
-    }
-
-    #[bench]
-    fn ordinal_compare_n10(b: &mut Bencher) {
-        bench_compare::<10>(b);
-    }
-
-    #[bench]
-    fn ordinal_count_n13(b: &mut Bencher) {
-        bench_count::<13>(b);
-    }
-
-    #[bench]
-    fn ordinal_compare_n13(b: &mut Bencher) {
-        bench_compare::<13>(b);
-    }
-
-    #[bench]
-    fn ordinal_count_n25(b: &mut Bencher) {
-        bench_count::<25>(b);
-    }
-
-    #[bench]
-    fn ordinal_compare_n25(b: &mut Bencher) {
-        bench_compare::<25>(b);
-    }
-
-    #[bench]
-    fn correct_perfect_match(b: &mut Bencher) {
+    #[divan::bench]
+    fn correct_perfect_match(b: Bencher) {
         let word = Word::<5>::try_from("crate").unwrap();
         let guess = Word::<5>::try_from("crate").unwrap();
-        b.iter(|| black_box(WordCorrectness::<5>::correct(word, guess)));
+        b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 }
 
