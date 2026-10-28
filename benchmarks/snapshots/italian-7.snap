@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "italian",
+      "length": 7
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "bbc3c5f5f50325896bece1503bf139b59c889a0ccf5274344b1688f7ec1c7350",
+  "first_guess": "seriato",
+  "games_sha256": "a520c1baf5f426cf02ad598bde77cddfa8ff237cad51d597a2827ab2b2907ae8",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.017749264605102608,
+        "3": 0.7568370316764494,
+        "4": 0.20723156227882464,
+        "5": 0.01818214143962327
+      },
+      "mean": 3.225846580552968
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.02,
+        "3": 0.6700000000000004,
+        "4": 0.2700000000000001,
+        "5": 0.04
+      },
+      "mean": 3.3299999999999956
+    }
+  },
+  "track": "italian-7"
+}

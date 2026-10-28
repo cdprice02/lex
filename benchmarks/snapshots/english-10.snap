@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 10
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "5f57cd6302bb9f0a487fea9aaf464d12b7687a3c904015b399811e1260eebf50",
+  "first_guess": "porcelains",
+  "games_sha256": "aaf6ed7a2d63146260be00d971f7013576770a131350441bb374c610a0d03fbb",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.15245169617525153,
+        "3": 0.8276683888419097,
+        "4": 0.01987991498283877
+      },
+      "mean": 2.8674282188075866
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.11999999999999998,
+        "3": 0.8500000000000005,
+        "4": 0.03
+      },
+      "mean": 2.909999999999996
+    }
+  },
+  "track": "english-10"
+}

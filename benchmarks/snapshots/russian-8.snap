@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "russian",
+      "length": 8
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "353d594c4e23f3391eed63a2edcb6d68e579b3f063244ef2884ce83cb2f304f9",
+  "first_guess": "каретном",
+  "games_sha256": "1c7ee55f71699bb08a537c63febfb3b31d9a214fd097392f20d816fc0a11aebf",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.006328749578638299,
+        "3": 0.6742343955438984,
+        "4": 0.3157185945168264,
+        "5": 0.0037182603606353737
+      },
+      "mean": 3.3168263656594563
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.008,
+        "3": 0.6280000000000004,
+        "4": 0.35800000000000026,
+        "5": 0.006
+      },
+      "mean": 3.3619999999999726
+    }
+  },
+  "track": "russian-8"
+}

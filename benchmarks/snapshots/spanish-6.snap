@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "spanish",
+      "length": 6
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "f359b37c11094457eb39982f9892e0d0e2927c7f1e4e8bb32e8315ee4a4cfe18",
+  "first_guess": "coreas",
+  "games_sha256": "29cbfb3c1dad217836bf2f7160bcb30aa2d0a8cc5c796296a91355c0b5992659",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.27725936022267156,
+        "4": 0.6170865903274354,
+        "5": 0.09560643191273677,
+        "6": 0.010047617537156231
+      },
+      "mean": 3.838442306764378
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.25000000000000006,
+        "4": 0.6000000000000003,
+        "5": 0.13999999999999999,
+        "6": 0.01
+      },
+      "mean": 3.909999999999999
+    }
+  },
+  "track": "spanish-6"
+}

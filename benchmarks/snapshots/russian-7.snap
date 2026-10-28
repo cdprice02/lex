@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "russian",
+      "length": 7
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "9e3df8d0df178494243d5260fe3a20b0108e3f15f98c3d0f7bb948b3212374ae",
+  "first_guess": "соринка",
+  "games_sha256": "5a148ef70e6128ec89002bd2a4d0fb298553714c921645baf3aeff5e11d637a1",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.3598206033304367,
+        "4": 0.5848202013170136,
+        "5": 0.05535919535254988
+      },
+      "mean": 3.695538592022115
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.34000000000000014,
+        "4": 0.6000000000000003,
+        "5": 0.060000000000000005
+      },
+      "mean": 3.7199999999999993
+    }
+  },
+  "track": "russian-7"
+}

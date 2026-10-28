@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "kind": "profile",
+      "profile": "wordle"
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "full"
+    }
+  },
+  "corpus_sha256": "29104fb5747b23a54ec5249ee31428a7ca440e57dd05a65361359badc008f282",
+  "first_guess": "roate",
+  "games_sha256": "39e0e02509cc16edb3071fe0f5415028adb90d0bdf6c6c80c2a64b4b14a449cf",
+  "profile": {
+    "answers_sha256": "f40e47975cf360ff9febe7d49c8e285054d8fa3fb9644cea575922060951d6ee",
+    "guess_only_sha256": "f012ef5ecdbeb94274186abcbbd5388d92bb86fe8ae0635fffcc5e9be4aa3d33",
+    "name": "wordle"
+  },
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.03340488688456678,
+        "3": 0.5572382003549027,
+        "4": 0.3918314577561622,
+        "5": 0.017525455004367075
+      },
+      "mean": 3.3934774808803145
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.025485961123110145,
+        "3": 0.5028077753779725,
+        "4": 0.44578833693304776,
+        "5": 0.025917926565874723
+      },
+      "mean": 3.472138228941602
+    }
+  },
+  "track": "wordle"
+}
