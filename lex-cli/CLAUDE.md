@@ -2,9 +2,9 @@
 
 ## Purpose
 
-CLI frontend with four subcommands: `simulate` (batch games via `lex-core`),
-`assist` (interactive helper for live games), and `compare` (paired diff of two
-simulation reports), and `clear` (delete a cached corpus with `--lang [-l]`, or a fetched Profile with `--profile`; exactly one). Loads corpora via `lex-data` and
+CLI frontend with five subcommands: `simulate` (batch games via `lex-core`),
+`assist` (interactive helper for live games), `compare` (paired diff of two
+simulation reports), `bench` (the Suite manifest: `--dry-run` and `--calibrate`), and `clear` (delete a cached corpus with `--lang [-l]`, or a fetched Profile with `--profile`; exactly one). Loads corpora via `lex-data` and
 monomorphizes the call chain over word lengths 3–10 at compile time.
 
 ## Module map
@@ -18,6 +18,7 @@ monomorphizes the call chain over word lengths 3–10 at compile time.
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary |
 | `compare.rs` | paired per-target comparison of two reports, joined on word |
 | `assist.rs` | interactive loop; `parse_feedback` (private) auto-detects input format |
+| `bench/` | `lex bench` (see below): `mod.rs` (entry, `--track`/`--tier` selection, dry-run lines), `manifest.rs` (`Manifest`, `Track`, `Tier`, `Targets`, the generated matrix and `drift()`), `calibrate.rs` (the `Runner` and `LoadProbe` seams, full-or-500 choice, load check, `calibrate` loop), `system.rs` (child process runner, process-table sampling, CPU model, commit) |
 | `error.rs` | `CliError` |
 
 ## Monomorphization dispatch
@@ -52,6 +53,14 @@ Feedback formats are auto-detected from the first symbol and must not be mixed
 within one entry: letters `g`/`y`/`x` (gray aliases `b` `.` `-`), digits
 `2`/`1`/`0` (matches the `Correctness` encoding), emoji including dark-mode ⬛
 and high-contrast 🟧/🟦 variants.
+
+## Bench (`bench/`)
+
+`lex bench` reads `benchmarks/suite.json` (`--manifest`). Every run first compares the manifest with `Manifest::generated()` (every language x `MIN..=MAX_WORD_LENGTH`, the Profile Tracks `wordle`, `wordle-all`, `wordle-hard`, the `english-5-ultrahard` Track, and pending lengths up to 25) and errors on any drift, including a Tier that disagrees with ADR 0007 for the length or targets the Tier does not allow. Tiers are by length: 5 headline, 3/8/13/21 breadth, the rest smoke.
+
+- `--dry-run` needs no corpus data: one tab-separated line per live Track (id, Tier, `reported` yes/no, the track's `simulate` arguments, the full command); `oracle.sh` parses it, so the column order is a contract.
+- `--calibrate` runs each selected Track (`--track` repeatable, `--tier`) as a child `lex simulate` through the `Runner` trait (`ChildRunner` measures CPU from `wait4` rusage and kills at the 600 s CPU cutoff), after a 5 s `LoadProbe` sample of every other process (refuse above half a core for one process or one core in total; `--force` records `contended: true`). Headline runs full, smoke 100 sampled, breadth tries full under the cutoff and else 500 sampled (`--seed 0`); a Track over the cutoff keeps its Tier and is flagged `over_budget`. The manifest is rewritten after each Track.
+- With neither flag the command errors: the suite run and `--against` are not built yet.
 
 ## Error handling
 

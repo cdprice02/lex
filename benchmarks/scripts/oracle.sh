@@ -5,8 +5,10 @@
 #
 # usage: benchmarks/scripts/oracle.sh [--full] <base-ref> [data-dir]
 #
-# The sets follow the Tiers of ADR 0007: the fast set (the default) is the
-# headline Tier, and --full is every Tier.
+# The sets come from the Suite manifest (benchmarks/suite.json) through the
+# candidate's `lex bench --dry-run`: the fast set (the default) is the headline
+# Tier plus the reported Tracks, and --full is every Track. A Track the base
+# cannot run (a flag or a word length it lacks) is skipped.
 #
 # Base reports are cached per commit under data/oracle/<sha>/, so later runs
 # against the same base only rebuild and rerun the candidate.
@@ -31,64 +33,54 @@ base_sha=$(git rev-parse --verify "$base_ref^{commit}")
 base_dir="$data_dir/oracle/$base_sha"
 cand_dir=$(mktemp -d)
 trap 'rm -rf "$cand_dir"' EXIT
+tab=$(printf '\t')
 
-languages="english french german spanish italian russian"
+# The word lengths the base commit supports; a length only the candidate
+# supports has no base to compare against.
+base_src=$(git -C "$repo" show "$base_sha:lex-data/src/lib.rs")
+bound() { printf '%s\n' "$base_src" | sed -n "s/^pub const $1_WORD_LENGTH: usize = \([0-9]*\);/\1/p"; }
+base_min=$(bound MIN)
+base_max=$(bound MAX)
 
-# The lengths the base commit supports; a length only the candidate supports
-# has no base to compare against.
-lengths() {
-    src=$(git -C "$repo" show "$base_sha:lex-data/src/lib.rs")
-    bound() { printf '%s\n' "$src" | sed -n "s/^pub const $1_WORD_LENGTH: usize = \([0-9]*\);/\1/p"; }
-    seq "$(bound MIN)" "$(bound MAX)"
-}
+# The candidate's binary reads the candidate's manifest, even against an older base.
+(cd "$repo" && cargo build --release --locked --bin lex)
+cand_lex="$repo/target/release/lex"
+listing=$("$cand_lex" bench --dry-run --manifest "$repo/benchmarks/suite.json")
 
-tracks=$(
-    for lang in $languages; do echo "$lang 5"; done
-    echo "english 5 --profile wordle --hard"
-    echo "english 5 --ultrahard"
-    echo "english 5 --profile wordle"
-    echo "english 5 --profile wordle-all"
-    if [ "$set_name" = full ]; then
-        for lang in $languages; do
-            for len in $(lengths); do
-                [ "$len" -eq 5 ] || echo "$lang $len"
-            done
-        done
-    fi
-)
+# One "<id><TAB><simulate track arguments>" line per track of the set.
+tracks=$(printf '%s\n' "$listing" | awk -F'\t' -v set="$set_name" \
+    'set == "full" || $2 == "headline" || $3 == "yes" { print $1 "\t" $4 }')
+[ -n "$tracks" ] || { echo "oracle: the manifest lists no tracks" >&2; exit 1; }
 
-track_name() { # <lang> <len> [flags]: english-5, english-5-hard-mode
-    printf '%s-%s%s' "$1" "$2" "$(printf '%s' "${3:-}" | tr -s ' -' '-')"
-}
-
-# A track with a flag the base binary lacks (a base from before `--profile` or `--hard`) cannot be
-# compared and is skipped; once a base has every flag, the track is compared like any other. The
-# match is on the whole flag, so `--hard` is not satisfied by a base that only has `--hard-mode`.
-base_supports() { # <track flags>
+# A track with a flag the base binary lacks (a base from before `--profile` or `--hard`), or a
+# word length outside the base's range, cannot be compared and is skipped; once a base has every
+# flag, the track is compared like any other. The match is on the whole flag, so `--hard` is not
+# satisfied by a base that only has `--hard-mode`.
+base_supports() { # <track arguments>
     help=$("$base_dir/lex" simulate --help)
-    for flag in $1; do
-        case "$flag" in
+    prev=""
+    for arg in $1; do
+        case "$arg" in
             --*) printf '%s\n' "$help" |
-                grep -Eq -- "(^|[^[:alnum:]-])$flag([^[:alnum:]-]|\$)" || return 1 ;;
+                grep -Eq -- "(^|[^[:alnum:]-])$arg([^[:alnum:]-]|\$)" || return 1 ;;
         esac
+        if [ "$prev" = -l ] && { [ "$arg" -lt "$base_min" ] || [ "$arg" -gt "$base_max" ]; }; then
+            return 1
+        fi
+        prev=$arg
     done
 }
 
 run_tracks() { # <lex binary> <output dir>
     mkdir -p "$2"
-    echo "$tracks" | while read -r lang len flags; do
-        out="$2/$(track_name "$lang" "$len" "$flags").json"
+    echo "$tracks" | while IFS=$tab read -r id args; do
+        out="$2/$id.json"
         [ -f "$out" ] && continue
-        base_supports "$flags" || continue
-        echo "oracle: $(track_name "$lang" "$len" "$flags") ($1)" >&2
-        # A Profile fixes the language and length, and rejects both flags.
-        case "$flags" in
-            *--profile*) target="" ;;
-            *) target="-l $len --lang $lang" ;;
-        esac
-        # $target and $flags are unquoted on purpose: they split into separate arguments
+        base_supports "$args" || continue
+        echo "oracle: $id ($1)" >&2
+        # $args is unquoted on purpose: it splits into separate arguments
         # shellcheck disable=SC2086
-        "$1" simulate $target -n 200 --seed 0 $flags \
+        "$1" simulate $args -n 200 --seed 0 \
             --data-dir "$data_dir" -o "$out.$$.tmp" </dev/null >/dev/null
         mv "$out.$$.tmp" "$out"
     done
@@ -113,16 +105,14 @@ run_tracks "$base_dir/lex" "$base_dir"
 rmdir "$lock"
 trap 'rm -rf "$cand_dir"' EXIT
 
-(cd "$repo" && cargo build --release --locked --bin lex)
-run_tracks "$repo/target/release/lex" "$cand_dir"
+run_tracks "$cand_lex" "$cand_dir"
 
 status=0
 echo "$tracks" | {
-    while read -r lang len flags; do
-        track=$(track_name "$lang" "$len" "$flags")
+    while IFS=$tab read -r track args; do
         name="$track.json"
-        if ! base_supports "$flags"; then
-            echo "skipped $track (base has no such flag)"
+        if ! base_supports "$args"; then
+            echo "skipped $track (base lacks a flag or word length)"
         elif [ "$(jq -S '{games, summary}' "$base_dir/$name")" = \
              "$(jq -S '{games, summary}' "$cand_dir/$name")" ]; then
             echo "same    $track"

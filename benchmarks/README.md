@@ -8,6 +8,7 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 | Path | Holds |
 |---|---|
 | `README.md` | Methodology and the current results |
+| `suite.json` | The Suite manifest: every Track, its Tier, targets and calibration (`lex bench --dry-run` checks it) |
 | `baselines/*.json` | Committed `lex simulate` reports that changes are paired against |
 | `experiments/<topic>.md` | The evidence and verdict behind each solver or performance choice |
 | `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid; `oracle.sh`: the Oracle) |
@@ -85,15 +86,44 @@ headline numbers of a change and compare it to the sampled baselines for the pai
 
 A change meant to leave play untouched (a speed change, a refactor) must reproduce the base
 commit's games exactly: `simulate -n 200 --seed 0` on every Track of the set, compared on `games`
-and `summary`. The sets follow the Tiers of `docs/adr/0007-benchmark-objective.md`.
+and `summary`. The sets come from the Suite manifest (`benchmarks/suite.json`) through the
+candidate's `lex bench --dry-run`, so a new Track joins the Oracle by joining the manifest.
 
 | Command | Tracks | Run it |
 |---|---|---|
-| `benchmarks/scripts/oracle.sh <base-ref>` | fast: every language at length 5, `--profile wordle --hard`, English-5 `--ultrahard`, `--profile wordle`, `--profile wordle-all` | on every behavior-preserving PR |
-| `benchmarks/scripts/oracle.sh --full <base-ref>` | full: the fast set plus every language at every other Supported length | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
+| `benchmarks/scripts/oracle.sh <base-ref>` | fast: the headline Tier plus the reported Tracks (every language at length 5, `wordle`, `wordle-all`, `wordle-hard`, English-5 `--ultrahard`) | on every behavior-preserving PR |
+| `benchmarks/scripts/oracle.sh --full <base-ref>` | full: every Track in the manifest (every language at every Supported length, plus the above) | instead, when the change touches word-length-dependent code (pattern ordinals, counting, the length limit), and once at the end of a map |
 
-Base reports are cached per commit under `data/oracle/<sha>/`, so concurrent runs against one base
-share them. A track whose flags the base binary lacks prints `skipped`.
+Base reports are cached per commit under `data/oracle/<sha>/`, named by Track id, so concurrent
+runs against one base share them. The candidate's manifest is used even against an older base; a
+Track whose flags or word length the base lacks prints `skipped`.
+
+## Suite manifest and calibration
+
+`benchmarks/suite.json` lists every Track with its Tier (ADR 0007: length 5 headline; 3, 8, 13, 21
+breadth; the other Supported lengths smoke), its targets (`full`, `500` or `100`), whether it is
+`reported`, and its calibration. `lex bench --dry-run` checks that the file is exactly the generated
+matrix and prints each Track's `simulate` command; CI runs it. Lengths above the Supported ones are
+listed with `"pending": true`.
+
+Recalibrate on an idle machine, with the Opening book state you mean to record, and review the
+rewritten file in the PR:
+
+```bash
+cargo build --release --locked --bin lex
+target/release/lex bench --calibrate                          # every Track
+target/release/lex bench --calibrate --tier breadth           # one Tier
+target/release/lex bench --calibrate --track german-8 --track french-3
+```
+
+Each Track runs alone as a child `lex simulate`, after a 5 s check that no other process uses over
+half a core and the rest together under one core (`--force` overrides and records `contended:
+true`). Headline Tracks run in full and smoke Tracks on 100 sampled targets; a breadth Track runs
+in full under a 10-minute CPU cutoff and otherwise on 500 sampled targets (`--seed 0`). A Track
+over the cutoff keeps its Tier and is flagged `over_budget`. The file records CPU and wall seconds
+per Track, the commit, and the CPU model, and is rewritten after every Track, so an interrupted
+run keeps what it measured. Record the exact command, commit, and output path on the PR before a
+long run.
 
 ## Comparing a change
 

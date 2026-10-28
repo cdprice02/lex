@@ -6,6 +6,7 @@ use compare::compare_reports;
 use simulate::simulate;
 
 mod assist;
+mod bench;
 mod cli;
 mod compare;
 mod error;
@@ -24,6 +25,7 @@ fn main() -> anyhow::Result<()> {
         Command::Assist(args) => {
             lex_data::match_word_length!(assist, args.common.dispatch_length(), &args)
         }
+        Command::Bench(args) => bench::bench(&args),
         Command::Compare(args) => compare_reports(&args),
         Command::Clear(args) => {
             let dir = lex_data::DataDir::new(&args.data_dir);

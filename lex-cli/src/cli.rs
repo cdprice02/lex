@@ -4,6 +4,7 @@ use clap::{Parser, Subcommand};
 use lex_core::{GuessPool, Strategy};
 use lex_data::{Language, Profile};
 
+use crate::bench::Tier;
 use crate::error::CliError;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
@@ -22,8 +23,49 @@ pub enum Command {
     Assist(AssistArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
+    /// Read or recalibrate the Suite manifest (`benchmarks/suite.json`)
+    Bench(BenchArgs),
     /// Delete a cached corpus or a fetched Profile so it is rebuilt on next use (the Wiktionary dictionary is kept)
     Clear(ClearArgs),
+}
+
+#[derive(clap::Args, Debug)]
+pub struct BenchArgs {
+    #[arg(
+        long,
+        conflicts_with = "calibrate",
+        help = "Check the manifest against the generated matrix and print each Track's simulate command; needs no corpus data"
+    )]
+    pub dry_run: bool,
+    #[arg(
+        long,
+        help = "Run each Track on one solver thread, choose its targets, record CPU and wall time, and rewrite the manifest after each"
+    )]
+    pub calibrate: bool,
+    #[arg(
+        long,
+        help = "Select this Track by id (repeatable); default every Track"
+    )]
+    pub track: Vec<String>,
+    #[arg(long, value_enum, help = "Select only the Tracks of this Tier")]
+    pub tier: Option<Tier>,
+    #[arg(
+        long,
+        help = "Calibrate on a loaded machine; the Track records contended: true"
+    )]
+    pub force: bool,
+    #[arg(
+        long,
+        default_value = "benchmarks/suite.json",
+        help = "The Suite manifest"
+    )]
+    pub manifest: PathBuf,
+    #[arg(
+        long,
+        default_value = "data",
+        help = "Directory containing cached word-frequency files"
+    )]
+    pub data_dir: PathBuf,
 }
 
 #[derive(clap::Args, Debug)]

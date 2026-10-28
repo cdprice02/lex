@@ -76,11 +76,11 @@ _Avoid_: Default mode
 The weight a Track carries in a Verdict: headline Tracks (every language at length 5, and the Wordle Profiles) are scored on their full dictionary, breadth Tracks (every language at the Fibonacci lengths) with a looser regression bound, and smoke Tracks (the remaining lengths) only have to finish._Avoid_: Level, suite (that is the whole matrix)
 
 **Oracle**:
-The check for a change meant to leave play untouched: on every Track of a set, the candidate's games must equal the base commit's word for word. Its fast set is the headline Tier's Tracks and its full set every Track.
+The check for a change meant to leave play untouched: on every Track of a set, the candidate's games must equal the base commit's word for word. Its fast set is the headline Tier's Tracks plus the reported ones, and its full set every Track, both read from the Suite manifest.
 _Avoid_: Regression suite (judging a change that is meant to move play is the Verdict's job)
 
 **Suite manifest**:
-The committed list of every Track and its Tier; it changes only when the Tiers are deliberately recalibrated.
+The committed list (`benchmarks/suite.json`) of every Track with its Tier, targets (`full` or a sample size), whether it is reported, and its last calibration (CPU and wall time, flagged `over_budget` or `contended`); it changes only when the Tiers are deliberately recalibrated. Lengths above the Supported ones are listed as pending.
 _Avoid_: Matrix (informal for the same thing), config
 
 **Verdict**:

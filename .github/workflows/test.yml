@@ -26,3 +26,5 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Test
         run: cargo test --locked --all
+      - name: Suite manifest
+        run: cargo run --locked --bin lex -- bench --dry-run
