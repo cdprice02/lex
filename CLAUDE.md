@@ -25,8 +25,12 @@ cargo test --all
 cargo test --package lex-core suggest_filters_impossible_words
 cargo test --package lex-data sums_across_years
 
-# Benchmarks (nightly required, already pinned)
-cargo bench --all
+# Micro-benchmarks (divan; the bench feature gates them)
+cargo bench -p lex-core --features bench
+cargo bench -p lex-data --features bench
+cargo bench -p lex-core --features bench -- ordinal_count   # divan filter: a substring of the bench path
+cargo bench -p lex-core --features bench -- --exact correctness::benches::ordinal_count   # exact path
+cargo test --workspace --all-features --benches             # divan test mode: each bench runs once
 
 # Lint / format (mirrors pre-commit hooks)
 cargo clippy --all --all-targets --all-features -- -D warnings
@@ -37,7 +41,7 @@ The `RUST_LOG` env var controls verbosity (`info` shows per-game progress, `debu
 
 ## Toolchain
 
-Pinned to nightly in `rust-toolchain.toml`. The codebase uses several nightly features: `variant_count`, `non_exhaustive_omitted_patterns_lint`, and `extern crate test` for `#[bench]`. `.cargo/config.toml` enables parallel codegen (`-Z threads=8`, `-Z share-generics=yes`).
+Pinned to nightly in `rust-toolchain.toml`. The codebase uses nightly features such as `non_exhaustive_omitted_patterns_lint` and `must_not_suspend`; benches use divan, not `#[bench]`. `.cargo/config.toml` enables parallel codegen (`-Z threads=8`, `-Z share-generics=yes`).
 
 Toolchain options:
 - **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically

@@ -19,6 +19,15 @@ sha2 = "0.11.1"
 time = { version = "0.3.55", features = ["formatting"] }
 
 tempfile = "3"
+divan = { version = "0.1", optional = true }
 
 [dev-dependencies]
 proptest = { workspace = true }
+
+[features]
+bench = ["dep:divan"]
+
+[[bench]]
+name = "lex-data"
+harness = false
+required-features = ["bench"]

@@ -64,7 +64,7 @@ impl<const N: usize> Candidates<N> {
     }
 
     /// Every pool word is a candidate.
-    #[cfg(test)]
+    #[cfg(any(test, feature = "bench"))]
     pub(crate) fn whole_pool(pool: Arc<Pool<N>>) -> Self {
         let indices = (0..pool.len() as u32).collect();
         Self { pool, indices }
@@ -383,16 +383,15 @@ mod tests {
     }
 }
 
-#[cfg(test)]
+#[cfg(feature = "bench")]
 mod benches {
-    extern crate test;
+    use divan::Bencher;
     use std::hint::black_box;
-    use test::Bencher;
 
     use super::*;
 
-    #[bench]
-    fn guess_entropy_10_words(b: &mut Bencher) {
+    #[divan::bench]
+    fn guess_entropy_10_words(b: Bencher) {
         let pairs: Vec<(Word<5>, u64)> = (0..10)
             .map(|i| {
                 let s: String = [char::from(b'a' + i as u8); 5].iter().collect();
@@ -403,7 +402,7 @@ mod benches {
         let guess = *pool.code(0);
         let words: Vec<Code<5>> = (0..pool.len() as u32).map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];
-        b.iter(|| black_box(guess_entropy(&guess, &words, &probs)));
+        b.bench(|| black_box(guess_entropy(&guess, &words, &probs)));
     }
 
     /// A reproducible pool of `count` distinct words over a..z, frequency-descending, so every
@@ -426,26 +425,26 @@ mod benches {
         Pool::new(&lex_data::WordSet::from_pairs(pairs))
     }
 
-    fn bench_suggest<const N: usize>(b: &mut Bencher, count: usize) {
+    fn bench_suggest<const N: usize>(b: Bencher, count: usize) {
         let candidates = Candidates::whole_pool(synthetic_pool::<N>(count));
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
+        b.bench(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
     }
 
-    #[bench]
-    fn root_suggest_all_1000_n5(b: &mut Bencher) {
+    #[divan::bench]
+    fn root_suggest_all_1000_n5(b: Bencher) {
         bench_suggest::<5>(b, 1000);
     }
 
-    #[bench]
-    fn root_suggest_all_300_n10(b: &mut Bencher) {
+    #[divan::bench]
+    fn root_suggest_all_300_n10(b: Bencher) {
         bench_suggest::<10>(b, 300);
     }
 
     /// Narrows a 3000-word pool with its most frequent words as guesses, as a game would, until at
     /// most `limit` candidates remain, then times a full-pool `suggest`. Most nodes of a full run
     /// are deep ones like this: few candidates scored against a large pool.
-    fn bench_deep_suggest(b: &mut Bencher, limit: usize) {
+    fn bench_deep_suggest(b: Bencher, limit: usize) {
         let mut candidates = Candidates::whole_pool(synthetic_pool::<5>(3000));
         let target = candidates.pool.word(1);
         for i in 2..400 {
@@ -462,27 +461,27 @@ mod benches {
             candidates.len()
         );
         let strategy = Strategy::default();
-        b.iter(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
+        b.bench(|| black_box(candidates.suggest(&strategy, &Allowed::Whole)));
     }
 
-    #[bench]
-    fn deep_suggest_all_60_of_3000_n5(b: &mut Bencher) {
+    #[divan::bench]
+    fn deep_suggest_all_60_of_3000_n5(b: Bencher) {
         bench_deep_suggest(b, 60);
     }
 
-    #[bench]
-    fn deep_suggest_all_8_of_3000_n5(b: &mut Bencher) {
+    #[divan::bench]
+    fn deep_suggest_all_8_of_3000_n5(b: Bencher) {
         bench_deep_suggest(b, 8);
     }
 
-    #[bench]
-    fn filtered_1000_n5(b: &mut Bencher) {
+    #[divan::bench]
+    fn filtered_1000_n5(b: Bencher) {
         let candidates = Candidates::whole_pool(synthetic_pool::<5>(1000));
         let target = candidates.pool.word(0);
         let guess = Guess::new(
             candidates.pool.word(1),
             WordCorrectness::correct(target, candidates.pool.word(1)),
         );
-        b.iter(|| black_box(candidates.filtered(&guess)));
+        b.bench(|| black_box(candidates.filtered(&guess)));
     }
 }

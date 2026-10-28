@@ -1,5 +1,3 @@
-#![cfg_attr(test, feature(test))]
-#![feature(variant_count)]
 #![feature(non_exhaustive_omitted_patterns_lint)]
 #![warn(non_exhaustive_omitted_patterns)]
 

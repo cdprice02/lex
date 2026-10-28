@@ -42,27 +42,26 @@ pub(crate) fn normalize(s: &str) -> String {
         .collect()
 }
 
-#[cfg(test)]
+#[cfg(feature = "bench")]
 mod benches {
-    extern crate test;
+    use divan::Bencher;
     use std::hint::black_box;
-    use test::Bencher;
 
     use super::*;
 
-    #[bench]
-    fn parse_ngram_line_single(b: &mut Bencher) {
+    #[divan::bench]
+    fn parse_ngram_line_single(b: Bencher) {
         let line = "apple\t2000,500,10";
-        b.iter(|| black_box(parse_ngram_line(line)));
+        b.bench(|| black_box(parse_ngram_line(line)));
     }
 
-    #[bench]
-    fn parse_ngram_line_many_years(b: &mut Bencher) {
+    #[divan::bench]
+    fn parse_ngram_line_many_years(b: Bencher) {
         let line = "apple\t2000,1,1\t2001,2,1\t2002,3,1\t2003,4,1\t2004,5,1\
                     \t2005,6,1\t2006,7,1\t2007,8,1\t2008,9,1\t2009,10,1\
                     \t2010,11,1\t2011,12,1\t2012,13,1\t2013,14,1\t2014,15,1\
                     \t2015,16,1\t2016,17,1\t2017,18,1\t2018,19,1\t2019,20,1";
-        b.iter(|| black_box(parse_ngram_line(line)));
+        b.bench(|| black_box(parse_ngram_line(line)));
     }
 }
 
