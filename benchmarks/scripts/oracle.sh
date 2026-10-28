@@ -42,31 +42,46 @@ lengths() {
     seq "$(bound MIN)" "$(bound MAX)"
 }
 
+# One line per track: its id (the id `lex simulate --track` takes), then the `simulate` arguments
+# that play it, in the vocabulary of the working tree. A Profile fixes the language and length,
+# and rejects both flags.
 tracks=$(
-    for lang in $languages; do echo "$lang 5"; done
-    echo "english 5 --profile wordle --hard"
-    echo "english 5 --ultrahard"
-    echo "english 5 --profile wordle"
-    echo "english 5 --profile wordle-all"
+    for lang in $languages; do echo "$lang-5 -l 5 --lang $lang"; done
+    echo "wordle --profile wordle"
+    echo "wordle-all --profile wordle-all"
+    echo "wordle-hard --profile wordle --pool hard"
+    echo "wordle-ultrahard --profile wordle --pool ultrahard"
     if [ "$set_name" = full ]; then
         for lang in $languages; do
             for len in $(lengths); do
-                [ "$len" -eq 5 ] || echo "$lang $len"
+                [ "$len" -eq 5 ] || echo "$lang-$len -l $len --lang $lang"
             done
         done
     fi
 )
 
-track_name() { # <lang> <len> [flags]: english-5, english-5-hard-mode
-    printf '%s-%s%s' "$1" "$2" "$(printf '%s' "${3:-}" | tr -s ' -' '-')"
+# Whether the base binary has the flag `--pool`; a base from before it plays hard and ultrahard
+# with `--hard` and `--ultrahard`.
+base_has_pool() {
+    "$base_dir/lex" simulate --help |
+        grep -Eq -- '(^|[^[:alnum:]-])--pool([^[:alnum:]-]|$)'
+}
+
+# <binary> <args>: the args as that binary spells them.
+args_for() {
+    if [ "$1" = "$base_dir/lex" ] && ! base_has_pool; then
+        printf '%s' "$2" | sed 's/--pool all//; s/--pool hard/--hard/; s/--pool ultrahard/--ultrahard/'
+    else
+        printf '%s' "$2"
+    fi
 }
 
 # A track with a flag the base binary lacks (a base from before `--profile` or `--hard`) cannot be
 # compared and is skipped; once a base has every flag, the track is compared like any other. The
 # match is on the whole flag, so `--hard` is not satisfied by a base that only has `--hard-mode`.
-base_supports() { # <track flags>
+base_supports() { # <track args>
     help=$("$base_dir/lex" simulate --help)
-    for flag in $1; do
+    for flag in $(args_for "$base_dir/lex" "$1"); do
         case "$flag" in
             --*) printf '%s\n' "$help" |
                 grep -Eq -- "(^|[^[:alnum:]-])$flag([^[:alnum:]-]|\$)" || return 1 ;;
@@ -76,19 +91,14 @@ base_supports() { # <track flags>
 
 run_tracks() { # <lex binary> <output dir>
     mkdir -p "$2"
-    echo "$tracks" | while read -r lang len flags; do
-        out="$2/$(track_name "$lang" "$len" "$flags").json"
+    echo "$tracks" | while read -r id args; do
+        out="$2/$id.json"
         [ -f "$out" ] && continue
-        base_supports "$flags" || continue
-        echo "oracle: $(track_name "$lang" "$len" "$flags") ($1)" >&2
-        # A Profile fixes the language and length, and rejects both flags.
-        case "$flags" in
-            *--profile*) target="" ;;
-            *) target="-l $len --lang $lang" ;;
-        esac
-        # $target and $flags are unquoted on purpose: they split into separate arguments
-        # shellcheck disable=SC2086
-        "$1" simulate $target -n 200 --seed 0 $flags \
+        base_supports "$args" || continue
+        echo "oracle: $id ($1)" >&2
+        # $args splits into separate arguments on purpose
+        # shellcheck disable=SC2046
+        "$1" simulate $(args_for "$1" "$args") -n 200 --seed 0 \
             --data-dir "$data_dir" -o "$out.$$.tmp" </dev/null >/dev/null
         mv "$out.$$.tmp" "$out"
     done
@@ -118,10 +128,9 @@ run_tracks "$repo/target/release/lex" "$cand_dir"
 
 status=0
 echo "$tracks" | {
-    while read -r lang len flags; do
-        track=$(track_name "$lang" "$len" "$flags")
+    while read -r track args; do
         name="$track.json"
-        if ! base_supports "$flags"; then
+        if ! base_supports "$args"; then
             echo "skipped $track (base has no such flag)"
         elif [ "$(jq -S '{games, summary}' "$base_dir/$name")" = \
              "$(jq -S '{games, summary}' "$cand_dir/$name")" ]; then

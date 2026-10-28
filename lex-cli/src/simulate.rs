@@ -6,19 +6,32 @@
 
 use std::collections::HashMap;
 use std::io::Write;
+use std::path::Path;
 
 use lex_core::{CANONICAL_TEMPERATURE, Guesser, answer_prior, play};
+use lex_data::DataDir;
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
 use crate::cli::SimulateArgs;
+use crate::config::{RunConfig, Targets};
 use crate::lists::{GameLists, Source};
 use crate::report::{Game, Report, Run, SCHEMA_VERSION, Summary};
 use crate::targets;
 
+/// The `simulate` command: plays what the arguments ask for, then prints or writes the report.
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
-    let data_dir = lex_data::DataDir::new(&args.common.data_dir);
-    let (lists, source) = Source::load::<N>(&args.common, &data_dir)?;
+    let report = run_n::<N>(&(&args.config(), &DataDir::new(&args.common.data_dir)))?;
+    emit(&report, args.output.as_deref())
+}
+
+/// Plays `config` and returns the report; prints nothing.
+pub fn run(config: &RunConfig, data_dir: &DataDir) -> anyhow::Result<Report> {
+    lex_data::match_word_length!(run_n, config.game.word_length(), &(config, data_dir))
+}
+
+fn run_n<const N: usize>((config, data_dir): &(&RunConfig, &DataDir)) -> anyhow::Result<Report> {
+    let (lists, source) = Source::load::<N>(config, data_dir)?;
 
     // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
     // taken over the whole pool before any game narrows the candidate set; only the Answer
@@ -26,12 +39,17 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let priors: HashMap<_, _> = answer_prior(&lists.pool, CANONICAL_TEMPERATURE)
         .into_iter()
         .collect();
+    let (file, num_games, seed) = match &config.targets {
+        Targets::Full => (None, None, 0),
+        Targets::Sample { n, seed } => (None, Some(*n), *seed),
+        Targets::File(path) => (Some(path.as_path()), None, 0),
+    };
     let targets = targets::select(
         lists.answers.clone(),
         &source.answer_noun(),
-        args.targets.as_deref(),
-        args.num_games,
-        args.seed,
+        file,
+        num_games,
+        seed,
     )?;
     let num_games = targets.len();
 
@@ -42,7 +60,7 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     );
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
-    let strategy = args.common.strategy();
+    let strategy = config.strategy;
     let GameLists { pool, answers } = lists;
     let mut guesser = Guesser::new(pool, answers, strategy);
     let first_guess = guesser
@@ -76,14 +94,14 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
 
     log::info!("Completed {num_games} games");
 
-    let report = Report {
+    Ok(Report {
         schema_version: SCHEMA_VERSION,
         run: Run {
             lex_version: env!("CARGO_PKG_VERSION").to_owned(),
             timestamp: OffsetDateTime::now_utc().format(&Rfc3339)?,
-            seed: args.seed,
+            seed,
             num_games,
-            targets_file: args.targets.as_ref().map(|p| p.display().to_string()),
+            targets_file: file.map(|p| p.display().to_string()),
             first_guess: first_guess.to_string(),
             strategy: strategy.into(),
         },
@@ -91,9 +109,11 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
         profile: source.profile_report(),
         summary: Summary::from_games(&games),
         games,
-    };
+    })
+}
 
-    match args.output.as_deref() {
+fn emit(report: &Report, output: Option<&Path>) -> anyhow::Result<()> {
+    match output {
         Some(path) if path.as_os_str() == "-" => {
             let mut stdout = std::io::stdout().lock();
             serde_json::to_writer_pretty(&mut stdout, &report)?;

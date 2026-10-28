@@ -453,6 +453,9 @@ dependencies = [
  "rand_chacha 0.10.0",
  "serde",
  "serde_json",
+ "sha2",
+ "strum",
+ "tempfile",
  "thiserror",
  "time",
 ]

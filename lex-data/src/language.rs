@@ -1,6 +1,6 @@
-use strum::{Display, EnumString, VariantNames};
+use strum::{Display, EnumString, VariantArray};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantNames)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantArray)]
 #[strum(ascii_case_insensitive)]
 pub enum Language {
     #[strum(to_string = "english", serialize = "english", serialize = "eng")]

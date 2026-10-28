@@ -2,7 +2,7 @@
 
 ## Purpose
 
-CLI frontend with four subcommands: `simulate` (batch games via `lex-core`),
+CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with four subcommands: `simulate` (batch games via `lex-core`),
 `assist` (interactive helper for live games), and `compare` (paired diff of two
 simulation reports), and `clear` (delete a cached corpus with `--lang [-l]`, or a fetched Profile with `--profile`; exactly one). Loads corpora via `lex-data` and
 monomorphizes the call chain over word lengths 3–10 at compile time.
@@ -11,8 +11,10 @@ monomorphizes the call chain over word lengths 3–10 at compile time.
 
 | Module | Responsibility |
 |---|---|
-| `cli.rs` | clap `Cli`/`Command`; `CommonArgs` flattened into `SimulateArgs`/`AssistArgs`; `--lang` and `-l` have no defaults: each is required unless `--profile` is given and conflicts with it (the Profile fixes both); `--profile` also conflicts with `--dictionary-length`; `--hard` and `--ultrahard` conflict with each other; `CommonArgs::dispatch_length()` picks the length to monomorphize over |
-| `simulate.rs` | batch simulation loop; builds and emits the `Report` |
+| `cli.rs` | clap `Cli`/`Command`; `CommonArgs` flattened into `SimulateArgs`/`AssistArgs`; `--lang` and `-l` have no defaults: each is required unless `--profile` is given and conflicts with it (the Profile fixes both); `--profile` also conflicts with `--dictionary-length`; `--pool <all|hard|ultrahard>` (parsed by `GuessPool`'s `FromStr`) picks the Guess pool; `CommonArgs::dispatch_length()` picks the length to monomorphize over, `CommonArgs::config(targets)` builds the `RunConfig`; `SimulateArgs::config()` turns `-n`/`--seed`/`--targets` into `Targets` (`--targets` conflicts with `-n`; `--seed` needs `-n`), and the hidden `--track <id>` plays a Track's config and conflicts with every game, pool, strategy and target flag |
+| `config.rs` | `RunConfig { game, strategy, targets }`: `Game` (`Corpus { language, length, dictionary_length }` or `Profile`) and `Targets` (`Full`, `Sample { n, seed }`, `File`). One value for what a run plays, built from flags or from a Track |
+| `tracks.rs` | `TRACKS`, the `const` table of benchmark Tracks (`Track { game, strategy, tier, judged, targets }`), built by a `const fn` over `Language::VARIANTS` and the length range; `TRACK_COUNT` is computed from them, so a new language or length needs no edit. `Track::config()`, `Track::find(id)`, ids from `Display`. Tier and target rules are ADR 0007's; the evidence is `benchmarks/experiments/track-targets.md` |
+| `simulate.rs` | `run(&RunConfig, &DataDir) -> Result<Report>` plays a config and prints nothing (it dispatches the word length itself); `simulate::<N>(&SimulateArgs)` is the command: `args.config()`, `run`, then print or write the report |
 | `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary |
@@ -30,9 +32,9 @@ in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 
 ## Simulate loop (`simulate.rs`)
 
-1. Load `GameLists<N>` and its `Source` with the shared args; capture the evaluation prior over the whole pool (`answer_prior` at `CANONICAL_TEMPERATURE`, whatever the solver's `--temperature`); only targets are looked up. `corpus.dictionary_length` is `Source::dictionary_length()`, the Corpus size (`DataDir::ngrams_count` on a Profile, the pool size otherwise)
-2. Select targets from the Answer list, or the whole dictionary without a Profile (`--seed`, `--targets`, `-n`); `--targets` words must be in that list
-3. Build one `Guesser` from `CommonArgs::strategy()` (`--hard`, `--ultrahard`, `--temperature`, `--win-weight`) and read `first_guess` from its root suggestion (reported, not replayed)
+1. Load `GameLists<N>` and its `Source` from the `RunConfig`; capture the evaluation prior over the whole pool (`answer_prior` at `CANONICAL_TEMPERATURE`, whatever the solver's `--temperature`); only targets are looked up. `corpus.dictionary_length` is `Source::dictionary_length()`, the Corpus size (`DataDir::ngrams_count` on a Profile, the pool size otherwise)
+2. Select targets from the Answer list, or the whole dictionary without a Profile (`Targets`: all, a seeded sample, or a file); file words must be in that list
+3. Build one `Guesser` from the config's `Strategy` (`--pool`, `--temperature`, `--win-weight`) and read `first_guess` from its root suggestion (reported, not replayed)
 4. For each game: call `play(word, &mut guesser, Vec::new())`; games share the guesser's decision tree, so each position is scored once
 5. Emit the report: summary to stdout (stderr when `-o -` sends JSON to stdout), JSON to `-o PATH`
 
