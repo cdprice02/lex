@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use lex_data::{MAX_ALPHABET_SIZE, Word, WordSet};
+use strum::{Display, EnumString, VariantArray, VariantNames};
 
 use crate::correctness::{Code, UNKNOWN_LETTER};
 
@@ -10,7 +11,8 @@ use crate::correctness::{Code, UNKNOWN_LETTER};
 pub const CANONICAL_TEMPERATURE: f64 = 5.0;
 
 /// Which words the solver may play as a guess.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Display, EnumString, VariantNames, VariantArray)]
+#[strum(serialize_all = "lowercase", ascii_case_insensitive)]
 pub enum GuessPool {
     /// Every word in the loaded set, including ones already ruled out as the answer.
     All,
@@ -42,6 +44,16 @@ pub struct Strategy {
 }
 
 impl Strategy {
+    /// Unconstrained guessing with the temperature and win weight chosen by the sweep recorded in
+    /// `benchmarks/experiments/strategy.md`.
+    pub const DEFAULT: Self = Self {
+        pool: GuessPool::All,
+        temperature: CANONICAL_TEMPERATURE,
+        win_weight: 1.0,
+        endgame_threshold: 0,
+        endgame_aversion: 0.0,
+    };
+
     /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
     /// entropy alone.
     pub const fn ultrahard() -> Self {
@@ -73,17 +85,9 @@ impl Strategy {
     }
 }
 
-/// Unconstrained guessing with the temperature and win weight chosen by the sweep recorded in
-/// `benchmarks/experiments/strategy.md`.
 impl Default for Strategy {
     fn default() -> Self {
-        Self {
-            pool: GuessPool::All,
-            temperature: CANONICAL_TEMPERATURE,
-            win_weight: 1.0,
-            endgame_threshold: 0,
-            endgame_aversion: 0.0,
-        }
+        Self::DEFAULT
     }
 }
 

@@ -1,6 +1,6 @@
 use lex_data::{DataDir, Language, ProfileStats, Word, WordSet};
 
-use crate::cli::CommonArgs;
+use crate::config::{Game, RunConfig};
 use crate::report::{Corpus, DictProvenance, ProfileReport};
 
 /// What a game is played over: the Guess pool and the Answer list, a subset of it. A Corpus run
@@ -18,14 +18,14 @@ pub enum Source {
 }
 
 impl Source {
-    /// Loads the Profile's lists when `--profile` is set, otherwise the Corpus (honouring
-    /// `--dictionary-length`) with every word as an answer.
+    /// Loads the Profile's lists for a Profile game, otherwise the Corpus (honouring its
+    /// `dictionary_length`) with every word as an answer.
     pub fn load<const N: usize>(
-        args: &CommonArgs,
+        config: &RunConfig,
         data_dir: &DataDir,
     ) -> anyhow::Result<(GameLists<N>, Self)> {
-        match args.profile {
-            Some(profile) => {
+        match config.game {
+            Game::Profile(profile) => {
                 let lang = profile.spec().language;
                 let data = data_dir.load_profile::<N>(profile)?;
                 // The Corpus size, which the Profile's pool does not equal.
@@ -42,10 +42,13 @@ impl Source {
                     },
                 ))
             }
-            None => {
-                let lang = args.lang.expect("clap requires --lang without --profile");
-                let pool = data_dir.load::<N>(lang, args.dictionary_length)?;
-                let corpus = corpus_report::<N>(data_dir, lang, pool.len())?;
+            Game::Corpus {
+                language,
+                dictionary_length,
+                ..
+            } => {
+                let pool = data_dir.load::<N>(language, dictionary_length)?;
+                let corpus = corpus_report::<N>(data_dir, language, pool.len())?;
                 let answers = pool.words().collect();
                 Ok((GameLists { pool, answers }, Self::Corpus(corpus)))
             }

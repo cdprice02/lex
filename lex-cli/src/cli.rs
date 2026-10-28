@@ -4,7 +4,9 @@ use clap::{Parser, Subcommand};
 use lex_core::{GuessPool, Strategy};
 use lex_data::{Language, Profile};
 
+use crate::config::{Game, RunConfig, Targets};
 use crate::error::CliError;
+use crate::tracks::Track;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
 #[derive(Parser, Debug)]
@@ -94,38 +96,33 @@ pub struct CommonArgs {
     pub data_dir: PathBuf,
     #[arg(
         long,
-        conflicts_with = "ultrahard",
-        help = "Official Wordle hard mode: keep every green in place and reuse every green or yellow letter"
+        default_value_t = Strategy::DEFAULT.pool,
+        help = "Which words may be guessed: all (every word), hard (the official Wordle hard-mode rule: keep every green in place, reuse every green or yellow letter) or ultrahard (only words consistent with every feedback so far, stricter than hard)"
     )]
-    pub hard: bool,
+    pub pool: GuessPool,
     #[arg(
         long,
-        help = "Only guess words consistent with every feedback so far (stricter than --hard)"
-    )]
-    pub ultrahard: bool,
-    #[arg(
-        long,
-        default_value_t = Strategy::default().temperature,
+        default_value_t = Strategy::DEFAULT.temperature,
         value_parser = parse_temperature,
         help = "Answer prior temperature: higher flattens the frequency-based prior"
     )]
     pub temperature: f64,
     #[arg(
         long,
-        default_value_t = Strategy::default().win_weight,
+        default_value_t = Strategy::DEFAULT.win_weight,
         value_parser = parse_win_weight,
         help = "Score bonus, in bits, per unit of probability that a guess is the answer"
     )]
     pub win_weight: f64,
     #[arg(
         long,
-        default_value_t = Strategy::default().endgame_threshold,
+        default_value_t = Strategy::DEFAULT.endgame_threshold,
         help = "Search the game tree exactly once this few candidates remain (0 disables)"
     )]
     pub endgame_threshold: usize,
     #[arg(
         long,
-        default_value_t = Strategy::default().endgame_aversion,
+        default_value_t = Strategy::DEFAULT.endgame_aversion,
         value_parser = parse_win_weight,
         help = "Endgame risk aversion: minimize the mean of e^(aversion x guesses); 0 minimizes plain expected guesses"
     )]
@@ -143,36 +140,55 @@ impl CommonArgs {
         }
     }
 
+    pub fn game(&self) -> Game {
+        match self.profile {
+            Some(profile) => Game::Profile(profile),
+            None => Game::Corpus {
+                language: self.lang.expect("clap requires --lang without --profile"),
+                length: self.dispatch_length(),
+                dictionary_length: self.dictionary_length,
+            },
+        }
+    }
+
     pub fn strategy(&self) -> Strategy {
         Strategy {
-            pool: if self.ultrahard {
-                GuessPool::Ultrahard
-            } else if self.hard {
-                GuessPool::Hard
-            } else {
-                GuessPool::All
-            },
+            pool: self.pool,
             temperature: self.temperature,
             win_weight: self.win_weight,
             endgame_threshold: self.endgame_threshold,
             endgame_aversion: self.endgame_aversion,
         }
     }
+
+    pub fn config(&self, targets: Targets) -> RunConfig {
+        RunConfig {
+            game: self.game(),
+            strategy: self.strategy(),
+            targets,
+        }
+    }
 }
 
 #[derive(clap::Args, Debug)]
+#[command(
+    mut_arg("lang", |a| a.required_unless_present("track")),
+    mut_arg("word_length", |a| a.required_unless_present("track"))
+)]
 pub struct SimulateArgs {
     #[command(flatten)]
     pub common: CommonArgs,
     #[arg(
         short = 'n',
         long,
+        conflicts_with = "targets",
         help = "Number of target words to sample (default: every word in the dictionary)"
     )]
     pub num_games: Option<usize>,
     #[arg(
         long,
         default_value_t = 0,
+        requires = "num_games",
         help = "Seed for sampling targets; the same seed and corpus give the same targets"
     )]
     pub seed: u64,
@@ -187,6 +203,40 @@ pub struct SimulateArgs {
         help = "Write the full JSON report here ('-' for stdout, which moves the summary to stderr)"
     )]
     pub output: Option<PathBuf>,
+    #[arg(
+        long,
+        hide = true,
+        value_parser = parse_track,
+        conflicts_with_all = [
+            "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
+            "win_weight", "endgame_threshold", "endgame_aversion", "num_games", "seed", "targets",
+        ],
+        help = "Play a benchmark Track by id (its game, strategy and targets)"
+    )]
+    pub track: Option<Track>,
+}
+
+impl SimulateArgs {
+    /// The length to monomorphize over.
+    pub fn dispatch_length(&self) -> usize {
+        match self.track {
+            Some(track) => track.game.word_length(),
+            None => self.common.dispatch_length(),
+        }
+    }
+
+    /// What these arguments ask to play.
+    pub fn config(&self) -> RunConfig {
+        if let Some(track) = self.track {
+            return track.config();
+        }
+        let targets = match (&self.targets, self.num_games) {
+            (Some(path), _) => Targets::File(path.clone()),
+            (None, Some(n)) => Targets::Sample { n, seed: self.seed },
+            (None, None) => Targets::Full,
+        };
+        self.common.config(targets)
+    }
 }
 
 #[derive(clap::Args, Debug)]
@@ -221,6 +271,10 @@ fn parse_word_length(s: &str) -> anyhow::Result<usize> {
         }
         .into())
     }
+}
+
+fn parse_track(s: &str) -> anyhow::Result<Track> {
+    Track::find(s).ok_or_else(|| CliError::UnknownTrack(s.to_owned()).into())
 }
 
 fn parse_temperature(s: &str) -> anyhow::Result<f64> {
@@ -303,20 +357,90 @@ mod profile_tests {
     }
 
     #[test]
-    fn a_profile_plays_hard_and_ultrahard() {
-        let hard = common(&["--profile", "wordle", "--hard"]).unwrap();
-        assert_eq!(hard.strategy().pool, GuessPool::Hard);
-        let ultra = common(&["--profile", "wordle", "--ultrahard"]).unwrap();
-        assert_eq!(ultra.strategy().pool, GuessPool::Ultrahard);
+    fn a_profile_plays_every_pool() {
+        for (flag, pool) in [
+            ("all", GuessPool::All),
+            ("hard", GuessPool::Hard),
+            ("ultrahard", GuessPool::Ultrahard),
+        ] {
+            let common = common(&["--profile", "wordle", "--pool", flag]).unwrap();
+            assert_eq!(common.strategy().pool, pool);
+        }
     }
 
     #[test]
-    fn hard_and_ultrahard_conflict_and_the_old_flag_is_gone() {
-        assert!(common(&["--profile", "wordle", "--hard", "--ultrahard"]).is_err());
-        assert!(common(&["--profile", "wordle", "--hard-mode"]).is_err());
+    fn the_pool_defaults_to_all_and_the_old_flags_are_gone() {
         assert_eq!(
             common(&["--profile", "wordle"]).unwrap().strategy().pool,
             GuessPool::All
         );
+        for old in ["--hard", "--ultrahard", "--hard-mode"] {
+            assert!(common(&["--profile", "wordle", old]).is_err(), "{old}");
+        }
+        assert!(common(&["--profile", "wordle", "--pool", "easy"]).is_err());
+    }
+}
+
+#[cfg(test)]
+mod track_tests {
+    use super::*;
+    use crate::config::Targets;
+
+    fn simulate(args: &[&str]) -> Result<SimulateArgs, clap::Error> {
+        match Cli::try_parse_from(["lex", "simulate"].into_iter().chain(args.iter().copied()))?
+            .command
+        {
+            Command::Simulate(a) => Ok(a),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn a_track_stands_alone_and_plays_its_config() {
+        let args = simulate(&["--track", "wordle-hard"]).unwrap();
+        assert_eq!(args.config(), Track::find("wordle-hard").unwrap().config());
+        assert_eq!(args.dispatch_length(), 5);
+        assert_eq!(
+            simulate(&["--track", "russian-8"])
+                .unwrap()
+                .dispatch_length(),
+            8
+        );
+    }
+
+    #[test]
+    fn a_track_conflicts_with_game_pool_and_target_flags() {
+        for extra in [
+            &["--lang", "english"][..],
+            &["-l", "5"],
+            &["--profile", "wordle"],
+            &["--pool", "hard"],
+            &["--temperature", "2"],
+            &["-n", "10"],
+            &["--seed", "1"],
+            &["--targets", "t.txt"],
+        ] {
+            let args: Vec<&str> = ["--track", "english-5"]
+                .into_iter()
+                .chain(extra.iter().copied())
+                .collect();
+            assert!(simulate(&args).is_err(), "{extra:?}");
+        }
+        assert!(simulate(&["--track", "english-5", "-o", "-"]).is_ok());
+        assert!(simulate(&["--track", "english-5ultrahard"]).is_err());
+    }
+
+    #[test]
+    fn flags_become_a_run_config() {
+        let sampled =
+            simulate(&["-l", "5", "--lang", "english", "-n", "7", "--seed", "3"]).unwrap();
+        assert_eq!(sampled.config().targets, Targets::Sample { n: 7, seed: 3 });
+        let full = simulate(&["-l", "5", "--lang", "english", "--pool", "hard"]).unwrap();
+        assert_eq!(full.config().targets, Targets::Full);
+        assert_eq!(full.config().strategy.pool, GuessPool::Hard);
+        let file = simulate(&["-l", "5", "--lang", "english", "--targets", "t.txt"]).unwrap();
+        assert_eq!(file.config().targets, Targets::File("t.txt".into()));
+        assert!(simulate(&["-l", "5", "--lang", "english", "--targets", "t", "-n", "1"]).is_err());
+        assert!(simulate(&["-l", "5", "--lang", "english", "--seed", "1"]).is_err());
     }
 }

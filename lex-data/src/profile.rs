@@ -1,7 +1,7 @@
 //! The built-in Profile registry: which lists a Profile is made of and the checksums they must
 //! hash to.
 
-use strum::{Display, EnumString, VariantNames};
+use strum::{Display, EnumString, VariantArray};
 
 use crate::language::Language;
 use crate::word::{Word, WordSet};
@@ -29,7 +29,7 @@ pub struct ProfileSpec {
     pub guess_only: ListSpec,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantNames)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantArray)]
 #[strum(ascii_case_insensitive)]
 pub enum Profile {
     /// The original game: 2,315 answers, 12,972-word Guess pool.

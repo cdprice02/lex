@@ -3,6 +3,7 @@ use std::io::{BufRead, Write};
 use lex_core::{Correctness, Guess, Guesser, WordCorrectness};
 use lex_data::Word;
 
+use crate::config::Targets;
 use crate::lists::Source;
 
 use crate::cli::AssistArgs;
@@ -12,10 +13,11 @@ use crate::cli::AssistArgs;
 /// candidate set until solved (or until the candidates are exhausted, e.g.
 /// when the day's target is missing from our corpus).
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
+    let config = args.common.config(Targets::Full);
     let (lists, source) =
-        Source::load::<N>(&args.common, &lex_data::DataDir::new(&args.common.data_dir))?;
+        Source::load::<N>(&config, &lex_data::DataDir::new(&args.common.data_dir))?;
     let guess_pool = lists.pool.clone();
-    let mut guesser = Guesser::new(lists.pool, lists.answers, args.common.strategy());
+    let mut guesser = Guesser::new(lists.pool, lists.answers, config.strategy);
 
     let stdin = std::io::stdin();
     let mut lines = stdin.lock().lines();
