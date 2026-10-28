@@ -48,6 +48,9 @@ pub fn bench(args: &BenchArgs) -> anyhow::Result<()> {
     if !args.dry_run && !args.calibrate {
         bail!("pass --dry-run or --calibrate; the suite run is not built yet");
     }
+    if args.resume && !args.calibrate {
+        bail!("--resume only applies to --calibrate");
+    }
     if args.force && !args.calibrate {
         bail!("--force only applies to --calibrate");
     }
