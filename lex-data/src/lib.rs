@@ -9,6 +9,7 @@ mod data_dir;
 mod error;
 mod header;
 mod http;
+mod le;
 mod list;
 mod ngrams;
 mod parse;
@@ -46,15 +47,18 @@ pub use seq_macro;
 /// (`MIN_WORD_LENGTH..=MAX_WORD_LENGTH`), monomorphizing `$f` for each `N`.
 ///
 /// `$f` must be an in-scope function generic over `const N: usize`; `$len` is
-/// the runtime word length; `$args` is passed through unchanged. Lengths
-/// outside the supported range panic — validate at the CLI boundary first.
+/// the runtime word length; `$args` is passed through unchanged. `$f` returns
+/// a `Result` whose error converts from [`LexDataError`], which a length
+/// outside the supported range becomes as `UnsupportedWordLength`.
 #[macro_export]
 macro_rules! match_word_length {
     ($f:ident, $len:expr, $args:expr) => {
         $crate::seq_macro::seq!(N in 3..=21 {
             match $len {
                 #(N => $f::<N>($args),)*
-                _ => ::std::unreachable!("word length outside supported range"),
+                other => ::std::result::Result::Err(
+                    $crate::LexDataError::UnsupportedWordLength(other).into(),
+                ),
             }
         })
     };

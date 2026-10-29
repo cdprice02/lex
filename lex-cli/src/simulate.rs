@@ -82,7 +82,6 @@ fn run_n<const N: usize>(
     for word in targets {
         let result = play(word, &mut guesser, Vec::new())?;
         let label = match result.num_guesses() {
-            0 => unreachable!("game must have at least one guess to complete"),
             1 => "Genius",
             2 => "Magnificent",
             3 => "Impressive",

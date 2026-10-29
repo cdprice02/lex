@@ -13,6 +13,6 @@ pub fn clear(args: &ClearArgs) -> anyhow::Result<()> {
         (true, lang, _) => dir.clear_books(lang, args.word_length),
         (false, Some(lang), _) => dir.clear(lang, args.word_length),
         (false, None, Some(profile)) => dir.clear_profile(profile),
-        (false, None, None) => unreachable!("clap requires --lang, --profile or --books"),
+        (false, None, None) => anyhow::bail!("name --lang, --profile or --books"),
     }
 }

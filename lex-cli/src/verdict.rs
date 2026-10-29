@@ -314,7 +314,7 @@ fn compare(
         }
         let mut status = match (b, h) {
             (None, Some(_)) => "new".to_owned(),
-            (Some(_), None) => "missing".to_owned(),
+            (Some(_), None) | (None, None) => "missing".to_owned(),
             (Some(b), Some(h)) if !b.same_data(h) => {
                 if counts {
                     excluded += 1;
@@ -338,7 +338,6 @@ fn compare(
                 .to_owned()
             }
             (Some(_), Some(_)) => "not judged".to_owned(),
-            (None, None) => unreachable!("ids come from the two sets"),
         };
         if stale {
             status.push_str(" (stale)");
@@ -530,9 +529,10 @@ fn run(args: &VerdictArgs) -> Result<i32> {
 /// Runs the subcommand and returns its exit code: 0 accept, unchanged, rebaseline or new;
 /// 1 reject, stale or a stale README; 2 bad input.
 #[must_use]
-pub fn command(args: &VerdictArgs) -> i32 {
-    run(args).unwrap_or_else(|e| {
+pub fn command(args: &VerdictArgs) -> std::process::ExitCode {
+    let code = run(args).unwrap_or_else(|e| {
         eprintln!("error: {e:#}");
         2
-    })
+    });
+    std::process::ExitCode::from(u8::try_from(code).unwrap_or(2))
 }

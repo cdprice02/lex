@@ -169,7 +169,7 @@ fn clear(dir: &DataDir, args: &[&str]) {
     .unwrap()
     .command
     else {
-        unreachable!()
+        panic!("`clear` parses to the clear command")
     };
     lex_cli::clear::clear(&args).unwrap();
 }

@@ -413,10 +413,7 @@ mod benches {
     #[divan::bench]
     fn guess_entropy_10_words(b: Bencher) {
         let pairs: Vec<(Word<5>, u64)> = (0..10)
-            .map(|i| {
-                let s: String = [char::from(b'a' + i as u8); 5].iter().collect();
-                (Word::<5>::try_from(s.as_str()).unwrap(), 10 - i as u64)
-            })
+            .map(|i| (Word::from([char::from(b'a' + i as u8); 5]), 10 - i as u64))
             .collect();
         let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs));
         let guess = *pool.code(0);

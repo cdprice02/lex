@@ -110,13 +110,16 @@ impl DataDir {
         self.path.join("profiles").join(profile.to_string())
     }
 
+    /// Directory holding the cached ngrams binary files for `lang`.
+    #[must_use]
+    pub fn ngrams_dir(&self, lang: Language) -> PathBuf {
+        self.path.join("ngrams").join(lang.lang_code())
+    }
+
     /// Path to the cached ngrams binary file for `lang` at word length `n`.
     #[must_use]
     pub fn ngrams_path(&self, lang: Language, n: usize) -> PathBuf {
-        self.path
-            .join("ngrams")
-            .join(lang.lang_code())
-            .join(format!("{n}.bin"))
+        self.ngrams_dir(lang).join(format!("{n}.bin"))
     }
 
     /// Path to the cached Wiktionary word list for `lang`.

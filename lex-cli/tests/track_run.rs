@@ -50,7 +50,7 @@ fn track_flag_and_run_of_its_config_give_equal_reports() {
     .unwrap()
     .command
     else {
-        unreachable!()
+        panic!("`simulate` parses to the simulate command")
     };
 
     let track = Track::find("english-5").unwrap();

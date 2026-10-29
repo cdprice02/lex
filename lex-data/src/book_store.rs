@@ -32,6 +32,7 @@ use sha2::{Digest, Sha256};
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
 use crate::language::Language;
+use crate::le::array_at;
 use crate::store::hex;
 
 /// File magic identifying an Opening book.
@@ -216,11 +217,7 @@ fn encode(key: &BookKey, book: &StoredBook) -> anyhow::Result<Vec<u8>> {
     let mut out = Vec::with_capacity(header_len + body.len());
     out.extend_from_slice(&MAGIC);
     out.extend_from_slice(&VERSION.to_le_bytes());
-    out.extend_from_slice(
-        &u16::try_from(key.word_length)
-            .expect("word length fits in u16")
-            .to_le_bytes(),
-    );
+    out.extend_from_slice(&u16::try_from(key.word_length)?.to_le_bytes());
     out.extend_from_slice(&u32::try_from(header_len)?.to_le_bytes());
     out.extend_from_slice(&(book.nodes.len() as u64).to_le_bytes());
     out.extend_from_slice(&Sha256::digest(&body));
@@ -242,25 +239,25 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
             format!("truncated header ({} bytes, need {FIXED_LEN})", bytes.len()),
         ));
     }
-    let version = u16::from_le_bytes(bytes[4..6].try_into().unwrap());
+    let version = u16::from_le_bytes(array_at(bytes, 4));
     if version != VERSION {
         return Err(corrupt(
             path,
             format!("unsupported format version {version} (this build reads {VERSION})"),
         ));
     }
-    let header_len = u32::from_le_bytes(bytes[8..12].try_into().unwrap()) as usize;
-    let key_len = u32::from_le_bytes(bytes[52..56].try_into().unwrap()) as usize;
+    let header_len = u32::from_le_bytes(array_at(bytes, 8)) as usize;
+    let key_len = u32::from_le_bytes(array_at(bytes, 52)) as usize;
     if header_len != FIXED_LEN + key_len || bytes.len() < header_len {
         return Err(corrupt(path, "truncated or inconsistent header"));
     }
     let key: BookKey = postcard::from_bytes(&bytes[FIXED_LEN..header_len])
         .map_err(|e| corrupt(path, format!("unreadable key: {e}")))?;
     Ok(Header {
-        word_length: u16::from_le_bytes(bytes[6..8].try_into().unwrap()),
+        word_length: u16::from_le_bytes(array_at(bytes, 6)),
         body_offset: header_len,
-        node_count: u64::from_le_bytes(bytes[12..20].try_into().unwrap()),
-        checksum: bytes[20..52].try_into().unwrap(),
+        node_count: u64::from_le_bytes(array_at(bytes, 12)),
+        checksum: array_at(bytes, 20),
         key,
     })
 }
@@ -300,7 +297,7 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     if got < FIXED_LEN {
         return Err(corrupt(path, "truncated header").into());
     }
-    let key_len = u32::from_le_bytes(fixed[52..56].try_into().unwrap()) as usize;
+    let key_len = u32::from_le_bytes(array_at(&fixed, 52)) as usize;
     let mut bytes = fixed.to_vec();
     bytes.resize(FIXED_LEN + key_len, 0);
     file.read_exact(&mut bytes[FIXED_LEN..])
@@ -330,10 +327,13 @@ impl DataDir {
     /// Path of the book for `key`: `books/<lang>/<N>/<key-hash>.bin`.
     #[must_use]
     pub fn book_path(&self, lang: Language, key: &BookKey) -> PathBuf {
-        self.books_root()
-            .join(lang.lang_code())
-            .join(key.word_length.to_string())
+        self.book_dir(lang, key.word_length)
             .join(format!("{}.bin", key.hash()))
+    }
+
+    /// Directory holding the books for `lang` at word length `n`.
+    fn book_dir(&self, lang: Language, n: usize) -> PathBuf {
+        self.books_root().join(lang.lang_code()).join(n.to_string())
     }
 
     /// Reads the book for `key`. A file that is present but fails its checksum, parse, or key
@@ -341,7 +341,7 @@ impl DataDir {
     pub fn read_book(&self, lang: Language, key: &BookKey) -> anyhow::Result<BookLookup> {
         let path = self.book_path(lang, key);
         if !path.exists() {
-            let nearest = book_files(path.parent().expect("a book path has a parent"))
+            let nearest = book_files(&self.book_dir(lang, key.word_length))
                 .iter()
                 .filter_map(|p| read_key(p).ok())
                 .map(|k| key.differing_fields(&k))
@@ -365,10 +365,10 @@ impl DataDir {
         book: &StoredBook,
     ) -> anyhow::Result<BookFile> {
         let path = self.book_path(lang, key);
-        let dir = path.parent().expect("a book path has a parent");
-        std::fs::create_dir_all(dir)?;
+        let dir = self.book_dir(lang, key.word_length);
+        std::fs::create_dir_all(&dir)?;
         let bytes = encode(key, book)?;
-        let mut tmp = tempfile::NamedTempFile::new_in(dir)?;
+        let mut tmp = tempfile::NamedTempFile::new_in(&dir)?;
         tmp.write_all(&bytes)?;
         tmp.persist(&path)
             .with_context(|| format!("renaming the opening book into {}", path.display()))?;

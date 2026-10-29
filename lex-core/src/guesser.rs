@@ -239,16 +239,14 @@ mod benches {
     fn make_wordset(n: usize) -> Vec<(Word<5>, u64)> {
         (0..n)
             .map(|i| {
-                let s: String = [
+                let word = Word::from([
                     char::from(b'a' + (i % 26) as u8),
                     char::from(b'a' + ((i / 26) % 26) as u8),
                     char::from(b'a' + ((i / 676) % 26) as u8),
                     char::from(b'a' + ((i / 17576) % 26) as u8),
                     char::from(b'a' + ((i / 456_976) % 26) as u8),
-                ]
-                .iter()
-                .collect();
-                (Word::<5>::try_from(s.as_str()).unwrap(), (n - i) as u64)
+                ]);
+                (word, (n - i) as u64)
             })
             .collect()
     }

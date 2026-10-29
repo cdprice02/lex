@@ -161,7 +161,7 @@ fn write_bucket(
     words: &HashMap<String, u64>,
 ) -> anyhow::Result<()> {
     let path = dir.ngrams_path(lang, n);
-    std::fs::create_dir_all(path.parent().unwrap())?;
+    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
     entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));
     let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
@@ -172,7 +172,7 @@ fn write_bucket(
         }
         records.extend_from_slice(&freq.to_le_bytes());
     }
-    let header = Header::for_records(n, record_size, &records);
+    let header = Header::for_records(n, record_size, &records)?;
     let mut writer = BufWriter::new(std::fs::File::create(&path)?);
     writer.write_all(&header.encode())?;
     writer.write_all(&records)?;

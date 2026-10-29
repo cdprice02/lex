@@ -88,18 +88,19 @@ pub struct Provenance {
     source_sha256: String,
 }
 
+/// Directory holding the word lists and their metadata.
+fn dict_dir(data_dir: &Path) -> std::path::PathBuf {
+    data_dir.join("dicts")
+}
+
 /// Path of the sorted word list for `lang`.
 pub fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
-    data_dir
-        .join("dicts")
-        .join(format!("{}.txt", lang.lang_code()))
+    dict_dir(data_dir).join(format!("{}.txt", lang.lang_code()))
 }
 
 /// Path of the metadata for `lang`.
 fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
-    data_dir
-        .join("dicts")
-        .join(format!("{}.meta.json", lang.lang_code()))
+    dict_dir(data_dir).join(format!("{}.meta.json", lang.lang_code()))
 }
 
 /// Downloads the KAIKKI Wiktionary extract for `lang`, extracts all valid headwords
@@ -130,7 +131,7 @@ pub fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let word_count = words.len();
 
     let txt_path = dict_txt_path(data_dir, lang);
-    std::fs::create_dir_all(txt_path.parent().unwrap())?;
+    std::fs::create_dir_all(dict_dir(data_dir))?;
     let mut sorted: Vec<&str> = words.iter().map(std::string::String::as_str).collect();
     sorted.sort_unstable();
     let mut writer = BufWriter::new(std::fs::File::create(&txt_path)?);

@@ -17,6 +17,8 @@
 
 use std::path::Path;
 
+use crate::le::array_at;
+
 use anyhow::Context;
 use sha2::{Digest, Sha256};
 
@@ -45,13 +47,17 @@ pub struct Header {
 impl Header {
     /// Header for a records region: counts `records.len() / record_size` records and
     /// hashes the bytes.
-    pub(crate) fn for_records(word_len: usize, record_size: usize, records: &[u8]) -> Self {
-        Self {
-            word_len: u16::try_from(word_len).expect("word length fits in u16"),
+    pub(crate) fn for_records(
+        word_len: usize,
+        record_size: usize,
+        records: &[u8],
+    ) -> Result<Self, std::num::TryFromIntError> {
+        Ok(Self {
+            word_len: u16::try_from(word_len)?,
             records_offset: HEADER_LEN as u32,
             record_count: (records.len() / record_size) as u64,
             checksum: Sha256::digest(records).into(),
-        }
+        })
     }
 
     /// The header as `HEADER_LEN` little-endian bytes.
@@ -84,21 +90,21 @@ impl Header {
                 bytes.len()
             )));
         }
-        let version = u16::from_le_bytes(bytes[4..6].try_into().unwrap());
+        let version = u16::from_le_bytes(array_at(bytes, 4));
         if version != VERSION {
             return Err(corrupt(format!(
                 "unsupported format version {version} (this build reads {VERSION})"
             )));
         }
-        let header_len = u32::from_le_bytes(bytes[8..12].try_into().unwrap());
+        let header_len = u32::from_le_bytes(array_at(bytes, 8));
         if (header_len as usize) < HEADER_LEN {
             return Err(corrupt(format!("header length {header_len} is too small")));
         }
         Ok(Self {
-            word_len: u16::from_le_bytes(bytes[6..8].try_into().unwrap()),
+            word_len: u16::from_le_bytes(array_at(bytes, 6)),
             records_offset: header_len,
-            record_count: u64::from_le_bytes(bytes[12..20].try_into().unwrap()),
-            checksum: bytes[20..52].try_into().unwrap(),
+            record_count: u64::from_le_bytes(array_at(bytes, 12)),
+            checksum: array_at(bytes, 20),
         })
     }
 
@@ -125,7 +131,7 @@ mod tests {
     use super::*;
 
     fn sample() -> Header {
-        Header::for_records(5, 28, &[7u8; 28 * 3])
+        Header::for_records(5, 28, &[7u8; 28 * 3]).unwrap()
     }
 
     #[test]

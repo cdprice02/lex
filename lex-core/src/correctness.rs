@@ -75,14 +75,16 @@ impl<const N: usize> WordCorrectness<N> {
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
         // Index each letter by where it first appears in `word`, else in `guess`: at most 2N
         // distinct values, so no Alphabet is needed to compare a pair.
-        let first = |c: char| {
+        // `at` is where `c` sits in its own word, so it stands in for the position lookup that
+        // cannot miss
+        let first = |c: char, at: usize| {
             word.iter()
                 .position(|&w| w == c)
-                .or_else(|| guess.iter().position(|&g| g == c).map(|i| N + i))
-                .expect("c came from one of the two words") as u8
+                .unwrap_or_else(|| N + guess.iter().position(|&g| g == c).unwrap_or(at))
+                as u8
         };
-        let word_code: Code<N> = std::array::from_fn(|i| first(word[i]));
-        let guess_code: Code<N> = std::array::from_fn(|i| first(guess[i]));
+        let word_code: Code<N> = std::array::from_fn(|i| first(word[i], i));
+        let guess_code: Code<N> = std::array::from_fn(|i| first(guess[i], i));
         Self::from_ordinal(pattern_ordinal(&word_code, &guess_code, &mut [0; 256]))
     }
 
@@ -209,15 +211,15 @@ mod benches {
 
     #[divan::bench]
     fn correct_no_overlap(b: Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("fling").unwrap();
+        let word = Word::from(['c', 'r', 'a', 't', 'e']);
+        let guess = Word::from(['f', 'l', 'i', 'n', 'g']);
         b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
     #[divan::bench]
     fn correct_partial_match(b: Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("track").unwrap();
+        let word = Word::from(['c', 'r', 'a', 't', 'e']);
+        let guess = Word::from(['t', 'r', 'a', 'c', 'k']);
         b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 
@@ -258,8 +260,8 @@ mod benches {
 
     #[divan::bench]
     fn correct_perfect_match(b: Bencher) {
-        let word = Word::<5>::try_from("crate").unwrap();
-        let guess = Word::<5>::try_from("crate").unwrap();
+        let word = Word::from(['c', 'r', 'a', 't', 'e']);
+        let guess = Word::from(['c', 'r', 'a', 't', 'e']);
         b.bench(|| black_box(WordCorrectness::<5>::correct(word, guess)));
     }
 }

@@ -419,12 +419,15 @@ mod profile_tests {
     use super::*;
 
     fn common(args: &[&str]) -> Result<CommonArgs, clap::Error> {
-        match Cli::try_parse_from(["lex", "assist"].into_iter().chain(args.iter().copied()))?
-            .command
-        {
-            Command::Assist(a) => Ok(a.common),
-            _ => unreachable!(),
-        }
+        let Command::Assist(a) =
+            Cli::try_parse_from(["lex", "assist"].into_iter().chain(args.iter().copied()))?.command
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`assist` parsed to another command",
+            ));
+        };
+        Ok(a.common)
     }
 
     #[test]
@@ -483,12 +486,16 @@ mod track_tests {
     use crate::config::Targets;
 
     fn simulate(args: &[&str]) -> Result<SimulateArgs, clap::Error> {
-        match Cli::try_parse_from(["lex", "simulate"].into_iter().chain(args.iter().copied()))?
-            .command
-        {
-            Command::Simulate(a) => Ok(a),
-            _ => unreachable!(),
-        }
+        let Command::Simulate(a) =
+            Cli::try_parse_from(["lex", "simulate"].into_iter().chain(args.iter().copied()))?
+                .command
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`simulate` parsed to another command",
+            ));
+        };
+        Ok(a)
     }
 
     #[test]
@@ -546,18 +553,21 @@ mod book_tests {
     use super::*;
 
     fn build(args: &[&str]) -> Result<BookBuildArgs, clap::Error> {
-        match Cli::try_parse_from(
+        let Command::Book(BookArgs {
+            command: BookCommand::Build(a),
+        }) = Cli::try_parse_from(
             ["lex", "book", "build"]
                 .into_iter()
                 .chain(args.iter().copied()),
         )?
         .command
-        {
-            Command::Book(BookArgs {
-                command: BookCommand::Build(a),
-            }) => Ok(a),
-            _ => unreachable!(),
-        }
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`book build` parsed to another command",
+            ));
+        };
+        Ok(a)
     }
 
     #[test]

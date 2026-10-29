@@ -9,6 +9,7 @@ use std::sync::Arc;
 use memmap2::{Mmap, MmapMut};
 
 use crate::error::LexDataError;
+use crate::le::array_at;
 
 /// A word of exactly `N` letters.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -33,10 +34,11 @@ impl<const N: usize> TryFrom<&str> for Word<N> {
                 got: chars_count,
             });
         }
-        let mut chars = s.chars();
-        Ok(Self::from(std::array::from_fn(|_| {
-            chars.next().expect("N chars as checked above")
-        })))
+        let mut letters = ['\0'; N];
+        for (slot, ch) in letters.iter_mut().zip(s.chars()) {
+            *slot = ch;
+        }
+        Ok(Self::from(letters))
     }
 }
 
@@ -78,13 +80,21 @@ impl<const N: usize> RawRecord<'_, N> {
     /// Bytes of one record.
     pub(crate) const SIZE: usize = Self::CHAR_BYTES * N + Self::FREQ_BYTES;
 
+    /// The word with any invalid stored scalar replaced by U+FFFD, for records already validated
+    /// at load.
+    pub(crate) fn word_lossy(&self) -> Word<N> {
+        Word::from(std::array::from_fn(|i| {
+            char::from_u32(u32::from_le_bytes(array_at(self.0, i * Self::CHAR_BYTES)))
+                .unwrap_or(char::REPLACEMENT_CHARACTER)
+        }))
+    }
+
     /// Returns `None` if any stored scalar is not a valid Unicode scalar value.
     pub(crate) fn word(&self) -> Option<Word<N>> {
         let mut chars = ['\0'; N];
         for (i, char_slot) in chars.iter_mut().enumerate() {
             let off = i * Self::CHAR_BYTES;
-            let scalar =
-                u32::from_le_bytes(self.0[off..off + Self::CHAR_BYTES].try_into().unwrap());
+            let scalar = u32::from_le_bytes(array_at(self.0, off));
             *char_slot = char::from_u32(scalar)?;
         }
         Some(Word::from(chars))
@@ -93,7 +103,7 @@ impl<const N: usize> RawRecord<'_, N> {
     /// The word's frequency.
     pub(crate) fn freq(&self) -> u64 {
         let off = Self::CHAR_BYTES * N;
-        u64::from_le_bytes(self.0[off..off + Self::FREQ_BYTES].try_into().unwrap())
+        u64::from_le_bytes(array_at(self.0, off))
     }
 }
 
@@ -124,7 +134,7 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
         self.index += 1;
         let record =
             RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
-        Some(record.word().expect("records are validated at load"))
+        Some(record.word_lossy())
     }
 
     fn size_hint(&self) -> (usize, Option<usize>) {
@@ -260,10 +270,7 @@ impl<const N: usize> WordSet<N> {
         self.offsets.iter().map(|&off| {
             let record =
                 RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
-            (
-                record.word().expect("records are validated at load"),
-                record.freq(),
-            )
+            (record.word_lossy(), record.freq())
         })
     }
 
@@ -342,16 +349,14 @@ mod benches {
     fn make_wordset(n: usize) -> WordSet<5> {
         let frequencies = (0..n)
             .map(|i| {
-                let s: String = [
+                let word = Word::from([
                     char::from(b'a' + (i % 26) as u8),
                     char::from(b'a' + ((i / 26) % 26) as u8),
                     char::from(b'a' + ((i / 676) % 26) as u8),
                     char::from(b'a' + ((i / 17576) % 26) as u8),
                     char::from(b'a' + ((i / 456_976) % 26) as u8),
-                ]
-                .iter()
-                .collect();
-                (Word::<5>::try_from(s.as_str()).unwrap(), (n - i) as u64)
+                ]);
+                (word, (n - i) as u64)
             })
             .collect::<HashMap<Word<5>, u64>>();
         WordSet::from_frequency_map(frequencies)
