@@ -26,6 +26,28 @@ pub enum Command {
     Compare(CompareArgs),
     /// Delete a cached corpus or a fetched Profile so it is rebuilt on next use (the Wiktionary dictionary is kept)
     Clear(ClearArgs),
+    /// Judge a head set of Track snapshots against a base set, or refresh the README table
+    #[command(hide = true)]
+    Verdict(VerdictArgs),
+}
+
+#[derive(clap::Args, Debug)]
+pub struct VerdictArgs {
+    /// Snapshot directory of the base
+    #[arg(required_unless_present = "readme")]
+    pub base: Option<PathBuf>,
+    /// Snapshot directory of the head
+    #[arg(requires = "base")]
+    pub head: Option<PathBuf>,
+    /// Rewrite the Tracks table of the README from this snapshot directory
+    #[arg(long, value_name = "SNAP_DIR", conflicts_with_all = ["base", "head"])]
+    pub readme: Option<PathBuf>,
+    /// With --readme, change nothing and fail when the README is stale
+    #[arg(long, requires = "readme")]
+    pub check: bool,
+    /// README file that --readme edits
+    #[arg(long, requires = "readme", default_value = "benchmarks/README.md")]
+    pub file: PathBuf,
 }
 
 #[derive(clap::Args, Debug)]

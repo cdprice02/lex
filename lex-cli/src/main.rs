@@ -16,6 +16,7 @@ fn main() -> anyhow::Result<()> {
             lex_data::match_word_length!(assist, args.common.dispatch_length(), &args)
         }
         Command::Compare(args) => compare_reports(&args),
+        Command::Verdict(args) => std::process::exit(lex_cli::verdict::command(&args)),
         Command::Clear(args) => {
             let dir = lex_data::DataDir::new(&args.data_dir);
             match (args.lang, args.profile) {

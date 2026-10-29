@@ -1,0 +1,25 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: FIXTURE_DIGEST
+---
+{
+  "corpus_sha256": "aaaa00000000",
+  "profile": {
+    "answers_sha256": "b1",
+    "guess_only_sha256": "b2"
+  },
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "mean": 3.4
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "mean": 3.49
+    }
+  },
+  "track": "wordle"
+}
