@@ -70,10 +70,10 @@ impl Language {
     pub const fn max_supported_length(self) -> usize {
         let largest = match self {
             Language::English => 21,
-            Language::French => 21,
+            Language::French => 20,
             Language::German => 21,
-            Language::Spanish => 21,
-            Language::Italian => 21,
+            Language::Spanish => 18,
+            Language::Italian => 19,
             Language::Russian => 21,
         };
         if largest < crate::MAX_WORD_LENGTH {
