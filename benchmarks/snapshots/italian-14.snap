@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "italian",
+      "length": 14
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "d355d11e5b352fbeff64452b7a8df1c3f3f5dae40322d1cfb50eaecc4a285e5e",
+  "first_guess": "rinascimentale",
+  "games_sha256": "8712fca693384ce1f2e347b20a6c453998676c3815318c02350b2bf7d42c40c2",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8009262353978761,
+        "3": 0.1990737646021242
+      },
+      "mean": 2.1990737646021246
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.7800000000000005,
+        "3": 0.22000000000000006
+      },
+      "mean": 2.2200000000000006
+    }
+  },
+  "track": "italian-14"
+}

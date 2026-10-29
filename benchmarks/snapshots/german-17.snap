@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "german",
+      "length": 17
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "7e1123589995cb99cf9919583e9cd393c5430151f77dbc2776aa21a5ec4bfb71",
+  "first_guess": "selbsterfahrungen",
+  "games_sha256": "71fbe170174c18d37a182d4324817f39a83de21c2a9df9097113a849869cf8d0",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9210032466938834,
+        "3": 0.07899675330611688
+      },
+      "mean": 2.078996753306117
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9200000000000006,
+        "3": 0.08
+      },
+      "mean": 2.0800000000000014
+    }
+  },
+  "track": "german-17"
+}

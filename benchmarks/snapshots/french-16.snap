@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "french",
+      "length": 16
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "b087df8ec88c81562aa46e2876b90b9327e2920482930fac91952c7b99fcf12a",
+  "first_guess": "récapituleraient",
+  "games_sha256": "25dafa0fc7700bdd494e552ec2a0f2680762206b7d7b8f949286db16c391db71",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9116790927645587,
+        "3": 0.08832090723544164
+      },
+      "mean": 2.0883209072354423
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8800000000000006,
+        "3": 0.11999999999999998
+      },
+      "mean": 2.1200000000000014
+    }
+  },
+  "track": "french-16"
+}

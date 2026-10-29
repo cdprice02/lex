@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 19
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "14636711bef411ebd0e3ba9980a5547d2b8c2fd63191b79770e7b1c2f7a5528f",
+  "first_guess": "microconidiogenesis",
+  "games_sha256": "95c09f20450a20da5b25a5efe7c5a6b1ed325f8f206656c5d5099895bc277f4a",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.974444358092574,
+        "3": 0.025555641907425916
+      },
+      "mean": 2.025555641907425
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9800000000000006,
+        "3": 0.02
+      },
+      "mean": 2.0200000000000014
+    }
+  },
+  "track": "english-19"
+}

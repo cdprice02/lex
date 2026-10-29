@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "german",
+      "length": 13
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "95bc5cb66fb0f1bf064ddd9a38e09cfc14ce06b62ea9c0e0c4a05d994329b59e",
+  "first_guess": "herausfliegen",
+  "games_sha256": "dcd67e0a30aab0de90f70018b149daa9bf3ca0f67e5bea5e7d3a33d6f4aebb71",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.5134476470745183,
+        "3": 0.48543172088927933,
+        "4": 0.001120632036201769
+      },
+      "mean": 2.487672984961682
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.46000000000000035,
+        "3": 0.5380000000000004,
+        "4": 0.002
+      },
+      "mean": 2.541999999999989
+    }
+  },
+  "track": "german-13"
+}

@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 16
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "c17f4d0198792223a2b1eba1763dbf16ae339fa6ca006afd3ca72974fd3a7a01",
+  "first_guess": "mercaptoethanols",
+  "games_sha256": "f5bd4991679fb5d5d164b97738986b702890b6855b3758159359c34a90381729",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8968184119806855,
+        "3": 0.10318158801931483
+      },
+      "mean": 2.1031815880193148
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9000000000000006,
+        "3": 0.09999999999999999
+      },
+      "mean": 2.1000000000000014
+    }
+  },
+  "track": "english-16"
+}

@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "french",
+      "length": 20
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "7d38b805c29c47543b4b01e99ed1dd3647d6573677c0847665340027aa44163b",
+  "first_guess": "pneumorétropéritoine",
+  "games_sha256": "befaf18dfedcb318e35d9c8c8adafdd935fc430748ca924dd0c08c0a00805c83",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9941641159880916,
+        "3": 0.005835884011908037
+      },
+      "mean": 2.005835884011907
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9900000000000007,
+        "3": 0.01
+      },
+      "mean": 2.010000000000001
+    }
+  },
+  "track": "french-20"
+}
