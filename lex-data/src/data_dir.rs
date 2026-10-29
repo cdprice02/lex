@@ -61,9 +61,11 @@ impl DataDir {
     }
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
-    /// language ngrams directory (None). Does not remove the Wiktionary dict.
+    /// language ngrams directory (None), with the Opening books of the same scope. Does not remove
+    /// the Wiktionary dict.
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
-        store::clear(self, lang, n)
+        store::clear(self, lang, n)?;
+        self.clear_books(Some(lang), n)
     }
 
     /// Loads a Profile: its lists (fetched and checksum-verified on first use) against the
@@ -88,8 +90,10 @@ impl DataDir {
         )
     }
 
-    /// Removes a Profile's stored lists so they are fetched again on next use.
+    /// Removes a Profile's stored lists so they are fetched again on next use, and the Opening
+    /// books built for it.
     pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<()> {
+        self.clear_profile_books(&profile.to_string())?;
         std::fs::remove_dir_all(self.profile_dir(profile))
             .with_context(|| format!("removing profile {profile}"))
     }

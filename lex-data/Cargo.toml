@@ -19,6 +19,7 @@ sha2 = "0.11.1"
 time = { version = "0.3.55", features = ["formatting"] }
 
 tempfile = "3"
+postcard = { version = "1", default-features = false, features = ["use-std"] }
 divan = { version = "0.1", optional = true }
 
 [dev-dependencies]

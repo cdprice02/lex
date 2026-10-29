@@ -6,6 +6,7 @@
 pub mod language;
 pub mod word;
 
+mod book_store;
 mod data_dir;
 mod error;
 mod header;
@@ -19,6 +20,7 @@ mod retry;
 mod store;
 mod wiktionary;
 
+pub use book_store::{BookFile, BookKey, BookLookup, ProfileKey, StoredBook, StoredNode};
 pub use data_dir::DataDir;
 pub use error::LexDataError;
 pub use language::Language;

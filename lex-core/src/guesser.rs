@@ -94,13 +94,19 @@ impl<const N: usize> Guesser<N> {
     /// Builds the [`OpeningBook`] of this guesser's starting position: every position on the
     /// policy's paths whose work exceeds [`BOOK_FLOOR`].
     pub fn build_book(&self) -> OpeningBook<N> {
-        self.build_book_with_floor(BOOK_FLOOR)
+        self.build_book_reporting(&mut |_| {})
+    }
+
+    /// As [`build_book`](Self::build_book), calling `on_booked` with the number of positions
+    /// booked so far each time one is added, so a caller can show progress on a long build.
+    pub fn build_book_reporting(&self, on_booked: &mut dyn FnMut(usize)) -> OpeningBook<N> {
+        self.tree.borrow_mut().build_book(BOOK_FLOOR, on_booked)
     }
 
     /// As [`build_book`](Self::build_book) with a chosen floor, in pattern evaluations (guesses
     /// the strategy allows times Candidate set size).
     pub fn build_book_with_floor(&self, floor: u64) -> OpeningBook<N> {
-        self.tree.borrow_mut().build_book(floor)
+        self.tree.borrow_mut().build_book(floor, &mut |_| {})
     }
 
     pub fn with_history(
