@@ -1,3 +1,6 @@
+//! The `--track` flag plays and builds a Track in-process.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+
 mod common;
 
 use clap::Parser;

@@ -1,3 +1,5 @@
+//! The Decision tree: one node per Guess path, each memoizing its suggestion.
+
 use std::collections::{BTreeSet, HashMap};
 
 use lex_data::Word;
@@ -10,6 +12,7 @@ use crate::endgame::Endgame;
 use crate::guesser::Guess;
 use crate::strategy::Strategy;
 
+/// Index of a node in the tree's arena.
 pub(crate) type NodeId = usize;
 
 /// Every game position reached so far, shared by all games played from one starting word set.
@@ -26,9 +29,11 @@ pub(crate) type NodeId = usize;
 /// suggestion (the interactive assistant does).
 #[derive(Debug)]
 pub(crate) struct DecisionTree<const N: usize> {
+    /// The Strategy fixed for the tree's life.
     strategy: Strategy,
     /// Present when the strategy has an endgame threshold; owns the memo of exact searches.
     endgame: Option<Endgame<N>>,
+    /// The nodes, root first.
     nodes: Vec<Node<N>>,
     /// Seeds nodes created along booked paths; `None` plays everything online.
     book: Option<OpeningBook<N>>,
@@ -37,19 +42,24 @@ pub(crate) struct DecisionTree<const N: usize> {
     booked_computations: usize,
 }
 
+/// One game position.
 #[derive(Debug)]
 struct Node<const N: usize> {
+    /// The words still consistent with the Guess path.
     candidates: Candidates<N>,
     /// The guesses the strategy's pool rule permits here; a function of the guess path.
     allowed: Allowed,
+    /// The memoized suggestion: outer `None` is not yet computed, inner `None` is no consistent word.
     suggestion: Option<Option<Word<N>>>,
     /// The book node this position is on, while the game stays on the book's path.
     book: Option<u32>,
     // Sparse: fan-out is 3^N per guess, 59,049 at the length cap.
+    /// The positions reached from here, by the (guess, feedback ordinal) step taken.
     children: HashMap<(Word<N>, u64), NodeId>,
 }
 
 impl<const N: usize> Node<N> {
+    /// A node holding `candidates`, with nothing computed yet.
     fn new(candidates: Candidates<N>, allowed: Allowed) -> Self {
         Self {
             candidates,
@@ -62,8 +72,10 @@ impl<const N: usize> Node<N> {
 }
 
 impl<const N: usize> DecisionTree<N> {
+    /// The node of the starting position.
     pub(crate) const ROOT: NodeId = 0;
 
+    /// A tree rooted at the full Candidate set, optionally seeded from `book`.
     pub(crate) fn new(
         candidates: Candidates<N>,
         strategy: Strategy,
@@ -99,14 +111,17 @@ impl<const N: usize> DecisionTree<N> {
         node.suggestion = Some(Some(node.candidates.pool().word(book.guess(id))));
     }
 
+    /// The Candidate set at `node`.
     pub(crate) fn candidates(&self, node: NodeId) -> &Candidates<N> {
         &self.nodes[node].candidates
     }
 
+    /// The guesses permitted at `node`.
     pub(crate) fn allowed(&self, node: NodeId) -> &Allowed {
         &self.nodes[node].allowed
     }
 
+    /// The Strategy this tree scores under.
     pub(crate) fn strategy(&self) -> &Strategy {
         &self.strategy
     }
@@ -166,6 +181,7 @@ impl<const N: usize> DecisionTree<N> {
         book
     }
 
+    /// Books `node` and its booked descendants into `book`, returning its book id, or `None` when its work is at or below `floor`.
     fn book_node(
         &mut self,
         node: NodeId,

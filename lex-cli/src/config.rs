@@ -11,7 +11,9 @@ use lex_data::{Language, Profile};
 pub enum Game {
     /// Every Corpus word is both a guess and an answer.
     Corpus {
+        /// The Corpus language.
         language: Language,
+        /// Length of every word.
         length: usize,
         /// Cap on the Corpus words loaded; `None` loads them all.
         dictionary_length: Option<usize>,
@@ -21,6 +23,7 @@ pub enum Game {
 }
 
 impl Game {
+    /// The word length the game is played at.
     pub fn word_length(&self) -> usize {
         match self {
             Game::Corpus { length, .. } => *length,
@@ -35,14 +38,24 @@ pub enum Targets {
     /// Every answer.
     Full,
     /// `n` distinct answers drawn uniformly, reproducible from `seed`.
-    Sample { n: usize, seed: u64 },
+    /// `n` distinct answers drawn uniformly, reproducible from `seed`.
+    Sample {
+        /// How many answers.
+        n: usize,
+        /// Seed of the draw.
+        seed: u64,
+    },
     /// The words of a file, one per line.
     File(PathBuf),
 }
 
+/// Everything a run plays: the game, the Strategy and the targets.
 #[derive(Debug, Clone, PartialEq)]
 pub struct RunConfig {
+    /// The Guess pool and Answer list.
     pub game: Game,
+    /// The solver's Strategy.
     pub strategy: Strategy,
+    /// Which answers are played.
     pub targets: Targets,
 }

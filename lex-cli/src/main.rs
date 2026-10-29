@@ -1,3 +1,6 @@
+//! The `lex` binary: hands a parsed command line to its subcommand.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+
 use clap::Parser;
 
 use lex_cli::assist::assist;

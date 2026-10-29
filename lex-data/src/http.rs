@@ -1,3 +1,5 @@
+//! One retried HTTP GET, shared by every download.
+
 use std::io::{self, Read};
 use std::time::Duration;
 
@@ -5,7 +7,9 @@ use anyhow::Context;
 
 use crate::retry::{Failure, with_retry};
 
+/// Longest wait to establish a connection.
 const CONNECT_TIMEOUT: Duration = Duration::from_secs(30);
+/// Longest wait for the response headers once the request is sent.
 const RESPONSE_TIMEOUT: Duration = Duration::from_secs(60);
 /// Bounds a stalled transfer without capping the total: a healthy multi-hundred-MB shard on a
 /// slow link must be allowed to finish.
@@ -42,6 +46,7 @@ pub(crate) fn get<T>(
     .with_context(|| format!("GET {url}"))
 }
 
+/// Whether `error` is transient (worth another attempt) or permanent.
 fn classify(error: ureq::Error) -> Failure {
     // ureq's error enum is non-exhaustive: any variant not named here is a fault a repeat will not
     // clear (bad URI, protocol or TLS failure), so it is deliberately left to the wildcard

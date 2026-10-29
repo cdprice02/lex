@@ -22,50 +22,71 @@ const TIE: f64 = 0.001;
 /// Deltas below this are float noise, not change.
 const EPSILON: f64 = 1e-9;
 
+/// Marker opening the Tracks table in the README.
 pub const README_START: &str = "<!-- tracks:start -->";
+/// Marker closing the Tracks table in the README.
 pub const README_END: &str = "<!-- tracks:end -->";
 
+/// The two numbers of a score the verdict compares.
 #[derive(Debug, Clone, Copy, Deserialize)]
 struct Stats {
+    /// Mean guesses.
     mean: f64,
+    /// Share of games finishing in more than [`MAX_GUESSES`](crate::report::MAX_GUESSES).
     failure_rate: f64,
 }
 
+/// A snapshot's two weightings.
 #[derive(Debug, Deserialize)]
 struct Summary {
+    /// Every target weighted equally.
     uniform: Stats,
+    /// Targets weighted by the Answer prior.
     prior: Stats,
 }
 
+/// The Profile list checksums a snapshot records.
 #[derive(Debug, Deserialize, PartialEq)]
 struct ProfileSums {
+    /// SHA-256 of the Answer list.
     answers_sha256: String,
+    /// SHA-256 of the guess-only list.
     guess_only_sha256: String,
 }
 
+/// The fields of a snapshot body that the verdict reads.
 #[derive(Debug, Deserialize)]
 struct Body {
+    /// The Track id.
     track: String,
+    /// The Corpus checksum.
     corpus_sha256: String,
+    /// The Profile list checksums, on a Profile Track.
     profile: Option<ProfileSums>,
+    /// The Track's scores.
     summary: Summary,
 }
 
 /// One Track's committed snapshot: the body fields the verdict reads and the header digest.
 #[derive(Debug)]
 struct Snap {
+    /// The parsed body.
     body: Body,
+    /// The solver digest from the header, when recorded.
     digest: Option<String>,
 }
 
 /// The YAML header of a `.snap` file; the keys the verdict does not read are ignored.
 #[derive(Debug, Deserialize)]
 struct Header {
+    /// The provenance block of the header.
     info: Option<Info>,
 }
 
+/// The provenance block of a snapshot header.
 #[derive(Debug, Deserialize)]
 struct Info {
+    /// The solver source the snapshot was measured against.
     solver_digest: Option<String>,
 }
 
@@ -78,6 +99,7 @@ fn split_snapshot(text: &str) -> Option<(&str, &str)> {
 }
 
 impl Snap {
+    /// Reads and parses the snapshot at `path`.
     fn load(path: &Path) -> Result<Snap> {
         let text =
             fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
@@ -106,6 +128,7 @@ impl Snap {
     }
 }
 
+/// Every `.snap` file in `dir`, by Track id.
 fn load_dir(dir: &Path) -> Result<BTreeMap<String, Snap>> {
     let mut snaps = BTreeMap::new();
     for entry in fs::read_dir(dir).with_context(|| format!("reading {}", dir.display()))? {
@@ -118,18 +141,25 @@ fn load_dir(dir: &Path) -> Result<BTreeMap<String, Snap>> {
     Ok(snaps)
 }
 
+/// The result of judging a head set against a base set.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Outcome {
+    /// Within the regression bounds and better on average.
     Accept,
+    /// No judged Track changed.
     Unchanged,
+    /// A judged Track regressed past its bound, or the average did not improve.
     Reject,
+    /// Every judged Track changed Corpus, so the base no longer applies.
     Rebaseline,
+    /// A headline Track was not run on the current solver.
     Stale,
     /// No judged Track exists on both sides, so there is nothing to compare.
     New,
 }
 
 impl Outcome {
+    /// The outcome's name as printed.
     pub fn name(self) -> &'static str {
         match self {
             Outcome::Accept => "accept",
@@ -141,6 +171,7 @@ impl Outcome {
         }
     }
 
+    /// The process exit code: 1 for `Reject` and `Stale`, else 0.
     pub fn exit_code(self) -> i32 {
         match self {
             Outcome::Reject | Outcome::Stale => 1,
@@ -149,26 +180,38 @@ impl Outcome {
     }
 }
 
+/// One Track's line in the verdict table.
 #[derive(Debug)]
 struct Row {
+    /// The Track id.
     id: String,
+    /// The Tier's name.
     tier: &'static str,
+    /// Whether the Track counts toward the outcome.
     judged: bool,
+    /// Base mean, when the base has the Track.
     base: Option<f64>,
+    /// Head mean, when the head has the Track.
     head: Option<f64>,
+    /// How the Track compares, as printed.
     status: String,
 }
 
 impl Row {
+    /// Head mean minus base mean, when both exist.
     fn delta(&self) -> Option<f64> {
         Some(self.head? - self.base?)
     }
 }
 
+/// The judgement of a head set against a base set.
 #[derive(Debug)]
 pub struct Verdict {
+    /// One row per Track.
     rows: Vec<Row>,
+    /// The reasons behind the outcome.
     notes: Vec<String>,
+    /// The result.
     pub outcome: Outcome,
 }
 
@@ -202,11 +245,15 @@ impl Verdict {
     }
 }
 
+/// What the Track table says about a Track id.
 struct Meta {
+    /// Its Tier, `None` for an id no longer in the table.
     tier: Option<Tier>,
+    /// Whether it is judged.
     judged: bool,
 }
 
+/// The table's entry for Track `id`.
 fn meta(id: &str) -> Meta {
     match Track::find(id) {
         Some(t) => Meta {
@@ -235,6 +282,7 @@ fn ordered_ids(base: &BTreeMap<String, Snap>, head: &BTreeMap<String, Snap>) -> 
     ids
 }
 
+/// Judges `head` against `base`, marking a head snapshot not measured by `expected_digest` stale.
 fn compare(
     base: &BTreeMap<String, Snap>,
     head: &BTreeMap<String, Snap>,
@@ -307,6 +355,7 @@ fn compare(
     }
 }
 
+/// The outcome of the judged Tracks' deltas, with the reasons added to `notes`.
 fn decide(
     judged: &[(bool, f64, f64, String)],
     excluded: usize,
@@ -443,6 +492,7 @@ pub fn splice_readme(readme: &str, table: &str) -> Result<String> {
     Ok(format!("{}\n{}{}", &readme[..start], table, &readme[end..]))
 }
 
+/// Runs the `verdict` command and returns its exit code.
 fn run(args: &VerdictArgs) -> Result<i32> {
     if let Some(snaps) = &args.readme {
         let table = readme_table(snaps)?;

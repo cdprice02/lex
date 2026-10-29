@@ -1,3 +1,5 @@
+//! Loading the Guess pool and Answer list a game is played over.
+
 use lex_data::{DataDir, Language, ProfileStats, Word, WordSet};
 
 use crate::config::{Game, RunConfig};
@@ -7,14 +9,23 @@ use crate::report::{Corpus, DictProvenance, ProfileReport};
 /// answers with every pool word; a Profile with its own list. Where they came from is the
 /// [`Source`], returned beside them.
 pub struct GameLists<const N: usize> {
+    /// The Guess pool.
     pub pool: WordSet<N>,
+    /// The Answer list, a subset of the pool.
     pub answers: Vec<Word<N>>,
 }
 
 /// Where the lists came from, with the statistics a report carries about it.
 pub enum Source {
+    /// A Corpus run: the Corpus alone is both pool and answers.
     Corpus(Corpus),
-    Profile { corpus: Corpus, stats: ProfileStats },
+    /// A Profile run, whose lists were floored against `corpus`.
+    Profile {
+        /// The Corpus the lists were floored against.
+        corpus: Corpus,
+        /// What the Profile contributes to a report.
+        stats: ProfileStats,
+    },
 }
 
 impl Source {
@@ -106,6 +117,7 @@ impl Source {
     }
 }
 
+/// The report identity of the Corpus for `lang` at length `N`, with `dictionary_length` words.
 fn corpus_report<const N: usize>(
     data_dir: &DataDir,
     lang: Language,

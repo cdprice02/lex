@@ -1,3 +1,5 @@
+//! Exact search for Candidate sets at or below the Endgame threshold.
+
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -13,6 +15,7 @@ struct Solved {
     /// The sum over answers in the set of `weight * f(guesses to finish)`, where `f` is the
     /// identity, or `a^guesses` with risk aversion.
     cost: f64,
+    /// Index into the Guess pool of the best guess.
     guess: u32,
 }
 
@@ -30,10 +33,13 @@ struct Solved {
 /// costs are always exact.
 #[derive(Debug)]
 pub(crate) struct Endgame<const N: usize> {
+    /// The Guess pool the set indices point into.
     pool: Arc<Pool<N>>,
+    /// The Strategy's Guess pool, which decides which guesses a position allows.
     guess_pool: GuessPool,
     /// `a` in the `a^guesses` objective; `None` is plain expected guesses (the `a -> 1` limit).
     growth: Option<f64>,
+    /// Answer prior weight of each pool word, unnormalized.
     weights: Vec<f64>,
     /// Each distinct allowed-guess list met so far, numbered, so a memo key is small.
     list_ids: HashMap<Vec<u32>, u32>,
@@ -42,6 +48,7 @@ pub(crate) struct Endgame<const N: usize> {
 }
 
 impl<const N: usize> Endgame<N> {
+    /// An empty search over `pool`, weighting answers by the Answer prior at `temperature` and scoring risk by `aversion`.
     pub(crate) fn new(
         pool: Arc<Pool<N>>,
         guess_pool: GuessPool,
@@ -75,6 +82,7 @@ impl<const N: usize> Endgame<N> {
         self.solve(set, allowed).cost / mass
     }
 
+    /// The memo id of `allowed`, or `None` when the Guess pool mode implies it.
     fn memo_slot(&mut self, allowed: &Allowed) -> Option<u32> {
         let Allowed::List(list) = allowed else {
             return None;
@@ -87,6 +95,7 @@ impl<const N: usize> Endgame<N> {
         Some(id)
     }
 
+    /// The best guess and cost for `set`, memoized.
     fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let slot = self.memo_slot(allowed);
         if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {

@@ -1,3 +1,5 @@
+//! The Strategy, the Guess pool policy, and the Answer prior.
+
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -28,6 +30,7 @@ pub enum GuessPool {
 /// tree memoizes suggestions, so a different strategy needs a different guesser.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Strategy {
+    /// The Guess pool policy.
     pub pool: GuessPool,
     /// Answer prior temperature: p_i is proportional to f_i^(1/T). Must be positive and finite.
     pub temperature: f64,
@@ -86,6 +89,7 @@ impl Strategy {
         ]
     }
 
+    /// Asserts the temperature is positive and finite and the win weight non-negative and finite.
     pub(crate) fn assert_valid(&self) {
         assert!(
             self.temperature.is_finite() && self.temperature > 0.0,
@@ -115,10 +119,13 @@ impl Default for Strategy {
 /// log-frequency. Candidate sets index into it.
 #[derive(Debug)]
 pub(crate) struct Pool<const N: usize> {
+    /// Every pool word, in frequency-descending order.
     words: Vec<Word<N>>,
     /// Each word's letters as indices into the Alphabet, parallel to `words`.
     codes: Vec<Code<N>>,
+    /// Alphabet letter to its index.
     letters: HashMap<char, u8>,
+    /// Natural log of each word's frequency, parallel to `words`.
     ln_freqs: Vec<f64>,
 }
 
@@ -163,10 +170,12 @@ impl<const N: usize> Pool<N> {
         encode(&self.letters, word)
     }
 
+    /// Number of words in the pool.
     pub(crate) fn len(&self) -> usize {
         self.words.len()
     }
 
+    /// The word at pool index `index`.
     pub(crate) fn word(&self, index: u32) -> Word<N> {
         self.words[index as usize]
     }
@@ -205,6 +214,7 @@ impl<const N: usize> Pool<N> {
     }
 }
 
+/// `word`'s letters as Alphabet indices, [`UNKNOWN_LETTER`] for any outside it.
 fn encode<const N: usize>(letters: &HashMap<char, u8>, word: &Word<N>) -> Code<N> {
     std::array::from_fn(|i| letters.get(&word[i]).copied().unwrap_or(UNKNOWN_LETTER))
 }

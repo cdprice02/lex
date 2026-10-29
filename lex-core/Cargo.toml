@@ -29,3 +29,6 @@ bench = ["dep:divan"]
 name = "lex-core"
 harness = false
 required-features = ["bench"]
+
+[lints]
+workspace = true

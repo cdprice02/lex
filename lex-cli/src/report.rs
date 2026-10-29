@@ -1,3 +1,5 @@
+//! The JSON report of a simulation run and its human-readable rendering.
+
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
 
@@ -8,28 +10,42 @@ use serde::{Deserialize, Serialize};
 /// keeps playing until it wins, so the true guess count is always recorded.
 pub const MAX_GUESSES: usize = 6;
 
+/// Version of the JSON report layout.
 pub const SCHEMA_VERSION: u32 = 1;
 
+/// The JSON record of one simulation run.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Report {
+    /// [`SCHEMA_VERSION`] when written.
     pub schema_version: u32,
+    /// How the run was configured.
     pub run: Run,
+    /// The data the run was measured against.
     pub corpus: Corpus,
     /// The Profile played, if any. Its `summary.uniform` is the headline: the Report prior of a
     /// Wordle Profile is uniform over the Answer list.
     #[serde(default)]
     pub profile: Option<ProfileReport>,
+    /// Aggregate results of the games.
     pub summary: Summary,
+    /// Every game played, in play order.
     pub games: Vec<Game>,
 }
 
+/// The parameters of a run.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Run {
+    /// Version of `lex` that wrote the report.
     pub lex_version: String,
+    /// RFC 3339 time of the run.
     pub timestamp: String,
+    /// Seed the targets were sampled with.
     pub seed: u64,
+    /// Number of games played.
     pub num_games: usize,
+    /// The targets file, when one was given.
     pub targets_file: Option<String>,
+    /// The first guess played.
     pub first_guess: String,
     /// Reports from before the strategy was configurable played hard mode at the defaults.
     #[serde(default = "StrategyReport::legacy")]
@@ -40,6 +56,7 @@ pub struct Run {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Mode {
+    /// Any word in the Guess pool.
     Unconstrained,
     /// The official Wordle hard-mode rule.
     Hard,
@@ -52,12 +69,16 @@ pub enum Mode {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(from = "RawStrategyReport")]
 pub struct StrategyReport {
+    /// Which guesses the run could play.
     pub mode: Mode,
+    /// Answer prior temperature.
     pub temperature: f64,
+    /// Score bonus, in bits, per unit of probability that a guess is the answer.
     pub win_weight: f64,
     /// Reports from before the endgame search never used one.
     #[serde(default)]
     pub endgame_threshold: usize,
+    /// Endgame risk aversion; zero minimizes plain expected guesses.
     #[serde(default)]
     pub endgame_aversion: f64,
 }
@@ -66,12 +87,18 @@ pub struct StrategyReport {
 /// bool meant candidates only, which is ultrahard.
 #[derive(Deserialize)]
 struct RawStrategyReport {
+    /// Absent in reports written before the mode field.
     mode: Option<Mode>,
+    /// Present in reports written before the mode field; true meant ultrahard.
     hard_mode: Option<bool>,
+    /// Answer prior temperature.
     temperature: f64,
+    /// Score bonus, in bits, per unit of probability that a guess is the answer.
     win_weight: f64,
+    /// Endgame threshold, zero when absent.
     #[serde(default)]
     endgame_threshold: usize,
+    /// Endgame risk aversion, zero when absent.
     #[serde(default)]
     endgame_aversion: f64,
 }
@@ -94,6 +121,7 @@ impl From<RawStrategyReport> for StrategyReport {
 }
 
 impl StrategyReport {
+    /// The Strategy a report without one played: ultrahard at the defaults.
     fn legacy() -> Self {
         Strategy::ultrahard().into()
     }
@@ -137,11 +165,17 @@ impl std::fmt::Display for StrategyReport {
 /// `ngrams_sha256` matches.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Corpus {
+    /// The Corpus language.
     pub language: String,
+    /// Length of every word.
     pub word_length: usize,
+    /// Number of words in the Guess pool.
     pub dictionary_length: usize,
+    /// The Google Books Ngrams snapshot the Corpus was built from.
     pub ngrams_snapshot: String,
+    /// The Corpus checksum.
     pub ngrams_sha256: String,
+    /// Provenance of the Wiktionary dictionary, when it was recorded.
     pub dict: Option<DictProvenance>,
 }
 
@@ -149,17 +183,24 @@ pub struct Corpus {
 /// both checksums match.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ProfileReport {
+    /// The Profile's stored name.
     pub name: String,
+    /// SHA-256 of the Answer list.
     pub answers_sha256: String,
+    /// SHA-256 of the guess-only list.
     pub guess_only_sha256: String,
+    /// Number of words in the Answer list.
     pub answer_count: usize,
+    /// Number of words in the Guess pool.
     pub guess_count: usize,
     /// Count assigned to Profile words the Corpus lacks (the Unseen-word floor).
     pub floor: u64,
+    /// Profile words the Corpus lacked, which took the floor.
     pub floored: usize,
 }
 
 impl ProfileReport {
+    /// Whether both reports played the same Profile lists.
     pub fn same_lists(&self, other: &Self) -> bool {
         (&self.name, &self.answers_sha256, &self.guess_only_sha256)
             == (&other.name, &other.answers_sha256, &other.guess_only_sha256)
@@ -180,25 +221,36 @@ impl From<lex_data::ProfileStats> for ProfileReport {
     }
 }
 
+/// Where the Wiktionary dictionary was downloaded from, and when.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictProvenance {
+    /// The URL downloaded.
     pub source_url: Option<String>,
+    /// RFC 3339 time of the download.
     pub fetched_at: Option<String>,
+    /// SHA-256 of the compressed download.
     pub source_sha256: Option<String>,
+    /// Number of words in the dictionary.
     pub word_count: usize,
 }
 
+/// One game played.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Game {
+    /// The target.
     pub word: String,
+    /// Guesses taken, the winning one included.
     pub num_guesses: usize,
     /// The target's probability under the answer prior over the full dictionary.
     pub prior: f64,
+    /// The guesses played, in order.
     pub guesses: Vec<String>,
 }
 
+/// The results of a run under both weightings.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Summary {
+    /// Guesses a real game allows, [`MAX_GUESSES`].
     pub max_guesses: usize,
     /// Every target weighted equally.
     pub uniform: Stats,
@@ -211,12 +263,16 @@ pub struct Summary {
 /// (shares sum to 1). `failure_rate` is the share finishing in more than [`MAX_GUESSES`].
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Stats {
+    /// Weighted mean of guesses taken.
     pub mean: f64,
+    /// Share of games finishing in more than [`MAX_GUESSES`].
     pub failure_rate: f64,
+    /// Share of games finishing in each guess count.
     pub histogram: BTreeMap<usize, f64>,
 }
 
 impl Stats {
+    /// The [`Stats`] of `games` with each weighted by `weight`.
     fn weighted(games: &[Game], weight: impl Fn(&Game) -> f64) -> Self {
         let total: f64 = games.iter().map(&weight).sum();
         let mut mean = 0.0;
@@ -239,6 +295,7 @@ impl Stats {
 }
 
 impl Summary {
+    /// Both weightings of `games`.
     pub fn from_games(games: &[Game]) -> Self {
         Self {
             max_guesses: MAX_GUESSES,
@@ -303,6 +360,7 @@ impl Report {
     }
 }
 
+/// The first 12 characters of `hash`.
 fn short(hash: &str) -> &str {
     hash.get(..12).unwrap_or(hash)
 }

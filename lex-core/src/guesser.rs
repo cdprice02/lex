@@ -1,3 +1,5 @@
+//! The per-game solver state: guesses played and a cursor into the shared Decision tree.
+
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -11,21 +13,27 @@ use crate::correctness::WordCorrectness;
 use crate::strategy::{GuessPool, Pool, Strategy};
 use crate::tree::{DecisionTree, NodeId};
 
+/// One guess and the feedback it earned.
 #[derive(Debug, Clone)]
 pub struct Guess<const N: usize> {
+    /// The word played.
     word: Word<N>,
+    /// The feedback the word earned.
     correctness: WordCorrectness<N>,
 }
 
 impl<const N: usize> Guess<N> {
+    /// A guess of `word` that earned `correctness`.
     pub fn new(word: Word<N>, correctness: WordCorrectness<N>) -> Self {
         Self { word, correctness }
     }
 
+    /// The word played.
     pub fn word(&self) -> Word<N> {
         self.word
     }
 
+    /// The feedback the word earned.
     pub fn correctness(&self) -> WordCorrectness<N> {
         self.correctness
     }
@@ -35,8 +43,11 @@ impl<const N: usize> Guess<N> {
 /// reused across games with [`reset`](Self::reset), so repeated positions are scored once. The
 /// [`Strategy`] is fixed at construction.
 pub struct Guesser<const N: usize> {
+    /// The Decision tree, shared across games.
     tree: Rc<RefCell<DecisionTree<N>>>,
+    /// The current position in the tree.
     node: NodeId,
+    /// The guesses of this game, in order.
     history: Vec<Guess<N>>,
 }
 
@@ -69,6 +80,7 @@ impl<const N: usize> Guesser<N> {
         Self::build(pool, answers, strategy, Some(book))
     }
 
+    /// Shared constructor: validates the Strategy and book, then roots a fresh tree.
     fn build(
         pool: WordSet<N>,
         answers: Vec<Word<N>>,
@@ -109,6 +121,7 @@ impl<const N: usize> Guesser<N> {
         self.tree.borrow_mut().build_book(floor, &mut |_| {})
     }
 
+    /// A guesser already holding `history`, as if those guesses had been pushed in order.
     pub fn with_history(
         pool: WordSet<N>,
         answers: Vec<Word<N>>,
@@ -129,10 +142,12 @@ impl<const N: usize> Guesser<N> {
         self.history.clear();
     }
 
+    /// The guesses played so far, in order.
     pub fn history(&self) -> &[Guess<N>] {
         &self.history
     }
 
+    /// Records `guess` and moves to the position it leads to.
     pub fn push_guess(&mut self, guess: Guess<N>) {
         self.node = self.tree.borrow_mut().child(self.node, &guess);
         self.history.push(guess);
@@ -178,6 +193,7 @@ impl<const N: usize> Guesser<N> {
         }
     }
 
+    /// The best next guess under the Strategy, or `None` when no word is consistent.
     pub fn suggest(&self) -> Option<Word<N>> {
         self.tree.borrow_mut().suggest(self.node)
     }
@@ -191,6 +207,13 @@ fn corpus_guesser<const N: usize>(pool: WordSet<N>, strategy: Strategy) -> Guess
 }
 
 #[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
 mod benches {
     use divan::Bencher;
     use std::collections::HashMap;

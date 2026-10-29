@@ -1,3 +1,5 @@
+//! `lex compare`: paired comparison of two simulation reports.
+
 use std::collections::HashMap;
 use std::fmt::Write as _;
 use std::path::Path;
@@ -6,6 +8,7 @@ use anyhow::Context;
 
 use crate::report::{MAX_GUESSES, Report};
 
+/// Prints the paired comparison of the two reports `args` names.
 pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
     let baseline = load(&args.baseline)?;
     let candidate = load(&args.candidate)?;
@@ -13,6 +16,7 @@ pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
     Ok(())
 }
 
+/// Reads the JSON report at `path`.
 fn load(path: &Path) -> anyhow::Result<Report> {
     let content =
         std::fs::read_to_string(path).with_context(|| format!("reading report {path:?}"))?;

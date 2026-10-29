@@ -1,3 +1,5 @@
+//! The Opening book: the persisted top levels of a Decision tree.
+
 use std::marker::PhantomData;
 use std::mem::size_of;
 
@@ -20,12 +22,16 @@ pub const BOOK_FLOOR: u64 = 40_000_000;
 /// against the pool, Answer list and Strategy it was built for.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct OpeningBook<const N: usize> {
+    /// Booked positions in preorder.
     nodes: Vec<BookNode>,
+    /// Ties the book to the word length it was built for.
     _word_length: PhantomData<[u8; N]>,
 }
 
+/// One booked position.
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct BookNode {
+    /// Index into the Guess pool of the guess the online search chose here.
     guess: u32,
     /// Ascending by feedback ordinal; only to booked children.
     edges: Vec<(u64, u32)>,
@@ -34,27 +40,54 @@ struct BookNode {
 /// Why a stored book is not a valid [`OpeningBook`] for its pool.
 #[derive(Debug, Error, PartialEq, Eq)]
 pub enum BookError {
+    /// A node books a guess that is not an index into the pool.
     #[error("node {node} books guess {guess}, outside the pool of {pool_len} words")]
     GuessOutsidePool {
+        /// Preorder index of the offending node.
         node: usize,
+        /// The booked pool index.
         guess: u32,
+        /// Number of words in the pool.
         pool_len: usize,
     },
+    /// A node's child does not come after it in preorder.
     #[error("node {node} has child {child}, which does not come after it in preorder")]
-    ChildNotAfterParent { node: usize, child: u32 },
+    ChildNotAfterParent {
+        /// Preorder index of the parent.
+        node: usize,
+        /// The child's preorder index.
+        child: u32,
+    },
+    /// A node's child index is past the last node.
     #[error("node {node} has child {child}, but the book holds {len} nodes")]
-    ChildOutsideBook { node: usize, child: u32, len: usize },
+    ChildOutsideBook {
+        /// Preorder index of the parent.
+        node: usize,
+        /// The child's preorder index.
+        child: u32,
+        /// Number of nodes in the book.
+        len: usize,
+    },
+    /// An edge key is not a feedback ordinal of the book's word length.
     #[error(
         "node {node} has feedback ordinal {ordinal}, outside the {patterns} patterns of length {n}"
     )]
     OrdinalOutsidePatterns {
+        /// Preorder index of the offending node.
         node: usize,
+        /// The edge's feedback ordinal.
         ordinal: u64,
+        /// Number of feedback patterns, 3^`n`.
         patterns: u64,
+        /// The word length.
         n: usize,
     },
+    /// A node's edges are not strictly ascending by feedback ordinal.
     #[error("node {node} lists its feedback ordinals out of ascending order")]
-    EdgesNotAscending { node: usize },
+    EdgesNotAscending {
+        /// Preorder index of the offending node.
+        node: usize,
+    },
 }
 
 impl<const N: usize> Default for OpeningBook<N> {
@@ -72,6 +105,7 @@ impl<const N: usize> OpeningBook<N> {
         self.nodes.len()
     }
 
+    /// Whether no position is booked, so every position is searched online.
     pub fn is_empty(&self) -> bool {
         self.nodes.is_empty()
     }
@@ -178,6 +212,7 @@ impl<const N: usize> OpeningBook<N> {
             .map(|i| edges[i].1)
     }
 
+    /// The largest booked Guess pool index, or `None` for an empty book.
     pub(crate) fn max_guess(&self) -> Option<u32> {
         self.nodes.iter().map(|n| n.guess).max()
     }

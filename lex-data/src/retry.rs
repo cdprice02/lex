@@ -1,6 +1,10 @@
+//! Retrying a fallible network operation with backoff.
+
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+/// Attempts made before giving up.
 pub(crate) const ATTEMPTS: u32 = 3;
+/// Delay after the first failure; each later one doubles.
 const BASE_BACKOFF: Duration = Duration::from_secs(1);
 
 /// Why one attempt failed, which decides whether another is worth making.

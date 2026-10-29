@@ -1,3 +1,5 @@
+//! The on-disk data directory and the paths inside it.
+
 use std::path::{Path, PathBuf};
 
 use anyhow::Context;
@@ -11,12 +13,15 @@ use crate::store;
 use crate::wiktionary::{self, DictMetadata};
 use crate::word::WordSet;
 
+/// The directory holding every Cache, dictionary, Profile and Opening book.
 #[derive(Clone, Debug)]
 pub struct DataDir {
+    /// The root directory.
     path: PathBuf,
 }
 
 impl DataDir {
+    /// A data directory rooted at `path`; nothing is created until it is used.
     pub fn new(path: impl Into<PathBuf>) -> Self {
         Self { path: path.into() }
     }

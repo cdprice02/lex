@@ -1,3 +1,5 @@
+//! The Candidate set and its entropy scoring.
+
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::hint::cold_path;
@@ -13,6 +15,7 @@ use crate::strategy::{Pool, Strategy};
 /// A scored guess: how much it is expected to teach, and whether it could itself be the answer.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Suggestion<const N: usize> {
+    /// The guess itself.
     pub word: Word<N>,
     /// Expected information gain under the answer prior, in bits.
     pub entropy_bits: f64,
@@ -36,6 +39,7 @@ impl<const N: usize> Suggestion<N> {
 /// [`DecisionTree`]: crate::tree::DecisionTree
 #[derive(Debug, Clone)]
 pub(crate) struct Candidates<const N: usize> {
+    /// The Guess pool the indices point into.
     pool: Arc<Pool<N>>,
     /// Ascending, so frequency-descending.
     indices: Vec<u32>,
@@ -87,14 +91,17 @@ impl<const N: usize> Candidates<N> {
         }
     }
 
+    /// A shared handle to the Guess pool.
     pub(crate) fn pool(&self) -> Arc<Pool<N>> {
         Arc::clone(&self.pool)
     }
 
+    /// The Candidate set as ascending Guess pool indices.
     pub(crate) fn indices(&self) -> &[u32] {
         &self.indices
     }
 
+    /// Size of the Candidate set.
     pub(crate) fn len(&self) -> usize {
         self.indices.len()
     }
@@ -167,6 +174,7 @@ impl<const N: usize> Candidates<N> {
         scored
     }
 
+    /// The guess with the best score among those `allowed` permits, preferring a Candidate on ties; `None` when the set is empty.
     pub(crate) fn suggest(&self, strategy: &Strategy, allowed: &Allowed) -> Option<Word<N>> {
         match self.indices.as_slice() {
             [] => {
@@ -213,6 +221,7 @@ impl<const N: usize> Candidates<N> {
 /// than a list of word lengths.
 const DENSE_BOUND_BYTES: u64 = 16 * 1024 * 1024;
 
+/// Expected information gain, in bits, of playing `guess` against `words` weighted by `probs`.
 fn guess_entropy<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
     if WordCorrectness::<N>::COUNT * size_of::<f64>() as u64 <= DENSE_BOUND_BYTES {
         entropy_dense(guess, words, probs)
@@ -232,6 +241,7 @@ fn entropy_from_masses(masses: impl Iterator<Item = f64>) -> f64 {
     0.0 - acc
 }
 
+/// [`guess_entropy`] with one bucket per feedback ordinal, for lengths whose 3^N buckets fit [`DENSE_BOUND_BYTES`].
 fn entropy_dense<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
     /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
     /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
@@ -384,6 +394,13 @@ mod tests {
 }
 
 #[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
 mod benches {
     use divan::Bencher;
     use std::hint::black_box;

@@ -22,15 +22,23 @@ use sha2::{Digest, Sha256};
 
 use crate::error::LexDataError;
 
+/// File magic identifying an ngrams Cache.
 pub(crate) const MAGIC: [u8; 4] = *b"LEXC";
+/// Format version of the Cache header.
 pub(crate) const VERSION: u16 = 1;
+/// Bytes of header this version writes.
 pub(crate) const HEADER_LEN: usize = 64;
 
+/// The parsed header of a Cache file.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub(crate) struct Header {
+    /// Word length `N` the Cache holds.
     pub(crate) word_len: u16,
+    /// Offset of the first record.
     pub(crate) header_len: u32,
+    /// Number of records.
     pub(crate) record_count: u64,
+    /// SHA-256 of the records region.
     pub(crate) checksum: [u8; 32],
 }
 
@@ -46,6 +54,7 @@ impl Header {
         }
     }
 
+    /// The header as `HEADER_LEN` little-endian bytes.
     pub(crate) fn encode(&self) -> [u8; HEADER_LEN] {
         let mut out = [0u8; HEADER_LEN];
         out[0..4].copy_from_slice(&MAGIC);
@@ -105,6 +114,7 @@ impl Header {
         Ok(Self::parse(&buf, path)?)
     }
 
+    /// The records checksum as lowercase hex: the Corpus checksum.
     pub(crate) fn checksum_hex(&self) -> String {
         crate::store::hex(&self.checksum)
     }

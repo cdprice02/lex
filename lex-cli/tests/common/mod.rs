@@ -6,7 +6,7 @@ use std::io::Write;
 use lex_data::{DataDir, Language};
 
 /// Writes a cache file in the documented on-disk format, so `load` never touches the network.
-pub fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
+pub(crate) fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
     use sha2::{Digest, Sha256};
     let path = dir.ngrams_path(lang, n);
     fs::create_dir_all(path.parent().unwrap()).unwrap();
@@ -30,7 +30,7 @@ pub fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]
 }
 
 /// Stands in for the cached Wiktionary list, so the report's provenance lookup never downloads.
-pub fn seed_dict(dir: &DataDir, lang: Language) {
+pub(crate) fn seed_dict(dir: &DataDir, lang: Language) {
     let path = dir.dict_path(lang);
     fs::create_dir_all(path.parent().unwrap()).unwrap();
     fs::write(&path, "").unwrap();

@@ -1,22 +1,30 @@
+//! Playing one game to completion.
+
 use lex_data::Word;
 
 use crate::correctness::WordCorrectness;
 use crate::guesser::{Guess, Guesser};
 
+/// The outcome of one game: the answer and the guesses that found it.
 pub struct GameResult<const N: usize> {
+    /// The answer.
     word: Word<N>,
+    /// The guesses played, the last of them the answer.
     guesses: Vec<Guess<N>>,
 }
 
 impl<const N: usize> GameResult<N> {
+    /// The answer.
     pub fn word(&self) -> Word<N> {
         self.word
     }
 
+    /// The guesses played, in order.
     pub fn guesses(&self) -> &[Guess<N>] {
         &self.guesses
     }
 
+    /// How many guesses the game took.
     pub fn num_guesses(&self) -> usize {
         self.guesses.len()
     }
@@ -74,6 +82,7 @@ pub fn play<const N: usize>(
     })
 }
 
+/// Logs one guess and its feedback at `info`.
 #[inline(always)]
 fn log_guess<const N: usize>(guess_num: usize, guess: &Guess<N>) {
     log::info!(

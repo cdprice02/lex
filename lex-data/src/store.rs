@@ -1,3 +1,5 @@
+//! Building, reading and clearing the on-disk Cache.
+
 use std::collections::HashMap;
 use std::io::{BufWriter, Write};
 
@@ -13,6 +15,7 @@ use crate::ngrams;
 use crate::wiktionary;
 use crate::word::{RawRecord, WordSet};
 
+/// Least summed count a word needs to enter a Corpus.
 pub(crate) const MIN_FREQUENCY: u64 = 1;
 
 /// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
@@ -86,6 +89,7 @@ pub(crate) fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> 
     Ok(Header::read_file(path)?.checksum_hex())
 }
 
+/// `bytes` as lowercase hex.
 pub(crate) fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|b| format!("{b:02x}")).collect()
 }
@@ -107,6 +111,7 @@ pub(crate) fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::
     Ok(())
 }
 
+/// Writes one Cache per length bucket of `by_length`.
 fn populate(
     dir: &DataDir,
     lang: Language,
@@ -119,6 +124,7 @@ fn populate(
     Ok(())
 }
 
+/// Writes the Cache for `lang` at length `n`, most frequent word first.
 fn write_bucket(
     dir: &DataDir,
     lang: Language,

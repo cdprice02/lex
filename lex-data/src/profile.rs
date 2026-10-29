@@ -9,7 +9,9 @@ use crate::word::{Word, WordSet};
 /// A pinned download and the SHA-256 its normalized form must have.
 #[derive(Debug, Clone, Copy)]
 pub struct Source {
+    /// Where the list is downloaded from.
     pub url: &'static str,
+    /// SHA-256 of the download once normalized.
     pub sha256: &'static str,
 }
 
@@ -17,18 +19,26 @@ pub struct Source {
 /// sorted) file. The two differ when a list merges several sources or has none.
 #[derive(Debug, Clone, Copy)]
 pub struct ListSpec {
+    /// The downloads merged into the list; none for a list derived from others.
     pub sources: &'static [Source],
+    /// SHA-256 of the stored file.
     pub sha256: &'static str,
 }
 
+/// The language, word length and lists a Profile pairs.
 #[derive(Debug, Clone, Copy)]
 pub struct ProfileSpec {
+    /// Language of the Corpus whose frequencies the lists take.
     pub language: Language,
+    /// Length of every word in both lists.
     pub word_length: usize,
+    /// The Answer list.
     pub answers: ListSpec,
+    /// Guess pool words that are not answers.
     pub guess_only: ListSpec,
 }
 
+/// A built-in pairing of an Answer list and a Guess pool.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantArray)]
 #[strum(ascii_case_insensitive)]
 pub enum Profile {
@@ -40,19 +50,23 @@ pub enum Profile {
     WordleAll,
 }
 
+/// The pinned Wordle answer list.
 const WORDLE_ANSWERS: Source = Source {
     url: "https://gist.githubusercontent.com/cfreshman/a03ef2cba789d8cf00c08f767e0fad7b/raw/50838083dca5359b3cacf1ab677059b40c0e025e/wordle-answers-alphabetical.txt",
     sha256: "f40e47975cf360ff9febe7d49c8e285054d8fa3fb9644cea575922060951d6ee",
 };
 
+/// The pinned Wordle allowed-guess list, which excludes the answers.
 const WORDLE_GUESS_ONLY: Source = Source {
     url: "https://gist.githubusercontent.com/cfreshman/cdcdf777450c5b5301e439061d29694c/raw/cc443a0688b07ab5947afd3975160975547fc513/wordle-allowed-guesses.txt",
     sha256: "f012ef5ecdbeb94274186abcbbd5388d92bb86fe8ae0635fffcc5e9be4aa3d33",
 };
 
+/// SHA-256 of the empty list.
 const EMPTY_SHA256: &str = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
 impl Profile {
+    /// The registry entry for this Profile.
     pub fn spec(self) -> ProfileSpec {
         match self {
             Profile::Wordle => ProfileSpec {
@@ -86,9 +100,13 @@ impl Profile {
 /// What a loaded Profile contributes to a report.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ProfileStats {
+    /// The Profile's stored name.
     pub name: String,
+    /// SHA-256 of the stored Answer list.
     pub answers_sha256: String,
+    /// SHA-256 of the stored guess-only list.
     pub guess_only_sha256: String,
+    /// Number of words in the Answer list.
     pub answer_count: usize,
     /// Size of the Guess pool (answers plus guess-only words).
     pub guess_count: usize,
@@ -98,11 +116,13 @@ pub struct ProfileStats {
     pub floored: usize,
 }
 
+/// A loaded Profile: its Guess pool, Answer list and stats.
 pub struct ProfileData<const N: usize> {
     /// The Guess pool: Corpus words in Corpus order, then floored words alphabetically.
     pub pool: WordSet<N>,
     /// The Answer list, sorted.
     pub answers: Vec<Word<N>>,
+    /// What the Profile contributes to a report.
     pub stats: ProfileStats,
 }
 

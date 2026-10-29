@@ -1,3 +1,5 @@
+//! Choosing the target words a simulation plays.
+
 use std::collections::HashSet;
 use std::path::Path;
 
@@ -27,6 +29,7 @@ pub fn select<const N: usize>(
     }
 }
 
+/// The distinct words in the file at `path`, each required to be an answer, at most `num_games` of them.
 fn from_file<const N: usize>(
     answers: &[Word<N>],
     noun: &str,
@@ -61,6 +64,7 @@ fn from_file<const N: usize>(
     Ok(targets)
 }
 
+/// `num_games` words of `words` drawn uniformly, reproducible from `seed`; all of them when `None`.
 fn sample<const N: usize>(
     mut words: Vec<Word<N>>,
     num_games: Option<usize>,

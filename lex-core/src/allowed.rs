@@ -1,3 +1,5 @@
+//! The guesses a game position permits, including the hard-mode rule.
+
 use std::fmt;
 
 use crate::correctness::{Code, LetterCounts, pattern_ordinal};
@@ -9,7 +11,9 @@ use crate::strategy::{GuessPool, Pool};
 /// yellow may repeat its position.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub(crate) struct HardRule<T> {
+    /// Each green letter with its position, ascending by position.
     greens: Vec<(usize, T)>,
+    /// Each green or yellow letter with the fewest times a word must hold it.
     needs: Vec<(T, usize)>,
 }
 
@@ -47,6 +51,7 @@ impl<T: Copy + PartialEq> HardRule<T> {
         Self { greens, needs }
     }
 
+    /// The first way `word` breaks the rule, or `None` when it keeps it.
     pub(crate) fn violation<const N: usize>(&self, word: &[T; N]) -> Option<Violation<T>> {
         if let Some(&(position, letter)) = self.greens.iter().find(|&&(p, l)| word[p] != l) {
             return Some(Violation::Position(position, letter));
@@ -57,6 +62,7 @@ impl<T: Copy + PartialEq> HardRule<T> {
         })
     }
 
+    /// Whether `word` keeps the rule.
     pub(crate) fn allows<const N: usize>(&self, word: &[T; N]) -> bool {
         self.violation(word).is_none()
     }
