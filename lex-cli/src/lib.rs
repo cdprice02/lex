@@ -11,3 +11,4 @@ pub mod report;
 pub mod simulate;
 pub mod targets;
 pub mod tracks;
+pub mod verdict;

@@ -1,0 +1,39 @@
+name: verdict
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  verdict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # the base commit must be reachable for git archive
+          fetch-depth: 0
+      - name: Extract the base snapshots
+        run: |
+          mkdir -p base
+          git archive "${{ github.event.pull_request.base.sha }}" benchmarks/snapshots | tar -x -C base/ || true
+      # installs the pin from rust-toolchain.toml
+      - name: Install pinned toolchain
+        run: rustup toolchain install
+      - name: Cache cargo registry and build artifacts
+        uses: Swatinem/rust-cache@v2
+      - name: Build lex
+        run: cargo build --locked --release -p lex-cli
+      - name: Verdict
+        run: |
+          set -o pipefail
+          target/release/lex verdict base/benchmarks/snapshots benchmarks/snapshots | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: README table
+        run: target/release/lex verdict --readme benchmarks/snapshots --check

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with four subcommands: `simulate` (batch games via `lex-core`),
+CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with five subcommands (the fifth, `verdict`, is hidden plumbing): `simulate` (batch games via `lex-core`),
 `assist` (interactive helper for live games), and `compare` (paired diff of two
 simulation reports), and `clear` (delete a cached corpus with `--lang [-l]`, or a fetched Profile with `--profile`; exactly one). Loads corpora via `lex-data` and
 monomorphizes the call chain over word lengths 3–10 at compile time.
@@ -18,10 +18,16 @@ monomorphizes the call chain over word lengths 3–10 at compile time.
 | `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
 | `tests/tracks.rs` | libtest-mimic harness (`harness = false`): one ignored trial per `TRACKS` entry, named `<tier>::<track-id>`, that plays `simulate::run(&track.config(), &data_dir)` and compares an insta snapshot in `benchmarks/snapshots/` (body: Track id, config, Corpus and Profile checksums, summary, first guess, games SHA-256; header `info`: `SOLVER_DIGEST`, lex version). Data comes from `LEX_DATA_DIR` (default the workspace `data/`); missing data fails with a download hint. Loop: `cargo test --release -p lex-cli --test tracks -- --ignored headline` (fast set), `-- --ignored` (full set), `cargo insta test --force-update-snapshots` to refresh header digests after a behavior-preserving change; behavior-changing PRs commit snapshots in a separate `test(snapshots): ...` commit (ADR 0012) |
+| `verdict.rs` | `lex verdict`, see Plumbing |
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary |
 | `compare.rs` | paired per-target comparison of two reports, joined on word |
 | `assist.rs` | interactive loop; `parse_feedback` (private) auto-detects input format |
 | `error.rs` | `CliError` |
+
+## Plumbing
+
+`lex verdict` is hidden from `--help`; CI and the benchmark loop use it, people rarely do.
+`lex verdict <base-dir> <head-dir>` reads two directories of Track snapshots (the YAML header via `yaml_serde` for the solver digest, the body as JSON) and prints a markdown table and an `Outcome:` line by ADR 0007's rule; exit 0 accept, unchanged, rebaseline or new, 1 reject or a stale headline digest, 2 bad input. A Track's tier and judged flag come from `TRACKS` by id, never the snapshot. `lex verdict --readme <snap-dir> [--check] [--file PATH]` rewrites, or checks, the headline table between `<!-- tracks:start -->` and `<!-- tracks:end -->` in `benchmarks/README.md`. `verdict()` takes the expected digest as a parameter; `tests/verdict.rs` runs the binary over `tests/fixtures/verdict/` (a `base/` set and per-case head overlays, with `FIXTURE_DIGEST` replaced by the compiled digest). Methodology: `benchmarks/README.md`.
 
 ## Monomorphization dispatch
 

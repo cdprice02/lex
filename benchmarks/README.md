@@ -7,29 +7,32 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 
 | Path | Holds |
 |---|---|
-| `README.md` | Methodology and the current results |
+| `README.md` | Methodology and the current results (the table is generated) |
 | `snapshots/*.snap` | One committed insta snapshot per Track: the record a change is checked against |
-| `baselines/*.json` | Committed `lex simulate` reports that `lex compare` pairs a change against |
 | `experiments/<topic>.md` | The evidence and verdict behind each solver or performance choice |
 | `scripts/` | Harness scripts (`sweep.sh`: temperature by win-weight grid) |
 
 ## Current results
 
-Full-dictionary runs, default strategy (unconstrained, T=5, win weight 1, endgame off).
-Update this table whenever a change lands.
+Full-dictionary runs of the headline Tier, default strategy unless the Track says otherwise
+(unconstrained, T=5, win weight 1, endgame off). The table is generated from the committed
+snapshots by `lex verdict --readme benchmarks/snapshots`, and CI fails when it is stale.
 
+<!-- tracks:start -->
 | Track | Targets | Uniform mean | Prior-weighted mean | Failure rate (>6) | Corpus |
 |---|---|---|---|---|---|
-| English-5 | 27,524 | 4.3442 | 4.1769 | 0.37% | `29104fb5747b` (phase 08) |
-| French-5 | 16,978 | 4.233 | 4.079 | 0.38% | `9b5e427a4e54` (phase 05) |
-| Wordle profile | 2,315 | 3.4721 | 3.3930 | 0.00% | `29104fb5747b` |
-
-The Wordle profile is run with `lex simulate --profile wordle` (the 2,315 answers as targets, the
-12,972-word Guess pool, the Answer prior at T=5); its headline is the uniform mean. Guess counts:
-2 in 59 games, 3 in 1,164, 4 in 1,032, 5 in 60. The `wordle-all` profile, Wordle hard mode, and the
-other languages and lengths are not measured yet. The committed
-baselines predate the English corpus rebuild (`cf683dcd1747`), so they must be regenerated before
-the next paired comparison.
+| english-5 | full | 4.3442 | 4.1769 | 0.37% | `29104fb5747b` |
+| french-5 | full | 4.2329 | 4.0791 | 0.38% | `a26c9f43ec6b` |
+| german-5 | full | 4.0427 | 3.9341 | 0.02% | `8da1b8d16892` |
+| spanish-5 | full | 4.2954 | 4.1255 | 1.16% | `454707da08a3` |
+| italian-5 | full | 3.7915 | 3.6845 | 0.02% | `e399c50fd473` |
+| russian-5 | full | 4.5951 | 4.4719 | 0.93% | `43af0a83cd76` |
+| wordle | full | 3.4721 | 3.3935 | 0.00% | `29104fb5747b` |
+| wordle-all | full | 4.1074 | 3.9192 | 0.38% | `29104fb5747b` |
+| wordle-hard | full | 3.5806 | 3.4663 | 0.48% | `29104fb5747b` |
+| wordle-ultrahard | full | 3.5823 | 3.4658 | 0.48% | `29104fb5747b` |
+| wordle-original | full | 3.5832 | 3.4897 | 0.22% | `29104fb5747b` |
+<!-- tracks:end -->
 
 ## Hard and ultrahard
 
@@ -59,35 +62,17 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
 
-## Baselines
-
-Each baseline is a sample, kept small enough to commit (a full English-5 report is ~6 MB). Because
-targets are paired by word, a full-dictionary run can be compared against these samples too.
-
-| File | Command |
-|---|---|
-| `baselines/english-5.json` | `lex simulate -l 5 --lang english -n 2000 --seed 0 -o benchmarks/baselines/english-5.json` |
-| `baselines/french-5.json` | `lex simulate -l 5 --lang french -n 500 --seed 0 -o benchmarks/baselines/french-5.json` |
-| `baselines/english-5-hard.json` | the same, with `--pool ultrahard --win-weight 0` (the solver before phase 05) |
-| `baselines/french-5-hard.json` | the same, with `--pool ultrahard --win-weight 0` |
-
-The French baseline keeps the generic (language, length) path honest. The unsuffixed files use the
-default strategy; the `-hard` files are the original solver, kept as the reference that
-`--pool ultrahard --win-weight 0` must reproduce exactly (0 targets changed). Ultrahard alone does not
-reproduce them: the win-weight bonus also applies inside the candidate set. They were written when
-the flag was `--hard-mode`, which is now `--pool ultrahard`; `--pool hard` is the official Wordle rule.
-
 ## Tracks
 
 The Tracks are one `const` table in `lex-cli/src/tracks.rs`, built from the supported languages and
 word lengths, the Profiles and the guess pools; adding a language or raising `MAX_WORD_LENGTH` adds
 its Tracks with no table edit. A Track's id is `{language}-{length}` (`english-5`) or the Profile's
-(`wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard`), and `lex simulate --track <id>` (hidden
+(`wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard`, `wordle-original`), and `lex simulate --track <id>` (hidden
 from `--help`) plays it.
 
 | Tier | Tracks | Targets | Judged |
 |---|---|---|---|
-| headline | every language at length 5; the four Profile Tracks | full | all but `wordle-all`, `wordle-hard`, `wordle-ultrahard` |
+| headline | every language at length 5; the four Profile Tracks | full | `wordle` only |
 | breadth | every language at 3, 8, 13 and 21 (those Supported) | full at length 3, else 500 sampled | yes |
 | smoke | every language at the other Supported lengths | 100 sampled | no |
 
@@ -98,7 +83,7 @@ Sampled Tracks draw with seed 0. The evidence for the targets is in
 
 Omit `-n` to play every word: exact expected performance with no sampling variance. The decision
 tree makes this affordable (English-5 in about a minute on one core, 41 MB peak RSS; timings are in the experiments). Use it for the
-headline numbers of a change and compare it to the sampled baselines for the paired diff.
+headline numbers of a change.
 
 ## Snapshots
 
@@ -171,21 +156,46 @@ Check for stray CPU-heavy processes first, and rerun any figure taken under cont
 where the time goes, profile with `samply record -- ./target/release/lex simulate ...` (the
 `samply` Cargo profile keeps debug info).
 
-## Comparing a change
+## Verdict
 
-Rerun the same command to a scratch path, then:
+`lex verdict` (hidden from `--help`) applies ADR 0007's rule to two snapshot directories. CI runs it
+on every pull request (`.github/workflows/verdict.yml`) with the base branch's `benchmarks/snapshots`
+and the head's, and writes the table to the job summary. To run it locally, extract the base
+snapshots and compare:
 
 ```bash
-lex compare benchmarks/baselines/english-5.json /tmp/candidate.json
+mkdir -p /tmp/base && git archive origin/main benchmarks/snapshots | tar -x -C /tmp/base
+lex verdict /tmp/base/benchmarks/snapshots benchmarks/snapshots
 ```
 
-Targets are paired by word, so the comparison is not affected by sampling noise. It warns when
-the corpus checksums differ.
+It prints a table per Track (tier, judged, base and head score, delta, status) and an `Outcome:` line.
+The score is the uniform mean on a Profile Track and the prior-weighted mean on a Corpus Track; a
+Track's tier and whether it is judged come from the Track table, not the snapshot.
+
+| Outcome | Meaning | Exit |
+|---|---|---|
+| `accept` | the average judged headline delta is negative, no headline Track is worse by more than 0.005, no breadth Track by more than 0.02; within 0.001 of zero the average failure-rate delta must also be negative | 0 |
+| `unchanged` | every judged delta is zero | 0 |
+| `rebaseline` | every judged Track changed Corpus or Profile checksum, so none can be compared | 0 |
+| `new` | no judged Track exists on both sides (a base with no snapshots) | 0 |
+| `reject` | a regression limit or the average rule failed | 1 |
+| `stale` | a headline snapshot's solver digest differs from the `lex` binary's | 1 |
+| bad input | a missing head directory, an unreadable snapshot | 2 |
+
+Smoke, reported, new and missing Tracks are listed and never judged. A Track whose Corpus or Profile
+checksum changed is `corpus changed` and left out. A breadth or smoke snapshot with an old digest
+is marked `(stale)` and still compared. A behavior-changing PR therefore commits the snapshots of
+the headline Tier, run on its own source; a behavior-preserving one refreshes the digests (see
+Snapshots). `lex verdict --readme benchmarks/snapshots` rewrites the table above from the head
+snapshots, and `--check` fails when it is out of date.
+
+To see which games changed rather than the Track scores, run `lex simulate -o` on both builds and
+`lex compare` the reports; targets are paired by word and it warns when the Corpus checksums differ.
 
 ## Provenance
 
 KAIKKI Wiktionary extracts are rolling. A report's `corpus.ngrams_sha256` is the Corpus checksum
 from the cache header (SHA-256 of the records), identifying the exact word list and frequencies it
 ran against; `corpus.dict` records the Wiktionary download. A rebuilt Corpus will usually have a
-different checksum, so baselines must be regenerated (and the change noted) when the Corpus is
+different checksum, so the snapshots must be regenerated (and the change noted) when the Corpus is
 rebuilt, not mixed with reports from an older one.

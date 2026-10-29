@@ -23,14 +23,23 @@ const SMOKE_SAMPLE: usize = 100;
 /// The seed every sampled Track draws with.
 const SAMPLE_SEED: u64 = 0;
 
-/// The Profile Tracks: the Profile, the pool it is played with, and whether it is judged. All
-/// are headline; only the original Wordle Profile is judged (ADR 0007).
-const PROFILE_TRACKS: [(Profile, GuessPool, bool); 4] = [
-    (Profile::Wordle, GuessPool::All, true),
-    (Profile::WordleAll, GuessPool::All, false),
-    (Profile::Wordle, GuessPool::Hard, false),
-    (Profile::Wordle, GuessPool::Ultrahard, false),
+/// The Profile Tracks: the Profile, the strategy it is played with, and whether it is judged. All
+/// are headline; only the original Wordle Profile is judged (ADR 0007). The last is the original
+/// solver, kept as the reference the default strategy is measured against.
+const PROFILE_TRACKS: [(Profile, Strategy, bool); 5] = [
+    (Profile::Wordle, Strategy::DEFAULT, true),
+    (Profile::WordleAll, Strategy::DEFAULT, false),
+    (Profile::Wordle, pool(GuessPool::Hard), false),
+    (Profile::Wordle, pool(GuessPool::Ultrahard), false),
+    (Profile::Wordle, Strategy::ultrahard(), false),
 ];
+
+const fn pool(pool: GuessPool) -> Strategy {
+    Strategy {
+        pool,
+        ..Strategy::DEFAULT
+    }
+}
 
 const CORPUS_TRACK_COUNT: usize =
     Language::VARIANTS.len() * (MAX_WORD_LENGTH - MIN_WORD_LENGTH + 1);
@@ -111,7 +120,8 @@ impl Track {
 }
 
 /// `{language}-{length}` for a Corpus game, the Profile's name for a Profile game, each followed
-/// by `-{pool}` unless the pool is `all`.
+/// by `-{pool}` unless the pool is `all`. The original solver (ultrahard, win weight 0) is
+/// `-original`, so it does not share an id with the ultrahard pool under the default strategy.
 impl fmt::Display for Track {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self.game {
@@ -119,6 +129,9 @@ impl fmt::Display for Track {
                 language, length, ..
             } => write!(f, "{language}-{length}")?,
             Game::Profile(profile) => write!(f, "{profile}")?,
+        }
+        if self.strategy == Strategy::ultrahard() {
+            return write!(f, "-original");
         }
         match self.strategy.pool {
             GuessPool::All => Ok(()),
@@ -174,13 +187,10 @@ const fn build() -> [Track; TRACK_COUNT] {
     }
     let mut p = 0;
     while p < PROFILE_TRACKS.len() {
-        let (profile, pool, judged) = PROFILE_TRACKS[p];
+        let (profile, strategy, judged) = PROFILE_TRACKS[p];
         tracks[n] = Track {
             game: Game::Profile(profile),
-            strategy: Strategy {
-                pool,
-                ..Strategy::DEFAULT
-            },
+            strategy,
             tier: Tier::Headline,
             judged,
             targets: TrackTargets::Full,
@@ -218,6 +228,7 @@ mod tests {
             "wordle-all",
             "wordle-hard",
             "wordle-ultrahard",
+            "wordle-original",
         ] {
             assert!(Track::find(id).is_some(), "{id}");
         }
@@ -280,6 +291,16 @@ mod tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn the_original_solver_track_plays_ultrahard_with_no_win_weight() {
+        let track = Track::find("wordle-original").unwrap();
+        assert_eq!(track.strategy, Strategy::ultrahard());
+        assert_eq!(track.game, Game::Profile(Profile::Wordle));
+        assert_eq!(track.tier, Tier::Headline);
+        assert!(!track.judged);
+        assert_eq!(track.targets, TrackTargets::Full);
     }
 
     #[test]
