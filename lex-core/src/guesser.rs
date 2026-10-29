@@ -838,6 +838,59 @@ mod tests {
         }
     }
 
+    /// The book as a run would have it: written to a file under its key and read back through
+    /// the stored form, so the test covers the whole round trip.
+    fn through_a_file(strategy: Strategy, answers: &[Word<5>]) -> Guesser<5> {
+        let built = fresh(strategy, answers).build_book_with_floor(LOW_FLOOR);
+        assert!(
+            !built.is_empty(),
+            "{strategy:?}: the book should be non-empty"
+        );
+        let key = lex_data::BookKey {
+            corpus_sha256: "fixture".to_owned(),
+            profile: None,
+            word_length: 5,
+            dictionary_length: DICT.len(),
+            strategy: strategy
+                .key_fields()
+                .into_iter()
+                .map(|(name, value)| (name.to_owned(), value))
+                .collect(),
+            solver_digest: crate::SOLVER_DIGEST.to_owned(),
+        };
+        let tmp = tempfile::tempdir().unwrap();
+        let dir = lex_data::DataDir::new(tmp.path());
+        dir.write_book(lex_data::Language::English, &key, &built.to_nodes())
+            .unwrap();
+        let lex_data::BookLookup::Found(stored) =
+            dir.read_book(lex_data::Language::English, &key).unwrap()
+        else {
+            panic!("{strategy:?}: the written book should be found");
+        };
+        let loaded = OpeningBook::<5>::from_nodes(stored, DICT.len()).unwrap();
+        assert_eq!(loaded, built, "{strategy:?}");
+        Guesser::with_book(dict_set(DICT), answers.to_vec(), strategy, loaded)
+    }
+
+    #[test]
+    fn a_book_loaded_from_its_file_plays_the_online_games_without_searching_a_booked_node() {
+        for strategy in book_strategies() {
+            for answers in book_answer_lists() {
+                let mut loaded = through_a_file(strategy, &answers);
+                assert_eq!(
+                    games(&mut loaded, &answers),
+                    games(&mut fresh(strategy, &answers), &answers),
+                    "{strategy:?}"
+                );
+                assert_eq!(
+                    loaded.tree.borrow().booked_computations(),
+                    0,
+                    "{strategy:?}"
+                );
+            }
+        }
+    }
+
     #[test]
     fn an_off_path_guess_leaves_the_book_and_is_computed_online() {
         let strategy = Strategy::default();

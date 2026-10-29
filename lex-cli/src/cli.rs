@@ -24,22 +24,84 @@ pub enum Command {
     Assist(AssistArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
-    /// Delete a cached corpus or a fetched Profile so it is rebuilt on next use (the Wiktionary dictionary is kept)
+    /// Delete a cached corpus, a fetched Profile or the opening books so they are rebuilt on next use (the Wiktionary dictionary is kept)
     Clear(ClearArgs),
+    /// Manage opening book files
+    Book(BookArgs),
+}
+
+#[derive(clap::Args, Debug)]
+pub struct BookArgs {
+    #[command(subcommand)]
+    pub command: BookCommand,
+}
+
+#[derive(Subcommand, Debug)]
+pub enum BookCommand {
+    /// Build the opening book for a game and strategy, or report that it is up to date
+    Build(BookBuildArgs),
+}
+
+#[derive(clap::Args, Debug)]
+#[command(
+    mut_arg("lang", |a| a.required_unless_present("track")),
+    mut_arg("word_length", |a| a.required_unless_present("track"))
+)]
+pub struct BookBuildArgs {
+    #[command(flatten)]
+    pub common: CommonArgs,
+    #[arg(long, help = "Rebuild even when the book is up to date")]
+    pub force: bool,
+    #[arg(
+        long,
+        hide = true,
+        value_parser = parse_track,
+        conflicts_with_all = [
+            "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
+            "win_weight", "endgame_threshold", "endgame_aversion",
+        ],
+        help = "Build the book of a benchmark Track by id"
+    )]
+    pub track: Option<Track>,
+}
+
+impl BookBuildArgs {
+    /// The length to monomorphize over.
+    pub fn dispatch_length(&self) -> usize {
+        match self.track {
+            Some(track) => track.game.word_length(),
+            None => self.common.dispatch_length(),
+        }
+    }
+
+    /// What these arguments build the book for. A book covers the full Answer set whatever
+    /// targets a run samples.
+    pub fn config(&self) -> RunConfig {
+        match self.track {
+            Some(track) => track.config(),
+            None => self.common.config(Targets::Full),
+        }
+    }
 }
 
 #[derive(clap::Args, Debug)]
 pub struct ClearArgs {
     #[arg(
         long,
-        required_unless_present = "profile",
+        required_unless_present_any = ["profile", "books"],
         conflicts_with = "profile",
-        help = "Language whose corpus cache to delete"
+        help = "Language whose corpus cache (and opening books) to delete"
     )]
     pub lang: Option<Language>,
     #[arg(
         long,
-        help = "Profile whose fetched lists to delete (never touches corpora)"
+        conflicts_with = "profile",
+        help = "Delete only the opening books, narrowed by --lang and -l (never touches corpora or Profiles)"
+    )]
+    pub books: bool,
+    #[arg(
+        long,
+        help = "Profile whose fetched lists and opening books to delete (never touches corpora)"
     )]
     pub profile: Option<Profile>,
     #[arg(
@@ -47,7 +109,7 @@ pub struct ClearArgs {
         long,
         conflicts_with = "profile",
         value_parser = parse_word_length,
-        help = "Delete only this word length (default: every length for the language)"
+        help = "Delete only this word length (default: every length)"
     )]
     pub word_length: Option<usize>,
     #[arg(
@@ -205,6 +267,11 @@ pub struct SimulateArgs {
     pub output: Option<PathBuf>,
     #[arg(
         long,
+        help = "Play fully online instead of building and using the opening book"
+    )]
+    pub no_book: bool,
+    #[arg(
+        long,
         hide = true,
         value_parser = parse_track,
         conflicts_with_all = [
@@ -258,6 +325,11 @@ pub struct AssistArgs {
         help = "Number of suggestions to show per turn"
     )]
     pub suggestions: usize,
+    #[arg(
+        long,
+        help = "Play fully online instead of building and using the opening book"
+    )]
+    pub no_book: bool,
 }
 
 fn parse_word_length(s: &str) -> anyhow::Result<usize> {
@@ -309,6 +381,15 @@ mod clear_tests {
         assert!(parse(&["--lang", "english"]).is_ok());
         assert!(parse(&["--profile", "wordle"]).is_ok());
         assert!(parse(&["--lang", "english", "--profile", "wordle"]).is_err());
+    }
+
+    #[test]
+    fn books_stand_alone_or_narrow_by_language_and_length() {
+        assert!(parse(&["--books"]).is_ok());
+        assert!(parse(&["--books", "--lang", "english"]).is_ok());
+        assert!(parse(&["--books", "--lang", "english", "-l", "5"]).is_ok());
+        assert!(parse(&["--books", "-l", "5"]).is_ok());
+        assert!(parse(&["--books", "--profile", "wordle"]).is_err());
     }
 
     #[test]
@@ -442,5 +523,60 @@ mod track_tests {
         assert_eq!(file.config().targets, Targets::File("t.txt".into()));
         assert!(simulate(&["-l", "5", "--lang", "english", "--targets", "t", "-n", "1"]).is_err());
         assert!(simulate(&["-l", "5", "--lang", "english", "--seed", "1"]).is_err());
+    }
+}
+
+#[cfg(test)]
+mod book_tests {
+    use super::*;
+
+    fn build(args: &[&str]) -> Result<BookBuildArgs, clap::Error> {
+        match Cli::try_parse_from(
+            ["lex", "book", "build"]
+                .into_iter()
+                .chain(args.iter().copied()),
+        )?
+        .command
+        {
+            Command::Book(BookArgs {
+                command: BookCommand::Build(a),
+            }) => Ok(a),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn build_takes_simulates_game_and_strategy_flags() {
+        assert!(build(&[]).is_err());
+        let args = build(&["-l", "5", "--lang", "english", "--pool", "hard", "--force"]).unwrap();
+        assert!(args.force);
+        assert_eq!(args.config().strategy.pool, GuessPool::Hard);
+        assert_eq!(args.config().targets, Targets::Full);
+        assert_eq!(
+            build(&["--profile", "wordle"]).unwrap().dispatch_length(),
+            5
+        );
+    }
+
+    #[test]
+    fn build_takes_a_track_alone() {
+        let args = build(&["--track", "english-5"]).unwrap();
+        assert_eq!(args.config(), Track::find("english-5").unwrap().config());
+        assert!(build(&["--track", "english-5", "--pool", "hard"]).is_err());
+        assert!(build(&["--track", "english-5", "--force"]).is_ok());
+    }
+
+    #[test]
+    fn simulate_and_assist_can_opt_out_of_the_book() {
+        for command in ["simulate", "assist"] {
+            let parse = |extra: &[&str]| {
+                Cli::try_parse_from(
+                    ["lex", command, "-l", "5", "--lang", "english"]
+                        .into_iter()
+                        .chain(extra.iter().copied()),
+                )
+            };
+            assert!(parse(&["--no-book"]).is_ok(), "{command}");
+        }
     }
 }

@@ -2,6 +2,8 @@
 //! nothing here is a stable API.
 
 pub mod assist;
+pub mod books;
+pub mod clear;
 pub mod cli;
 pub mod compare;
 pub mod config;
