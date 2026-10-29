@@ -74,6 +74,24 @@ impl Language {
         }
     }
 
+    /// The largest word length this language has a Supported Corpus for, capped by
+    /// `MAX_WORD_LENGTH`.
+    pub const fn max_supported_length(self) -> usize {
+        let largest = match self {
+            Language::English => 21,
+            Language::French => 20,
+            Language::German => 21,
+            Language::Spanish => 18,
+            Language::Italian => 19,
+            Language::Russian => 21,
+        };
+        if largest < crate::MAX_WORD_LENGTH {
+            largest
+        } else {
+            crate::MAX_WORD_LENGTH
+        }
+    }
+
     /// Number of Google Books Ngrams V3 shards for this language (confirmed against GCS).
     pub fn shard_count(self) -> u32 {
         match self {

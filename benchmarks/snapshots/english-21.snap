@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 21
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "183d84a1fe31cdc3f7c8200be25f7b659c9088f2da3ee0e4d690d0a33fbccd1a",
+  "first_guess": "mucopolysaccharidosis",
+  "games_sha256": "f78bd04201c121b332c8a1e89e779473d786649e1bfee16b7e0b04b340e3255d",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9912853711981203,
+        "3": 0.008714628801878245
+      },
+      "mean": 2.0087146288018753
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9900000000000008,
+        "3": 0.01
+      },
+      "mean": 2.0100000000000016
+    }
+  },
+  "track": "english-21"
+}

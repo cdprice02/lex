@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "spanish",
+      "length": 18
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "9b7bc78526526147d351530d6f6a2ae2340745a86403301295ae766456190c4d",
+  "first_guess": "desaprovecharíamos",
+  "games_sha256": "6662eebb1d3376a3ba1f5f7f75d589a11f4cee61b85b009cbdf31b6396b2ac6e",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9748339648941706,
+        "3": 0.025166035105829564
+      },
+      "mean": 2.0251660351058303
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9700000000000006,
+        "3": 0.03
+      },
+      "mean": 2.030000000000001
+    }
+  },
+  "track": "spanish-18"
+}

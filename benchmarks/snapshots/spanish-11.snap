@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "spanish",
+      "length": 11
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "b4ff23bea303d7fcf5858fc5742d89b36864939da8ad479bdf8b7d644dc2993e",
+  "first_guess": "decapitaron",
+  "games_sha256": "a1365c6a6600decc95411f862cff4e51d99f4b6fa4d33afc4bbbc26e5bfb63d0",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.28282025050053455,
+        "3": 0.7117694131929325,
+        "4": 0.005410336306533282
+      },
+      "mean": 2.7225900858060004
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.25000000000000006,
+        "3": 0.7400000000000004,
+        "4": 0.01
+      },
+      "mean": 2.759999999999998
+    }
+  },
+  "track": "spanish-11"
+}

@@ -30,7 +30,10 @@ pub use word::{Word, WordSet};
 /// Shortest word length the solver plays.
 pub const MIN_WORD_LENGTH: usize = 3;
 /// Longest word length the solver plays.
-pub const MAX_WORD_LENGTH: usize = 10;
+pub const MAX_WORD_LENGTH: usize = 21;
+
+/// The fewest words a Corpus length holds to be Supported.
+pub const MIN_SUPPORTED_WORDS: usize = 200;
 
 /// The most letters a Corpus Alphabet may hold: the solver encodes a letter as one byte and
 /// reserves the last value for a letter outside the Alphabet.
@@ -48,7 +51,7 @@ pub use seq_macro;
 #[macro_export]
 macro_rules! match_word_length {
     ($f:ident, $len:expr, $args:expr) => {
-        $crate::seq_macro::seq!(N in 3..=10 {
+        $crate::seq_macro::seq!(N in 3..=21 {
             match $len {
                 #(N => $f::<N>($args),)*
                 _ => ::std::unreachable!("word length outside supported range"),
@@ -57,9 +60,9 @@ macro_rules! match_word_length {
     };
 }
 
-// seq_macro requires literal bounds; this assert keeps the macro's 3..=10 in
+// seq_macro requires literal bounds; this assert keeps the macro's 3..=21 in
 // lockstep with the consts above.
 const _: () = assert!(
-    MIN_WORD_LENGTH == 3 && MAX_WORD_LENGTH == 10,
+    MIN_WORD_LENGTH == 3 && MAX_WORD_LENGTH == 21,
     "match_word_length! seq bounds must match MIN_WORD_LENGTH / MAX_WORD_LENGTH"
 );

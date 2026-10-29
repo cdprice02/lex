@@ -21,9 +21,9 @@ info:
       "kind": "full"
     }
   },
-  "corpus_sha256": "29104fb5747b23a54ec5249ee31428a7ca440e57dd05a65361359badc008f282",
+  "corpus_sha256": "ed5ad0f39c90a51585ff4388523c992bacdbad303506e884c629546e9176db11",
   "first_guess": "roate",
-  "games_sha256": "39e0e02509cc16edb3071fe0f5415028adb90d0bdf6c6c80c2a64b4b14a449cf",
+  "games_sha256": "a17d2b5d733686ce8aa7122acd4fe120ed54ccd5a6e253e4d100038ba1f3c79b",
   "profile": {
     "answers_sha256": "f40e47975cf360ff9febe7d49c8e285054d8fa3fb9644cea575922060951d6ee",
     "guess_only_sha256": "f012ef5ecdbeb94274186abcbbd5388d92bb86fe8ae0635fffcc5e9be4aa3d33",
@@ -34,12 +34,12 @@ info:
     "prior": {
       "failure_rate": 0.0,
       "histogram": {
-        "2": 0.03340488688456678,
-        "3": 0.5572382003549027,
-        "4": 0.3918314577561622,
-        "5": 0.017525455004367075
+        "2": 0.03340488688456682,
+        "3": 0.5572382003549029,
+        "4": 0.3918314577561625,
+        "5": 0.017525455004367085
       },
-      "mean": 3.3934774808803145
+      "mean": 3.393477480880317
     },
     "uniform": {
       "failure_rate": 0.0,

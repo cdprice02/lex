@@ -23,9 +23,9 @@ info:
       "kind": "full"
     }
   },
-  "corpus_sha256": "43af0a83cd7631b9beda328089feed5bff5996ebb91fdc98cbaf5365e7c2e3fa",
+  "corpus_sha256": "0df2e0461d82a7d14bdc2a9933eb927b9337a9d18aabf15a7646822a6560f825",
   "first_guess": "карие",
-  "games_sha256": "447c7c50b7b932d42c6766555d26082713395d38bfc3cc9902b915ddf8b4bd2a",
+  "games_sha256": "950fd6860324c1ef3263c273cae5eaf968189574b1f053a0c2f8c2eb4200de93",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -55,7 +55,7 @@ info:
         "7": 0.009139097057210744,
         "8": 0.00018278194114421497
       },
-      "mean": 4.595138000366704
+      "mean": 4.5951380003667035
     }
   },
   "track": "russian-5"

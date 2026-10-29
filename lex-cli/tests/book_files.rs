@@ -1,13 +1,12 @@
 //! Opening book files through the CLI's own seams: the first use builds, a changed key rebuilds
-//! and says why, damage fails loudly, and `lex clear` prunes. The fixture Corpus is too small
-//! for the production floor to book anything, so the books here are empty; the round trip of a
-//! non-empty book is `lex-core`'s `guesser` test.
+//! and says why, damage fails loudly, and `lex clear` prunes. The round trip of a non-empty
+//! book is `lex-core`'s `guesser` test.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 mod common;
 
 use clap::Parser;
-use common::{seed_bin, seed_dict};
+use common::{seed_dict, seed_supported};
 use lex_cli::books::{self, BookMode, Status};
 use lex_cli::cli::{Cli, Command};
 use lex_cli::config::{Game, RunConfig, Targets};
@@ -31,7 +30,7 @@ const WORDS: [(&str, u64); 8] = [
 fn seeded() -> (tempfile::TempDir, DataDir) {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_bin(&dir, Language::English, 5, &WORDS);
+    seed_supported(&dir, Language::English, 5, &WORDS);
     seed_dict(&dir, Language::English);
     (tmp, dir)
 }
@@ -124,7 +123,7 @@ fn a_changed_corpus_rebuilds_and_names_its_checksum() {
     ensure(&dir, &config, false).unwrap();
     let mut words = WORDS.to_vec();
     words[0].1 += 1;
-    seed_bin(&dir, Language::English, 5, &words);
+    seed_supported(&dir, Language::English, 5, &words);
     let rebuilt = ensure(&dir, &config, false).unwrap();
     assert_eq!(rebuilt.stale_fields, Some(vec!["corpus_sha256".to_owned()]));
 }

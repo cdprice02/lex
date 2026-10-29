@@ -14,6 +14,7 @@ use crate::language::Language;
 use crate::ngrams;
 use crate::wiktionary;
 use crate::word::{RawRecord, WordSet};
+use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 
 /// Least summed count a word needs to enter a Corpus.
 pub(crate) const MIN_FREQUENCY: u64 = 1;
@@ -37,6 +38,35 @@ pub(crate) fn build_if_missing<const N: usize>(
         log::info!("Cached {} corpus ({} length buckets)", lang, n_buckets);
     }
     Ok(())
+}
+
+/// Rejects a length whose cached Corpus holds fewer than `MIN_SUPPORTED_WORDS` words, naming
+/// the lengths of `lang` that do, read from the cache headers.
+pub(crate) fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
+    let count_at = |len: usize| -> Option<usize> {
+        let header = Header::read_file(&dir.ngrams_path(lang, len)).ok()?;
+        Some(header.record_count as usize)
+    };
+    let count = match count_at(n) {
+        Some(count) => count,
+        // An unreadable header is reported by the load itself; a missing file holds no words.
+        None if dir.ngrams_path(lang, n).exists() => return Ok(()),
+        None => 0,
+    };
+    if count >= MIN_SUPPORTED_WORDS {
+        return Ok(());
+    }
+    let supported = (MIN_WORD_LENGTH..=MAX_WORD_LENGTH)
+        .filter(|&len| count_at(len).is_some_and(|c| c >= MIN_SUPPORTED_WORDS))
+        .collect();
+    Err(LexDataError::UnsupportedLength {
+        lang,
+        length: n,
+        count,
+        min: MIN_SUPPORTED_WORDS,
+        supported,
+    }
+    .into())
 }
 
 /// Reads the cached ngrams binary file for `lang` at word length `N` into a `WordSet`.
@@ -160,7 +190,8 @@ mod tests {
     use crate::language::Language;
     use crate::word::{Word, WordSet};
 
-    use super::{clear, populate, read};
+    use super::{clear, ensure_supported, populate, read};
+    use crate::MIN_SUPPORTED_WORDS;
 
     fn toy_corpus() -> HashMap<usize, HashMap<String, u64>> {
         let mut five = HashMap::new();
@@ -363,6 +394,49 @@ mod tests {
         let (_tmp, dir, _path, bytes) = cache_bytes();
         let count = (bytes.len() - 64) / (5 * 4 + 8);
         assert_eq!(dir.ngrams_count(Language::English, 5).unwrap(), count);
+    }
+
+    #[test]
+    fn short_length_is_rejected_naming_the_supported_lengths() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        let big: HashMap<String, u64> = (0..MIN_SUPPORTED_WORDS as u64)
+            .map(|i| (format!("w{i:04}"), 1000 - i))
+            .collect();
+        let mut corpus = toy_corpus();
+        corpus.insert(5, big);
+        corpus.insert(4, [("abcd".to_string(), 1u64)].into());
+        populate(&dir, Language::English, &corpus).unwrap();
+
+        let err = dir
+            .load::<4>(Language::English, None)
+            .unwrap_err()
+            .downcast::<LexDataError>()
+            .expect("typed error");
+        assert!(
+            matches!(
+                err,
+                LexDataError::UnsupportedLength {
+                    length: 4,
+                    count: 1,
+                    ..
+                }
+            ),
+            "{err}"
+        );
+        let msg = err.to_string();
+        assert!(msg.contains("english"), "{msg}");
+        assert!(msg.contains("1 words at length 4"), "{msg}");
+        assert!(msg.ends_with("Supported lengths for english: 5"), "{msg}");
+    }
+
+    #[test]
+    fn exactly_the_minimum_is_supported() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        let words: HashMap<String, u64> = (0..MIN_SUPPORTED_WORDS as u64)
+            .map(|i| (format!("w{i:04}"), 1000 - i))
+            .collect();
+        populate(&dir, Language::English, &[(5, words)].into()).unwrap();
+        assert!(ensure_supported(&dir, Language::English, 5).is_ok());
     }
 
     #[test]

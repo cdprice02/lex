@@ -4,7 +4,7 @@
 mod common;
 
 use clap::Parser;
-use common::{seed_bin, seed_dict};
+use common::{seed_dict, seed_supported};
 use lex_cli::cli::{Cli, Command};
 use lex_cli::report::Report;
 use lex_cli::simulate::run;
@@ -21,7 +21,7 @@ fn bytes(mut report: Report) -> String {
 fn track_flag_and_run_of_its_config_give_equal_reports() {
     let tmp = tempfile::tempdir().unwrap();
     let dir = DataDir::new(tmp.path());
-    seed_bin(
+    seed_supported(
         &dir,
         Language::English,
         5,
@@ -56,6 +56,6 @@ fn track_flag_and_run_of_its_config_give_equal_reports() {
     let track = Track::find("english-5").unwrap();
     let from_flag = run(&args.config(), &dir).unwrap();
     let from_config = run(&track.config(), &dir).unwrap();
-    assert_eq!(from_flag.games.len(), 8);
+    assert_eq!(from_flag.games.len(), 200);
     assert_eq!(bytes(from_flag), bytes(from_config));
 }

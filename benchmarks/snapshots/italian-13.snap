@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "italian",
+      "length": 13
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "64f967d4ca95901cb1be7a9e74bcbcf0c79d9f5d643de661f4761b4f7be53dd6",
+  "first_guess": "selenocianato",
+  "games_sha256": "72da48abb6e432f724b92f4f63cf33157239b55b443a13c33e90e7e9c024a312",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.664778000944221,
+        "3": 0.33255915935496244,
+        "4": 0.002662839700816624
+      },
+      "mean": 2.3378848387565987
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.6000000000000004,
+        "3": 0.3960000000000003,
+        "4": 0.004
+      },
+      "mean": 2.403999999999994
+    }
+  },
+  "track": "italian-13"
+}

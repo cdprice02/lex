@@ -5,7 +5,7 @@
 CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with six subcommands (the sixth, `verdict`, is hidden plumbing): `simulate` (batch games via `lex-core`),
 `assist` (interactive helper for live games), `compare` (paired diff of two
 simulation reports), `book build` (build or refresh the opening book), and `clear` (delete a cached corpus with `--lang [-l]`, a fetched Profile with `--profile`, or just the opening books with `--books [--lang] [-l]`; a corpus or Profile takes its books with it). Loads corpora via `lex-data` and
-monomorphizes the call chain over word lengths 3–10 at compile time.
+monomorphizes the call chain over word lengths 3–21 at compile time.
 
 ## Module map
 
@@ -34,7 +34,7 @@ monomorphizes the call chain over word lengths 3–10 at compile time.
 ## Monomorphization dispatch
 
 `lex_data::match_word_length!(f, len, args)` expands (via `seq_macro`) to a
-`match` on `len` calling `f::<N>(args)` for each `N` in 3..=10. The macro lives
+`match` on `len` calling `f::<N>(args)` for each `N` in 3..=21. The macro lives
 in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 (compile-time assert keeps them in lockstep), so future frontends reuse it.
 `main.rs` invokes it once per subcommand.

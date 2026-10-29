@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
 ---
 {
   "config": {
@@ -25,29 +25,31 @@ info:
       "seed": 0
     }
   },
-  "corpus_sha256": "9e3df8d0df178494243d5260fe3a20b0108e3f15f98c3d0f7bb948b3212374ae",
+  "corpus_sha256": "634d880e46e2d0f198f07015017b4e3efff7d4756c2d4789f18e0a5f746ccf10",
   "first_guess": "соринка",
-  "games_sha256": "5a148ef70e6128ec89002bd2a4d0fb298553714c921645baf3aeff5e11d637a1",
+  "games_sha256": "71faa467adb66ad09f3660ee36d1411fd8a1055cde2edf72ea7f30459afafe52",
   "profile": null,
   "summary": {
     "max_guesses": 6,
     "prior": {
       "failure_rate": 0.0,
       "histogram": {
-        "3": 0.3598206033304367,
-        "4": 0.5848202013170136,
-        "5": 0.05535919535254988
+        "2": 0.007084769562044643,
+        "3": 0.34830357851083954,
+        "4": 0.5790357310191415,
+        "5": 0.06557592090797429
       },
-      "mean": 3.695538592022115
+      "mean": 3.7031028032730466
     },
     "uniform": {
       "failure_rate": 0.0,
       "histogram": {
-        "3": 0.34000000000000014,
-        "4": 0.6000000000000003,
-        "5": 0.060000000000000005
+        "2": 0.01,
+        "3": 0.3300000000000001,
+        "4": 0.5900000000000003,
+        "5": 0.07
       },
-      "mean": 3.7199999999999993
+      "mean": 3.719999999999998
     }
   },
   "track": "russian-7"

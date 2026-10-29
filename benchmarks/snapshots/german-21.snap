@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "german",
+      "length": 21
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "55b3c876f9b04480c313d8bb5ce2bab8aa301ddcedcc5f94beca824b337fcbf8",
+  "first_guess": "rasiermesserschnitten",
+  "games_sha256": "841c2d9f4b3af1302978354a2ec389d6536d334d9bfe1a42f983088eac609b4d",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.982712200274358,
+        "3": 0.017287799725641057
+      },
+      "mean": 2.0172877997256395
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.9800000000000008,
+        "3": 0.020000000000000004
+      },
+      "mean": 2.0200000000000014
+    }
+  },
+  "track": "german-21"
+}

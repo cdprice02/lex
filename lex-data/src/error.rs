@@ -4,6 +4,20 @@ use std::path::PathBuf;
 
 use thiserror::Error;
 
+use crate::language::Language;
+
+/// Renders a list of lengths for a message, `none` when it is empty.
+fn format_lengths(lengths: &[usize]) -> String {
+    if lengths.is_empty() {
+        return "none".to_string();
+    }
+    lengths
+        .iter()
+        .map(usize::to_string)
+        .collect::<Vec<_>>()
+        .join(", ")
+}
+
 /// Why loading, building or parsing Corpus, Profile or Opening book data failed.
 #[derive(Error, Debug)]
 pub enum LexDataError {
@@ -51,6 +65,24 @@ pub enum LexDataError {
         index: usize,
         /// What failed.
         reason: String,
+    },
+    /// A length whose Corpus holds fewer than `MIN_SUPPORTED_WORDS` words.
+    #[error(
+        "{lang} has {count} words at length {length}; a length needs at least {min} to be \
+         supported. Supported lengths for {lang}: {}",
+        format_lengths(supported)
+    )]
+    UnsupportedLength {
+        /// The language asked for.
+        lang: Language,
+        /// The length asked for.
+        length: usize,
+        /// Words the Corpus holds at that length.
+        count: usize,
+        /// The Supported floor, `MIN_SUPPORTED_WORDS`.
+        min: usize,
+        /// The lengths the language does support.
+        supported: Vec<usize>,
     },
     /// An Opening book file that fails its magic, version, checksum, parse or key check.
     #[error("corrupt opening book {path:?}: {reason}; rebuild it with `lex book build --force`")]
