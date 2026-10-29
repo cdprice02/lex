@@ -69,8 +69,8 @@ fn measure<const N: usize>(
 fn a_fixture_book_stays_far_under_the_cap() {
     let pool = fixture();
     let pool_len = pool.len();
-    let answers = pool.words().collect();
-    let guesser = Guesser::new(pool, answers, Strategy::default());
+    let answers: Vec<_> = pool.words().collect();
+    let guesser = Guesser::new(&pool, &answers, Strategy::default());
     let (peak, nodes) = measure(&guesser, pool_len, |g| g.build_book_with_floor(1));
     assert!(nodes > 0);
     assert!(peak < CAP / 100);
@@ -82,7 +82,7 @@ fn the_english_5_book_fits_the_cap() {
     let dir = DataDir::new(std::env::var("LEX_DATA_DIR").unwrap_or_else(|_| "../data".into()));
     let pool = dir.load::<5>(Language::English, None).unwrap();
     let pool_len = pool.len();
-    let answers = pool.words().collect();
-    let guesser = Guesser::new(pool, answers, Strategy::default());
+    let answers: Vec<_> = pool.words().collect();
+    let guesser = Guesser::new(&pool, &answers, Strategy::default());
     measure(&guesser, pool_len, lex_core::Guesser::build_book);
 }

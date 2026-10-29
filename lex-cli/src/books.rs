@@ -136,7 +136,7 @@ pub fn ensure<const N: usize>(
     }
 
     let started = Instant::now();
-    let guesser = Guesser::new(lists.pool.clone(), lists.answers.clone(), config.strategy);
+    let guesser = Guesser::new(&lists.pool, &lists.answers, config.strategy);
     let mut last_report = Instant::now();
     let book = guesser.build_book_reporting(&mut |booked| {
         if last_report.elapsed() >= Duration::from_secs(5) {
@@ -174,11 +174,11 @@ pub fn guesser<const N: usize>(
     let strategy = config.strategy;
     if mode == BookMode::Off {
         let GameLists { pool, answers } = lists;
-        return Ok(Guesser::new(pool, answers, strategy));
+        return Ok(Guesser::new(&pool, &answers, strategy));
     }
     let ensured = ensure(config, data_dir, source, &lists, false)?;
     let GameLists { pool, answers } = lists;
-    Ok(Guesser::with_book(pool, answers, strategy, ensured.book))
+    Ok(Guesser::with_book(&pool, &answers, strategy, ensured.book))
 }
 
 /// The `lex book build` command: builds the book, or reports that it is up to date.

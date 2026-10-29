@@ -25,8 +25,8 @@ fn fixture() -> WordSet<5> {
 
 fn sequence(strategy: Strategy, target: &str) -> Vec<String> {
     let pool = fixture();
-    let answers = pool.words().collect();
-    let mut guesser = Guesser::new(pool, answers, strategy);
+    let answers: Vec<_> = pool.words().collect();
+    let mut guesser = Guesser::new(&pool, &answers, strategy);
     let result = play(
         Word::<5>::try_from(target).unwrap(),
         &mut guesser,

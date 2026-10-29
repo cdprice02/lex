@@ -9,7 +9,7 @@ use lex_core::{Guesser, Guess, Strategy, WordCorrectness, play};
 use lex_data::WordSet;
 
 // `answers` are the words the target can be (every word of the set, or a Profile's list)
-let mut guesser = Guesser::new(word_set, answers, Strategy::default());
+let mut guesser = Guesser::new(&word_set, &answers, Strategy::default());
 let suggestion = guesser.suggest().unwrap();
 
 // Apply feedback and narrow the candidate set
