@@ -82,7 +82,7 @@ the flag was `--hard-mode`, which is now `--pool ultrahard`; `--pool hard` is th
 The Tracks are one `const` table in `lex-cli/src/tracks.rs`, built from the supported languages and
 word lengths, the Profiles and the guess pools; adding a language or raising `MAX_WORD_LENGTH` adds
 its Tracks with no table edit. A Track's id is `{language}-{length}` (`english-5`) or the Profile's
-(`wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard`), and `lex simulate --track <id>` (hidden
+(`wordle`, `wordle-all`, `wordle-hard`, `wordle-ultrahard`, `wordle-original`), and `lex simulate --track <id>` (hidden
 from `--help`) plays it.
 
 | Tier | Tracks | Targets | Judged |
