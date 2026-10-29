@@ -1,6 +1,7 @@
 //! Opening book files through the CLI's own seams: the first use builds, a changed key rebuilds
 //! and says why, damage fails loudly, and `lex clear` prunes. The round trip of a non-empty
 //! book is `lex-core`'s `guesser` test.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 mod common;
 

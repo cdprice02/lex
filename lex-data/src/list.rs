@@ -9,6 +9,7 @@ use crate::parse::normalize;
 use crate::store::hex;
 use crate::word::Word;
 
+/// An [`LexDataError::InvalidProfileList`] at `line` of `file`.
 fn invalid(file: &str, line: usize, reason: impl Into<String>) -> anyhow::Error {
     LexDataError::InvalidProfileList {
         file: file.to_string(),
@@ -86,10 +87,13 @@ pub(crate) fn complain(file: &str, line: usize, reason: impl Into<String>) -> an
 /// The stored form of a list: sorted, `\n` after every word. Its SHA-256 is the checksum
 /// compiled into the registry.
 pub(crate) struct Canonical {
+    /// The list, one word per line.
     pub(crate) text: String,
+    /// SHA-256 of `text`, as lowercase hex.
     pub(crate) sha256: String,
 }
 
+/// Sorts `words` into their stored form and checksums it.
 pub(crate) fn canonicalize(mut words: Vec<String>) -> Canonical {
     words.sort_unstable();
     let mut text = String::with_capacity(words.iter().map(|w| w.len() + 1).sum());

@@ -1,3 +1,5 @@
+//! `Word` and `WordSet`, the in-memory form of a Corpus.
+
 use std::collections::{HashMap, HashSet};
 use std::fmt::Display;
 use std::ops::Deref;
@@ -8,6 +10,7 @@ use memmap2::{Mmap, MmapMut};
 
 use crate::error::LexDataError;
 
+/// A word of exactly `N` letters.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct Word<const N: usize>([char; N]);
@@ -68,8 +71,11 @@ impl<const N: usize> IntoIterator for Word<N> {
 pub(crate) struct RawRecord<'a, const N: usize>(&'a [u8]);
 
 impl<const N: usize> RawRecord<'_, N> {
+    /// Bytes of one stored letter.
     pub(crate) const CHAR_BYTES: usize = std::mem::size_of::<u32>();
+    /// Bytes of the stored frequency.
     pub(crate) const FREQ_BYTES: usize = std::mem::size_of::<u64>();
+    /// Bytes of one record.
     pub(crate) const SIZE: usize = Self::CHAR_BYTES * N + Self::FREQ_BYTES;
 
     /// Returns `None` if any stored scalar is not a valid Unicode scalar value.
@@ -84,6 +90,7 @@ impl<const N: usize> RawRecord<'_, N> {
         Some(Word::from(chars))
     }
 
+    /// The word's frequency.
     pub(crate) fn freq(&self) -> u64 {
         let off = Self::CHAR_BYTES * N;
         u64::from_le_bytes(self.0[off..off + Self::FREQ_BYTES].try_into().unwrap())
@@ -101,8 +108,11 @@ impl<'a, const N: usize> From<&'a [u8]> for RawRecord<'a, N> {
 ///
 /// Implements [`Clone`] to support `.cycle()`.
 pub struct WordIter<'a, const N: usize> {
+    /// The records the iterator reads.
     mmap: &'a Mmap,
+    /// Offsets of the records still to read.
     offsets: &'a [u32],
+    /// Position of the next record in `offsets`.
     index: usize,
 }
 
@@ -135,11 +145,13 @@ impl<const N: usize> Clone for WordIter<'_, N> {
     }
 }
 
+/// Words of one length in frequency-descending order, read from a memory map.
 #[derive(Debug, Clone)]
 pub struct WordSet<const N: usize> {
+    /// The records the offsets point into.
     mmap: Arc<Mmap>,
-    // Absolute byte offsets of active records within the mmap (past any header), sorted descending by frequency.
-    // Elements are only ever removed (via limit) — never reordered after construction.
+    /// Absolute byte offsets of active records within the mmap (past any header), sorted descending
+    /// by frequency. Elements are only ever removed (via limit), never reordered after construction.
     offsets: Vec<u32>,
 }
 
@@ -188,6 +200,7 @@ impl<const N: usize> WordSet<N> {
         Ok(Self::from_offsets(mmap, offsets))
     }
 
+    /// A set over `mmap` holding the records at `offsets`.
     fn from_offsets(mmap: Mmap, offsets: Vec<u32>) -> Self {
         Self {
             mmap: Arc::new(mmap),
@@ -251,6 +264,7 @@ impl<const N: usize> WordSet<N> {
         })
     }
 
+    /// The frequency of `word`, or `None` when it is not in the set.
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
         for &off in &self.offsets {
             let record =
@@ -280,24 +294,35 @@ impl<const N: usize> WordSet<N> {
         Ok(())
     }
 
+    /// Number of words in the set.
     pub fn len(&self) -> usize {
         self.offsets.len()
     }
 
+    /// Whether the set holds no words.
     pub fn is_empty(&self) -> bool {
         self.offsets.is_empty()
     }
 
+    /// Whether `word` is in the set.
     pub fn contains(&self, word: &Word<N>) -> bool {
         self.frequency(word).is_some()
     }
 
+    /// Keeps only the `n` most frequent words.
     pub fn limit(&mut self, n: usize) {
         self.offsets.truncate(n);
     }
 }
 
 #[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
 mod benches {
     use divan::Bencher;
     use std::collections::HashMap;

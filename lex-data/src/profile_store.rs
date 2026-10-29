@@ -15,13 +15,17 @@ use crate::list::{self, Canonical};
 use crate::profile::{ListSpec, ProfileData, ProfileSpec, ProfileStats};
 use crate::word::{Word, WordSet};
 
+/// Name of the stored Answer list.
 pub(crate) const ANSWERS_FILE: &str = "answers.txt";
+/// Name of the stored guess-only list.
 pub(crate) const GUESS_ONLY_FILE: &str = "guess-only.txt";
+/// Name of the Provenance record, written last so its presence marks a complete fetch.
 pub(crate) const META_FILE: &str = "meta.json";
 
 /// Returns the body of a URL as text. Injected so tests never touch the network.
 pub(crate) type Get<'a> = &'a dyn Fn(&str) -> anyhow::Result<String>;
 
+/// A [`Get`] over HTTP.
 pub(crate) fn http_get(url: &str) -> anyhow::Result<String> {
     http::get(&http::agent(), url, |body| {
         let mut text = String::new();
@@ -30,27 +34,40 @@ pub(crate) fn http_get(url: &str) -> anyhow::Result<String> {
     })
 }
 
+/// A list source as recorded in `meta.json`.
 #[derive(Serialize)]
 struct SourceProvenance {
+    /// Where the list was downloaded from.
     url: &'static str,
+    /// SHA-256 of the download once normalized.
     sha256: &'static str,
 }
 
+/// A stored list as recorded in `meta.json`.
 #[derive(Serialize)]
 struct ListProvenance {
+    /// SHA-256 of the stored list.
     sha256: String,
+    /// Number of words in the list.
     words: usize,
+    /// The downloads merged into the list.
     sources: Vec<SourceProvenance>,
 }
 
+/// The Provenance of a fetched Profile, as stored in `meta.json`.
 #[derive(Serialize)]
 struct Metadata {
+    /// The Profile's stored name.
     profile: String,
+    /// RFC 3339 time of the fetch.
     fetched_at: String,
+    /// Provenance of the Answer list.
     answers: ListProvenance,
+    /// Provenance of the guess-only list.
     guess_only: ListProvenance,
 }
 
+/// The record of `list`, built from `spec`.
 fn provenance(spec: &ListSpec, list: &Canonical) -> ListProvenance {
     ListProvenance {
         sha256: list.sha256.clone(),
@@ -66,6 +83,7 @@ fn provenance(spec: &ListSpec, list: &Canonical) -> ListProvenance {
     }
 }
 
+/// A [`LexDataError::ProfileChecksum`] for `file`.
 fn mismatch(file: &str, expected: &str, actual: String) -> anyhow::Error {
     LexDataError::ProfileChecksum {
         file: file.to_string(),

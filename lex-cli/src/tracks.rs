@@ -34,6 +34,7 @@ const PROFILE_TRACKS: [(Profile, Strategy, bool); 5] = [
     (Profile::Wordle, Strategy::ultrahard(), false),
 ];
 
+/// The default Strategy with Guess pool `pool`.
 const fn pool(pool: GuessPool) -> Strategy {
     Strategy {
         pool,
@@ -52,14 +53,19 @@ const fn corpus_track_count() -> usize {
     count
 }
 
+/// Number of Corpus Tracks: every language at every Supported length.
 const CORPUS_TRACK_COUNT: usize = corpus_track_count();
+/// Number of Tracks in the table.
 pub const TRACK_COUNT: usize = CORPUS_TRACK_COUNT + PROFILE_TRACKS.len();
 
 /// How much a Track weighs in the benchmark (ADR 0007).
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Tier {
+    /// Scored on the full dictionary with the tightest regression bound.
     Headline,
+    /// Scored with a looser regression bound.
     Breadth,
+    /// Only has to finish.
     Smoke,
 }
 
@@ -79,6 +85,7 @@ impl Tier {
         Tier::Smoke
     }
 
+    /// The Tier's name in snapshots and the verdict table.
     pub const fn name(self) -> &'static str {
         match self {
             Tier::Headline => "headline",
@@ -91,8 +98,15 @@ impl Tier {
 /// The targets a Track plays; a Track never reads a file.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum TrackTargets {
+    /// Every answer.
     Full,
-    Sample { n: usize, seed: u64 },
+    /// `n` answers sampled with `seed`.
+    Sample {
+        /// How many answers.
+        n: usize,
+        /// Seed of the draw.
+        seed: u64,
+    },
 }
 
 impl From<TrackTargets> for Targets {
@@ -104,17 +118,23 @@ impl From<TrackTargets> for Targets {
     }
 }
 
+/// One scored pairing: a game, its Strategy and its targets.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Track {
+    /// The game played.
     pub game: Game,
+    /// The Strategy it is played with.
     pub strategy: Strategy,
+    /// Its Tier.
     pub tier: Tier,
     /// Whether the Track counts toward the verdict, or is only reported.
     pub judged: bool,
+    /// The answers it plays.
     pub targets: TrackTargets,
 }
 
 impl Track {
+    /// The run configuration that plays this Track.
     pub fn config(&self) -> RunConfig {
         RunConfig {
             game: self.game,
@@ -150,6 +170,7 @@ impl fmt::Display for Track {
     }
 }
 
+/// The targets a Corpus Track of `tier` and `length` plays.
 const fn corpus_targets(tier: Tier, length: usize) -> TrackTargets {
     match tier {
         Tier::Headline => TrackTargets::Full,
@@ -165,6 +186,7 @@ const fn corpus_targets(tier: Tier, length: usize) -> TrackTargets {
     }
 }
 
+/// Builds the Track table from the supported languages, lengths and Profiles.
 const fn build() -> [Track; TRACK_COUNT] {
     let mut tracks = [Track {
         game: Game::Profile(Profile::Wordle),
@@ -211,6 +233,7 @@ const fn build() -> [Track; TRACK_COUNT] {
     tracks
 }
 
+/// Every Track.
 pub const TRACKS: [Track; TRACK_COUNT] = build();
 
 #[cfg(test)]

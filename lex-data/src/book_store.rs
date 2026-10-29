@@ -34,16 +34,23 @@ use crate::error::LexDataError;
 use crate::language::Language;
 use crate::store::hex;
 
+/// File magic identifying an Opening book.
 const MAGIC: [u8; 4] = *b"LEXB";
+/// Format version of the book file.
 const VERSION: u16 = 1;
+/// Bytes of fixed header before the key.
 const FIXED_LEN: usize = 64;
+/// Domain tag hashed ahead of the key fields.
 const KEY_HASH_DOMAIN: &str = "lex-book-key-v1";
 
 /// A Profile as a book key names it: the stored name, plus the checksums of both lists.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ProfileKey {
+    /// The Profile's stored name.
     pub name: String,
+    /// SHA-256 of the stored Answer list.
     pub answers_sha256: String,
+    /// SHA-256 of the stored guess-only list.
     pub guess_only_sha256: String,
 }
 
@@ -52,11 +59,15 @@ pub struct ProfileKey {
 /// without knowing what the fields mean.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BookKey {
+    /// The Corpus checksum.
     pub corpus_sha256: String,
     /// Absent on a Corpus run.
     pub profile: Option<ProfileKey>,
+    /// The word length.
     pub word_length: usize,
+    /// Size of the Guess pool the book indexes into.
     pub dictionary_length: usize,
+    /// The Strategy as ordered (field name, value) strings.
     pub strategy: Vec<(String, String)>,
     /// The hash of the solver source the book was built with.
     pub solver_digest: String,
@@ -136,7 +147,9 @@ impl BookKey {
 /// One booked position: the pool index of its guess and the booked children by feedback ordinal.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StoredNode {
+    /// Index into the Guess pool of the booked guess.
     pub guess: u32,
+    /// (feedback ordinal, child node index) pairs, ascending by ordinal.
     pub edges: Vec<(u64, u32)>,
 }
 
@@ -144,27 +157,33 @@ pub struct StoredNode {
 /// them: `lex-core` validates them against its pool.
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StoredBook {
+    /// The nodes in preorder, root first.
     pub nodes: Vec<StoredNode>,
 }
 
 /// A book file as written.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct BookFile {
+    /// Where the file was written.
     pub path: PathBuf,
+    /// Size of the file in bytes.
     pub bytes: u64,
 }
 
 /// The outcome of looking a key up on disk.
 #[derive(Debug, PartialEq, Eq)]
 pub enum BookLookup {
+    /// The stored book for the key.
     Found(StoredBook),
     /// No file for the key. `nearest` names the fields on which the closest book of the same
     /// language and length differs, or is `None` when there is no book there at all.
     Missing {
+        /// Fields on which the nearest book differs.
         nearest: Option<Vec<String>>,
     },
 }
 
+/// A [`LexDataError::CorruptBook`] for the file at `path`.
 fn corrupt(path: &Path, reason: impl Into<String>) -> LexDataError {
     LexDataError::CorruptBook {
         path: path.to_path_buf(),
@@ -172,14 +191,21 @@ fn corrupt(path: &Path, reason: impl Into<String>) -> LexDataError {
     }
 }
 
+/// The parsed fixed header and key of a book file.
 struct Header {
+    /// Word length `N` the book was built for.
     word_length: u16,
+    /// Offset of the body.
     header_len: usize,
+    /// Number of nodes in the body.
     node_count: u64,
+    /// SHA-256 of the body.
     checksum: [u8; 32],
+    /// The key stored ahead of the body.
     key: BookKey,
 }
 
+/// The file bytes holding `book` under `key`.
 fn encode(key: &BookKey, book: &StoredBook) -> anyhow::Result<Vec<u8>> {
     let key_bytes = postcard::to_stdvec(key)?;
     let body = postcard::to_stdvec(book)?;
@@ -236,6 +262,7 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
     })
 }
 
+/// Verifies a book file's bytes and parses them into its key and body.
 fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataError> {
     let header = parse_header(bytes, path)?;
     let body = &bytes[header.header_len..];
@@ -278,6 +305,7 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     Ok(parse_header(&bytes, path)?.key)
 }
 
+/// The `.bin` files in `dir`, sorted; empty when the directory is absent.
 fn book_files(dir: &Path) -> Vec<PathBuf> {
     let Ok(entries) = std::fs::read_dir(dir) else {
         return Vec::new();
@@ -291,6 +319,7 @@ fn book_files(dir: &Path) -> Vec<PathBuf> {
 }
 
 impl DataDir {
+    /// The directory holding every book file.
     fn books_root(&self) -> PathBuf {
         self.as_ref().join("books")
     }

@@ -1,3 +1,5 @@
+//! `lex assist`: the interactive solver for a live game.
+
 use std::io::{BufRead, Write};
 
 use lex_core::{Correctness, Guess, WordCorrectness};
@@ -129,6 +131,7 @@ fn prompt_feedback<const N: usize>(
     }
 }
 
+/// How a feedback pattern is written.
 #[derive(Clone, Copy, PartialEq, Debug)]
 enum FeedbackFormat {
     /// g / y / x (aliases for gray: b, `.`, `-`)

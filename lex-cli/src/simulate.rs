@@ -1,3 +1,5 @@
+//! `lex simulate`: plays a batch of games and reports the results.
+
 // TODO: future frontend crates follow this pattern:
 //   lex-tui/   — terminal UI (ratatui or similar), depends on lex-core + lex-data only
 //   lex-cli/   — batch simulation CLI (clap), depends on lex-core + lex-data only
@@ -37,6 +39,7 @@ pub fn run_with(config: &RunConfig, data_dir: &DataDir, mode: BookMode) -> anyho
     lex_data::match_word_length!(run_n, config.game.word_length(), &(config, data_dir, mode))
 }
 
+/// Plays every target of `config` and builds its report.
 fn run_n<const N: usize>(
     (config, data_dir, mode): &(&RunConfig, &DataDir, BookMode),
 ) -> anyhow::Result<Report> {
@@ -120,6 +123,7 @@ fn run_n<const N: usize>(
     })
 }
 
+/// Writes the full report to `output` (`-` for stdout, with the summary on stderr), else prints the summary.
 fn emit(report: &Report, output: Option<&Path>) -> anyhow::Result<()> {
     match output {
         Some(path) if path.as_os_str() == "-" => {

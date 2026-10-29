@@ -1,7 +1,7 @@
 //! Real fetch of the pinned Wordle lists. Run with:
 //! `LEX_CORPUS_DIR=<data dir holding ngrams/eng/5.bin> cargo test -p lex-data --test profile_fetch -- --ignored --nocapture`
 //! The Corpus is linked read-only into a temp dir; Profile files are written only there.
-
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 #![cfg(unix)]
 
 use lex_data::{DataDir, Profile};

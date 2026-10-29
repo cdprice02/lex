@@ -2,6 +2,7 @@
 //! head snapshots that differ from `base/`; the head is the base with the case laid over it. The
 //! fixtures carry the placeholder `FIXTURE_DIGEST`, replaced here by the compiled solver digest,
 //! so a lex-core edit never invalidates them.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 use std::fs;
 use std::path::{Path, PathBuf};

@@ -21,6 +21,7 @@ pub enum BookMode {
 }
 
 impl BookMode {
+    /// `Off` when `--no-book` was given, else `Auto`.
     pub fn from_no_book(no_book: bool) -> Self {
         if no_book { Self::Off } else { Self::Auto }
     }
@@ -35,13 +36,18 @@ pub enum Status {
     Built(Duration),
 }
 
+/// A book ready for play and how it got there.
 pub struct Ensured<const N: usize> {
+    /// The book.
     pub book: OpeningBook<N>,
+    /// Whether the book was loaded or built.
     pub status: Status,
     /// The key fields on which the closest book on disk differed, when this book was built
     /// because that one was stale.
     pub stale_fields: Option<Vec<String>>,
+    /// The book file.
     pub path: std::path::PathBuf,
+    /// Size of the book file in bytes.
     pub bytes: u64,
 }
 
@@ -70,6 +76,7 @@ pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameList
     }
 }
 
+/// The language of `game`'s Corpus.
 fn language(game: &Game) -> lex_data::Language {
     match game {
         Game::Corpus { language, .. } => *language,

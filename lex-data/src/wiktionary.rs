@@ -1,3 +1,5 @@
+//! The Wiktionary dictionary that filters a Corpus down to real words.
+
 use std::collections::HashSet;
 use std::io::{BufRead, BufReader, BufWriter, Read, Write};
 use std::path::Path;
@@ -21,18 +23,25 @@ use crate::parse::{is_valid_word, normalize};
 /// provenance stamping existed.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DictMetadata {
+    /// Shortest word in the list.
     min_word_length: usize,
+    /// Longest word in the list.
     max_word_length: usize,
+    /// Number of words in the list.
     pub word_count: usize,
+    /// Where the extract was downloaded from.
     #[serde(default)]
     source_url: Option<String>,
+    /// RFC 3339 time of the download.
     #[serde(default)]
     fetched_at: Option<String>,
+    /// SHA-256 of the compressed download.
     #[serde(default)]
     source_sha256: Option<String>,
 }
 
 impl DictMetadata {
+    /// Metadata for a list of `count` words of lengths `min` to `max`, from the download `provenance` names.
     pub(crate) fn new(min: usize, max: usize, count: usize, provenance: Provenance) -> Self {
         Self {
             min_word_length: min,
@@ -65,18 +74,24 @@ impl DictMetadata {
     }
 }
 
+/// Where a dictionary download came from.
 pub(crate) struct Provenance {
+    /// The URL downloaded.
     source_url: String,
+    /// RFC 3339 time of the download.
     fetched_at: String,
+    /// SHA-256 of the compressed download.
     source_sha256: String,
 }
 
+/// Path of the sorted word list for `lang`.
 pub(crate) fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     data_dir
         .join("dicts")
         .join(format!("{}.txt", lang.lang_code()))
 }
 
+/// Path of the metadata for `lang`.
 fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     data_dir
         .join("dicts")
@@ -135,7 +150,9 @@ pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> 
 /// Hashes the compressed bytes as they stream past, so the provenance checksum identifies the
 /// download rather than the decoded text.
 struct HashingReader<R> {
+    /// The wrapped reader.
     inner: R,
+    /// SHA-256 of the bytes read so far.
     hasher: Sha256,
 }
 
@@ -179,13 +196,14 @@ pub(crate) fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Resul
 }
 
 /// Reads the per-language metadata written when the dict was last fetched.
-pub fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
+pub(crate) fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
     let path = dict_meta_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
         .with_context(|| format!("reading dict metadata for {lang} at {path:?}"))?;
     serde_json::from_str(&content).with_context(|| format!("parsing metadata for {lang}"))
 }
 
+/// Adds `raw` to `set` when it normalizes to a valid word.
 fn insert_word(set: &mut HashSet<String>, raw: &str) {
     let normalized = normalize(raw);
     if !normalized.is_empty() && is_valid_word(&normalized) {
@@ -193,17 +211,24 @@ fn insert_word(set: &mut HashSet<String>, raw: &str) {
     }
 }
 
+/// One line of the KAIKKI JSONL extract.
 #[derive(Deserialize)]
 struct WiktionaryEntry {
+    /// The headword.
     word: String,
+    /// The entry's language code.
     lang_code: String,
+    /// Part of speech; proper nouns are excluded.
     pos: Option<String>,
+    /// Inflected forms of the headword.
     #[serde(default)]
     forms: Vec<WiktionaryForm>,
 }
 
+/// An inflected form of an entry.
 #[derive(Deserialize)]
 struct WiktionaryForm {
+    /// The form's text.
     form: String,
 }
 

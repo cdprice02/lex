@@ -1,5 +1,6 @@
 //! Prints the Opening book's node count, in-memory size and build time on real data. Opt-in:
 //! `LEX_DATA_DIR=<data dir> cargo test -p lex-core --release --test book_measure -- --ignored --nocapture`
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 use std::time::Instant;
 

@@ -1,13 +1,20 @@
+//! Per-letter and per-guess feedback, and the base-3 ordinals that index feedback patterns.
+
 use lex_data::Word;
 
+/// Feedback for one letter of a guess.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, strum::EnumCount)]
 pub enum Correctness {
+    /// The letter is absent from the answer, or every occurrence is already accounted for.
     Absent,
+    /// The letter is in the answer at another position.
     Misplaced,
+    /// The letter is in the answer at this position.
     Correct,
 }
 
 impl Correctness {
+    /// Number of feedback kinds per letter.
     pub const COUNT: usize = <Self as strum::EnumCount>::COUNT;
 }
 
@@ -22,6 +29,7 @@ impl std::fmt::Display for Correctness {
     }
 }
 
+/// Feedback for a whole guess, one [`Correctness`] per letter.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
@@ -46,13 +54,16 @@ impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
 }
 
 impl<const N: usize> WordCorrectness<N> {
+    /// Number of distinct feedback patterns, 3^N.
     pub const COUNT: u64 = (Correctness::COUNT as u64).pow(N as u32);
 
+    /// The pattern's base-3 ordinal (absent 0, misplaced 1, correct 2; position 0 most significant), below [`COUNT`](Self::COUNT).
     pub fn ordinal(&self) -> u64 {
         self.iter()
             .fold(0, |acc, &c| acc * Correctness::COUNT as u64 + c as u64)
     }
 
+    /// The all-absent pattern, ordinal 0.
     pub fn absent() -> Self {
         Self([Correctness::Absent; N])
     }
@@ -87,6 +98,7 @@ impl<const N: usize> WordCorrectness<N> {
         result
     }
 
+    /// Whether every letter is correct, so the guess is the answer.
     pub fn is_correct(&self) -> bool {
         self.0.iter().all(|&c| c == Correctness::Correct)
     }
@@ -181,6 +193,13 @@ fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
 }
 
 #[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
 mod benches {
     use divan::Bencher;
     use std::hint::black_box;

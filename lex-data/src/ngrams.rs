@@ -1,3 +1,5 @@
+//! Downloading and filtering the Google Books Ngrams V3 shards into word counts.
+
 use std::collections::{HashMap, HashSet};
 use std::io::{BufRead, BufReader};
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
@@ -12,6 +14,7 @@ use crate::parse::parse_ngram_line;
 use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
+/// Shards downloaded at once.
 const SHARD_CONCURRENCY: usize = 4;
 
 /// Google Books Ngrams V3 snapshot the corpus is built from. The snapshot is frozen, but

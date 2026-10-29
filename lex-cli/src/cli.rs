@@ -1,3 +1,5 @@
+//! The command line: clap definitions and their conversion to run configurations.
+
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
@@ -9,13 +11,17 @@ use crate::error::CliError;
 use crate::tracks::Track;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
+/// The `lex` command line.
+// `about = None`: a doc comment would otherwise become the `--help` banner.
 #[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
+#[command(version, about = None, long_about = None)]
 pub struct Cli {
+    /// The subcommand to run.
     #[command(subcommand)]
     pub command: Command,
 }
 
+/// The subcommands of `lex`.
 #[derive(Subcommand, Debug)]
 pub enum Command {
     /// Simulate batch games against the corpus
@@ -33,28 +39,35 @@ pub enum Command {
     Verdict(VerdictArgs),
 }
 
+/// Arguments of `lex book`.
 #[derive(clap::Args, Debug)]
 pub struct BookArgs {
+    /// The book operation.
     #[command(subcommand)]
     pub command: BookCommand,
 }
 
+/// The operations of `lex book`.
 #[derive(Subcommand, Debug)]
 pub enum BookCommand {
     /// Build the opening book for a game and strategy, or report that it is up to date
     Build(BookBuildArgs),
 }
 
+/// Arguments of `lex book build`.
 #[derive(clap::Args, Debug)]
 #[command(
     mut_arg("lang", |a| a.required_unless_present("track")),
     mut_arg("word_length", |a| a.required_unless_present("track"))
 )]
 pub struct BookBuildArgs {
+    /// The game and Strategy to build for.
     #[command(flatten)]
     pub common: CommonArgs,
-    #[arg(long, help = "Rebuild even when the book is up to date")]
+    /// Rebuild even when the book is up to date
+    #[arg(long)]
     pub force: bool,
+    /// Build the book of a benchmark Track by id
     #[arg(
         long,
         hide = true,
@@ -62,8 +75,7 @@ pub struct BookBuildArgs {
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
             "win_weight", "endgame_threshold", "endgame_aversion",
-        ],
-        help = "Build the book of a benchmark Track by id"
+        ]
     )]
     pub track: Option<Track>,
 }
@@ -87,6 +99,7 @@ impl BookBuildArgs {
     }
 }
 
+/// Arguments of `lex verdict`.
 #[derive(clap::Args, Debug)]
 pub struct VerdictArgs {
     /// Snapshot directory of the base
@@ -106,45 +119,39 @@ pub struct VerdictArgs {
     pub file: PathBuf,
 }
 
+/// Arguments of `lex clear`.
 #[derive(clap::Args, Debug)]
 pub struct ClearArgs {
+    /// Language whose corpus cache (and opening books) to delete
     #[arg(
         long,
         required_unless_present_any = ["profile", "books"],
-        conflicts_with = "profile",
-        help = "Language whose corpus cache (and opening books) to delete"
+        conflicts_with = "profile"
     )]
     pub lang: Option<Language>,
-    #[arg(
-        long,
-        conflicts_with = "profile",
-        help = "Delete only the opening books, narrowed by --lang and -l (never touches corpora or Profiles)"
-    )]
+    /// Delete only the opening books, narrowed by --lang and -l (never touches corpora or Profiles)
+    #[arg(long, conflicts_with = "profile")]
     pub books: bool,
-    #[arg(
-        long,
-        help = "Profile whose fetched lists and opening books to delete (never touches corpora)"
-    )]
+    /// Profile whose fetched lists and opening books to delete (never touches corpora)
+    #[arg(long)]
     pub profile: Option<Profile>,
+    /// Delete only this word length (default: every length)
     #[arg(
         short = 'l',
         long,
         conflicts_with = "profile",
-        value_parser = parse_word_length,
-        help = "Delete only this word length (default: every length)"
+        value_parser = parse_word_length
     )]
     pub word_length: Option<usize>,
-    #[arg(
-        long,
-        default_value = "data",
-        help = "Directory containing cached word-frequency files"
-    )]
+    /// Directory containing cached word-frequency files
+    #[arg(long, default_value = "data")]
     pub data_dir: PathBuf,
 }
 
 /// Arguments shared by every subcommand.
 #[derive(clap::Args, Debug)]
 pub struct CommonArgs {
+    /// Word length; the `help` below interpolates the supported range, which a doc comment cannot.
     #[arg(
         short = 'l',
         long,
@@ -154,61 +161,49 @@ pub struct CommonArgs {
         help = format!("Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH}); a profile fixes it")
     )]
     pub word_length: Option<usize>,
-    #[arg(
-        long,
-        conflicts_with = "profile",
-        help = "Number of the words to allow in the guesser's dictionary (default: all words in the corpus)"
-    )]
+    /// Number of the words to allow in the guesser's dictionary (default: all words in the corpus)
+    #[arg(long, conflicts_with = "profile")]
     pub dictionary_length: Option<usize>,
-    #[arg(
-        long,
-        required_unless_present = "profile",
-        conflicts_with = "profile",
-        help = "Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus); a profile fixes it"
-    )]
+    /// Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus); a profile fixes it
+    #[arg(long, required_unless_present = "profile", conflicts_with = "profile")]
     pub lang: Option<Language>,
-    #[arg(
-        long,
-        help = "Play a profile: its answer list and guess pool, with its language and word length (wordle, wordle-all)"
-    )]
+    /// Play a profile: its answer list and guess pool, with its language and word length (wordle, wordle-all)
+    #[arg(long)]
     pub profile: Option<Profile>,
-    #[arg(
-        long,
-        default_value = "data",
-        help = "Directory containing cached word-frequency files"
-    )]
+    /// Directory containing cached word-frequency files
+    #[arg(long, default_value = "data")]
     pub data_dir: PathBuf,
+    /// Which words may be guessed: all (every word), hard (the official Wordle hard-mode rule: keep every green in place, reuse every green or yellow letter) or ultrahard (only words consistent with every feedback so far, stricter than hard)
     #[arg(
         long,
-        default_value_t = Strategy::DEFAULT.pool,
-        help = "Which words may be guessed: all (every word), hard (the official Wordle hard-mode rule: keep every green in place, reuse every green or yellow letter) or ultrahard (only words consistent with every feedback so far, stricter than hard)"
+        default_value_t = Strategy::DEFAULT.pool
     )]
     pub pool: GuessPool,
+    /// Answer prior temperature: higher flattens the frequency-based prior
     #[arg(
         long,
         default_value_t = Strategy::DEFAULT.temperature,
-        value_parser = parse_temperature,
-        help = "Answer prior temperature: higher flattens the frequency-based prior"
+        value_parser = parse_temperature
     )]
     pub temperature: f64,
+    /// Score bonus, in bits, per unit of probability that a guess is the answer
     #[arg(
         long,
         default_value_t = Strategy::DEFAULT.win_weight,
-        value_parser = parse_win_weight,
-        help = "Score bonus, in bits, per unit of probability that a guess is the answer"
+        value_parser = parse_win_weight
     )]
     pub win_weight: f64,
+    /// Search the game tree exactly once this few candidates remain (0 disables)
     #[arg(
         long,
-        default_value_t = Strategy::DEFAULT.endgame_threshold,
-        help = "Search the game tree exactly once this few candidates remain (0 disables)"
+        default_value_t = Strategy::DEFAULT.endgame_threshold
     )]
     pub endgame_threshold: usize,
+    /// Endgame risk aversion: minimize the mean of e^(aversion x guesses); 0 minimizes plain expected guesses
     #[arg(
         long,
         default_value_t = Strategy::DEFAULT.endgame_aversion,
-        value_parser = parse_win_weight,
-        help = "Endgame risk aversion: minimize the mean of e^(aversion x guesses); 0 minimizes plain expected guesses"
+        value_parser = parse_win_weight
     )]
     pub endgame_aversion: f64,
 }
@@ -224,6 +219,7 @@ impl CommonArgs {
         }
     }
 
+    /// The game these arguments select.
     pub fn game(&self) -> Game {
         match self.profile {
             Some(profile) => Game::Profile(profile),
@@ -235,6 +231,7 @@ impl CommonArgs {
         }
     }
 
+    /// The Strategy these arguments select.
     pub fn strategy(&self) -> Strategy {
         Strategy {
             pool: self.pool,
@@ -245,6 +242,7 @@ impl CommonArgs {
         }
     }
 
+    /// The run these arguments select, over `targets`.
     pub fn config(&self, targets: Targets) -> RunConfig {
         RunConfig {
             game: self.game(),
@@ -254,44 +252,32 @@ impl CommonArgs {
     }
 }
 
+/// Arguments of `lex simulate`.
 #[derive(clap::Args, Debug)]
 #[command(
     mut_arg("lang", |a| a.required_unless_present("track")),
     mut_arg("word_length", |a| a.required_unless_present("track"))
 )]
 pub struct SimulateArgs {
+    /// The game and Strategy to play.
     #[command(flatten)]
     pub common: CommonArgs,
-    #[arg(
-        short = 'n',
-        long,
-        conflicts_with = "targets",
-        help = "Number of target words to sample (default: every word in the dictionary)"
-    )]
+    /// Number of target words to sample (default: every word in the dictionary)
+    #[arg(short = 'n', long, conflicts_with = "targets")]
     pub num_games: Option<usize>,
-    #[arg(
-        long,
-        default_value_t = 0,
-        requires = "num_games",
-        help = "Seed for sampling targets; the same seed and corpus give the same targets"
-    )]
+    /// Seed for sampling targets; the same seed and corpus give the same targets
+    #[arg(long, default_value_t = 0, requires = "num_games")]
     pub seed: u64,
-    #[arg(
-        long,
-        help = "File of target words (one per line) to play instead of sampling"
-    )]
+    /// File of target words (one per line) to play instead of sampling
+    #[arg(long)]
     pub targets: Option<PathBuf>,
-    #[arg(
-        short = 'o',
-        long,
-        help = "Write the full JSON report here ('-' for stdout, which moves the summary to stderr)"
-    )]
+    /// Write the full JSON report here ('-' for stdout, which moves the summary to stderr)
+    #[arg(short = 'o', long)]
     pub output: Option<PathBuf>,
-    #[arg(
-        long,
-        help = "Play fully online instead of building and using the opening book"
-    )]
+    /// Play fully online instead of building and using the opening book
+    #[arg(long)]
     pub no_book: bool,
+    /// Play a benchmark Track by id (its game, strategy and targets)
     #[arg(
         long,
         hide = true,
@@ -299,8 +285,7 @@ pub struct SimulateArgs {
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
             "win_weight", "endgame_threshold", "endgame_aversion", "num_games", "seed", "targets",
-        ],
-        help = "Play a benchmark Track by id (its game, strategy and targets)"
+        ]
     )]
     pub track: Option<Track>,
 }
@@ -328,6 +313,7 @@ impl SimulateArgs {
     }
 }
 
+/// Arguments of `lex compare`.
 #[derive(clap::Args, Debug)]
 pub struct CompareArgs {
     /// Baseline report
@@ -336,24 +322,21 @@ pub struct CompareArgs {
     pub candidate: PathBuf,
 }
 
+/// Arguments of `lex assist`.
 #[derive(clap::Args, Debug)]
 pub struct AssistArgs {
+    /// The game and Strategy to play.
     #[command(flatten)]
     pub common: CommonArgs,
-    #[arg(
-        short = 's',
-        long,
-        default_value_t = 5,
-        help = "Number of suggestions to show per turn"
-    )]
+    /// Number of suggestions to show per turn
+    #[arg(short = 's', long, default_value_t = 5)]
     pub suggestions: usize,
-    #[arg(
-        long,
-        help = "Play fully online instead of building and using the opening book"
-    )]
+    /// Play fully online instead of building and using the opening book
+    #[arg(long)]
     pub no_book: bool,
 }
 
+/// Parses a word length, rejecting one outside the supported range.
 fn parse_word_length(s: &str) -> anyhow::Result<usize> {
     let n: usize = s.parse()?;
     if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&n) {
@@ -367,10 +350,12 @@ fn parse_word_length(s: &str) -> anyhow::Result<usize> {
     }
 }
 
+/// Parses a Track id, rejecting one that names no Track.
 fn parse_track(s: &str) -> anyhow::Result<Track> {
     Track::find(s).ok_or_else(|| CliError::UnknownTrack(s.to_owned()).into())
 }
 
+/// Parses an Answer prior temperature, which must be positive and finite.
 fn parse_temperature(s: &str) -> anyhow::Result<f64> {
     let t: f64 = s.parse()?;
     if t.is_finite() && t > 0.0 {
@@ -380,6 +365,7 @@ fn parse_temperature(s: &str) -> anyhow::Result<f64> {
     }
 }
 
+/// Parses a non-negative finite weight.
 fn parse_win_weight(s: &str) -> anyhow::Result<f64> {
     let w: f64 = s.parse()?;
     if w.is_finite() && w >= 0.0 {

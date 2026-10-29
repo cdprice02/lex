@@ -2,6 +2,7 @@
 //! other test binaries are unaffected. The fixture test runs everywhere; the English-5 test is
 //! opt-in because it builds the real book:
 //! `LEX_DATA_DIR=<data dir> cargo test -p lex-core --release --test book_heap -- --ignored --nocapture`
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 use std::sync::Mutex;
 

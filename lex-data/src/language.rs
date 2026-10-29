@@ -1,18 +1,27 @@
+//! The languages a Corpus can be built for.
+
 use strum::{Display, EnumString, VariantArray};
 
+/// A language with a Corpus.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Display, EnumString, VariantArray)]
 #[strum(ascii_case_insensitive)]
 pub enum Language {
+    /// Google Books `eng`, Wiktionary `en`.
     #[strum(to_string = "english", serialize = "english", serialize = "eng")]
     English,
+    /// Google Books `fre`, Wiktionary `fr`.
     #[strum(to_string = "french", serialize = "french", serialize = "fre")]
     French,
+    /// Google Books `ger`, Wiktionary `de`.
     #[strum(to_string = "german", serialize = "german", serialize = "ger")]
     German,
+    /// Google Books `spa`, Wiktionary `es`.
     #[strum(to_string = "spanish", serialize = "spanish", serialize = "spa")]
     Spanish,
+    /// Google Books `ita`, Wiktionary `it`.
     #[strum(to_string = "italian", serialize = "italian", serialize = "ita")]
     Italian,
+    /// Google Books `rus`, Wiktionary `ru`.
     #[strum(to_string = "russian", serialize = "russian", serialize = "rus")]
     Russian,
 }

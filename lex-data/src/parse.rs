@@ -1,3 +1,5 @@
+//! Parsing and normalizing V3 ngram lines.
+
 use unicode_normalization::UnicodeNormalization;
 
 use crate::error::LexDataError;
@@ -5,7 +7,7 @@ use crate::error::LexDataError;
 /// V3 (2020) line format: `ngram\tyear,match_count,vol[\tyear,match_count,vol]*`
 /// All years are on one line; we sum match_count across all year groups.
 /// Returns None for multi-word tokens, POS-tagged tokens, and tokens with non-alphabetic chars.
-pub fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
+pub(crate) fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
     let (ngram, rest) = line
         .split_once('\t')
         .ok_or_else(|| LexDataError::InvalidParseLine(line.to_string()))?;
@@ -43,6 +45,13 @@ pub(crate) fn normalize(s: &str) -> String {
 }
 
 #[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
 mod benches {
     use divan::Bencher;
     use std::hint::black_box;

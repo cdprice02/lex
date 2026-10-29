@@ -1,7 +1,5 @@
-#![feature(non_exhaustive_omitted_patterns_lint)]
-#![feature(must_not_suspend)]
-#![warn(non_exhaustive_omitted_patterns)]
-#![warn(must_not_suspend)]
+//! Corpus acquisition and the word types the solver consumes: download, validate, cache and load Corpora, Profiles and Opening books.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 pub mod language;
 pub mod word;
@@ -29,7 +27,9 @@ pub use profile::{ListSpec, Profile, ProfileData, ProfileSpec, ProfileStats, Sou
 pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
 
+/// Shortest word length the solver plays.
 pub const MIN_WORD_LENGTH: usize = 3;
+/// Longest word length the solver plays.
 pub const MAX_WORD_LENGTH: usize = 21;
 
 /// The fewest words a Corpus length holds to be Supported.

@@ -13,6 +13,15 @@ proptest = "1"
 strum = { version = "0.26", features = ["derive"] }
 thiserror = "2.0"
 
+[workspace.lints.rust]
+missing_docs = "warn"
+unreachable_pub = "warn"
+non_exhaustive_omitted_patterns = "warn"
+must_not_suspend = "warn"
+
+[workspace.lints.clippy]
+missing_docs_in_private_items = "warn"
+
 [profile.release]
 lto = "fat"
 opt-level = 3

@@ -2,6 +2,11 @@
 //! and compares the result with the committed snapshot in `benchmarks/snapshots/`. The trials
 //! are ignored by default, so `cargo test` needs no data; `-- --ignored <tier>` runs a Tier and
 //! a bare `--ignored` runs every Track.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::missing_docs_in_private_items,
+    reason = "test helpers: their names and the module docs describe them"
+)]
 
 use std::path::PathBuf;
 

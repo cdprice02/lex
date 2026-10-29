@@ -1,12 +1,16 @@
 //! Hashes the solver source into `SOLVER_DIGEST`, so a snapshot can say which source it was
 //! measured against.
 
+// The workspace lint table names these nightly lints, and rustc warns on a lint it does not know.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
 use sha2::{Digest, Sha256};
 
+/// Hashes `src` and `Cargo.toml` into the `LEX_SOLVER_DIGEST` compile-time variable.
 fn collect(dir: &Path, out: &mut Vec<PathBuf>) -> io::Result<()> {
     for entry in fs::read_dir(dir)? {
         let path = entry?.path();

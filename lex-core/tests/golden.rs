@@ -1,6 +1,7 @@
 //! Exact guess sequences over a small fixed dictionary. Any solver-behavior change (scoring,
 //! tie-breaking, filtering) shows up here as a diff; update the table only when the change is
 //! intended and its effect has been measured against the committed baselines.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 use lex_core::{Guesser, Strategy, play};
 use lex_data::{Word, WordSet};

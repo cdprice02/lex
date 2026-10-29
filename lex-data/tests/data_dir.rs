@@ -1,3 +1,9 @@
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    missing_docs,
+    reason = "an integration test crate: its test names are its documentation"
+)]
+
 use std::fs;
 use std::io::Write;
 
