@@ -24,17 +24,20 @@ pub struct Guess<const N: usize> {
 
 impl<const N: usize> Guess<N> {
     /// A guess of `word` that earned `correctness`.
-    pub fn new(word: Word<N>, correctness: WordCorrectness<N>) -> Self {
+    #[must_use]
+    pub const fn new(word: Word<N>, correctness: WordCorrectness<N>) -> Self {
         Self { word, correctness }
     }
 
     /// The word played.
-    pub fn word(&self) -> Word<N> {
+    #[must_use]
+    pub const fn word(&self) -> Word<N> {
         self.word
     }
 
     /// The feedback the word earned.
-    pub fn correctness(&self) -> WordCorrectness<N> {
+    #[must_use]
+    pub const fn correctness(&self) -> WordCorrectness<N> {
         self.correctness
     }
 }
@@ -59,8 +62,9 @@ impl<const N: usize> Guesser<N> {
     ///
     /// If an answer is not in the pool, if the strategy's temperature is not positive and
     /// finite, or if its win weight is negative or not finite.
+    #[must_use]
     pub fn new(pool: WordSet<N>, answers: Vec<Word<N>>, strategy: Strategy) -> Self {
-        Self::build(pool, answers, strategy, None)
+        Self::build(&pool, &answers, strategy, None)
     }
 
     /// Like [`new`](Self::new), seeded with an [`OpeningBook`] built for the same pool, Answer
@@ -71,31 +75,32 @@ impl<const N: usize> Guesser<N> {
     /// # Panics
     ///
     /// As [`new`](Self::new), and if the book names a guess outside the pool.
+    #[must_use]
     pub fn with_book(
         pool: WordSet<N>,
         answers: Vec<Word<N>>,
         strategy: Strategy,
         book: OpeningBook<N>,
     ) -> Self {
-        Self::build(pool, answers, strategy, Some(book))
+        Self::build(&pool, &answers, strategy, Some(book))
     }
 
     /// Shared constructor: validates the Strategy and book, then roots a fresh tree.
     fn build(
-        pool: WordSet<N>,
-        answers: Vec<Word<N>>,
+        pool: &WordSet<N>,
+        answers: &[Word<N>],
         strategy: Strategy,
         book: Option<OpeningBook<N>>,
     ) -> Self {
         strategy.assert_valid();
-        let pool = Pool::new(&pool);
+        let pool = Pool::new(pool);
         assert!(
             book.as_ref()
                 .and_then(OpeningBook::max_guess)
                 .is_none_or(|g| (g as usize) < pool.len()),
             "the opening book names a guess outside the pool"
         );
-        let candidates = Candidates::new(pool, &answers);
+        let candidates = Candidates::new(pool, answers);
         Self {
             tree: Rc::new(RefCell::new(DecisionTree::new(candidates, strategy, book))),
             node: DecisionTree::<N>::ROOT,
@@ -105,6 +110,7 @@ impl<const N: usize> Guesser<N> {
 
     /// Builds the [`OpeningBook`] of this guesser's starting position: every position on the
     /// policy's paths whose work exceeds [`BOOK_FLOOR`].
+    #[must_use]
     pub fn build_book(&self) -> OpeningBook<N> {
         self.build_book_reporting(&mut |_| {})
     }
@@ -117,11 +123,13 @@ impl<const N: usize> Guesser<N> {
 
     /// As [`build_book`](Self::build_book) with a chosen floor, in pattern evaluations (guesses
     /// the strategy allows times Candidate set size).
+    #[must_use]
     pub fn build_book_with_floor(&self, floor: u64) -> OpeningBook<N> {
         self.tree.borrow_mut().build_book(floor, &mut |_| {})
     }
 
     /// A guesser already holding `history`, as if those guesses had been pushed in order.
+    #[must_use]
     pub fn with_history(
         pool: WordSet<N>,
         answers: Vec<Word<N>>,
@@ -143,6 +151,7 @@ impl<const N: usize> Guesser<N> {
     }
 
     /// The guesses played so far, in order.
+    #[must_use]
     pub fn history(&self) -> &[Guess<N>] {
         &self.history
     }
@@ -154,6 +163,7 @@ impl<const N: usize> Guesser<N> {
     }
 
     /// Number of candidate words still consistent with the pushed guesses.
+    #[must_use]
     pub fn num_candidates(&self) -> usize {
         self.tree.borrow().candidates(self.node).len()
     }
@@ -161,6 +171,7 @@ impl<const N: usize> Guesser<N> {
     /// The `k` best guesses by the strategy's score, descending. Equal scores prefer words still
     /// in the candidate set, then frequency order, so the first element always agrees with
     /// [`suggest`](Self::suggest). Not memoized.
+    #[must_use]
     pub fn suggest_top_k(&self, k: usize) -> Vec<Suggestion<N>> {
         let tree = self.tree.borrow();
         tree.candidates(self.node)
@@ -170,6 +181,7 @@ impl<const N: usize> Guesser<N> {
     /// Why `word` may not be played next under the strategy's pool rule and the guesses pushed,
     /// as a one-line reason, or `None` when it is allowed (always, outside hard and ultrahard
     /// mode). Independent of the tree, so it also vets a word the solver never scored.
+    #[must_use]
     pub fn rule_violation(&self, word: Word<N>) -> Option<String> {
         let letters = |w: &Word<N>| -> [char; N] { std::array::from_fn(|i| w[i]) };
         let candidate = letters(&word);
@@ -194,6 +206,7 @@ impl<const N: usize> Guesser<N> {
     }
 
     /// The best next guess under the Strategy, or `None` when no word is consistent.
+    #[must_use]
     pub fn suggest(&self) -> Option<Word<N>> {
         self.tree.borrow_mut().suggest(self.node)
     }
@@ -221,7 +234,7 @@ mod benches {
 
     use lex_data::{Word, WordSet};
 
-    use super::*;
+    use super::{Guess, Guesser, Strategy, WordCorrectness, corpus_guesser};
 
     fn make_wordset(n: usize) -> Vec<(Word<5>, u64)> {
         (0..n)
@@ -231,7 +244,7 @@ mod benches {
                     char::from(b'a' + ((i / 26) % 26) as u8),
                     char::from(b'a' + ((i / 676) % 26) as u8),
                     char::from(b'a' + ((i / 17576) % 26) as u8),
-                    char::from(b'a' + ((i / 456976) % 26) as u8),
+                    char::from(b'a' + ((i / 456_976) % 26) as u8),
                 ]
                 .iter()
                 .collect();
@@ -1068,6 +1081,6 @@ mod tests {
     #[test]
     #[should_panic(expected = "not in the guess pool")]
     fn answer_missing_from_the_pool_panics() {
-        Guesser::new(pool_set(), vec![word("zebra")], Strategy::default());
+        let _ = Guesser::new(pool_set(), vec![word("zebra")], Strategy::default());
     }
 }

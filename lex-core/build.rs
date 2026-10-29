@@ -4,6 +4,7 @@
 // The workspace lint table names these nightly lints, and rustc warns on a lint it does not know.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
+use std::fmt::Write as _;
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
@@ -47,11 +48,10 @@ fn main() -> io::Result<()> {
         hasher.update((text.len() as u64).to_le_bytes());
         hasher.update(&text);
     }
-    let digest: String = hasher
-        .finalize()
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect();
+    let digest = hasher.finalize().iter().fold(String::new(), |mut hex, b| {
+        let _ = write!(hex, "{b:02x}");
+        hex
+    });
     println!("cargo:rustc-env=LEX_SOLVER_DIGEST={digest}");
     Ok(())
 }

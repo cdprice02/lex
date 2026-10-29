@@ -58,17 +58,20 @@ impl<const N: usize> WordCorrectness<N> {
     pub const COUNT: u64 = (Correctness::COUNT as u64).pow(N as u32);
 
     /// The pattern's base-3 ordinal (absent 0, misplaced 1, correct 2; position 0 most significant), below [`COUNT`](Self::COUNT).
+    #[must_use]
     pub fn ordinal(&self) -> u64 {
         self.iter()
             .fold(0, |acc, &c| acc * Correctness::COUNT as u64 + c as u64)
     }
 
     /// The all-absent pattern, ordinal 0.
-    pub fn absent() -> Self {
+    #[must_use]
+    pub const fn absent() -> Self {
         Self([Correctness::Absent; N])
     }
 
     /// The feedback for playing `guess` against `word`.
+    #[must_use]
     pub fn correct(word: Word<N>, guess: Word<N>) -> Self {
         // Index each letter by where it first appears in `word`, else in `guess`: at most 2N
         // distinct values, so no Alphabet is needed to compare a pair.
@@ -99,6 +102,7 @@ impl<const N: usize> WordCorrectness<N> {
     }
 
     /// Whether every letter is correct, so the guess is the answer.
+    #[must_use]
     pub fn is_correct(&self) -> bool {
         self.0.iter().all(|&c| c == Correctness::Correct)
     }
@@ -179,13 +183,10 @@ fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
                 .iter()
                 .enumerate()
                 .position(|(j, &w)| claimed >> j & 1 == 0 && w == letter);
-            match unclaimed {
-                Some(j) => {
-                    claimed |= 1 << j;
-                    Correctness::Misplaced as u64
-                }
-                None => Correctness::Absent as u64,
-            }
+            unclaimed.map_or(Correctness::Absent as u64, |j| {
+                claimed |= 1 << j;
+                Correctness::Misplaced as u64
+            })
         };
         ordinal = ordinal * Correctness::COUNT as u64 + digit;
     }
@@ -204,7 +205,7 @@ mod benches {
     use divan::Bencher;
     use std::hint::black_box;
 
-    use super::*;
+    use super::{Code, LetterCounts, Word, WordCorrectness, compare_ordinal, pattern_ordinal};
 
     #[divan::bench]
     fn correct_no_overlap(b: Bencher) {
@@ -226,8 +227,8 @@ mod benches {
         let mut word = || -> Code<N> {
             std::array::from_fn(|_| {
                 state = state
-                    .wrapping_mul(6364136223846793005)
-                    .wrapping_add(1442695040888963407);
+                    .wrapping_mul(6_364_136_223_846_793_005)
+                    .wrapping_add(1_442_695_040_888_963_407);
                 ((state >> 33) % 26) as u8
             })
         };

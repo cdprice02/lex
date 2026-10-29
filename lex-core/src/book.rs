@@ -101,16 +101,19 @@ impl<const N: usize> Default for OpeningBook<N> {
 
 impl<const N: usize> OpeningBook<N> {
     /// The number of booked positions.
-    pub fn len(&self) -> usize {
+    #[must_use]
+    pub const fn len(&self) -> usize {
         self.nodes.len()
     }
 
     /// Whether no position is booked, so every position is searched online.
-    pub fn is_empty(&self) -> bool {
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
         self.nodes.is_empty()
     }
 
     /// Bytes the book holds in memory, counting toward the 1 GB cap.
+    #[must_use]
     pub fn heap_bytes(&self) -> usize {
         size_of::<Self>()
             + self.nodes.capacity() * size_of::<BookNode>()
@@ -169,6 +172,7 @@ impl<const N: usize> OpeningBook<N> {
     }
 
     /// The stored form of this book, for `lex-data` to write.
+    #[must_use]
     pub fn to_nodes(&self) -> StoredBook {
         StoredBook {
             nodes: self

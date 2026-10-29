@@ -28,7 +28,8 @@ pub enum Language {
 
 impl Language {
     /// Google Books Ngrams V3 URL slug and ngrams subdirectory name (e.g. "eng", "fre").
-    pub fn lang_code(self) -> &'static str {
+    #[must_use]
+    pub const fn lang_code(self) -> &'static str {
         match self {
             Self::English => "eng",
             Self::French => "fre",
@@ -41,9 +42,10 @@ impl Language {
 
     /// ISO 639-1 two-character code used by KAIKKI.org Wiktionary extract URLs
     /// and the `lang_code` field in KAIKKI JSONL records (e.g. "en", "de").
-    /// Not systematically derivable from lang_code — German is "de" not "ge",
+    /// Not systematically derivable from `lang_code` — German is "de" not "ge",
     /// Spanish is "es" not "sp".
-    pub fn iso_code(self) -> &'static str {
+    #[must_use]
+    pub const fn iso_code(self) -> &'static str {
         match self {
             Self::English => "en",
             Self::French => "fr",
@@ -61,6 +63,7 @@ impl Language {
     /// per-ISO-code extracts under `downloads/`. KAIKKI reorganizes these
     /// URLs occasionally (the `downloads/en/` extract was removed in 2026) —
     /// see <https://kaikki.org/dictionary/rawdata.html> for the current layout.
+    #[must_use]
     pub fn wiktionary_url(self) -> String {
         if self == Self::English {
             "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz"
@@ -73,14 +76,13 @@ impl Language {
 
     /// The largest word length this language has a Supported Corpus for, capped by
     /// `MAX_WORD_LENGTH`.
+    #[must_use]
     pub const fn max_supported_length(self) -> usize {
         let largest = match self {
-            Self::English => 21,
+            Self::English | Self::German | Self::Russian => 21,
             Self::French => 20,
-            Self::German => 21,
             Self::Spanish => 18,
             Self::Italian => 19,
-            Self::Russian => 21,
         };
         if largest < crate::MAX_WORD_LENGTH {
             largest
@@ -90,14 +92,14 @@ impl Language {
     }
 
     /// Number of Google Books Ngrams V3 shards for this language (confirmed against GCS).
-    pub fn shard_count(self) -> u32 {
+    #[must_use]
+    pub const fn shard_count(self) -> u32 {
         match self {
             Self::English => 24,
             Self::French => 6,
             Self::German => 8,
             Self::Spanish => 3,
-            Self::Italian => 2,
-            Self::Russian => 2,
+            Self::Italian | Self::Russian => 2,
         }
     }
 }

@@ -11,10 +11,11 @@ use crate::lists::Source;
 
 use crate::cli::AssistArgs;
 
-/// Interactive helper for a live Wordle game: suggests guesses, reads the word
-/// the user actually played and the feedback Wordle returned, and narrows the
-/// candidate set until solved (or until the candidates are exhausted, e.g.
-/// when the day's target is missing from our corpus).
+/// Interactive helper for a live Wordle game.
+///
+/// Suggests guesses, reads the word the user actually played and the feedback Wordle returned,
+/// and narrows the candidate set until solved (or until the candidates are exhausted, e.g. when
+/// the day's target is missing from our corpus).
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     let config = args.common.config(Targets::Full);
     let data_dir = lex_data::DataDir::new(&args.common.data_dir);
@@ -164,15 +165,15 @@ fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, Str
     let mut feedback = WordCorrectness::<N>::absent();
     for (i, &symbol) in symbols.iter().enumerate() {
         feedback[i] = match (format, symbol.to_ascii_lowercase()) {
-            (FeedbackFormat::Letters, 'g') => Correctness::Correct,
-            (FeedbackFormat::Letters, 'y') => Correctness::Misplaced,
-            (FeedbackFormat::Letters, 'x' | 'b' | '.' | '-') => Correctness::Absent,
-            (FeedbackFormat::Digits, '2') => Correctness::Correct,
-            (FeedbackFormat::Digits, '1') => Correctness::Misplaced,
-            (FeedbackFormat::Digits, '0') => Correctness::Absent,
-            (FeedbackFormat::Emoji, '🟩' | '🟧') => Correctness::Correct,
-            (FeedbackFormat::Emoji, '🟨' | '🟦') => Correctness::Misplaced,
-            (FeedbackFormat::Emoji, '⬜' | '⬛') => Correctness::Absent,
+            (FeedbackFormat::Letters, 'g')
+            | (FeedbackFormat::Digits, '2')
+            | (FeedbackFormat::Emoji, '🟩' | '🟧') => Correctness::Correct,
+            (FeedbackFormat::Letters, 'y')
+            | (FeedbackFormat::Digits, '1')
+            | (FeedbackFormat::Emoji, '🟨' | '🟦') => Correctness::Misplaced,
+            (FeedbackFormat::Letters, 'x' | 'b' | '.' | '-')
+            | (FeedbackFormat::Digits, '0')
+            | (FeedbackFormat::Emoji, '⬜' | '⬛') => Correctness::Absent,
             _ => {
                 return Err(format!(
                     "symbol {symbol:?} at position {} doesn't match the {format:?} format \

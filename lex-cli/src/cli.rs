@@ -82,7 +82,8 @@ pub struct BookBuildArgs {
 
 impl BookBuildArgs {
     /// The length to monomorphize over.
-    pub fn dispatch_length(&self) -> usize {
+    #[must_use]
+    pub const fn dispatch_length(&self) -> usize {
         match self.track {
             Some(track) => track.game.word_length(),
             None => self.common.dispatch_length(),
@@ -91,11 +92,11 @@ impl BookBuildArgs {
 
     /// What these arguments build the book for. A book covers the full Answer set whatever
     /// targets a run samples.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
-        match self.track {
-            Some(track) => track.config(),
-            None => self.common.config(Targets::Full),
-        }
+        self.track
+            .as_ref()
+            .map_or_else(|| self.common.config(Targets::Full), Track::config)
     }
 }
 
@@ -210,7 +211,8 @@ pub struct CommonArgs {
 
 impl CommonArgs {
     /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
-    pub fn dispatch_length(&self) -> usize {
+    #[must_use]
+    pub const fn dispatch_length(&self) -> usize {
         match self.profile {
             Some(profile) => profile.spec().word_length,
             None => self
@@ -220,7 +222,8 @@ impl CommonArgs {
     }
 
     /// The game these arguments select.
-    pub fn game(&self) -> Game {
+    #[must_use]
+    pub const fn game(&self) -> Game {
         match self.profile {
             Some(profile) => Game::Profile(profile),
             None => Game::Corpus {
@@ -232,7 +235,8 @@ impl CommonArgs {
     }
 
     /// The Strategy these arguments select.
-    pub fn strategy(&self) -> Strategy {
+    #[must_use]
+    pub const fn strategy(&self) -> Strategy {
         Strategy {
             pool: self.pool,
             temperature: self.temperature,
@@ -243,7 +247,8 @@ impl CommonArgs {
     }
 
     /// The run these arguments select, over `targets`.
-    pub fn config(&self, targets: Targets) -> RunConfig {
+    #[must_use]
+    pub const fn config(&self, targets: Targets) -> RunConfig {
         RunConfig {
             game: self.game(),
             strategy: self.strategy(),
@@ -292,7 +297,8 @@ pub struct SimulateArgs {
 
 impl SimulateArgs {
     /// The length to monomorphize over.
-    pub fn dispatch_length(&self) -> usize {
+    #[must_use]
+    pub const fn dispatch_length(&self) -> usize {
         match self.track {
             Some(track) => track.game.word_length(),
             None => self.common.dispatch_length(),
@@ -300,6 +306,7 @@ impl SimulateArgs {
     }
 
     /// What these arguments ask to play.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
         if let Some(track) = self.track {
             return track.config();

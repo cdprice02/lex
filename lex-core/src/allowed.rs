@@ -100,7 +100,7 @@ pub enum Allowed {
 impl Allowed {
     /// The allowed guesses before any guess is played. Ultrahard on a Corpus run (every pool word
     /// is a candidate) is the candidate set at every depth, so it stores nothing.
-    pub(crate) fn root(mode: GuessPool, candidates_are_whole_pool: bool) -> Self {
+    pub(crate) const fn root(mode: GuessPool, candidates_are_whole_pool: bool) -> Self {
         match mode {
             GuessPool::Ultrahard if candidates_are_whole_pool => Self::Candidates,
             GuessPool::All | GuessPool::Hard | GuessPool::Ultrahard => Self::Whole,

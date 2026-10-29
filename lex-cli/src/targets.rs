@@ -36,8 +36,8 @@ fn from_file<const N: usize>(
     path: &Path,
     num_games: Option<usize>,
 ) -> anyhow::Result<Vec<Word<N>>> {
-    let content =
-        std::fs::read_to_string(path).with_context(|| format!("reading targets file {path:?}"))?;
+    let content = std::fs::read_to_string(path)
+        .with_context(|| format!("reading targets file {}", path.display()))?;
     let dictionary: HashSet<Word<N>> = answers.iter().copied().collect();
     let mut seen = HashSet::new();
     let mut targets = Vec::new();
@@ -47,17 +47,22 @@ fn from_file<const N: usize>(
             continue;
         }
         let word = Word::<N>::try_from(line.to_lowercase().as_str())
-            .with_context(|| format!("{path:?} line {}: {line:?}", i + 1))?;
+            .with_context(|| format!("{} line {}: {line:?}", path.display(), i + 1))?;
         anyhow::ensure!(
             dictionary.contains(&word),
-            "{path:?} line {}: {line:?} is not in {noun}",
+            "{} line {}: {line:?} is not in {noun}",
+            path.display(),
             i + 1
         );
         if seen.insert(word) {
             targets.push(word);
         }
     }
-    anyhow::ensure!(!targets.is_empty(), "{path:?} contains no targets");
+    anyhow::ensure!(
+        !targets.is_empty(),
+        "{} contains no targets",
+        path.display()
+    );
     if let Some(n) = num_games {
         targets.truncate(n);
     }

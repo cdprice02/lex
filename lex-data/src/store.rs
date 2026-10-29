@@ -1,6 +1,7 @@
 //! Building, reading and clearing the on-disk Cache.
 
 use std::collections::HashMap;
+use std::fmt::Write as _;
 use std::io::{BufWriter, Write};
 
 use anyhow::Context;
@@ -77,9 +78,10 @@ pub fn read<const N: usize>(
     limit: Option<usize>,
 ) -> anyhow::Result<WordSet<N>> {
     let path = dir.ngrams_path(lang, N);
-    let f = std::fs::File::open(&path).with_context(|| format!("opening ngrams file: {path:?}"))?;
-    let mmap =
-        unsafe { Mmap::map(&f) }.with_context(|| format!("mmapping ngrams file: {path:?}"))?;
+    let f = std::fs::File::open(&path)
+        .with_context(|| format!("opening ngrams file: {}", path.display()))?;
+    let mmap = unsafe { Mmap::map(&f) }
+        .with_context(|| format!("mmapping ngrams file: {}", path.display()))?;
     let header = Header::parse(&mmap, &path)?;
     let corrupt = |reason: String| LexDataError::CorruptCache {
         path: path.clone(),
@@ -92,7 +94,7 @@ pub fn read<const N: usize>(
         ))
         .into());
     }
-    let start = header.header_len as usize;
+    let start = header.records_offset as usize;
     let size = <RawRecord<'_, N>>::SIZE;
     let count = usize::try_from(header.record_count)
         .map_err(|_| corrupt(format!("record count {} is too large", header.record_count)))?;
@@ -118,7 +120,10 @@ pub fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
 
 /// `bytes` as lowercase hex.
 pub fn hex(bytes: &[u8]) -> String {
-    bytes.iter().map(|b| format!("{b:02x}")).collect()
+    bytes.iter().fold(String::new(), |mut hex, b| {
+        let _ = write!(hex, "{b:02x}");
+        hex
+    })
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire

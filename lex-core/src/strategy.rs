@@ -32,7 +32,7 @@ pub enum GuessPool {
 pub struct Strategy {
     /// The Guess pool policy.
     pub pool: GuessPool,
-    /// Answer prior temperature: p_i is proportional to f_i^(1/T). Must be positive and finite.
+    /// Answer prior temperature: `p_i` is proportional to `f_i^(1/T)`. Must be positive and finite.
     pub temperature: f64,
     /// Bonus, in bits, per unit of probability that the guess is the answer. Must be finite and
     /// non-negative; zero scores purely by entropy.
@@ -59,6 +59,7 @@ impl Strategy {
 
     /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
     /// entropy alone.
+    #[must_use]
     pub const fn ultrahard() -> Self {
         Self {
             pool: GuessPool::Ultrahard,
@@ -72,6 +73,7 @@ impl Strategy {
     /// Every field as an ordered (name, value) pair: what an Opening book is keyed on besides
     /// the pool and the solver source. Destructuring without `..` makes a new field a compile
     /// error here until it is listed, and floats print in their shortest round-tripping form.
+    #[must_use]
     pub fn key_fields(&self) -> Vec<(&'static str, String)> {
         let Self {
             pool,
@@ -171,7 +173,7 @@ impl<const N: usize> Pool<N> {
     }
 
     /// Number of words in the pool.
-    pub(crate) fn len(&self) -> usize {
+    pub(crate) const fn len(&self) -> usize {
         self.words.len()
     }
 
@@ -195,8 +197,8 @@ impl<const N: usize> Pool<N> {
             .collect()
     }
 
-    /// The answer prior over `indices`, renormalized to sum to 1: p_i is proportional to
-    /// exp((ln f_i - max ln f) / T) over just those words.
+    /// The answer prior over `indices`, renormalized to sum to 1: `p_i` is proportional to
+    /// exp((ln `f_i` - max ln f) / T) over just those words.
     pub(crate) fn prior(&self, indices: &[u32], temperature: f64) -> Vec<f64> {
         if indices.is_empty() {
             return Vec::new();
@@ -223,6 +225,7 @@ fn encode<const N: usize>(letters: &HashMap<char, u8>, word: &Word<N>) -> Code<N
 /// Raw-frequency softmax collapses to one-hot on the top word because ngrams counts span many
 /// orders of magnitude; log-space input with temperature above 1 flattens the distribution
 /// toward uniform without discarding rank information.
+#[must_use]
 pub fn answer_prior<const N: usize>(
     word_set: &WordSet<N>,
     temperature: f64,

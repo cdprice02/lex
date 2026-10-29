@@ -67,7 +67,8 @@ const EMPTY_SHA256: &str = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495
 
 impl Profile {
     /// The registry entry for this Profile.
-    pub fn spec(self) -> ProfileSpec {
+    #[must_use]
+    pub const fn spec(self) -> ProfileSpec {
         match self {
             Self::Wordle => ProfileSpec {
                 language: Language::English,

@@ -54,22 +54,26 @@ impl DictMetadata {
     }
 
     /// URL the word list was downloaded from.
+    #[must_use]
     pub fn source_url(&self) -> Option<&str> {
         self.source_url.as_deref()
     }
 
     /// RFC 3339 UTC timestamp of the download.
+    #[must_use]
     pub fn fetched_at(&self) -> Option<&str> {
         self.fetched_at.as_deref()
     }
 
     /// Hex SHA-256 of the compressed bytes as downloaded.
+    #[must_use]
     pub fn source_sha256(&self) -> Option<&str> {
         self.source_sha256.as_deref()
     }
 
     /// The range of word lengths attested in this language's Wiktionary word list.
-    pub fn word_length_range(&self) -> std::ops::RangeInclusive<usize> {
+    #[must_use]
+    pub const fn word_length_range(&self) -> std::ops::RangeInclusive<usize> {
         self.min_word_length..=self.max_word_length
     }
 }
@@ -188,7 +192,7 @@ fn read_dict(reader: impl BufRead, iso: &str) -> std::io::Result<HashSet<String>
 pub fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
     let path = dict_txt_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
-        .with_context(|| format!("reading dict for {lang} at {path:?}"))?;
+        .with_context(|| format!("reading dict for {lang} at {}", path.display()))?;
     Ok(content.lines().map(str::to_owned).collect())
 }
 
@@ -196,7 +200,7 @@ pub fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashS
 pub fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
     let path = dict_meta_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
-        .with_context(|| format!("reading dict metadata for {lang} at {path:?}"))?;
+        .with_context(|| format!("reading dict metadata for {lang} at {}", path.display()))?;
     serde_json::from_str(&content).with_context(|| format!("parsing metadata for {lang}"))
 }
 

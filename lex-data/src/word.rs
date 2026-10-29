@@ -211,6 +211,7 @@ impl<const N: usize> WordSet<N> {
     /// Constructs a `WordSet` from a word-to-frequency map.
     ///
     /// Sorts by frequency descending and writes records into an anonymous memory map.
+    #[must_use]
     pub fn from_frequency_map(frequencies: HashMap<Word<N>, u64>) -> Self {
         Self::from_pairs(frequencies.into_iter().collect())
     }
@@ -220,6 +221,7 @@ impl<const N: usize> WordSet<N> {
     /// The sort by frequency descending is stable, so equal frequencies keep the input
     /// order. Unlike [`from_frequency_map`](Self::from_frequency_map), whose tie order
     /// inherits `HashMap` iteration order, this is deterministic for fixtures and tests.
+    #[must_use]
     pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
         let record_size = RawRecord::<N>::SIZE;
@@ -243,6 +245,7 @@ impl<const N: usize> WordSet<N> {
     }
 
     /// Words sorted descending by frequency, read lazily from the mmap backing store.
+    #[must_use]
     pub fn words(&self) -> WordIter<'_, N> {
         WordIter {
             mmap: &self.mmap,
@@ -265,6 +268,7 @@ impl<const N: usize> WordSet<N> {
     }
 
     /// The frequency of `word`, or `None` when it is not in the set.
+    #[must_use]
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
         for &off in &self.offsets {
             let record =
@@ -297,16 +301,19 @@ impl<const N: usize> WordSet<N> {
     }
 
     /// Number of words in the set.
-    pub fn len(&self) -> usize {
+    #[must_use]
+    pub const fn len(&self) -> usize {
         self.offsets.len()
     }
 
     /// Whether the set holds no words.
-    pub fn is_empty(&self) -> bool {
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
         self.offsets.is_empty()
     }
 
     /// Whether `word` is in the set.
+    #[must_use]
     pub fn contains(&self, word: &Word<N>) -> bool {
         self.frequency(word).is_some()
     }
@@ -330,7 +337,7 @@ mod benches {
     use std::collections::HashMap;
     use std::hint::black_box;
 
-    use super::*;
+    use super::{Word, WordSet};
 
     fn make_wordset(n: usize) -> WordSet<5> {
         let frequencies = (0..n)
@@ -340,7 +347,7 @@ mod benches {
                     char::from(b'a' + ((i / 26) % 26) as u8),
                     char::from(b'a' + ((i / 676) % 26) as u8),
                     char::from(b'a' + ((i / 17576) % 26) as u8),
-                    char::from(b'a' + ((i / 456976) % 26) as u8),
+                    char::from(b'a' + ((i / 456_976) % 26) as u8),
                 ]
                 .iter()
                 .collect();

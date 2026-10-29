@@ -5,7 +5,7 @@ use unicode_normalization::UnicodeNormalization;
 use crate::error::LexDataError;
 
 /// V3 (2020) line format: `ngram\tyear,match_count,vol[\tyear,match_count,vol]*`
-/// All years are on one line; we sum match_count across all year groups.
+/// All years are on one line; we sum `match_count` across all year groups.
 /// Returns None for multi-word tokens, POS-tagged tokens, and tokens with non-alphabetic chars.
 pub fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
     let (ngram, rest) = line
@@ -56,7 +56,7 @@ mod benches {
     use divan::Bencher;
     use std::hint::black_box;
 
-    use super::*;
+    use super::parse_ngram_line;
 
     #[divan::bench]
     fn parse_ngram_line_single(b: Bencher) {

@@ -22,7 +22,8 @@ pub enum BookMode {
 
 impl BookMode {
     /// `Off` when `--no-book` was given, else `Auto`.
-    pub fn from_no_book(no_book: bool) -> Self {
+    #[must_use]
+    pub const fn from_no_book(no_book: bool) -> Self {
         if no_book { Self::Off } else { Self::Auto }
     }
 }
@@ -52,6 +53,7 @@ pub struct Ensured<const N: usize> {
 }
 
 /// The key of the book for `config` over `lists`: everything that can change a chosen guess.
+#[must_use]
 pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameLists<N>) -> BookKey {
     let profile = match source {
         Source::Corpus(_) => None,
@@ -77,15 +79,16 @@ pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameList
 }
 
 /// The language of `game`'s Corpus.
-fn language(game: &Game) -> lex_data::Language {
+const fn language(game: &Game) -> lex_data::Language {
     match game {
         Game::Corpus { language, .. } => *language,
         Game::Profile(profile) => profile.spec().language,
     }
 }
 
-/// Loads the book for `config`, building and storing it first when no file matches the key or
-/// `force` asks for a rebuild. A stale book is rebuilt with a message naming what changed; a
+/// Loads the book for `config`, building it first when none matches or `force` asks.
+///
+/// A missing book is built and stored. A stale book is rebuilt with a message naming what changed; a
 /// damaged one is an error.
 pub fn ensure<const N: usize>(
     config: &RunConfig,
@@ -102,9 +105,13 @@ pub fn ensure<const N: usize>(
         match data_dir.read_book(lang, &key)? {
             BookLookup::Found(stored) => {
                 let bytes = std::fs::metadata(&path)?.len();
-                let book = OpeningBook::<N>::from_nodes(stored, lists.pool.len()).with_context(
-                    || format!("opening book {path:?} is corrupt; rebuild it with `lex book build --force`"),
-                )?;
+                let book =
+                    OpeningBook::<N>::from_nodes(stored, lists.pool.len()).with_context(|| {
+                        format!(
+                            "opening book {} is corrupt; rebuild it with `lex book build --force`",
+                            path.display()
+                        )
+                    })?;
                 return Ok(Ensured {
                     book,
                     status: Status::UpToDate,

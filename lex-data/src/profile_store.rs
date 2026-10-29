@@ -168,12 +168,12 @@ fn fetch_into<const N: usize>(
 /// Reads a stored list, requiring its bytes to hash to `expected`.
 fn read_verified(dir: &Path, file: &str, expected: &str) -> anyhow::Result<String> {
     let path = dir.join(file);
-    let bytes = std::fs::read(&path).with_context(|| format!("reading {path:?}"))?;
+    let bytes = std::fs::read(&path).with_context(|| format!("reading {}", path.display()))?;
     let actual = list::checksum(&bytes);
     if actual != expected {
         return Err(mismatch(&path.display().to_string(), expected, actual));
     }
-    String::from_utf8(bytes).with_context(|| format!("{path:?} is not UTF-8"))
+    String::from_utf8(bytes).with_context(|| format!("{} is not UTF-8", path.display()))
 }
 
 /// Loads a Profile against its Corpus, fetching the lists first if `dir` has no `meta.json`.

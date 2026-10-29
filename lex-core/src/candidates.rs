@@ -27,6 +27,7 @@ pub struct Suggestion<const N: usize> {
 
 impl<const N: usize> Suggestion<N> {
     /// The quantity the solver maximizes: entropy plus the bonus for a chance of winning now.
+    #[must_use]
     pub fn score(&self, win_weight: f64) -> f64 {
         self.entropy_bits + win_weight * self.p_answer
     }
@@ -102,7 +103,7 @@ impl<const N: usize> Candidates<N> {
     }
 
     /// Size of the Candidate set.
-    pub(crate) fn len(&self) -> usize {
+    pub(crate) const fn len(&self) -> usize {
         self.indices.len()
     }
 
@@ -349,7 +350,7 @@ mod tests {
     /// Words over a small alphabet so patterns collide and runs have several members.
     fn counters_agree<const N: usize>(
         guess: [u8; N],
-        pairs: Vec<([u8; N], f64)>,
+        pairs: &[([u8; N], f64)],
     ) -> Result<(), TestCaseError> {
         let words: Vec<Code<N>> = pairs.iter().map(|&(w, _)| w).collect();
         let probs: Vec<f64> = pairs.iter().map(|&(_, p)| p).collect();
@@ -366,7 +367,7 @@ mod tests {
             guess in prop::array::uniform3(0u8..3),
             pairs in prop::collection::vec((prop::array::uniform3(0u8..3), 1e-6f64..1.0), 1..60),
         ) {
-            counters_agree::<3>(guess, pairs)?;
+            counters_agree::<3>(guess, &pairs)?;
         }
 
         #[test]
@@ -374,7 +375,7 @@ mod tests {
             guess in prop::array::uniform5(0u8..4),
             pairs in prop::collection::vec((prop::array::uniform5(0u8..4), 1e-6f64..1.0), 1..80),
         ) {
-            counters_agree::<5>(guess, pairs)?;
+            counters_agree::<5>(guess, &pairs)?;
         }
 
         #[test]
@@ -382,7 +383,7 @@ mod tests {
             guess in prop::array::uniform13(0u8..4),
             pairs in prop::collection::vec((prop::array::uniform13(0u8..4), 1e-6f64..1.0), 1..80),
         ) {
-            counters_agree::<13>(guess, pairs)?;
+            counters_agree::<13>(guess, &pairs)?;
         }
     }
 
@@ -405,7 +406,9 @@ mod benches {
     use divan::Bencher;
     use std::hint::black_box;
 
-    use super::*;
+    use super::{
+        Allowed, Arc, Candidates, Code, Guess, Pool, Strategy, Word, WordCorrectness, guess_entropy,
+    };
 
     #[divan::bench]
     fn guess_entropy_10_words(b: Bencher) {
@@ -431,8 +434,8 @@ mod benches {
         while pairs.len() < count {
             let chars: [char; N] = std::array::from_fn(|_| {
                 state = state
-                    .wrapping_mul(6364136223846793005)
-                    .wrapping_add(1442695040888963407);
+                    .wrapping_mul(6_364_136_223_846_793_005)
+                    .wrapping_add(1_442_695_040_888_963_407);
                 char::from(b'a' + ((state >> 33) % 26) as u8)
             });
             if seen.insert(chars) {

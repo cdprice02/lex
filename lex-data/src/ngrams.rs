@@ -21,7 +21,7 @@ const SHARD_CONCURRENCY: usize = 4;
 /// recording it keeps run provenance complete.
 pub const SNAPSHOT: &str = "20200217";
 
-/// Downloads all Google Books Ngrams V3 shards for `lang` with up to SHARD_CONCURRENCY
+/// Downloads all Google Books Ngrams V3 shards for `lang` with up to `SHARD_CONCURRENCY`
 /// requests in flight at once. Returns the words in `valid`, grouped by char count, for every
 /// supported length. Callers write all length buckets on a cache miss so future requests for
 /// any length of this language are served from disk.
@@ -70,9 +70,10 @@ pub fn fetch(
     };
 
     let results: Vec<_> = thread::scope(|scope| {
-        let workers: Vec<_> = (0..SHARD_CONCURRENCY.min(n as usize))
-            .map(|_| scope.spawn(worker))
-            .collect();
+        let mut workers = Vec::new();
+        for _ in 0..SHARD_CONCURRENCY.min(n as usize) {
+            workers.push(scope.spawn(worker));
+        }
         workers
             .into_iter()
             .map(|w| w.join().unwrap_or_else(|p| std::panic::resume_unwind(p)))

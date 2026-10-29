@@ -1,5 +1,6 @@
-//! The benchmark Tracks: one `const` table of every game the project measures, derived from the
-//! supported languages, word lengths, Profiles and guess pools (ADR 0007). A new `Language`
+//! The benchmark Tracks: one `const` table of every game the project measures.
+//!
+//! Derived from the supported languages, word lengths, Profiles and guess pools (ADR 0007). A new `Language`
 //! variant or a raised `max_supported_length` adds its Tracks without a table edit.
 
 use std::fmt;
@@ -71,6 +72,7 @@ pub enum Tier {
 
 impl Tier {
     /// The Tier a Corpus Track of this length has.
+    #[must_use]
     pub const fn of_length(length: usize) -> Self {
         if length == HEADLINE_LENGTH {
             return Self::Headline;
@@ -86,6 +88,7 @@ impl Tier {
     }
 
     /// The Tier's name in snapshots and the verdict table.
+    #[must_use]
     pub const fn name(self) -> &'static str {
         match self {
             Self::Headline => "headline",
@@ -135,6 +138,7 @@ pub struct Track {
 
 impl Track {
     /// The run configuration that plays this Track.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
         RunConfig {
             game: self.game,
@@ -144,6 +148,7 @@ impl Track {
     }
 
     /// The Track with this id, as printed by `Display`.
+    #[must_use]
     pub fn find(id: &str) -> Option<Self> {
         TRACKS.iter().find(|t| t.to_string() == id).copied()
     }

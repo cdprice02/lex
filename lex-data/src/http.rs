@@ -10,10 +10,10 @@ use crate::retry::{Failure, with_retry};
 /// Longest wait to establish a connection.
 const CONNECT_TIMEOUT: Duration = Duration::from_secs(30);
 /// Longest wait for the response headers once the request is sent.
-const RESPONSE_TIMEOUT: Duration = Duration::from_secs(60);
+const RESPONSE_TIMEOUT: Duration = Duration::from_mins(1);
 /// Bounds a stalled transfer without capping the total: a healthy multi-hundred-MB shard on a
 /// slow link must be allowed to finish.
-const READ_TIMEOUT: Duration = Duration::from_secs(60);
+const READ_TIMEOUT: Duration = Duration::from_mins(1);
 
 /// A client for the data downloads. Built without ureq's `gzip` feature, so it never asks for or
 /// transparently decodes `Content-Encoding`: the sources are `.gz` files, decoded by the caller.

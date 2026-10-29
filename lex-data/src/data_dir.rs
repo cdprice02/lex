@@ -26,7 +26,7 @@ impl DataDir {
         Self { path: path.into() }
     }
 
-    /// Loads a WordSet for `lang` at word length `N`, building the local cache on a miss.
+    /// Loads a `WordSet` for `lang` at word length `N`, building the local cache on a miss.
     ///
     /// On a cache miss this downloads the Wiktionary word list (once per language) and all
     /// Google Books Ngrams shards for that language, filters to valid words, and writes
@@ -105,11 +105,13 @@ impl DataDir {
     }
 
     /// Directory holding a Profile's `answers.txt`, `guess-only.txt` and `meta.json`.
+    #[must_use]
     pub fn profile_dir(&self, profile: Profile) -> PathBuf {
         self.path.join("profiles").join(profile.to_string())
     }
 
     /// Path to the cached ngrams binary file for `lang` at word length `n`.
+    #[must_use]
     pub fn ngrams_path(&self, lang: Language, n: usize) -> PathBuf {
         self.path
             .join("ngrams")
@@ -118,6 +120,7 @@ impl DataDir {
     }
 
     /// Path to the cached Wiktionary word list for `lang`.
+    #[must_use]
     pub fn dict_path(&self, lang: Language) -> PathBuf {
         self.path
             .join("dicts")

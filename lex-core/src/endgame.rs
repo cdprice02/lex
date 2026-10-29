@@ -193,10 +193,9 @@ impl<const N: usize> Endgame<N> {
             }
             let weights = group.iter().map(|&(_, i)| self.weights[i as usize]);
             let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
-            sum += match self.growth {
-                None => 2.0 * group_mass - top,
-                Some(a) => a * top + a * a * (group_mass - top),
-            };
+            sum += self.growth.map_or(2.0 * group_mass - top, |a| {
+                a * top + a * a * (group_mass - top)
+            });
         }
         Some(sum * self.growth.unwrap_or(1.0))
     }

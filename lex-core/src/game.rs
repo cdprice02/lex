@@ -15,17 +15,20 @@ pub struct GameResult<const N: usize> {
 
 impl<const N: usize> GameResult<N> {
     /// The answer.
-    pub fn word(&self) -> Word<N> {
+    #[must_use]
+    pub const fn word(&self) -> Word<N> {
         self.word
     }
 
     /// The guesses played, in order.
+    #[must_use]
     pub fn guesses(&self) -> &[Guess<N>] {
         &self.guesses
     }
 
     /// How many guesses the game took.
-    pub fn num_guesses(&self) -> usize {
+    #[must_use]
+    pub const fn num_guesses(&self) -> usize {
         self.guesses.len()
     }
 }
@@ -83,7 +86,7 @@ pub fn play<const N: usize>(
 }
 
 /// Logs one guess and its feedback at `info`.
-#[inline(always)]
+#[inline]
 fn log_guess<const N: usize>(guess_num: usize, guess: &Guess<N>) {
     log::info!(
         "Guess {guess_num}: {} -> {}",

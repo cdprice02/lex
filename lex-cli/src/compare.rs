@@ -18,9 +18,9 @@ pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
 
 /// Reads the JSON report at `path`.
 fn load(path: &Path) -> anyhow::Result<Report> {
-    let content =
-        std::fs::read_to_string(path).with_context(|| format!("reading report {path:?}"))?;
-    serde_json::from_str(&content).with_context(|| format!("parsing report {path:?}"))
+    let content = std::fs::read_to_string(path)
+        .with_context(|| format!("reading report {}", path.display()))?;
+    serde_json::from_str(&content).with_context(|| format!("parsing report {}", path.display()))
 }
 
 /// Paired comparison over the targets both reports played. Pairing removes target-sampling

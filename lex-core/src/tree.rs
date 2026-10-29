@@ -42,6 +42,15 @@ pub struct DecisionTree<const N: usize> {
     booked_computations: usize,
 }
 
+/// A node's memoized suggestion.
+#[derive(Debug, Clone, Copy)]
+enum Memo<const N: usize> {
+    /// Not yet computed.
+    Pending,
+    /// Computed; `None` when no consistent word remains.
+    Computed(Option<Word<N>>),
+}
+
 /// One game position.
 #[derive(Debug)]
 struct Node<const N: usize> {
@@ -49,8 +58,8 @@ struct Node<const N: usize> {
     candidates: Candidates<N>,
     /// The guesses the strategy's pool rule permits here; a function of the guess path.
     allowed: Allowed,
-    /// The memoized suggestion: outer `None` is not yet computed, inner `None` is no consistent word.
-    suggestion: Option<Option<Word<N>>>,
+    /// The memoized suggestion.
+    suggestion: Memo<N>,
     /// The book node this position is on, while the game stays on the book's path.
     book: Option<u32>,
     // Sparse: fan-out is 3^N per guess, 59,049 at the length cap.
@@ -64,7 +73,7 @@ impl<const N: usize> Node<N> {
         Self {
             candidates,
             allowed,
-            suggestion: None,
+            suggestion: Memo::Pending,
             book: None,
             children: HashMap::new(),
         }
@@ -108,7 +117,7 @@ impl<const N: usize> DecisionTree<N> {
     /// Puts `node` on book node `id` and takes the booked guess as its suggestion.
     fn seed(node: &mut Node<N>, book: &OpeningBook<N>, id: u32) {
         node.book = Some(id);
-        node.suggestion = Some(Some(node.candidates.pool().word(book.guess(id))));
+        node.suggestion = Memo::Computed(Some(node.candidates.pool().word(book.guess(id))));
     }
 
     /// The Candidate set at `node`.
@@ -122,7 +131,7 @@ impl<const N: usize> DecisionTree<N> {
     }
 
     /// The Strategy this tree scores under.
-    pub(crate) fn strategy(&self) -> &Strategy {
+    pub(crate) const fn strategy(&self) -> &Strategy {
         &self.strategy
     }
 
@@ -137,7 +146,10 @@ impl<const N: usize> DecisionTree<N> {
             ..
         } = self;
         let entry = &mut nodes[node];
-        *entry.suggestion.get_or_insert_with(|| {
+        if let Memo::Computed(suggestion) = entry.suggestion {
+            return suggestion;
+        }
+        let suggestion = {
             #[cfg(test)]
             if entry.book.is_some() {
                 *booked_computations += 1;
@@ -151,7 +163,9 @@ impl<const N: usize> DecisionTree<N> {
                 }
                 _ => entry.candidates.suggest(strategy, &entry.allowed),
             }
-        })
+        };
+        entry.suggestion = Memo::Computed(suggestion);
+        suggestion
     }
 
     /// Work at `node`: the guesses its rule allows times its candidates.
@@ -217,7 +231,7 @@ impl<const N: usize> DecisionTree<N> {
     }
 
     #[cfg(test)]
-    pub(crate) fn booked_computations(&self) -> usize {
+    pub(crate) const fn booked_computations(&self) -> usize {
         self.booked_computations
     }
 

@@ -24,7 +24,8 @@ pub enum Game {
 
 impl Game {
     /// The word length the game is played at.
-    pub fn word_length(&self) -> usize {
+    #[must_use]
+    pub const fn word_length(&self) -> usize {
         match self {
             Self::Corpus { length, .. } => *length,
             Self::Profile(profile) => profile.spec().word_length,

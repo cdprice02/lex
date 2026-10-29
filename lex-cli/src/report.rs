@@ -105,10 +105,12 @@ struct RawStrategyReport {
 
 impl From<RawStrategyReport> for StrategyReport {
     fn from(raw: RawStrategyReport) -> Self {
-        let mode = raw.mode.unwrap_or(if raw.hard_mode == Some(true) {
-            Mode::Ultrahard
-        } else {
-            Mode::Unconstrained
+        let mode = raw.mode.unwrap_or_else(|| {
+            if raw.hard_mode == Some(true) {
+                Mode::Ultrahard
+            } else {
+                Mode::Unconstrained
+            }
         });
         Self {
             mode,
@@ -201,6 +203,7 @@ pub struct ProfileReport {
 
 impl ProfileReport {
     /// Whether both reports played the same Profile lists.
+    #[must_use]
     pub fn same_lists(&self, other: &Self) -> bool {
         (&self.name, &self.answers_sha256, &self.guess_only_sha256)
             == (&other.name, &other.answers_sha256, &other.guess_only_sha256)
@@ -296,6 +299,7 @@ impl Stats {
 
 impl Summary {
     /// Both weightings of `games`.
+    #[must_use]
     pub fn from_games(games: &[Game]) -> Self {
         Self {
             max_guesses: MAX_GUESSES,

@@ -35,7 +35,7 @@ pub struct Header {
     /// Word length `N` the Cache holds.
     pub(crate) word_len: u16,
     /// Offset of the first record.
-    pub(crate) header_len: u32,
+    pub(crate) records_offset: u32,
     /// Number of records.
     pub(crate) record_count: u64,
     /// SHA-256 of the records region.
@@ -48,7 +48,7 @@ impl Header {
     pub(crate) fn for_records(word_len: usize, record_size: usize, records: &[u8]) -> Self {
         Self {
             word_len: u16::try_from(word_len).expect("word length fits in u16"),
-            header_len: HEADER_LEN as u32,
+            records_offset: HEADER_LEN as u32,
             record_count: (records.len() / record_size) as u64,
             checksum: Sha256::digest(records).into(),
         }
@@ -60,7 +60,7 @@ impl Header {
         out[0..4].copy_from_slice(&MAGIC);
         out[4..6].copy_from_slice(&VERSION.to_le_bytes());
         out[6..8].copy_from_slice(&self.word_len.to_le_bytes());
-        out[8..12].copy_from_slice(&self.header_len.to_le_bytes());
+        out[8..12].copy_from_slice(&self.records_offset.to_le_bytes());
         out[12..20].copy_from_slice(&self.record_count.to_le_bytes());
         out[20..52].copy_from_slice(&self.checksum);
         out
@@ -96,7 +96,7 @@ impl Header {
         }
         Ok(Self {
             word_len: u16::from_le_bytes(bytes[6..8].try_into().unwrap()),
-            header_len,
+            records_offset: header_len,
             record_count: u64::from_le_bytes(bytes[12..20].try_into().unwrap()),
             checksum: bytes[20..52].try_into().unwrap(),
         })
@@ -107,10 +107,10 @@ impl Header {
         use std::io::Read;
         let mut buf = Vec::with_capacity(HEADER_LEN);
         std::fs::File::open(path)
-            .with_context(|| format!("opening ngrams file: {path:?}"))?
+            .with_context(|| format!("opening ngrams file: {}", path.display()))?
             .take(HEADER_LEN as u64)
             .read_to_end(&mut buf)
-            .with_context(|| format!("reading ngrams header: {path:?}"))?;
+            .with_context(|| format!("reading ngrams header: {}", path.display()))?;
         Ok(Self::parse(&buf, path)?)
     }
 

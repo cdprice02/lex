@@ -1,5 +1,6 @@
-//! `lex verdict`: judges a head set of Track snapshots against a base set by ADR 0007's rule,
-//! and renders the headline table of `benchmarks/README.md`. It reads the snapshots the
+//! `lex verdict`: judges a head set of Track snapshots against a base set by ADR 0007's rule.
+//!
+//! It also renders the headline table of `benchmarks/README.md`. It reads the snapshots the
 //! `tracks` tests write (ADR 0012) and runs no game.
 
 use std::collections::BTreeMap;
@@ -114,7 +115,7 @@ impl Snap {
     }
 
     /// The uniform statistics on a Profile Track, the prior-weighted ones on a Corpus Track.
-    fn score(&self) -> Stats {
+    const fn score(&self) -> Stats {
         match self.body.profile {
             Some(_) => self.body.summary.uniform,
             None => self.body.summary.prior,
@@ -160,7 +161,8 @@ pub enum Outcome {
 
 impl Outcome {
     /// The outcome's name as printed.
-    pub fn name(self) -> &'static str {
+    #[must_use]
+    pub const fn name(self) -> &'static str {
         match self {
             Self::Accept => "accept",
             Self::Unchanged => "unchanged",
@@ -172,7 +174,8 @@ impl Outcome {
     }
 
     /// The process exit code: 1 for `Reject` and `Stale`, else 0.
-    pub fn exit_code(self) -> i32 {
+    #[must_use]
+    pub const fn exit_code(self) -> i32 {
         match self {
             Self::Reject | Self::Stale => 1,
             _ => 0,
@@ -217,13 +220,16 @@ pub struct Verdict {
 
 impl Verdict {
     /// The markdown report: a table per Track, the notes behind the outcome, then the outcome.
+    #[must_use]
     pub fn render(&self) -> String {
         let mut out = String::from(
             "| Track | Tier | Judged | Base | Head | Delta | Status |\n|---|---|---|---|---|---|---|\n",
         );
-        let cell = |v: Option<f64>| v.map_or("-".to_owned(), |v| format!("{v:.4}"));
+        let cell = |v: Option<f64>| v.map_or_else(|| "-".to_owned(), |v| format!("{v:.4}"));
         for row in &self.rows {
-            let delta = row.delta().map_or("-".to_owned(), |d| format!("{d:+.4}"));
+            let delta = row
+                .delta()
+                .map_or_else(|| "-".to_owned(), |d| format!("{d:+.4}"));
             let _ = writeln!(
                 out,
                 "| {} | {} | {} | {} | {} | {} | {} |",
@@ -255,16 +261,16 @@ struct Meta {
 
 /// The table's entry for Track `id`.
 fn meta(id: &str) -> Meta {
-    match Track::find(id) {
-        Some(t) => Meta {
-            tier: Some(t.tier),
-            judged: t.judged,
-        },
-        None => Meta {
+    Track::find(id).map_or(
+        Meta {
             tier: None,
             judged: false,
         },
-    }
+        |t| Meta {
+            tier: Some(t.tier),
+            judged: t.judged,
+        },
+    )
 }
 
 /// Tracks in table order, then any unknown ids alphabetically.
@@ -513,9 +519,8 @@ fn run(args: &VerdictArgs) -> Result<i32> {
         }
         return Ok(0);
     }
-    let (base, head) = match (&args.base, &args.head) {
-        (Some(base), Some(head)) => (base, head),
-        _ => bail!("verdict needs a base and a head directory"),
+    let (Some(base), Some(head)) = (&args.base, &args.head) else {
+        bail!("verdict needs a base and a head directory");
     };
     let verdict = verdict(base, head, lex_core::SOLVER_DIGEST)?;
     print!("{}", verdict.render());
@@ -524,6 +529,7 @@ fn run(args: &VerdictArgs) -> Result<i32> {
 
 /// Runs the subcommand and returns its exit code: 0 accept, unchanged, rebaseline or new;
 /// 1 reject, stale or a stale README; 2 bad input.
+#[must_use]
 pub fn command(args: &VerdictArgs) -> i32 {
     run(args).unwrap_or_else(|e| {
         eprintln!("error: {e:#}");

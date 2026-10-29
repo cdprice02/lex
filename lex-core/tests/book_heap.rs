@@ -45,9 +45,9 @@ fn measure<const N: usize>(
         .lock()
         .unwrap_or_else(std::sync::PoisonError::into_inner);
     let _profiler = dhat::Profiler::builder().testing().build();
-    let built = build(guesser);
-    let stored = built.to_nodes();
-    drop(built);
+    let fresh = build(guesser);
+    let stored = fresh.to_nodes();
+    drop(fresh);
     let loaded = OpeningBook::<N>::from_nodes(stored, pool_len).unwrap();
     let peak = dhat::HeapStats::get().max_bytes as u64;
     let (nodes, claimed) = (loaded.len(), loaded.heap_bytes());

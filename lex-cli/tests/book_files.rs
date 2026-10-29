@@ -35,7 +35,7 @@ fn seeded() -> (tempfile::TempDir, DataDir) {
     (tmp, dir)
 }
 
-fn config(strategy: Strategy) -> RunConfig {
+const fn config(strategy: Strategy) -> RunConfig {
     RunConfig {
         game: Game::Corpus {
             language: Language::English,
