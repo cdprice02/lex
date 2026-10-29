@@ -67,13 +67,13 @@ fn ultrahard_guess_sequences_are_stable() {
         (
             "hatch",
             &[
-                "their", "watch", "match", "catch", "patch", "batch", "hatch",
+                "their", "watch", "match", "catch", "patch", "batch", "latch", "hatch",
             ],
         ),
         (
             "latch",
             &[
-                "their", "watch", "match", "catch", "patch", "batch", "hatch", "latch",
+                "their", "watch", "match", "catch", "patch", "batch", "latch",
             ],
         ),
         ("match", &["their", "watch", "match"]),
@@ -83,12 +83,12 @@ fn ultrahard_guess_sequences_are_stable() {
         ("might", &["their", "night", "light", "might"]),
         ("night", &["their", "night"]),
         ("right", &["their", "right"]),
-        ("sight", &["their", "night", "light", "might", "sight"]),
-        ("tight", &["their", "tight"]),
         (
-            "fight",
-            &["their", "night", "light", "might", "sight", "fight"],
+            "sight",
+            &["their", "night", "light", "might", "fight", "sight"],
         ),
+        ("tight", &["their", "tight"]),
+        ("fight", &["their", "night", "light", "might", "fight"]),
         ("about", &["their", "about"]),
         ("other", &["their", "other"]),
         ("which", &["their", "which"]),

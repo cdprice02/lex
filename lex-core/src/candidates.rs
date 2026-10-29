@@ -30,8 +30,8 @@ pub struct Suggestion<const N: usize> {
 impl<const N: usize> Suggestion<N> {
     /// The quantity the solver maximizes: entropy plus the bonus for a chance of winning now.
     #[must_use]
-    pub fn score(&self, win_weight: f64) -> f64 {
-        self.entropy_bits + win_weight * self.p_answer
+    pub const fn score(&self, win_weight: f64) -> f64 {
+        win_weight.mul_add(self.p_answer, self.entropy_bits)
     }
 }
 
@@ -194,7 +194,7 @@ impl<const N: usize> Candidates<N> {
             allowed,
             strategy.temperature,
             |i, entropy_bits, p_answer, in_candidates| {
-                let score = entropy_bits + strategy.win_weight * p_answer;
+                let score = strategy.win_weight.mul_add(p_answer, entropy_bits);
                 log::trace!("{}: {}", self.pool.word(i), score);
                 match best {
                     Some((best_i, best_score, best_in)) => {
@@ -247,7 +247,7 @@ fn guess_entropy<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f6
 fn entropy_from_masses(masses: impl Iterator<Item = f64>) -> f64 {
     let mut acc = 0.0_f64;
     for p in masses {
-        acc += p * p.log2();
+        acc = p.mul_add(p.log2(), acc);
     }
     // 0.0 - acc rather than -acc: a zero sum yields +0.0, not -0.0
     0.0 - acc

@@ -195,9 +195,10 @@ impl<const N: usize> Endgame<N> {
             }
             let weights = group.iter().map(|&(_, i)| self.weights[cast::index(i)]);
             let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
-            sum += self.growth.map_or(2.0 * group_mass - top, |a| {
-                a * top + a * a * (group_mass - top)
-            });
+            sum += self.growth.map_or_else(
+                || 2.0_f64.mul_add(group_mass, -top),
+                |a| (a * a).mul_add(group_mass - top, a * top),
+            );
         }
         Some(sum * self.growth.unwrap_or(1.0))
     }
@@ -324,8 +325,8 @@ mod tests {
             }
             let objective = endgame
                 .growth
-                .map_or(f64::from(guesses), |a| a.powi(guesses));
-            total += endgame.weights[crate::cast::index(answer)] * objective;
+                .map_or_else(|| f64::from(guesses), |a| a.powi(guesses));
+            total = endgame.weights[crate::cast::index(answer)].mul_add(objective, total);
         }
         total
     }
