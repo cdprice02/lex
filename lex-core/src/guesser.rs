@@ -241,7 +241,7 @@ mod benches {
     }
 
     fn build_guesser(pairs: &[(Word<5>, u64)]) -> Guesser<5> {
-        let frequencies: HashMap<Word<5>, u64> = pairs.iter().cloned().collect();
+        let frequencies: HashMap<Word<5>, u64> = pairs.iter().copied().collect();
         let ws = WordSet::from_frequency_map(frequencies);
         corpus_guesser(ws, Strategy::ultrahard())
     }

@@ -104,7 +104,7 @@ fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
 pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
     let url = lang.wiktionary_url();
-    log::info!("Fetching Wiktionary dict for {} from {url}...", lang);
+    log::info!("Fetching Wiktionary dict for {lang} from {url}...");
 
     let (words, source_sha256) = http::get(&http::agent(), &url, |body| {
         let mut hashing = HashingReader {
@@ -127,7 +127,7 @@ pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> 
 
     let txt_path = dict_txt_path(data_dir, lang);
     std::fs::create_dir_all(txt_path.parent().unwrap())?;
-    let mut sorted: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
+    let mut sorted: Vec<&str> = words.iter().map(std::string::String::as_str).collect();
     sorted.sort_unstable();
     let mut writer = BufWriter::new(std::fs::File::create(&txt_path)?);
     for word in sorted {
@@ -140,10 +140,7 @@ pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> 
         serde_json::to_string_pretty(&meta)?,
     )?;
 
-    log::info!(
-        "Cached {} Wiktionary dict ({word_count} words, lengths {min_len}–{max_len})",
-        lang
-    );
+    log::info!("Cached {lang} Wiktionary dict ({word_count} words, lengths {min_len}–{max_len})");
     Ok(())
 }
 

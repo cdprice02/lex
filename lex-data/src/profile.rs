@@ -69,7 +69,7 @@ impl Profile {
     /// The registry entry for this Profile.
     pub fn spec(self) -> ProfileSpec {
         match self {
-            Profile::Wordle => ProfileSpec {
+            Self::Wordle => ProfileSpec {
                 language: Language::English,
                 word_length: 5,
                 answers: ListSpec {
@@ -81,7 +81,7 @@ impl Profile {
                     sha256: WORDLE_GUESS_ONLY.sha256,
                 },
             },
-            Profile::WordleAll => ProfileSpec {
+            Self::WordleAll => ProfileSpec {
                 language: Language::English,
                 word_length: 5,
                 answers: ListSpec {

@@ -71,26 +71,26 @@ pub enum Tier {
 
 impl Tier {
     /// The Tier a Corpus Track of this length has.
-    pub const fn of_length(length: usize) -> Tier {
+    pub const fn of_length(length: usize) -> Self {
         if length == HEADLINE_LENGTH {
-            return Tier::Headline;
+            return Self::Headline;
         }
         let mut i = 0;
         while i < BREADTH_LENGTHS.len() {
             if BREADTH_LENGTHS[i] == length {
-                return Tier::Breadth;
+                return Self::Breadth;
             }
             i += 1;
         }
-        Tier::Smoke
+        Self::Smoke
     }
 
     /// The Tier's name in snapshots and the verdict table.
     pub const fn name(self) -> &'static str {
         match self {
-            Tier::Headline => "headline",
-            Tier::Breadth => "breadth",
-            Tier::Smoke => "smoke",
+            Self::Headline => "headline",
+            Self::Breadth => "breadth",
+            Self::Smoke => "smoke",
         }
     }
 }
@@ -112,8 +112,8 @@ pub enum TrackTargets {
 impl From<TrackTargets> for Targets {
     fn from(targets: TrackTargets) -> Self {
         match targets {
-            TrackTargets::Full => Targets::Full,
-            TrackTargets::Sample { n, seed } => Targets::Sample { n, seed },
+            TrackTargets::Full => Self::Full,
+            TrackTargets::Sample { n, seed } => Self::Sample { n, seed },
         }
     }
 }
@@ -144,7 +144,7 @@ impl Track {
     }
 
     /// The Track with this id, as printed by `Display`.
-    pub fn find(id: &str) -> Option<Track> {
+    pub fn find(id: &str) -> Option<Self> {
         TRACKS.iter().find(|t| t.to_string() == id).copied()
     }
 }

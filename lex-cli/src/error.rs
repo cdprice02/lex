@@ -4,7 +4,6 @@ use thiserror::Error;
 
 /// Why a command line value is rejected.
 #[derive(Error, Debug)]
-#[allow(clippy::enum_variant_names)]
 pub enum CliError {
     /// A word length outside the supported range.
     #[error("invalid word length: expected {range:?}, got {got}")]

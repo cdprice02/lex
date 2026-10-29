@@ -124,7 +124,7 @@ mod tests {
     use super::*;
 
     fn valid(words: &[&str]) -> HashSet<String> {
-        words.iter().map(|w| w.to_string()).collect()
+        words.iter().map(std::string::ToString::to_string).collect()
     }
 
     #[test]

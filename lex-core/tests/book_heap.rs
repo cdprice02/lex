@@ -41,7 +41,9 @@ fn measure<const N: usize>(
     pool_len: usize,
     build: impl FnOnce(&Guesser<N>) -> OpeningBook<N>,
 ) -> (u64, usize) {
-    let _guard = PROFILER.lock().unwrap_or_else(|e| e.into_inner());
+    let _guard = PROFILER
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let _profiler = dhat::Profiler::builder().testing().build();
     let built = build(guesser);
     let stored = built.to_nodes();
@@ -82,5 +84,5 @@ fn the_english_5_book_fits_the_cap() {
     let pool_len = pool.len();
     let answers = pool.words().collect();
     let guesser = Guesser::new(pool, answers, Strategy::default());
-    measure(&guesser, pool_len, |g| g.build_book());
+    measure(&guesser, pool_len, lex_core::Guesser::build_book);
 }

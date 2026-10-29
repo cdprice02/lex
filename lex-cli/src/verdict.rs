@@ -100,7 +100,7 @@ fn split_snapshot(text: &str) -> Option<(&str, &str)> {
 
 impl Snap {
     /// Reads and parses the snapshot at `path`.
-    fn load(path: &Path) -> Result<Snap> {
+    fn load(path: &Path) -> Result<Self> {
         let text =
             fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
         let (header, body) = split_snapshot(&text)
@@ -110,7 +110,7 @@ impl Snap {
         let body: Body = serde_json::from_str(body)
             .with_context(|| format!("{} has no Track body", path.display()))?;
         let digest = header.info.and_then(|i| i.solver_digest);
-        Ok(Snap { body, digest })
+        Ok(Self { body, digest })
     }
 
     /// The uniform statistics on a Profile Track, the prior-weighted ones on a Corpus Track.
@@ -122,7 +122,7 @@ impl Snap {
     }
 
     /// Whether the Corpus or Profile lists differ, so the two scores are not comparable.
-    fn same_data(&self, other: &Snap) -> bool {
+    fn same_data(&self, other: &Self) -> bool {
         self.body.corpus_sha256 == other.body.corpus_sha256
             && self.body.profile == other.body.profile
     }
@@ -162,19 +162,19 @@ impl Outcome {
     /// The outcome's name as printed.
     pub fn name(self) -> &'static str {
         match self {
-            Outcome::Accept => "accept",
-            Outcome::Unchanged => "unchanged",
-            Outcome::Reject => "reject",
-            Outcome::Rebaseline => "rebaseline",
-            Outcome::Stale => "stale",
-            Outcome::New => "new",
+            Self::Accept => "accept",
+            Self::Unchanged => "unchanged",
+            Self::Reject => "reject",
+            Self::Rebaseline => "rebaseline",
+            Self::Stale => "stale",
+            Self::New => "new",
         }
     }
 
     /// The process exit code: 1 for `Reject` and `Stale`, else 0.
     pub fn exit_code(self) -> i32 {
         match self {
-            Outcome::Reject | Outcome::Stale => 1,
+            Self::Reject | Self::Stale => 1,
             _ => 0,
         }
     }

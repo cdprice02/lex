@@ -34,7 +34,7 @@ impl<const N: usize> TryFrom<&str> for Word<N> {
             });
         }
         let mut chars = s.chars();
-        Ok(Word::from(std::array::from_fn(|_| {
+        Ok(Self::from(std::array::from_fn(|_| {
             chars.next().expect("N chars as checked above")
         })))
     }
@@ -51,7 +51,7 @@ impl<const N: usize> Deref for Word<N> {
 impl<const N: usize> Display for Word<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for ch in &self.0 {
-            write!(f, "{}", ch)?;
+            write!(f, "{ch}")?;
         }
         Ok(())
     }
@@ -278,7 +278,9 @@ impl<const N: usize> WordSet<N> {
 
     /// The Alphabet: every distinct letter in the set's words.
     pub fn alphabet(&self) -> HashSet<char> {
-        self.words().flat_map(|w| w.into_iter()).collect()
+        self.words()
+            .flat_map(std::iter::IntoIterator::into_iter)
+            .collect()
     }
 
     /// Fails if the Alphabet exceeds [`MAX_ALPHABET_SIZE`](crate::MAX_ALPHABET_SIZE), the most

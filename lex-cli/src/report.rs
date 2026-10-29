@@ -181,7 +181,7 @@ pub struct Corpus {
 
 /// Identity of the Profile lists a run played. Two reports are only comparable when the name and
 /// both checksums match.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ProfileReport {
     /// The Profile's stored name.
     pub name: String,

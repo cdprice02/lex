@@ -402,11 +402,11 @@ impl DataDir {
         let Ok(langs) = std::fs::read_dir(self.books_root()) else {
             return Ok(());
         };
-        for lang_dir in langs.filter_map(|e| e.ok()) {
+        for lang_dir in langs.filter_map(std::result::Result::ok) {
             let Ok(lengths) = std::fs::read_dir(lang_dir.path()) else {
                 continue;
             };
-            for length_dir in lengths.filter_map(|e| e.ok()) {
+            for length_dir in lengths.filter_map(std::result::Result::ok) {
                 for file in book_files(&length_dir.path()) {
                     match read_key(&file) {
                         Ok(key) if key.profile.as_ref().is_some_and(|p| p.name == name) => {

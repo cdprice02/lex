@@ -49,15 +49,17 @@ pub(crate) fn get<T>(
 /// Whether `error` is transient (worth another attempt) or permanent.
 fn classify(error: ureq::Error) -> Failure {
     // ureq's error enum is non-exhaustive: any variant not named here is a fault a repeat will not
-    // clear (bad URI, protocol or TLS failure), so it is deliberately left to the wildcard
-    #[allow(non_exhaustive_omitted_patterns)]
-    let transient = match &error {
-        ureq::Error::StatusCode(code) => *code >= 500 || *code == 429,
-        ureq::Error::Timeout(_)
-        | ureq::Error::Io(_)
-        | ureq::Error::HostNotFound
-        | ureq::Error::ConnectionFailed => true,
-        _ => false,
+    // clear (bad URI, protocol or TLS failure), so it falls to the `else` as permanent
+    let transient = if let ureq::Error::StatusCode(code) = &error {
+        *code >= 500 || *code == 429
+    } else {
+        matches!(
+            &error,
+            ureq::Error::Timeout(_)
+                | ureq::Error::Io(_)
+                | ureq::Error::HostNotFound
+                | ureq::Error::ConnectionFailed
+        )
     };
     let error = anyhow::Error::new(error);
     if transient {

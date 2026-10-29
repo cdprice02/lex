@@ -31,11 +31,11 @@ pub(crate) fn build_if_missing<const N: usize>(
             wiktionary::fetch_dict(lang, dir.as_ref())?;
         }
         let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
-        log::warn!("Building {} corpus...", lang);
+        log::warn!("Building {lang} corpus...");
         let by_length = ngrams::fetch(lang, &valid_words)?;
         let n_buckets = by_length.len();
         populate(dir, lang, &by_length)?;
-        log::info!("Cached {} corpus ({} length buckets)", lang, n_buckets);
+        log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
     }
     Ok(())
 }
@@ -127,16 +127,13 @@ pub(crate) fn hex(bytes: &[u8]) -> String {
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
 /// language ngrams directory (None).
 pub(crate) fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
-    match n {
-        Some(n) => {
-            std::fs::remove_file(dir.ngrams_path(lang, n))
-                .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
-        }
-        None => {
-            let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
-            std::fs::remove_dir_all(&lang_dir)
-                .with_context(|| format!("removing ngrams dir for {lang}"))?;
-        }
+    if let Some(n) = n {
+        std::fs::remove_file(dir.ngrams_path(lang, n))
+            .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
+    } else {
+        let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
+        std::fs::remove_dir_all(&lang_dir)
+            .with_context(|| format!("removing ngrams dir for {lang}"))?;
     }
     Ok(())
 }
@@ -208,7 +205,7 @@ mod tests {
     fn all_words_valid() -> HashSet<String> {
         ["crane", "stare", "light", "mount", "swipe", "ace"]
             .iter()
-            .map(|s| s.to_string())
+            .map(std::string::ToString::to_string)
             .collect()
     }
 
@@ -217,7 +214,7 @@ mod tests {
         let dir = DataDir::new(tmp.path());
         let dict_dir = tmp.path().join("dicts");
         std::fs::create_dir_all(&dict_dir).unwrap();
-        let mut sorted: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
+        let mut sorted: Vec<&str> = words.iter().map(std::string::String::as_str).collect();
         sorted.sort_unstable();
         std::fs::write(dir.dict_path(Language::English), sorted.join("\n")).unwrap();
         (tmp, dir)

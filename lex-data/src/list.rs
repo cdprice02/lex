@@ -119,7 +119,7 @@ mod tests {
     }
 
     fn words(ws: &[&str]) -> Vec<String> {
-        ws.iter().map(|w| w.to_string()).collect()
+        ws.iter().map(std::string::ToString::to_string).collect()
     }
 
     #[test]

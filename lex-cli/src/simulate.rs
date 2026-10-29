@@ -90,7 +90,7 @@ fn run_n<const N: usize>(
             5 => "Great",
             _ => "Phew",
         };
-        log::info!("{}", label);
+        log::info!("{label}");
         games.push(Game {
             word: word.to_string(),
             num_guesses: result.num_guesses(),

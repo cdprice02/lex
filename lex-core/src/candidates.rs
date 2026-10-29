@@ -415,7 +415,7 @@ mod benches {
                 (Word::<5>::try_from(s.as_str()).unwrap(), 10 - i as u64)
             })
             .collect();
-        let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs.clone()));
+        let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs));
         let guess = *pool.code(0);
         let words: Vec<Code<5>> = (0..pool.len() as u32).map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];

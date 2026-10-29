@@ -21,11 +21,11 @@ impl Correctness {
 impl std::fmt::Display for Correctness {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let symbol = match self {
-            Correctness::Absent => '⬜',
-            Correctness::Misplaced => '🟨',
-            Correctness::Correct => '🟩',
+            Self::Absent => '⬜',
+            Self::Misplaced => '🟨',
+            Self::Correct => '🟩',
         };
-        write!(f, "{}", symbol)
+        write!(f, "{symbol}")
     }
 }
 
@@ -153,7 +153,7 @@ pub(crate) fn pattern_ordinal<const N: usize>(
 impl<const N: usize> std::fmt::Display for WordCorrectness<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for state in &self.0 {
-            write!(f, "{}", state)?;
+            write!(f, "{state}")?;
         }
         Ok(())
     }

@@ -26,9 +26,7 @@ fn workspace() -> PathBuf {
 
 /// `LEX_DATA_DIR`, else the workspace's `data/`.
 fn data_dir() -> PathBuf {
-    std::env::var_os("LEX_DATA_DIR")
-        .map(PathBuf::from)
-        .unwrap_or_else(|| workspace().join("data"))
+    std::env::var_os("LEX_DATA_DIR").map_or_else(|| workspace().join("data"), PathBuf::from)
 }
 
 /// Fails with a download hint when the cache the Track reads is absent: a run would otherwise

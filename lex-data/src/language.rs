@@ -30,12 +30,12 @@ impl Language {
     /// Google Books Ngrams V3 URL slug and ngrams subdirectory name (e.g. "eng", "fre").
     pub fn lang_code(self) -> &'static str {
         match self {
-            Language::English => "eng",
-            Language::French => "fre",
-            Language::German => "ger",
-            Language::Spanish => "spa",
-            Language::Italian => "ita",
-            Language::Russian => "rus",
+            Self::English => "eng",
+            Self::French => "fre",
+            Self::German => "ger",
+            Self::Spanish => "spa",
+            Self::Italian => "ita",
+            Self::Russian => "rus",
         }
     }
 
@@ -45,12 +45,12 @@ impl Language {
     /// Spanish is "es" not "sp".
     pub fn iso_code(self) -> &'static str {
         match self {
-            Language::English => "en",
-            Language::French => "fr",
-            Language::German => "de",
-            Language::Spanish => "es",
-            Language::Italian => "it",
-            Language::Russian => "ru",
+            Self::English => "en",
+            Self::French => "fr",
+            Self::German => "de",
+            Self::Spanish => "es",
+            Self::Italian => "it",
+            Self::Russian => "ru",
         }
     }
 
@@ -62,15 +62,12 @@ impl Language {
     /// URLs occasionally (the `downloads/en/` extract was removed in 2026) —
     /// see <https://kaikki.org/dictionary/rawdata.html> for the current layout.
     pub fn wiktionary_url(self) -> String {
-        match self {
-            Language::English => {
-                "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz"
-                    .to_string()
-            }
-            _ => {
-                let iso = self.iso_code();
-                format!("https://kaikki.org/dictionary/downloads/{iso}/{iso}-extract.jsonl.gz")
-            }
+        if self == Self::English {
+            "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz"
+                .to_string()
+        } else {
+            let iso = self.iso_code();
+            format!("https://kaikki.org/dictionary/downloads/{iso}/{iso}-extract.jsonl.gz")
         }
     }
 
@@ -78,12 +75,12 @@ impl Language {
     /// `MAX_WORD_LENGTH`.
     pub const fn max_supported_length(self) -> usize {
         let largest = match self {
-            Language::English => 21,
-            Language::French => 20,
-            Language::German => 21,
-            Language::Spanish => 18,
-            Language::Italian => 19,
-            Language::Russian => 21,
+            Self::English => 21,
+            Self::French => 20,
+            Self::German => 21,
+            Self::Spanish => 18,
+            Self::Italian => 19,
+            Self::Russian => 21,
         };
         if largest < crate::MAX_WORD_LENGTH {
             largest
@@ -95,12 +92,12 @@ impl Language {
     /// Number of Google Books Ngrams V3 shards for this language (confirmed against GCS).
     pub fn shard_count(self) -> u32 {
         match self {
-            Language::English => 24,
-            Language::French => 6,
-            Language::German => 8,
-            Language::Spanish => 3,
-            Language::Italian => 2,
-            Language::Russian => 2,
+            Self::English => 24,
+            Self::French => 6,
+            Self::German => 8,
+            Self::Spanish => 3,
+            Self::Italian => 2,
+            Self::Russian => 2,
         }
     }
 }

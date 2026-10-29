@@ -116,8 +116,7 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
 
     let _ = writeln!(
         out,
-        "mean guesses (uniform):  {:+.4}  (negative is better)",
-        uniform_delta
+        "mean guesses (uniform):  {uniform_delta:+.4}  (negative is better)"
     );
     let _ = writeln!(out, "mean guesses (prior):    {prior_delta:+.4}");
     let _ = writeln!(
