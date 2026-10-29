@@ -113,7 +113,7 @@ pub fn ensure<const N: usize>(
                 nearest: Some(fields),
             } => {
                 eprintln!(
-                    "opening book is stale ({} changed); rebuilding",
+                    "no opening book for this key (the closest on disk differs in {}); building it",
                     fields.join(", ")
                 );
                 stale_fields = Some(fields);
