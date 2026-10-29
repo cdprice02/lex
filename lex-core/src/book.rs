@@ -203,7 +203,10 @@ impl<const N: usize> OpeningBook<N> {
     /// Edges must be added in ascending ordinal order.
     pub(crate) fn add_edge(&mut self, from: u32, ordinal: u64, to: u32) {
         let edges = &mut self.nodes[from as usize].edges;
-        debug_assert!(edges.last().is_none_or(|&(o, _)| o < ordinal));
+        debug_assert!(
+            edges.last().is_none_or(|&(o, _)| o < ordinal),
+            "edges must be added in ascending ordinal order"
+        );
         edges.push((ordinal, to));
     }
 

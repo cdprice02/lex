@@ -170,7 +170,7 @@ impl fmt::Display for Track {
         }
         match self.strategy.pool {
             GuessPool::All => Ok(()),
-            pool => write!(f, "-{pool}"),
+            pool @ (GuessPool::Hard | GuessPool::Ultrahard) => write!(f, "-{pool}"),
         }
     }
 }

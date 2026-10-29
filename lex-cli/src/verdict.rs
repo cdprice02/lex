@@ -95,8 +95,7 @@ struct Info {
 /// the header ends at the next one.
 fn split_snapshot(text: &str) -> Option<(&str, &str)> {
     let rest = text.strip_prefix("---\n")?;
-    let end = rest.find("\n---\n")?;
-    Some((&rest[..end], &rest[end + "\n---\n".len()..]))
+    rest.split_once("\n---\n")
 }
 
 impl Snap {
@@ -178,7 +177,7 @@ impl Outcome {
     pub const fn exit_code(self) -> i32 {
         match self {
             Self::Reject | Self::Stale => 1,
-            _ => 0,
+            Self::Accept | Self::Unchanged | Self::Rebaseline | Self::New => 0,
         }
     }
 }
@@ -314,7 +313,7 @@ fn compare(
         }
         let mut status = match (b, h) {
             (None, Some(_)) => "new".to_owned(),
-            (Some(_), None) | (None, None) => "missing".to_owned(),
+            (Some(_) | None, None) => "missing".to_owned(),
             (Some(b), Some(h)) if !b.same_data(h) => {
                 if counts {
                     excluded += 1;
@@ -506,7 +505,9 @@ pub fn splice_readme(readme: &str, table: &str) -> Result<String> {
     if end < start {
         bail!("{README_END} comes before {README_START}");
     }
-    Ok(format!("{}\n{}{}", &readme[..start], table, &readme[end..]))
+    let (before, _) = readme.split_at(start);
+    let (_, after) = readme.split_at(end);
+    Ok(format!("{before}\n{table}{after}"))
 }
 
 /// Runs the `verdict` command and returns its exit code.

@@ -109,7 +109,7 @@ impl<const N: usize> RawRecord<'_, N> {
 
 impl<'a, const N: usize> From<&'a [u8]> for RawRecord<'a, N> {
     fn from(bytes: &'a [u8]) -> Self {
-        debug_assert_eq!(bytes.len(), Self::SIZE);
+        debug_assert_eq!(bytes.len(), Self::SIZE, "a record is exactly SIZE bytes");
         RawRecord(bytes)
     }
 }

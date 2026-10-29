@@ -80,6 +80,8 @@ pub fn read<const N: usize>(
     let path = dir.ngrams_path(lang, N);
     let f = std::fs::File::open(&path)
         .with_context(|| format!("opening ngrams file: {}", path.display()))?;
+    // SAFETY: the cache is rewritten only by `populate`, before any reader maps it, and nothing
+    // else truncates a mapped file; a concurrent truncation would be undefined behaviour.
     let mmap = unsafe { Mmap::map(&f) }
         .with_context(|| format!("mmapping ngrams file: {}", path.display()))?;
     let header = Header::parse(&mmap, &path)?;

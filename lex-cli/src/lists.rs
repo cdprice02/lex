@@ -126,7 +126,7 @@ impl Source {
             Self::Profile { stats, .. } if !pool.contains(word) => {
                 Err(format!("{word} is not in the {} guess pool", stats.name))
             }
-            _ => Ok(()),
+            Self::Profile { .. } | Self::Corpus(_) => Ok(()),
         }
     }
 }
