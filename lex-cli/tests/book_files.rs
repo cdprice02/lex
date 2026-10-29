@@ -2,6 +2,11 @@
 //! and says why, damage fails loudly, and `lex clear` prunes. The round trip of a non-empty
 //! book is `lex-core`'s `guesser` test.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::panic,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 mod common;
 

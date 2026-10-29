@@ -55,6 +55,10 @@ impl<const N: usize> Candidates<N> {
     /// # Panics
     ///
     /// If an answer is not in the pool: `lex-data` guarantees the Answer list is a subset.
+    #[expect(
+        clippy::panic,
+        reason = "an answer outside the pool breaks the lex-data subset guarantee; there is no valid game to play"
+    )]
     pub(crate) fn new(pool: Arc<Pool<N>>, answers: &[Word<N>]) -> Self {
         let by_word: HashMap<Word<N>, u32> = (0..cast::narrow(pool.len()))
             .map(|i| (pool.word(i), i))

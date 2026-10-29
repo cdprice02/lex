@@ -3,6 +3,11 @@
 //! opt-in because it builds the real book:
 //! `LEX_DATA_DIR=<data dir> cargo test -p lex-core --release --test book_heap -- --ignored --nocapture`
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::expect_used,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 use std::sync::Mutex;
 

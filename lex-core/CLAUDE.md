@@ -8,6 +8,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 
 | Module | Responsibility |
 |---|---|
+| `cast.rs` | Crate-private numeric conversions (`index`, `narrow`, `widen`, `size`, `short`, `letter_code`, `lossy_f64`; `letter` for test and bench fixtures), each the one audited `as` for its width invariant |
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool` (`All`, `Hard`, `Ultrahard`; strum `EnumString`/`Display`/`VariantNames`/`VariantArray`, serialized `all`/`hard`/`ultrahard`, so a frontend parses it through `FromStr` and `lex-core` needs no clap), `Strategy::DEFAULT` (the `const` behind `Default`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
@@ -64,7 +65,7 @@ Each tree node stores an `Allowed` beside its candidates, a function of the gues
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 
-The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
+The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` borrows the `&WordSet` and the `&[Word]` and always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
 (see Allowed guesses below) as
 `entropy + win_weight * P(guess is the answer)`, with probabilities renormalized over the surviving
 candidates each time (`Pool::prior`: softmax of ln-frequency over T, relative to the survivors'

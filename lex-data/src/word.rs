@@ -237,6 +237,10 @@ impl<const N: usize> WordSet<N> {
     ///
     /// If the operating system cannot map the records' memory.
     #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "a failed anonymous mapping is memory exhaustion, which aborts like a failed allocation"
+    )]
     pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
         let record_size = RawRecord::<N>::SIZE;

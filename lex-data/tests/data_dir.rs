@@ -1,5 +1,9 @@
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 #![expect(
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
+#![expect(
     missing_docs,
     reason = "an integration test crate: its test names are its documentation"
 )]

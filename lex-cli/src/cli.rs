@@ -217,6 +217,10 @@ impl CommonArgs {
     /// If neither a profile nor `-l` is set, which clap rejects and only a hand-built value can
     /// reach.
     #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "clap's required_unless_present makes -l mandatory without --profile, and a required argument is never absent"
+    )]
     pub const fn dispatch_length(&self) -> usize {
         match self.profile {
             Some(profile) => profile.spec().word_length,
@@ -233,6 +237,10 @@ impl CommonArgs {
     /// If neither a profile nor `--lang` is set, which clap rejects and only a hand-built value
     /// can reach.
     #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "clap's required_unless_present makes --lang mandatory without --profile, and a required argument is never absent"
+    )]
     pub const fn game(&self) -> Game {
         match self.profile {
             Some(profile) => Game::Profile(profile),

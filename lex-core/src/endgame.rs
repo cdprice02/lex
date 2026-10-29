@@ -122,6 +122,10 @@ impl<const N: usize> Endgame<N> {
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave. Exact ties go to a candidate, then to the
     /// more frequent word, as in the entropy solver.
+    #[expect(
+        clippy::expect_used,
+        reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
+    )]
     fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let mass: f64 = set.iter().map(|&i| self.weights[cast::index(i)]).sum();
         let mut keyed = Vec::with_capacity(set.len());

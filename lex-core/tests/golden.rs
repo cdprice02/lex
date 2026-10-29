@@ -2,6 +2,11 @@
 //! tie-breaking, filtering) shows up here as a diff; update the table only when the change is
 //! intended and its effect has been measured against the committed baselines.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::expect_used,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 use lex_core::{Guesser, Strategy, play};
 use lex_data::{Word, WordSet};
