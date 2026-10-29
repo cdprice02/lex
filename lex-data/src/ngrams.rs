@@ -143,8 +143,12 @@ mod tests {
         let shard = "crane\t2000,5,1\n\
                      swipe\t2000,5,1\n\
                      ab\t2000,5,1\n\
-                     abcdefghijk\t2000,5,1\n";
-        let words = read_shard(shard.as_bytes(), &valid(&["crane", "ab", "abcdefghijk"])).unwrap();
+                     abcdefghijklmnopqrstuv\t2000,5,1\n";
+        let words = read_shard(
+            shard.as_bytes(),
+            &valid(&["crane", "ab", "abcdefghijklmnopqrstuv"]),
+        )
+        .unwrap();
         assert_eq!(words.keys().collect::<Vec<_>>(), ["crane"]);
     }
 

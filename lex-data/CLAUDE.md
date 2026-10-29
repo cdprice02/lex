@@ -9,7 +9,7 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | Module | Responsibility |
 |---|---|
 | `data_dir.rs` | `DataDir`: sync entry point; `load`, `dict_metadata`, `clear`, path helpers |
-| `store.rs` | `build_if_missing`, `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub(crate)` |
+| `store.rs` | `build_if_missing`, `ensure_supported` (a length under `MIN_SUPPORTED_WORDS` = 200 is `UnsupportedLength`, listing the language's Supported lengths from its cache headers; `DataDir::load` calls it), `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub(crate)` |
 | `http.rs` | `agent()` (ureq, rustls, timeouts) and `get(agent, url, consume)`: one retried GET whose body is handed to `consume`; classifies errors transient or permanent |
 | `retry.rs` | `with_retry(op, sleep)`: 3 attempts, 1 s then 2 s backoff plus jitter; `sleep` is injected so tests do not wait |
 | `header.rs` | 64-byte cache header: encode, parse, `read_file` |
@@ -21,9 +21,9 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | `profile.rs` | `Profile` enum (`wordle`, `wordle-all`; strum `VariantArray`), `spec()` registry (language, length, `ListSpec`s of pinned `Source` URLs plus compiled-in checksums), `ProfileData`, `ProfileStats` |
 | `profile_store.rs` | fetch (temp file then rename; `meta.json` last), re-hash on every load, build the pool and Answer list; `Get` is injected so tests skip the network |
 | `list.rs` | pure list handling: `parse` (normalize, blank lines only at the end), `validate` (length, Alphabet, duplicates, file and line named), `canonicalize` (sorted, `\n` after each; its SHA-256 is the checksum) |
-| `language.rs` | `Language` enum (strum `VariantArray`: `Language::VARIANTS`) with `lang_code()` and `iso_code()` |
-| `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`, `CorruptBook`) |
-| `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=10; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
+| `language.rs` | `Language` enum (strum `VariantArray`: `Language::VARIANTS`) with `lang_code()`, `iso_code()` and `max_supported_length()` (const, capped by `MAX_WORD_LENGTH`; bounds the Track table) |
+| `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`, `CorruptBook`, `UnsupportedLength`) |
+| `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=21; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
 
 ## Data layout
 

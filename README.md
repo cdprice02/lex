@@ -47,7 +47,7 @@ removes them, and clearing a corpus or a Profile removes its books too.
 
 | Flag | Default | Description |
 |---|---|---|
-| `-l` / `--word-length` | `5` | Word length (3–10) |
+| `-l` / `--word-length` | `5` | Word length (3–21) |
 | `--dictionary-length` | all | Cap the candidate dictionary size |
 | `--lang` | `english` | Language corpus (see below) |
 | `--data-dir` | `data` | Directory for cached word-frequency files |
@@ -82,4 +82,4 @@ cargo fmt --all
 |---|---|
 | `lex-data` | Corpus acquisition, Wiktionary validation, `Word`/`WordSet` types |
 | `lex-core` | Entropy solver library: `Guesser`, `WordCorrectness`, game loop |
-| `lex-cli` | Simulation CLI; monomorphizes `lex-core` over word lengths 3–10 |
+| `lex-cli` | Simulation CLI; monomorphizes `lex-core` over word lengths 3–21 |

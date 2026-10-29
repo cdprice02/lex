@@ -33,6 +33,7 @@ impl DataDir {
         limit: Option<usize>,
     ) -> anyhow::Result<WordSet<N>> {
         store::build_if_missing::<N>(self, lang)?;
+        store::ensure_supported(self, lang, N)?;
         let words = store::read::<N>(self, lang, limit)?;
         words.ensure_alphabet_fits()?;
         Ok(words)

@@ -23,9 +23,9 @@ info:
       "kind": "full"
     }
   },
-  "corpus_sha256": "454707da08a3c63e36b68d0ba0c19d4686298d4202df95053afe69e1524de6e7",
+  "corpus_sha256": "b171872e1550e5745098e3e9d6401762e548bf309107e9970107c79ce53bb590",
   "first_guess": "rosea",
-  "games_sha256": "aaac82dc86cd8de702f6e22331086be6e075c563941ca014f0260c72054bba63",
+  "games_sha256": "6782600c19882b01ef01fa317a200e66b427c99f49df95581808d83f833f1a5c",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -41,7 +41,7 @@ info:
         "7": 0.006662905360165205,
         "8": 0.0003490890999638047
       },
-      "mean": 4.125532991248314
+      "mean": 4.125532991248315
     },
     "uniform": {
       "failure_rate": 0.011614920705829814,

@@ -17,7 +17,7 @@ cargo run --release -- <COMMAND> [OPTIONS]
 
 | Flag | Default | Description |
 |---|---|---|
-| `-l` / `--word-length` | required | Word length (3–10); not with `--profile` |
+| `-l` / `--word-length` | required | Word length (3–21); not with `--profile` |
 | `--dictionary-length` | all | Cap candidate dictionary to N most-frequent words |
 | `--lang` | required | Not with `--profile`. Language: `english`, `french`, `german`, `spanish`, `italian`, `russian` |
 | `--data-dir` | `data` | Root directory for cached word-frequency files |

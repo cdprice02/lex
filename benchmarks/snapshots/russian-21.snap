@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "russian",
+      "length": 21
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 500,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "eac49ea4234ae8971399fce40e126d95c7468684028ce98c8dece34f0f1d9a2c",
+  "first_guess": "сельскохозяйственными",
+  "games_sha256": "c1ab6cda2701502158019dd533c528712daf5f21b757ae054602173094048b4c",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8977341155516488,
+        "3": 0.1022658844483509
+      },
+      "mean": 2.1022658844483497
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8760000000000007,
+        "3": 0.1240000000000001
+      },
+      "mean": 2.1240000000000006
+    }
+  },
+  "track": "russian-21"
+}

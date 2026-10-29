@@ -23,9 +23,9 @@ info:
       "kind": "full"
     }
   },
-  "corpus_sha256": "a26c9f43ec6bf2a030790cb41c826a9c9e89792b00295d1752354bd20e7b673e",
+  "corpus_sha256": "d00df27d4d4caf11623cc91fe28ce9d46ebe57adf9f280ec7a103f12dec3e0b3",
   "first_guess": "raies",
-  "games_sha256": "9203314005c3bfcf371eed825ec5572f116ed1e3bcecf15965ee0f4a36084c56",
+  "games_sha256": "03dc2cb65be0c7e11c35eac5abdb99dffc3a6275942d370a477ff08a1755db5e",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -41,7 +41,7 @@ info:
         "7": 0.0019966534145790826,
         "8": 0.000039187233151834945
       },
-      "mean": 4.079064100388135
+      "mean": 4.079064100388137
     },
     "uniform": {
       "failure_rate": 0.003769584167746498,

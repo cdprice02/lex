@@ -1,0 +1,52 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 15
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "99cd9093d707d1659cce2d976955910ba71f5cbfc78d1f8ed2812b54057e4c84",
+  "first_guess": "neuroprotectins",
+  "games_sha256": "8dca7c7c1dce6d33e5f0134228de3110cbc5f90deb324058b7bd280958608cb0",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8739136311335186,
+        "3": 0.12608636886648153
+      },
+      "mean": 2.126086368866481
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "2": 0.8200000000000005,
+        "3": 0.18000000000000002
+      },
+      "mean": 2.1800000000000015
+    }
+  },
+  "track": "english-15"
+}

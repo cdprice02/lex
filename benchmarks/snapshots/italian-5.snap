@@ -23,9 +23,9 @@ info:
       "kind": "full"
     }
   },
-  "corpus_sha256": "e399c50fd473e2005601c731636529a07dd367730e241a5a0165499eb940bdcc",
+  "corpus_sha256": "4bc3cf41a5c340cab0b40a0463047ba9f4febc66bd23ebfc8d181de3ae9c9def",
   "first_guess": "sarti",
-  "games_sha256": "181772c37ac07a59c7490fdf1537b3f6b3f126ebd60a139aff46d10fc07cc926",
+  "games_sha256": "28d7d481ca531aed56c8e67dc19dd5af563f6fcf143127aa5c6d6bc2f5cb91a3",
   "profile": null,
   "summary": {
     "max_guesses": 6,

@@ -27,7 +27,7 @@ All public types are re-exported from `lib.rs`: `use lex_core::{Guesser, Guess, 
 A game position is identified by its guess path: the `(guess word, feedback ordinal)` steps from the
 root. For a fixed starting (pool, Answer list) the path determines the candidate set, and `Candidates::suggest`
 is deterministic, so a node computes its suggestion once and every later game reaching it reuses
-it. Edges are sparse (`HashMap<(Word<N>, u64), NodeId>`: 59,049 possible patterns at N=10) and
+it. Edges are sparse (`HashMap<(Word<N>, u64), NodeId>`: 3^N possible patterns) and
 keyed by the guess word as well as the pattern, because callers may push guesses that were not the
 suggestion (`assist` does). Ordinals are `u64` at every length; a const assertion in `correctness.rs` checks that
 3^`MAX_WORD_LENGTH` fits. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so the tree's identity is (pool, Answer list, `Strategy`).
@@ -74,7 +74,7 @@ single candidate is returned without scanning the pool. `answer_prior` exposes t
 for reports; the CLI fixes the report prior at `CANONICAL_TEMPERATURE`. Cost is O(pool x candidates)
 per node, the reason memoization matters.
 
-`guess_entropy` dispatches on a `const` memory rule: `entropy_dense` while 3^N x 8 bytes <= `DENSE_BOUND_BYTES` (16 MiB, N <= 13), else `entropy_sorted`. Both are the per-guess counters described below, and a proptest asserts they agree bit for bit. Sort-and-run keeps a thread-local `Vec<(u64, f64)>` scratch (outside the 1 GB cap, ADR 0007), stably sorts it by ordinal so each run's mass accumulates in word order, and sums runs in ascending ordinal through the same `entropy_from_masses` as the dense path. Production reaches it only once `MAX_WORD_LENGTH` exceeds 13.
+`guess_entropy` dispatches on a `const` memory rule: `entropy_dense` while 3^N x 8 bytes <= `DENSE_BOUND_BYTES` (16 MiB, N <= 13), else `entropy_sorted`. Both are the per-guess counters described below, and a proptest asserts they agree bit for bit. Sort-and-run keeps a thread-local `Vec<(u64, f64)>` scratch (outside the 1 GB cap, ADR 0007), stably sorts it by ordinal so each run's mass accumulates in word order, and sums runs in ascending ordinal through the same `entropy_from_masses` as the dense path. Production reaches it at every length above 13.
 
 Dense counter: for one guess, iterates the candidate words and accumulates probability mass per feedback ordinal (`pattern_ordinal`, no `WordCorrectness` built). Returns entropy in bits.
 
