@@ -105,15 +105,15 @@ impl<const N: usize> WordCorrectness<N> {
 }
 
 /// A word's letters as indices into the Corpus Alphabet, one byte each.
-pub(crate) type Code<const N: usize> = [u8; N];
+pub type Code<const N: usize> = [u8; N];
 
 /// The code of a letter outside the Alphabet. The Alphabet holds at most
 /// `lex_data::MAX_ALPHABET_SIZE` (255) letters, so this value is never an Alphabet index.
-pub(crate) const UNKNOWN_LETTER: u8 = u8::MAX;
+pub const UNKNOWN_LETTER: u8 = u8::MAX;
 
 /// Per-letter tally of unmatched word letters. All zero between calls to [`pattern_ordinal`],
 /// so a caller makes one on its stack and reuses it across a whole scan.
-pub(crate) type LetterCounts = [u8; 256];
+pub type LetterCounts = [u8; 256];
 
 /// The [`ordinal`](WordCorrectness::ordinal) of the feedback for guessing `guess` against `word`.
 ///
@@ -122,7 +122,7 @@ pub(crate) type LetterCounts = [u8; 256];
 /// once, left to right), else `Absent`. The unmatched word letters are tallied per letter, so the
 /// cost is linear in N at every length. `counts` must be all zero; the call zeroes the entries it
 /// touched before returning.
-pub(crate) fn pattern_ordinal<const N: usize>(
+pub fn pattern_ordinal<const N: usize>(
     word: &Code<N>,
     guess: &Code<N>,
     counts: &mut LetterCounts,

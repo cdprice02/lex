@@ -13,7 +13,7 @@ use crate::guesser::Guess;
 use crate::strategy::Strategy;
 
 /// Index of a node in the tree's arena.
-pub(crate) type NodeId = usize;
+pub type NodeId = usize;
 
 /// Every game position reached so far, shared by all games played from one starting word set.
 ///
@@ -28,7 +28,7 @@ pub(crate) type NodeId = usize;
 /// The edge key carries the guess word because callers may push guesses that were not the
 /// suggestion (the interactive assistant does).
 #[derive(Debug)]
-pub(crate) struct DecisionTree<const N: usize> {
+pub struct DecisionTree<const N: usize> {
     /// The Strategy fixed for the tree's life.
     strategy: Strategy,
     /// Present when the strategy has an endgame threshold; owns the memo of exact searches.

@@ -75,7 +75,7 @@ impl DictMetadata {
 }
 
 /// Where a dictionary download came from.
-pub(crate) struct Provenance {
+pub struct Provenance {
     /// The URL downloaded.
     source_url: String,
     /// RFC 3339 time of the download.
@@ -85,7 +85,7 @@ pub(crate) struct Provenance {
 }
 
 /// Path of the sorted word list for `lang`.
-pub(crate) fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
+pub fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     data_dir
         .join("dicts")
         .join(format!("{}.txt", lang.lang_code()))
@@ -101,7 +101,7 @@ fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
 /// Downloads the KAIKKI Wiktionary extract for `lang`, extracts all valid headwords
 /// and inflected forms (excluding proper nouns), and writes the sorted word list and
 /// metadata to `data_dir/dicts/`.
-pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
+pub fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
     let url = lang.wiktionary_url();
     log::info!("Fetching Wiktionary dict for {lang} from {url}...");
@@ -185,7 +185,7 @@ fn read_dict(reader: impl BufRead, iso: &str) -> std::io::Result<HashSet<String>
 
 /// Reads the cached Wiktionary word list for `lang` into a `HashSet`.
 /// Returns an error if the dict file does not exist — call `fetch_dict` first.
-pub(crate) fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
+pub fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
     let path = dict_txt_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
         .with_context(|| format!("reading dict for {lang} at {path:?}"))?;
@@ -193,7 +193,7 @@ pub(crate) fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Resul
 }
 
 /// Reads the per-language metadata written when the dict was last fetched.
-pub(crate) fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
+pub fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
     let path = dict_meta_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
         .with_context(|| format!("reading dict metadata for {lang} at {path:?}"))?;

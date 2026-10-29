@@ -7,7 +7,7 @@ use crate::error::LexDataError;
 /// V3 (2020) line format: `ngram\tyear,match_count,vol[\tyear,match_count,vol]*`
 /// All years are on one line; we sum match_count across all year groups.
 /// Returns None for multi-word tokens, POS-tagged tokens, and tokens with non-alphabetic chars.
-pub(crate) fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
+pub fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
     let (ngram, rest) = line
         .split_once('\t')
         .ok_or_else(|| LexDataError::InvalidParseLine(line.to_string()))?;
@@ -27,7 +27,7 @@ pub(crate) fn parse_ngram_line(line: &str) -> anyhow::Result<(String, u64)> {
 
 /// Rejects multi-word ngrams, POS-tagged tokens (contain `_`),
 /// and any token with non-alphabetic characters.
-pub(crate) fn is_valid_word(s: &str) -> bool {
+pub fn is_valid_word(s: &str) -> bool {
     !s.contains([' ', '_']) && s.chars().all(char::is_alphabetic)
 }
 
@@ -37,7 +37,7 @@ pub(crate) fn is_valid_word(s: &str) -> bool {
 ///  - Latin with diacritics: precomposed in NFC (combining class 0) → kept (e.g. é stays é)
 ///  - Cyrillic: single codepoints, unaffected
 ///  - Combining vowel marks (if any): stripped
-pub(crate) fn normalize(s: &str) -> String {
+pub fn normalize(s: &str) -> String {
     s.nfc()
         .filter(|&c| unicode_normalization::char::canonical_combining_class(c) == 0)
         .flat_map(char::to_lowercase)

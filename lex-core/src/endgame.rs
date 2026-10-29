@@ -32,7 +32,7 @@ struct Solved {
 /// key is the candidates alone. The search is exhaustive, with no bound passed down, so memoized
 /// costs are always exact.
 #[derive(Debug)]
-pub(crate) struct Endgame<const N: usize> {
+pub struct Endgame<const N: usize> {
     /// The Guess pool the set indices point into.
     pool: Arc<Pool<N>>,
     /// The Strategy's Guess pool, which decides which guesses a position allows.

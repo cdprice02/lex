@@ -32,7 +32,7 @@ pub const SNAPSHOT: &str = "20200217";
 /// Workers pull shard indices from a shared counter; a shard that fails after its retries stops
 /// the others from starting new ones. Counts are summed, so the result does not depend on the
 /// order shards finish in.
-pub(crate) fn fetch(
+pub fn fetch(
     lang: Language,
     valid: &HashSet<String>,
 ) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {

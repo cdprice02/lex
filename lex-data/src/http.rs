@@ -17,7 +17,7 @@ const READ_TIMEOUT: Duration = Duration::from_secs(60);
 
 /// A client for the data downloads. Built without ureq's `gzip` feature, so it never asks for or
 /// transparently decodes `Content-Encoding`: the sources are `.gz` files, decoded by the caller.
-pub(crate) fn agent() -> ureq::Agent {
+pub fn agent() -> ureq::Agent {
     ureq::Agent::config_builder()
         .timeout_connect(Some(CONNECT_TIMEOUT))
         .timeout_recv_response(Some(RESPONSE_TIMEOUT))
@@ -28,7 +28,7 @@ pub(crate) fn agent() -> ureq::Agent {
 
 /// GETs `url` and hands the body to `consume`, retrying the whole request and read on a transient
 /// failure. `consume` runs afresh on each attempt, so it must not carry state between calls.
-pub(crate) fn get<T>(
+pub fn get<T>(
     agent: &ureq::Agent,
     url: &str,
     mut consume: impl FnMut(&mut dyn Read) -> io::Result<T>,

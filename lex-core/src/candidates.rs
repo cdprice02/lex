@@ -38,7 +38,7 @@ impl<const N: usize> Suggestion<N> {
 ///
 /// [`DecisionTree`]: crate::tree::DecisionTree
 #[derive(Debug, Clone)]
-pub(crate) struct Candidates<const N: usize> {
+pub struct Candidates<const N: usize> {
     /// The Guess pool the indices point into.
     pool: Arc<Pool<N>>,
     /// Ascending, so frequency-descending.

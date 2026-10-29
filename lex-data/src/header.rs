@@ -23,15 +23,15 @@ use sha2::{Digest, Sha256};
 use crate::error::LexDataError;
 
 /// File magic identifying an ngrams Cache.
-pub(crate) const MAGIC: [u8; 4] = *b"LEXC";
+pub const MAGIC: [u8; 4] = *b"LEXC";
 /// Format version of the Cache header.
-pub(crate) const VERSION: u16 = 1;
+pub const VERSION: u16 = 1;
 /// Bytes of header this version writes.
-pub(crate) const HEADER_LEN: usize = 64;
+pub const HEADER_LEN: usize = 64;
 
 /// The parsed header of a Cache file.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) struct Header {
+pub struct Header {
     /// Word length `N` the Cache holds.
     pub(crate) word_len: u16,
     /// Offset of the first record.

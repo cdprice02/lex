@@ -118,7 +118,7 @@ impl Default for Strategy {
 /// The immutable guess pool: every loaded word in frequency-descending order with its
 /// log-frequency. Candidate sets index into it.
 #[derive(Debug)]
-pub(crate) struct Pool<const N: usize> {
+pub struct Pool<const N: usize> {
     /// Every pool word, in frequency-descending order.
     words: Vec<Word<N>>,
     /// Each word's letters as indices into the Alphabet, parallel to `words`.

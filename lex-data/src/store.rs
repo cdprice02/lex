@@ -17,15 +17,12 @@ use crate::word::{RawRecord, WordSet};
 use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 
 /// Least summed count a word needs to enter a Corpus.
-pub(crate) const MIN_FREQUENCY: u64 = 1;
+pub const MIN_FREQUENCY: u64 = 1;
 
 /// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
 /// Ensures the Wiktionary dict is present first, then downloads all ngrams shards keeping only
 /// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
-pub(crate) fn build_if_missing<const N: usize>(
-    dir: &DataDir,
-    lang: Language,
-) -> anyhow::Result<()> {
+pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow::Result<()> {
     if !dir.ngrams_path(lang, N).exists() {
         if !dir.dict_path(lang).exists() {
             wiktionary::fetch_dict(lang, dir.as_ref())?;
@@ -42,7 +39,7 @@ pub(crate) fn build_if_missing<const N: usize>(
 
 /// Rejects a length whose cached Corpus holds fewer than `MIN_SUPPORTED_WORDS` words, naming
 /// the lengths of `lang` that do, read from the cache headers.
-pub(crate) fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
+pub fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
     let count_at = |len: usize| -> Option<usize> {
         let header = Header::read_file(&dir.ngrams_path(lang, len)).ok()?;
         Some(header.record_count as usize)
@@ -74,7 +71,7 @@ pub(crate) fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyho
 /// Checks the header, the file length it implies, the records checksum, and every record
 /// before returning; a failure names the file (and record index) and never falls back to a
 /// partial read.
-pub(crate) fn read<const N: usize>(
+pub fn read<const N: usize>(
     dir: &DataDir,
     lang: Language,
     limit: Option<usize>,
@@ -115,18 +112,18 @@ pub(crate) fn read<const N: usize>(
 }
 
 /// Hex SHA-256 of the records in the cached ngrams file, as recorded in its header.
-pub(crate) fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
+pub fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
     Ok(Header::read_file(path)?.checksum_hex())
 }
 
 /// `bytes` as lowercase hex.
-pub(crate) fn hex(bytes: &[u8]) -> String {
+pub fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|b| format!("{b:02x}")).collect()
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
 /// language ngrams directory (None).
-pub(crate) fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
+pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
     if let Some(n) = n {
         std::fs::remove_file(dir.ngrams_path(lang, n))
             .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;

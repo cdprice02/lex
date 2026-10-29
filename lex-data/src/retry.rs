@@ -3,13 +3,13 @@
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 /// Attempts made before giving up.
-pub(crate) const ATTEMPTS: u32 = 3;
+pub const ATTEMPTS: u32 = 3;
 /// Delay after the first failure; each later one doubles.
 const BASE_BACKOFF: Duration = Duration::from_secs(1);
 
 /// Why one attempt failed, which decides whether another is worth making.
 #[derive(Debug)]
-pub(crate) enum Failure {
+pub enum Failure {
     /// A fault a repeat can plausibly clear: connect error, timeout, 5xx, a dropped body.
     Transient(anyhow::Error),
     /// A fault a repeat cannot clear, such as a 404.
@@ -18,7 +18,7 @@ pub(crate) enum Failure {
 
 /// Runs `op` up to [`ATTEMPTS`] times, sleeping an exponentially growing, jittered delay between
 /// transient failures. `sleep` is injected so tests do not wait.
-pub(crate) fn with_retry<T>(
+pub fn with_retry<T>(
     mut op: impl FnMut() -> Result<T, Failure>,
     mut sleep: impl FnMut(Duration),
 ) -> anyhow::Result<T> {

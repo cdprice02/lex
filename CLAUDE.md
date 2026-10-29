@@ -63,7 +63,7 @@ Each crate has its own `CLAUDE.md` with internal architecture details.
 
 ## Lints
 
-`[workspace.lints]` in the root `Cargo.toml` flags undocumented items (`missing_docs`, clippy `missing_docs_in_private_items`) and unreachable `pub` (`unreachable_pub`); CI fails on them through clippy `-D warnings`. Test and bench code carries `expect`s instead.
+`[workspace.lints]` in the root `Cargo.toml` flags undocumented items (`missing_docs`, clippy `missing_docs_in_private_items`); CI fails on them through clippy `-D warnings`. Test and bench code carries `expect`s instead.
 
 ## Pre-commit hooks
 
