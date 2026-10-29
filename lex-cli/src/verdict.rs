@@ -8,8 +8,6 @@ use std::fs;
 use std::path::Path;
 
 use anyhow::{Context, Result, bail};
-use insta::Snapshot;
-use insta::internals::Content;
 use serde::Deserialize;
 
 use crate::cli::VerdictArgs;
@@ -60,24 +58,36 @@ struct Snap {
     digest: Option<String>,
 }
 
+/// The YAML header of a `.snap` file; the keys the verdict does not read are ignored.
+#[derive(Debug, Deserialize)]
+struct Header {
+    info: Option<Info>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Info {
+    solver_digest: Option<String>,
+}
+
+/// Splits an insta snapshot into its YAML header and body: the file opens with a `---` line and
+/// the header ends at the next one.
+fn split_snapshot(text: &str) -> Option<(&str, &str)> {
+    let rest = text.strip_prefix("---\n")?;
+    let end = rest.find("\n---\n")?;
+    Some((&rest[..end], &rest[end + "\n---\n".len()..]))
+}
+
 impl Snap {
     fn load(path: &Path) -> Result<Snap> {
-        let snapshot =
-            Snapshot::from_file(path).map_err(|e| anyhow::anyhow!("{}: {e}", path.display()))?;
-        let text = snapshot
-            .contents()
-            .as_text()
-            .with_context(|| format!("{} is a binary snapshot", path.display()))?
-            .to_string();
-        let body: Body = serde_json::from_str(&text)
+        let text =
+            fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
+        let (header, body) = split_snapshot(&text)
+            .with_context(|| format!("{} has no snapshot header", path.display()))?;
+        let header: Header = yaml_serde::from_str(header)
+            .with_context(|| format!("{} has an unreadable header", path.display()))?;
+        let body: Body = serde_json::from_str(body)
             .with_context(|| format!("{} has no Track body", path.display()))?;
-        let digest = match snapshot.metadata().private_info() {
-            Some(Content::Map(entries)) => entries
-                .iter()
-                .find(|(k, _)| k.as_str() == Some("solver_digest"))
-                .and_then(|(_, v)| v.as_str().map(str::to_owned)),
-            _ => None,
-        };
+        let digest = header.info.and_then(|i| i.solver_digest);
         Ok(Snap { body, digest })
     }
 
