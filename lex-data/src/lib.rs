@@ -5,6 +5,7 @@ pub mod language;
 pub mod word;
 
 mod book_store;
+mod cast;
 mod data_dir;
 mod error;
 mod header;

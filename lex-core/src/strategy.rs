@@ -1,5 +1,6 @@
 //! The Strategy, the Guess pool policy, and the Answer prior.
 
+use crate::cast;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -146,11 +147,11 @@ impl<const N: usize> Pool<N> {
         let letters: HashMap<char, u8> = alphabet
             .into_iter()
             .enumerate()
-            .map(|(i, c)| (c, i as u8))
+            .map(|(i, c)| (c, cast::letter_code(i)))
             .collect();
         let (words, ln_freqs): (Vec<_>, _) = word_set
             .word_frequencies()
-            .map(|(word, freq)| (word, (freq as f64).ln()))
+            .map(|(word, freq)| (word, cast::lossy_f64(freq).ln()))
             .unzip();
         let codes = words.iter().map(|w| encode(&letters, w)).collect();
         Arc::new(Self {
@@ -163,7 +164,7 @@ impl<const N: usize> Pool<N> {
 
     /// The pool word's letters as Alphabet indices.
     pub(crate) fn code(&self, index: u32) -> &Code<N> {
-        &self.codes[index as usize]
+        &self.codes[cast::index(index)]
     }
 
     /// Any word's letters as Alphabet indices; a letter outside the Alphabet becomes
@@ -179,7 +180,7 @@ impl<const N: usize> Pool<N> {
 
     /// The word at pool index `index`.
     pub(crate) fn word(&self, index: u32) -> Word<N> {
-        self.words[index as usize]
+        self.words[cast::index(index)]
     }
 
     /// Unnormalized answer prior for every word: exp((ln f - max ln f) / T) over the whole pool.
@@ -205,11 +206,11 @@ impl<const N: usize> Pool<N> {
         }
         let max_lf = indices
             .iter()
-            .map(|&i| self.ln_freqs[i as usize])
+            .map(|&i| self.ln_freqs[cast::index(i)])
             .fold(f64::NEG_INFINITY, f64::max);
         let exp: Vec<f64> = indices
             .iter()
-            .map(|&i| ((self.ln_freqs[i as usize] - max_lf) / temperature).exp())
+            .map(|&i| ((self.ln_freqs[cast::index(i)] - max_lf) / temperature).exp())
             .collect();
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
@@ -232,7 +233,7 @@ pub fn answer_prior<const N: usize>(
     temperature: f64,
 ) -> Vec<(Word<N>, f64)> {
     let pool = Pool::new(word_set);
-    let all: Vec<u32> = (0..pool.len() as u32).collect();
+    let all: Vec<u32> = (0..cast::narrow(pool.len())).collect();
     let probs = pool.prior(&all, temperature);
     pool.words.iter().copied().zip(probs).collect()
 }

@@ -8,6 +8,7 @@ use std::thread;
 use anyhow::Context;
 use flate2::read::MultiGzDecoder;
 
+use crate::cast::index;
 use crate::http;
 use crate::language::Language;
 use crate::parse::parse_ngram_line;
@@ -71,7 +72,7 @@ pub fn fetch(
 
     let results: Vec<_> = thread::scope(|scope| {
         let mut workers = Vec::new();
-        for _ in 0..SHARD_CONCURRENCY.min(n as usize) {
+        for _ in 0..SHARD_CONCURRENCY.min(index(n)) {
             workers.push(scope.spawn(worker));
         }
         workers

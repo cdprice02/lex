@@ -8,6 +8,7 @@ use std::sync::Arc;
 
 use memmap2::{Mmap, MmapMut};
 
+use crate::cast::{index, offset};
 use crate::error::LexDataError;
 use crate::le::array_at;
 
@@ -133,7 +134,7 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
         let &off = self.offsets.get(self.index)?;
         self.index += 1;
         let record =
-            RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+            RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
         Some(record.word_lossy())
     }
 
@@ -247,14 +248,14 @@ impl<const N: usize> WordSet<N> {
             for (j, &ch) in word.iter().enumerate() {
                 let char_off = off + j * RawRecord::<N>::CHAR_BYTES;
                 buf[char_off..char_off + RawRecord::<N>::CHAR_BYTES]
-                    .copy_from_slice(&(ch as u32).to_le_bytes());
+                    .copy_from_slice(&u32::from(ch).to_le_bytes());
             }
             let freq_off = off + RawRecord::<N>::CHAR_BYTES * N;
             buf[freq_off..freq_off + RawRecord::<N>::FREQ_BYTES]
                 .copy_from_slice(&freq.to_le_bytes());
         }
         let mmap = buf.make_read_only().expect("failed to make mmap read-only");
-        let offsets = (0..pairs.len()).map(|i| (i * record_size) as u32).collect();
+        let offsets = (0..pairs.len()).map(|i| offset(i * record_size)).collect();
         Self::from_offsets(mmap, offsets)
     }
 
@@ -273,7 +274,7 @@ impl<const N: usize> WordSet<N> {
     pub fn word_frequencies(&self) -> impl Iterator<Item = (Word<N>, u64)> + '_ {
         self.offsets.iter().map(|&off| {
             let record =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+                RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
             (record.word_lossy(), record.freq())
         })
     }
@@ -283,7 +284,7 @@ impl<const N: usize> WordSet<N> {
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
         for &off in &self.offsets {
             let record =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+                RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
             if record.word().as_ref() == Some(word) {
                 return Some(record.freq());
             }
@@ -349,18 +350,23 @@ mod benches {
     use std::hint::black_box;
 
     use super::{Word, WordSet};
+    use crate::cast::widen;
+
+    fn letter(i: usize) -> char {
+        char::from(b"abcdefghijklmnopqrstuvwxyz"[i % 26])
+    }
 
     fn make_wordset(n: usize) -> WordSet<5> {
         let frequencies = (0..n)
             .map(|i| {
                 let word = Word::from([
-                    char::from(b'a' + (i % 26) as u8),
-                    char::from(b'a' + ((i / 26) % 26) as u8),
-                    char::from(b'a' + ((i / 676) % 26) as u8),
-                    char::from(b'a' + ((i / 17576) % 26) as u8),
-                    char::from(b'a' + ((i / 456_976) % 26) as u8),
+                    letter(i),
+                    letter(i / 26),
+                    letter(i / 676),
+                    letter(i / 17_576),
+                    letter(i / 456_976),
                 ]);
-                (word, (n - i) as u64)
+                (word, widen(n - i))
             })
             .collect::<HashMap<Word<5>, u64>>();
         WordSet::from_frequency_map(frequencies)

@@ -29,6 +29,7 @@ use anyhow::Context;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
+use crate::cast::{index, widen};
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
 use crate::language::Language;
@@ -220,7 +221,7 @@ fn encode(key: &BookKey, book: &StoredBook) -> anyhow::Result<Vec<u8>> {
     out.extend_from_slice(&VERSION.to_le_bytes());
     out.extend_from_slice(&u16::try_from(key.word_length)?.to_le_bytes());
     out.extend_from_slice(&u32::try_from(header_len)?.to_le_bytes());
-    out.extend_from_slice(&(book.nodes.len() as u64).to_le_bytes());
+    out.extend_from_slice(&widen(book.nodes.len()).to_le_bytes());
     out.extend_from_slice(&Sha256::digest(&body));
     out.extend_from_slice(&u32::try_from(key_bytes.len())?.to_le_bytes());
     out.resize(FIXED_LEN, 0);
@@ -247,8 +248,8 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
             format!("unsupported format version {version} (this build reads {VERSION})"),
         ));
     }
-    let header_len = u32::from_le_bytes(array_at(bytes, 8)) as usize;
-    let key_len = u32::from_le_bytes(array_at(bytes, 52)) as usize;
+    let header_len = index(u32::from_le_bytes(array_at(bytes, 8)));
+    let key_len = index(u32::from_le_bytes(array_at(bytes, 52)));
     if header_len != FIXED_LEN + key_len || bytes.len() < header_len {
         return Err(corrupt(path, "truncated or inconsistent header"));
     }
@@ -272,7 +273,7 @@ fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataErr
     }
     let book: StoredBook =
         postcard::from_bytes(body).map_err(|e| corrupt(path, format!("unreadable body: {e}")))?;
-    if book.nodes.len() as u64 != header.node_count {
+    if widen(book.nodes.len()) != header.node_count {
         return Err(corrupt(
             path,
             format!(
@@ -298,7 +299,7 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     if got < FIXED_LEN {
         return Err(corrupt(path, "truncated header").into());
     }
-    let key_len = u32::from_le_bytes(array_at(&fixed, 52)) as usize;
+    let key_len = index(u32::from_le_bytes(array_at(&fixed, 52)));
     let mut bytes = fixed.to_vec();
     bytes.resize(FIXED_LEN + key_len, 0);
     file.read_exact(&mut bytes[FIXED_LEN..])
@@ -383,7 +384,7 @@ impl DataDir {
             .with_context(|| format!("renaming the opening book into {}", path.display()))?;
         Ok(BookFile {
             path,
-            bytes: bytes.len() as u64,
+            bytes: widen(bytes.len()),
         })
     }
 

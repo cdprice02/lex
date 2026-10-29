@@ -49,7 +49,7 @@ fn measure<const N: usize>(
     let stored = fresh.to_nodes();
     drop(fresh);
     let loaded = OpeningBook::<N>::from_nodes(stored, pool_len).unwrap();
-    let peak = dhat::HeapStats::get().max_bytes as u64;
+    let peak = u64::try_from(dhat::HeapStats::get().max_bytes).unwrap();
     let (nodes, claimed) = (loaded.len(), loaded.heap_bytes());
     let live = dhat::HeapStats::get().curr_bytes;
     drop(loaded);

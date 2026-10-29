@@ -17,6 +17,7 @@
 
 use std::path::Path;
 
+use crate::cast::{index, widen};
 use crate::le::array_at;
 
 use anyhow::Context;
@@ -54,8 +55,8 @@ impl Header {
     ) -> Result<Self, std::num::TryFromIntError> {
         Ok(Self {
             word_len: u16::try_from(word_len)?,
-            records_offset: HEADER_LEN as u32,
-            record_count: (records.len() / record_size) as u64,
+            records_offset: u32::try_from(HEADER_LEN)?,
+            record_count: u64::try_from(records.len() / record_size)?,
             checksum: Sha256::digest(records).into(),
         })
     }
@@ -97,7 +98,7 @@ impl Header {
             )));
         }
         let header_len = u32::from_le_bytes(array_at(bytes, 8));
-        if (header_len as usize) < HEADER_LEN {
+        if index(header_len) < HEADER_LEN {
             return Err(corrupt(format!("header length {header_len} is too small")));
         }
         Ok(Self {
@@ -114,7 +115,7 @@ impl Header {
         let mut buf = Vec::with_capacity(HEADER_LEN);
         std::fs::File::open(path)
             .with_context(|| format!("opening ngrams file: {}", path.display()))?
-            .take(HEADER_LEN as u64)
+            .take(widen(HEADER_LEN))
             .read_to_end(&mut buf)
             .with_context(|| format!("reading ngrams header: {}", path.display()))?;
         Ok(Self::parse(&buf, path)?)

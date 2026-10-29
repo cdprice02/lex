@@ -1,5 +1,6 @@
 //! Per-letter and per-guess feedback, and the base-3 ordinals that index feedback patterns.
 
+use crate::cast;
 use lex_data::Word;
 
 /// Feedback for one letter of a guess.
@@ -16,7 +17,24 @@ pub enum Correctness {
 impl Correctness {
     /// Number of feedback kinds per letter.
     pub const COUNT: usize = <Self as strum::EnumCount>::COUNT;
+
+    /// The base-3 digit this feedback contributes to an ordinal.
+    const fn digit(self) -> u64 {
+        match self {
+            Self::Absent => 0,
+            Self::Misplaced => 1,
+            Self::Correct => 2,
+        }
+    }
 }
+
+/// The radix of a feedback ordinal, [`Correctness::COUNT`] as the ordinal's integer type.
+const BASE: u64 = 3;
+
+const _: () = assert!(
+    Correctness::COUNT == 3,
+    "the ordinal radix must match the number of feedback kinds"
+);
 
 impl std::fmt::Display for Correctness {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -35,7 +53,8 @@ pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
 // Ordinals are `u64`: 3^MAX_WORD_LENGTH must fit.
 const _: () = assert!(
-    3u128.pow(lex_data::MAX_WORD_LENGTH as u32) <= u64::MAX as u128,
+    3u64.checked_pow(cast::narrow(lex_data::MAX_WORD_LENGTH))
+        .is_some(),
     "pattern ordinals must fit u64"
 );
 
@@ -55,13 +74,12 @@ impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
 
 impl<const N: usize> WordCorrectness<N> {
     /// Number of distinct feedback patterns, 3^N.
-    pub const COUNT: u64 = (Correctness::COUNT as u64).pow(N as u32);
+    pub const COUNT: u64 = BASE.pow(cast::narrow(N));
 
     /// The pattern's base-3 ordinal (absent 0, misplaced 1, correct 2; position 0 most significant), below [`COUNT`](Self::COUNT).
     #[must_use]
     pub fn ordinal(&self) -> u64 {
-        self.iter()
-            .fold(0, |acc, &c| acc * Correctness::COUNT as u64 + c as u64)
+        self.iter().fold(0, |acc, &c| acc * BASE + c.digit())
     }
 
     /// The all-absent pattern, ordinal 0.
@@ -78,10 +96,11 @@ impl<const N: usize> WordCorrectness<N> {
         // `at` is where `c` sits in its own word, so it stands in for the position lookup that
         // cannot miss
         let first = |c: char, at: usize| {
-            word.iter()
-                .position(|&w| w == c)
-                .unwrap_or_else(|| N + guess.iter().position(|&g| g == c).unwrap_or(at))
-                as u8
+            cast::letter_code(
+                word.iter()
+                    .position(|&w| w == c)
+                    .unwrap_or_else(|| N + guess.iter().position(|&g| g == c).unwrap_or(at)),
+            )
         };
         let word_code: Code<N> = std::array::from_fn(|i| first(word[i], i));
         let guess_code: Code<N> = std::array::from_fn(|i| first(guess[i], i));
@@ -93,12 +112,12 @@ impl<const N: usize> WordCorrectness<N> {
         debug_assert!(ordinal < Self::COUNT, "ordinal {ordinal} is not below 3^N");
         let mut result = Self::absent();
         for slot in result.0.iter_mut().rev() {
-            *slot = match ordinal % Correctness::COUNT as u64 {
+            *slot = match ordinal % BASE {
                 0 => Correctness::Absent,
                 1 => Correctness::Misplaced,
                 _ => Correctness::Correct,
             };
-            ordinal /= Correctness::COUNT as u64;
+            ordinal /= BASE;
         }
         result
     }
@@ -135,23 +154,23 @@ pub fn pattern_ordinal<const N: usize>(
 ) -> u64 {
     for (&w, &g) in word.iter().zip(guess) {
         if w != g {
-            counts[w as usize] += 1;
+            counts[usize::from(w)] += 1;
         }
     }
     let mut ordinal = 0;
     for (&w, &g) in word.iter().zip(guess) {
         let digit = if w == g {
-            Correctness::Correct as u64
-        } else if counts[g as usize] > 0 {
-            counts[g as usize] -= 1;
-            Correctness::Misplaced as u64
+            Correctness::Correct.digit()
+        } else if counts[usize::from(g)] > 0 {
+            counts[usize::from(g)] -= 1;
+            Correctness::Misplaced.digit()
         } else {
-            Correctness::Absent as u64
+            Correctness::Absent.digit()
         };
-        ordinal = ordinal * Correctness::COUNT as u64 + digit;
+        ordinal = ordinal * BASE + digit;
     }
     for &w in word {
-        counts[w as usize] = 0;
+        counts[usize::from(w)] = 0;
     }
     ordinal
 }
@@ -179,18 +198,18 @@ fn compare_ordinal<const N: usize>(word: &Code<N>, guess: &Code<N>) -> u64 {
     let mut ordinal = 0;
     for (i, &letter) in guess.iter().enumerate() {
         let digit = if green >> i & 1 == 1 {
-            Correctness::Correct as u64
+            Correctness::Correct.digit()
         } else {
             let unclaimed = word
                 .iter()
                 .enumerate()
                 .position(|(j, &w)| claimed >> j & 1 == 0 && w == letter);
-            unclaimed.map_or(Correctness::Absent as u64, |j| {
+            unclaimed.map_or(Correctness::Absent.digit(), |j| {
                 claimed |= 1 << j;
-                Correctness::Misplaced as u64
+                Correctness::Misplaced.digit()
             })
         };
-        ordinal = ordinal * Correctness::COUNT as u64 + digit;
+        ordinal = ordinal * BASE + digit;
     }
     ordinal
 }
@@ -231,7 +250,7 @@ mod benches {
                 state = state
                     .wrapping_mul(6_364_136_223_846_793_005)
                     .wrapping_add(1_442_695_040_888_963_407);
-                ((state >> 33) % 26) as u8
+                crate::cast::letter_code(crate::cast::size((state >> 33) % 26))
             })
         };
         (0..256).map(|_| (word(), word())).collect()
@@ -452,15 +471,15 @@ mod prop_tests {
                 let mut counts = [0usize; 4];
                 for i in 0..N {
                     if word[i] != guess[i] {
-                        counts[word[i] as usize] += 1;
+                        counts[usize::from(word[i])] += 1;
                     }
                 }
                 let mut ordinal = 0;
                 for i in 0..N {
                     let digit = if word[i] == guess[i] {
                         2
-                    } else if counts[guess[i] as usize] > 0 {
-                        counts[guess[i] as usize] -= 1;
+                    } else if counts[usize::from(guess[i])] > 0 {
+                        counts[usize::from(guess[i])] -= 1;
                         1
                     } else {
                         0

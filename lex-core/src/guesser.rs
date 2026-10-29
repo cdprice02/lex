@@ -1,5 +1,6 @@
 //! The per-game solver state: guesses played and a cursor into the shared Decision tree.
 
+use crate::cast;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -98,7 +99,7 @@ impl<const N: usize> Guesser<N> {
         assert!(
             book.as_ref()
                 .and_then(OpeningBook::max_guess)
-                .is_none_or(|g| (g as usize) < pool.len()),
+                .is_none_or(|g| cast::index(g) < pool.len()),
             "the opening book names a guess outside the pool"
         );
         let candidates = Candidates::new(pool, answers);
@@ -241,13 +242,13 @@ mod benches {
         (0..n)
             .map(|i| {
                 let word = Word::from([
-                    char::from(b'a' + (i % 26) as u8),
-                    char::from(b'a' + ((i / 26) % 26) as u8),
-                    char::from(b'a' + ((i / 676) % 26) as u8),
-                    char::from(b'a' + ((i / 17576) % 26) as u8),
-                    char::from(b'a' + ((i / 456_976) % 26) as u8),
+                    crate::cast::letter(i),
+                    crate::cast::letter(i / 26),
+                    crate::cast::letter(i / 676),
+                    crate::cast::letter(i / 17576),
+                    crate::cast::letter(i / 456_976),
                 ]);
-                (word, (n - i) as u64)
+                (word, crate::cast::widen(n - i))
             })
             .collect()
     }
@@ -973,10 +974,12 @@ mod tests {
         let letters = |i: usize| -> String {
             [i, i / 26, i / 676, i / 17576, 7]
                 .iter()
-                .map(|d| char::from(b'a' + (d % 26) as u8))
+                .map(|d| crate::cast::letter(*d))
                 .collect()
         };
-        let pairs: Vec<(String, u64)> = (0..3000).map(|i| (letters(i), 3000 - i as u64)).collect();
+        let pairs: Vec<(String, u64)> = (0..3000)
+            .map(|i| (letters(i), 3000 - crate::cast::widen(i)))
+            .collect();
         let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
         let answers: Vec<Word<5>> = borrowed[..1400].iter().map(|&(w, _)| word(w)).collect();
         for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
@@ -998,7 +1001,7 @@ mod tests {
             let pairs: Vec<(String, u64)> = words
                 .into_iter()
                 .enumerate()
-                .map(|(i, w)| (w, 1 + i as u64 * 7))
+                .map(|(i, w)| (w, 1 + crate::cast::widen(i) * 7))
                 .collect();
             let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
             let ws = dict_set(&borrowed);

@@ -96,9 +96,9 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
         return Ok(out);
     }
 
-    let n = pairs.len() as f64;
+    let n = crate::cast::count(pairs.len());
     let diff = |(g, h): &(&crate::report::Game, &crate::report::Game)| {
-        h.num_guesses as f64 - g.num_guesses as f64
+        crate::cast::count(h.num_guesses) - crate::cast::count(g.num_guesses)
     };
     let uniform_delta = pairs.iter().map(diff).sum::<f64>() / n;
     let total_prior: f64 = pairs.iter().map(|(g, _)| g.prior).sum();
@@ -112,7 +112,7 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
         .filter(|(g, h)| h.num_guesses > g.num_guesses)
         .count();
     let fail = |games: &mut dyn Iterator<Item = usize>| {
-        games.filter(|&k| k > MAX_GUESSES).count() as f64 / n
+        crate::cast::count(games.filter(|&k| k > MAX_GUESSES).count()) / n
     };
     let base_fail = fail(&mut pairs.iter().map(|(g, _)| g.num_guesses));
     let cand_fail = fail(&mut pairs.iter().map(|(_, h)| h.num_guesses));

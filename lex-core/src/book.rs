@@ -1,5 +1,6 @@
 //! The Opening book: the persisted top levels of a Decision tree.
 
+use crate::cast;
 use std::marker::PhantomData;
 use std::mem::size_of;
 
@@ -136,7 +137,7 @@ impl<const N: usize> OpeningBook<N> {
         let patterns = WordCorrectness::<N>::COUNT;
         let len = stored.nodes.len();
         for (node, stored_node) in stored.nodes.iter().enumerate() {
-            if stored_node.guess as usize >= pool_len {
+            if cast::index(stored_node.guess) >= pool_len {
                 return Err(BookError::GuessOutsidePool {
                     node,
                     guess: stored_node.guess,
@@ -155,10 +156,10 @@ impl<const N: usize> OpeningBook<N> {
                 if i > 0 && stored_node.edges[i - 1].0 >= ordinal {
                     return Err(BookError::EdgesNotAscending { node });
                 }
-                if child as usize <= node {
+                if cast::index(child) <= node {
                     return Err(BookError::ChildNotAfterParent { node, child });
                 }
-                if child as usize >= len {
+                if cast::index(child) >= len {
                     return Err(BookError::ChildOutsideBook { node, child, len });
                 }
             }
@@ -197,12 +198,12 @@ impl<const N: usize> OpeningBook<N> {
             guess,
             edges: Vec::new(),
         });
-        (self.nodes.len() - 1) as u32
+        cast::narrow(self.nodes.len() - 1)
     }
 
     /// Edges must be added in ascending ordinal order.
     pub(crate) fn add_edge(&mut self, from: u32, ordinal: u64, to: u32) {
-        let edges = &mut self.nodes[from as usize].edges;
+        let edges = &mut self.nodes[cast::index(from)].edges;
         debug_assert!(
             edges.last().is_none_or(|&(o, _)| o < ordinal),
             "edges must be added in ascending ordinal order"
@@ -212,12 +213,12 @@ impl<const N: usize> OpeningBook<N> {
 
     /// The pool index of the guess booked at `node`.
     pub(crate) fn guess(&self, node: u32) -> u32 {
-        self.nodes[node as usize].guess
+        self.nodes[cast::index(node)].guess
     }
 
     /// The booked position reached from `node` by feedback `ordinal`.
     pub(crate) fn edge(&self, node: u32, ordinal: u64) -> Option<u32> {
-        let edges = &self.nodes[node as usize].edges;
+        let edges = &self.nodes[cast::index(node)].edges;
         edges
             .binary_search_by_key(&ordinal, |&(o, _)| o)
             .ok()

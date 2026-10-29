@@ -13,16 +13,16 @@ pub fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]
     let mut records = Vec::new();
     for &(word, freq) in entries {
         for ch in word.chars() {
-            records.extend_from_slice(&(ch as u32).to_le_bytes());
+            records.extend_from_slice(&u32::from(ch).to_le_bytes());
         }
         records.extend_from_slice(&freq.to_le_bytes());
     }
     let mut header = [0u8; 64];
     header[0..4].copy_from_slice(b"LEXC");
     header[4..6].copy_from_slice(&1u16.to_le_bytes());
-    header[6..8].copy_from_slice(&(n as u16).to_le_bytes());
+    header[6..8].copy_from_slice(&u16::try_from(n).unwrap().to_le_bytes());
     header[8..12].copy_from_slice(&64u32.to_le_bytes());
-    header[12..20].copy_from_slice(&(entries.len() as u64).to_le_bytes());
+    header[12..20].copy_from_slice(&u64::try_from(entries.len()).unwrap().to_le_bytes());
     header[20..52].copy_from_slice(&Sha256::digest(&records));
     let mut f = fs::File::create(path).unwrap();
     f.write_all(&header).unwrap();
@@ -37,11 +37,11 @@ pub fn seed_supported(dir: &DataDir, lang: Language, n: usize, head: &[(&str, u6
         .map(|i| {
             let letters: String = [i / 676, i / 26 % 26, i % 26]
                 .iter()
-                .map(|&d| char::from(b'a' + d as u8))
+                .map(|&d| char::from(b'a' + u8::try_from(d).unwrap()))
                 .collect();
             (
                 format!("zz{letters}"),
-                floor.saturating_sub(1 + i as u64).max(1),
+                floor.saturating_sub(1 + u64::try_from(i).unwrap()).max(1),
             )
         })
         .collect();

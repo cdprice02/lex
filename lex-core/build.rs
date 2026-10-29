@@ -45,7 +45,11 @@ fn main() -> io::Result<()> {
         // Line endings are normalized so a Windows checkout hashes like a Unix one.
         let text = fs::read(path)?;
         let text: Vec<u8> = text.into_iter().filter(|&b| b != b'\r').collect();
-        hasher.update((text.len() as u64).to_le_bytes());
+        hasher.update(
+            u64::try_from(text.len())
+                .map_err(io::Error::other)?
+                .to_le_bytes(),
+        );
         hasher.update(&text);
     }
     let digest = hasher.finalize().iter().fold(String::new(), |mut hex, b| {

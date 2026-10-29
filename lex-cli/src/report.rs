@@ -283,7 +283,7 @@ impl Stats {
         let mut histogram = BTreeMap::new();
         for game in games {
             let share = weight(game) / total;
-            mean += share * game.num_guesses as f64;
+            mean += share * crate::cast::count(game.num_guesses);
             if game.num_guesses > MAX_GUESSES {
                 failure_rate += share;
             }
@@ -351,9 +351,9 @@ impl Report {
                 stats.failure_rate * 100.0
             );
             for (guesses, share) in &stats.histogram {
-                let bar = "#".repeat((share * 40.0).round() as usize);
+                let bar = "#".repeat(crate::cast::rounded(share * 40.0));
                 let count = if exact {
-                    format!(" ({})", (share * n as f64).round() as usize)
+                    format!(" ({})", crate::cast::rounded(share * crate::cast::count(n)))
                 } else {
                     String::new()
                 };
