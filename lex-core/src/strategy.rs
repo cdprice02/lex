@@ -66,6 +66,26 @@ impl Strategy {
         }
     }
 
+    /// Every field as an ordered (name, value) pair: what an Opening book is keyed on besides
+    /// the pool and the solver source. Destructuring without `..` makes a new field a compile
+    /// error here until it is listed, and floats print in their shortest round-tripping form.
+    pub fn key_fields(&self) -> Vec<(&'static str, String)> {
+        let Self {
+            pool,
+            temperature,
+            win_weight,
+            endgame_threshold,
+            endgame_aversion,
+        } = *self;
+        vec![
+            ("pool", pool.to_string()),
+            ("temperature", temperature.to_string()),
+            ("win_weight", win_weight.to_string()),
+            ("endgame_threshold", endgame_threshold.to_string()),
+            ("endgame_aversion", endgame_aversion.to_string()),
+        ]
+    }
+
     pub(crate) fn assert_valid(&self) {
         assert!(
             self.temperature.is_finite() && self.temperature > 0.0,
@@ -214,6 +234,58 @@ mod tests {
                 .map(|&(s, f)| (Word::<5>::try_from(s).unwrap(), f))
                 .collect(),
         )
+    }
+
+    #[test]
+    fn the_key_lists_every_strategy_field_in_declaration_order() {
+        let strategy = Strategy {
+            pool: GuessPool::Hard,
+            temperature: 2.5,
+            win_weight: 0.125,
+            endgame_threshold: 7,
+            endgame_aversion: 0.5,
+        };
+        // Debug prints each field by name, so it is a source of field names that does not
+        // come from `key_fields` itself.
+        let declared: Vec<String> = format!("{strategy:#?}")
+            .lines()
+            .filter_map(|l| l.trim().split_once(": "))
+            .map(|(name, _)| name.to_owned())
+            .collect();
+        let keyed: Vec<&str> = strategy.key_fields().iter().map(|&(n, _)| n).collect();
+        assert_eq!(keyed, declared);
+        let values: Vec<String> = strategy.key_fields().into_iter().map(|(_, v)| v).collect();
+        assert_eq!(values, ["hard", "2.5", "0.125", "7", "0.5"]);
+    }
+
+    #[test]
+    fn changing_any_field_changes_the_key() {
+        let base = Strategy::DEFAULT;
+        let variants = [
+            Strategy {
+                pool: GuessPool::Hard,
+                ..base
+            },
+            Strategy {
+                temperature: 4.0,
+                ..base
+            },
+            Strategy {
+                win_weight: 0.5,
+                ..base
+            },
+            Strategy {
+                endgame_threshold: 3,
+                ..base
+            },
+            Strategy {
+                endgame_aversion: 0.25,
+                ..base
+            },
+        ];
+        for variant in variants {
+            assert_ne!(variant.key_fields(), base.key_fields(), "{variant:?}");
+        }
     }
 
     #[test]

@@ -152,12 +152,17 @@ impl<const N: usize> DecisionTree<N> {
 
     /// Books every position, top-down, whose work exceeds `floor`. Work never rises along a
     /// path, so the booked positions form a subtree rooted at the start.
-    pub(crate) fn build_book(&mut self, floor: u64) -> OpeningBook<N> {
+    /// `progress` is called with the booked count each time a position is booked.
+    pub(crate) fn build_book(
+        &mut self,
+        floor: u64,
+        progress: &mut dyn FnMut(usize),
+    ) -> OpeningBook<N> {
         let pool = self.nodes[Self::ROOT].candidates.pool();
         let index_of: HashMap<Word<N>, u32> =
             (0..pool.len() as u32).map(|i| (pool.word(i), i)).collect();
         let mut book = OpeningBook::default();
-        self.book_node(Self::ROOT, floor, &index_of, &mut book);
+        self.book_node(Self::ROOT, floor, &index_of, &mut book, progress);
         book
     }
 
@@ -167,12 +172,14 @@ impl<const N: usize> DecisionTree<N> {
         floor: u64,
         index_of: &HashMap<Word<N>, u32>,
         book: &mut OpeningBook<N>,
+        progress: &mut dyn FnMut(usize),
     ) -> Option<u32> {
         if self.work(node) <= floor {
             return None;
         }
         let guess = self.suggest(node)?;
         let id = book.push(index_of[&guess]);
+        progress(book.len());
         let pool = self.nodes[node].candidates.pool();
         let ordinals: BTreeSet<u64> = self.nodes[node]
             .candidates
@@ -186,7 +193,7 @@ impl<const N: usize> DecisionTree<N> {
                 continue;
             }
             let child = self.child(node, &Guess::new(guess, feedback));
-            if let Some(booked) = self.book_node(child, floor, index_of, book) {
+            if let Some(booked) = self.book_node(child, floor, index_of, book, progress) {
                 book.add_edge(id, ordinal, booked);
             }
         }

@@ -94,13 +94,19 @@ impl<const N: usize> Guesser<N> {
     /// Builds the [`OpeningBook`] of this guesser's starting position: every position on the
     /// policy's paths whose work exceeds [`BOOK_FLOOR`].
     pub fn build_book(&self) -> OpeningBook<N> {
-        self.build_book_with_floor(BOOK_FLOOR)
+        self.build_book_reporting(&mut |_| {})
+    }
+
+    /// As [`build_book`](Self::build_book), calling `on_booked` with the number of positions
+    /// booked so far each time one is added, so a caller can show progress on a long build.
+    pub fn build_book_reporting(&self, on_booked: &mut dyn FnMut(usize)) -> OpeningBook<N> {
+        self.tree.borrow_mut().build_book(BOOK_FLOOR, on_booked)
     }
 
     /// As [`build_book`](Self::build_book) with a chosen floor, in pattern evaluations (guesses
     /// the strategy allows times Candidate set size).
     pub fn build_book_with_floor(&self, floor: u64) -> OpeningBook<N> {
-        self.tree.borrow_mut().build_book(floor)
+        self.tree.borrow_mut().build_book(floor, &mut |_| {})
     }
 
     pub fn with_history(
@@ -825,6 +831,59 @@ mod tests {
                 games(&mut guesser, &answers);
                 assert_eq!(
                     guesser.tree.borrow().booked_computations(),
+                    0,
+                    "{strategy:?}"
+                );
+            }
+        }
+    }
+
+    /// The book as a run would have it: written to a file under its key and read back through
+    /// the stored form, so the test covers the whole round trip.
+    fn through_a_file(strategy: Strategy, answers: &[Word<5>]) -> Guesser<5> {
+        let built = fresh(strategy, answers).build_book_with_floor(LOW_FLOOR);
+        assert!(
+            !built.is_empty(),
+            "{strategy:?}: the book should be non-empty"
+        );
+        let key = lex_data::BookKey {
+            corpus_sha256: "fixture".to_owned(),
+            profile: None,
+            word_length: 5,
+            dictionary_length: DICT.len(),
+            strategy: strategy
+                .key_fields()
+                .into_iter()
+                .map(|(name, value)| (name.to_owned(), value))
+                .collect(),
+            solver_digest: crate::SOLVER_DIGEST.to_owned(),
+        };
+        let tmp = tempfile::tempdir().unwrap();
+        let dir = lex_data::DataDir::new(tmp.path());
+        dir.write_book(lex_data::Language::English, &key, &built.to_nodes())
+            .unwrap();
+        let lex_data::BookLookup::Found(stored) =
+            dir.read_book(lex_data::Language::English, &key).unwrap()
+        else {
+            panic!("{strategy:?}: the written book should be found");
+        };
+        let loaded = OpeningBook::<5>::from_nodes(stored, DICT.len()).unwrap();
+        assert_eq!(loaded, built, "{strategy:?}");
+        Guesser::with_book(dict_set(DICT), answers.to_vec(), strategy, loaded)
+    }
+
+    #[test]
+    fn a_book_loaded_from_its_file_plays_the_online_games_without_searching_a_booked_node() {
+        for strategy in book_strategies() {
+            for answers in book_answer_lists() {
+                let mut loaded = through_a_file(strategy, &answers);
+                assert_eq!(
+                    games(&mut loaded, &answers),
+                    games(&mut fresh(strategy, &answers), &answers),
+                    "{strategy:?}"
+                );
+                assert_eq!(
+                    loaded.tree.borrow().booked_computations(),
                     0,
                     "{strategy:?}"
                 );

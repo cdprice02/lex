@@ -56,6 +56,7 @@ lex-cli/      — simulation CLI, binary: lex (crate: lex_cli)
 data/         — on-disk cache (created at runtime, not committed)
   ngrams/     —   binary ngrams caches: data/ngrams/{lang_code}/{N}.bin
   dicts/      —   Wiktionary word lists: data/dicts/{lang_code}.txt + .meta.json
+  books/      :   opening books: data/books/{lang_code}/{N}/{key-hash}.bin, built on first use by simulate and assist (`lex book build`)
 ```
 
 Each crate has its own `CLAUDE.md` with internal architecture details.

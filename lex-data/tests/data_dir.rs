@@ -109,3 +109,36 @@ fn path_helpers_return_expected_paths() {
         std::path::Path::new("/data/dicts/eng.txt")
     );
 }
+
+#[test]
+fn clearing_a_profile_removes_its_books_and_keeps_other_books() {
+    use lex_data::{BookKey, Profile, ProfileKey, StoredBook};
+
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    let key = |profile: Option<&str>| BookKey {
+        corpus_sha256: "c".to_owned(),
+        profile: profile.map(|name| ProfileKey {
+            name: name.to_owned(),
+            answers_sha256: "a".to_owned(),
+            guess_only_sha256: "g".to_owned(),
+        }),
+        word_length: 5,
+        dictionary_length: 10,
+        strategy: vec![],
+        solver_digest: "d".to_owned(),
+    };
+    for k in [key(Some("wordle")), key(Some("wordle-all")), key(None)] {
+        dir.write_book(Language::English, &k, &StoredBook::default())
+            .unwrap();
+    }
+    std::fs::create_dir_all(dir.profile_dir(Profile::Wordle)).unwrap();
+
+    dir.clear_profile(Profile::Wordle).unwrap();
+
+    let exists = |k: &BookKey| dir.book_path(Language::English, k).exists();
+    assert!(!exists(&key(Some("wordle"))));
+    assert!(exists(&key(Some("wordle-all"))));
+    assert!(exists(&key(None)));
+    assert!(!dir.profile_dir(Profile::Wordle).exists());
+}

@@ -1,7 +1,9 @@
 use clap::Parser;
 
 use lex_cli::assist::assist;
-use lex_cli::cli::{Cli, Command};
+use lex_cli::books::build_command;
+use lex_cli::clear::clear;
+use lex_cli::cli::{BookCommand, Cli, Command};
 use lex_cli::compare::compare_reports;
 use lex_cli::simulate::simulate;
 
@@ -17,13 +19,11 @@ fn main() -> anyhow::Result<()> {
         }
         Command::Compare(args) => compare_reports(&args),
         Command::Verdict(args) => std::process::exit(lex_cli::verdict::command(&args)),
-        Command::Clear(args) => {
-            let dir = lex_data::DataDir::new(&args.data_dir);
-            match (args.lang, args.profile) {
-                (Some(lang), _) => dir.clear(lang, args.word_length),
-                (None, Some(profile)) => dir.clear_profile(profile),
-                (None, None) => unreachable!("clap requires --lang or --profile"),
+        Command::Book(args) => match args.command {
+            BookCommand::Build(args) => {
+                lex_data::match_word_length!(build_command, args.dispatch_length(), &args)
             }
-        }
+        },
+        Command::Clear(args) => clear(&args),
     }
 }

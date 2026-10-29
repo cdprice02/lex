@@ -27,6 +27,8 @@ pub enum LexDataError {
         index: usize,
         reason: String,
     },
+    #[error("corrupt opening book {path:?}: {reason}; rebuild it with `lex book build --force`")]
+    CorruptBook { path: PathBuf, reason: String },
     #[error(
         "the Corpus Alphabet has {size} letters; the solver encodes a letter in one byte and \
          supports at most {max}"

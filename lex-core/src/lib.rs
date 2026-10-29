@@ -15,7 +15,7 @@ mod tree;
 /// solver source a result was measured against.
 pub const SOLVER_DIGEST: &str = env!("LEX_SOLVER_DIGEST");
 
-pub use book::{BOOK_FLOOR, OpeningBook};
+pub use book::{BOOK_FLOOR, BookError, OpeningBook};
 pub use candidates::Suggestion;
 pub use correctness::{Correctness, WordCorrectness};
 pub use game::{GameResult, play};

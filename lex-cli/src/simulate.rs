@@ -8,29 +8,38 @@ use std::collections::HashMap;
 use std::io::Write;
 use std::path::Path;
 
-use lex_core::{CANONICAL_TEMPERATURE, Guesser, answer_prior, play};
+use lex_core::{CANONICAL_TEMPERATURE, answer_prior, play};
 use lex_data::DataDir;
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
+use crate::books::{self, BookMode};
 use crate::cli::SimulateArgs;
 use crate::config::{RunConfig, Targets};
-use crate::lists::{GameLists, Source};
+use crate::lists::Source;
 use crate::report::{Game, Report, Run, SCHEMA_VERSION, Summary};
 use crate::targets;
 
 /// The `simulate` command: plays what the arguments ask for, then prints or writes the report.
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
-    let report = run_n::<N>(&(&args.config(), &DataDir::new(&args.common.data_dir)))?;
+    let mode = BookMode::from_no_book(args.no_book);
+    let report = run_n::<N>(&(&args.config(), &DataDir::new(&args.common.data_dir), mode))?;
     emit(&report, args.output.as_deref())
 }
 
-/// Plays `config` and returns the report; prints nothing.
+/// Plays `config` with its Opening book, built on first use, and returns the report.
 pub fn run(config: &RunConfig, data_dir: &DataDir) -> anyhow::Result<Report> {
-    lex_data::match_word_length!(run_n, config.game.word_length(), &(config, data_dir))
+    run_with(config, data_dir, BookMode::Auto)
 }
 
-fn run_n<const N: usize>((config, data_dir): &(&RunConfig, &DataDir)) -> anyhow::Result<Report> {
+/// As [`run`], with the Opening book used or not as `mode` says.
+pub fn run_with(config: &RunConfig, data_dir: &DataDir, mode: BookMode) -> anyhow::Result<Report> {
+    lex_data::match_word_length!(run_n, config.game.word_length(), &(config, data_dir, mode))
+}
+
+fn run_n<const N: usize>(
+    (config, data_dir, mode): &(&RunConfig, &DataDir, BookMode),
+) -> anyhow::Result<Report> {
     let (lists, source) = Source::load::<N>(config, data_dir)?;
 
     // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
@@ -61,8 +70,7 @@ fn run_n<const N: usize>((config, data_dir): &(&RunConfig, &DataDir)) -> anyhow:
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
     let strategy = config.strategy;
-    let GameLists { pool, answers } = lists;
-    let mut guesser = Guesser::new(pool, answers, strategy);
+    let mut guesser = books::guesser(config, data_dir, &source, lists, *mode)?;
     let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;
