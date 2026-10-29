@@ -32,6 +32,10 @@ pub enum Source {
 impl Source {
     /// Loads the Profile's lists for a Profile game, otherwise the Corpus (honouring its
     /// `dictionary_length`) with every word as an answer.
+    ///
+    /// # Errors
+    ///
+    /// If the Corpus cache or the Profile's lists cannot be loaded.
     pub fn load<const N: usize>(
         config: &RunConfig,
         data_dir: &DataDir,
@@ -109,6 +113,10 @@ impl Source {
     }
 
     /// A Profile's Guess pool is closed; a Corpus run accepts any word, as it always has.
+    ///
+    /// # Errors
+    ///
+    /// A message naming the Profile when `word` is outside its Guess pool.
     pub fn check_guess<const N: usize>(
         &self,
         pool: &WordSet<N>,

@@ -90,6 +90,10 @@ const fn language(game: &Game) -> lex_data::Language {
 ///
 /// A missing book is built and stored. A stale book is rebuilt with a message naming what changed; a
 /// damaged one is an error.
+///
+/// # Errors
+///
+/// If the lists cannot be loaded, a stored book is damaged, or the book cannot be written.
 pub fn ensure<const N: usize>(
     config: &RunConfig,
     data_dir: &DataDir,
@@ -164,6 +168,10 @@ pub fn ensure<const N: usize>(
 }
 
 /// A guesser for `lists`, seeded with the Opening book unless `mode` is off.
+///
+/// # Errors
+///
+/// As [`ensure`], and when the stored book does not fit the Guess pool.
 pub fn guesser<const N: usize>(
     config: &RunConfig,
     data_dir: &DataDir,
@@ -182,6 +190,10 @@ pub fn guesser<const N: usize>(
 }
 
 /// The `lex book build` command: builds the book, or reports that it is up to date.
+///
+/// # Errors
+///
+/// As [`ensure`].
 pub fn build_command<const N: usize>(args: &BookBuildArgs) -> anyhow::Result<()> {
     let config = args.config();
     let data_dir = DataDir::new(&args.common.data_dir);

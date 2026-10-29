@@ -16,6 +16,10 @@ use rand_chacha::ChaCha8Rng;
 /// With `file`, reads one word per line (blank lines ignored, case-folded) and requires each
 /// to be in `answers`. Otherwise samples `num_games` distinct words uniformly at random from
 /// `answers`, seeded for reproducibility; `None` plays all of them.
+///
+/// # Errors
+///
+/// If a target is not in `answers`, or the targets file cannot be read.
 pub fn select<const N: usize>(
     answers: Vec<Word<N>>,
     noun: &str,

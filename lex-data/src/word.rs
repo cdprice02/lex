@@ -231,6 +231,10 @@ impl<const N: usize> WordSet<N> {
     /// The sort by frequency descending is stable, so equal frequencies keep the input
     /// order. Unlike [`from_frequency_map`](Self::from_frequency_map), whose tie order
     /// inherits `HashMap` iteration order, this is deterministic for fixtures and tests.
+    ///
+    /// # Panics
+    ///
+    /// If the operating system cannot map the records' memory.
     #[must_use]
     pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));

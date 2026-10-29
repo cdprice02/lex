@@ -9,6 +9,10 @@ use anyhow::Context;
 use crate::report::{MAX_GUESSES, Report};
 
 /// Prints the paired comparison of the two reports `args` names.
+///
+/// # Errors
+///
+/// If either report cannot be read or parsed.
 pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
     let baseline = load(&args.baseline)?;
     let candidate = load(&args.candidate)?;

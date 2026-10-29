@@ -222,6 +222,7 @@ fn encode<const N: usize>(letters: &HashMap<char, u8>, word: &Word<N>) -> Code<N
 }
 
 /// The answer prior over a whole word set at `temperature`, in frequency-descending order.
+///
 /// Raw-frequency softmax collapses to one-hot on the top word because ngrams counts span many
 /// orders of magnitude; log-space input with temperature above 1 flattens the distribution
 /// toward uniform without discarding rank information.

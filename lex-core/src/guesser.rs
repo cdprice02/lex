@@ -42,9 +42,10 @@ impl<const N: usize> Guess<N> {
     }
 }
 
-/// One game's solver state: the guesses played and a cursor into a shared decision tree that can be
-/// reused across games with [`reset`](Self::reset), so repeated positions are scored once. The
-/// [`Strategy`] is fixed at construction.
+/// One game's solver state: the guesses played and a cursor into a shared decision tree.
+///
+/// The tree can be reused across games with [`reset`](Self::reset), so repeated positions are
+/// scored once. The [`Strategy`] is fixed at construction.
 pub struct Guesser<const N: usize> {
     /// The Decision tree, shared across games.
     tree: Rc<RefCell<DecisionTree<N>>>,

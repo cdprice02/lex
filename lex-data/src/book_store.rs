@@ -55,9 +55,10 @@ pub struct ProfileKey {
     pub guess_only_sha256: String,
 }
 
-/// Everything that can change a guess the solver chooses. The Strategy arrives as ordered
-/// (field name, value) strings rendered by `lex-core`, which this crate stores and compares
-/// without knowing what the fields mean.
+/// Everything that can change a guess the solver chooses.
+///
+/// The Strategy arrives as ordered (field name, value) strings rendered by `lex-core`, which
+/// this crate stores and compares without knowing what the fields mean.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BookKey {
     /// The Corpus checksum.
@@ -338,6 +339,10 @@ impl DataDir {
 
     /// Reads the book for `key`. A file that is present but fails its checksum, parse, or key
     /// check is an error naming it, never a miss: rebuilding silently would hide the corruption.
+    ///
+    /// # Errors
+    ///
+    /// If the book file exists but cannot be read, or fails its checksum, parse or key check.
     pub fn read_book(&self, lang: Language, key: &BookKey) -> anyhow::Result<BookLookup> {
         let path = self.book_path(lang, key);
         if !path.exists() {
@@ -358,6 +363,10 @@ impl DataDir {
 
     /// Writes the book for `key` through a temporary file and a rename, so an interrupted build
     /// leaves nothing and a reader sees either no book or a whole one.
+    ///
+    /// # Errors
+    ///
+    /// If the book cannot be encoded or its file cannot be written.
     pub fn write_book(
         &self,
         lang: Language,
@@ -379,6 +388,10 @@ impl DataDir {
     }
 
     /// Removes `books/`, narrowed to a language and a word length. Missing directories are fine.
+    ///
+    /// # Errors
+    ///
+    /// If a books directory exists but cannot be removed.
     pub fn clear_books(&self, lang: Option<Language>, n: Option<usize>) -> anyhow::Result<()> {
         let root = self.books_root();
         let langs: Vec<PathBuf> = lang.map_or_else(

@@ -23,6 +23,10 @@ use crate::report::{Game, Report, Run, SCHEMA_VERSION, Summary};
 use crate::targets;
 
 /// The `simulate` command: plays what the arguments ask for, then prints or writes the report.
+///
+/// # Errors
+///
+/// If the run fails (see [`run`]) or the report cannot be written.
 pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let mode = BookMode::from_no_book(args.no_book);
     let report = run_n::<N>(&(&args.config(), &DataDir::new(&args.common.data_dir), mode))?;
@@ -30,11 +34,19 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
 }
 
 /// Plays `config` with its Opening book, built on first use, and returns the report.
+///
+/// # Errors
+///
+/// If the lists cannot be loaded, the book cannot be built or read, or a game finds no valid word.
 pub fn run(config: &RunConfig, data_dir: &DataDir) -> anyhow::Result<Report> {
     run_with(config, data_dir, BookMode::Auto)
 }
 
 /// As [`run`], with the Opening book used or not as `mode` says.
+///
+/// # Errors
+///
+/// As [`run`].
 pub fn run_with(config: &RunConfig, data_dir: &DataDir, mode: BookMode) -> anyhow::Result<Report> {
     lex_data::match_word_length!(run_n, config.game.word_length(), &(config, data_dir, mode))
 }

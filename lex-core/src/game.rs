@@ -35,6 +35,10 @@ impl<const N: usize> GameResult<N> {
 
 /// Plays one game to completion from `history`, resetting `guesser` first. Reusing one
 /// `guesser` across games shares its decision tree, so no position is scored twice.
+///
+/// # Errors
+///
+/// If no valid word remains for the guesser to suggest.
 pub fn play<const N: usize>(
     word: Word<N>,
     guesser: &mut Guesser<N>,

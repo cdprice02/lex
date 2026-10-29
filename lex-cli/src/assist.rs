@@ -16,6 +16,10 @@ use crate::cli::AssistArgs;
 /// Suggests guesses, reads the word the user actually played and the feedback Wordle returned,
 /// and narrows the candidate set until solved (or until the candidates are exhausted, e.g. when
 /// the day's target is missing from our corpus).
+///
+/// # Errors
+///
+/// If the lists or the Opening book cannot be loaded, or the terminal cannot be read.
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     let config = args.common.config(Targets::Full);
     let data_dir = lex_data::DataDir::new(&args.common.data_dir);

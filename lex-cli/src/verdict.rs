@@ -439,6 +439,10 @@ fn decide(
 
 /// Judges `head` against `base`; `expected_digest` is the solver digest the headline snapshots
 /// must carry. A missing `base` directory counts every Track as new.
+///
+/// # Errors
+///
+/// If `head` is not a directory, or a snapshot in either directory cannot be read or parsed.
 pub fn verdict(base: &Path, head: &Path, expected_digest: &str) -> Result<Verdict> {
     if !head.is_dir() {
         bail!("{} is not a directory", head.display());
@@ -453,6 +457,10 @@ pub fn verdict(base: &Path, head: &Path, expected_digest: &str) -> Result<Verdic
 }
 
 /// The headline-Tier table of the head snapshots, judged and reported.
+///
+/// # Errors
+///
+/// If a snapshot in `head` cannot be read or parsed.
 pub fn readme_table(head: &Path) -> Result<String> {
     let snaps = load_dir(head)?;
     let mut out = String::from(
@@ -483,6 +491,10 @@ pub fn readme_table(head: &Path) -> Result<String> {
 }
 
 /// Replaces the text between the README markers with `table`.
+///
+/// # Errors
+///
+/// If the README markers are missing or out of order.
 pub fn splice_readme(readme: &str, table: &str) -> Result<String> {
     let start = readme
         .find(README_START)

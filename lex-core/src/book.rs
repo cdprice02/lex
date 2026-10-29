@@ -8,8 +8,9 @@ use thiserror::Error;
 
 use crate::correctness::WordCorrectness;
 
-/// Pattern evaluations (guesses scored times Candidate set size) above which a position is
-/// booked. Calibrated once at about one second of single-core scoring on the reference machine
+/// Pattern evaluations (guesses scored times Candidate set size) above which a position is booked.
+///
+/// Calibrated once at about one second of single-core scoring on the reference machine
 /// (`benchmarks/experiments/book-floor.md`) and never retuned: the solver digest in the book key
 /// already rebuilds the book when the solver changes.
 pub const BOOK_FLOOR: u64 = 40_000_000;
@@ -127,6 +128,10 @@ impl<const N: usize> OpeningBook<N> {
     /// The book a [`StoredBook`] holds, checked against a pool of `pool_len` words: guesses are
     /// pool indices, children come after their parent, and ordinals are feedback patterns in
     /// ascending order. A book that fails was not built for this pool or has been damaged.
+    ///
+    /// # Errors
+    ///
+    /// A [`BookError`] naming the first check the book fails.
     pub fn from_nodes(stored: StoredBook, pool_len: usize) -> Result<Self, BookError> {
         let patterns = WordCorrectness::<N>::COUNT;
         let len = stored.nodes.len();

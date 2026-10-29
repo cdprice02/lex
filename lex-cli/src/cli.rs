@@ -211,6 +211,11 @@ pub struct CommonArgs {
 
 impl CommonArgs {
     /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
+    ///
+    /// # Panics
+    ///
+    /// If neither a profile nor `-l` is set, which clap rejects and only a hand-built value can
+    /// reach.
     #[must_use]
     pub const fn dispatch_length(&self) -> usize {
         match self.profile {
@@ -222,6 +227,11 @@ impl CommonArgs {
     }
 
     /// The game these arguments select.
+    ///
+    /// # Panics
+    ///
+    /// If neither a profile nor `--lang` is set, which clap rejects and only a hand-built value
+    /// can reach.
     #[must_use]
     pub const fn game(&self) -> Game {
         match self.profile {
