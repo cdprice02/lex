@@ -150,9 +150,12 @@ They diagnose where time goes; there is no saved baseline, and they never judge 
 A speed change is judged on end-to-end CPU time with hyperfine, base against head, each built
 `--release` in its own checkout. One round is one invocation per binary with `--runs 1`, and the
 order of base and head alternates between rounds so thermal drift and cache warmth do not favour
-one side. Run at least 3 rounds:
+one side. Time warm: build each binary's book first (`lex book build ...` with the same flags, which
+prints its node count, size and build time), so a round measures play and the build time is reported
+beside it. Run at least 3 rounds:
 
 ```bash
+# once per binary: base/target/release/lex book build -l 5 --lang english
 # round 1: base first, round 2: head first, round 3: base first, ...
 hyperfine -N --runs 1 --export-json /tmp/round1.json \
   'base/target/release/lex simulate -l 5 --lang english --seed 0' \

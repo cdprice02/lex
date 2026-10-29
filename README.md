@@ -32,9 +32,18 @@ The first run for a language downloads its Wiktionary word list and all Google B
 
 ## CLI
 
-Two subcommands: `simulate` (batch games, average guess count) and `assist`
+Subcommands: `simulate` (batch games, average guess count), `assist`
 (interactive helper for a live Wordle — suggests guesses, you enter the
-feedback as letters `gyx`, digits `210`, or pasted emoji).
+feedback as letters `gyx`, digits `210`, or pasted emoji), `book build` (the
+opening book, below) and `clear`.
+
+`simulate` and `assist` build the opening book for their game and strategy on
+first use (progress on stderr) and load it afterwards; `--no-book` plays fully
+online. The book is a cache of the solver's own choices, so games are identical
+either way. `lex book build` takes the same game and strategy flags, builds the
+book or reports it up to date (`--force` rebuilds), and prints its size and
+build time. Books live in `data/books/`; `lex clear --books [--lang L] [-l N]`
+removes them, and clearing a corpus or a Profile removes its books too.
 
 | Flag | Default | Description |
 |---|---|---|
