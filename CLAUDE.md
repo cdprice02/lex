@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `lex` is a Wordle solver CLI that runs simulations against the Google Books Ngrams V3 corpus. It picks guesses by maximizing Shannon entropy over the remaining candidate word set, scored against every word in the dictionary by default (`--pool hard` plays the official Wordle hard-mode rule; `--pool ultrahard` restricts guesses to words consistent with every feedback, which on a Corpus run are the candidates). Words are filtered against Wiktionary extracts so every candidate is a real dictionary word. It is a generic solver: any supported (language, word length) pair, with no English-only or 5-letter-only assumptions.
 
-Planned work lives in GitHub issues; the open `wayfinder:map` issue charts the current effort. Standing decisions are ADRs in `docs/adr/`. A solver-behavior change ships with a paired per-target comparison judged by the rule in `docs/adr/0007-benchmark-objective.md`; methodology and current results are in `benchmarks/README.md`.
+Planned work lives in GitHub issues; the open `wayfinder:map` issue charts the current effort. Standing decisions are ADRs in `docs/adr/`. A solver-behavior change ships with a paired per-target comparison judged by the rule in `docs/adr/0007-benchmark-objective.md`; every Track has a committed snapshot in `benchmarks/snapshots/` (ADR 0012), checked with `cargo test --release -p lex-cli --test tracks -- --ignored headline`, and a behavior-changing PR commits its snapshots in a separate `test(snapshots): ...` commit. Methodology and current results are in `benchmarks/README.md`.
 
 ## Commands
 
@@ -45,7 +45,7 @@ Pinned to nightly in `rust-toolchain.toml`. The codebase uses nightly features s
 
 Toolchain options:
 - **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically
-- **rustup**: `rustup install nightly && rustup override set nightly` — `rust-toolchain.toml` is read automatically
+- **rustup**: `rustup install nightly && rustup override set nightly` — `rust-toolchain.toml` is read automatically; also `cargo install cargo-insta` for the Track snapshots (the Nix shell has it)
 
 ## Workspace structure
 

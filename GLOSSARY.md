@@ -75,9 +75,9 @@ _Avoid_: Default mode
 **Tier**:
 The weight a Track carries in a Verdict: headline Tracks (every language at length 5, and the Wordle Profiles) are scored on their full dictionary, breadth Tracks (every language at the Fibonacci lengths) with a looser regression bound, and smoke Tracks (the remaining lengths) only have to finish._Avoid_: Level, suite (that is the whole matrix)
 
-**Oracle**:
-The check for a change meant to leave play untouched: on every Track of a set, the candidate's games must equal the base commit's word for word. Its fast set is the headline Tier's Tracks and its full set every Track.
-_Avoid_: Regression suite (judging a change that is meant to move play is the Verdict's job)
+**Snapshot**:
+The committed record of one Track's play: the Corpus and Profile checksums, the run configuration, the summary, the first guess and a digest of every game. A change meant to leave play untouched must leave its Tracks' snapshots unchanged; the header (solver digest, version) is provenance and never decides a match.
+_Avoid_: Baseline (a snapshot is the base itself, never rebuilt from a base commit), Oracle (the earlier rerun-the-base check)
 
 **Track table**:
 The `const` list of every Track and its Tier, built from the supported languages, word lengths and Profiles, so it grows with them and has no file to edit.

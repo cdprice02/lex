@@ -6,7 +6,7 @@ A solver change is judged by mean guesses first and failure rate (more than 6 gu
 - breadth, paired by word: every language at the Fibonacci lengths 3, 8, 13 and 21 that are Supported, on the full dictionary where that fits the time budget and 500 sampled targets otherwise;
 - smoke, must finish: every language at the remaining Supported lengths.
 
-The Oracle follows the tiers: its fast set is the headline tracks, its full set every track.
+The committed snapshots follow the tiers (ADR 0012): the fast set is the headline tracks, the full set every track.
 
 A change lands when the average per-track mean delta over the headline tier is negative, no headline track regresses by more than 0.005 guesses, and no breadth track regresses by more than 0.02. Tunables are derived from the Corpus at load time or set once globally against the pooled matrix; a table of values tuned per language and length is not allowed.
 

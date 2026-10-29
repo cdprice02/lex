@@ -1,0 +1,54 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 7
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "3683ee900db3d7f8f7772209154f282539ad8e4ad851fd2fa591c3fe78946604",
+  "first_guess": "carnies",
+  "games_sha256": "4159866a47545c084e74371bdad3bbe94e5bcaaca9cfae35ab296d4b87d671bd",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.5438140300277836,
+        "4": 0.4354402208988419,
+        "5": 0.020745749073374967
+      },
+      "mean": 3.4769317190455946
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.4200000000000002,
+        "4": 0.5400000000000003,
+        "5": 0.04
+      },
+      "mean": 3.6199999999999974
+    }
+  },
+  "track": "english-7"
+}

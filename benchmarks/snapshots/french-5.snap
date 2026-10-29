@@ -1,0 +1,62 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "french",
+      "length": 5
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "full"
+    }
+  },
+  "corpus_sha256": "a26c9f43ec6bf2a030790cb41c826a9c9e89792b00295d1752354bd20e7b673e",
+  "first_guess": "raies",
+  "games_sha256": "9203314005c3bfcf371eed825ec5572f116ed1e3bcecf15965ee0f4a36084c56",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.002035840647730918,
+      "histogram": {
+        "1": 0.00013380335394348354,
+        "2": 0.004191384973808404,
+        "3": 0.2005247879641375,
+        "4": 0.5399272703665958,
+        "5": 0.2241474662021796,
+        "6": 0.029039446491602058,
+        "7": 0.0019966534145790826,
+        "8": 0.000039187233151834945
+      },
+      "mean": 4.079064100388135
+    },
+    "uniform": {
+      "failure_rate": 0.003769584167746498,
+      "histogram": {
+        "1": 0.00005889975262103899,
+        "2": 0.0026504888679467547,
+        "3": 0.1521969607727654,
+        "4": 0.5088349628931093,
+        "5": 0.28578159971728984,
+        "6": 0.04670750382848336,
+        "7": 0.0036517846625044197,
+        "8": 0.00011779950524207798
+      },
+      "mean": 4.232948521616535
+    }
+  },
+  "track": "french-5"
+}

@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "french",
+      "length": 6
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "e95aac86fa67b8ac2f1541b21fafca1df909ea1c190309798188e794c38508aa",
+  "first_guess": "taries",
+  "games_sha256": "2d0377ad768f2f7ad7904ddbc2f1c43adbb4fe817447c117dcb2b719941e8579",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.42479198407712404,
+        "4": 0.4929859679604579,
+        "5": 0.07386059044900208,
+        "6": 0.008361457513416073
+      },
+      "mean": 3.66579152139871
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.3900000000000002,
+        "4": 0.48000000000000026,
+        "5": 0.10999999999999999,
+        "6": 0.02
+      },
+      "mean": 3.7599999999999967
+    }
+  },
+  "track": "french-6"
+}

@@ -1,0 +1,56 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 4f5349569c4d802fdc8956c274b34f743b99c2d7473e556e90a6fc11ed17c366
+---
+{
+  "config": {
+    "game": {
+      "dictionary_length": null,
+      "kind": "corpus",
+      "language": "english",
+      "length": 6
+    },
+    "strategy": {
+      "endgame_aversion": 0.0,
+      "endgame_threshold": 0,
+      "mode": "unconstrained",
+      "temperature": 5.0,
+      "win_weight": 1.0
+    },
+    "targets": {
+      "kind": "sample",
+      "n": 100,
+      "seed": 0
+    }
+  },
+  "corpus_sha256": "e152f47092321554188731247edf980f72855ad29e3cccf8400ac2e71523b9c3",
+  "first_guess": "sarten",
+  "games_sha256": "7b78a6167848c3f7b515d318968fbf8376e233d779d91bba5930f3e3d422d09b",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.39591408951527457,
+        "4": 0.5158604460101494,
+        "5": 0.07951742613930346,
+        "6": 0.00870803833527276
+      },
+      "mean": 3.7010194132945733
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "histogram": {
+        "3": 0.26000000000000006,
+        "4": 0.6000000000000003,
+        "5": 0.11999999999999998,
+        "6": 0.02
+      },
+      "mean": 3.8999999999999986
+    }
+  },
+  "track": "english-6"
+}
