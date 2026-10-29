@@ -18,6 +18,7 @@ fn main() -> anyhow::Result<()> {
             lex_data::match_word_length!(assist, args.common.dispatch_length(), &args)
         }
         Command::Compare(args) => compare_reports(&args),
+        Command::Verdict(args) => std::process::exit(lex_cli::verdict::command(&args)),
         Command::Book(args) => match args.command {
             BookCommand::Build(args) => {
                 lex_data::match_word_length!(build_command, args.dispatch_length(), &args)

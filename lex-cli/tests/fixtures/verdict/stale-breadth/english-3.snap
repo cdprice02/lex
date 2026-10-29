@@ -1,0 +1,22 @@
+---
+source: lex-cli/tests/tracks.rs
+info:
+  lex_version: 0.1.0
+  solver_digest: 0000000000000000000000000000000000000000000000000000000000000000
+---
+{
+  "corpus_sha256": "aaaa00000000",
+  "profile": null,
+  "summary": {
+    "max_guesses": 6,
+    "prior": {
+      "failure_rate": 0.0,
+      "mean": 3.0
+    },
+    "uniform": {
+      "failure_rate": 0.0,
+      "mean": 3.1
+    }
+  },
+  "track": "english-3"
+}
