@@ -29,6 +29,30 @@ pub fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]
     f.write_all(&records).unwrap();
 }
 
+/// Seeds the cache with `head` followed by distinct low-frequency five-letter words, up to the
+/// 200 a length needs to be Supported. The head keeps its frequencies and its order.
+pub fn seed_supported(dir: &DataDir, lang: Language, n: usize, head: &[(&str, u64)]) {
+    let floor = head.iter().map(|&(_, f)| f).min().unwrap_or(1);
+    let padding: Vec<(String, u64)> = (0..lex_data::MIN_SUPPORTED_WORDS.saturating_sub(head.len()))
+        .map(|i| {
+            let letters: String = [i / 676, i / 26 % 26, i % 26]
+                .iter()
+                .map(|&d| char::from(b'a' + d as u8))
+                .collect();
+            (
+                format!("zz{letters}"),
+                floor.saturating_sub(1 + i as u64).max(1),
+            )
+        })
+        .collect();
+    let entries: Vec<(&str, u64)> = head
+        .iter()
+        .copied()
+        .chain(padding.iter().map(|(w, f)| (w.as_str(), *f)))
+        .collect();
+    seed_bin(dir, lang, n, &entries);
+}
+
 /// Stands in for the cached Wiktionary list, so the report's provenance lookup never downloads.
 pub fn seed_dict(dir: &DataDir, lang: Language) {
     let path = dir.dict_path(lang);

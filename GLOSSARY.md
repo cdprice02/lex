@@ -49,7 +49,7 @@ The Corpus's minimum observed count, assigned to Profile words the Corpus lacks 
 _Avoid_: Default frequency
 
 **Supported length**:
-A word length at which a language's Corpus holds at least 500 words; a language's maximum length is its largest Supported length.
+A word length at which a language's Corpus holds at least 200 words; a language's maximum length is its largest Supported length.
 _Avoid_: Max length (as a fixed constant)
 
 **Alphabet**:

@@ -1,11 +1,11 @@
 //! The benchmark Tracks: one `const` table of every game the project measures, derived from the
 //! supported languages, word lengths, Profiles and guess pools (ADR 0007). A new `Language`
-//! variant or a raised `MAX_WORD_LENGTH` adds its Tracks without a table edit.
+//! variant or a raised `max_supported_length` adds its Tracks without a table edit.
 
 use std::fmt;
 
 use lex_core::{GuessPool, Strategy};
-use lex_data::{Language, MAX_WORD_LENGTH, MIN_WORD_LENGTH, Profile};
+use lex_data::{Language, MIN_WORD_LENGTH, Profile};
 use strum::VariantArray;
 
 use crate::config::{Game, RunConfig, Targets};
@@ -41,8 +41,18 @@ const fn pool(pool: GuessPool) -> Strategy {
     }
 }
 
-const CORPUS_TRACK_COUNT: usize =
-    Language::VARIANTS.len() * (MAX_WORD_LENGTH - MIN_WORD_LENGTH + 1);
+/// The Corpus lengths a language has Tracks for: 3 up to its maximum Supported length.
+const fn corpus_track_count() -> usize {
+    let mut count = 0;
+    let mut l = 0;
+    while l < Language::VARIANTS.len() {
+        count += Language::VARIANTS[l].max_supported_length() - MIN_WORD_LENGTH + 1;
+        l += 1;
+    }
+    count
+}
+
+const CORPUS_TRACK_COUNT: usize = corpus_track_count();
 pub const TRACK_COUNT: usize = CORPUS_TRACK_COUNT + PROFILE_TRACKS.len();
 
 /// How much a Track weighs in the benchmark (ADR 0007).
@@ -167,7 +177,7 @@ const fn build() -> [Track; TRACK_COUNT] {
     let mut l = 0;
     while l < Language::VARIANTS.len() {
         let mut length = MIN_WORD_LENGTH;
-        while length <= MAX_WORD_LENGTH {
+        while length <= Language::VARIANTS[l].max_supported_length() {
             let tier = Tier::of_length(length);
             tracks[n] = Track {
                 game: Game::Corpus {
@@ -236,18 +246,16 @@ mod tests {
 
     #[test]
     fn the_count_follows_the_variants_and_the_length_range() {
-        let lengths = MAX_WORD_LENGTH - MIN_WORD_LENGTH + 1;
-        assert_eq!(
-            TRACK_COUNT,
-            Language::VARIANTS.len() * lengths + PROFILE_TRACKS.len()
-        );
+        let lengths = |l: Language| l.max_supported_length() - MIN_WORD_LENGTH + 1;
+        let corpus_total: usize = Language::VARIANTS.iter().map(|&l| lengths(l)).sum();
+        assert_eq!(TRACK_COUNT, corpus_total + PROFILE_TRACKS.len());
         let corpus = TRACKS
             .iter()
             .filter(|t| matches!(t.game, Game::Corpus { .. }))
             .count();
-        assert_eq!(corpus, Language::VARIANTS.len() * lengths);
+        assert_eq!(corpus, corpus_total);
         for &language in Language::VARIANTS {
-            for length in MIN_WORD_LENGTH..=MAX_WORD_LENGTH {
+            for length in MIN_WORD_LENGTH..=language.max_supported_length() {
                 assert!(
                     TRACKS.iter().any(|t| matches!(t.game,
                         Game::Corpus { language: l, length: n, .. } if l == language && n == length)),

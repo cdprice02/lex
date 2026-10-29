@@ -2,6 +2,19 @@ use std::path::PathBuf;
 
 use thiserror::Error;
 
+use crate::language::Language;
+
+fn format_lengths(lengths: &[usize]) -> String {
+    if lengths.is_empty() {
+        return "none".to_string();
+    }
+    lengths
+        .iter()
+        .map(usize::to_string)
+        .collect::<Vec<_>>()
+        .join(", ")
+}
+
 #[derive(Error, Debug)]
 pub enum LexDataError {
     #[error("invalid ngram: {0}")]
@@ -26,6 +39,18 @@ pub enum LexDataError {
         path: PathBuf,
         index: usize,
         reason: String,
+    },
+    #[error(
+        "{lang} has {count} words at length {length}; a length needs at least {min} to be \
+         supported. Supported lengths for {lang}: {}",
+        format_lengths(supported)
+    )]
+    UnsupportedLength {
+        lang: Language,
+        length: usize,
+        count: usize,
+        min: usize,
+        supported: Vec<usize>,
     },
     #[error("corrupt opening book {path:?}: {reason}; rebuild it with `lex book build --force`")]
     CorruptBook { path: PathBuf, reason: String },
