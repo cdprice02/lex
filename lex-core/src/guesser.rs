@@ -741,7 +741,7 @@ mod tests {
             !top.in_candidates,
             "{probe} should be a non-candidate probe"
         );
-        assert_eq!(top.p_answer, 0.0);
+        assert_eq!(top.p_answer.abs().to_bits(), 0);
     }
 
     #[test]

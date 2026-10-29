@@ -1,5 +1,6 @@
 //! Exact search for Candidate sets at or below the Endgame threshold.
 
+use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -247,7 +248,11 @@ impl<const N: usize> Endgame<N> {
         let ahead = |b: Solved| {
             // candidates rank ahead of non-candidates, then pool (frequency) order
             let rank = |g: u32| (set.binary_search(&g).is_err(), g);
-            cost < b.cost || (cost == b.cost && rank(guess) < rank(b.guess))
+            match cost.total_cmp(&b.cost) {
+                Ordering::Less => true,
+                Ordering::Equal => rank(guess) < rank(b.guess),
+                Ordering::Greater => false,
+            }
         };
         if best.is_none_or(ahead) {
             *best = Some(Solved { cost, guess });
@@ -382,18 +387,27 @@ mod tests {
         let free = endgame.expected_guesses(&set, &Allowed::Whole);
         assert!(free < limited, "{free} !< {limited}");
         // asking again, in either order, returns each allowed set's own cost
-        assert_eq!(endgame.expected_guesses(&set, &restricted), limited);
-        assert_eq!(endgame.expected_guesses(&set, &Allowed::Whole), free);
+        assert_eq!(
+            endgame.expected_guesses(&set, &restricted).to_bits(),
+            limited.to_bits()
+        );
+        assert_eq!(
+            endgame.expected_guesses(&set, &Allowed::Whole).to_bits(),
+            free.to_bits()
+        );
         let fresh = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0)
             .expected_guesses(&set, &restricted);
-        assert_eq!(limited, fresh);
+        assert_eq!(limited.to_bits(), fresh.to_bits());
     }
 
     #[test]
     fn a_lone_candidate_is_one_guess() {
         let pool = pool_of(&FAMILY);
         let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0);
-        assert_eq!(endgame.expected_guesses(&[3], &Allowed::Whole), 1.0);
+        assert_eq!(
+            endgame.expected_guesses(&[3], &Allowed::Whole).to_bits(),
+            1.0_f64.to_bits()
+        );
         assert_eq!(
             endgame.best_guess(&[3], &Allowed::Whole),
             Some(pool.word(3))

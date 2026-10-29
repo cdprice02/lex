@@ -1,6 +1,7 @@
 //! The Candidate set and its entropy scoring.
 
 use std::cell::RefCell;
+use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::hint::cold_path;
 use std::sync::Arc;
@@ -167,9 +168,7 @@ impl<const N: usize> Candidates<N> {
         // stable sort: equal keys keep frequency-descending iteration order
         scored.sort_by(|a, b| {
             let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
-            sb.partial_cmp(&sa)
-                .expect("scores are finite")
-                .then(b.in_candidates.cmp(&a.in_candidates))
+            cmp_scores(sb, sa).then(b.in_candidates.cmp(&a.in_candidates))
         });
         scored.truncate(k);
         scored
@@ -197,8 +196,12 @@ impl<const N: usize> Candidates<N> {
                 log::trace!("{}: {}", self.pool.word(i), score);
                 match best {
                     Some((best_i, best_score, best_in)) => {
-                        if score > best_score || (score == best_score && in_candidates && !best_in)
-                        {
+                        let beats = match cmp_scores(score, best_score) {
+                            Ordering::Greater => true,
+                            Ordering::Equal => in_candidates && !best_in,
+                            Ordering::Less => false,
+                        };
+                        if beats {
                             log::debug!(
                                 "{} > {}; {} > {}",
                                 self.pool.word(i),
@@ -215,6 +218,12 @@ impl<const N: usize> Candidates<N> {
         );
         best.map(|(i, _, _)| self.pool.word(i))
     }
+}
+
+/// Orders two finite scores. Adding `0.0` first folds `-0.0` into `0.0`, so a guess scoring zero
+/// entropy ties with another zero whichever sign its sum landed on.
+fn cmp_scores(a: f64, b: f64) -> Ordering {
+    (a + 0.0).total_cmp(&(b + 0.0))
 }
 
 /// Largest bucket array the dense counter may allocate per thread. Working memory like this sits
@@ -320,9 +329,9 @@ mod tests {
         let five: Code<5> = [0, 1, 2, 3, 4];
         let ten: Code<10> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         // N=5 sizes the shared buffer first; N=10 must grow it rather than index past the end
-        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
-        assert_eq!(guess_entropy(&ten, &[ten], &[1.0]), 0.0);
-        assert_eq!(guess_entropy(&five, &[five], &[1.0]), 0.0);
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]).abs().to_bits(), 0);
+        assert_eq!(guess_entropy(&ten, &[ten], &[1.0]).abs().to_bits(), 0);
+        assert_eq!(guess_entropy(&five, &[five], &[1.0]).abs().to_bits(), 0);
     }
 
     #[test]
