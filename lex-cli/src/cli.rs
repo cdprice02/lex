@@ -74,7 +74,7 @@ pub struct BookBuildArgs {
         value_parser = parse_track,
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
-            "win_weight", "endgame_threshold", "endgame_aversion",
+            "win_weight", "endgame_threshold", "endgame_aversion", "rollout_k",
         ]
     )]
     pub track: Option<Track>,
@@ -207,6 +207,12 @@ pub struct CommonArgs {
         value_parser = parse_win_weight
     )]
     pub endgame_aversion: f64,
+    /// Compare this many top-scored guesses by playing each out at mid-sized candidate sets (0 disables)
+    #[arg(
+        long,
+        default_value_t = Strategy::DEFAULT.rollout_k
+    )]
+    pub rollout_k: usize,
 }
 
 impl CommonArgs {
@@ -261,6 +267,7 @@ impl CommonArgs {
             win_weight: self.win_weight,
             endgame_threshold: self.endgame_threshold,
             endgame_aversion: self.endgame_aversion,
+            rollout_k: self.rollout_k,
         }
     }
 
@@ -307,7 +314,8 @@ pub struct SimulateArgs {
         value_parser = parse_track,
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
-            "win_weight", "endgame_threshold", "endgame_aversion", "num_games", "seed", "targets",
+            "win_weight", "endgame_threshold", "endgame_aversion", "rollout_k", "num_games", "seed",
+            "targets",
         ]
     )]
     pub track: Option<Track>,

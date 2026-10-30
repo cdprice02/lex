@@ -175,8 +175,13 @@ impl<const N: usize> Guesser<N> {
     #[must_use]
     pub fn suggest_top_k(&self, k: usize) -> Vec<Suggestion<N>> {
         let tree = self.tree.borrow();
-        tree.candidates(self.node)
+        let candidates = tree.candidates(self.node);
+        let pool = candidates.pool();
+        candidates
             .suggest_top_k(tree.strategy(), tree.allowed(self.node), k)
+            .iter()
+            .map(|scored| scored.suggestion(&pool))
+            .collect()
     }
 
     /// Why `word` may not be played next under the strategy's pool rule and the guesses pushed,
@@ -525,6 +530,7 @@ mod tests {
             win_weight: 0.0,
             endgame_threshold: 0,
             endgame_aversion: 0.0,
+            rollout_k: 0,
         },
         Strategy {
             pool: GuessPool::All,
@@ -532,6 +538,7 @@ mod tests {
             win_weight: 1.5,
             endgame_threshold: 0,
             endgame_aversion: 0.0,
+            rollout_k: 0,
         },
     ];
 
@@ -803,17 +810,48 @@ mod tests {
         }
     }
 
+    #[test]
+    fn a_rollout_leaves_positions_within_the_endgame_threshold_to_the_endgame() {
+        let ws = dict_set(DICT);
+        let plain = Strategy {
+            endgame_threshold: 3,
+            ..Strategy::default()
+        };
+        let with_rollout = Strategy {
+            rollout_k: 5,
+            ..plain
+        };
+        for &(target, _) in DICT {
+            let target = word(target);
+            let mut a = corpus_guesser(&ws, plain);
+            let mut b = corpus_guesser(&ws, with_rollout);
+            while let Some(guess) = a.suggest() {
+                if b.num_candidates() <= 3 {
+                    assert_eq!(b.suggest(), Some(guess), "target {target}");
+                }
+                let guess = Guess::new(guess, WordCorrectness::correct(target, guess));
+                if guess.correctness().is_correct() {
+                    break;
+                }
+                a.push_guess(guess.clone());
+                b.push_guess(guess);
+            }
+        }
+    }
+
     /// A floor low enough that the ten-word fixtures book several levels.
     const LOW_FLOOR: u64 = 4;
 
-    /// Every strategy shape the book must serve: the three pools, with and without an Endgame.
+    /// Every strategy shape the book must serve: the three pools, with and without an Endgame
+    /// and a rollout.
     fn book_strategies() -> Vec<Strategy> {
         let mut all = Vec::new();
         for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
-            for endgame_threshold in [0, 3] {
+            for (endgame_threshold, rollout_k) in [(0, 0), (3, 0), (0, 4), (3, 4)] {
                 all.push(Strategy {
                     pool,
                     endgame_threshold,
+                    rollout_k,
                     ..Strategy::default()
                 });
             }

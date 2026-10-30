@@ -1,6 +1,9 @@
 //! The guesses a game position permits, including the hard-mode rule.
 
+use std::cell::RefCell;
+use std::collections::HashMap;
 use std::fmt;
+use std::rc::Rc;
 
 use crate::correctness::{Code, LetterCounts, pattern_ordinal};
 use crate::strategy::{GuessPool, Pool};
@@ -107,6 +110,15 @@ impl Allowed {
         }
     }
 
+    /// How many guesses this allows at a node of `candidates` candidates over a pool of `pool_len`.
+    pub(crate) const fn guess_count(&self, pool_len: usize, candidates: usize) -> usize {
+        match self {
+            Self::Whole => pool_len,
+            Self::Candidates => candidates,
+            Self::List(list) => list.len(),
+        }
+    }
+
     /// The allowed guesses after `guess` scored `ordinal`.
     pub(crate) fn after<const N: usize>(
         &self,
@@ -139,9 +151,43 @@ impl Allowed {
     }
 }
 
+/// Numbers each distinct allowed-guess list met so far, so a memo key stays small. Clones share
+/// one table, which is how the Endgame and the rollout memos intern a list once between them.
+#[derive(Debug, Clone, Default)]
+pub struct AllowedIds(Rc<RefCell<HashMap<Vec<u32>, u32>>>);
+
+impl AllowedIds {
+    /// The memo id of `allowed`, or `None` when the Guess pool mode implies it: `Whole` and
+    /// `Candidates` are fixed by the mode and the candidate set, so only a `List` needs an id.
+    pub(crate) fn slot(&self, allowed: &Allowed) -> Option<u32> {
+        let Allowed::List(list) = allowed else {
+            return None;
+        };
+        let mut ids = self.0.borrow_mut();
+        if let Some(&id) = ids.get(list) {
+            return Some(id);
+        }
+        let id = u32::try_from(ids.len()).unwrap_or(u32::MAX);
+        ids.insert(list.clone(), id);
+        Some(id)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_clone_numbers_lists_in_the_same_table() {
+        let ids = AllowedIds::default();
+        let shared = ids.clone();
+        let (a, b) = (Allowed::List(vec![1, 2]), Allowed::List(vec![3]));
+        assert_eq!(ids.slot(&a), Some(0));
+        assert_eq!(shared.slot(&b), Some(1));
+        assert_eq!(shared.slot(&a), Some(0));
+        assert_eq!(ids.slot(&Allowed::Whole), None);
+        assert_eq!(ids.slot(&Allowed::Candidates), None);
+    }
 
     fn letters(word: &str) -> [char; 5] {
         word.chars().collect::<Vec<_>>().try_into().unwrap()

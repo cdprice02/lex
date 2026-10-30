@@ -6,8 +6,8 @@ use std::sync::Arc;
 
 use lex_data::Word;
 
-use crate::allowed::Allowed;
-use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
+use crate::allowed::{Allowed, AllowedIds};
+use crate::correctness::WordCorrectness;
 use crate::strategy::{GuessPool, Pool};
 
 /// The best guess for a candidate set and what it costs.
@@ -43,7 +43,7 @@ pub struct Endgame<const N: usize> {
     /// Answer prior weight of each pool word, unnormalized.
     weights: Vec<f64>,
     /// Each distinct allowed-guess list met so far, numbered, so a memo key is small.
-    list_ids: HashMap<Vec<u32>, u32>,
+    list_ids: AllowedIds,
     /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
     memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
 }
@@ -62,9 +62,15 @@ impl<const N: usize> Endgame<N> {
             guess_pool,
             growth: (aversion > 0.0).then(|| aversion.exp()),
             weights,
-            list_ids: HashMap::new(),
+            list_ids: AllowedIds::default(),
             memo: HashMap::new(),
         }
+    }
+
+    /// Numbers allowed-guess lists in `ids`, a table another memo may share.
+    pub(crate) fn sharing(mut self, ids: AllowedIds) -> Self {
+        self.list_ids = ids;
+        self
     }
 
     /// The Answer prior weight of the pool word at `index`.
@@ -74,11 +80,15 @@ impl<const N: usize> Endgame<N> {
 
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
     pub(crate) fn best_guess(&mut self, set: &[u32], allowed: &Allowed) -> Option<Word<N>> {
+        self.best_index(set, allowed).map(|i| self.pool.word(i))
+    }
+
+    /// [`best_guess`](Self::best_guess) as a pool index.
+    pub(crate) fn best_index(&mut self, set: &[u32], allowed: &Allowed) -> Option<u32> {
         if set.is_empty() {
             return None;
         }
-        let guess = self.solve(set, allowed).guess;
-        Some(self.pool.word(guess))
+        Some(self.solve(set, allowed).guess)
     }
 
     /// Expected number of guesses to finish from `set` under the answer prior renormalized to it.
@@ -88,22 +98,9 @@ impl<const N: usize> Endgame<N> {
         self.solve(set, allowed).cost / mass
     }
 
-    /// The memo id of `allowed`, or `None` when the Guess pool mode implies it.
-    fn memo_slot(&mut self, allowed: &Allowed) -> Option<u32> {
-        let Allowed::List(list) = allowed else {
-            return None;
-        };
-        if let Some(&id) = self.list_ids.get(list) {
-            return Some(id);
-        }
-        let id = u32::try_from(self.list_ids.len()).unwrap_or(u32::MAX);
-        self.list_ids.insert(list.clone(), id);
-        Some(id)
-    }
-
     /// The best guess and cost for `set`, memoized.
     fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
-        let slot = self.memo_slot(allowed);
+        let slot = self.list_ids.slot(allowed);
         if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
             return solved;
         }
@@ -135,7 +132,7 @@ impl<const N: usize> Endgame<N> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order: Vec<(f64, bool, u32)> = Vec::new();
         let mut consider = |this: &Self, g: u32, in_set: bool| {
-            this.partition(set, g, &mut keyed);
+            this.pool.partition(set, g, &mut keyed);
             if let Some(floor) = this.floor(&keyed, g, in_set, mass) {
                 order.push((floor, !in_set, g));
             }
@@ -169,20 +166,6 @@ impl<const N: usize> Endgame<N> {
             self.try_guess(set, allowed, g, !outside, mass, &mut best);
         }
         best.expect("a non-empty set has a candidate guess")
-    }
-
-    /// Fills `out` with `(feedback ordinal, answer)` for every answer in `set` against `guess`,
-    /// grouped by ordinal and ascending by index within a group.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
-        let code = self.pool.code(guess);
-        let mut counts: LetterCounts = [0; 256];
-        out.clear();
-        out.extend(
-            set.iter()
-                .map(|&i| (pattern_ordinal(self.pool.code(i), code, &mut counts), i)),
-        );
-        // stable sort keeps each group ascending by index
-        out.sort_by_key(|&(ordinal, _)| ordinal);
     }
 
     /// A lower bound on the cost of `guess`, or `None` if it should not be tried. A non-candidate
@@ -232,7 +215,7 @@ impl<const N: usize> Endgame<N> {
         best: &mut Option<Solved>,
     ) {
         let mut keyed = Vec::with_capacity(set.len());
-        self.partition(set, guess, &mut keyed);
+        self.pool.partition(set, guess, &mut keyed);
 
         let win = WordCorrectness::<N>::COUNT - 1;
         let growth = self.growth.unwrap_or(1.0);
@@ -275,6 +258,7 @@ mod tests {
     use lex_data::WordSet;
 
     use super::*;
+    use crate::correctness::pattern_ordinal;
 
     const FAMILY: [&str; 7] = [
         "batch", "catch", "hatch", "latch", "match", "patch", "watch",
