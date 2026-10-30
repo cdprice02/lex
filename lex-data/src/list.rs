@@ -21,7 +21,7 @@ fn invalid(file: &str, line: usize, reason: impl Into<String>) -> anyhow::Error 
 
 /// Normalizes each line of `text` in input order. Empty lines are allowed only at the end of the
 /// file (the final newline included); one anywhere else is an error.
-pub(crate) fn parse(file: &str, text: &str) -> anyhow::Result<Vec<String>> {
+pub fn parse(file: &str, text: &str) -> anyhow::Result<Vec<String>> {
     let mut lines: Vec<&str> = text.split('\n').collect();
     while lines.last() == Some(&"") {
         lines.pop();
@@ -45,7 +45,7 @@ pub(crate) fn parse(file: &str, text: &str) -> anyhow::Result<Vec<String>> {
 
 /// Checks every word against length `N`, the Alphabet and uniqueness. Line numbers are positions
 /// in `words`, which is the file's line order.
-pub(crate) fn validate<const N: usize>(
+pub fn validate<const N: usize>(
     file: &str,
     words: &[String],
     alphabet: &HashSet<char>,
@@ -80,13 +80,13 @@ pub(crate) fn validate<const N: usize>(
 }
 
 /// A line-numbered complaint for callers that find a violation across lists.
-pub(crate) fn complain(file: &str, line: usize, reason: impl Into<String>) -> anyhow::Error {
+pub fn complain(file: &str, line: usize, reason: impl Into<String>) -> anyhow::Error {
     invalid(file, line, reason)
 }
 
 /// The stored form of a list: sorted, `\n` after every word. Its SHA-256 is the checksum
 /// compiled into the registry.
-pub(crate) struct Canonical {
+pub struct Canonical {
     /// The list, one word per line.
     pub(crate) text: String,
     /// SHA-256 of `text`, as lowercase hex.
@@ -94,7 +94,7 @@ pub(crate) struct Canonical {
 }
 
 /// Sorts `words` into their stored form and checksums it.
-pub(crate) fn canonicalize(mut words: Vec<String>) -> Canonical {
+pub fn canonicalize(mut words: Vec<String>) -> Canonical {
     words.sort_unstable();
     let mut text = String::with_capacity(words.iter().map(|w| w.len() + 1).sum());
     for w in &words {
@@ -106,7 +106,7 @@ pub(crate) fn canonicalize(mut words: Vec<String>) -> Canonical {
 }
 
 /// Hex SHA-256 of a stored list's bytes.
-pub(crate) fn checksum(bytes: &[u8]) -> String {
+pub fn checksum(bytes: &[u8]) -> String {
     hex(&Sha256::digest(bytes))
 }
 
@@ -119,7 +119,7 @@ mod tests {
     }
 
     fn words(ws: &[&str]) -> Vec<String> {
-        ws.iter().map(|w| w.to_string()).collect()
+        ws.iter().map(std::string::ToString::to_string).collect()
     }
 
     #[test]

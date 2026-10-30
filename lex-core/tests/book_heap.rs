@@ -3,6 +3,11 @@
 //! opt-in because it builds the real book:
 //! `LEX_DATA_DIR=<data dir> cargo test -p lex-core --release --test book_heap -- --ignored --nocapture`
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::expect_used,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 use std::sync::Mutex;
 
@@ -41,13 +46,15 @@ fn measure<const N: usize>(
     pool_len: usize,
     build: impl FnOnce(&Guesser<N>) -> OpeningBook<N>,
 ) -> (u64, usize) {
-    let _guard = PROFILER.lock().unwrap_or_else(|e| e.into_inner());
+    let _guard = PROFILER
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let _profiler = dhat::Profiler::builder().testing().build();
-    let built = build(guesser);
-    let stored = built.to_nodes();
-    drop(built);
+    let fresh = build(guesser);
+    let stored = fresh.to_nodes();
+    drop(fresh);
     let loaded = OpeningBook::<N>::from_nodes(stored, pool_len).unwrap();
-    let peak = dhat::HeapStats::get().max_bytes as u64;
+    let peak = u64::try_from(dhat::HeapStats::get().max_bytes).unwrap();
     let (nodes, claimed) = (loaded.len(), loaded.heap_bytes());
     let live = dhat::HeapStats::get().curr_bytes;
     drop(loaded);
@@ -67,8 +74,8 @@ fn measure<const N: usize>(
 fn a_fixture_book_stays_far_under_the_cap() {
     let pool = fixture();
     let pool_len = pool.len();
-    let answers = pool.words().collect();
-    let guesser = Guesser::new(pool, answers, Strategy::default());
+    let answers: Vec<_> = pool.words().collect();
+    let guesser = Guesser::new(&pool, &answers, Strategy::default());
     let (peak, nodes) = measure(&guesser, pool_len, |g| g.build_book_with_floor(1));
     assert!(nodes > 0);
     assert!(peak < CAP / 100);
@@ -80,7 +87,7 @@ fn the_english_5_book_fits_the_cap() {
     let dir = DataDir::new(std::env::var("LEX_DATA_DIR").unwrap_or_else(|_| "../data".into()));
     let pool = dir.load::<5>(Language::English, None).unwrap();
     let pool_len = pool.len();
-    let answers = pool.words().collect();
-    let guesser = Guesser::new(pool, answers, Strategy::default());
-    measure(&guesser, pool_len, |g| g.build_book());
+    let answers: Vec<_> = pool.words().collect();
+    let guesser = Guesser::new(&pool, &answers, Strategy::default());
+    measure(&guesser, pool_len, lex_core::Guesser::build_book);
 }

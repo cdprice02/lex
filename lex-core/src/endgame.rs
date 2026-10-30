@@ -1,5 +1,6 @@
 //! Exact search for Candidate sets at or below the Endgame threshold.
 
+use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -32,7 +33,7 @@ struct Solved {
 /// key is the candidates alone. The search is exhaustive, with no bound passed down, so memoized
 /// costs are always exact.
 #[derive(Debug)]
-pub(crate) struct Endgame<const N: usize> {
+pub struct Endgame<const N: usize> {
     /// The Guess pool the set indices point into.
     pool: Arc<Pool<N>>,
     /// The Strategy's Guess pool, which decides which guesses a position allows.
@@ -66,6 +67,11 @@ impl<const N: usize> Endgame<N> {
         }
     }
 
+    /// The Answer prior weight of the pool word at `index`.
+    fn weight(&self, index: u32) -> f64 {
+        self.weights[usize::try_from(index).unwrap_or(usize::MAX)]
+    }
+
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
     pub(crate) fn best_guess(&mut self, set: &[u32], allowed: &Allowed) -> Option<Word<N>> {
         if set.is_empty() {
@@ -78,7 +84,7 @@ impl<const N: usize> Endgame<N> {
     /// Expected number of guesses to finish from `set` under the answer prior renormalized to it.
     #[cfg(test)]
     pub(crate) fn expected_guesses(&mut self, set: &[u32], allowed: &Allowed) -> f64 {
-        let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
+        let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
         self.solve(set, allowed).cost / mass
     }
 
@@ -90,7 +96,7 @@ impl<const N: usize> Endgame<N> {
         if let Some(&id) = self.list_ids.get(list) {
             return Some(id);
         }
-        let id = self.list_ids.len() as u32;
+        let id = u32::try_from(self.list_ids.len()).unwrap_or(u32::MAX);
         self.list_ids.insert(list.clone(), id);
         Some(id)
     }
@@ -104,7 +110,7 @@ impl<const N: usize> Endgame<N> {
         let solved = match *set {
             // a lone candidate is the answer: one guess
             [only] => Solved {
-                cost: self.weights[only as usize] * self.growth.unwrap_or(1.0),
+                cost: self.weight(only) * self.growth.unwrap_or(1.0),
                 guess: only,
             },
             _ => self.search(set, allowed),
@@ -120,8 +126,12 @@ impl<const N: usize> Endgame<N> {
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave. Exact ties go to a candidate, then to the
     /// more frequent word, as in the entropy solver.
+    #[expect(
+        clippy::expect_used,
+        reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
+    )]
     fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
-        let mass: f64 = set.iter().map(|&i| self.weights[i as usize]).sum();
+        let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
         let mut keyed = Vec::with_capacity(set.len());
         let mut order: Vec<(f64, bool, u32)> = Vec::new();
         let mut consider = |this: &Self, g: u32, in_set: bool| {
@@ -145,7 +155,7 @@ impl<const N: usize> Endgame<N> {
         };
         match allowed {
             Allowed::Candidates => {}
-            Allowed::Whole => outside(self, &mut (0..self.pool.len() as u32)),
+            Allowed::Whole => outside(self, &mut self.pool.indices()),
             Allowed::List(list) => outside(self, &mut list.iter().copied()),
         }
         order.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)).then(a.2.cmp(&b.2)));
@@ -191,12 +201,12 @@ impl<const N: usize> Endgame<N> {
             if group[0].0 == win {
                 continue;
             }
-            let weights = group.iter().map(|&(_, i)| self.weights[i as usize]);
+            let weights = group.iter().map(|&(_, i)| self.weight(i));
             let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
-            sum += match self.growth {
-                None => 2.0 * group_mass - top,
-                Some(a) => a * top + a * a * (group_mass - top),
-            };
+            sum += self.growth.map_or_else(
+                || 2.0_f64.mul_add(group_mass, -top),
+                |a| (a * a).mul_add(group_mass - top, a * top),
+            );
         }
         Some(sum * self.growth.unwrap_or(1.0))
     }
@@ -206,7 +216,7 @@ impl<const N: usize> Endgame<N> {
     fn initial_cost(&self, guess: u32, in_set: bool, mass: f64) -> f64 {
         match self.growth {
             None => mass,
-            Some(_) if in_set => self.weights[guess as usize],
+            Some(_) if in_set => self.weight(guess),
             Some(_) => 0.0,
         }
     }
@@ -248,7 +258,11 @@ impl<const N: usize> Endgame<N> {
         let ahead = |b: Solved| {
             // candidates rank ahead of non-candidates, then pool (frequency) order
             let rank = |g: u32| (set.binary_search(&g).is_err(), g);
-            cost < b.cost || (cost == b.cost && rank(guess) < rank(b.guess))
+            match cost.total_cmp(&b.cost) {
+                Ordering::Less => true,
+                Ordering::Equal => rank(guess) < rank(b.guess),
+                Ordering::Greater => false,
+            }
         };
         if best.is_none_or(ahead) {
             *best = Some(Solved { cost, guess });
@@ -269,8 +283,8 @@ mod tests {
     fn pool_of(words: &[&str]) -> Arc<Pool<5>> {
         let pairs = words
             .iter()
-            .enumerate()
-            .map(|(i, s)| (Word::<5>::try_from(*s).unwrap(), 1000 - i as u64))
+            .zip(0_u64..)
+            .map(|(s, i)| (Word::<5>::try_from(*s).unwrap(), 1000 - i))
             .collect();
         Pool::new(&WordSet::from_pairs(pairs))
     }
@@ -284,7 +298,7 @@ mod tests {
             .iter()
             .map(|w| {
                 let w = Word::<5>::try_from(*w).unwrap();
-                (0..pool.len() as u32).find(|&i| pool.word(i) == w).unwrap()
+                pool.indices().find(|&i| pool.word(i) == w).unwrap()
             })
             .collect();
         v.sort_unstable();
@@ -310,8 +324,10 @@ mod tests {
                     ordinal_of(&endgame.pool, endgame.pool.word(i), guess) == feedback
                 });
             }
-            let objective = endgame.growth.map_or(guesses as f64, |a| a.powi(guesses));
-            total += endgame.weights[answer as usize] * objective;
+            let objective = endgame
+                .growth
+                .map_or_else(|| f64::from(guesses), |a| a.powi(guesses));
+            total = endgame.weight(answer).mul_add(objective, total);
         }
         total
     }
@@ -383,18 +399,27 @@ mod tests {
         let free = endgame.expected_guesses(&set, &Allowed::Whole);
         assert!(free < limited, "{free} !< {limited}");
         // asking again, in either order, returns each allowed set's own cost
-        assert_eq!(endgame.expected_guesses(&set, &restricted), limited);
-        assert_eq!(endgame.expected_guesses(&set, &Allowed::Whole), free);
+        assert_eq!(
+            endgame.expected_guesses(&set, &restricted).to_bits(),
+            limited.to_bits()
+        );
+        assert_eq!(
+            endgame.expected_guesses(&set, &Allowed::Whole).to_bits(),
+            free.to_bits()
+        );
         let fresh = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0)
             .expected_guesses(&set, &restricted);
-        assert_eq!(limited, fresh);
+        assert_eq!(limited.to_bits(), fresh.to_bits());
     }
 
     #[test]
     fn a_lone_candidate_is_one_guess() {
         let pool = pool_of(&FAMILY);
         let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 5.0, 0.0);
-        assert_eq!(endgame.expected_guesses(&[3], &Allowed::Whole), 1.0);
+        assert_eq!(
+            endgame.expected_guesses(&[3], &Allowed::Whole).to_bits(),
+            1.0_f64.to_bits()
+        );
         assert_eq!(
             endgame.best_guess(&[3], &Allowed::Whole),
             Some(pool.word(3))
@@ -436,7 +461,7 @@ mod tests {
         let mut checked = std::collections::HashSet::new();
         // `suggest` over the full pool is seconds at the root, so share it across targets
         let mut suggested = std::collections::HashMap::new();
-        for target_index in (0..pool.len() as u32).step_by(400) {
+        for target_index in pool.indices().step_by(400) {
             let target = pool.word(target_index);
             let mut candidates = Candidates::whole_pool(Arc::clone(&pool));
             while candidates.len() > LIMIT {

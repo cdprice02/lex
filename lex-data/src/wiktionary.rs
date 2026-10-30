@@ -54,28 +54,32 @@ impl DictMetadata {
     }
 
     /// URL the word list was downloaded from.
+    #[must_use]
     pub fn source_url(&self) -> Option<&str> {
         self.source_url.as_deref()
     }
 
     /// RFC 3339 UTC timestamp of the download.
+    #[must_use]
     pub fn fetched_at(&self) -> Option<&str> {
         self.fetched_at.as_deref()
     }
 
     /// Hex SHA-256 of the compressed bytes as downloaded.
+    #[must_use]
     pub fn source_sha256(&self) -> Option<&str> {
         self.source_sha256.as_deref()
     }
 
     /// The range of word lengths attested in this language's Wiktionary word list.
-    pub fn word_length_range(&self) -> std::ops::RangeInclusive<usize> {
+    #[must_use]
+    pub const fn word_length_range(&self) -> std::ops::RangeInclusive<usize> {
         self.min_word_length..=self.max_word_length
     }
 }
 
 /// Where a dictionary download came from.
-pub(crate) struct Provenance {
+pub struct Provenance {
     /// The URL downloaded.
     source_url: String,
     /// RFC 3339 time of the download.
@@ -84,27 +88,28 @@ pub(crate) struct Provenance {
     source_sha256: String,
 }
 
+/// Directory holding the word lists and their metadata.
+fn dict_dir(data_dir: &Path) -> std::path::PathBuf {
+    data_dir.join("dicts")
+}
+
 /// Path of the sorted word list for `lang`.
-pub(crate) fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
-    data_dir
-        .join("dicts")
-        .join(format!("{}.txt", lang.lang_code()))
+pub fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
+    dict_dir(data_dir).join(format!("{}.txt", lang.lang_code()))
 }
 
 /// Path of the metadata for `lang`.
 fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
-    data_dir
-        .join("dicts")
-        .join(format!("{}.meta.json", lang.lang_code()))
+    dict_dir(data_dir).join(format!("{}.meta.json", lang.lang_code()))
 }
 
 /// Downloads the KAIKKI Wiktionary extract for `lang`, extracts all valid headwords
 /// and inflected forms (excluding proper nouns), and writes the sorted word list and
 /// metadata to `data_dir/dicts/`.
-pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
+pub fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
     let iso = lang.iso_code();
     let url = lang.wiktionary_url();
-    log::info!("Fetching Wiktionary dict for {} from {url}...", lang);
+    log::info!("Fetching Wiktionary dict for {lang} from {url}...");
 
     let (words, source_sha256) = http::get(&http::agent(), &url, |body| {
         let mut hashing = HashingReader {
@@ -126,8 +131,8 @@ pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> 
     let word_count = words.len();
 
     let txt_path = dict_txt_path(data_dir, lang);
-    std::fs::create_dir_all(txt_path.parent().unwrap())?;
-    let mut sorted: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
+    std::fs::create_dir_all(dict_dir(data_dir))?;
+    let mut sorted: Vec<&str> = words.iter().map(std::string::String::as_str).collect();
     sorted.sort_unstable();
     let mut writer = BufWriter::new(std::fs::File::create(&txt_path)?);
     for word in sorted {
@@ -140,10 +145,7 @@ pub(crate) fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> 
         serde_json::to_string_pretty(&meta)?,
     )?;
 
-    log::info!(
-        "Cached {} Wiktionary dict ({word_count} words, lengths {min_len}–{max_len})",
-        lang
-    );
+    log::info!("Cached {lang} Wiktionary dict ({word_count} words, lengths {min_len}–{max_len})");
     Ok(())
 }
 
@@ -188,18 +190,18 @@ fn read_dict(reader: impl BufRead, iso: &str) -> std::io::Result<HashSet<String>
 
 /// Reads the cached Wiktionary word list for `lang` into a `HashSet`.
 /// Returns an error if the dict file does not exist — call `fetch_dict` first.
-pub(crate) fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
+pub fn load_valid_words(lang: Language, data_dir: &Path) -> anyhow::Result<HashSet<String>> {
     let path = dict_txt_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
-        .with_context(|| format!("reading dict for {lang} at {path:?}"))?;
+        .with_context(|| format!("reading dict for {lang} at {}", path.display()))?;
     Ok(content.lines().map(str::to_owned).collect())
 }
 
 /// Reads the per-language metadata written when the dict was last fetched.
-pub(crate) fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
+pub fn load_metadata(lang: Language, data_dir: &Path) -> anyhow::Result<DictMetadata> {
     let path = dict_meta_path(data_dir, lang);
     let content = std::fs::read_to_string(&path)
-        .with_context(|| format!("reading dict metadata for {lang} at {path:?}"))?;
+        .with_context(|| format!("reading dict metadata for {lang} at {}", path.display()))?;
     serde_json::from_str(&content).with_context(|| format!("parsing metadata for {lang}"))
 }
 

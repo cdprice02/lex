@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "e8b4317f888ff55dc7f372df47e4290f8d4623864ed3531310a052ac44e1d289",
   "first_guess": "carolines",
-  "games_sha256": "a76d4a50e91919ba3818e2132d9ce37653d0d85163a04fbbb4014188e3b3980c",
+  "games_sha256": "4a7a39a659cfa8016dcd6e34f5bbf4b2f0c8ce8024b38fff7bc2b47a123c2bd8",
   "profile": null,
   "summary": {
     "max_guesses": 6,

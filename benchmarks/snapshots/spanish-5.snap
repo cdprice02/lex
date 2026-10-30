@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: d220f0173daeb25713ca5dd782dc65856b823395ed2b58fe2d85ea777cb4266c
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -25,7 +25,7 @@ info:
   },
   "corpus_sha256": "b171872e1550e5745098e3e9d6401762e548bf309107e9970107c79ce53bb590",
   "first_guess": "rosea",
-  "games_sha256": "6782600c19882b01ef01fa317a200e66b427c99f49df95581808d83f833f1a5c",
+  "games_sha256": "4d81eea08642deee28d054847510d008f27491f0ef4226d8cbaf379b7e6ff1e2",
   "profile": null,
   "summary": {
     "max_guesses": 6,

@@ -8,6 +8,7 @@
     reason = "test helpers: their names and the module docs describe them"
 )]
 
+use std::fmt::Write as _;
 use std::path::PathBuf;
 
 use insta::{Settings, assert_json_snapshot};
@@ -26,9 +27,7 @@ fn workspace() -> PathBuf {
 
 /// `LEX_DATA_DIR`, else the workspace's `data/`.
 fn data_dir() -> PathBuf {
-    std::env::var_os("LEX_DATA_DIR")
-        .map(PathBuf::from)
-        .unwrap_or_else(|| workspace().join("data"))
+    std::env::var_os("LEX_DATA_DIR").map_or_else(|| workspace().join("data"), PathBuf::from)
 }
 
 /// Fails with a download hint when the cache the Track reads is absent: a run would otherwise
@@ -46,17 +45,16 @@ fn require_data(track: &Track, dir: &DataDir, root: &std::path::Path) -> Result<
     let missing = [dir.ngrams_path(language, length), dir.dict_path(language)]
         .into_iter()
         .find(|path| !path.exists());
-    match missing {
-        None => Ok(()),
-        Some(path) => Err(format!(
+    missing.map_or(Ok(()), |path| {
+        Err(format!(
             "{} is missing, so Track {track} has no data in {}. Download it once with \
              `cargo run --release -- simulate --track {track} --data-dir {}`, or point \
              LEX_DATA_DIR at a populated data directory.",
             path.display(),
             root.display(),
             root.display()
-        )),
-    }
+        ))
+    })
 }
 
 fn config_json(track: &Track, report: &Report) -> Value {
@@ -87,10 +85,12 @@ fn play(track: &Track) -> Result<(), String> {
     let report = run(&track.config(), &data).map_err(|e| format!("{e:#}"))?;
 
     let games = serde_json::to_vec(&report.games).map_err(|e| e.to_string())?;
-    let games_sha256: String = Sha256::digest(&games)
+    let games_sha256 = Sha256::digest(&games)
         .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect();
+        .fold(String::new(), |mut hex, b| {
+            let _ = write!(hex, "{b:02x}");
+            hex
+        });
     let profile = report.profile.as_ref().map(|p| {
         json!({
             "name": p.name,

@@ -3,13 +3,13 @@
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 /// Attempts made before giving up.
-pub(crate) const ATTEMPTS: u32 = 3;
+pub const ATTEMPTS: u32 = 3;
 /// Delay after the first failure; each later one doubles.
 const BASE_BACKOFF: Duration = Duration::from_secs(1);
 
 /// Why one attempt failed, which decides whether another is worth making.
 #[derive(Debug)]
-pub(crate) enum Failure {
+pub enum Failure {
     /// A fault a repeat can plausibly clear: connect error, timeout, 5xx, a dropped body.
     Transient(anyhow::Error),
     /// A fault a repeat cannot clear, such as a 404.
@@ -18,15 +18,14 @@ pub(crate) enum Failure {
 
 /// Runs `op` up to [`ATTEMPTS`] times, sleeping an exponentially growing, jittered delay between
 /// transient failures. `sleep` is injected so tests do not wait.
-pub(crate) fn with_retry<T>(
+pub fn with_retry<T>(
     mut op: impl FnMut() -> Result<T, Failure>,
     mut sleep: impl FnMut(Duration),
 ) -> anyhow::Result<T> {
-    for attempt in 1.. {
+    for attempt in 1..ATTEMPTS {
         match op() {
             Ok(value) => return Ok(value),
             Err(Failure::Permanent(e)) => return Err(e),
-            Err(Failure::Transient(e)) if attempt >= ATTEMPTS => return Err(e),
             Err(Failure::Transient(e)) => {
                 let delay = backoff(attempt, clock_jitter());
                 log::warn!("attempt {attempt}/{ATTEMPTS} failed: {e:#}; retrying in {delay:?}");
@@ -34,7 +33,10 @@ pub(crate) fn with_retry<T>(
             }
         }
     }
-    unreachable!("the loop returns on success or on the final attempt")
+    // the final attempt has no retry left, so either kind of failure ends the call
+    op().map_err(|failure| match failure {
+        Failure::Transient(e) | Failure::Permanent(e) => e,
+    })
 }
 
 /// `BASE_BACKOFF * 2^(attempt - 1)`, plus up to half of that again as `jitter` (in `0.0..1.0`),

@@ -2,6 +2,11 @@
 //! and says why, damage fails loudly, and `lex clear` prunes. The round trip of a non-empty
 //! book is `lex-core`'s `guesser` test.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::panic,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 mod common;
 
@@ -35,7 +40,7 @@ fn seeded() -> (tempfile::TempDir, DataDir) {
     (tmp, dir)
 }
 
-fn config(strategy: Strategy) -> RunConfig {
+const fn config(strategy: Strategy) -> RunConfig {
     RunConfig {
         game: Game::Corpus {
             language: Language::English,
@@ -169,7 +174,7 @@ fn clear(dir: &DataDir, args: &[&str]) {
     .unwrap()
     .command
     else {
-        unreachable!()
+        panic!("`clear` parses to the clear command")
     };
     lex_cli::clear::clear(&args).unwrap();
 }

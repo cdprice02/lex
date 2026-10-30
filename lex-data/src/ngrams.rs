@@ -15,13 +15,13 @@ use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
 /// Shards downloaded at once.
-const SHARD_CONCURRENCY: usize = 4;
+const SHARD_CONCURRENCY: u32 = 4;
 
 /// Google Books Ngrams V3 snapshot the corpus is built from. The snapshot is frozen, but
 /// recording it keeps run provenance complete.
 pub const SNAPSHOT: &str = "20200217";
 
-/// Downloads all Google Books Ngrams V3 shards for `lang` with up to SHARD_CONCURRENCY
+/// Downloads all Google Books Ngrams V3 shards for `lang` with up to `SHARD_CONCURRENCY`
 /// requests in flight at once. Returns the words in `valid`, grouped by char count, for every
 /// supported length. Callers write all length buckets on a cache miss so future requests for
 /// any length of this language are served from disk.
@@ -32,7 +32,7 @@ pub const SNAPSHOT: &str = "20200217";
 /// Workers pull shard indices from a shared counter; a shard that fails after its retries stops
 /// the others from starting new ones. Counts are summed, so the result does not depend on the
 /// order shards finish in.
-pub(crate) fn fetch(
+pub fn fetch(
     lang: Language,
     valid: &HashSet<String>,
 ) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
@@ -70,9 +70,10 @@ pub(crate) fn fetch(
     };
 
     let results: Vec<_> = thread::scope(|scope| {
-        let workers: Vec<_> = (0..SHARD_CONCURRENCY.min(n as usize))
-            .map(|_| scope.spawn(worker))
-            .collect();
+        let mut workers = Vec::new();
+        for _ in 0..SHARD_CONCURRENCY.min(n) {
+            workers.push(scope.spawn(worker));
+        }
         workers
             .into_iter()
             .map(|w| w.join().unwrap_or_else(|p| std::panic::resume_unwind(p)))
@@ -124,7 +125,7 @@ mod tests {
     use super::*;
 
     fn valid(words: &[&str]) -> HashSet<String> {
-        words.iter().map(|w| w.to_string()).collect()
+        words.iter().map(std::string::ToString::to_string).collect()
     }
 
     #[test]

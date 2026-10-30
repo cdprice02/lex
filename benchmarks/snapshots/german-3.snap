@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -25,7 +25,7 @@ info:
   },
   "corpus_sha256": "a5e9393555c2952ba8e397d43851e4b14dd33b73b8f4df732eb27eda434301eb",
   "first_guess": "eas",
-  "games_sha256": "74d44312f2d58642547e9183cb85a8d06dbd1a30261a78ebde3671738956ae63",
+  "games_sha256": "d9e26a6859cfc2d781df0a643b5029cfc9f74f133b81894e047efd0cc0364c28",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -59,7 +59,7 @@ info:
         "8": 0.09623733719247422,
         "9": 0.010853835021707673
       },
-      "mean": 5.997829232995575
+      "mean": 5.9978292329955725
     }
   },
   "track": "german-3"

@@ -26,12 +26,16 @@ impl DataDir {
         Self { path: path.into() }
     }
 
-    /// Loads a WordSet for `lang` at word length `N`, building the local cache on a miss.
+    /// Loads a `WordSet` for `lang` at word length `N`, building the local cache on a miss.
     ///
     /// On a cache miss this downloads the Wiktionary word list (once per language) and all
     /// Google Books Ngrams shards for that language, filters to valid words, and writes
     /// every length bucket to disk before returning. Subsequent calls for any length in the
     /// same language are served from disk without any network access.
+    ///
+    /// # Errors
+    ///
+    /// If the downloads or the cache files fail, or the Corpus is not Supported at `N`.
     pub fn load<const N: usize>(
         &self,
         lang: Language,
@@ -46,6 +50,10 @@ impl DataDir {
 
     /// Returns Wiktionary-derived metadata for `lang` (word count, length range).
     /// Downloads the dictionary if not already cached.
+    ///
+    /// # Errors
+    ///
+    /// If the dictionary cannot be downloaded, read or parsed.
     pub fn dict_metadata(&self, lang: Language) -> anyhow::Result<DictMetadata> {
         if !self.dict_path(lang).exists() {
             wiktionary::fetch_dict(lang, &self.path)?;
@@ -56,19 +64,31 @@ impl DataDir {
     /// Corpus checksum of the cached ngrams file for `lang` at word length `n`: the hex
     /// SHA-256 of its records, read from the header. It identifies the exact word list and
     /// frequencies a run was measured against.
+    ///
+    /// # Errors
+    ///
+    /// If the cached ngrams file is missing or its header is invalid.
     pub fn ngrams_sha256(&self, lang: Language, n: usize) -> anyhow::Result<String> {
         store::corpus_checksum(&self.ngrams_path(lang, n))
     }
 
     /// Number of words in the cached Corpus for `lang` at word length `n`, read from the header
     /// without loading the records.
+    ///
+    /// # Errors
+    ///
+    /// If the cached ngrams file is missing or its header is invalid.
     pub fn ngrams_count(&self, lang: Language, n: usize) -> anyhow::Result<usize> {
-        Ok(Header::read_file(&self.ngrams_path(lang, n))?.record_count as usize)
+        Ok(Header::read_file(&self.ngrams_path(lang, n))?.record_count)
     }
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
     /// language ngrams directory (None), with the Opening books of the same scope. Does not remove
     /// the Wiktionary dict.
+    ///
+    /// # Errors
+    ///
+    /// If a cache file cannot be removed.
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
         store::clear(self, lang, n)?;
         self.clear_books(Some(lang), n)
@@ -77,6 +97,11 @@ impl DataDir {
     /// Loads a Profile: its lists (fetched and checksum-verified on first use) against the
     /// Corpus of its language and length, which is built on a miss. `N` must be the Profile's
     /// word length.
+    ///
+    /// # Errors
+    ///
+    /// If `N` is not the Profile's word length, or its lists or Corpus cannot be fetched or
+    /// verified.
     pub fn load_profile<const N: usize>(&self, profile: Profile) -> anyhow::Result<ProfileData<N>> {
         let spec = profile.spec();
         if spec.word_length != N {
@@ -98,6 +123,10 @@ impl DataDir {
 
     /// Removes a Profile's stored lists so they are fetched again on next use, and the Opening
     /// books built for it.
+    ///
+    /// # Errors
+    ///
+    /// If the Profile's directory cannot be removed.
     pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<()> {
         self.clear_profile_books(&profile.to_string())?;
         std::fs::remove_dir_all(self.profile_dir(profile))
@@ -105,19 +134,25 @@ impl DataDir {
     }
 
     /// Directory holding a Profile's `answers.txt`, `guess-only.txt` and `meta.json`.
+    #[must_use]
     pub fn profile_dir(&self, profile: Profile) -> PathBuf {
         self.path.join("profiles").join(profile.to_string())
     }
 
+    /// Directory holding the cached ngrams binary files for `lang`.
+    #[must_use]
+    pub fn ngrams_dir(&self, lang: Language) -> PathBuf {
+        self.path.join("ngrams").join(lang.lang_code())
+    }
+
     /// Path to the cached ngrams binary file for `lang` at word length `n`.
+    #[must_use]
     pub fn ngrams_path(&self, lang: Language, n: usize) -> PathBuf {
-        self.path
-            .join("ngrams")
-            .join(lang.lang_code())
-            .join(format!("{n}.bin"))
+        self.ngrams_dir(lang).join(format!("{n}.bin"))
     }
 
     /// Path to the cached Wiktionary word list for `lang`.
+    #[must_use]
     pub fn dict_path(&self, lang: Language) -> PathBuf {
         self.path
             .join("dicts")

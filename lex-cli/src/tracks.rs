@@ -1,5 +1,6 @@
-//! The benchmark Tracks: one `const` table of every game the project measures, derived from the
-//! supported languages, word lengths, Profiles and guess pools (ADR 0007). A new `Language`
+//! The benchmark Tracks: one `const` table of every game the project measures.
+//!
+//! Derived from the supported languages, word lengths, Profiles and guess pools (ADR 0007). A new `Language`
 //! variant or a raised `max_supported_length` adds its Tracks without a table edit.
 
 use std::fmt;
@@ -71,26 +72,28 @@ pub enum Tier {
 
 impl Tier {
     /// The Tier a Corpus Track of this length has.
-    pub const fn of_length(length: usize) -> Tier {
+    #[must_use]
+    pub const fn of_length(length: usize) -> Self {
         if length == HEADLINE_LENGTH {
-            return Tier::Headline;
+            return Self::Headline;
         }
         let mut i = 0;
         while i < BREADTH_LENGTHS.len() {
             if BREADTH_LENGTHS[i] == length {
-                return Tier::Breadth;
+                return Self::Breadth;
             }
             i += 1;
         }
-        Tier::Smoke
+        Self::Smoke
     }
 
     /// The Tier's name in snapshots and the verdict table.
+    #[must_use]
     pub const fn name(self) -> &'static str {
         match self {
-            Tier::Headline => "headline",
-            Tier::Breadth => "breadth",
-            Tier::Smoke => "smoke",
+            Self::Headline => "headline",
+            Self::Breadth => "breadth",
+            Self::Smoke => "smoke",
         }
     }
 }
@@ -112,8 +115,8 @@ pub enum TrackTargets {
 impl From<TrackTargets> for Targets {
     fn from(targets: TrackTargets) -> Self {
         match targets {
-            TrackTargets::Full => Targets::Full,
-            TrackTargets::Sample { n, seed } => Targets::Sample { n, seed },
+            TrackTargets::Full => Self::Full,
+            TrackTargets::Sample { n, seed } => Self::Sample { n, seed },
         }
     }
 }
@@ -135,6 +138,7 @@ pub struct Track {
 
 impl Track {
     /// The run configuration that plays this Track.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
         RunConfig {
             game: self.game,
@@ -144,7 +148,8 @@ impl Track {
     }
 
     /// The Track with this id, as printed by `Display`.
-    pub fn find(id: &str) -> Option<Track> {
+    #[must_use]
+    pub fn find(id: &str) -> Option<Self> {
         TRACKS.iter().find(|t| t.to_string() == id).copied()
     }
 }
@@ -165,7 +170,7 @@ impl fmt::Display for Track {
         }
         match self.strategy.pool {
             GuessPool::All => Ok(()),
-            pool => write!(f, "-{pool}"),
+            pool @ (GuessPool::Hard | GuessPool::Ultrahard) => write!(f, "-{pool}"),
         }
     }
 }

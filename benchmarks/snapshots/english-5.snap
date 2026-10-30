@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: d220f0173daeb25713ca5dd782dc65856b823395ed2b58fe2d85ea777cb4266c
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -25,7 +25,7 @@ info:
   },
   "corpus_sha256": "ed5ad0f39c90a51585ff4388523c992bacdbad303506e884c629546e9176db11",
   "first_guess": "tares",
-  "games_sha256": "b32c020b36b8e3a1ec1ddc9b2469efe89e42ed02a59c103c0574bd6fa78f0a72",
+  "games_sha256": "467ed984f7ba716542ec94dbe54053d5a4d6fc4d93de6716e220290b674525f8",
   "profile": null,
   "summary": {
     "max_guesses": 6,

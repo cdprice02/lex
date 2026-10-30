@@ -27,6 +27,9 @@ pub enum LexDataError {
     /// A line that does not follow the V3 ngram line format.
     #[error("invalid parse line: {0}")]
     InvalidParseLine(String),
+    /// A word length no solver is built for.
+    #[error("unsupported word length {0}")]
+    UnsupportedWordLength(usize),
     /// A word whose length is not the one the caller asked for.
     #[error("invalid word length: expected {expected}, got {got}")]
     WordLengthError {

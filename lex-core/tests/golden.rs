@@ -2,6 +2,11 @@
 //! tie-breaking, filtering) shows up here as a diff; update the table only when the change is
 //! intended and its effect has been measured against the committed baselines.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::expect_used,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 use lex_core::{Guesser, Strategy, play};
 use lex_data::{Word, WordSet};
@@ -25,8 +30,8 @@ fn fixture() -> WordSet<5> {
 
 fn sequence(strategy: Strategy, target: &str) -> Vec<String> {
     let pool = fixture();
-    let answers = pool.words().collect();
-    let mut guesser = Guesser::new(pool, answers, strategy);
+    let answers: Vec<_> = pool.words().collect();
+    let mut guesser = Guesser::new(&pool, &answers, strategy);
     let result = play(
         Word::<5>::try_from(target).unwrap(),
         &mut guesser,
@@ -67,13 +72,13 @@ fn ultrahard_guess_sequences_are_stable() {
         (
             "hatch",
             &[
-                "their", "watch", "match", "catch", "patch", "batch", "hatch",
+                "their", "watch", "match", "catch", "patch", "batch", "latch", "hatch",
             ],
         ),
         (
             "latch",
             &[
-                "their", "watch", "match", "catch", "patch", "batch", "hatch", "latch",
+                "their", "watch", "match", "catch", "patch", "batch", "latch",
             ],
         ),
         ("match", &["their", "watch", "match"]),
@@ -83,12 +88,12 @@ fn ultrahard_guess_sequences_are_stable() {
         ("might", &["their", "night", "light", "might"]),
         ("night", &["their", "night"]),
         ("right", &["their", "right"]),
-        ("sight", &["their", "night", "light", "might", "sight"]),
-        ("tight", &["their", "tight"]),
         (
-            "fight",
-            &["their", "night", "light", "might", "sight", "fight"],
+            "sight",
+            &["their", "night", "light", "might", "fight", "sight"],
         ),
+        ("tight", &["their", "tight"]),
+        ("fight", &["their", "night", "light", "might", "fight"]),
         ("about", &["their", "about"]),
         ("other", &["their", "other"]),
         ("which", &["their", "which"]),

@@ -1,5 +1,9 @@
 //! The `--track` flag plays and builds a Track in-process.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 mod common;
 
@@ -50,7 +54,7 @@ fn track_flag_and_run_of_its_config_give_equal_reports() {
     .unwrap()
     .command
     else {
-        unreachable!()
+        panic!("`simulate` parses to the simulate command")
     };
 
     let track = Track::find("english-5").unwrap();

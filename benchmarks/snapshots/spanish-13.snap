@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "d2ef63e93235d4753ec28d27cf8b42e4c5aac83e3a8776c0407ee7b42c7646c9",
   "first_guess": "secretariados",
-  "games_sha256": "2950823c11c982ef178b58d603e38c287879cd1f728cee343e34cb528b387ecd",
+  "games_sha256": "be9dde9cadf36412214f2b9223664c6dba713baaeab772cd746b24015e3de6f8",
   "profile": null,
   "summary": {
     "max_guesses": 6,

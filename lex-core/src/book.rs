@@ -8,8 +8,9 @@ use thiserror::Error;
 
 use crate::correctness::WordCorrectness;
 
-/// Pattern evaluations (guesses scored times Candidate set size) above which a position is
-/// booked. Calibrated once at about one second of single-core scoring on the reference machine
+/// Pattern evaluations (guesses scored times Candidate set size) above which a position is booked.
+///
+/// Calibrated once at about one second of single-core scoring on the reference machine
 /// (`benchmarks/experiments/book-floor.md`) and never retuned: the solver digest in the book key
 /// already rebuilds the book when the solver changes.
 pub const BOOK_FLOOR: u64 = 40_000_000;
@@ -101,16 +102,19 @@ impl<const N: usize> Default for OpeningBook<N> {
 
 impl<const N: usize> OpeningBook<N> {
     /// The number of booked positions.
-    pub fn len(&self) -> usize {
+    #[must_use]
+    pub const fn len(&self) -> usize {
         self.nodes.len()
     }
 
     /// Whether no position is booked, so every position is searched online.
-    pub fn is_empty(&self) -> bool {
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
         self.nodes.is_empty()
     }
 
     /// Bytes the book holds in memory, counting toward the 1 GB cap.
+    #[must_use]
     pub fn heap_bytes(&self) -> usize {
         size_of::<Self>()
             + self.nodes.capacity() * size_of::<BookNode>()
@@ -124,11 +128,15 @@ impl<const N: usize> OpeningBook<N> {
     /// The book a [`StoredBook`] holds, checked against a pool of `pool_len` words: guesses are
     /// pool indices, children come after their parent, and ordinals are feedback patterns in
     /// ascending order. A book that fails was not built for this pool or has been damaged.
+    ///
+    /// # Errors
+    ///
+    /// A [`BookError`] naming the first check the book fails.
     pub fn from_nodes(stored: StoredBook, pool_len: usize) -> Result<Self, BookError> {
         let patterns = WordCorrectness::<N>::COUNT;
         let len = stored.nodes.len();
         for (node, stored_node) in stored.nodes.iter().enumerate() {
-            if stored_node.guess as usize >= pool_len {
+            if usize::try_from(stored_node.guess).unwrap_or(usize::MAX) >= pool_len {
                 return Err(BookError::GuessOutsidePool {
                     node,
                     guess: stored_node.guess,
@@ -147,10 +155,11 @@ impl<const N: usize> OpeningBook<N> {
                 if i > 0 && stored_node.edges[i - 1].0 >= ordinal {
                     return Err(BookError::EdgesNotAscending { node });
                 }
-                if child as usize <= node {
+                let child_at = usize::try_from(child).unwrap_or(usize::MAX);
+                if child_at <= node {
                     return Err(BookError::ChildNotAfterParent { node, child });
                 }
-                if child as usize >= len {
+                if child_at >= len {
                     return Err(BookError::ChildOutsideBook { node, child, len });
                 }
             }
@@ -169,6 +178,7 @@ impl<const N: usize> OpeningBook<N> {
     }
 
     /// The stored form of this book, for `lex-data` to write.
+    #[must_use]
     pub fn to_nodes(&self) -> StoredBook {
         StoredBook {
             nodes: self
@@ -183,29 +193,37 @@ impl<const N: usize> OpeningBook<N> {
     }
 
     /// Appends a node and returns its id.
+    #[expect(
+        clippy::expect_used,
+        reason = "a book holds one in-memory node per booked position, so 2^32 of them would need over 100 GiB first"
+    )]
     pub(crate) fn push(&mut self, guess: u32) -> u32 {
+        let id = u32::try_from(self.nodes.len()).expect("the book exceeds u32::MAX nodes");
         self.nodes.push(BookNode {
             guess,
             edges: Vec::new(),
         });
-        (self.nodes.len() - 1) as u32
+        id
     }
 
     /// Edges must be added in ascending ordinal order.
     pub(crate) fn add_edge(&mut self, from: u32, ordinal: u64, to: u32) {
-        let edges = &mut self.nodes[from as usize].edges;
-        debug_assert!(edges.last().is_none_or(|&(o, _)| o < ordinal));
+        let edges = &mut self.nodes[usize::try_from(from).unwrap_or(usize::MAX)].edges;
+        debug_assert!(
+            edges.last().is_none_or(|&(o, _)| o < ordinal),
+            "edges must be added in ascending ordinal order"
+        );
         edges.push((ordinal, to));
     }
 
     /// The pool index of the guess booked at `node`.
     pub(crate) fn guess(&self, node: u32) -> u32 {
-        self.nodes[node as usize].guess
+        self.nodes[usize::try_from(node).unwrap_or(usize::MAX)].guess
     }
 
     /// The booked position reached from `node` by feedback `ordinal`.
     pub(crate) fn edge(&self, node: u32, ordinal: u64) -> Option<u32> {
-        let edges = &self.nodes[node as usize].edges;
+        let edges = &self.nodes[usize::try_from(node).unwrap_or(usize::MAX)].edges;
         edges
             .binary_search_by_key(&ordinal, |&(o, _)| o)
             .ok()

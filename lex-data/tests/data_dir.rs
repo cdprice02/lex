@@ -1,5 +1,9 @@
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 #![expect(
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
+#![expect(
     missing_docs,
     reason = "an integration test crate: its test names are its documentation"
 )]
@@ -19,16 +23,16 @@ fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
     let mut records = Vec::new();
     for &(word, freq) in entries {
         for ch in word.chars() {
-            records.extend_from_slice(&(ch as u32).to_le_bytes());
+            records.extend_from_slice(&u32::from(ch).to_le_bytes());
         }
         records.extend_from_slice(&freq.to_le_bytes());
     }
     let mut header = [0u8; 64];
     header[0..4].copy_from_slice(b"LEXC");
     header[4..6].copy_from_slice(&1u16.to_le_bytes());
-    header[6..8].copy_from_slice(&(n as u16).to_le_bytes());
+    header[6..8].copy_from_slice(&u16::try_from(n).unwrap().to_le_bytes());
     header[8..12].copy_from_slice(&64u32.to_le_bytes());
-    header[12..20].copy_from_slice(&(entries.len() as u64).to_le_bytes());
+    header[12..20].copy_from_slice(&u64::try_from(entries.len()).unwrap().to_le_bytes());
     header[20..52].copy_from_slice(&Sha256::digest(&records));
     let mut f = fs::File::create(path).unwrap();
     f.write_all(&header).unwrap();
@@ -40,12 +44,12 @@ fn five_letter_words(count: usize) -> Vec<(String, u64)> {
     let letters = |i: usize| -> String {
         [i / 676, i / 26 % 26, i % 26]
             .iter()
-            .map(|&d| char::from(b'a' + d as u8))
+            .map(|&d| char::from(b'a' + u8::try_from(d).unwrap()))
             .collect()
     };
     std::iter::once("crane".to_string())
         .chain((1..count).map(|i| format!("zz{}", letters(i))))
-        .zip((1..=count as u64).rev())
+        .zip((1..=u64::try_from(count).unwrap()).rev())
         .collect()
 }
 

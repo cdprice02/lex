@@ -32,7 +32,7 @@ pub enum GuessPool {
 pub struct Strategy {
     /// The Guess pool policy.
     pub pool: GuessPool,
-    /// Answer prior temperature: p_i is proportional to f_i^(1/T). Must be positive and finite.
+    /// Answer prior temperature: `p_i` is proportional to `f_i^(1/T)`. Must be positive and finite.
     pub temperature: f64,
     /// Bonus, in bits, per unit of probability that the guess is the answer. Must be finite and
     /// non-negative; zero scores purely by entropy.
@@ -59,6 +59,7 @@ impl Strategy {
 
     /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
     /// entropy alone.
+    #[must_use]
     pub const fn ultrahard() -> Self {
         Self {
             pool: GuessPool::Ultrahard,
@@ -72,6 +73,7 @@ impl Strategy {
     /// Every field as an ordered (name, value) pair: what an Opening book is keyed on besides
     /// the pool and the solver source. Destructuring without `..` makes a new field a compile
     /// error here until it is listed, and floats print in their shortest round-tripping form.
+    #[must_use]
     pub fn key_fields(&self) -> Vec<(&'static str, String)> {
         let Self {
             pool,
@@ -118,7 +120,7 @@ impl Default for Strategy {
 /// The immutable guess pool: every loaded word in frequency-descending order with its
 /// log-frequency. Candidate sets index into it.
 #[derive(Debug)]
-pub(crate) struct Pool<const N: usize> {
+pub struct Pool<const N: usize> {
     /// Every pool word, in frequency-descending order.
     words: Vec<Word<N>>,
     /// Each word's letters as indices into the Alphabet, parallel to `words`.
@@ -127,12 +129,15 @@ pub(crate) struct Pool<const N: usize> {
     letters: HashMap<char, u8>,
     /// Natural log of each word's frequency, parallel to `words`.
     ln_freqs: Vec<f64>,
+    /// Number of words, as the pool-index type.
+    count: u32,
 }
 
 impl<const N: usize> Pool<N> {
     /// # Panics
     ///
-    /// If the Alphabet exceeds [`MAX_ALPHABET_SIZE`]: `DataDir::load` rejects such a Corpus.
+    /// If the Alphabet exceeds [`MAX_ALPHABET_SIZE`] (`DataDir::load` rejects such a Corpus), or
+    /// the word set holds more words than a `u32` pool index addresses.
     pub(crate) fn new(word_set: &WordSet<N>) -> Arc<Self> {
         let mut alphabet: Vec<char> = word_set.alphabet().into_iter().collect();
         assert!(
@@ -141,27 +146,38 @@ impl<const N: usize> Pool<N> {
             alphabet.len()
         );
         alphabet.sort_unstable();
-        let letters: HashMap<char, u8> = alphabet
-            .into_iter()
-            .enumerate()
-            .map(|(i, c)| (c, i as u8))
-            .collect();
+        let letters: HashMap<char, u8> = alphabet.into_iter().zip(0..=u8::MAX).collect();
         let (words, ln_freqs): (Vec<_>, _) = word_set
             .word_frequencies()
-            .map(|(word, freq)| (word, (freq as f64).ln()))
+            .map(|(word, freq)| {
+                #[expect(
+                    clippy::as_conversions,
+                    clippy::cast_precision_loss,
+                    reason = "ngram counts stay far below 2^53, so the float holds each count exactly"
+                )]
+                let freq = freq as f64;
+                (word, freq.ln())
+            })
             .unzip();
+        let count = u32::try_from(words.len());
+        assert!(
+            count.is_ok(),
+            "the word set holds {} words, more than a u32 pool index addresses",
+            words.len()
+        );
         let codes = words.iter().map(|w| encode(&letters, w)).collect();
         Arc::new(Self {
             words,
             codes,
             letters,
             ln_freqs,
+            count: count.unwrap_or(u32::MAX),
         })
     }
 
     /// The pool word's letters as Alphabet indices.
     pub(crate) fn code(&self, index: u32) -> &Code<N> {
-        &self.codes[index as usize]
+        &self.codes[usize::try_from(index).unwrap_or(usize::MAX)]
     }
 
     /// Any word's letters as Alphabet indices; a letter outside the Alphabet becomes
@@ -171,13 +187,23 @@ impl<const N: usize> Pool<N> {
     }
 
     /// Number of words in the pool.
-    pub(crate) fn len(&self) -> usize {
+    pub(crate) const fn len(&self) -> usize {
         self.words.len()
     }
 
     /// The word at pool index `index`.
     pub(crate) fn word(&self, index: u32) -> Word<N> {
-        self.words[index as usize]
+        self.words[usize::try_from(index).unwrap_or(usize::MAX)]
+    }
+
+    /// Every pool index, ascending.
+    pub(crate) const fn indices(&self) -> std::ops::Range<u32> {
+        0..self.count
+    }
+
+    /// Natural log of the frequency of the word at pool index `index`.
+    fn ln_freq(&self, index: u32) -> f64 {
+        self.ln_freqs[usize::try_from(index).unwrap_or(usize::MAX)]
     }
 
     /// Unnormalized answer prior for every word: exp((ln f - max ln f) / T) over the whole pool.
@@ -195,19 +221,19 @@ impl<const N: usize> Pool<N> {
             .collect()
     }
 
-    /// The answer prior over `indices`, renormalized to sum to 1: p_i is proportional to
-    /// exp((ln f_i - max ln f) / T) over just those words.
+    /// The answer prior over `indices`, renormalized to sum to 1: `p_i` is proportional to
+    /// exp((ln `f_i` - max ln f) / T) over just those words.
     pub(crate) fn prior(&self, indices: &[u32], temperature: f64) -> Vec<f64> {
         if indices.is_empty() {
             return Vec::new();
         }
         let max_lf = indices
             .iter()
-            .map(|&i| self.ln_freqs[i as usize])
+            .map(|&i| self.ln_freq(i))
             .fold(f64::NEG_INFINITY, f64::max);
         let exp: Vec<f64> = indices
             .iter()
-            .map(|&i| ((self.ln_freqs[i as usize] - max_lf) / temperature).exp())
+            .map(|&i| ((self.ln_freq(i) - max_lf) / temperature).exp())
             .collect();
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
@@ -220,15 +246,17 @@ fn encode<const N: usize>(letters: &HashMap<char, u8>, word: &Word<N>) -> Code<N
 }
 
 /// The answer prior over a whole word set at `temperature`, in frequency-descending order.
+///
 /// Raw-frequency softmax collapses to one-hot on the top word because ngrams counts span many
 /// orders of magnitude; log-space input with temperature above 1 flattens the distribution
 /// toward uniform without discarding rank information.
+#[must_use]
 pub fn answer_prior<const N: usize>(
     word_set: &WordSet<N>,
     temperature: f64,
 ) -> Vec<(Word<N>, f64)> {
     let pool = Pool::new(word_set);
-    let all: Vec<u32> = (0..pool.len() as u32).collect();
+    let all: Vec<u32> = pool.indices().collect();
     let probs = pool.prior(&all, temperature);
     pool.words.iter().copied().zip(probs).collect()
 }

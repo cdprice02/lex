@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 
 /// Real Wordle allows six guesses; a game needing more counts as a failure. The solver itself
 /// keeps playing until it wins, so the true guess count is always recorded.
-pub const MAX_GUESSES: usize = 6;
+pub const MAX_GUESSES: u32 = 6;
 
 /// Version of the JSON report layout.
 pub const SCHEMA_VERSION: u32 = 1;
@@ -105,10 +105,12 @@ struct RawStrategyReport {
 
 impl From<RawStrategyReport> for StrategyReport {
     fn from(raw: RawStrategyReport) -> Self {
-        let mode = raw.mode.unwrap_or(if raw.hard_mode == Some(true) {
-            Mode::Ultrahard
-        } else {
-            Mode::Unconstrained
+        let mode = raw.mode.unwrap_or_else(|| {
+            if raw.hard_mode == Some(true) {
+                Mode::Ultrahard
+            } else {
+                Mode::Unconstrained
+            }
         });
         Self {
             mode,
@@ -181,7 +183,7 @@ pub struct Corpus {
 
 /// Identity of the Profile lists a run played. Two reports are only comparable when the name and
 /// both checksums match.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ProfileReport {
     /// The Profile's stored name.
     pub name: String,
@@ -201,6 +203,7 @@ pub struct ProfileReport {
 
 impl ProfileReport {
     /// Whether both reports played the same Profile lists.
+    #[must_use]
     pub fn same_lists(&self, other: &Self) -> bool {
         (&self.name, &self.answers_sha256, &self.guess_only_sha256)
             == (&other.name, &other.answers_sha256, &other.guess_only_sha256)
@@ -240,7 +243,7 @@ pub struct Game {
     /// The target.
     pub word: String,
     /// Guesses taken, the winning one included.
-    pub num_guesses: usize,
+    pub num_guesses: u32,
     /// The target's probability under the answer prior over the full dictionary.
     pub prior: f64,
     /// The guesses played, in order.
@@ -251,7 +254,7 @@ pub struct Game {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Summary {
     /// Guesses a real game allows, [`MAX_GUESSES`].
-    pub max_guesses: usize,
+    pub max_guesses: u32,
     /// Every target weighted equally.
     pub uniform: Stats,
     /// Targets weighted by their answer-prior probability, renormalized over the targets
@@ -268,7 +271,7 @@ pub struct Stats {
     /// Share of games finishing in more than [`MAX_GUESSES`].
     pub failure_rate: f64,
     /// Share of games finishing in each guess count.
-    pub histogram: BTreeMap<usize, f64>,
+    pub histogram: BTreeMap<u32, f64>,
 }
 
 impl Stats {
@@ -280,7 +283,7 @@ impl Stats {
         let mut histogram = BTreeMap::new();
         for game in games {
             let share = weight(game) / total;
-            mean += share * game.num_guesses as f64;
+            mean = share.mul_add(f64::from(game.num_guesses), mean);
             if game.num_guesses > MAX_GUESSES {
                 failure_rate += share;
             }
@@ -296,6 +299,7 @@ impl Stats {
 
 impl Summary {
     /// Both weightings of `games`.
+    #[must_use]
     pub fn from_games(games: &[Game]) -> Self {
         Self {
             max_guesses: MAX_GUESSES,
@@ -334,7 +338,7 @@ impl Report {
                 dict.source_sha256.as_deref().map_or("unknown", short)
             );
         }
-        let n = self.games.len();
+        let n: f64 = self.games.iter().map(|_| 1.0).sum();
         for (name, stats, exact) in [
             ("uniform", &self.summary.uniform, true),
             ("prior-weighted", &self.summary.prior, false),
@@ -347,9 +351,13 @@ impl Report {
                 stats.failure_rate * 100.0
             );
             for (guesses, share) in &stats.histogram {
-                let bar = "#".repeat((share * 40.0).round() as usize);
+                // `k` cells are filled when round(share * 40) >= k, that is share * 40 >= k - 0.5
+                let bar: String = (1..=40_u8)
+                    .take_while(|&k| f64::from(k) - 0.5 <= share * 40.0)
+                    .map(|_| '#')
+                    .collect();
                 let count = if exact {
-                    format!(" ({})", (share * n as f64).round() as usize)
+                    format!(" ({:.0})", share * n)
                 } else {
                     String::new()
                 };

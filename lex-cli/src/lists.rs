@@ -5,9 +5,10 @@ use lex_data::{DataDir, Language, ProfileStats, Word, WordSet};
 use crate::config::{Game, RunConfig};
 use crate::report::{Corpus, DictProvenance, ProfileReport};
 
-/// What a game is played over: the Guess pool and the Answer list, a subset of it. A Corpus run
-/// answers with every pool word; a Profile with its own list. Where they came from is the
-/// [`Source`], returned beside them.
+/// What a game is played over: the Guess pool and the Answer list, a subset of it.
+///
+/// A Corpus run answers with every pool word; a Profile with its own list. Where they came from is
+/// the [`Source`], returned beside them.
 pub struct GameLists<const N: usize> {
     /// The Guess pool.
     pub pool: WordSet<N>,
@@ -31,6 +32,10 @@ pub enum Source {
 impl Source {
     /// Loads the Profile's lists for a Profile game, otherwise the Corpus (honouring its
     /// `dictionary_length`) with every word as an answer.
+    ///
+    /// # Errors
+    ///
+    /// If the Corpus cache or the Profile's lists cannot be loaded.
     pub fn load<const N: usize>(
         config: &RunConfig,
         data_dir: &DataDir,
@@ -67,18 +72,21 @@ impl Source {
     }
 
     /// The Corpus the lists were built from.
-    pub fn corpus(&self) -> &Corpus {
+    #[must_use]
+    pub const fn corpus(&self) -> &Corpus {
         match self {
             Self::Corpus(corpus) | Self::Profile { corpus, .. } => corpus,
         }
     }
 
     /// The Corpus size, which is the pool size only on a Corpus run.
-    pub fn dictionary_length(&self) -> usize {
+    #[must_use]
+    pub const fn dictionary_length(&self) -> usize {
         self.corpus().dictionary_length
     }
 
     /// The Profile's identity for a report; a Corpus run has none.
+    #[must_use]
     pub fn profile_report(&self) -> Option<ProfileReport> {
         match self {
             Self::Corpus(_) => None,
@@ -87,6 +95,7 @@ impl Source {
     }
 
     /// What the games are played in, for messages: the Profile's name or the language.
+    #[must_use]
     pub fn name(&self) -> &str {
         match self {
             Self::Corpus(corpus) => &corpus.language,
@@ -95,6 +104,7 @@ impl Source {
     }
 
     /// Names the list targets must come from, for error messages.
+    #[must_use]
     pub fn answer_noun(&self) -> String {
         match self {
             Self::Corpus(_) => "the dictionary".to_owned(),
@@ -103,6 +113,10 @@ impl Source {
     }
 
     /// A Profile's Guess pool is closed; a Corpus run accepts any word, as it always has.
+    ///
+    /// # Errors
+    ///
+    /// A message naming the Profile when `word` is outside its Guess pool.
     pub fn check_guess<const N: usize>(
         &self,
         pool: &WordSet<N>,
@@ -112,7 +126,7 @@ impl Source {
             Self::Profile { stats, .. } if !pool.contains(word) => {
                 Err(format!("{word} is not in the {} guess pool", stats.name))
             }
-            _ => Ok(()),
+            Self::Profile { .. } | Self::Corpus(_) => Ok(()),
         }
     }
 }

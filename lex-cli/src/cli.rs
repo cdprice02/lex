@@ -82,7 +82,8 @@ pub struct BookBuildArgs {
 
 impl BookBuildArgs {
     /// The length to monomorphize over.
-    pub fn dispatch_length(&self) -> usize {
+    #[must_use]
+    pub const fn dispatch_length(&self) -> usize {
         match self.track {
             Some(track) => track.game.word_length(),
             None => self.common.dispatch_length(),
@@ -91,11 +92,11 @@ impl BookBuildArgs {
 
     /// What these arguments build the book for. A book covers the full Answer set whatever
     /// targets a run samples.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
-        match self.track {
-            Some(track) => track.config(),
-            None => self.common.config(Targets::Full),
-        }
+        self.track
+            .as_ref()
+            .map_or_else(|| self.common.config(Targets::Full), Track::config)
     }
 }
 
@@ -210,7 +211,17 @@ pub struct CommonArgs {
 
 impl CommonArgs {
     /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
-    pub fn dispatch_length(&self) -> usize {
+    ///
+    /// # Panics
+    ///
+    /// If neither a profile nor `-l` is set, which clap rejects and only a hand-built value can
+    /// reach.
+    #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "clap's required_unless_present makes -l mandatory without --profile, and a required argument is never absent"
+    )]
+    pub const fn dispatch_length(&self) -> usize {
         match self.profile {
             Some(profile) => profile.spec().word_length,
             None => self
@@ -220,7 +231,17 @@ impl CommonArgs {
     }
 
     /// The game these arguments select.
-    pub fn game(&self) -> Game {
+    ///
+    /// # Panics
+    ///
+    /// If neither a profile nor `--lang` is set, which clap rejects and only a hand-built value
+    /// can reach.
+    #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "clap's required_unless_present makes --lang mandatory without --profile, and a required argument is never absent"
+    )]
+    pub const fn game(&self) -> Game {
         match self.profile {
             Some(profile) => Game::Profile(profile),
             None => Game::Corpus {
@@ -232,7 +253,8 @@ impl CommonArgs {
     }
 
     /// The Strategy these arguments select.
-    pub fn strategy(&self) -> Strategy {
+    #[must_use]
+    pub const fn strategy(&self) -> Strategy {
         Strategy {
             pool: self.pool,
             temperature: self.temperature,
@@ -243,7 +265,8 @@ impl CommonArgs {
     }
 
     /// The run these arguments select, over `targets`.
-    pub fn config(&self, targets: Targets) -> RunConfig {
+    #[must_use]
+    pub const fn config(&self, targets: Targets) -> RunConfig {
         RunConfig {
             game: self.game(),
             strategy: self.strategy(),
@@ -292,7 +315,8 @@ pub struct SimulateArgs {
 
 impl SimulateArgs {
     /// The length to monomorphize over.
-    pub fn dispatch_length(&self) -> usize {
+    #[must_use]
+    pub const fn dispatch_length(&self) -> usize {
         match self.track {
             Some(track) => track.game.word_length(),
             None => self.common.dispatch_length(),
@@ -300,6 +324,7 @@ impl SimulateArgs {
     }
 
     /// What these arguments ask to play.
+    #[must_use]
     pub fn config(&self) -> RunConfig {
         if let Some(track) = self.track {
             return track.config();
@@ -412,12 +437,15 @@ mod profile_tests {
     use super::*;
 
     fn common(args: &[&str]) -> Result<CommonArgs, clap::Error> {
-        match Cli::try_parse_from(["lex", "assist"].into_iter().chain(args.iter().copied()))?
-            .command
-        {
-            Command::Assist(a) => Ok(a.common),
-            _ => unreachable!(),
-        }
+        let Command::Assist(a) =
+            Cli::try_parse_from(["lex", "assist"].into_iter().chain(args.iter().copied()))?.command
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`assist` parsed to another command",
+            ));
+        };
+        Ok(a.common)
     }
 
     #[test]
@@ -476,12 +504,16 @@ mod track_tests {
     use crate::config::Targets;
 
     fn simulate(args: &[&str]) -> Result<SimulateArgs, clap::Error> {
-        match Cli::try_parse_from(["lex", "simulate"].into_iter().chain(args.iter().copied()))?
-            .command
-        {
-            Command::Simulate(a) => Ok(a),
-            _ => unreachable!(),
-        }
+        let Command::Simulate(a) =
+            Cli::try_parse_from(["lex", "simulate"].into_iter().chain(args.iter().copied()))?
+                .command
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`simulate` parsed to another command",
+            ));
+        };
+        Ok(a)
     }
 
     #[test]
@@ -539,18 +571,21 @@ mod book_tests {
     use super::*;
 
     fn build(args: &[&str]) -> Result<BookBuildArgs, clap::Error> {
-        match Cli::try_parse_from(
+        let Command::Book(BookArgs {
+            command: BookCommand::Build(a),
+        }) = Cli::try_parse_from(
             ["lex", "book", "build"]
                 .into_iter()
                 .chain(args.iter().copied()),
         )?
         .command
-        {
-            Command::Book(BookArgs {
-                command: BookCommand::Build(a),
-            }) => Ok(a),
-            _ => unreachable!(),
-        }
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`book build` parsed to another command",
+            ));
+        };
+        Ok(a)
     }
 
     #[test]

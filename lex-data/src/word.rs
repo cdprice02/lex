@@ -9,6 +9,7 @@ use std::sync::Arc;
 use memmap2::{Mmap, MmapMut};
 
 use crate::error::LexDataError;
+use crate::le::array_at;
 
 /// A word of exactly `N` letters.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -33,10 +34,11 @@ impl<const N: usize> TryFrom<&str> for Word<N> {
                 got: chars_count,
             });
         }
-        let mut chars = s.chars();
-        Ok(Word::from(std::array::from_fn(|_| {
-            chars.next().expect("N chars as checked above")
-        })))
+        let mut letters = ['\0'; N];
+        for (slot, ch) in letters.iter_mut().zip(s.chars()) {
+            *slot = ch;
+        }
+        Ok(Self::from(letters))
     }
 }
 
@@ -51,7 +53,7 @@ impl<const N: usize> Deref for Word<N> {
 impl<const N: usize> Display for Word<N> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for ch in &self.0 {
-            write!(f, "{}", ch)?;
+            write!(f, "{ch}")?;
         }
         Ok(())
     }
@@ -78,13 +80,21 @@ impl<const N: usize> RawRecord<'_, N> {
     /// Bytes of one record.
     pub(crate) const SIZE: usize = Self::CHAR_BYTES * N + Self::FREQ_BYTES;
 
+    /// The word with any invalid stored scalar replaced by U+FFFD, for records already validated
+    /// at load.
+    pub(crate) fn word_lossy(&self) -> Word<N> {
+        Word::from(std::array::from_fn(|i| {
+            char::from_u32(u32::from_le_bytes(array_at(self.0, i * Self::CHAR_BYTES)))
+                .unwrap_or(char::REPLACEMENT_CHARACTER)
+        }))
+    }
+
     /// Returns `None` if any stored scalar is not a valid Unicode scalar value.
     pub(crate) fn word(&self) -> Option<Word<N>> {
         let mut chars = ['\0'; N];
         for (i, char_slot) in chars.iter_mut().enumerate() {
             let off = i * Self::CHAR_BYTES;
-            let scalar =
-                u32::from_le_bytes(self.0[off..off + Self::CHAR_BYTES].try_into().unwrap());
+            let scalar = u32::from_le_bytes(array_at(self.0, off));
             *char_slot = char::from_u32(scalar)?;
         }
         Some(Word::from(chars))
@@ -93,15 +103,25 @@ impl<const N: usize> RawRecord<'_, N> {
     /// The word's frequency.
     pub(crate) fn freq(&self) -> u64 {
         let off = Self::CHAR_BYTES * N;
-        u64::from_le_bytes(self.0[off..off + Self::FREQ_BYTES].try_into().unwrap())
+        u64::from_le_bytes(array_at(self.0, off))
     }
 }
 
 impl<'a, const N: usize> From<&'a [u8]> for RawRecord<'a, N> {
     fn from(bytes: &'a [u8]) -> Self {
-        debug_assert_eq!(bytes.len(), Self::SIZE);
+        debug_assert_eq!(bytes.len(), Self::SIZE, "a record is exactly SIZE bytes");
         RawRecord(bytes)
     }
+}
+
+/// The record at byte offset `off` of the mapped Corpus.
+fn record_at<const N: usize>(mmap: &[u8], off: u32) -> RawRecord<'_, N> {
+    #[expect(
+        clippy::as_conversions,
+        reason = "a u32 offset widens losslessly into usize; the crate-level assert in lib.rs checks usize holds 32 bits"
+    )]
+    let start = off as usize;
+    RawRecord::from(&mmap[start..start + RawRecord::<N>::SIZE])
 }
 
 /// Iterator over the active words in a [`WordSet`], reading lazily from the mmap backing store.
@@ -122,9 +142,7 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
     fn next(&mut self) -> Option<Word<N>> {
         let &off = self.offsets.get(self.index)?;
         self.index += 1;
-        let record =
-            RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
-        Some(record.word().expect("records are validated at load"))
+        Some(record_at::<N>(self.mmap, off).word_lossy())
     }
 
     fn size_hint(&self) -> (usize, Option<usize>) {
@@ -211,6 +229,7 @@ impl<const N: usize> WordSet<N> {
     /// Constructs a `WordSet` from a word-to-frequency map.
     ///
     /// Sorts by frequency descending and writes records into an anonymous memory map.
+    #[must_use]
     pub fn from_frequency_map(frequencies: HashMap<Word<N>, u64>) -> Self {
         Self::from_pairs(frequencies.into_iter().collect())
     }
@@ -220,6 +239,15 @@ impl<const N: usize> WordSet<N> {
     /// The sort by frequency descending is stable, so equal frequencies keep the input
     /// order. Unlike [`from_frequency_map`](Self::from_frequency_map), whose tie order
     /// inherits `HashMap` iteration order, this is deterministic for fixtures and tests.
+    ///
+    /// # Panics
+    ///
+    /// If the operating system cannot map the records' memory, or the records exceed 4 GiB.
+    #[must_use]
+    #[expect(
+        clippy::expect_used,
+        reason = "a failed anonymous mapping or a set beyond the u32 offsets is memory exhaustion, which aborts like a failed allocation"
+    )]
     pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
         let record_size = RawRecord::<N>::SIZE;
@@ -231,18 +259,21 @@ impl<const N: usize> WordSet<N> {
             for (j, &ch) in word.iter().enumerate() {
                 let char_off = off + j * RawRecord::<N>::CHAR_BYTES;
                 buf[char_off..char_off + RawRecord::<N>::CHAR_BYTES]
-                    .copy_from_slice(&(ch as u32).to_le_bytes());
+                    .copy_from_slice(&u32::from(ch).to_le_bytes());
             }
             let freq_off = off + RawRecord::<N>::CHAR_BYTES * N;
             buf[freq_off..freq_off + RawRecord::<N>::FREQ_BYTES]
                 .copy_from_slice(&freq.to_le_bytes());
         }
         let mmap = buf.make_read_only().expect("failed to make mmap read-only");
-        let offsets = (0..pairs.len()).map(|i| (i * record_size) as u32).collect();
+        let offsets = (0..pairs.len())
+            .map(|i| u32::try_from(i * record_size).expect("record offset exceeds 4 GiB"))
+            .collect();
         Self::from_offsets(mmap, offsets)
     }
 
     /// Words sorted descending by frequency, read lazily from the mmap backing store.
+    #[must_use]
     pub fn words(&self) -> WordIter<'_, N> {
         WordIter {
             mmap: &self.mmap,
@@ -255,20 +286,16 @@ impl<const N: usize> WordSet<N> {
     /// these frequencies is a solver modeling choice and lives in `lex-core`.
     pub fn word_frequencies(&self) -> impl Iterator<Item = (Word<N>, u64)> + '_ {
         self.offsets.iter().map(|&off| {
-            let record =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
-            (
-                record.word().expect("records are validated at load"),
-                record.freq(),
-            )
+            let record = record_at::<N>(&self.mmap, off);
+            (record.word_lossy(), record.freq())
         })
     }
 
     /// The frequency of `word`, or `None` when it is not in the set.
+    #[must_use]
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
         for &off in &self.offsets {
-            let record =
-                RawRecord::<N>::from(&self.mmap[off as usize..off as usize + RawRecord::<N>::SIZE]);
+            let record = record_at::<N>(&self.mmap, off);
             if record.word().as_ref() == Some(word) {
                 return Some(record.freq());
             }
@@ -278,7 +305,9 @@ impl<const N: usize> WordSet<N> {
 
     /// The Alphabet: every distinct letter in the set's words.
     pub fn alphabet(&self) -> HashSet<char> {
-        self.words().flat_map(|w| w.into_iter()).collect()
+        self.words()
+            .flat_map(std::iter::IntoIterator::into_iter)
+            .collect()
     }
 
     /// Fails if the Alphabet exceeds [`MAX_ALPHABET_SIZE`](crate::MAX_ALPHABET_SIZE), the most
@@ -295,16 +324,19 @@ impl<const N: usize> WordSet<N> {
     }
 
     /// Number of words in the set.
-    pub fn len(&self) -> usize {
+    #[must_use]
+    pub const fn len(&self) -> usize {
         self.offsets.len()
     }
 
     /// Whether the set holds no words.
-    pub fn is_empty(&self) -> bool {
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
         self.offsets.is_empty()
     }
 
     /// Whether `word` is in the set.
+    #[must_use]
     pub fn contains(&self, word: &Word<N>) -> bool {
         self.frequency(word).is_some()
     }
@@ -328,21 +360,23 @@ mod benches {
     use std::collections::HashMap;
     use std::hint::black_box;
 
-    use super::*;
+    use super::{Word, WordSet};
+
+    fn letter(i: usize) -> char {
+        char::from(b"abcdefghijklmnopqrstuvwxyz"[i % 26])
+    }
 
     fn make_wordset(n: usize) -> WordSet<5> {
         let frequencies = (0..n)
             .map(|i| {
-                let s: String = [
-                    char::from(b'a' + (i % 26) as u8),
-                    char::from(b'a' + ((i / 26) % 26) as u8),
-                    char::from(b'a' + ((i / 676) % 26) as u8),
-                    char::from(b'a' + ((i / 17576) % 26) as u8),
-                    char::from(b'a' + ((i / 456976) % 26) as u8),
-                ]
-                .iter()
-                .collect();
-                (Word::<5>::try_from(s.as_str()).unwrap(), (n - i) as u64)
+                let word = Word::from([
+                    letter(i),
+                    letter(i / 26),
+                    letter(i / 676),
+                    letter(i / 17_576),
+                    letter(i / 456_976),
+                ]);
+                (word, u64::try_from(n - i).unwrap_or(1))
             })
             .collect::<HashMap<Word<5>, u64>>();
         WordSet::from_frequency_map(frequencies)

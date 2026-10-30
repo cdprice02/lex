@@ -37,7 +37,7 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 `match` on `len` calling `f::<N>(args)` for each `N` in 3..=21. The macro lives
 in `lex-data` next to the `MIN_WORD_LENGTH`/`MAX_WORD_LENGTH` consts it mirrors
 (compile-time assert keeps them in lockstep), so future frontends reuse it.
-`main.rs` invokes it once per subcommand.
+`main.rs` invokes it once per subcommand and returns an `ExitCode`; `verdict::command` does too.
 
 ## Simulate loop (`simulate.rs`)
 

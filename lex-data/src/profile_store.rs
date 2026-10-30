@@ -16,17 +16,17 @@ use crate::profile::{ListSpec, ProfileData, ProfileSpec, ProfileStats};
 use crate::word::{Word, WordSet};
 
 /// Name of the stored Answer list.
-pub(crate) const ANSWERS_FILE: &str = "answers.txt";
+pub const ANSWERS_FILE: &str = "answers.txt";
 /// Name of the stored guess-only list.
-pub(crate) const GUESS_ONLY_FILE: &str = "guess-only.txt";
+pub const GUESS_ONLY_FILE: &str = "guess-only.txt";
 /// Name of the Provenance record, written last so its presence marks a complete fetch.
-pub(crate) const META_FILE: &str = "meta.json";
+pub const META_FILE: &str = "meta.json";
 
 /// Returns the body of a URL as text. Injected so tests never touch the network.
-pub(crate) type Get<'a> = &'a dyn Fn(&str) -> anyhow::Result<String>;
+pub type Get<'a> = &'a dyn Fn(&str) -> anyhow::Result<String>;
 
 /// A [`Get`] over HTTP.
-pub(crate) fn http_get(url: &str) -> anyhow::Result<String> {
+pub fn http_get(url: &str) -> anyhow::Result<String> {
     http::get(&http::agent(), url, |body| {
         let mut text = String::new();
         body.read_to_string(&mut text)?;
@@ -168,17 +168,17 @@ fn fetch_into<const N: usize>(
 /// Reads a stored list, requiring its bytes to hash to `expected`.
 fn read_verified(dir: &Path, file: &str, expected: &str) -> anyhow::Result<String> {
     let path = dir.join(file);
-    let bytes = std::fs::read(&path).with_context(|| format!("reading {path:?}"))?;
+    let bytes = std::fs::read(&path).with_context(|| format!("reading {}", path.display()))?;
     let actual = list::checksum(&bytes);
     if actual != expected {
         return Err(mismatch(&path.display().to_string(), expected, actual));
     }
-    String::from_utf8(bytes).with_context(|| format!("{path:?} is not UTF-8"))
+    String::from_utf8(bytes).with_context(|| format!("{} is not UTF-8", path.display()))
 }
 
 /// Loads a Profile against its Corpus, fetching the lists first if `dir` has no `meta.json`.
 /// Every load re-hashes the stored files; a mismatch is a hard error and is never refetched.
-pub(crate) fn load<const N: usize>(
+pub fn load<const N: usize>(
     dir: &Path,
     name: &str,
     spec: &ProfileSpec,

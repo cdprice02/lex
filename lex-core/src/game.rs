@@ -15,23 +15,30 @@ pub struct GameResult<const N: usize> {
 
 impl<const N: usize> GameResult<N> {
     /// The answer.
-    pub fn word(&self) -> Word<N> {
+    #[must_use]
+    pub const fn word(&self) -> Word<N> {
         self.word
     }
 
     /// The guesses played, in order.
+    #[must_use]
     pub fn guesses(&self) -> &[Guess<N>] {
         &self.guesses
     }
 
     /// How many guesses the game took.
-    pub fn num_guesses(&self) -> usize {
+    #[must_use]
+    pub const fn num_guesses(&self) -> usize {
         self.guesses.len()
     }
 }
 
 /// Plays one game to completion from `history`, resetting `guesser` first. Reusing one
 /// `guesser` across games shares its decision tree, so no position is scored twice.
+///
+/// # Errors
+///
+/// If no valid word remains for the guesser to suggest.
 pub fn play<const N: usize>(
     word: Word<N>,
     guesser: &mut Guesser<N>,
@@ -83,7 +90,7 @@ pub fn play<const N: usize>(
 }
 
 /// Logs one guess and its feedback at `info`.
-#[inline(always)]
+#[inline]
 fn log_guess<const N: usize>(guess_num: usize, guess: &Guess<N>) {
     log::info!(
         "Guess {guess_num}: {} -> {}",

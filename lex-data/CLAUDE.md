@@ -9,21 +9,22 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 | Module | Responsibility |
 |---|---|
 | `data_dir.rs` | `DataDir`: sync entry point; `load`, `dict_metadata`, `clear`, path helpers |
-| `store.rs` | `build_if_missing`, `ensure_supported` (a length under `MIN_SUPPORTED_WORDS` = 200 is `UnsupportedLength`, listing the language's Supported lengths from its cache headers; `DataDir::load` calls it), `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub(crate)` |
+| `store.rs` | `build_if_missing`, `ensure_supported` (a length under `MIN_SUPPORTED_WORDS` = 200 is `UnsupportedLength`, listing the language's Supported lengths from its cache headers; `DataDir::load` calls it), `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub` in a private module |
 | `http.rs` | `agent()` (ureq, rustls, timeouts) and `get(agent, url, consume)`: one retried GET whose body is handed to `consume`; classifies errors transient or permanent |
 | `retry.rs` | `with_retry(op, sleep)`: 3 attempts, 1 s then 2 s backoff plus jitter; `sleep` is injected so tests do not wait |
+| `le.rs` | `array_at`: a fixed-size little-endian field read from a byte slice |
 | `header.rs` | 64-byte cache header: encode, parse, `read_file` |
 | `book_store.rs` | Opening book files at `books/<lang code>/<N>/<key hash>.bin` (ADR 0011): `BookKey` (typed Corpus, Profile, length and dictionary-length fields, the Strategy as ordered `(name, value)` strings rendered by `lex-core`, the solver digest; `fields()`, `differing_fields()`, `hash()`), `StoredBook`/`StoredNode` (the plain stored nodes, which this crate does not interpret), and `DataDir::{book_path, read_book, write_book, clear_books}`. Layout: `LEXB` magic, format version, word length, `header_len`, node count, body SHA-256, key length, then the postcard key and the postcard body. `read_book` returns the book, or a miss naming the fields on which the nearest sibling differs; a present file that fails its magic, version, checksum, parse or key check is `CorruptBook` (never a rebuild). `write_book` goes through `NamedTempFile::persist`. `clear` of a language and `clear_profile` also remove the matching books |
 | `ngrams.rs` | `fetch(lang, valid)`: 4 scoped worker threads (`SHARD_CONCURRENCY`) pull shard indices from a shared counter and filter as they stream; `read_shard` takes any `BufRead` |
 | `wiktionary.rs` | `fetch_dict`, `read_dict` (any `BufRead`), `load_valid_words`, `load_metadata`, `DictMetadata` |
-| `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub(crate)` for reuse in `wiktionary.rs` |
+| `parse.rs` | V3 line parser; `normalize()` and `is_valid_word()` are `pub` (in a private module) for reuse in `wiktionary.rs` |
 | `word.rs` | `Word<N>`, `WordSet<N>` (`from_pairs` keeps input order on frequency ties; `from_frequency_map` inherits HashMap order), `RawRecord<'a, N>` (zero-copy binary record view); `alphabet()` (distinct letters; `ensure_alphabet_fits` rejects more than `MAX_ALPHABET_SIZE` = 255 with `AlphabetTooLarge`, called by `DataDir::load`), exposes raw frequencies only (`word_frequencies`), the answer prior lives in `lex-core` |
 | `profile.rs` | `Profile` enum (`wordle`, `wordle-all`; strum `VariantArray`), `spec()` registry (language, length, `ListSpec`s of pinned `Source` URLs plus compiled-in checksums), `ProfileData`, `ProfileStats` |
 | `profile_store.rs` | fetch (temp file then rename; `meta.json` last), re-hash on every load, build the pool and Answer list; `Get` is injected so tests skip the network |
 | `list.rs` | pure list handling: `parse` (normalize, blank lines only at the end), `validate` (length, Alphabet, duplicates, file and line named), `canonicalize` (sorted, `\n` after each; its SHA-256 is the checksum) |
 | `language.rs` | `Language` enum (strum `VariantArray`: `Language::VARIANTS`) with `lang_code()`, `iso_code()` and `max_supported_length()` (const, capped by `MAX_WORD_LENGTH`; bounds the Track table) |
-| `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`, `CorruptBook`, `UnsupportedLength`) |
-| `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn over 3..=21; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
+| `error.rs` | `LexDataError` (incl. `LegacyCache`, `CorruptCache`, `CorruptRecord`, `CorruptBook`, `UnsupportedLength`, `UnsupportedWordLength`) |
+| `lib.rs` | `MIN`/`MAX_WORD_LENGTH` + `match_word_length!` dispatch macro (monomorphizes a fn returning a `Result` over 3..=21, and any other length is `UnsupportedWordLength`; compile-time assert keeps the macro's literal bounds in lockstep with the consts) |
 
 ## Data layout
 

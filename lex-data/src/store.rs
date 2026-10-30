@@ -1,6 +1,7 @@
 //! Building, reading and clearing the on-disk Cache.
 
 use std::collections::HashMap;
+use std::fmt::Write as _;
 use std::io::{BufWriter, Write};
 
 use anyhow::Context;
@@ -17,35 +18,32 @@ use crate::word::{RawRecord, WordSet};
 use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 
 /// Least summed count a word needs to enter a Corpus.
-pub(crate) const MIN_FREQUENCY: u64 = 1;
+pub const MIN_FREQUENCY: u64 = 1;
 
 /// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
 /// Ensures the Wiktionary dict is present first, then downloads all ngrams shards keeping only
 /// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
-pub(crate) fn build_if_missing<const N: usize>(
-    dir: &DataDir,
-    lang: Language,
-) -> anyhow::Result<()> {
+pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow::Result<()> {
     if !dir.ngrams_path(lang, N).exists() {
         if !dir.dict_path(lang).exists() {
             wiktionary::fetch_dict(lang, dir.as_ref())?;
         }
         let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
-        log::warn!("Building {} corpus...", lang);
+        log::warn!("Building {lang} corpus...");
         let by_length = ngrams::fetch(lang, &valid_words)?;
         let n_buckets = by_length.len();
         populate(dir, lang, &by_length)?;
-        log::info!("Cached {} corpus ({} length buckets)", lang, n_buckets);
+        log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
     }
     Ok(())
 }
 
 /// Rejects a length whose cached Corpus holds fewer than `MIN_SUPPORTED_WORDS` words, naming
 /// the lengths of `lang` that do, read from the cache headers.
-pub(crate) fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
+pub fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
     let count_at = |len: usize| -> Option<usize> {
         let header = Header::read_file(&dir.ngrams_path(lang, len)).ok()?;
-        Some(header.record_count as usize)
+        Some(header.record_count)
     };
     let count = match count_at(n) {
         Some(count) => count,
@@ -74,15 +72,18 @@ pub(crate) fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyho
 /// Checks the header, the file length it implies, the records checksum, and every record
 /// before returning; a failure names the file (and record index) and never falls back to a
 /// partial read.
-pub(crate) fn read<const N: usize>(
+pub fn read<const N: usize>(
     dir: &DataDir,
     lang: Language,
     limit: Option<usize>,
 ) -> anyhow::Result<WordSet<N>> {
     let path = dir.ngrams_path(lang, N);
-    let f = std::fs::File::open(&path).with_context(|| format!("opening ngrams file: {path:?}"))?;
-    let mmap =
-        unsafe { Mmap::map(&f) }.with_context(|| format!("mmapping ngrams file: {path:?}"))?;
+    let f = std::fs::File::open(&path)
+        .with_context(|| format!("opening ngrams file: {}", path.display()))?;
+    // SAFETY: the cache is rewritten only by `populate`, before any reader maps it, and nothing
+    // else truncates a mapped file; a concurrent truncation would be undefined behaviour.
+    let mmap = unsafe { Mmap::map(&f) }
+        .with_context(|| format!("mmapping ngrams file: {}", path.display()))?;
     let header = Header::parse(&mmap, &path)?;
     let corrupt = |reason: String| LexDataError::CorruptCache {
         path: path.clone(),
@@ -95,10 +96,9 @@ pub(crate) fn read<const N: usize>(
         ))
         .into());
     }
-    let start = header.header_len as usize;
+    let start = header.records_offset;
     let size = <RawRecord<'_, N>>::SIZE;
-    let count = usize::try_from(header.record_count)
-        .map_err(|_| corrupt(format!("record count {} is too large", header.record_count)))?;
+    let count = header.record_count;
     let expected_len = count.checked_mul(size).and_then(|b| b.checked_add(start));
     if expected_len != Some(mmap.len()) {
         return Err(corrupt(format!(
@@ -115,28 +115,28 @@ pub(crate) fn read<const N: usize>(
 }
 
 /// Hex SHA-256 of the records in the cached ngrams file, as recorded in its header.
-pub(crate) fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
+pub fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
     Ok(Header::read_file(path)?.checksum_hex())
 }
 
 /// `bytes` as lowercase hex.
-pub(crate) fn hex(bytes: &[u8]) -> String {
-    bytes.iter().map(|b| format!("{b:02x}")).collect()
+pub fn hex(bytes: &[u8]) -> String {
+    bytes.iter().fold(String::new(), |mut hex, b| {
+        let _ = write!(hex, "{b:02x}");
+        hex
+    })
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
 /// language ngrams directory (None).
-pub(crate) fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
-    match n {
-        Some(n) => {
-            std::fs::remove_file(dir.ngrams_path(lang, n))
-                .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
-        }
-        None => {
-            let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
-            std::fs::remove_dir_all(&lang_dir)
-                .with_context(|| format!("removing ngrams dir for {lang}"))?;
-        }
+pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
+    if let Some(n) = n {
+        std::fs::remove_file(dir.ngrams_path(lang, n))
+            .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
+    } else {
+        let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
+        std::fs::remove_dir_all(&lang_dir)
+            .with_context(|| format!("removing ngrams dir for {lang}"))?;
     }
     Ok(())
 }
@@ -162,20 +162,20 @@ fn write_bucket(
     words: &HashMap<String, u64>,
 ) -> anyhow::Result<()> {
     let path = dir.ngrams_path(lang, n);
-    std::fs::create_dir_all(path.parent().unwrap())?;
+    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
     entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));
     let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
     let mut records = Vec::with_capacity(entries.len() * record_size);
     for (word, freq) in entries {
         for ch in word.chars() {
-            records.extend_from_slice(&(ch as u32).to_le_bytes());
+            records.extend_from_slice(&u32::from(ch).to_le_bytes());
         }
         records.extend_from_slice(&freq.to_le_bytes());
     }
-    let header = Header::for_records(n, record_size, &records);
+    let header = Header::for_records(n, record_size, &records)?;
     let mut writer = BufWriter::new(std::fs::File::create(&path)?);
-    writer.write_all(&header.encode())?;
+    writer.write_all(&header.encode()?)?;
     writer.write_all(&records)?;
     writer.flush()?;
     Ok(())
@@ -208,7 +208,7 @@ mod tests {
     fn all_words_valid() -> HashSet<String> {
         ["crane", "stare", "light", "mount", "swipe", "ace"]
             .iter()
-            .map(|s| s.to_string())
+            .map(std::string::ToString::to_string)
             .collect()
     }
 
@@ -217,7 +217,7 @@ mod tests {
         let dir = DataDir::new(tmp.path());
         let dict_dir = tmp.path().join("dicts");
         std::fs::create_dir_all(&dict_dir).unwrap();
-        let mut sorted: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
+        let mut sorted: Vec<&str> = words.iter().map(std::string::String::as_str).collect();
         sorted.sort_unstable();
         std::fs::write(dir.dict_path(Language::English), sorted.join("\n")).unwrap();
         (tmp, dir)
@@ -399,7 +399,7 @@ mod tests {
     #[test]
     fn short_length_is_rejected_naming_the_supported_lengths() {
         let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
-        let big: HashMap<String, u64> = (0..MIN_SUPPORTED_WORDS as u64)
+        let big: HashMap<String, u64> = (0..u64::try_from(MIN_SUPPORTED_WORDS).unwrap())
             .map(|i| (format!("w{i:04}"), 1000 - i))
             .collect();
         let mut corpus = toy_corpus();
@@ -432,7 +432,7 @@ mod tests {
     #[test]
     fn exactly_the_minimum_is_supported() {
         let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
-        let words: HashMap<String, u64> = (0..MIN_SUPPORTED_WORDS as u64)
+        let words: HashMap<String, u64> = (0..u64::try_from(MIN_SUPPORTED_WORDS).unwrap())
             .map(|i| (format!("w{i:04}"), 1000 - i))
             .collect();
         populate(&dir, Language::English, &[(5, words)].into()).unwrap();

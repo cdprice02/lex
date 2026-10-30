@@ -64,7 +64,7 @@ Each tree node stores an `Allowed` beside its candidates, a function of the gues
 
 ## Strategy and scoring (`strategy.rs`, `candidates.rs`)
 
-The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
+The guess pool is immutable (every loaded word); a `Candidates` is a sorted index list into it, starting as exactly the Answer list's pool indices (`Guesser::new` borrows the `&WordSet` and the `&[Word]` and always takes one: every pool word on a Corpus run, a Profile's list otherwise; mapped once through a `HashMap`, sorted ascending so frequency order holds; an answer missing from the pool panics). The prior is always taken over the surviving candidates, so a Profile's Answer list restricts it without changing its formula. `filtered` copies indices, not words. `suggest` scores every guess the `Strategy` allows
 (see Allowed guesses below) as
 `entropy + win_weight * P(guess is the answer)`, with probabilities renormalized over the surviving
 candidates each time (`Pool::prior`: softmax of ln-frequency over T, relative to the survivors'

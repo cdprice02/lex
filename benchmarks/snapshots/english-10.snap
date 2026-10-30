@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "93bbf4eb7693fce5a074c5a51db93268e6fb32c2c4cc3827579ca618c800181e",
   "first_guess": "porcelains",
-  "games_sha256": "f2fa71642a0a93896815412fcd11ecf0a74950a01f801fe97881454cb4b8b1b2",
+  "games_sha256": "b916eee03cd99c23c3797fcb622f1e611e54071b700a50c097f0ff8fc93303fe",
   "profile": null,
   "summary": {
     "max_guesses": 6,

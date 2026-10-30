@@ -22,7 +22,8 @@ pub enum BookMode {
 
 impl BookMode {
     /// `Off` when `--no-book` was given, else `Auto`.
-    pub fn from_no_book(no_book: bool) -> Self {
+    #[must_use]
+    pub const fn from_no_book(no_book: bool) -> Self {
         if no_book { Self::Off } else { Self::Auto }
     }
 }
@@ -52,6 +53,7 @@ pub struct Ensured<const N: usize> {
 }
 
 /// The key of the book for `config` over `lists`: everything that can change a chosen guess.
+#[must_use]
 pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameLists<N>) -> BookKey {
     let profile = match source {
         Source::Corpus(_) => None,
@@ -77,16 +79,21 @@ pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameList
 }
 
 /// The language of `game`'s Corpus.
-fn language(game: &Game) -> lex_data::Language {
+const fn language(game: &Game) -> lex_data::Language {
     match game {
         Game::Corpus { language, .. } => *language,
         Game::Profile(profile) => profile.spec().language,
     }
 }
 
-/// Loads the book for `config`, building and storing it first when no file matches the key or
-/// `force` asks for a rebuild. A stale book is rebuilt with a message naming what changed; a
+/// Loads the book for `config`, building it first when none matches or `force` asks.
+///
+/// A missing book is built and stored. A stale book is rebuilt with a message naming what changed; a
 /// damaged one is an error.
+///
+/// # Errors
+///
+/// If the lists cannot be loaded, a stored book is damaged, or the book cannot be written.
 pub fn ensure<const N: usize>(
     config: &RunConfig,
     data_dir: &DataDir,
@@ -102,9 +109,13 @@ pub fn ensure<const N: usize>(
         match data_dir.read_book(lang, &key)? {
             BookLookup::Found(stored) => {
                 let bytes = std::fs::metadata(&path)?.len();
-                let book = OpeningBook::<N>::from_nodes(stored, lists.pool.len()).with_context(
-                    || format!("opening book {path:?} is corrupt; rebuild it with `lex book build --force`"),
-                )?;
+                let book =
+                    OpeningBook::<N>::from_nodes(stored, lists.pool.len()).with_context(|| {
+                        format!(
+                            "opening book {} is corrupt; rebuild it with `lex book build --force`",
+                            path.display()
+                        )
+                    })?;
                 return Ok(Ensured {
                     book,
                     status: Status::UpToDate,
@@ -129,7 +140,7 @@ pub fn ensure<const N: usize>(
     }
 
     let started = Instant::now();
-    let guesser = Guesser::new(lists.pool.clone(), lists.answers.clone(), config.strategy);
+    let guesser = Guesser::new(&lists.pool, &lists.answers, config.strategy);
     let mut last_report = Instant::now();
     let book = guesser.build_book_reporting(&mut |booked| {
         if last_report.elapsed() >= Duration::from_secs(5) {
@@ -157,6 +168,10 @@ pub fn ensure<const N: usize>(
 }
 
 /// A guesser for `lists`, seeded with the Opening book unless `mode` is off.
+///
+/// # Errors
+///
+/// As [`ensure`], and when the stored book does not fit the Guess pool.
 pub fn guesser<const N: usize>(
     config: &RunConfig,
     data_dir: &DataDir,
@@ -167,14 +182,18 @@ pub fn guesser<const N: usize>(
     let strategy = config.strategy;
     if mode == BookMode::Off {
         let GameLists { pool, answers } = lists;
-        return Ok(Guesser::new(pool, answers, strategy));
+        return Ok(Guesser::new(&pool, &answers, strategy));
     }
     let ensured = ensure(config, data_dir, source, &lists, false)?;
     let GameLists { pool, answers } = lists;
-    Ok(Guesser::with_book(pool, answers, strategy, ensured.book))
+    Ok(Guesser::with_book(&pool, &answers, strategy, ensured.book))
 }
 
 /// The `lex book build` command: builds the book, or reports that it is up to date.
+///
+/// # Errors
+///
+/// As [`ensure`].
 pub fn build_command<const N: usize>(args: &BookBuildArgs) -> anyhow::Result<()> {
     let config = args.config();
     let data_dir = DataDir::new(&args.common.data_dir);

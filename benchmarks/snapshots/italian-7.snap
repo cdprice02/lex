@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "2b2dd9ca6594d850c01140513b7d76b4869699a0a2545bf8ffce36d940aaeb5a",
   "first_guess": "seriato",
-  "games_sha256": "416a51ce130ab4bff8bb65d59911da24179dfad18c3f77cae6989a2cbd3f34c5",
+  "games_sha256": "71a8edc6d2d71294f1a1633264c1370f305e5fee00f96919e9090eb1ed028faa",
   "profile": null,
   "summary": {
     "max_guesses": 6,

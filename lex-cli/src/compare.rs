@@ -9,6 +9,10 @@ use anyhow::Context;
 use crate::report::{MAX_GUESSES, Report};
 
 /// Prints the paired comparison of the two reports `args` names.
+///
+/// # Errors
+///
+/// If either report cannot be read or parsed.
 pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
     let baseline = load(&args.baseline)?;
     let candidate = load(&args.candidate)?;
@@ -18,9 +22,9 @@ pub fn compare_reports(args: &crate::cli::CompareArgs) -> anyhow::Result<()> {
 
 /// Reads the JSON report at `path`.
 fn load(path: &Path) -> anyhow::Result<Report> {
-    let content =
-        std::fs::read_to_string(path).with_context(|| format!("reading report {path:?}"))?;
-    serde_json::from_str(&content).with_context(|| format!("parsing report {path:?}"))
+    let content = std::fs::read_to_string(path)
+        .with_context(|| format!("reading report {}", path.display()))?;
+    serde_json::from_str(&content).with_context(|| format!("parsing report {}", path.display()))
 }
 
 /// Paired comparison over the targets both reports played. Pairing removes target-sampling
@@ -92,9 +96,9 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
         return Ok(out);
     }
 
-    let n = pairs.len() as f64;
+    let n: f64 = pairs.iter().map(|_| 1.0).sum();
     let diff = |(g, h): &(&crate::report::Game, &crate::report::Game)| {
-        h.num_guesses as f64 - g.num_guesses as f64
+        f64::from(h.num_guesses) - f64::from(g.num_guesses)
     };
     let uniform_delta = pairs.iter().map(diff).sum::<f64>() / n;
     let total_prior: f64 = pairs.iter().map(|(g, _)| g.prior).sum();
@@ -107,8 +111,8 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
         .iter()
         .filter(|(g, h)| h.num_guesses > g.num_guesses)
         .count();
-    let fail = |games: &mut dyn Iterator<Item = usize>| {
-        games.filter(|&k| k > MAX_GUESSES).count() as f64 / n
+    let fail = |games: &mut dyn Iterator<Item = u32>| {
+        games.filter(|&k| k > MAX_GUESSES).map(|_| 1.0).sum::<f64>() / n
     };
     let base_fail = fail(&mut pairs.iter().map(|(g, _)| g.num_guesses));
     let cand_fail = fail(&mut pairs.iter().map(|(_, h)| h.num_guesses));
@@ -116,8 +120,7 @@ pub fn compare(baseline: &Report, candidate: &Report) -> anyhow::Result<String> 
 
     let _ = writeln!(
         out,
-        "mean guesses (uniform):  {:+.4}  (negative is better)",
-        uniform_delta
+        "mean guesses (uniform):  {uniform_delta:+.4}  (negative is better)"
     );
     let _ = writeln!(out, "mean guesses (prior):    {prior_delta:+.4}");
     let _ = writeln!(

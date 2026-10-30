@@ -32,6 +32,7 @@ use sha2::{Digest, Sha256};
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
 use crate::language::Language;
+use crate::le::array_at;
 use crate::store::hex;
 
 /// File magic identifying an Opening book.
@@ -54,9 +55,10 @@ pub struct ProfileKey {
     pub guess_only_sha256: String,
 }
 
-/// Everything that can change a guess the solver chooses. The Strategy arrives as ordered
-/// (field name, value) strings rendered by `lex-core`, which this crate stores and compares
-/// without knowing what the fields mean.
+/// Everything that can change a guess the solver chooses.
+///
+/// The Strategy arrives as ordered (field name, value) strings rendered by `lex-core`, which
+/// this crate stores and compares without knowing what the fields mean.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BookKey {
     /// The Corpus checksum.
@@ -75,6 +77,7 @@ pub struct BookKey {
 
 impl BookKey {
     /// The key as ordered (name, value) pairs; the unit a stale book is diagnosed in.
+    #[must_use]
     pub fn fields(&self) -> Vec<(String, String)> {
         let none = || "none".to_owned();
         let mut out = vec![
@@ -111,6 +114,7 @@ impl BookKey {
     }
 
     /// Names of the fields on which `self` and `other` differ.
+    #[must_use]
     pub fn differing_fields(&self, other: &Self) -> Vec<String> {
         let (a, b) = (self.fields(), other.fields());
         let mut out: Vec<String> = a
@@ -131,6 +135,7 @@ impl BookKey {
     }
 
     /// Hex SHA-256 of the canonical rendering: the file's name.
+    #[must_use]
     pub fn hash(&self) -> String {
         let mut hasher = Sha256::new();
         hasher.update(KEY_HASH_DOMAIN.as_bytes());
@@ -196,9 +201,9 @@ struct Header {
     /// Word length `N` the book was built for.
     word_length: u16,
     /// Offset of the body.
-    header_len: usize,
+    body_offset: usize,
     /// Number of nodes in the body.
-    node_count: u64,
+    node_count: usize,
     /// SHA-256 of the body.
     checksum: [u8; 32],
     /// The key stored ahead of the body.
@@ -213,13 +218,9 @@ fn encode(key: &BookKey, book: &StoredBook) -> anyhow::Result<Vec<u8>> {
     let mut out = Vec::with_capacity(header_len + body.len());
     out.extend_from_slice(&MAGIC);
     out.extend_from_slice(&VERSION.to_le_bytes());
-    out.extend_from_slice(
-        &u16::try_from(key.word_length)
-            .expect("word length fits in u16")
-            .to_le_bytes(),
-    );
+    out.extend_from_slice(&u16::try_from(key.word_length)?.to_le_bytes());
     out.extend_from_slice(&u32::try_from(header_len)?.to_le_bytes());
-    out.extend_from_slice(&(book.nodes.len() as u64).to_le_bytes());
+    out.extend_from_slice(&u64::try_from(book.nodes.len())?.to_le_bytes());
     out.extend_from_slice(&Sha256::digest(&body));
     out.extend_from_slice(&u32::try_from(key_bytes.len())?.to_le_bytes());
     out.resize(FIXED_LEN, 0);
@@ -239,39 +240,46 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
             format!("truncated header ({} bytes, need {FIXED_LEN})", bytes.len()),
         ));
     }
-    let version = u16::from_le_bytes(bytes[4..6].try_into().unwrap());
+    let version = u16::from_le_bytes(array_at(bytes, 4));
     if version != VERSION {
         return Err(corrupt(
             path,
             format!("unsupported format version {version} (this build reads {VERSION})"),
         ));
     }
-    let header_len = u32::from_le_bytes(bytes[8..12].try_into().unwrap()) as usize;
-    let key_len = u32::from_le_bytes(bytes[52..56].try_into().unwrap()) as usize;
+    let header_len = length_at(bytes, 8, path)?;
+    let key_len = length_at(bytes, 52, path)?;
     if header_len != FIXED_LEN + key_len || bytes.len() < header_len {
         return Err(corrupt(path, "truncated or inconsistent header"));
     }
     let key: BookKey = postcard::from_bytes(&bytes[FIXED_LEN..header_len])
         .map_err(|e| corrupt(path, format!("unreadable key: {e}")))?;
     Ok(Header {
-        word_length: u16::from_le_bytes(bytes[6..8].try_into().unwrap()),
-        header_len,
-        node_count: u64::from_le_bytes(bytes[12..20].try_into().unwrap()),
-        checksum: bytes[20..52].try_into().unwrap(),
+        word_length: u16::from_le_bytes(array_at(bytes, 6)),
+        body_offset: header_len,
+        node_count: usize::try_from(u64::from_le_bytes(array_at(bytes, 12)))
+            .map_err(|_| corrupt(path, "node count is too large"))?,
+        checksum: array_at(bytes, 20),
         key,
     })
+}
+
+/// The little-endian `u32` length at byte `at`, as an in-memory size.
+fn length_at(bytes: &[u8], at: usize, path: &Path) -> Result<usize, LexDataError> {
+    usize::try_from(u32::from_le_bytes(array_at(bytes, at)))
+        .map_err(|_| corrupt(path, "a stored length does not fit in memory"))
 }
 
 /// Verifies a book file's bytes and parses them into its key and body.
 fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataError> {
     let header = parse_header(bytes, path)?;
-    let body = &bytes[header.header_len..];
+    let body = &bytes[header.body_offset..];
     if <[u8; 32]>::from(Sha256::digest(body)) != header.checksum {
         return Err(corrupt(path, "body checksum mismatch"));
     }
     let book: StoredBook =
         postcard::from_bytes(body).map_err(|e| corrupt(path, format!("unreadable body: {e}")))?;
-    if book.nodes.len() as u64 != header.node_count {
+    if book.nodes.len() != header.node_count {
         return Err(corrupt(
             path,
             format!(
@@ -290,14 +298,14 @@ fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataErr
 /// Reads just the key at the start of the book file at `path`.
 fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     use std::io::Read;
-    let mut file =
-        std::fs::File::open(path).with_context(|| format!("opening opening book: {path:?}"))?;
+    let mut file = std::fs::File::open(path)
+        .with_context(|| format!("opening opening book: {}", path.display()))?;
     let mut fixed = [0u8; FIXED_LEN];
     let got = file.read(&mut fixed)?;
     if got < FIXED_LEN {
         return Err(corrupt(path, "truncated header").into());
     }
-    let key_len = u32::from_le_bytes(fixed[52..56].try_into().unwrap()) as usize;
+    let key_len = length_at(&fixed, 52, path)?;
     let mut bytes = fixed.to_vec();
     bytes.resize(FIXED_LEN + key_len, 0);
     file.read_exact(&mut bytes[FIXED_LEN..])
@@ -325,26 +333,34 @@ impl DataDir {
     }
 
     /// Path of the book for `key`: `books/<lang>/<N>/<key-hash>.bin`.
+    #[must_use]
     pub fn book_path(&self, lang: Language, key: &BookKey) -> PathBuf {
-        self.books_root()
-            .join(lang.lang_code())
-            .join(key.word_length.to_string())
+        self.book_dir(lang, key.word_length)
             .join(format!("{}.bin", key.hash()))
+    }
+
+    /// Directory holding the books for `lang` at word length `n`.
+    fn book_dir(&self, lang: Language, n: usize) -> PathBuf {
+        self.books_root().join(lang.lang_code()).join(n.to_string())
     }
 
     /// Reads the book for `key`. A file that is present but fails its checksum, parse, or key
     /// check is an error naming it, never a miss: rebuilding silently would hide the corruption.
+    ///
+    /// # Errors
+    ///
+    /// If the book file exists but cannot be read, or fails its checksum, parse or key check.
     pub fn read_book(&self, lang: Language, key: &BookKey) -> anyhow::Result<BookLookup> {
         let path = self.book_path(lang, key);
         if !path.exists() {
-            let nearest = book_files(path.parent().expect("a book path has a parent"))
+            let nearest = book_files(&self.book_dir(lang, key.word_length))
                 .iter()
                 .filter_map(|p| read_key(p).ok())
                 .map(|k| key.differing_fields(&k))
                 .min_by_key(Vec::len);
             return Ok(BookLookup::Missing { nearest });
         }
-        let bytes = std::fs::read(&path).with_context(|| format!("reading {path:?}"))?;
+        let bytes = std::fs::read(&path).with_context(|| format!("reading {}", path.display()))?;
         let (stored_key, book) = decode(&bytes, &path)?;
         if &stored_key != key {
             return Err(corrupt(&path, "its key does not match its file name").into());
@@ -354,6 +370,10 @@ impl DataDir {
 
     /// Writes the book for `key` through a temporary file and a rename, so an interrupted build
     /// leaves nothing and a reader sees either no book or a whole one.
+    ///
+    /// # Errors
+    ///
+    /// If the book cannot be encoded or its file cannot be written.
     pub fn write_book(
         &self,
         lang: Language,
@@ -361,28 +381,34 @@ impl DataDir {
         book: &StoredBook,
     ) -> anyhow::Result<BookFile> {
         let path = self.book_path(lang, key);
-        let dir = path.parent().expect("a book path has a parent");
-        std::fs::create_dir_all(dir)?;
+        let dir = self.book_dir(lang, key.word_length);
+        std::fs::create_dir_all(&dir)?;
         let bytes = encode(key, book)?;
-        let mut tmp = tempfile::NamedTempFile::new_in(dir)?;
+        let mut tmp = tempfile::NamedTempFile::new_in(&dir)?;
         tmp.write_all(&bytes)?;
         tmp.persist(&path)
-            .with_context(|| format!("renaming the opening book into {path:?}"))?;
+            .with_context(|| format!("renaming the opening book into {}", path.display()))?;
         Ok(BookFile {
             path,
-            bytes: bytes.len() as u64,
+            bytes: u64::try_from(bytes.len())?,
         })
     }
 
     /// Removes `books/`, narrowed to a language and a word length. Missing directories are fine.
+    ///
+    /// # Errors
+    ///
+    /// If a books directory exists but cannot be removed.
     pub fn clear_books(&self, lang: Option<Language>, n: Option<usize>) -> anyhow::Result<()> {
         let root = self.books_root();
-        let langs: Vec<PathBuf> = match lang {
-            Some(lang) => vec![root.join(lang.lang_code())],
-            None => std::fs::read_dir(&root)
-                .map(|entries| entries.filter_map(|e| e.ok().map(|e| e.path())).collect())
-                .unwrap_or_default(),
-        };
+        let langs: Vec<PathBuf> = lang.map_or_else(
+            || {
+                std::fs::read_dir(&root)
+                    .map(|entries| entries.filter_map(|e| e.ok().map(|e| e.path())).collect())
+                    .unwrap_or_default()
+            },
+            |lang| vec![root.join(lang.lang_code())],
+        );
         for lang_dir in langs {
             let target = match n {
                 Some(n) => lang_dir.join(n.to_string()),
@@ -391,7 +417,7 @@ impl DataDir {
             match std::fs::remove_dir_all(&target) {
                 Ok(()) => {}
                 Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
-                Err(e) => return Err(e).with_context(|| format!("removing {target:?}")),
+                Err(e) => return Err(e).with_context(|| format!("removing {}", target.display())),
             }
         }
         Ok(())
@@ -402,19 +428,19 @@ impl DataDir {
         let Ok(langs) = std::fs::read_dir(self.books_root()) else {
             return Ok(());
         };
-        for lang_dir in langs.filter_map(|e| e.ok()) {
+        for lang_dir in langs.filter_map(std::result::Result::ok) {
             let Ok(lengths) = std::fs::read_dir(lang_dir.path()) else {
                 continue;
             };
-            for length_dir in lengths.filter_map(|e| e.ok()) {
+            for length_dir in lengths.filter_map(std::result::Result::ok) {
                 for file in book_files(&length_dir.path()) {
                     match read_key(&file) {
                         Ok(key) if key.profile.as_ref().is_some_and(|p| p.name == name) => {
                             std::fs::remove_file(&file)
-                                .with_context(|| format!("removing {file:?}"))?;
+                                .with_context(|| format!("removing {}", file.display()))?;
                         }
                         Ok(_) => {}
-                        Err(e) => log::warn!("skipping unreadable book {file:?}: {e:#}"),
+                        Err(e) => log::warn!("skipping unreadable book {}: {e:#}", file.display()),
                     }
                 }
             }
@@ -497,11 +523,12 @@ mod tests {
         );
     }
 
+    type Edit = Box<dyn Fn(&mut BookKey)>;
+
     #[test]
     fn changing_any_key_field_misses_and_names_that_field() {
         let (_tmp, dir) = dir();
         dir.write_book(LANG, &key(), &book()).unwrap();
-        type Edit = Box<dyn Fn(&mut BookKey)>;
         let edits: Vec<(&str, Edit)> = vec![
             ("corpus_sha256", Box::new(|k| k.corpus_sha256 = "c1".into())),
             (

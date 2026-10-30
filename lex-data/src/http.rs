@@ -10,14 +10,14 @@ use crate::retry::{Failure, with_retry};
 /// Longest wait to establish a connection.
 const CONNECT_TIMEOUT: Duration = Duration::from_secs(30);
 /// Longest wait for the response headers once the request is sent.
-const RESPONSE_TIMEOUT: Duration = Duration::from_secs(60);
+const RESPONSE_TIMEOUT: Duration = Duration::from_mins(1);
 /// Bounds a stalled transfer without capping the total: a healthy multi-hundred-MB shard on a
 /// slow link must be allowed to finish.
-const READ_TIMEOUT: Duration = Duration::from_secs(60);
+const READ_TIMEOUT: Duration = Duration::from_mins(1);
 
 /// A client for the data downloads. Built without ureq's `gzip` feature, so it never asks for or
 /// transparently decodes `Content-Encoding`: the sources are `.gz` files, decoded by the caller.
-pub(crate) fn agent() -> ureq::Agent {
+pub fn agent() -> ureq::Agent {
     ureq::Agent::config_builder()
         .timeout_connect(Some(CONNECT_TIMEOUT))
         .timeout_recv_response(Some(RESPONSE_TIMEOUT))
@@ -28,7 +28,7 @@ pub(crate) fn agent() -> ureq::Agent {
 
 /// GETs `url` and hands the body to `consume`, retrying the whole request and read on a transient
 /// failure. `consume` runs afresh on each attempt, so it must not carry state between calls.
-pub(crate) fn get<T>(
+pub fn get<T>(
     agent: &ureq::Agent,
     url: &str,
     mut consume: impl FnMut(&mut dyn Read) -> io::Result<T>,
@@ -49,15 +49,17 @@ pub(crate) fn get<T>(
 /// Whether `error` is transient (worth another attempt) or permanent.
 fn classify(error: ureq::Error) -> Failure {
     // ureq's error enum is non-exhaustive: any variant not named here is a fault a repeat will not
-    // clear (bad URI, protocol or TLS failure), so it is deliberately left to the wildcard
-    #[allow(non_exhaustive_omitted_patterns)]
-    let transient = match &error {
-        ureq::Error::StatusCode(code) => *code >= 500 || *code == 429,
-        ureq::Error::Timeout(_)
-        | ureq::Error::Io(_)
-        | ureq::Error::HostNotFound
-        | ureq::Error::ConnectionFailed => true,
-        _ => false,
+    // clear (bad URI, protocol or TLS failure), so it falls to the `else` as permanent
+    let transient = if let ureq::Error::StatusCode(code) = &error {
+        *code >= 500 || *code == 429
+    } else {
+        matches!(
+            &error,
+            ureq::Error::Timeout(_)
+                | ureq::Error::Io(_)
+                | ureq::Error::HostNotFound
+                | ureq::Error::ConnectionFailed
+        )
     };
     let error = anyhow::Error::new(error);
     if transient {

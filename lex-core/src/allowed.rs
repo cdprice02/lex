@@ -10,7 +10,7 @@ use crate::strategy::{GuessPool, Pool};
 /// letter at least as many times as it was scored green or yellow. Grays may be replayed, and a
 /// yellow may repeat its position.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) struct HardRule<T> {
+pub struct HardRule<T> {
     /// Each green letter with its position, ascending by position.
     greens: Vec<(usize, T)>,
     /// Each green or yellow letter with the fewest times a word must hold it.
@@ -19,7 +19,7 @@ pub(crate) struct HardRule<T> {
 
 /// How a word breaks a [`HardRule`].
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum Violation<T> {
+pub enum Violation<T> {
     /// A green letter must stay at this position.
     Position(usize, T),
     /// The letter must appear at least this many times.
@@ -88,7 +88,7 @@ impl fmt::Display for Violation<char> {
 /// `Whole` and `Candidates` store nothing: the pool, or the node's own candidate set. `List`
 /// is an ascending index list that always contains the candidates.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) enum Allowed {
+pub enum Allowed {
     /// Every pool word.
     Whole,
     /// Exactly the candidates.
@@ -100,7 +100,7 @@ pub(crate) enum Allowed {
 impl Allowed {
     /// The allowed guesses before any guess is played. Ultrahard on a Corpus run (every pool word
     /// is a candidate) is the candidate set at every depth, so it stores nothing.
-    pub(crate) fn root(mode: GuessPool, candidates_are_whole_pool: bool) -> Self {
+    pub(crate) const fn root(mode: GuessPool, candidates_are_whole_pool: bool) -> Self {
         match mode {
             GuessPool::Ultrahard if candidates_are_whole_pool => Self::Candidates,
             GuessPool::All | GuessPool::Hard | GuessPool::Ultrahard => Self::Whole,
@@ -133,7 +133,7 @@ impl Allowed {
         };
         match self {
             Self::Candidates => Self::Candidates,
-            Self::Whole => Self::List((0..pool.len() as u32).filter(|&i| keep(i)).collect()),
+            Self::Whole => Self::List(pool.indices().filter(|&i| keep(i)).collect()),
             Self::List(list) => Self::List(list.iter().copied().filter(|&i| keep(i)).collect()),
         }
     }

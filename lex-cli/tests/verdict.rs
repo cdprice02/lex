@@ -3,6 +3,11 @@
 //! fixtures carry the placeholder `FIXTURE_DIGEST`, replaced here by the compiled solver digest,
 //! so a lex-core edit never invalidates them.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::panic,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
 
 use std::fs;
 use std::path::{Path, PathBuf};

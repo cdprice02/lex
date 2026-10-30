@@ -1,5 +1,6 @@
-//! `lex verdict`: judges a head set of Track snapshots against a base set by ADR 0007's rule,
-//! and renders the headline table of `benchmarks/README.md`. It reads the snapshots the
+//! `lex verdict`: judges a head set of Track snapshots against a base set by ADR 0007's rule.
+//!
+//! It also renders the headline table of `benchmarks/README.md`. It reads the snapshots the
 //! `tracks` tests write (ADR 0012) and runs no game.
 
 use std::collections::BTreeMap;
@@ -94,13 +95,12 @@ struct Info {
 /// the header ends at the next one.
 fn split_snapshot(text: &str) -> Option<(&str, &str)> {
     let rest = text.strip_prefix("---\n")?;
-    let end = rest.find("\n---\n")?;
-    Some((&rest[..end], &rest[end + "\n---\n".len()..]))
+    rest.split_once("\n---\n")
 }
 
 impl Snap {
     /// Reads and parses the snapshot at `path`.
-    fn load(path: &Path) -> Result<Snap> {
+    fn load(path: &Path) -> Result<Self> {
         let text =
             fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
         let (header, body) = split_snapshot(&text)
@@ -110,11 +110,11 @@ impl Snap {
         let body: Body = serde_json::from_str(body)
             .with_context(|| format!("{} has no Track body", path.display()))?;
         let digest = header.info.and_then(|i| i.solver_digest);
-        Ok(Snap { body, digest })
+        Ok(Self { body, digest })
     }
 
     /// The uniform statistics on a Profile Track, the prior-weighted ones on a Corpus Track.
-    fn score(&self) -> Stats {
+    const fn score(&self) -> Stats {
         match self.body.profile {
             Some(_) => self.body.summary.uniform,
             None => self.body.summary.prior,
@@ -122,7 +122,7 @@ impl Snap {
     }
 
     /// Whether the Corpus or Profile lists differ, so the two scores are not comparable.
-    fn same_data(&self, other: &Snap) -> bool {
+    fn same_data(&self, other: &Self) -> bool {
         self.body.corpus_sha256 == other.body.corpus_sha256
             && self.body.profile == other.body.profile
     }
@@ -160,22 +160,24 @@ pub enum Outcome {
 
 impl Outcome {
     /// The outcome's name as printed.
-    pub fn name(self) -> &'static str {
+    #[must_use]
+    pub const fn name(self) -> &'static str {
         match self {
-            Outcome::Accept => "accept",
-            Outcome::Unchanged => "unchanged",
-            Outcome::Reject => "reject",
-            Outcome::Rebaseline => "rebaseline",
-            Outcome::Stale => "stale",
-            Outcome::New => "new",
+            Self::Accept => "accept",
+            Self::Unchanged => "unchanged",
+            Self::Reject => "reject",
+            Self::Rebaseline => "rebaseline",
+            Self::Stale => "stale",
+            Self::New => "new",
         }
     }
 
     /// The process exit code: 1 for `Reject` and `Stale`, else 0.
-    pub fn exit_code(self) -> i32 {
+    #[must_use]
+    pub const fn exit_code(self) -> i32 {
         match self {
-            Outcome::Reject | Outcome::Stale => 1,
-            _ => 0,
+            Self::Reject | Self::Stale => 1,
+            Self::Accept | Self::Unchanged | Self::Rebaseline | Self::New => 0,
         }
     }
 }
@@ -217,13 +219,16 @@ pub struct Verdict {
 
 impl Verdict {
     /// The markdown report: a table per Track, the notes behind the outcome, then the outcome.
+    #[must_use]
     pub fn render(&self) -> String {
         let mut out = String::from(
             "| Track | Tier | Judged | Base | Head | Delta | Status |\n|---|---|---|---|---|---|---|\n",
         );
-        let cell = |v: Option<f64>| v.map_or("-".to_owned(), |v| format!("{v:.4}"));
+        let cell = |v: Option<f64>| v.map_or_else(|| "-".to_owned(), |v| format!("{v:.4}"));
         for row in &self.rows {
-            let delta = row.delta().map_or("-".to_owned(), |d| format!("{d:+.4}"));
+            let delta = row
+                .delta()
+                .map_or_else(|| "-".to_owned(), |d| format!("{d:+.4}"));
             let _ = writeln!(
                 out,
                 "| {} | {} | {} | {} | {} | {} | {} |",
@@ -255,16 +260,16 @@ struct Meta {
 
 /// The table's entry for Track `id`.
 fn meta(id: &str) -> Meta {
-    match Track::find(id) {
-        Some(t) => Meta {
-            tier: Some(t.tier),
-            judged: t.judged,
-        },
-        None => Meta {
+    Track::find(id).map_or(
+        Meta {
             tier: None,
             judged: false,
         },
-    }
+        |t| Meta {
+            tier: Some(t.tier),
+            judged: t.judged,
+        },
+    )
 }
 
 /// Tracks in table order, then any unknown ids alphabetically.
@@ -308,7 +313,7 @@ fn compare(
         }
         let mut status = match (b, h) {
             (None, Some(_)) => "new".to_owned(),
-            (Some(_), None) => "missing".to_owned(),
+            (Some(_) | None, None) => "missing".to_owned(),
             (Some(b), Some(h)) if !b.same_data(h) => {
                 if counts {
                     excluded += 1;
@@ -332,7 +337,6 @@ fn compare(
                 .to_owned()
             }
             (Some(_), Some(_)) => "not judged".to_owned(),
-            (None, None) => unreachable!("ids come from the two sets"),
         };
         if stale {
             status.push_str(" (stale)");
@@ -404,7 +408,7 @@ fn decide(
             headline
         }
     };
-    let n = tier_set.len() as f64;
+    let n: f64 = tier_set.iter().map(|_| 1.0).sum();
     let mean = tier_set.iter().map(|j| j.1).sum::<f64>() / n;
     let failure = tier_set.iter().map(|j| j.2).sum::<f64>() / n;
     notes.push(format!(
@@ -434,6 +438,10 @@ fn decide(
 
 /// Judges `head` against `base`; `expected_digest` is the solver digest the headline snapshots
 /// must carry. A missing `base` directory counts every Track as new.
+///
+/// # Errors
+///
+/// If `head` is not a directory, or a snapshot in either directory cannot be read or parsed.
 pub fn verdict(base: &Path, head: &Path, expected_digest: &str) -> Result<Verdict> {
     if !head.is_dir() {
         bail!("{} is not a directory", head.display());
@@ -448,6 +456,10 @@ pub fn verdict(base: &Path, head: &Path, expected_digest: &str) -> Result<Verdic
 }
 
 /// The headline-Tier table of the head snapshots, judged and reported.
+///
+/// # Errors
+///
+/// If a snapshot in `head` cannot be read or parsed.
 pub fn readme_table(head: &Path) -> Result<String> {
     let snaps = load_dir(head)?;
     let mut out = String::from(
@@ -478,6 +490,10 @@ pub fn readme_table(head: &Path) -> Result<String> {
 }
 
 /// Replaces the text between the README markers with `table`.
+///
+/// # Errors
+///
+/// If the README markers are missing or out of order.
 pub fn splice_readme(readme: &str, table: &str) -> Result<String> {
     let start = readme
         .find(README_START)
@@ -489,7 +505,9 @@ pub fn splice_readme(readme: &str, table: &str) -> Result<String> {
     if end < start {
         bail!("{README_END} comes before {README_START}");
     }
-    Ok(format!("{}\n{}{}", &readme[..start], table, &readme[end..]))
+    let (before, _) = readme.split_at(start);
+    let (_, after) = readme.split_at(end);
+    Ok(format!("{before}\n{table}{after}"))
 }
 
 /// Runs the `verdict` command and returns its exit code.
@@ -513,9 +531,8 @@ fn run(args: &VerdictArgs) -> Result<i32> {
         }
         return Ok(0);
     }
-    let (base, head) = match (&args.base, &args.head) {
-        (Some(base), Some(head)) => (base, head),
-        _ => bail!("verdict needs a base and a head directory"),
+    let (Some(base), Some(head)) = (&args.base, &args.head) else {
+        bail!("verdict needs a base and a head directory");
     };
     let verdict = verdict(base, head, lex_core::SOLVER_DIGEST)?;
     print!("{}", verdict.render());
@@ -524,9 +541,11 @@ fn run(args: &VerdictArgs) -> Result<i32> {
 
 /// Runs the subcommand and returns its exit code: 0 accept, unchanged, rebaseline or new;
 /// 1 reject, stale or a stale README; 2 bad input.
-pub fn command(args: &VerdictArgs) -> i32 {
-    run(args).unwrap_or_else(|e| {
+#[must_use]
+pub fn command(args: &VerdictArgs) -> std::process::ExitCode {
+    let code = run(args).unwrap_or_else(|e| {
         eprintln!("error: {e:#}");
         2
-    })
+    });
+    std::process::ExitCode::from(u8::try_from(code).unwrap_or(2))
 }
