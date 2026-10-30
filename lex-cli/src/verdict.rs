@@ -408,7 +408,7 @@ fn decide(
             headline
         }
     };
-    let n = crate::cast::count(tier_set.len());
+    let n: f64 = tier_set.iter().map(|_| 1.0).sum();
     let mean = tier_set.iter().map(|j| j.1).sum::<f64>() / n;
     let failure = tier_set.iter().map(|j| j.2).sum::<f64>() / n;
     notes.push(format!(

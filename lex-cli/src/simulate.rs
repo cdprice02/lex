@@ -104,7 +104,7 @@ fn run_n<const N: usize>(
         log::info!("{label}");
         games.push(Game {
             word: word.to_string(),
-            num_guesses: result.num_guesses(),
+            num_guesses: u32::try_from(result.num_guesses())?,
             prior: priors[&word],
             guesses: result
                 .guesses()

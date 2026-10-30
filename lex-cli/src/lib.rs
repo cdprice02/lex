@@ -4,7 +4,6 @@
 
 pub mod assist;
 pub mod books;
-mod cast;
 pub mod clear;
 pub mod cli;
 pub mod compare;
