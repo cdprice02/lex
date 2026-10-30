@@ -17,7 +17,6 @@
 
 use std::path::Path;
 
-use crate::cast::{index, widen};
 use crate::le::array_at;
 
 use anyhow::Context;
@@ -38,9 +37,9 @@ pub struct Header {
     /// Word length `N` the Cache holds.
     pub(crate) word_len: u16,
     /// Offset of the first record.
-    pub(crate) records_offset: u32,
+    pub(crate) records_offset: usize,
     /// Number of records.
-    pub(crate) record_count: u64,
+    pub(crate) record_count: usize,
     /// SHA-256 of the records region.
     pub(crate) checksum: [u8; 32],
 }
@@ -55,22 +54,22 @@ impl Header {
     ) -> Result<Self, std::num::TryFromIntError> {
         Ok(Self {
             word_len: u16::try_from(word_len)?,
-            records_offset: u32::try_from(HEADER_LEN)?,
-            record_count: u64::try_from(records.len() / record_size)?,
+            records_offset: HEADER_LEN,
+            record_count: records.len() / record_size,
             checksum: Sha256::digest(records).into(),
         })
     }
 
     /// The header as `HEADER_LEN` little-endian bytes.
-    pub(crate) fn encode(&self) -> [u8; HEADER_LEN] {
+    pub(crate) fn encode(&self) -> Result<[u8; HEADER_LEN], std::num::TryFromIntError> {
         let mut out = [0u8; HEADER_LEN];
         out[0..4].copy_from_slice(&MAGIC);
         out[4..6].copy_from_slice(&VERSION.to_le_bytes());
         out[6..8].copy_from_slice(&self.word_len.to_le_bytes());
-        out[8..12].copy_from_slice(&self.records_offset.to_le_bytes());
-        out[12..20].copy_from_slice(&self.record_count.to_le_bytes());
+        out[8..12].copy_from_slice(&u32::try_from(self.records_offset)?.to_le_bytes());
+        out[12..20].copy_from_slice(&u64::try_from(self.record_count)?.to_le_bytes());
         out[20..52].copy_from_slice(&self.checksum);
-        out
+        Ok(out)
     }
 
     /// Parses the header at the start of `bytes`. A file without the magic is a legacy
@@ -98,13 +97,17 @@ impl Header {
             )));
         }
         let header_len = u32::from_le_bytes(array_at(bytes, 8));
-        if index(header_len) < HEADER_LEN {
-            return Err(corrupt(format!("header length {header_len} is too small")));
-        }
+        let records_offset = usize::try_from(header_len)
+            .ok()
+            .filter(|&len| len >= HEADER_LEN)
+            .ok_or_else(|| corrupt(format!("header length {header_len} is too small")))?;
+        let record_count = u64::from_le_bytes(array_at(bytes, 12));
+        let record_count = usize::try_from(record_count)
+            .map_err(|_| corrupt(format!("record count {record_count} is too large")))?;
         Ok(Self {
             word_len: u16::from_le_bytes(array_at(bytes, 6)),
-            records_offset: header_len,
-            record_count: u64::from_le_bytes(array_at(bytes, 12)),
+            records_offset,
+            record_count,
             checksum: array_at(bytes, 20),
         })
     }
@@ -115,7 +118,7 @@ impl Header {
         let mut buf = Vec::with_capacity(HEADER_LEN);
         std::fs::File::open(path)
             .with_context(|| format!("opening ngrams file: {}", path.display()))?
-            .take(widen(HEADER_LEN))
+            .take(u64::try_from(HEADER_LEN)?)
             .read_to_end(&mut buf)
             .with_context(|| format!("reading ngrams header: {}", path.display()))?;
         Ok(Self::parse(&buf, path)?)
@@ -139,7 +142,10 @@ mod tests {
     fn roundtrip() {
         let h = sample();
         assert_eq!(h.record_count, 3);
-        assert_eq!(Header::parse(&h.encode(), Path::new("x")).unwrap(), h);
+        assert_eq!(
+            Header::parse(&h.encode().unwrap(), Path::new("x")).unwrap(),
+            h
+        );
     }
 
     #[test]
@@ -152,7 +158,7 @@ mod tests {
 
     #[test]
     fn unsupported_version_is_corrupt() {
-        let mut bytes = sample().encode();
+        let mut bytes = sample().encode().unwrap();
         bytes[4] = 99;
         let err = Header::parse(&bytes, Path::new("x")).unwrap_err();
         assert!(err.to_string().contains("version 99"), "{err}");
@@ -160,7 +166,7 @@ mod tests {
 
     #[test]
     fn truncated_header_is_corrupt() {
-        let bytes = sample().encode();
+        let bytes = sample().encode().unwrap();
         let err = Header::parse(&bytes[..30], Path::new("x")).unwrap_err();
         assert!(err.to_string().contains("truncated header"), "{err}");
     }

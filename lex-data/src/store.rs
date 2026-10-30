@@ -8,7 +8,6 @@ use anyhow::Context;
 use memmap2::Mmap;
 use sha2::{Digest, Sha256};
 
-use crate::cast::{index, size};
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
 use crate::header::Header;
@@ -44,7 +43,7 @@ pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow
 pub fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
     let count_at = |len: usize| -> Option<usize> {
         let header = Header::read_file(&dir.ngrams_path(lang, len)).ok()?;
-        Some(size(header.record_count))
+        Some(header.record_count)
     };
     let count = match count_at(n) {
         Some(count) => count,
@@ -97,10 +96,9 @@ pub fn read<const N: usize>(
         ))
         .into());
     }
-    let start = index(header.records_offset);
+    let start = header.records_offset;
     let size = <RawRecord<'_, N>>::SIZE;
-    let count = usize::try_from(header.record_count)
-        .map_err(|_| corrupt(format!("record count {} is too large", header.record_count)))?;
+    let count = header.record_count;
     let expected_len = count.checked_mul(size).and_then(|b| b.checked_add(start));
     if expected_len != Some(mmap.len()) {
         return Err(corrupt(format!(
@@ -177,7 +175,7 @@ fn write_bucket(
     }
     let header = Header::for_records(n, record_size, &records)?;
     let mut writer = BufWriter::new(std::fs::File::create(&path)?);
-    writer.write_all(&header.encode())?;
+    writer.write_all(&header.encode()?)?;
     writer.write_all(&records)?;
     writer.flush()?;
     Ok(())
@@ -187,7 +185,6 @@ fn write_bucket(
 mod tests {
     use std::collections::{HashMap, HashSet};
 
-    use crate::cast::widen;
     use crate::data_dir::DataDir;
     use crate::error::LexDataError;
     use crate::language::Language;
@@ -402,7 +399,7 @@ mod tests {
     #[test]
     fn short_length_is_rejected_naming_the_supported_lengths() {
         let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
-        let big: HashMap<String, u64> = (0..widen(MIN_SUPPORTED_WORDS))
+        let big: HashMap<String, u64> = (0..u64::try_from(MIN_SUPPORTED_WORDS).unwrap())
             .map(|i| (format!("w{i:04}"), 1000 - i))
             .collect();
         let mut corpus = toy_corpus();
@@ -435,7 +432,7 @@ mod tests {
     #[test]
     fn exactly_the_minimum_is_supported() {
         let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
-        let words: HashMap<String, u64> = (0..widen(MIN_SUPPORTED_WORDS))
+        let words: HashMap<String, u64> = (0..u64::try_from(MIN_SUPPORTED_WORDS).unwrap())
             .map(|i| (format!("w{i:04}"), 1000 - i))
             .collect();
         populate(&dir, Language::English, &[(5, words)].into()).unwrap();

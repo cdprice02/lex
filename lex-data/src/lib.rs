@@ -5,7 +5,6 @@ pub mod language;
 pub mod word;
 
 mod book_store;
-mod cast;
 mod data_dir;
 mod error;
 mod header;
@@ -28,6 +27,11 @@ pub use ngrams::SNAPSHOT as NGRAMS_SNAPSHOT;
 pub use profile::{ListSpec, Profile, ProfileData, ProfileSpec, ProfileStats, Source};
 pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
+
+const _: () = assert!(
+    u32::BITS <= usize::BITS,
+    "stored u32 offsets and lengths index memory as usize"
+);
 
 /// Shortest word length the solver plays.
 pub const MIN_WORD_LENGTH: usize = 3;

@@ -8,7 +8,6 @@ use std::sync::Arc;
 
 use memmap2::{Mmap, MmapMut};
 
-use crate::cast::{index, offset};
 use crate::error::LexDataError;
 use crate::le::array_at;
 
@@ -115,6 +114,16 @@ impl<'a, const N: usize> From<&'a [u8]> for RawRecord<'a, N> {
     }
 }
 
+/// The record at byte offset `off` of the mapped Corpus.
+fn record_at<const N: usize>(mmap: &[u8], off: u32) -> RawRecord<'_, N> {
+    #[expect(
+        clippy::as_conversions,
+        reason = "a u32 offset widens losslessly into usize; the crate-level assert in lib.rs checks usize holds 32 bits"
+    )]
+    let start = off as usize;
+    RawRecord::from(&mmap[start..start + RawRecord::<N>::SIZE])
+}
+
 /// Iterator over the active words in a [`WordSet`], reading lazily from the mmap backing store.
 ///
 /// Implements [`Clone`] to support `.cycle()`.
@@ -133,9 +142,7 @@ impl<const N: usize> Iterator for WordIter<'_, N> {
     fn next(&mut self) -> Option<Word<N>> {
         let &off = self.offsets.get(self.index)?;
         self.index += 1;
-        let record =
-            RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
-        Some(record.word_lossy())
+        Some(record_at::<N>(self.mmap, off).word_lossy())
     }
 
     fn size_hint(&self) -> (usize, Option<usize>) {
@@ -235,11 +242,11 @@ impl<const N: usize> WordSet<N> {
     ///
     /// # Panics
     ///
-    /// If the operating system cannot map the records' memory.
+    /// If the operating system cannot map the records' memory, or the records exceed 4 GiB.
     #[must_use]
     #[expect(
         clippy::expect_used,
-        reason = "a failed anonymous mapping is memory exhaustion, which aborts like a failed allocation"
+        reason = "a failed anonymous mapping or a set beyond the u32 offsets is memory exhaustion, which aborts like a failed allocation"
     )]
     pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
         pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
@@ -259,7 +266,9 @@ impl<const N: usize> WordSet<N> {
                 .copy_from_slice(&freq.to_le_bytes());
         }
         let mmap = buf.make_read_only().expect("failed to make mmap read-only");
-        let offsets = (0..pairs.len()).map(|i| offset(i * record_size)).collect();
+        let offsets = (0..pairs.len())
+            .map(|i| u32::try_from(i * record_size).expect("record offset exceeds 4 GiB"))
+            .collect();
         Self::from_offsets(mmap, offsets)
     }
 
@@ -277,8 +286,7 @@ impl<const N: usize> WordSet<N> {
     /// these frequencies is a solver modeling choice and lives in `lex-core`.
     pub fn word_frequencies(&self) -> impl Iterator<Item = (Word<N>, u64)> + '_ {
         self.offsets.iter().map(|&off| {
-            let record =
-                RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
+            let record = record_at::<N>(&self.mmap, off);
             (record.word_lossy(), record.freq())
         })
     }
@@ -287,8 +295,7 @@ impl<const N: usize> WordSet<N> {
     #[must_use]
     pub fn frequency(&self, word: &Word<N>) -> Option<u64> {
         for &off in &self.offsets {
-            let record =
-                RawRecord::<N>::from(&self.mmap[index(off)..index(off) + RawRecord::<N>::SIZE]);
+            let record = record_at::<N>(&self.mmap, off);
             if record.word().as_ref() == Some(word) {
                 return Some(record.freq());
             }
@@ -354,7 +361,6 @@ mod benches {
     use std::hint::black_box;
 
     use super::{Word, WordSet};
-    use crate::cast::widen;
 
     fn letter(i: usize) -> char {
         char::from(b"abcdefghijklmnopqrstuvwxyz"[i % 26])
@@ -370,7 +376,7 @@ mod benches {
                     letter(i / 17_576),
                     letter(i / 456_976),
                 ]);
-                (word, widen(n - i))
+                (word, u64::try_from(n - i).unwrap_or(1))
             })
             .collect::<HashMap<Word<5>, u64>>();
         WordSet::from_frequency_map(frequencies)

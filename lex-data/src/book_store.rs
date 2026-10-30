@@ -29,7 +29,6 @@ use anyhow::Context;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
-use crate::cast::{index, widen};
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
 use crate::language::Language;
@@ -204,7 +203,7 @@ struct Header {
     /// Offset of the body.
     body_offset: usize,
     /// Number of nodes in the body.
-    node_count: u64,
+    node_count: usize,
     /// SHA-256 of the body.
     checksum: [u8; 32],
     /// The key stored ahead of the body.
@@ -221,7 +220,7 @@ fn encode(key: &BookKey, book: &StoredBook) -> anyhow::Result<Vec<u8>> {
     out.extend_from_slice(&VERSION.to_le_bytes());
     out.extend_from_slice(&u16::try_from(key.word_length)?.to_le_bytes());
     out.extend_from_slice(&u32::try_from(header_len)?.to_le_bytes());
-    out.extend_from_slice(&widen(book.nodes.len()).to_le_bytes());
+    out.extend_from_slice(&u64::try_from(book.nodes.len())?.to_le_bytes());
     out.extend_from_slice(&Sha256::digest(&body));
     out.extend_from_slice(&u32::try_from(key_bytes.len())?.to_le_bytes());
     out.resize(FIXED_LEN, 0);
@@ -248,8 +247,8 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
             format!("unsupported format version {version} (this build reads {VERSION})"),
         ));
     }
-    let header_len = index(u32::from_le_bytes(array_at(bytes, 8)));
-    let key_len = index(u32::from_le_bytes(array_at(bytes, 52)));
+    let header_len = length_at(bytes, 8, path)?;
+    let key_len = length_at(bytes, 52, path)?;
     if header_len != FIXED_LEN + key_len || bytes.len() < header_len {
         return Err(corrupt(path, "truncated or inconsistent header"));
     }
@@ -258,10 +257,17 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
     Ok(Header {
         word_length: u16::from_le_bytes(array_at(bytes, 6)),
         body_offset: header_len,
-        node_count: u64::from_le_bytes(array_at(bytes, 12)),
+        node_count: usize::try_from(u64::from_le_bytes(array_at(bytes, 12)))
+            .map_err(|_| corrupt(path, "node count is too large"))?,
         checksum: array_at(bytes, 20),
         key,
     })
+}
+
+/// The little-endian `u32` length at byte `at`, as an in-memory size.
+fn length_at(bytes: &[u8], at: usize, path: &Path) -> Result<usize, LexDataError> {
+    usize::try_from(u32::from_le_bytes(array_at(bytes, at)))
+        .map_err(|_| corrupt(path, "a stored length does not fit in memory"))
 }
 
 /// Verifies a book file's bytes and parses them into its key and body.
@@ -273,7 +279,7 @@ fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataErr
     }
     let book: StoredBook =
         postcard::from_bytes(body).map_err(|e| corrupt(path, format!("unreadable body: {e}")))?;
-    if widen(book.nodes.len()) != header.node_count {
+    if book.nodes.len() != header.node_count {
         return Err(corrupt(
             path,
             format!(
@@ -299,7 +305,7 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     if got < FIXED_LEN {
         return Err(corrupt(path, "truncated header").into());
     }
-    let key_len = index(u32::from_le_bytes(array_at(&fixed, 52)));
+    let key_len = length_at(&fixed, 52, path)?;
     let mut bytes = fixed.to_vec();
     bytes.resize(FIXED_LEN + key_len, 0);
     file.read_exact(&mut bytes[FIXED_LEN..])
@@ -384,7 +390,7 @@ impl DataDir {
             .with_context(|| format!("renaming the opening book into {}", path.display()))?;
         Ok(BookFile {
             path,
-            bytes: widen(bytes.len()),
+            bytes: u64::try_from(bytes.len())?,
         })
     }
 

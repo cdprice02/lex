@@ -4,7 +4,6 @@ use std::path::{Path, PathBuf};
 
 use anyhow::Context;
 
-use crate::cast::size;
 use crate::error::LexDataError;
 use crate::header::Header;
 use crate::language::Language;
@@ -80,9 +79,7 @@ impl DataDir {
     ///
     /// If the cached ngrams file is missing or its header is invalid.
     pub fn ngrams_count(&self, lang: Language, n: usize) -> anyhow::Result<usize> {
-        Ok(size(
-            Header::read_file(&self.ngrams_path(lang, n))?.record_count,
-        ))
+        Ok(Header::read_file(&self.ngrams_path(lang, n))?.record_count)
     }
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire

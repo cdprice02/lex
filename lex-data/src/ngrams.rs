@@ -8,7 +8,6 @@ use std::thread;
 use anyhow::Context;
 use flate2::read::MultiGzDecoder;
 
-use crate::cast::index;
 use crate::http;
 use crate::language::Language;
 use crate::parse::parse_ngram_line;
@@ -16,7 +15,7 @@ use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
 /// Shards downloaded at once.
-const SHARD_CONCURRENCY: usize = 4;
+const SHARD_CONCURRENCY: u32 = 4;
 
 /// Google Books Ngrams V3 snapshot the corpus is built from. The snapshot is frozen, but
 /// recording it keeps run provenance complete.
@@ -72,7 +71,7 @@ pub fn fetch(
 
     let results: Vec<_> = thread::scope(|scope| {
         let mut workers = Vec::new();
-        for _ in 0..SHARD_CONCURRENCY.min(index(n)) {
+        for _ in 0..SHARD_CONCURRENCY.min(n) {
             workers.push(scope.spawn(worker));
         }
         workers
