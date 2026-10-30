@@ -81,6 +81,9 @@ pub struct StrategyReport {
     /// Endgame risk aversion; zero minimizes plain expected guesses.
     #[serde(default)]
     pub endgame_aversion: f64,
+    /// Reports from before rollout never used one.
+    #[serde(default)]
+    pub rollout_k: usize,
 }
 
 /// The wire shape: reports written before the mode field carry `hard_mode: bool`, and that
@@ -101,6 +104,9 @@ struct RawStrategyReport {
     /// Endgame risk aversion, zero when absent.
     #[serde(default)]
     endgame_aversion: f64,
+    /// Rollout width, zero when absent.
+    #[serde(default)]
+    rollout_k: usize,
 }
 
 impl From<RawStrategyReport> for StrategyReport {
@@ -118,6 +124,7 @@ impl From<RawStrategyReport> for StrategyReport {
             win_weight: raw.win_weight,
             endgame_threshold: raw.endgame_threshold,
             endgame_aversion: raw.endgame_aversion,
+            rollout_k: raw.rollout_k,
         }
     }
 }
@@ -141,6 +148,7 @@ impl From<Strategy> for StrategyReport {
             win_weight: s.win_weight,
             endgame_threshold: s.endgame_threshold,
             endgame_aversion: s.endgame_aversion,
+            rollout_k: s.rollout_k,
         }
     }
 }
@@ -149,7 +157,7 @@ impl std::fmt::Display for StrategyReport {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}",
+            "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}, rollout K {}",
             match self.mode {
                 Mode::Unconstrained => "unconstrained",
                 Mode::Hard => "hard mode",
@@ -158,7 +166,8 @@ impl std::fmt::Display for StrategyReport {
             self.temperature,
             self.win_weight,
             self.endgame_threshold,
-            self.endgame_aversion
+            self.endgame_aversion,
+            self.rollout_k
         )
     }
 }

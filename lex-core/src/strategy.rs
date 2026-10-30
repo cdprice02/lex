@@ -6,7 +6,7 @@ use std::sync::Arc;
 use lex_data::{MAX_ALPHABET_SIZE, Word, WordSet};
 use strum::{Display, EnumString, VariantArray, VariantNames};
 
-use crate::correctness::{Code, UNKNOWN_LETTER};
+use crate::correctness::{Code, LetterCounts, UNKNOWN_LETTER, pattern_ordinal};
 
 /// The temperature the report's evaluation prior is always computed at, so runs with different
 /// solver temperatures stay comparable.
@@ -44,6 +44,10 @@ pub struct Strategy {
     /// minimizes the prior-weighted mean of `a^guesses`, so a long game costs more than its
     /// length alone. Zero minimizes plain expected guesses. Must be finite and non-negative.
     pub endgame_aversion: f64,
+    /// Guesses a rollout compares at a mid-sized Candidate set: the top `rollout_k` by entropy
+    /// score are each played out under the base policy and the cheapest in expected guesses wins.
+    /// Zero turns rollout off.
+    pub rollout_k: usize,
 }
 
 impl Strategy {
@@ -55,6 +59,7 @@ impl Strategy {
         win_weight: 1.0,
         endgame_threshold: 0,
         endgame_aversion: 0.0,
+        rollout_k: 0,
     };
 
     /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
@@ -67,6 +72,7 @@ impl Strategy {
             win_weight: 0.0,
             endgame_threshold: 0,
             endgame_aversion: 0.0,
+            rollout_k: 0,
         }
     }
 
@@ -81,6 +87,7 @@ impl Strategy {
             win_weight,
             endgame_threshold,
             endgame_aversion,
+            rollout_k,
         } = *self;
         vec![
             ("pool", pool.to_string()),
@@ -88,6 +95,7 @@ impl Strategy {
             ("win_weight", win_weight.to_string()),
             ("endgame_threshold", endgame_threshold.to_string()),
             ("endgame_aversion", endgame_aversion.to_string()),
+            ("rollout_k", rollout_k.to_string()),
         ]
     }
 
@@ -201,6 +209,20 @@ impl<const N: usize> Pool<N> {
         0..self.count
     }
 
+    /// Fills `out` with `(feedback ordinal, answer)` for every answer in `set` against `guess`,
+    /// grouped by ordinal and ascending by index within a group.
+    pub(crate) fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
+        let code = self.code(guess);
+        let mut counts: LetterCounts = [0; 256];
+        out.clear();
+        out.extend(
+            set.iter()
+                .map(|&i| (pattern_ordinal(self.code(i), code, &mut counts), i)),
+        );
+        // stable sort keeps each group ascending by index
+        out.sort_by_key(|&(ordinal, _)| ordinal);
+    }
+
     /// Natural log of the frequency of the word at pool index `index`.
     fn ln_freq(&self, index: u32) -> f64 {
         self.ln_freqs[usize::try_from(index).unwrap_or(usize::MAX)]
@@ -282,6 +304,7 @@ mod tests {
             win_weight: 0.125,
             endgame_threshold: 7,
             endgame_aversion: 0.5,
+            rollout_k: 4,
         };
         // Debug prints each field by name, so it is a source of field names that does not
         // come from `key_fields` itself.
@@ -293,7 +316,7 @@ mod tests {
         let keyed: Vec<&str> = strategy.key_fields().iter().map(|&(n, _)| n).collect();
         assert_eq!(keyed, declared);
         let values: Vec<String> = strategy.key_fields().into_iter().map(|(_, v)| v).collect();
-        assert_eq!(values, ["hard", "2.5", "0.125", "7", "0.5"]);
+        assert_eq!(values, ["hard", "2.5", "0.125", "7", "0.5", "4"]);
     }
 
     #[test]
@@ -318,6 +341,10 @@ mod tests {
             },
             Strategy {
                 endgame_aversion: 0.25,
+                ..base
+            },
+            Strategy {
+                rollout_k: 10,
                 ..base
             },
         ];
