@@ -65,7 +65,7 @@ Each crate has its own `CLAUDE.md` with internal architecture details.
 
 `[workspace.lints]` in the root `Cargo.toml` turns on clippy `pedantic` and `nursery` at warn, flags undocumented items (`missing_docs`, clippy `missing_docs_in_private_items`) and denies a set of restriction lints: `unwrap_used`, `expect_used`, `panic`, `unreachable`, `as_conversions`, `string_slice`, `wildcard_enum_match_arm`, `allow_attributes` and the rest of the list there. CI fails on all of it through clippy `-D warnings`. `unreachable_pub` is off; `redundant_pub_crate` is on, so an item in a private module is `pub`, not `pub(crate)`.
 
-`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules from the unwrap, expect, panic and indexing lints. An integration test's plain helpers are not exempt, so those files open with a crate-level `#![expect(.., reason = ..)]`. A fallible path returns a typed error; an `#[expect]` in library code marks an invariant that could not be restructured away. A lossy numeric cast goes through a named helper in the crate's private `cast.rs`, the only place `as_conversions` is expected.
+`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules from the unwrap, expect, panic and indexing lints. An integration test's plain helpers are not exempt, so those files open with a crate-level `#![expect(.., reason = ..)]`. A fallible path returns a typed error; an `#[expect]` in library code marks an invariant that could not be restructured away. A numeric conversion uses `From`, `TryFrom` or restructured arithmetic; a remaining `as` carries its own `#[expect(clippy::as_conversions, .., reason = ..)]` naming the invariant that makes it safe.
 
 ## Pre-commit hooks
 

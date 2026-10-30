@@ -1,6 +1,5 @@
 //! The Candidate set and its entropy scoring.
 
-use crate::cast;
 use std::cell::RefCell;
 use std::cmp::Ordering;
 use std::collections::HashMap;
@@ -60,9 +59,7 @@ impl<const N: usize> Candidates<N> {
         reason = "an answer outside the pool breaks the lex-data subset guarantee; there is no valid game to play"
     )]
     pub(crate) fn new(pool: Arc<Pool<N>>, answers: &[Word<N>]) -> Self {
-        let by_word: HashMap<Word<N>, u32> = (0..cast::narrow(pool.len()))
-            .map(|i| (pool.word(i), i))
-            .collect();
+        let by_word: HashMap<Word<N>, u32> = pool.indices().map(|i| (pool.word(i), i)).collect();
         let mut indices: Vec<u32> = answers
             .iter()
             .map(|w| {
@@ -78,7 +75,7 @@ impl<const N: usize> Candidates<N> {
     /// Every pool word is a candidate.
     #[cfg(any(test, feature = "bench"))]
     pub(crate) fn whole_pool(pool: Arc<Pool<N>>) -> Self {
-        let indices = (0..cast::narrow(pool.len())).collect();
+        let indices = pool.indices().collect();
         Self { pool, indices }
     }
 
@@ -144,7 +141,7 @@ impl<const N: usize> Candidates<N> {
         };
         match allowed {
             Allowed::Candidates => scan(&mut self.indices.iter().copied()),
-            Allowed::Whole => scan(&mut (0..cast::narrow(self.pool.len()))),
+            Allowed::Whole => scan(&mut self.pool.indices()),
             Allowed::List(list) => scan(&mut list.iter().copied()),
         }
     }
@@ -237,9 +234,13 @@ fn cmp_scores(a: f64, b: f64) -> Ordering {
 /// than a list of word lengths.
 const DENSE_BOUND_BYTES: u64 = 16 * 1024 * 1024;
 
+/// Bytes one dense bucket takes.
+const BUCKET_BYTES: u64 = 8;
+const _: () = assert!(size_of::<f64>() == 8, "a dense bucket is one f64");
+
 /// Expected information gain, in bits, of playing `guess` against `words` weighted by `probs`.
 fn guess_entropy<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
-    if WordCorrectness::<N>::COUNT * cast::widen(size_of::<f64>()) <= DENSE_BOUND_BYTES {
+    if WordCorrectness::<N>::COUNT * BUCKET_BYTES <= DENSE_BOUND_BYTES {
         entropy_dense(guess, words, probs)
     } else {
         entropy_sorted(guess, words, probs)
@@ -263,7 +264,7 @@ fn entropy_dense<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f6
     /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
     struct Patterns {
         buckets: Vec<f64>,
-        touched: Vec<u32>,
+        touched: Vec<u64>,
     }
     thread_local! {
         static PATTERNS: RefCell<Patterns> = const {
@@ -273,26 +274,25 @@ fn entropy_dense<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f6
     PATTERNS.with(|patterns| {
         let Patterns { buckets, touched } = &mut *patterns.borrow_mut();
         // one static serves every monomorphization, so it grows to the largest N seen
-        if (cast::widen(buckets.len())) < WordCorrectness::<N>::COUNT {
-            buckets.resize(cast::size(WordCorrectness::<N>::COUNT), 0.0);
+        let need = usize::try_from(WordCorrectness::<N>::COUNT).unwrap_or(usize::MAX);
+        if buckets.len() < need {
+            buckets.resize(need, 0.0);
         }
         let mut counts: LetterCounts = [0; 256];
         for (word, &prob) in words.iter().zip(probs) {
             debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
             let ordinal = pattern_ordinal(word, guess, &mut counts);
-            let slot = cast::size(ordinal);
+            let slot = usize::try_from(ordinal).unwrap_or(usize::MAX);
             if buckets[slot] == 0.0 {
-                touched.push(cast::short(ordinal));
+                touched.push(ordinal);
             }
             buckets[slot] += prob;
         }
         // ascending ordinal order keeps the floating-point sum independent of word order
         touched.sort_unstable();
-        let entropy = entropy_from_masses(
-            touched
-                .iter()
-                .map(|&ordinal| std::mem::take(&mut buckets[cast::index(ordinal)])),
-        );
+        let entropy = entropy_from_masses(touched.iter().map(|&ordinal| {
+            std::mem::take(&mut buckets[usize::try_from(ordinal).unwrap_or(usize::MAX)])
+        }));
         touched.clear();
         entropy
     })
@@ -427,19 +427,12 @@ mod benches {
 
     #[divan::bench]
     fn guess_entropy_10_words(b: Bencher) {
-        let pairs: Vec<(Word<5>, u64)> = (0..10_u32)
-            .map(|i| {
-                (
-                    Word::from([crate::cast::letter(crate::cast::index(i)); 5]),
-                    u64::from(10 - i),
-                )
-            })
+        let pairs: Vec<(Word<5>, u64)> = (0..10_u64)
+            .map(|i| (Word::from([crate::guesser::letter(i); 5]), 10 - i))
             .collect();
         let pool = Pool::new(&lex_data::WordSet::from_pairs(pairs));
         let guess = *pool.code(0);
-        let words: Vec<Code<5>> = (0..crate::cast::narrow(pool.len()))
-            .map(|i| *pool.code(i))
-            .collect();
+        let words: Vec<Code<5>> = pool.indices().map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];
         b.bench(|| black_box(guess_entropy(&guess, &words, &probs)));
     }
@@ -455,12 +448,12 @@ mod benches {
                 state = state
                     .wrapping_mul(6_364_136_223_846_793_005)
                     .wrapping_add(1_442_695_040_888_963_407);
-                crate::cast::letter(crate::cast::size((state >> 33) % 26))
+                crate::guesser::letter((state >> 33) % 26)
             });
             if seen.insert(chars) {
                 pairs.push((
                     Word::<N>::from(chars),
-                    crate::cast::widen(count - pairs.len()) * 10,
+                    u64::try_from(count - pairs.len()).unwrap_or(1) * 10,
                 ));
             }
         }

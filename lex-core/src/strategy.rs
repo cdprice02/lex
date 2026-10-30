@@ -1,6 +1,5 @@
 //! The Strategy, the Guess pool policy, and the Answer prior.
 
-use crate::cast;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -130,12 +129,15 @@ pub struct Pool<const N: usize> {
     letters: HashMap<char, u8>,
     /// Natural log of each word's frequency, parallel to `words`.
     ln_freqs: Vec<f64>,
+    /// Number of words, as the pool-index type.
+    count: u32,
 }
 
 impl<const N: usize> Pool<N> {
     /// # Panics
     ///
-    /// If the Alphabet exceeds [`MAX_ALPHABET_SIZE`]: `DataDir::load` rejects such a Corpus.
+    /// If the Alphabet exceeds [`MAX_ALPHABET_SIZE`] (`DataDir::load` rejects such a Corpus), or
+    /// the word set holds more words than a `u32` pool index addresses.
     pub(crate) fn new(word_set: &WordSet<N>) -> Arc<Self> {
         let mut alphabet: Vec<char> = word_set.alphabet().into_iter().collect();
         assert!(
@@ -144,27 +146,38 @@ impl<const N: usize> Pool<N> {
             alphabet.len()
         );
         alphabet.sort_unstable();
-        let letters: HashMap<char, u8> = alphabet
-            .into_iter()
-            .enumerate()
-            .map(|(i, c)| (c, cast::letter_code(i)))
-            .collect();
+        let letters: HashMap<char, u8> = alphabet.into_iter().zip(0..=u8::MAX).collect();
         let (words, ln_freqs): (Vec<_>, _) = word_set
             .word_frequencies()
-            .map(|(word, freq)| (word, cast::lossy_f64(freq).ln()))
+            .map(|(word, freq)| {
+                #[expect(
+                    clippy::as_conversions,
+                    clippy::cast_precision_loss,
+                    reason = "ngram counts stay far below 2^53, so the float holds each count exactly"
+                )]
+                let freq = freq as f64;
+                (word, freq.ln())
+            })
             .unzip();
+        let count = u32::try_from(words.len());
+        assert!(
+            count.is_ok(),
+            "the word set holds {} words, more than a u32 pool index addresses",
+            words.len()
+        );
         let codes = words.iter().map(|w| encode(&letters, w)).collect();
         Arc::new(Self {
             words,
             codes,
             letters,
             ln_freqs,
+            count: count.unwrap_or(u32::MAX),
         })
     }
 
     /// The pool word's letters as Alphabet indices.
     pub(crate) fn code(&self, index: u32) -> &Code<N> {
-        &self.codes[cast::index(index)]
+        &self.codes[usize::try_from(index).unwrap_or(usize::MAX)]
     }
 
     /// Any word's letters as Alphabet indices; a letter outside the Alphabet becomes
@@ -180,7 +193,17 @@ impl<const N: usize> Pool<N> {
 
     /// The word at pool index `index`.
     pub(crate) fn word(&self, index: u32) -> Word<N> {
-        self.words[cast::index(index)]
+        self.words[usize::try_from(index).unwrap_or(usize::MAX)]
+    }
+
+    /// Every pool index, ascending.
+    pub(crate) const fn indices(&self) -> std::ops::Range<u32> {
+        0..self.count
+    }
+
+    /// Natural log of the frequency of the word at pool index `index`.
+    fn ln_freq(&self, index: u32) -> f64 {
+        self.ln_freqs[usize::try_from(index).unwrap_or(usize::MAX)]
     }
 
     /// Unnormalized answer prior for every word: exp((ln f - max ln f) / T) over the whole pool.
@@ -206,11 +229,11 @@ impl<const N: usize> Pool<N> {
         }
         let max_lf = indices
             .iter()
-            .map(|&i| self.ln_freqs[cast::index(i)])
+            .map(|&i| self.ln_freq(i))
             .fold(f64::NEG_INFINITY, f64::max);
         let exp: Vec<f64> = indices
             .iter()
-            .map(|&i| ((self.ln_freqs[cast::index(i)] - max_lf) / temperature).exp())
+            .map(|&i| ((self.ln_freq(i) - max_lf) / temperature).exp())
             .collect();
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
@@ -233,7 +256,7 @@ pub fn answer_prior<const N: usize>(
     temperature: f64,
 ) -> Vec<(Word<N>, f64)> {
     let pool = Pool::new(word_set);
-    let all: Vec<u32> = (0..cast::narrow(pool.len())).collect();
+    let all: Vec<u32> = pool.indices().collect();
     let probs = pool.prior(&all, temperature);
     pool.words.iter().copied().zip(probs).collect()
 }

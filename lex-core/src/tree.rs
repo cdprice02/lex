@@ -1,6 +1,5 @@
 //! The Decision tree: one node per Guess path, each memoizing its suggestion.
 
-use crate::cast;
 use std::collections::{BTreeSet, HashMap};
 
 use lex_data::Word;
@@ -177,7 +176,8 @@ impl<const N: usize> DecisionTree<N> {
             Allowed::Candidates => entry.candidates.len(),
             Allowed::List(list) => list.len(),
         };
-        cast::widen(allowed) * cast::widen(entry.candidates.len())
+        let widen = |n: usize| u64::try_from(n).unwrap_or(u64::MAX);
+        widen(allowed).saturating_mul(widen(entry.candidates.len()))
     }
 
     /// Books every position, top-down, whose work exceeds `floor`. Work never rises along a
@@ -189,9 +189,7 @@ impl<const N: usize> DecisionTree<N> {
         progress: &mut dyn FnMut(usize),
     ) -> OpeningBook<N> {
         let pool = self.nodes[Self::ROOT].candidates.pool();
-        let index_of: HashMap<Word<N>, u32> = (0..cast::narrow(pool.len()))
-            .map(|i| (pool.word(i), i))
-            .collect();
+        let index_of: HashMap<Word<N>, u32> = pool.indices().map(|i| (pool.word(i), i)).collect();
         let mut book = OpeningBook::default();
         self.book_node(Self::ROOT, floor, &index_of, &mut book, progress);
         book

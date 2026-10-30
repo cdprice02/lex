@@ -4,7 +4,6 @@
 mod allowed;
 mod book;
 mod candidates;
-mod cast;
 mod correctness;
 mod endgame;
 mod game;

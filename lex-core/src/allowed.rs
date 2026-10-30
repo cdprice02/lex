@@ -1,6 +1,5 @@
 //! The guesses a game position permits, including the hard-mode rule.
 
-use crate::cast;
 use std::fmt;
 
 use crate::correctness::{Code, LetterCounts, pattern_ordinal};
@@ -134,7 +133,7 @@ impl Allowed {
         };
         match self {
             Self::Candidates => Self::Candidates,
-            Self::Whole => Self::List((0..cast::narrow(pool.len())).filter(|&i| keep(i)).collect()),
+            Self::Whole => Self::List(pool.indices().filter(|&i| keep(i)).collect()),
             Self::List(list) => Self::List(list.iter().copied().filter(|&i| keep(i)).collect()),
         }
     }

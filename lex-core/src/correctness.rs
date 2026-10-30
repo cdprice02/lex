@@ -1,6 +1,5 @@
 //! Per-letter and per-guess feedback, and the base-3 ordinals that index feedback patterns.
 
-use crate::cast;
 use lex_data::Word;
 
 /// Feedback for one letter of a guess.
@@ -51,10 +50,23 @@ impl std::fmt::Display for Correctness {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WordCorrectness<const N: usize>([Correctness; N]);
 
+/// 3^`n`, or `None` when it overflows `u64`.
+const fn pow3(n: usize) -> Option<u64> {
+    let mut acc: u64 = 1;
+    let mut i = 0;
+    while i < n {
+        let Some(next) = acc.checked_mul(BASE) else {
+            return None;
+        };
+        acc = next;
+        i += 1;
+    }
+    Some(acc)
+}
+
 // Ordinals are `u64`: 3^MAX_WORD_LENGTH must fit.
 const _: () = assert!(
-    3u64.checked_pow(cast::narrow(lex_data::MAX_WORD_LENGTH))
-        .is_some(),
+    pow3(lex_data::MAX_WORD_LENGTH).is_some(),
     "pattern ordinals must fit u64"
 );
 
@@ -74,7 +86,11 @@ impl<const N: usize> std::ops::DerefMut for WordCorrectness<N> {
 
 impl<const N: usize> WordCorrectness<N> {
     /// Number of distinct feedback patterns, 3^N.
-    pub const COUNT: u64 = BASE.pow(cast::narrow(N));
+    pub const COUNT: u64 = match pow3(N) {
+        Some(count) => count,
+        // a length past MAX_WORD_LENGTH; the assert above rules out the lengths the CLI dispatches
+        None => u64::MAX,
+    };
 
     /// The pattern's base-3 ordinal (absent 0, misplaced 1, correct 2; position 0 most significant), below [`COUNT`](Self::COUNT).
     #[must_use]
@@ -96,11 +112,12 @@ impl<const N: usize> WordCorrectness<N> {
         // `at` is where `c` sits in its own word, so it stands in for the position lookup that
         // cannot miss
         let first = |c: char, at: usize| {
-            cast::letter_code(
+            u8::try_from(
                 word.iter()
                     .position(|&w| w == c)
                     .unwrap_or_else(|| N + guess.iter().position(|&g| g == c).unwrap_or(at)),
             )
+            .unwrap_or(UNKNOWN_LETTER)
         };
         let word_code: Code<N> = std::array::from_fn(|i| first(word[i], i));
         let guess_code: Code<N> = std::array::from_fn(|i| first(guess[i], i));
@@ -250,7 +267,7 @@ mod benches {
                 state = state
                     .wrapping_mul(6_364_136_223_846_793_005)
                     .wrapping_add(1_442_695_040_888_963_407);
-                crate::cast::letter_code(crate::cast::size((state >> 33) % 26))
+                u8::try_from((state >> 33) % 26).unwrap_or_default()
             })
         };
         (0..256).map(|_| (word(), word())).collect()

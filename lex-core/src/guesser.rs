@@ -1,6 +1,5 @@
 //! The per-game solver state: guesses played and a cursor into the shared Decision tree.
 
-use crate::cast;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -99,7 +98,7 @@ impl<const N: usize> Guesser<N> {
         assert!(
             book.as_ref()
                 .and_then(OpeningBook::max_guess)
-                .is_none_or(|g| cast::index(g) < pool.len()),
+                .is_none_or(|g| pool.indices().contains(&g)),
             "the opening book names a guess outside the pool"
         );
         let candidates = Candidates::new(pool, answers);
@@ -214,6 +213,12 @@ impl<const N: usize> Guesser<N> {
     }
 }
 
+/// The `n`-th letter of `a..z`, wrapping, for fixtures.
+#[cfg(any(test, feature = "bench"))]
+pub fn letter(n: u64) -> char {
+    char::from(b'a' + u8::try_from(n % 26).unwrap_or_default())
+}
+
 /// A guesser whose answers are every pool word.
 #[cfg(any(test, feature = "bench"))]
 fn corpus_guesser<const N: usize>(pool: &WordSet<N>, strategy: Strategy) -> Guesser<N> {
@@ -238,17 +243,17 @@ mod benches {
 
     use super::{Guess, Guesser, Strategy, WordCorrectness, corpus_guesser};
 
-    fn make_wordset(n: usize) -> Vec<(Word<5>, u64)> {
+    fn make_wordset(n: u64) -> Vec<(Word<5>, u64)> {
         (0..n)
             .map(|i| {
                 let word = Word::from([
-                    crate::cast::letter(i),
-                    crate::cast::letter(i / 26),
-                    crate::cast::letter(i / 676),
-                    crate::cast::letter(i / 17576),
-                    crate::cast::letter(i / 456_976),
+                    crate::guesser::letter(i),
+                    crate::guesser::letter(i / 26),
+                    crate::guesser::letter(i / 676),
+                    crate::guesser::letter(i / 17576),
+                    crate::guesser::letter(i / 456_976),
                 ]);
-                (word, crate::cast::widen(n - i))
+                (word, n - i)
             })
             .collect()
     }
@@ -971,15 +976,13 @@ mod tests {
     /// production floor and exactly its root once the floor is lowered below its work.
     #[test]
     fn a_profile_shaped_root_is_booked_only_below_its_work() {
-        let letters = |i: usize| -> String {
+        let letters = |i: u64| -> String {
             [i, i / 26, i / 676, i / 17576, 7]
                 .iter()
-                .map(|d| crate::cast::letter(*d))
+                .map(|d| crate::guesser::letter(*d))
                 .collect()
         };
-        let pairs: Vec<(String, u64)> = (0..3000)
-            .map(|i| (letters(i), 3000 - crate::cast::widen(i)))
-            .collect();
+        let pairs: Vec<(String, u64)> = (0..3000).map(|i| (letters(i), 3000 - i)).collect();
         let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
         let answers: Vec<Word<5>> = borrowed[..1400].iter().map(|&(w, _)| word(w)).collect();
         for pool in [GuessPool::All, GuessPool::Hard, GuessPool::Ultrahard] {
@@ -1000,8 +1003,8 @@ mod tests {
         ) {
             let pairs: Vec<(String, u64)> = words
                 .into_iter()
-                .enumerate()
-                .map(|(i, w)| (w, 1 + crate::cast::widen(i) * 7))
+                .zip(0_u64..)
+                .map(|(w, i)| (w, 1 + i * 7))
                 .collect();
             let borrowed: Vec<(&str, u64)> = pairs.iter().map(|(w, f)| (w.as_str(), *f)).collect();
             let ws = dict_set(&borrowed);

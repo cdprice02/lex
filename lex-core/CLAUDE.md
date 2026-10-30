@@ -8,7 +8,6 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 
 | Module | Responsibility |
 |---|---|
-| `cast.rs` | Crate-private numeric conversions (`index`, `narrow`, `widen`, `size`, `short`, `letter_code`, `lossy_f64`; `letter` for test and bench fixtures), each the one audited `as` for its width invariant |
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight), `GuessPool` (`All`, `Hard`, `Ultrahard`; strum `EnumString`/`Display`/`VariantNames`/`VariantArray`, serialized `all`/`hard`/`ultrahard`, so a frontend parses it through `FromStr` and `lex-core` needs no clap), `Strategy::DEFAULT` (the `const` behind `Default`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
