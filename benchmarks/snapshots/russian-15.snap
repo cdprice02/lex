@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "2a40720e9c6c3731c8333f8cdd8b7aed414c133de5fdc169d2cc7b5936442833",
   "first_guess": "патримониальное",
-  "games_sha256": "f543fb8e83992d39f8ea0859179e01941cbc3ae1afbfd18799fa78330ad45548",
+  "games_sha256": "173e770e5c3042e8f19d5b894da17dfb2c4488fc5817cef5359f9f867c06be57",
   "profile": null,
   "summary": {
     "max_guesses": 6,

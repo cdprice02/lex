@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "45ac39969a6a7dc3ea6e7d99874908528410f08666fc44e3359596937f692372",
   "first_guess": "aeri",
-  "games_sha256": "8c341bdb372679415ff1520ea41b5aa50a48acac6b53104e648c9207b859fbdc",
+  "games_sha256": "61bad184e8125ee3e267d29aec855bf9d20d78b1bb97005cfb6c3a180e5f5bb2",
   "profile": null,
   "summary": {
     "max_guesses": 6,

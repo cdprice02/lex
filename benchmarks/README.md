@@ -31,7 +31,7 @@ snapshots by `lex verdict --readme benchmarks/snapshots`, and CI fails when it i
 | wordle-all | full | 4.1072 | 3.9193 | 0.37% | `ed5ad0f39c90` |
 | wordle-hard | full | 3.5806 | 3.4663 | 0.48% | `ed5ad0f39c90` |
 | wordle-ultrahard | full | 3.5823 | 3.4658 | 0.48% | `ed5ad0f39c90` |
-| wordle-original | full | 3.5832 | 3.4897 | 0.22% | `ed5ad0f39c90` |
+| wordle-original | full | 3.5814 | 3.4970 | 0.22% | `ed5ad0f39c90` |
 <!-- tracks:end -->
 
 ## Hard and ultrahard

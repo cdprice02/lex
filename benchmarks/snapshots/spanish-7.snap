@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 31d3b7369ec9316dff154c2f4d9470663899d919b3844ee23aa8c50cb105c13d
+  solver_digest: a29c6cbbd97ba78e652d22876bbba83bc0886afb6187e2af5413ccf0782bdd5a
 ---
 {
   "config": {
@@ -27,7 +27,7 @@ info:
   },
   "corpus_sha256": "32314eb60c64539b35381fa74d776612cf2c05ab8d404fe7052d9aa2012d08fe",
   "first_guess": "coteras",
-  "games_sha256": "1ddd802c82dca4ed3a529c7a58b7cd950ea5a123e2d5b9e395327cef68620277",
+  "games_sha256": "57e0870bd271ec5724ed05389b997d3a31c92397991e8eb22a86f79e7af27c44",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -49,7 +49,7 @@ info:
         "4": 0.4200000000000002,
         "5": 0.07
       },
-      "mean": 3.539999999999998
+      "mean": 3.5399999999999983
     }
   },
   "track": "spanish-7"
