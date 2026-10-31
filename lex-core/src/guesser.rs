@@ -986,7 +986,12 @@ mod tests {
 
     #[test]
     fn a_higher_floor_books_fewer_positions() {
-        let g = corpus_guesser(&dict_set(DICT), Strategy::default());
+        // rollout off: the floors below are read against plain pattern-evaluation work
+        let strategy = Strategy {
+            rollout_k: 0,
+            ..Strategy::default()
+        };
+        let g = corpus_guesser(&dict_set(DICT), strategy);
         let (low, high) = (g.build_book_with_floor(5), g.build_book_with_floor(50));
         assert!(!high.is_empty() && high.len() < low.len());
         assert!(

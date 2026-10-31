@@ -59,7 +59,7 @@ impl Strategy {
         win_weight: 1.0,
         endgame_threshold: 0,
         endgame_aversion: 0.0,
-        rollout_k: 0,
+        rollout_k: 10,
     };
 
     /// The original solver: ultrahard guesses (on a Corpus run, only the candidates), scored by
@@ -344,7 +344,7 @@ mod tests {
                 ..base
             },
             Strategy {
-                rollout_k: 10,
+                rollout_k: 4,
                 ..base
             },
         ];
