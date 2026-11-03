@@ -57,7 +57,7 @@ impl Strategy {
         pool: GuessPool::All,
         temperature: CANONICAL_TEMPERATURE,
         win_weight: 1.0,
-        endgame_threshold: 0,
+        endgame_threshold: 10,
         endgame_aversion: 0.0,
         rollout_k: 10,
     };

@@ -15,7 +15,7 @@ acceptance rule for a change are in `docs/adr/0007-benchmark-objective.md`.
 ## Current results
 
 Full-dictionary runs of the headline Tier, default strategy unless the Track says otherwise
-(unconstrained, T=5, win weight 1, endgame off). The table is generated from the committed
+(unconstrained, T=5, win weight 1, endgame threshold 10). The table is generated from the committed
 snapshots by `lex verdict --readme benchmarks/snapshots`, and CI fails when it is stale.
 
 <!-- tracks:start -->
@@ -57,7 +57,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 |---|---|
 | [Strategy](experiments/strategy.md) | Unconstrained guessing, T=5, win weight 1 |
 | [Micro-optimization](experiments/micro-opt.md) | Generic ordinal and selective reset adopted; byte words, bounds-check removal rejected |
-| [Endgame](experiments/endgame.md) | Exact search below a threshold, off by default |
+| [Endgame](experiments/endgame.md) | Exact search below a threshold, on by default at 10 |
 | [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |

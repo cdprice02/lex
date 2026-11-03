@@ -43,7 +43,7 @@ new game on the same tree, and `play` takes `&mut Guesser` for that reason.
 
 ## Endgame search (`endgame.rs`)
 
-Off unless `Strategy::endgame_threshold > 0`. `BasePolicy::guess_index` calls `Endgame::best_index` for
+On by default (`Strategy::DEFAULT.endgame_threshold` is 10); off when it is 0. `BasePolicy::guess_index` calls `Endgame::best_index` for
 sets with 2 to threshold candidates and otherwise falls back to `Candidates::suggest_index`; the tree's
 `BasePolicy` owns the `Endgame`, so its memo is shared by every game. Costs are weighted sums using pool-wide prior weights,
 so a set's cost is independent of the position it was reached from. The memo is keyed by the sorted
