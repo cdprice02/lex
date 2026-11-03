@@ -459,6 +459,7 @@ mod benches {
 
     use super::{Allowed, AllowedIds, BasePolicy, Candidates, Rollout, Strategy};
     use crate::candidates::synthetic_pool;
+    use crate::endgame::Endgame;
 
     /// Candidate-set sizes the rollout multiplier is read at: the edge of the band, a mid-sized
     /// set, and the compiled-in cap.
@@ -479,12 +480,13 @@ mod benches {
         b.bench(|| black_box(candidates.suggest_index(&strategy, &Allowed::Whole)));
     }
 
-    /// One rollout from a cold memo, K=10: its ratio to `greedy_suggest` is the multiplier a
-    /// position pays before the memo is shared across games.
+    /// One rollout from a cold memo, K=10, with greedy as the base policy: its ratio to
+    /// `greedy_suggest` is the multiplier a position pays before the memo is shared across games.
     #[divan::bench(args = SIZES)]
     fn rollout_cold(b: Bencher, size: usize) {
         let candidates = fixture(size);
         let strategy = Strategy {
+            endgame_threshold: 0,
             rollout_k: 10,
             ..Strategy::default()
         };
@@ -493,5 +495,33 @@ mod benches {
                 let mut base = BasePolicy::new(strategy, None);
                 black_box(rollout.best_guess(&candidates, &Allowed::Whole, &mut base))
             });
+    }
+
+    /// [`rollout_cold`] with the Endgame inside its threshold as the base policy, the tree's
+    /// default: the multiplier a position pays when children within the threshold are searched.
+    #[divan::bench(args = SIZES)]
+    fn rollout_cold_endgame(b: Bencher, size: usize) {
+        let candidates = fixture(size);
+        let strategy = Strategy {
+            rollout_k: 10,
+            ..Strategy::default()
+        };
+        b.with_inputs(|| {
+            let ids = AllowedIds::default();
+            let endgame = Endgame::new(
+                candidates.pool(),
+                strategy.pool,
+                strategy.temperature,
+                strategy.endgame_aversion,
+            )
+            .sharing(ids.clone());
+            (
+                Rollout::new(candidates.pool(), &strategy, ids),
+                BasePolicy::new(strategy, Some(endgame)),
+            )
+        })
+        .bench_local_refs(|(rollout, base)| {
+            black_box(rollout.best_guess(&candidates, &Allowed::Whole, base))
+        });
     }
 }
