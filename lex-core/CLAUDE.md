@@ -13,6 +13,7 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
 | `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_index`/`suggest_top_k` (the last returns `Scored` pool indices with their base scores), private `guess_entropy()`; public `Suggestion<N>` |
 | `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
+| `policy.rs` | `BasePolicy<N>` (crate-private): the Strategy plus the optional `Endgame`, and the one rule "Endgame for 2 to `endgame_threshold` candidates, otherwise greedy"; `DecisionTree` holds it and Rollout plays out under it |
 | `rollout.rs` | `Rollout<N>` (crate-private): lookahead over the top `Strategy::rollout_k` guesses for sets above the Endgame threshold and at most `ROLLOUT_CAP`; see Rollout below |
 | `book.rs` | `OpeningBook<N>` (preorder nodes of guess pool index and `(ordinal, child)` edges), `BOOK_FLOOR`; `from_nodes`/`to_nodes` convert to and from `lex_data::StoredBook`, and `from_nodes` validates against the pool (`BookError`: guesses under the pool size, children after their parent and inside the book, ordinals under 3^N and strictly ascending) |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
@@ -42,9 +43,9 @@ new game on the same tree, and `play` takes `&mut Guesser` for that reason.
 
 ## Endgame search (`endgame.rs`)
 
-Off unless `Strategy::endgame_threshold > 0`. `DecisionTree::suggest` calls `Endgame::best_guess` for
-nodes with 2 to threshold candidates and otherwise falls back to `Candidates::suggest`; the tree owns the
-`Endgame`, so its memo is shared by every game. Costs are weighted sums using pool-wide prior weights,
+Off unless `Strategy::endgame_threshold > 0`. `BasePolicy::guess_index` calls `Endgame::best_index` for
+sets with 2 to threshold candidates and otherwise falls back to `Candidates::suggest_index`; the tree's
+`BasePolicy` owns the `Endgame`, so its memo is shared by every game. Costs are weighted sums using pool-wide prior weights,
 so a set's cost is independent of the position it was reached from. The memo is keyed by the sorted
 candidate indices and the allowed guesses (a cost under fewer allowed guesses must not be reused for more); an
 `Allowed::List` is interned to a small id, and in normal mode and on an ultrahard Corpus run the allowed set is implied, so the key is the candidates alone. Plain objective: sum of weight x guesses to finish. With
@@ -61,7 +62,7 @@ cost against simulated games on real roots.
 
 ## Rollout (`rollout.rs`)
 
-Off unless `Strategy::rollout_k > 0`. `DecisionTree::suggest` dispatches by candidate count `n`: the Endgame for 2 to `endgame_threshold`, `Rollout::best_guess` for `max(endgame_threshold, 2) < n <= ROLLOUT_CAP`, otherwise greedy `Candidates::suggest`. Rollout takes `Candidates::suggest_top_k(rollout_k)`, plays each guess out under the base policy (the tree's own without rollout: the Endgame within its threshold, else greedy), and keeps the guess with the lowest expected guesses `1 + sum share * base_cost(child)`, children summed in ascending feedback ordinal with `mul_add`. A strictly lower cost wins with no epsilon, so an exact tie keeps the higher-scored guess; a guess that leaves the set whole costs infinity.
+Off unless `Strategy::rollout_k > 0`. `DecisionTree::suggest` dispatches by candidate count `n`: `Rollout::best_guess` for `max(endgame_threshold, 2) < n <= ROLLOUT_CAP`, otherwise the `BasePolicy` (the Endgame for 2 to `endgame_threshold`, else greedy). Rollout takes `Candidates::suggest_top_k(rollout_k)`, plays each guess out under the `BasePolicy` (the tree's own without rollout), and keeps the guess with the lowest expected guesses `1 + sum share * base_cost(child)`, children summed in ascending feedback ordinal with `mul_add`. A strictly lower cost wins with no epsilon, so an exact tie keeps the higher-scored guess; a guess that leaves the set whole costs infinity.
 
 Costs use the same pool-wide prior weights as the Endgame, so a set's `base_cost` is independent of the position it was reached from. The tree owns the memo, shared by every game and counted in the memory cap, keyed by the sorted candidate indices and the allowed guesses; `AllowedIds` (in `allowed.rs`) interns an `Allowed::List` and one table is shared by the Endgame and the rollout memos. `ROLLOUT_CAP` and `ROLLOUT_MULTIPLIER` are compiled in, not Strategy fields; `DecisionTree::work` scales a rollout position by the multiplier so `BOOK_FLOOR` still counts pattern evaluations. The opt-in test `real_corpus_rollout_reproduces_the_spike_band` replays English-5 with the band forced to 12 to 300 (a test-only floor override) and checks the spike's prior-weighted 4.1569; it also prints the measured multiplier.
 

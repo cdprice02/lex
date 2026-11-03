@@ -119,6 +119,9 @@ _Avoid_: Cutoff, search limit
 Scoring each of the top few guesses at a position by how the solver's own one-guess-ahead choices would play out in the positions it leads to, then choosing the guess that plays out best.
 _Avoid_: Look-ahead, two-ply search
 
+**Base policy**:
+The solver's choice at a position without Rollout: the Endgame within the Endgame threshold, otherwise the best entropy-scored guess. Rollout plays positions out under it.
+
 **Pre-screen**:
 Narrowing the Guess pool at a position by a cheap approximate score before the surviving guesses are scored exactly.
 _Avoid_: Pruning, shortlist

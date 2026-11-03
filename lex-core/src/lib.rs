@@ -8,6 +8,7 @@ mod correctness;
 mod endgame;
 mod game;
 mod guesser;
+mod policy;
 mod rollout;
 mod strategy;
 mod tree;

@@ -4,6 +4,7 @@ use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::sync::Arc;
 
+#[cfg(test)]
 use lex_data::Word;
 
 use crate::allowed::{Allowed, AllowedIds};
@@ -79,11 +80,12 @@ impl<const N: usize> Endgame<N> {
     }
 
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
+    #[cfg(test)]
     pub(crate) fn best_guess(&mut self, set: &[u32], allowed: &Allowed) -> Option<Word<N>> {
         self.best_index(set, allowed).map(|i| self.pool.word(i))
     }
 
-    /// [`best_guess`](Self::best_guess) as a pool index.
+    /// The guess of `best_guess` as a pool index.
     pub(crate) fn best_index(&mut self, set: &[u32], allowed: &Allowed) -> Option<u32> {
         if set.is_empty() {
             return None;

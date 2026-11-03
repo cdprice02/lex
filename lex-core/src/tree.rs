@@ -10,7 +10,8 @@ use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
-use crate::rollout::{Base, ROLLOUT_MULTIPLIER, Rollout};
+use crate::policy::BasePolicy;
+use crate::rollout::{ROLLOUT_MULTIPLIER, Rollout};
 use crate::strategy::Strategy;
 
 /// Index of a node in the tree's arena.
@@ -30,10 +31,9 @@ pub type NodeId = usize;
 /// suggestion (the interactive assistant does).
 #[derive(Debug)]
 pub struct DecisionTree<const N: usize> {
-    /// The Strategy fixed for the tree's life.
-    strategy: Strategy,
-    /// Present when the strategy has an endgame threshold; owns the memo of exact searches.
-    endgame: Option<Endgame<N>>,
+    /// The Strategy fixed for the tree's life and the Endgame whose memo of exact searches every
+    /// game shares.
+    base: BasePolicy<N>,
     /// Present when the strategy has a rollout width; owns the memo of base costs.
     rollout: Option<Rollout<N>>,
     /// The nodes, root first.
@@ -112,8 +112,7 @@ impl<const N: usize> DecisionTree<N> {
             Self::seed(&mut root, book, 0);
         }
         Self {
-            strategy,
-            endgame,
+            base: BasePolicy::new(strategy, endgame),
             rollout,
             nodes: vec![root],
             book,
@@ -140,14 +139,13 @@ impl<const N: usize> DecisionTree<N> {
 
     /// The Strategy this tree scores under.
     pub(crate) const fn strategy(&self) -> &Strategy {
-        &self.strategy
+        self.base.strategy()
     }
 
     /// The suggestion at `node`, computed on first request.
     pub(crate) fn suggest(&mut self, node: NodeId) -> Option<Word<N>> {
         let Self {
-            strategy,
-            endgame,
+            base,
             rollout,
             nodes,
             #[cfg(test)]
@@ -164,17 +162,11 @@ impl<const N: usize> DecisionTree<N> {
                 *booked_computations += 1;
             }
             let size = entry.candidates.len();
-            match (endgame.as_mut(), rollout.as_mut()) {
-                // a lone candidate needs no search; `Candidates::suggest` returns it directly
-                (Some(endgame), _) if (2..=strategy.endgame_threshold).contains(&size) => {
-                    endgame.best_guess(entry.candidates.indices(), &entry.allowed)
+            match rollout.as_mut() {
+                Some(rollout) if !base.uses_endgame(size) && rollout.applies(size) => {
+                    rollout.best_guess(&entry.candidates, &entry.allowed, base)
                 }
-                (_, Some(rollout)) if rollout.applies(size) => rollout.best_guess(
-                    &entry.candidates,
-                    &entry.allowed,
-                    &mut Base { strategy, endgame },
-                ),
-                _ => entry.candidates.suggest(strategy, &entry.allowed),
+                _ => base.guess(&entry.candidates, &entry.allowed),
             }
         };
         entry.suggestion = Memo::Computed(suggestion);
@@ -298,7 +290,7 @@ impl<const N: usize> DecisionTree<N> {
         let candidates = parent.candidates.filtered(guess);
         let pool = candidates.pool();
         let allowed = parent.allowed.after(
-            self.strategy.pool,
+            self.base.strategy().pool,
             &pool,
             &pool.encode(&guess.word()),
             key.1,
