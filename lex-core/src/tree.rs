@@ -4,12 +4,13 @@ use std::collections::{BTreeSet, HashMap};
 
 use lex_data::Word;
 
-use crate::allowed::Allowed;
+use crate::allowed::{Allowed, AllowedIds};
 use crate::book::OpeningBook;
 use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
+use crate::rollout::{Base, ROLLOUT_MULTIPLIER, Rollout};
 use crate::strategy::Strategy;
 
 /// Index of a node in the tree's arena.
@@ -33,6 +34,8 @@ pub struct DecisionTree<const N: usize> {
     strategy: Strategy,
     /// Present when the strategy has an endgame threshold; owns the memo of exact searches.
     endgame: Option<Endgame<N>>,
+    /// Present when the strategy has a rollout width; owns the memo of base costs.
+    rollout: Option<Rollout<N>>,
     /// The nodes, root first.
     nodes: Vec<Node<N>>,
     /// Seeds nodes created along booked paths; `None` plays everything online.
@@ -90,6 +93,7 @@ impl<const N: usize> DecisionTree<N> {
         strategy: Strategy,
         book: Option<OpeningBook<N>>,
     ) -> Self {
+        let list_ids = AllowedIds::default();
         let endgame = (strategy.endgame_threshold > 0).then(|| {
             Endgame::new(
                 candidates.pool(),
@@ -97,7 +101,10 @@ impl<const N: usize> DecisionTree<N> {
                 strategy.temperature,
                 strategy.endgame_aversion,
             )
+            .sharing(list_ids.clone())
         });
+        let rollout =
+            (strategy.rollout_k > 0).then(|| Rollout::new(candidates.pool(), &strategy, list_ids));
         let allowed = Allowed::root(strategy.pool, candidates.len() == candidates.pool().len());
         let mut root = Node::new(candidates, allowed);
         let book = book.filter(|b| !b.is_empty());
@@ -107,6 +114,7 @@ impl<const N: usize> DecisionTree<N> {
         Self {
             strategy,
             endgame,
+            rollout,
             nodes: vec![root],
             book,
             #[cfg(test)]
@@ -140,6 +148,7 @@ impl<const N: usize> DecisionTree<N> {
         let Self {
             strategy,
             endgame,
+            rollout,
             nodes,
             #[cfg(test)]
             booked_computations,
@@ -154,13 +163,17 @@ impl<const N: usize> DecisionTree<N> {
             if entry.book.is_some() {
                 *booked_computations += 1;
             }
-            match endgame {
+            let size = entry.candidates.len();
+            match (endgame.as_mut(), rollout.as_mut()) {
                 // a lone candidate needs no search; `Candidates::suggest` returns it directly
-                Some(endgame)
-                    if (2..=strategy.endgame_threshold).contains(&entry.candidates.len()) =>
-                {
+                (Some(endgame), _) if (2..=strategy.endgame_threshold).contains(&size) => {
                     endgame.best_guess(entry.candidates.indices(), &entry.allowed)
                 }
+                (_, Some(rollout)) if rollout.applies(size) => rollout.best_guess(
+                    &entry.candidates,
+                    &entry.allowed,
+                    &mut Base { strategy, endgame },
+                ),
                 _ => entry.candidates.suggest(strategy, &entry.allowed),
             }
         };
@@ -168,16 +181,49 @@ impl<const N: usize> DecisionTree<N> {
         suggestion
     }
 
-    /// Work at `node`: the guesses its rule allows times its candidates.
-    fn work(&self, node: NodeId) -> u64 {
+    /// Pattern evaluations of one scan at `node`: the guesses its rule allows times its candidates.
+    fn scan_evaluations(&self, node: NodeId) -> u64 {
         let entry = &self.nodes[node];
-        let allowed = match &entry.allowed {
-            Allowed::Whole => entry.candidates.pool().len(),
-            Allowed::Candidates => entry.candidates.len(),
-            Allowed::List(list) => list.len(),
-        };
+        let size = entry.candidates.len();
+        let allowed = entry
+            .allowed
+            .guess_count(entry.candidates.pool().len(), size);
         let widen = |n: usize| u64::try_from(n).unwrap_or(u64::MAX);
-        widen(allowed).saturating_mul(widen(entry.candidates.len()))
+        widen(allowed).saturating_mul(widen(size))
+    }
+
+    /// Work at `node`: one scan, scaled up where a rollout chooses the guess.
+    fn work(&self, node: NodeId) -> u64 {
+        let evaluations = self.scan_evaluations(node);
+        let size = self.nodes[node].candidates.len();
+        if self.rollout.as_ref().is_some_and(|r| r.applies(size)) {
+            evaluations.saturating_mul(ROLLOUT_MULTIPLIER)
+        } else {
+            evaluations
+        }
+    }
+
+    /// Moves the lower edge of the rollout band to above `floor` candidates.
+    #[cfg(test)]
+    pub(crate) fn set_rollout_floor(&mut self, floor: usize) {
+        self.rollout = self.rollout.take().map(|r| r.with_floor(floor));
+    }
+
+    /// What the rollouts run so far spent, and what plain scans of the same positions would have:
+    /// the measured multiplier is the first over the second.
+    #[cfg(test)]
+    pub(crate) fn rollout_cost(&self) -> (u64, u64) {
+        let Some(rollout) = &self.rollout else {
+            return (0, 0);
+        };
+        let scans = (0..self.nodes.len())
+            .filter(|&n| {
+                matches!(self.nodes[n].suggestion, Memo::Computed(_))
+                    && rollout.applies(self.nodes[n].candidates.len())
+            })
+            .map(|n| self.scan_evaluations(n))
+            .sum();
+        (rollout.evaluations() + scans, scans)
     }
 
     /// Books every position, top-down, whose work exceeds `floor`. Work never rises along a

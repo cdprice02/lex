@@ -34,6 +34,36 @@ impl<const N: usize> Suggestion<N> {
     }
 }
 
+/// A guess scored against a Candidate set, by its pool index.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Scored {
+    /// The guess's index in the Guess pool.
+    pub index: u32,
+    /// Expected information gain under the answer prior, in bits.
+    pub entropy_bits: f64,
+    /// Probability that the guess is the answer; zero for a guess already ruled out.
+    pub p_answer: f64,
+    /// Whether the guess is still consistent with every guess played.
+    pub in_candidates: bool,
+}
+
+impl Scored {
+    /// The quantity the solver maximizes, as [`Suggestion::score`].
+    pub(crate) const fn score(&self, win_weight: f64) -> f64 {
+        win_weight.mul_add(self.p_answer, self.entropy_bits)
+    }
+
+    /// The public view of this guess.
+    pub(crate) fn suggestion<const N: usize>(&self, pool: &Pool<N>) -> Suggestion<N> {
+        Suggestion {
+            word: pool.word(self.index),
+            entropy_bits: self.entropy_bits,
+            p_answer: self.p_answer,
+            in_candidates: self.in_candidates,
+        }
+    }
+}
+
 /// The words still consistent with every guess played so far, as indices into the immutable
 /// guess pool, and the choice of the next guess under a [`Strategy`]. Holds no history and caches
 /// nothing: a [`DecisionTree`] node owns one and memoizes its [`suggest`](Self::suggest).
@@ -69,6 +99,11 @@ impl<const N: usize> Candidates<N> {
             })
             .collect();
         indices.sort_unstable();
+        Self { pool, indices }
+    }
+
+    /// A Candidate set of exactly `indices`, ascending pool indices already filtered by the caller.
+    pub(crate) const fn from_indices(pool: Arc<Pool<N>>, indices: Vec<u32>) -> Self {
         Self { pool, indices }
     }
 
@@ -148,44 +183,57 @@ impl<const N: usize> Candidates<N> {
 
     /// The `k` best guesses by score, descending. Equal scores prefer words still in the
     /// candidate set, then frequency order, so the first element agrees with
-    /// [`suggest`](Self::suggest).
+    /// [`suggest`](Self::suggest). Only the `k` kept are sorted.
     pub(crate) fn suggest_top_k(
         &self,
         strategy: &Strategy,
         allowed: &Allowed,
         k: usize,
-    ) -> Vec<Suggestion<N>> {
+    ) -> Vec<Scored> {
         let mut scored = Vec::new();
         self.for_each_guess(
             allowed,
             strategy.temperature,
-            |i, entropy_bits, p_answer, in_candidates| {
-                scored.push(Suggestion {
-                    word: self.pool.word(i),
+            |index, entropy_bits, p_answer, in_candidates| {
+                scored.push(Scored {
+                    index,
                     entropy_bits,
                     p_answer,
                     in_candidates,
                 });
             },
         );
-        // stable sort: equal keys keep frequency-descending iteration order
-        scored.sort_by(|a, b| {
-            let (sa, sb) = (a.score(strategy.win_weight), b.score(strategy.win_weight));
-            cmp_scores(sb, sa).then(b.in_candidates.cmp(&a.in_candidates))
-        });
-        scored.truncate(k);
+        // the pool index closes the order, so the unstable selection is deterministic
+        let better = |a: &Scored, b: &Scored| {
+            cmp_scores(b.score(strategy.win_weight), a.score(strategy.win_weight))
+                .then(b.in_candidates.cmp(&a.in_candidates))
+                .then(a.index.cmp(&b.index))
+        };
+        if k < scored.len() {
+            if let Some(last) = k.checked_sub(1) {
+                scored.select_nth_unstable_by(last, better);
+            }
+            scored.truncate(k);
+        }
+        scored.sort_unstable_by(better);
         scored
     }
 
     /// The guess with the best score among those `allowed` permits, preferring a Candidate on ties; `None` when the set is empty.
     pub(crate) fn suggest(&self, strategy: &Strategy, allowed: &Allowed) -> Option<Word<N>> {
+        self.suggest_index(strategy, allowed)
+            .map(|index| self.pool.word(index))
+    }
+
+    /// [`suggest`](Self::suggest) as a pool index.
+    pub(crate) fn suggest_index(&self, strategy: &Strategy, allowed: &Allowed) -> Option<u32> {
         match self.indices.as_slice() {
             [] => {
                 cold_path();
                 return None;
             }
             // every guess scores zero entropy against a single candidate, so it is the answer
-            &[only] => return Some(self.pool.word(only)),
+            &[only] => return Some(only),
             _ => {}
         }
 
@@ -219,7 +267,7 @@ impl<const N: usize> Candidates<N> {
                 }
             },
         );
-        best.map(|(i, _, _)| self.pool.word(i))
+        best.map(|(i, _, _)| i)
     }
 }
 
@@ -360,6 +408,78 @@ mod tests {
         assert!(kept.indices().contains(&0));
     }
 
+    /// Forty distinct words over a small alphabet, frequency-descending, so scores collide and
+    /// the tie-break order matters.
+    fn top_k_pool() -> Arc<Pool<5>> {
+        let letters = ['a', 'b', 'c', 'd'];
+        let mut seen = std::collections::HashSet::new();
+        let pairs: Vec<(Word<5>, u64)> = (0..400_u64)
+            .map(|i| -> [char; 5] {
+                std::array::from_fn(|p| {
+                    letters[usize::try_from(i * 7 / 3 + i * i).unwrap_or(0) >> (2 * p) & 3]
+                })
+            })
+            .filter(|chars| seen.insert(*chars))
+            .take(40)
+            .zip(0_u64..)
+            .map(|(chars, i)| (Word::from(chars), 400 - i))
+            .collect();
+        assert_eq!(
+            pairs.len(),
+            40,
+            "the generator yields enough distinct words"
+        );
+        Pool::new(&lex_data::WordSet::from_pairs(pairs))
+    }
+
+    #[test]
+    fn top_k_matches_the_full_sort_and_leads_with_suggest() {
+        let pool = top_k_pool();
+        let all: Vec<u32> = pool.indices().collect();
+        let strategy = crate::strategy::Strategy::default();
+        let sets = [
+            all.iter().copied().step_by(2).collect::<Vec<_>>(),
+            all.iter().copied().skip(5).take(9).collect::<Vec<_>>(),
+            all.clone(),
+        ];
+        for set in sets {
+            let candidates = Candidates::from_indices(Arc::clone(&pool), set.clone());
+            let list = Allowed::List(
+                all.iter()
+                    .copied()
+                    .step_by(3)
+                    .chain(set.clone())
+                    .collect::<std::collections::BTreeSet<_>>()
+                    .into_iter()
+                    .collect(),
+            );
+            for allowed in [Allowed::Whole, Allowed::Candidates, list] {
+                // the reference scores every guess, then sorts all of them with a stable sort
+                let mut full = Vec::new();
+                candidates.for_each_guess(&allowed, strategy.temperature, |index, e, p, c| {
+                    full.push(Scored {
+                        index,
+                        entropy_bits: e,
+                        p_answer: p,
+                        in_candidates: c,
+                    });
+                });
+                full.sort_by(|a, b| {
+                    cmp_scores(b.score(strategy.win_weight), a.score(strategy.win_weight))
+                        .then(b.in_candidates.cmp(&a.in_candidates))
+                });
+                for k in [0, 1, 2, 7, full.len(), full.len() + 3] {
+                    let top = candidates.suggest_top_k(&strategy, &allowed, k);
+                    assert_eq!(top, full[..k.min(full.len())], "k {k}");
+                }
+                assert_eq!(
+                    candidates.suggest_top_k(&strategy, &allowed, 1)[0].index,
+                    candidates.suggest_index(&strategy, &allowed).unwrap()
+                );
+            }
+        }
+    }
+
     use proptest::prelude::*;
 
     /// Words over a small alphabet so patterns collide and runs have several members.
@@ -410,6 +530,30 @@ mod tests {
 }
 
 #[cfg(feature = "bench")]
+/// A reproducible pool of `count` distinct words over a..z, frequency-descending, so every
+/// bench scores against letter overlap like a real corpus rather than disjoint words.
+pub fn synthetic_pool<const N: usize>(count: usize) -> Arc<Pool<N>> {
+    let mut state = 0x2545_f491_4f6c_dd1d_u64;
+    let mut seen = std::collections::HashSet::new();
+    let mut pairs = Vec::with_capacity(count);
+    while pairs.len() < count {
+        let chars: [char; N] = std::array::from_fn(|_| {
+            state = state
+                .wrapping_mul(6_364_136_223_846_793_005)
+                .wrapping_add(1_442_695_040_888_963_407);
+            crate::guesser::letter((state >> 33) % 26)
+        });
+        if seen.insert(chars) {
+            pairs.push((
+                Word::<N>::from(chars),
+                u64::try_from(count - pairs.len()).unwrap_or(1) * 10,
+            ));
+        }
+    }
+    Pool::new(&lex_data::WordSet::from_pairs(pairs))
+}
+
+#[cfg(feature = "bench")]
 #[cfg_attr(
     not(test),
     expect(
@@ -422,7 +566,8 @@ mod benches {
     use std::hint::black_box;
 
     use super::{
-        Allowed, Arc, Candidates, Code, Guess, Pool, Strategy, Word, WordCorrectness, guess_entropy,
+        Allowed, Candidates, Code, Guess, Pool, Strategy, Word, WordCorrectness, guess_entropy,
+        synthetic_pool,
     };
 
     #[divan::bench]
@@ -435,29 +580,6 @@ mod benches {
         let words: Vec<Code<5>> = pool.indices().map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];
         b.bench(|| black_box(guess_entropy(&guess, &words, &probs)));
-    }
-
-    /// A reproducible pool of `count` distinct words over a..z, frequency-descending, so every
-    /// bench scores against letter overlap like a real corpus rather than disjoint words.
-    fn synthetic_pool<const N: usize>(count: usize) -> Arc<Pool<N>> {
-        let mut state = 0x2545_f491_4f6c_dd1d_u64;
-        let mut seen = std::collections::HashSet::new();
-        let mut pairs = Vec::with_capacity(count);
-        while pairs.len() < count {
-            let chars: [char; N] = std::array::from_fn(|_| {
-                state = state
-                    .wrapping_mul(6_364_136_223_846_793_005)
-                    .wrapping_add(1_442_695_040_888_963_407);
-                crate::guesser::letter((state >> 33) % 26)
-            });
-            if seen.insert(chars) {
-                pairs.push((
-                    Word::<N>::from(chars),
-                    u64::try_from(count - pairs.len()).unwrap_or(1) * 10,
-                ));
-            }
-        }
-        Pool::new(&lex_data::WordSet::from_pairs(pairs))
     }
 
     fn bench_suggest<const N: usize>(b: Bencher, count: usize) {
