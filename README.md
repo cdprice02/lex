@@ -6,7 +6,16 @@
 [![rustc: nightly](https://img.shields.io/badge/rustc-nightly-orange.svg)](rust-toolchain.toml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-An entropy-based Wordle solver. Simulates games against the [Google Books Ngrams V3](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html) corpus, cross-referenced with [Wiktionary](https://kaikki.org) to keep only real dictionary words. Picks each guess by maximizing Shannon entropy over the remaining candidate set.
+An entropy-based Wordle solver. Simulates games against the [Google Books Ngrams V3](https://storage.googleapis.com/books/ngrams/books/datasetsv3.html) corpus, cross-referenced with [Wiktionary](https://kaikki.org) to keep only real dictionary words.
+
+## How it plays
+
+- **Entropy scoring.** Each guess is scored by the Shannon entropy of the feedback it splits the Candidate set into, weighted by a frequency-based Answer prior, plus a bonus for the chance the guess is the answer itself. By default every word in the Corpus may be guessed (`--pool all`).
+- **Opening book.** The top levels of the game tree are built once and looked up, so positions too slow to search per move cost nothing at play time. A game plays identically with or without the book.
+- **Rollout.** At mid-sized Candidate sets the top 10 guesses (`--rollout-k`) are each played out under the base policy (greedy entropy, then the Endgame once 10 or fewer candidates remain), and the one with the fewest expected guesses wins.
+- **Endgame.** At 10 or fewer candidates (`--endgame-threshold`) the solver searches the game tree exactly to minimize expected guesses.
+
+Methodology and the current results table are in [`benchmarks/README.md`](benchmarks/README.md).
 
 ## Quick start
 
@@ -33,9 +42,10 @@ The first run for a language downloads its Wiktionary word list and all Google B
 ## CLI
 
 Subcommands: `simulate` (batch games, average guess count), `assist`
-(interactive helper for a live Wordle — suggests guesses, you enter the
-feedback as letters `gyx`, digits `210`, or pasted emoji), `book build` (the
-opening book, below) and `clear`.
+(interactive helper for a live Wordle: suggests guesses, you enter the
+feedback as letters `gyx`, digits `210`, or pasted emoji), `compare` (paired
+comparison of two `simulate --output` reports), `book build` (the opening
+book, below) and `clear`.
 
 `simulate` and `assist` build the opening book for their game and strategy on
 first use (progress on stderr) and load it afterwards; `--no-book` plays fully
@@ -45,14 +55,36 @@ book or reports it up to date (`--force` rebuilds), and prints its size and
 build time. Books live in `data/books/`; `lex clear --books [--lang L] [-l N]`
 removes them, and clearing a corpus or a Profile removes its books too.
 
+`simulate`, `assist` and `book build` share the game and Strategy flags:
+
 | Flag | Default | Description |
 |---|---|---|
-| `-l` / `--word-length` | `5` | Word length (3–21) |
+| `-l` / `--word-length` | required without `--profile` | Word length (3-21) |
+| `--lang` | required without `--profile` | Language corpus (see below) |
+| `--profile` | none | Play a Profile: its Answer list and Guess pool, with its language and word length (`wordle`, `wordle-all`) |
 | `--dictionary-length` | all | Cap the candidate dictionary size |
-| `--lang` | `english` | Language corpus (see below) |
 | `--data-dir` | `data` | Directory for cached word-frequency files |
-| `-n` / `--num-games` | all | (simulate) Number of games |
-| `-s` / `--suggestions` | `5` | (assist) Suggestions shown per turn |
+| `--pool` | `all` | Words that may be guessed: `all`, `hard` (official Wordle hard-mode rule) or `ultrahard` (only words consistent with every feedback) |
+| `--temperature` | `5` | Answer prior temperature; higher flattens the frequency-based prior |
+| `--win-weight` | `1` | Score bonus, in bits, per unit of probability that a guess is the answer |
+| `--endgame-threshold` | `10` | Search exactly once this few candidates remain (`0` disables) |
+| `--endgame-aversion` | `0` | Endgame risk aversion; `0` minimizes plain expected guesses |
+| `--rollout-k` | `10` | Top-scored guesses compared by Rollout (`0` disables) |
+| `--no-book` | off | (`simulate`, `assist`) Play fully online instead of using the opening book |
+| `--force` | off | (`book build`) Rebuild even when the book is up to date |
+
+`simulate` also takes:
+
+| Flag | Default | Description |
+|---|---|---|
+| `-n` / `--num-games` | every word | Number of target words to sample |
+| `--seed` | `0` | Seed for sampling targets (requires `-n`) |
+| `--targets` | none | File of target words, one per line, to play instead of sampling |
+| `-o` / `--output` | none | Write the full JSON report here (`-` for stdout, which moves the summary to stderr) |
+
+`assist` also takes `-s` / `--suggestions` (default `5`): suggestions shown per turn.
+
+`clear` takes `--lang`, `--profile`, `--books` and `-l`, plus `--data-dir`; see `lex clear --help`.
 
 ## Languages
 
