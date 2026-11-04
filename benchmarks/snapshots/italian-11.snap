@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 4d97852bdc535f55c2061824d11ee2d055c134d1fe9c0b0a3770b1b66e8b6954
+  solver_digest: 274523b8074cb63883ed79d78d3753953cde172800cb7a33429f2ac4543d303c
 ---
 {
   "config": {
@@ -14,7 +14,7 @@ info:
     },
     "strategy": {
       "endgame_aversion": 0.0,
-      "endgame_threshold": 0,
+      "endgame_threshold": 10,
       "mode": "unconstrained",
       "rollout_k": 10,
       "temperature": 5.0,
@@ -28,7 +28,7 @@ info:
   },
   "corpus_sha256": "acaa5578c51df8c471cb47c7f92b7e14ce1e478f28bb57b2e3382b070401e99a",
   "first_guess": "riscontiate",
-  "games_sha256": "a8e414c3ef9b550557b3bf54e2c63d310605d548f46f3d0b81e841a522c0aa08",
+  "games_sha256": "250c5b06191987986f02c45ca999f7a9897baaf5b9a63beb192dfe85e864eb88",
   "profile": null,
   "summary": {
     "max_guesses": 6,
@@ -36,17 +36,19 @@ info:
       "failure_rate": 0.0,
       "histogram": {
         "2": 0.3285626834851915,
-        "3": 0.6714373165148088
+        "3": 0.6615458932758739,
+        "4": 0.009891423238934929
       },
-      "mean": 2.6714373165148064
+      "mean": 2.6813287397537415
     },
     "uniform": {
       "failure_rate": 0.0,
       "histogram": {
         "2": 0.3200000000000001,
-        "3": 0.6800000000000004
+        "3": 0.6700000000000004,
+        "4": 0.01
       },
-      "mean": 2.6799999999999984
+      "mean": 2.689999999999998
     }
   },
   "track": "italian-11"

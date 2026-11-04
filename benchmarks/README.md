@@ -21,16 +21,16 @@ snapshots by `lex verdict --readme benchmarks/snapshots`, and CI fails when it i
 <!-- tracks:start -->
 | Track | Targets | Uniform mean | Prior-weighted mean | Failure rate (>6) | Corpus |
 |---|---|---|---|---|---|
-| english-5 | full | 4.3481 | 4.1572 | 0.42% | `ed5ad0f39c90` |
-| french-5 | full | 4.2330 | 4.0489 | 0.46% | `d00df27d4d4c` |
-| german-5 | full | 4.0432 | 3.9083 | 0.08% | `c74b64153cb4` |
-| spanish-5 | full | 4.2861 | 4.0953 | 1.09% | `b171872e1550` |
-| italian-5 | full | 3.7956 | 3.6610 | 0.03% | `4bc3cf41a5c3` |
-| russian-5 | full | 4.5929 | 4.4507 | 1.08% | `0df2e0461d82` |
-| wordle | full | 3.4691 | 3.3757 | 0.00% | `ed5ad0f39c90` |
-| wordle-all | full | 4.1154 | 3.8922 | 0.51% | `ed5ad0f39c90` |
-| wordle-hard | full | 3.5741 | 3.4429 | 0.17% | `ed5ad0f39c90` |
-| wordle-ultrahard | full | 3.5762 | 3.4430 | 0.22% | `ed5ad0f39c90` |
+| english-5 | full | 4.3664 | 4.1440 | 0.95% | `ed5ad0f39c90` |
+| french-5 | full | 4.2441 | 4.0360 | 0.84% | `d00df27d4d4c` |
+| german-5 | full | 4.0560 | 3.8964 | 0.25% | `c74b64153cb4` |
+| spanish-5 | full | 4.3042 | 4.0806 | 1.85% | `b171872e1550` |
+| italian-5 | full | 3.8055 | 3.6503 | 0.11% | `4bc3cf41a5c3` |
+| russian-5 | full | 4.6049 | 4.4367 | 1.73% | `0df2e0461d82` |
+| wordle | full | 3.4721 | 3.3671 | 0.00% | `ed5ad0f39c90` |
+| wordle-all | full | 4.1324 | 3.8815 | 0.86% | `ed5ad0f39c90` |
+| wordle-hard | full | 3.5758 | 3.4424 | 0.26% | `ed5ad0f39c90` |
+| wordle-ultrahard | full | 3.5771 | 3.4426 | 0.26% | `ed5ad0f39c90` |
 | wordle-original | full | 3.5814 | 3.4970 | 0.22% | `ed5ad0f39c90` |
 <!-- tracks:end -->
 

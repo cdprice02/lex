@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 4d97852bdc535f55c2061824d11ee2d055c134d1fe9c0b0a3770b1b66e8b6954
+  solver_digest: 274523b8074cb63883ed79d78d3753953cde172800cb7a33429f2ac4543d303c
 ---
 {
   "config": {
@@ -14,7 +14,7 @@ info:
     },
     "strategy": {
       "endgame_aversion": 0.0,
-      "endgame_threshold": 0,
+      "endgame_threshold": 10,
       "mode": "unconstrained",
       "rollout_k": 10,
       "temperature": 5.0,
@@ -28,7 +28,7 @@ info:
   },
   "corpus_sha256": "64f967d4ca95901cb1be7a9e74bcbcf0c79d9f5d643de661f4761b4f7be53dd6",
   "first_guess": "selenocianato",
-  "games_sha256": "1700482288460272f8d1e6cc36fcb08a0b0020bfe3e2683be793a90e1b6905f4",
+  "games_sha256": "a223eaa5a705306dca22f99592c3273e9939bcad19147c215e24e9681f14dab0",
   "profile": null,
   "summary": {
     "max_guesses": 6,
