@@ -55,7 +55,7 @@ independent of depth (a penalty past guess 6 would not be).
 `search` computes a lower bound per guess from its partition (a group needs one guess for the answer it
 names and two for each other), sorts by it, and stops once the bound exceeds the best cost. A
 non-candidate that leaves the set in one group is skipped, which guarantees the recursion shrinks it.
-Ties go to a candidate, then pool order. Children are solved without any bound passed down, so memoized
+Ties go to a candidate, then pool order. `search` scores the candidates first and scans the other allowed guesses only when one could still win: an outside guess leaves every answer a guess to go, so it costs at least `2 * mass` (plain) or `a^2 * mass` (averse), and the scan is skipped when the best candidate is below that by a relative `SLACK` of 1e-9, so no float rounding can change the winner (nearer ties are scanned). Sets of 2, and of 3 in plain mode, take closed forms that repeat `try_guess`'s sums operation for operation (a pair's optimum is always a candidate, so no memo lookup). Candidates are always allowed guesses: `Whole` holds the pool, `Candidates` is the set, a `List` contains them. The test-only `reference` flag restores the full scan, and `the_fast_paths_match_the_full_search_bit_for_bit` holds the fast paths to it with `to_bits`. Children are solved without any bound passed down, so memoized
 costs are exact. `win_weight` is ignored here. A top-K entropy probe limit was tried and rejected
 (`benchmarks/experiments/endgame.md`). The opt-in test `real_corpus_roots_match_simulated_cost` checks predicted
 cost against simulated games on real roots.

@@ -47,7 +47,16 @@ pub struct Endgame<const N: usize> {
     list_ids: AllowedIds,
     /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
     memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
+    /// Scans every allowed guess at every node, as the search did before the candidate-first cut:
+    /// the reference the equivalence test holds the fast paths to.
+    #[cfg(test)]
+    reference: bool,
 }
+
+/// Relative slack on the bounds that skip a scan. A cost is a short float sum, off by about 1e-15
+/// of its value; this is far above that, so a skip fires only when no rounding can change the
+/// winner, and anything closer is scanned.
+const SLACK: f64 = 1e-9;
 
 impl<const N: usize> Endgame<N> {
     /// An empty search over `pool`, weighting answers by the Answer prior at `temperature` and scoring risk by `aversion`.
@@ -65,6 +74,8 @@ impl<const N: usize> Endgame<N> {
             weights,
             list_ids: AllowedIds::default(),
             memo: HashMap::new(),
+            #[cfg(test)]
+            reference: false,
         }
     }
 
@@ -121,16 +132,111 @@ impl<const N: usize> Endgame<N> {
         solved
     }
 
+    /// Finds the cheapest guess for a set of two or more. The candidates are scored first (in
+    /// closed form for two, and for three in plain mode); the rest of the allowed guesses are
+    /// scanned only if one of them could still win, see [`Self::outside_cannot_win`].
+    fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
+        let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
+        #[cfg(test)]
+        if self.reference {
+            return self.scan(set, allowed, mass, true);
+        }
+        // a set's candidates are always allowed guesses: `Whole` holds every pool word,
+        // `Candidates` is the set itself, and a `List` is built to contain them
+        let outside = match allowed {
+            Allowed::Candidates => false,
+            Allowed::Whole => self.pool.len() > set.len(),
+            Allowed::List(list) => list.len() > set.len(),
+        };
+        let first = match (self.growth, set.len()) {
+            (None, 2) => self.pair(set, mass),
+            (None, 3) => self.triple(set, mass),
+            _ => self.scan(set, allowed, mass, false),
+        };
+        if !outside || self.outside_cannot_win(first.cost, mass) {
+            return first;
+        }
+        self.scan(set, allowed, mass, true)
+    }
+
+    /// Whether no guess outside the set can beat a candidate costing `best`, so the pool need not
+    /// be scanned. Outside the set every answer survives this turn, so each takes two guesses or
+    /// more: plain, `2 * mass`; averse, `a^2 * mass`. Candidates rank ahead on an exact tie, so
+    /// only a strictly lower cost matters, and [`SLACK`] covers float rounding.
+    fn outside_cannot_win(&self, best: f64, mass: f64) -> bool {
+        let floor = mass * self.growth.map_or(2.0, |a| a * a);
+        best <= floor * (1.0 - SLACK)
+    }
+
+    /// The best guess for two candidates, which is always a candidate: guessing one finishes it
+    /// and leaves the other a lone group, and an outside guess costs at least `2 * mass`. The
+    /// sums repeat `try_guess` operation for operation so the costs match bit for bit; the
+    /// earlier candidate keeps an exact tie.
+    fn pair(&self, set: &[u32], mass: f64) -> Solved {
+        let cost_of = |guess: u32, other: u32| {
+            let lone = self.weight(other) * self.growth.unwrap_or(1.0);
+            (self.initial_cost(guess, true, mass) + lone) * self.growth.unwrap_or(1.0)
+        };
+        let (first, second) = (set[0], set[1]);
+        let (a, b) = (cost_of(first, second), cost_of(second, first));
+        if b.total_cmp(&a) == Ordering::Less {
+            Solved {
+                cost: b,
+                guess: second,
+            }
+        } else {
+            Solved {
+                cost: a,
+                guess: first,
+            }
+        }
+    }
+
+    /// The best candidate for three candidates in plain mode, with each group of unsolved answers
+    /// costed in closed form: a lone answer is its weight, a pair is [`Self::pair`]. This is
+    /// exactly the candidate pass of [`Self::scan`], because a pair's optimum is a candidate and
+    /// so needs no memo. The pass is not the whole answer when `outside_cannot_win` fails: an
+    /// outside guess that separates all three costs `2 * mass`, which only an (almost) exact tie
+    /// among the weights leaves a candidate unable to beat.
+    fn triple(&self, set: &[u32], mass: f64) -> Solved {
+        let win = WordCorrectness::<N>::COUNT - 1;
+        let mut keyed = Vec::with_capacity(set.len());
+        let mut best = Solved {
+            cost: f64::INFINITY,
+            guess: set[0],
+        };
+        for &guess in set {
+            self.pool.partition(set, guess, &mut keyed);
+            let mut cost = mass;
+            for group in keyed.chunk_by(|a, b| a.0 == b.0) {
+                if group[0].0 == win {
+                    continue;
+                }
+                cost += if group.len() == 1 {
+                    self.weight(group[0].1)
+                } else {
+                    let pair = [group[0].1, group[1].1];
+                    self.pair(&pair, pair.iter().map(|&i| self.weight(i)).sum())
+                        .cost
+                };
+            }
+            if cost.total_cmp(&best.cost) == Ordering::Less {
+                best = Solved { cost, guess };
+            }
+        }
+        best
+    }
+
     /// Finds the cheapest guess, trying them in order of a cheap lower bound on their cost and
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave. Exact ties go to a candidate, then to the
-    /// more frequent word, as in the entropy solver.
+    /// more frequent word, as in the entropy solver. Guesses outside the set are considered only
+    /// when `outside`.
     #[expect(
         clippy::expect_used,
         reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
     )]
-    fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
-        let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
+    fn scan(&mut self, set: &[u32], allowed: &Allowed, mass: f64, outside: bool) -> Solved {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order: Vec<(f64, bool, u32)> = Vec::new();
         let mut consider = |this: &Self, g: u32, in_set: bool| {
@@ -142,7 +248,7 @@ impl<const N: usize> Endgame<N> {
         for &g in set {
             consider(self, g, true);
         }
-        let mut outside = |this: &Self, guesses: &mut dyn Iterator<Item = u32>| {
+        let mut beyond = |this: &Self, guesses: &mut dyn Iterator<Item = u32>| {
             let mut next = 0;
             for g in guesses {
                 if set.get(next) == Some(&g) {
@@ -153,16 +259,16 @@ impl<const N: usize> Endgame<N> {
             }
         };
         match allowed {
-            Allowed::Candidates => {}
-            Allowed::Whole => outside(self, &mut self.pool.indices()),
-            Allowed::List(list) => outside(self, &mut list.iter().copied()),
+            Allowed::Whole if outside => beyond(self, &mut self.pool.indices()),
+            Allowed::List(list) if outside => beyond(self, &mut list.iter().copied()),
+            Allowed::Candidates | Allowed::Whole | Allowed::List(_) => {}
         }
         order.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)).then(a.2.cmp(&b.2)));
 
         let mut best: Option<Solved> = None;
         for (floor, outside, g) in order {
             // the slack keeps a bound that rounds a hair high from hiding a true tie or win
-            if best.is_some_and(|b| floor > b.cost * (1.0 + 1e-9)) {
+            if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
                 break;
             }
             self.try_guess(set, allowed, g, !outside, mass, &mut best);
@@ -421,6 +527,193 @@ mod tests {
         ]));
         let mut endgame = Endgame::new(pool, GuessPool::All, 5.0, 0.0);
         assert!((endgame.expected_guesses(&[0, 1], &Allowed::Whole) - 1.5).abs() < 1e-12);
+    }
+
+    /// A deterministic xorshift stream, so a failing round replays.
+    struct Rng(u64);
+
+    impl Rng {
+        fn next(&mut self) -> u64 {
+            self.0 ^= self.0 << 13;
+            self.0 ^= self.0 >> 7;
+            self.0 ^= self.0 << 17;
+            self.0
+        }
+
+        fn below(&mut self, n: usize) -> usize {
+            usize::try_from(self.next() % u64::try_from(n).unwrap()).unwrap()
+        }
+
+        fn index(&mut self, n: usize) -> u32 {
+            u32::try_from(self.below(n)).unwrap()
+        }
+    }
+
+    /// A pool of distinct words over a four-letter alphabet, so patterns collide often. By
+    /// `shape`, counts differ mildly, repeat (exact weight ties), or span nine orders of magnitude
+    /// (tiny weights).
+    fn random_pool(rng: &mut Rng, size: usize, shape: usize) -> Arc<Pool<5>> {
+        let mut seen = std::collections::HashSet::new();
+        let mut pairs = Vec::new();
+        while pairs.len() < size {
+            let text: String = (0..5)
+                .map(|_| char::from(b'a' + u8::try_from(rng.below(4)).unwrap()))
+                .collect();
+            if seen.insert(text.clone()) {
+                let count = match shape {
+                    0 => 1000 + rng.next() % 5000,
+                    1 => 1 + rng.next() % 3,
+                    _ => 10_u64.pow(u32::try_from(rng.below(10)).unwrap()),
+                };
+                pairs.push((Word::<5>::try_from(text.as_str()).unwrap(), count));
+            }
+        }
+        Pool::new(&WordSet::from_pairs(pairs))
+    }
+
+    fn random_set(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
+        let mut set = std::collections::BTreeSet::new();
+        while set.len() < len {
+            set.insert(rng.index(pool.len()));
+        }
+        set.into_iter().collect()
+    }
+
+    /// The `len` words nearest a random seed word by letters differing, which are hard to tell
+    /// apart and so make guesses outside the set worth scanning for.
+    fn similar_set(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
+        let seed = pool.code(rng.index(pool.len()));
+        let distance = |i: u32| {
+            pool.code(i)
+                .iter()
+                .zip(seed.iter())
+                .filter(|(a, b)| a != b)
+                .count()
+        };
+        let mut keyed: Vec<(usize, u64, u32)> = pool
+            .indices()
+            .map(|i| (distance(i), rng.next(), i))
+            .collect();
+        keyed.sort_unstable();
+        let mut all: Vec<u32> = keyed.iter().take(len).map(|k| k.2).collect();
+        all.sort_unstable();
+        all
+    }
+
+    /// Solves `set` with the fast paths and with the full search, each from a cold memo, and
+    /// demands the same guess and the same cost bit for bit. Where the memo key is the set alone,
+    /// every set the fast memo holds must also be the full search's optimum.
+    fn assert_matches_reference(
+        pool: &Arc<Pool<5>>,
+        mode: GuessPool,
+        temperature: f64,
+        aversion: f64,
+        set: &[u32],
+        allowed: &Allowed,
+    ) {
+        let mut fast = Endgame::new(Arc::clone(pool), mode, temperature, aversion);
+        let mut full = Endgame::new(Arc::clone(pool), mode, temperature, aversion);
+        full.reference = true;
+        let (f, r) = (fast.solve(set, allowed), full.solve(set, allowed));
+        let context = format!("{mode:?} T{temperature} L{aversion} {set:?} {allowed:?}");
+        assert_eq!(f.guess, r.guess, "guess for {context}");
+        assert_eq!(f.cost.to_bits(), r.cost.to_bits(), "cost for {context}");
+        let implied = matches!(
+            (mode, allowed),
+            (GuessPool::All, Allowed::Whole) | (GuessPool::Ultrahard, Allowed::Candidates)
+        );
+        if implied {
+            let held: Vec<(Vec<u32>, Solved)> = fast.memo[&None]
+                .iter()
+                .map(|(k, v)| (k.clone(), *v))
+                .collect();
+            for (key, kept) in held {
+                let exact = full.solve(&key, allowed);
+                assert_eq!(kept.guess, exact.guess, "memo guess for {key:?}, {context}");
+                assert_eq!(
+                    kept.cost.to_bits(),
+                    exact.cost.to_bits(),
+                    "memo cost for {key:?}, {context}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn the_fast_paths_match_the_full_search_bit_for_bit() {
+        let mut rng = Rng(0x9e37_79b9_7f4a_7c15);
+        for round in 0..90 {
+            let size = 24 + rng.below(if round % 2 == 0 { 40 } else { 120 });
+            let pool = random_pool(&mut rng, size, round % 3);
+            for temperature in [1.0, 5.0] {
+                for aversion in [0.0, 0.0, 1e-12, 0.4, 1.5] {
+                    let len = 2 + rng.below(7);
+                    let set = if round % 2 == 0 {
+                        random_set(&mut rng, &pool, len)
+                    } else {
+                        similar_set(&mut rng, &pool, len)
+                    };
+                    // the list holds every candidate, as the search requires
+                    let mut list = set.clone();
+                    let extra = 3 + rng.below(12);
+                    list.extend(random_set(&mut rng, &pool, extra));
+                    list.sort_unstable();
+                    list.dedup();
+                    for (mode, allowed) in [
+                        (GuessPool::All, Allowed::Whole),
+                        (GuessPool::All, Allowed::List(list)),
+                        (GuessPool::Ultrahard, Allowed::Candidates),
+                    ] {
+                        assert_matches_reference(
+                            &pool,
+                            mode,
+                            temperature,
+                            aversion,
+                            &set,
+                            &allowed,
+                        );
+                    }
+                    // hard mode: the set and list a real first guess leaves
+                    let guess = rng.index(pool.len());
+                    let target = rng.index(pool.len());
+                    let code = pool.code(guess);
+                    let ordinal = pattern_ordinal(pool.code(target), code, &mut [0; 256]);
+                    let left: Vec<u32> = pool
+                        .indices()
+                        .filter(|&i| pattern_ordinal(pool.code(i), code, &mut [0; 256]) == ordinal)
+                        .collect();
+                    if (2..=10).contains(&left.len()) {
+                        let allowed = Allowed::Whole.after(GuessPool::Hard, &pool, code, ordinal);
+                        assert_matches_reference(
+                            &pool,
+                            GuessPool::Hard,
+                            temperature,
+                            aversion,
+                            &left,
+                            &allowed,
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn the_fast_paths_match_the_full_search_on_a_family_with_probes() {
+        let pool = pool_of(&[&FAMILY[..], &["clamp", "twang", "phlox"]].concat());
+        let set = indices_of(&pool, &FAMILY);
+        for aversion in [0.0, 0.3, 1.0] {
+            for len in 2..=FAMILY.len() {
+                assert_matches_reference(
+                    &pool,
+                    GuessPool::All,
+                    5.0,
+                    aversion,
+                    &set[..len],
+                    &Allowed::Whole,
+                );
+            }
+        }
     }
 
     /// Roots reached by real play on the English-5 cache: every 400th target is played with the
