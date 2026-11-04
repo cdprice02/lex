@@ -12,6 +12,7 @@ pub mod error;
 pub mod lists;
 pub mod report;
 pub mod simulate;
+pub mod style;
 pub mod targets;
 pub mod tracks;
 pub mod verdict;

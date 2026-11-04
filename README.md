@@ -53,6 +53,8 @@ removes them, and clearing a corpus or a Profile removes its books too.
 | `--data-dir` | `data` | Directory for cached word-frequency files |
 | `-n` / `--num-games` | all | (simulate) Number of games |
 | `-s` / `--suggestions` | `5` | (assist) Suggestions shown per turn |
+| `--color` | `auto` | `auto`, `always` or `never`; `auto` colours a terminal and honours `NO_COLOR` |
+| `--symbols` | `letters` | Feedback tiles shown as `letters` (g/y/x), `digits` (2/1/0) or `emoji`; assist input accepts all three regardless |
 
 ## Languages
 

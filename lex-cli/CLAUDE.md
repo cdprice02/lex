@@ -23,7 +23,8 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 | `verdict.rs` | `lex verdict`, see Plumbing |
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary |
 | `compare.rs` | paired per-target comparison of two reports, joined on word |
-| `assist.rs` | interactive loop; `parse_feedback` (private) auto-detects input format |
+| `assist.rs` | interactive loop; `parse_feedback` (private) auto-detects input format whatever `--symbols` says; the echoed feedback is `style::tiles` |
+| `style.rs` | shared by every frontend, knows no subcommand: `ColorArg` (`--color auto\|always\|never`, maps to `anstream::ColorChoice`), `SymbolScheme` (`--symbols letters\|digits\|emoji`, display only), `init(color)` sets anstream's global policy, `tile_style` is the palette, `tiles()` renders feedback (padded coloured cells for letters and digits, bare emoji). Print styled text through `anstream::println!`, which strips escapes off a terminal or under `NO_COLOR`. Both flags are global on `Cli`; `main` copies `--symbols` into `AssistArgs` |
 | `error.rs` | `CliError` |
 
 ## Plumbing

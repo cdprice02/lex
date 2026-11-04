@@ -8,6 +8,7 @@ use lex_data::{Language, Profile};
 
 use crate::config::{Game, RunConfig, Targets};
 use crate::error::CliError;
+use crate::style::{ColorArg, SymbolScheme};
 use crate::tracks::Track;
 use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
@@ -19,6 +20,12 @@ pub struct Cli {
     /// The subcommand to run.
     #[command(subcommand)]
     pub command: Command,
+    /// When to colour output
+    #[arg(long, value_enum, default_value_t, global = true)]
+    pub color: ColorArg,
+    /// How feedback tiles are displayed (input accepts every scheme regardless)
+    #[arg(long, value_enum, default_value_t, global = true)]
+    pub symbols: SymbolScheme,
 }
 
 /// The subcommands of `lex`.
@@ -367,6 +374,9 @@ pub struct AssistArgs {
     /// Play fully online instead of building and using the opening book
     #[arg(long)]
     pub no_book: bool,
+    /// The display scheme for echoed feedback, copied from the global `--symbols` by `main`.
+    #[arg(skip)]
+    pub symbols: SymbolScheme,
 }
 
 /// Parses a word length, rejecting one outside the supported range.
@@ -454,6 +464,42 @@ mod profile_tests {
             ));
         };
         Ok(a.common)
+    }
+
+    #[test]
+    fn display_flags_are_global_and_default_to_auto_letters() {
+        let base = ["lex", "assist", "--lang", "english", "-l", "5"];
+        let cli = Cli::try_parse_from(base).unwrap();
+        assert_eq!(
+            (cli.color, cli.symbols),
+            (ColorArg::Auto, SymbolScheme::Letters)
+        );
+        let cli = Cli::try_parse_from(base.into_iter().chain([
+            "--color",
+            "always",
+            "--symbols",
+            "emoji",
+        ]))
+        .unwrap();
+        assert_eq!(
+            (cli.color, cli.symbols),
+            (ColorArg::Always, SymbolScheme::Emoji)
+        );
+        let cli = Cli::try_parse_from([
+            "lex",
+            "--color",
+            "never",
+            "--symbols",
+            "digits",
+            "clear",
+            "--books",
+        ])
+        .unwrap();
+        assert_eq!(
+            (cli.color, cli.symbols),
+            (ColorArg::Never, SymbolScheme::Digits)
+        );
+        assert!(Cli::try_parse_from(["lex", "--symbols", "c", "clear"]).is_err());
     }
 
     #[test]

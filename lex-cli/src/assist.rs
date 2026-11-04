@@ -8,6 +8,7 @@ use lex_data::Word;
 use crate::books::{self, BookMode};
 use crate::config::Targets;
 use crate::lists::Source;
+use crate::style;
 
 use crate::cli::AssistArgs;
 
@@ -16,6 +17,8 @@ use crate::cli::AssistArgs;
 /// Suggests guesses, reads the word the user actually played and the feedback Wordle returned,
 /// and narrows the candidate set until solved (or until the candidates are exhausted, e.g. when
 /// the day's target is missing from our corpus).
+///
+/// `args.symbols` sets how the echoed feedback is displayed; input is auto-detected whatever it is.
 ///
 /// # Errors
 ///
@@ -80,7 +83,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         let Some(feedback) = prompt_feedback::<N>(&mut lines)? else {
             return Ok(()); // EOF
         };
-        println!("  {word} -> {feedback}");
+        anstream::println!("  {word} -> {}", style::tiles(&feedback, args.symbols));
 
         if feedback.is_correct() {
             println!("Solved in {turn} turn{}!", if turn == 1 { "" } else { "s" });

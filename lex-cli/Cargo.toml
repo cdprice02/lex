@@ -15,6 +15,8 @@ harness = false
 lex-core = { path = "../lex-core" }
 lex-data = { path = "../lex-data" }
 anyhow = { workspace = true }
+anstream = "1.0"
+anstyle = "1.0"
 clap = { version = "4.6", features = ["derive"] }
 thiserror = { workspace = true }
 strum = { workspace = true }
