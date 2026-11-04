@@ -86,6 +86,13 @@ removes them, and clearing a corpus or a Profile removes its books too.
 
 `clear` takes `--lang`, `--profile`, `--books` and `-l`, plus `--data-dir`; see `lex clear --help`.
 
+Every command also takes the display flags:
+
+| Flag | Default | Description |
+|---|---|---|
+| `--color` | `auto` | `auto`, `always` or `never`; `auto` colours a terminal and honours `NO_COLOR` |
+| `--symbols` | `letters` | Feedback tiles shown as `letters` (g/y/x), `digits` (2/1/0) or `emoji`; assist input accepts all three regardless |
+
 ## Languages
 
 `english`, `french`, `german`, `spanish`, `italian`, `russian`

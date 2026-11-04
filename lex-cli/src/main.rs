@@ -11,11 +11,14 @@ use lex_cli::clear::clear;
 use lex_cli::cli::{BookCommand, Cli, Command};
 use lex_cli::compare::compare_reports;
 use lex_cli::simulate::simulate;
+use lex_cli::style::{self, SymbolScheme};
 
 fn main() -> ExitCode {
     env_logger::init();
 
-    match run(Cli::parse().command) {
+    let cli = Cli::parse();
+    style::init(cli.color);
+    match run(cli.command, cli.symbols) {
         Ok(code) => code,
         Err(error) => {
             eprintln!("Error: {error:?}");
@@ -25,7 +28,7 @@ fn main() -> ExitCode {
 }
 
 /// Runs `command` and returns the process exit code.
-fn run(command: Command) -> anyhow::Result<ExitCode> {
+fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
     let done = |result: anyhow::Result<()>| result.map(|()| ExitCode::SUCCESS);
     match command {
         Command::Simulate(args) => done(lex_data::match_word_length!(
@@ -33,11 +36,14 @@ fn run(command: Command) -> anyhow::Result<ExitCode> {
             args.dispatch_length(),
             &args
         )),
-        Command::Assist(args) => done(lex_data::match_word_length!(
-            assist,
-            args.common.dispatch_length(),
-            &args
-        )),
+        Command::Assist(mut args) => {
+            args.symbols = symbols;
+            done(lex_data::match_word_length!(
+                assist,
+                args.common.dispatch_length(),
+                &args
+            ))
+        }
         Command::Compare(args) => done(compare_reports(&args)),
         Command::Verdict(args) => Ok(lex_cli::verdict::command(&args)),
         Command::Book(args) => match args.command {
