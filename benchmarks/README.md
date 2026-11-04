@@ -143,8 +143,8 @@ beside it. Run at least 3 rounds:
 # once per binary: base/target/release/lex book build -l 5 --lang english
 # round 1: base first, round 2: head first, round 3: base first, ...
 hyperfine -N --runs 1 --export-json /tmp/round1.json \
-  'base/target/release/lex simulate -l 5 --lang english --seed 0' \
-  'head/target/release/lex simulate -l 5 --lang english --seed 0'
+  'base/target/release/lex simulate -l 5 --lang english' \
+  'head/target/release/lex simulate -l 5 --lang english'
 ```
 
 Summarize each command's mean and spread across the round files:
