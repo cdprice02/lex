@@ -12,7 +12,7 @@ An entropy-based Wordle solver. Simulates games against the [Google Books Ngrams
 
 - **Entropy scoring.** Each guess is scored by the Shannon entropy of the feedback it splits the Candidate set into, weighted by a frequency-based Answer prior, plus a bonus for the chance the guess is the answer itself. By default every word in the Corpus may be guessed (`--pool all`).
 - **Opening book.** The top levels of the game tree are built once and looked up, so positions too slow to search per move cost nothing at play time. A game plays identically with or without the book.
-- **Rollout.** At mid-sized Candidate sets the top 10 guesses (`--rollout-k`) are each played out with the solver's own one-guess-ahead choices, and the best-playing one wins.
+- **Rollout.** At mid-sized Candidate sets the top 10 guesses (`--rollout-k`) are each played out under the base policy (greedy entropy, then the Endgame once 10 or fewer candidates remain), and the one with the fewest expected guesses wins.
 - **Endgame.** At 10 or fewer candidates (`--endgame-threshold`) the solver searches the game tree exactly to minimize expected guesses.
 
 Methodology and the current results table are in [`benchmarks/README.md`](benchmarks/README.md).
