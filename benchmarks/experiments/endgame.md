@@ -64,3 +64,31 @@ lex compare /tmp/off.json /tmp/on.json
 Rebuilding the corpus changes its checksum; rerun the endgame-off run rather than comparing against
 an older report. The search's predicted cost is checked against simulated games on real Endgame
 roots by `cargo test -p lex-core --release -- --ignored real_corpus`.
+
+## As the default, with rollout
+
+The Endgame at threshold 10 with plain expectation became the default Strategy alongside Rollout
+(K=10). Every Track was regenerated against the rollout-only snapshots; the Verdict accepts with a
+headline average delta of -0.0106 and an average failure-rate delta of +0.0019.
+
+| Track | Prior-weighted | Uniform | Failure rate (>6) | Warm run |
+|---|---|---|---|---|
+| english-5 | 4.1572 to 4.1440 | 4.3481 to 4.3664 | 0.42% to 0.95% | 300 s |
+| french-5 | 4.0489 to 4.0360 | 4.2330 to 4.2441 | 0.46% to 0.84% | 127 s |
+| german-5 | 3.9083 to 3.8964 | 4.0432 to 4.0560 | 0.08% to 0.25% | 37 s |
+| spanish-5 | 4.0953 to 4.0806 | 4.2861 to 4.3042 | 1.09% to 1.85% | 158 s |
+| italian-5 | 3.6610 to 3.6503 | 3.7956 to 3.8055 | 0.03% to 0.11% | 12 s |
+| russian-5 | 4.4507 to 4.4367 | 4.5929 to 4.6049 | 1.08% to 1.73% | 697 s |
+| wordle | 3.3757 to 3.3671 | 3.4691 to 3.4721 | 0.00% to 0.00% | 6 s |
+
+- Every length-5 Corpus Track gains about 0.01 to 0.015 prior-weighted and loses about the same
+  uniformly, with failure rates up by 0.1 to 0.8 points: plain expectation spends rare words' games
+  to shorten common ones, as in the threshold table above. The aversion rows show the knob that
+  trades this back.
+- Wordle is judged on the uniform mean and moves +0.0030, inside the 0.005 headline margin.
+- The six length-5 headline Tracks total 1,331 s warm; Russian-5 alone exceeds the 600 s budget.
+- The slowest Opening book is Russian-9 at 86.8 minutes, inside the 2-hour gate.
+- Speed bar, English-5 full simulate, 3 alternating rounds: rollout only 167.1 s (166.7 to 167.7),
+  with the Endgame 291.1 s (290.4 to 291.7), 1.74 times the time.
+- The rollout multiplier stays 8: rollout over greedy measured 8.35 (geometric mean of 12, 60 and
+  300 candidates) with the Endgame as the base policy, against 8.1 with greedy.

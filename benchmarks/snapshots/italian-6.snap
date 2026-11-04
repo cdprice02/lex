@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: 4d97852bdc535f55c2061824d11ee2d055c134d1fe9c0b0a3770b1b66e8b6954
+  solver_digest: 274523b8074cb63883ed79d78d3753953cde172800cb7a33429f2ac4543d303c
 ---
 {
   "config": {
@@ -14,7 +14,7 @@ info:
     },
     "strategy": {
       "endgame_aversion": 0.0,
-      "endgame_threshold": 0,
+      "endgame_threshold": 10,
       "mode": "unconstrained",
       "rollout_k": 10,
       "temperature": 5.0,
@@ -28,29 +28,29 @@ info:
   },
   "corpus_sha256": "a3e523e9651f4c61f7a54e175bb300898d752cd34c2b813c097c6422ec7012cf",
   "first_guess": "sorati",
-  "games_sha256": "b80af1ef48570162101341e8d649e5767b3be943f8dd4d621cf5d0a59e43244b",
+  "games_sha256": "e21ab71fc3c37cdc2a0a2bd0e57d6ae46a0888e5d52982661682966705fdaf4b",
   "profile": null,
   "summary": {
     "max_guesses": 6,
     "prior": {
       "failure_rate": 0.0,
       "histogram": {
-        "2": 0.009564763598088754,
-        "3": 0.6332505116885369,
-        "4": 0.33593866527285543,
-        "5": 0.021246059440518317
+        "2": 0.02163847605081011,
+        "3": 0.6158911675908058,
+        "4": 0.3309475546147507,
+        "5": 0.03152280174363284
       },
-      "mean": 3.3688660205558003
+      "mean": 3.3723546820512036
     },
     "uniform": {
       "failure_rate": 0.0,
       "histogram": {
-        "2": 0.01,
-        "3": 0.5500000000000003,
-        "4": 0.3900000000000002,
-        "5": 0.05
+        "2": 0.02,
+        "3": 0.5300000000000002,
+        "4": 0.38000000000000017,
+        "5": 0.07
       },
-      "mean": 3.4799999999999964
+      "mean": 3.4999999999999964
     }
   },
   "track": "italian-6"
