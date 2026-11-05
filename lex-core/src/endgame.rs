@@ -48,8 +48,9 @@ pub struct Endgame<const N: usize> {
     list_ids: AllowedIds,
     /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
     memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
-    /// Scans every allowed guess at every node, as the search did before the candidate-first cut:
-    /// the reference the equivalence test holds the fast paths to.
+    /// Scans every allowed guess at every node and abandons a guess only on the partial cost, as
+    /// the search did before the candidate-first cut and the mixed bound: the reference the
+    /// equivalence test holds the fast paths to.
     #[cfg(test)]
     reference: bool,
 }
@@ -347,14 +348,20 @@ impl<const N: usize> Endgame<N> {
             if group[0].0 == win {
                 continue;
             }
-            let weights = group.iter().map(|&(_, i)| self.weight(i));
-            let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
-            sum += self.growth.map_or_else(
-                || 2.0_f64.mul_add(group_mass, -top),
-                |a| (a * a).mul_add(group_mass - top, a * top),
-            );
+            sum += self.group_floor(group);
         }
         Some(sum * self.growth.unwrap_or(1.0))
+    }
+
+    /// The lower bound on what one unsolved group adds to a guess's cost, before the growth
+    /// factor: shared by [`Self::floor`] and the mixed bound in [`Self::try_guess`].
+    fn group_floor(&self, group: &[(u64, u32)]) -> f64 {
+        let weights = group.iter().map(|&(_, i)| self.weight(i));
+        let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
+        self.growth.map_or_else(
+            || 2.0_f64.mul_add(group_mass, -top),
+            |a| (a * a).mul_add(group_mass - top, a * top),
+        )
     }
 
     /// What the guess itself costs before any unsolved group is added. Plain: every answer pays
@@ -383,6 +390,20 @@ impl<const N: usize> Endgame<N> {
         let win = WordCorrectness::<N>::COUNT - 1;
         let growth = self.growth.unwrap_or(1.0);
         let mut cost = self.initial_cost(guess, in_set, mass);
+        // Mixed bound: the solved groups' true cost plus the floors of those still to solve. The
+        // floors are subtracted as their groups are solved, so the drift is far inside `SLACK`.
+        let mut remaining = 0.0;
+        #[cfg(test)]
+        let mixed = !self.reference;
+        #[cfg(not(test))]
+        let mixed = true;
+        if mixed {
+            for group in keyed.chunk_by(|a, b| a.0 == b.0) {
+                if group[0].0 != win {
+                    remaining += self.group_floor(group);
+                }
+            }
+        }
         for group in keyed.chunk_by(|a, b| a.0 == b.0) {
             if group[0].0 == win {
                 continue;
@@ -395,8 +416,14 @@ impl<const N: usize> Endgame<N> {
                 group[0].0,
             );
             cost += self.solve(&child, &child_allowed).cost;
-            // costs only grow from here, so this guess can no longer be as cheap
-            if best.is_some_and(|b| cost * growth > b.cost) {
+            let bail = if mixed {
+                remaining -= self.group_floor(group);
+                // the slack keeps a bound that rounds a hair high from hiding a true tie
+                best.is_some_and(|b| (cost + remaining) * growth > b.cost * (1.0 + SLACK))
+            } else {
+                best.is_some_and(|b| cost * growth > b.cost)
+            };
+            if bail {
                 return;
             }
         }
