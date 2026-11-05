@@ -1,6 +1,7 @@
 //! Exact search for Candidate sets at or below the Endgame threshold.
 
-use std::cmp::Ordering;
+use std::cmp::{Ordering, Reverse};
+use std::collections::BinaryHeap;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -51,6 +52,34 @@ pub struct Endgame<const N: usize> {
     /// the reference the equivalence test holds the fast paths to.
     #[cfg(test)]
     reference: bool,
+}
+
+/// A guess's place in the try order: floor, then candidates before outside guesses, then pool
+/// index. The index makes the order total, so any way of drawing it gives the same sequence.
+#[derive(Debug, Clone, Copy)]
+struct Ranked(f64, bool, u32);
+
+impl PartialEq for Ranked {
+    fn eq(&self, other: &Self) -> bool {
+        self.cmp(other) == Ordering::Equal
+    }
+}
+
+impl Eq for Ranked {}
+
+impl PartialOrd for Ranked {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Ranked {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.0
+            .total_cmp(&other.0)
+            .then(self.1.cmp(&other.1))
+            .then(self.2.cmp(&other.2))
+    }
 }
 
 /// Relative slack on the bounds that skip a scan. A cost is a short float sum, off by about 1e-15
@@ -132,9 +161,9 @@ impl<const N: usize> Endgame<N> {
         solved
     }
 
-    /// Finds the cheapest guess for a set of two or more: closed forms for two, and for three in
-    /// plain mode; otherwise the candidates first, then the rest of the allowed guesses only if
-    /// one of them could still win, see [`Self::outside_cannot_win`].
+    /// Finds the cheapest guess for a set of two or more. Two candidates, and three in plain
+    /// mode, are costed in closed form, and the pool is scanned only when an outside guess could
+    /// still tie or win (see [`Self::outside_cannot_win`]); every other set scans.
     fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
         #[cfg(test)]
@@ -146,101 +175,81 @@ impl<const N: usize> Endgame<N> {
             (None, 3) => Some(self.triple(set, mass)),
             _ => None,
         };
-        self.staged(set, allowed, mass, closed)
+        if let Some(best) = closed {
+            // a set's candidates are always allowed guesses: `Whole` holds every pool word,
+            // `Candidates` is the set itself, and a `List` is built to contain them
+            let outside = match allowed {
+                Allowed::Candidates => false,
+                Allowed::Whole => self.pool.len() > set.len(),
+                Allowed::List(list) => list.len() > set.len(),
+            };
+            if !outside || Self::outside_cannot_win(best.cost, mass) {
+                return best;
+            }
+        }
+        self.scan(set, allowed, mass)
     }
 
-    /// The staged search. `closed` is the best candidate if a closed form already found it.
+    /// Finds the cheapest guess, trying them in order of a cheap lower bound on their cost and
+    /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
+    /// without recursing into the groups it would leave, so the order is drawn from a heap: the
+    /// few guesses tried cost a pop each, where sorting the whole pool would cost far more. The
+    /// key is unique per guess, so the order is the one a full sort gives. Exact ties go to a
+    /// candidate, then to the more frequent word, as in the entropy solver.
     #[expect(
         clippy::expect_used,
         reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
     )]
-    fn staged(
-        &mut self,
-        set: &[u32],
-        allowed: &Allowed,
-        mass: f64,
-        closed: Option<Solved>,
-    ) -> Solved {
-        let mut best = closed;
-        if best.is_none() {
-            let mut keyed = Vec::with_capacity(set.len());
-            let mut order = Vec::with_capacity(set.len());
-            for &g in set {
-                self.pool.partition(set, g, &mut keyed);
-                if let Some(floor) = self.floor(&keyed, g, true, mass) {
-                    order.push((floor, false, g));
-                }
+    fn scan(&mut self, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
+        let mut heap = BinaryHeap::from(self.floors(set, allowed, mass));
+        let mut best: Option<Solved> = None;
+        while let Some(Reverse(Ranked(floor, outside, g))) = heap.pop() {
+            // the slack keeps a bound that rounds a hair high from hiding a true tie or win
+            if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
+                break;
             }
-            self.try_in_order(set, allowed, mass, order, &mut best);
+            self.try_guess(set, allowed, g, !outside, mass, &mut best);
         }
-        let best = best.expect("a non-empty set has a candidate guess");
-        // a set's candidates are always allowed guesses: `Whole` holds every pool word,
-        // `Candidates` is the set itself, and a `List` is built to contain them
-        let outside = match allowed {
-            Allowed::Candidates => false,
-            Allowed::Whole => self.pool.len() > set.len(),
-            Allowed::List(list) => list.len() > set.len(),
-        };
-        if !outside || self.outside_cannot_win(best.cost, mass) {
-            return best;
-        }
-        // `best` only falls from here, so a floor above it now is above it for good
-        let limit = best.cost * (1.0 + SLACK);
+        best.expect("a non-empty set has a candidate guess")
+    }
+
+    /// Every allowed guess that may be tried, with its floor.
+    fn floors(&self, set: &[u32], allowed: &Allowed, mass: f64) -> Vec<Reverse<Ranked>> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order = Vec::new();
-        let mut consider = |this: &Self, g: u32| {
-            this.pool.partition(set, g, &mut keyed);
-            if let Some(floor) = this.floor(&keyed, g, false, mass).filter(|&f| f <= limit) {
-                order.push((floor, true, g));
+        let mut consider = |g: u32, in_set: bool| {
+            self.pool.partition(set, g, &mut keyed);
+            if let Some(floor) = self.floor(&keyed, g, in_set, mass) {
+                order.push(Reverse(Ranked(floor, !in_set, g)));
             }
         };
-        let mut beyond = |this: &Self, guesses: &mut dyn Iterator<Item = u32>| {
+        for &g in set {
+            consider(g, true);
+        }
+        let mut beyond = |guesses: &mut dyn Iterator<Item = u32>| {
             let mut next = 0;
             for g in guesses {
                 if set.get(next) == Some(&g) {
                     next += 1;
                 } else {
-                    consider(this, g);
+                    consider(g, false);
                 }
             }
         };
         match allowed {
-            Allowed::Whole => beyond(self, &mut self.pool.indices()),
-            Allowed::List(list) => beyond(self, &mut list.iter().copied()),
+            Allowed::Whole => beyond(&mut self.pool.indices()),
+            Allowed::List(list) => beyond(&mut list.iter().copied()),
             Allowed::Candidates => {}
         }
-        let mut best = Some(best);
-        self.try_in_order(set, allowed, mass, order, &mut best);
-        best.expect("best was set above")
+        order
     }
 
-    /// Tries `order` (floor, outside the set, guess) cheapest floor first, stopping once the floor
-    /// exceeds the best cost. Exact ties go to a candidate, then to the more frequent word.
-    fn try_in_order(
-        &mut self,
-        set: &[u32],
-        allowed: &Allowed,
-        mass: f64,
-        mut order: Vec<(f64, bool, u32)>,
-        best: &mut Option<Solved>,
-    ) {
-        order.sort_by(|a, b| a.0.total_cmp(&b.0).then(a.1.cmp(&b.1)).then(a.2.cmp(&b.2)));
-        for (floor, outside, g) in order {
-            // the slack keeps a bound that rounds a hair high from hiding a true tie or win
-            if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
-                break;
-            }
-            self.try_guess(set, allowed, g, !outside, mass, best);
-        }
-    }
-
-    /// Whether no guess outside the set can beat a candidate costing `best`, so the pool need not
-    /// be scanned. Outside the set every answer survives this turn, so each takes two guesses or
-    /// more: plain, `2 * mass`; averse, `a^2 * mass`. Candidates rank ahead on an exact tie, so
-    /// only a strictly lower cost matters, and [`SLACK`] covers float rounding.
-    fn outside_cannot_win(&self, best: f64, mass: f64) -> bool {
-        let floor = mass * self.growth.map_or(2.0, |a| a * a);
-        best <= floor * (1.0 - SLACK)
+    /// Whether no guess outside the set can beat a candidate costing `best` in plain mode, so
+    /// the pool need not be scanned. Outside the set every answer survives this turn, so each
+    /// takes two guesses or more: `2 * mass`. Candidates rank ahead on an exact tie, so only a
+    /// strictly lower cost matters, and [`SLACK`] covers float rounding.
+    fn outside_cannot_win(best: f64, mass: f64) -> bool {
+        best <= 2.0 * mass * (1.0 - SLACK)
     }
 
     /// The best guess for two candidates, which is always a candidate: guessing one finishes it
@@ -302,38 +311,23 @@ impl<const N: usize> Endgame<N> {
         best
     }
 
-    /// The single sorted pass over every allowed guess, which the staged search must match bit
-    /// for bit.
+    /// The single pass with the whole order sorted up front, which the heap-ordered `scan` must
+    /// match bit for bit.
     #[cfg(test)]
     fn scan_all(&mut self, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
-        let mut keyed = Vec::with_capacity(set.len());
-        let mut order: Vec<(f64, bool, u32)> = Vec::new();
-        let mut consider = |this: &Self, g: u32, in_set: bool| {
-            this.pool.partition(set, g, &mut keyed);
-            if let Some(floor) = this.floor(&keyed, g, in_set, mass) {
-                order.push((floor, !in_set, g));
+        let mut order: Vec<Ranked> = self
+            .floors(set, allowed, mass)
+            .into_iter()
+            .map(|Reverse(r)| r)
+            .collect();
+        order.sort();
+        let mut best: Option<Solved> = None;
+        for Ranked(floor, outside, g) in order {
+            if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
+                break;
             }
-        };
-        for &g in set {
-            consider(self, g, true);
+            self.try_guess(set, allowed, g, !outside, mass, &mut best);
         }
-        let mut beyond = |this: &Self, guesses: &mut dyn Iterator<Item = u32>| {
-            let mut next = 0;
-            for g in guesses {
-                if set.get(next) == Some(&g) {
-                    next += 1;
-                } else {
-                    consider(this, g, false);
-                }
-            }
-        };
-        match allowed {
-            Allowed::Whole => beyond(self, &mut self.pool.indices()),
-            Allowed::List(list) => beyond(self, &mut list.iter().copied()),
-            Allowed::Candidates => {}
-        }
-        let mut best = None;
-        self.try_in_order(set, allowed, mass, order, &mut best);
         best.expect("a non-empty set has a candidate guess")
     }
 
