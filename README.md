@@ -92,10 +92,15 @@ Every command also takes the display flags:
 |---|---|---|
 | `--color` | `auto` | `auto`, `always` or `never`; `auto` colours a terminal and honours `NO_COLOR` |
 | `--symbols` | `letters` | Feedback tiles shown as `letters` (g/y/x), `digits` (2/1/0) or `emoji`; assist input accepts all three regardless |
+| `--no-progress` | off | Show no progress: bars and spinners on a terminal, periodic lines elsewhere, and the opening-book build messages. The summary, errors and `RUST_LOG` logging stay |
 
 ## Languages
 
 `english`, `french`, `german`, `spanish`, `italian`, `russian`
+
+## Progress
+
+On a terminal, `simulate` draws a bar over the games on stderr (count, elapsed time, games per second, ETA), and building an opening book shows a spinner with the positions booked. Off a terminal, a line goes to stderr every 5 seconds instead. `--no-progress` turns both off. With `RUST_LOG` unset the log filter is `error,lex::progress=info`; setting `RUST_LOG` replaces it.
 
 ## Verbosity
 

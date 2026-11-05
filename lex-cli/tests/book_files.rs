@@ -10,12 +10,15 @@
 
 mod common;
 
+use std::cell::{Cell, RefCell};
+
 use clap::Parser;
 use common::{seed_dict, seed_supported};
 use lex_cli::books::{self, BookMode, Status};
 use lex_cli::cli::{Cli, Command};
 use lex_cli::config::{Game, RunConfig, Targets};
 use lex_cli::lists::Source;
+use lex_cli::progress::Observer;
 use lex_cli::report::Report;
 use lex_cli::simulate::{run, run_with};
 use lex_core::Strategy;
@@ -54,7 +57,7 @@ const fn config(strategy: Strategy) -> RunConfig {
 
 fn ensure(dir: &DataDir, config: &RunConfig, force: bool) -> anyhow::Result<books::Ensured<5>> {
     let (lists, source) = Source::load::<5>(config, dir)?;
-    books::ensure(config, dir, &source, &lists, force)
+    books::ensure(config, dir, &source, &lists, force, None)
 }
 
 fn games(report: &Report) -> Vec<(String, Vec<String>)> {
@@ -156,13 +159,13 @@ fn a_run_builds_the_book_unless_told_not_to_and_plays_the_same_games() {
     let (_tmp, dir) = seeded();
     let config = config(Strategy::default());
 
-    let online = run_with(&config, &dir, BookMode::Off).unwrap();
+    let online = run_with(&config, &dir, BookMode::Off, None).unwrap();
     assert!(book_files(&dir).is_empty(), "--no-book writes nothing");
 
-    let booked = run(&config, &dir).unwrap();
+    let booked = run(&config, &dir, None).unwrap();
     assert_eq!(book_files(&dir).len(), 1);
     assert_eq!(games(&booked), games(&online));
-    assert_eq!(games(&run(&config, &dir).unwrap()), games(&online));
+    assert_eq!(games(&run(&config, &dir, None).unwrap()), games(&online));
 }
 
 fn clear(dir: &DataDir, args: &[&str]) {
@@ -195,4 +198,75 @@ fn clearing_a_corpus_removes_its_books() {
     clear(&dir, &["--lang", "english", "-l", "5"]);
     assert!(book_files(&dir).is_empty());
     assert!(!dir.ngrams_path(Language::English, 5).exists());
+}
+
+/// Counts what an observer is told.
+#[derive(Default)]
+struct Counts {
+    book_started: Cell<usize>,
+    positions: Cell<usize>,
+    book_finished: Cell<usize>,
+    games_total: Cell<usize>,
+    games: Cell<usize>,
+    message: RefCell<String>,
+}
+
+impl Observer for Counts {
+    fn book_started(&self, message: &str) {
+        message.clone_into(&mut self.message.borrow_mut());
+        self.book_started.set(self.book_started.get() + 1);
+    }
+    fn book_progress(&self, booked: usize) {
+        self.positions.set(self.positions.get() + 1);
+        assert_eq!(booked, self.positions.get(), "the count is cumulative");
+    }
+    fn book_finished(&self, _line: &str) {
+        self.book_finished.set(self.book_finished.get() + 1);
+    }
+    fn games_started(&self, total: usize) {
+        self.games_total.set(total);
+    }
+    fn game_played(&self) {
+        self.games.set(self.games.get() + 1);
+    }
+}
+
+#[test]
+fn a_stale_book_start_message_names_the_differing_fields() {
+    let (_tmp, dir) = seeded();
+    ensure(&dir, &config(Strategy::default()), false).unwrap();
+    let other = config(Strategy {
+        temperature: 4.0,
+        ..Strategy::default()
+    });
+    let (lists, source) = Source::load::<5>(&other, &dir).unwrap();
+    let counts = Counts::default();
+    books::ensure(&other, &dir, &source, &lists, false, Some(&counts)).unwrap();
+    let message = counts.message.borrow();
+    assert!(
+        message.contains("differs in strategy.temperature"),
+        "{message}"
+    );
+}
+
+#[test]
+fn the_observer_hears_each_booked_position_and_each_game() {
+    let (_tmp, dir) = seeded();
+    let config = config(Strategy::default());
+
+    let counts = Counts::default();
+    let report = run(&config, &dir, Some(&counts)).unwrap();
+    let book = ensure(&dir, &config, false).unwrap().book;
+    assert_eq!(counts.book_started.get(), 1);
+    assert_eq!(counts.positions.get(), book.len());
+    assert_eq!(counts.book_finished.get(), 1);
+    assert_eq!(counts.games_total.get(), report.games.len());
+    assert_eq!(counts.games.get(), report.games.len());
+
+    // The book exists now, so a second run plays the same games without building.
+    let again = Counts::default();
+    run(&config, &dir, Some(&again)).unwrap();
+    assert_eq!(again.book_started.get(), 0);
+    assert_eq!(again.positions.get(), 0);
+    assert_eq!(again.games.get(), report.games.len());
 }

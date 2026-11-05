@@ -10,6 +10,7 @@ use lex_data::{BookKey, BookLookup, DataDir, ProfileKey};
 use crate::cli::BookBuildArgs;
 use crate::config::{Game, RunConfig};
 use crate::lists::{GameLists, Source};
+use crate::progress::{self, Observer};
 
 /// Whether a run plays with the Opening book.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -88,8 +89,8 @@ const fn language(game: &Game) -> lex_data::Language {
 
 /// Loads the book for `config`, building it first when none matches or `force` asks.
 ///
-/// A missing book is built and stored. A stale book is rebuilt with a message naming what changed; a
-/// damaged one is an error.
+/// A missing book is built and stored. A stale book is rebuilt, the observer told what changed; a
+/// damaged one is an error. `observer` hears the build; `None` draws and prints nothing.
 ///
 /// # Errors
 ///
@@ -100,11 +101,13 @@ pub fn ensure<const N: usize>(
     source: &Source,
     lists: &GameLists<N>,
     force: bool,
+    observer: Option<&dyn Observer>,
 ) -> anyhow::Result<Ensured<N>> {
     let lang = language(&config.game);
     let key = key(config, source, lists);
     let path = data_dir.book_path(lang, &key);
     let mut stale_fields = None;
+    let mut message = "rebuilding the opening book".to_owned();
     if !force {
         match data_dir.read_book(lang, &key)? {
             BookLookup::Found(stored) => {
@@ -125,12 +128,12 @@ pub fn ensure<const N: usize>(
                 });
             }
             BookLookup::Missing { nearest: None } => {
-                eprintln!("no opening book for {}; building it", source.name());
+                message = format!("no opening book for {}; building it", source.name());
             }
             BookLookup::Missing {
                 nearest: Some(fields),
             } => {
-                eprintln!(
+                message = format!(
                     "no opening book for this key (the closest on disk differs in {}); building it",
                     fields.join(", ")
                 );
@@ -139,25 +142,25 @@ pub fn ensure<const N: usize>(
         }
     }
 
+    if let Some(observer) = observer {
+        observer.book_started(&message);
+    }
     let started = Instant::now();
     let guesser = Guesser::new(&lists.pool, &lists.answers, config.strategy);
-    let mut last_report = Instant::now();
     let book = guesser.build_book_reporting(&mut |booked| {
-        if last_report.elapsed() >= Duration::from_secs(5) {
-            eprintln!(
-                "  booked {booked} positions ({:?} elapsed)",
-                started.elapsed()
-            );
-            last_report = Instant::now();
+        if let Some(observer) = observer {
+            observer.book_progress(booked);
         }
     });
     let elapsed = started.elapsed();
     let file = data_dir.write_book(lang, &key, &book.to_nodes())?;
-    eprintln!(
-        "built the opening book: {} positions, {} bytes, {elapsed:.1?}",
-        book.len(),
-        file.bytes
-    );
+    if let Some(observer) = observer {
+        observer.book_finished(&format!(
+            "built the opening book: {} positions, {} bytes, {elapsed:.1?}",
+            book.len(),
+            file.bytes
+        ));
+    }
     Ok(Ensured {
         book,
         status: Status::Built(elapsed),
@@ -178,13 +181,14 @@ pub fn guesser<const N: usize>(
     source: &Source,
     lists: GameLists<N>,
     mode: BookMode,
+    observer: Option<&dyn Observer>,
 ) -> anyhow::Result<Guesser<N>> {
     let strategy = config.strategy;
     if mode == BookMode::Off {
         let GameLists { pool, answers } = lists;
         return Ok(Guesser::new(&pool, &answers, strategy));
     }
-    let ensured = ensure(config, data_dir, source, &lists, false)?;
+    let ensured = ensure(config, data_dir, source, &lists, false, observer)?;
     let GameLists { pool, answers } = lists;
     Ok(Guesser::with_book(&pool, &answers, strategy, ensured.book))
 }
@@ -198,7 +202,15 @@ pub fn build_command<const N: usize>(args: &BookBuildArgs) -> anyhow::Result<()>
     let config = args.config();
     let data_dir = DataDir::new(&args.common.data_dir);
     let (lists, source) = Source::load::<N>(&config, &data_dir)?;
-    let ensured = ensure(&config, &data_dir, &source, &lists, args.force)?;
+    let observer = progress::observer();
+    let ensured = ensure(
+        &config,
+        &data_dir,
+        &source,
+        &lists,
+        args.force,
+        observer.as_deref(),
+    )?;
     let state = match ensured.status {
         Status::UpToDate => "up to date".to_owned(),
         Status::Built(elapsed) => format!("built in {elapsed:.1?}"),

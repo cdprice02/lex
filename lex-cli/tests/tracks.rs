@@ -82,7 +82,7 @@ fn play(track: &Track) -> Result<(), String> {
     let root = data_dir();
     let data = DataDir::new(&root);
     require_data(track, &data, &root)?;
-    let report = run(&track.config(), &data).map_err(|e| format!("{e:#}"))?;
+    let report = run(&track.config(), &data, None).map_err(|e| format!("{e:#}"))?;
 
     let games = serde_json::to_vec(&report.games).map_err(|e| e.to_string())?;
     let games_sha256 = Sha256::digest(&games)

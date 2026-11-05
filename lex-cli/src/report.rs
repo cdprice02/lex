@@ -3,8 +3,11 @@
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
 
+use anstyle::Style;
 use lex_core::{GuessPool, Strategy};
 use serde::{Deserialize, Serialize};
+
+use crate::style;
 
 /// Real Wordle allows six guesses; a game needing more counts as a failure. The solver itself
 /// keeps playing until it wins, so the true guess count is always recorded.
@@ -319,8 +322,26 @@ impl Summary {
 }
 
 impl Report {
-    /// Human-readable summary: parameters, corpus identity, then both weightings.
+    /// Human-readable summary: parameters, corpus identity, then both weightings. Plain text, with
+    /// no escape codes.
+    #[must_use]
     pub fn render(&self) -> String {
+        self.render_styled(false)
+    }
+
+    /// As [`render`](Self::render), with `styled` adding escape codes: means bold, provenance
+    /// dimmed, histogram bars green within [`MAX_GUESSES`] and failure rows red. With `styled` off
+    /// the text is exactly [`render`](Self::render)'s, and a stream that strips escapes
+    /// (`anstream`) shows the same bytes either way.
+    #[must_use]
+    pub fn render_styled(&self, styled: bool) -> String {
+        let paint = |style: Style, text: &str| {
+            if styled {
+                format!("{style}{text}{style:#}")
+            } else {
+                text.to_owned()
+            }
+        };
         let mut out = String::new();
         let c = &self.corpus;
         let _ = writeln!(
@@ -335,27 +356,31 @@ impl Report {
                 p.name, p.answer_count, p.guess_count, p.floored, p.floor
             );
         }
-        let _ = writeln!(out, "strategy: {}", self.run.strategy);
+        let dim = style::dim_style();
+        let strategy = format!("strategy: {}", self.run.strategy);
+        let _ = writeln!(out, "{}", paint(dim, &strategy));
         let _ = writeln!(out, "first guess: {}", self.run.first_guess);
-        let _ = writeln!(out, "ngrams sha256: {}", short(&c.ngrams_sha256));
+        let ngrams = format!("ngrams sha256: {}", short(&c.ngrams_sha256));
+        let _ = writeln!(out, "{}", paint(dim, &ngrams));
         if let Some(dict) = &c.dict {
-            let _ = writeln!(
-                out,
+            let line = format!(
                 "dict: {} words, fetched {}, sha256 {}",
                 dict.word_count,
                 dict.fetched_at.as_deref().unwrap_or("unknown"),
                 dict.source_sha256.as_deref().map_or("unknown", short)
             );
+            let _ = writeln!(out, "{}", paint(dim, &line));
         }
         let n: f64 = self.games.iter().map(|_| 1.0).sum();
         for (name, stats, exact) in [
             ("uniform", &self.summary.uniform, true),
             ("prior-weighted", &self.summary.prior, false),
         ] {
+            let mean = format!("mean {:.3} guesses", stats.mean);
             let _ = writeln!(
                 out,
-                "\n{name}: mean {:.3} guesses, failure rate (>{}) {:.2}%",
-                stats.mean,
+                "\n{name}: {}, failure rate (>{}) {:.2}%",
+                paint(style::emphasis_style(), &mean),
                 self.summary.max_guesses,
                 stats.failure_rate * 100.0
             );
@@ -370,13 +395,18 @@ impl Report {
                 } else {
                     String::new()
                 };
-                let _ = writeln!(out, "  {guesses:>2} | {:>6.2}%{count} {bar}", share * 100.0);
+                let head = format!("  {guesses:>2} | {:>6.2}%{count} ", share * 100.0);
+                if *guesses > self.summary.max_guesses {
+                    let row = format!("{head}{bar}");
+                    let _ = writeln!(out, "{}", paint(style::failure_style(), &row));
+                } else {
+                    let _ = writeln!(out, "{head}{}", paint(style::success_style(), &bar));
+                }
             }
         }
         out
     }
 }
-
 /// The first 12 characters of `hash`.
 fn short(hash: &str) -> &str {
     hash.get(..12).unwrap_or(hash)
@@ -385,6 +415,87 @@ fn short(hash: &str) -> &str {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn game(word: &str, num_guesses: u32) -> Game {
+        Game {
+            word: word.to_owned(),
+            num_guesses,
+            prior: 0.25,
+            guesses: Vec::new(),
+        }
+    }
+
+    fn fixture() -> Report {
+        let games = [
+            game("crane", 3),
+            game("stare", 4),
+            game("light", 4),
+            game("mount", 7),
+        ];
+        Report {
+            schema_version: SCHEMA_VERSION,
+            run: Run {
+                lex_version: "0.0.0".to_owned(),
+                timestamp: String::new(),
+                seed: 7,
+                num_games: games.len(),
+                targets_file: None,
+                first_guess: "tares".to_owned(),
+                strategy: Strategy::default().into(),
+            },
+            corpus: Corpus {
+                language: "english".to_owned(),
+                word_length: 5,
+                dictionary_length: 4,
+                ngrams_snapshot: "v3".to_owned(),
+                ngrams_sha256: "0123456789abcdef0123".to_owned(),
+                dict: Some(DictProvenance {
+                    source_url: None,
+                    fetched_at: Some("2026-01-01T00:00:00Z".to_owned()),
+                    source_sha256: Some("fedcba9876543210".to_owned()),
+                    word_count: 10,
+                }),
+            },
+            profile: None,
+            summary: Summary::from_games(&games),
+            games: games.into(),
+        }
+    }
+
+    #[test]
+    fn the_plain_summary_is_unchanged() {
+        insta::assert_snapshot!(fixture().render(), @"
+        4 games, 5-letter english words (dictionary: 4), seed 7
+        strategy: unconstrained, temperature 5, win weight 1, endgame threshold 10, aversion 0, rollout K 10
+        first guess: tares
+        ngrams sha256: 0123456789ab
+        dict: 10 words, fetched 2026-01-01T00:00:00Z, sha256 fedcba987654
+
+        uniform: mean 4.500 guesses, failure rate (>6) 25.00%
+           3 |  25.00% (1) ##########
+           4 |  50.00% (2) ####################
+           7 |  25.00% (1) ##########
+
+        prior-weighted: mean 4.500 guesses, failure rate (>6) 25.00%
+           3 |  25.00% ##########
+           4 |  50.00% ####################
+           7 |  25.00% ##########
+        ");
+    }
+
+    #[test]
+    fn styling_adds_only_escape_codes() {
+        let report = fixture();
+        let styled = report.render_styled(true);
+        assert!(styled.contains('\x1b'));
+        assert_eq!(
+            anstream::adapter::strip_str(&styled).to_string(),
+            report.render()
+        );
+        // Bars within the limit are green, the failure row red.
+        assert!(styled.contains("\x1b[32m#"));
+        assert!(styled.contains("\x1b[31m"));
+    }
 
     fn read(json: &str) -> StrategyReport {
         serde_json::from_str(json).unwrap()

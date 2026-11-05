@@ -10,6 +10,7 @@ pub mod compare;
 pub mod config;
 pub mod error;
 pub mod lists;
+pub mod progress;
 pub mod report;
 pub mod simulate;
 pub mod style;
