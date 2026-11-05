@@ -8,6 +8,7 @@ use lex_data::Word;
 use crate::books::{self, BookMode};
 use crate::config::Targets;
 use crate::lists::Source;
+use crate::progress;
 use crate::style;
 
 use crate::cli::AssistArgs;
@@ -34,6 +35,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         &source,
         lists,
         BookMode::from_no_book(args.no_book),
+        progress::observer().as_deref(),
     )?;
 
     let stdin = std::io::stdin();

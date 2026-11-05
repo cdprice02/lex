@@ -26,6 +26,9 @@ pub struct Cli {
     /// How feedback tiles are displayed (input accepts every scheme regardless)
     #[arg(long, value_enum, default_value_t, global = true)]
     pub symbols: SymbolScheme,
+    /// Show no progress bars, spinners or progress lines
+    #[arg(long, global = true)]
+    pub no_progress: bool,
 }
 
 /// The subcommands of `lex`.

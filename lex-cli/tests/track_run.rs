@@ -58,8 +58,8 @@ fn track_flag_and_run_of_its_config_give_equal_reports() {
     };
 
     let track = Track::find("english-5").unwrap();
-    let from_flag = run(&args.config(), &dir).unwrap();
-    let from_config = run(&track.config(), &dir).unwrap();
+    let from_flag = run(&args.config(), &dir, None).unwrap();
+    let from_config = run(&track.config(), &dir, None).unwrap();
     assert_eq!(from_flag.games.len(), 200);
     assert_eq!(bytes(from_flag), bytes(from_config));
 }

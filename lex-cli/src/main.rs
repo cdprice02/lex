@@ -10,14 +10,14 @@ use lex_cli::books::build_command;
 use lex_cli::clear::clear;
 use lex_cli::cli::{BookCommand, Cli, Command};
 use lex_cli::compare::compare_reports;
+use lex_cli::progress;
 use lex_cli::simulate::simulate;
 use lex_cli::style::{self, SymbolScheme};
 
 fn main() -> ExitCode {
-    env_logger::init();
-
     let cli = Cli::parse();
     style::init(cli.color);
+    progress::init(cli.no_progress);
     match run(cli.command, cli.symbols) {
         Ok(code) => code,
         Err(error) => {

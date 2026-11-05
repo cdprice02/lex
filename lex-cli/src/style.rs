@@ -63,6 +63,31 @@ pub const fn tile_style(feedback: Correctness) -> Style {
         .bg_color(Some(anstyle::Color::Ansi(bg)))
 }
 
+/// Text that went right: a histogram bar within the guess limit. The Correct tile's green, as
+/// a foreground.
+#[must_use]
+pub const fn success_style() -> Style {
+    Style::new().fg_color(Some(anstyle::Color::Ansi(AnsiColor::Green)))
+}
+
+/// Text that went wrong: a failed game's histogram row.
+#[must_use]
+pub const fn failure_style() -> Style {
+    Style::new().fg_color(Some(anstyle::Color::Ansi(AnsiColor::Red)))
+}
+
+/// Text of secondary importance: provenance lines.
+#[must_use]
+pub const fn dim_style() -> Style {
+    Style::new().dimmed()
+}
+
+/// Text that carries the headline number.
+#[must_use]
+pub const fn emphasis_style() -> Style {
+    Style::new().bold()
+}
+
 /// The symbol of one tile in `scheme`.
 #[must_use]
 pub const fn symbol(scheme: SymbolScheme, feedback: Correctness) -> &'static str {
@@ -157,6 +182,14 @@ mod tests {
         assert_ne!(styles[0], styles[1]);
         assert_ne!(styles[1], styles[2]);
         assert_ne!(styles[0], styles[2]);
+    }
+
+    #[test]
+    fn success_is_the_correct_tile_green() {
+        assert_eq!(
+            success_style().get_fg_color(),
+            tile_style(Correctness::Correct).get_bg_color()
+        );
     }
 
     #[test]
