@@ -89,7 +89,7 @@ const fn language(game: &Game) -> lex_data::Language {
 
 /// Loads the book for `config`, building it first when none matches or `force` asks.
 ///
-/// A missing book is built and stored. A stale book is rebuilt with a warning naming what changed; a
+/// A missing book is built and stored. A stale book is rebuilt, the observer told what changed; a
 /// damaged one is an error. `observer` hears the build; `None` draws and prints nothing.
 ///
 /// # Errors
@@ -133,11 +133,10 @@ pub fn ensure<const N: usize>(
             BookLookup::Missing {
                 nearest: Some(fields),
             } => {
-                log::warn!(
+                message = format!(
                     "no opening book for this key (the closest on disk differs in {}); building it",
                     fields.join(", ")
                 );
-                "no opening book for this key; building it".clone_into(&mut message);
                 stale_fields = Some(fields);
             }
         }

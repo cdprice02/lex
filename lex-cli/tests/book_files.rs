@@ -10,7 +10,7 @@
 
 mod common;
 
-use std::cell::Cell;
+use std::cell::{Cell, RefCell};
 
 use clap::Parser;
 use common::{seed_dict, seed_supported};
@@ -208,10 +208,12 @@ struct Counts {
     book_finished: Cell<usize>,
     games_total: Cell<usize>,
     games: Cell<usize>,
+    message: RefCell<String>,
 }
 
 impl Observer for Counts {
-    fn book_started(&self, _message: &str) {
+    fn book_started(&self, message: &str) {
+        message.clone_into(&mut self.message.borrow_mut());
         self.book_started.set(self.book_started.get() + 1);
     }
     fn book_progress(&self, booked: usize) {
@@ -227,6 +229,24 @@ impl Observer for Counts {
     fn game_played(&self) {
         self.games.set(self.games.get() + 1);
     }
+}
+
+#[test]
+fn a_stale_book_start_message_names_the_differing_fields() {
+    let (_tmp, dir) = seeded();
+    ensure(&dir, &config(Strategy::default()), false).unwrap();
+    let other = config(Strategy {
+        temperature: 4.0,
+        ..Strategy::default()
+    });
+    let (lists, source) = Source::load::<5>(&other, &dir).unwrap();
+    let counts = Counts::default();
+    books::ensure(&other, &dir, &source, &lists, false, Some(&counts)).unwrap();
+    let message = counts.message.borrow();
+    assert!(
+        message.contains("differs in strategy.temperature"),
+        "{message}"
+    );
 }
 
 #[test]
