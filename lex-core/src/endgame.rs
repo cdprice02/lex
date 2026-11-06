@@ -592,11 +592,11 @@ impl<const N: usize> Endgame<N> {
         )
     }
 
-    /// [`Self::floor`] read straight from a table row, without building the partition: `cols` are
-    /// the table column and weight of each member of the set, and `row` the ranks and ordinals of
-    /// `guess`. Each rank
-    /// accumulates its weights in set order, as its group of the sorted partition does, and the
-    /// groups are added in ascending rank, as `floor` adds them, so the sums are the same bits.
+    /// [`Self::floor`] read straight from a table row, without building the partition: `members`
+    /// holds the table column and weight of each member of the set, and `row` the ranks and
+    /// ordinals of `guess`. Each rank accumulates its weights in set order, as its group of the
+    /// sorted partition does, and the groups are added in ascending rank, as `floor` adds them,
+    /// so the sums are the same bits.
     /// `groups` is scratch with a slot per table column.
     fn floor_from_ranks(
         &self,
