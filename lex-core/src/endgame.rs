@@ -80,8 +80,8 @@ struct PatternTable {
     /// Per row, the distinct ordinals in ascending order, indexed by rank (the rest is unused).
     /// The all-green ordinal, when the row has it, is the last one: the win rank.
     ordinals: Vec<u64>,
-    /// Sort buffer for building one row.
-    scratch: Vec<u64>,
+    /// The (ordinal, column) pairs of the row being built, sorted to assign ranks.
+    scratch: Vec<(u64, usize)>,
 }
 
 impl PatternTable {
@@ -115,19 +115,23 @@ impl PatternTable {
             };
             let code = pool.code(guess);
             let span = row * cols..(row + 1) * cols;
-            let ordinals = &mut self.ordinals[span.clone()];
-            for (o, &answer) in ordinals.iter_mut().zip(set) {
-                *o = pattern_ordinal(pool.code(answer), code, &mut counts);
-            }
             self.scratch.clear();
-            self.scratch.extend_from_slice(ordinals);
+            self.scratch
+                .extend(set.iter().enumerate().map(|(col, &answer)| {
+                    (pattern_ordinal(pool.code(answer), code, &mut counts), col)
+                }));
             self.scratch.sort_unstable();
-            self.scratch.dedup();
-            for (rank, o) in self.ranks[span].iter_mut().zip(ordinals.iter()) {
-                let place = self.scratch.binary_search(o).unwrap_or_default();
-                *rank = u8::try_from(place).unwrap_or(u8::MAX);
+            let (ranks, ordinals) = (&mut self.ranks[span.clone()], &mut self.ordinals[span]);
+            let mut rank = 0_usize;
+            let mut previous = None;
+            for &(ordinal, col) in &self.scratch {
+                if previous.is_some_and(|p| p != ordinal) {
+                    rank += 1;
+                }
+                previous = Some(ordinal);
+                ranks[col] = u8::try_from(rank).unwrap_or(u8::MAX);
+                ordinals[rank] = ordinal;
             }
-            ordinals[..self.scratch.len()].copy_from_slice(&self.scratch);
         }
         self.active = true;
     }
