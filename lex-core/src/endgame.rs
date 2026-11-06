@@ -1016,3 +1016,44 @@ mod tests {
         eprintln!("checked {} roots", checked.len());
     }
 }
+
+#[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
+mod benches {
+    use divan::Bencher;
+    use std::hint::black_box;
+
+    use super::{Allowed, Endgame, GuessPool};
+    use crate::candidates::synthetic_pool;
+
+    /// A fixed set of 10 answers spread over a 12000-word pool, the size of English-5's.
+    const SET: [u32; 10] = [3, 40, 211, 480, 1_007, 2_500, 4_096, 6_001, 8_888, 11_500];
+
+    /// Builds the table and reads every floor of the whole pool against a set of 10, as the first
+    /// scan of a top-level call does.
+    fn build_and_floors(b: Bencher, aversion: f64) {
+        let mut endgame = Endgame::new(synthetic_pool::<5>(12_000), GuessPool::All, 1.0, aversion);
+        let mass: f64 = SET.iter().map(|&i| endgame.weight(i)).sum();
+        b.bench_local(|| {
+            endgame.table.active = false;
+            endgame.table.build(&endgame.pool, &SET, &Allowed::Whole);
+            black_box(endgame.floors(&SET, &Allowed::Whole, mass))
+        });
+    }
+
+    #[divan::bench]
+    fn table_floors_10_plain(b: Bencher) {
+        build_and_floors(b, 0.0);
+    }
+
+    #[divan::bench]
+    fn table_floors_10_averse(b: Bencher) {
+        build_and_floors(b, 0.3);
+    }
+}
