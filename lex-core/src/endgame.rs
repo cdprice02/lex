@@ -183,14 +183,21 @@ impl PatternTable {
         else {
             return false;
         };
-        out.clear();
-        for (&col, &answer) in cols.iter().zip(set) {
-            out.push((u64::from(ranks[col]), answer));
+        // counting sort by rank: ranks are below the table's width, and placing in set order keeps
+        // a group ascending by index
+        let mut starts = [0_usize; MAX_TABLE_COLUMNS + 1];
+        for &col in cols {
+            starts[usize::from(ranks[col]) + 1] += 1;
         }
-        // stable, so a group stays ascending by index
-        out.sort_by_key(|&(rank, _)| rank);
-        for entry in out.iter_mut() {
-            entry.0 = ordinals[usize::try_from(entry.0).unwrap_or(usize::MAX)];
+        for rank in 0..width {
+            starts[rank + 1] += starts[rank];
+        }
+        out.clear();
+        out.resize(set.len(), (0, 0));
+        for (&col, &answer) in cols.iter().zip(set) {
+            let rank = usize::from(ranks[col]);
+            out[starts[rank]] = (ordinals[rank], answer);
+            starts[rank] += 1;
         }
         true
     }
