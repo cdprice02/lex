@@ -80,8 +80,8 @@ struct PatternTable {
     /// Per row, the distinct ordinals in ascending order, indexed by rank (the rest is unused).
     /// The all-green ordinal, when the row has it, is the last one: the win rank.
     ordinals: Vec<u64>,
-    /// Sort buffer for building one row.
-    scratch: Vec<u64>,
+    /// The (ordinal, column) pairs of the row being built, sorted to assign ranks.
+    scratch: Vec<(u64, usize)>,
 }
 
 impl PatternTable {
@@ -115,19 +115,23 @@ impl PatternTable {
             };
             let code = pool.code(guess);
             let span = row * cols..(row + 1) * cols;
-            let ordinals = &mut self.ordinals[span.clone()];
-            for (o, &answer) in ordinals.iter_mut().zip(set) {
-                *o = pattern_ordinal(pool.code(answer), code, &mut counts);
-            }
             self.scratch.clear();
-            self.scratch.extend_from_slice(ordinals);
+            self.scratch
+                .extend(set.iter().enumerate().map(|(col, &answer)| {
+                    (pattern_ordinal(pool.code(answer), code, &mut counts), col)
+                }));
             self.scratch.sort_unstable();
-            self.scratch.dedup();
-            for (rank, o) in self.ranks[span].iter_mut().zip(ordinals.iter()) {
-                let place = self.scratch.binary_search(o).unwrap_or_default();
-                *rank = u8::try_from(place).unwrap_or(u8::MAX);
+            let (ranks, ordinals) = (&mut self.ranks[span.clone()], &mut self.ordinals[span]);
+            let mut rank = 0_usize;
+            let mut previous = None;
+            for &(ordinal, col) in &self.scratch {
+                if previous.is_some_and(|p| p != ordinal) {
+                    rank += 1;
+                }
+                previous = Some(ordinal);
+                ranks[col] = u8::try_from(rank).unwrap_or(u8::MAX);
+                ordinals[rank] = ordinal;
             }
-            ordinals[..self.scratch.len()].copy_from_slice(&self.scratch);
         }
         self.active = true;
     }
@@ -141,29 +145,63 @@ impl PatternTable {
         }
     }
 
-    /// Fills `out` as `Pool::partition` would, or returns false (leaving `out` unspecified) when
-    /// the guess or an answer lies outside the table.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) -> bool {
-        let cols = self.set.len();
+    /// The ranks and ordinals of `guess`'s row, if the call allowed it.
+    fn row_of(&self, guess: u32) -> Option<(&[u8], &[u64])> {
+        let width = self.set.len();
+        let span = self.row(guess).map(|row| row * width..(row + 1) * width)?;
+        Some((self.ranks.get(span.clone())?, self.ordinals.get(span)?))
+    }
+
+    /// The table column of each member of `set` into `cols`, or false when a member is not a
+    /// column. A set equal to the table's own maps by identity.
+    fn columns(&self, set: &[u32], cols: &mut Vec<usize>) -> bool {
+        cols.clear();
+        if set == self.set {
+            cols.extend(0..set.len());
+            return true;
+        }
+        for answer in set {
+            let Ok(col) = self.set.binary_search(answer) else {
+                return false;
+            };
+            cols.push(col);
+        }
+        true
+    }
+
+    /// Fills `out` as `Pool::partition` would for `set`, whose table columns are `cols`, or
+    /// returns false (leaving `out` unspecified) when the guess lies outside the table.
+    fn partition(
+        &self,
+        cols: &[usize],
+        set: &[u32],
+        guess: u32,
+        out: &mut Vec<(u64, u32)>,
+    ) -> bool {
+        let width = self.set.len();
         let Some(row) = self.row(guess) else {
             return false;
         };
-        let span = row * cols..(row + 1) * cols;
+        let span = row * width..(row + 1) * width;
         let (Some(ranks), Some(ordinals)) = (self.ranks.get(span.clone()), self.ordinals.get(span))
         else {
             return false;
         };
-        out.clear();
-        for &answer in set {
-            let Ok(col) = self.set.binary_search(&answer) else {
-                return false;
-            };
-            out.push((u64::from(ranks[col]), answer));
+        // counting sort by rank: ranks are below the table's width, and placing in set order keeps
+        // a group ascending by index
+        let mut starts = [0_usize; MAX_TABLE_COLUMNS + 1];
+        for &col in cols {
+            starts[usize::from(ranks[col]) + 1] += 1;
         }
-        // stable, so a group stays ascending by index
-        out.sort_by_key(|&(rank, _)| rank);
-        for entry in out.iter_mut() {
-            entry.0 = ordinals[usize::try_from(entry.0).unwrap_or(usize::MAX)];
+        for rank in 0..width {
+            starts[rank + 1] += starts[rank];
+        }
+        out.clear();
+        out.resize(set.len(), (0, 0));
+        for (&col, &answer) in cols.iter().zip(set) {
+            let rank = usize::from(ranks[col]);
+            out[starts[rank]] = (ordinals[rank], answer);
+            starts[rank] += 1;
         }
         true
     }
@@ -230,15 +268,36 @@ impl<const N: usize> Endgame<N> {
         self
     }
 
+    /// The table columns of `set`, computed once per call and passed to [`Self::partition`]:
+    /// `None` when no table is active, or when a member lies outside it (a broken subset
+    /// invariant, caught by a debug assertion), and then every partition is computed directly.
+    fn columns(&self, set: &[u32]) -> Option<Vec<usize>> {
+        if !self.table.active {
+            return None;
+        }
+        let mut cols = Vec::with_capacity(set.len());
+        if self.table.columns(set, &mut cols) {
+            return Some(cols);
+        }
+        debug_assert!(false, "set {set:?} is outside the table");
+        None
+    }
+
     /// Fills `out` with `set` against `guess` as [`Pool::partition`] does, from the table when
-    /// one is active. A guess or answer outside it breaks the subset invariant and is computed
-    /// directly in release builds.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
-        if self.table.active {
-            if self.table.partition(set, guess, out) {
+    /// `cols` (from [`Self::columns`]) is given. A guess outside the table breaks the subset
+    /// invariant and is computed directly in release builds.
+    fn partition(
+        &self,
+        cols: Option<&[usize]>,
+        set: &[u32],
+        guess: u32,
+        out: &mut Vec<(u64, u32)>,
+    ) {
+        if let Some(cols) = cols {
+            if self.table.partition(cols, set, guess, out) {
                 return;
             }
-            debug_assert!(false, "guess {guess} or set {set:?} is outside the table");
+            debug_assert!(false, "guess {guess} is outside the table");
         }
         self.pool.partition(set, guess, out);
     }
@@ -372,9 +431,24 @@ impl<const N: usize> Endgame<N> {
     fn floors(&self, set: &[u32], allowed: &Allowed, mass: f64) -> Vec<Reverse<Ranked>> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order = Vec::new();
+        let cols = self.columns(set);
+        let members: Vec<(usize, f64)> = cols.as_deref().map_or_else(Vec::new, |cols| {
+            cols.iter()
+                .zip(set)
+                .map(|(&col, &answer)| (col, self.weight(answer)))
+                .collect()
+        });
+        let mut groups = vec![(0.0, 0.0, false); self.table.set.len()];
         let mut consider = |g: u32, in_set: bool| {
-            self.partition(set, g, &mut keyed);
-            if let Some(floor) = self.floor(&keyed, g, in_set, mass) {
+            let row = cols.as_ref().and_then(|_| self.table.row_of(g));
+            let floor = row.map_or_else(
+                || {
+                    self.partition(cols.as_deref(), set, g, &mut keyed);
+                    self.floor(&keyed, g, in_set, mass)
+                },
+                |row| self.floor_from_ranks(&mut groups, &members, row, g, in_set, mass),
+            );
+            if let Some(floor) = floor {
                 order.push(Reverse(Ranked(floor, !in_set, g)));
             }
         };
@@ -444,8 +518,9 @@ impl<const N: usize> Endgame<N> {
             cost: f64::INFINITY,
             guess: set[0],
         };
+        let cols = self.columns(set);
         for &guess in set {
-            self.partition(set, guess, &mut keyed);
+            self.partition(cols.as_deref(), set, guess, &mut keyed);
             let mut cost = mass;
             for group in keyed.chunk_by(|a, b| a.0 == b.0) {
                 if group[0].0 == win {
@@ -504,10 +579,49 @@ impl<const N: usize> Endgame<N> {
             }
             let weights = group.iter().map(|&(_, i)| self.weight(i));
             let (group_mass, top) = weights.fold((0.0, 0.0_f64), |(m, t), w| (m + w, t.max(w)));
-            sum += self.growth.map_or_else(
-                || 2.0_f64.mul_add(group_mass, -top),
-                |a| (a * a).mul_add(group_mass - top, a * top),
-            );
+            sum += self.group_floor(group_mass, top);
+        }
+        Some(sum * self.growth.unwrap_or(1.0))
+    }
+
+    /// What an unsolved group of total weight `group_mass` and heaviest answer `top` adds to a floor.
+    fn group_floor(&self, group_mass: f64, top: f64) -> f64 {
+        self.growth.map_or_else(
+            || 2.0_f64.mul_add(group_mass, -top),
+            |a| (a * a).mul_add(group_mass - top, a * top),
+        )
+    }
+
+    /// [`Self::floor`] read straight from a table row, without building the partition: `members`
+    /// holds the table column and weight of each member of the set, and `row` the ranks and
+    /// ordinals of `guess`. Each rank accumulates its weights in set order, as its group of the
+    /// sorted partition does, and the groups are added in ascending rank, as `floor` adds them,
+    /// so the sums are the same bits.
+    /// `groups` is scratch with a slot per table column.
+    fn floor_from_ranks(
+        &self,
+        groups: &mut [(f64, f64, bool)],
+        members: &[(usize, f64)],
+        row: (&[u8], &[u64]),
+        guess: u32,
+        in_set: bool,
+        mass: f64,
+    ) -> Option<f64> {
+        let (ranks, ordinals) = row;
+        groups.fill((0.0, 0.0, false));
+        for &(col, w) in members {
+            let slot = &mut groups[usize::from(ranks[col])];
+            *slot = (slot.0 + w, slot.1.max(w), true);
+        }
+        if !in_set && groups.iter().filter(|g| g.2).count() <= 1 {
+            return None;
+        }
+        let win = WordCorrectness::<N>::COUNT - 1;
+        let mut sum = self.initial_cost(guess, in_set, mass);
+        for (&(group_mass, top, present), &ordinal) in groups.iter().zip(ordinals) {
+            if present && ordinal != win {
+                sum += self.group_floor(group_mass, top);
+            }
         }
         Some(sum * self.growth.unwrap_or(1.0))
     }
@@ -533,7 +647,8 @@ impl<const N: usize> Endgame<N> {
         best: &mut Option<Solved>,
     ) {
         let mut keyed = Vec::with_capacity(set.len());
-        self.partition(set, guess, &mut keyed);
+        let cols = self.columns(set);
+        self.partition(cols.as_deref(), set, guess, &mut keyed);
 
         let win = WordCorrectness::<N>::COUNT - 1;
         let growth = self.growth.unwrap_or(1.0);
@@ -935,8 +1050,71 @@ mod tests {
                     for part in [&set, &sub] {
                         let (mut direct, mut tabled) = (Vec::new(), Vec::new());
                         pool.partition(part, guess, &mut direct);
-                        assert!(table.partition(part, guess, &mut tabled));
+                        let mut cols = Vec::new();
+                        assert!(table.columns(part, &mut cols));
+                        assert!(table.partition(&cols, part, guess, &mut tabled));
                         assert_eq!(direct, tabled, "guess {guess} over {part:?}");
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn floors_read_from_ranks_equal_floors_over_the_sorted_partition() {
+        let mut rng = Rng(0x9e37_79b9_7f4a_7c15);
+        for round in 0..60 {
+            let size = 30 + rng.below(90);
+            let pool = random_pool(&mut rng, size, round % 3);
+            let len = 2 + rng.below(9);
+            let set = random_set(&mut rng, &pool, len);
+            let mut list = set.clone();
+            let extra = 3 + rng.below(20);
+            list.extend(random_set(&mut rng, &pool, extra));
+            list.sort_unstable();
+            list.dedup();
+            for aversion in [0.0, 0.3] {
+                let mut endgame = Endgame::new(Arc::clone(&pool), GuessPool::All, 1.0, aversion);
+                for allowed in [
+                    Allowed::Whole,
+                    Allowed::List(list.clone()),
+                    Allowed::Candidates,
+                ] {
+                    endgame.table.build(&endgame.pool, &set, &allowed);
+                    endgame.table.active = true;
+                    // the whole set, then random subsets of it, as children are
+                    let mut parts = vec![set.clone()];
+                    for _ in 0..4 {
+                        let sub: Vec<u32> =
+                            set.iter().copied().filter(|_| rng.below(2) == 0).collect();
+                        if !sub.is_empty() {
+                            parts.push(sub);
+                        }
+                    }
+                    for part in parts {
+                        let mass: f64 = part.iter().map(|&i| endgame.weight(i)).sum();
+                        let guesses: Vec<u32> = match &allowed {
+                            Allowed::Whole => pool.indices().collect(),
+                            Allowed::List(list) => list.clone(),
+                            Allowed::Candidates => part.clone(),
+                        };
+                        let mut expected = Vec::new();
+                        let mut keyed = Vec::new();
+                        for &g in &guesses {
+                            pool.partition(&part, g, &mut keyed);
+                            let in_set = part.binary_search(&g).is_ok();
+                            if let Some(f) = endgame.floor(&keyed, g, in_set, mass) {
+                                expected.push((g, !in_set, f.to_bits()));
+                            }
+                        }
+                        let mut got: Vec<(u32, bool, u64)> = endgame
+                            .floors(&part, &allowed, mass)
+                            .into_iter()
+                            .map(|Reverse(Ranked(f, outside, g))| (g, outside, f.to_bits()))
+                            .collect();
+                        got.sort_unstable();
+                        expected.sort_unstable();
+                        assert_eq!(expected, got, "L{aversion} {part:?} {allowed:?}");
                     }
                 }
             }
@@ -1014,5 +1192,46 @@ mod tests {
         }
         assert!(checked.len() > 10, "only {} distinct roots", checked.len());
         eprintln!("checked {} roots", checked.len());
+    }
+}
+
+#[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
+mod benches {
+    use divan::Bencher;
+    use std::hint::black_box;
+
+    use super::{Allowed, Endgame, GuessPool};
+    use crate::candidates::synthetic_pool;
+
+    /// A fixed set of 10 answers spread over a 12000-word pool, the size of English-5's.
+    const SET: [u32; 10] = [3, 40, 211, 480, 1_007, 2_500, 4_096, 6_001, 8_888, 11_500];
+
+    /// Builds the table and reads every floor of the whole pool against a set of 10, as the first
+    /// scan of a top-level call does.
+    fn build_and_floors(b: Bencher, aversion: f64) {
+        let mut endgame = Endgame::new(synthetic_pool::<5>(12_000), GuessPool::All, 1.0, aversion);
+        let mass: f64 = SET.iter().map(|&i| endgame.weight(i)).sum();
+        b.bench_local(|| {
+            endgame.table.active = false;
+            endgame.table.build(&endgame.pool, &SET, &Allowed::Whole);
+            black_box(endgame.floors(&SET, &Allowed::Whole, mass))
+        });
+    }
+
+    #[divan::bench]
+    fn table_floors_10_plain(b: Bencher) {
+        build_and_floors(b, 0.0);
+    }
+
+    #[divan::bench]
+    fn table_floors_10_averse(b: Bencher) {
+        build_and_floors(b, 0.3);
     }
 }
