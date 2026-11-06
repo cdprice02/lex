@@ -269,22 +269,13 @@ impl<const N: usize> Endgame<N> {
         self.solve(set, allowed).cost / mass
     }
 
-    /// The best guess and cost for `set`, memoized: the top-level entry. On a miss it builds the
-    /// pattern table once for the whole search below it; the recursion goes through
-    /// [`Self::solve_within`], so it never rebuilds the table and no entry nests in another.
+    /// The best guess and cost for `set`, memoized: the top-level entry. The recursion goes
+    /// through [`Self::solve_within`], so no entry nests in another and the pattern table, built
+    /// by the first scan (see [`Self::scan`]), is dropped when the entry returns.
     fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let slot = self.list_ids.slot(allowed);
         if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
             return solved;
-        }
-        #[cfg(test)]
-        let tabled = !self.reference;
-        #[cfg(not(test))]
-        let tabled = true;
-        if tabled && (2..=MAX_TABLE_COLUMNS).contains(&set.len()) {
-            let mut table = std::mem::take(&mut self.table);
-            table.build(&self.pool, set, allowed);
-            self.table = table;
         }
         let solved = self.solve_within(set, allowed);
         self.table.active = false;
@@ -342,6 +333,17 @@ impl<const N: usize> Endgame<N> {
         self.scan(set, allowed, mass)
     }
 
+    /// Builds the pattern table for this top-level call before its first scan. A closed form that
+    /// returns never gets here, so the table is paid for only when the pool is scanned. The first
+    /// scan of a call is always its top-level set, because the recursion starts inside a scan:
+    /// every later scan finds the table active and reads it. Sets over the rank limit scan with
+    /// `Pool::partition`.
+    fn ensure_table(&mut self, set: &[u32], allowed: &Allowed) {
+        if !self.table.active && set.len() <= MAX_TABLE_COLUMNS {
+            self.table.build(&self.pool, set, allowed);
+        }
+    }
+
     /// Finds the cheapest guess, trying them in order of a cheap lower bound on their cost and
     /// stopping once the bound exceeds the best found. Most of the pool is rejected by the bound
     /// without recursing into the groups it would leave, so the order is drawn from a heap: the
@@ -353,6 +355,7 @@ impl<const N: usize> Endgame<N> {
         reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
     )]
     fn scan(&mut self, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
+        self.ensure_table(set, allowed);
         let mut heap = BinaryHeap::from(self.floors(set, allowed, mass));
         let mut best: Option<Solved> = None;
         while let Some(Reverse(Ranked(floor, outside, g))) = heap.pop() {
