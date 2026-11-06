@@ -141,23 +141,43 @@ impl PatternTable {
         }
     }
 
-    /// Fills `out` as `Pool::partition` would, or returns false (leaving `out` unspecified) when
-    /// the guess or an answer lies outside the table.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) -> bool {
-        let cols = self.set.len();
+    /// The table column of each member of `set` into `cols`, or false when a member is not a
+    /// column. A set equal to the table's own maps by identity.
+    fn columns(&self, set: &[u32], cols: &mut Vec<usize>) -> bool {
+        cols.clear();
+        if set == self.set {
+            cols.extend(0..set.len());
+            return true;
+        }
+        for answer in set {
+            let Ok(col) = self.set.binary_search(answer) else {
+                return false;
+            };
+            cols.push(col);
+        }
+        true
+    }
+
+    /// Fills `out` as `Pool::partition` would for `set`, whose table columns are `cols`, or
+    /// returns false (leaving `out` unspecified) when the guess lies outside the table.
+    fn partition(
+        &self,
+        cols: &[usize],
+        set: &[u32],
+        guess: u32,
+        out: &mut Vec<(u64, u32)>,
+    ) -> bool {
+        let width = self.set.len();
         let Some(row) = self.row(guess) else {
             return false;
         };
-        let span = row * cols..(row + 1) * cols;
+        let span = row * width..(row + 1) * width;
         let (Some(ranks), Some(ordinals)) = (self.ranks.get(span.clone()), self.ordinals.get(span))
         else {
             return false;
         };
         out.clear();
-        for &answer in set {
-            let Ok(col) = self.set.binary_search(&answer) else {
-                return false;
-            };
+        for (&col, &answer) in cols.iter().zip(set) {
             out.push((u64::from(ranks[col]), answer));
         }
         // stable, so a group stays ascending by index
@@ -230,15 +250,36 @@ impl<const N: usize> Endgame<N> {
         self
     }
 
+    /// The table columns of `set`, computed once per call and passed to [`Self::partition`]:
+    /// `None` when no table is active, or when a member lies outside it (a broken subset
+    /// invariant, caught by a debug assertion), and then every partition is computed directly.
+    fn columns(&self, set: &[u32]) -> Option<Vec<usize>> {
+        if !self.table.active {
+            return None;
+        }
+        let mut cols = Vec::with_capacity(set.len());
+        if self.table.columns(set, &mut cols) {
+            return Some(cols);
+        }
+        debug_assert!(false, "set {set:?} is outside the table");
+        None
+    }
+
     /// Fills `out` with `set` against `guess` as [`Pool::partition`] does, from the table when
-    /// one is active. A guess or answer outside it breaks the subset invariant and is computed
-    /// directly in release builds.
-    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
-        if self.table.active {
-            if self.table.partition(set, guess, out) {
+    /// `cols` (from [`Self::columns`]) is given. A guess outside the table breaks the subset
+    /// invariant and is computed directly in release builds.
+    fn partition(
+        &self,
+        cols: Option<&[usize]>,
+        set: &[u32],
+        guess: u32,
+        out: &mut Vec<(u64, u32)>,
+    ) {
+        if let Some(cols) = cols {
+            if self.table.partition(cols, set, guess, out) {
                 return;
             }
-            debug_assert!(false, "guess {guess} or set {set:?} is outside the table");
+            debug_assert!(false, "guess {guess} is outside the table");
         }
         self.pool.partition(set, guess, out);
     }
@@ -372,8 +413,9 @@ impl<const N: usize> Endgame<N> {
     fn floors(&self, set: &[u32], allowed: &Allowed, mass: f64) -> Vec<Reverse<Ranked>> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order = Vec::new();
+        let cols = self.columns(set);
         let mut consider = |g: u32, in_set: bool| {
-            self.partition(set, g, &mut keyed);
+            self.partition(cols.as_deref(), set, g, &mut keyed);
             if let Some(floor) = self.floor(&keyed, g, in_set, mass) {
                 order.push(Reverse(Ranked(floor, !in_set, g)));
             }
@@ -444,8 +486,9 @@ impl<const N: usize> Endgame<N> {
             cost: f64::INFINITY,
             guess: set[0],
         };
+        let cols = self.columns(set);
         for &guess in set {
-            self.partition(set, guess, &mut keyed);
+            self.partition(cols.as_deref(), set, guess, &mut keyed);
             let mut cost = mass;
             for group in keyed.chunk_by(|a, b| a.0 == b.0) {
                 if group[0].0 == win {
@@ -533,7 +576,8 @@ impl<const N: usize> Endgame<N> {
         best: &mut Option<Solved>,
     ) {
         let mut keyed = Vec::with_capacity(set.len());
-        self.partition(set, guess, &mut keyed);
+        let cols = self.columns(set);
+        self.partition(cols.as_deref(), set, guess, &mut keyed);
 
         let win = WordCorrectness::<N>::COUNT - 1;
         let growth = self.growth.unwrap_or(1.0);
@@ -935,7 +979,9 @@ mod tests {
                     for part in [&set, &sub] {
                         let (mut direct, mut tabled) = (Vec::new(), Vec::new());
                         pool.partition(part, guess, &mut direct);
-                        assert!(table.partition(part, guess, &mut tabled));
+                        let mut cols = Vec::new();
+                        assert!(table.columns(part, &mut cols));
+                        assert!(table.partition(&cols, part, guess, &mut tabled));
                         assert_eq!(direct, tabled, "guess {guess} over {part:?}");
                     }
                 }
