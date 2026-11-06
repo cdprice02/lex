@@ -9,7 +9,7 @@ use std::sync::Arc;
 use lex_data::Word;
 
 use crate::allowed::{Allowed, AllowedIds};
-use crate::correctness::WordCorrectness;
+use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
 use crate::strategy::{GuessPool, Pool};
 
 /// The best guess for a candidate set and what it costs.
@@ -48,10 +48,125 @@ pub struct Endgame<const N: usize> {
     list_ids: AllowedIds,
     /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
     memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
+    /// The patterns of the top-level call in progress, reused between calls.
+    table: PatternTable,
     /// Scans every allowed guess at every node, as the search did before the candidate-first cut:
     /// the reference the equivalence test holds the fast paths to.
     #[cfg(test)]
     reference: bool,
+}
+
+/// The most answers a table can hold: a rank is a `u8`.
+const MAX_TABLE_COLUMNS: usize = 255;
+
+/// Every pattern one top-level call needs, computed once. A row per guess the call allows, a
+/// column per answer of its set; a cell is the rank of that answer's pattern among the row's
+/// distinct patterns over the set, in ascending ordinal order. Ranks order as ordinals do, so a
+/// partition read from the table has the groups of `Pool::partition` in the same order. Every
+/// child set is a subset of the set and every child's allowed guesses a subset of the rows, so
+/// the recursion below the call never computes a pattern.
+#[derive(Debug, Default)]
+struct PatternTable {
+    /// Whether the table describes the call in progress.
+    active: bool,
+    /// The top-level set (ascending pool indices): the columns.
+    set: Vec<u32>,
+    /// Whether the rows are every pool word, in pool order; otherwise `rows` lists them.
+    whole: bool,
+    /// The guess of each row (ascending), when not `whole`.
+    rows: Vec<u32>,
+    /// `rows * set.len()` ranks, row-major.
+    ranks: Vec<u8>,
+    /// Per row, the distinct ordinals in ascending order, indexed by rank (the rest is unused).
+    /// The all-green ordinal, when the row has it, is the last one: the win rank.
+    ordinals: Vec<u64>,
+    /// Sort buffer for building one row.
+    scratch: Vec<u64>,
+}
+
+impl PatternTable {
+    /// Fills the table for `set` and the guesses `allowed` permits.
+    fn build<const N: usize>(&mut self, pool: &Pool<N>, set: &[u32], allowed: &Allowed) {
+        let cols = set.len();
+        self.set.clear();
+        self.set.extend_from_slice(set);
+        self.rows.clear();
+        self.whole = matches!(allowed, Allowed::Whole);
+        match allowed {
+            Allowed::Whole => {}
+            Allowed::List(list) => self.rows.extend_from_slice(list),
+            Allowed::Candidates => self.rows.extend_from_slice(set),
+        }
+        let rows = if self.whole {
+            pool.len()
+        } else {
+            self.rows.len()
+        };
+        self.ranks.clear();
+        self.ranks.resize(rows * cols, 0);
+        self.ordinals.clear();
+        self.ordinals.resize(rows * cols, 0);
+        let mut counts: LetterCounts = [0; 256];
+        for row in 0..rows {
+            let guess = if self.whole {
+                u32::try_from(row).unwrap_or(u32::MAX)
+            } else {
+                self.rows[row]
+            };
+            let code = pool.code(guess);
+            let span = row * cols..(row + 1) * cols;
+            let ordinals = &mut self.ordinals[span.clone()];
+            for (o, &answer) in ordinals.iter_mut().zip(set) {
+                *o = pattern_ordinal(pool.code(answer), code, &mut counts);
+            }
+            self.scratch.clear();
+            self.scratch.extend_from_slice(ordinals);
+            self.scratch.sort_unstable();
+            self.scratch.dedup();
+            for (rank, o) in self.ranks[span].iter_mut().zip(ordinals.iter()) {
+                let place = self.scratch.binary_search(o).unwrap_or_default();
+                *rank = u8::try_from(place).unwrap_or(u8::MAX);
+            }
+            ordinals[..self.scratch.len()].copy_from_slice(&self.scratch);
+        }
+        self.active = true;
+    }
+
+    /// The row of `guess`, if the call allowed it.
+    fn row(&self, guess: u32) -> Option<usize> {
+        if self.whole {
+            usize::try_from(guess).ok()
+        } else {
+            self.rows.binary_search(&guess).ok()
+        }
+    }
+
+    /// Fills `out` as `Pool::partition` would, or returns false (leaving `out` unspecified) when
+    /// the guess or an answer lies outside the table.
+    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) -> bool {
+        let cols = self.set.len();
+        let Some(row) = self.row(guess) else {
+            return false;
+        };
+        let span = row * cols..(row + 1) * cols;
+        let (Some(ranks), Some(ordinals)) = (self.ranks.get(span.clone()), self.ordinals.get(span))
+        else {
+            return false;
+        };
+        out.clear();
+        for &answer in set {
+            let Ok(col) = self.set.binary_search(&answer) else {
+                return false;
+            };
+            out.push((u64::from(ranks[col]), answer));
+        }
+        // stable, so a group stays ascending by index
+        out.sort_by_key(|&(rank, _)| rank);
+        for entry in out.iter_mut() {
+            entry.0 = ordinals[usize::try_from(entry.0).unwrap_or(usize::MAX)];
+        }
+        true
+    }
 }
 
 /// A guess's place in the try order: floor, then candidates before outside guesses, then pool
@@ -103,6 +218,7 @@ impl<const N: usize> Endgame<N> {
             weights,
             list_ids: AllowedIds::default(),
             memo: HashMap::new(),
+            table: PatternTable::default(),
             #[cfg(test)]
             reference: false,
         }
@@ -112,6 +228,19 @@ impl<const N: usize> Endgame<N> {
     pub(crate) fn sharing(mut self, ids: AllowedIds) -> Self {
         self.list_ids = ids;
         self
+    }
+
+    /// Fills `out` with `set` against `guess` as [`Pool::partition`] does, from the table when
+    /// one is active. A guess or answer outside it breaks the subset invariant and is computed
+    /// directly in release builds.
+    fn partition(&self, set: &[u32], guess: u32, out: &mut Vec<(u64, u32)>) {
+        if self.table.active {
+            if self.table.partition(set, guess, out) {
+                return;
+            }
+            debug_assert!(false, "guess {guess} or set {set:?} is outside the table");
+        }
+        self.pool.partition(set, guess, out);
     }
 
     /// The Answer prior weight of the pool word at `index`.
@@ -140,8 +269,31 @@ impl<const N: usize> Endgame<N> {
         self.solve(set, allowed).cost / mass
     }
 
-    /// The best guess and cost for `set`, memoized.
+    /// The best guess and cost for `set`, memoized: the top-level entry. On a miss it builds the
+    /// pattern table once for the whole search below it; the recursion goes through
+    /// [`Self::solve_within`], so it never rebuilds the table and no entry nests in another.
     fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
+        let slot = self.list_ids.slot(allowed);
+        if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
+            return solved;
+        }
+        #[cfg(test)]
+        let tabled = !self.reference;
+        #[cfg(not(test))]
+        let tabled = true;
+        if tabled && (2..=MAX_TABLE_COLUMNS).contains(&set.len()) {
+            let mut table = std::mem::take(&mut self.table);
+            table.build(&self.pool, set, allowed);
+            self.table = table;
+        }
+        let solved = self.solve_within(set, allowed);
+        self.table.active = false;
+        solved
+    }
+
+    /// The best guess and cost for `set`, memoized, reading patterns from the table of the
+    /// top-level call.
+    fn solve_within(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
         let slot = self.list_ids.slot(allowed);
         if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
             return solved;
@@ -218,7 +370,7 @@ impl<const N: usize> Endgame<N> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order = Vec::new();
         let mut consider = |g: u32, in_set: bool| {
-            self.pool.partition(set, g, &mut keyed);
+            self.partition(set, g, &mut keyed);
             if let Some(floor) = self.floor(&keyed, g, in_set, mass) {
                 order.push(Reverse(Ranked(floor, !in_set, g)));
             }
@@ -290,7 +442,7 @@ impl<const N: usize> Endgame<N> {
             guess: set[0],
         };
         for &guess in set {
-            self.pool.partition(set, guess, &mut keyed);
+            self.partition(set, guess, &mut keyed);
             let mut cost = mass;
             for group in keyed.chunk_by(|a, b| a.0 == b.0) {
                 if group[0].0 == win {
@@ -378,7 +530,7 @@ impl<const N: usize> Endgame<N> {
         best: &mut Option<Solved>,
     ) {
         let mut keyed = Vec::with_capacity(set.len());
-        self.pool.partition(set, guess, &mut keyed);
+        self.partition(set, guess, &mut keyed);
 
         let win = WordCorrectness::<N>::COUNT - 1;
         let growth = self.growth.unwrap_or(1.0);
@@ -394,7 +546,7 @@ impl<const N: usize> Endgame<N> {
                 self.pool.code(guess),
                 group[0].0,
             );
-            cost += self.solve(&child, &child_allowed).cost;
+            cost += self.solve_within(&child, &child_allowed).cost;
             // costs only grow from here, so this guess can no longer be as cheap
             if best.is_some_and(|b| cost * growth > b.cost) {
                 return;
@@ -747,6 +899,41 @@ mod tests {
                             &left,
                             &allowed,
                         );
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn a_table_partition_equals_pool_partition() {
+        let mut rng = Rng(0x2545_f491_4f6c_dd1d);
+        for round in 0..60 {
+            let size = 30 + rng.below(90);
+            let pool = random_pool(&mut rng, size, round % 3);
+            let len = 2 + rng.below(9);
+            let set = random_set(&mut rng, &pool, len);
+            let mut list = set.clone();
+            let extra = 3 + rng.below(20);
+            list.extend(random_set(&mut rng, &pool, extra));
+            list.sort_unstable();
+            list.dedup();
+            for allowed in [Allowed::Whole, Allowed::List(list), Allowed::Candidates] {
+                let mut table = PatternTable::default();
+                table.build(&pool, &set, &allowed);
+                let guesses: Vec<u32> = match &allowed {
+                    Allowed::Whole => pool.indices().collect(),
+                    Allowed::List(list) => list.clone(),
+                    Allowed::Candidates => set.clone(),
+                };
+                for guess in guesses {
+                    // the whole set, then a random subset of it, as a child would be
+                    let sub: Vec<u32> = set.iter().copied().filter(|_| rng.below(2) == 0).collect();
+                    for part in [&set, &sub] {
+                        let (mut direct, mut tabled) = (Vec::new(), Vec::new());
+                        pool.partition(part, guess, &mut direct);
+                        assert!(table.partition(part, guess, &mut tabled));
+                        assert_eq!(direct, tabled, "guess {guess} over {part:?}");
                     }
                 }
             }
