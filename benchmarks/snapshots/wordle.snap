@@ -2,7 +2,7 @@
 source: lex-cli/tests/tracks.rs
 info:
   lex_version: 0.1.0
-  solver_digest: a473b9db82d2da352de8eb68ecb16046aa042cfa720acd5998c9b0dd93769c1a
+  solver_digest: 655396ab071f7c5320ac3aec0aaa80143b6066157a8e686c8351059182d60d75
 ---
 {
   "config": {
