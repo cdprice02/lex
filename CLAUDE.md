@@ -43,6 +43,8 @@ The `RUST_LOG` env var controls verbosity (`info` shows per-game progress, `debu
 
 Pinned to nightly in `rust-toolchain.toml`. The codebase uses nightly features such as `non_exhaustive_omitted_patterns_lint` and `must_not_suspend`; benches use divan, not `#[bench]`. `.cargo/config.toml` enables parallel codegen (`-Z threads=8`, `-Z share-generics=yes`).
 
+Release builds use `target-cpu=native` locally (`Cargo.toml` profiles) and `x86-64-v3` in CI (`CARGO_PROFILE_RELEASE_RUSTFLAGS` in the workflows).
+
 Toolchain options:
 - **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically
 - **rustup**: `rustup install nightly && rustup override set nightly` — `rust-toolchain.toml` is read automatically; also `cargo install cargo-insta` for the Track snapshots (the Nix shell has it)
