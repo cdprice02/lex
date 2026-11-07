@@ -194,6 +194,11 @@ impl<const N: usize> Pool<N> {
         encode(&self.letters, word)
     }
 
+    /// Number of letters in the Alphabet; every pool code is below it.
+    pub(crate) fn alphabet_len(&self) -> usize {
+        self.letters.len()
+    }
+
     /// Number of words in the pool.
     pub(crate) const fn len(&self) -> usize {
         self.words.len()
