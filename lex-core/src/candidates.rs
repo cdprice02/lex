@@ -156,6 +156,7 @@ impl<const N: usize> Candidates<N> {
     ) {
         let probs = self.pool.prior(&self.indices, temperature);
         let words: Vec<Code<N>> = self.indices.iter().map(|&i| *self.pool.code(i)).collect();
+        let mut scratch = Scratch::take::<N>();
         let mut scan = |guesses: &mut dyn Iterator<Item = u32>| {
             let mut next = 0;
             for i in guesses {
@@ -168,7 +169,7 @@ impl<const N: usize> Candidates<N> {
                 };
                 f(
                     i,
-                    guess_entropy(self.pool.code(i), &words, &probs),
+                    guess_entropy(self.pool.code(i), &words, &probs, &mut scratch),
                     p_answer,
                     in_candidates,
                 );
@@ -179,6 +180,7 @@ impl<const N: usize> Candidates<N> {
             Allowed::Whole => scan(&mut self.pool.indices()),
             Allowed::List(list) => scan(&mut list.iter().copied()),
         }
+        scratch.give_back();
     }
 
     /// The `k` best guesses by score, descending. Equal scores prefer words still in the
@@ -286,12 +288,65 @@ const DENSE_BOUND_BYTES: u64 = 16 * 1024 * 1024;
 const BUCKET_BYTES: u64 = 8;
 const _: () = assert!(size_of::<f64>() == 8, "a dense bucket is one f64");
 
+/// The per-thread working memory of an entropy scan, taken once per scan and reused for every
+/// guess in it.
+#[derive(Default)]
+struct Scratch {
+    /// Probability mass per feedback ordinal. Every bucket is zero between guesses; `touched`
+    /// lists the ones a guess dirtied, so neither the reset nor the sum walks all 3^N buckets.
+    buckets: Vec<f64>,
+    /// Ordinals of the dirtied buckets.
+    touched: Vec<u64>,
+    /// `(ordinal, probability)` pairs for the sorting counter.
+    pairs: Vec<(u64, f64)>,
+}
+
+thread_local! {
+    /// The scratch between scans. One static serves every monomorphization, so it grows to the
+    /// largest N seen.
+    static SCRATCH: RefCell<Scratch> = const { RefCell::new(Scratch {
+        buckets: Vec::new(),
+        touched: Vec::new(),
+        pairs: Vec::new(),
+    }) };
+}
+
+impl Scratch {
+    /// This thread's scratch, sized for words of length `N`. Taken out of the thread-local rather
+    /// than borrowed, so a scan that re-enters another does not meet a held borrow.
+    fn take<const N: usize>() -> Self {
+        let mut scratch = SCRATCH.with(|s| std::mem::take(&mut *s.borrow_mut()));
+        scratch.size_for::<N>();
+        scratch
+    }
+
+    /// Hands the scratch back to this thread for the next scan.
+    fn give_back(self) {
+        SCRATCH.with(|s| *s.borrow_mut() = self);
+    }
+
+    /// Grows the buckets to one per feedback ordinal when the dense counter serves `N`.
+    fn size_for<const N: usize>(&mut self) {
+        if WordCorrectness::<N>::COUNT * BUCKET_BYTES <= DENSE_BOUND_BYTES {
+            let need = usize::try_from(WordCorrectness::<N>::COUNT).unwrap_or(usize::MAX);
+            if self.buckets.len() < need {
+                self.buckets.resize(need, 0.0);
+            }
+        }
+    }
+}
+
 /// Expected information gain, in bits, of playing `guess` against `words` weighted by `probs`.
-fn guess_entropy<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
+fn guess_entropy<const N: usize>(
+    guess: &Code<N>,
+    words: &[Code<N>],
+    probs: &[f64],
+    scratch: &mut Scratch,
+) -> f64 {
     if WordCorrectness::<N>::COUNT * BUCKET_BYTES <= DENSE_BOUND_BYTES {
-        entropy_dense(guess, words, probs)
+        entropy_dense(guess, words, probs, scratch)
     } else {
-        entropy_sorted(guess, words, probs)
+        entropy_sorted(guess, words, probs, scratch)
     }
 }
 
@@ -306,74 +361,63 @@ fn entropy_from_masses(masses: impl Iterator<Item = f64>) -> f64 {
     0.0 - acc
 }
 
-/// [`guess_entropy`] with one bucket per feedback ordinal, for lengths whose 3^N buckets fit [`DENSE_BOUND_BYTES`].
-fn entropy_dense<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
-    /// Probability mass per feedback ordinal. Every bucket is zero between calls; `touched` lists
-    /// the ones a call dirtied, so neither the reset nor the sum walks all 3^N buckets.
-    struct Patterns {
-        buckets: Vec<f64>,
-        touched: Vec<u64>,
-    }
-    thread_local! {
-        static PATTERNS: RefCell<Patterns> = const {
-            RefCell::new(Patterns { buckets: Vec::new(), touched: Vec::new() })
-        };
-    }
-    PATTERNS.with(|patterns| {
-        let Patterns { buckets, touched } = &mut *patterns.borrow_mut();
-        // one static serves every monomorphization, so it grows to the largest N seen
-        let need = usize::try_from(WordCorrectness::<N>::COUNT).unwrap_or(usize::MAX);
-        if buckets.len() < need {
-            buckets.resize(need, 0.0);
+/// [`guess_entropy`] with one bucket per feedback ordinal, for lengths whose 3^N buckets fit
+/// [`DENSE_BOUND_BYTES`]. The buckets must be sized by [`Scratch::take`].
+fn entropy_dense<const N: usize>(
+    guess: &Code<N>,
+    words: &[Code<N>],
+    probs: &[f64],
+    scratch: &mut Scratch,
+) -> f64 {
+    let Scratch {
+        buckets, touched, ..
+    } = scratch;
+    let mut counts: LetterCounts = [0; 256];
+    for (word, &prob) in words.iter().zip(probs) {
+        debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
+        let ordinal = pattern_ordinal(word, guess, &mut counts);
+        let slot = usize::try_from(ordinal).unwrap_or(usize::MAX);
+        if buckets[slot] == 0.0 {
+            touched.push(ordinal);
         }
-        let mut counts: LetterCounts = [0; 256];
-        for (word, &prob) in words.iter().zip(probs) {
-            debug_assert!(prob > 0.0, "a zero-probability word would be listed twice");
-            let ordinal = pattern_ordinal(word, guess, &mut counts);
-            let slot = usize::try_from(ordinal).unwrap_or(usize::MAX);
-            if buckets[slot] == 0.0 {
-                touched.push(ordinal);
-            }
-            buckets[slot] += prob;
-        }
-        // ascending ordinal order keeps the floating-point sum independent of word order
-        touched.sort_unstable();
-        let entropy = entropy_from_masses(touched.iter().map(|&ordinal| {
-            std::mem::take(&mut buckets[usize::try_from(ordinal).unwrap_or(usize::MAX)])
-        }));
-        touched.clear();
-        entropy
-    })
+        buckets[slot] += prob;
+    }
+    // ascending ordinal order keeps the floating-point sum independent of word order
+    touched.sort_unstable();
+    let entropy = entropy_from_masses(touched.iter().map(|&ordinal| {
+        std::mem::take(&mut buckets[usize::try_from(ordinal).unwrap_or(usize::MAX)])
+    }));
+    touched.clear();
+    entropy
 }
 
 /// Counts by sorting `(ordinal, probability)` pairs, for lengths whose dense array would exceed
 /// [`DENSE_BOUND_BYTES`]. The sort is stable, so each run's mass accumulates in word order, as in
 /// the dense counter, and runs are summed in ascending ordinal.
-fn entropy_sorted<const N: usize>(guess: &Code<N>, words: &[Code<N>], probs: &[f64]) -> f64 {
-    thread_local! {
-        static SCRATCH: RefCell<Vec<(u64, f64)>> = const { RefCell::new(Vec::new()) };
-    }
-    SCRATCH.with(|scratch| {
-        let scratch = &mut *scratch.borrow_mut();
-        scratch.clear();
-        let mut counts: LetterCounts = [0; 256];
-        scratch.extend(
-            words
-                .iter()
-                .zip(probs)
-                .map(|(word, &prob)| (pattern_ordinal(word, guess, &mut counts), prob)),
-        );
-        scratch.sort_by_key(|&(ordinal, _)| ordinal);
-        let entropy = entropy_from_masses(
-            scratch
-                .chunk_by(|a, b| a.0 == b.0)
-                .map(|run| run.iter().fold(0.0, |mass, &(_, prob)| mass + prob)),
-        );
-        scratch.clear();
-        entropy
-    })
+fn entropy_sorted<const N: usize>(
+    guess: &Code<N>,
+    words: &[Code<N>],
+    probs: &[f64],
+    scratch: &mut Scratch,
+) -> f64 {
+    let pairs = &mut scratch.pairs;
+    pairs.clear();
+    let mut counts: LetterCounts = [0; 256];
+    pairs.extend(
+        words
+            .iter()
+            .zip(probs)
+            .map(|(word, &prob)| (pattern_ordinal(word, guess, &mut counts), prob)),
+    );
+    pairs.sort_by_key(|&(ordinal, _)| ordinal);
+    let entropy = entropy_from_masses(
+        pairs
+            .chunk_by(|a, b| a.0 == b.0)
+            .map(|run| run.iter().fold(0.0, |mass, &(_, prob)| mass + prob)),
+    );
+    pairs.clear();
+    entropy
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -383,9 +427,30 @@ mod tests {
         let five: Code<5> = [0, 1, 2, 3, 4];
         let ten: Code<10> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         // N=5 sizes the shared buffer first; N=10 must grow it rather than index past the end
-        assert_eq!(guess_entropy(&five, &[five], &[1.0]).abs().to_bits(), 0);
-        assert_eq!(guess_entropy(&ten, &[ten], &[1.0]).abs().to_bits(), 0);
-        assert_eq!(guess_entropy(&five, &[five], &[1.0]).abs().to_bits(), 0);
+        let mut scratch = Scratch::take::<5>();
+        assert_eq!(
+            guess_entropy(&five, &[five], &[1.0], &mut scratch)
+                .abs()
+                .to_bits(),
+            0
+        );
+        scratch.give_back();
+        let mut scratch = Scratch::take::<10>();
+        assert_eq!(
+            guess_entropy(&ten, &[ten], &[1.0], &mut scratch)
+                .abs()
+                .to_bits(),
+            0
+        );
+        scratch.give_back();
+        let mut scratch = Scratch::take::<5>();
+        assert_eq!(
+            guess_entropy(&five, &[five], &[1.0], &mut scratch)
+                .abs()
+                .to_bits(),
+            0
+        );
+        scratch.give_back();
     }
 
     #[test]
@@ -489,10 +554,11 @@ mod tests {
     ) -> Result<(), TestCaseError> {
         let words: Vec<Code<N>> = pairs.iter().map(|&(w, _)| w).collect();
         let probs: Vec<f64> = pairs.iter().map(|&(_, p)| p).collect();
-        prop_assert_eq!(
-            entropy_dense(&guess, &words, &probs).to_bits(),
-            entropy_sorted(&guess, &words, &probs).to_bits()
-        );
+        let mut scratch = Scratch::take::<N>();
+        let dense = entropy_dense(&guess, &words, &probs, &mut scratch);
+        let sorted = entropy_sorted(&guess, &words, &probs, &mut scratch);
+        scratch.give_back();
+        prop_assert_eq!(dense.to_bits(), sorted.to_bits());
         Ok(())
     }
 
@@ -566,8 +632,8 @@ mod benches {
     use std::hint::black_box;
 
     use super::{
-        Allowed, Candidates, Code, Guess, Pool, Strategy, Word, WordCorrectness, guess_entropy,
-        synthetic_pool,
+        Allowed, Candidates, Code, Guess, Pool, Scratch, Strategy, Word, WordCorrectness,
+        guess_entropy, synthetic_pool,
     };
 
     #[divan::bench]
@@ -579,7 +645,8 @@ mod benches {
         let guess = *pool.code(0);
         let words: Vec<Code<5>> = pool.indices().map(|i| *pool.code(i)).collect();
         let probs = vec![0.1; words.len()];
-        b.bench(|| black_box(guess_entropy(&guess, &words, &probs)));
+        let mut scratch = Scratch::take::<5>();
+        b.bench_local(|| black_box(guess_entropy(&guess, &words, &probs, &mut scratch)));
     }
 
     fn bench_suggest<const N: usize>(b: Bencher, count: usize) {
