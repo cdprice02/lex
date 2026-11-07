@@ -10,6 +10,8 @@ concurrency:
 
 env:
   CARGO_TERM_COLOR: always
+  # a named level: native artifacts in the shared rust-cache crash rustc on other runner CPUs
+  CARGO_PROFILE_RELEASE_RUSTFLAGS: "-C target-cpu=x86-64-v3"
 
 jobs:
   verdict:
@@ -30,7 +32,7 @@ jobs:
       - name: Cache cargo registry and build artifacts
         uses: Swatinem/rust-cache@v2
       - name: Build lex
-        run: cargo build --locked --release -p lex-cli
+        run: cargo build --locked --release -v -p lex-cli
       - name: Verdict
         run: |
           set -o pipefail
