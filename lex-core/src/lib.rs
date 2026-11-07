@@ -11,6 +11,7 @@ mod guesser;
 mod policy;
 mod rollout;
 mod strategy;
+mod transposed;
 mod tree;
 
 /// SHA-256 of every file under `lex-core/src` and `lex-core/Cargo.toml`, sorted by path: which
