@@ -745,10 +745,11 @@ pub fn synthetic_pool<const N: usize>(count: usize) -> Arc<Pool<N>> {
 mod benches {
     use divan::Bencher;
     use std::hint::black_box;
+    use std::sync::Arc;
 
     use super::{
-        Allowed, Candidates, Code, Guess, Pool, Scratch, Strategy, Word, WordCorrectness,
-        guess_entropy, synthetic_pool,
+        Allowed, Candidates, Code, Columns, Guess, Plan, Pool, Scratch, Strategy, Word,
+        WordCorrectness, guess_entropy, guess_entropy_columns, synthetic_pool,
     };
 
     #[divan::bench]
@@ -762,6 +763,59 @@ mod benches {
         let probs = vec![0.1; words.len()];
         let mut scratch = Scratch::take::<5>();
         b.bench_local(|| black_box(guess_entropy(&guess, &words, &probs, &mut scratch)));
+    }
+
+    /// 1000 candidates and 16 guesses over a..z, so repeated letters and overlaps come up as in a
+    /// real corpus; the old and new kernels score the same pairs.
+    fn entropy_fixture<const N: usize>() -> (Arc<Pool<N>>, Vec<Code<N>>, Vec<f64>) {
+        let pool = synthetic_pool::<N>(1000);
+        let words = pool.indices().map(|i| *pool.code(i)).collect();
+        let probs = vec![1.0 / 1000.0; 1000];
+        (pool, words, probs)
+    }
+
+    #[divan::bench(consts = [3, 5, 9, 15, 25])]
+    fn entropy_16_guesses_old<const N: usize>(b: Bencher) {
+        let (pool, words, probs) = entropy_fixture::<N>();
+        let mut scratch = Scratch::take::<N>();
+        b.bench_local(|| {
+            for i in 0..16 {
+                black_box(guess_entropy(
+                    pool.code(i * 7),
+                    black_box(&words),
+                    &probs,
+                    &mut scratch,
+                ));
+            }
+        });
+    }
+
+    #[divan::bench(consts = [3, 5, 9, 15, 25])]
+    fn entropy_16_guesses_new<const N: usize>(b: Bencher) {
+        let (pool, words, probs) = entropy_fixture::<N>();
+        let columns = Columns::gather(words.iter(), pool.alphabet_len());
+        let mut scratch = Scratch::take::<N>();
+        b.bench_local(|| {
+            for i in 0..16 {
+                black_box(guess_entropy_columns(
+                    &Plan::new(pool.code(i * 7)),
+                    black_box(&columns),
+                    &probs,
+                    &mut scratch,
+                ));
+            }
+        });
+    }
+
+    #[divan::bench(consts = [3, 5, 9, 15, 25])]
+    fn gather_1000<const N: usize>(b: Bencher) {
+        let (pool, words, _) = entropy_fixture::<N>();
+        b.bench(|| {
+            black_box(Columns::gather(
+                black_box(&words).iter(),
+                pool.alphabet_len(),
+            ))
+        });
     }
 
     fn bench_suggest<const N: usize>(b: Bencher, count: usize) {
