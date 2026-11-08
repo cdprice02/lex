@@ -301,3 +301,37 @@ mod tests {
         }
     }
 }
+
+#[cfg(feature = "bench")]
+#[cfg_attr(
+    not(test),
+    expect(
+        clippy::missing_docs_in_private_items,
+        reason = "bench functions are named for the divan report, not documented; clippy skips them in the test harness build"
+    )
+)]
+mod benches {
+    use divan::Bencher;
+    use std::hint::black_box;
+
+    use super::{BLOCK, Columns, Plan};
+    use crate::candidates::synthetic_pool;
+
+    /// The kernel alone: 16 guesses over every block of 1000 candidates.
+    #[divan::bench(consts = [3, 5, 9, 15, 25])]
+    fn ordinals_16_guesses_1000<const N: usize>(b: Bencher) {
+        let pool = synthetic_pool::<N>(1000);
+        let words: Vec<_> = pool.indices().map(|i| *pool.code(i)).collect();
+        let columns = Columns::gather(words.iter(), pool.alphabet_len());
+        let plans: Vec<Plan<N>> = (0..16).map(|i| Plan::new(pool.code(i * 7))).collect();
+        let mut out = [0; BLOCK];
+        b.bench_local(|| {
+            for plan in &plans {
+                for k in 0..columns.blocks() {
+                    columns.ordinals(plan, k, &mut out);
+                    black_box(&out);
+                }
+            }
+        });
+    }
+}

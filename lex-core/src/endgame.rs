@@ -1234,4 +1234,25 @@ mod benches {
     fn table_floors_10_averse(b: Bencher) {
         build_and_floors(b, 0.3);
     }
+
+    /// The table build alone for the whole pool against a set of `n` answers.
+    fn build_only(b: Bencher, n: usize) {
+        let mut endgame = Endgame::new(synthetic_pool::<5>(12_000), GuessPool::All, 1.0, 0.0);
+        let set: Vec<u32> = (0..n).map(|i| u32::try_from(i * 97).unwrap_or(0)).collect();
+        b.bench_local(|| {
+            endgame.table.active = false;
+            endgame.table.build(&endgame.pool, &set, &Allowed::Whole);
+            black_box(&endgame.table);
+        });
+    }
+
+    #[divan::bench]
+    fn table_build_10(b: Bencher) {
+        build_only(b, 10);
+    }
+
+    #[divan::bench]
+    fn table_build_100(b: Bencher) {
+        build_only(b, 100);
+    }
 }
