@@ -1,5 +1,5 @@
 //! The entropy-based solver: picks the guess that maximizes expected information over the Candidate set, with no I/O.
-#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend, portable_simd)]
 
 mod allowed;
 mod book;
