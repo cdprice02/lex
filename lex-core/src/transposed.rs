@@ -16,7 +16,7 @@ pub const BLOCK: usize = 64;
 type ByteBlock = [u8; BLOCK];
 
 /// Counts for a letter no word of the set can hold.
-static NO_PRESENCE: ByteBlock = [0; BLOCK];
+static NO_COUNTS: ByteBlock = [0; BLOCK];
 
 /// The words of a Candidate set as `N` letter columns plus the letters each word contains, padded
 /// with words that match nothing to a whole number of [`BLOCK`]s.
@@ -25,6 +25,8 @@ pub struct Columns<const N: usize> {
     len: usize,
     /// `cols[i][k][b]` is letter `i` of word `k * BLOCK + b`; padding is `UNKNOWN_LETTER`.
     cols: [Vec<ByteBlock>; N],
+    /// Letters in the Alphabet: the planes of `counts` per block.
+    alphabet_len: usize,
     /// `counts[c * blocks + k][b]` is how many times word `k * BLOCK + b` holds the letter with
     /// code `c`: a plane per letter of the Alphabet, which is at most 255.
     counts: Vec<ByteBlock>,
@@ -51,7 +53,12 @@ impl<const N: usize> Columns<N> {
                 }
             }
         }
-        Self { len, cols, counts }
+        Self {
+            len,
+            cols,
+            alphabet_len,
+            counts,
+        }
     }
 
     /// Number of blocks, the last possibly padded.
@@ -81,10 +88,10 @@ impl<const N: usize> Columns<N> {
 
     /// Block `k` of the count plane of the letter with code `letter`.
     fn plane(&self, letter: usize, k: usize) -> &ByteBlock {
-        if letter < self.counts.len() / self.blocks().max(1) {
+        if letter < self.alphabet_len {
             &self.counts[letter * self.blocks() + k]
         } else {
-            &NO_PRESENCE
+            &NO_COUNTS
         }
     }
 
@@ -122,7 +129,7 @@ impl<const N: usize> Columns<N> {
 pub const MAX_U32_LENGTH: usize = 20;
 
 /// An integer a block's ordinals are written as: `u32` for words of up to [`MAX_U32_LENGTH`]
-/// letters, which halves the bytes stored and widened, else `u64`.
+/// letters, which halves the bytes stored, else `u64`.
 pub trait Ordinal: SimdElement + SimdCast + Into<u64> + Default {}
 
 impl Ordinal for u32 {}
@@ -153,13 +160,13 @@ fn combine<const N: usize, O: Ordinal>(digits: &[Bytes; N], out: &mut [O]) {
     let mut c = 1;
     // 3^10 fits a u16
     while c < chunks.min(2) {
-        narrow = narrow * Simd::splat(pow3_u16(len(c))) + chunk(c).cast::<u16>();
+        narrow = narrow * Simd::splat(u16::from(POW3[len(c)])) + chunk(c).cast::<u16>();
         c += 1;
     }
     let mut mid = narrow.cast::<u32>();
     // 3^20 fits a u32
     while c < chunks.min(4) {
-        mid = mid * Simd::splat(pow3_u32(len(c))) + chunk(c).cast::<u32>();
+        mid = mid * Simd::splat(u32::from(POW3[len(c)])) + chunk(c).cast::<u32>();
         c += 1;
     }
     if c == chunks {
@@ -168,44 +175,15 @@ fn combine<const N: usize, O: Ordinal>(digits: &[Bytes; N], out: &mut [O]) {
     }
     let mut wide = mid.cast::<u64>();
     while c < chunks {
-        wide = wide * Simd::splat(pow3_u64(len(c))) + chunk(c).cast::<u64>();
+        wide = wide * Simd::splat(u64::from(POW3[len(c)])) + chunk(c).cast::<u64>();
         c += 1;
     }
     wide.cast::<O>().copy_to_slice(out);
 }
 
-/// `3^n` as a `u16`, for `n` of at most 5 (a chunk's length).
-const fn pow3_u16(n: usize) -> u16 {
-    let mut p = 1_u16;
-    let mut i = 0;
-    while i < n {
-        p *= 3;
-        i += 1;
-    }
-    p
-}
-
-/// `3^n` as a `u32`, for `n` of at most 5.
-const fn pow3_u32(n: usize) -> u32 {
-    let mut p = 1_u32;
-    let mut i = 0;
-    while i < n {
-        p *= 3;
-        i += 1;
-    }
-    p
-}
-
-/// `3^n` as a `u64`, for `n` of at most 5.
-const fn pow3_u64(n: usize) -> u64 {
-    let mut p = 1_u64;
-    let mut i = 0;
-    while i < n {
-        p *= 3;
-        i += 1;
-    }
-    p
-}
+/// `3^n` for `n` up to [`CHUNK`]: what folding a chunk of `n` digits multiplies the running value
+/// by.
+const POW3: [u8; CHUNK + 1] = [1, 3, 9, 27, 81, 243];
 
 /// A guess letter that occurs once in the guess: when it is not green it is yellow exactly when
 /// the word holds it anywhere, since every such occurrence is unmatched.
