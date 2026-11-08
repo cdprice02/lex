@@ -9,8 +9,9 @@ use std::sync::Arc;
 use lex_data::Word;
 
 use crate::allowed::{Allowed, AllowedIds};
-use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
+use crate::correctness::WordCorrectness;
 use crate::strategy::{GuessPool, Pool};
+use crate::transposed::{BLOCK, Columns, Plan};
 
 /// The best guess for a candidate set and what it costs.
 #[derive(Debug, Clone, Copy)]
@@ -106,7 +107,8 @@ impl PatternTable {
         self.ranks.resize(rows * cols, 0);
         self.ordinals.clear();
         self.ordinals.resize(rows * cols, 0);
-        let mut counts: LetterCounts = [0; 256];
+        let columns = Columns::gather(set.iter().map(|&a| pool.code(a)), pool.alphabet_len());
+        let mut block = [0_u64; BLOCK];
         for row in 0..rows {
             let guess = if self.whole {
                 u32::try_from(row).unwrap_or(u32::MAX)
@@ -116,10 +118,18 @@ impl PatternTable {
             let code = pool.code(guess);
             let span = row * cols..(row + 1) * cols;
             self.scratch.clear();
-            self.scratch
-                .extend(set.iter().enumerate().map(|(col, &answer)| {
-                    (pattern_ordinal(pool.code(answer), code, &mut counts), col)
-                }));
+            let plan = Plan::new(code);
+            for k in 0..columns.blocks() {
+                columns.ordinals(&plan, k, &mut block);
+                let first = k * BLOCK;
+                self.scratch.extend(
+                    block
+                        .iter()
+                        .take(columns.block_len(k))
+                        .enumerate()
+                        .map(|(b, &ordinal)| (ordinal, first + b)),
+                );
+            }
             self.scratch.sort_unstable();
             let (ranks, ordinals) = (&mut self.ranks[span.clone()], &mut self.ordinals[span]);
             let mut rank = 0_usize;
@@ -1061,6 +1071,27 @@ mod tests {
     }
 
     #[test]
+    fn a_table_over_several_blocks_equals_pool_partition() {
+        let mut rng = Rng(0x1234_5678_9abc_def1);
+        for round in 0..6 {
+            let size = 200 + rng.below(50);
+            let pool = random_pool(&mut rng, size, round % 3);
+            let len = 65 + rng.below(100);
+            let set = random_set(&mut rng, &pool, len);
+            let mut table = PatternTable::default();
+            table.build(&pool, &set, &Allowed::Whole);
+            let mut cols = Vec::new();
+            assert!(table.columns(&set, &mut cols));
+            for guess in pool.indices() {
+                let (mut direct, mut tabled) = (Vec::new(), Vec::new());
+                pool.partition(&set, guess, &mut direct);
+                assert!(table.partition(&cols, &set, guess, &mut tabled));
+                assert_eq!(direct, tabled, "guess {guess}");
+            }
+        }
+    }
+
+    #[test]
     fn floors_read_from_ranks_equal_floors_over_the_sorted_partition() {
         let mut rng = Rng(0x9e37_79b9_7f4a_7c15);
         for round in 0..60 {
@@ -1236,8 +1267,8 @@ mod benches {
     }
 
     /// The table build alone for the whole pool against a set of `n` answers.
-    fn build_only(b: Bencher, n: usize) {
-        let mut endgame = Endgame::new(synthetic_pool::<5>(12_000), GuessPool::All, 1.0, 0.0);
+    fn build_only<const N: usize>(b: Bencher, n: usize) {
+        let mut endgame = Endgame::new(synthetic_pool::<N>(12_000), GuessPool::All, 1.0, 0.0);
         let set: Vec<u32> = (0..n).map(|i| u32::try_from(i * 97).unwrap_or(0)).collect();
         b.bench_local(|| {
             endgame.table.active = false;
@@ -1246,13 +1277,13 @@ mod benches {
         });
     }
 
-    #[divan::bench]
-    fn table_build_10(b: Bencher) {
-        build_only(b, 10);
+    #[divan::bench(consts = [5, 9])]
+    fn table_build_10<const N: usize>(b: Bencher) {
+        build_only::<N>(b, 10);
     }
 
-    #[divan::bench]
-    fn table_build_100(b: Bencher) {
-        build_only(b, 100);
+    #[divan::bench(consts = [5, 9])]
+    fn table_build_100<const N: usize>(b: Bencher) {
+        build_only::<N>(b, 100);
     }
 }
