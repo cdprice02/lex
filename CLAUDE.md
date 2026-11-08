@@ -46,7 +46,7 @@ Pinned to nightly in `rust-toolchain.toml`. The codebase uses nightly features s
 Release builds use `target-cpu=native` locally (`Cargo.toml` profiles) and `x86-64-v3` in CI (`CARGO_PROFILE_RELEASE_RUSTFLAGS` in the workflows).
 
 Toolchain options:
-- **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically
+- **Nix + direnv**: `direnv allow` — picks up the pinned toolchain from `flake.nix` automatically (the shell also has `cargo-show-asm`: `cargo asm -p lex-core --bench lex-core --features bench --simplify` lists the bench binary's functions, whole-program inlining included)
 - **rustup**: `rustup install nightly && rustup override set nightly` — `rust-toolchain.toml` is read automatically; also `cargo install cargo-insta` for the Track snapshots (the Nix shell has it)
 
 ## Workspace structure
