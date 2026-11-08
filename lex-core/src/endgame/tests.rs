@@ -5,6 +5,7 @@ use lex_data::{Word, WordSet};
 use super::*;
 use crate::correctness::pattern_ordinal;
 use crate::pool_ops::shared;
+use crate::strategy::Pool;
 
 const FAMILY: [&str; 7] = [
     "batch", "catch", "hatch", "latch", "match", "patch", "watch",
