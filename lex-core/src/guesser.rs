@@ -1,7 +1,6 @@
 //! The per-game solver state: guesses played and a cursor into the shared Decision tree.
 
 use std::cell::RefCell;
-use std::rc::Rc;
 
 use lex_data::Word;
 use lex_data::WordSet;
@@ -47,8 +46,10 @@ impl<const N: usize> Guess<N> {
 /// The tree can be reused across games with [`reset`](Self::reset), so repeated positions are
 /// scored once. The [`Strategy`] is fixed at construction.
 pub struct Guesser<const N: usize> {
-    /// The Decision tree, shared across games.
-    tree: Rc<RefCell<DecisionTree<N>>>,
+    /// The Decision tree, reused across this guesser's games and owned by it alone. A `RefCell`
+    /// because the memoizing queries (`suggest`, `build_book`) take `&self`; a borrow never spans
+    /// a call into another `Guesser` method.
+    tree: RefCell<DecisionTree<N>>,
     /// The current position in the tree.
     node: NodeId,
     /// The guesses of this game, in order.
@@ -103,7 +104,7 @@ impl<const N: usize> Guesser<N> {
         );
         let candidates = Candidates::new(pool, answers);
         Self {
-            tree: Rc::new(RefCell::new(DecisionTree::new(candidates, strategy, book))),
+            tree: RefCell::new(DecisionTree::new(candidates, strategy, book)),
             node: DecisionTree::<N>::ROOT,
             history: Vec::new(),
         }
