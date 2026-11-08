@@ -1266,6 +1266,30 @@ mod benches {
         build_and_floors(b, 0.3);
     }
 
+    /// Every floor of the whole pool for a child set of `child` of the table's 10 answers: what
+    /// each scan below the top-level call does.
+    fn child_floors(b: Bencher, aversion: f64, child: &[u32]) {
+        let mut endgame = Endgame::new(synthetic_pool::<5>(12_000), GuessPool::All, 1.0, aversion);
+        endgame.table.build(&endgame.pool, &SET, &Allowed::Whole);
+        let mass: f64 = child.iter().map(|&i| endgame.weight(i)).sum();
+        b.bench_local(|| black_box(endgame.floors(child, &Allowed::Whole, mass)));
+    }
+
+    #[divan::bench]
+    fn floors_child_3_of_10_plain(b: Bencher) {
+        child_floors(b, 0.0, &[SET[1], SET[4], SET[7]]);
+    }
+
+    #[divan::bench]
+    fn floors_child_3_of_10_averse(b: Bencher) {
+        child_floors(b, 0.3, &[SET[1], SET[4], SET[7]]);
+    }
+
+    #[divan::bench]
+    fn floors_top_10_plain(b: Bencher) {
+        child_floors(b, 0.0, &SET);
+    }
+
     /// The table build alone for the whole pool against a set of `n` answers.
     fn build_only<const N: usize>(b: Bencher, n: usize) {
         let mut endgame = Endgame::new(synthetic_pool::<N>(12_000), GuessPool::All, 1.0, 0.0);
