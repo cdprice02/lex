@@ -1,6 +1,10 @@
 //! The Candidate set transposed for the entropy scan: one contiguous byte column per letter
-//! position, and a letter-presence mask per word, scored against a guess a block of words at a
+//! position, and a letter-count byte per word and letter, scored against a guess a block of words at a
 //! time. The kernel yields exactly [`pattern_ordinal`](crate::correctness::pattern_ordinal).
+
+use std::simd::cmp::{SimdOrd, SimdPartialEq, SimdPartialOrd};
+use std::simd::num::SimdUint;
+use std::simd::{Mask, Select, Simd, SimdCast, SimdElement};
 
 use crate::correctness::Code;
 
@@ -8,17 +12,11 @@ use crate::correctness::Code;
 /// that a block's working set stays in the L1 cache at the longest word length.
 pub const BLOCK: usize = 64;
 
-/// Bits in one presence word.
-const PRESENCE_BITS: usize = 64;
-
 /// One block of a column of letter codes.
 type ByteBlock = [u8; BLOCK];
 
-/// One block of a presence word per word of the set.
-type MaskBlock = [u64; BLOCK];
-
-/// Presence for a letter no word of the set can hold.
-static NO_PRESENCE: MaskBlock = [0; BLOCK];
+/// Counts for a letter no word of the set can hold.
+static NO_PRESENCE: ByteBlock = [0; BLOCK];
 
 /// The words of a Candidate set as `N` letter columns plus the letters each word contains, padded
 /// with words that match nothing to a whole number of [`BLOCK`]s.
@@ -27,9 +25,9 @@ pub struct Columns<const N: usize> {
     len: usize,
     /// `cols[i][k][b]` is letter `i` of word `k * BLOCK + b`; padding is `UNKNOWN_LETTER`.
     cols: [Vec<ByteBlock>; N],
-    /// `presence[w][k][b]` has bit `c % 64` set when word `k * BLOCK + b` holds the letter with
-    /// code `c`, for `c / 64 == w`. The Alphabet is at most 255 letters, so up to four words.
-    presence: Vec<Vec<MaskBlock>>,
+    /// `counts[c * blocks + k][b]` is how many times word `k * BLOCK + b` holds the letter with
+    /// code `c`: a plane per letter of the Alphabet, which is at most 255.
+    counts: Vec<ByteBlock>,
 }
 
 impl<const N: usize> Columns<N> {
@@ -42,23 +40,18 @@ impl<const N: usize> Columns<N> {
         let blocks = len.div_ceil(BLOCK);
         let mut cols: [Vec<ByteBlock>; N] =
             std::array::from_fn(|_| vec![[crate::correctness::UNKNOWN_LETTER; BLOCK]; blocks]);
-        let mut presence =
-            vec![vec![[0_u64; BLOCK]; blocks]; alphabet_len.div_ceil(PRESENCE_BITS).max(1)];
+        let mut counts = vec![[0_u8; BLOCK]; alphabet_len * blocks];
         for (at, word) in words.enumerate() {
             let (k, b) = (at / BLOCK, at % BLOCK);
             for (col, &code) in cols.iter_mut().zip(word) {
                 col[k][b] = code;
                 let letter = usize::from(code);
-                if let Some(slot) = presence.get_mut(letter / PRESENCE_BITS) {
-                    slot[k][b] |= 1 << (letter % PRESENCE_BITS);
+                if letter < alphabet_len {
+                    counts[letter * blocks + k][b] += 1;
                 }
             }
         }
-        Self {
-            len,
-            cols,
-            presence,
-        }
+        Self { len, cols, counts }
     }
 
     /// Number of blocks, the last possibly padded.
@@ -74,49 +67,144 @@ impl<const N: usize> Columns<N> {
 
     /// The feedback ordinal of each word of block `k` against the guess of `plan`; entries past
     /// [`block_len`](Self::block_len) are meaningless.
-    pub fn ordinals(&self, plan: &Plan<N>, k: usize, out: &mut [u64; BLOCK]) {
-        let mut green = [[0_u8; BLOCK]; N];
-        for ((green, col), &letter) in green.iter_mut().zip(&self.cols).zip(&plan.guess) {
-            for (g, &c) in green.iter_mut().zip(&col[k]) {
-                *g = u8::from(c == letter);
-            }
+    pub fn ordinals<O: Ordinal>(&self, plan: &Plan<N>, k: usize, out: &mut [O; BLOCK]) {
+        debug_assert!(
+            N <= MAX_U32_LENGTH || size_of::<O>() == size_of::<u64>(),
+            "an ordinal of {N} digits needs a u64"
+        );
+        for (half, out) in out.chunks_exact_mut(LANES).enumerate() {
+            let at = half * LANES;
+            let digits = self.digits(plan, k, at);
+            combine(&digits, out);
         }
-        let mut digit = [[0_u8; BLOCK]; N];
-        for &Once { at, word, shift } in plan.once() {
-            let present = self.presence.get(word).map_or(&NO_PRESENCE, |p| &p[k]);
-            for ((d, &g), &mask) in digit[at].iter_mut().zip(&green[at]).zip(present) {
-                let yellow = u8::from(mask >> shift & 1 == 1);
-                *d = if g == 1 { 2 } else { yellow };
-            }
+    }
+
+    /// Block `k` of the count plane of the letter with code `letter`.
+    fn plane(&self, letter: usize, k: usize) -> &ByteBlock {
+        if letter < self.counts.len() / self.blocks().max(1) {
+            &self.counts[letter * self.blocks() + k]
+        } else {
+            &NO_PRESENCE
+        }
+    }
+
+    /// The feedback digit of each of the `LANES` words of block `k` from `at`, per guess
+    /// position.
+    fn digits(&self, plan: &Plan<N>, k: usize, at: usize) -> [Bytes; N] {
+        let column = |i: usize| Bytes::from_slice(&self.cols[i][k][at..at + LANES]);
+        let green: [Mask<i8, LANES>; N] =
+            std::array::from_fn(|i| column(i).simd_eq(Bytes::splat(plan.guess[i])));
+        let (zero, one, two) = (Bytes::splat(0), Bytes::splat(1), Bytes::splat(2));
+        let mut digit = [zero; N];
+        for &Once { at: pos, letter } in plan.once() {
+            let held = Bytes::from_slice(&self.plane(letter, k)[at..at + LANES]);
+            let yellow = held.simd_min(one);
+            digit[pos] = green[pos].select(two, yellow);
         }
         for group in plan.groups() {
             // word letters equal to the guess letter that no green already matched
-            let mut unmatched = [0_u8; BLOCK];
-            for col in &self.cols {
-                for (u, &c) in unmatched.iter_mut().zip(&col[k]) {
-                    *u += u8::from(c == group.letter);
-                }
+            let mut unmatched =
+                Bytes::from_slice(&self.plane(group.letter.into(), k)[at..at + LANES]);
+            for &pos in group.positions() {
+                unmatched -= green[pos].select(one, zero);
             }
-            for &at in group.positions() {
-                for (u, &g) in unmatched.iter_mut().zip(&green[at]) {
-                    *u -= g;
-                }
-            }
-            for &at in group.positions() {
-                for ((d, &g), u) in digit[at].iter_mut().zip(&green[at]).zip(&mut unmatched) {
-                    let spend = g == 0 && *u > 0;
-                    *d = if g == 1 { 2 } else { u8::from(spend) };
-                    *u -= u8::from(spend);
-                }
+            for &pos in group.positions() {
+                let spend = !green[pos] & unmatched.simd_gt(zero);
+                digit[pos] = green[pos].select(two, spend.select(one, zero));
+                unmatched -= spend.select(one, zero);
             }
         }
-        out.fill(0);
-        for d in &digit {
-            for (o, &d) in out.iter_mut().zip(d) {
-                *o = *o * 3 + u64::from(d);
-            }
-        }
+        digit
     }
+}
+
+/// The longest word whose feedback ordinal, 3^N - 1 at most, fits a `u32`.
+pub const MAX_U32_LENGTH: usize = 20;
+
+/// An integer a block's ordinals are written as: `u32` for words of up to [`MAX_U32_LENGTH`]
+/// letters, which halves the bytes stored and widened, else `u64`.
+pub trait Ordinal: SimdElement + SimdCast + Into<u64> + Default {}
+
+impl Ordinal for u32 {}
+
+impl Ordinal for u64 {}
+
+/// Words scored together in one vector: an AVX2 register of bytes.
+const LANES: usize = 32;
+
+/// One vector of bytes, a feedback digit or letter code per word.
+type Bytes = Simd<u8, LANES>;
+
+/// Digits that fit a byte when folded base 3: `3^5 = 243`.
+const CHUNK: usize = 5;
+
+/// Folds the base-3 digits of each lane, position 0 most significant, into `out`. Digits fold in
+/// chunks of [`CHUNK`] inside a byte, and the chunks in the narrowest integer that holds the
+/// running value, so the wide multiplies are few.
+fn combine<const N: usize, O: Ordinal>(digits: &[Bytes; N], out: &mut [O]) {
+    let chunk = |c: usize| {
+        let part = &digits[c * CHUNK..N.min((c + 1) * CHUNK)];
+        part.iter()
+            .fold(Bytes::splat(0), |acc, &d| acc + acc + acc + d)
+    };
+    let len = |c: usize| N.min((c + 1) * CHUNK) - c * CHUNK;
+    let chunks = N.div_ceil(CHUNK);
+    let mut narrow = chunk(0).cast::<u16>();
+    let mut c = 1;
+    // 3^10 fits a u16
+    while c < chunks.min(2) {
+        narrow = narrow * Simd::splat(pow3_u16(len(c))) + chunk(c).cast::<u16>();
+        c += 1;
+    }
+    let mut mid = narrow.cast::<u32>();
+    // 3^20 fits a u32
+    while c < chunks.min(4) {
+        mid = mid * Simd::splat(pow3_u32(len(c))) + chunk(c).cast::<u32>();
+        c += 1;
+    }
+    if c == chunks {
+        mid.cast::<O>().copy_to_slice(out);
+        return;
+    }
+    let mut wide = mid.cast::<u64>();
+    while c < chunks {
+        wide = wide * Simd::splat(pow3_u64(len(c))) + chunk(c).cast::<u64>();
+        c += 1;
+    }
+    wide.cast::<O>().copy_to_slice(out);
+}
+
+/// `3^n` as a `u16`, for `n` of at most 5 (a chunk's length).
+const fn pow3_u16(n: usize) -> u16 {
+    let mut p = 1_u16;
+    let mut i = 0;
+    while i < n {
+        p *= 3;
+        i += 1;
+    }
+    p
+}
+
+/// `3^n` as a `u32`, for `n` of at most 5.
+const fn pow3_u32(n: usize) -> u32 {
+    let mut p = 1_u32;
+    let mut i = 0;
+    while i < n {
+        p *= 3;
+        i += 1;
+    }
+    p
+}
+
+/// `3^n` as a `u64`, for `n` of at most 5.
+const fn pow3_u64(n: usize) -> u64 {
+    let mut p = 1_u64;
+    let mut i = 0;
+    while i < n {
+        p *= 3;
+        i += 1;
+    }
+    p
 }
 
 /// A guess letter that occurs once in the guess: when it is not green it is yellow exactly when
@@ -125,10 +213,8 @@ impl<const N: usize> Columns<N> {
 struct Once {
     /// Guess position.
     at: usize,
-    /// Presence word holding the letter's bit.
-    word: usize,
-    /// The bit within it.
-    shift: usize,
+    /// The letter's code.
+    letter: usize,
 }
 
 /// A guess letter that occurs more than once, with its positions in the guess.
@@ -185,11 +271,9 @@ impl<const N: usize> Plan<N> {
             match times[usize::from(letter)] {
                 0 => {}
                 1 => {
-                    let code = usize::from(letter);
                     plan.once[plan.once_count] = Once {
                         at,
-                        word: code / PRESENCE_BITS,
-                        shift: code % PRESENCE_BITS,
+                        letter: usize::from(letter),
                     };
                     plan.once_count += 1;
                 }
@@ -228,8 +312,8 @@ mod tests {
     use crate::correctness::{LetterCounts, pattern_ordinal};
     use proptest::prelude::*;
 
-    /// Every word of `words` against `guess`, kernel versus the scalar tally.
-    fn kernel_matches_scalar<const N: usize>(
+    /// Every word of `words` against `guess`, kernel versus the scalar tally, at ordinal width `O`.
+    fn kernel_matches_scalar_as<const N: usize, O: Ordinal>(
         guess: Code<N>,
         words: &[Code<N>],
         alphabet_len: usize,
@@ -237,19 +321,32 @@ mod tests {
         let columns = Columns::gather(words.iter(), alphabet_len);
         let plan = Plan::new(&guess);
         let mut counts: LetterCounts = [0; 256];
-        let mut out = [0; BLOCK];
+        let mut out = [O::default(); BLOCK];
         for k in 0..columns.blocks() {
             columns.ordinals(&plan, k, &mut out);
             for (b, &ordinal) in out.iter().enumerate().take(columns.block_len(k)) {
                 let word = &words[k * BLOCK + b];
                 prop_assert_eq!(
-                    ordinal,
+                    ordinal.into(),
                     pattern_ordinal(word, &guess, &mut counts),
                     "word {:?} guess {:?}",
                     word,
                     guess
                 );
             }
+        }
+        Ok(())
+    }
+
+    /// The kernel at every ordinal width the length allows.
+    fn kernel_matches_scalar<const N: usize>(
+        guess: Code<N>,
+        words: &[Code<N>],
+        alphabet_len: usize,
+    ) -> Result<(), TestCaseError> {
+        kernel_matches_scalar_as::<N, u64>(guess, words, alphabet_len)?;
+        if N <= MAX_U32_LENGTH {
+            kernel_matches_scalar_as::<N, u32>(guess, words, alphabet_len)?;
         }
         Ok(())
     }
@@ -293,7 +390,7 @@ mod tests {
         let guess: Code<3> = [200, 1, 0];
         let columns = Columns::gather(words.iter(), 3);
         let plan = Plan::new(&guess);
-        let mut out = [0; BLOCK];
+        let mut out = [0_u64; BLOCK];
         columns.ordinals(&plan, 0, &mut out);
         let mut counts: LetterCounts = [0; 256];
         for (&ordinal, word) in out.iter().zip(&words) {
@@ -314,17 +411,16 @@ mod benches {
     use divan::Bencher;
     use std::hint::black_box;
 
-    use super::{BLOCK, Columns, Plan};
+    use super::{BLOCK, Columns, Ordinal, Plan};
     use crate::candidates::synthetic_pool;
 
-    /// The kernel alone: 16 guesses over every block of 1000 candidates.
-    #[divan::bench(consts = [3, 5, 9, 15, 25])]
-    fn ordinals_16_guesses_1000<const N: usize>(b: Bencher) {
+    /// The kernel alone at ordinal width `O`: 16 guesses over every block of 1000 candidates.
+    fn ordinals_16<const N: usize, O: Ordinal>(b: Bencher) {
         let pool = synthetic_pool::<N>(1000);
         let words: Vec<_> = pool.indices().map(|i| *pool.code(i)).collect();
         let columns = Columns::gather(words.iter(), pool.alphabet_len());
         let plans: Vec<Plan<N>> = (0..16).map(|i| Plan::new(pool.code(i * 7))).collect();
-        let mut out = [0; BLOCK];
+        let mut out = [O::default(); BLOCK];
         b.bench_local(|| {
             for plan in &plans {
                 for k in 0..columns.blocks() {
@@ -333,5 +429,15 @@ mod benches {
                 }
             }
         });
+    }
+
+    #[divan::bench(consts = [3, 5, 9, 15, 25])]
+    fn ordinals_16_guesses_1000<const N: usize>(b: Bencher) {
+        ordinals_16::<N, u64>(b);
+    }
+
+    #[divan::bench(consts = [3, 5, 9, 15])]
+    fn ordinals_16_guesses_1000_u32<const N: usize>(b: Bencher) {
+        ordinals_16::<N, u32>(b);
     }
 }

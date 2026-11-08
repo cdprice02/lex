@@ -14,7 +14,7 @@ use crate::correctness::Code;
 use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
 use crate::guesser::Guess;
 use crate::strategy::{Pool, Strategy};
-use crate::transposed::{BLOCK, Columns, Plan};
+use crate::transposed::{BLOCK, Columns, MAX_U32_LENGTH, Ordinal, Plan};
 
 /// A scored guess: how much it is expected to teach, and whether it could itself be the answer.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -417,7 +417,8 @@ fn guess_entropy_columns<const N: usize>(
     entropy_columns(plan, columns, probs, is_dense::<N>(), scratch)
 }
 
-/// [`guess_entropy_columns`] with the counter chosen by `dense`, so a test can run both.
+/// [`guess_entropy_columns`] with the counter chosen by `dense`, so a test can run both. Ordinals
+/// are `u32` while 3^N fits one, chosen at compile time.
 fn entropy_columns<const N: usize>(
     plan: &Plan<N>,
     columns: &Columns<N>,
@@ -425,18 +426,36 @@ fn entropy_columns<const N: usize>(
     dense: bool,
     scratch: &mut Scratch,
 ) -> f64 {
-    let mut ordinals = [0_u64; BLOCK];
+    if N <= MAX_U32_LENGTH {
+        entropy_columns_as::<N, u32>(plan, columns, probs, dense, scratch)
+    } else {
+        entropy_columns_as::<N, u64>(plan, columns, probs, dense, scratch)
+    }
+}
+
+/// [`entropy_columns`] with the kernel writing ordinals as `O`.
+fn entropy_columns_as<const N: usize, O: Ordinal>(
+    plan: &Plan<N>,
+    columns: &Columns<N>,
+    probs: &[f64],
+    dense: bool,
+    scratch: &mut Scratch,
+) -> f64 {
+    let mut ordinals = [O::default(); BLOCK];
     for k in 0..columns.blocks() {
         columns.ordinals(plan, k, &mut ordinals);
         let masses = &probs[k * BLOCK..][..columns.block_len(k)];
         if dense {
             for (&ordinal, &prob) in ordinals.iter().zip(masses) {
-                scratch.add_dense(ordinal, prob);
+                scratch.add_dense(ordinal.into(), prob);
             }
         } else {
-            scratch
-                .pairs
-                .extend(ordinals.iter().copied().zip(masses.iter().copied()));
+            scratch.pairs.extend(
+                ordinals
+                    .iter()
+                    .map(|&o| o.into())
+                    .zip(masses.iter().copied()),
+            );
         }
     }
     if dense {
