@@ -116,7 +116,8 @@ pub fn observer() -> Option<Box<dyn Observer>> {
 struct BarObserver {
     /// The host the bars are added to.
     multi: MultiProgress,
-    /// The live spinner or bar, one phase at a time.
+    /// The live spinner or bar, one phase at a time. Owned by this observer alone, behind a
+    /// `RefCell` only because [`Observer`] methods take `&self`; no borrow outlives a method.
     bar: RefCell<Option<ProgressBar>>,
 }
 
@@ -196,59 +197,78 @@ impl Drop for BarObserver {
     }
 }
 
-/// Logs a line every [`LINE_INTERVAL`] under [`TARGET`].
-struct LineObserver {
-    /// When the current phase began.
-    started: Cell<Instant>,
+/// Where the current phase stands: the one piece of state a [`LineObserver`] mutates.
+#[derive(Debug, Clone, Copy)]
+struct Phase {
+    /// When the phase began.
+    started: Instant,
     /// When a line was last logged.
-    last: Cell<Instant>,
-    /// Games finished in this phase.
-    played: Cell<usize>,
-    /// Games in this phase.
-    total: Cell<usize>,
+    last: Instant,
+    /// Games finished in the phase.
+    played: usize,
+    /// Games in the phase.
+    total: usize,
 }
 
-impl LineObserver {
-    /// An observer whose clock starts now.
-    fn new() -> Self {
+impl Phase {
+    /// A phase beginning now with no games.
+    fn begin() -> Self {
         let now = Instant::now();
         Self {
-            started: Cell::new(now),
-            last: Cell::new(now),
-            played: Cell::new(0),
-            total: Cell::new(0),
+            started: now,
+            last: now,
+            played: 0,
+            total: 0,
         }
     }
 
-    /// Restarts the clock for a new phase.
-    fn restart(&self) {
-        let now = Instant::now();
-        self.started.set(now);
-        self.last.set(now);
-    }
-
     /// Whether a line is due, resetting the timer when it is.
-    fn due(&self) -> bool {
-        let due = self.last.get().elapsed() >= LINE_INTERVAL;
+    fn due(&mut self) -> bool {
+        let due = self.last.elapsed() >= LINE_INTERVAL;
         if due {
-            self.last.set(Instant::now());
+            self.last = Instant::now();
         }
         due
     }
 }
 
+/// Logs a line every [`LINE_INTERVAL`] under [`TARGET`].
+struct LineObserver {
+    /// The current phase. Owned by this observer alone, behind a `Cell` only because
+    /// [`Observer`] methods take `&self`; it is read and written within one method at a time.
+    phase: Cell<Phase>,
+}
+
+impl LineObserver {
+    /// An observer whose clock starts now.
+    fn new() -> Self {
+        Self {
+            phase: Cell::new(Phase::begin()),
+        }
+    }
+
+    /// Applies `f` to the phase and stores the result, returning what `f` returns.
+    fn update<T>(&self, f: impl FnOnce(&mut Phase) -> T) -> T {
+        let mut phase = self.phase.get();
+        let out = f(&mut phase);
+        self.phase.set(phase);
+        out
+    }
+}
+
 impl Observer for LineObserver {
     fn book_started(&self, message: &str) {
-        self.restart();
+        self.phase.set(Phase::begin());
         log::info!(target: TARGET, "{message}");
     }
 
     fn book_progress(&self, booked: usize) {
-        if self.due() {
+        let (due, started) = self.update(|phase| (phase.due(), phase.started));
+        if due {
             log::info!(
                 target: TARGET,
                 "booked {booked} positions ({:?} elapsed)",
-                self.started.get().elapsed()
+                started.elapsed()
             );
         }
     }
@@ -258,20 +278,24 @@ impl Observer for LineObserver {
     }
 
     fn games_started(&self, total: usize) {
-        self.restart();
-        self.played.set(0);
-        self.total.set(total);
+        self.phase.set(Phase {
+            total,
+            ..Phase::begin()
+        });
     }
 
     fn game_played(&self) {
-        self.played.set(self.played.get() + 1);
-        if self.due() {
+        let (due, phase) = self.update(|phase| {
+            phase.played += 1;
+            (phase.due(), *phase)
+        });
+        if due {
             log::info!(
                 target: TARGET,
                 "played {}/{} games ({:?} elapsed)",
-                self.played.get(),
-                self.total.get(),
-                self.started.get().elapsed()
+                phase.played,
+                phase.total,
+                phase.started.elapsed()
             );
         }
     }
