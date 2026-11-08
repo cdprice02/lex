@@ -224,8 +224,7 @@ impl<const N: usize> Pool<N> {
             set.iter()
                 .map(|&i| (pattern_ordinal(self.code(i), code, &mut counts), i)),
         );
-        // stable sort keeps each group ascending by index
-        out.sort_by_key(|&(ordinal, _)| ordinal);
+        group_by_ordinal(out);
     }
 
     /// Natural log of the frequency of the word at pool index `index`.
@@ -265,6 +264,12 @@ impl<const N: usize> Pool<N> {
         let sum: f64 = exp.iter().sum();
         exp.into_iter().map(|e| e / sum).collect()
     }
+}
+
+/// Groups `(ordinal, answer)` pairs by ordinal. The sort is stable, so a group stays ascending by
+/// index. It is not generic over the word length, so the sort is compiled once.
+fn group_by_ordinal(pairs: &mut [(u64, u32)]) {
+    pairs.sort_by_key(|&(ordinal, _)| ordinal);
 }
 
 /// `word`'s letters as Alphabet indices, [`UNKNOWN_LETTER`] for any outside it.

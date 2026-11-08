@@ -69,7 +69,7 @@ impl Scored {
 
 /// The words still consistent with every guess played so far, as indices into the immutable
 /// guess pool, and the choice of the next guess under a [`Strategy`]. Holds no history and caches
-/// nothing: a [`DecisionTree`] node owns one and memoizes its [`suggest`](Self::suggest).
+/// nothing: a [`DecisionTree`] node owns one and memoizes its suggestion.
 ///
 /// [`DecisionTree`]: crate::tree::DecisionTree
 #[derive(Debug, Clone)]
@@ -196,7 +196,7 @@ impl<const N: usize> Candidates<N> {
 
     /// The `k` best guesses by score, descending. Equal scores prefer words still in the
     /// candidate set, then frequency order, so the first element agrees with
-    /// [`suggest`](Self::suggest). Only the `k` kept are sorted.
+    /// `suggest_index`. Only the `k` kept are sorted.
     pub(crate) fn suggest_top_k(
         &self,
         strategy: &Strategy,
@@ -216,29 +216,20 @@ impl<const N: usize> Candidates<N> {
                 });
             },
         );
-        // the pool index closes the order, so the unstable selection is deterministic
-        let better = |a: &Scored, b: &Scored| {
-            cmp_scores(b.score(strategy.win_weight), a.score(strategy.win_weight))
-                .then(b.in_candidates.cmp(&a.in_candidates))
-                .then(a.index.cmp(&b.index))
-        };
-        if k < scored.len() {
-            if let Some(last) = k.checked_sub(1) {
-                scored.select_nth_unstable_by(last, better);
-            }
-            scored.truncate(k);
-        }
-        scored.sort_unstable_by(better);
+        keep_best(&mut scored, strategy.win_weight, k);
         scored
     }
 
     /// The guess with the best score among those `allowed` permits, preferring a Candidate on ties; `None` when the set is empty.
+    ///
+    /// Tests and benches only: the solver goes through [`suggest_index`](Self::suggest_index).
+    #[cfg(any(test, feature = "bench"))]
     pub(crate) fn suggest(&self, strategy: &Strategy, allowed: &Allowed) -> Option<Word<N>> {
         self.suggest_index(strategy, allowed)
             .map(|index| self.pool.word(index))
     }
 
-    /// [`suggest`](Self::suggest) as a pool index.
+    /// The best guess as a pool index; `suggest` wraps it.
     pub(crate) fn suggest_index(&self, strategy: &Strategy, allowed: &Allowed) -> Option<u32> {
         match self.indices.as_slice() {
             [] => {
@@ -282,6 +273,24 @@ impl<const N: usize> Candidates<N> {
         );
         best.map(|(i, _, _)| i)
     }
+}
+
+/// Keeps the `k` best of `scored` by score, descending: equal scores prefer a candidate, then the
+/// lower pool index, so the order is total and the unstable selection deterministic. Only the `k`
+/// kept are sorted. It is not generic over the word length, so the sorts are compiled once.
+fn keep_best(scored: &mut Vec<Scored>, win_weight: f64, k: usize) {
+    let better = |a: &Scored, b: &Scored| {
+        cmp_scores(b.score(win_weight), a.score(win_weight))
+            .then(b.in_candidates.cmp(&a.in_candidates))
+            .then(a.index.cmp(&b.index))
+    };
+    if k < scored.len() {
+        if let Some(last) = k.checked_sub(1) {
+            scored.select_nth_unstable_by(last, better);
+        }
+        scored.truncate(k);
+    }
+    scored.sort_unstable_by(better);
 }
 
 /// Orders two finite scores. Adding `0.0` first folds `-0.0` into `0.0`, so a guess scoring zero
