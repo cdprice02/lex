@@ -4,10 +4,11 @@ use divan::Bencher;
 use std::hint::black_box;
 use std::sync::Arc;
 
+use super::counters::{Scratch, guess_entropy, guess_entropy_columns};
 use super::{
-    Allowed, Candidates, Code, Columns, Guess, Plan, Pool, Scratch, Strategy, Word,
-    WordCorrectness, guess_entropy, guess_entropy_columns, synthetic_pool,
+    Allowed, Candidates, Code, Guess, Pool, Strategy, Word, WordCorrectness, synthetic_pool,
 };
+use crate::transposed::{Columns, Plan};
 
 #[divan::bench]
 fn guess_entropy_10_words(b: Bencher) {

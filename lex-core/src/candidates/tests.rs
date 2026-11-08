@@ -1,5 +1,8 @@
 //! Tests for the Candidate set, the entropy scan and its counters.
 
+use super::counters::{
+    DENSE_BOUND_BYTES, entropy_columns, entropy_scalar, guess_entropy, is_dense,
+};
 use super::*;
 
 #[test]
