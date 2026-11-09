@@ -1,16 +1,18 @@
 //! The Decision tree: one node per Guess path, each memoizing its suggestion.
 
 use std::collections::{BTreeSet, HashMap};
+use std::sync::Arc;
 
 use lex_data::Word;
 
-use crate::allowed::{Allowed, AllowedIds};
+use crate::allowed::Allowed;
 use crate::book::OpeningBook;
 use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
 use crate::guesser::Guess;
 use crate::policy::BasePolicy;
+use crate::pool_ops::{self, PoolOps};
 use crate::rollout::{ROLLOUT_MULTIPLIER, Rollout};
 use crate::strategy::Strategy;
 
@@ -33,9 +35,11 @@ pub type NodeId = usize;
 pub struct DecisionTree<const N: usize> {
     /// The Strategy fixed for the tree's life and the Endgame whose memo of exact searches every
     /// game shares.
-    base: BasePolicy<N>,
+    base: BasePolicy,
+    /// The Guess pool as the word-length-free search sees it.
+    pool: Arc<dyn PoolOps>,
     /// Present when the strategy has a rollout width; owns the memo of base costs.
-    rollout: Option<Rollout<N>>,
+    rollout: Option<Rollout>,
     /// The nodes, root first.
     nodes: Vec<Node<N>>,
     /// Seeds nodes created along booked paths; `None` plays everything online.
@@ -93,18 +97,16 @@ impl<const N: usize> DecisionTree<N> {
         strategy: Strategy,
         book: Option<OpeningBook<N>>,
     ) -> Self {
-        let list_ids = AllowedIds::default();
+        let pool = pool_ops::shared(&candidates.pool());
         let endgame = (strategy.endgame_threshold > 0).then(|| {
             Endgame::new(
-                candidates.pool(),
+                Arc::clone(&pool),
                 strategy.pool,
                 strategy.temperature,
                 strategy.endgame_aversion,
             )
-            .sharing(list_ids.clone())
         });
-        let rollout =
-            (strategy.rollout_k > 0).then(|| Rollout::new(candidates.pool(), &strategy, list_ids));
+        let rollout = (strategy.rollout_k > 0).then(|| Rollout::new(Arc::clone(&pool), &strategy));
         let allowed = Allowed::root(strategy.pool, candidates.len() == candidates.pool().len());
         let mut root = Node::new(candidates, allowed);
         let book = book.filter(|b| !b.is_empty());
@@ -113,6 +115,7 @@ impl<const N: usize> DecisionTree<N> {
         }
         Self {
             base: BasePolicy::new(strategy, endgame),
+            pool,
             rollout,
             nodes: vec![root],
             book,
@@ -146,6 +149,7 @@ impl<const N: usize> DecisionTree<N> {
     pub(crate) fn suggest(&mut self, node: NodeId) -> Option<Word<N>> {
         let Self {
             base,
+            pool,
             rollout,
             nodes,
             #[cfg(test)]
@@ -162,12 +166,14 @@ impl<const N: usize> DecisionTree<N> {
                 *booked_computations += 1;
             }
             let size = entry.candidates.len();
-            match rollout.as_mut() {
+            let set = entry.candidates.indices();
+            let index = match rollout.as_mut() {
                 Some(rollout) if !base.uses_endgame(size) && rollout.applies(size) => {
-                    rollout.best_guess(&entry.candidates, &entry.allowed, base)
+                    rollout.best_guess(set, &entry.allowed, base)
                 }
-                _ => base.guess(&entry.candidates, &entry.allowed),
-            }
+                _ => base.guess_index(pool, set, &entry.allowed),
+            };
+            index.map(|i| entry.candidates.pool().word(i))
         };
         entry.suggestion = Memo::Computed(suggestion);
         suggestion

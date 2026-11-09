@@ -11,14 +11,15 @@ Entropy-based Wordle solver. Pure computation — no I/O. Depends only on `lex-d
 | `correctness.rs` | `Correctness`, `WordCorrectness<N>`, `correct()`, `ordinal()`, crate-private `pattern_ordinal()`, `Code<N>` |
 | `strategy.rs` | `Strategy` (pool policy, temperature, win weight, endgame, `rollout_k`), `GuessPool` (`All`, `Hard`, `Ultrahard`; strum `EnumString`/`Display`/`VariantNames`/`VariantArray`, serialized `all`/`hard`/`ultrahard`, so a frontend parses it through `FromStr` and `lex-core` needs no clap), `Strategy::DEFAULT` (the `const` behind `Default`), `answer_prior()`, crate-private `Pool<N>` (immutable guess pool with log-frequencies, Alphabet codes and the renormalized prior) |
 | `allowed.rs` | `Allowed` (crate-private): the guesses a node permits (`Whole`, `Candidates`, or a sorted `List`), derived per feedback; `HardRule`, Selby's `okhard` |
-| `candidates.rs` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest`/`suggest_index`/`suggest_top_k` (the last returns `Scored` pool indices with their base scores), private `guess_entropy_columns()`; public `Suggestion<N>` |
+| `candidates/` | `Candidates<N>` (crate-private): the shrinking candidate set as indices into the `Pool`, `filtered(guess)`, scored `suggest_index`/`suggest_top_k` (the last returns `Scored` pool indices with their base scores; `suggest` is the test and bench wrapper of `suggest_index`); public `Suggestion<N>`. A directory: `candidates/counters.rs` holds the thread-local `Scratch`, the dense and sorted counters and the test-only scalar oracles; `tests.rs` and `benches.rs` sit beside `mod.rs` |
 | `transposed.rs` | `Columns<N>` (crate-private): the Candidate set as byte columns plus per-letter count planes, and `Plan<N>`, a guess split into once-only and repeated letters; the block kernel behind the entropy scan, see Strategy and scoring |
-| `endgame.rs` | `Endgame<N>` (crate-private): exact search for candidate sets at or below `Strategy::endgame_threshold`; see Endgame search below |
-| `policy.rs` | `BasePolicy<N>` (crate-private): the Strategy plus the optional `Endgame`, and the one rule "Endgame for 2 to `endgame_threshold` candidates, otherwise greedy"; `DecisionTree` holds it and Rollout plays out under it |
-| `rollout.rs` | `Rollout<N>` (crate-private): lookahead over the top `Strategy::rollout_k` guesses for sets above the Endgame threshold and at most `ROLLOUT_CAP`; see Rollout below |
+| `pool_ops.rs` | `PoolOps` (crate-private): the word-length-free face of a `Pool<N>` (partition, weights, allowed-after, pattern table fill, top-k and best guess), implemented for `Arc<Pool<N>>`. The Endgame, the rollout and the Base policy are written against it, so they are compiled once, not per length; every method is coarse, so the dynamic call is not a cost |
+| `endgame/` | `Endgame` (crate-private, not generic): exact search for candidate sets at or below `Strategy::endgame_threshold`; `mod.rs` is the memo and the search, `table.rs` the `PatternTable`, `floors.rs` the lower bounds and the try order; see Endgame search below |
+| `policy.rs` | `BasePolicy` (crate-private, not generic): the Strategy plus the optional `Endgame`, and the one rule "Endgame for 2 to `endgame_threshold` candidates, otherwise greedy"; `DecisionTree` holds it and Rollout plays out under it |
+| `rollout.rs` | `Rollout` (crate-private, not generic): lookahead over the top `Strategy::rollout_k` guesses for sets above the Endgame threshold and at most `ROLLOUT_CAP`; see Rollout below |
 | `book.rs` | `OpeningBook<N>` (preorder nodes of guess pool index and `(ordinal, child)` edges), `BOOK_FLOOR`; `from_nodes`/`to_nodes` convert to and from `lex_data::StoredBook`, and `from_nodes` validates against the pool (`BookError`: guesses under the pool size, children after their parent and inside the book, ordinals under 3^N and strictly ascending) |
 | `tree.rs` | `DecisionTree<N>` (crate-private): arena of nodes, one per game position, with a memoized suggestion each |
-| `guesser.rs` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
+| `guesser/` | `Guess<N>`, `Guesser<N>`: history plus a cursor into a shared `DecisionTree` |
 | `game.rs` | `GameResult<N>`, `play()`, private `log_guess()` |
 
 `build.rs` hashes every file under `src/` plus `Cargo.toml` (sorted by path, path and contents) into `SOLVER_DIGEST`, which names the solver source in each Track snapshot's header. Any edit to `lex-core`, a comment included, changes it.
@@ -28,21 +29,21 @@ All public types are re-exported from `lib.rs`: `use lex_core::{Guesser, Guess, 
 ## Decision tree (`tree.rs`)
 
 A game position is identified by its guess path: the `(guess word, feedback ordinal)` steps from the
-root. For a fixed starting (pool, Answer list) the path determines the candidate set, and `Candidates::suggest`
+root. For a fixed starting (pool, Answer list) the path determines the candidate set, and `Candidates::suggest_index`
 is deterministic, so a node computes its suggestion once and every later game reaching it reuses
 it. Edges are sparse (`HashMap<(Word<N>, u64), NodeId>`: 3^N possible patterns) and
 keyed by the guess word as well as the pattern, because callers may push guesses that were not the
 suggestion (`assist` does). Ordinals are `u64` at every length; a const assertion in `correctness.rs` checks that
 3^`MAX_WORD_LENGTH` fits. If `suggest` ever gains randomness or hidden state, the cache is invalid. The `Strategy` is fixed per tree (a `Guesser` takes it at construction), so the tree's identity is (pool, Answer list, `Strategy`).
 
-`Guesser` holds the tree behind `Rc<RefCell<..>>`, so it is not `Send`; `Guesser::reset()` starts a
+`Guesser` owns the tree behind a `RefCell` (the memoizing queries take `&self`), so it is not `Sync`; `Guesser::reset()` starts a
 new game on the same tree, and `play` takes `&mut Guesser` for that reason.
 
 ## Opening book (`book.rs`, `tree.rs`)
 
 `Guesser::build_book()` books, top-down, every position whose work (guesses its `Allowed` permits x candidate count) exceeds `BOOK_FLOOR` (40 M pattern evaluations, `benchmarks/experiments/book-floor.md`); `build_book_with_floor` takes the floor so tests can lower it. Work never rises along a path, so the booked positions are a subtree. Each booked node stores the guess `DecisionTree::suggest` chose; a child is booked only if its own work exceeds the floor. `Guesser::with_book` seeds a tree: a node created by playing the booked guess with a booked edge takes the booked child's guess as its pre-filled suggestion and stays on the book; any other guess leaves it. The book holds no Candidate sets, so nodes still filter on creation. The test-only `booked_computations` counter proves a seeded run never searches at a booked node. A book is valid only for the pool, Answer list and Strategy it was built for; `lex-data` stores it under a key of the Corpus and Profile checksums, the length, `Strategy::key_fields()` (every field as an ordered `(name, value)` pair; a destructuring without `..` makes a new field a compile error there) and `SOLVER_DIGEST`. `Guesser::build_book_reporting` reports each booked position for progress. `tests/book_heap.rs` owns a `dhat` global allocator and holds the book's heap against the 1 GB cap (the English-5 case is `--ignored`).
 
-## Endgame search (`endgame.rs`)
+## Endgame search (`endgame/`)
 
 On by default (`Strategy::DEFAULT.endgame_threshold` is 10); off when it is 0. `BasePolicy::guess_index` calls `Endgame::best_index` for
 sets with 2 to threshold candidates and otherwise falls back to `Candidates::suggest_index`; the tree's
@@ -65,7 +66,7 @@ cost against simulated games on real roots.
 
 Off unless `Strategy::rollout_k > 0`. `DecisionTree::suggest` dispatches by candidate count `n`: `Rollout::best_guess` for `max(endgame_threshold, 2) < n <= ROLLOUT_CAP`, otherwise the `BasePolicy` (the Endgame for 2 to `endgame_threshold`, else greedy). Rollout takes `Candidates::suggest_top_k(rollout_k)`, plays each guess out under the `BasePolicy` (the tree's own without rollout), and keeps the guess with the lowest expected guesses `1 + sum share * base_cost(child)`, children summed in ascending feedback ordinal with `mul_add`. A strictly lower cost wins with no epsilon, so an exact tie keeps the higher-scored guess; a guess that leaves the set whole costs infinity.
 
-Costs use the same pool-wide prior weights as the Endgame, so a set's `base_cost` is independent of the position it was reached from. The tree owns the memo, shared by every game and counted in the memory cap, keyed by the sorted candidate indices and the allowed guesses; `AllowedIds` (in `allowed.rs`) interns an `Allowed::List` and one table is shared by the Endgame and the rollout memos. `ROLLOUT_CAP` and `ROLLOUT_MULTIPLIER` are compiled in, not Strategy fields; `DecisionTree::work` scales a rollout position by the multiplier so `BOOK_FLOOR` still counts pattern evaluations. The opt-in test `real_corpus_rollout_reproduces_the_spike_band` replays English-5 with the band forced to 12 to 300 (a test-only floor override) and checks the spike's prior-weighted 4.1569; it also prints the measured multiplier.
+Costs use the same pool-wide prior weights as the Endgame, so a set's `base_cost` is independent of the position it was reached from. The rollout owns the memo, shared by every game and counted in the memory cap, keyed by the sorted candidate indices and the allowed guesses; `AllowedIds` (in `allowed.rs`) interns an `Allowed::List`; each memo (the Endgame's, the rollout's) owns its own table. `ROLLOUT_CAP` and `ROLLOUT_MULTIPLIER` are compiled in, not Strategy fields; `DecisionTree::work` scales a rollout position by the multiplier so `BOOK_FLOOR` still counts pattern evaluations. The opt-in test `real_corpus_rollout_reproduces_the_spike_band` replays English-5 with the band forced to 12 to 300 (a test-only floor override) and checks the spike's prior-weighted 4.1569; it also prints the measured multiplier.
 
 ## Allowed guesses (`allowed.rs`)
 

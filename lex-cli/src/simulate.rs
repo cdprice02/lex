@@ -107,7 +107,6 @@ fn run_n<const N: usize>(
     );
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
-    let strategy = config.strategy;
     let mut guesser = books::guesser(config, data_dir, &source, lists, *mode, *observer)?;
     let first_guess = guesser
         .suggest()
@@ -145,16 +144,29 @@ fn run_n<const N: usize>(
 
     log::info!("Completed {num_games} games");
 
+    assemble(config, &source, file, seed, first_guess.to_string(), games)
+}
+
+/// The report of `games`, which `config` and `source` produced. Not generic over the word length,
+/// so it is compiled once.
+fn assemble(
+    config: &RunConfig,
+    source: &Source,
+    targets_file: Option<&Path>,
+    seed: u64,
+    first_guess: String,
+    games: Vec<Game>,
+) -> anyhow::Result<Report> {
     Ok(Report {
         schema_version: SCHEMA_VERSION,
         run: Run {
             lex_version: env!("CARGO_PKG_VERSION").to_owned(),
             timestamp: OffsetDateTime::now_utc().format(&Rfc3339)?,
             seed,
-            num_games,
-            targets_file: file.map(|p| p.display().to_string()),
-            first_guess: first_guess.to_string(),
-            strategy: strategy.into(),
+            num_games: games.len(),
+            targets_file: targets_file.map(|p| p.display().to_string()),
+            first_guess,
+            strategy: config.strategy.into(),
         },
         corpus: source.corpus().clone(),
         profile: source.profile_report(),

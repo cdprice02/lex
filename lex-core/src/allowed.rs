@@ -1,9 +1,7 @@
 //! The guesses a game position permits, including the hard-mode rule.
 
-use std::cell::RefCell;
 use std::collections::HashMap;
 use std::fmt;
-use std::rc::Rc;
 
 use crate::correctness::{Code, LetterCounts, pattern_ordinal};
 use crate::strategy::{GuessPool, Pool};
@@ -32,10 +30,13 @@ pub enum Violation<T> {
 impl<T: Copy + PartialEq> HardRule<T> {
     /// The rule from a guess's `letters` and the base-3 `ordinal` of its feedback (position 0 is
     /// the most significant digit; 0 absent, 1 misplaced, 2 correct).
-    pub(crate) fn new<const N: usize>(letters: &[T; N], mut ordinal: u64) -> Self {
+    ///
+    /// Takes slices, not word-length arrays, so the rule is compiled once per letter type rather
+    /// than once per length.
+    pub(crate) fn new(letters: &[T], mut ordinal: u64) -> Self {
         let mut greens = Vec::new();
         let mut needs: Vec<(T, usize)> = Vec::new();
-        for position in (0..N).rev() {
+        for position in (0..letters.len()).rev() {
             let digit = ordinal % 3;
             ordinal /= 3;
             if digit == 0 {
@@ -55,7 +56,7 @@ impl<T: Copy + PartialEq> HardRule<T> {
     }
 
     /// The first way `word` breaks the rule, or `None` when it keeps it.
-    pub(crate) fn violation<const N: usize>(&self, word: &[T; N]) -> Option<Violation<T>> {
+    pub(crate) fn violation(&self, word: &[T]) -> Option<Violation<T>> {
         if let Some(&(position, letter)) = self.greens.iter().find(|&&(p, l)| word[p] != l) {
             return Some(Violation::Position(position, letter));
         }
@@ -66,7 +67,7 @@ impl<T: Copy + PartialEq> HardRule<T> {
     }
 
     /// Whether `word` keeps the rule.
-    pub(crate) fn allows<const N: usize>(&self, word: &[T; N]) -> bool {
+    pub(crate) fn allows(&self, word: &[T]) -> bool {
         self.violation(word).is_none()
     }
 }
@@ -151,24 +152,23 @@ impl Allowed {
     }
 }
 
-/// Numbers each distinct allowed-guess list met so far, so a memo key stays small. Clones share
-/// one table, which is how the Endgame and the rollout memos intern a list once between them.
-#[derive(Debug, Clone, Default)]
-pub struct AllowedIds(Rc<RefCell<HashMap<Vec<u32>, u32>>>);
+/// Numbers each distinct allowed-guess list met so far, so a memo key stays small. Owned by the one
+/// memo whose keys it numbers (the Endgame's, the rollout's), so it lives and is cleared with it.
+#[derive(Debug, Default)]
+pub struct AllowedIds(HashMap<Vec<u32>, u32>);
 
 impl AllowedIds {
     /// The memo id of `allowed`, or `None` when the Guess pool mode implies it: `Whole` and
     /// `Candidates` are fixed by the mode and the candidate set, so only a `List` needs an id.
-    pub(crate) fn slot(&self, allowed: &Allowed) -> Option<u32> {
+    pub(crate) fn slot(&mut self, allowed: &Allowed) -> Option<u32> {
         let Allowed::List(list) = allowed else {
             return None;
         };
-        let mut ids = self.0.borrow_mut();
-        if let Some(&id) = ids.get(list) {
+        if let Some(&id) = self.0.get(list) {
             return Some(id);
         }
-        let id = u32::try_from(ids.len()).unwrap_or(u32::MAX);
-        ids.insert(list.clone(), id);
+        let id = u32::try_from(self.0.len()).unwrap_or(u32::MAX);
+        self.0.insert(list.clone(), id);
         Some(id)
     }
 }
@@ -178,13 +178,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn a_clone_numbers_lists_in_the_same_table() {
-        let ids = AllowedIds::default();
-        let shared = ids.clone();
+    fn lists_are_numbered_in_first_seen_order() {
+        let mut ids = AllowedIds::default();
         let (a, b) = (Allowed::List(vec![1, 2]), Allowed::List(vec![3]));
         assert_eq!(ids.slot(&a), Some(0));
-        assert_eq!(shared.slot(&b), Some(1));
-        assert_eq!(shared.slot(&a), Some(0));
+        assert_eq!(ids.slot(&b), Some(1));
+        assert_eq!(ids.slot(&a), Some(0));
         assert_eq!(ids.slot(&Allowed::Whole), None);
         assert_eq!(ids.slot(&Allowed::Candidates), None);
     }

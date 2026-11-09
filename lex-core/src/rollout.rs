@@ -4,13 +4,10 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use lex_data::Word;
-
 use crate::allowed::{Allowed, AllowedIds};
-use crate::candidates::Candidates;
-use crate::correctness::WordCorrectness;
 use crate::policy::BasePolicy;
-use crate::strategy::{GuessPool, Pool, Strategy};
+use crate::pool_ops::PoolOps;
+use crate::strategy::{GuessPool, Strategy};
 
 /// The largest Candidate set a rollout is attempted on. A compiled-in constant rather than a
 /// Strategy field: it bounds the worst Track's book build, not a solver preference, and it moves
@@ -27,9 +24,9 @@ pub const ROLLOUT_MULTIPLIER: u64 = 8;
 /// A set's base cost is a weighted sum over answers with the pool-wide prior weights, shared by
 /// every game, so the memo is keyed by the sorted candidate indices and the allowed guesses alone.
 #[derive(Debug)]
-pub struct Rollout<const N: usize> {
+pub struct Rollout {
     /// The Guess pool the set indices point into.
-    pool: Arc<Pool<N>>,
+    pool: Arc<dyn PoolOps>,
     /// The Strategy's Guess pool, which decides which guesses a position allows.
     guess_pool: GuessPool,
     /// How many top-scored guesses are played out.
@@ -38,7 +35,8 @@ pub struct Rollout<const N: usize> {
     floor: usize,
     /// Answer prior weight of each pool word, unnormalized.
     weights: Vec<f64>,
-    /// Allowed-guess lists numbered once for this memo and the Endgame's.
+    /// Each distinct allowed-guess list met so far, numbered, so a memo key is small. Belongs to
+    /// `memo`.
     list_ids: AllowedIds,
     /// Expected guesses from a set under the base policy, by allowed list (`None` when the mode
     /// implies it) and then by set.
@@ -48,10 +46,10 @@ pub struct Rollout<const N: usize> {
     evaluations: std::cell::Cell<u64>,
 }
 
-impl<const N: usize> Rollout<N> {
+impl Rollout {
     /// A rollout over `pool` playing out the best `strategy.rollout_k` guesses, active above the
     /// Endgame threshold (and above a lone pair when the Endgame is off).
-    pub(crate) fn new(pool: Arc<Pool<N>>, strategy: &Strategy, list_ids: AllowedIds) -> Self {
+    pub(crate) fn new(pool: Arc<dyn PoolOps>, strategy: &Strategy) -> Self {
         let weights = pool.weights(strategy.temperature);
         Self {
             pool,
@@ -59,7 +57,7 @@ impl<const N: usize> Rollout<N> {
             width: strategy.rollout_k,
             floor: strategy.endgame_threshold.max(2),
             weights,
-            list_ids,
+            list_ids: AllowedIds::default(),
             memo: HashMap::new(),
             #[cfg(test)]
             evaluations: std::cell::Cell::new(0),
@@ -107,20 +105,19 @@ impl<const N: usize> Rollout<N> {
     /// A strictly cheaper guess wins; an exact tie keeps the higher-scored one.
     pub(crate) fn best_guess(
         &mut self,
-        candidates: &Candidates<N>,
+        set: &[u32],
         allowed: &Allowed,
-        base: &mut BasePolicy<N>,
-    ) -> Option<Word<N>> {
-        let set = candidates.indices();
+        base: &mut BasePolicy,
+    ) -> Option<u32> {
         let mass = self.mass(set);
         let mut best: Option<(f64, u32)> = None;
-        for scored in candidates.suggest_top_k(base.strategy(), allowed, self.width) {
+        for scored in self.pool.top_k(set, base.strategy(), allowed, self.width) {
             let cost = self.guess_cost(set, allowed, scored.index, mass, base);
             if best.is_none_or(|(lowest, _)| cost < lowest) {
                 best = Some((cost, scored.index));
             }
         }
-        best.map(|(_, guess)| self.pool.word(guess))
+        best.map(|(_, guess)| guess)
     }
 
     /// Expected guesses from `set` after playing `guess` now and the base policy afterwards;
@@ -131,13 +128,13 @@ impl<const N: usize> Rollout<N> {
         allowed: &Allowed,
         guess: u32,
         mass: f64,
-        base: &mut BasePolicy<N>,
+        base: &mut BasePolicy,
     ) -> f64 {
         let mut keyed = Vec::with_capacity(set.len());
         self.pool.partition(set, guess, &mut keyed);
         #[cfg(test)]
         self.count_evaluations(1, set.len());
-        let win = WordCorrectness::<N>::COUNT - 1;
+        let win = self.pool.win_ordinal();
         let mut cost = 1.0;
         // ascending feedback ordinal, so the floating-point sum does not depend on word order
         for group in keyed.chunk_by(|a, b| a.0 == b.0) {
@@ -148,12 +145,9 @@ impl<const N: usize> Rollout<N> {
                 return f64::INFINITY;
             }
             let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
-            let child_allowed = allowed.after(
-                self.guess_pool,
-                &self.pool,
-                self.pool.code(guess),
-                group[0].0,
-            );
+            let child_allowed =
+                self.pool
+                    .allowed_after(allowed, self.guess_pool, guess, group[0].0);
             let share = self.mass(&child) / mass;
             let child_cost = self.base_cost(&child, &child_allowed, base);
             cost = share.mul_add(child_cost, cost);
@@ -163,7 +157,7 @@ impl<const N: usize> Rollout<N> {
 
     /// Expected guesses from `set` under the base policy: the Endgame within the Strategy's
     /// threshold, otherwise the best-scored guess. Memoized.
-    fn base_cost(&mut self, set: &[u32], allowed: &Allowed, base: &mut BasePolicy<N>) -> f64 {
+    fn base_cost(&mut self, set: &[u32], allowed: &Allowed, base: &mut BasePolicy) -> f64 {
         if set.len() <= 1 {
             return 1.0;
         }
@@ -183,24 +177,24 @@ impl<const N: usize> Rollout<N> {
     }
 
     /// The base policy's guess for `set`.
-    fn base_guess(&self, set: &[u32], allowed: &Allowed, base: &mut BasePolicy<N>) -> Option<u32> {
+    fn base_guess(&self, set: &[u32], allowed: &Allowed, base: &mut BasePolicy) -> Option<u32> {
         #[cfg(test)]
         if !base.uses_endgame(set.len()) {
             self.count_evaluations(allowed.guess_count(self.pool.len(), set.len()), set.len());
         }
-        base.guess_index(
-            &Candidates::from_indices(Arc::clone(&self.pool), set.to_vec()),
-            allowed,
-        )
+        base.guess_index(&self.pool, set, allowed)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use lex_data::WordSet;
+    use lex_data::{Word, WordSet};
 
     use super::*;
-    use crate::correctness::pattern_ordinal;
+    use crate::candidates::Candidates;
+    use crate::correctness::{WordCorrectness, pattern_ordinal};
+    use crate::pool_ops::shared;
+    use crate::strategy::Pool;
 
     /// Words over a small alphabet, frequency-descending, so scores tie and play-outs differ.
     fn pool() -> Arc<Pool<4>> {
@@ -281,11 +275,9 @@ mod tests {
         set: &[u32],
         allowed: &Allowed,
     ) -> Option<u32> {
-        let mut rollout = Rollout::new(Arc::clone(pool), strategy, AllowedIds::default());
+        let mut rollout = Rollout::new(shared(pool), strategy);
         let mut base = BasePolicy::new(*strategy, None);
-        let candidates = Candidates::from_indices(Arc::clone(pool), set.to_vec());
-        let word = rollout.best_guess(&candidates, allowed, &mut base)?;
-        pool.indices().find(|&i| pool.word(i) == word)
+        rollout.best_guess(set, allowed, &mut base)
     }
 
     #[test]
@@ -331,12 +323,11 @@ mod tests {
         let pool = pool();
         let rollout = |threshold| {
             Rollout::new(
-                Arc::clone(&pool),
+                shared(&pool),
                 &Strategy {
                     endgame_threshold: threshold,
                     ..strategy(10)
                 },
-                AllowedIds::default(),
             )
         };
         let off = rollout(0);
@@ -352,7 +343,7 @@ mod tests {
         let strategy = strategy(4);
         let set: Vec<u32> = (0..120).step_by(5).collect();
         let restricted = Allowed::List(set.clone());
-        let mut rollout = Rollout::new(Arc::clone(&pool), &strategy, AllowedIds::default());
+        let mut rollout = Rollout::new(shared(&pool), &strategy);
         let mut base = BasePolicy::new(strategy, None);
         let limited = rollout.base_cost(&set, &restricted, &mut base);
         let free = rollout.base_cost(&set, &Allowed::Whole, &mut base);
@@ -361,11 +352,7 @@ mod tests {
             rollout.base_cost(&set, &restricted, &mut base).to_bits(),
             limited.to_bits()
         );
-        let fresh = Rollout::new(Arc::clone(&pool), &strategy, AllowedIds::default()).base_cost(
-            &set,
-            &restricted,
-            &mut base,
-        );
+        let fresh = Rollout::new(shared(&pool), &strategy).base_cost(&set, &restricted, &mut base);
         assert_eq!(limited.to_bits(), fresh.to_bits());
     }
 
@@ -457,9 +444,13 @@ mod benches {
     use divan::Bencher;
     use std::hint::black_box;
 
-    use super::{Allowed, AllowedIds, BasePolicy, Candidates, Rollout, Strategy};
+    use std::sync::Arc;
+
+    use super::{Allowed, BasePolicy, Rollout, Strategy};
+    use crate::candidates::Candidates;
     use crate::candidates::synthetic_pool;
     use crate::endgame::Endgame;
+    use crate::pool_ops::shared;
 
     /// Candidate-set sizes the rollout multiplier is read at: the edge of the band, a mid-sized
     /// set, and the compiled-in cap.
@@ -490,10 +481,10 @@ mod benches {
             rollout_k: 10,
             ..Strategy::default()
         };
-        b.with_inputs(|| Rollout::new(candidates.pool(), &strategy, AllowedIds::default()))
+        b.with_inputs(|| Rollout::new(shared(&candidates.pool()), &strategy))
             .bench_local_refs(|rollout| {
                 let mut base = BasePolicy::new(strategy, None);
-                black_box(rollout.best_guess(&candidates, &Allowed::Whole, &mut base))
+                black_box(rollout.best_guess(candidates.indices(), &Allowed::Whole, &mut base))
             });
     }
 
@@ -507,21 +498,20 @@ mod benches {
             ..Strategy::default()
         };
         b.with_inputs(|| {
-            let ids = AllowedIds::default();
+            let pool = shared(&candidates.pool());
             let endgame = Endgame::new(
-                candidates.pool(),
+                Arc::clone(&pool),
                 strategy.pool,
                 strategy.temperature,
                 strategy.endgame_aversion,
-            )
-            .sharing(ids.clone());
+            );
             (
-                Rollout::new(candidates.pool(), &strategy, ids),
+                Rollout::new(pool, &strategy),
                 BasePolicy::new(strategy, Some(endgame)),
             )
         })
         .bench_local_refs(|(rollout, base)| {
-            black_box(rollout.best_guess(&candidates, &Allowed::Whole, base))
+            black_box(rollout.best_guess(candidates.indices(), &Allowed::Whole, base))
         });
     }
 }
