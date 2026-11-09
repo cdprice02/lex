@@ -3,7 +3,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
-use lex_core::{GuessPool, Strategy};
+use lex_core::{GuessPool, PriorShape, Strategy};
 use lex_data::{Language, Profile};
 
 use crate::config::{Game, RunConfig, Targets};
@@ -85,6 +85,7 @@ pub struct BookBuildArgs {
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
             "win_weight", "endgame_threshold", "endgame_aversion", "rollout_k",
+            "prior_shape",
         ]
     )]
     pub track: Option<Track>,
@@ -223,6 +224,13 @@ pub struct CommonArgs {
         default_value_t = Strategy::DEFAULT.rollout_k
     )]
     pub rollout_k: usize,
+    /// How frequency becomes the Answer prior weight: power, sigmoid:<cutoff in (0, 1]> or floor:<percentile in [0, 100)>
+    #[arg(
+        long,
+        hide = true,
+        default_value_t = Strategy::DEFAULT.prior_shape
+    )]
+    pub prior_shape: PriorShape,
 }
 
 impl CommonArgs {
@@ -278,6 +286,7 @@ impl CommonArgs {
             endgame_threshold: self.endgame_threshold,
             endgame_aversion: self.endgame_aversion,
             rollout_k: self.rollout_k,
+            prior_shape: self.prior_shape,
         }
     }
 
@@ -324,7 +333,7 @@ pub struct SimulateArgs {
         value_parser = parse_track,
         conflicts_with_all = [
             "lang", "word_length", "dictionary_length", "profile", "pool", "temperature",
-            "win_weight", "endgame_threshold", "endgame_aversion", "rollout_k", "num_games", "seed",
+            "win_weight", "endgame_threshold", "endgame_aversion", "rollout_k", "prior_shape", "num_games", "seed",
             "targets",
         ]
     )]
@@ -584,6 +593,28 @@ mod track_tests {
                 .dispatch_length(),
             8
         );
+    }
+
+    #[test]
+    fn the_prior_shape_defaults_to_power_and_rejects_bad_values() {
+        let base = ["--lang", "english", "-l", "5"];
+        let shape = |extra: &[&str]| {
+            let args: Vec<&str> = base.iter().chain(extra).copied().collect();
+            simulate(&args).map(|a| a.common.strategy().prior_shape)
+        };
+        assert_eq!(shape(&[]).unwrap(), PriorShape::Power);
+        assert_eq!(
+            shape(&["--prior-shape", "sigmoid:0.25"]).unwrap(),
+            PriorShape::Sigmoid { cutoff: 0.25 }
+        );
+        assert_eq!(
+            shape(&["--prior-shape", "floor:50"]).unwrap(),
+            PriorShape::Floor { percentile: 50.0 }
+        );
+        for bad in ["sigmoid:0", "sigmoid:2", "floor:100", "floor:-5", "bogus"] {
+            assert!(shape(&["--prior-shape", bad]).is_err(), "{bad}");
+        }
+        assert!(simulate(&["--track", "english-5", "--prior-shape", "power"]).is_err());
     }
 
     #[test]
