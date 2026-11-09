@@ -60,7 +60,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Endgame](experiments/endgame.md) | Exact search below a threshold, on by default at 10 |
 | [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
-| [Build flags](experiments/build-flags.md) | `codegen-units`, `panic`, `-Z build-std`, PGO and BOLT against the plain build; results pending |
+| [Build flags](experiments/build-flags.md) | `codegen-units`, `panic`, `-Z build-std`, PGO and BOLT against the plain build; no profile change, PGO stays opt-in |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
 
 ## Tracks
@@ -180,8 +180,9 @@ benchmarks/scripts/pgo.sh --data-dir /path/to/data
 ```
 
 It builds an instrumented binary, trains on `simulate -l 5` English and Russian (`-n 200`) and
-English `--pool hard` (`-n 50`), builds the optimized binary and prints its path. Training is a
-subset of the measured runs, so lengths and languages outside it are unprofiled. The CLI ignores
+English `--pool hard` (`-n 50`), plus English-7 and Russian-9 (`-n 20`), builds the optimized
+binary and prints its path. Each word length is its own copy of the solver and LLVM treats an
+unprofiled copy as cold, so the other lengths keep it from slowing the rest. The CLI ignores
 `LEX_DATA_DIR`, hence `--data-dir`. Training plays with the opening book like the measured runs;
 pass `-- --no-book` to skip it, and `GAMES=N` to shrink the runs. Plain `cargo build --release` is
 unchanged. With `--bolt` (Linux only, since BOLT rewrites ELF binaries) it adds a BOLT stage on top

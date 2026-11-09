@@ -6,9 +6,10 @@
 #   --bolt      add a BOLT stage on top of the PGO build (Linux only)
 #   --data-dir  the data directory every training run uses (the CLI ignores LEX_DATA_DIR)
 #   GAMES=N     games per training run (default 200; the English and Russian runs match the Tracks)
-# Training is a strict subset of the Speed bar runs, so the profile never favours an unmeasured
-# case: English-5 and Russian-5 at -n 200, plus English-5 --pool hard at -n 50 for the hard-mode
-# rollout paths (hard mode narrows the guess pool, so 50 games exercise it in a fraction of the time).
+# Training covers the Speed bar runs (English-5 and Russian-5 at -n 200, English-5 --pool hard at
+# -n 50 for the hard-mode rollout paths) plus English-7 and Russian-9 at -n 20: LLVM treats code
+# with no profile as cold, and a 5-letter-only profile slowed the Russian-9 book build by 10%, since
+# each word length is its own monomorphized copy of the solver.
 # Training runs play with the opening book like the measured runs, so a missing book is built first
 # unless the extra args carry --no-book.
 set -eu
@@ -25,6 +26,7 @@ while [ $# -gt 0 ]; do
 done
 GAMES=${GAMES:-200}
 HARD_GAMES=${HARD_GAMES:-50}
+OTHER_GAMES=${OTHER_GAMES:-20}
 
 if [ "$BOLT" = 1 ] && [ "$(uname -s)" != Linux ]; then
   echo "--bolt needs Linux: BOLT rewrites ELF binaries only" >&2
@@ -40,6 +42,8 @@ run_training() {
   "$bin" simulate -l 5 --lang english -n "$GAMES" --data-dir "$DATA" "$@" >/dev/null
   "$bin" simulate -l 5 --lang russian -n "$GAMES" --data-dir "$DATA" "$@" >/dev/null
   "$bin" simulate -l 5 --lang english --pool hard -n "$HARD_GAMES" --data-dir "$DATA" "$@" >/dev/null
+  "$bin" simulate -l 7 --lang english -n "$OTHER_GAMES" --data-dir "$DATA" "$@" >/dev/null
+  "$bin" simulate -l 9 --lang russian -n "$OTHER_GAMES" --data-dir "$DATA" "$@" >/dev/null
 }
 
 cargo pgo build -- -p lex-cli
