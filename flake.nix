@@ -30,7 +30,10 @@
           pkgs.cargo-llvm-lines
           pkgs.cargo-bloat
           pkgs.cargo-modules
-        ];
+          pkgs.cargo-pgo
+        ]
+        # BOLT rewrites ELF binaries only.
+        ++ nixpkgs.lib.optionals pkgs.stdenv.isLinux [pkgs.llvmPackages.bolt];
       };
     });
   };
