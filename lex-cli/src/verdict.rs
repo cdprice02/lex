@@ -6,12 +6,16 @@
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
 use std::fs;
+use std::io::IsTerminal as _;
 use std::path::Path;
 
 use anyhow::{Context, Result, bail};
 use serde::Deserialize;
+use tabled::builder::Builder;
+use tabled::settings::Style;
 
 use crate::cli::VerdictArgs;
+use crate::style;
 use crate::tracks::{TRACKS, Tier, Track, TrackTargets};
 
 /// A headline Track may not regress by more than this many guesses.
@@ -246,6 +250,62 @@ impl Verdict {
             let _ = writeln!(out, "- {note}");
         }
         let _ = writeln!(out, "Outcome: {}", self.outcome.name());
+        out
+    }
+}
+
+impl Verdict {
+    /// The terminal form of [`render`](Self::render): a bordered, coloured table, the notes,
+    /// then the outcome. [`render`](Self::render) stays markdown for CI's job summary.
+    #[must_use]
+    pub fn render_table(&self) -> String {
+        let mut builder = Builder::new();
+        builder.push_record(["Track", "Tier", "Judged", "Base", "Head", "Delta", "Status"]);
+        let cell = |v: Option<f64>| v.map_or_else(|| "-".to_owned(), |v| format!("{v:.4}"));
+        let paint = |s: anstyle::Style, text: String| format!("{s}{text}{s:#}");
+        for row in &self.rows {
+            let delta = row.delta();
+            let delta_style = match delta {
+                Some(d) if d < -EPSILON => style::success_style(),
+                Some(d) if d > EPSILON => style::failure_style(),
+                _ => anstyle::Style::new(),
+            };
+            let status_style = if row.status.starts_with("better") {
+                style::success_style()
+            } else if row.status.starts_with("worse") {
+                style::failure_style()
+            } else {
+                style::dim_style()
+            };
+            builder.push_record([
+                row.id.clone(),
+                row.tier.to_owned(),
+                if row.judged { "yes" } else { "no" }.to_owned(),
+                cell(row.base),
+                cell(row.head),
+                paint(
+                    delta_style,
+                    delta.map_or_else(|| "-".to_owned(), |d| format!("{d:+.4}")),
+                ),
+                paint(status_style, row.status.clone()),
+            ]);
+        }
+        let mut table = builder.build();
+        table.with(Style::rounded());
+        let mut out = format!("{table}\n");
+        for note in &self.notes {
+            let _ = writeln!(out, "- {note}");
+        }
+        let outcome_style = match self.outcome {
+            Outcome::Accept => style::success_style(),
+            Outcome::Reject | Outcome::Stale => style::failure_style(),
+            Outcome::Unchanged | Outcome::Rebaseline | Outcome::New => style::emphasis_style(),
+        };
+        let _ = writeln!(
+            out,
+            "Outcome: {outcome_style}{}{outcome_style:#}",
+            self.outcome.name()
+        );
         out
     }
 }
@@ -535,7 +595,11 @@ fn run(args: &VerdictArgs) -> Result<i32> {
         bail!("verdict needs a base and a head directory");
     };
     let verdict = verdict(base, head, lex_core::SOLVER_DIGEST)?;
-    print!("{}", verdict.render());
+    if std::io::stdout().is_terminal() {
+        anstream::print!("{}", verdict.render_table());
+    } else {
+        print!("{}", verdict.render());
+    }
     Ok(verdict.outcome.exit_code())
 }
 
