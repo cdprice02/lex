@@ -95,7 +95,7 @@ impl<const N: usize> Guesser<N> {
         book: Option<OpeningBook<N>>,
     ) -> Self {
         strategy.assert_valid();
-        let pool = Pool::new(pool);
+        let pool = Pool::shaped(pool, answers, strategy.prior_shape);
         assert!(
             book.as_ref()
                 .and_then(OpeningBook::max_guess)

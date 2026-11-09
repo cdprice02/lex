@@ -24,7 +24,9 @@ pub use candidates::Suggestion;
 pub use correctness::{Correctness, WordCorrectness};
 pub use game::{GameResult, play};
 pub use guesser::{Guess, Guesser};
-pub use strategy::{CANONICAL_TEMPERATURE, GuessPool, Strategy, answer_prior};
+pub use strategy::{
+    CANONICAL_TEMPERATURE, GuessPool, PriorShape, PriorShapeError, Strategy, answer_prior,
+};
 
 #[cfg(test)]
 mod tests {

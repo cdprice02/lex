@@ -4,7 +4,7 @@ use std::collections::BTreeMap;
 use std::fmt::Write as _;
 
 use anstyle::Style;
-use lex_core::{GuessPool, Strategy};
+use lex_core::{GuessPool, PriorShape, Strategy};
 use serde::{Deserialize, Serialize};
 
 use crate::style;
@@ -87,6 +87,32 @@ pub struct StrategyReport {
     /// Reports from before rollout never used one.
     #[serde(default)]
     pub rollout_k: usize,
+    /// Reports from before prior shapes used the power law; only a non-default shape is written.
+    #[serde(default, skip_serializing_if = "is_power", with = "shape_text")]
+    pub prior_shape: PriorShape,
+}
+
+/// Whether `shape` is the default, which a report leaves out.
+fn is_power(shape: &PriorShape) -> bool {
+    *shape == PriorShape::Power
+}
+
+/// A [`PriorShape`] on the wire as its command-line text, such as `sigmoid:0.25`.
+mod shape_text {
+    use lex_core::PriorShape;
+    use serde::{Deserialize, Deserializer, Serializer};
+
+    /// Writes the shape as text.
+    pub fn serialize<S: Serializer>(shape: &PriorShape, s: S) -> Result<S::Ok, S::Error> {
+        s.collect_str(shape)
+    }
+
+    /// Reads the shape from text.
+    pub fn deserialize<'de, D: Deserializer<'de>>(d: D) -> Result<PriorShape, D::Error> {
+        String::deserialize(d)?
+            .parse()
+            .map_err(serde::de::Error::custom)
+    }
 }
 
 /// The wire shape: reports written before the mode field carry `hard_mode: bool`, and that
@@ -110,6 +136,9 @@ struct RawStrategyReport {
     /// Rollout width, zero when absent.
     #[serde(default)]
     rollout_k: usize,
+    /// Power when absent.
+    #[serde(default, with = "shape_text")]
+    prior_shape: PriorShape,
 }
 
 impl From<RawStrategyReport> for StrategyReport {
@@ -128,6 +157,7 @@ impl From<RawStrategyReport> for StrategyReport {
             endgame_threshold: raw.endgame_threshold,
             endgame_aversion: raw.endgame_aversion,
             rollout_k: raw.rollout_k,
+            prior_shape: raw.prior_shape,
         }
     }
 }
@@ -152,6 +182,7 @@ impl From<Strategy> for StrategyReport {
             endgame_threshold: s.endgame_threshold,
             endgame_aversion: s.endgame_aversion,
             rollout_k: s.rollout_k,
+            prior_shape: s.prior_shape,
         }
     }
 }
@@ -160,7 +191,7 @@ impl std::fmt::Display for StrategyReport {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}, rollout K {}",
+            "{}, temperature {}, win weight {}, endgame threshold {}, aversion {}, rollout K {}{}",
             match self.mode {
                 Mode::Unconstrained => "unconstrained",
                 Mode::Hard => "hard mode",
@@ -170,7 +201,12 @@ impl std::fmt::Display for StrategyReport {
             self.win_weight,
             self.endgame_threshold,
             self.endgame_aversion,
-            self.rollout_k
+            self.rollout_k,
+            if is_power(&self.prior_shape) {
+                String::new()
+            } else {
+                format!(", prior shape {}", self.prior_shape)
+            }
         )
     }
 }
@@ -499,6 +535,21 @@ mod tests {
 
     fn read(json: &str) -> StrategyReport {
         serde_json::from_str(json).unwrap()
+    }
+
+    #[test]
+    fn the_default_shape_is_left_out_and_others_round_trip() {
+        let default = serde_json::to_string(&StrategyReport::from(Strategy::default())).unwrap();
+        assert!(!default.contains("prior_shape"));
+        assert_eq!(read(&default).prior_shape, PriorShape::Power);
+        let shaped = StrategyReport::from(Strategy {
+            prior_shape: PriorShape::Sigmoid { cutoff: 0.25 },
+            ..Strategy::default()
+        });
+        let json = serde_json::to_string(&shaped).unwrap();
+        assert!(json.contains(r#""prior_shape":"sigmoid:0.25""#));
+        assert_eq!(read(&json), shaped);
+        assert!(shaped.to_string().ends_with(", prior shape sigmoid:0.25"));
     }
 
     #[test]

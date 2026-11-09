@@ -62,6 +62,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
 | [Build flags](experiments/build-flags.md) | `codegen-units`, `panic`, `-Z build-std`, PGO and BOLT against the plain build; no profile change, PGO stays opt-in |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
+| [Prior shape](experiments/prior-shape.md) | Screen of a sigmoid-of-rank and a frequency-floor Answer prior against the power law; results pending |
 
 ## Tracks
 

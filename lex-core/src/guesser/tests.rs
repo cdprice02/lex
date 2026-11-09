@@ -229,6 +229,7 @@ const STRATEGIES: [Strategy; 5] = [
         endgame_threshold: 0,
         endgame_aversion: 0.0,
         rollout_k: 0,
+        prior_shape: crate::PriorShape::Power,
     },
     Strategy {
         pool: GuessPool::All,
@@ -237,6 +238,7 @@ const STRATEGIES: [Strategy; 5] = [
         endgame_threshold: 0,
         endgame_aversion: 0.0,
         rollout_k: 0,
+        prior_shape: crate::PriorShape::Power,
     },
 ];
 
