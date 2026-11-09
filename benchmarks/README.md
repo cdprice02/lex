@@ -60,6 +60,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Endgame](experiments/endgame.md) | Exact search below a threshold, on by default at 10 |
 | [Partition dedupe](experiments/dedupe.md) | Rejected: slower, and over the memory cap on a full run |
 | [Opening book floor](experiments/book-floor.md) | 40 M pattern evaluations (about 1 s single-core); the Wordle Profile books nothing |
+| [Build flags](experiments/build-flags.md) | `codegen-units`, `panic`, `-Z build-std`, PGO and BOLT against the plain build; results pending |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
 
 ## Tracks
@@ -158,6 +159,52 @@ jq -s -r '[.[].results[]] | group_by(.command)[] |
 Check for stray CPU-heavy processes first, and rerun any figure taken under contention. To see
 where the time goes, profile with `samply record -- ./target/release/lex simulate ...` (the
 `samply` Cargo profile keeps debug info).
+
+## Build variants
+
+A build-flag change is a speed change and is judged by the Speed bar above, with one rule: base and
+candidate use the same profile and the same flags, `-C target-cpu=native` included, so the only
+difference is the variant under test. Anything the candidate sets by environment (`RUSTFLAGS`,
+`CARGO_PROFILE_*`) is set for the base's build too, or the variant is the environment and not the
+flag. Equivalence is the bar of any speed change: `simulate` output byte-identical to the plain
+build's.
+
+### PGO
+
+`benchmarks/scripts/pgo.sh` builds `lex` with profile-guided optimization through
+[`cargo-pgo`](https://github.com/Kobzol/cargo-pgo) (in the Nix dev shell; it needs the `llvm-tools`
+component from `rust-toolchain.toml`, and `cargo pgo info` checks both). Run it from the repo root:
+
+```bash
+benchmarks/scripts/pgo.sh --data-dir /path/to/data
+```
+
+It builds an instrumented binary, trains on `simulate -l 5` English and Russian (`-n 200`) and
+English `--pool hard` (`-n 50`), builds the optimized binary and prints its path. Training is a
+subset of the measured runs, so lengths and languages outside it are unprofiled. The CLI ignores
+`LEX_DATA_DIR`, hence `--data-dir`. Training plays with the opening book like the measured runs;
+pass `-- --no-book` to skip it, and `GAMES=N` to shrink the runs. Plain `cargo build --release` is
+unchanged. With `--bolt` (Linux only, since BOLT rewrites ELF binaries) it adds a BOLT stage on top
+of the PGO profile and prints the BOLT-optimized binary instead; compare that with the PGO binary,
+not the plain one. A Speed bar run of a PGO binary builds its book with that same binary first.
+
+### `-Z build-std`
+
+Rebuilds the standard library with the workspace's profile and flags. It needs `rust-src` (in the
+toolchain file) and an explicit `--target`, which moves the binary to `target/$TARGET/release/lex`:
+
+```bash
+TARGET=$(rustc -vV | sed -n 's/^host: //p')
+RUSTFLAGS="-C target-cpu=native" cargo build --release -p lex-cli \
+  -Z build-std=std,panic_abort --target "$TARGET"
+```
+
+`std,panic_abort` is the form for a `panic = "abort"` candidate; use `-Z build-std=std` for the
+unwind build. The profile's own `rustflags` (`target-cpu=native` in `Cargo.toml`) reach the
+workspace crates; `RUSTFLAGS` is what reaches the rebuilt standard library, so set it to the same
+`target-cpu`. `RUSTFLAGS` replaces `[build] rustflags` from `.cargo/config.toml`, which holds only
+compile-speed flags (`-Z threads`, `-Z share-generics`) and no codegen. Check the flags landed with
+`cargo build -v` (look for `target-cpu=native` on the `core` and `std` rustc lines) before timing.
 
 ## Verdict
 
