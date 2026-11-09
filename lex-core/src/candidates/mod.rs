@@ -10,7 +10,9 @@ use lex_data::Word;
 use crate::allowed::Allowed;
 #[cfg(any(test, feature = "bench"))]
 use crate::correctness::Code;
-use crate::correctness::{LetterCounts, WordCorrectness, pattern_ordinal};
+#[cfg(any(test, feature = "bench"))]
+use crate::correctness::WordCorrectness;
+use crate::correctness::{LetterCounts, pattern_ordinal};
 use crate::guesser::Guess;
 use crate::strategy::{Pool, Strategy};
 mod counters;

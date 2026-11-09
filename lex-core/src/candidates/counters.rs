@@ -2,7 +2,9 @@
 
 use std::cell::RefCell;
 
-use crate::correctness::{Code, LetterCounts, WordCorrectness, pattern_ordinal};
+use crate::correctness::WordCorrectness;
+#[cfg(any(test, feature = "bench"))]
+use crate::correctness::{Code, LetterCounts, pattern_ordinal};
 use crate::transposed::{BLOCK, Columns, MAX_U32_LENGTH, Ordinal, Plan};
 
 /// Largest bucket array the dense counter may allocate per thread. Working memory like this sits
