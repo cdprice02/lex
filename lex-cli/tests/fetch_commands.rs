@@ -17,7 +17,7 @@ use clap::Parser;
 use clap::error::ErrorKind;
 use common::{seed_dict, seed_supported};
 use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
-use lex_cli::fetch::{Network, Sinks, corpus_with, dict_with, profile_with};
+use lex_cli::fetch::{Network, Online, Sinks, corpus_with, dict_with, profile_with};
 use lex_data::{DataDir, Language, Profile};
 use strum::VariantArray as _;
 use totals_common::seed_totals;
@@ -473,4 +473,198 @@ fn profile_fetch_hands_the_download_request_to_the_corpus_build() {
     let seen = workers_of(PROFILE, Some(2));
     assert!(!seen.is_empty());
     assert!(seen.iter().all(|w| *w == Some(2)));
+}
+
+/// Runs a fetch command with `--offline` (copied into the arguments as `main` does) over `net`,
+/// returning what it printed and its result.
+fn run_offline(
+    net: &dyn Network,
+    root: &Path,
+    group_verb: &[&str],
+    args: &[&str],
+) -> (String, anyhow::Result<()>) {
+    let data = root.to_str().unwrap();
+    let all: Vec<&str> = group_verb
+        .iter()
+        .chain(args)
+        .copied()
+        .chain(["--data-dir", data])
+        .collect();
+    let mut out = Vec::new();
+    let result = {
+        let mut sinks = Sinks {
+            out: &mut out,
+            warn: &mut Vec::new(),
+            terminal: false,
+        };
+        match parse(&all).unwrap() {
+            Command::Dict(a) => {
+                let DictCommand::Fetch(mut a) = a.command else {
+                    panic!("dict fetch")
+                };
+                a.offline = true;
+                dict_with(&a, net, &mut sinks)
+            }
+            Command::Corpus(a) => {
+                let CorpusCommand::Build(mut a) = a.command else {
+                    panic!("corpus build")
+                };
+                a.offline = true;
+                corpus_with(&a, net, &mut sinks)
+            }
+            Command::Profile(a) => {
+                let ProfileCommand::Fetch(mut a) = a.command else {
+                    panic!("profile fetch")
+                };
+                a.offline = true;
+                profile_with(&a, net, &mut sinks)
+            }
+            Command::Simulate(_)
+            | Command::Assist(_)
+            | Command::Compare(_)
+            | Command::Book(_)
+            | Command::Verdict(_)
+            | Command::Word(_) => panic!("a fetch command"),
+        }
+    };
+    (String::from_utf8(out).unwrap(), result)
+}
+
+fn offline_message(result: anyhow::Result<()>) -> String {
+    let err = result.unwrap_err();
+    assert!(
+        matches!(
+            err.downcast_ref::<lex_data::LexDataError>(),
+            Some(lex_data::LexDataError::Offline { .. })
+        ),
+        "{err:?}"
+    );
+    err.to_string()
+}
+
+#[test]
+fn offline_a_missing_dictionary_is_the_offline_error_and_nothing_is_downloaded() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let (_, result) = run_offline(&net, tmp.path(), DICT, &["--lang", "english"]);
+    assert_eq!(
+        offline_message(result),
+        "offline: the english Dictionary is not cached; run `lex dict fetch --lang english`"
+    );
+    assert!(net.calls().is_empty());
+}
+
+#[test]
+fn offline_a_cached_dictionary_is_ready() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    run(&net, tmp.path(), DICT, &["--lang", "english"]);
+    let (out, result) = run_offline(&net, tmp.path(), DICT, &["--lang", "english"]);
+    result.unwrap();
+    assert!(out.contains("english Dictionary is ready"), "{out}");
+    assert_eq!(net.calls().len(), 1);
+}
+
+#[test]
+fn offline_corpus_build_without_a_dictionary_or_totals_is_the_offline_error() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let (_, result) = run_offline(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert!(offline_message(result).contains("lex dict fetch --lang english"));
+
+    let dir = DataDir::new(tmp.path());
+    std::fs::create_dir_all(dir.dict_path(Language::English).parent().unwrap()).unwrap();
+    std::fs::write(dir.dict_path(Language::English), "crane\n").unwrap();
+    let (_, result) = run_offline(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert!(offline_message(result).contains("lex corpus build --lang english"));
+    assert!(net.calls().is_empty());
+}
+
+#[test]
+fn offline_corpus_build_from_cached_totals_still_builds() {
+    let tmp = tempfile::tempdir().unwrap();
+    english_with_totals(tmp.path());
+    let (out, result) = run_offline(&Online, tmp.path(), CORPUS, &["--lang", "english"]);
+    result.unwrap();
+    assert!(out.contains("built the english Corpus"), "{out}");
+    let dir = DataDir::new(tmp.path());
+    assert!(dir.ngrams_path(Language::English, 5).is_file());
+    assert!(dir.ngrams_path(Language::English, 6).is_file());
+    assert!(!dir.ngrams_path(Language::English, 7).exists());
+}
+
+#[test]
+fn offline_profile_fetch_without_lists_is_the_offline_error() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    let (_, result) = run_offline(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    assert_eq!(
+        offline_message(result),
+        "offline: the lists of Profile wordle is not cached; run `lex profile fetch --profile wordle`"
+    );
+    assert!(net.calls().is_empty());
+}
+
+#[test]
+fn offline_profile_fetch_without_a_corpus_names_the_dictionary() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let (_, result) = run_offline(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    assert!(offline_message(result).contains("lex dict fetch --lang english"));
+    assert!(net.calls().is_empty());
+}
+
+#[test]
+fn force_conflicts_with_offline_in_all_three_commands_and_offline_is_global() {
+    for verb in [DICT, CORPUS, PROFILE] {
+        let selector = if verb == PROFILE {
+            ["--profile", "wordle"]
+        } else {
+            ["--lang", "english"]
+        };
+        let args: Vec<&str> = verb
+            .iter()
+            .copied()
+            .chain(selector)
+            .chain(["--force", "--offline"])
+            .collect();
+        assert_eq!(
+            parse(&args).unwrap_err().kind(),
+            ErrorKind::ArgumentConflict,
+            "{verb:?}"
+        );
+        let args: Vec<&str> = std::iter::once("--offline")
+            .chain(verb.iter().copied())
+            .chain(selector)
+            .collect();
+        assert!(parse(&args).is_ok(), "{verb:?}");
+    }
+}
+
+#[test]
+fn the_binary_offline_fails_with_the_fetch_command_and_exit_1() {
+    let tmp = tempfile::tempdir().unwrap();
+    let out = std::process::Command::new(env!("CARGO_BIN_EXE_lex"))
+        .args([
+            "--offline",
+            "--no-progress",
+            "dict",
+            "fetch",
+            "--lang",
+            "english",
+        ])
+        .args(["--data-dir", tmp.path().to_str().unwrap()])
+        .output()
+        .unwrap();
+    assert_eq!(out.status.code(), Some(1));
+    assert!(
+        String::from_utf8_lossy(&out.stderr).contains(
+            "offline: the english Dictionary is not cached; run `lex dict fetch --lang english`"
+        ),
+        "{}",
+        String::from_utf8_lossy(&out.stderr)
+    );
+    assert!(std::fs::read_dir(tmp.path()).unwrap().next().is_none());
 }

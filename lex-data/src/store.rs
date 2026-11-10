@@ -60,7 +60,7 @@ pub fn build_all_via(
     download: &Download<'_>,
 ) -> anyhow::Result<()> {
     if !dir.dict_path(lang).exists() {
-        wiktionary::fetch_dict(lang, dir.as_ref())?;
+        dir.fetch_dict(lang)?;
     }
     let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
     match totals::inspect(dir, lang) {
@@ -82,6 +82,10 @@ pub fn build_all_via(
         ),
         totals::Inspection::Absent => {}
     }
+    dir.require_online(
+        &format!("the complete {lang} Ngrams totals"),
+        &format!("lex corpus build --lang {lang}"),
+    )?;
     log::warn!("Building {lang} corpus...");
     let mut by_length = download(progress)?;
     totals::write(dir, lang, &by_length)?;
@@ -691,5 +695,60 @@ mod tests {
         assert!(build_all_via(&dir, Language::English, &|_, _| {}, &no_download).is_err());
         assert!(!dir.totals_dir(Language::English).exists());
         assert!(!dir.ngrams_dir(Language::English).exists());
+    }
+
+    fn offline_message(err: &anyhow::Error) -> String {
+        match err.downcast_ref::<crate::error::LexDataError>() {
+            Some(crate::error::LexDataError::Offline { .. }) => err.to_string(),
+            other => panic!("expected the Offline error, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn offline_without_a_dictionary_names_the_dictionary_and_writes_nothing() {
+        let tmp = tempfile::tempdir().unwrap();
+        let dir = DataDir::new(tmp.path()).offline(true);
+        let err = build_all_via(&dir, Language::English, &|_, _| {}, &no_download).unwrap_err();
+        assert_eq!(
+            offline_message(&err),
+            "offline: the english Dictionary is not cached; run `lex dict fetch --lang english`"
+        );
+        assert!(std::fs::read_dir(tmp.path()).unwrap().next().is_none());
+    }
+
+    #[test]
+    fn offline_without_totals_never_downloads() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        let dir = dir.offline(true);
+        let downloads = std::cell::Cell::new(0);
+        let err = build_all_via(&dir, Language::English, &|_, _| {}, &|_| {
+            downloads.set(downloads.get() + 1);
+            Ok(synthetic_totals())
+        })
+        .unwrap_err();
+        assert!(offline_message(&err).contains("lex corpus build --lang english"));
+        assert_eq!(downloads.get(), 0);
+        assert!(!dir.totals_dir(Language::English).exists());
+        assert!(!dir.ngrams_dir(Language::English).exists());
+    }
+
+    #[test]
+    fn offline_with_incomplete_totals_never_downloads() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        totals::write(&dir, Language::English, &synthetic_totals()).unwrap();
+        std::fs::remove_file(dir.totals_dir(Language::English).join("meta.json")).unwrap();
+        let dir = dir.offline(true);
+        let err = build_all_via(&dir, Language::English, &|_, _| {}, &no_download).unwrap_err();
+        offline_message(&err);
+    }
+
+    #[test]
+    fn offline_builds_the_corpus_from_cached_totals() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        totals::write(&dir, Language::English, &synthetic_totals()).unwrap();
+        let dir = dir.offline(true);
+        build_all_via(&dir, Language::English, &|_, _| {}, &no_download).unwrap();
+        let ws: WordSet<5> = read::<5>(&dir, Language::English, None).unwrap();
+        assert_eq!(ws.len(), 5);
     }
 }

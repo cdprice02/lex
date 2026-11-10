@@ -38,6 +38,14 @@ pub enum LexDataError {
         /// The length of the word given.
         got: usize,
     },
+    /// A download that `--offline` forbids: the item is not cached and no request was made.
+    #[error("offline: {item} is not cached; run `{command}`")]
+    Offline {
+        /// What is missing, as in "the english Dictionary".
+        item: String,
+        /// The command that fetches it, to run without `--offline`.
+        command: String,
+    },
     /// A Legacy cache: a file with no header, which must be rebuilt, never read.
     #[error(
         "{path:?} is a legacy or unrecognized cache file (no header); \

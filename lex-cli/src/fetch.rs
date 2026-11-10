@@ -134,6 +134,16 @@ fn languages(lang: Option<Language>) -> Vec<Language> {
     lang.map_or_else(|| Language::VARIANTS.to_vec(), |lang| vec![lang])
 }
 
+/// Fails with the offline error unless downloads are allowed, before the Dictionary of `lang` is
+/// fetched. The real [`Network`] enforces this too; checking here keeps any other from being reached.
+fn require_dict_online(dir: &DataDir, lang: Language) -> anyhow::Result<()> {
+    dir.require_online(
+        &format!("the {lang} Dictionary"),
+        &format!("lex dict fetch --lang {lang}"),
+    )?;
+    Ok(())
+}
+
 /// A blank line between the summaries of consecutive items.
 fn separate(sinks: &mut Sinks<'_>, index: usize) -> anyhow::Result<()> {
     if index > 0 {
@@ -152,7 +162,7 @@ pub fn dict_with(
     net: &dyn Network,
     sinks: &mut Sinks<'_>,
 ) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.dir();
     for (index, lang) in languages(args.lang).into_iter().enumerate() {
         separate(sinks, index)?;
         fetch_dict(&dir, lang, args.force, net, sinks)?;
@@ -190,6 +200,7 @@ fn fetch_dict(
                 )?;
                 dir.clear_dict(lang)?;
             }
+            require_dict_online(dir, lang)?;
             net.dict(dir, lang)?;
             writeln!(sinks.out, "fetched the {lang} Dictionary")?;
         }
@@ -292,8 +303,15 @@ fn build_corpus(
             sinks.out,
             "the {lang} Corpus is filtered by its Dictionary, which is not cached"
         )?;
+        require_dict_online(dir, lang)?;
         net.dict(dir, lang)?;
         writeln!(sinks.out, "fetched the {lang} Dictionary")?;
+    }
+    if dir.corpus_lengths_from_totals(lang)?.is_none() {
+        dir.require_online(
+            &format!("the complete {lang} Ngrams totals"),
+            &format!("lex corpus build --lang {lang}"),
+        )?;
     }
     if dir.totals(lang)?.is_some() {
         writeln!(
@@ -357,6 +375,10 @@ fn fetch_profile(
                 )?;
                 build_corpus(dir, lang, net, sinks)?;
             }
+            dir.require_online(
+                &format!("the lists of Profile {profile}"),
+                &format!("lex profile fetch --profile {profile}"),
+            )?;
             net.profile(dir, profile)?;
             writeln!(sinks.out, "fetched Profile {profile}")?;
         }

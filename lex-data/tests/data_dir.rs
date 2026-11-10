@@ -1,5 +1,6 @@
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 #![expect(
+    clippy::panic,
     clippy::unwrap_used,
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
@@ -180,4 +181,55 @@ fn max_supported_length_matches_the_cache_headers() {
             .unwrap_or(0);
         assert_eq!(language.max_supported_length(), largest, "{language}");
     }
+}
+
+fn offline_error(err: &anyhow::Error) -> String {
+    match err.downcast_ref::<lex_data::LexDataError>() {
+        Some(lex_data::LexDataError::Offline { .. }) => err.to_string(),
+        other => panic!("expected the Offline error, got {other:?}"),
+    }
+}
+
+#[test]
+fn offline_load_of_an_uncached_corpus_is_the_offline_error() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path()).offline(true);
+    let err = dir.load::<5>(Language::English, None).unwrap_err();
+    assert_eq!(
+        offline_error(&err),
+        "offline: the english Dictionary is not cached; run `lex dict fetch --lang english`"
+    );
+    assert!(std::fs::read_dir(tmp.path()).unwrap().next().is_none());
+}
+
+#[test]
+fn offline_fetch_dict_and_dict_metadata_are_the_offline_error() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path()).offline(true);
+    offline_error(&dir.fetch_dict(Language::English).unwrap_err());
+    offline_error(&dir.dict_metadata(Language::English).unwrap_err());
+    assert!(std::fs::read_dir(tmp.path()).unwrap().next().is_none());
+}
+
+#[test]
+fn offline_load_profile_without_lists_is_the_offline_error() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path()).offline(true);
+    seed_five_letter_words(&dir, 250);
+    let Err(err) = dir.load_profile::<5>(lex_data::Profile::Wordle) else {
+        panic!("an offline load without the lists must fail");
+    };
+    assert_eq!(
+        offline_error(&err),
+        "offline: the lists of Profile wordle is not cached; run `lex profile fetch --profile wordle`"
+    );
+    assert!(!dir.profile_dir(lex_data::Profile::Wordle).exists());
+}
+
+#[test]
+fn offline_still_loads_a_cached_corpus() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path()).offline(true);
+    seed_five_letter_words(&dir, 250);
+    assert_eq!(dir.load::<5>(Language::English, None).unwrap().len(), 250);
 }
