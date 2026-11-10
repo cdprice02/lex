@@ -5,6 +5,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use crate::allowed::{Allowed, AllowedIds};
+use crate::candidates::Scored;
 use crate::policy::BasePolicy;
 use crate::pool_ops::PoolOps;
 use crate::strategy::{GuessPool, Strategy};
@@ -109,15 +110,55 @@ impl Rollout {
         allowed: &Allowed,
         base: &mut BasePolicy,
     ) -> Option<u32> {
+        self.choose(set, allowed, base, None)
+    }
+
+    /// As [`best_guess`](Self::best_guess), also returning each guess played out with its cost, in
+    /// score order: what a rollout already computes, kept.
+    pub(crate) fn best_guess_scored(
+        &mut self,
+        set: &[u32],
+        allowed: &Allowed,
+        base: &mut BasePolicy,
+    ) -> Option<(u32, Vec<(Scored, f64)>)> {
+        let mut played = Vec::with_capacity(self.width);
+        let best = self.choose(set, allowed, base, Some(&mut played))?;
+        Some((best, played))
+    }
+
+    /// The choice, pushing each played-out guess and its cost to `played` when it is given.
+    fn choose(
+        &mut self,
+        set: &[u32],
+        allowed: &Allowed,
+        base: &mut BasePolicy,
+        mut played: Option<&mut Vec<(Scored, f64)>>,
+    ) -> Option<u32> {
         let mass = self.mass(set);
         let mut best: Option<(f64, u32)> = None;
         for scored in self.pool.top_k(set, base.strategy(), allowed, self.width) {
             let cost = self.guess_cost(set, allowed, scored.index, mass, base);
+            if let Some(played) = played.as_deref_mut() {
+                played.push((scored, cost));
+            }
             if best.is_none_or(|(lowest, _)| cost < lowest) {
                 best = Some((cost, scored.index));
             }
         }
         best.map(|(_, guess)| guess)
+    }
+
+    /// Expected guesses from `set` after playing `guess` now and the base policy afterwards, as a
+    /// rollout costs a guess; infinite when it leaves the set whole.
+    pub(crate) fn cost_of(
+        &mut self,
+        set: &[u32],
+        allowed: &Allowed,
+        guess: u32,
+        base: &mut BasePolicy,
+    ) -> f64 {
+        let mass = self.mass(set);
+        self.guess_cost(set, allowed, guess, mass, base)
     }
 
     /// Expected guesses from `set` after playing `guess` now and the base policy afterwards;

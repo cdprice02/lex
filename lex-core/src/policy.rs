@@ -50,3 +50,20 @@ impl BasePolicy {
         pool.best_index(set, &self.strategy, allowed)
     }
 }
+
+impl BasePolicy {
+    /// The Endgame's guess for `set` and its Guess cost, memoized with the guess itself.
+    pub(crate) fn endgame_pick(&mut self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
+        self.endgame.as_mut()?.best_with_cost(set, allowed)
+    }
+
+    /// The Guess cost of playing `guess` now at an Endgame position, the Endgame's own after.
+    pub(crate) fn endgame_cost(
+        &mut self,
+        set: &[u32],
+        allowed: &Allowed,
+        guess: u32,
+    ) -> Option<f64> {
+        Some(self.endgame.as_mut()?.cost_of(set, allowed, guess))
+    }
+}

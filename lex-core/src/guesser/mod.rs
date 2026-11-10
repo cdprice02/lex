@@ -9,6 +9,7 @@ use crate::allowed::HardRule;
 use crate::book::{BOOK_FLOOR, OpeningBook};
 use crate::candidates::{Candidates, Suggestion};
 use crate::correctness::WordCorrectness;
+use crate::explain::{Explanation, ScoredGuess};
 use crate::strategy::{GuessPool, Pool, Strategy};
 use crate::tree::{DecisionTree, NodeId};
 
@@ -183,6 +184,31 @@ impl<const N: usize> Guesser<N> {
             .iter()
             .map(|scored| scored.suggestion(&pool))
             .collect()
+    }
+
+    /// Switches recording on or off. On, each position decided from now on records what it weighed,
+    /// for [`explain`](Self::explain); off (the default), [`suggest`](Self::suggest) does no extra
+    /// work. Switch it on before the first position is decided.
+    pub fn set_explain(&mut self, on: bool) {
+        self.tree.get_mut().set_explain(on);
+    }
+
+    /// The solver's choice at this position and what it weighed, decided first if need be: the
+    /// guess [`suggest`](Self::suggest) plays, the technique that chose it, up to ten scored
+    /// guesses and the chosen guess's feedback distribution. `None` when recording is off (see
+    /// [`set_explain`](Self::set_explain)), when no word is consistent, or when the position was
+    /// decided before recording was switched on.
+    #[must_use]
+    pub fn explain(&self) -> Option<Explanation<N>> {
+        self.tree.borrow_mut().explain(self.node)
+    }
+
+    /// `word` scored against this position, listed or not: expected bits and Expected remaining,
+    /// and a Guess cost where the Endgame or a Rollout applies. A word the Guess pool rule
+    /// forbids is still scored and flagged. `None` when `word` is not in the Guess pool.
+    #[must_use]
+    pub fn score(&self, word: Word<N>) -> Option<ScoredGuess<N>> {
+        self.tree.borrow_mut().score(self.node, word)
     }
 
     /// Why `word` may not be played next under the strategy's pool rule and the guesses pushed,

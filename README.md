@@ -83,7 +83,7 @@ removes them, and clearing a corpus or a Profile removes its books too.
 | `--targets` | none | File of target words, one per line, to play instead of sampling |
 | `-o` / `--output` | none | Write the full JSON report here (`-` for stdout, which moves the summary to stderr) |
 
-`assist` also takes `-s` / `--suggestions` (default `5`): suggestions shown per turn.
+`assist` also takes `-s` / `--suggestions` (default `5`): guesses shown per turn, each with its expected bits, Expected remaining and, where the solver computed one, Guess cost; `--no-explain` shows only the suggested guess.
 
 ## Cache commands
 

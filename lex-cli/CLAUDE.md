@@ -25,6 +25,7 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 | `simulate.rs` | `run(&RunConfig, &DataDir, Option<&dyn Observer>) -> Result<Report>` plays a config with its book, built on first use (`run_with(.., BookMode, observer)` opts out), and prints nothing (it dispatches the word length itself; the report assembly is not generic); `simulate::<N>(&SimulateArgs)` is the command: `args.config()`, `run`, then print or write the report |
 | `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
+| `tests/explain_agrees.rs` | ignored: `explain`'s guess equals `suggest`'s at every position of the first 20 games of English-5, Russian-5 and Wordle hard mode (two guessers on the same book); reads `LEX_DATA_DIR` like `tracks.rs` |
 | `tests/tracks.rs` | libtest-mimic harness (`harness = false`): one ignored trial per `TRACKS` entry, named `<tier>::<track-id>`, that plays `simulate::run(&track.config(), &data_dir, None)` (which builds a missing Opening book first, like `simulate`) and compares an insta snapshot in `benchmarks/snapshots/` (body: Track id, config, Corpus and Profile checksums, summary, first guess, games SHA-256; header `info`: `SOLVER_DIGEST`, lex version). Data comes from `LEX_DATA_DIR` (default the workspace `data/`); missing data fails with a download hint. Loop: `cargo test --release -p lex-cli --test tracks -- --ignored headline` (fast set), `-- --ignored` (full set), `cargo insta test --force-update-snapshots` to refresh header digests after a behavior-preserving change; behavior-changing PRs commit snapshots in a separate `test(snapshots): ...` commit (ADR 0012) |
 | `verdict.rs` | `lex verdict`, see Plumbing |
 | `report.rs` | JSON schema (`Report`), uniform and prior-weighted `Stats`, text summary: `render()` is plain text (snapshot-tested), `render_styled(true)` adds bold means, dim provenance, green bars within `MAX_GUESSES` and red failure rows, printed through `anstream` |
@@ -78,7 +79,7 @@ Sharing the tree is only valid while `Candidates::suggest` is deterministic (see
 
 With `--profile`, a played word outside the Profile's Guess pool is rejected ("is not in the `<profile>` guess pool"); without one any `Word<N>` is accepted.
 
-Per turn: show `suggest_top_k(--suggestions)` with entropy bits (non-candidate probes are marked) → prompt for
+Per turn: `Guesser::explain` (switched on at construction; `--no-explain` leaves only the `suggest` guess) shows the technique that chose the guess and up to `--suggestions` of the guesses it weighed with bits, Expected remaining and, where one exists, Guess cost (non-candidate probes are marked); a booked position shows the guess alone → prompt for
 the word actually played (empty input = top suggestion; may be any `Word<N>`,
 not necessarily suggested or in the corpus) → prompt for feedback →
 `push_guess`. Exits on all-correct feedback, candidate exhaustion (target not

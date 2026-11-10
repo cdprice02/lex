@@ -2,7 +2,7 @@
 
 use std::io::{BufRead, Write};
 
-use lex_core::{Correctness, Guess, WordCorrectness};
+use lex_core::{Correctness, Guess, Guesser, WordCorrectness};
 use lex_data::Word;
 
 use crate::books::{self, BookMode};
@@ -38,6 +38,8 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         progress::observer().as_deref(),
     )?;
 
+    guesser.set_explain(!args.no_explain);
+
     let stdin = std::io::stdin();
     let mut lines = stdin.lock().lines();
 
@@ -64,16 +66,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
             ("s", "")
         };
         println!("\nTurn {turn} — {num_candidates} candidate{noun_suffix} remain{verb_suffix}");
-        let suggestions = guesser.suggest_top_k(args.suggestions.max(1));
-        for s in &suggestions {
-            let note = if s.in_candidates {
-                ""
-            } else {
-                ", not a possible answer"
-            };
-            println!("  {}  ({:.3} bits{note})", s.word, s.entropy_bits);
-        }
-        let top = suggestions[0].word;
+        let top = show_suggestions(&guesser, args.suggestions.max(1))?;
 
         let Some(word) = prompt_word::<N>(&mut lines, top, |w| {
             source.check_guess(&guess_pool, w)?;
@@ -94,6 +87,38 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         guesser.push_guess(Guess::new(word, feedback));
         turn += 1;
     }
+}
+
+/// Prints the guess `suggest` plays and, while the guesser explains, the technique that chose it
+/// and up to `shown` of the guesses it weighed; returns the guess.
+fn show_suggestions<const N: usize>(guesser: &Guesser<N>, shown: usize) -> anyhow::Result<Word<N>> {
+    let Some(explanation) = guesser.explain() else {
+        let guess = guesser
+            .suggest()
+            .ok_or_else(|| anyhow::anyhow!("no valid guess"))?;
+        println!("  {guess}");
+        return Ok(guess);
+    };
+    if let Some(technique) = explanation.technique {
+        println!("  chosen by the {technique}");
+    }
+    if explanation.guesses.is_empty() {
+        println!("  {}", explanation.guess);
+    }
+    for s in explanation.guesses.iter().take(shown) {
+        let mut notes = vec![
+            format!("{:.3} bits", s.expected_bits),
+            format!("{:.1} words left", s.expected_remaining),
+        ];
+        if let Some(cost) = s.guess_cost {
+            notes.push(format!("{cost:.2} guesses to finish"));
+        }
+        if !s.in_candidates {
+            notes.push("not a possible answer".to_owned());
+        }
+        println!("  {}  ({})", s.word, notes.join(", "));
+    }
+    Ok(explanation.guess)
 }
 
 /// Prompts for the word the user played. Empty input accepts `default`;
