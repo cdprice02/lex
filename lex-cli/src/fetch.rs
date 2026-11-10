@@ -215,14 +215,26 @@ pub fn corpus_with(
     for (index, lang) in languages(args.lang).into_iter().enumerate() {
         separate(sinks, index)?;
         let cached = cached_lengths(&dir, lang)?;
-        if cached > 0 && !args.force {
+        let missing = missing_lengths(&dir, lang, &cached)?;
+        if missing.as_ref().is_none_or(Vec::is_empty) && !cached.is_empty() && !args.force {
             writeln!(
                 sinks.out,
-                "the {lang} Corpus is ready ({cached} lengths cached); --force rebuilds it"
+                "the {lang} Corpus is ready ({} lengths cached); --force rebuilds it",
+                cached.len()
             )?;
         } else {
             if args.force {
                 dir.clear(lang, None)?;
+            } else if let Some(lengths) = missing.filter(|lengths| !lengths.is_empty()) {
+                writeln!(
+                    sinks.out,
+                    "the {lang} Corpus lacks the lengths {}; building them from the cached Ngrams totals",
+                    lengths
+                        .iter()
+                        .map(usize::to_string)
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                )?;
             }
             build_corpus(&dir, lang, net, sinks)?;
         }
@@ -231,18 +243,41 @@ pub fn corpus_with(
             .into_iter()
             .filter(|r| r.language == lang)
             .collect();
+        let totals: Vec<_> = dir.totals(lang)?.into_iter().collect();
         write!(
             sinks.out,
             "{}",
-            corpora::render_list(&records, sinks.terminal)
+            corpora::render_list(&records, &totals, sinks.terminal)
         )?;
     }
     Ok(())
 }
 
-/// How many lengths of `lang` have a Corpus on disk.
-fn cached_lengths(dir: &DataDir, lang: Language) -> anyhow::Result<usize> {
-    Ok(dir.corpora()?.iter().filter(|r| r.language == lang).count())
+/// The lengths of `lang` that have a Corpus on disk.
+fn cached_lengths(dir: &DataDir, lang: Language) -> anyhow::Result<Vec<usize>> {
+    Ok(dir
+        .corpora()?
+        .iter()
+        .filter(|r| r.language == lang)
+        .map(|r| r.word_length)
+        .collect())
+}
+
+/// The lengths a build would add. With complete Ngrams totals and the Dictionary cached the
+/// Corpus has exactly the lengths the totals have words in the Dictionary at, so those not
+/// cached are missing; `None` when that is not known offline, and the rule is then that any
+/// cached length is ready.
+fn missing_lengths(
+    dir: &DataDir,
+    lang: Language,
+    cached: &[usize],
+) -> anyhow::Result<Option<Vec<usize>>> {
+    Ok(dir.corpus_lengths_from_totals(lang)?.map(|expected| {
+        expected
+            .into_iter()
+            .filter(|n| !cached.contains(n))
+            .collect()
+    }))
 }
 
 /// Builds the Corpus of `lang`, fetching its Dictionary first when absent.
@@ -259,6 +294,12 @@ fn build_corpus(
         )?;
         net.dict(dir, lang)?;
         writeln!(sinks.out, "fetched the {lang} Dictionary")?;
+    }
+    if dir.totals(lang)?.is_some() {
+        writeln!(
+            sinks.out,
+            "the {lang} Ngrams totals are cached: no download is needed"
+        )?;
     }
     let task = Task::start(&format!("building the {lang} Corpus"));
     let result = net.corpus(dir, lang, &|done, total| task.set(done, total));

@@ -8,6 +8,7 @@
 )]
 
 mod common;
+mod totals_common;
 
 use std::cell::RefCell;
 use std::path::Path;
@@ -19,6 +20,7 @@ use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
 use lex_cli::fetch::{Network, Sinks, corpus_with, dict_with, profile_with};
 use lex_data::{DataDir, Language, Profile};
 use strum::VariantArray as _;
+use totals_common::seed_totals;
 
 /// Records what was downloaded and writes stand-in files in place of the network.
 #[derive(Default)]
@@ -207,7 +209,7 @@ fn corpus_build_fetches_the_missing_dictionary_first() {
     assert!(
         printed
             .out
-            .contains("language\tlength\twords\tsupported\tsize\tchecksum\tstatus\n"),
+            .contains("language\tlength\twords\tsupported\tsize\tchecksum\tstatus\ttotals\n"),
         "{}",
         printed.out
     );
@@ -226,6 +228,79 @@ fn a_cached_corpus_is_ready_and_nothing_is_downloaded() {
         printed
             .out
             .contains("english Corpus is ready (1 lengths cached)"),
+        "{}",
+        printed.out
+    );
+}
+
+/// An English Dictionary of two five-letter words and one six-letter word, with Ngrams totals
+/// that also hold a word of length 7 the Dictionary lacks.
+fn english_with_totals(root: &Path) -> DataDir {
+    let dir = DataDir::new(root);
+    std::fs::create_dir_all(dir.dict_path(Language::English).parent().unwrap()).unwrap();
+    std::fs::write(dir.dict_path(Language::English), "crane\nplanet\nstare\n").unwrap();
+    seed_totals(
+        &dir,
+        Language::English,
+        &[
+            (5, &[("crane", 9), ("stare", 8), ("zzzzz", 7)]),
+            (6, &[("planet", 5)]),
+            (7, &[("qqqqqqq", 3)]),
+        ],
+    );
+    dir
+}
+
+#[test]
+fn with_totals_ready_means_every_length_the_totals_give_is_cached() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = english_with_totals(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert_eq!(net.calls(), ["corpus english"], "length 6 is missing");
+    assert!(
+        printed.out.contains("lacks the lengths 6"),
+        "{}",
+        printed.out
+    );
+
+    seed_supported(&dir, Language::English, 6, &[("planet", 9)]);
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert!(net.calls().is_empty(), "7 has no Dictionary word: ready");
+    assert!(
+        printed
+            .out
+            .contains("english Corpus is ready (2 lengths cached)"),
+        "{}",
+        printed.out
+    );
+}
+
+#[test]
+fn without_totals_any_cached_length_is_ready() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    std::fs::create_dir_all(dir.dict_path(Language::English).parent().unwrap()).unwrap();
+    std::fs::write(dir.dict_path(Language::English), "crane\nplanet\n").unwrap();
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert!(net.calls().is_empty());
+    assert!(printed.out.contains("is ready (1 lengths cached)"));
+}
+
+#[test]
+fn corpus_build_force_keeps_the_totals() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = english_with_totals(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english", "--force"]);
+    assert!(dir.totals(Language::English).unwrap().is_some());
+    assert!(
+        printed.out.contains("Ngrams totals are cached"),
         "{}",
         printed.out
     );

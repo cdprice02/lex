@@ -21,6 +21,7 @@ mod profile_list;
 mod profile_store;
 mod retry;
 mod store;
+mod totals;
 mod wiktionary;
 mod word_lookup;
 
@@ -35,6 +36,7 @@ pub use ngrams::SNAPSHOT as NGRAMS_SNAPSHOT;
 pub use parse::{is_valid_word, normalize};
 pub use profile::{ListSpec, Profile, ProfileData, ProfileSpec, ProfileStats, Source};
 pub use profile_list::{ProfileListRecord, ProfileRecord};
+pub use totals::TotalsRecord;
 pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
 pub use word_lookup::ProfileWords;

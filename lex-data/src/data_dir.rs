@@ -221,6 +221,24 @@ impl DataDir {
         self.path.join("ngrams").join(lang.lang_code())
     }
 
+    /// Directory holding every language's Ngrams totals.
+    #[must_use]
+    pub fn totals_root(&self) -> PathBuf {
+        self.path.join("totals")
+    }
+
+    /// Directory holding the Ngrams totals of `lang`.
+    #[must_use]
+    pub fn totals_dir(&self, lang: Language) -> PathBuf {
+        self.totals_root().join(lang.lang_code())
+    }
+
+    /// Path to the Ngrams totals file of `lang` at word length `n`.
+    #[must_use]
+    pub fn totals_path(&self, lang: Language, n: usize) -> PathBuf {
+        self.totals_dir(lang).join(format!("{n}.bin"))
+    }
+
     /// Path to the cached ngrams binary file for `lang` at word length `n`.
     #[must_use]
     pub fn ngrams_path(&self, lang: Language, n: usize) -> PathBuf {

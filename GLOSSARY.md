@@ -5,8 +5,12 @@ A Wordle solver that picks guesses by Shannon entropy over a frequency-weighted 
 ## Language
 
 **Corpus**:
-The frequency-ranked list of valid words for one language at one word length, built from Google Books ngrams filtered by a Wiktionary dictionary.
+The frequency-ranked list of valid words for one language at one word length, built from the Ngrams totals filtered by a Dictionary.
 _Avoid_: Word list, dataset
+
+**Ngrams totals**:
+The per-word occurrence counts from the ngrams snapshot for one language, summed over years and not yet filtered by the Dictionary; the Corpus is built from them.
+_Avoid_: Raw shards, ngrams cache
 
 **Cache**:
 The on-disk form of a Corpus, one file per language and word length, rebuilt rather than edited.

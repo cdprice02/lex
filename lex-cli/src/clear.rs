@@ -52,7 +52,8 @@ pub fn dict(args: &DictClearArgs) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// `lex corpus clear`: Corpus caches with their books. A language with no cache removes nothing.
+/// `lex corpus clear`: Corpus caches with their books, and with `--all-data` the Ngrams totals
+/// too. A language with no cache removes nothing.
 ///
 /// # Errors
 ///
@@ -62,9 +63,15 @@ pub fn corpus(args: &CorpusClearArgs) -> anyhow::Result<()> {
     let mut removed = Vec::new();
     if let Some(lang) = args.lang {
         removed.extend(dir.clear(lang, args.word_length)?);
+        if args.all_data {
+            removed.extend(dir.clear_totals(lang)?);
+        }
     } else {
         for &lang in Language::VARIANTS {
             removed.extend(dir.clear(lang, None)?);
+            if args.all_data {
+                removed.extend(dir.clear_totals(lang)?);
+            }
         }
     }
     report(&removed);

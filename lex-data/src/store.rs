@@ -1,6 +1,6 @@
 //! Building, reading and clearing the on-disk Cache.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fmt::Write as _;
 use std::io::{BufWriter, Write};
 use std::path::PathBuf;
@@ -14,6 +14,7 @@ use crate::error::LexDataError;
 use crate::header::Header;
 use crate::language::Language;
 use crate::ngrams;
+use crate::totals;
 use crate::wiktionary;
 use crate::word::{RawRecord, WordSet};
 use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
@@ -31,23 +32,72 @@ pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow
     Ok(())
 }
 
-/// Downloads every ngrams shard of `lang` and writes a Corpus for each length, fetching the
-/// Dictionary first when it is absent. `progress(done, total)` reports finished shards.
+/// Builds the Corpus of `lang` at every length, fetching the Dictionary first when it is absent.
+///
+/// With complete Ngrams totals cached the Corpus is filtered from them with no network, and only
+/// the lengths not already cached are written, so an existing Corpus file is never touched.
+/// Otherwise every shard is downloaded once, the totals are written, and the Corpus is filtered
+/// from the same totals and written at every length. `progress(done, total)` reports finished
+/// shards of a download.
 pub fn build_all(
     dir: &DataDir,
     lang: Language,
     progress: &(dyn Fn(u32, u32) + Sync),
 ) -> anyhow::Result<()> {
+    build_all_via(dir, lang, progress, &|progress| {
+        ngrams::fetch(lang, dir.download_workers(), progress)
+    })
+}
+
+/// The download of a language's Ngrams totals, taking the shard progress callback.
+pub type Download<'a> = dyn Fn(&(dyn Fn(u32, u32) + Sync)) -> anyhow::Result<totals::ByLength> + 'a;
+
+/// [`build_all`] with the download injected: `download` returns the Ngrams totals of `lang`.
+pub fn build_all_via(
+    dir: &DataDir,
+    lang: Language,
+    progress: &(dyn Fn(u32, u32) + Sync),
+    download: &Download<'_>,
+) -> anyhow::Result<()> {
     if !dir.dict_path(lang).exists() {
         wiktionary::fetch_dict(lang, dir.as_ref())?;
     }
     let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
+    match totals::inspect(dir, lang) {
+        totals::Inspection::Complete(meta) => {
+            match totals::read_filtered(dir, lang, &meta, &valid_words) {
+                Ok(by_length) => {
+                    log::warn!("Building {lang} corpus from the cached Ngrams totals...");
+                    populate_missing(dir, lang, &by_length)?;
+                    log::info!("Cached {lang} corpus ({} length buckets)", by_length.len());
+                    return Ok(());
+                }
+                Err(e) => log::warn!(
+                    "the cached {lang} Ngrams totals are unusable ({e:#}); downloading them again"
+                ),
+            }
+        }
+        totals::Inspection::Incomplete(reason) => log::warn!(
+            "the cached {lang} Ngrams totals are incomplete ({reason}); downloading them again"
+        ),
+        totals::Inspection::Absent => {}
+    }
     log::warn!("Building {lang} corpus...");
-    let by_length = ngrams::fetch(lang, &valid_words, dir.download_workers(), progress)?;
+    let mut by_length = download(progress)?;
+    totals::write(dir, lang, &by_length)?;
+    filter_by_dictionary(&mut by_length, &valid_words);
     let n_buckets = by_length.len();
     populate(dir, lang, &by_length)?;
     log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
     Ok(())
+}
+
+/// Keeps the words in `valid` and drops the lengths left empty, as the Corpus holds them.
+fn filter_by_dictionary(by_length: &mut totals::ByLength, valid: &HashSet<String>) {
+    for words in by_length.values_mut() {
+        words.retain(|word, &mut count| count >= MIN_FREQUENCY && valid.contains(word));
+    }
+    by_length.retain(|_, words| !words.is_empty());
 }
 
 /// Rejects a length whose cached Corpus holds fewer than `MIN_SUPPORTED_WORDS` words, naming
@@ -164,17 +214,27 @@ fn populate(
     Ok(())
 }
 
-/// Writes the Cache for `lang` at length `n`, most frequent word first.
-fn write_bucket(
+/// Writes the Cache of each length of `by_length` that is not on disk, leaving the others as
+/// they are.
+fn populate_missing(
     dir: &DataDir,
     lang: Language,
-    n: usize,
-    words: &HashMap<String, u64>,
+    by_length: &totals::ByLength,
 ) -> anyhow::Result<()> {
-    let path = dir.ngrams_path(lang, n);
-    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
+    for (&n, words) in by_length {
+        if !dir.ngrams_path(lang, n).exists() {
+            write_bucket(dir, lang, n, words)
+                .with_context(|| format!("writing ngrams for {lang} length {n}"))?;
+        }
+    }
+    Ok(())
+}
+
+/// The records region for the words of one length: most frequent first, equal counts in word
+/// order, so the same words and counts always encode to the same bytes.
+pub fn encode_records(n: usize, words: &HashMap<String, u64>) -> Vec<u8> {
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
-    entries.sort_unstable_by_key(|e| std::cmp::Reverse(e.1));
+    entries.sort_unstable_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)));
     let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
     let mut records = Vec::with_capacity(entries.len() * record_size);
     for (word, freq) in entries {
@@ -183,6 +243,21 @@ fn write_bucket(
         }
         records.extend_from_slice(&freq.to_le_bytes());
     }
+    records
+}
+
+/// Writes the Cache for `lang` at length `n`, most frequent word first, equal counts in word
+/// order.
+fn write_bucket(
+    dir: &DataDir,
+    lang: Language,
+    n: usize,
+    words: &HashMap<String, u64>,
+) -> anyhow::Result<()> {
+    let path = dir.ngrams_path(lang, n);
+    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
+    let records = encode_records(n, words);
+    let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
     let header = Header::for_records(n, record_size, &records)?;
     let mut writer = BufWriter::new(std::fs::File::create(&path)?);
     writer.write_all(&header.encode()?)?;
@@ -200,8 +275,9 @@ mod tests {
     use crate::language::Language;
     use crate::word::{Word, WordSet};
 
-    use super::{clear, ensure_supported, populate, read};
+    use super::{build_all_via, clear, ensure_supported, populate, read};
     use crate::MIN_SUPPORTED_WORDS;
+    use crate::totals;
 
     fn toy_corpus() -> HashMap<usize, HashMap<String, u64>> {
         let mut five = HashMap::new();
@@ -454,5 +530,166 @@ mod tests {
         let (_tmp, dir, _path, _bytes) = cache_bytes();
         let ws: WordSet<5> = read::<5>(&dir, Language::English, Some(3)).unwrap();
         assert_eq!(ws.words().len(), 3);
+    }
+
+    fn synthetic_totals() -> totals::ByLength {
+        let mut five = HashMap::new();
+        for (word, count) in [
+            ("crane", 300u64),
+            ("stare", 300),
+            ("light", 300),
+            ("mount", 75),
+            ("swipe", 25),
+            ("qqqqq", 500),
+        ] {
+            five.insert(word.to_string(), count);
+        }
+        let three = HashMap::from([("ace".to_string(), 9u64), ("zzz".to_string(), 90)]);
+        let eleven = HashMap::from([("notadictword".to_string(), 4u64)]);
+        [(5, five), (3, three), (12, eleven)].into()
+    }
+
+    fn corpus_files(dir: &DataDir) -> Vec<(String, Vec<u8>)> {
+        let mut files: Vec<_> = std::fs::read_dir(dir.ngrams_dir(Language::English))
+            .map(|entries| {
+                entries
+                    .map(|e| {
+                        let path = e.unwrap().path();
+                        (
+                            path.file_name().unwrap().to_string_lossy().into_owned(),
+                            std::fs::read(&path).unwrap(),
+                        )
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
+        files.sort();
+        files
+    }
+
+    fn no_download(_: &(dyn Fn(u32, u32) + Sync)) -> anyhow::Result<totals::ByLength> {
+        anyhow::bail!("the network must not be reached")
+    }
+
+    #[test]
+    fn a_download_writes_the_totals_and_the_filtered_corpus() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        build_all_via(&dir, Language::English, &|_, _| {}, &|_| {
+            Ok(synthetic_totals())
+        })
+        .unwrap();
+
+        let totals::Inspection::Complete(meta) = totals::inspect(&dir, Language::English) else {
+            panic!("the download should leave complete totals");
+        };
+        assert_eq!(meta.files.keys().copied().collect::<Vec<_>>(), [3, 5, 12]);
+        let ws: WordSet<5> = read::<5>(&dir, Language::English, None).unwrap();
+        assert_eq!(ws.len(), 5, "qqqqq is not in the Dictionary");
+        assert!(!dir.ngrams_path(Language::English, 12).exists());
+    }
+
+    #[test]
+    fn a_corpus_built_from_totals_is_byte_identical_to_the_downloaded_one() {
+        let (_tmp_a, downloaded) = make_dir_with_dict(&all_words_valid());
+        build_all_via(&downloaded, Language::English, &|_, _| {}, &|_| {
+            Ok(synthetic_totals())
+        })
+        .unwrap();
+
+        let (_tmp_b, offline) = make_dir_with_dict(&all_words_valid());
+        totals::write(&offline, Language::English, &synthetic_totals()).unwrap();
+        build_all_via(&offline, Language::English, &|_, _| {}, &no_download).unwrap();
+
+        let from_download = corpus_files(&downloaded);
+        assert_eq!(from_download.len(), 2);
+        assert_eq!(from_download, corpus_files(&offline));
+        assert_eq!(
+            downloaded.ngrams_sha256(Language::English, 5).unwrap(),
+            offline.ngrams_sha256(Language::English, 5).unwrap()
+        );
+    }
+
+    #[test]
+    fn a_rebuild_is_byte_identical_whatever_the_hash_order() {
+        let words: Vec<String> = (0..300).map(|i| format!("w{i:04}")).collect();
+        let forward: HashMap<String, u64> = words.iter().map(|w| (w.clone(), 7)).collect();
+        let backward: HashMap<String, u64> = words.iter().rev().map(|w| (w.clone(), 7)).collect();
+        assert_eq!(
+            super::encode_records(5, &forward),
+            super::encode_records(5, &backward)
+        );
+        let records = super::encode_records(5, &forward);
+        let first: Vec<u8> = records[..20].to_vec();
+        assert_eq!(
+            first[..4],
+            u32::from('w').to_le_bytes(),
+            "ties are in word order"
+        );
+        assert_eq!(first[4..8], u32::from('0').to_le_bytes());
+    }
+
+    #[test]
+    fn building_from_totals_writes_only_the_missing_lengths() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        totals::write(&dir, Language::English, &synthetic_totals()).unwrap();
+        std::fs::create_dir_all(dir.ngrams_dir(Language::English)).unwrap();
+        std::fs::write(
+            dir.ngrams_path(Language::English, 5),
+            b"from an older build",
+        )
+        .unwrap();
+
+        build_all_via(&dir, Language::English, &|_, _| {}, &no_download).unwrap();
+
+        assert_eq!(
+            std::fs::read(dir.ngrams_path(Language::English, 5)).unwrap(),
+            b"from an older build"
+        );
+        assert!(dir.ngrams_path(Language::English, 3).exists());
+    }
+
+    #[test]
+    fn incomplete_totals_are_downloaded_again_never_used() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        totals::write(&dir, Language::English, &synthetic_totals()).unwrap();
+        std::fs::remove_file(dir.totals_dir(Language::English).join("meta.json")).unwrap();
+        let downloads = std::cell::Cell::new(0);
+        build_all_via(&dir, Language::English, &|_, _| {}, &|_| {
+            downloads.set(downloads.get() + 1);
+            Ok(synthetic_totals())
+        })
+        .unwrap();
+        assert_eq!(downloads.get(), 1);
+        assert!(matches!(
+            totals::inspect(&dir, Language::English),
+            totals::Inspection::Complete(_)
+        ));
+    }
+
+    #[test]
+    fn totals_with_a_corrupt_record_are_downloaded_again() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        totals::write(&dir, Language::English, &synthetic_totals()).unwrap();
+        let path = dir.totals_path(Language::English, 5);
+        let mut bytes = std::fs::read(&path).unwrap();
+        let last = bytes.len() - 1;
+        bytes[last] ^= 1;
+        std::fs::write(&path, bytes).unwrap();
+        let downloads = std::cell::Cell::new(0);
+        build_all_via(&dir, Language::English, &|_, _| {}, &|_| {
+            downloads.set(downloads.get() + 1);
+            Ok(synthetic_totals())
+        })
+        .unwrap();
+        assert_eq!(downloads.get(), 1);
+        assert!(read::<5>(&dir, Language::English, None).is_ok());
+    }
+
+    #[test]
+    fn a_failed_download_leaves_no_totals_and_no_corpus() {
+        let (_tmp, dir) = make_dir_with_dict(&all_words_valid());
+        assert!(build_all_via(&dir, Language::English, &|_, _| {}, &no_download).is_err());
+        assert!(!dir.totals_dir(Language::English).exists());
+        assert!(!dir.ngrams_dir(Language::English).exists());
     }
 }
