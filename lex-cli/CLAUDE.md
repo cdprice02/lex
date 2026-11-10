@@ -16,6 +16,7 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 | `tracks.rs` | `TRACKS`, the `const` table of benchmark Tracks (`Track { game, strategy, tier, judged, targets }`), built by a `const fn` over `Language::VARIANTS` and the length range; `TRACK_COUNT` is computed from them, so a new language or length needs no edit. `Track::config()`, `Track::find(id)`, ids from `Display`. Tier and target rules are ADR 0007's; the evidence is `benchmarks/experiments/track-targets.md` |
 | `books.rs` | Opening book files for a run: `key()` builds the `BookKey` (Corpus and Profile checksums, length, pool size, `Strategy::key_fields()`, `SOLVER_DIGEST`); `ensure()` loads the book, or on a miss builds it (reporting to an `Observer`; a stale book's start message names the changed fields) and stores it, errors on a damaged file naming it and `lex book build --force`; `guesser()` returns a `Guesser` seeded with it unless `BookMode::Off` (`--no-book`); `build_command` is `lex book build`. A book always covers the full Answer set, whatever `-n` samples. Build time goes to the observer and `book build`'s stdout, never into the Report |
 | `clear.rs` | The `clear` verb of the cache groups: `dict`, `corpus`, `profile`, `book` each call the matching `DataDir` delete (which returns the paths it removed) and print them through `summary()`, one per line and a total. `dict` warns on stderr first |
+| `dicts.rs` | `lex dict list` and `lex dict show --lang L`: `render_list` and `render_show` take the `DictRecord`s of `DataDir::dicts()` / `dict()` and a `terminal` flag (`is_terminal()` of stdout): a rounded `tabled` table with size in MiB (one decimal) on a terminal, otherwise tab-separated columns with one header line and size in bytes (`show` is `field`, `value`, `note` rows). `list` has a row per cached language (code, words, fetch date, 8-character checksum, size, Corpus lengths cached) or prints "no Dictionaries cached"; `show` prints full Provenance, paths, per-length counts 3 to 21 with cached Corpus lengths noted, the count outside, and flags a metadata word count that differs from the file; an uncached language is an error. Provenance missing reads "unknown". Neither command downloads |
 | `simulate.rs` | `run(&RunConfig, &DataDir, Option<&dyn Observer>) -> Result<Report>` plays a config with its book, built on first use (`run_with(.., BookMode, observer)` opts out), and prints nothing (it dispatches the word length itself; the report assembly is not generic); `simulate::<N>(&SimulateArgs)` is the command: `args.config()`, `run`, then print or write the report |
 | `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
@@ -30,7 +31,7 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 
 ## Cache commands
 
-Game actions stay top-level (`simulate`, `assist`, `compare`, `verdict`). Each kind of cached data is a group; later slices add `list` and `show` beside `clear` (tracker #23).
+Game actions stay top-level (`simulate`, `assist`, `compare`, `verdict`). Each kind of cached data is a group; `dict` has `list` and `show` beside `clear`, and later slices add them to the others (tracker #23).
 
 | Group | `clear` | Cascade |
 |---|---|---|
@@ -39,7 +40,7 @@ Game actions stay top-level (`simulate`, `assist`, `compare`, `verdict`). Each k
 | `lex profile` | `--profile P` or `--all` | the Profile's lists and its books |
 | `lex book` | `--lang L [-l N]` or `--all` | books only; `book build` also lives here |
 
-`--lang`, `-l`, `--profile` and `--data-dir` mean the same in every group. `clear` with nothing selecting what to clear is a clap error unless `--all`. The deletes live in `lex-data` (`DataDir::{clear_dict, clear, clear_profile, clear_books}`) and return the paths they removed; `--all` skips items that are not cached, while naming one that is missing is an error (except `dict clear`, which skips absent pieces). There is no top-level clear command. `tests/cache_commands.rs` covers parsing and the cascades in temp data dirs.
+`--lang`, `-l`, `--profile` and `--data-dir` mean the same in every group. `clear` with nothing selecting what to clear is a clap error unless `--all`. The deletes live in `lex-data` (`DataDir::{clear_dict, clear, clear_profile, clear_books}`) and return the paths they removed; a `clear` of something that is not cached removes nothing and succeeds with "0 paths removed". There is no top-level clear command. `tests/cache_commands.rs` covers parsing and the cascades in temp data dirs.
 
 ## Plumbing
 

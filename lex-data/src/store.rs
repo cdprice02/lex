@@ -129,18 +129,14 @@ pub fn hex(bytes: &[u8]) -> String {
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
-/// language ngrams directory (None), returning the path removed.
+/// language ngrams directory (None), returning the path removed; nothing cached removes
+/// nothing and succeeds.
 pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<Vec<PathBuf>> {
-    if let Some(n) = n {
-        let path = dir.ngrams_path(lang, n);
-        std::fs::remove_file(&path)
-            .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
+    let path = n.map_or_else(|| dir.ngrams_dir(lang), |n| dir.ngrams_path(lang, n));
+    if crate::data_dir::remove_if_present(&path)? {
         Ok(vec![path])
     } else {
-        let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
-        std::fs::remove_dir_all(&lang_dir)
-            .with_context(|| format!("removing ngrams dir for {lang}"))?;
-        Ok(vec![lang_dir])
+        Ok(Vec::new())
     }
 }
 
