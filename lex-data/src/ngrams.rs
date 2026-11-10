@@ -1,6 +1,6 @@
 //! Downloading and filtering the Google Books Ngrams V3 shards into word counts.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::io::{BufRead, BufReader};
 use std::num::NonZeroUsize;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
@@ -32,12 +32,12 @@ fn worker_count(requested: Option<NonZeroUsize>, shards: u32) -> usize {
 pub const SNAPSHOT: &str = "20200217";
 
 /// Downloads all Google Books Ngrams V3 shards for `lang` with up to `requested`
-/// requests in flight at once (see [`worker_count`]). Returns the words in `valid`, grouped by char count, for every
-/// supported length. Callers write all length buckets on a cache miss so future requests for
-/// any length of this language are served from disk.
+/// requests in flight at once (see [`worker_count`]). Returns the
+/// Ngrams totals: every word that passes `is_valid_word` at a supported length with its count
+/// summed over all years, grouped by char count, before any Dictionary filter.
 ///
-/// Words are filtered as each shard streams in, so memory holds only the kept words rather than
-/// every distinct token in the corpus.
+/// Words are reduced as each shard streams in and each worker folds its shards into one map, so
+/// memory holds the distinct valid words rather than every token of the corpus.
 ///
 /// `progress(done, total)` is called once with 0 before the first request and after each shard
 /// finishes, from the worker threads.
@@ -47,7 +47,6 @@ pub const SNAPSHOT: &str = "20200217";
 /// order shards finish in.
 pub fn fetch(
     lang: Language,
-    valid: &HashSet<String>,
     requested: Option<NonZeroUsize>,
     progress: &(dyn Fn(u32, u32) + Sync),
 ) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
@@ -58,8 +57,8 @@ pub fn fetch(
     let next = AtomicU32::new(0);
     let failed = AtomicBool::new(false);
 
-    let worker = || -> anyhow::Result<Vec<HashMap<String, u64>>> {
-        let mut done = Vec::new();
+    let worker = || -> anyhow::Result<HashMap<String, u64>> {
+        let mut folded: HashMap<String, u64> = HashMap::new();
         while !failed.load(Ordering::Relaxed) {
             let shard = next.fetch_add(1, Ordering::Relaxed);
             if shard >= n {
@@ -71,12 +70,12 @@ pub fn fetch(
             );
             log::debug!("  [{}/{}] {url}", shard + 1, n);
             match http::get(&agent, &url, |body| {
-                read_shard(BufReader::new(MultiGzDecoder::new(body)), valid)
+                read_shard(BufReader::new(MultiGzDecoder::new(body)))
             }) {
                 Ok(words) => {
                     log::info!("  [{}/{}] done", shard + 1, n);
                     progress(finished.fetch_add(1, Ordering::Relaxed) + 1, n);
-                    done.push(words);
+                    fold(&mut folded, words);
                 }
                 Err(e) => {
                     failed.store(true, Ordering::Relaxed);
@@ -84,7 +83,7 @@ pub fn fetch(
                 }
             }
         }
-        Ok(done)
+        Ok(folded)
     };
 
     let results: Vec<_> = thread::scope(|scope| {
@@ -98,39 +97,51 @@ pub fn fetch(
             .collect()
     });
 
-    let mut by_length: HashMap<usize, HashMap<String, u64>> = HashMap::new();
-    for shard_map in results
+    let folded = results
         .into_iter()
         .collect::<anyhow::Result<Vec<_>>>()
-        .with_context(|| format!("fetching ngrams for {lang}"))?
-        .into_iter()
-        .flatten()
-    {
-        for (word, count) in shard_map {
-            let len = word.chars().count();
-            *by_length.entry(len).or_default().entry(word).or_insert(0) += count;
-        }
-    }
-    // a word's total, not a single shard's share of it, decides whether it is kept
-    for words in by_length.values_mut() {
-        words.retain(|_, &mut count| count >= MIN_FREQUENCY);
-    }
-    by_length.retain(|_, words| !words.is_empty());
-    Ok(by_length)
+        .with_context(|| format!("fetching ngrams for {lang}"))?;
+    Ok(by_length(folded))
 }
 
-/// Sums the counts of every word in `valid` whose length is supported, in one decompressed
-/// shard. Membership is a per-word test, so filtering per shard keeps exactly the words that
-/// filtering the merged corpus would.
-fn read_shard(
-    reader: impl BufRead,
-    valid: &HashSet<String>,
-) -> std::io::Result<HashMap<String, u64>> {
+/// Adds every count of `from` into `into`.
+fn fold(into: &mut HashMap<String, u64>, from: HashMap<String, u64>) {
+    for (word, count) in from {
+        *into.entry(word).or_insert(0) += count;
+    }
+}
+
+/// Sums the per-worker maps and groups the words by char count. A word's total, not a single
+/// shard's share of it, is what is kept, so the result does not depend on how shards were
+/// divided among workers. Words with no count are dropped.
+fn by_length(
+    folded: impl IntoIterator<Item = HashMap<String, u64>>,
+) -> HashMap<usize, HashMap<String, u64>> {
+    let mut maps = folded.into_iter();
+    let mut total = maps.next().unwrap_or_default();
+    for map in maps {
+        fold(&mut total, map);
+    }
+    let mut by_length: HashMap<usize, HashMap<String, u64>> = HashMap::new();
+    for (word, count) in total {
+        if count >= MIN_FREQUENCY {
+            by_length
+                .entry(word.chars().count())
+                .or_default()
+                .insert(word, count);
+        }
+    }
+    by_length
+}
+
+/// Sums the counts of every valid word whose length is supported, in one decompressed shard.
+/// A normalized word can span shards, so these are partial counts until merged.
+fn read_shard(reader: impl BufRead) -> std::io::Result<HashMap<String, u64>> {
     let mut acc: HashMap<String, u64> = HashMap::new();
     for line in reader.lines() {
         if let Ok((word, count)) = parse_ngram_line(&line?) {
             let len = word.chars().count();
-            if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&len) && valid.contains(&word) {
+            if (MIN_WORD_LENGTH..=MAX_WORD_LENGTH).contains(&len) {
                 *acc.entry(word).or_insert(0) += count;
             }
         }
@@ -141,10 +152,6 @@ fn read_shard(
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    fn valid(words: &[&str]) -> HashSet<String> {
-        words.iter().map(std::string::ToString::to_string).collect()
-    }
 
     fn workers(requested: Option<usize>, shards: u32) -> usize {
         worker_count(requested.and_then(NonZeroUsize::new), shards)
@@ -176,24 +183,37 @@ mod tests {
                      two words\t2000,9,1\n\
                      no tab here\n\
                      light\t2000,4,1\n";
-        let words = read_shard(shard.as_bytes(), &valid(&["crane", "stare", "light"])).unwrap();
+        let words = read_shard(shard.as_bytes()).unwrap();
         assert_eq!(words.len(), 2);
         assert_eq!(words["crane"], 15);
         assert_eq!(words["light"], 4);
     }
 
     #[test]
-    fn read_shard_drops_words_outside_the_dictionary_and_supported_lengths() {
+    fn read_shard_keeps_dictionary_blind_words_and_drops_unsupported_lengths() {
         let shard = "crane\t2000,5,1\n\
                      swipe\t2000,5,1\n\
                      ab\t2000,5,1\n\
                      abcdefghijklmnopqrstuv\t2000,5,1\n";
-        let words = read_shard(
-            shard.as_bytes(),
-            &valid(&["crane", "ab", "abcdefghijklmnopqrstuv"]),
-        )
-        .unwrap();
-        assert_eq!(words.keys().collect::<Vec<_>>(), ["crane"]);
+        let words = read_shard(shard.as_bytes()).unwrap();
+        let mut kept: Vec<_> = words.keys().map(String::as_str).collect();
+        kept.sort_unstable();
+        assert_eq!(kept, ["crane", "swipe"]);
+    }
+
+    #[test]
+    fn by_length_sums_a_word_across_workers_and_groups_by_length() {
+        let worker = |pairs: &[(&str, u64)]| -> HashMap<String, u64> {
+            pairs.iter().map(|&(w, c)| (w.to_owned(), c)).collect()
+        };
+        let totals = by_length([
+            worker(&[("crane", 5), ("ace", 1)]),
+            worker(&[("crane", 7), ("zero", 0)]),
+        ]);
+        assert_eq!(totals[&5]["crane"], 12);
+        assert_eq!(totals[&3]["ace"], 1);
+        assert!(!totals.contains_key(&4), "a zero total is dropped");
+        assert!(by_length([]).is_empty());
     }
 
     #[test]
@@ -205,11 +225,7 @@ mod tests {
             .write_all(b"crane\t2000,5,1\nlight\t2000,4,1\n")
             .unwrap();
         let gz = encoder.finish().unwrap();
-        let words = read_shard(
-            BufReader::new(MultiGzDecoder::new(gz.as_slice())),
-            &valid(&["crane", "light"]),
-        )
-        .unwrap();
+        let words = read_shard(BufReader::new(MultiGzDecoder::new(gz.as_slice()))).unwrap();
         assert_eq!(words["crane"], 5);
         assert_eq!(words["light"], 4);
     }
@@ -224,6 +240,6 @@ mod tests {
             .unwrap();
         let gz = encoder.finish().unwrap();
         let cut = &gz[..gz.len() - 8];
-        assert!(read_shard(BufReader::new(MultiGzDecoder::new(cut)), &valid(&["crane"])).is_err());
+        assert!(read_shard(BufReader::new(MultiGzDecoder::new(cut))).is_err());
     }
 }

@@ -57,6 +57,28 @@ pub enum LexDataError {
         /// What failed.
         reason: String,
     },
+    /// A file of one cache kind where the other was expected: the Corpus and Ngrams totals
+    /// files share a layout and differ in the magic.
+    #[error("{path:?} is an {found}, not a {expected}")]
+    WrongCacheKind {
+        /// The rejected file.
+        path: PathBuf,
+        /// What the magic says it is.
+        found: &'static str,
+        /// What the reader wanted.
+        expected: &'static str,
+    },
+    /// An Ngrams totals file or set that fails validation.
+    #[error(
+        "corrupt Ngrams totals {path:?}: {reason}; remove them with \
+         `lex corpus clear --lang <lang> --all-data`"
+    )]
+    CorruptTotals {
+        /// The rejected file.
+        path: PathBuf,
+        /// What failed.
+        reason: String,
+    },
     /// A Cache record that is not a valid word and frequency.
     #[error(
         "corrupt cache {path:?}: record {index}: {reason}; delete it and rebuild with `lex corpus clear --lang <lang>`"
