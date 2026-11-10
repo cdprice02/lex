@@ -78,7 +78,17 @@ fn config_json(track: &Track, report: &Report) -> Value {
     json!({ "game": game, "strategy": report.run.strategy, "targets": targets })
 }
 
+/// Plays `track` in its own one-thread rayon pool, so the solver stays serial per Track while
+/// the Tracks run side by side on libtest's threads.
 fn play(track: &Track) -> Result<(), String> {
+    rayon::ThreadPoolBuilder::new()
+        .num_threads(1)
+        .build()
+        .map_err(|e| e.to_string())?
+        .install(|| play_serial(track))
+}
+
+fn play_serial(track: &Track) -> Result<(), String> {
     let root = data_dir();
     let data = DataDir::new(&root);
     require_data(track, &data, &root)?;

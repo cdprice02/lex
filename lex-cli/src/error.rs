@@ -22,4 +22,7 @@ pub enum CliError {
     /// A Track id that names no Track.
     #[error("unknown track {0:?}")]
     UnknownTrack(String),
+    /// The worker thread pool could not be started.
+    #[error("could not start the thread pool: {0}")]
+    ThreadPool(#[from] rayon::ThreadPoolBuildError),
 }
