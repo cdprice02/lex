@@ -45,14 +45,15 @@ Subcommands: `simulate` (batch games, average guess count), `assist`
 (interactive helper for a live Wordle: suggests guesses, you enter the
 feedback as letters `gyx`, digits `210`, or pasted emoji), `compare` (paired
 comparison of two `simulate --output` reports), `book build` (the opening
-book, below) and `clear`.
+book, below) and the cache groups `dict`, `corpus`, `profile` and `book`, each
+with a `clear` command (below).
 
 `simulate` and `assist` build the opening book for their game and strategy on
 first use (progress on stderr) and load it afterwards; `--no-book` plays fully
 online. The book is a cache of the solver's own choices, so games are identical
 either way. `lex book build` takes the same game and strategy flags, builds the
 book or reports it up to date (`--force` rebuilds), and prints its size and
-build time. Books live in `data/books/`; `lex clear --books [--lang L] [-l N]`
+build time. Books live in `data/books/`; `lex book clear --lang L [-l N]`
 removes them, and clearing a corpus or a Profile removes its books too.
 
 `simulate`, `assist` and `book build` share the game and Strategy flags:
@@ -84,7 +85,18 @@ removes them, and clearing a corpus or a Profile removes its books too.
 
 `assist` also takes `-s` / `--suggestions` (default `5`): suggestions shown per turn.
 
-`clear` takes `--lang`, `--profile`, `--books` and `-l`, plus `--data-dir`; see `lex clear --help`.
+## Cache commands
+
+Each kind of cached data is a group with a `clear` command that deletes it so it is rebuilt on next use. Every `clear` prints each path it removed and a total, and asks nothing first. Naming nothing is an error; `--all` clears every item of that kind.
+
+| Command | Removes |
+|---|---|
+| `lex dict clear --lang L` (alias `dictionary`) | the Dictionary of `L` (its Wiktionary word list and metadata), its Corpus caches at every length and their opening books; `-l` is not accepted |
+| `lex corpus clear --lang L [-l N]` | the Corpus cache of `L` (one length with `-l`) and its opening books |
+| `lex profile clear --profile P` | the fetched lists of `P` and its opening books |
+| `lex book clear --lang L [-l N]` | only the opening books |
+
+All take `--data-dir`; the group commands accept `--all` in place of the selector. `dict clear` warns first: the next fetch takes KAIKKI's current (rolling) Wiktionary extract, which can change the Corpus and that language's Track snapshots. See `lex <group> clear --help`.
 
 Every command also takes the display flags:
 

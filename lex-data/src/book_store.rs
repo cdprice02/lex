@@ -394,12 +394,17 @@ impl DataDir {
         })
     }
 
-    /// Removes `books/`, narrowed to a language and a word length. Missing directories are fine.
+    /// Removes `books/`, narrowed to a language and a word length, returning each path
+    /// removed. Missing directories are fine.
     ///
     /// # Errors
     ///
     /// If a books directory exists but cannot be removed.
-    pub fn clear_books(&self, lang: Option<Language>, n: Option<usize>) -> anyhow::Result<()> {
+    pub fn clear_books(
+        &self,
+        lang: Option<Language>,
+        n: Option<usize>,
+    ) -> anyhow::Result<Vec<PathBuf>> {
         let root = self.books_root();
         let langs: Vec<PathBuf> = lang.map_or_else(
             || {
@@ -409,24 +414,24 @@ impl DataDir {
             },
             |lang| vec![root.join(lang.lang_code())],
         );
+        let mut removed = Vec::new();
         for lang_dir in langs {
             let target = match n {
                 Some(n) => lang_dir.join(n.to_string()),
                 None => lang_dir,
             };
-            match std::fs::remove_dir_all(&target) {
-                Ok(()) => {}
-                Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
-                Err(e) => return Err(e).with_context(|| format!("removing {}", target.display())),
+            if crate::data_dir::remove_if_present(&target)? {
+                removed.push(target);
             }
         }
-        Ok(())
+        Ok(removed)
     }
 
-    /// Removes the books whose key names the Profile `name`.
-    pub(crate) fn clear_profile_books(&self, name: &str) -> anyhow::Result<()> {
+    /// Removes the books whose key names the Profile `name`, returning each file removed.
+    pub(crate) fn clear_profile_books(&self, name: &str) -> anyhow::Result<Vec<PathBuf>> {
+        let mut removed = Vec::new();
         let Ok(langs) = std::fs::read_dir(self.books_root()) else {
-            return Ok(());
+            return Ok(removed);
         };
         for lang_dir in langs.filter_map(std::result::Result::ok) {
             let Ok(lengths) = std::fs::read_dir(lang_dir.path()) else {
@@ -438,6 +443,7 @@ impl DataDir {
                         Ok(key) if key.profile.as_ref().is_some_and(|p| p.name == name) => {
                             std::fs::remove_file(&file)
                                 .with_context(|| format!("removing {}", file.display()))?;
+                            removed.push(file);
                         }
                         Ok(_) => {}
                         Err(e) => log::warn!("skipping unreadable book {}: {e:#}", file.display()),
@@ -445,7 +451,7 @@ impl DataDir {
                 }
             }
         }
-        Ok(())
+        Ok(removed)
     }
 }
 
@@ -725,5 +731,44 @@ mod tests {
         assert!(!dir.book_path(LANG, &key()).exists());
         assert!(dir.book_path(LANG, &other_profile).exists());
         assert!(dir.book_path(LANG, &corpus).exists());
+    }
+
+    fn seed_language(tmp: &std::path::Path, dir: &DataDir, lang: Language) -> Vec<PathBuf> {
+        let code = lang.lang_code();
+        let files = [
+            tmp.join(format!("dicts/{code}.txt")),
+            tmp.join(format!("dicts/{code}.meta.json")),
+            tmp.join(format!("ngrams/{code}/5.bin")),
+            tmp.join(format!("ngrams/{code}/6.bin")),
+        ];
+        for file in &files {
+            std::fs::create_dir_all(file.parent().unwrap()).unwrap();
+            std::fs::write(file, b"x").unwrap();
+        }
+        dir.write_book(lang, &key(), &book()).unwrap();
+        files.to_vec()
+    }
+
+    #[test]
+    fn clear_dict_removes_the_dictionary_corpora_and_books_of_one_language() {
+        let (tmp, dir) = dir();
+        let english = seed_language(tmp.path(), &dir, Language::English);
+        let french = seed_language(tmp.path(), &dir, Language::French);
+
+        let removed = dir.clear_dict(Language::English).unwrap();
+        assert!(english.iter().all(|f| !f.exists()));
+        assert!(!dir.book_path(Language::English, &key()).exists());
+        assert!(french.iter().all(|f| f.exists()));
+        assert!(dir.book_path(Language::French, &key()).exists());
+        // dict txt, meta, the ngrams directory (every length) and the books directory
+        assert_eq!(removed.len(), 4, "{removed:?}");
+        assert!(removed.contains(&tmp.path().join("ngrams/eng")));
+        assert!(removed.contains(&tmp.path().join("books/eng")));
+    }
+
+    #[test]
+    fn clear_dict_of_an_uncached_language_removes_nothing() {
+        let (_tmp, dir) = dir();
+        assert!(dir.clear_dict(Language::German).unwrap().is_empty());
     }
 }

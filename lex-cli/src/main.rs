@@ -7,8 +7,8 @@ use clap::Parser;
 
 use lex_cli::assist::assist;
 use lex_cli::books::build_command;
-use lex_cli::clear::clear;
-use lex_cli::cli::{BookCommand, Cli, Command};
+use lex_cli::clear;
+use lex_cli::cli::{BookCommand, Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
 use lex_cli::compare::compare_reports;
 use lex_cli::progress;
 use lex_cli::simulate::simulate;
@@ -52,7 +52,16 @@ fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
                 args.dispatch_length(),
                 &args
             )),
+            BookCommand::Clear(args) => done(clear::book(&args)),
         },
-        Command::Clear(args) => done(clear(&args)),
+        Command::Dict(args) => match args.command {
+            DictCommand::Clear(args) => done(clear::dict(&args)),
+        },
+        Command::Corpus(args) => match args.command {
+            CorpusCommand::Clear(args) => done(clear::corpus(&args)),
+        },
+        Command::Profile(args) => match args.command {
+            ProfileCommand::Clear(args) => done(clear::profile(&args)),
+        },
     }
 }

@@ -3,6 +3,7 @@
 use std::collections::HashMap;
 use std::fmt::Write as _;
 use std::io::{BufWriter, Write};
+use std::path::PathBuf;
 
 use anyhow::Context;
 use memmap2::Mmap;
@@ -128,17 +129,19 @@ pub fn hex(bytes: &[u8]) -> String {
 }
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
-/// language ngrams directory (None).
-pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
+/// language ngrams directory (None), returning the path removed.
+pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<Vec<PathBuf>> {
     if let Some(n) = n {
-        std::fs::remove_file(dir.ngrams_path(lang, n))
+        let path = dir.ngrams_path(lang, n);
+        std::fs::remove_file(&path)
             .with_context(|| format!("removing ngrams file for {lang} length {n}"))?;
+        Ok(vec![path])
     } else {
         let lang_dir = dir.as_ref().join("ngrams").join(lang.lang_code());
         std::fs::remove_dir_all(&lang_dir)
             .with_context(|| format!("removing ngrams dir for {lang}"))?;
+        Ok(vec![lang_dir])
     }
-    Ok(())
 }
 
 /// Writes one Cache per length bucket of `by_length`.

@@ -1,5 +1,5 @@
 //! Opening book files through the CLI's own seams: the first use builds, a changed key rebuilds
-//! and says why, damage fails loudly, and `lex clear` prunes. The round trip of a non-empty
+//! and says why, damage fails loudly, and `lex book clear` prunes. The round trip of a non-empty
 //! book is `lex-core`'s `guesser` test.
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 #![expect(
@@ -15,7 +15,7 @@ use std::cell::{Cell, RefCell};
 use clap::Parser;
 use common::{seed_dict, seed_supported};
 use lex_cli::books::{self, BookMode, Status};
-use lex_cli::cli::{Cli, Command};
+use lex_cli::cli::{BookArgs, BookCommand, Cli, Command, CorpusArgs, CorpusCommand};
 use lex_cli::config::{Game, RunConfig, Targets};
 use lex_cli::lists::Source;
 use lex_cli::progress::Observer;
@@ -168,25 +168,55 @@ fn a_run_builds_the_book_unless_told_not_to_and_plays_the_same_games() {
     assert_eq!(games(&run(&config, &dir, None).unwrap()), games(&online));
 }
 
-fn clear(dir: &DataDir, args: &[&str]) {
-    let Command::Clear(args) = Cli::try_parse_from(
-        ["lex", "clear", "--data-dir", dir.as_ref().to_str().unwrap()]
-            .into_iter()
-            .chain(args.iter().copied()),
+fn clear_corpus(dir: &DataDir, args: &[&str]) {
+    let Command::Corpus(CorpusArgs {
+        command: CorpusCommand::Clear(args),
+    }) = Cli::try_parse_from(
+        [
+            "lex",
+            "corpus",
+            "clear",
+            "--data-dir",
+            dir.as_ref().to_str().unwrap(),
+        ]
+        .into_iter()
+        .chain(args.iter().copied()),
     )
     .unwrap()
     .command
     else {
-        panic!("`clear` parses to the clear command")
+        panic!("`corpus clear` parses to the corpus clear command")
     };
-    lex_cli::clear::clear(&args).unwrap();
+    lex_cli::clear::corpus(&args).unwrap();
+}
+
+fn clear_books(dir: &DataDir, args: &[&str]) {
+    let Command::Book(BookArgs {
+        command: BookCommand::Clear(args),
+    }) = Cli::try_parse_from(
+        [
+            "lex",
+            "book",
+            "clear",
+            "--data-dir",
+            dir.as_ref().to_str().unwrap(),
+        ]
+        .into_iter()
+        .chain(args.iter().copied()),
+    )
+    .unwrap()
+    .command
+    else {
+        panic!("`book clear` parses to the book clear command")
+    };
+    lex_cli::clear::book(&args).unwrap();
 }
 
 #[test]
 fn clear_books_removes_books_and_nothing_else() {
     let (_tmp, dir) = seeded();
     ensure(&dir, &config(Strategy::default()), false).unwrap();
-    clear(&dir, &["--books", "--lang", "english", "-l", "5"]);
+    clear_books(&dir, &["--lang", "english", "-l", "5"]);
     assert!(book_files(&dir).is_empty());
     assert!(dir.ngrams_path(Language::English, 5).exists());
 }
@@ -195,7 +225,7 @@ fn clear_books_removes_books_and_nothing_else() {
 fn clearing_a_corpus_removes_its_books() {
     let (_tmp, dir) = seeded();
     ensure(&dir, &config(Strategy::default()), false).unwrap();
-    clear(&dir, &["--lang", "english", "-l", "5"]);
+    clear_corpus(&dir, &["--lang", "english", "-l", "5"]);
     assert!(book_files(&dir).is_empty());
     assert!(!dir.ngrams_path(Language::English, 5).exists());
 }

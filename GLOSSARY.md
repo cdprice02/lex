@@ -16,6 +16,10 @@ _Avoid_: Store, database
 The SHA-256 of a Cache's word records, the identity that benchmark reports embed to show two runs used the same Corpus.
 _Avoid_: File hash, ngrams hash
 
+**Dictionary**:
+The set of valid words for a language, from a Wiktionary extract, that filters the Corpus; it carries a Provenance.
+_Avoid_: Word list, dict (in prose)
+
 **Legacy cache**:
 A Cache written before the format carried a header; it is rejected and must be rebuilt, never read.
 _Avoid_: Old cache, v0
