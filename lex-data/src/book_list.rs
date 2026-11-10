@@ -1,5 +1,5 @@
 //! Reading the stored opening books from disk, never building one, as plain records for any
-//! frontend. A record needs only a file's header and key, so listing never reads a body.
+//! frontend. A record reads a file's header and key and verifies its body checksum.
 
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -76,7 +76,7 @@ impl BookRecord {
         self.id.get(..SHORT_ID_LEN).unwrap_or(&self.id)
     }
 
-    /// Verifies the body against its checksum, which a header-only record never reads.
+    /// Verifies the body against its checksum again (a listed record already carries the result).
     ///
     /// # Errors
     ///
@@ -200,7 +200,9 @@ impl<'a> Current<'a> {
             positions: header.node_count,
             key: key.clone(),
         });
-        record.status = if key.hash() != record.id {
+        record.status = if let Err(e) = book_store::verify_file(path) {
+            BookStatus::Corrupt(reason(&e.into()))
+        } else if key.hash() != record.id {
             BookStatus::Corrupt("its key does not match its file name".to_owned())
         } else if key.word_length != n {
             BookStatus::Corrupt("its word length disagrees with its directory".to_owned())
@@ -237,7 +239,7 @@ fn length_dirs(dir: &Path) -> Vec<(usize, PathBuf)> {
 
 impl DataDir {
     /// Every stored book matching `filter`, in language order, then word length, then file name.
-    /// Reads headers only; nothing is built. `solver_digest` is the current build's, which this
+    /// Reads and verifies every file; nothing is built. `solver_digest` is the current build's, which this
     /// crate cannot know. A damaged book lists as corrupt.
     #[must_use]
     pub fn books(&self, solver_digest: &str, filter: &BookFilter) -> Vec<BookRecord> {
@@ -466,7 +468,7 @@ mod tests {
     }
 
     #[test]
-    fn a_flipped_body_byte_passes_the_listing_and_fails_verification() {
+    fn a_flipped_body_byte_lists_as_corrupt_and_stale_clearing_removes_it() {
         let (_tmp, dir) = dir();
         let file = dir
             .write_book(LANG, &corpus_key("any", DIGEST), &book())
@@ -475,8 +477,12 @@ mod tests {
         *bytes.last_mut().unwrap() ^= 0xff;
         std::fs::write(&file.path, bytes).unwrap();
         let records = all(&dir);
-        assert_eq!(records[0].status, BookStatus::Current);
+        assert!(matches!(records[0].status, BookStatus::Corrupt(_)));
         assert!(records[0].verify_body().is_err());
+        let removed = dir
+            .clear_stale_books(DIGEST, &BookFilter::default())
+            .unwrap();
+        assert_eq!(removed, [file.path]);
     }
 
     #[test]

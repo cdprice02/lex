@@ -1,8 +1,8 @@
 //! `lex book list` and `lex book show`: the stored opening books.
 //!
 //! A `tabled` table on a terminal, tab-separated columns with one header line when piped. Reads
-//! disk only: it never builds a book, fetches a Corpus or reads a book body except to verify it
-//! in `show`.
+//! disk only: it never builds a book or fetches a Corpus. `show` is the only command that reads
+//! more than a book file, and it never fetches either.
 
 use std::io::IsTerminal as _;
 
