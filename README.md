@@ -96,6 +96,10 @@ Each kind of cached data is a group with a `clear` command that deletes it so it
 | `lex profile clear --profile P` | the fetched lists of `P` and its opening books |
 | `lex book clear --lang L [-l N]` | only the opening books |
 
+A `clear` of something that is not cached succeeds with "0 paths removed".
+
+`lex dict list` shows a row per cached Dictionary (language, words, fetch date, checksum prefix, size, Corpus lengths built against it) and `lex dict show --lang L` shows one in full: Provenance, paths, word counts per word length 3 to 21 and which lengths have a Corpus cached. Both read the cache only and never download; a language that has not been used yet is absent. On a terminal they print tables; piped, tab-separated columns with one header line and sizes in bytes.
+
 All take `--data-dir`; the group commands accept `--all` in place of the selector. `dict clear` warns first: the next fetch takes KAIKKI's current (rolling) Wiktionary extract, which can change the Corpus and that language's Track snapshots. See `lex <group> clear --help`.
 
 Every command also takes the display flags:
