@@ -1,0 +1,189 @@
+//! The cache command groups: parsing, and the cascades of `clear` against a temp data dir.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::panic,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
+
+use std::path::Path;
+
+use clap::Parser;
+use clap::error::ErrorKind;
+use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
+
+fn parse(args: &[&str]) -> Result<Command, clap::Error> {
+    Cli::try_parse_from(std::iter::once("lex").chain(args.iter().copied())).map(|cli| cli.command)
+}
+
+fn kind(args: &[&str]) -> ErrorKind {
+    parse(args).unwrap_err().kind()
+}
+
+/// Writes `data_dir/<relative>` with a stand-in body.
+fn touch(data_dir: &Path, relative: &str) {
+    let path = data_dir.join(relative);
+    std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+    std::fs::write(path, b"x").unwrap();
+}
+
+/// A data dir holding a Dictionary, two Corpus lengths and a book for each of `codes`.
+fn seeded(codes: &[&str]) -> tempfile::TempDir {
+    let tmp = tempfile::tempdir().unwrap();
+    for code in codes {
+        for relative in [
+            format!("dicts/{code}.txt"),
+            format!("dicts/{code}.meta.json"),
+            format!("ngrams/{code}/5.bin"),
+            format!("ngrams/{code}/6.bin"),
+            format!("books/{code}/5/a.bin"),
+            format!("books/{code}/6/b.bin"),
+        ] {
+            touch(tmp.path(), &relative);
+        }
+    }
+    tmp
+}
+
+fn run_dict_clear(tmp: &tempfile::TempDir, args: &[&str]) {
+    let dir = tmp.path().to_str().unwrap();
+    let Command::Dict(args) =
+        parse(&[&["dict", "clear", "--data-dir", dir], args].concat()).unwrap()
+    else {
+        panic!("`dict clear` parses to the dict command")
+    };
+    let DictCommand::Clear(args) = args.command;
+    lex_cli::clear::dict(&args).unwrap();
+}
+
+#[test]
+fn dict_clear_removes_the_dictionary_every_length_and_the_books_of_one_language() {
+    let tmp = seeded(&["eng", "fre"]);
+    run_dict_clear(&tmp, &["--lang", "english"]);
+    let root = tmp.path();
+    assert!(!root.join("dicts/eng.txt").exists());
+    assert!(!root.join("dicts/eng.meta.json").exists());
+    assert!(!root.join("ngrams/eng").exists());
+    assert!(!root.join("books/eng").exists());
+    for kept in [
+        "dicts/fre.txt",
+        "dicts/fre.meta.json",
+        "ngrams/fre/5.bin",
+        "ngrams/fre/6.bin",
+        "books/fre/5/a.bin",
+        "books/fre/6/b.bin",
+    ] {
+        assert!(root.join(kept).exists(), "{kept} survives");
+    }
+}
+
+#[test]
+fn dict_clear_all_removes_every_language() {
+    let tmp = seeded(&["eng", "fre"]);
+    run_dict_clear(&tmp, &["--all"]);
+    for gone in ["dicts/eng.txt", "dicts/fre.txt", "ngrams/fre", "books/eng"] {
+        assert!(!tmp.path().join(gone).exists(), "{gone}");
+    }
+}
+
+#[test]
+fn corpus_clear_all_keeps_dictionaries_and_removes_books() {
+    let tmp = seeded(&["eng", "fre"]);
+    let dir = tmp.path().to_str().unwrap();
+    let Command::Corpus(args) = parse(&["corpus", "clear", "--all", "--data-dir", dir]).unwrap()
+    else {
+        panic!("`corpus clear` parses to the corpus command")
+    };
+    let CorpusCommand::Clear(args) = args.command;
+    lex_cli::clear::corpus(&args).unwrap();
+    assert!(!tmp.path().join("ngrams/eng").exists());
+    assert!(!tmp.path().join("ngrams/fre").exists());
+    assert!(!tmp.path().join("books/fre").exists());
+    assert!(tmp.path().join("dicts/eng.txt").exists());
+}
+
+#[test]
+fn profile_clear_all_removes_fetched_profiles_and_skips_the_rest() {
+    let tmp = tempfile::tempdir().unwrap();
+    touch(tmp.path(), "profiles/wordle/answers.txt");
+    let dir = tmp.path().to_str().unwrap();
+    let Command::Profile(args) = parse(&["profile", "clear", "--all", "--data-dir", dir]).unwrap()
+    else {
+        panic!("`profile clear` parses to the profile command")
+    };
+    let ProfileCommand::Clear(args) = args.command;
+    lex_cli::clear::profile(&args).unwrap();
+    assert!(!tmp.path().join("profiles/wordle").exists());
+}
+
+#[test]
+fn the_summary_lists_each_path_and_a_total() {
+    let removed = [
+        Path::new("data/a").to_path_buf(),
+        Path::new("data/b").to_path_buf(),
+    ];
+    assert_eq!(
+        lex_cli::clear::summary(&removed),
+        "removed data/a\nremoved data/b\n2 paths removed"
+    );
+    assert_eq!(
+        lex_cli::clear::summary(&removed[..1]).lines().last(),
+        Some("1 path removed")
+    );
+}
+
+#[test]
+fn clear_with_nothing_named_is_an_error_unless_all() {
+    for group in ["dict", "corpus", "profile", "book"] {
+        assert_eq!(
+            kind(&[group, "clear"]),
+            ErrorKind::MissingRequiredArgument,
+            "{group}"
+        );
+        assert!(parse(&[group, "clear", "--all"]).is_ok(), "{group}");
+    }
+}
+
+#[test]
+fn dict_clear_rejects_a_word_length() {
+    assert_eq!(
+        kind(&["dict", "clear", "--lang", "english", "-l", "5"]),
+        ErrorKind::UnknownArgument
+    );
+}
+
+#[test]
+fn all_conflicts_with_naming_something() {
+    assert_eq!(
+        kind(&["dict", "clear", "--all", "--lang", "english"]),
+        ErrorKind::ArgumentConflict
+    );
+    assert_eq!(
+        kind(&["profile", "clear", "--all", "--profile", "wordle"]),
+        ErrorKind::ArgumentConflict
+    );
+    assert_eq!(
+        kind(&["corpus", "clear", "--all", "-l", "5"]),
+        ErrorKind::ArgumentConflict
+    );
+}
+
+#[test]
+fn the_groups_parse_and_dictionary_is_an_alias() {
+    assert!(matches!(
+        parse(&["dictionary", "clear", "--lang", "english"]).unwrap(),
+        Command::Dict(_)
+    ));
+    assert!(parse(&["corpus", "clear", "--lang", "english", "-l", "5"]).is_ok());
+    assert!(parse(&["profile", "clear", "--profile", "wordle"]).is_ok());
+    assert!(parse(&["book", "clear", "--lang", "english", "-l", "5"]).is_ok());
+    assert!(parse(&["book", "build", "--lang", "english", "-l", "5"]).is_ok());
+}
+
+#[test]
+fn the_old_clear_command_is_gone() {
+    assert_eq!(
+        kind(&["clear", "--lang", "english"]),
+        ErrorKind::InvalidSubcommand
+    );
+}

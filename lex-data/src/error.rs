@@ -41,7 +41,7 @@ pub enum LexDataError {
     /// A Legacy cache: a file with no header, which must be rebuilt, never read.
     #[error(
         "{path:?} is a legacy or unrecognized cache file (no header); \
-         delete it and rebuild with `lex clear --lang <lang>`"
+         delete it and rebuild with `lex corpus clear --lang <lang>`"
     )]
     LegacyCache {
         /// The rejected file.
@@ -49,7 +49,7 @@ pub enum LexDataError {
     },
     /// A Cache whose header or record region fails validation.
     #[error(
-        "corrupt cache {path:?}: {reason}; delete it and rebuild with `lex clear --lang <lang>`"
+        "corrupt cache {path:?}: {reason}; delete it and rebuild with `lex corpus clear --lang <lang>`"
     )]
     CorruptCache {
         /// The rejected file.
@@ -59,7 +59,7 @@ pub enum LexDataError {
     },
     /// A Cache record that is not a valid word and frequency.
     #[error(
-        "corrupt cache {path:?}: record {index}: {reason}; delete it and rebuild with `lex clear --lang <lang>`"
+        "corrupt cache {path:?}: record {index}: {reason}; delete it and rebuild with `lex corpus clear --lang <lang>`"
     )]
     CorruptRecord {
         /// The rejected file.

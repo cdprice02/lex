@@ -40,8 +40,13 @@ pub enum Command {
     Assist(AssistArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
-    /// Delete a cached corpus, a fetched Profile or the opening books so they are rebuilt on next use (the Wiktionary dictionary is kept)
-    Clear(ClearArgs),
+    /// Manage the cached Wiktionary dictionaries
+    #[command(alias = "dictionary")]
+    Dict(DictArgs),
+    /// Manage the cached word-frequency corpora
+    Corpus(CorpusArgs),
+    /// Manage the fetched Profile lists
+    Profile(ProfileArgs),
     /// Manage opening book files
     Book(BookArgs),
     /// Judge a head set of Track snapshots against a base set, or refresh the README table
@@ -60,8 +65,10 @@ pub struct BookArgs {
 /// The operations of `lex book`.
 #[derive(Subcommand, Debug)]
 pub enum BookCommand {
+    /// Delete opening books so they are rebuilt on next use
+    Clear(BookClearArgs),
     /// Build the opening book for a game and strategy, or report that it is up to date
-    Build(BookBuildArgs),
+    Build(Box<BookBuildArgs>),
 }
 
 /// Arguments of `lex book build`.
@@ -131,33 +138,131 @@ pub struct VerdictArgs {
     pub file: PathBuf,
 }
 
-/// Arguments of `lex clear`.
+/// The data directory option every cache command shares.
 #[derive(clap::Args, Debug)]
-pub struct ClearArgs {
-    /// Language whose corpus cache (and opening books) to delete
-    #[arg(
-        long,
-        required_unless_present_any = ["profile", "books"],
-        conflicts_with = "profile"
-    )]
+pub struct DataDirArg {
+    /// Directory containing cached word-frequency files
+    #[arg(long, default_value = "data")]
+    pub data_dir: PathBuf,
+}
+
+/// Arguments of `lex dict`.
+#[derive(clap::Args, Debug)]
+pub struct DictArgs {
+    /// The dictionary operation.
+    #[command(subcommand)]
+    pub command: DictCommand,
+}
+
+/// The operations of `lex dict`.
+#[derive(Subcommand, Debug)]
+pub enum DictCommand {
+    /// Delete a Dictionary, the Corpus caches of its language at every length and their opening books
+    Clear(DictClearArgs),
+}
+
+/// Arguments of `lex dict clear`. One Dictionary serves every word length, so there is no `-l`.
+#[derive(clap::Args, Debug)]
+pub struct DictClearArgs {
+    /// Language whose Dictionary (with its corpora and opening books) to delete; the next fetch takes KAIKKI's current extract, which can change the Corpus
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
     pub lang: Option<Language>,
-    /// Delete only the opening books, narrowed by --lang and -l (never touches corpora or Profiles)
-    #[arg(long, conflicts_with = "profile")]
-    pub books: bool,
-    /// Profile whose fetched lists and opening books to delete (never touches corpora)
+    /// Delete the Dictionary of every language
     #[arg(long)]
-    pub profile: Option<Profile>,
+    pub all: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex corpus`.
+#[derive(clap::Args, Debug)]
+pub struct CorpusArgs {
+    /// The corpus operation.
+    #[command(subcommand)]
+    pub command: CorpusCommand,
+}
+
+/// The operations of `lex corpus`.
+#[derive(Subcommand, Debug)]
+pub enum CorpusCommand {
+    /// Delete a cached Corpus and its opening books so they are rebuilt on next use (the Dictionary is kept)
+    Clear(CorpusClearArgs),
+}
+
+/// Arguments of `lex corpus clear`.
+#[derive(clap::Args, Debug)]
+pub struct CorpusClearArgs {
+    /// Language whose Corpus cache (and opening books) to delete
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub lang: Option<Language>,
     /// Delete only this word length (default: every length)
     #[arg(
         short = 'l',
         long,
-        conflicts_with = "profile",
+        requires = "lang",
+        conflicts_with = "all",
         value_parser = parse_word_length
     )]
     pub word_length: Option<usize>,
-    /// Directory containing cached word-frequency files
-    #[arg(long, default_value = "data")]
-    pub data_dir: PathBuf,
+    /// Delete the Corpus caches of every language
+    #[arg(long)]
+    pub all: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex profile`.
+#[derive(clap::Args, Debug)]
+pub struct ProfileArgs {
+    /// The profile operation.
+    #[command(subcommand)]
+    pub command: ProfileCommand,
+}
+
+/// The operations of `lex profile`.
+#[derive(Subcommand, Debug)]
+pub enum ProfileCommand {
+    /// Delete a Profile's fetched lists and opening books so they are fetched again on next use (corpora are kept)
+    Clear(ProfileClearArgs),
+}
+
+/// Arguments of `lex profile clear`.
+#[derive(clap::Args, Debug)]
+pub struct ProfileClearArgs {
+    /// Profile whose fetched lists and opening books to delete
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub profile: Option<Profile>,
+    /// Delete every Profile
+    #[arg(long)]
+    pub all: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex book clear`.
+#[derive(clap::Args, Debug)]
+pub struct BookClearArgs {
+    /// Language whose opening books to delete
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub lang: Option<Language>,
+    /// Delete only this word length (default: every length)
+    #[arg(
+        short = 'l',
+        long,
+        requires = "lang",
+        conflicts_with = "all",
+        value_parser = parse_word_length
+    )]
+    pub word_length: Option<usize>,
+    /// Delete the opening books of every language
+    #[arg(long)]
+    pub all: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
 }
 
 /// Arguments shared by every subcommand.
@@ -431,38 +536,6 @@ fn parse_win_weight(s: &str) -> anyhow::Result<f64> {
 }
 
 #[cfg(test)]
-mod clear_tests {
-    use super::*;
-
-    fn parse(args: &[&str]) -> Result<Cli, clap::Error> {
-        Cli::try_parse_from(["lex", "clear"].into_iter().chain(args.iter().copied()))
-    }
-
-    #[test]
-    fn exactly_one_of_lang_and_profile() {
-        assert!(parse(&[]).is_err());
-        assert!(parse(&["--lang", "english"]).is_ok());
-        assert!(parse(&["--profile", "wordle"]).is_ok());
-        assert!(parse(&["--lang", "english", "--profile", "wordle"]).is_err());
-    }
-
-    #[test]
-    fn books_stand_alone_or_narrow_by_language_and_length() {
-        assert!(parse(&["--books"]).is_ok());
-        assert!(parse(&["--books", "--lang", "english"]).is_ok());
-        assert!(parse(&["--books", "--lang", "english", "-l", "5"]).is_ok());
-        assert!(parse(&["--books", "-l", "5"]).is_ok());
-        assert!(parse(&["--books", "--profile", "wordle"]).is_err());
-    }
-
-    #[test]
-    fn word_length_goes_only_with_lang() {
-        assert!(parse(&["--lang", "english", "-l", "5"]).is_ok());
-        assert!(parse(&["--profile", "wordle", "-l", "5"]).is_err());
-    }
-}
-
-#[cfg(test)]
 mod profile_tests {
     use super::*;
 
@@ -503,15 +576,16 @@ mod profile_tests {
             "never",
             "--symbols",
             "digits",
+            "book",
             "clear",
-            "--books",
+            "--all",
         ])
         .unwrap();
         assert_eq!(
             (cli.color, cli.symbols),
             (ColorArg::Never, SymbolScheme::Digits)
         );
-        assert!(Cli::try_parse_from(["lex", "--symbols", "c", "clear"]).is_err());
+        assert!(Cli::try_parse_from(["lex", "--symbols", "c", "book", "clear", "--all"]).is_err());
     }
 
     #[test]
@@ -673,7 +747,7 @@ mod book_tests {
                 "`book build` parsed to another command",
             ));
         };
-        Ok(a)
+        Ok(*a)
     }
 
     #[test]

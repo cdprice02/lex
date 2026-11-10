@@ -99,7 +99,7 @@ pub fn dict_txt_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
 }
 
 /// Path of the metadata for `lang`.
-fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
+pub fn dict_meta_path(data_dir: &Path, lang: Language) -> std::path::PathBuf {
     dict_dir(data_dir).join(format!("{}.meta.json", lang.lang_code()))
 }
 

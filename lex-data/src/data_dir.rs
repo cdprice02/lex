@@ -83,15 +83,40 @@ impl DataDir {
     }
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
-    /// language ngrams directory (None), with the Opening books of the same scope. Does not remove
-    /// the Wiktionary dict.
+    /// language ngrams directory (None), with the Opening books of the same scope, and returns
+    /// each path removed. Does not remove the Dictionary.
     ///
     /// # Errors
     ///
     /// If a cache file cannot be removed.
-    pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<()> {
-        store::clear(self, lang, n)?;
-        self.clear_books(Some(lang), n)
+    pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<Vec<PathBuf>> {
+        let mut removed = store::clear(self, lang, n)?;
+        removed.extend(self.clear_books(Some(lang), n)?);
+        Ok(removed)
+    }
+
+    /// Removes the Dictionary of `lang` (its word list and metadata), every Corpus cache of
+    /// that language at every length, and their Opening books, and returns each path removed.
+    /// Missing pieces are skipped. Other languages are untouched.
+    ///
+    /// The next fetch takes KAIKKI's current extract, which can change the Corpus.
+    ///
+    /// # Errors
+    ///
+    /// If a cache file exists but cannot be removed.
+    pub fn clear_dict(&self, lang: Language) -> anyhow::Result<Vec<PathBuf>> {
+        let mut removed = Vec::new();
+        for path in [
+            self.dict_path(lang),
+            wiktionary::dict_meta_path(&self.path, lang),
+            self.ngrams_dir(lang),
+        ] {
+            if remove_if_present(&path)? {
+                removed.push(path);
+            }
+        }
+        removed.extend(self.clear_books(Some(lang), None)?);
+        Ok(removed)
     }
 
     /// Loads a Profile: its lists (fetched and checksum-verified on first use) against the
@@ -122,15 +147,17 @@ impl DataDir {
     }
 
     /// Removes a Profile's stored lists so they are fetched again on next use, and the Opening
-    /// books built for it.
+    /// books built for it, returning each path removed.
     ///
     /// # Errors
     ///
     /// If the Profile's directory cannot be removed.
-    pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<()> {
-        self.clear_profile_books(&profile.to_string())?;
-        std::fs::remove_dir_all(self.profile_dir(profile))
-            .with_context(|| format!("removing profile {profile}"))
+    pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<Vec<PathBuf>> {
+        let mut removed = self.clear_profile_books(&profile.to_string())?;
+        let dir = self.profile_dir(profile);
+        std::fs::remove_dir_all(&dir).with_context(|| format!("removing profile {profile}"))?;
+        removed.push(dir);
+        Ok(removed)
     }
 
     /// Directory holding a Profile's `answers.txt`, `guess-only.txt` and `meta.json`.
@@ -157,6 +184,20 @@ impl DataDir {
         self.path
             .join("dicts")
             .join(format!("{}.txt", lang.lang_code()))
+    }
+}
+
+/// Removes a file or directory tree; `false` when it was not there.
+pub fn remove_if_present(path: &Path) -> anyhow::Result<bool> {
+    let result = if path.is_dir() {
+        std::fs::remove_dir_all(path)
+    } else {
+        std::fs::remove_file(path)
+    };
+    match result {
+        Ok(()) => Ok(true),
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(false),
+        Err(e) => Err(e).with_context(|| format!("removing {}", path.display())),
     }
 }
 
