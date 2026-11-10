@@ -80,7 +80,8 @@ pub fn key<const N: usize>(config: &RunConfig, source: &Source, lists: &GameList
 }
 
 /// The language of `game`'s Corpus.
-const fn language(game: &Game) -> lex_data::Language {
+#[must_use]
+pub const fn language(game: &Game) -> lex_data::Language {
     match game {
         Game::Corpus { language, .. } => *language,
         Game::Profile(profile) => profile.spec().language,

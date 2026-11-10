@@ -4,6 +4,7 @@
 pub mod language;
 pub mod word;
 
+mod book_list;
 mod book_store;
 mod corpus_list;
 mod data_dir;
@@ -23,6 +24,7 @@ mod store;
 mod wiktionary;
 mod word_lookup;
 
+pub use book_list::{BookFilter, BookHeader, BookRecord, BookStatus, StaleField};
 pub use book_store::{BookFile, BookKey, BookLookup, ProfileKey, StoredBook, StoredNode};
 pub use corpus_list::{CorpusRecord, CorpusStatus};
 pub use data_dir::DataDir;

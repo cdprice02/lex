@@ -197,17 +197,22 @@ fn corrupt(path: &Path, reason: impl Into<String>) -> LexDataError {
 }
 
 /// The parsed fixed header and key of a book file.
-struct Header {
+pub struct Header {
     /// Word length `N` the book was built for.
     word_length: u16,
     /// Offset of the body.
     body_offset: usize,
     /// Number of nodes in the body.
-    node_count: usize,
+    pub node_count: usize,
     /// SHA-256 of the body.
     checksum: [u8; 32],
     /// The key stored ahead of the body.
-    key: BookKey,
+    pub key: BookKey,
+}
+
+/// The format version this build reads and writes.
+pub const fn format_version() -> u16 {
+    VERSION
 }
 
 /// The file bytes holding `book` under `key`.
@@ -297,6 +302,17 @@ fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataErr
 
 /// Reads just the key at the start of the book file at `path`.
 fn read_key(path: &Path) -> anyhow::Result<BookKey> {
+    Ok(read_header(path)?.key)
+}
+
+/// Verifies the whole book file at `path`: its body checksum, parse and node count.
+pub fn verify_file(path: &Path) -> Result<(), LexDataError> {
+    let bytes = std::fs::read(path).map_err(|e| corrupt(path, format!("unreadable: {e}")))?;
+    decode(&bytes, path).map(|_| ())
+}
+
+/// Reads the header and key at the start of the book file at `path`, without its body.
+pub fn read_header(path: &Path) -> anyhow::Result<Header> {
     use std::io::Read;
     let mut file = std::fs::File::open(path)
         .with_context(|| format!("opening opening book: {}", path.display()))?;
@@ -305,16 +321,22 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     if got < FIXED_LEN {
         return Err(corrupt(path, "truncated header").into());
     }
+    if fixed[0..4] != MAGIC {
+        return Err(corrupt(path, "not an opening book (bad magic)").into());
+    }
     let key_len = length_at(&fixed, 52, path)?;
+    if u64::try_from(FIXED_LEN + key_len)? > file.metadata()?.len() {
+        return Err(corrupt(path, "truncated header").into());
+    }
     let mut bytes = fixed.to_vec();
     bytes.resize(FIXED_LEN + key_len, 0);
     file.read_exact(&mut bytes[FIXED_LEN..])
         .map_err(|_| corrupt(path, "truncated header"))?;
-    Ok(parse_header(&bytes, path)?.key)
+    Ok(parse_header(&bytes, path)?)
 }
 
 /// The `.bin` files in `dir`, sorted; empty when the directory is absent.
-fn book_files(dir: &Path) -> Vec<PathBuf> {
+pub fn book_files(dir: &Path) -> Vec<PathBuf> {
     let Ok(entries) = std::fs::read_dir(dir) else {
         return Vec::new();
     };
@@ -328,7 +350,7 @@ fn book_files(dir: &Path) -> Vec<PathBuf> {
 
 impl DataDir {
     /// The directory holding every book file.
-    fn books_root(&self) -> PathBuf {
+    pub(crate) fn books_root(&self) -> PathBuf {
         self.as_ref().join("books")
     }
 
@@ -340,8 +362,21 @@ impl DataDir {
     }
 
     /// Directory holding the books for `lang` at word length `n`.
-    fn book_dir(&self, lang: Language, n: usize) -> PathBuf {
+    pub(crate) fn book_dir(&self, lang: Language, n: usize) -> PathBuf {
         self.books_root().join(lang.lang_code()).join(n.to_string())
+    }
+
+    /// The book of the same language and length whose key differs least from `key`, with the
+    /// names of the fields on which it differs; `None` when there is no readable book there.
+    #[must_use]
+    pub fn nearest_book(&self, lang: Language, key: &BookKey) -> Option<(PathBuf, Vec<String>)> {
+        book_files(&self.book_dir(lang, key.word_length))
+            .into_iter()
+            .filter_map(|p| {
+                let fields = key.differing_fields(&read_key(&p).ok()?);
+                Some((p, fields))
+            })
+            .min_by_key(|(_, fields)| fields.len())
     }
 
     /// Reads the book for `key`. A file that is present but fails its checksum, parse, or key
@@ -353,11 +388,7 @@ impl DataDir {
     pub fn read_book(&self, lang: Language, key: &BookKey) -> anyhow::Result<BookLookup> {
         let path = self.book_path(lang, key);
         if !path.exists() {
-            let nearest = book_files(&self.book_dir(lang, key.word_length))
-                .iter()
-                .filter_map(|p| read_key(p).ok())
-                .map(|k| key.differing_fields(&k))
-                .min_by_key(Vec::len);
+            let nearest = self.nearest_book(lang, key).map(|(_, fields)| fields);
             return Ok(BookLookup::Missing { nearest });
         }
         let bytes = std::fs::read(&path).with_context(|| format!("reading {}", path.display()))?;
