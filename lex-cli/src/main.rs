@@ -20,6 +20,7 @@ use lex_cli::profiles;
 use lex_cli::progress;
 use lex_cli::simulate::simulate;
 use lex_cli::style::{self, SymbolScheme};
+use lex_cli::word;
 
 fn main() -> ExitCode {
     let cli = Cli::parse();
@@ -56,6 +57,7 @@ fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
         }
         Command::Compare(args) => done(compare_reports(&args)),
         Command::Verdict(args) => Ok(lex_cli::verdict::command(&args)),
+        Command::Word(args) => done(word::run(&args)),
         Command::Book(args) => match args.command {
             BookCommand::Build(args) => done(lex_data::match_word_length!(
                 build_command,

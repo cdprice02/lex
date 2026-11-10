@@ -74,6 +74,8 @@ pub enum Command {
     /// Judge a head set of Track snapshots against a base set, or refresh the README table
     #[command(hide = true)]
     Verdict(VerdictArgs),
+    /// Look words up: Dictionary membership, Corpus frequency and rank, Prior, Profile lists (never downloads)
+    Word(WordArgs),
 }
 
 /// Arguments of `lex book`.
@@ -208,6 +210,20 @@ pub struct DataDirArg {
     /// Directory containing cached word-frequency files
     #[arg(long, default_value = "data")]
     pub data_dir: PathBuf,
+}
+
+/// Arguments of `lex word`.
+#[derive(clap::Args, Debug)]
+pub struct WordArgs {
+    /// Words to look up; each is normalized as a Corpus build does (NFC, lowercase)
+    #[arg(required = true, value_name = "WORD")]
+    pub words: Vec<String>,
+    /// Language whose Dictionary, Corpus and Profiles to look in
+    #[arg(long)]
+    pub lang: Language,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
 }
 
 /// Arguments of `lex dict`.

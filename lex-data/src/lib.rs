@@ -22,6 +22,7 @@ mod profile_store;
 mod retry;
 mod store;
 mod wiktionary;
+mod word_lookup;
 
 pub use book_list::{BookFilter, BookHeader, BookRecord, BookStatus, StaleField};
 pub use book_store::{BookFile, BookKey, BookLookup, ProfileKey, StoredBook, StoredNode};
@@ -31,10 +32,12 @@ pub use dict_list::DictRecord;
 pub use error::LexDataError;
 pub use language::Language;
 pub use ngrams::SNAPSHOT as NGRAMS_SNAPSHOT;
+pub use parse::{is_valid_word, normalize};
 pub use profile::{ListSpec, Profile, ProfileData, ProfileSpec, ProfileStats, Source};
 pub use profile_list::{ProfileListRecord, ProfileRecord};
 pub use wiktionary::DictMetadata;
 pub use word::{Word, WordSet};
+pub use word_lookup::ProfileWords;
 
 const _: () = assert!(
     u32::BITS <= usize::BITS,
