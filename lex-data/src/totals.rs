@@ -334,7 +334,7 @@ pub fn lengths_after_filter(
 
 impl DataDir {
     /// The cached Ngrams totals of `lang`, or `None` when none are cached or the set is not
-    /// complete (see [`inspect`]). Reads headers only; nothing is fetched.
+    /// complete (see `totals::inspect`). Reads headers only; nothing is fetched.
     ///
     /// # Errors
     ///
