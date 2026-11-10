@@ -379,12 +379,12 @@ fn prior_cell(prior: f64) -> String {
     format!("{prior:.3e}")
 }
 
-/// The word as shown: its normalized form, with the input when it differs.
-fn word_cell(facts: &Facts) -> String {
+/// The input column: what was typed, empty when it is already the normalized form.
+fn input_cell(facts: &Facts) -> String {
     if facts.input == facts.word {
-        facts.word.clone()
+        String::new()
     } else {
-        format!("{} (from {})", facts.word, facts.input)
+        facts.input.clone()
     }
 }
 
@@ -470,6 +470,7 @@ fn render_table(facts: &[Facts], lang: Language, terminal: bool) -> String {
     let prior_header = format!("prior {STRATEGY_LABEL}");
     let header = [
         "word",
+        "input",
         "length",
         "dictionary",
         "rank",
@@ -492,7 +493,8 @@ fn render_table(facts: &[Facts], lang: Language, terminal: bool) -> String {
                     .join(", ")
             };
             vec![
-                word_cell(f),
+                f.word.clone(),
+                input_cell(f),
                 f.length.to_string(),
                 dictionary_cell(f.dictionary).to_owned(),
                 rank,
@@ -508,19 +510,18 @@ fn render_table(facts: &[Facts], lang: Language, terminal: bool) -> String {
 
 /// The step-by-step report of one word, as `step`, `result` and `note` rows.
 fn render_steps(facts: &Facts, lang: Language, terminal: bool) -> String {
-    let normalized = if facts.input == facts.word {
-        String::new()
-    } else {
-        format!("normalized from {}", facts.input)
-    };
-    let mut rows = vec![
-        row("word", &facts.word, normalized),
+    let mut rows = Vec::new();
+    if facts.input != facts.word {
+        rows.push(row("input", &facts.input, "as typed"));
+    }
+    rows.extend([
+        row("word", &facts.word, ""),
         row(
             "shape",
             yes_no(facts.shape, terminal),
             "one alphabetic token after NFC and lowercasing",
         ),
-    ];
+    ]);
     if facts.shape {
         rows.push(length_row(facts, lang, terminal));
     }
@@ -685,8 +686,8 @@ mod tests {
         let facts = Facts::new("CRANE");
         assert_eq!(facts.word, "crane");
         assert!(facts.shape && facts.in_range);
-        assert_eq!(word_cell(&facts), "crane (from CRANE)");
-        assert_eq!(word_cell(&Facts::new("crane")), "crane");
+        assert_eq!(input_cell(&facts), "CRANE");
+        assert_eq!(input_cell(&Facts::new("crane")), "");
         assert!(!Facts::new("two words").shape);
         assert!(!Facts::new("ab").in_range);
         assert!(!Facts::new("").shape);
@@ -833,17 +834,26 @@ mod tests {
         let lines: Vec<&str> = out.lines().collect();
         assert_eq!(
             lines[0],
-            "word\tlength\tdictionary\trank\tfrequency\tprior (default Strategy)\tprofiles\tverdict"
+            "word\tinput\tlength\tdictionary\trank\tfrequency\tprior (default Strategy)\tprofiles\tverdict"
         );
         assert_eq!(lines.len(), 3);
-        assert!(lines[1].starts_with("crane (from CRANE)\t5\t-\t-\t-\t-\t-\t"));
+        assert!(lines[1].starts_with("crane\tCRANE\t5\t-\t-\t-\t-\t-\t"));
         assert!(lines[2].contains("outside the Supported range"));
+    }
+
+    #[test]
+    fn the_step_report_shows_the_typed_form_only_when_it_differs() {
+        let typed = render_steps(&Facts::new("CRANE"), Language::English, false);
+        assert!(typed.contains("\ninput\tCRANE\tas typed\n"), "{typed}");
+        assert!(typed.contains("\nword\tcrane\t\n"), "{typed}");
+        let plain = render_steps(&Facts::new("crane"), Language::English, false);
+        assert!(!plain.contains("input"), "{plain}");
     }
 
     #[test]
     fn a_single_word_is_a_row_when_piped_and_steps_on_a_terminal() {
         let facts = vec![Facts::new("crane")];
-        assert!(render(&facts, Language::English, false).starts_with("word\tlength"));
+        assert!(render(&facts, Language::English, false).starts_with("word\tinput\tlength"));
         let terminal = render(&facts, Language::English, true);
         assert!(terminal.contains('\u{256d}') && terminal.contains("step"));
     }
