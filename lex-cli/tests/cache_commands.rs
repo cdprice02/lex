@@ -270,6 +270,171 @@ fn dict_list_with_nothing_cached_succeeds_and_show_errors() {
     assert!(!tmp.path().join("dicts").exists());
 }
 
+fn book_key(digest: &str, word_length: usize) -> lex_data::BookKey {
+    lex_data::BookKey {
+        corpus_sha256: "any".to_owned(),
+        profile: None,
+        word_length,
+        dictionary_length: 10,
+        strategy: vec![("pool".to_owned(), "hard".to_owned())],
+        solver_digest: digest.to_owned(),
+    }
+}
+
+/// A data dir with a current, a stale and a corrupt English book and a stale French one.
+/// Returns the ids of the current and the stale English books.
+fn books_dir() -> (tempfile::TempDir, String, String) {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = lex_data::DataDir::new(tmp.path());
+    let book = lex_data::StoredBook::default();
+    let current = book_key(lex_core::SOLVER_DIGEST, 5);
+    let stale = book_key("an old digest", 5);
+    dir.write_book(lex_data::Language::English, &current, &book)
+        .unwrap();
+    dir.write_book(lex_data::Language::English, &stale, &book)
+        .unwrap();
+    dir.write_book(
+        lex_data::Language::French,
+        &book_key("an old digest", 6),
+        &book,
+    )
+    .unwrap();
+    std::fs::write(tmp.path().join("books/eng/5/junk.bin"), b"not a book").unwrap();
+    (tmp, current.hash(), stale.hash())
+}
+
+#[test]
+fn book_list_show_and_clear_stale_parse() {
+    assert!(parse(&["book", "list", "--lang", "english", "-l", "5", "--stale"]).is_ok());
+    assert!(parse(&["book", "list", "--profile", "wordle"]).is_ok());
+    assert!(parse(&["book", "show", "abcd1234"]).is_ok());
+    assert!(
+        parse(&[
+            "book", "show", "-l", "5", "--lang", "english", "--pool", "hard"
+        ])
+        .is_ok()
+    );
+    assert!(parse(&["book", "show", "--profile", "wordle"]).is_ok());
+    assert_eq!(kind(&["book", "show"]), ErrorKind::MissingRequiredArgument);
+    assert_eq!(
+        kind(&["book", "show", "abcd1234", "--pool", "hard"]),
+        ErrorKind::ArgumentConflict
+    );
+    assert!(parse(&["book", "clear", "--stale"]).is_ok());
+    assert!(parse(&["book", "clear", "--stale", "--profile", "wordle"]).is_ok());
+    assert!(parse(&["book", "clear", "--stale", "--lang", "english", "-l", "5"]).is_ok());
+    assert_eq!(
+        kind(&["book", "clear", "--profile", "wordle", "--lang", "english"]),
+        ErrorKind::MissingRequiredArgument
+    );
+    assert_eq!(
+        kind(&["book", "clear", "--stale", "--all"]),
+        ErrorKind::ArgumentConflict
+    );
+    assert_eq!(kind(&["book", "clear"]), ErrorKind::MissingRequiredArgument);
+}
+
+#[test]
+fn piped_book_list_has_a_header_a_row_per_book_and_the_footer_on_stderr() {
+    let (tmp, current, _) = books_dir();
+    let dir = tmp.path().to_str().unwrap();
+    let out = lex(&["book", "list", "--data-dir", dir]);
+    assert!(out.status.success());
+    let stdout = String::from_utf8(out.stdout).unwrap();
+    let lines: Vec<_> = stdout.lines().collect();
+    assert_eq!(lines.len(), 5, "{stdout}");
+    assert_eq!(lines[0], "id\tgame\tstrategy\tpositions\tsize\tstatus");
+    let row = lines
+        .iter()
+        .find(|l| l.starts_with(current.get(..8).unwrap()))
+        .unwrap();
+    assert!(row.contains("\tenglish-5\tpool=hard\t0\t"), "{row}");
+    assert!(row.ends_with("\tcurrent"), "{row}");
+    let stderr = String::from_utf8(out.stderr).unwrap();
+    assert!(
+        stderr.starts_with("4 books: 1 current, 2 stale, 1 corrupt; total size "),
+        "{stderr}"
+    );
+}
+
+#[test]
+fn book_list_filters_and_stale_lists_what_clear_would_remove() {
+    let (tmp, _, _) = books_dir();
+    let dir = tmp.path().to_str().unwrap();
+    let rows = |extra: &[&str]| {
+        let out = lex(&[&["book", "list", "--data-dir", dir], extra].concat());
+        assert!(out.status.success());
+        String::from_utf8(out.stdout).unwrap().lines().count() - 1
+    };
+    assert_eq!(rows(&["--lang", "english"]), 3);
+    assert_eq!(rows(&["--lang", "french"]), 1);
+    assert_eq!(rows(&["-l", "6"]), 1);
+    assert_eq!(rows(&["--stale"]), 3);
+    assert_eq!(rows(&["--stale", "--lang", "english"]), 2);
+    assert_eq!(rows(&["--profile", "wordle"]), 0);
+}
+
+#[test]
+fn book_show_by_id_prefix_prints_every_key_field_and_the_stale_pair() {
+    let (tmp, current, stale) = books_dir();
+    let dir = tmp.path().to_str().unwrap();
+    let out = lex(&["book", "show", stale.get(..10).unwrap(), "--data-dir", dir]);
+    assert!(out.status.success());
+    let stdout = String::from_utf8(out.stdout).unwrap();
+    assert!(stdout.starts_with("field\tvalue\tnote\n"));
+    assert!(stdout.contains("\nbody checksum\tverified\t\n"), "{stdout}");
+    assert!(
+        stdout.contains("\nstatus\tstale (solver_digest)\t"),
+        "{stdout}"
+    );
+    assert!(
+        stdout.contains(&format!(
+            "\nsolver_digest\tan old digest\tstale: current is {}\n",
+            lex_core::SOLVER_DIGEST
+        )),
+        "{stdout}"
+    );
+    assert!(stdout.contains("\nstrategy.pool\thard\t\n"), "{stdout}");
+    let out = lex(&["book", "show", &current, "--data-dir", dir]);
+    assert!(
+        String::from_utf8(out.stdout)
+            .unwrap()
+            .contains("\nstatus\tcurrent\t")
+    );
+    let out = lex(&["book", "show", "zzzz", "--data-dir", dir]);
+    assert!(!out.status.success());
+}
+
+#[test]
+fn book_clear_stale_removes_stale_and_corrupt_books_inside_the_narrowing_only() {
+    let (tmp, current, stale) = books_dir();
+    let dir = tmp.path().to_str().unwrap();
+    let out = lex(&[
+        "book",
+        "clear",
+        "--stale",
+        "--lang",
+        "english",
+        "--data-dir",
+        dir,
+    ]);
+    assert!(out.status.success());
+    let stdout = String::from_utf8(out.stdout).unwrap();
+    assert!(stdout.ends_with("2 paths removed\n"), "{stdout}");
+    let root = tmp.path().join("books");
+    assert!(root.join(format!("eng/5/{current}.bin")).exists());
+    assert!(!root.join(format!("eng/5/{stale}.bin")).exists());
+    assert!(!root.join("eng/5/junk.bin").exists());
+    assert_eq!(std::fs::read_dir(root.join("fre/6")).unwrap().count(), 1);
+    let out = lex(&["book", "clear", "--stale", "--data-dir", dir]);
+    assert!(
+        String::from_utf8(out.stdout)
+            .unwrap()
+            .ends_with("1 path removed\n")
+    );
+    assert!(root.join(format!("eng/5/{current}.bin")).exists());
+}
+
 #[test]
 fn corpus_list_filters_and_corpus_show_needs_a_language_and_length() {
     let Command::Corpus(args) = parse(&["corpus", "list", "--lang", "english", "-l", "5"]).unwrap()

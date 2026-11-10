@@ -95,8 +95,11 @@ Each kind of cached data is a group with a `clear` command that deletes it so it
 | `lex corpus clear --lang L [-l N]` | the Corpus cache of `L` (one length with `-l`) and its opening books |
 | `lex profile clear --profile P` | the fetched lists of `P` and its opening books |
 | `lex book clear --lang L [-l N]` | only the opening books |
+| `lex book clear --stale [--lang L] [-l N] [--profile P]` | only the opening books `lex book list --stale` shows: stale or corrupt |
 
 A `clear` of something that is not cached succeeds with "0 paths removed".
+
+`lex book list [--lang L] [-l N] [--profile P] [--stale]` shows a row per stored opening book (8-character id, game, the Strategy fields that differ from the default, positions, size, status) and a footer of counts by status and total size. A book is **current**, **stale** (a run of its game and Strategy would not read it: its solver digest, Corpus checksum or Profile list checksums are not the current ones; the fields are named) or **corrupt** (unreadable header or key, or a body that fails its checksum). A different Strategy is a different book, never a stale one. `lex book show ID` takes an id (or a unique prefix) from `list`, or the game and Strategy flags of `book build`: it prints every key field, the header, whether the body checksum verifies, the path and size, and the stored and current value of each stale field; for flags it shows the book that run would read, or the nearest stored book and the fields that differ. Neither command builds a book or downloads anything. Piped, the output is tab-separated with one header line and sizes in bytes, and `book list`'s footer of counts goes to stderr, so stdout is only the header and one line per book.
 
 `lex dict list` shows a row per cached Dictionary (language, words, fetch date, checksum prefix, size, Corpus lengths built against it) and `lex dict show --lang L` shows one in full: Provenance, paths, word counts per word length 3 to 21 and which lengths have a Corpus cached. Both read the cache only and never download; a language that has not been used yet is absent. On a terminal they print tables; piped, tab-separated columns with one header line and sizes in bytes.
 
