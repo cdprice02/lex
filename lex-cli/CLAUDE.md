@@ -2,9 +2,9 @@
 
 ## Purpose
 
-CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with six subcommands (the sixth, `verdict`, is hidden plumbing): `simulate` (batch games via `lex-core`),
+CLI frontend, a library (`lex_cli`, internal: `src/lib.rs`) plus the `lex` binary (`main.rs` parses and dispatches), with these subcommands (`verdict` is hidden plumbing): `simulate` (batch games via `lex-core`),
 `assist` (interactive helper for live games), `compare` (paired diff of two
-simulation reports), `book build` (build or refresh the opening book), and `clear` (delete a cached corpus with `--lang [-l]`, a fetched Profile with `--profile`, or just the opening books with `--books [--lang] [-l]`; a corpus or Profile takes its books with it). Loads corpora via `lex-data` and
+simulation reports), and four cache groups (see Cache commands): `dict`, `corpus`, `profile` and `book` (`book build` builds or refreshes the opening book). Loads corpora via `lex-data` and
 monomorphizes the call chain over word lengths 3–21 at compile time.
 
 ## Module map
@@ -15,7 +15,7 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 | `config.rs` | `RunConfig { game, strategy, targets }`: `Game` (`Corpus { language, length, dictionary_length }` or `Profile`) and `Targets` (`Full`, `Sample { n, seed }`, `File`). One value for what a run plays, built from flags or from a Track |
 | `tracks.rs` | `TRACKS`, the `const` table of benchmark Tracks (`Track { game, strategy, tier, judged, targets }`), built by a `const fn` over `Language::VARIANTS` and the length range; `TRACK_COUNT` is computed from them, so a new language or length needs no edit. `Track::config()`, `Track::find(id)`, ids from `Display`. Tier and target rules are ADR 0007's; the evidence is `benchmarks/experiments/track-targets.md` |
 | `books.rs` | Opening book files for a run: `key()` builds the `BookKey` (Corpus and Profile checksums, length, pool size, `Strategy::key_fields()`, `SOLVER_DIGEST`); `ensure()` loads the book, or on a miss builds it (reporting to an `Observer`; a stale book's start message names the changed fields) and stores it, errors on a damaged file naming it and `lex book build --force`; `guesser()` returns a `Guesser` seeded with it unless `BookMode::Off` (`--no-book`); `build_command` is `lex book build`. A book always covers the full Answer set, whatever `-n` samples. Build time goes to the observer and `book build`'s stdout, never into the Report |
-| `clear.rs` | `clear(&ClearArgs)`: `--books` removes only books; otherwise a Corpus (with its books) or a Profile (with the books whose key names it) |
+| `clear.rs` | The `clear` verb of the cache groups: `dict`, `corpus`, `profile`, `book` each call the matching `DataDir` delete (which returns the paths it removed) and print them through `summary()`, one per line and a total. `dict` warns on stderr first |
 | `simulate.rs` | `run(&RunConfig, &DataDir, Option<&dyn Observer>) -> Result<Report>` plays a config with its book, built on first use (`run_with(.., BookMode, observer)` opts out), and prints nothing (it dispatches the word length itself; the report assembly is not generic); `simulate::<N>(&SimulateArgs)` is the command: `args.config()`, `run`, then print or write the report |
 | `lists.rs` | `GameLists<N>` (pool, Answer list; a Corpus run answers with every pool word) and `Source` (`Corpus` or `Profile`, with the report's Corpus info and `ProfileStats`), both from `Source::load`. `Source` owns `dictionary_length()` (the Corpus size, fixed at load), `answer_noun()`, the report's provenance and assist's Guess-pool check; a new source is a new variant |
 | `targets.rs` | target selection: seeded uniform sample (ChaCha8, partial Fisher-Yates) or `--targets` file |
@@ -27,6 +27,19 @@ monomorphizes the call chain over word lengths 3–21 at compile time.
 | `style.rs` | shared by every frontend, knows no subcommand: `ColorArg` (`--color auto\|always\|never`, maps to `anstream::ColorChoice`), `SymbolScheme` (`--symbols letters\|digits\|emoji`, display only), `init(color)` sets anstream's global policy, `tile_style` is the palette, `tiles()` renders feedback (padded coloured cells for letters and digits, bare emoji). Print styled text through `anstream::println!`, which strips escapes off a terminal or under `NO_COLOR`. Both flags are global on `Cli`; `main` copies `--symbols` into `AssistArgs` |
 | `progress.rs` | Progress for the long phases, one channel with three `Mode`s from `mode(stderr_is_terminal, no_progress)`: `Bar` (indicatif spinner and games bar on stderr, logger wrapped by `indicatif-log-bridge` so log lines print above), `Lines` (every 5 s, `log::info!` under target `lex::progress`), `Off`. `init(no_progress)` runs once in `main`, installs the logger (default filter `error,lex::progress=info`, replaced by `RUST_LOG`) and the mode; unset means `Off`. The `Observer` trait (`&self` methods, so each observer keeps its one piece of mutable state, the bar or the `Phase`, behind a `RefCell` or `Cell` it alone owns: `book_started`, `book_progress`, `book_finished`, `games_started`, `game_played`) is what `run`, `run_with`, `books::ensure` and `books::guesser` take as `Option<&dyn Observer>`; `progress::observer()` returns the active mode's. Library callers, `book_files.rs` and the Track tests pass `None` and draw nothing. `--no-progress` is global; it also silences the book start message ("no opening book for X; building it", with "the closest on disk differs in ..." when a stale book exists) and "built the opening book" |
 | `error.rs` | `CliError` |
+
+## Cache commands
+
+Game actions stay top-level (`simulate`, `assist`, `compare`, `verdict`). Each kind of cached data is a group; later slices add `list` and `show` beside `clear` (tracker #23).
+
+| Group | `clear` | Cascade |
+|---|---|---|
+| `lex dict` (alias `dictionary`) | `--lang L` or `--all` | the Dictionary (`dicts/{code}.txt` and `.meta.json`), that language's Corpus caches at every length, their books; warns that the next fetch takes KAIKKI's rolling extract, which can change the Corpus and its Track snapshots; no `-l` (one Dictionary serves every length) |
+| `lex corpus` | `--lang L [-l N]` or `--all` | the Corpus cache and its books |
+| `lex profile` | `--profile P` or `--all` | the Profile's lists and its books |
+| `lex book` | `--lang L [-l N]` or `--all` | books only; `book build` also lives here |
+
+`--lang`, `-l`, `--profile` and `--data-dir` mean the same in every group. `clear` with nothing selecting what to clear is a clap error unless `--all`. The deletes live in `lex-data` (`DataDir::{clear_dict, clear, clear_profile, clear_books}`) and return the paths they removed; `--all` skips items that are not cached, while naming one that is missing is an error (except `dict clear`, which skips absent pieces). There is no top-level clear command. `tests/cache_commands.rs` covers parsing and the cascades in temp data dirs.
 
 ## Plumbing
 

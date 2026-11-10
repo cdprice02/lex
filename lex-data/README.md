@@ -31,7 +31,7 @@ dir.clear(Language::English, None)?;     // whole language
 | Type | Description |
 |---|---|
 | `blocking::DataDir` | Sync entry point — wraps the async `DataDir` |
-| `DataDir` | Async entry point; `load`, `dict_metadata`, `clear`, path helpers |
+| `DataDir` | Async entry point; `load`, `dict_metadata`, `clear`, `clear_dict`, `clear_profile`, path helpers |
 | `Language` | Enum: `English`, `French`, `German`, `Spanish`, `Italian`, `Russian` |
 | `Word<N>` | Stack-allocated `[char; N]`, `Copy`, NFC-normalized |
 | `WordSet<N>` | `HashMap<Word<N>, u64>` frequency map with probability helpers |
