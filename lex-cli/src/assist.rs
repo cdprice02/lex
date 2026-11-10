@@ -35,6 +35,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         &source,
         lists,
         BookMode::from_no_book(args.no_book),
+        !args.no_explain,
         progress::observer().as_deref(),
     )?;
 
@@ -99,12 +100,7 @@ fn show_suggestions<const N: usize>(guesser: &Guesser<N>, shown: usize) -> anyho
         println!("  {guess}");
         return Ok(guess);
     };
-    if let Some(technique) = explanation.technique {
-        println!("  chosen by the {technique}");
-    }
-    if explanation.guesses.is_empty() {
-        println!("  {}", explanation.guess);
-    }
+    println!("  chosen by the {}", explanation.technique);
     for s in explanation.guesses.iter().take(shown) {
         let mut notes = vec![
             format!("{:.3} bits", s.expected_bits),

@@ -107,7 +107,7 @@ fn run_n<const N: usize>(
     );
 
     // One guesser for every game: they share its decision tree, so each position is scored once.
-    let mut guesser = books::guesser(config, data_dir, &source, lists, *mode, *observer)?;
+    let mut guesser = books::guesser(config, data_dir, &source, lists, *mode, false, *observer)?;
     let first_guess = guesser
         .suggest()
         .ok_or_else(|| anyhow::anyhow!("no valid first guess"))?;

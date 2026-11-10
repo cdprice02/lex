@@ -33,9 +33,11 @@ fn agrees(id: &str) {
     let targets: Vec<_> = lists.answers.iter().copied().take(GAMES).collect();
     let (again, _) = Source::load::<5>(&config, &data).unwrap();
     // two guessers on the same book: one records, one is the plain `suggest` the Track plays
-    let build = |lists| books::guesser(&config, &data, &source, lists, BookMode::Auto, None);
-    let mut explained = build(lists).unwrap();
-    let mut plain = build(again).unwrap();
+    let build = |lists, scores| {
+        books::guesser(&config, &data, &source, lists, BookMode::Auto, scores, None)
+    };
+    let mut explained = build(lists, true).unwrap();
+    let mut plain = build(again, false).unwrap();
     explained.set_explain(true);
     let mut positions = 0;
     for target in targets {

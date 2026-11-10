@@ -3,14 +3,14 @@
 use std::collections::{BTreeSet, HashMap};
 use std::sync::Arc;
 
-use lex_data::Word;
+use lex_data::{StoredGuess, Word};
 
 use crate::allowed::Allowed;
-use crate::book::OpeningBook;
+use crate::book::{Listing, OpeningBook};
 use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
-use crate::explain::{Explainer, Explanation, PatternShare, Record, ScoredGuess};
+use crate::explain::{Explainer, Explanation, LISTED, PatternShare, Record, ScoredGuess};
 use crate::guesser::Guess;
 use crate::policy::BasePolicy;
 use crate::pool_ops::{self, PoolOps};
@@ -220,8 +220,8 @@ impl<const N: usize> DecisionTree<N> {
     }
 
     /// The explanation of the choice at `node`, deciding it first if need be. `None` when
-    /// recording is off, when no word is consistent, or when the position was decided before
-    /// recording was switched on.
+    /// recording is off, when no word is consistent, when the position was decided before
+    /// recording was switched on, or when it is booked and the book holds no scores.
     pub(crate) fn explain(&mut self, node: NodeId) -> Option<Explanation<N>> {
         if !self.recording {
             return None;
@@ -233,7 +233,7 @@ impl<const N: usize> DecisionTree<N> {
             let permitted = |i| entry.allowed.permits(i, entry.candidates.indices());
             return Some(Explanation {
                 guess,
-                technique: Some(record.technique),
+                technique: record.technique,
                 from_book: false,
                 guesses: record
                     .listed
@@ -251,15 +251,28 @@ impl<const N: usize> DecisionTree<N> {
                 distribution: Self::shares(&record.distribution),
             });
         }
-        let booked = self.book.as_ref().zip(entry.book)?;
+        let (book, on) = self.book.as_ref().zip(entry.book)?;
+        let listing = book.listing(on)?;
         let explainer = self.explainer.as_ref()?;
-        let groups = explainer.distribution(entry.candidates.indices(), booked.0.guess(booked.1));
+        let set = entry.candidates.indices();
         Some(Explanation {
             guess,
-            technique: None,
+            technique: listing.technique,
             from_book: true,
-            guesses: Vec::new(),
-            distribution: Self::shares(&groups),
+            guesses: listing
+                .guesses
+                .iter()
+                .map(|g| ScoredGuess {
+                    word: pool.word(g.index),
+                    expected_bits: g.expected_bits,
+                    expected_remaining: g.expected_remaining,
+                    guess_cost: g.guess_cost,
+                    score: g.score,
+                    in_candidates: set.binary_search(&g.index).is_ok(),
+                    permitted: entry.allowed.permits(g.index, set),
+                })
+                .collect(),
+            distribution: Self::shares(&explainer.distribution(set, book.guess(on))),
         })
     }
 
@@ -351,6 +364,9 @@ impl<const N: usize> DecisionTree<N> {
     /// Books every position, top-down, whose work exceeds `floor`. Work never rises along a
     /// path, so the booked positions form a subtree rooted at the start.
     /// `progress` is called with the booked count each time a position is booked.
+    ///
+    /// Recording is on for the build, so each booked position keeps the technique and top guesses
+    /// the one search that chose its guess already computed; it returns to its earlier setting.
     pub(crate) fn build_book(
         &mut self,
         floor: u64,
@@ -359,8 +375,33 @@ impl<const N: usize> DecisionTree<N> {
         let pool = self.nodes[Self::ROOT].candidates.pool();
         let index_of: HashMap<Word<N>, u32> = pool.indices().map(|i| (pool.word(i), i)).collect();
         let mut book = OpeningBook::default();
+        let was_recording = self.recording;
+        self.set_explain(true);
         self.book_node(Self::ROOT, floor, &index_of, &mut book, progress);
+        self.recording = was_recording;
         book
+    }
+
+    /// What `node` recorded when it decided; a position decided before recording was on is
+    /// decided again from the warm memos, which reaches the same guess.
+    fn record_at(&mut self, node: NodeId) -> Option<Record> {
+        if let Some(record) = self.records.get(&node) {
+            return Some(record.clone());
+        }
+        let Self {
+            base,
+            rollout,
+            nodes,
+            explainer,
+            ..
+        } = self;
+        let entry = &nodes[node];
+        explainer.as_ref()?.decide(
+            entry.candidates.indices(),
+            &entry.allowed,
+            base,
+            rollout.as_mut(),
+        )
     }
 
     /// Books `node` and its booked descendants into `book`, returning its book id, or `None` when its work is at or below `floor`.
@@ -376,7 +417,28 @@ impl<const N: usize> DecisionTree<N> {
             return None;
         }
         let guess = self.suggest(node)?;
-        let id = book.push(index_of[&guess]);
+        let record = self.record_at(node)?;
+        let chosen = index_of[&guess];
+        debug_assert_eq!(
+            record.listed[0].index, chosen,
+            "the record's choice is the suggestion"
+        );
+        let listing = Listing {
+            technique: record.technique,
+            guesses: record
+                .listed
+                .iter()
+                .take(LISTED)
+                .map(|l| StoredGuess {
+                    index: l.index,
+                    expected_bits: l.bits,
+                    expected_remaining: l.remaining,
+                    guess_cost: l.cost,
+                    score: l.score,
+                })
+                .collect(),
+        };
+        let id = book.push(chosen, listing);
         progress(book.len());
         let pool = self.nodes[node].candidates.pool();
         let ordinals: BTreeSet<u64> = self.nodes[node]

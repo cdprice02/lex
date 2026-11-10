@@ -113,8 +113,8 @@ pub fn ensure<const N: usize>(
         match data_dir.read_book(lang, &key)? {
             BookLookup::Found(stored) => {
                 let bytes = std::fs::metadata(&path)?.len();
-                let book =
-                    OpeningBook::<N>::from_nodes(stored, lists.pool.len()).with_context(|| {
+                let book = OpeningBook::<N>::from_nodes(stored, lists.pool.len(), true)
+                    .with_context(|| {
                         format!(
                             "opening book {} is corrupt; rebuild it with `lex book build --force`",
                             path.display()
@@ -154,7 +154,10 @@ pub fn ensure<const N: usize>(
         }
     });
     let elapsed = started.elapsed();
-    let file = data_dir.write_book(lang, &key, &book.to_nodes())?;
+    let stored = book
+        .to_nodes()
+        .context("a book built with recording on holds its scores")?;
+    let file = data_dir.write_book(lang, &key, &stored)?;
     if let Some(observer) = observer {
         observer.book_finished(&format!(
             "built the opening book: {} positions, {} bytes, {elapsed:.1?}",
@@ -173,6 +176,9 @@ pub fn ensure<const N: usize>(
 
 /// A guesser for `lists`, seeded with the Opening book unless `mode` is off.
 ///
+/// The book's techniques and scores stay in memory only when `scores` is set, for a caller that
+/// will switch explaining on; plain play drops them as soon as the file is parsed.
+///
 /// # Errors
 ///
 /// As [`ensure`], and when the stored book does not fit the Guess pool.
@@ -182,6 +188,7 @@ pub fn guesser<const N: usize>(
     source: &Source,
     lists: GameLists<N>,
     mode: BookMode,
+    scores: bool,
     observer: Option<&dyn Observer>,
 ) -> anyhow::Result<Guesser<N>> {
     let strategy = config.strategy;
@@ -190,8 +197,13 @@ pub fn guesser<const N: usize>(
         return Ok(Guesser::new(&pool, &answers, strategy));
     }
     let ensured = ensure(config, data_dir, source, &lists, false, observer)?;
+    let book = if scores {
+        ensured.book
+    } else {
+        ensured.book.without_scores()
+    };
     let GameLists { pool, answers } = lists;
-    Ok(Guesser::with_book(&pool, &answers, strategy, ensured.book))
+    Ok(Guesser::with_book(&pool, &answers, strategy, book))
 }
 
 /// The `lex book build` command: builds the book, or reports that it is up to date.
