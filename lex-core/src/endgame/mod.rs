@@ -132,6 +132,59 @@ impl Endgame {
         Some(self.solve(set, allowed).guess)
     }
 
+    /// The summed prior weight of `set`.
+    fn mass(&self, set: &[u32]) -> f64 {
+        set.iter().map(|&i| self.weight(i)).sum()
+    }
+
+    /// A summed cost over a set of weight `mass` as a Guess cost: plain, the expected guesses;
+    /// averse, the certainty equivalent ln(E[a^g]) / ln(a).
+    fn guess_cost(&self, total: f64, mass: f64) -> f64 {
+        self.growth
+            .map_or_else(|| total / mass, |a| (total / mass).log(a))
+    }
+
+    /// As [`best_index`](Self::best_index), with the Guess cost of the guess.
+    pub(crate) fn best_with_cost(&mut self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
+        if set.is_empty() {
+            return None;
+        }
+        let solved = self.solve(set, allowed);
+        Some((solved.guess, self.guess_cost(solved.cost, self.mass(set))))
+    }
+
+    /// The Guess cost of playing `guess`, allowed or not, now and the search after: one `try_guess`
+    /// worth of work, the groups it leaves solved through the memo. Infinite when a guess that
+    /// cannot be the answer leaves the set whole, which the search never recurses into.
+    ///
+    /// The pattern table is built for `set` and `allowed` so the children read it, as under
+    /// [`solve`](Self::solve); the guess itself is partitioned directly, as it may not be a row.
+    pub(crate) fn cost_of(&mut self, set: &[u32], allowed: &Allowed, guess: u32) -> f64 {
+        let mass = self.mass(set);
+        let win = self.pool.win_ordinal();
+        let mut keyed = Vec::with_capacity(set.len());
+        self.pool.partition(set, guess, &mut keyed);
+        if keyed.iter().all(|k| k.0 == keyed[0].0) && keyed[0].0 != win {
+            return f64::INFINITY;
+        }
+        self.ensure_table(set, allowed);
+        let growth = self.growth.unwrap_or(1.0);
+        let in_set = set.binary_search(&guess).is_ok();
+        let mut cost = self.initial_cost(guess, in_set, mass);
+        for group in keyed.chunk_by(|a, b| a.0 == b.0) {
+            if group[0].0 == win {
+                continue;
+            }
+            let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
+            let child_allowed =
+                self.pool
+                    .allowed_after(allowed, self.guess_pool, guess, group[0].0);
+            cost += self.solve_within(&child, &child_allowed).cost;
+        }
+        self.table.active = false;
+        self.guess_cost(cost * growth, mass)
+    }
+
     /// Expected number of guesses to finish from `set` under the answer prior renormalized to it.
     #[cfg(test)]
     pub(crate) fn expected_guesses(&mut self, set: &[u32], allowed: &Allowed) -> f64 {

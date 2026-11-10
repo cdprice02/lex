@@ -6,6 +6,7 @@ mod book;
 mod candidates;
 mod correctness;
 mod endgame;
+mod explain;
 mod game;
 mod guesser;
 mod policy;
@@ -22,6 +23,7 @@ pub const SOLVER_DIGEST: &str = env!("LEX_SOLVER_DIGEST");
 pub use book::{BOOK_FLOOR, BookError, OpeningBook};
 pub use candidates::Suggestion;
 pub use correctness::{Correctness, WordCorrectness};
+pub use explain::{Explanation, PatternShare, ScoredGuess, Technique};
 pub use game::{GameResult, play};
 pub use guesser::{Guess, Guesser};
 pub use strategy::{

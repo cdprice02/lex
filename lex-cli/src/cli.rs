@@ -784,6 +784,9 @@ pub struct AssistArgs {
     /// Play fully online instead of building and using the opening book
     #[arg(long)]
     pub no_book: bool,
+    /// Show only the suggested guess, without the scores behind it
+    #[arg(long)]
+    pub no_explain: bool,
     /// The display scheme for echoed feedback, copied from the global `--symbols` by `main`.
     #[arg(skip)]
     pub symbols: SymbolScheme,

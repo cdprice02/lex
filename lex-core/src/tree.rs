@@ -10,6 +10,7 @@ use crate::book::OpeningBook;
 use crate::candidates::Candidates;
 use crate::correctness::WordCorrectness;
 use crate::endgame::Endgame;
+use crate::explain::{Explainer, Explanation, PatternShare, Record, ScoredGuess};
 use crate::guesser::Guess;
 use crate::policy::BasePolicy;
 use crate::pool_ops::{self, PoolOps};
@@ -44,6 +45,14 @@ pub struct DecisionTree<const N: usize> {
     nodes: Vec<Node<N>>,
     /// Seeds nodes created along booked paths; `None` plays everything online.
     book: Option<OpeningBook<N>>,
+    /// Whether a node records what it weighed when it decides; off, `suggest` runs the plain code.
+    recording: bool,
+    /// Scores guesses against the Answer prior; built when recording is switched on or a guess is
+    /// first scored.
+    explainer: Option<Explainer>,
+    /// What each node recorded when it decided, kept beside the nodes so an unrecorded tree
+    /// pays nothing per node.
+    records: HashMap<NodeId, Record>,
     /// Suggestions computed at a booked node, which a correctly seeded run never needs.
     #[cfg(test)]
     booked_computations: usize,
@@ -119,6 +128,9 @@ impl<const N: usize> DecisionTree<N> {
             rollout,
             nodes: vec![root],
             book,
+            recording: false,
+            explainer: None,
+            records: HashMap::new(),
             #[cfg(test)]
             booked_computations: 0,
         }
@@ -152,6 +164,9 @@ impl<const N: usize> DecisionTree<N> {
             pool,
             rollout,
             nodes,
+            explainer,
+            records,
+            recording,
             #[cfg(test)]
             booked_computations,
             ..
@@ -167,16 +182,125 @@ impl<const N: usize> DecisionTree<N> {
             }
             let size = entry.candidates.len();
             let set = entry.candidates.indices();
-            let index = match rollout.as_mut() {
-                Some(rollout) if !base.uses_endgame(size) && rollout.applies(size) => {
-                    rollout.best_guess(set, &entry.allowed, base)
-                }
-                _ => base.guess_index(pool, set, &entry.allowed),
+            let index = match explainer.as_ref().filter(|_| *recording) {
+                Some(explainer) => explainer
+                    .decide(set, &entry.allowed, base, rollout.as_mut())
+                    .map(|record| {
+                        let chosen = record.listed[0].index;
+                        records.insert(node, record);
+                        chosen
+                    }),
+                None => match rollout.as_mut() {
+                    Some(rollout) if !base.uses_endgame(size) && rollout.applies(size) => {
+                        rollout.best_guess(set, &entry.allowed, base)
+                    }
+                    _ => base.guess_index(pool, set, &entry.allowed),
+                },
             };
             index.map(|i| entry.candidates.pool().word(i))
         };
         entry.suggestion = Memo::Computed(suggestion);
         suggestion
+    }
+
+    /// Switches recording on or off for the positions decided from now on.
+    pub(crate) fn set_explain(&mut self, on: bool) {
+        self.recording = on;
+        if on {
+            self.ensure_explainer();
+        }
+    }
+
+    /// Builds the explainer once.
+    fn ensure_explainer(&mut self) {
+        if self.explainer.is_none() {
+            let temperature = self.base.strategy().temperature;
+            self.explainer = Some(Explainer::new(Arc::clone(&self.pool), temperature));
+        }
+    }
+
+    /// The explanation of the choice at `node`, deciding it first if need be. `None` when
+    /// recording is off, when no word is consistent, or when the position was decided before
+    /// recording was switched on.
+    pub(crate) fn explain(&mut self, node: NodeId) -> Option<Explanation<N>> {
+        if !self.recording {
+            return None;
+        }
+        let guess = self.suggest(node)?;
+        let entry = &self.nodes[node];
+        let pool = entry.candidates.pool();
+        if let Some(record) = self.records.get(&node) {
+            let permitted = |i| entry.allowed.permits(i, entry.candidates.indices());
+            return Some(Explanation {
+                guess,
+                technique: Some(record.technique),
+                from_book: false,
+                guesses: record
+                    .listed
+                    .iter()
+                    .map(|l| ScoredGuess {
+                        word: pool.word(l.index),
+                        expected_bits: l.bits,
+                        expected_remaining: l.remaining,
+                        guess_cost: l.cost,
+                        score: l.score,
+                        in_candidates: l.in_candidates,
+                        permitted: permitted(l.index),
+                    })
+                    .collect(),
+                distribution: Self::shares(&record.distribution),
+            });
+        }
+        let booked = self.book.as_ref().zip(entry.book)?;
+        let explainer = self.explainer.as_ref()?;
+        let groups = explainer.distribution(entry.candidates.indices(), booked.0.guess(booked.1));
+        Some(Explanation {
+            guess,
+            technique: None,
+            from_book: true,
+            guesses: Vec::new(),
+            distribution: Self::shares(&groups),
+        })
+    }
+
+    /// The public view of feedback groups.
+    fn shares(groups: &[crate::explain::Group]) -> Vec<PatternShare<N>> {
+        groups
+            .iter()
+            .map(|g| PatternShare {
+                pattern: WordCorrectness::<N>::from_ordinal(g.ordinal),
+                count: g.count,
+                probability: g.probability,
+            })
+            .collect()
+    }
+
+    /// `word` scored against the candidates at `node`; `None` when it is not in the Guess pool.
+    pub(crate) fn score(&mut self, node: NodeId, word: Word<N>) -> Option<ScoredGuess<N>> {
+        self.ensure_explainer();
+        let Self {
+            base,
+            rollout,
+            nodes,
+            explainer,
+            ..
+        } = self;
+        let entry = &nodes[node];
+        let pool = entry.candidates.pool();
+        let index = pool.indices().find(|&i| pool.word(i) == word)?;
+        let set = entry.candidates.indices();
+        let listed = explainer
+            .as_ref()?
+            .score(set, &entry.allowed, base, rollout.as_mut(), index);
+        Some(ScoredGuess {
+            word,
+            expected_bits: listed.bits,
+            expected_remaining: listed.remaining,
+            guess_cost: listed.cost,
+            score: listed.score,
+            in_candidates: listed.in_candidates,
+            permitted: entry.allowed.permits(index, set),
+        })
     }
 
     /// Pattern evaluations of one scan at `node`: the guesses its rule allows times its candidates.

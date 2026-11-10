@@ -134,6 +134,18 @@ _Avoid_: Look-ahead, two-ply search
 **Base policy**:
 The solver's choice at a position without Rollout: the Endgame within the Endgame threshold, otherwise the best entropy-scored guess. Rollout plays positions out under it.
 
+**Technique**:
+The method that chose a guess at a position: Entropy (the best entropy score), Rollout, or the Endgame.
+_Avoid_: Strategy (that is the tunable settings), mode
+
+**Guess cost**:
+The expected number of guesses to finish a game after playing a guess, counting that guess, under the solver's own later choices. Only the Endgame and Rollout compute one.
+_Avoid_: Score, cost
+
+**Expected remaining**:
+The expected Candidate set size after a guess's feedback, under the Answer prior.
+_Avoid_: Expected size, leftover
+
 **Pre-screen**:
 Narrowing the Guess pool at a position by a cheap approximate score before the surviving guesses are scored exactly.
 _Avoid_: Pruning, shortlist
