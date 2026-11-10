@@ -14,15 +14,23 @@ use crate::parse::parse_ngram_line;
 use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
-/// Shards downloaded at once.
-const SHARD_CONCURRENCY: u32 = 4;
+/// Most shards downloaded at once.
+const SHARD_CONCURRENCY: usize = 4;
+
+/// Download workers for a language of `shards` shards: the most shards downloaded at once,
+/// capped by the thread budget (the ambient rayon pool) and by the shard count.
+fn worker_count(shards: u32) -> usize {
+    SHARD_CONCURRENCY
+        .min(rayon::current_num_threads())
+        .min(usize::try_from(shards).unwrap_or(usize::MAX))
+}
 
 /// Google Books Ngrams V3 snapshot the corpus is built from. The snapshot is frozen, but
 /// recording it keeps run provenance complete.
 pub const SNAPSHOT: &str = "20200217";
 
 /// Downloads all Google Books Ngrams V3 shards for `lang` with up to `SHARD_CONCURRENCY`
-/// requests in flight at once. Returns the words in `valid`, grouped by char count, for every
+/// requests in flight at once, fewer when the ambient rayon pool has fewer threads. Returns the words in `valid`, grouped by char count, for every
 /// supported length. Callers write all length buckets on a cache miss so future requests for
 /// any length of this language are served from disk.
 ///
@@ -71,7 +79,7 @@ pub fn fetch(
 
     let results: Vec<_> = thread::scope(|scope| {
         let mut workers = Vec::new();
-        for _ in 0..SHARD_CONCURRENCY.min(n) {
+        for _ in 0..worker_count(n) {
             workers.push(scope.spawn(worker));
         }
         workers
@@ -126,6 +134,26 @@ mod tests {
 
     fn valid(words: &[&str]) -> HashSet<String> {
         words.iter().map(std::string::ToString::to_string).collect()
+    }
+
+    fn workers_in_pool(threads: usize, shards: u32) -> usize {
+        rayon::ThreadPoolBuilder::new()
+            .num_threads(threads)
+            .build()
+            .unwrap()
+            .install(|| worker_count(shards))
+    }
+
+    #[test]
+    fn worker_count_follows_the_ambient_pool() {
+        assert_eq!(workers_in_pool(1, 24), 1);
+        assert_eq!(workers_in_pool(3, 24), 3);
+        assert_eq!(workers_in_pool(16, 24), SHARD_CONCURRENCY);
+    }
+
+    #[test]
+    fn worker_count_is_capped_by_the_shard_count() {
+        assert_eq!(workers_in_pool(16, 2), 2);
     }
 
     #[test]

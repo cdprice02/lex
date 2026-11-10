@@ -39,11 +39,11 @@ BIN=target/$TARGET/release/lex
 run_training() {
   bin=$1
   shift
-  "$bin" simulate -l 5 --lang english -n "$GAMES" --data-dir "$DATA" "$@" >/dev/null
-  "$bin" simulate -l 5 --lang russian -n "$GAMES" --data-dir "$DATA" "$@" >/dev/null
-  "$bin" simulate -l 5 --lang english --pool hard -n "$HARD_GAMES" --data-dir "$DATA" "$@" >/dev/null
-  "$bin" simulate -l 7 --lang english -n "$OTHER_GAMES" --data-dir "$DATA" "$@" >/dev/null
-  "$bin" simulate -l 9 --lang russian -n "$OTHER_GAMES" --data-dir "$DATA" "$@" >/dev/null
+  "$bin" simulate -l 5 --lang english -n "$GAMES" --data-dir "$DATA" --threads 1 "$@" >/dev/null
+  "$bin" simulate -l 5 --lang russian -n "$GAMES" --data-dir "$DATA" --threads 1 "$@" >/dev/null
+  "$bin" simulate -l 5 --lang english --pool hard -n "$HARD_GAMES" --data-dir "$DATA" --threads 1 "$@" >/dev/null
+  "$bin" simulate -l 7 --lang english -n "$OTHER_GAMES" --data-dir "$DATA" --threads 1 "$@" >/dev/null
+  "$bin" simulate -l 9 --lang russian -n "$OTHER_GAMES" --data-dir "$DATA" --threads 1 "$@" >/dev/null
 }
 
 cargo pgo build -- -p lex-cli

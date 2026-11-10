@@ -8,7 +8,9 @@ use clap::Parser;
 use lex_cli::assist::assist;
 use lex_cli::books::build_command;
 use lex_cli::clear;
-use lex_cli::cli::{BookCommand, Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
+use lex_cli::cli::{
+    BookCommand, Cli, Command, CorpusCommand, DictCommand, ProfileCommand, build_pool,
+};
 use lex_cli::compare::compare_reports;
 use lex_cli::dicts;
 use lex_cli::progress;
@@ -19,7 +21,10 @@ fn main() -> ExitCode {
     let cli = Cli::parse();
     style::init(cli.color);
     progress::init(cli.no_progress);
-    match run(cli.command, cli.symbols) {
+    let result = build_pool(cli.threads)
+        .map_err(anyhow::Error::from)
+        .and_then(|pool| pool.install(|| run(cli.command, cli.symbols)));
+    match result {
         Ok(code) => code,
         Err(error) => {
             eprintln!("Error: {error:?}");

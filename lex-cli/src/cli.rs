@@ -1,5 +1,6 @@
 //! The command line: clap definitions and their conversion to run configurations.
 
+use std::num::NonZeroUsize;
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
@@ -29,6 +30,27 @@ pub struct Cli {
     /// Show no progress bars, spinners or progress lines
     #[arg(long, global = true)]
     pub no_progress: bool,
+    /// Worker threads (at least 1); defaults to the available parallelism
+    #[arg(long, value_name = "N", default_value_t = default_threads(), global = true)]
+    pub threads: NonZeroUsize,
+}
+
+/// The thread count when `--threads` is absent: the available parallelism, else 1.
+#[must_use]
+pub fn default_threads() -> NonZeroUsize {
+    std::thread::available_parallelism().unwrap_or(NonZeroUsize::MIN)
+}
+
+/// Builds the one rayon pool of a run, `threads` wide. The command runs inside `install`, so the
+/// ambient pool carries the thread budget and nothing else sees the count.
+///
+/// # Errors
+///
+/// [`CliError::ThreadPool`] when the operating system refuses the threads.
+pub fn build_pool(threads: NonZeroUsize) -> Result<rayon::ThreadPool, CliError> {
+    Ok(rayon::ThreadPoolBuilder::new()
+        .num_threads(threads.get())
+        .build()?)
 }
 
 /// The subcommands of `lex`.
@@ -809,5 +831,66 @@ mod book_tests {
             };
             assert!(parse(&["--no-book"]).is_ok(), "{command}");
         }
+    }
+}
+
+#[cfg(test)]
+mod threads_tests {
+    use super::*;
+
+    const ASSIST: [&str; 6] = ["assist", "--lang", "english", "-l", "5", "--no-progress"];
+
+    fn threads(args: &[&str]) -> Result<NonZeroUsize, clap::Error> {
+        Cli::try_parse_from(std::iter::once("lex").chain(args.iter().copied())).map(|c| c.threads)
+    }
+
+    #[test]
+    fn threads_accepts_one_and_more() {
+        assert_eq!(
+            threads(&["--threads", "1", "book", "clear", "--all"])
+                .unwrap()
+                .get(),
+            1
+        );
+        assert_eq!(
+            threads(&["--threads", "7", "book", "clear", "--all"])
+                .unwrap()
+                .get(),
+            7
+        );
+    }
+
+    #[test]
+    fn threads_rejects_zero_and_non_numbers() {
+        assert!(threads(&["--threads", "0", "book", "clear", "--all"]).is_err());
+        assert!(threads(&["--threads", "-1", "book", "clear", "--all"]).is_err());
+        assert!(threads(&["--threads", "many", "book", "clear", "--all"]).is_err());
+    }
+
+    #[test]
+    fn threads_defaults_to_the_available_parallelism() {
+        let default = threads(&ASSIST).unwrap();
+        assert!(default.get() >= 1);
+        assert_eq!(default, default_threads());
+    }
+
+    #[test]
+    fn threads_is_global_before_and_after_the_subcommand() {
+        let after: Vec<&str> = ASSIST.into_iter().chain(["--threads", "2"]).collect();
+        assert_eq!(threads(&after).unwrap().get(), 2);
+        let before: Vec<&str> = ["--threads", "3"].into_iter().chain(ASSIST).collect();
+        assert_eq!(threads(&before).unwrap().get(), 3);
+        assert_eq!(
+            threads(&["book", "clear", "--all", "--threads", "4"])
+                .unwrap()
+                .get(),
+            4
+        );
+    }
+
+    #[test]
+    fn the_pool_has_the_requested_width() {
+        let pool = build_pool(NonZeroUsize::new(3).unwrap()).unwrap();
+        assert_eq!(pool.install(rayon::current_num_threads), 3);
     }
 }
