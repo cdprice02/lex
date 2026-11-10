@@ -3,7 +3,8 @@
 use std::num::NonZeroUsize;
 use std::path::PathBuf;
 
-use clap::{Parser, Subcommand};
+use clap::parser::ValueSource;
+use clap::{CommandFactory, FromArgMatches, Parser, Subcommand};
 use lex_core::{GuessPool, PriorShape, Strategy};
 use lex_data::{Language, Profile};
 
@@ -33,6 +34,40 @@ pub struct Cli {
     /// Worker threads (at least 1); defaults to the available parallelism
     #[arg(long, value_name = "N", default_value_t = default_threads(), global = true)]
     pub threads: NonZeroUsize,
+    /// Parallel shard downloads; default measured, or --threads when given
+    #[arg(long, value_name = "N", global = true)]
+    pub download_threads: Option<NonZeroUsize>,
+    /// Whether `--threads` was given on the command line rather than defaulted, set by
+    /// [`Cli::parse_args`].
+    #[arg(skip)]
+    pub threads_explicit: bool,
+}
+
+impl Cli {
+    /// Parses `args` (the program name first) like [`Parser::try_parse_from`], and records
+    /// whether `--threads` was given, which the derive alone cannot tell from its default.
+    ///
+    /// # Errors
+    ///
+    /// As [`Parser::try_parse_from`].
+    pub fn parse_args<I, T>(args: I) -> Result<Self, clap::Error>
+    where
+        I: IntoIterator<Item = T>,
+        T: Into<std::ffi::OsString> + Clone,
+    {
+        let matches = Self::command().try_get_matches_from(args)?;
+        let mut cli = Self::from_arg_matches(&matches)?;
+        cli.threads_explicit = matches.value_source("threads") == Some(ValueSource::CommandLine);
+        Ok(cli)
+    }
+
+    /// The shard download count the user asked for: `--download-threads`, else an explicit
+    /// `--threads`, else `None` (the default applies). lex-data caps it at the shard count.
+    #[must_use]
+    pub fn download_request(&self) -> Option<NonZeroUsize> {
+        self.download_threads
+            .or_else(|| self.threads_explicit.then_some(self.threads))
+    }
 }
 
 /// The thread count when `--threads` is absent: the available parallelism, else 1.
@@ -503,9 +538,18 @@ pub struct CommonArgs {
         default_value_t = Strategy::DEFAULT.prior_shape
     )]
     pub prior_shape: PriorShape,
+    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    #[arg(skip)]
+    pub download_workers: Option<NonZeroUsize>,
 }
 
 impl CommonArgs {
+    /// The data directory, set to download as many shards at once as the user asked for.
+    #[must_use]
+    pub fn data(&self) -> lex_data::DataDir {
+        lex_data::DataDir::new(&self.data_dir).with_download_workers(self.download_workers)
+    }
+
     /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
     ///
     /// # Panics
@@ -1011,5 +1055,68 @@ mod threads_tests {
     fn the_pool_has_the_requested_width() {
         let pool = build_pool(NonZeroUsize::new(3).unwrap()).unwrap();
         assert_eq!(pool.install(rayon::current_num_threads), 3);
+    }
+
+    fn parse(args: &[&str]) -> Result<Cli, clap::Error> {
+        Cli::parse_args(std::iter::once("lex").chain(args.iter().copied()))
+    }
+
+    fn request(args: &[&str]) -> Option<usize> {
+        parse(args)
+            .unwrap()
+            .download_request()
+            .map(NonZeroUsize::get)
+    }
+
+    #[test]
+    fn download_threads_rejects_zero_and_non_numbers() {
+        for bad in ["0", "-1", "many"] {
+            assert!(parse(&["--download-threads", bad, "book", "clear", "--all"]).is_err());
+        }
+        assert!(parse(&["--download-threads", "1", "book", "clear", "--all"]).is_ok());
+    }
+
+    #[test]
+    fn download_threads_wins_over_threads() {
+        let args = [
+            "--threads",
+            "2",
+            "--download-threads",
+            "9",
+            "book",
+            "clear",
+            "--all",
+        ];
+        assert_eq!(request(&args), Some(9));
+    }
+
+    #[test]
+    fn explicit_threads_is_the_download_request() {
+        assert_eq!(
+            request(&["--threads", "1", "book", "clear", "--all"]),
+            Some(1)
+        );
+        assert_eq!(
+            request(&["book", "clear", "--all", "--threads", "6"]),
+            Some(6)
+        );
+    }
+
+    #[test]
+    fn neither_option_leaves_the_default() {
+        assert_eq!(request(&["book", "clear", "--all"]), None);
+        assert!(!parse(&["book", "clear", "--all"]).unwrap().threads_explicit);
+    }
+
+    #[test]
+    fn download_threads_is_global_before_and_after_the_subcommand() {
+        assert_eq!(
+            request(&["book", "clear", "--all", "--download-threads", "3"]),
+            Some(3)
+        );
+        assert_eq!(
+            request(&["--download-threads", "5", "book", "clear", "--all"]),
+            Some(5)
+        );
     }
 }

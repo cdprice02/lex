@@ -33,7 +33,7 @@ pub fn simulate<const N: usize>(args: &SimulateArgs) -> anyhow::Result<()> {
     let observer = progress::observer();
     let report = run_n::<N>(&(
         &args.config(),
-        &DataDir::new(&args.common.data_dir),
+        &args.common.data(),
         mode,
         observer.as_deref(),
     ))?;

@@ -31,7 +31,7 @@ pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow
         }
         let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
         log::warn!("Building {lang} corpus...");
-        let by_length = ngrams::fetch(lang, &valid_words)?;
+        let by_length = ngrams::fetch(lang, &valid_words, dir.download_workers())?;
         let n_buckets = by_length.len();
         populate(dir, lang, &by_length)?;
         log::info!("Cached {lang} corpus ({n_buckets} length buckets)");

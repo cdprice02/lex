@@ -2,6 +2,7 @@
 
 use std::collections::{HashMap, HashSet};
 use std::io::{BufRead, BufReader};
+use std::num::NonZeroUsize;
 use std::sync::atomic::{AtomicBool, AtomicU32, Ordering};
 use std::thread;
 
@@ -14,14 +15,15 @@ use crate::parse::parse_ngram_line;
 use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
-/// Most shards downloaded at once.
-const SHARD_CONCURRENCY: usize = 4;
+/// Download workers when the user asked for no count. A placeholder until the measured default
+/// replaces it.
+pub const DEFAULT_DOWNLOAD_WORKERS: usize = 4;
 
-/// Download workers for a language of `shards` shards: the most shards downloaded at once,
-/// capped by the thread budget (the ambient rayon pool) and by the shard count.
-fn worker_count(shards: u32) -> usize {
-    SHARD_CONCURRENCY
-        .min(rayon::current_num_threads())
+/// Download workers for a language of `shards` shards: the count the user asked for, else
+/// [`DEFAULT_DOWNLOAD_WORKERS`], capped by the shard count.
+fn worker_count(requested: Option<NonZeroUsize>, shards: u32) -> usize {
+    requested
+        .map_or(DEFAULT_DOWNLOAD_WORKERS, NonZeroUsize::get)
         .min(usize::try_from(shards).unwrap_or(usize::MAX))
 }
 
@@ -29,8 +31,8 @@ fn worker_count(shards: u32) -> usize {
 /// recording it keeps run provenance complete.
 pub const SNAPSHOT: &str = "20200217";
 
-/// Downloads all Google Books Ngrams V3 shards for `lang` with up to `SHARD_CONCURRENCY`
-/// requests in flight at once, fewer when the ambient rayon pool has fewer threads. Returns the words in `valid`, grouped by char count, for every
+/// Downloads all Google Books Ngrams V3 shards for `lang` with up to `requested`
+/// requests in flight at once (see [`worker_count`]). Returns the words in `valid`, grouped by char count, for every
 /// supported length. Callers write all length buckets on a cache miss so future requests for
 /// any length of this language are served from disk.
 ///
@@ -43,6 +45,7 @@ pub const SNAPSHOT: &str = "20200217";
 pub fn fetch(
     lang: Language,
     valid: &HashSet<String>,
+    requested: Option<NonZeroUsize>,
 ) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
     let n = lang.shard_count();
     let agent = http::agent();
@@ -79,7 +82,7 @@ pub fn fetch(
 
     let results: Vec<_> = thread::scope(|scope| {
         let mut workers = Vec::new();
-        for _ in 0..worker_count(n) {
+        for _ in 0..worker_count(requested, n) {
             workers.push(scope.spawn(worker));
         }
         workers
@@ -136,24 +139,26 @@ mod tests {
         words.iter().map(std::string::ToString::to_string).collect()
     }
 
-    fn workers_in_pool(threads: usize, shards: u32) -> usize {
-        rayon::ThreadPoolBuilder::new()
-            .num_threads(threads)
-            .build()
-            .unwrap()
-            .install(|| worker_count(shards))
+    fn workers(requested: Option<usize>, shards: u32) -> usize {
+        worker_count(requested.and_then(NonZeroUsize::new), shards)
     }
 
     #[test]
-    fn worker_count_follows_the_ambient_pool() {
-        assert_eq!(workers_in_pool(1, 24), 1);
-        assert_eq!(workers_in_pool(3, 24), 3);
-        assert_eq!(workers_in_pool(16, 24), SHARD_CONCURRENCY);
+    fn worker_count_honors_the_requested_count() {
+        assert_eq!(workers(Some(1), 24), 1);
+        assert_eq!(workers(Some(12), 24), 12);
+        assert_eq!(workers(Some(24), 24), 24);
+    }
+
+    #[test]
+    fn worker_count_defaults_when_nothing_is_requested() {
+        assert_eq!(workers(None, 24), DEFAULT_DOWNLOAD_WORKERS);
     }
 
     #[test]
     fn worker_count_is_capped_by_the_shard_count() {
-        assert_eq!(workers_in_pool(16, 2), 2);
+        assert_eq!(workers(Some(16), 2), 2);
+        assert_eq!(workers(None, 2), 2);
     }
 
     #[test]
