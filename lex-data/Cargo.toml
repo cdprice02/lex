@@ -17,7 +17,7 @@ thiserror = { workspace = true }
 ureq = { version = "3", default-features = false, features = ["rustls"] }
 unicode-normalization = "0.1"
 sha2 = "0.11.1"
-time = { version = "0.3.55", features = ["formatting"] }
+time = { version = "0.3.55", features = ["formatting", "parsing"] }
 
 tempfile = "3"
 postcard = { version = "1", default-features = false, features = ["use-std"] }
