@@ -84,11 +84,12 @@ impl DataDir {
 
     /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
     /// language ngrams directory (None), with the Opening books of the same scope, and returns
-    /// each path removed. Does not remove the Dictionary.
+    /// each path removed; an absent cache removes nothing and succeeds. Does not remove the
+    /// Dictionary.
     ///
     /// # Errors
     ///
-    /// If a cache file cannot be removed.
+    /// If a cache file exists but cannot be removed.
     pub fn clear(&self, lang: Language, n: Option<usize>) -> anyhow::Result<Vec<PathBuf>> {
         let mut removed = store::clear(self, lang, n)?;
         removed.extend(self.clear_books(Some(lang), n)?);
@@ -147,16 +148,18 @@ impl DataDir {
     }
 
     /// Removes a Profile's stored lists so they are fetched again on next use, and the Opening
-    /// books built for it, returning each path removed.
+    /// books built for it, returning each path removed. A Profile that is not fetched removes
+    /// nothing and succeeds.
     ///
     /// # Errors
     ///
-    /// If the Profile's directory cannot be removed.
+    /// If the Profile's directory exists but cannot be removed.
     pub fn clear_profile(&self, profile: Profile) -> anyhow::Result<Vec<PathBuf>> {
         let mut removed = self.clear_profile_books(&profile.to_string())?;
         let dir = self.profile_dir(profile);
-        std::fs::remove_dir_all(&dir).with_context(|| format!("removing profile {profile}"))?;
-        removed.push(dir);
+        if remove_if_present(&dir)? {
+            removed.push(dir);
+        }
         Ok(removed)
     }
 

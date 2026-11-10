@@ -6,6 +6,7 @@ pub mod word;
 
 mod book_store;
 mod data_dir;
+mod dict_list;
 mod error;
 mod header;
 mod http;
@@ -21,6 +22,7 @@ mod wiktionary;
 
 pub use book_store::{BookFile, BookKey, BookLookup, ProfileKey, StoredBook, StoredNode};
 pub use data_dir::DataDir;
+pub use dict_list::DictRecord;
 pub use error::LexDataError;
 pub use language::Language;
 pub use ngrams::SNAPSHOT as NGRAMS_SNAPSHOT;

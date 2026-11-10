@@ -51,8 +51,7 @@ pub fn dict(args: &DictClearArgs) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// `lex corpus clear`: Corpus caches with their books. Naming a language that has no cache is
-/// an error; `--all` skips languages without one.
+/// `lex corpus clear`: Corpus caches with their books. A language with no cache removes nothing.
 ///
 /// # Errors
 ///
@@ -64,17 +63,15 @@ pub fn corpus(args: &CorpusClearArgs) -> anyhow::Result<()> {
         removed.extend(dir.clear(lang, args.word_length)?);
     } else {
         for &lang in Language::VARIANTS {
-            if dir.ngrams_dir(lang).exists() {
-                removed.extend(dir.clear(lang, None)?);
-            }
+            removed.extend(dir.clear(lang, None)?);
         }
     }
     report(&removed);
     Ok(())
 }
 
-/// `lex profile clear`: a Profile's lists with its books. `--all` skips Profiles that are not
-/// fetched.
+/// `lex profile clear`: a Profile's lists with its books. A Profile that is not fetched removes
+/// nothing.
 ///
 /// # Errors
 ///
@@ -86,9 +83,7 @@ pub fn profile(args: &ProfileClearArgs) -> anyhow::Result<()> {
         removed.extend(dir.clear_profile(profile)?);
     } else {
         for &profile in Profile::VARIANTS {
-            if dir.profile_dir(profile).exists() {
-                removed.extend(dir.clear_profile(profile)?);
-            }
+            removed.extend(dir.clear_profile(profile)?);
         }
     }
     report(&removed);

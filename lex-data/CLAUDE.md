@@ -8,7 +8,8 @@ Corpus acquisition and word type library. Owns all I/O: downloading Google Books
 
 | Module | Responsibility |
 |---|---|
-| `data_dir.rs` | `DataDir`: sync entry point; `load`, `dict_metadata`, the deletes `clear`, `clear_dict` and `clear_profile` (each returns the paths removed, `clear_dict` takes the Dictionary, that language's Corpus caches and their books), path helpers |
+| `data_dir.rs` | `DataDir`: sync entry point; `load`, `dict_metadata` (fetches on a miss), the deletes `clear`, `clear_dict` and `clear_profile` (each returns the paths removed, and removes nothing and succeeds when the item is absent; `clear_dict` takes the Dictionary, that language's Corpus caches and their books), path helpers |
+| `dict_list.rs` | `DictRecord` (plain record of a cached Dictionary: word list and metadata paths, size, word count read from the file, counts per Supported length counted in characters, count outside the range, optional `DictMetadata`, cached Corpus lengths) and `DataDir::{dicts, dict, cached_dict_metadata}`. Disk only: nothing is fetched, a language without a word list is absent, a word list without metadata still lists, metadata without Provenance has `None` fields. `metadata_mismatch()` gives the metadata count when it differs from the file. No rendering; the CLI and a later TUI picker render the records |
 | `store.rs` | `build_if_missing`, `ensure_supported` (a length under `MIN_SUPPORTED_WORDS` = 200 is `UnsupportedLength`, listing the language's Supported lengths from its cache headers; `DataDir::load` calls it), `read` (validates), `populate`, `clear`, `corpus_checksum`; all `pub` in a private module |
 | `http.rs` | `agent()` (ureq, rustls, timeouts) and `get(agent, url, consume)`: one retried GET whose body is handed to `consume`; classifies errors transient or permanent |
 | `retry.rs` | `with_retry(op, sleep)`: 3 attempts, 1 s then 2 s backoff plus jitter; `sleep` is injected so tests do not wait |

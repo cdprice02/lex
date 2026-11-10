@@ -179,8 +179,34 @@ pub struct DictArgs {
 /// The operations of `lex dict`.
 #[derive(Subcommand, Debug)]
 pub enum DictCommand {
+    /// List the cached Dictionaries (never downloads)
+    List(DictListArgs),
+    /// Show one cached Dictionary in full (never downloads)
+    Show(DictShowArgs),
     /// Delete a Dictionary, the Corpus caches of its language at every length and their opening books
     Clear(DictClearArgs),
+}
+
+/// Arguments of `lex dict list`.
+#[derive(clap::Args, Debug)]
+pub struct DictListArgs {
+    /// List only this language
+    #[arg(long)]
+    pub lang: Option<Language>,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex dict show`.
+#[derive(clap::Args, Debug)]
+pub struct DictShowArgs {
+    /// Language whose Dictionary to show
+    #[arg(long)]
+    pub lang: Language,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
 }
 
 /// Arguments of `lex dict clear`. One Dictionary serves every word length, so there is no `-l`.
