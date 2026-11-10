@@ -31,6 +31,19 @@ pub const VERSION: u16 = 1;
 /// Bytes of header this version writes.
 pub const HEADER_LEN: usize = 64;
 
+/// How a Cache file's header reads, for listing without loading.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Inspected {
+    /// A header of this build's format version.
+    Header(Header),
+    /// No magic: a Legacy cache.
+    Legacy,
+    /// The magic with another format version.
+    OldVersion(u16),
+    /// The magic but a truncated or malformed header.
+    Unreadable,
+}
+
 /// The parsed header of a Cache file.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Header {
@@ -122,6 +135,28 @@ impl Header {
             .read_to_end(&mut buf)
             .with_context(|| format!("reading ngrams header: {}", path.display()))?;
         Ok(Self::parse(&buf, path)?)
+    }
+
+    /// How the file at `path` reads in its first `HEADER_LEN` bytes, classified without
+    /// reading the records. A bad file is a classification; only an unopenable one errors.
+    pub(crate) fn inspect(path: &Path) -> anyhow::Result<Inspected> {
+        use std::io::Read;
+        let mut buf = Vec::with_capacity(HEADER_LEN);
+        std::fs::File::open(path)
+            .with_context(|| format!("opening ngrams file: {}", path.display()))?
+            .take(u64::try_from(HEADER_LEN)?)
+            .read_to_end(&mut buf)
+            .with_context(|| format!("reading ngrams header: {}", path.display()))?;
+        if buf.len() < MAGIC.len() || buf[0..4] != MAGIC {
+            return Ok(Inspected::Legacy);
+        }
+        if buf.len() >= 6 {
+            let version = u16::from_le_bytes(array_at(&buf, 4));
+            if version != VERSION {
+                return Ok(Inspected::OldVersion(version));
+            }
+        }
+        Ok(Self::parse(&buf, path).map_or(Inspected::Unreadable, Inspected::Header))
     }
 
     /// The records checksum as lowercase hex: the Corpus checksum.

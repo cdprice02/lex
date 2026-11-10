@@ -4,19 +4,16 @@
 //! disk only: it never builds a book, fetches a Corpus or reads a book body except to verify it
 //! in `show`.
 
-use std::fmt::Write as _;
 use std::io::IsTerminal as _;
 
 use lex_core::{SOLVER_DIGEST, Strategy};
 use lex_data::{BookFilter, BookKey, BookRecord, BookStatus, DataDir};
-use tabled::builder::Builder;
-use tabled::settings::Style;
 
 use crate::books;
 use crate::cli::{BookListArgs, BookShowArgs};
 use crate::config::{Game, Targets};
+use crate::dicts::{flag, render_rows, row};
 use crate::lists::Source;
-use crate::style;
 
 /// `lex book list`: a row per stored book, then a footer of counts by status and total size.
 ///
@@ -265,47 +262,12 @@ pub fn render_show(
     render_rows(&["field", "value", "note"], rows, terminal)
 }
 
-/// A show row of field, value and note.
-fn row(field: impl Into<String>, value: impl Into<String>, note: impl Into<String>) -> Vec<String> {
-    vec![field.into(), value.into(), note.into()]
-}
-
-/// A note in the failure style on a terminal.
-fn flag(text: &str, terminal: bool) -> String {
-    if terminal {
-        let style = style::failure_style();
-        format!("{style}{text}{style:#}")
-    } else {
-        text.to_owned()
-    }
-}
-
 /// `text` in the failure style when `status` is stale or corrupt, on a terminal.
 fn flag_if_bad(text: &str, status: &BookStatus, terminal: bool) -> String {
     match status {
         BookStatus::Current => text.to_owned(),
         BookStatus::Stale(_) | BookStatus::Corrupt(_) => flag(text, terminal),
     }
-}
-
-/// `rows` under `header`: a rounded table on a terminal, else tab-separated with one header line.
-fn render_rows(header: &[&str], rows: Vec<Vec<String>>, terminal: bool) -> String {
-    if terminal {
-        let mut builder = Builder::new();
-        builder.push_record(header.iter().map(|h| (*h).to_owned()));
-        for row in rows {
-            builder.push_record(row);
-        }
-        let mut table = builder.build();
-        table.with(Style::rounded());
-        return format!("{table}\n");
-    }
-    let mut out = String::new();
-    let _ = writeln!(out, "{}", header.join("\t"));
-    for row in rows {
-        let _ = writeln!(out, "{}", row.join("\t"));
-    }
-    out
 }
 
 /// A byte size: KiB or MiB with one decimal on a terminal, bytes when piped.

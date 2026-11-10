@@ -132,12 +132,18 @@ pub fn render_show(record: &DictRecord, terminal: bool) -> String {
 }
 
 /// A show row of field, value and note.
-fn row(field: impl Into<String>, value: impl Into<String>, note: impl Into<String>) -> Vec<String> {
+#[must_use]
+pub fn row(
+    field: impl Into<String>,
+    value: impl Into<String>,
+    note: impl Into<String>,
+) -> Vec<String> {
     vec![field.into(), value.into(), note.into()]
 }
 
 /// A note in the failure style on a terminal.
-fn flag(text: &str, terminal: bool) -> String {
+#[must_use]
+pub fn flag(text: &str, terminal: bool) -> String {
     if terminal {
         let style = style::failure_style();
         format!("{style}{text}{style:#}")
@@ -147,7 +153,8 @@ fn flag(text: &str, terminal: bool) -> String {
 }
 
 /// `rows` under `header`: a rounded table on a terminal, else tab-separated with one header line.
-fn render_rows(header: &[&str], rows: Vec<Vec<String>>, terminal: bool) -> String {
+#[must_use]
+pub fn render_rows(header: &[&str], rows: Vec<Vec<String>>, terminal: bool) -> String {
     if terminal {
         let mut builder = Builder::new();
         builder.push_record(header.iter().map(|h| (*h).to_owned()));
@@ -167,7 +174,8 @@ fn render_rows(header: &[&str], rows: Vec<Vec<String>>, terminal: bool) -> Strin
 }
 
 /// The date of an RFC 3339 timestamp.
-fn fetch_date(timestamp: &str) -> String {
+#[must_use]
+pub fn fetch_date(timestamp: &str) -> String {
     timestamp.split('T').next().unwrap_or(timestamp).to_owned()
 }
 
@@ -184,7 +192,8 @@ fn lengths(lengths: &[usize]) -> String {
 }
 
 /// A byte size: MiB with one decimal on a terminal, bytes when piped.
-fn size(bytes: u64, terminal: bool) -> String {
+#[must_use]
+pub fn size(bytes: u64, terminal: bool) -> String {
     if !terminal {
         return bytes.to_string();
     }
