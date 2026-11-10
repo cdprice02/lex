@@ -15,7 +15,6 @@ use std::path::{Path, PathBuf};
 use anyhow::Context;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use strum::VariantArray;
 
 use crate::data_dir::{DataDir, remove_if_present};
 use crate::error::LexDataError;
@@ -358,20 +357,6 @@ impl DataDir {
             shard_count: meta.shard_count,
             snapshot: meta.snapshot,
         }))
-    }
-
-    /// The cached totals of every language that has a complete set, in `Language::VARIANTS`
-    /// order.
-    ///
-    /// # Errors
-    ///
-    /// If a file's size cannot be read.
-    pub fn all_totals(&self) -> anyhow::Result<Vec<TotalsRecord>> {
-        let mut records = Vec::new();
-        for &lang in Language::VARIANTS {
-            records.extend(self.totals(lang)?);
-        }
-        Ok(records)
     }
 
     /// The word lengths a Corpus of `lang` has once built, read from complete cached totals and
