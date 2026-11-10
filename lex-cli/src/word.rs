@@ -631,7 +631,7 @@ fn profile_rows(fact: &ProfileFact, terminal: bool) -> Vec<Vec<String>> {
         ProfileStatus::NotFetched => vec![row(
             format!("{name} lists"),
             "not fetched",
-            "fetched on first play",
+            format!("fetch it with `lex profile fetch --profile {name}`"),
         )],
         ProfileStatus::Answer { prior, answers: n } => vec![
             row(
@@ -715,8 +715,10 @@ mod tests {
         assert_eq!(facts[0].dictionary, Dictionary::NotCached);
         assert_eq!(facts[0].corpus, Corpus::NotCached);
         let steps = render_steps(&facts[0], Language::English, false);
-        assert!(steps.contains("no english Dictionary is cached; it is fetched on first use"));
-        assert!(steps.contains("no english Corpus of length 5 is cached"));
+        assert!(steps.contains(
+            "no english Dictionary is cached; fetch it with `lex dict fetch --lang english`"
+        ));
+        assert!(steps.contains("no english Corpus of length 5 is cached; build it with `lex corpus build --lang english`"));
         assert!(steps.contains("verdict\tunknown: the Dictionary and the Corpus are not cached"));
         assert_eq!(
             std::fs::read_dir(tmp.path()).unwrap().count(),

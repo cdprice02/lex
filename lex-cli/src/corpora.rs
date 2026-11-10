@@ -58,7 +58,9 @@ fn not_cached(lang: Language, n: usize) -> anyhow::Error {
 /// What `corpus show` says of a Corpus that is not on disk.
 #[must_use]
 pub fn not_cached_hint(lang: Language, n: usize) -> String {
-    format!("no {lang} Corpus of length {n} is cached; it is built on first use of that language")
+    format!(
+        "no {lang} Corpus of length {n} is cached; build it with `lex corpus build --lang {lang}`"
+    )
 }
 
 /// A status, in the failure style on a terminal unless it is `ok`.
@@ -173,9 +175,8 @@ pub fn render_show(record: &CorpusRecord, verified: Option<bool>, terminal: bool
                 terminal,
             ),
             format!(
-                "rebuild with `lex corpus build --lang {} -l {} --force`",
-                record.language.lang_code(),
-                record.word_length
+                "rebuild with `lex corpus build --lang {} --force`",
+                record.language
             ),
         ));
     }
@@ -302,13 +303,13 @@ mod tests {
         let out = render_show(&record, Some(true), false);
         assert!(out.contains("\nDictionary fetched at\t2999-01-01T00:00:00Z\t\n"));
         assert!(
-            out.contains("lex corpus build --lang eng -l 5 --force"),
+            out.contains("lex corpus build --lang english --force"),
             "{out}"
         );
     }
 
     #[test]
-    fn show_of_an_uncached_corpus_names_the_first_use_build() {
+    fn show_of_an_uncached_corpus_names_the_build_command() {
         let (_tmp, dir) = dir_with(&[]);
         let args = CorpusShowArgs {
             lang: Language::English,
@@ -318,7 +319,7 @@ mod tests {
             },
         };
         let error = show(&args).unwrap_err().to_string();
-        assert!(error.contains("built on first use"), "{error}");
+        assert!(error.contains("lex corpus build --lang english"), "{error}");
         assert!(!dir.as_ref().join("ngrams").exists(), "nothing was built");
     }
 }

@@ -276,6 +276,8 @@ pub enum DictCommand {
     List(DictListArgs),
     /// Show one cached Dictionary in full (never downloads)
     Show(DictShowArgs),
+    /// Download a Dictionary ahead of time (a no-op when cached; --force takes KAIKKI's current extract)
+    Fetch(DictFetchArgs),
     /// Delete a Dictionary, the Corpus caches of its language at every length and their opening books
     Clear(DictClearArgs),
 }
@@ -297,6 +299,23 @@ pub struct DictShowArgs {
     /// Language whose Dictionary to show
     #[arg(long)]
     pub lang: Language,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex dict fetch`. One Dictionary serves every word length, so there is no `-l`.
+#[derive(clap::Args, Debug)]
+pub struct DictFetchArgs {
+    /// Language whose Dictionary to fetch
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub lang: Option<Language>,
+    /// Fetch the Dictionary of every language
+    #[arg(long)]
+    pub all: bool,
+    /// Fetch again even when cached: clears the Dictionary, the Corpus caches built from it and their opening books first, then takes KAIKKI's current extract, which can change the Corpus
+    #[arg(long)]
+    pub force: bool,
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
@@ -331,6 +350,8 @@ pub enum CorpusCommand {
     List(CorpusListArgs),
     /// Show one cached Corpus in full, verifying its checksum (never downloads)
     Show(CorpusShowArgs),
+    /// Build the Corpus of a language at every length ahead of time (a no-op when cached; --force rebuilds)
+    Build(CorpusBuildArgs),
     /// Delete a cached Corpus and its opening books so they are rebuilt on next use (the Dictionary is kept)
     Clear(CorpusClearArgs),
 }
@@ -361,6 +382,34 @@ pub struct CorpusShowArgs {
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
+}
+
+/// Arguments of `lex corpus build`. A build covers every word length, so there is no `-l`.
+#[derive(clap::Args, Debug)]
+pub struct CorpusBuildArgs {
+    /// Language whose Corpus to build (its Dictionary is fetched first if absent)
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub lang: Option<Language>,
+    /// Build the Corpus of every language
+    #[arg(long)]
+    pub all: bool,
+    /// Build again even when cached: clears the Corpus caches and their opening books, then rebuilds from the cached Dictionary
+    #[arg(long)]
+    pub force: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    #[arg(skip)]
+    pub download_workers: Option<NonZeroUsize>,
+}
+
+impl CorpusBuildArgs {
+    /// The data directory, set to download as many shards at once as the user asked for.
+    #[must_use]
+    pub fn dir(&self) -> lex_data::DataDir {
+        lex_data::DataDir::new(&self.data.data_dir).with_download_workers(self.download_workers)
+    }
 }
 
 /// Arguments of `lex corpus clear`.
@@ -401,6 +450,8 @@ pub enum ProfileCommand {
     List(ProfileListArgs),
     /// Show one fetched Profile's lists and checksums (never downloads)
     Show(ProfileShowArgs),
+    /// Fetch a Profile's lists ahead of time, building its Corpus if absent (a no-op when fetched; --force refetches)
+    Fetch(ProfileFetchArgs),
     /// Delete a Profile's fetched lists and opening books so they are fetched again on next use (corpora are kept)
     Clear(ProfileClearArgs),
 }
@@ -422,6 +473,34 @@ pub struct ProfileShowArgs {
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
+}
+
+/// Arguments of `lex profile fetch`.
+#[derive(clap::Args, Debug)]
+pub struct ProfileFetchArgs {
+    /// Profile whose lists to fetch (its language's Corpus is built first if absent)
+    #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+    pub profile: Option<Profile>,
+    /// Fetch every Profile
+    #[arg(long)]
+    pub all: bool,
+    /// Fetch again even when fetched: clears the Profile's lists and opening books first, then re-verifies the checksums
+    #[arg(long)]
+    pub force: bool,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    #[arg(skip)]
+    pub download_workers: Option<NonZeroUsize>,
+}
+
+impl ProfileFetchArgs {
+    /// The data directory, set to download as many shards at once as the user asked for.
+    #[must_use]
+    pub fn dir(&self) -> lex_data::DataDir {
+        lex_data::DataDir::new(&self.data.data_dir).with_download_workers(self.download_workers)
+    }
 }
 
 /// Arguments of `lex profile clear`.

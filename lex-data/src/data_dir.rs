@@ -68,6 +68,32 @@ impl DataDir {
         Ok(words)
     }
 
+    /// Downloads KAIKKI's current Wiktionary extract for `lang`, replacing any cached
+    /// Dictionary. Callers that keep a Corpus built from the old one clear it first
+    /// (`clear_dict`).
+    ///
+    /// # Errors
+    ///
+    /// If the download fails or the files cannot be written.
+    pub fn fetch_dict(&self, lang: Language) -> anyhow::Result<()> {
+        wiktionary::fetch_dict(lang, &self.path)
+    }
+
+    /// Downloads every Ngrams shard of `lang` and writes its Corpus at every length, fetching
+    /// the Dictionary first when absent and replacing any cached Corpus files.
+    /// `progress(done, total)` is called from worker threads as shards finish, first with 0.
+    ///
+    /// # Errors
+    ///
+    /// If a download or a cache file fails.
+    pub fn build_corpus(
+        &self,
+        lang: Language,
+        progress: &(dyn Fn(u32, u32) + Sync),
+    ) -> anyhow::Result<()> {
+        store::build_all(self, lang, progress)
+    }
+
     /// Returns Wiktionary-derived metadata for `lang` (word count, length range).
     /// Downloads the dictionary if not already cached.
     ///

@@ -87,6 +87,16 @@ removes them, and clearing a corpus or a Profile removes its books too.
 
 ## Cache commands
 
+Ready the caches ahead of time, like `cargo fetch`, so later runs need no network:
+
+| Command | Does |
+|---|---|
+| `lex dict fetch --lang L` (or `--all`) | downloads the Dictionary of `L` |
+| `lex corpus build --lang L` (or `--all`) | builds the Corpus of `L` at every length (fetching its Dictionary first if absent); `-l` is not accepted |
+| `lex profile fetch --profile P` (or `--all`) | fetches and verifies the lists of `P` (building its language's Corpus first if absent) |
+
+Each is a no-op when the item is cached (it says it is ready, and when it was fetched) and redoes the work with `--force`: `dict fetch --force` warns that it takes KAIKKI's current (rolling) extract and first clears what was built from the old one (its Corpus caches and their books); `corpus build --force` clears the Corpus and its books and rebuilds from the cached Dictionary; `profile fetch --force` clears the lists and their books and re-verifies the checksums. Downloads show a spinner or shard bar on stderr (`--no-progress` silences it), and the command ends with the matching `show` output (for `corpus build`, the `corpus list` rows of the language). Opening books stay with `lex book build`.
+
 Each kind of cached data is a group with a `clear` command that deletes it so it is rebuilt on next use. Every `clear` prints each path it removed and a total, and asks nothing first. Naming nothing is an error; `--all` clears every item of that kind.
 
 | Command | Removes |

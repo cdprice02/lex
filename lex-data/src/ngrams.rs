@@ -39,6 +39,9 @@ pub const SNAPSHOT: &str = "20200217";
 /// Words are filtered as each shard streams in, so memory holds only the kept words rather than
 /// every distinct token in the corpus.
 ///
+/// `progress(done, total)` is called once with 0 before the first request and after each shard
+/// finishes, from the worker threads.
+///
 /// Workers pull shard indices from a shared counter; a shard that fails after its retries stops
 /// the others from starting new ones. Counts are summed, so the result does not depend on the
 /// order shards finish in.
@@ -46,8 +49,11 @@ pub fn fetch(
     lang: Language,
     valid: &HashSet<String>,
     requested: Option<NonZeroUsize>,
+    progress: &(dyn Fn(u32, u32) + Sync),
 ) -> anyhow::Result<HashMap<usize, HashMap<String, u64>>> {
     let n = lang.shard_count();
+    progress(0, n);
+    let finished = AtomicU32::new(0);
     let agent = http::agent();
     let next = AtomicU32::new(0);
     let failed = AtomicBool::new(false);
@@ -69,6 +75,7 @@ pub fn fetch(
             }) {
                 Ok(words) => {
                     log::info!("  [{}/{}] done", shard + 1, n);
+                    progress(finished.fetch_add(1, Ordering::Relaxed) + 1, n);
                     done.push(words);
                 }
                 Err(e) => {
