@@ -2,11 +2,14 @@
 //!
 //! Reads disk only; `list` reads headers, `show` also hashes the records.
 
+use std::fmt::Write as _;
 use std::io::IsTerminal as _;
 
 use lex_data::{
     CorpusRecord, CorpusStatus, DataDir, Language, MIN_SUPPORTED_WORDS, NGRAMS_SNAPSHOT,
+    TotalsRecord,
 };
+use strum::VariantArray as _;
 
 use crate::cli::{CorpusListArgs, CorpusShowArgs};
 use crate::dicts::{flag, render_rows, row, size};
@@ -20,12 +23,22 @@ const ABSENT: &str = "-";
 ///
 /// If a cache file or Dictionary metadata cannot be read.
 pub fn list(args: &CorpusListArgs) -> anyhow::Result<()> {
-    let mut records = DataDir::new(&args.data.data_dir).corpora()?;
+    let dir = DataDir::new(&args.data.data_dir);
+    let mut records = dir.corpora()?;
     records.retain(|r| {
         args.lang.is_none_or(|lang| r.language == lang)
             && args.word_length.is_none_or(|n| r.word_length == n)
     });
-    anstream::print!("{}", render_list(&records, std::io::stdout().is_terminal()));
+    let mut totals = Vec::new();
+    for lang in Language::VARIANTS {
+        if args.lang.is_none_or(|wanted| wanted == *lang) {
+            totals.extend(dir.totals(*lang)?);
+        }
+    }
+    anstream::print!(
+        "{}",
+        render_list(&records, &totals, std::io::stdout().is_terminal())
+    );
     Ok(())
 }
 
@@ -43,9 +56,15 @@ pub fn show(args: &CorpusShowArgs) -> anyhow::Result<()> {
         Some(_) => Some(dir.verify_corpus(args.lang, args.word_length)?),
         None => None,
     };
+    let totals = dir.totals(args.lang)?;
     anstream::print!(
         "{}",
-        render_show(&record, verified, std::io::stdout().is_terminal())
+        render_show(
+            &record,
+            verified,
+            totals.as_ref(),
+            std::io::stdout().is_terminal()
+        )
     );
     Ok(())
 }
@@ -81,11 +100,29 @@ fn supported_cell(record: &CorpusRecord) -> &'static str {
     }
 }
 
-/// The list as a table (`terminal`) or tab-separated lines.
+/// What a listing says of a language's Ngrams totals: their size, or `-`.
+fn totals_cell(totals: &[TotalsRecord], lang: Language, terminal: bool) -> String {
+    totals
+        .iter()
+        .find(|t| t.language == lang)
+        .map_or_else(|| ABSENT.to_owned(), |t| size(t.size_bytes, terminal))
+}
+
+/// The list as a table (`terminal`) or tab-separated lines. `totals` are the Ngrams totals
+/// cached, whose size shows in each row of their language.
 #[must_use]
-pub fn render_list(records: &[CorpusRecord], terminal: bool) -> String {
+pub fn render_list(records: &[CorpusRecord], totals: &[TotalsRecord], terminal: bool) -> String {
     if records.is_empty() {
-        return "no Corpora cached\n".to_owned();
+        let mut out = "no Corpora cached\n".to_owned();
+        for t in totals {
+            let _ = writeln!(
+                out,
+                "{} Ngrams totals are cached ({})",
+                t.language,
+                size(t.size_bytes, terminal)
+            );
+        }
+        return out;
     }
     let header = [
         "language",
@@ -95,6 +132,7 @@ pub fn render_list(records: &[CorpusRecord], terminal: bool) -> String {
         "size",
         "checksum",
         "status",
+        "totals",
     ];
     let rows = records
         .iter()
@@ -110,6 +148,7 @@ pub fn render_list(records: &[CorpusRecord], terminal: bool) -> String {
                     .as_deref()
                     .map_or_else(|| ABSENT.to_owned(), |c| c.chars().take(8).collect()),
                 status_cell(r.status, terminal),
+                totals_cell(totals, r.language, terminal),
             ]
         })
         .collect();
@@ -119,7 +158,12 @@ pub fn render_list(records: &[CorpusRecord], terminal: bool) -> String {
 /// One Corpus in full as a table (`terminal`) or tab-separated lines. `verified` is whether the
 /// records hash to the header's checksum, `None` when there is no readable header to check.
 #[must_use]
-pub fn render_show(record: &CorpusRecord, verified: Option<bool>, terminal: bool) -> String {
+pub fn render_show(
+    record: &CorpusRecord,
+    verified: Option<bool>,
+    totals: Option<&TotalsRecord>,
+    terminal: bool,
+) -> String {
     let mut rows = vec![
         row("language", record.language.to_string(), ""),
         row("length", record.word_length.to_string(), ""),
@@ -162,6 +206,25 @@ pub fn render_show(record: &CorpusRecord, verified: Option<bool>, terminal: bool
             "ngrams snapshot",
             format!("{NGRAMS_SNAPSHOT} (this build)"),
             "",
+        ),
+        totals.map_or_else(
+            || {
+                row(
+                    "ngrams totals",
+                    "not cached",
+                    format!("the next download of {} writes them", record.language),
+                )
+            },
+            |t| {
+                row(
+                    "ngrams totals",
+                    format!("cached ({})", size(t.size_bytes, terminal)),
+                    format!(
+                        "{} words at {} lengths; `lex corpus build --lang {} --force` rebuilds this Corpus from them with no network",
+                        t.words, t.lengths, record.language
+                    ),
+                )
+            },
         ),
     ];
     if let Some(fetched) = record.dict_fetched_at.as_deref() {
@@ -227,33 +290,34 @@ mod tests {
             ("ngrams/eng/5.bin", cache(5, 200)),
             ("ngrams/rus/4.bin", vec![1u8; 10]),
         ]);
-        let out = render_list(&dir.corpora().unwrap(), false);
+        let out = render_list(&dir.corpora().unwrap(), &[], false);
         let lines: Vec<_> = out.lines().collect();
         assert_eq!(
             lines[0],
-            "language\tlength\twords\tsupported\tsize\tchecksum\tstatus"
+            "language\tlength\twords\tsupported\tsize\tchecksum\tstatus\ttotals"
         );
         let five: Vec<_> = lines[1].split('\t').collect();
         assert_eq!(&five[..4], ["english", "5", "200", "yes"]);
         assert_eq!(five[4], (64 + 28 * 200).to_string());
         assert_eq!(five[5].len(), 8);
         assert_eq!(five[6], "ok");
+        assert_eq!(five[7], "-");
         let six: Vec<_> = lines[2].split('\t').collect();
         assert_eq!(&six[..4], ["english", "6", "2", "no"]);
-        assert_eq!(lines[3], "russian\t4\t-\t-\t10\t-\tlegacy");
+        assert_eq!(lines[3], "russian\t4\t-\t-\t10\t-\tlegacy\t-");
         assert_eq!(lines.len(), 4);
     }
 
     #[test]
     fn an_empty_list_says_so() {
-        assert_eq!(render_list(&[], false), "no Corpora cached\n");
-        assert_eq!(render_list(&[], true), "no Corpora cached\n");
+        assert_eq!(render_list(&[], &[], false), "no Corpora cached\n");
+        assert_eq!(render_list(&[], &[], true), "no Corpora cached\n");
     }
 
     #[test]
     fn terminal_list_is_a_table_with_mib_sizes() {
         let (_tmp, dir) = dir_with(&[("ngrams/eng/5.bin", cache(5, 1))]);
-        let out = render_list(&dir.corpora().unwrap(), true);
+        let out = render_list(&dir.corpora().unwrap(), &[], true);
         assert!(out.contains('\u{256d}'));
         assert!(out.contains("0.0 MiB"));
     }
@@ -262,7 +326,7 @@ mod tests {
     fn show_verifies_and_names_the_snapshot() {
         let (_tmp, dir) = dir_with(&[("ngrams/eng/5.bin", cache(5, 3))]);
         let record = dir.corpus(Language::English, 5).unwrap().unwrap();
-        let out = render_show(&record, Some(true), false);
+        let out = render_show(&record, Some(true), None, false);
         assert!(out.starts_with("field\tvalue\tnote\n"));
         assert!(out.contains("\nformat version\t1\t\n"));
         assert!(out.contains("\nstatus\tok\t\n"));
@@ -280,9 +344,9 @@ mod tests {
             ("ngrams/eng/6.bin", vec![1u8; 10]),
         ]);
         let five = dir.corpus(Language::English, 5).unwrap().unwrap();
-        assert!(render_show(&five, Some(false), false).contains("\tMISMATCH:"));
+        assert!(render_show(&five, Some(false), None, false).contains("\tMISMATCH:"));
         let six = dir.corpus(Language::English, 6).unwrap().unwrap();
-        let out = render_show(&six, None, false);
+        let out = render_show(&six, None, None, false);
         assert!(out.contains("\nstatus\tlegacy\t\n"));
         assert!(out.contains("\nchecksum\t-\tnot checked\n"));
     }
@@ -298,9 +362,9 @@ mod tests {
             ),
         ]);
         let record = dir.corpus(Language::English, 5).unwrap().unwrap();
-        let list = render_list(std::slice::from_ref(&record), false);
-        assert!(list.ends_with("\tolder than its Dictionary\n"), "{list}");
-        let out = render_show(&record, Some(true), false);
+        let list = render_list(std::slice::from_ref(&record), &[], false);
+        assert!(list.contains("\tolder than its Dictionary\t-\n"), "{list}");
+        let out = render_show(&record, Some(true), None, false);
         assert!(out.contains("\nDictionary fetched at\t2999-01-01T00:00:00Z\t\n"));
         assert!(
             out.contains("lex corpus build --lang english --force"),
@@ -321,5 +385,50 @@ mod tests {
         let error = show(&args).unwrap_err().to_string();
         assert!(error.contains("lex corpus build --lang english"), "{error}");
         assert!(!dir.as_ref().join("ngrams").exists(), "nothing was built");
+    }
+
+    fn totals_record(lang: Language, size_bytes: u64) -> TotalsRecord {
+        TotalsRecord {
+            language: lang,
+            path: std::path::PathBuf::from("totals"),
+            size_bytes,
+            lengths: 3,
+            words: 42,
+            shard_count: 24,
+            snapshot: NGRAMS_SNAPSHOT.to_owned(),
+        }
+    }
+
+    #[test]
+    fn the_list_shows_the_totals_size_on_the_rows_of_their_language() {
+        let (_tmp, dir) = dir_with(&[
+            ("ngrams/eng/5.bin", cache(5, 3)),
+            ("ngrams/fre/5.bin", cache(5, 3)),
+        ]);
+        let totals = [totals_record(Language::English, 1234)];
+        let out = render_list(&dir.corpora().unwrap(), &totals, false);
+        let lines: Vec<_> = out.lines().collect();
+        assert!(lines[1].starts_with("english\t5\t") && lines[1].ends_with("\t1234"));
+        assert!(lines[2].starts_with("french\t5\t") && lines[2].ends_with("\t-"));
+    }
+
+    #[test]
+    fn totals_alone_are_said_when_no_corpus_is_cached() {
+        let totals = [totals_record(Language::Russian, 2048)];
+        assert_eq!(
+            render_list(&[], &totals, false),
+            "no Corpora cached\nrussian Ngrams totals are cached (2048)\n"
+        );
+    }
+
+    #[test]
+    fn show_says_whether_the_totals_are_cached() {
+        let (_tmp, dir) = dir_with(&[("ngrams/eng/5.bin", cache(5, 3))]);
+        let record = dir.corpus(Language::English, 5).unwrap().unwrap();
+        let cached = totals_record(Language::English, 4096);
+        let out = render_show(&record, Some(true), Some(&cached), false);
+        assert!(out.contains("\nngrams totals\tcached (4096)\t42 words at 3 lengths;"));
+        let out = render_show(&record, Some(true), None, false);
+        assert!(out.contains("\nngrams totals\tnot cached\t"));
     }
 }

@@ -6,6 +6,8 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
+mod totals_common;
+
 use std::path::Path;
 
 use clap::Parser;
@@ -104,6 +106,84 @@ fn corpus_clear_all_keeps_dictionaries_and_removes_books() {
     assert!(!tmp.path().join("ngrams/fre").exists());
     assert!(!tmp.path().join("books/fre").exists());
     assert!(tmp.path().join("dicts/eng.txt").exists());
+}
+
+/// Runs `lex corpus clear <args> --data-dir <tmp>`.
+fn run_corpus_clear(tmp: &tempfile::TempDir, args: &[&str]) {
+    let dir = tmp.path().to_str().unwrap();
+    let Command::Corpus(args) =
+        parse(&[&["corpus", "clear", "--data-dir", dir], args].concat()).unwrap()
+    else {
+        panic!("`corpus clear` parses to the corpus command")
+    };
+    let CorpusCommand::Clear(args) = args.command else {
+        panic!("parses to the clear operation")
+    };
+    lex_cli::clear::corpus(&args).unwrap();
+}
+
+fn seeded_with_totals() -> tempfile::TempDir {
+    let tmp = seeded(&["eng", "fre"]);
+    let data = lex_data::DataDir::new(tmp.path());
+    for lang in [lex_data::Language::English, lex_data::Language::French] {
+        totals_common::seed_totals(&data, lang, &[(5, &[("crane", 9)])]);
+    }
+    tmp
+}
+
+#[test]
+fn corpus_clear_keeps_the_totals_and_all_data_removes_them() {
+    let tmp = seeded_with_totals();
+    run_corpus_clear(&tmp, &["--lang", "english"]);
+    assert!(!tmp.path().join("ngrams/eng").exists());
+    assert!(tmp.path().join("totals/eng/5.bin").exists());
+
+    run_corpus_clear(&tmp, &["--lang", "french", "--all-data"]);
+    assert!(!tmp.path().join("totals/fre").exists());
+    assert!(
+        tmp.path().join("totals/eng").exists(),
+        "another language is untouched"
+    );
+
+    run_corpus_clear(&tmp, &["--all", "--all-data"]);
+    assert!(!tmp.path().join("totals/eng").exists());
+}
+
+#[test]
+fn corpus_clear_all_without_all_data_keeps_every_total() {
+    let tmp = seeded_with_totals();
+    run_corpus_clear(&tmp, &["--all"]);
+    assert!(tmp.path().join("totals/eng/meta.json").exists());
+    assert!(tmp.path().join("totals/fre/meta.json").exists());
+}
+
+#[test]
+fn dict_clear_leaves_the_totals() {
+    let tmp = seeded_with_totals();
+    run_dict_clear(&tmp, &["--all"]);
+    assert!(!tmp.path().join("dicts/eng.txt").exists());
+    assert!(tmp.path().join("totals/eng/5.bin").exists());
+    assert!(tmp.path().join("totals/fre/5.bin").exists());
+}
+
+#[test]
+fn all_data_needs_a_selector_and_conflicts_with_a_word_length() {
+    assert_eq!(
+        kind(&["corpus", "clear", "--all-data"]),
+        ErrorKind::MissingRequiredArgument
+    );
+    assert_eq!(
+        kind(&[
+            "corpus",
+            "clear",
+            "--lang",
+            "english",
+            "-l",
+            "5",
+            "--all-data"
+        ]),
+        ErrorKind::ArgumentConflict
+    );
 }
 
 #[test]

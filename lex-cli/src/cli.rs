@@ -393,7 +393,7 @@ pub struct CorpusBuildArgs {
     /// Build the Corpus of every language
     #[arg(long)]
     pub all: bool,
-    /// Build again even when cached: clears the Corpus caches and their opening books, then rebuilds from the cached Dictionary
+    /// Build again even when cached: clears the Corpus caches and their opening books, then rebuilds from the cached Dictionary, and from the cached Ngrams totals when there are any (no download)
     #[arg(long)]
     pub force: bool,
     /// Where the cache lives.
@@ -430,6 +430,9 @@ pub struct CorpusClearArgs {
     /// Delete the Corpus caches of every language
     #[arg(long)]
     pub all: bool,
+    /// Also delete the Ngrams totals, which a plain clear keeps so the Corpus rebuilds with no network; the next build downloads every shard again
+    #[arg(long, conflicts_with = "word_length")]
+    pub all_data: bool,
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
