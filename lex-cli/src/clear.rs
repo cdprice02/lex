@@ -3,7 +3,8 @@
 
 use std::path::PathBuf;
 
-use lex_data::{DataDir, Language, Profile};
+use lex_core::SOLVER_DIGEST;
+use lex_data::{BookFilter, DataDir, Language, Profile};
 use strum::VariantArray;
 
 use crate::cli::{BookClearArgs, CorpusClearArgs, DictClearArgs, ProfileClearArgs};
@@ -90,13 +91,23 @@ pub fn profile(args: &ProfileClearArgs) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// `lex book clear`: only the opening books, narrowed by `--lang` and `-l`.
+/// `lex book clear`: only the opening books, narrowed by `--lang` and `-l`; with `--stale`, only
+/// the books `lex book list --stale` shows, narrowed also by `--profile`.
 ///
 /// # Errors
 ///
 /// If a books directory cannot be removed.
 pub fn book(args: &BookClearArgs) -> anyhow::Result<()> {
     let dir = DataDir::new(&args.data.data_dir);
+    if args.stale {
+        let filter = BookFilter {
+            lang: args.lang,
+            word_length: args.word_length,
+            profile: args.profile,
+        };
+        report(&dir.clear_stale_books(SOLVER_DIGEST, &filter)?);
+        return Ok(());
+    }
     report(&dir.clear_books(args.lang, args.word_length)?);
     Ok(())
 }

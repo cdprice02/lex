@@ -3,6 +3,7 @@
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
 
 pub mod assist;
+pub mod book_listing;
 pub mod books;
 pub mod clear;
 pub mod cli;

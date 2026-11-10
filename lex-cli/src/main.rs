@@ -6,6 +6,7 @@ use std::process::ExitCode;
 use clap::Parser;
 
 use lex_cli::assist::assist;
+use lex_cli::book_listing::{self, show_game};
 use lex_cli::books::build_command;
 use lex_cli::clear;
 use lex_cli::cli::{
@@ -58,6 +59,12 @@ fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
                 args.dispatch_length(),
                 &args
             )),
+            BookCommand::List(args) => done(book_listing::list(&args)),
+            BookCommand::Show(args) => done(if args.id.is_some() {
+                book_listing::show_id(&args)
+            } else {
+                lex_data::match_word_length!(show_game, args.common.dispatch_length(), &args)
+            }),
             BookCommand::Clear(args) => done(clear::book(&args)),
         },
         Command::Dict(args) => match args.command {
