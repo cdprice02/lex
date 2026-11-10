@@ -8,6 +8,7 @@ pub mod clear;
 pub mod cli;
 pub mod compare;
 pub mod config;
+pub mod dicts;
 pub mod error;
 pub mod lists;
 pub mod progress;

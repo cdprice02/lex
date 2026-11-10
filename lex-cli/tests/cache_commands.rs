@@ -52,7 +52,9 @@ fn run_dict_clear(tmp: &tempfile::TempDir, args: &[&str]) {
     else {
         panic!("`dict clear` parses to the dict command")
     };
-    let DictCommand::Clear(args) = args.command;
+    let DictCommand::Clear(args) = args.command else {
+        panic!("`dict clear` parses to the clear operation")
+    };
     lex_cli::clear::dict(&args).unwrap();
 }
 
@@ -211,4 +213,51 @@ fn the_old_clear_command_is_gone() {
         kind(&["clear", "--lang", "english"]),
         ErrorKind::InvalidSubcommand
     );
+}
+
+/// Runs the `lex` binary with stdout piped (so output is the plain form).
+fn lex(args: &[&str]) -> std::process::Output {
+    std::process::Command::new(env!("CARGO_BIN_EXE_lex"))
+        .args(args)
+        .output()
+        .unwrap()
+}
+
+#[test]
+fn dict_list_and_show_parse_and_reject_a_missing_language_for_show() {
+    assert!(parse(&["dict", "list"]).is_ok());
+    assert!(parse(&["dictionary", "list", "--lang", "english"]).is_ok());
+    assert!(parse(&["dict", "show", "--lang", "english"]).is_ok());
+    assert_eq!(kind(&["dict", "show"]), ErrorKind::MissingRequiredArgument);
+}
+
+#[test]
+fn piped_dict_list_prints_a_header_and_a_row_per_cached_language_without_fetching() {
+    let tmp = tempfile::tempdir().unwrap();
+    for relative in ["dicts/eng.txt", "ngrams/eng/5.bin", "ngrams/eng/6.bin"] {
+        touch(tmp.path(), relative);
+    }
+    let dir = tmp.path().to_str().unwrap();
+    let out = lex(&["dict", "list", "--data-dir", dir]);
+    assert!(out.status.success());
+    let stdout = String::from_utf8(out.stdout).unwrap();
+    let lines: Vec<_> = stdout.lines().collect();
+    assert_eq!(lines.len(), 2, "{stdout}");
+    assert!(lines[0].starts_with("language\tcode\t"));
+    assert!(lines[1].starts_with("english\teng\t"));
+    assert!(lines[1].ends_with("\t5,6"));
+}
+
+#[test]
+fn dict_list_with_nothing_cached_succeeds_and_show_errors() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().to_str().unwrap();
+    let out = lex(&["dict", "list", "--data-dir", dir]);
+    assert!(out.status.success());
+    assert_eq!(out.stdout, b"no Dictionaries cached\n");
+    let out = lex(&["dict", "show", "--lang", "english", "--data-dir", dir]);
+    assert!(!out.status.success());
+    let stderr = String::from_utf8(out.stderr).unwrap();
+    assert!(stderr.contains("fetched on first use"), "{stderr}");
+    assert!(!tmp.path().join("dicts").exists());
 }

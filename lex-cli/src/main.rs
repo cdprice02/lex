@@ -10,6 +10,7 @@ use lex_cli::books::build_command;
 use lex_cli::clear;
 use lex_cli::cli::{BookCommand, Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
 use lex_cli::compare::compare_reports;
+use lex_cli::dicts;
 use lex_cli::progress;
 use lex_cli::simulate::simulate;
 use lex_cli::style::{self, SymbolScheme};
@@ -55,6 +56,8 @@ fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
             BookCommand::Clear(args) => done(clear::book(&args)),
         },
         Command::Dict(args) => match args.command {
+            DictCommand::List(args) => done(dicts::list(&args)),
+            DictCommand::Show(args) => done(dicts::show(&args)),
             DictCommand::Clear(args) => done(clear::dict(&args)),
         },
         Command::Corpus(args) => match args.command {
