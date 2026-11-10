@@ -96,7 +96,9 @@ fn corpus_clear_all_keeps_dictionaries_and_removes_books() {
     else {
         panic!("`corpus clear` parses to the corpus command")
     };
-    let CorpusCommand::Clear(args) = args.command;
+    let CorpusCommand::Clear(args) = args.command else {
+        panic!("parses to the clear operation")
+    };
     lex_cli::clear::corpus(&args).unwrap();
     assert!(!tmp.path().join("ngrams/eng").exists());
     assert!(!tmp.path().join("ngrams/fre").exists());
@@ -113,7 +115,9 @@ fn profile_clear_all_removes_fetched_profiles_and_skips_the_rest() {
     else {
         panic!("`profile clear` parses to the profile command")
     };
-    let ProfileCommand::Clear(args) = args.command;
+    let ProfileCommand::Clear(args) = args.command else {
+        panic!("parses to the clear operation")
+    };
     lex_cli::clear::profile(&args).unwrap();
     assert!(!tmp.path().join("profiles/wordle").exists());
 }
@@ -195,7 +199,9 @@ fn corpus_and_profile_clear_of_an_absent_item_remove_nothing_and_succeed() {
         let Command::Corpus(args) = parse(&args).unwrap() else {
             panic!("`corpus clear` parses to the corpus command")
         };
-        let CorpusCommand::Clear(args) = args.command;
+        let CorpusCommand::Clear(args) = args.command else {
+            panic!("parses to the clear operation")
+        };
         lex_cli::clear::corpus(&args).unwrap();
     }
     let Command::Profile(args) =
@@ -203,7 +209,9 @@ fn corpus_and_profile_clear_of_an_absent_item_remove_nothing_and_succeed() {
     else {
         panic!("`profile clear` parses to the profile command")
     };
-    let ProfileCommand::Clear(args) = args.command;
+    let ProfileCommand::Clear(args) = args.command else {
+        panic!("parses to the clear operation")
+    };
     lex_cli::clear::profile(&args).unwrap();
 }
 
@@ -260,4 +268,57 @@ fn dict_list_with_nothing_cached_succeeds_and_show_errors() {
     let stderr = String::from_utf8(out.stderr).unwrap();
     assert!(stderr.contains("fetched on first use"), "{stderr}");
     assert!(!tmp.path().join("dicts").exists());
+}
+
+#[test]
+fn corpus_list_filters_and_corpus_show_needs_a_language_and_length() {
+    let Command::Corpus(args) = parse(&["corpus", "list", "--lang", "english", "-l", "5"]).unwrap()
+    else {
+        panic!("`corpus list` parses to the corpus command")
+    };
+    let CorpusCommand::List(args) = args.command else {
+        panic!("parses to the list operation")
+    };
+    assert_eq!(args.word_length, Some(5));
+    assert!(parse(&["corpus", "list"]).is_ok());
+    assert_eq!(
+        kind(&["corpus", "show", "--lang", "english"]),
+        ErrorKind::MissingRequiredArgument
+    );
+    assert_eq!(
+        kind(&["corpus", "show", "-l", "5"]),
+        ErrorKind::MissingRequiredArgument
+    );
+    assert!(parse(&["corpus", "show", "--lang", "english", "-l", "5"]).is_ok());
+}
+
+#[test]
+fn profile_show_needs_a_profile_and_list_takes_none() {
+    assert!(parse(&["profile", "list"]).is_ok());
+    assert_eq!(
+        kind(&["profile", "show"]),
+        ErrorKind::MissingRequiredArgument
+    );
+    assert!(parse(&["profile", "show", "--profile", "wordle-all"]).is_ok());
+}
+
+#[test]
+fn corpus_and_profile_list_create_nothing_in_an_empty_data_dir() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().to_str().unwrap();
+    let Command::Corpus(args) = parse(&["corpus", "list", "--data-dir", dir]).unwrap() else {
+        panic!("corpus")
+    };
+    let CorpusCommand::List(args) = args.command else {
+        panic!("list")
+    };
+    lex_cli::corpora::list(&args).unwrap();
+    let Command::Profile(args) = parse(&["profile", "list", "--data-dir", dir]).unwrap() else {
+        panic!("profile")
+    };
+    let ProfileCommand::List(args) = args.command else {
+        panic!("list")
+    };
+    lex_cli::profiles::list(&args).unwrap();
+    assert_eq!(std::fs::read_dir(tmp.path()).unwrap().count(), 0);
 }

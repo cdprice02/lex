@@ -234,8 +234,40 @@ pub struct CorpusArgs {
 /// The operations of `lex corpus`.
 #[derive(Subcommand, Debug)]
 pub enum CorpusCommand {
+    /// List the cached Corpora from their headers (never downloads)
+    List(CorpusListArgs),
+    /// Show one cached Corpus in full, verifying its checksum (never downloads)
+    Show(CorpusShowArgs),
     /// Delete a cached Corpus and its opening books so they are rebuilt on next use (the Dictionary is kept)
     Clear(CorpusClearArgs),
+}
+
+/// Arguments of `lex corpus list`.
+#[derive(clap::Args, Debug)]
+pub struct CorpusListArgs {
+    /// List only this language
+    #[arg(long)]
+    pub lang: Option<Language>,
+    /// List only this word length
+    #[arg(short = 'l', long, value_parser = parse_word_length)]
+    pub word_length: Option<usize>,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex corpus show`.
+#[derive(clap::Args, Debug)]
+pub struct CorpusShowArgs {
+    /// Language of the Corpus to show
+    #[arg(long)]
+    pub lang: Language,
+    /// Word length of the Corpus to show
+    #[arg(short = 'l', long, value_parser = parse_word_length)]
+    pub word_length: usize,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
 }
 
 /// Arguments of `lex corpus clear`.
@@ -272,8 +304,31 @@ pub struct ProfileArgs {
 /// The operations of `lex profile`.
 #[derive(Subcommand, Debug)]
 pub enum ProfileCommand {
+    /// List the fetched Profiles, verifying their lists (never downloads)
+    List(ProfileListArgs),
+    /// Show one fetched Profile's lists and checksums (never downloads)
+    Show(ProfileShowArgs),
     /// Delete a Profile's fetched lists and opening books so they are fetched again on next use (corpora are kept)
     Clear(ProfileClearArgs),
+}
+
+/// Arguments of `lex profile list`.
+#[derive(clap::Args, Debug)]
+pub struct ProfileListArgs {
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
+}
+
+/// Arguments of `lex profile show`.
+#[derive(clap::Args, Debug)]
+pub struct ProfileShowArgs {
+    /// Profile to show
+    #[arg(long)]
+    pub profile: Profile,
+    /// Where the cache lives.
+    #[command(flatten)]
+    pub data: DataDirArg,
 }
 
 /// Arguments of `lex profile clear`.
