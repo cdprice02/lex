@@ -181,6 +181,31 @@ fn the_groups_parse_and_dictionary_is_an_alias() {
 }
 
 #[test]
+fn corpus_and_profile_clear_of_an_absent_item_remove_nothing_and_succeed() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = tmp.path().to_str().unwrap();
+    for lang_args in [&["-l", "5"][..], &[][..]] {
+        let args = [
+            &["corpus", "clear", "--lang", "english", "--data-dir", dir][..],
+            lang_args,
+        ]
+        .concat();
+        let Command::Corpus(args) = parse(&args).unwrap() else {
+            panic!("`corpus clear` parses to the corpus command")
+        };
+        let CorpusCommand::Clear(args) = args.command;
+        lex_cli::clear::corpus(&args).unwrap();
+    }
+    let Command::Profile(args) =
+        parse(&["profile", "clear", "--profile", "wordle", "--data-dir", dir]).unwrap()
+    else {
+        panic!("`profile clear` parses to the profile command")
+    };
+    let ProfileCommand::Clear(args) = args.command;
+    lex_cli::clear::profile(&args).unwrap();
+}
+
+#[test]
 fn the_old_clear_command_is_gone() {
     assert_eq!(
         kind(&["clear", "--lang", "english"]),
