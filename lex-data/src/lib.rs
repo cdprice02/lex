@@ -4,6 +4,7 @@
 pub mod language;
 pub mod word;
 
+mod book_list;
 mod book_store;
 mod data_dir;
 mod dict_list;
@@ -20,6 +21,7 @@ mod retry;
 mod store;
 mod wiktionary;
 
+pub use book_list::{BookFilter, BookHeader, BookRecord, BookStatus, StaleField};
 pub use book_store::{BookFile, BookKey, BookLookup, ProfileKey, StoredBook, StoredNode};
 pub use data_dir::DataDir;
 pub use dict_list::DictRecord;
