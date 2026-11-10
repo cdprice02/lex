@@ -41,7 +41,13 @@ pub fn show(args: &DictShowArgs) -> anyhow::Result<()> {
 
 /// The error for a language whose Dictionary is not on disk.
 fn not_cached(lang: Language) -> anyhow::Error {
-    anyhow::anyhow!("no {lang} Dictionary is cached; it is fetched on first use of that language")
+    anyhow::anyhow!(not_cached_hint(lang))
+}
+
+/// What `dict show` says of a language whose Dictionary is not on disk.
+#[must_use]
+pub fn not_cached_hint(lang: Language) -> String {
+    format!("no {lang} Dictionary is cached; it is fetched on first use of that language")
 }
 
 /// Prints through `anstream`, which strips escapes off a terminal or under `NO_COLOR`.

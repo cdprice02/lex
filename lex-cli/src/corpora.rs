@@ -52,9 +52,13 @@ pub fn show(args: &CorpusShowArgs) -> anyhow::Result<()> {
 
 /// The error for a Corpus that is not on disk.
 fn not_cached(lang: Language, n: usize) -> anyhow::Error {
-    anyhow::anyhow!(
-        "no {lang} Corpus of length {n} is cached; it is built on first use of that language"
-    )
+    anyhow::anyhow!(not_cached_hint(lang, n))
+}
+
+/// What `corpus show` says of a Corpus that is not on disk.
+#[must_use]
+pub fn not_cached_hint(lang: Language, n: usize) -> String {
+    format!("no {lang} Corpus of length {n} is cached; it is built on first use of that language")
 }
 
 /// A status, in the failure style on a terminal unless it is `ok`.

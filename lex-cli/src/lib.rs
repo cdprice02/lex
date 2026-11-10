@@ -20,3 +20,4 @@ pub mod style;
 pub mod targets;
 pub mod tracks;
 pub mod verdict;
+pub mod word;
