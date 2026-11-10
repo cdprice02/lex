@@ -43,7 +43,7 @@ pub fn build_all(
     }
     let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
     log::warn!("Building {lang} corpus...");
-    let by_length = ngrams::fetch(lang, &valid_words, progress)?;
+    let by_length = ngrams::fetch(lang, &valid_words, dir.download_workers(), progress)?;
     let n_buckets = by_length.len();
     populate(dir, lang, &by_length)?;
     log::info!("Cached {lang} corpus ({n_buckets} length buckets)");

@@ -24,6 +24,8 @@ use strum::VariantArray as _;
 #[derive(Default)]
 struct Fake {
     calls: RefCell<Vec<String>>,
+    /// The download workers each `corpus` call's `DataDir` carried.
+    workers: RefCell<Vec<Option<usize>>>,
 }
 
 impl Fake {
@@ -52,6 +54,9 @@ impl Network for Fake {
         progress: &(dyn Fn(u32, u32) + Sync),
     ) -> anyhow::Result<()> {
         self.calls.borrow_mut().push(format!("corpus {lang}"));
+        self.workers
+            .borrow_mut()
+            .push(dir.download_workers().map(std::num::NonZeroUsize::get));
         progress(0, 1);
         seed_supported(dir, lang, 5, &[("crane", 900), ("stare", 800)]);
         progress(1, 1);
@@ -342,4 +347,55 @@ fn the_binary_reports_cached_items_ready_without_a_network() {
         assert!(String::from_utf8_lossy(&out.stdout).contains("is ready"));
         assert_eq!(String::from_utf8_lossy(&out.stderr), "");
     }
+}
+
+/// The download workers `corpus build` and `profile fetch` hand to the Corpus build, with `main`'s
+/// copy of the request into the arguments done by hand.
+fn workers_of(group_verb: &[&str], request: Option<usize>) -> Vec<Option<usize>> {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let root = tmp.path().to_str().unwrap();
+    let all: Vec<&str> = group_verb
+        .iter()
+        .copied()
+        .chain(["--all", "--data-dir", root])
+        .collect();
+    let workers = request.and_then(std::num::NonZeroUsize::new);
+    let mut sinks = Sinks {
+        out: &mut Vec::new(),
+        warn: &mut Vec::new(),
+        terminal: false,
+    };
+    let command = parse(&all).unwrap();
+    if let Command::Corpus(a) = command {
+        let CorpusCommand::Build(mut a) = a.command else {
+            panic!("corpus build")
+        };
+        a.download_workers = workers;
+        corpus_with(&a, &net, &mut sinks).unwrap();
+    } else if let Command::Profile(a) = command {
+        let ProfileCommand::Fetch(mut a) = a.command else {
+            panic!("profile fetch")
+        };
+        a.download_workers = workers;
+        profile_with(&a, &net, &mut sinks).unwrap();
+    } else {
+        panic!("a fetch command");
+    }
+    net.workers.borrow().clone()
+}
+
+#[test]
+fn corpus_build_hands_the_download_request_to_the_build() {
+    let seen = workers_of(CORPUS, Some(7));
+    assert_eq!(seen.len(), Language::VARIANTS.len());
+    assert!(seen.iter().all(|w| *w == Some(7)));
+    assert!(workers_of(CORPUS, None).iter().all(Option::is_none));
+}
+
+#[test]
+fn profile_fetch_hands_the_download_request_to_the_corpus_build() {
+    let seen = workers_of(PROFILE, Some(2));
+    assert!(!seen.is_empty());
+    assert!(seen.iter().all(|w| *w == Some(2)));
 }

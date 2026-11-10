@@ -211,7 +211,7 @@ pub fn corpus_with(
     net: &dyn Network,
     sinks: &mut Sinks<'_>,
 ) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.dir();
     for (index, lang) in languages(args.lang).into_iter().enumerate() {
         separate(sinks, index)?;
         let cached = cached_lengths(&dir, lang)?;
@@ -278,7 +278,7 @@ pub fn profile_with(
     net: &dyn Network,
     sinks: &mut Sinks<'_>,
 ) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.dir();
     let chosen = args
         .profile
         .map_or_else(|| Profile::VARIANTS.to_vec(), |profile| vec![profile]);

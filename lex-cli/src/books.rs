@@ -201,7 +201,7 @@ pub fn guesser<const N: usize>(
 /// As [`ensure`].
 pub fn build_command<const N: usize>(args: &BookBuildArgs) -> anyhow::Result<()> {
     let config = args.config();
-    let data_dir = DataDir::new(&args.common.data_dir);
+    let data_dir = args.common.data();
     let (lists, source) = Source::load::<N>(&config, &data_dir)?;
     let observer = progress::observer();
     let ensured = ensure(

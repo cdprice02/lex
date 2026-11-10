@@ -26,7 +26,7 @@ use crate::cli::AssistArgs;
 /// If the lists or the Opening book cannot be loaded, or the terminal cannot be read.
 pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     let config = args.common.config(Targets::Full);
-    let data_dir = lex_data::DataDir::new(&args.common.data_dir);
+    let data_dir = args.common.data();
     let (lists, source) = Source::load::<N>(&config, &data_dir)?;
     let guess_pool = lists.pool.clone();
     let mut guesser = books::guesser(

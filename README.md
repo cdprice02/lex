@@ -124,7 +124,8 @@ Every command also takes the display flags:
 | `--color` | `auto` | `auto`, `always` or `never`; `auto` colours a terminal and honours `NO_COLOR` |
 | `--symbols` | `letters` | Feedback tiles shown as `letters` (g/y/x), `digits` (2/1/0) or `emoji`; assist input accepts all three regardless |
 | `--no-progress` | off | Show no progress: bars and spinners on a terminal, periodic lines elsewhere, and the opening-book build messages. The summary, errors and `RUST_LOG` logging stay |
-| `--threads` | available parallelism (1 if unknown) | Worker threads, at least 1. `main` builds one rayon pool of this size and runs the command inside it; nothing parallel uses it yet beyond the ngrams download (at most 4 workers, fewer under a smaller pool) |
+| `--threads` | available parallelism (1 if unknown) | Worker threads, at least 1. `main` builds one rayon pool of this size and runs the command inside it |
+| `--download-threads` | 4 (a placeholder until measured), or `--threads` when given | Parallel shard downloads, at least 1, capped at the language's shard count. Wins over `--threads`; only a `--threads` given on the command line counts |
 
 ## Languages
 
