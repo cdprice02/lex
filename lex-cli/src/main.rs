@@ -15,6 +15,7 @@ use lex_cli::cli::{
 use lex_cli::compare::compare_reports;
 use lex_cli::corpora;
 use lex_cli::dicts;
+use lex_cli::fetch;
 use lex_cli::profiles;
 use lex_cli::progress;
 use lex_cli::simulate::simulate;
@@ -72,16 +73,19 @@ fn run(command: Command, symbols: SymbolScheme) -> anyhow::Result<ExitCode> {
         Command::Dict(args) => match args.command {
             DictCommand::List(args) => done(dicts::list(&args)),
             DictCommand::Show(args) => done(dicts::show(&args)),
+            DictCommand::Fetch(args) => done(fetch::dict(&args)),
             DictCommand::Clear(args) => done(clear::dict(&args)),
         },
         Command::Corpus(args) => match args.command {
             CorpusCommand::List(args) => done(corpora::list(&args)),
             CorpusCommand::Show(args) => done(corpora::show(&args)),
+            CorpusCommand::Build(args) => done(fetch::corpus(&args)),
             CorpusCommand::Clear(args) => done(clear::corpus(&args)),
         },
         Command::Profile(args) => match args.command {
             ProfileCommand::List(args) => done(profiles::list(&args)),
             ProfileCommand::Show(args) => done(profiles::show(&args)),
+            ProfileCommand::Fetch(args) => done(fetch::profile(&args)),
             ProfileCommand::Clear(args) => done(clear::profile(&args)),
         },
     }

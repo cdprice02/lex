@@ -41,7 +41,7 @@ pub fn show(args: &DictShowArgs) -> anyhow::Result<()> {
 
 /// The error for a language whose Dictionary is not on disk.
 fn not_cached(lang: Language) -> anyhow::Error {
-    anyhow::anyhow!("no {lang} Dictionary is cached; it is fetched on first use of that language")
+    anyhow::anyhow!("no {lang} Dictionary is cached; fetch it with `lex dict fetch --lang {lang}`")
 }
 
 /// Prints through `anstream`, which strips escapes off a terminal or under `NO_COLOR`.
@@ -311,7 +311,7 @@ mod tests {
     }
 
     #[test]
-    fn show_of_an_uncached_language_names_the_first_use_fetch() {
+    fn show_of_an_uncached_language_names_the_fetch_command() {
         let (_tmp, dir) = dir_with(&[]);
         let args = DictShowArgs {
             lang: Language::English,
@@ -320,7 +320,7 @@ mod tests {
             },
         };
         let error = show(&args).unwrap_err().to_string();
-        assert!(error.contains("fetched on first use"), "{error}");
+        assert!(error.contains("lex dict fetch --lang english"), "{error}");
         assert!(!dir.as_ref().join("dicts").exists(), "nothing was fetched");
     }
 }

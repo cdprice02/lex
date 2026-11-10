@@ -197,6 +197,109 @@ impl Drop for BarObserver {
     }
 }
 
+/// A download phase of a fetch command: a spinner while the size is unknown, a bar over shards
+/// once [`Task::set`] reports a total. `&self` and `Sync`, so download workers share one.
+pub struct Task {
+    /// How this task shows itself.
+    show: TaskShow,
+}
+
+/// How a [`Task`] draws, per [`Mode`].
+enum TaskShow {
+    /// A spinner or bar on the shared host.
+    Bar(ProgressBar),
+    /// A line every [`LINE_INTERVAL`].
+    Lines {
+        /// What is being downloaded.
+        label: String,
+        /// When the task began.
+        started: Instant,
+        /// When a line was last logged.
+        last: std::sync::Mutex<Instant>,
+    },
+    /// Nothing.
+    Off,
+}
+
+#[expect(
+    clippy::literal_string_with_formatting_args,
+    reason = "indicatif templates use braces for their own placeholders"
+)]
+impl Task {
+    /// Starts a task labelled `label` in the active mode.
+    #[must_use]
+    pub fn start(label: &str) -> Self {
+        let show = match STATE.get() {
+            Some(State {
+                mode: Mode::Bar,
+                multi: Some(multi),
+            }) => {
+                let bar = multi.add(ProgressBar::new_spinner());
+                bar.set_style(
+                    ProgressStyle::with_template("{spinner} {msg} ({elapsed})")
+                        .unwrap_or_else(|_| ProgressStyle::default_spinner()),
+                );
+                bar.set_message(label.to_owned());
+                bar.enable_steady_tick(Duration::from_millis(100));
+                TaskShow::Bar(bar)
+            }
+            Some(State {
+                mode: Mode::Lines, ..
+            }) => {
+                log::info!(target: TARGET, "{label}");
+                let now = Instant::now();
+                TaskShow::Lines {
+                    label: label.to_owned(),
+                    started: now,
+                    last: std::sync::Mutex::new(now),
+                }
+            }
+            _ => TaskShow::Off,
+        };
+        Self { show }
+    }
+
+    /// `done` of `total` shards are finished.
+    pub fn set(&self, done: u32, total: u32) {
+        match &self.show {
+            TaskShow::Bar(bar) => {
+                if bar.length() != Some(u64::from(total)) {
+                    bar.set_style(
+                        ProgressStyle::with_template(
+                            "{msg} {bar:30} {pos}/{len} shards ({elapsed})",
+                        )
+                        .unwrap_or_else(|_| ProgressStyle::default_bar()),
+                    );
+                    bar.set_length(u64::from(total));
+                }
+                bar.set_position(u64::from(done));
+            }
+            TaskShow::Lines {
+                label,
+                started,
+                last,
+            } => {
+                let Ok(mut last) = last.lock() else { return };
+                if last.elapsed() >= LINE_INTERVAL {
+                    *last = Instant::now();
+                    log::info!(
+                        target: TARGET,
+                        "{label}: {done}/{total} shards ({:?} elapsed)",
+                        started.elapsed()
+                    );
+                }
+            }
+            TaskShow::Off => {}
+        }
+    }
+
+    /// Removes the spinner or bar.
+    pub fn finish(self) {
+        if let TaskShow::Bar(bar) = self.show {
+            bar.finish_and_clear();
+        }
+    }
+}
 /// Where the current phase stands: the one piece of state a [`LineObserver`] mutates.
 #[derive(Debug, Clone, Copy)]
 struct Phase {

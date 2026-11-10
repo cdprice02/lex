@@ -1,0 +1,345 @@
+//! `dict fetch`, `corpus build` and `profile fetch` against a temp data dir and a stubbed
+//! [`Network`]: what each downloads, the upward cascade, idempotence and the `--force` cascades.
+#![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]
+#![expect(
+    clippy::panic,
+    clippy::unwrap_used,
+    reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
+)]
+
+mod common;
+
+use std::cell::RefCell;
+use std::path::Path;
+
+use clap::Parser;
+use clap::error::ErrorKind;
+use common::{seed_dict, seed_supported};
+use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
+use lex_cli::fetch::{Network, Sinks, corpus_with, dict_with, profile_with};
+use lex_data::{DataDir, Language, Profile};
+use strum::VariantArray as _;
+
+/// Records what was downloaded and writes stand-in files in place of the network.
+#[derive(Default)]
+struct Fake {
+    calls: RefCell<Vec<String>>,
+}
+
+impl Fake {
+    fn calls(&self) -> Vec<String> {
+        self.calls.borrow().clone()
+    }
+}
+
+impl Network for Fake {
+    fn dict(&self, dir: &DataDir, lang: Language) -> anyhow::Result<()> {
+        self.calls.borrow_mut().push(format!("dict {lang}"));
+        let path = dir.dict_path(lang);
+        std::fs::create_dir_all(path.parent().unwrap())?;
+        std::fs::write(&path, "crane\n")?;
+        std::fs::write(
+            path.with_extension("meta.json"),
+            r#"{"min_word_length":5,"max_word_length":5,"word_count":1,"source_url":"https://example.test/x.gz","fetched_at":"2026-05-02T00:00:00Z","source_sha256":"abcdef0123456789"}"#,
+        )?;
+        Ok(())
+    }
+
+    fn corpus(
+        &self,
+        dir: &DataDir,
+        lang: Language,
+        progress: &(dyn Fn(u32, u32) + Sync),
+    ) -> anyhow::Result<()> {
+        self.calls.borrow_mut().push(format!("corpus {lang}"));
+        progress(0, 1);
+        seed_supported(dir, lang, 5, &[("crane", 900), ("stare", 800)]);
+        progress(1, 1);
+        Ok(())
+    }
+
+    fn profile(&self, dir: &DataDir, profile: Profile) -> anyhow::Result<()> {
+        self.calls.borrow_mut().push(format!("profile {profile}"));
+        let root = dir.profile_dir(profile);
+        std::fs::create_dir_all(&root)?;
+        std::fs::write(root.join("answers.txt"), "crane\n")?;
+        std::fs::write(root.join("guess-only.txt"), "stare\n")?;
+        std::fs::write(
+            root.join("meta.json"),
+            r#"{"profile":"wordle","fetched_at":"2026-05-03T00:00:00Z"}"#,
+        )?;
+        Ok(())
+    }
+}
+
+/// What a command printed.
+struct Printed {
+    out: String,
+    warn: String,
+}
+
+/// Parses `args` after `lex` and returns the command.
+fn parse(args: &[&str]) -> Result<Command, clap::Error> {
+    Cli::try_parse_from(std::iter::once("lex").chain(args.iter().copied())).map(|cli| cli.command)
+}
+
+/// Runs `lex <group> <verb> <args> --data-dir <root>` over `net`.
+fn run(net: &Fake, root: &Path, group_verb: &[&str], args: &[&str]) -> Printed {
+    let data = root.to_str().unwrap();
+    let all: Vec<&str> = group_verb
+        .iter()
+        .chain(args)
+        .copied()
+        .chain(["--data-dir", data])
+        .collect();
+    let (mut out, mut warn) = (Vec::new(), Vec::new());
+    {
+        let mut sinks = Sinks {
+            out: &mut out,
+            warn: &mut warn,
+            terminal: false,
+        };
+        let command = parse(&all).unwrap();
+        if let Command::Dict(a) = command {
+            let DictCommand::Fetch(a) = a.command else {
+                panic!("dict fetch")
+            };
+            dict_with(&a, net, &mut sinks).unwrap();
+        } else if let Command::Corpus(a) = command {
+            let CorpusCommand::Build(a) = a.command else {
+                panic!("corpus build")
+            };
+            corpus_with(&a, net, &mut sinks).unwrap();
+        } else if let Command::Profile(a) = command {
+            let ProfileCommand::Fetch(a) = a.command else {
+                panic!("profile fetch")
+            };
+            profile_with(&a, net, &mut sinks).unwrap();
+        } else {
+            panic!("a cache command");
+        }
+    }
+    Printed {
+        out: String::from_utf8(out).unwrap(),
+        warn: String::from_utf8(warn).unwrap(),
+    }
+}
+
+/// Writes a stand-in file under `root`.
+fn touch(root: &Path, relative: &str) {
+    let path = root.join(relative);
+    std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+    std::fs::write(path, b"x").unwrap();
+}
+
+const DICT: &[&str] = &["dict", "fetch"];
+const CORPUS: &[&str] = &["corpus", "build"];
+const PROFILE: &[&str] = &["profile", "fetch"];
+
+#[test]
+fn dict_fetch_downloads_then_prints_the_show_summary() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), DICT, &["--lang", "english"]);
+    assert_eq!(net.calls(), ["dict english"]);
+    assert!(printed.out.contains("fetched the english Dictionary\n"));
+    assert!(printed.out.contains("field\tvalue\tnote\n"));
+    assert!(printed.out.contains("\nfetched at\t2026-05-02T00:00:00Z\t"));
+    assert_eq!(printed.warn, "");
+}
+
+#[test]
+fn a_cached_dictionary_is_ready_and_nothing_is_downloaded() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    run(&net, tmp.path(), DICT, &["--lang", "english"]);
+    let again = run(&net, tmp.path(), DICT, &["--lang", "english"]);
+    assert_eq!(net.calls().len(), 1, "the second run is a no-op");
+    assert!(
+        again
+            .out
+            .contains("english Dictionary is ready (fetched 2026-05-02)"),
+        "{}",
+        again.out
+    );
+    assert!(again.out.contains("field\tvalue\tnote\n"));
+}
+
+#[test]
+fn dict_fetch_force_warns_clears_the_corpus_and_books_then_fetches() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_dict(&dir, Language::English);
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    touch(tmp.path(), "books/eng/5/a.bin");
+    seed_dict(&dir, Language::French);
+    touch(tmp.path(), "books/fre/5/a.bin");
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), DICT, &["--lang", "english", "--force"]);
+    assert_eq!(net.calls(), ["dict english"]);
+    assert!(printed.warn.contains("rolling"), "{}", printed.warn);
+    assert!(!tmp.path().join("ngrams/eng").exists());
+    assert!(!tmp.path().join("books/eng").exists());
+    assert!(tmp.path().join("books/fre/5/a.bin").exists());
+    assert!(tmp.path().join("dicts/fre.txt").exists());
+}
+
+#[test]
+fn dict_fetch_all_covers_every_language() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    run(&net, tmp.path(), DICT, &["--all"]);
+    assert_eq!(net.calls().len(), lex_data::Language::VARIANTS.len());
+}
+
+#[test]
+fn corpus_build_fetches_the_missing_dictionary_first() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert_eq!(net.calls(), ["dict english", "corpus english"]);
+    assert!(printed.out.contains("built the english Corpus\n"));
+    assert!(
+        printed
+            .out
+            .contains("language\tlength\twords\tsupported\tsize\tchecksum\tstatus\n"),
+        "{}",
+        printed.out
+    );
+    assert!(printed.out.contains("english\t5\t"));
+}
+
+#[test]
+fn a_cached_corpus_is_ready_and_nothing_is_downloaded() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), CORPUS, &["--lang", "english"]);
+    assert!(net.calls().is_empty());
+    assert!(
+        printed
+            .out
+            .contains("english Corpus is ready (1 lengths cached)"),
+        "{}",
+        printed.out
+    );
+}
+
+#[test]
+fn corpus_build_force_clears_corpus_and_books_and_keeps_the_dictionary() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_dict(&dir, Language::English);
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    touch(tmp.path(), "ngrams/eng/6.bin");
+    touch(tmp.path(), "books/eng/5/a.bin");
+    let net = Fake::default();
+    run(&net, tmp.path(), CORPUS, &["--lang", "english", "--force"]);
+    assert_eq!(net.calls(), ["corpus english"], "no Dictionary fetch");
+    assert!(
+        !tmp.path().join("ngrams/eng/6.bin").exists(),
+        "the old set is gone"
+    );
+    assert!(!tmp.path().join("books/eng").exists());
+    assert!(tmp.path().join("ngrams/eng/5.bin").exists());
+}
+
+#[test]
+fn profile_fetch_builds_the_corpus_and_the_dictionary_beneath_it() {
+    let tmp = tempfile::tempdir().unwrap();
+    let net = Fake::default();
+    let printed = run(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    assert_eq!(
+        net.calls(),
+        ["dict english", "corpus english", "profile wordle"]
+    );
+    assert!(printed.out.contains("fetched Profile wordle\n"));
+    assert!(printed.out.contains("\nprofile\twordle\t"));
+}
+
+#[test]
+fn profile_fetch_with_a_cached_corpus_fetches_only_the_lists() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    run(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    assert_eq!(net.calls(), ["profile wordle"]);
+}
+
+#[test]
+fn a_fetched_profile_is_ready_and_force_clears_its_books_before_refetching() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let net = Fake::default();
+    run(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    let ready = run(&net, tmp.path(), PROFILE, &["--profile", "wordle"]);
+    assert_eq!(net.calls().len(), 1);
+    assert!(
+        ready
+            .out
+            .contains("Profile wordle is ready (fetched 2026-05-03)"),
+        "{}",
+        ready.out
+    );
+    touch(tmp.path(), "books/eng/5/a.bin");
+    run(
+        &net,
+        tmp.path(),
+        PROFILE,
+        &["--profile", "wordle", "--force"],
+    );
+    assert_eq!(net.calls().len(), 2);
+    assert!(tmp.path().join("profiles/wordle/meta.json").exists());
+}
+
+#[test]
+fn a_word_length_is_rejected_and_a_selector_is_required() {
+    for verb in [DICT, CORPUS] {
+        let with_length: Vec<&str> = verb
+            .iter()
+            .copied()
+            .chain(["--lang", "english", "-l", "5"])
+            .collect();
+        assert_eq!(
+            parse(&with_length).unwrap_err().kind(),
+            ErrorKind::UnknownArgument
+        );
+    }
+    for verb in [DICT, CORPUS, PROFILE] {
+        assert_eq!(
+            parse(verb).unwrap_err().kind(),
+            ErrorKind::MissingRequiredArgument
+        );
+    }
+    assert_eq!(
+        parse(&["dict", "fetch", "--lang", "english", "--all"])
+            .unwrap_err()
+            .kind(),
+        ErrorKind::ArgumentConflict
+    );
+}
+
+#[test]
+fn the_binary_reports_cached_items_ready_without_a_network() {
+    let tmp = tempfile::tempdir().unwrap();
+    let dir = DataDir::new(tmp.path());
+    seed_dict(&dir, Language::English);
+    seed_supported(&dir, Language::English, 5, &[("crane", 9)]);
+    let data = tmp.path().to_str().unwrap();
+    for args in [
+        ["dict", "fetch", "--lang", "english"],
+        ["corpus", "build", "--lang", "english"],
+    ] {
+        let out = std::process::Command::new(env!("CARGO_BIN_EXE_lex"))
+            .args(args)
+            .args(["--no-progress", "--data-dir", data])
+            .output()
+            .unwrap();
+        assert!(out.status.success());
+        assert!(String::from_utf8_lossy(&out.stdout).contains("is ready"));
+        assert_eq!(String::from_utf8_lossy(&out.stderr), "");
+    }
+}

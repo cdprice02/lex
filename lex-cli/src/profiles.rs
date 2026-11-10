@@ -36,7 +36,9 @@ pub fn show(args: &ProfileShowArgs) -> anyhow::Result<()> {
 
 /// The error for a Profile whose lists are not on disk.
 fn not_fetched(profile: Profile) -> anyhow::Error {
-    anyhow::anyhow!("Profile {profile} is not fetched; it is fetched on first play")
+    anyhow::anyhow!(
+        "Profile {profile} is not fetched; fetch it with `lex profile fetch --profile {profile}`"
+    )
 }
 
 /// `yes` or `no`, `no` in the failure style on a terminal.
@@ -207,7 +209,7 @@ mod tests {
     }
 
     #[test]
-    fn show_of_an_unfetched_profile_says_it_is_fetched_on_first_play() {
+    fn show_of_an_unfetched_profile_names_the_fetch_command() {
         let (_tmp, dir) = dir_with(&[]);
         let args = ProfileShowArgs {
             profile: Profile::Wordle,
@@ -216,7 +218,10 @@ mod tests {
             },
         };
         let error = show(&args).unwrap_err().to_string();
-        assert!(error.contains("fetched on first play"), "{error}");
+        assert!(
+            error.contains("lex profile fetch --profile wordle"),
+            "{error}"
+        );
         assert!(
             !dir.as_ref().join("profiles").exists(),
             "nothing was fetched"
