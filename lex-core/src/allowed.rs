@@ -111,6 +111,15 @@ impl Allowed {
         }
     }
 
+    /// Whether this allows the pool word at `index` at a node whose candidates are `set`.
+    pub(crate) fn permits(&self, index: u32, set: &[u32]) -> bool {
+        match self {
+            Self::Whole => true,
+            Self::Candidates => set.binary_search(&index).is_ok(),
+            Self::List(list) => list.binary_search(&index).is_ok(),
+        }
+    }
+
     /// How many guesses this allows at a node of `candidates` candidates over a pool of `pool_len`.
     pub(crate) const fn guess_count(&self, pool_len: usize, candidates: usize) -> usize {
         match self {

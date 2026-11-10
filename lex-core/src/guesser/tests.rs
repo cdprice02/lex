@@ -831,3 +831,5 @@ fn history_narrows_within_the_answer_list() {
 fn answer_missing_from_the_pool_panics() {
     let _ = Guesser::new(&pool_set(), &[word("zebra")], Strategy::default());
 }
+
+mod explain;
