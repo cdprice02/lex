@@ -26,16 +26,27 @@ pub const MIN_FREQUENCY: u64 = 1;
 /// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
 pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow::Result<()> {
     if !dir.ngrams_path(lang, N).exists() {
-        if !dir.dict_path(lang).exists() {
-            wiktionary::fetch_dict(lang, dir.as_ref())?;
-        }
-        let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
-        log::warn!("Building {lang} corpus...");
-        let by_length = ngrams::fetch(lang, &valid_words)?;
-        let n_buckets = by_length.len();
-        populate(dir, lang, &by_length)?;
-        log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
+        build_all(dir, lang, &|_, _| {})?;
     }
+    Ok(())
+}
+
+/// Downloads every ngrams shard of `lang` and writes a Corpus for each length, fetching the
+/// Dictionary first when it is absent. `progress(done, total)` reports finished shards.
+pub fn build_all(
+    dir: &DataDir,
+    lang: Language,
+    progress: &(dyn Fn(u32, u32) + Sync),
+) -> anyhow::Result<()> {
+    if !dir.dict_path(lang).exists() {
+        wiktionary::fetch_dict(lang, dir.as_ref())?;
+    }
+    let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
+    log::warn!("Building {lang} corpus...");
+    let by_length = ngrams::fetch(lang, &valid_words, progress)?;
+    let n_buckets = by_length.len();
+    populate(dir, lang, &by_length)?;
+    log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
     Ok(())
 }
 

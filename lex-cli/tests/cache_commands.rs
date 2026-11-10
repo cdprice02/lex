@@ -266,7 +266,7 @@ fn dict_list_with_nothing_cached_succeeds_and_show_errors() {
     let out = lex(&["dict", "show", "--lang", "english", "--data-dir", dir]);
     assert!(!out.status.success());
     let stderr = String::from_utf8(out.stderr).unwrap();
-    assert!(stderr.contains("fetched on first use"), "{stderr}");
+    assert!(stderr.contains("lex dict fetch --lang english"), "{stderr}");
     assert!(!tmp.path().join("dicts").exists());
 }
 
