@@ -48,7 +48,7 @@ pub fn random_pool(rng: &mut Rng, size: usize, shape: usize) -> Arc<Pool<5>> {
     Pool::new(&WordSet::from_pairs(pairs))
 }
 
-pub fn random_set(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
+pub fn random_candidates(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
     let mut set = std::collections::BTreeSet::new();
     while set.len() < len {
         set.insert(rng.index(pool.len()));
@@ -58,7 +58,7 @@ pub fn random_set(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
 
 /// The `len` words nearest a random seed word by letters differing, which are hard to tell
 /// apart and so make guesses outside the set worth scanning for.
-pub fn similar_set(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
+pub fn similar_candidates(rng: &mut Rng, pool: &Pool<5>, len: usize) -> Vec<u32> {
     let seed = pool.code(rng.index(pool.len()));
     let distance = |i: u32| {
         pool.code(i)

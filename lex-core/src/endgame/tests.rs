@@ -6,7 +6,7 @@ use super::*;
 use crate::correctness::pattern_ordinal;
 use crate::pool_ops::shared;
 use crate::strategy::Pool;
-use crate::test_support::{Rng, random_pool, random_set, similar_set};
+use crate::test_support::{Rng, random_candidates, random_pool, similar_candidates};
 
 const FAMILY: [&str; 7] = [
     "batch", "catch", "hatch", "latch", "match", "patch", "watch",
@@ -225,14 +225,14 @@ fn the_fast_paths_match_the_full_search_bit_for_bit() {
             for aversion in [0.0, 0.0, 1e-12, 0.4, 1.5] {
                 let len = 2 + rng.below(7);
                 let set = if round % 2 == 0 {
-                    random_set(&mut rng, &pool, len)
+                    random_candidates(&mut rng, &pool, len)
                 } else {
-                    similar_set(&mut rng, &pool, len)
+                    similar_candidates(&mut rng, &pool, len)
                 };
                 // the list holds every candidate, as the search requires
                 let mut list = set.clone();
                 let extra = 3 + rng.below(12);
-                list.extend(random_set(&mut rng, &pool, extra));
+                list.extend(random_candidates(&mut rng, &pool, extra));
                 list.sort_unstable();
                 list.dedup();
                 for (mode, allowed) in [
@@ -274,10 +274,10 @@ fn a_table_partition_equals_pool_partition() {
         let size = 30 + rng.below(90);
         let pool = random_pool(&mut rng, size, round % 3);
         let len = 2 + rng.below(9);
-        let set = random_set(&mut rng, &pool, len);
+        let set = random_candidates(&mut rng, &pool, len);
         let mut list = set.clone();
         let extra = 3 + rng.below(20);
-        list.extend(random_set(&mut rng, &pool, extra));
+        list.extend(random_candidates(&mut rng, &pool, extra));
         list.sort_unstable();
         list.dedup();
         for allowed in [Allowed::Whole, Allowed::List(list), Allowed::Candidates] {
@@ -311,7 +311,7 @@ fn a_table_over_several_blocks_equals_pool_partition() {
         let size = 200 + rng.below(50);
         let pool = random_pool(&mut rng, size, round % 3);
         let len = 65 + rng.below(100);
-        let set = random_set(&mut rng, &pool, len);
+        let set = random_candidates(&mut rng, &pool, len);
         let mut table = PatternTable::default();
         table.build(&pool, &set, &Allowed::Whole);
         let mut cols = Vec::new();
@@ -332,10 +332,10 @@ fn floors_read_from_ranks_equal_floors_over_the_sorted_partition() {
         let size = 30 + rng.below(90);
         let pool = random_pool(&mut rng, size, round % 3);
         let len = 2 + rng.below(9);
-        let set = random_set(&mut rng, &pool, len);
+        let set = random_candidates(&mut rng, &pool, len);
         let mut list = set.clone();
         let extra = 3 + rng.below(20);
-        list.extend(random_set(&mut rng, &pool, extra));
+        list.extend(random_candidates(&mut rng, &pool, extra));
         list.sort_unstable();
         list.dedup();
         for aversion in [0.0, 0.3] {
