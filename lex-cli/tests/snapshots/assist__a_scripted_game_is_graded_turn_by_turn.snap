@@ -1,0 +1,23 @@
+---
+source: lex-cli/tests/assist.rs
+expression: "assist(\"crane\\nxxxxx\\n\\n22222\\n\", &[])"
+---
+Assisting a 5-letter game in english. Feedback formats: letters (g=green, y=yellow, x/b/./- = gray), digits (2=green, 1=yellow, 0=gray), or emoji.
+
+Turn 1: 200 candidates remain
+  chosen by the Rollout
+  crane  (78.7 words left)
+  plumb  (98.0 words left)
+  sound  (98.0 words left)
+  light  (87.8 words left)
+  zzaba  (89.4 words left)
+word played [crane]: feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩):   crane ->  x  x  x  x  x
+Luck: 2 words left (expected 79)    Skill: matched lex
+
+Turn 2: 2 candidates remain
+  chosen by the Endgame
+  light  (1.0 words left)
+  plumb  (1.0 words left)
+word played [light]: feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩):   light ->  g  g  g  g  g
+Skill: matched lex
+Solved in 2 turns!
