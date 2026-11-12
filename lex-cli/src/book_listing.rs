@@ -12,8 +12,8 @@ use lex_data::{BookFilter, BookKey, BookRecord, BookStatus, DataDir};
 use crate::books;
 use crate::cli::{BookListArgs, BookShowArgs};
 use crate::config::{Game, Targets};
-use crate::dicts::{flag, render_rows, row};
 use crate::lists::Source;
+use crate::table::{flag, render_rows, row};
 
 /// `lex book list`: a row per stored book, then a footer of counts by status and total size.
 ///

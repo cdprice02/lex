@@ -14,7 +14,7 @@ use strum::VariantArray;
 
 use crate::cli::{CorpusBuildArgs, DictFetchArgs, ProfileFetchArgs};
 use crate::progress::Task;
-use crate::{corpora, dicts, profiles};
+use crate::{corpora, dicts, profiles, table};
 
 /// What the commands download. [`Online`] is the real thing.
 pub trait Network {
@@ -184,7 +184,7 @@ fn fetch_dict(
                 .metadata
                 .as_ref()
                 .and_then(|m| m.fetched_at())
-                .map_or_else(|| "date unknown".to_owned(), dicts::fetch_date);
+                .map_or_else(|| "date unknown".to_owned(), table::fetch_date);
             writeln!(
                 sinks.out,
                 "the {lang} Dictionary is ready (fetched {fetched}); --force takes KAIKKI's current extract"
@@ -360,7 +360,7 @@ fn fetch_profile(
         Some(record) if !force => writeln!(
             sinks.out,
             "Profile {profile} is ready (fetched {}); --force fetches and verifies it again",
-            dicts::fetch_date(&record.fetched_at)
+            table::fetch_date(&record.fetched_at)
         )?,
         _ => {
             if force {

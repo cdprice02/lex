@@ -12,7 +12,7 @@ use lex_data::{
 use strum::VariantArray as _;
 
 use crate::cli::{CorpusListArgs, CorpusShowArgs};
-use crate::dicts::{flag, render_rows, row, size};
+use crate::table::{flag, render_rows, row, size};
 
 /// What a header-less file shows where its header's fields would be.
 const ABSENT: &str = "-";

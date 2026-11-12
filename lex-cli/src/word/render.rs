@@ -4,7 +4,8 @@ use lex_data::{Language, MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 
 use super::{Corpus, Dictionary, Facts, ProfileFact, ProfileStatus};
 use crate::corpora::not_cached_hint as corpus_hint;
-use crate::dicts::{flag, not_cached_hint as dict_hint, render_rows, row};
+use crate::dicts::not_cached_hint as dict_hint;
+use crate::table::{flag, render_rows, row};
 
 /// The label every Prior carries: it is the one the default Strategy derives.
 const STRATEGY_LABEL: &str = "(default Strategy)";

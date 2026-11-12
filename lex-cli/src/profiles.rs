@@ -8,7 +8,7 @@ use std::io::IsTerminal as _;
 use lex_data::{DataDir, Profile, ProfileListRecord, ProfileRecord};
 
 use crate::cli::{ProfileListArgs, ProfileShowArgs};
-use crate::dicts::{fetch_date, flag, render_rows, row};
+use crate::table::{fetch_date, flag, render_rows, row};
 
 /// `lex profile list`: a row per fetched Profile, or "no Profiles fetched".
 ///
