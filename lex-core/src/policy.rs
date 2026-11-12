@@ -9,7 +9,7 @@ use crate::strategy::Strategy;
 
 /// The Base policy: the Endgame for 2 to `endgame_threshold` candidates, otherwise the best
 /// entropy-scored guess. The Endgame lives here, not in [`Strategy`], because the Strategy is a
-/// `Copy` value in the book key and the Endgame is mutable memo state.
+/// `Copy` value in the book key and the Endgame is shared memo state.
 #[derive(Debug)]
 pub struct BasePolicy {
     /// The Strategy the tree scores under, fixed for the policy's life.
@@ -37,13 +37,13 @@ impl BasePolicy {
 
     /// The guess for the candidate `set` (ascending pool indices) of `pool`, as a pool index.
     pub(crate) fn guess_index(
-        &mut self,
+        &self,
         pool: &Arc<dyn PoolOps>,
         set: &[u32],
         allowed: &Allowed,
     ) -> Option<u32> {
         if self.uses_endgame(set.len())
-            && let Some(endgame) = self.endgame.as_mut()
+            && let Some(endgame) = self.endgame.as_ref()
         {
             return endgame.best_index(set, allowed);
         }
@@ -53,17 +53,12 @@ impl BasePolicy {
 
 impl BasePolicy {
     /// The Endgame's guess for `set` and its Guess cost, memoized with the guess itself.
-    pub(crate) fn endgame_pick(&mut self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
-        self.endgame.as_mut()?.best_with_cost(set, allowed)
+    pub(crate) fn endgame_pick(&self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
+        self.endgame.as_ref()?.best_with_cost(set, allowed)
     }
 
     /// The Guess cost of playing `guess` now at an Endgame position, the Endgame's own after.
-    pub(crate) fn endgame_cost(
-        &mut self,
-        set: &[u32],
-        allowed: &Allowed,
-        guess: u32,
-    ) -> Option<f64> {
-        Some(self.endgame.as_mut()?.cost_of(set, allowed, guess))
+    pub(crate) fn endgame_cost(&self, set: &[u32], allowed: &Allowed, guess: u32) -> Option<f64> {
+        Some(self.endgame.as_ref()?.cost_of(set, allowed, guess))
     }
 }

@@ -41,6 +41,15 @@ impl<V: Copy> Memo<V> {
         }
     }
 
+    /// Every entry of the plain map, for tests that audit what the search kept.
+    #[cfg(test)]
+    pub(crate) fn plain_entries(&self) -> Vec<(Vec<u32>, V)> {
+        self.plain
+            .iter()
+            .map(|e| (e.key().clone(), *e.value()))
+            .collect()
+    }
+
     /// Stores `value` for `set` under `allowed`, keeping an earlier value for the same key.
     pub(crate) fn insert(&self, allowed: &Allowed, set: &[u32], value: V) {
         match allowed {

@@ -1,11 +1,12 @@
 //! Exact search for Candidate sets at or below the Endgame threshold.
 
+use std::cell::RefCell;
 use std::cmp::{Ordering, Reverse};
 use std::collections::BinaryHeap;
-use std::collections::HashMap;
 use std::sync::Arc;
 
-use crate::allowed::{Allowed, AllowedIds};
+use crate::allowed::Allowed;
+use crate::memo::Memo;
 use crate::pool_ops::PoolOps;
 use crate::strategy::GuessPool;
 
@@ -48,17 +49,19 @@ pub struct Endgame {
     growth: Option<f64>,
     /// Answer prior weight of each pool word, unnormalized.
     weights: Vec<f64>,
-    /// Each distinct allowed-guess list met so far, numbered, so a memo key is small. Belongs to
-    /// `memo`.
-    list_ids: AllowedIds,
-    /// Solved sets by allowed-guess list (`None` when the mode implies it) and then by set.
-    memo: HashMap<Option<u32>, HashMap<Vec<u32>, Solved>>,
-    /// The patterns of the top-level call in progress, reused between calls.
-    table: PatternTable,
+    /// Solved sets by allowed-guess list and then by set.
+    memo: Memo<Solved>,
     /// Scans every allowed guess at every node, as the search did before the candidate-first cut:
     /// the reference the equivalence test holds the fast paths to.
     #[cfg(test)]
     reference: bool,
+}
+
+thread_local! {
+    /// The patterns of the top-level call in progress on this thread, reused between calls. It is
+    /// borrowed for one top-level solve and handed down the recursion, never across a call that
+    /// could run another solve on the thread.
+    static TABLE: RefCell<PatternTable> = RefCell::new(PatternTable::default());
 }
 
 impl Endgame {
@@ -75,9 +78,7 @@ impl Endgame {
             guess_pool,
             growth: (aversion > 0.0).then(|| aversion.exp()),
             weights,
-            list_ids: AllowedIds::default(),
-            memo: HashMap::new(),
-            table: PatternTable::default(),
+            memo: Memo::default(),
             #[cfg(test)]
             reference: false,
         }
@@ -86,12 +87,12 @@ impl Endgame {
     /// The table columns of `set`, computed once per call and passed to [`Self::partition`]:
     /// `None` when no table is active, or when a member lies outside it (a broken subset
     /// invariant, caught by a debug assertion), and then every partition is computed directly.
-    fn columns(&self, set: &[u32]) -> Option<Vec<usize>> {
-        if !self.table.active {
+    fn columns(table: &PatternTable, set: &[u32]) -> Option<Vec<usize>> {
+        if !table.active {
             return None;
         }
         let mut cols = Vec::with_capacity(set.len());
-        if self.table.columns(set, &mut cols) {
+        if table.columns(set, &mut cols) {
             return Some(cols);
         }
         debug_assert!(false, "set {set:?} is outside the table");
@@ -103,13 +104,14 @@ impl Endgame {
     /// invariant and is computed directly in release builds.
     fn partition(
         &self,
+        table: &PatternTable,
         cols: Option<&[usize]>,
         set: &[u32],
         guess: u32,
         out: &mut Vec<(u64, u32)>,
     ) {
         if let Some(cols) = cols {
-            if self.table.partition(cols, set, guess, out) {
+            if table.partition(cols, set, guess, out) {
                 return;
             }
             debug_assert!(false, "guess {guess} is outside the table");
@@ -125,7 +127,7 @@ impl Endgame {
     /// The guess minimizing expected guesses for the answers in `set` (ascending pool indices).
     ///
     /// The guess as a pool index.
-    pub(crate) fn best_index(&mut self, set: &[u32], allowed: &Allowed) -> Option<u32> {
+    pub(crate) fn best_index(&self, set: &[u32], allowed: &Allowed) -> Option<u32> {
         if set.is_empty() {
             return None;
         }
@@ -145,7 +147,7 @@ impl Endgame {
     }
 
     /// As [`best_index`](Self::best_index), with the Guess cost of the guess.
-    pub(crate) fn best_with_cost(&mut self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
+    pub(crate) fn best_with_cost(&self, set: &[u32], allowed: &Allowed) -> Option<(u32, f64)> {
         if set.is_empty() {
             return None;
         }
@@ -159,7 +161,7 @@ impl Endgame {
     ///
     /// The pattern table is built for `set` and `allowed` so the children read it, as under
     /// [`solve`](Self::solve); the guess itself is partitioned directly, as it may not be a row.
-    pub(crate) fn cost_of(&mut self, set: &[u32], allowed: &Allowed, guess: u32) -> f64 {
+    pub(crate) fn cost_of(&self, set: &[u32], allowed: &Allowed, guess: u32) -> f64 {
         let mass = self.mass(set);
         let win = self.pool.win_ordinal();
         let mut keyed = Vec::with_capacity(set.len());
@@ -167,27 +169,29 @@ impl Endgame {
         if keyed.iter().all(|k| k.0 == keyed[0].0) && keyed[0].0 != win {
             return f64::INFINITY;
         }
-        self.ensure_table(set, allowed);
         let growth = self.growth.unwrap_or(1.0);
         let in_set = set.binary_search(&guess).is_ok();
         let mut cost = self.initial_cost(guess, in_set, mass);
-        for group in keyed.chunk_by(|a, b| a.0 == b.0) {
-            if group[0].0 == win {
-                continue;
+        TABLE.with_borrow_mut(|table| {
+            self.ensure_table(table, set, allowed);
+            for group in keyed.chunk_by(|a, b| a.0 == b.0) {
+                if group[0].0 == win {
+                    continue;
+                }
+                let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
+                let child_allowed =
+                    self.pool
+                        .allowed_after(allowed, self.guess_pool, guess, group[0].0);
+                cost += self.solve_within(table, &child, &child_allowed).cost;
             }
-            let child: Vec<u32> = group.iter().map(|&(_, i)| i).collect();
-            let child_allowed =
-                self.pool
-                    .allowed_after(allowed, self.guess_pool, guess, group[0].0);
-            cost += self.solve_within(&child, &child_allowed).cost;
-        }
-        self.table.active = false;
+            table.active = false;
+        });
         self.guess_cost(cost * growth, mass)
     }
 
     /// Expected number of guesses to finish from `set` under the answer prior renormalized to it.
     #[cfg(test)]
-    pub(crate) fn expected_guesses(&mut self, set: &[u32], allowed: &Allowed) -> f64 {
+    pub(crate) fn expected_guesses(&self, set: &[u32], allowed: &Allowed) -> f64 {
         let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
         self.solve(set, allowed).cost / mass
     }
@@ -195,21 +199,21 @@ impl Endgame {
     /// The best guess and cost for `set`, memoized: the top-level entry. The recursion goes
     /// through [`Self::solve_within`], so no entry nests in another and the pattern table, built
     /// by the first scan (see [`Self::scan`]), is dropped when the entry returns.
-    fn solve(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
-        let slot = self.list_ids.slot(allowed);
-        if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
+    fn solve(&self, set: &[u32], allowed: &Allowed) -> Solved {
+        if let Some(solved) = self.memo.get(allowed, set) {
             return solved;
         }
-        let solved = self.solve_within(set, allowed);
-        self.table.active = false;
-        solved
+        TABLE.with_borrow_mut(|table| {
+            let solved = self.solve_within(table, set, allowed);
+            table.active = false;
+            solved
+        })
     }
 
     /// The best guess and cost for `set`, memoized, reading patterns from the table of the
     /// top-level call.
-    fn solve_within(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
-        let slot = self.list_ids.slot(allowed);
-        if let Some(&solved) = self.memo.get(&slot).and_then(|m| m.get(set)) {
+    fn solve_within(&self, table: &mut PatternTable, set: &[u32], allowed: &Allowed) -> Solved {
+        if let Some(solved) = self.memo.get(allowed, set) {
             return solved;
         }
         let solved = match *set {
@@ -218,27 +222,24 @@ impl Endgame {
                 cost: self.weight(only) * self.growth.unwrap_or(1.0),
                 guess: only,
             },
-            _ => self.search(set, allowed),
+            _ => self.search(table, set, allowed),
         };
-        self.memo
-            .entry(slot)
-            .or_default()
-            .insert(set.to_vec(), solved);
+        self.memo.insert(allowed, set, solved);
         solved
     }
 
     /// Finds the cheapest guess for a set of two or more. Two candidates, and three in plain
     /// mode, are costed in closed form, and the pool is scanned only when an outside guess could
     /// still tie or win (see [`Self::outside_cannot_win`]); every other set scans.
-    fn search(&mut self, set: &[u32], allowed: &Allowed) -> Solved {
+    fn search(&self, table: &mut PatternTable, set: &[u32], allowed: &Allowed) -> Solved {
         let mass: f64 = set.iter().map(|&i| self.weight(i)).sum();
         #[cfg(test)]
         if self.reference {
-            return self.scan_all(set, allowed, mass);
+            return self.scan_all(table, set, allowed, mass);
         }
         let closed = match (self.growth, set.len()) {
             (None, 2) => Some(self.pair(set, mass)),
-            (None, 3) => Some(self.triple(set, mass)),
+            (None, 3) => Some(self.triple(table, set, mass)),
             _ => None,
         };
         if let Some(best) = closed {
@@ -253,7 +254,7 @@ impl Endgame {
                 return best;
             }
         }
-        self.scan(set, allowed, mass)
+        self.scan(table, set, allowed, mass)
     }
 
     /// Builds the pattern table for this top-level call before its first scan. A closed form that
@@ -261,9 +262,9 @@ impl Endgame {
     /// scan of a call is always its top-level set, because the recursion starts inside a scan:
     /// every later scan finds the table active and reads it. Sets over the rank limit scan with
     /// `Pool::partition`.
-    fn ensure_table(&mut self, set: &[u32], allowed: &Allowed) {
-        if !self.table.active && set.len() <= MAX_TABLE_COLUMNS {
-            self.pool.fill_table(&mut self.table, set, allowed);
+    fn ensure_table(&self, table: &mut PatternTable, set: &[u32], allowed: &Allowed) {
+        if !table.active && set.len() <= MAX_TABLE_COLUMNS {
+            self.pool.fill_table(table, set, allowed);
         }
     }
 
@@ -277,16 +278,16 @@ impl Endgame {
         clippy::expect_used,
         reason = "every member of the set is tried as a guess and none is skipped, so a non-empty set always yields one"
     )]
-    fn scan(&mut self, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
-        self.ensure_table(set, allowed);
-        let mut heap = BinaryHeap::from(self.floors(set, allowed, mass));
+    fn scan(&self, table: &mut PatternTable, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
+        self.ensure_table(table, set, allowed);
+        let mut heap = BinaryHeap::from(self.floors(table, set, allowed, mass));
         let mut best: Option<Solved> = None;
-        while let Some(Reverse(Ranked(floor, outside, g))) = heap.pop() {
+        while let Some(Reverse(Ranked(floor, _, g))) = heap.pop() {
             // the slack keeps a bound that rounds a hair high from hiding a true tie or win
             if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
                 break;
             }
-            self.try_guess(set, allowed, g, !outside, mass, &mut best);
+            self.try_guess(table, set, allowed, g, mass, &mut best);
         }
         best.expect("a non-empty set has a candidate guess")
     }
@@ -321,16 +322,16 @@ impl Endgame {
     /// so needs no memo. The pass is not the whole answer when `outside_cannot_win` fails: an
     /// outside guess that separates all three costs `2 * mass`, which only an (almost) exact tie
     /// among the weights leaves a candidate unable to beat.
-    fn triple(&self, set: &[u32], mass: f64) -> Solved {
+    fn triple(&self, table: &PatternTable, set: &[u32], mass: f64) -> Solved {
         let win = self.pool.win_ordinal();
         let mut keyed = Vec::with_capacity(set.len());
         let mut best = Solved {
             cost: f64::INFINITY,
             guess: set[0],
         };
-        let cols = self.columns(set);
+        let cols = Self::columns(table, set);
         for &guess in set {
-            self.partition(cols.as_deref(), set, guess, &mut keyed);
+            self.partition(table, cols.as_deref(), set, guess, &mut keyed);
             let mut cost = mass;
             for group in keyed.chunk_by(|a, b| a.0 == b.0) {
                 if group[0].0 == win {
@@ -354,19 +355,25 @@ impl Endgame {
     /// The single pass with the whole order sorted up front, which the heap-ordered `scan` must
     /// match bit for bit.
     #[cfg(test)]
-    fn scan_all(&mut self, set: &[u32], allowed: &Allowed, mass: f64) -> Solved {
+    fn scan_all(
+        &self,
+        table: &mut PatternTable,
+        set: &[u32],
+        allowed: &Allowed,
+        mass: f64,
+    ) -> Solved {
         let mut order: Vec<Ranked> = self
-            .floors(set, allowed, mass)
+            .floors(table, set, allowed, mass)
             .into_iter()
             .map(|Reverse(r)| r)
             .collect();
         order.sort();
         let mut best: Option<Solved> = None;
-        for Ranked(floor, outside, g) in order {
+        for Ranked(floor, _, g) in order {
             if best.is_some_and(|b| floor > b.cost * (1.0 + SLACK)) {
                 break;
             }
-            self.try_guess(set, allowed, g, !outside, mass, &mut best);
+            self.try_guess(table, set, allowed, g, mass, &mut best);
         }
         best.expect("a non-empty set has a candidate guess")
     }
@@ -383,20 +390,21 @@ impl Endgame {
 
     /// Scores `guess` against `set` and keeps it in `best` if cheaper, or equal and ranked ahead.
     fn try_guess(
-        &mut self,
+        &self,
+        table: &mut PatternTable,
         set: &[u32],
         allowed: &Allowed,
         guess: u32,
-        in_set: bool,
         mass: f64,
         best: &mut Option<Solved>,
     ) {
         let mut keyed = Vec::with_capacity(set.len());
-        let cols = self.columns(set);
-        self.partition(cols.as_deref(), set, guess, &mut keyed);
+        let cols = Self::columns(table, set);
+        self.partition(table, cols.as_deref(), set, guess, &mut keyed);
 
         let win = self.pool.win_ordinal();
         let growth = self.growth.unwrap_or(1.0);
+        let in_set = set.binary_search(&guess).is_ok();
         let mut cost = self.initial_cost(guess, in_set, mass);
         for group in keyed.chunk_by(|a, b| a.0 == b.0) {
             if group[0].0 == win {
@@ -406,7 +414,7 @@ impl Endgame {
             let child_allowed =
                 self.pool
                     .allowed_after(allowed, self.guess_pool, guess, group[0].0);
-            cost += self.solve_within(&child, &child_allowed).cost;
+            cost += self.solve_within(table, &child, &child_allowed).cost;
             // costs only grow from here, so this guess can no longer be as cheap
             if best.is_some_and(|b| cost * growth > b.cost) {
                 return;
