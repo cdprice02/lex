@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
-use crate::store::hex;
+use crate::header::hex;
 
 /// Domain tag hashed ahead of the key fields.
 const KEY_HASH_DOMAIN: &str = "lex-book-key-v1";

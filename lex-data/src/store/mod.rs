@@ -5,7 +5,6 @@ mod build;
 mod read;
 mod write;
 
-use std::fmt::Write as _;
 use std::path::PathBuf;
 
 use crate::data_dir::DataDir;
@@ -17,14 +16,6 @@ pub use write::{encode_entries, encode_records, write_records};
 
 /// Least summed count a word needs to enter a Corpus.
 pub const MIN_FREQUENCY: u64 = 1;
-
-/// `bytes` as lowercase hex.
-pub fn hex(bytes: &[u8]) -> String {
-    bytes.iter().fold(String::new(), |mut hex, b| {
-        let _ = write!(hex, "{b:02x}");
-        hex
-    })
-}
 
 /// Removes the cached ngrams file for `lang` at length `n` (Some) or the entire
 /// language ngrams directory (None), returning the path removed; nothing cached removes
@@ -244,7 +235,7 @@ mod tests {
         let (_tmp, dir, _path, bytes) = cache_bytes();
         assert_eq!(
             dir.ngrams_sha256(Language::English, 5).unwrap(),
-            super::hex(&Sha256::digest(&bytes[64..]))
+            crate::header::hex(&Sha256::digest(&bytes[64..]))
         );
     }
 

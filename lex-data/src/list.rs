@@ -5,8 +5,8 @@ use std::collections::HashSet;
 use sha2::{Digest, Sha256};
 
 use crate::error::LexDataError;
+use crate::header::hex;
 use crate::parse::normalize;
-use crate::store::hex;
 use crate::word::Word;
 
 /// An [`LexDataError::InvalidProfileList`] at `line` of `file`.

@@ -18,11 +18,12 @@ use sha2::{Digest, Sha256};
 
 use crate::data_dir::{DataDir, remove_if_present};
 use crate::error::LexDataError;
+use crate::header::hex;
 use crate::header::{HEADER_LEN, Header, Kind, record_size};
 use crate::language::Language;
 use crate::le::array_at;
 use crate::ngrams::SNAPSHOT;
-use crate::store::{encode_records, hex};
+use crate::store::encode_records;
 use crate::wiktionary;
 
 /// Name of the file, last written, that makes a set of totals complete.
