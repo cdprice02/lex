@@ -2,11 +2,16 @@
 
 use std::io::{BufRead, Write};
 
-use lex_core::{Correctness, Guess, Guesser, WordCorrectness};
+use std::collections::HashSet;
+
+use lex_core::{
+    Correctness, Explanation, Guess, Guesser, ScoredGuess, WordCorrectness, answer_prior,
+};
 use lex_data::Word;
 
 use crate::books::{self, BookMode};
 use crate::config::Targets;
+use crate::grading::{Grading, Worth, grading_line};
 use crate::lists::Source;
 use crate::progress;
 use crate::style;
@@ -29,6 +34,13 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
     let data_dir = args.common.data();
     let (lists, source) = Source::load::<N>(&config, &data_dir)?;
     let guess_pool = lists.pool.clone();
+    let mut survivors = args.details.then(|| {
+        let answers: HashSet<Word<N>> = lists.answers.iter().copied().collect();
+        answer_prior(&lists.pool, config.strategy.temperature)
+            .into_iter()
+            .filter(|(word, _)| answers.contains(word))
+            .collect::<Vec<_>>()
+    });
     let mut guesser = books::guesser(
         &config,
         &data_dir,
@@ -55,7 +67,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         let num_candidates = guesser.num_candidates();
         if num_candidates == 0 {
             println!(
-                "No candidates remain — a feedback entry may be inconsistent, or the target \
+                "No candidates remain. A feedback entry may be inconsistent, or the target \
                  is not in the corpus."
             );
             return Ok(());
@@ -66,8 +78,8 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         } else {
             ("s", "")
         };
-        println!("\nTurn {turn} — {num_candidates} candidate{noun_suffix} remain{verb_suffix}");
-        let top = show_suggestions(&guesser, args.suggestions.max(1))?;
+        println!("\nTurn {turn}: {num_candidates} candidate{noun_suffix} remain{verb_suffix}");
+        let (top, pick) = show_suggestions(&guesser, args.suggestions.max(1), args.details)?;
 
         let Some(word) = prompt_word::<N>(&mut lines, top, |w| {
             source.check_guess(&guess_pool, w)?;
@@ -81,32 +93,101 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         };
         anstream::println!("  {word} -> {}", style::tiles(&feedback, args.symbols));
 
+        let graded = pick.and_then(|pick| {
+            let played = guesser.score(word)?;
+            Some((pick, played))
+        });
+        let line = |left: Option<usize>, realised_bits: Option<f64>| {
+            graded.as_ref().map(|(pick, played)| {
+                grading_line(
+                    &Grading {
+                        matched: pick.word == word,
+                        played: worth(played),
+                        pick: worth(pick),
+                        left,
+                        realised_bits,
+                    },
+                    args.details,
+                )
+            })
+        };
+
         if feedback.is_correct() {
+            if let Some(line) = line(None, None) {
+                println!("{line}");
+            }
             println!("Solved in {turn} turn{}!", if turn == 1 { "" } else { "s" });
             return Ok(());
         }
+        let realised_bits = survivors
+            .as_mut()
+            .and_then(|set| narrow(set, word, feedback));
         guesser.push_guess(Guess::new(word, feedback));
+        if let Some(line) = line(Some(guesser.num_candidates()), realised_bits) {
+            println!("{line}");
+        }
         turn += 1;
     }
 }
 
+/// The grading numbers of a scored guess.
+const fn worth<const N: usize>(s: &ScoredGuess<N>) -> Worth {
+    Worth {
+        remaining: s.expected_remaining,
+        bits: s.expected_bits,
+        cost: s.guess_cost,
+    }
+}
+
+/// Keeps the answers that earn `feedback` for `word` and returns the bits it gained, the
+/// negative log of their share of the prior; `None` when none does.
+fn narrow<const N: usize>(
+    survivors: &mut Vec<(Word<N>, f64)>,
+    word: Word<N>,
+    feedback: WordCorrectness<N>,
+) -> Option<f64> {
+    let total: f64 = survivors.iter().map(|&(_, w)| w).sum();
+    survivors.retain(|&(answer, _)| WordCorrectness::correct(answer, word) == feedback);
+    let kept: f64 = survivors.iter().map(|&(_, w)| w).sum();
+    (kept > 0.0).then(|| -(kept / total).log2())
+}
+
 /// Prints the guess `suggest` plays and, while the guesser explains, the technique that chose it
-/// and up to `shown` of the guesses it weighed; returns the guess.
-fn show_suggestions<const N: usize>(guesser: &Guesser<N>, shown: usize) -> anyhow::Result<Word<N>> {
-    let Some(explanation) = guesser.explain() else {
+/// and up to `shown` of the guesses it weighed; returns the guess and the solver's scored pick.
+///
+/// The player view gives each guess's words left; `details` adds the bits and every Guess cost,
+/// and names the opening book.
+fn show_suggestions<const N: usize>(
+    guesser: &Guesser<N>,
+    shown: usize,
+    details: bool,
+) -> anyhow::Result<(Word<N>, Option<ScoredGuess<N>>)> {
+    let Some(Explanation {
+        guess,
+        technique,
+        from_book,
+        guesses,
+        ..
+    }) = guesser.explain()
+    else {
         let guess = guesser
             .suggest()
             .ok_or_else(|| anyhow::anyhow!("no valid guess"))?;
         println!("  {guess}");
-        return Ok(guess);
+        return Ok((guess, None));
     };
-    println!("  chosen by the {}", explanation.technique);
-    for s in explanation.guesses.iter().take(shown) {
-        let mut notes = vec![
-            format!("{:.3} bits", s.expected_bits),
-            format!("{:.1} words left", s.expected_remaining),
-        ];
-        if let Some(cost) = s.guess_cost {
+    if details && from_book {
+        println!("  chosen by the {technique} (from the opening book)");
+    } else {
+        println!("  chosen by the {technique}");
+    }
+    for s in guesses.iter().take(shown) {
+        let mut notes = Vec::new();
+        if details {
+            notes.push(format!("{:.3} bits", s.expected_bits));
+        }
+        notes.push(format!("{:.1} words left", s.expected_remaining));
+        if let (true, Some(cost)) = (details, s.guess_cost) {
             notes.push(format!("{cost:.2} guesses to finish"));
         }
         if !s.in_candidates {
@@ -114,7 +195,7 @@ fn show_suggestions<const N: usize>(guesser: &Guesser<N>, shown: usize) -> anyho
         }
         println!("  {}  ({})", s.word, notes.join(", "));
     }
-    Ok(explanation.guess)
+    Ok((guess, guesses.first().copied()))
 }
 
 /// Prompts for the word the user played. Empty input accepts `default`;
