@@ -146,6 +146,14 @@ _Avoid_: Score, cost
 The expected Candidate set size after a guess's feedback, under the Answer prior.
 _Avoid_: Expected size, leftover
 
+**Luck**:
+How the candidates a guess actually left compare with the Expected remaining it promised.
+_Avoid_: chance, fortune
+
+**Skill**:
+How a played guess compares with the solver's pick at the same position, by Guess cost where both have one, else by Expected remaining.
+_Avoid_: score, rating, accuracy
+
 **Pre-screen**:
 Narrowing the Guess pool at a position by a cheap approximate score before the surviving guesses are scored exactly.
 _Avoid_: Pruning, shortlist
