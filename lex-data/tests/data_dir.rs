@@ -9,35 +9,12 @@
     reason = "an integration test crate: its test names are its documentation"
 )]
 
-use std::fs;
-use std::io::Write;
-
 use lex_data::DataDir;
+use lex_data::testing::seed_corpus;
 use lex_data::{Language, Word, WordSet};
 
-/// Writes a cache file in the documented on-disk format: a 64-byte header (magic, version,
-/// word length, header length, record count, records SHA-256) followed by the records.
 fn seed_bin(dir: &DataDir, lang: Language, n: usize, entries: &[(&str, u64)]) {
-    use sha2::{Digest, Sha256};
-    let path = dir.ngrams_path(lang, n);
-    fs::create_dir_all(path.parent().unwrap()).unwrap();
-    let mut records = Vec::new();
-    for &(word, freq) in entries {
-        for ch in word.chars() {
-            records.extend_from_slice(&u32::from(ch).to_le_bytes());
-        }
-        records.extend_from_slice(&freq.to_le_bytes());
-    }
-    let mut header = [0u8; 64];
-    header[0..4].copy_from_slice(b"LEXC");
-    header[4..6].copy_from_slice(&1u16.to_le_bytes());
-    header[6..8].copy_from_slice(&u16::try_from(n).unwrap().to_le_bytes());
-    header[8..12].copy_from_slice(&64u32.to_le_bytes());
-    header[12..20].copy_from_slice(&u64::try_from(entries.len()).unwrap().to_le_bytes());
-    header[20..52].copy_from_slice(&Sha256::digest(&records));
-    let mut f = fs::File::create(path).unwrap();
-    f.write_all(&header).unwrap();
-    f.write_all(&records).unwrap();
+    seed_corpus(dir, lang, n, entries);
 }
 
 /// `count` distinct five-letter words, "crane" first, in frequency-descending order.

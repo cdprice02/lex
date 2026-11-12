@@ -9,6 +9,7 @@ use std::sync::Arc;
 use memmap2::{Mmap, MmapMut};
 
 use crate::error::LexDataError;
+use crate::header::record_size;
 use crate::le::array_at;
 
 /// A word of exactly `N` letters.
@@ -78,7 +79,7 @@ impl<const N: usize> RawRecord<'_, N> {
     /// Bytes of the stored frequency.
     pub(crate) const FREQ_BYTES: usize = std::mem::size_of::<u64>();
     /// Bytes of one record.
-    pub(crate) const SIZE: usize = Self::CHAR_BYTES * N + Self::FREQ_BYTES;
+    pub(crate) const SIZE: usize = record_size(N);
 
     /// The word with any invalid stored scalar replaced by U+FFFD, for records already validated
     /// at load.
@@ -122,6 +123,15 @@ fn record_at<const N: usize>(mmap: &[u8], off: u32) -> RawRecord<'_, N> {
     )]
     let start = off as usize;
     RawRecord::from(&mmap[start..start + RawRecord::<N>::SIZE])
+}
+
+/// Positions of `frequencies` in descending order of value; equal values keep their order.
+/// Sorting positions rather than `(Word<N>, u64)` pairs keeps the sort compiled once, not once
+/// per word length.
+fn descending_by(frequencies: &[u64]) -> Vec<usize> {
+    let mut order: Vec<usize> = (0..frequencies.len()).collect();
+    order.sort_by_key(|&i| std::cmp::Reverse(frequencies[i]));
+    order
 }
 
 /// Iterator over the active words in a [`WordSet`], reading lazily from the mmap backing store.
@@ -248,13 +258,18 @@ impl<const N: usize> WordSet<N> {
         clippy::expect_used,
         reason = "a failed anonymous mapping or a set beyond the u32 offsets is memory exhaustion, which aborts like a failed allocation"
     )]
-    pub fn from_pairs(mut pairs: Vec<(Word<N>, u64)>) -> Self {
-        pairs.sort_by_key(|&(_, f)| std::cmp::Reverse(f));
+    #[expect(
+        clippy::needless_pass_by_value,
+        reason = "the public signature predates the index sort and its callers build an owned Vec"
+    )]
+    pub fn from_pairs(pairs: Vec<(Word<N>, u64)>) -> Self {
+        let frequencies: Vec<u64> = pairs.iter().map(|&(_, f)| f).collect();
+        let order = descending_by(&frequencies);
         let record_size = RawRecord::<N>::SIZE;
         let total = pairs.len() * record_size;
         // map_anon(0) fails on many platforms; allocate at least 1 byte.
         let mut buf = MmapMut::map_anon(total.max(1)).expect("anonymous mmap allocation failed");
-        for (i, (word, freq)) in pairs.iter().enumerate() {
+        for (i, (word, freq)) in order.iter().map(|&p| &pairs[p]).enumerate() {
             let off = i * record_size;
             for (j, &ch) in word.iter().enumerate() {
                 let char_off = off + j * RawRecord::<N>::CHAR_BYTES;

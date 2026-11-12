@@ -95,9 +95,10 @@ fn mismatch(file: &str, expected: &str, actual: String) -> anyhow::Error {
 
 /// Downloads and merges one list's sources: each is checked against its own checksum and
 /// validated, then the merged form against the list's.
-fn fetch_list<const N: usize>(
+fn fetch_list(
     file: &str,
     spec: &ListSpec,
+    n: usize,
     alphabet: &HashSet<char>,
     get: Get<'_>,
 ) -> anyhow::Result<Canonical> {
@@ -110,7 +111,7 @@ fn fetch_list<const N: usize>(
         if own.sha256 != source.sha256 {
             return Err(mismatch(source.url, source.sha256, own.sha256));
         }
-        list::validate::<N>(source.url, &words, alphabet)?;
+        list::validate(source.url, &words, n, alphabet)?;
         for (i, w) in words.iter().enumerate() {
             if !seen.insert(w.clone()) {
                 return Err(list::complain(
@@ -141,16 +142,17 @@ fn write_atomic(dir: &Path, name: &str, text: &str) -> anyhow::Result<()> {
 
 /// Fetches both lists and stores them. `meta.json` goes last: it marks the directory complete,
 /// and parallel jobs that race here write identical list files.
-fn fetch_into<const N: usize>(
+fn fetch_into(
     dir: &Path,
     name: &str,
     spec: &ProfileSpec,
+    n: usize,
     alphabet: &HashSet<char>,
     get: Get<'_>,
 ) -> anyhow::Result<()> {
-    let answers = fetch_list::<N>(ANSWERS_FILE, &spec.answers, alphabet, get)
+    let answers = fetch_list(ANSWERS_FILE, &spec.answers, n, alphabet, get)
         .with_context(|| format!("fetching {name} answers"))?;
-    let guess_only = fetch_list::<N>(GUESS_ONLY_FILE, &spec.guess_only, alphabet, get)
+    let guess_only = fetch_list(GUESS_ONLY_FILE, &spec.guess_only, n, alphabet, get)
         .with_context(|| format!("fetching {name} guess-only words"))?;
     std::fs::create_dir_all(dir)?;
     write_atomic(dir, ANSWERS_FILE, &answers.text)?;
@@ -195,15 +197,17 @@ pub fn load<const N: usize>(
     let alphabet = corpus.alphabet();
     if !dir.join(META_FILE).exists() {
         log::warn!("Fetching Profile {name}...");
-        fetch_into::<N>(dir, name, spec, &alphabet, get)?;
+        fetch_into(dir, name, spec, N, &alphabet, get)?;
     }
 
     let answers_text = read_verified(dir, ANSWERS_FILE, spec.answers.sha256)?;
     let guess_text = read_verified(dir, GUESS_ONLY_FILE, spec.guess_only.sha256)?;
     let answer_words = list::parse(ANSWERS_FILE, &answers_text)?;
     let guess_words = list::parse(GUESS_ONLY_FILE, &guess_text)?;
-    let answers = list::validate::<N>(ANSWERS_FILE, &answer_words, &alphabet)?;
-    let guess_only = list::validate::<N>(GUESS_ONLY_FILE, &guess_words, &alphabet)?;
+    list::validate(ANSWERS_FILE, &answer_words, N, &alphabet)?;
+    list::validate(GUESS_ONLY_FILE, &guess_words, N, &alphabet)?;
+    let answers = list::to_words::<N>(&answer_words)?;
+    let guess_only = list::to_words::<N>(&guess_words)?;
 
     let answer_set: HashSet<&str> = answer_words.iter().map(String::as_str).collect();
     if let Some((i, w)) = guess_words
@@ -228,10 +232,14 @@ pub fn load<const N: usize>(
         .word_frequencies()
         .filter(|(w, _)| wanted.remove(w))
         .collect();
-    let mut floored: Vec<Word<N>> = wanted.into_iter().collect();
-    floored.sort_unstable_by_key(|w| **w);
+    // Sorted as strings: UTF-8 orders by scalar, as the letters do, and a `String` sort is
+    // compiled once rather than once per word length.
+    let mut floored: Vec<String> = wanted.into_iter().map(|w| w.to_string()).collect();
+    floored.sort_unstable();
     let floored_count = floored.len();
-    pairs.extend(floored.into_iter().map(|w| (w, floor)));
+    for word in &floored {
+        pairs.push((Word::try_from(word.as_str())?, floor));
+    }
 
     let pool = WordSet::from_pairs(pairs);
     let stats = ProfileStats {

@@ -11,22 +11,22 @@ use sha2::{Digest, Sha256};
 
 use crate::data_dir::DataDir;
 use crate::error::LexDataError;
-use crate::header::Header;
+use crate::header::{Header, record_size};
 use crate::language::Language;
 use crate::ngrams;
 use crate::totals;
 use crate::wiktionary;
-use crate::word::{RawRecord, WordSet};
+use crate::word::WordSet;
 use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 
 /// Least summed count a word needs to enter a Corpus.
 pub const MIN_FREQUENCY: u64 = 1;
 
-/// Builds the ngrams cache for `lang` at word length `N` if it does not already exist.
+/// Builds the ngrams cache for `lang` at word length `n` if it does not already exist.
 /// Ensures the Wiktionary dict is present first, then downloads all ngrams shards keeping only
 /// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
-pub fn build_if_missing<const N: usize>(dir: &DataDir, lang: Language) -> anyhow::Result<()> {
-    if !dir.ngrams_path(lang, N).exists() {
+pub fn build_if_missing(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
+    if !dir.ngrams_path(lang, n).exists() {
         build_all(dir, lang, &|_, _| {})?;
     }
     Ok(())
@@ -143,7 +143,39 @@ pub fn read<const N: usize>(
     lang: Language,
     limit: Option<usize>,
 ) -> anyhow::Result<WordSet<N>> {
-    let path = dir.ngrams_path(lang, N);
+    let Checked {
+        mmap,
+        path,
+        records_start,
+        record_count,
+    } = open_checked(dir, lang, N)?;
+    Ok(WordSet::from_cache(
+        mmap,
+        &path,
+        records_start,
+        record_count,
+        limit,
+    )?)
+}
+
+/// A Corpus file that passed its header, length and checksum checks, mapped and ready for the
+/// per-record validation.
+struct Checked {
+    /// The whole file.
+    mmap: Mmap,
+    /// Where it was read from, for error messages.
+    path: PathBuf,
+    /// Offset of the first record.
+    records_start: usize,
+    /// Number of records.
+    record_count: usize,
+}
+
+/// Maps the Corpus of `lang` at length `n` and checks its header, file length and records
+/// checksum. A run-time length keeps this compiled once, not once per word length; only the
+/// per-record validation in [`WordSet::from_cache`] depends on the length at compile time.
+fn open_checked(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<Checked> {
+    let path = dir.ngrams_path(lang, n);
     let f = std::fs::File::open(&path)
         .with_context(|| format!("opening ngrams file: {}", path.display()))?;
     // SAFETY: the cache is rewritten only by `populate`, before any reader maps it, and nothing
@@ -155,15 +187,15 @@ pub fn read<const N: usize>(
         path: path.clone(),
         reason,
     };
-    if usize::from(header.word_len) != N {
+    if usize::from(header.word_len) != n {
         return Err(corrupt(format!(
-            "header says word length {}, expected {N}",
+            "header says word length {}, expected {n}",
             header.word_len
         ))
         .into());
     }
     let start = header.records_offset;
-    let size = <RawRecord<'_, N>>::SIZE;
+    let size = record_size(n);
     let count = header.record_count;
     let expected_len = count.checked_mul(size).and_then(|b| b.checked_add(start));
     if expected_len != Some(mmap.len()) {
@@ -177,7 +209,12 @@ pub fn read<const N: usize>(
     if <[u8; 32]>::from(Sha256::digest(&mmap[start..])) != header.checksum {
         return Err(corrupt("records checksum mismatch".to_string()).into());
     }
-    Ok(WordSet::from_cache(mmap, &path, start, count, limit)?)
+    Ok(Checked {
+        mmap,
+        path,
+        records_start: start,
+        record_count: count,
+    })
 }
 
 /// Hex SHA-256 of the records in the cached ngrams file, as recorded in its header.
@@ -236,11 +273,15 @@ fn populate_missing(
 
 /// The records region for the words of one length: most frequent first, equal counts in word
 /// order, so the same words and counts always encode to the same bytes.
-pub fn encode_records(n: usize, words: &HashMap<String, u64>) -> Vec<u8> {
+pub fn encode_records(words: &HashMap<String, u64>) -> Vec<u8> {
     let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
     entries.sort_unstable_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)));
-    let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
-    let mut records = Vec::with_capacity(entries.len() * record_size);
+    encode_entries(entries)
+}
+
+/// The records region for `entries` in the order given.
+pub fn encode_entries<'a>(entries: impl IntoIterator<Item = (&'a str, u64)>) -> Vec<u8> {
+    let mut records = Vec::new();
     for (word, freq) in entries {
         for ch in word.chars() {
             records.extend_from_slice(&u32::from(ch).to_le_bytes());
@@ -248,6 +289,23 @@ pub fn encode_records(n: usize, words: &HashMap<String, u64>) -> Vec<u8> {
         records.extend_from_slice(&freq.to_le_bytes());
     }
     records
+}
+
+/// Writes the Corpus file of `lang` at length `n` from an encoded records region.
+pub fn write_records(
+    dir: &DataDir,
+    lang: Language,
+    n: usize,
+    records: &[u8],
+) -> anyhow::Result<()> {
+    let path = dir.ngrams_path(lang, n);
+    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
+    let header = Header::for_records(n, record_size(n), records)?;
+    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
+    writer.write_all(&header.encode()?)?;
+    writer.write_all(records)?;
+    writer.flush()?;
+    Ok(())
 }
 
 /// Writes the Cache for `lang` at length `n`, most frequent word first, equal counts in word
@@ -258,16 +316,7 @@ fn write_bucket(
     n: usize,
     words: &HashMap<String, u64>,
 ) -> anyhow::Result<()> {
-    let path = dir.ngrams_path(lang, n);
-    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
-    let records = encode_records(n, words);
-    let record_size = n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>();
-    let header = Header::for_records(n, record_size, &records)?;
-    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
-    writer.write_all(&header.encode()?)?;
-    writer.write_all(&records)?;
-    writer.flush()?;
-    Ok(())
+    write_records(dir, lang, n, &encode_records(words))
 }
 
 #[cfg(test)]
@@ -619,10 +668,10 @@ mod tests {
         let forward: HashMap<String, u64> = words.iter().map(|w| (w.clone(), 7)).collect();
         let backward: HashMap<String, u64> = words.iter().rev().map(|w| (w.clone(), 7)).collect();
         assert_eq!(
-            super::encode_records(5, &forward),
-            super::encode_records(5, &backward)
+            super::encode_records(&forward),
+            super::encode_records(&backward)
         );
-        let records = super::encode_records(5, &forward);
+        let records = super::encode_records(&forward);
         let first: Vec<u8> = records[..20].to_vec();
         assert_eq!(
             first[..4],

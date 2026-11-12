@@ -24,6 +24,12 @@ use sha2::{Digest, Sha256};
 
 use crate::error::LexDataError;
 
+/// Size in bytes of one record of a file of word length `n`: `n` letters as `u32` scalars, then
+/// a `u64` frequency.
+pub const fn record_size(n: usize) -> usize {
+    n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>()
+}
+
 /// File magic identifying a Corpus Cache.
 pub const MAGIC: [u8; 4] = *b"LEXC";
 /// File magic identifying an Ngrams totals file, which has the Corpus layout otherwise.
