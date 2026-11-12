@@ -8,12 +8,9 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
-mod common;
-
 use std::cell::{Cell, RefCell};
 
 use clap::Parser;
-use common::{seed_dict, seed_supported};
 use lex_cli::books::{self, BookMode, Status};
 use lex_cli::cli::{BookArgs, BookCommand, Cli, Command, CorpusArgs, CorpusCommand};
 use lex_cli::config::{Game, RunConfig, Targets};
@@ -22,6 +19,7 @@ use lex_cli::progress::Observer;
 use lex_cli::report::Report;
 use lex_cli::simulate::{run, run_with};
 use lex_core::Strategy;
+use lex_data::testing::{seed_dict, seed_supported};
 use lex_data::{DataDir, Language};
 
 const WORDS: [(&str, u64); 8] = [

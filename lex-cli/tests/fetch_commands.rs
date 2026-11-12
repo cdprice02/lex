@@ -7,20 +7,16 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
-mod common;
-mod totals_common;
-
 use std::cell::RefCell;
 use std::path::Path;
 
 use clap::Parser;
 use clap::error::ErrorKind;
-use common::{seed_dict, seed_supported};
 use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
 use lex_cli::fetch::{Network, Online, Sinks, corpus_with, dict_with, profile_with};
+use lex_data::testing::{seed_dict, seed_supported, seed_totals};
 use lex_data::{DataDir, Language, Profile};
 use strum::VariantArray as _;
-use totals_common::seed_totals;
 
 /// Records what was downloaded and writes stand-in files in place of the network.
 #[derive(Default)]

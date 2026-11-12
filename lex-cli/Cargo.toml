@@ -35,6 +35,7 @@ time = { version = "0.3.55", features = ["formatting"] }
 
 [dev-dependencies]
 insta = { version = "1.49", features = ["json"] }
+lex-data = { path = "../lex-data", features = ["test-support"] }
 libtest-mimic = "0.8"
 sha2 = "0.11.1"
 tempfile = "3"
