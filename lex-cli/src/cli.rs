@@ -37,6 +37,10 @@ pub struct Cli {
     /// Parallel shard downloads; default measured, or --threads when given
     #[arg(long, value_name = "N", global = true)]
     pub download_threads: Option<NonZeroUsize>,
+    /// Make no network request: use cached data, build what can be computed locally, and fail
+    /// naming the fetch command for anything missing
+    #[arg(long, global = true)]
+    pub offline: bool,
     /// Whether `--threads` was given on the command line rather than defaulted, set by
     /// [`Cli::parse_args`].
     #[arg(skip)]
@@ -314,11 +318,22 @@ pub struct DictFetchArgs {
     #[arg(long)]
     pub all: bool,
     /// Fetch again even when cached: clears the Dictionary, the Corpus caches built from it and their opening books first, then takes KAIKKI's current extract, which can change the Corpus
-    #[arg(long)]
+    #[arg(long, conflicts_with = "offline")]
     pub force: bool,
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
+    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    #[arg(skip)]
+    pub offline: bool,
+}
+
+impl DictFetchArgs {
+    /// The data directory, offline when the user asked for that.
+    #[must_use]
+    pub fn dir(&self) -> lex_data::DataDir {
+        lex_data::DataDir::new(&self.data.data_dir).offline(self.offline)
+    }
 }
 
 /// Arguments of `lex dict clear`. One Dictionary serves every word length, so there is no `-l`.
@@ -394,7 +409,7 @@ pub struct CorpusBuildArgs {
     #[arg(long)]
     pub all: bool,
     /// Build again even when cached: clears the Corpus caches and their opening books, then rebuilds from the cached Dictionary, and from the cached Ngrams totals when there are any (no download)
-    #[arg(long)]
+    #[arg(long, conflicts_with = "offline")]
     pub force: bool,
     /// Where the cache lives.
     #[command(flatten)]
@@ -402,13 +417,18 @@ pub struct CorpusBuildArgs {
     /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
+    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    #[arg(skip)]
+    pub offline: bool,
 }
 
 impl CorpusBuildArgs {
     /// The data directory, set to download as many shards at once as the user asked for.
     #[must_use]
     pub fn dir(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data.data_dir).with_download_workers(self.download_workers)
+        lex_data::DataDir::new(&self.data.data_dir)
+            .with_download_workers(self.download_workers)
+            .offline(self.offline)
     }
 }
 
@@ -488,7 +508,7 @@ pub struct ProfileFetchArgs {
     #[arg(long)]
     pub all: bool,
     /// Fetch again even when fetched: clears the Profile's lists and opening books first, then re-verifies the checksums
-    #[arg(long)]
+    #[arg(long, conflicts_with = "offline")]
     pub force: bool,
     /// Where the cache lives.
     #[command(flatten)]
@@ -496,13 +516,18 @@ pub struct ProfileFetchArgs {
     /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
+    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    #[arg(skip)]
+    pub offline: bool,
 }
 
 impl ProfileFetchArgs {
     /// The data directory, set to download as many shards at once as the user asked for.
     #[must_use]
     pub fn dir(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data.data_dir).with_download_workers(self.download_workers)
+        lex_data::DataDir::new(&self.data.data_dir)
+            .with_download_workers(self.download_workers)
+            .offline(self.offline)
     }
 }
 
@@ -623,13 +648,18 @@ pub struct CommonArgs {
     /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
+    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    #[arg(skip)]
+    pub offline: bool,
 }
 
 impl CommonArgs {
     /// The data directory, set to download as many shards at once as the user asked for.
     #[must_use]
     pub fn data(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data_dir).with_download_workers(self.download_workers)
+        lex_data::DataDir::new(&self.data_dir)
+            .with_download_workers(self.download_workers)
+            .offline(self.offline)
     }
 
     /// The word length to monomorphize over: the profile's, else `-l` (clap requires one).
