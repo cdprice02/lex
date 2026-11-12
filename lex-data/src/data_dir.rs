@@ -300,9 +300,7 @@ impl DataDir {
     /// Path to the cached Wiktionary word list for `lang`.
     #[must_use]
     pub fn dict_path(&self, lang: Language) -> PathBuf {
-        self.path
-            .join("dicts")
-            .join(format!("{}.txt", lang.lang_code()))
+        wiktionary::dict_txt_path(&self.path, lang)
     }
 }
 

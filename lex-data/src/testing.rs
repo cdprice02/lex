@@ -73,7 +73,7 @@ pub fn seed_supported(dir: &DataDir, lang: Language, n: usize, head: &[(&str, u6
 ///
 /// If the files cannot be written.
 pub fn seed_dict(dir: &DataDir, lang: Language) {
-    let path = wiktionary::dict_txt_path(dir.as_ref(), lang);
+    let path = dir.dict_path(lang);
     std::fs::create_dir_all(path.parent().expect("a Dictionary path has a parent"))
         .expect("creating the dicts directory");
     std::fs::write(&path, "").expect("writing the word list");
