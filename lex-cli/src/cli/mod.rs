@@ -24,7 +24,7 @@ pub use cache::{
     CorpusArgs, CorpusBuildArgs, CorpusClearArgs, CorpusCommand, CorpusListArgs, CorpusShowArgs,
     DataDirArg, DictArgs, DictClearArgs, DictCommand, DictFetchArgs, DictListArgs, DictShowArgs,
     ProfileArgs, ProfileClearArgs, ProfileCommand, ProfileFetchArgs, ProfileListArgs,
-    ProfileShowArgs,
+    ProfileShowArgs, languages,
 };
 pub use play::{AssistArgs, CommonArgs, CompareArgs, SimulateArgs};
 

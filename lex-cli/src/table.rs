@@ -56,6 +56,16 @@ pub fn fetch_date(timestamp: &str) -> String {
     timestamp.split('T').next().unwrap_or(timestamp).to_owned()
 }
 
+/// `yes`, or `no` in the failure style on a terminal.
+#[must_use]
+pub fn yes_no(value: bool, terminal: bool) -> String {
+    if value {
+        "yes".to_owned()
+    } else {
+        flag("no", terminal)
+    }
+}
+
 /// A byte size: MiB with one decimal on a terminal, bytes when piped.
 #[must_use]
 pub fn size(bytes: u64, terminal: bool) -> String {

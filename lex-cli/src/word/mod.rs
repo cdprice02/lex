@@ -14,7 +14,7 @@ mod tests;
 
 use std::io::IsTerminal as _;
 
-use lex_data::{DataDir, MAX_WORD_LENGTH, MIN_WORD_LENGTH, Profile};
+use lex_data::{MAX_WORD_LENGTH, MIN_WORD_LENGTH, Profile};
 
 use crate::cli::WordArgs;
 
@@ -139,7 +139,7 @@ impl Facts {
 ///
 /// If a cached file cannot be read.
 pub fn run(args: &WordArgs) -> anyhow::Result<()> {
-    let data = DataDir::new(&args.data.data_dir);
+    let data = args.data.dir();
     let facts = look_up(&data, args.lang, &args.words)?;
     let terminal = std::io::stdout().is_terminal();
     anstream::print!("{}", render(&facts, args.lang, terminal));

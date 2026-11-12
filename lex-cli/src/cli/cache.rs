@@ -6,6 +6,7 @@ use std::path::PathBuf;
 
 use clap::Subcommand;
 use lex_data::{Language, Profile};
+use strum::VariantArray as _;
 
 use super::play::parse_word_length;
 
@@ -15,6 +16,20 @@ pub struct DataDirArg {
     /// Directory containing cached word-frequency files
     #[arg(long, default_value = "data")]
     pub data_dir: PathBuf,
+}
+
+/// The languages `--lang` names, or every language with `--all`.
+#[must_use]
+pub fn languages(lang: Option<Language>) -> Vec<Language> {
+    lang.map_or_else(|| Language::VARIANTS.to_vec(), |lang| vec![lang])
+}
+
+impl DataDirArg {
+    /// The data directory.
+    #[must_use]
+    pub fn dir(&self) -> lex_data::DataDir {
+        lex_data::DataDir::new(&self.data_dir)
+    }
 }
 
 /// Arguments of `lex dict`.
@@ -84,7 +99,7 @@ impl DictFetchArgs {
     /// The data directory, offline when the user asked for that.
     #[must_use]
     pub fn dir(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data.data_dir).offline(self.offline)
+        self.data.dir().offline(self.offline)
     }
 }
 
@@ -178,7 +193,8 @@ impl CorpusBuildArgs {
     /// The data directory, set to download as many shards at once as the user asked for.
     #[must_use]
     pub fn dir(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data.data_dir)
+        self.data
+            .dir()
             .with_download_workers(self.download_workers)
             .offline(self.offline)
     }
@@ -277,7 +293,8 @@ impl ProfileFetchArgs {
     /// The data directory, set to download as many shards at once as the user asked for.
     #[must_use]
     pub fn dir(&self) -> lex_data::DataDir {
-        lex_data::DataDir::new(&self.data.data_dir)
+        self.data
+            .dir()
             .with_download_workers(self.download_workers)
             .offline(self.offline)
     }

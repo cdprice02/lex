@@ -3,7 +3,7 @@
 
 use std::io::IsTerminal as _;
 
-use lex_data::{DataDir, DictRecord, Language};
+use lex_data::{DictRecord, Language};
 
 use crate::cli::{DictListArgs, DictShowArgs};
 use crate::table::{fetch_date, flag, render_rows, row, size};
@@ -17,7 +17,7 @@ const UNKNOWN: &str = "unknown";
 ///
 /// If a cached file cannot be read or parsed.
 pub fn list(args: &DictListArgs) -> anyhow::Result<()> {
-    let mut records = DataDir::new(&args.data.data_dir).dicts()?;
+    let mut records = args.data.dir().dicts()?;
     records.retain(|r| args.lang.is_none_or(|lang| r.language == lang));
     print_rendered(&render_list(&records, std::io::stdout().is_terminal()));
     Ok(())
@@ -29,7 +29,9 @@ pub fn list(args: &DictListArgs) -> anyhow::Result<()> {
 ///
 /// If the Dictionary is not cached, or a cached file cannot be read or parsed.
 pub fn show(args: &DictShowArgs) -> anyhow::Result<()> {
-    let record = DataDir::new(&args.data.data_dir)
+    let record = args
+        .data
+        .dir()
         .dict(args.lang)?
         .ok_or_else(|| not_cached(args.lang))?;
     print_rendered(&render_show(&record, std::io::stdout().is_terminal()));
@@ -149,6 +151,7 @@ fn lengths(lengths: &[usize]) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use lex_data::DataDir;
 
     /// A temp data dir with `files` written under it.
     fn dir_with(files: &[(&str, &str)]) -> (tempfile::TempDir, DataDir) {

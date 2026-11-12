@@ -5,7 +5,7 @@ use lex_data::{Language, MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
 use super::{Corpus, Dictionary, Facts, ProfileFact, ProfileStatus};
 use crate::corpora::not_cached_hint as corpus_hint;
 use crate::dicts::not_cached_hint as dict_hint;
-use crate::table::{flag, render_rows, row};
+use crate::table::{flag, render_rows, row, yes_no};
 
 /// The label every Prior carries: it is the one the default Strategy derives.
 const STRATEGY_LABEL: &str = "(default Strategy)";
@@ -187,15 +187,6 @@ pub fn render_steps(facts: &Facts, lang: Language, terminal: bool) -> String {
     }
     rows.push(row("verdict", verdict(facts, lang), ""));
     render_rows(&["step", "result", "note"], rows, terminal)
-}
-
-/// `yes`, or `no` in the failure style.
-fn yes_no(value: bool, terminal: bool) -> String {
-    if value {
-        "yes".to_owned()
-    } else {
-        flag("no", terminal)
-    }
 }
 
 /// The length row: in range, and Supported when the Corpus says so.

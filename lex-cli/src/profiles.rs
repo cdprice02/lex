@@ -5,10 +5,10 @@
 
 use std::io::IsTerminal as _;
 
-use lex_data::{DataDir, Profile, ProfileListRecord, ProfileRecord};
+use lex_data::{Profile, ProfileListRecord, ProfileRecord};
 
 use crate::cli::{ProfileListArgs, ProfileShowArgs};
-use crate::table::{fetch_date, flag, render_rows, row};
+use crate::table::{fetch_date, flag, render_rows, row, yes_no};
 
 /// `lex profile list`: a row per fetched Profile, or "no Profiles fetched".
 ///
@@ -16,7 +16,7 @@ use crate::table::{fetch_date, flag, render_rows, row};
 ///
 /// If a fetched Profile's files cannot be read or parsed.
 pub fn list(args: &ProfileListArgs) -> anyhow::Result<()> {
-    let records = DataDir::new(&args.data.data_dir).profiles()?;
+    let records = args.data.dir().profiles()?;
     anstream::print!("{}", render_list(&records, std::io::stdout().is_terminal()));
     Ok(())
 }
@@ -27,7 +27,9 @@ pub fn list(args: &ProfileListArgs) -> anyhow::Result<()> {
 ///
 /// If the Profile is not fetched, or its files cannot be read or parsed.
 pub fn show(args: &ProfileShowArgs) -> anyhow::Result<()> {
-    let record = DataDir::new(&args.data.data_dir)
+    let record = args
+        .data
+        .dir()
         .fetched_profile(args.profile)?
         .ok_or_else(|| not_fetched(args.profile))?;
     anstream::print!("{}", render_show(&record, std::io::stdout().is_terminal()));
@@ -39,15 +41,6 @@ fn not_fetched(profile: Profile) -> anyhow::Error {
     anyhow::anyhow!(
         "Profile {profile} is not fetched; fetch it with `lex profile fetch --profile {profile}`"
     )
-}
-
-/// `yes` or `no`, `no` in the failure style on a terminal.
-fn yes_no(value: bool, terminal: bool) -> String {
-    if value {
-        "yes".to_owned()
-    } else {
-        flag("no", terminal)
-    }
 }
 
 /// The list as a table (`terminal`) or tab-separated lines.
@@ -150,6 +143,7 @@ pub fn render_show(record: &ProfileRecord, terminal: bool) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use lex_data::DataDir;
 
     /// A temp data dir with `files` written under it.
     fn dir_with(files: &[(&str, &str)]) -> (tempfile::TempDir, DataDir) {

@@ -6,8 +6,7 @@ use std::fmt::Write as _;
 use std::io::IsTerminal as _;
 
 use lex_data::{
-    CorpusRecord, CorpusStatus, DataDir, Language, MIN_SUPPORTED_WORDS, NGRAMS_SNAPSHOT,
-    TotalsRecord,
+    CorpusRecord, CorpusStatus, Language, MIN_SUPPORTED_WORDS, NGRAMS_SNAPSHOT, TotalsRecord,
 };
 use strum::VariantArray as _;
 
@@ -23,7 +22,7 @@ const ABSENT: &str = "-";
 ///
 /// If a cache file or Dictionary metadata cannot be read.
 pub fn list(args: &CorpusListArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     let mut records = dir.corpora()?;
     records.retain(|r| {
         args.lang.is_none_or(|lang| r.language == lang)
@@ -48,7 +47,7 @@ pub fn list(args: &CorpusListArgs) -> anyhow::Result<()> {
 ///
 /// If the Corpus is not cached, or a cache file cannot be read.
 pub fn show(args: &CorpusShowArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     let record = dir
         .corpus(args.lang, args.word_length)?
         .ok_or_else(|| not_cached(args.lang, args.word_length))?;
@@ -249,6 +248,7 @@ pub fn render_show(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use lex_data::DataDir;
 
     /// A temp data dir with `files` written under it.
     fn dir_with(files: &[(&str, Vec<u8>)]) -> (tempfile::TempDir, DataDir) {

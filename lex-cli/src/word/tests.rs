@@ -2,7 +2,7 @@ use super::lookup::{CorpusIndex, Lists, ProfileLists, corpus_fact};
 use super::render::{input_cell, render_steps};
 use super::*;
 use lex_core::{PriorShape, Strategy, answer_prior};
-use lex_data::{Language, ProfileWords, Word, WordSet};
+use lex_data::{DataDir, Language, ProfileWords, Word, WordSet};
 
 /// A temp data dir with `files` written under it.
 fn dir_with(files: &[(&str, &str)]) -> (tempfile::TempDir, DataDir) {

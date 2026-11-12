@@ -12,7 +12,7 @@ use std::io::{IsTerminal as _, Write};
 use lex_data::{DataDir, Language, Profile};
 use strum::VariantArray;
 
-use crate::cli::{CorpusBuildArgs, DictFetchArgs, ProfileFetchArgs};
+use crate::cli::{CorpusBuildArgs, DictFetchArgs, ProfileFetchArgs, languages};
 use crate::progress::Task;
 use crate::{corpora, dicts, profiles, table};
 
@@ -87,18 +87,24 @@ pub struct Sinks<'a> {
     pub terminal: bool,
 }
 
+impl Sinks<'_> {
+    /// Runs `f` over the process's stdout and stderr.
+    fn with_stdio<T>(f: impl FnOnce(&mut Sinks<'_>) -> T) -> T {
+        f(&mut Sinks {
+            out: &mut anstream::stdout(),
+            warn: &mut anstream::stderr(),
+            terminal: std::io::stdout().is_terminal(),
+        })
+    }
+}
+
 /// `lex dict fetch`.
 ///
 /// # Errors
 ///
 /// If a download or a cache file fails.
 pub fn dict(args: &DictFetchArgs) -> anyhow::Result<()> {
-    let mut sinks = Sinks {
-        out: &mut anstream::stdout(),
-        warn: &mut anstream::stderr(),
-        terminal: std::io::stdout().is_terminal(),
-    };
-    dict_with(args, &Online, &mut sinks)
+    Sinks::with_stdio(|sinks| dict_with(args, &Online, sinks))
 }
 
 /// `lex corpus build`.
@@ -107,12 +113,7 @@ pub fn dict(args: &DictFetchArgs) -> anyhow::Result<()> {
 ///
 /// If a download or a cache file fails.
 pub fn corpus(args: &CorpusBuildArgs) -> anyhow::Result<()> {
-    let mut sinks = Sinks {
-        out: &mut anstream::stdout(),
-        warn: &mut anstream::stderr(),
-        terminal: std::io::stdout().is_terminal(),
-    };
-    corpus_with(args, &Online, &mut sinks)
+    Sinks::with_stdio(|sinks| corpus_with(args, &Online, sinks))
 }
 
 /// `lex profile fetch`.
@@ -121,17 +122,7 @@ pub fn corpus(args: &CorpusBuildArgs) -> anyhow::Result<()> {
 ///
 /// If a download or a cache file fails, or a list does not verify.
 pub fn profile(args: &ProfileFetchArgs) -> anyhow::Result<()> {
-    let mut sinks = Sinks {
-        out: &mut anstream::stdout(),
-        warn: &mut anstream::stderr(),
-        terminal: std::io::stdout().is_terminal(),
-    };
-    profile_with(args, &Online, &mut sinks)
-}
-
-/// The languages `--lang` names, or every language with `--all`.
-fn languages(lang: Option<Language>) -> Vec<Language> {
-    lang.map_or_else(|| Language::VARIANTS.to_vec(), |lang| vec![lang])
+    Sinks::with_stdio(|sinks| profile_with(args, &Online, sinks))
 }
 
 /// Fails with the offline error unless downloads are allowed, before the Dictionary of `lang` is
