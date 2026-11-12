@@ -5,8 +5,8 @@ use std::collections::HashSet;
 use sha2::{Digest, Sha256};
 
 use crate::error::LexDataError;
+use crate::header::hex;
 use crate::parse::normalize;
-use crate::store::hex;
 use crate::word::Word;
 
 /// An [`LexDataError::InvalidProfileList`] at `line` of `file`.
@@ -43,40 +43,43 @@ pub fn parse(file: &str, text: &str) -> anyhow::Result<Vec<String>> {
         .collect()
 }
 
-/// Checks every word against length `N`, the Alphabet and uniqueness. Line numbers are positions
-/// in `words`, which is the file's line order.
-pub fn validate<const N: usize>(
+/// Checks every word against the length `n`, the Alphabet and uniqueness. Line numbers are
+/// positions in `words`, which is the file's line order. The length is a run-time value so this
+/// compiles once, not once per word length.
+pub fn validate(
     file: &str,
     words: &[String],
+    n: usize,
     alphabet: &HashSet<char>,
-) -> anyhow::Result<Vec<Word<N>>> {
+) -> anyhow::Result<()> {
     let mut seen = HashSet::with_capacity(words.len());
-    words
-        .iter()
-        .enumerate()
-        .map(|(i, w)| {
-            let line = i + 1;
-            let len = w.chars().count();
-            if len != N {
-                return Err(invalid(
-                    file,
-                    line,
-                    format!("{w:?} has {len} letters, expected {N}"),
-                ));
-            }
-            if let Some(c) = w.chars().find(|c| !alphabet.contains(c)) {
-                return Err(invalid(
-                    file,
-                    line,
-                    format!("{w:?} has {c:?}, which is not in the Corpus Alphabet"),
-                ));
-            }
-            if !seen.insert(w.as_str()) {
-                return Err(invalid(file, line, format!("{w:?} is a duplicate")));
-            }
-            Ok(Word::try_from(w.as_str())?)
-        })
-        .collect()
+    for (i, w) in words.iter().enumerate() {
+        let line = i + 1;
+        let len = w.chars().count();
+        if len != n {
+            return Err(invalid(
+                file,
+                line,
+                format!("{w:?} has {len} letters, expected {n}"),
+            ));
+        }
+        if let Some(c) = w.chars().find(|c| !alphabet.contains(c)) {
+            return Err(invalid(
+                file,
+                line,
+                format!("{w:?} has {c:?}, which is not in the Corpus Alphabet"),
+            ));
+        }
+        if !seen.insert(w.as_str()) {
+            return Err(invalid(file, line, format!("{w:?} is a duplicate")));
+        }
+    }
+    Ok(())
+}
+
+/// The validated `words` as `Word<N>`s.
+pub fn to_words<const N: usize>(words: &[String]) -> Result<Vec<Word<N>>, LexDataError> {
+    words.iter().map(|w| Word::try_from(w.as_str())).collect()
 }
 
 /// A line-numbered complaint for callers that find a violation across lists.
@@ -142,7 +145,7 @@ mod tests {
 
     #[test]
     fn validate_names_file_and_line_for_wrong_length() {
-        let e = validate::<5>("g.txt", &words(&["crane", "sla"]), &alphabet("cranesl"))
+        let e = validate("g.txt", &words(&["crane", "sla"]), 5, &alphabet("cranesl"))
             .unwrap_err()
             .to_string();
         assert!(
@@ -153,17 +156,23 @@ mod tests {
 
     #[test]
     fn validate_rejects_out_of_alphabet_character() {
-        let e = validate::<5>("g.txt", &words(&["crane", "qlate"]), &alphabet("cranesl"))
-            .unwrap_err()
-            .to_string();
+        let e = validate(
+            "g.txt",
+            &words(&["crane", "qlate"]),
+            5,
+            &alphabet("cranesl"),
+        )
+        .unwrap_err()
+        .to_string();
         assert!(e.contains("line 2") && e.contains("Alphabet"), "{e}");
     }
 
     #[test]
     fn validate_rejects_duplicates_at_the_second_occurrence() {
-        let e = validate::<5>(
+        let e = validate(
             "g.txt",
             &words(&["crane", "slate", "crane"]),
+            5,
             &alphabet("cranesltd"),
         )
         .unwrap_err()

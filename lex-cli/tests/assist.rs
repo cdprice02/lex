@@ -5,12 +5,10 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
-mod common;
-
 use std::io::Write;
 use std::process::{Command, Stdio};
 
-use common::{seed_dict, seed_supported};
+use lex_data::testing::{seed_dict, seed_supported};
 use lex_data::{DataDir, Language};
 
 /// Plays `script` (one input per line) into `lex assist` with `extra` flags and returns stdout.

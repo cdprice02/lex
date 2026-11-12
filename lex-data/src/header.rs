@@ -24,6 +24,12 @@ use sha2::{Digest, Sha256};
 
 use crate::error::LexDataError;
 
+/// Size in bytes of one record of a file of word length `n`: `n` letters as `u32` scalars, then
+/// a `u64` frequency.
+pub const fn record_size(n: usize) -> usize {
+    n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>()
+}
+
 /// File magic identifying a Corpus Cache.
 pub const MAGIC: [u8; 4] = *b"LEXC";
 /// File magic identifying an Ngrams totals file, which has the Corpus layout otherwise.
@@ -197,26 +203,13 @@ impl Header {
 
     /// Reads just the header of the file at `path`, which must be of `kind`.
     pub(crate) fn read_file_as(path: &Path, kind: Kind) -> anyhow::Result<Self> {
-        use std::io::Read;
-        let mut buf = Vec::with_capacity(HEADER_LEN);
-        std::fs::File::open(path)
-            .with_context(|| format!("opening ngrams file: {}", path.display()))?
-            .take(u64::try_from(HEADER_LEN)?)
-            .read_to_end(&mut buf)
-            .with_context(|| format!("reading ngrams header: {}", path.display()))?;
-        Ok(Self::parse_as(&buf, path, kind)?)
+        Ok(Self::parse_as(&read_prefix(path)?, path, kind)?)
     }
 
     /// How the file at `path` reads in its first `HEADER_LEN` bytes, classified without
     /// reading the records. A bad file is a classification; only an unopenable one errors.
     pub(crate) fn inspect(path: &Path) -> anyhow::Result<Inspected> {
-        use std::io::Read;
-        let mut buf = Vec::with_capacity(HEADER_LEN);
-        std::fs::File::open(path)
-            .with_context(|| format!("opening ngrams file: {}", path.display()))?
-            .take(u64::try_from(HEADER_LEN)?)
-            .read_to_end(&mut buf)
-            .with_context(|| format!("reading ngrams header: {}", path.display()))?;
+        let buf = read_prefix(path)?;
         if buf.len() < MAGIC.len() || buf[0..4] != MAGIC {
             return Ok(Inspected::Legacy);
         }
@@ -231,8 +224,29 @@ impl Header {
 
     /// The records checksum as lowercase hex: the Corpus checksum.
     pub(crate) fn checksum_hex(&self) -> String {
-        crate::store::hex(&self.checksum)
+        crate::header::hex(&self.checksum)
     }
+}
+
+/// `bytes` as lowercase hex.
+pub fn hex(bytes: &[u8]) -> String {
+    use std::fmt::Write as _;
+    bytes.iter().fold(String::new(), |mut hex, b| {
+        let _ = write!(hex, "{b:02x}");
+        hex
+    })
+}
+
+/// The first `HEADER_LEN` bytes of the file at `path`, or fewer when it is shorter.
+fn read_prefix(path: &Path) -> anyhow::Result<Vec<u8>> {
+    use std::io::Read;
+    let mut buf = Vec::with_capacity(HEADER_LEN);
+    std::fs::File::open(path)
+        .with_context(|| format!("opening ngrams file: {}", path.display()))?
+        .take(u64::try_from(HEADER_LEN)?)
+        .read_to_end(&mut buf)
+        .with_context(|| format!("reading ngrams header: {}", path.display()))?;
+    Ok(buf)
 }
 
 #[cfg(test)]

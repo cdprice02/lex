@@ -6,8 +6,6 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
-mod totals_common;
-
 use std::path::Path;
 
 use clap::Parser;
@@ -126,7 +124,7 @@ fn seeded_with_totals() -> tempfile::TempDir {
     let tmp = seeded(&["eng", "fre"]);
     let data = lex_data::DataDir::new(tmp.path());
     for lang in [lex_data::Language::English, lex_data::Language::French] {
-        totals_common::seed_totals(&data, lang, &[(5, &[("crane", 9)])]);
+        lex_data::testing::seed_totals(&data, lang, &[(5, &[("crane", 9)])]);
     }
     tmp
 }
