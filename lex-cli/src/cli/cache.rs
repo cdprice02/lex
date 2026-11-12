@@ -90,7 +90,7 @@ pub struct DictFetchArgs {
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
-    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    /// Whether downloads are forbidden, copied from [`super::Cli::offline`] by `main`.
     #[arg(skip)]
     pub offline: bool,
 }
@@ -181,10 +181,10 @@ pub struct CorpusBuildArgs {
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
-    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    /// Shard downloads at once, copied from [`super::Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
-    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    /// Whether downloads are forbidden, copied from [`super::Cli::offline`] by `main`.
     #[arg(skip)]
     pub offline: bool,
 }
@@ -281,10 +281,10 @@ pub struct ProfileFetchArgs {
     /// Where the cache lives.
     #[command(flatten)]
     pub data: DataDirArg,
-    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    /// Shard downloads at once, copied from [`super::Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
-    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    /// Whether downloads are forbidden, copied from [`super::Cli::offline`] by `main`.
     #[arg(skip)]
     pub offline: bool,
 }

@@ -82,10 +82,10 @@ pub struct CommonArgs {
         default_value_t = Strategy::DEFAULT.prior_shape
     )]
     pub prior_shape: PriorShape,
-    /// Shard downloads at once, copied from [`Cli::download_request`] by `main`.
+    /// Shard downloads at once, copied from [`super::Cli::download_request`] by `main`.
     #[arg(skip)]
     pub download_workers: Option<NonZeroUsize>,
-    /// Whether downloads are forbidden, copied from [`Cli::offline`] by `main`.
+    /// Whether downloads are forbidden, copied from [`super::Cli::offline`] by `main`.
     #[arg(skip)]
     pub offline: bool,
 }
