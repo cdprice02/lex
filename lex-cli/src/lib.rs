@@ -13,6 +13,7 @@ pub mod corpora;
 pub mod dicts;
 pub mod error;
 pub mod fetch;
+pub mod grading;
 pub mod lists;
 pub mod profiles;
 pub mod progress;

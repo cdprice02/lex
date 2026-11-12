@@ -1,0 +1,22 @@
+---
+source: lex-cli/tests/assist.rs
+expression: "assist(\"stare\\nxxxxx\\nplumb\\n22222\\n\", &[\"--details\"])"
+---
+Assisting a 5-letter game in english. Feedback formats: letters (g=green, y=yellow, x/b/./- = gray), digits (2=green, 1=yellow, 0=gray), or emoji.
+
+Turn 1: 200 candidates remain
+  chosen by the Rollout
+  crane  (2.098 bits, 78.7 words left, 5.84 guesses to finish)
+  plumb  (1.828 bits, 98.0 words left, 5.86 guesses to finish)
+  sound  (1.872 bits, 98.0 words left, 5.87 guesses to finish)
+  light  (1.980 bits, 87.8 words left, 5.87 guesses to finish)
+  zzaba  (1.789 bits, 89.4 words left, 6.01 guesses to finish)
+word played [crane]: feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩):   stare ->  x  x  x  x  x
+Luck: 1 word left (expected 105), 7.50 bits gained (expected 1.69)    Skill: 0.50 guesses behind lex's pick (6.34 guesses to finish against 5.84)
+
+Turn 2: 1 candidate remains
+  chosen by the Entropy
+  plumb  (0.000 bits, 1.0 words left)
+word played [plumb]: feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩):   plumb ->  g  g  g  g  g
+Skill: matched lex
+Solved in 2 turns!

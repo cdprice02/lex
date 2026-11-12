@@ -83,7 +83,7 @@ removes them, and clearing a corpus or a Profile removes its books too.
 | `--targets` | none | File of target words, one per line, to play instead of sampling |
 | `-o` / `--output` | none | Write the full JSON report here (`-` for stdout, which moves the summary to stderr) |
 
-`assist` also takes `-s` / `--suggestions` (default `5`): guesses shown per turn, each with its expected bits, Expected remaining and, where the solver computed one, Guess cost; `--no-explain` shows only the suggested guess.
+`assist` also takes `-s` / `--suggestions` (default `5`): guesses shown per turn, each with its words left (Expected remaining) and a note when it is not a possible answer. After each feedback entry it prints one grading line, for example `Luck: 12 words left (expected 38)    Skill: 0.21 guesses behind lex's pick`: Luck is the candidates the played guess actually left against what it expected to leave; Skill compares it with lex's pick at the same position (`matched lex`; by Guess cost, `behind` or `as good as`, where both have one; otherwise by Expected remaining with no verdict). On the winning turn only Skill is graded. `--details` shows the full numbers: bits, every Guess cost, whether the choice came from the opening book, and expected against realised bits in the grading line. `--no-explain` shows only the suggested guess, with no scores and no grading line.
 
 ## Cache commands
 
@@ -125,7 +125,7 @@ Every command also takes the display flags:
 | `--symbols` | `letters` | Feedback tiles shown as `letters` (g/y/x), `digits` (2/1/0) or `emoji`; assist input accepts all three regardless |
 | `--no-progress` | off | Show no progress: bars and spinners on a terminal, periodic lines elsewhere, and the opening-book build messages. The summary, errors and `RUST_LOG` logging stay |
 | `--threads` | available parallelism (1 if unknown) | Worker threads, at least 1. `main` builds one rayon pool of this size and runs the command inside it |
-| `--download-threads` | 4 (a placeholder until measured), or `--threads` when given | Parallel shard downloads, at least 1, capped at the language's shard count. Wins over `--threads`; only a `--threads` given on the command line counts |
+| `--download-threads` | 4 (measured: more adds no speed on a typical link), or `--threads` when given | Parallel shard downloads, at least 1, capped at the language's shard count. Wins over `--threads`; only a `--threads` given on the command line counts |
 
 ## Languages
 
