@@ -1,226 +1,22 @@
-//! Building, reading and clearing the on-disk Cache.
+//! The on-disk Corpus Cache: building ([`build`]), reading and validating ([`read`]) and
+//! encoding and writing ([`write`]) its files, plus the helpers they share.
 
-use std::collections::{HashMap, HashSet};
+mod build;
+mod read;
+mod write;
+
 use std::fmt::Write as _;
-use std::io::{BufWriter, Write};
 use std::path::PathBuf;
 
-use anyhow::Context;
-use memmap2::Mmap;
-use sha2::{Digest, Sha256};
-
 use crate::data_dir::DataDir;
-use crate::error::LexDataError;
-use crate::header::{Header, record_size};
 use crate::language::Language;
-use crate::ngrams;
-use crate::totals;
-use crate::wiktionary;
-use crate::word::WordSet;
-use crate::{MAX_WORD_LENGTH, MIN_SUPPORTED_WORDS, MIN_WORD_LENGTH};
+
+pub use build::{build_all, build_if_missing};
+pub use read::{corpus_checksum, ensure_supported, read};
+pub use write::{encode_entries, encode_records, write_records};
 
 /// Least summed count a word needs to enter a Corpus.
 pub const MIN_FREQUENCY: u64 = 1;
-
-/// Builds the ngrams cache for `lang` at word length `n` if it does not already exist.
-/// Ensures the Wiktionary dict is present first, then downloads all ngrams shards keeping only
-/// Wiktionary-valid words of supported lengths, and writes every length bucket to disk.
-pub fn build_if_missing(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
-    if !dir.ngrams_path(lang, n).exists() {
-        build_all(dir, lang, &|_, _| {})?;
-    }
-    Ok(())
-}
-
-/// Builds the Corpus of `lang` at every length, fetching the Dictionary first when it is absent.
-///
-/// With complete Ngrams totals cached the Corpus is filtered from them with no network, and only
-/// the lengths not already cached are written, so an existing Corpus file is never touched.
-/// Otherwise every shard is downloaded once, the totals are written, and the Corpus is filtered
-/// from the same totals and written at every length. `progress(done, total)` reports finished
-/// shards of a download.
-pub fn build_all(
-    dir: &DataDir,
-    lang: Language,
-    progress: &(dyn Fn(u32, u32) + Sync),
-) -> anyhow::Result<()> {
-    build_all_via(dir, lang, progress, &|progress| {
-        ngrams::fetch(lang, dir.download_workers(), progress)
-    })
-}
-
-/// The download of a language's Ngrams totals, taking the shard progress callback.
-pub type Download<'a> = dyn Fn(&(dyn Fn(u32, u32) + Sync)) -> anyhow::Result<totals::ByLength> + 'a;
-
-/// [`build_all`] with the download injected: `download` returns the Ngrams totals of `lang`.
-pub fn build_all_via(
-    dir: &DataDir,
-    lang: Language,
-    progress: &(dyn Fn(u32, u32) + Sync),
-    download: &Download<'_>,
-) -> anyhow::Result<()> {
-    if !dir.dict_path(lang).exists() {
-        dir.fetch_dict(lang)?;
-    }
-    let valid_words = wiktionary::load_valid_words(lang, dir.as_ref())?;
-    match totals::inspect(dir, lang) {
-        totals::Inspection::Complete(meta) => {
-            match totals::read_filtered(dir, lang, &meta, &valid_words) {
-                Ok(by_length) => {
-                    log::warn!("Building {lang} corpus from the cached Ngrams totals...");
-                    populate_missing(dir, lang, &by_length)?;
-                    log::info!("Cached {lang} corpus ({} length buckets)", by_length.len());
-                    return Ok(());
-                }
-                Err(e) => log::warn!(
-                    "the cached {lang} Ngrams totals are unusable ({e:#}); downloading them again"
-                ),
-            }
-        }
-        totals::Inspection::Incomplete(reason) => log::warn!(
-            "the cached {lang} Ngrams totals are incomplete ({reason}); downloading them again"
-        ),
-        totals::Inspection::Absent => {}
-    }
-    dir.require_online(
-        &format!("the complete {lang} Ngrams totals"),
-        &format!("lex corpus build --lang {lang}"),
-    )?;
-    log::warn!("Building {lang} corpus...");
-    let mut by_length = download(progress)?;
-    totals::write(dir, lang, &by_length)?;
-    filter_by_dictionary(&mut by_length, &valid_words);
-    let n_buckets = by_length.len();
-    populate(dir, lang, &by_length)?;
-    log::info!("Cached {lang} corpus ({n_buckets} length buckets)");
-    Ok(())
-}
-
-/// Keeps the words in `valid` and drops the lengths left empty, as the Corpus holds them.
-fn filter_by_dictionary(by_length: &mut totals::ByLength, valid: &HashSet<String>) {
-    for words in by_length.values_mut() {
-        words.retain(|word, &mut count| count >= MIN_FREQUENCY && valid.contains(word));
-    }
-    by_length.retain(|_, words| !words.is_empty());
-}
-
-/// Rejects a length whose cached Corpus holds fewer than `MIN_SUPPORTED_WORDS` words, naming
-/// the lengths of `lang` that do, read from the cache headers.
-pub fn ensure_supported(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<()> {
-    let count_at = |len: usize| -> Option<usize> {
-        let header = Header::read_file(&dir.ngrams_path(lang, len)).ok()?;
-        Some(header.record_count)
-    };
-    let count = match count_at(n) {
-        Some(count) => count,
-        // An unreadable header is reported by the load itself; a missing file holds no words.
-        None if dir.ngrams_path(lang, n).exists() => return Ok(()),
-        None => 0,
-    };
-    if count >= MIN_SUPPORTED_WORDS {
-        return Ok(());
-    }
-    let supported = (MIN_WORD_LENGTH..=MAX_WORD_LENGTH)
-        .filter(|&len| count_at(len).is_some_and(|c| c >= MIN_SUPPORTED_WORDS))
-        .collect();
-    Err(LexDataError::UnsupportedLength {
-        lang,
-        length: n,
-        count,
-        min: MIN_SUPPORTED_WORDS,
-        supported,
-    }
-    .into())
-}
-
-/// Reads the cached ngrams binary file for `lang` at word length `N` into a `WordSet`.
-///
-/// Checks the header, the file length it implies, the records checksum, and every record
-/// before returning; a failure names the file (and record index) and never falls back to a
-/// partial read.
-pub fn read<const N: usize>(
-    dir: &DataDir,
-    lang: Language,
-    limit: Option<usize>,
-) -> anyhow::Result<WordSet<N>> {
-    let Checked {
-        mmap,
-        path,
-        records_start,
-        record_count,
-    } = open_checked(dir, lang, N)?;
-    Ok(WordSet::from_cache(
-        mmap,
-        &path,
-        records_start,
-        record_count,
-        limit,
-    )?)
-}
-
-/// A Corpus file that passed its header, length and checksum checks, mapped and ready for the
-/// per-record validation.
-struct Checked {
-    /// The whole file.
-    mmap: Mmap,
-    /// Where it was read from, for error messages.
-    path: PathBuf,
-    /// Offset of the first record.
-    records_start: usize,
-    /// Number of records.
-    record_count: usize,
-}
-
-/// Maps the Corpus of `lang` at length `n` and checks its header, file length and records
-/// checksum. A run-time length keeps this compiled once, not once per word length; only the
-/// per-record validation in [`WordSet::from_cache`] depends on the length at compile time.
-fn open_checked(dir: &DataDir, lang: Language, n: usize) -> anyhow::Result<Checked> {
-    let path = dir.ngrams_path(lang, n);
-    let f = std::fs::File::open(&path)
-        .with_context(|| format!("opening ngrams file: {}", path.display()))?;
-    // SAFETY: the cache is rewritten only by `populate`, before any reader maps it, and nothing
-    // else truncates a mapped file; a concurrent truncation would be undefined behaviour.
-    let mmap = unsafe { Mmap::map(&f) }
-        .with_context(|| format!("mmapping ngrams file: {}", path.display()))?;
-    let header = Header::parse(&mmap, &path)?;
-    let corrupt = |reason: String| LexDataError::CorruptCache {
-        path: path.clone(),
-        reason,
-    };
-    if usize::from(header.word_len) != n {
-        return Err(corrupt(format!(
-            "header says word length {}, expected {n}",
-            header.word_len
-        ))
-        .into());
-    }
-    let start = header.records_offset;
-    let size = record_size(n);
-    let count = header.record_count;
-    let expected_len = count.checked_mul(size).and_then(|b| b.checked_add(start));
-    if expected_len != Some(mmap.len()) {
-        return Err(corrupt(format!(
-            "file is {} bytes, header implies {} records of {size} bytes after a {start}-byte header",
-            mmap.len(),
-            count
-        ))
-        .into());
-    }
-    if <[u8; 32]>::from(Sha256::digest(&mmap[start..])) != header.checksum {
-        return Err(corrupt("records checksum mismatch".to_string()).into());
-    }
-    Ok(Checked {
-        mmap,
-        path,
-        records_start: start,
-        record_count: count,
-    })
-}
-
-/// Hex SHA-256 of the records in the cached ngrams file, as recorded in its header.
-pub fn corpus_checksum(path: &std::path::Path) -> anyhow::Result<String> {
-    Ok(Header::read_file(path)?.checksum_hex())
-}
 
 /// `bytes` as lowercase hex.
 pub fn hex(bytes: &[u8]) -> String {
@@ -242,83 +38,6 @@ pub fn clear(dir: &DataDir, lang: Language, n: Option<usize>) -> anyhow::Result<
     }
 }
 
-/// Writes one Cache per length bucket of `by_length`.
-fn populate(
-    dir: &DataDir,
-    lang: Language,
-    by_length: &HashMap<usize, HashMap<String, u64>>,
-) -> anyhow::Result<()> {
-    for (&n, words) in by_length {
-        write_bucket(dir, lang, n, words)
-            .with_context(|| format!("writing ngrams for {lang} length {n}"))?;
-    }
-    Ok(())
-}
-
-/// Writes the Cache of each length of `by_length` that is not on disk, leaving the others as
-/// they are.
-fn populate_missing(
-    dir: &DataDir,
-    lang: Language,
-    by_length: &totals::ByLength,
-) -> anyhow::Result<()> {
-    for (&n, words) in by_length {
-        if !dir.ngrams_path(lang, n).exists() {
-            write_bucket(dir, lang, n, words)
-                .with_context(|| format!("writing ngrams for {lang} length {n}"))?;
-        }
-    }
-    Ok(())
-}
-
-/// The records region for the words of one length: most frequent first, equal counts in word
-/// order, so the same words and counts always encode to the same bytes.
-pub fn encode_records(words: &HashMap<String, u64>) -> Vec<u8> {
-    let mut entries: Vec<(&str, u64)> = words.iter().map(|(w, f)| (w.as_str(), *f)).collect();
-    entries.sort_unstable_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)));
-    encode_entries(entries)
-}
-
-/// The records region for `entries` in the order given.
-pub fn encode_entries<'a>(entries: impl IntoIterator<Item = (&'a str, u64)>) -> Vec<u8> {
-    let mut records = Vec::new();
-    for (word, freq) in entries {
-        for ch in word.chars() {
-            records.extend_from_slice(&u32::from(ch).to_le_bytes());
-        }
-        records.extend_from_slice(&freq.to_le_bytes());
-    }
-    records
-}
-
-/// Writes the Corpus file of `lang` at length `n` from an encoded records region.
-pub fn write_records(
-    dir: &DataDir,
-    lang: Language,
-    n: usize,
-    records: &[u8],
-) -> anyhow::Result<()> {
-    let path = dir.ngrams_path(lang, n);
-    std::fs::create_dir_all(dir.ngrams_dir(lang))?;
-    let header = Header::for_records(n, record_size(n), records)?;
-    let mut writer = BufWriter::new(std::fs::File::create(&path)?);
-    writer.write_all(&header.encode()?)?;
-    writer.write_all(records)?;
-    writer.flush()?;
-    Ok(())
-}
-
-/// Writes the Cache for `lang` at length `n`, most frequent word first, equal counts in word
-/// order.
-fn write_bucket(
-    dir: &DataDir,
-    lang: Language,
-    n: usize,
-    words: &HashMap<String, u64>,
-) -> anyhow::Result<()> {
-    write_records(dir, lang, n, &encode_records(words))
-}
-
 #[cfg(test)]
 mod tests {
     use std::collections::{HashMap, HashSet};
@@ -328,7 +47,8 @@ mod tests {
     use crate::language::Language;
     use crate::word::{Word, WordSet};
 
-    use super::{build_all_via, clear, ensure_supported, populate, read};
+    use super::build::{build_all_via, populate};
+    use super::{clear, ensure_supported, read};
     use crate::MIN_SUPPORTED_WORDS;
     use crate::totals;
 
