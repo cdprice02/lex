@@ -7,13 +7,13 @@ Owns all I/O: downloading Ngrams shards and Wiktionary extracts, validating, cac
 | Module | Role |
 |---|---|
 | `data_dir` | `DataDir`: the entry point and every path under the data directory; carries the download worker count and the offline flag |
-| `store` | Corpus files: build from totals or a download, `read` (validates), `ensure_supported`, `clear`, `corpus_checksum`; `build_all_via` takes the download as a parameter so tests need no network |
+| `store` | Corpus files: `build` (from totals or a download; `build_all_via` takes the download as a parameter so tests need no network), `read` (validates, `ensure_supported`, `corpus_checksum`), `write` (encode and write), `clear` |
 | `totals` | Ngrams totals (ADR 0013): `write` (all or nothing), `inspect`, `read_filtered` |
-| `header` | the 64-byte file header shared by Corpus (`LEXC`) and totals (`LEXT`) files; `record_size(n)` |
+| `header` | the 64-byte file header shared by Corpus (`LEXC`) and totals (`LEXT`) files; `record_size(n)`, `hex` |
 | `word` | `Word<N>`, `WordSet<N>`, `RawRecord` (zero-copy record view) |
 | `word_lookup` | read-only single-word lookups for a frontend; fetches and builds nothing |
 | `dict_list`, `corpus_list`, `book_list`, `profile_list` | plain records of what is cached, read from disk only |
-| `book_store` | Opening book files (ADR 0011): `BookKey`, stored nodes, read, write, clear |
+| `book_store` | Opening book files (ADR 0011): `key` (`BookKey`, `ProfileKey`), stored nodes, read, write, clear |
 | `profile`, `profile_store`, `list` | Profiles: the registry, fetch and verify, pure list parsing and validation |
 | `ngrams`, `wiktionary`, `parse` | the two sources and the line parser (`normalize`, `is_valid_word`) |
 | `http`, `retry`, `le` | one retried GET, the backoff, little-endian field reads |
@@ -50,7 +50,7 @@ books/{code}/{N}/{hash}.bin   Opening books
 
 ## Monomorphization
 
-`match_word_length!` instantiates its callee for every length 3 to 21, so generic code is compiled 19 times. Keep a length-generic function a thin wrapper: do the work on a run-time `n` (see `store::open_checked`, `list::validate`, `profile_store::fetch_into`) and convert to `Word<N>` at the last step. Measure with `cargo llvm-lines` and `cargo bloat`.
+`match_word_length!` instantiates its callee for every length 3 to 21, so generic code is compiled 19 times. Keep a length-generic function a thin wrapper: do the work on a run-time `n` (see `store::read::open_checked`, `list::validate`, `profile_store::fetch_into`) and convert to `Word<N>` at the last step. Measure with `cargo llvm-lines` and `cargo bloat`.
 
 ## Fixtures
 
