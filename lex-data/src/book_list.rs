@@ -196,7 +196,7 @@ impl<'a> Current<'a> {
         };
         let key = header.key;
         record.header = Some(BookHeader {
-            format_version: book_store::format_version(),
+            format_version: header.version,
             positions: header.node_count,
             key: key.clone(),
         });
@@ -207,7 +207,16 @@ impl<'a> Current<'a> {
         } else if key.word_length != n {
             BookStatus::Corrupt("its word length disagrees with its directory".to_owned())
         } else {
-            match self.stale_fields(lang, &key) {
+            let mut stale = self.stale_fields(lang, &key);
+            let current = book_store::format_version();
+            if header.version != current {
+                stale.push(StaleField {
+                    name: "format_version".to_owned(),
+                    book: header.version.to_string(),
+                    current: current.to_string(),
+                });
+            }
+            match stale {
                 stale if stale.is_empty() => BookStatus::Current,
                 stale => BookStatus::Stale(stale),
             }
@@ -339,8 +348,55 @@ mod tests {
         StoredBook {
             nodes: vec![StoredNode {
                 guess: 1,
+                technique: 0,
+                guesses: vec![],
                 edges: vec![],
             }],
+        }
+    }
+
+    /// Rewrites the format version in the header of the book file at `path`.
+    fn set_version(path: &Path, version: u16) {
+        let mut bytes = std::fs::read(path).unwrap();
+        bytes[4..6].copy_from_slice(&version.to_le_bytes());
+        std::fs::write(path, bytes).unwrap();
+    }
+
+    #[test]
+    fn an_older_format_version_is_stale_on_the_format_and_cleared_as_stale() {
+        let (_tmp, dir) = dir();
+        let key = corpus_key("any", DIGEST);
+        let file = dir.write_book(LANG, &key, &book()).unwrap();
+        set_version(&file.path, 1);
+        let record = &all(&dir)[0];
+        assert_eq!(record.header.as_ref().unwrap().format_version, 1);
+        assert_eq!(
+            record.status,
+            BookStatus::Stale(vec![StaleField {
+                name: "format_version".to_owned(),
+                book: "1".to_owned(),
+                current: book_store::format_version().to_string(),
+            }])
+        );
+        assert_eq!(
+            dir.clear_stale_books(DIGEST, &BookFilter::default())
+                .unwrap(),
+            [file.path]
+        );
+    }
+
+    #[test]
+    fn a_newer_or_unknown_format_version_stays_corrupt() {
+        for version in [book_store::format_version() + 1, 0] {
+            let (_tmp, dir) = dir();
+            let file = dir
+                .write_book(LANG, &corpus_key("any", DIGEST), &book())
+                .unwrap();
+            set_version(&file.path, version);
+            assert!(
+                matches!(all(&dir)[0].status, BookStatus::Corrupt(_)),
+                "{version}"
+            );
         }
     }
 

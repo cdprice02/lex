@@ -116,7 +116,7 @@ The shared record of every game position reached so far, where each position is 
 _Avoid_: Cache (reserved for the on-disk Corpus form), memo table
 
 **Opening book**:
-The persisted top levels of a Decision tree, built ahead of play so positions too slow to search per move are looked up instead; a game plays identically with or without it.
+The persisted top levels of a Decision tree, built ahead of play so positions too slow to search per move are looked up instead, and, for each position, the top 10 guesses with their scores; a game plays identically with or without it.
 _Avoid_: Solved tree, opener table
 
 **Endgame**:

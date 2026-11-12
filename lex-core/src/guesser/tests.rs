@@ -639,14 +639,18 @@ fn through_a_file(strategy: Strategy, answers: &[Word<5>]) -> Guesser<5> {
     };
     let tmp = tempfile::tempdir().unwrap();
     let dir = lex_data::DataDir::new(tmp.path());
-    dir.write_book(lex_data::Language::English, &key, &built.to_nodes())
-        .unwrap();
+    dir.write_book(
+        lex_data::Language::English,
+        &key,
+        &built.to_nodes().unwrap(),
+    )
+    .unwrap();
     let lex_data::BookLookup::Found(stored) =
         dir.read_book(lex_data::Language::English, &key).unwrap()
     else {
         panic!("{strategy:?}: the written book should be found");
     };
-    let loaded = OpeningBook::<5>::from_nodes(stored, DICT.len()).unwrap();
+    let loaded = OpeningBook::<5>::from_nodes(stored, DICT.len(), true).unwrap();
     assert_eq!(loaded, built, "{strategy:?}");
     Guesser::with_book(&dict_set(DICT), answers, strategy, loaded)
 }

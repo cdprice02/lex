@@ -38,7 +38,10 @@ use crate::store::hex;
 /// File magic identifying an Opening book.
 const MAGIC: [u8; 4] = *b"LEXB";
 /// Format version of the book file.
-const VERSION: u16 = 1;
+const VERSION: u16 = 2;
+/// The oldest format version whose header and key this build still reads. Its body is not read
+/// (the book is stale), but the file is listed and `book clear --stale` removes it.
+const OLDEST_VERSION: u16 = 1;
 /// Bytes of fixed header before the key.
 const FIXED_LEN: usize = 64;
 /// Domain tag hashed ahead of the key fields.
@@ -149,18 +152,39 @@ impl BookKey {
     }
 }
 
-/// One booked position: the pool index of its guess and the booked children by feedback ordinal.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+/// A guess a booked position weighed, with the scores the solver computed for it. The values are
+/// stored as the solver held them (`f64`), so a position explains exactly as it did when decided.
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+pub struct StoredGuess {
+    /// Index into the Guess pool.
+    pub index: u32,
+    /// Expected information gain, in bits.
+    pub expected_bits: f64,
+    /// The expected Candidate set size after the guess's feedback.
+    pub expected_remaining: f64,
+    /// The expected guesses to finish, where the Endgame or a Rollout computed it.
+    pub guess_cost: Option<f64>,
+    /// The entropy score the solver ranks by.
+    pub score: f64,
+}
+
+/// One booked position: the pool index of its guess, the booked children by feedback ordinal, and
+/// the technique and top guesses that explain the choice.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct StoredNode {
     /// Index into the Guess pool of the booked guess.
     pub guess: u32,
+    /// Code of the technique that chose it, which `lex-core` defines.
+    pub technique: u8,
+    /// The guesses the technique weighed, the booked one first, at most ten.
+    pub guesses: Vec<StoredGuess>,
     /// (feedback ordinal, child node index) pairs, ascending by ordinal.
     pub edges: Vec<(u64, u32)>,
 }
 
 /// The nodes of an Opening book in preorder, with the root first. This crate does not interpret
 /// them: `lex-core` validates them against its pool.
-#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct StoredBook {
     /// The nodes in preorder, root first.
     pub nodes: Vec<StoredNode>,
@@ -176,7 +200,7 @@ pub struct BookFile {
 }
 
 /// The outcome of looking a key up on disk.
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq)]
 pub enum BookLookup {
     /// The stored book for the key.
     Found(StoredBook),
@@ -198,6 +222,8 @@ fn corrupt(path: &Path, reason: impl Into<String>) -> LexDataError {
 
 /// The parsed fixed header and key of a book file.
 pub struct Header {
+    /// Format version the file declares.
+    pub version: u16,
     /// Word length `N` the book was built for.
     word_length: u16,
     /// Offset of the body.
@@ -210,7 +236,7 @@ pub struct Header {
     pub key: BookKey,
 }
 
-/// The format version this build reads and writes.
+/// The format version this build writes, and the only one whose body it reads.
 pub const fn format_version() -> u16 {
     VERSION
 }
@@ -246,10 +272,12 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
         ));
     }
     let version = u16::from_le_bytes(array_at(bytes, 4));
-    if version != VERSION {
+    if !(OLDEST_VERSION..=VERSION).contains(&version) {
         return Err(corrupt(
             path,
-            format!("unsupported format version {version} (this build reads {VERSION})"),
+            format!(
+                "unsupported format version {version} (this build reads {OLDEST_VERSION} to {VERSION})"
+            ),
         ));
     }
     let header_len = length_at(bytes, 8, path)?;
@@ -260,6 +288,7 @@ fn parse_header(bytes: &[u8], path: &Path) -> Result<Header, LexDataError> {
     let key: BookKey = postcard::from_bytes(&bytes[FIXED_LEN..header_len])
         .map_err(|e| corrupt(path, format!("unreadable key: {e}")))?;
     Ok(Header {
+        version,
         word_length: u16::from_le_bytes(array_at(bytes, 6)),
         body_offset: header_len,
         node_count: usize::try_from(u64::from_le_bytes(array_at(bytes, 12)))
@@ -281,6 +310,15 @@ fn decode(bytes: &[u8], path: &Path) -> Result<(BookKey, StoredBook), LexDataErr
     let body = &bytes[header.body_offset..];
     if <[u8; 32]>::from(Sha256::digest(body)) != header.checksum {
         return Err(corrupt(path, "body checksum mismatch"));
+    }
+    if header.version != VERSION {
+        return Err(corrupt(
+            path,
+            format!(
+                "the body of format version {} is not read (this build reads {VERSION})",
+                header.version
+            ),
+        ));
     }
     let book: StoredBook =
         postcard::from_bytes(body).map_err(|e| corrupt(path, format!("unreadable body: {e}")))?;
@@ -305,9 +343,19 @@ fn read_key(path: &Path) -> anyhow::Result<BookKey> {
     Ok(read_header(path)?.key)
 }
 
-/// Verifies the whole book file at `path`: its body checksum, parse and node count.
+/// Verifies the whole book file at `path`: its body checksum, parse and node count. A file of an
+/// older format version is checked for its checksum only, since its body layout is not read.
 pub fn verify_file(path: &Path) -> Result<(), LexDataError> {
     let bytes = std::fs::read(path).map_err(|e| corrupt(path, format!("unreadable: {e}")))?;
+    let header = parse_header(&bytes, path)?;
+    if header.version < VERSION {
+        let body = &bytes[header.body_offset..];
+        return if <[u8; 32]>::from(Sha256::digest(body)) == header.checksum {
+            Ok(())
+        } else {
+            Err(corrupt(path, "body checksum mismatch"))
+        };
+    }
     decode(&bytes, path).map(|_| ())
 }
 
@@ -379,7 +427,8 @@ impl DataDir {
             .min_by_key(|(_, fields)| fields.len())
     }
 
-    /// Reads the book for `key`. A file that is present but fails its checksum, parse, or key
+    /// Reads the book for `key`. A file of an older format version is a miss whose nearest
+    /// difference is `format_version`, so it is rebuilt. A file that is present but fails its checksum, parse, or key
     /// check is an error naming it, never a miss: rebuilding silently would hide the corruption.
     ///
     /// # Errors
@@ -392,6 +441,11 @@ impl DataDir {
             return Ok(BookLookup::Missing { nearest });
         }
         let bytes = std::fs::read(&path).with_context(|| format!("reading {}", path.display()))?;
+        if parse_header(&bytes, &path)?.version < VERSION {
+            return Ok(BookLookup::Missing {
+                nearest: Some(vec!["format_version".to_owned()]),
+            });
+        }
         let (stored_key, book) = decode(&bytes, &path)?;
         if &stored_key != key {
             return Err(corrupt(&path, "its key does not match its file name").into());
@@ -508,23 +562,82 @@ mod tests {
         }
     }
 
+    fn guess(index: u32, bits: f64, cost: Option<f64>) -> StoredGuess {
+        StoredGuess {
+            index,
+            expected_bits: bits,
+            expected_remaining: bits.recip(),
+            guess_cost: cost,
+            score: bits + 0.1 + 0.2,
+        }
+    }
+
     fn book() -> StoredBook {
         StoredBook {
             nodes: vec![
                 StoredNode {
                     guess: 3,
+                    technique: 1,
+                    guesses: vec![
+                        guess(3, 5.885_447_921_314_71, Some(3.421_2)),
+                        guess(8, f64::MIN_POSITIVE, None),
+                    ],
                     edges: vec![(1, 1), (40, 2)],
                 },
                 StoredNode {
                     guess: 7,
+                    technique: 0,
+                    guesses: vec![guess(7, 1.0 / 3.0, None)],
                     edges: vec![],
                 },
                 StoredNode {
                     guess: 9,
+                    technique: 2,
+                    guesses: vec![guess(9, 2.0, Some(1.5))],
                     edges: vec![],
                 },
             ],
         }
+    }
+
+    #[test]
+    fn stored_scores_round_trip_bit_for_bit() {
+        let (_tmp, dir) = dir();
+        dir.write_book(LANG, &key(), &book()).unwrap();
+        let BookLookup::Found(read) = dir.read_book(LANG, &key()).unwrap() else {
+            panic!("the written book is missing");
+        };
+        for (a, b) in book().nodes.iter().zip(&read.nodes) {
+            assert_eq!(a.technique, b.technique);
+            for (x, y) in a.guesses.iter().zip(&b.guesses) {
+                assert_eq!(x.expected_bits.to_bits(), y.expected_bits.to_bits());
+                assert_eq!(
+                    x.expected_remaining.to_bits(),
+                    y.expected_remaining.to_bits()
+                );
+                assert_eq!(x.score.to_bits(), y.score.to_bits());
+                assert_eq!(
+                    x.guess_cost.map(f64::to_bits),
+                    y.guess_cost.map(f64::to_bits)
+                );
+            }
+        }
+        assert_eq!(read, book());
+    }
+
+    #[test]
+    fn an_older_format_version_is_a_miss_naming_the_format() {
+        let (_tmp, dir) = dir();
+        let path = dir.write_book(LANG, &key(), &book()).unwrap().path;
+        let mut bytes = std::fs::read(&path).unwrap();
+        bytes[4..6].copy_from_slice(&1u16.to_le_bytes());
+        std::fs::write(&path, bytes).unwrap();
+        assert_eq!(
+            dir.read_book(LANG, &key()).unwrap(),
+            BookLookup::Missing {
+                nearest: Some(vec!["format_version".to_owned()])
+            }
+        );
     }
 
     fn dir() -> (tempfile::TempDir, DataDir) {
@@ -684,6 +797,9 @@ mod tests {
         let (_tmp, dir) = self::dir();
         let err = corrupt_at(&dir, |b| b[4] = 99);
         assert!(err.contains("version 99"), "{err}");
+        let (_tmp, dir) = self::dir();
+        let err = corrupt_at(&dir, |b| b[4] = VERSION.to_le_bytes()[0] + 1);
+        assert!(err.contains("unsupported format version"), "{err}");
     }
 
     #[test]

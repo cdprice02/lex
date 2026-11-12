@@ -306,6 +306,8 @@ mod tests {
         StoredBook {
             nodes: vec![StoredNode {
                 guess: 0,
+                technique: 0,
+                guesses: vec![],
                 edges: vec![],
             }],
         }
@@ -393,7 +395,7 @@ mod tests {
         assert!(out.contains("\nsolver_digest\tthen\tstale: current is now\n"));
         assert!(out.contains("\nbody checksum\tverified\t\n"));
         assert!(out.contains("\npositions\t1\t\n"));
-        assert!(out.contains("\nformat version\t1\t\n"));
+        assert!(out.contains("\nformat version\t2\t\n"));
         assert!(out.contains("\nstrategy.pool\tall\t\n"));
     }
 

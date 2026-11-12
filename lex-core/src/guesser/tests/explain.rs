@@ -65,7 +65,7 @@ fn an_entropy_explanation_lists_the_top_guesses_without_a_guess_cost() {
     let strategy = technique_strategy(0);
     let g = explaining(strategy);
     let explanation = g.explain().unwrap();
-    assert_eq!(explanation.technique, Some(Technique::Entropy));
+    assert_eq!(explanation.technique, Technique::Entropy);
     assert!(!explanation.from_book);
     assert_eq!(explanation.guess, g.suggest().unwrap());
     assert_eq!(explanation.guesses[0].word, explanation.guess);
@@ -127,7 +127,7 @@ fn the_distribution_is_the_chosen_guess_feedback_in_ascending_pattern_order() {
 fn a_rollout_explanation_lists_the_played_out_guesses_cheapest_first() {
     let g = explaining(technique_strategy(5));
     let explanation = g.explain().unwrap();
-    assert_eq!(explanation.technique, Some(Technique::Rollout));
+    assert_eq!(explanation.technique, Technique::Rollout);
     assert_eq!(explanation.guess, g.suggest().unwrap());
     assert_eq!(explanation.guesses[0].word, explanation.guess);
     assert_eq!(explanation.guesses.len(), 5);
@@ -161,7 +161,7 @@ fn an_endgame_explanation_leads_with_the_pick_and_costs_only_the_pick() {
     let candidates = candidates_after(std::slice::from_ref(&guess));
     g.push_guess(guess);
     let explanation = g.explain().unwrap();
-    assert_eq!(explanation.technique, Some(Technique::Endgame));
+    assert_eq!(explanation.technique, Technique::Endgame);
     assert_eq!(explanation.guess, g.suggest().unwrap());
     assert_eq!(explanation.guesses[0].word, explanation.guess);
     assert!(explanation.guesses[0].guess_cost.is_some());
@@ -229,14 +229,14 @@ fn under_endgame_aversion_a_guess_cost_is_the_certainty_equivalent() {
 }
 
 #[test]
-fn an_explanation_of_a_booked_position_is_the_guess_alone() {
+fn an_explanation_of_a_booked_position_is_the_whole_explanation() {
     let answers = &book_answer_lists()[0];
     let mut g = seeded(Strategy::default(), answers);
     g.set_explain(true);
     let explanation = g.explain().unwrap();
     assert!(explanation.from_book);
-    assert_eq!(explanation.technique, None);
-    assert!(explanation.guesses.is_empty());
+    assert!(!explanation.guesses.is_empty());
+    assert_eq!(explanation.guesses[0].word, explanation.guess);
     assert_eq!(explanation.guess, g.suggest().unwrap());
     assert_eq!(
         explanation
@@ -246,6 +246,77 @@ fn an_explanation_of_a_booked_position_is_the_guess_alone() {
             .sum::<usize>(),
         DICT.len()
     );
+}
+
+/// Every position of every game of `answers` under `strategy`, explained from a book read back
+/// from its file and explained online with no book: the two must be equal, scores bit for bit,
+/// apart from the `from_book` flag. Returns how many positions came from the book.
+fn book_explanations_equal_online_ones(strategy: Strategy, answers: &[Word<5>]) -> usize {
+    let mut booked = through_a_file(strategy, answers);
+    let mut online = fresh(strategy, answers);
+    booked.set_explain(true);
+    online.set_explain(true);
+    let mut from_book = 0;
+    for &target in answers {
+        booked.reset();
+        online.reset();
+        loop {
+            let mut a = booked.explain().unwrap();
+            let b = online.explain().unwrap();
+            from_book += usize::from(a.from_book);
+            a.from_book = false;
+            assert_eq!(a, b, "{strategy:?} {target}");
+            let guess = Guess::new(b.guess, WordCorrectness::correct(target, b.guess));
+            if guess.correctness().is_correct() {
+                break;
+            }
+            booked.push_guess(guess.clone());
+            online.push_guess(guess);
+        }
+    }
+    from_book
+}
+
+#[test]
+fn a_booked_explanation_equals_the_online_one_at_every_booked_position() {
+    for strategy in book_strategies() {
+        for answers in book_answer_lists() {
+            let from_book = book_explanations_equal_online_ones(strategy, &answers);
+            assert!(
+                from_book > 0,
+                "{strategy:?}: no position came from the book"
+            );
+        }
+    }
+}
+
+#[test]
+fn a_book_loaded_without_scores_plays_alike_and_explains_nothing_at_booked_positions() {
+    let strategy = Strategy::default();
+    let answers = &book_answer_lists()[0];
+    let book = fresh(strategy, answers)
+        .build_book_with_floor(LOW_FLOOR)
+        .without_scores();
+    assert!(!book.has_scores());
+    let mut plain = Guesser::with_book(&dict_set(DICT), answers, strategy, book);
+    assert_eq!(
+        games(&mut plain, answers),
+        games(&mut fresh(strategy, answers), answers)
+    );
+    plain.reset();
+    plain.set_explain(true);
+    assert_eq!(plain.explain(), None);
+}
+
+#[test]
+fn building_a_book_leaves_recording_as_it_was() {
+    let g = fresh(Strategy::default(), &book_answer_lists()[0]);
+    let _ = g.build_book_with_floor(LOW_FLOOR);
+    assert_eq!(g.explain(), None);
+    let mut recording = fresh(Strategy::default(), &book_answer_lists()[0]);
+    recording.set_explain(true);
+    let _ = recording.build_book_with_floor(LOW_FLOOR);
+    assert!(recording.explain().is_some());
 }
 
 #[test]

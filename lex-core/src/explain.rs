@@ -30,6 +30,27 @@ pub enum Technique {
     Endgame,
 }
 
+impl Technique {
+    /// The byte an Opening book stores for the technique.
+    pub(crate) const fn code(self) -> u8 {
+        match self {
+            Self::Entropy => 0,
+            Self::Rollout => 1,
+            Self::Endgame => 2,
+        }
+    }
+
+    /// The technique a stored byte names, `None` for a byte no build writes.
+    pub(crate) const fn from_code(code: u8) -> Option<Self> {
+        match code {
+            0 => Some(Self::Entropy),
+            1 => Some(Self::Rollout),
+            2 => Some(Self::Endgame),
+            _ => None,
+        }
+    }
+}
+
 /// A guess scored against the Candidate set of a position.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct ScoredGuess<const N: usize> {
@@ -66,11 +87,13 @@ pub struct PatternShare<const N: usize> {
 pub struct Explanation<const N: usize> {
     /// The guess [`suggest`](crate::Guesser::suggest) plays.
     pub guess: Word<N>,
-    /// The method that chose it; `None` for a position read from the Opening book.
-    pub technique: Option<Technique>,
-    /// Whether the position came from the Opening book, which keeps only the guess.
+    /// The method that chose it.
+    pub technique: Technique,
+    /// Whether the position came from the Opening book, whose stored technique and top guesses
+    /// this explains with.
     pub from_book: bool,
-    /// The chosen guess first, then the others the technique weighed; empty from the book.
+    /// The chosen guess first, then the others the technique weighed (at most 10 from the
+    /// book).
     pub guesses: Vec<ScoredGuess<N>>,
     /// The chosen guess's feedback patterns, ascending by pattern.
     pub distribution: Vec<PatternShare<N>>,
