@@ -24,11 +24,12 @@ use lex_cli::word;
 fn main() -> ExitCode {
     let cli = Cli::parse_args(std::env::args_os()).unwrap_or_else(|e| e.exit());
     let download_request = cli.download_request();
+    let offline = cli.offline;
     style::init(cli.color);
     progress::init(cli.no_progress);
     let result = build_pool(cli.threads)
         .map_err(anyhow::Error::from)
-        .and_then(|pool| pool.install(|| run(cli.command, cli.symbols, download_request)));
+        .and_then(|pool| pool.install(|| run(cli.command, cli.symbols, download_request, offline)));
     match result {
         Ok(code) => code,
         Err(error) => {
@@ -43,11 +44,13 @@ fn run(
     command: Command,
     symbols: SymbolScheme,
     download_workers: Option<NonZeroUsize>,
+    offline: bool,
 ) -> anyhow::Result<ExitCode> {
     let done = |result: anyhow::Result<()>| result.map(|()| ExitCode::SUCCESS);
     match command {
         Command::Simulate(mut args) => {
             args.common.download_workers = download_workers;
+            args.common.offline = offline;
             done(lex_data::match_word_length!(
                 simulate,
                 args.dispatch_length(),
@@ -57,6 +60,7 @@ fn run(
         Command::Assist(mut args) => {
             args.symbols = symbols;
             args.common.download_workers = download_workers;
+            args.common.offline = offline;
             done(lex_data::match_word_length!(
                 assist,
                 args.common.dispatch_length(),
@@ -69,6 +73,7 @@ fn run(
         Command::Book(args) => match args.command {
             BookCommand::Build(mut args) => {
                 args.common.download_workers = download_workers;
+                args.common.offline = offline;
                 done(lex_data::match_word_length!(
                     build_command,
                     args.dispatch_length(),
@@ -86,7 +91,10 @@ fn run(
         Command::Dict(args) => match args.command {
             DictCommand::List(args) => done(dicts::list(&args)),
             DictCommand::Show(args) => done(dicts::show(&args)),
-            DictCommand::Fetch(args) => done(fetch::dict(&args)),
+            DictCommand::Fetch(mut args) => {
+                args.offline = offline;
+                done(fetch::dict(&args))
+            }
             DictCommand::Clear(args) => done(clear::dict(&args)),
         },
         Command::Corpus(args) => match args.command {
@@ -94,6 +102,7 @@ fn run(
             CorpusCommand::Show(args) => done(corpora::show(&args)),
             CorpusCommand::Build(mut args) => {
                 args.download_workers = download_workers;
+                args.offline = offline;
                 done(fetch::corpus(&args))
             }
             CorpusCommand::Clear(args) => done(clear::corpus(&args)),
@@ -103,6 +112,7 @@ fn run(
             ProfileCommand::Show(args) => done(profiles::show(&args)),
             ProfileCommand::Fetch(mut args) => {
                 args.download_workers = download_workers;
+                args.offline = offline;
                 done(fetch::profile(&args))
             }
             ProfileCommand::Clear(args) => done(clear::profile(&args)),

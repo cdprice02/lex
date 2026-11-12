@@ -21,6 +21,8 @@ pub struct DataDir {
     path: PathBuf,
     /// Shard downloads to run at once; `None` leaves the count to the default.
     download_workers: Option<NonZeroUsize>,
+    /// Whether a download is forbidden; see [`DataDir::offline`].
+    offline: bool,
 }
 
 impl DataDir {
@@ -29,7 +31,46 @@ impl DataDir {
         Self {
             path: path.into(),
             download_workers: None,
+            offline: false,
         }
+    }
+
+    /// This directory with downloads forbidden (`true`) or allowed. Offline, every entry point
+    /// that would reach the network returns [`LexDataError::Offline`] before any request;
+    /// computed work (an Opening book, a Corpus built from cached Ngrams totals) still runs.
+    #[must_use]
+    pub const fn offline(mut self, offline: bool) -> Self {
+        self.offline = offline;
+        self
+    }
+
+    /// Whether downloads are forbidden.
+    #[must_use]
+    pub const fn is_offline(&self) -> bool {
+        self.offline
+    }
+
+    /// Passes when downloads are allowed; offline, names `item` and the `command` that fetches it.
+    ///
+    /// # Errors
+    ///
+    /// [`LexDataError::Offline`] when this directory is offline.
+    pub fn require_online(&self, item: &str, command: &str) -> Result<(), LexDataError> {
+        if self.offline {
+            return Err(LexDataError::Offline {
+                item: item.to_owned(),
+                command: command.to_owned(),
+            });
+        }
+        Ok(())
+    }
+
+    /// [`DataDir::require_online`] for the Dictionary of `lang`.
+    pub(crate) fn require_online_dict(&self, lang: Language) -> Result<(), LexDataError> {
+        self.require_online(
+            &format!("the {lang} Dictionary"),
+            &format!("lex dict fetch --lang {lang}"),
+        )
     }
 
     /// This directory with `workers` as the number of shards downloaded at once (capped by the
@@ -76,6 +117,7 @@ impl DataDir {
     ///
     /// If the download fails or the files cannot be written.
     pub fn fetch_dict(&self, lang: Language) -> anyhow::Result<()> {
+        self.require_online_dict(lang)?;
         wiktionary::fetch_dict(lang, &self.path)
     }
 
@@ -102,7 +144,7 @@ impl DataDir {
     /// If the dictionary cannot be downloaded, read or parsed.
     pub fn dict_metadata(&self, lang: Language) -> anyhow::Result<DictMetadata> {
         if !self.dict_path(lang).exists() {
-            wiktionary::fetch_dict(lang, &self.path)?;
+            self.fetch_dict(lang)?;
         }
         wiktionary::load_metadata(lang, &self.path)
     }
@@ -184,6 +226,16 @@ impl DataDir {
             .into());
         }
         let corpus = self.load::<N>(spec.language, None)?;
+        if !self
+            .profile_dir(profile)
+            .join(profile_store::META_FILE)
+            .exists()
+        {
+            self.require_online(
+                &format!("the lists of Profile {profile}"),
+                &format!("lex profile fetch --profile {profile}"),
+            )?;
+        }
         profile_store::load(
             &self.profile_dir(profile),
             &profile.to_string(),
