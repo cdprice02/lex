@@ -6,25 +6,16 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
+mod common;
+
 use std::path::Path;
 
-use clap::Parser;
 use clap::error::ErrorKind;
-use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
-
-fn parse(args: &[&str]) -> Result<Command, clap::Error> {
-    Cli::try_parse_from(std::iter::once("lex").chain(args.iter().copied())).map(|cli| cli.command)
-}
+use common::{parse, touch};
+use lex_cli::cli::{Command, CorpusCommand, DictCommand, ProfileCommand};
 
 fn kind(args: &[&str]) -> ErrorKind {
     parse(args).unwrap_err().kind()
-}
-
-/// Writes `data_dir/<relative>` with a stand-in body.
-fn touch(data_dir: &Path, relative: &str) {
-    let path = data_dir.join(relative);
-    std::fs::create_dir_all(path.parent().unwrap()).unwrap();
-    std::fs::write(path, b"x").unwrap();
 }
 
 /// A data dir holding a Dictionary, two Corpus lengths and a book for each of `codes`.
