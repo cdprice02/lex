@@ -13,6 +13,8 @@ mod policy;
 mod pool_ops;
 mod rollout;
 mod strategy;
+#[cfg(test)]
+mod test_support;
 mod transposed;
 mod tree;
 
