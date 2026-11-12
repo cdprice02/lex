@@ -15,8 +15,9 @@ use crate::parse::parse_ngram_line;
 use crate::store::MIN_FREQUENCY;
 use crate::{MAX_WORD_LENGTH, MIN_WORD_LENGTH};
 
-/// Download workers when the user asked for no count. A placeholder until the measured default
-/// replaces it.
+/// Download workers when the user asked for no count: from 4 up, a build runs at the speed of the
+/// link, and more workers only add CPU time and memory
+/// (`benchmarks/experiments/download-concurrency.md`).
 pub const DEFAULT_DOWNLOAD_WORKERS: usize = 4;
 
 /// Download workers for a language of `shards` shards: the count the user asked for, else

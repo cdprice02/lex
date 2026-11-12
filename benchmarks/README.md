@@ -63,6 +63,7 @@ figures are in the [measurement comment](https://github.com/cdprice02/lex/pull/6
 | [Build flags](experiments/build-flags.md) | `codegen-units`, `panic`, `-Z build-std`, PGO and BOLT against the plain build; no profile change, PGO stays opt-in |
 | [Track targets](experiments/track-targets.md) | Full for headline and length-3 breadth, 500 sampled for other breadth, 100 for smoke; the calibration behind the rule |
 | [Prior shape](experiments/prior-shape.md) | Screen of a sigmoid-of-rank and a frequency-floor Answer prior against the power law; rejected, the power law stays |
+| [Download concurrency](experiments/download-concurrency.md) | 4 parallel shard downloads by default; above 4 a Corpus build is link-bound |
 
 ## Tracks
 
