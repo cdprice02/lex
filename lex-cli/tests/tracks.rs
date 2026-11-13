@@ -78,11 +78,22 @@ fn config_json(track: &Track, report: &Report) -> Value {
     json!({ "game": game, "strategy": report.run.strategy, "targets": targets })
 }
 
-/// Plays `track` in its own one-thread rayon pool, so the solver stays serial per Track while
-/// the Tracks run side by side on libtest's threads.
+/// The solver threads each Track gets: `LEX_TRACK_THREADS`, default 1 so CI and the ADR 0007
+/// budgets stay serial. A snapshot must not move with it; raising it checks exactly that.
+fn track_threads() -> Result<usize, String> {
+    std::env::var("LEX_TRACK_THREADS").map_or(Ok(1), |v| {
+        v.parse::<usize>()
+            .ok()
+            .filter(|&n| n > 0)
+            .ok_or_else(|| format!("LEX_TRACK_THREADS must be a positive integer, got {v:?}"))
+    })
+}
+
+/// Plays `track` in its own rayon pool of `LEX_TRACK_THREADS` threads (one by default), so the
+/// solver stays serial per Track while the Tracks run side by side on libtest's threads.
 fn play(track: &Track) -> Result<(), String> {
     rayon::ThreadPoolBuilder::new()
-        .num_threads(1)
+        .num_threads(track_threads()?)
         .build()
         .map_err(|e| e.to_string())?
         .install(|| play_serial(track))
