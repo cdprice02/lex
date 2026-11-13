@@ -162,6 +162,11 @@ Check for stray CPU-heavy processes first, and rerun any figure taken under cont
 where the time goes, profile with `samply record -- ./target/release/lex simulate ...` (the
 `samply` Cargo profile keeps debug info).
 
+A change that lowers peak memory is also measured for it: `/usr/bin/time -l` (macOS) or
+`/usr/bin/time -v` (Linux) on one run of each binary, base and head, reporting maximum resident
+set size. ADR 0007 lets a memory saving buy back a slowdown of up to a quarter of the saving, in
+percent, judged on the worst machine and thread count measured.
+
 ## Build variants
 
 A build-flag change is a speed change and is judged by the Speed bar above, with one rule: base and
