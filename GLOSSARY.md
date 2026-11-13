@@ -161,3 +161,7 @@ _Avoid_: Pruning, shortlist
 **Guess path**:
 The sequence of (guess, feedback) steps from the start of a game to one position in the Decision tree; two games with the same Guess path have the same Candidate set.
 _Avoid_: History (that is the list of guesses a single game played)
+
+**Watch**:
+The mode in which lex plays a game against a hidden answer one guess at a time, explaining each guess as it goes.
+_Avoid_: demo, autoplay
