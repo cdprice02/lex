@@ -758,6 +758,7 @@ dependencies = [
  "lex-data",
  "log",
  "proptest",
+ "rayon",
  "sha2",
  "strum",
  "tempfile",
