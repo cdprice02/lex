@@ -262,6 +262,59 @@ pub struct AssistArgs {
     pub symbols: SymbolScheme,
 }
 
+/// Arguments of `lex tui`.
+///
+/// Without `--profile`, `--lang` or `-l` it plays the Wordle Profile; `--lang` and `-l` come
+/// together.
+#[derive(clap::Args, Debug)]
+#[command(
+    mut_arg("lang", |_| optional_lang()),
+    mut_arg("word_length", |_| optional_word_length())
+)]
+pub struct TuiArgs {
+    /// The game and Strategy to play.
+    #[command(flatten)]
+    pub common: CommonArgs,
+    /// Play fully online instead of building and using the opening book
+    #[arg(long)]
+    pub no_book: bool,
+    /// Seed of the first game's target (default: random); the next game uses the seed after it
+    #[arg(long)]
+    pub seed: Option<u64>,
+}
+
+impl TuiArgs {
+    /// Fills in the default game: the Wordle Profile when no game was named.
+    pub const fn resolve(&mut self) {
+        if self.common.profile.is_none() && self.common.lang.is_none() {
+            self.common.profile = Some(Profile::Wordle);
+        }
+    }
+}
+
+/// `--lang` as `lex tui` takes it: optional, since the Wordle Profile is the default game.
+fn optional_lang() -> clap::Arg {
+    clap::Arg::new("lang")
+        .long("lang")
+        .value_parser(clap::value_parser!(Language))
+        .requires("word_length")
+        .conflicts_with("profile")
+        .help("Language corpus (english/eng, french/fre, german/ger, spanish/spa, italian/ita, russian/rus); a profile fixes it")
+}
+
+/// `-l` as `lex tui` takes it: optional, since the Wordle Profile is the default game.
+fn optional_word_length() -> clap::Arg {
+    clap::Arg::new("word_length")
+        .short('l')
+        .long("word-length")
+        .value_parser(parse_word_length)
+        .requires("lang")
+        .conflicts_with("profile")
+        .help(format!(
+            "Length of the words to use in the game ({MIN_WORD_LENGTH}–{MAX_WORD_LENGTH}); a profile fixes it"
+        ))
+}
+
 /// Parses a word length, rejecting one outside the supported range.
 pub fn parse_word_length(s: &str) -> anyhow::Result<usize> {
     let n: usize = s.parse()?;

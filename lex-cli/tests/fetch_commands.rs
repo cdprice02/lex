@@ -507,6 +507,7 @@ fn run_offline(
             }
             Command::Simulate(_)
             | Command::Assist(_)
+            | Command::Tui(_)
             | Command::Compare(_)
             | Command::Book(_)
             | Command::Verdict(_)

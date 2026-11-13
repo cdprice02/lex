@@ -3,6 +3,7 @@
 
 use std::num::NonZeroUsize;
 use std::process::ExitCode;
+use std::sync::Arc;
 
 use lex_cli::assist::assist;
 use lex_cli::book_listing::{self, show_game};
@@ -19,17 +20,28 @@ use lex_cli::profiles;
 use lex_cli::progress;
 use lex_cli::simulate::simulate;
 use lex_cli::style::{self, SymbolScheme};
+use lex_cli::tui;
 use lex_cli::word;
 
 fn main() -> ExitCode {
-    let cli = Cli::parse_args(std::env::args_os()).unwrap_or_else(|e| e.exit());
+    let mut cli = Cli::parse_args(std::env::args_os()).unwrap_or_else(|e| e.exit());
     let download_request = cli.download_request();
     let offline = cli.offline;
     style::init(cli.color);
     progress::init(cli.no_progress);
     let result = build_pool(cli.threads)
         .map_err(anyhow::Error::from)
-        .and_then(|pool| pool.install(|| run(cli.command, cli.symbols, download_request, offline)));
+        .and_then(|pool| {
+            if let Command::Tui(args) = &mut cli.command {
+                // The UI loop stays off the pool: only the solver's calls enter it.
+                args.common.download_workers = download_request;
+                args.common.offline = offline;
+                args.resolve();
+                tui::launch(args, &Arc::new(pool), cli.symbols).map(|()| ExitCode::SUCCESS)
+            } else {
+                pool.install(|| run(cli.command, cli.symbols, download_request, offline))
+            }
+        });
     match result {
         Ok(code) => code,
         Err(error) => {
@@ -67,6 +79,9 @@ fn run(
                 &args
             ))
         }
+        Command::Tui(_) => Err(anyhow::anyhow!(
+            "`lex tui` runs outside the thread pool and is launched by `main` directly"
+        )),
         Command::Compare(args) => done(compare_reports(&args)),
         Command::Verdict(args) => Ok(lex_cli::verdict::command(&args)),
         Command::Word(args) => done(word::run(&args)),

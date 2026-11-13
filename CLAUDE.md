@@ -55,6 +55,7 @@ Toolchain options:
 lex-data/     — corpus acquisition, Wiktionary validation, word types (crate: lex-data)
 lex-core/     — entropy-based solver library and types (crate: lex_core)
 lex-cli/      — simulation CLI, binary: lex (crate: lex_cli)
+lex-tui/      : terminal UI library over lex-core, launched by `lex tui` (crate: lex_tui)
 data/         — on-disk cache (created at runtime, not committed)
   ngrams/     —   binary ngrams caches: data/ngrams/{lang_code}/{N}.bin
   dicts/      —   Wiktionary word lists: data/dicts/{lang_code}.txt + .meta.json

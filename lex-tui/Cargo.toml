@@ -1,0 +1,20 @@
+[package]
+name = "lex-tui"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lex-core = { path = "../lex-core" }
+crossterm = "0.29"
+ratatui = "0.30"
+thiserror = { workspace = true }
+
+[features]
+# Exposes the model, the headless driver and key helpers to other crates' tests.
+test-support = []
+
+[dev-dependencies]
+insta = "1.49"
+
+[lints]
+workspace = true

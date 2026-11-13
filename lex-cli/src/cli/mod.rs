@@ -26,7 +26,7 @@ pub use cache::{
     ProfileArgs, ProfileClearArgs, ProfileCommand, ProfileFetchArgs, ProfileListArgs,
     ProfileShowArgs, languages,
 };
-pub use play::{AssistArgs, CommonArgs, CompareArgs, SimulateArgs};
+pub use play::{AssistArgs, CommonArgs, CompareArgs, SimulateArgs, TuiArgs};
 
 /// The `lex` command line.
 // `about = None`: a doc comment would otherwise become the `--help` banner.
@@ -113,6 +113,8 @@ pub enum Command {
     Simulate(SimulateArgs),
     /// Interactively assist a live Wordle game
     Assist(AssistArgs),
+    /// Watch lex solve a hidden answer one guess at a time, in the terminal
+    Tui(TuiArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
     /// Manage the cached Wiktionary dictionaries
