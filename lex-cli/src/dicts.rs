@@ -1,15 +1,12 @@
 //! `lex dict list` and `lex dict show`: the cached Dictionaries as a `tabled` table on a
 //! terminal and as tab-separated columns with one header line when piped. Reads disk only.
 
-use std::fmt::Write as _;
 use std::io::IsTerminal as _;
 
-use lex_data::{DataDir, DictRecord, Language};
-use tabled::builder::Builder;
-use tabled::settings::Style;
+use lex_data::{DictRecord, Language};
 
 use crate::cli::{DictListArgs, DictShowArgs};
-use crate::style;
+use crate::table::{fetch_date, flag, render_rows, row, size};
 
 /// What a Dictionary without Provenance shows where Provenance would be.
 const UNKNOWN: &str = "unknown";
@@ -20,7 +17,7 @@ const UNKNOWN: &str = "unknown";
 ///
 /// If a cached file cannot be read or parsed.
 pub fn list(args: &DictListArgs) -> anyhow::Result<()> {
-    let mut records = DataDir::new(&args.data.data_dir).dicts()?;
+    let mut records = args.data.dir().dicts()?;
     records.retain(|r| args.lang.is_none_or(|lang| r.language == lang));
     print_rendered(&render_list(&records, std::io::stdout().is_terminal()));
     Ok(())
@@ -32,7 +29,9 @@ pub fn list(args: &DictListArgs) -> anyhow::Result<()> {
 ///
 /// If the Dictionary is not cached, or a cached file cannot be read or parsed.
 pub fn show(args: &DictShowArgs) -> anyhow::Result<()> {
-    let record = DataDir::new(&args.data.data_dir)
+    let record = args
+        .data
+        .dir()
         .dict(args.lang)?
         .ok_or_else(|| not_cached(args.lang))?;
     print_rendered(&render_show(&record, std::io::stdout().is_terminal()));
@@ -137,54 +136,6 @@ pub fn render_show(record: &DictRecord, terminal: bool) -> String {
     render_rows(&["field", "value", "note"], rows, terminal)
 }
 
-/// A show row of field, value and note.
-#[must_use]
-pub fn row(
-    field: impl Into<String>,
-    value: impl Into<String>,
-    note: impl Into<String>,
-) -> Vec<String> {
-    vec![field.into(), value.into(), note.into()]
-}
-
-/// A note in the failure style on a terminal.
-#[must_use]
-pub fn flag(text: &str, terminal: bool) -> String {
-    if terminal {
-        let style = style::failure_style();
-        format!("{style}{text}{style:#}")
-    } else {
-        text.to_owned()
-    }
-}
-
-/// `rows` under `header`: a rounded table on a terminal, else tab-separated with one header line.
-#[must_use]
-pub fn render_rows(header: &[&str], rows: Vec<Vec<String>>, terminal: bool) -> String {
-    if terminal {
-        let mut builder = Builder::new();
-        builder.push_record(header.iter().map(|h| (*h).to_owned()));
-        for row in rows {
-            builder.push_record(row);
-        }
-        let mut table = builder.build();
-        table.with(Style::rounded());
-        return format!("{table}\n");
-    }
-    let mut out = String::new();
-    let _ = writeln!(out, "{}", header.join("\t"));
-    for row in rows {
-        let _ = writeln!(out, "{}", row.join("\t"));
-    }
-    out
-}
-
-/// The date of an RFC 3339 timestamp.
-#[must_use]
-pub fn fetch_date(timestamp: &str) -> String {
-    timestamp.split('T').next().unwrap_or(timestamp).to_owned()
-}
-
 /// Corpus lengths as `5,6,7`, or `-` for none.
 fn lengths(lengths: &[usize]) -> String {
     if lengths.is_empty() {
@@ -197,19 +148,10 @@ fn lengths(lengths: &[usize]) -> String {
         .join(",")
 }
 
-/// A byte size: MiB with one decimal on a terminal, bytes when piped.
-#[must_use]
-pub fn size(bytes: u64, terminal: bool) -> String {
-    if !terminal {
-        return bytes.to_string();
-    }
-    let tenths = bytes.saturating_mul(10).saturating_add(1 << 19) >> 20;
-    format!("{}.{} MiB", tenths / 10, tenths % 10)
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use lex_data::DataDir;
 
     /// A temp data dir with `files` written under it.
     fn dir_with(files: &[(&str, &str)]) -> (tempfile::TempDir, DataDir) {
@@ -259,13 +201,6 @@ mod tests {
         let out = render_list(&dir.dicts().unwrap(), true);
         assert!(out.contains('\u{256d}'));
         assert!(out.contains("0.0 MiB"));
-    }
-
-    #[test]
-    fn size_rounds_to_one_decimal_mib() {
-        assert_eq!(size(1_572_864, true), "1.5 MiB");
-        assert_eq!(size(123_456_789, true), "117.7 MiB");
-        assert_eq!(size(1_572_864, false), "1572864");
     }
 
     #[test]

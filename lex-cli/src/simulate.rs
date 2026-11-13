@@ -80,8 +80,8 @@ fn run_n<const N: usize>(
 ) -> anyhow::Result<Report> {
     let (lists, source) = Source::load::<N>(config, data_dir)?;
 
-    // The evaluation prior is fixed at the canonical temperature whatever the solver uses, and is
-    // taken over the whole pool before any game narrows the candidate set; only the Answer
+    // The Report prior is fixed at the canonical temperature whatever the solver uses, and is
+    // taken over the whole pool before any game narrows the Candidate set; only the Answer
     // list's words are ever looked up.
     let priors: HashMap<_, _> = answer_prior(&lists.pool, CANONICAL_TEMPERATURE)
         .into_iter()

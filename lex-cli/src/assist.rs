@@ -91,7 +91,7 @@ pub fn assist<const N: usize>(args: &AssistArgs) -> anyhow::Result<()> {
         let Some(feedback) = prompt_feedback::<N>(&mut lines)? else {
             return Ok(()); // EOF
         };
-        anstream::println!("  {word} -> {}", style::tiles(&feedback, args.symbols));
+        anstream::println!("  {word} -> {}", style::tiles(&*feedback, args.symbols));
 
         let graded = pick.and_then(|pick| {
             let played = guesser.score(word)?;
@@ -176,39 +176,73 @@ fn show_suggestions<const N: usize>(
         println!("  {guess}");
         return Ok((guess, None));
     };
-    if details && from_book {
+    let weighed: Vec<Weighed> = guesses
+        .iter()
+        .take(shown)
+        .map(|s| Weighed {
+            word: s.word.to_string(),
+            bits: s.expected_bits,
+            remaining: s.expected_remaining,
+            cost: s.guess_cost,
+            in_candidates: s.in_candidates,
+        })
+        .collect();
+    print_weighed(
+        &technique.to_string(),
+        from_book && details,
+        &weighed,
+        details,
+    );
+    Ok((guess, guesses.first().copied()))
+}
+
+/// A guess the solver weighed, as `assist` prints it.
+struct Weighed {
+    /// The guess.
+    word: String,
+    /// Its expected information, in bits.
+    bits: f64,
+    /// Its Expected remaining.
+    remaining: f64,
+    /// Its Guess cost, when the Technique computed one.
+    cost: Option<f64>,
+    /// Whether it can still be the answer.
+    in_candidates: bool,
+}
+
+/// Prints the Technique that chose the guess, `from_book` naming the opening book, and a line per
+/// weighed guess. Not generic: the word length is already folded into [`Weighed`].
+fn print_weighed(technique: &str, from_book: bool, weighed: &[Weighed], details: bool) {
+    if from_book {
         println!("  chosen by the {technique} (from the opening book)");
     } else {
         println!("  chosen by the {technique}");
     }
-    for s in guesses.iter().take(shown) {
+    for w in weighed {
         let mut notes = Vec::new();
         if details {
-            notes.push(format!("{:.3} bits", s.expected_bits));
+            notes.push(format!("{:.3} bits", w.bits));
         }
-        notes.push(format!("{:.1} words left", s.expected_remaining));
-        if let (true, Some(cost)) = (details, s.guess_cost) {
+        notes.push(format!("{:.1} words left", w.remaining));
+        if let (true, Some(cost)) = (details, w.cost) {
             notes.push(format!("{cost:.2} guesses to finish"));
         }
-        if !s.in_candidates {
+        if !w.in_candidates {
             notes.push("not a possible answer".to_owned());
         }
-        println!("  {}  ({})", s.word, notes.join(", "));
+        println!("  {}  ({})", w.word, notes.join(", "));
     }
-    Ok((guess, guesses.first().copied()))
 }
 
 /// Prompts for the word the user played. Empty input accepts `default`;
 /// `Ok(None)` signals EOF. Re-prompts until the input parses as a `Word<N>` that `accept` allows.
 fn prompt_word<const N: usize>(
-    lines: &mut impl Iterator<Item = std::io::Result<String>>,
+    lines: &mut dyn Iterator<Item = std::io::Result<String>>,
     default: Word<N>,
     accept: impl Fn(&Word<N>) -> Result<(), String>,
 ) -> anyhow::Result<Option<Word<N>>> {
     loop {
-        print!("word played [{default}]: ");
-        std::io::stdout().flush()?;
-        let Some(line) = lines.next().transpose()? else {
+        let Some(line) = prompt_line(lines, &format!("word played [{default}]: "))? else {
             return Ok(None);
         };
         let input = line.trim().to_lowercase();
@@ -228,19 +262,33 @@ fn prompt_word<const N: usize>(
 /// Prompts for the feedback pattern. `Ok(None)` signals EOF. Re-prompts until
 /// the input parses in one of the accepted formats.
 fn prompt_feedback<const N: usize>(
-    lines: &mut impl Iterator<Item = std::io::Result<String>>,
+    lines: &mut dyn Iterator<Item = std::io::Result<String>>,
 ) -> anyhow::Result<Option<WordCorrectness<N>>> {
     loop {
-        print!("feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩): ");
-        std::io::stdout().flush()?;
-        let Some(line) = lines.next().transpose()? else {
+        let Some(line) = prompt_line(lines, "feedback (e.g. gyxxg / 21002 / 🟩🟨⬜⬜🟩): ")?
+        else {
             return Ok(None);
         };
-        match parse_feedback::<N>(&line) {
-            Ok(feedback) => return Ok(Some(feedback)),
+        match parse_feedback(&line, N) {
+            Ok(symbols) => {
+                let mut feedback = WordCorrectness::<N>::absent();
+                feedback.copy_from_slice(&symbols);
+                return Ok(Some(feedback));
+            }
             Err(e) => println!("  {e}"),
         }
     }
+}
+
+/// Prints `prompt` and reads one line; `None` at EOF. The one read every prompt shares, so the
+/// word length stays out of it.
+fn prompt_line(
+    lines: &mut dyn Iterator<Item = std::io::Result<String>>,
+    prompt: &str,
+) -> anyhow::Result<Option<String>> {
+    print!("{prompt}");
+    std::io::stdout().flush()?;
+    Ok(lines.next().transpose()?)
 }
 
 /// How a feedback pattern is written.
@@ -254,12 +302,12 @@ enum FeedbackFormat {
     Emoji,
 }
 
-/// Parses a feedback pattern in any accepted format, auto-detected from the
+/// Parses a feedback pattern of `n` symbols in any accepted format, auto-detected from the
 /// first symbol. Formats must not be mixed within one entry.
-fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, String> {
+fn parse_feedback(input: &str, n: usize) -> Result<Vec<Correctness>, String> {
     let symbols: Vec<char> = input.trim().chars().collect();
-    if symbols.len() != N {
-        return Err(format!("expected {N} symbols, got {}", symbols.len()));
+    if symbols.len() != n {
+        return Err(format!("expected {n} symbols, got {}", symbols.len()));
     }
 
     let format = match symbols[0].to_ascii_lowercase() {
@@ -273,9 +321,9 @@ fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, Str
         }
     };
 
-    let mut feedback = WordCorrectness::<N>::absent();
+    let mut feedback = Vec::with_capacity(n);
     for (i, &symbol) in symbols.iter().enumerate() {
-        feedback[i] = match (format, symbol.to_ascii_lowercase()) {
+        feedback.push(match (format, symbol.to_ascii_lowercase()) {
             (FeedbackFormat::Letters, 'g')
             | (FeedbackFormat::Digits, '2')
             | (FeedbackFormat::Emoji, '🟩' | '🟧') => Correctness::Correct,
@@ -292,7 +340,7 @@ fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, Str
                     i + 1
                 ));
             }
-        };
+        });
     }
     Ok(feedback)
 }
@@ -307,6 +355,14 @@ mod tests {
             wc[i] = c;
         }
         wc
+    }
+
+    /// `parse_feedback` at length `N`, as the prompt reads it.
+    fn parse_feedback<const N: usize>(input: &str) -> Result<WordCorrectness<N>, String> {
+        let symbols = super::parse_feedback(input, N)?;
+        let mut feedback = WordCorrectness::<N>::absent();
+        feedback.copy_from_slice(&symbols);
+        Ok(feedback)
     }
 
     const G: Correctness = Correctness::Correct;

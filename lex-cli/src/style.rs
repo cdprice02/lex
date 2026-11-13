@@ -6,7 +6,7 @@ use std::fmt::Write as _;
 use anstream::ColorChoice;
 use anstyle::{AnsiColor, Style};
 use clap::ValueEnum;
-use lex_core::{Correctness, WordCorrectness};
+use lex_core::Correctness;
 
 /// When to emit ANSI colour (`--color`).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, ValueEnum)]
@@ -107,10 +107,9 @@ pub const fn symbol(scheme: SymbolScheme, feedback: Correctness) -> &'static str
 /// Renders a feedback pattern as tiles. Letter and digit tiles are padded and coloured; emoji
 /// tiles are left bare. The result holds escape codes, which `anstream` removes when colour is off.
 #[must_use]
-pub fn tiles<const N: usize>(feedback: &WordCorrectness<N>, scheme: SymbolScheme) -> String {
+pub fn tiles(feedback: &[Correctness], scheme: SymbolScheme) -> String {
     let mut out = String::new();
-    for i in 0..N {
-        let state = feedback[i];
+    for &state in feedback {
         let sym = symbol(scheme, state);
         if scheme == SymbolScheme::Emoji {
             out.push_str(sym);
@@ -129,6 +128,8 @@ mod tests {
 
     use anstream::AutoStream;
 
+    use lex_core::WordCorrectness;
+
     use super::*;
 
     fn pattern() -> WordCorrectness<5> {
@@ -146,7 +147,7 @@ mod tests {
     #[test]
     fn letters_tiles() {
         assert_eq!(
-            plain(&tiles(&pattern(), SymbolScheme::Letters)),
+            plain(&tiles(&*pattern(), SymbolScheme::Letters)),
             " g  y  x  x  g "
         );
     }
@@ -154,20 +155,20 @@ mod tests {
     #[test]
     fn digits_tiles() {
         assert_eq!(
-            plain(&tiles(&pattern(), SymbolScheme::Digits)),
+            plain(&tiles(&*pattern(), SymbolScheme::Digits)),
             " 2  1  0  0  2 "
         );
     }
 
     #[test]
     fn emoji_tiles_are_bare() {
-        let rendered = tiles(&pattern(), SymbolScheme::Emoji);
+        let rendered = tiles(&*pattern(), SymbolScheme::Emoji);
         assert_eq!(rendered, "🟩🟨⬜⬜🟩");
     }
 
     #[test]
     fn coloured_tiles_carry_escapes_and_reset() {
-        let rendered = tiles(&pattern(), SymbolScheme::Letters);
+        let rendered = tiles(&*pattern(), SymbolScheme::Letters);
         assert!(rendered.contains('\x1b'));
         assert!(rendered.ends_with("\x1b[0m"));
     }
@@ -207,7 +208,7 @@ mod tests {
 
     #[test]
     fn never_strips_and_always_keeps_escapes() {
-        let rendered = tiles(&pattern(), SymbolScheme::Letters);
+        let rendered = tiles(&*pattern(), SymbolScheme::Letters);
         assert!(!through(ColorChoice::Never, &rendered).contains('\x1b'));
         assert!(through(ColorChoice::Always, &rendered).contains('\x1b'));
     }
@@ -215,7 +216,7 @@ mod tests {
     #[test]
     fn auto_on_a_pipe_strips_escapes() {
         // A Vec is not a terminal, so Auto resolves to no colour.
-        let rendered = tiles(&pattern(), SymbolScheme::Letters);
+        let rendered = tiles(&*pattern(), SymbolScheme::Letters);
         assert!(!through(ColorChoice::Auto, &rendered).contains('\x1b'));
     }
 }
