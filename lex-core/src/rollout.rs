@@ -5,6 +5,8 @@ use std::sync::Arc;
 #[cfg(test)]
 use std::sync::atomic::{AtomicU64, Ordering};
 
+use rayon::prelude::*;
+
 use crate::allowed::Allowed;
 use crate::candidates::Scored;
 use crate::memo::Memo;
@@ -132,9 +134,14 @@ impl Rollout {
         mut played: Option<&mut Vec<(Scored, f64)>>,
     ) -> Option<u32> {
         let mass = self.mass(set);
+        let top = self.pool.top_k(set, base.strategy(), allowed, self.width);
+        // each guess in its own slot, so the fold below sees the costs in score order
+        let costs: Vec<f64> = top
+            .par_iter()
+            .map(|scored| self.guess_cost(set, allowed, scored.index, mass, base))
+            .collect();
         let mut best: Option<(f64, u32)> = None;
-        for scored in self.pool.top_k(set, base.strategy(), allowed, self.width) {
-            let cost = self.guess_cost(set, allowed, scored.index, mass, base);
+        for (scored, cost) in top.into_iter().zip(costs) {
             if let Some(played) = played.as_deref_mut() {
                 played.push((scored, cost));
             }
@@ -173,7 +180,7 @@ impl Rollout {
         #[cfg(test)]
         self.count_evaluations(1, set.len());
         let win = self.pool.win_ordinal();
-        let mut cost = 1.0;
+        let mut children = Vec::new();
         // ascending feedback ordinal, so the floating-point sum does not depend on word order
         for group in keyed.chunk_by(|a, b| a.0 == b.0) {
             if group[0].0 == win {
@@ -186,8 +193,16 @@ impl Rollout {
             let child_allowed =
                 self.pool
                     .allowed_after(allowed, self.guess_pool, guess, group[0].0);
-            let share = self.mass(&child) / mass;
-            let child_cost = self.base_cost(&child, &child_allowed, base);
+            children.push((child, child_allowed));
+        }
+        // each child set in its own slot; the sum below stays sequential, in the same order
+        let costs: Vec<f64> = children
+            .par_iter()
+            .map(|(child, child_allowed)| self.base_cost(child, child_allowed, base))
+            .collect();
+        let mut cost = 1.0;
+        for ((child, _), child_cost) in children.iter().zip(costs) {
+            let share = self.mass(child) / mass;
             cost = share.mul_add(child_cost, cost);
         }
         cost
@@ -352,6 +367,43 @@ mod tests {
         let greedy = Candidates::from_indices(Arc::clone(&pool), set.clone())
             .suggest_index(&strategy, &Allowed::Whole);
         assert_eq!(choose(&pool, &strategy, &set, &Allowed::Whole), greedy);
+    }
+
+    /// A Rollout's choice and played-out list, from a cold memo, in a rayon pool of `threads`.
+    fn played_in_pool(
+        threads: usize,
+        set: &[u32],
+        allowed: &Allowed,
+    ) -> (Option<u32>, Vec<(u32, u64)>) {
+        let pool = pool();
+        let strategy = strategy(8);
+        rayon::ThreadPoolBuilder::new()
+            .num_threads(threads)
+            .build()
+            .expect("a rayon pool builds")
+            .install(|| {
+                let rollout = Rollout::new(shared(&pool), &strategy);
+                let base = BasePolicy::new(strategy, None);
+                let (best, played) = rollout
+                    .best_guess_scored(set, allowed, &base)
+                    .expect("a non-empty set has a guess");
+                let played = played
+                    .into_iter()
+                    .map(|(scored, cost)| (scored.index, cost.to_bits()))
+                    .collect();
+                (Some(best), played)
+            })
+    }
+
+    #[test]
+    fn the_choice_and_the_played_out_list_do_not_depend_on_the_thread_count() {
+        let set: Vec<u32> = (0..120).step_by(3).collect();
+        let hard = Allowed::List((0..120).collect());
+        for allowed in [Allowed::Whole, hard] {
+            let serial = played_in_pool(1, &set, &allowed);
+            assert!(serial.1.len() > 1, "the list must have several guesses");
+            assert_eq!(played_in_pool(4, &set, &allowed), serial);
+        }
     }
 
     #[test]
