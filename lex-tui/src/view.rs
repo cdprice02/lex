@@ -148,6 +148,7 @@ fn draw_explanation(frame: &mut Frame, area: Rect, model: &Model) {
         (Phase::Stuck, _) => vec![Line::raw(
             "No candidates remain: the target is not in lex's word list.",
         )],
+        (Phase::Failed, _) => vec![Line::raw("The game stopped. Press n for another word.")],
         (Phase::Ready, Some(view)) => explanation_lines(view, model.display.details),
         (Phase::Ready, None) => Vec::new(),
     };
@@ -225,13 +226,15 @@ fn draw_status(frame: &mut Frame, area: Rect, model: &Model) {
         model.display.symbols.name(),
     );
     let keys = " space play  n new  / type  r target  d details  c colour  s symbols  q quit";
-    frame.render_widget(
-        Paragraph::new(vec![
-            Line::styled(info, Style::new().add_modifier(Modifier::BOLD)),
-            Line::raw(keys),
-        ]),
-        area,
-    );
+    let first = match &model.error {
+        Some(error) if model.display.color => Line::styled(
+            format!(" error: {}", error.message()),
+            Style::new().fg(Color::Red),
+        ),
+        Some(error) => Line::raw(format!(" error: {}", error.message())),
+        None => Line::styled(info, Style::new().add_modifier(Modifier::BOLD)),
+    };
+    frame.render_widget(Paragraph::new(vec![first, Line::raw(keys)]), area);
 }
 
 /// The `/` box, over the middle of the screen.
@@ -246,8 +249,10 @@ fn draw_entry(frame: &mut Frame, area: Rect, entry: &Entry, color: bool) {
     };
     let mut lines = vec![Line::raw(format!("> {}_", entry.text))];
     lines.push(match &entry.error {
-        Some(error) if color => Line::styled(error.clone(), Style::new().fg(Color::Red)),
-        Some(error) => Line::raw(error.clone()),
+        Some(error) if color => {
+            Line::styled(error.message().to_owned(), Style::new().fg(Color::Red))
+        }
+        Some(error) => Line::raw(error.message().to_owned()),
         None => Line::raw(""),
     });
     lines.push(Line::raw("enter: watch this word   esc: cancel"));
@@ -267,8 +272,9 @@ mod tests {
 
     use super::*;
     use crate::fake::Fake;
-    use crate::model::{Msg, Options};
-    use crate::runtime::{drive, press};
+    use crate::fake::{Broken, Call};
+    use crate::model::Options;
+    use crate::runtime::{drive, enter, press};
 
     /// Colour is not asserted, so every snapshot runs with it off and the tiles carry symbols.
     const OPTIONS: Options = Options {
@@ -322,11 +328,14 @@ mod tests {
     #[test]
     fn word_entry_box_with_an_error() {
         let mut keys: Vec<_> = "/zebra".chars().map(press).collect();
-        keys.push(Msg::Key(crossterm::event::KeyEvent::new(
-            crossterm::event::KeyCode::Enter,
-            crossterm::event::KeyModifiers::NONE,
-        )));
+        keys.push(enter());
         let model = drive(&mut Fake, OPTIONS, keys);
+        insta::assert_snapshot!(render(&model, 80, 24));
+    }
+
+    #[test]
+    fn a_session_error_in_the_status_bar() {
+        let model = drive(&mut Broken(Call::Draw), OPTIONS, []);
         insta::assert_snapshot!(render(&model, 80, 24));
     }
 

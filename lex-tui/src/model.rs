@@ -4,7 +4,7 @@
 
 use crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
 
-use crate::session::{ExplanationView, GameInfo, Played};
+use crate::session::{ExplanationView, GameInfo, Played, SessionError};
 
 /// How a feedback pattern is written on a tile when colour is off.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -75,6 +75,8 @@ pub enum Phase {
     Solved,
     /// The solver has no guess: no Candidate remains.
     Stuck,
+    /// The session failed; the error is on screen and `n` starts another game.
+    Failed,
 }
 
 /// The `/` entry box.
@@ -83,7 +85,7 @@ pub struct Entry {
     /// What has been typed.
     pub text: String,
     /// Why the last submission was refused.
-    pub error: Option<String>,
+    pub error: Option<SessionError>,
 }
 
 /// The settings the player toggles with `r`, `d`, `c` and `s`.
@@ -116,6 +118,8 @@ pub struct Model {
     pub explanation: Option<ExplanationView>,
     /// Where the game stands.
     pub phase: Phase,
+    /// The latest session failure, until the next game starts.
+    pub error: Option<SessionError>,
     /// Counts games; an answer tagged with an older number is dropped.
     pub epoch: u64,
     /// What the player has toggled.
@@ -135,29 +139,29 @@ pub enum Msg {
     Drawn {
         /// The seed asked for.
         seed: u64,
-        /// The target.
-        target: String,
+        /// The target, or why none could be drawn.
+        result: Result<String, SessionError>,
     },
     /// The verdict on a typed target.
     Checked {
         /// What was typed.
         word: String,
         /// The target, or why it is refused.
-        result: Result<String, String>,
+        result: Result<String, SessionError>,
     },
     /// The feedback of a guess played.
     Feedback {
         /// The game it belongs to.
         epoch: u64,
-        /// The guess and its feedback.
-        played: Played,
+        /// The guess and its feedback, or why it could not be graded.
+        result: Result<Played, SessionError>,
     },
     /// The solver's explanation of a position.
     Explained {
         /// The game it belongs to.
         epoch: u64,
-        /// The explanation, `None` when no guess is possible.
-        view: Option<ExplanationView>,
+        /// The explanation (`None` when no guess is possible), or why there is none.
+        result: Result<Option<ExplanationView>, SessionError>,
     },
 }
 
@@ -204,6 +208,7 @@ impl Model {
             history: Vec::new(),
             explanation: None,
             phase: Phase::Starting,
+            error: None,
             epoch: 0,
             display: Display {
                 reveal: false,
@@ -231,6 +236,7 @@ impl Model {
         self.target = Some(target);
         self.history.clear();
         self.explanation = None;
+        self.error = None;
         self.phase = Phase::Thinking;
         vec![Request::Explain {
             epoch: self.epoch,
@@ -243,48 +249,66 @@ impl Model {
 pub fn update(model: &mut Model, msg: Msg) -> Vec<Request> {
     match msg {
         Msg::Key(key) => on_key(model, key),
-        Msg::Drawn { seed, target } => {
-            if model.phase == Phase::Starting && model.origin == Origin::Seed(seed) {
-                model.begin(Origin::Seed(seed), target)
-            } else {
-                Vec::new()
+        Msg::Drawn { seed, result } => {
+            if model.phase != Phase::Starting || model.origin != Origin::Seed(seed) {
+                return Vec::new();
+            }
+            match result {
+                Ok(target) => model.begin(Origin::Seed(seed), target),
+                Err(error) => fail(model, error),
             }
         }
         Msg::Checked { word, result } => on_checked(model, &word, result),
-        Msg::Feedback { epoch, played } => {
+        Msg::Feedback { epoch, result } => {
             if epoch != model.epoch || model.phase != Phase::Playing {
                 return Vec::new();
             }
+            let played = match result {
+                Ok(played) => played,
+                Err(error) => return fail(model, error),
+            };
             let solved = played.is_correct();
             model.history.push(played);
+            model.explanation = None;
             if solved {
                 model.phase = Phase::Solved;
-                model.explanation = None;
                 return Vec::new();
             }
             model.phase = Phase::Thinking;
-            model.explanation = None;
             vec![Request::Explain {
                 epoch,
                 history: model.history.clone(),
             }]
         }
-        Msg::Explained { epoch, view } => {
-            if epoch == model.epoch && model.phase == Phase::Thinking {
-                model.phase = if view.is_some() {
-                    Phase::Ready
-                } else {
-                    Phase::Stuck
-                };
-                model.explanation = view;
+        Msg::Explained { epoch, result } => {
+            if epoch != model.epoch || model.phase != Phase::Thinking {
+                return Vec::new();
             }
-            Vec::new()
+            match result {
+                Ok(view) => {
+                    model.phase = if view.is_some() {
+                        Phase::Ready
+                    } else {
+                        Phase::Stuck
+                    };
+                    model.explanation = view;
+                    Vec::new()
+                }
+                Err(error) => fail(model, error),
+            }
         }
     }
 }
 
+/// Records a session failure: the game cannot go on, but `n` can start another.
+fn fail(model: &mut Model, error: SessionError) -> Vec<Request> {
+    model.error = Some(error);
+    model.phase = Phase::Failed;
+    Vec::new()
+}
+
 /// Applies the verdict on a typed target, when the `/` box is still open for it.
-fn on_checked(model: &mut Model, word: &str, result: Result<String, String>) -> Vec<Request> {
+fn on_checked(model: &mut Model, word: &str, result: Result<String, SessionError>) -> Vec<Request> {
     let Some(entry) = model.entry.as_mut() else {
         return Vec::new();
     };
@@ -296,8 +320,8 @@ fn on_checked(model: &mut Model, word: &str, result: Result<String, String>) -> 
             model.entry = None;
             model.begin(Origin::Typed, target)
         }
-        Err(reason) => {
-            entry.error = Some(reason);
+        Err(error) => {
+            entry.error = Some(error);
             Vec::new()
         }
     }
@@ -358,6 +382,7 @@ fn new_game(model: &mut Model) -> Vec<Request> {
     model.target = None;
     model.history.clear();
     model.explanation = None;
+    model.error = None;
     model.phase = Phase::Starting;
     vec![Request::Draw { seed }]
 }
@@ -396,7 +421,7 @@ mod tests {
     use lex_core::Correctness;
 
     use super::*;
-    use crate::fake::Fake;
+    use crate::fake::{BROKEN, Broken, Call, Fake};
     use crate::runtime::{drive, handle, press};
     use crate::session::{Row, Session as _};
 
@@ -448,7 +473,7 @@ mod tests {
             &mut model,
             Msg::Drawn {
                 seed: 0,
-                target: "light".to_owned(),
+                result: Ok("light".to_owned()),
             },
         );
         assert_eq!(
@@ -463,7 +488,7 @@ mod tests {
             &mut model,
             Msg::Explained {
                 epoch: 1,
-                view: Some(view("slate")),
+                result: Ok(Some(view("slate"))),
             },
         );
         assert_eq!(model.phase, Phase::Ready);
@@ -492,7 +517,7 @@ mod tests {
             &mut model,
             Msg::Feedback {
                 epoch: 1,
-                played: played.clone(),
+                result: Ok(played.clone()),
             },
         );
         assert_eq!(
@@ -543,17 +568,17 @@ mod tests {
             &mut model,
             Msg::Feedback {
                 epoch: 1,
-                played: Played {
+                result: Ok(Played {
                     word: "slate".to_owned(),
                     feedback: vec![Correctness::Absent; 5],
-                },
+                }),
             },
         );
         update(
             &mut model,
             Msg::Explained {
                 epoch: 1,
-                view: None,
+                result: Ok(None),
             },
         );
         assert_eq!(model.phase, Phase::Stuck);
@@ -571,7 +596,7 @@ mod tests {
             &mut model,
             Msg::Explained {
                 epoch: 1,
-                view: Some(view("slate")),
+                result: Ok(Some(view("slate"))),
             },
         );
         assert_eq!(model.phase, Phase::Starting);
@@ -581,7 +606,7 @@ mod tests {
                 &mut model,
                 Msg::Drawn {
                     seed: 0,
-                    target: "light".to_owned()
+                    result: Ok("light".to_owned())
                 }
             )
             .is_empty()
@@ -627,7 +652,7 @@ mod tests {
         let entry = model.entry.as_ref().unwrap();
         assert_eq!(entry.text, "zebra");
         assert_eq!(
-            entry.error.as_deref(),
+            entry.error.as_ref().map(SessionError::message),
             Some("zebra is not in the wordle answer list")
         );
         assert_eq!(model.target, before.target);
@@ -674,6 +699,84 @@ mod tests {
             })
             .collect();
         assert_eq!(schemes, [Symbols::Digits, Symbols::Emoji, Symbols::Letters]);
+    }
+
+    fn error_message(model: &Model) -> Option<&str> {
+        model.error.as_ref().map(SessionError::message)
+    }
+
+    #[test]
+    fn a_failed_draw_stops_the_game_and_n_tries_again() {
+        let mut model = drive(&mut Broken(Call::Draw), OPTIONS, []);
+        assert_eq!(model.phase, Phase::Failed);
+        assert_eq!(error_message(&model), Some(BROKEN));
+        assert_eq!(model.target, None);
+        let requests = update(&mut model, press('n'));
+        assert_eq!(requests, [Request::Draw { seed: 1 }]);
+        assert_eq!((model.phase, model.error.as_ref()), (Phase::Starting, None));
+    }
+
+    #[test]
+    fn a_failed_check_keeps_the_box_open_with_the_error() {
+        let mut model = ready();
+        update(&mut model, press('/'));
+        for c in "crane".chars() {
+            update(&mut model, press(c));
+        }
+        let requests = update(&mut model, key(KeyCode::Enter));
+        for request in requests {
+            let msg = handle(&mut Broken(Call::CheckTarget), request);
+            update(&mut model, msg);
+        }
+        let entry = model.entry.as_ref().unwrap();
+        assert_eq!(
+            entry.error.as_ref().map(SessionError::message),
+            Some(BROKEN)
+        );
+        assert_eq!(model.origin, Origin::Seed(0));
+        assert_eq!(model.phase, Phase::Ready);
+    }
+
+    #[test]
+    fn a_failed_play_stops_the_game_with_the_guess_unplayed() {
+        let mut model = ready();
+        let requests = update(&mut model, press(' '));
+        for request in requests {
+            let msg = handle(&mut Broken(Call::Play), request);
+            assert!(update(&mut model, msg).is_empty());
+        }
+        assert_eq!(model.phase, Phase::Failed);
+        assert_eq!(error_message(&model), Some(BROKEN));
+        assert!(model.history.is_empty());
+    }
+
+    #[test]
+    fn a_failed_explain_stops_the_game() {
+        let mut model = ready();
+        model.phase = Phase::Thinking;
+        model.explanation = None;
+        let msg = handle(
+            &mut Broken(Call::Explain),
+            Request::Explain {
+                epoch: model.epoch,
+                history: Vec::new(),
+            },
+        );
+        assert!(update(&mut model, msg).is_empty());
+        assert_eq!(model.phase, Phase::Failed);
+        assert_eq!(error_message(&model), Some(BROKEN));
+    }
+
+    #[test]
+    fn a_failure_from_an_abandoned_game_is_ignored() {
+        let mut model = ready();
+        update(&mut model, press('n'));
+        let stale = Msg::Explained {
+            epoch: 1,
+            result: Err(SessionError::new("late")),
+        };
+        assert!(update(&mut model, stale).is_empty());
+        assert_eq!((model.phase, model.error), (Phase::Starting, None));
     }
 
     #[test]

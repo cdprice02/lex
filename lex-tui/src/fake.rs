@@ -2,7 +2,7 @@
 
 use lex_core::Correctness;
 
-use crate::session::{ExplanationView, GameInfo, Played, Row, Session};
+use crate::session::{ExplanationView, GameInfo, Played, Row, Session, SessionError};
 
 /// The answers the fake draws from, by seed modulo their count.
 pub const ANSWERS: [&str; 3] = ["light", "crane", "mount"];
@@ -21,23 +21,25 @@ impl Session for Fake {
         }
     }
 
-    fn draw(&self, seed: u64) -> String {
+    fn draw(&self, seed: u64) -> Result<String, SessionError> {
         let index = usize::try_from(seed % 3).unwrap_or_default();
-        ANSWERS[index].to_owned()
+        Ok(ANSWERS[index].to_owned())
     }
 
-    fn check_target(&self, word: &str) -> Result<String, String> {
+    fn check_target(&self, word: &str) -> Result<String, SessionError> {
         let word = word.trim().to_lowercase();
         if ANSWERS.contains(&word.as_str()) {
             Ok(word)
         } else {
-            Err(format!("{word} is not in the wordle answer list"))
+            Err(SessionError::new(format!(
+                "{word} is not in the wordle answer list"
+            )))
         }
     }
 
-    fn play(&self, guess: &str, target: &str) -> Vec<Correctness> {
+    fn play(&self, guess: &str, target: &str) -> Result<Vec<Correctness>, SessionError> {
         let target: Vec<char> = target.chars().collect();
-        guess
+        Ok(guess
             .chars()
             .enumerate()
             .map(|(i, c)| {
@@ -49,10 +51,10 @@ impl Session for Fake {
                     Correctness::Absent
                 }
             })
-            .collect()
+            .collect())
     }
 
-    fn explain(&mut self, history: &[Played]) -> Option<ExplanationView> {
+    fn explain(&mut self, history: &[Played]) -> Result<Option<ExplanationView>, SessionError> {
         let step = history.len();
         // The last scripted guess is the target of seed 0, so the script ends the game.
         let guess = SCRIPT[step.min(SCRIPT.len() - 1)];
@@ -71,12 +73,65 @@ impl Session for Fake {
                 }
             })
             .collect();
-        Some(ExplanationView {
+        Ok(Some(ExplanationView {
             guess: guess.to_owned(),
             technique: Some(if step == 0 { "Entropy" } else { "Rollout" }.to_owned()),
             from_book: step == 0,
             candidates: 2315 / (step + 1).pow(3),
             rows,
-        })
+        }))
+    }
+}
+
+/// The [`Session`] calls a [`Broken`] session can fail.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Call {
+    /// [`Session::draw`]
+    Draw,
+    /// [`Session::check_target`]
+    CheckTarget,
+    /// [`Session::play`]
+    Play,
+    /// [`Session::explain`]
+    Explain,
+}
+
+/// A [`Fake`] whose `0` call always fails, with this message.
+pub struct Broken(pub Call);
+
+/// What a [`Broken`] session says when its call fails.
+pub const BROKEN: &str = "the session is broken";
+
+impl Session for Broken {
+    fn game(&self) -> GameInfo {
+        Fake.game()
+    }
+
+    fn draw(&self, seed: u64) -> Result<String, SessionError> {
+        if self.0 == Call::Draw {
+            return Err(SessionError::new(BROKEN));
+        }
+        Fake.draw(seed)
+    }
+
+    fn check_target(&self, word: &str) -> Result<String, SessionError> {
+        if self.0 == Call::CheckTarget {
+            return Err(SessionError::new(BROKEN));
+        }
+        Fake.check_target(word)
+    }
+
+    fn play(&self, guess: &str, target: &str) -> Result<Vec<Correctness>, SessionError> {
+        if self.0 == Call::Play {
+            return Err(SessionError::new(BROKEN));
+        }
+        Fake.play(guess, target)
+    }
+
+    fn explain(&mut self, history: &[Played]) -> Result<Option<ExplanationView>, SessionError> {
+        if self.0 == Call::Explain {
+            return Err(SessionError::new(BROKEN));
+        }
+        Fake.explain(history)
     }
 }

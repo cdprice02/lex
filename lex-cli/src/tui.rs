@@ -6,7 +6,7 @@ use std::sync::Arc;
 
 use lex_core::{Correctness, Explanation, Guess, Guesser, WordCorrectness};
 use lex_data::Word;
-use lex_tui::{ExplanationView, GameInfo, Options, Played, Row, Session, Symbols};
+use lex_tui::{ExplanationView, GameInfo, Options, Played, Row, Session, SessionError, Symbols};
 
 use crate::books::{self, BookMode};
 use crate::config::Targets;
@@ -107,21 +107,33 @@ pub fn session<const N: usize>(setup: &Setup) -> anyhow::Result<Box<dyn Session 
 
 impl<const N: usize> WatchSession<N> {
     /// The word `text` spells, if it has `N` letters.
-    fn word(text: &str) -> Result<Word<N>, String> {
-        Word::<N>::try_from(text.trim().to_lowercase().as_str()).map_err(|e| e.to_string())
+    fn word(text: &str) -> Result<Word<N>, SessionError> {
+        Word::<N>::try_from(text.trim().to_lowercase().as_str())
+            .map_err(|e| SessionError::new(e.to_string()))
     }
 
     /// The guesser at the position after `history`.
-    fn replay(&mut self, history: &[Played]) {
+    ///
+    /// # Errors
+    ///
+    /// If a played word is not a word of the game or its feedback has the wrong length; the
+    /// guesser is then left part-way through `history`.
+    fn replay(&mut self, history: &[Played]) -> Result<(), SessionError> {
         self.guesser.reset();
         for played in history {
-            let (Ok(word), true) = (Self::word(&played.word), played.feedback.len() == N) else {
-                continue;
-            };
+            let word = Self::word(&played.word)?;
+            if played.feedback.len() != N {
+                return Err(SessionError::new(format!(
+                    "the feedback for {} has {} letters, not {N}",
+                    played.word,
+                    played.feedback.len()
+                )));
+            }
             let mut feedback = WordCorrectness::<N>::absent();
             feedback.copy_from_slice(&played.feedback);
             self.guesser.push_guess(Guess::new(word, feedback));
         }
+        Ok(())
     }
 }
 
@@ -133,34 +145,36 @@ impl<const N: usize> Session for WatchSession<N> {
         }
     }
 
-    fn draw(&self, seed: u64) -> String {
-        // `session` rejects an empty Answer list, so a sample of one always exists.
-        targets::select(self.answers.clone(), &self.noun, None, Some(1), seed)
-            .ok()
-            .and_then(|drawn| drawn.first().map(ToString::to_string))
-            .unwrap_or_default()
+    fn draw(&self, seed: u64) -> Result<String, SessionError> {
+        let drawn = targets::select(self.answers.clone(), &self.noun, None, Some(1), seed)
+            .map_err(|e| SessionError::new(e.to_string()))?;
+        drawn
+            .first()
+            .map(ToString::to_string)
+            .ok_or_else(|| SessionError::new(format!("{} is empty", self.noun)))
     }
 
-    fn check_target(&self, word: &str) -> Result<String, String> {
+    fn check_target(&self, word: &str) -> Result<String, SessionError> {
         let parsed = Self::word(word)?;
         if self.answers.contains(&parsed) {
             Ok(parsed.to_string())
         } else {
-            Err(format!("{parsed} is not in {}", self.noun))
+            Err(SessionError::new(format!(
+                "{parsed} is not in {}",
+                self.noun
+            )))
         }
     }
 
-    fn play(&self, guess: &str, target: &str) -> Vec<Correctness> {
-        match (Self::word(guess), Self::word(target)) {
-            (Ok(guess), Ok(target)) => WordCorrectness::correct(target, guess).to_vec(),
-            (Err(_), _) | (_, Err(_)) => vec![Correctness::Absent; N],
-        }
+    fn play(&self, guess: &str, target: &str) -> Result<Vec<Correctness>, SessionError> {
+        let (guess, target) = (Self::word(guess)?, Self::word(target)?);
+        Ok(WordCorrectness::correct(target, guess).to_vec())
     }
 
-    fn explain(&mut self, history: &[Played]) -> Option<ExplanationView> {
+    fn explain(&mut self, history: &[Played]) -> Result<Option<ExplanationView>, SessionError> {
         let pool = Arc::clone(&self.pool);
         pool.install(|| {
-            self.replay(history);
+            self.replay(history)?;
             let candidates = self.guesser.num_candidates();
             let Some(Explanation {
                 guess,
@@ -170,16 +184,18 @@ impl<const N: usize> Session for WatchSession<N> {
                 ..
             }) = self.guesser.explain()
             else {
-                let guess = self.guesser.suggest()?;
-                return Some(ExplanationView {
+                let Some(guess) = self.guesser.suggest() else {
+                    return Ok(None);
+                };
+                return Ok(Some(ExplanationView {
                     guess: guess.to_string(),
                     technique: None,
                     from_book: false,
                     candidates,
                     rows: Vec::new(),
-                });
+                }));
             };
-            Some(ExplanationView {
+            Ok(Some(ExplanationView {
                 guess: guess.to_string(),
                 technique: Some(technique.to_string()),
                 from_book,
@@ -194,7 +210,7 @@ impl<const N: usize> Session for WatchSession<N> {
                         in_candidates: s.in_candidates,
                     })
                     .collect(),
-            })
+            }))
         })
     }
 }
@@ -264,18 +280,20 @@ mod tests {
     #[test]
     fn draws_the_same_answer_for_the_same_seed() {
         let (_tmp, session) = seeded();
-        assert_eq!(session.draw(7), session.draw(7));
-        assert_eq!(session.check_target(&session.draw(7)), Ok(session.draw(7)));
+        let drawn = session.draw(7).unwrap();
+        assert_eq!(session.draw(7).unwrap(), drawn);
+        assert_eq!(session.check_target(&drawn).unwrap(), drawn);
     }
 
     #[test]
     fn a_target_must_be_an_answer_of_the_right_length() {
         let (_tmp, session) = seeded();
-        assert_eq!(session.check_target(" Crane "), Ok("crane".to_owned()));
+        assert_eq!(session.check_target(" Crane ").unwrap(), "crane");
         assert!(
             session
                 .check_target("bread")
                 .unwrap_err()
+                .message()
                 .contains("not in the dictionary")
         );
         assert!(session.check_target("cran").is_err());
@@ -284,14 +302,36 @@ mod tests {
     #[test]
     fn play_gives_the_feedback_against_the_target() {
         let (_tmp, session) = seeded();
-        assert_eq!(session.play("stare", "crane"), [X, X, G, Y, G]);
-        assert_eq!(session.play("crane", "crane"), [G; 5]);
+        assert_eq!(session.play("stare", "crane").unwrap(), [X, X, G, Y, G]);
+        assert_eq!(session.play("crane", "crane").unwrap(), [G; 5]);
+    }
+
+    #[test]
+    fn play_refuses_a_word_of_the_wrong_length() {
+        let (_tmp, session) = seeded();
+        assert!(session.play("star", "crane").is_err());
+        assert!(session.play("crane", "cranes").is_err());
+    }
+
+    #[test]
+    fn explain_refuses_a_history_that_is_not_the_games() {
+        let (_tmp, mut session) = seeded();
+        let bad_word = Played {
+            word: "star".to_owned(),
+            feedback: vec![X; 4],
+        };
+        assert!(session.explain(&[bad_word]).is_err());
+        let bad_feedback = Played {
+            word: "crane".to_owned(),
+            feedback: vec![X; 4],
+        };
+        assert!(session.explain(&[bad_feedback]).is_err());
     }
 
     #[test]
     fn explains_the_opening_and_narrows_after_a_guess() {
         let (_tmp, mut session) = seeded();
-        let opening = session.explain(&[]).unwrap();
+        let opening = session.explain(&[]).unwrap().unwrap();
         assert_eq!(
             opening.rows.first().map(|r| r.word.clone()),
             Some(opening.guess.clone())
@@ -299,9 +339,9 @@ mod tests {
         assert!(opening.technique.is_some());
         let played = Played {
             word: "crane".to_owned(),
-            feedback: session.play("crane", "light"),
+            feedback: session.play("crane", "light").unwrap(),
         };
-        let next = session.explain(&[played]).unwrap();
+        let next = session.explain(&[played]).unwrap().unwrap();
         assert!(next.candidates < opening.candidates);
         assert_eq!(session.game().word_length, 5);
     }

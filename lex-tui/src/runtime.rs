@@ -1,12 +1,15 @@
 //! The thin shell around the model: the worker that answers requests, the terminal loop, and a
 //! headless driver that plays a game with no terminal and no thread.
 
+#[cfg(any(test, feature = "test-support"))]
 use std::collections::VecDeque;
 use std::io;
 use std::sync::mpsc;
 use std::time::Duration;
 
-use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
+use crossterm::event::{self, Event, KeyEventKind};
+#[cfg(any(test, feature = "test-support"))]
+use crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
 
 use crate::model::{Model, Msg, Options, Request, update};
 use crate::session::{Played, Session};
@@ -16,12 +19,14 @@ use crate::view;
 const TICK: Duration = Duration::from_millis(50);
 
 /// The key press of the character `c`, as a [`Msg`].
+#[cfg(any(test, feature = "test-support"))]
 #[must_use]
 pub const fn press(c: char) -> Msg {
     Msg::Key(KeyEvent::new(KeyCode::Char(c), KeyModifiers::NONE))
 }
 
 /// The enter key, as a [`Msg`].
+#[cfg(any(test, feature = "test-support"))]
 #[must_use]
 pub const fn enter() -> Msg {
     Msg::Key(KeyEvent::new(KeyCode::Enter, KeyModifiers::NONE))
@@ -32,7 +37,7 @@ pub fn handle(session: &mut dyn Session, request: Request) -> Msg {
     match request {
         Request::Draw { seed } => Msg::Drawn {
             seed,
-            target: session.draw(seed),
+            result: session.draw(seed),
         },
         Request::Check { word } => {
             let result = session.check_target(&word);
@@ -43,24 +48,22 @@ pub fn handle(session: &mut dyn Session, request: Request) -> Msg {
             guess,
             target,
         } => {
-            let feedback = session.play(&guess, &target);
-            Msg::Feedback {
-                epoch,
-                played: Played {
-                    word: guess,
-                    feedback,
-                },
-            }
+            let result = session.play(&guess, &target).map(|feedback| Played {
+                word: guess,
+                feedback,
+            });
+            Msg::Feedback { epoch, result }
         }
         Request::Explain { epoch, history } => Msg::Explained {
             epoch,
-            view: session.explain(&history),
+            result: session.explain(&history),
         },
     }
 }
 
 /// Plays Watch with no terminal and no thread: opens a game, then feeds `inputs` in order,
 /// answering every request on the spot. Returns the model where the inputs leave it.
+#[cfg(any(test, feature = "test-support"))]
 pub fn drive(
     session: &mut dyn Session,
     options: Options,
@@ -76,6 +79,7 @@ pub fn drive(
 }
 
 /// Answers `requests`, and whatever those answers ask for, until none is left.
+#[cfg(any(test, feature = "test-support"))]
 fn settle(session: &mut dyn Session, model: &mut Model, requests: Vec<Request>) {
     let mut queue: VecDeque<Request> = requests.into();
     while let Some(request) = queue.pop_front() {

@@ -5,6 +5,30 @@
 
 use lex_core::Correctness;
 
+/// Why a [`Session`] call failed, in words for the player.
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[error("{message}")]
+pub struct SessionError {
+    /// What went wrong.
+    message: String,
+}
+
+impl SessionError {
+    /// An error that says `message`.
+    #[must_use]
+    pub fn new(message: impl Into<String>) -> Self {
+        Self {
+            message: message.into(),
+        }
+    }
+
+    /// What went wrong.
+    #[must_use]
+    pub fn message(&self) -> &str {
+        &self.message
+    }
+}
+
 /// A guess played and the feedback it earned.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Played {
@@ -63,24 +87,38 @@ pub struct ExplanationView {
 
 /// A game the Watch mode can play. The solver call, [`Session::explain`], is slow; the rest are
 /// quick.
+///
+/// Every call can fail; the UI shows the error and carries on.
 pub trait Session {
     /// The game being played.
     fn game(&self) -> GameInfo;
 
     /// The target a seed draws, uniform over the Answer list.
-    fn draw(&self, seed: u64) -> String;
-
-    /// The Answer-list word `word` names, or why it is not one.
     ///
     /// # Errors
     ///
-    /// A message for the player when `word` is not on the Answer list.
-    fn check_target(&self, word: &str) -> Result<String, String>;
+    /// If the game has no target to draw.
+    fn draw(&self, seed: u64) -> Result<String, SessionError>;
+
+    /// The Answer-list word `word` names.
+    ///
+    /// # Errors
+    ///
+    /// If `word` is not a word of the game or not on the Answer list.
+    fn check_target(&self, word: &str) -> Result<String, SessionError>;
 
     /// The feedback `guess` earns against `target`.
-    fn play(&self, guess: &str, target: &str) -> Vec<Correctness>;
+    ///
+    /// # Errors
+    ///
+    /// If either is not a word of the game.
+    fn play(&self, guess: &str, target: &str) -> Result<Vec<Correctness>, SessionError>;
 
     /// The solver's explanation at the position after `history`; `None` when no guess is
     /// possible.
-    fn explain(&mut self, history: &[Played]) -> Option<ExplanationView>;
+    ///
+    /// # Errors
+    ///
+    /// If `history` holds a guess that is not a word of the game or has the wrong feedback length.
+    fn explain(&mut self, history: &[Played]) -> Result<Option<ExplanationView>, SessionError>;
 }
