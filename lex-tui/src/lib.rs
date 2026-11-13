@@ -1,7 +1,7 @@
 //! The terminal UI of lex. A frontend library: the `lex` binary launches it, and it never
 //! depends on `lex-cli`.
 //!
-//! Watch is the first mode: lex plays a hidden answer one guess at a time, explaining each guess.
+//! Watch is its mode: lex plays a hidden answer one guess at a time, explaining each guess.
 //! The state is one [`Model`] changed by [`Msg`]s through the pure [`update`]; slow work leaves as
 //! a [`Request`] for a worker that owns the [`Session`].
 #![feature(non_exhaustive_omitted_patterns_lint, must_not_suspend)]

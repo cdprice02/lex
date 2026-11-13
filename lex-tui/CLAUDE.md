@@ -1,6 +1,6 @@
 # CLAUDE.md: lex-tui
 
-The terminal UI of lex: a library (`lex_tui`) that `lex-cli` launches as `lex tui`. It depends on `lex-core` for `Correctness` and never on `lex-cli`; `lex-cli` depends on it and implements `Session` over its own game setup. Watch is the only mode so far (Assist, Play and Results follow). Per-function detail lives in rustdoc.
+The terminal UI of lex: a library (`lex_tui`) that `lex-cli` launches as `lex tui`. It depends on `lex-core` for `Correctness` and never on `lex-cli`; `lex-cli` depends on it and implements `Session` over its own game setup. Watch is its mode: lex plays a hidden answer and explains each guess. Per-function detail lives in rustdoc.
 
 ## Module map
 
@@ -17,7 +17,7 @@ The terminal UI of lex: a library (`lex_tui`) that `lex-cli` launches as `lex tu
 - **One copy.** The trait speaks `String`, `Vec<Correctness>` and view structs, and `run` takes a `Box<dyn Session + Send>`: nothing here is generic over the word length, so the crate compiles once (ADR 0010). Keep `N` out of it.
 - **`update` is pure.** It never sleeps, spawns or reads the terminal. Anything slow or fallible leaves as a `Request`; the answer returns as a `Msg`. `handle` is the only code that calls the `Session`, and both the worker thread and `drive` use it, so tests and the terminal run one path.
 - **Epochs.** Each game bumps `Model::epoch`; `Feedback` and `Explained` carry the epoch they were asked in and are dropped on a mismatch, as is a `Drawn` for a seed other than the one pending. `n` therefore abandons a solve in flight without cancelling it.
-- **The worker is detached.** `run` never joins it: quitting mid-solve returns at once and the process exit ends it. The solver call runs inside the `--threads` pool (that is `lex-cli`'s `Session`, not this crate); the UI loop runs outside it.
+- **The worker is detached.** `run` never joins it: quitting mid-solve returns at once and the process exit ends it. The `explain` call runs inside the `--threads` pool (that is `lex-cli`'s `Session`, not this crate); the UI loop runs outside it.
 - **Seeds.** The first game uses `Options::seed`; `n` uses the previous seed plus one, so a fixed `--seed` replays the same sequence of games.
 - **Typed targets** are checked by the session (`check_target`) on Enter, so the `/` box stays open with the reason when the word is not an answer. It takes letters only.
 - **Colour.** The palette is the three tile colours in `view.rs`, a copy of `lex-cli`'s `style` palette (this crate cannot depend on it). With colour off no style is applied and each tile also shows its symbol (`s` cycles letters, digits, emoji); with colour on the symbol scheme has no tile to change.
