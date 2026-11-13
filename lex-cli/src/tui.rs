@@ -6,12 +6,13 @@ use std::sync::Arc;
 
 use lex_core::{Correctness, Explanation, Guess, Guesser, WordCorrectness};
 use lex_data::Word;
-use lex_tui::{ExplanationView, GameInfo, Played, Row, Session};
+use lex_tui::{ExplanationView, GameInfo, Options, Played, Row, Session, Symbols};
 
 use crate::books::{self, BookMode};
 use crate::config::Targets;
 use crate::lists::Source;
 use crate::progress;
+use crate::style::SymbolScheme;
 use crate::targets;
 
 use crate::cli::TuiArgs;
@@ -30,16 +31,53 @@ struct WatchSession<const N: usize> {
     pool: Arc<rayon::ThreadPool>,
 }
 
-/// Loads the lists and the Opening book for `args`, building the book if it is missing, and
+/// What [`session`] sets a game up from: one value, so the length dispatch macro can pass it.
+#[derive(Clone, Copy)]
+pub struct Setup<'a> {
+    /// The game and flags.
+    pub args: &'a TuiArgs,
+    /// The `--threads` pool the solver runs in.
+    pub pool: &'a Arc<rayon::ThreadPool>,
+}
+
+/// Opens the terminal UI on the game `args` name.
+///
+/// Loading the lists and building the Opening book come first, with the usual progress output;
+/// only then does the UI take over the terminal. It runs on the calling thread, outside `pool`,
+/// which only the solver calls enter.
+///
+/// # Errors
+///
+/// As [`session`], and if the terminal cannot be used.
+pub fn launch(
+    args: &TuiArgs,
+    pool: &Arc<rayon::ThreadPool>,
+    symbols: SymbolScheme,
+) -> anyhow::Result<()> {
+    let setup = Setup { args, pool };
+    let session = lex_data::match_word_length!(session, args.common.dispatch_length(), &setup)?;
+    let color = anstream::AutoStream::choice(&std::io::stdout()) != anstream::ColorChoice::Never;
+    let options = Options {
+        seed: args.seed.unwrap_or_else(rand::random),
+        color,
+        symbols: match symbols {
+            SymbolScheme::Letters => Symbols::Letters,
+            SymbolScheme::Digits => Symbols::Digits,
+            SymbolScheme::Emoji => Symbols::Emoji,
+        },
+    };
+    lex_tui::run(session, options)?;
+    Ok(())
+}
+
+/// Loads the lists and the Opening book for `setup`, building the book if it is missing, and
 /// returns the session over them. Slow, so it runs before the terminal is taken over.
 ///
 /// # Errors
 ///
 /// If the lists or the Opening book cannot be loaded, or the game has no answers.
-pub fn session<const N: usize>(
-    args: &TuiArgs,
-    pool: &Arc<rayon::ThreadPool>,
-) -> anyhow::Result<Box<dyn Session + Send>> {
+pub fn session<const N: usize>(setup: &Setup) -> anyhow::Result<Box<dyn Session + Send>> {
+    let Setup { args, pool } = *setup;
     let config = args.common.config(Targets::Full);
     let data_dir = args.common.data();
     pool.install(|| {
@@ -215,7 +253,11 @@ mod tests {
                 .build()
                 .unwrap(),
         );
-        let session = session::<5>(&flags.args, &pool).unwrap();
+        let session = session::<5>(&Setup {
+            args: &flags.args,
+            pool: &pool,
+        })
+        .unwrap();
         (tmp, session)
     }
 

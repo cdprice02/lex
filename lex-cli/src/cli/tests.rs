@@ -373,3 +373,47 @@ mod threads_tests {
         );
     }
 }
+
+mod tui_tests {
+    use lex_data::Profile;
+
+    use super::*;
+
+    fn tui(args: &[&str]) -> Result<TuiArgs, clap::Error> {
+        let Command::Tui(mut a) =
+            Cli::try_parse_from(["lex", "tui"].into_iter().chain(args.iter().copied()))?.command
+        else {
+            return Err(clap::Error::raw(
+                clap::error::ErrorKind::InvalidSubcommand,
+                "`tui` parsed to another command",
+            ));
+        };
+        a.resolve();
+        Ok(a)
+    }
+
+    #[test]
+    fn plays_the_wordle_profile_by_default() {
+        let a = tui(&[]).unwrap();
+        assert_eq!(a.common.profile, Some(Profile::Wordle));
+        assert_eq!(a.common.dispatch_length(), 5);
+        assert_eq!(a.seed, None);
+    }
+
+    #[test]
+    fn takes_a_game_the_way_assist_does() {
+        let a = tui(&["--lang", "french", "-l", "6", "--seed", "9"]).unwrap();
+        assert_eq!(a.common.profile, None);
+        assert_eq!(a.common.dispatch_length(), 6);
+        assert_eq!(a.seed, Some(9));
+        let a = tui(&["--profile", "wordle-all", "--pool", "hard"]).unwrap();
+        assert_eq!(a.common.profile, Some(Profile::WordleAll));
+    }
+
+    #[test]
+    fn a_language_and_a_length_come_together_and_exclude_a_profile() {
+        assert!(tui(&["--lang", "english"]).is_err());
+        assert!(tui(&["-l", "5"]).is_err());
+        assert!(tui(&["--profile", "wordle", "-l", "5", "--lang", "english"]).is_err());
+    }
+}

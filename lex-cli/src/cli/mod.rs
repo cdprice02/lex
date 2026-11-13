@@ -113,6 +113,8 @@ pub enum Command {
     Simulate(SimulateArgs),
     /// Interactively assist a live Wordle game
     Assist(AssistArgs),
+    /// Watch lex solve a hidden answer one guess at a time, in the terminal
+    Tui(TuiArgs),
     /// Paired comparison of two simulation reports (JSON from `simulate --output`)
     Compare(CompareArgs),
     /// Manage the cached Wiktionary dictionaries
