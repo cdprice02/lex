@@ -12,7 +12,9 @@ use crate::language::Language;
 
 pub use build::{build_all, build_if_missing};
 pub use read::{corpus_checksum, ensure_supported, read};
-pub use write::{encode_entries, encode_records, write_records};
+pub use write::encode_records;
+#[cfg(feature = "test-support")]
+pub use write::{encode_entries, write_records};
 
 /// Least summed count a word needs to enter a Corpus.
 pub const MIN_FREQUENCY: u64 = 1;
