@@ -26,7 +26,7 @@ pub use cache::{
     ProfileArgs, ProfileClearArgs, ProfileCommand, ProfileFetchArgs, ProfileListArgs,
     ProfileShowArgs, languages,
 };
-pub use play::{AssistArgs, CommonArgs, CompareArgs, SimulateArgs};
+pub use play::{AssistArgs, CommonArgs, CompareArgs, SimulateArgs, TuiArgs};
 
 /// The `lex` command line.
 // `about = None`: a doc comment would otherwise become the `--help` banner.

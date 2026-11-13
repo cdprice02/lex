@@ -23,5 +23,6 @@ pub mod style;
 pub mod table;
 pub mod targets;
 pub mod tracks;
+pub mod tui;
 pub mod verdict;
 pub mod word;

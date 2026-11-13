@@ -14,6 +14,7 @@ harness = false
 [dependencies]
 lex-core = { path = "../lex-core" }
 lex-data = { path = "../lex-data" }
+lex-tui = { path = "../lex-tui" }
 anyhow = { workspace = true }
 anstream = "1.0"
 anstyle = "1.0"
