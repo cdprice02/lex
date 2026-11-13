@@ -12,8 +12,11 @@ A change lands when the average per-track mean delta over the headline tier is n
 
 Budgets: a full-dictionary run at length 5 finishes within 10 minutes on one core, breadth runs within 10 minutes each, assist within 1 second per move at every length, and in-memory precomputed structures within 1 GB. Per-thread scratch reused across calls (pattern buckets, sort buffers) is working memory, not a precomputed structure, and does not count toward that cap. Run and assist times are measured with the Opening book built; building it has its own budget (ADR 0011).
 
+Memory below the cap still counts. A speed change that lowers peak memory may cost speed, up to a quarter of its memory saving in percent: a change that saves 40% of peak RSS lands if it is no more than 10% slower. Both figures come from the same runs, base against head on the same machine and thread count, peak RSS from `/usr/bin/time`; when machines or thread counts disagree, the worst case decides. Memory headroom pays for caches, and caches usually pay back in speed.
+
 ## Considered Options
 
 - Failure rate first, never traded for mean: rejected; fast solving is the goal, and a lower mean mostly lowers failures with it. Under the earlier rule the phase-08 endgame was rejected for doubling failures at a 0.02 prior-weighted gain.
 - Breadth as every length from 4 up to the largest whose run fits the time budget: the earlier rule, superseded; it tied the tier list to machine speed and left the Oracle as a separate hand-kept list. Fixed lengths reach the longest Supported words in a few runs per language.
 - English-5 as the only scored track: rejected; it invites tuning to one corpus, the opposite of the project's point.
+- Memory as a cap only, with any saving below 1 GB worth nothing against speed: the earlier rule, superseded; it rejected a memo layout that cut peak RSS by 39% for a few percent of speed, and gave up the headroom that further caching would use.
