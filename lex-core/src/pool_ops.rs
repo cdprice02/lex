@@ -17,7 +17,7 @@ use crate::strategy::{GuessPool, Pool, Strategy};
 
 /// What the search needs of a Guess pool of any word length. Set arguments are ascending pool
 /// indices.
-pub trait PoolOps: Debug {
+pub trait PoolOps: Debug + Send + Sync {
     /// Number of words in the pool.
     fn len(&self) -> usize;
 

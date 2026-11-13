@@ -184,13 +184,13 @@ impl<const N: usize> DecisionTree<N> {
             let set = entry.candidates.indices();
             let index = match explainer.as_ref().filter(|_| *recording) {
                 Some(explainer) => explainer
-                    .decide(set, &entry.allowed, base, rollout.as_mut())
+                    .decide(set, &entry.allowed, base, rollout.as_ref())
                     .map(|record| {
                         let chosen = record.listed[0].index;
                         records.insert(node, record);
                         chosen
                     }),
-                None => match rollout.as_mut() {
+                None => match rollout.as_ref() {
                     Some(rollout) if !base.uses_endgame(size) && rollout.applies(size) => {
                         rollout.best_guess(set, &entry.allowed, base)
                     }
@@ -304,7 +304,7 @@ impl<const N: usize> DecisionTree<N> {
         let set = entry.candidates.indices();
         let listed = explainer
             .as_ref()?
-            .score(set, &entry.allowed, base, rollout.as_mut(), index);
+            .score(set, &entry.allowed, base, rollout.as_ref(), index);
         Some(ScoredGuess {
             word,
             expected_bits: listed.bits,
@@ -400,7 +400,7 @@ impl<const N: usize> DecisionTree<N> {
             entry.candidates.indices(),
             &entry.allowed,
             base,
-            rollout.as_mut(),
+            rollout.as_ref(),
         )
     }
 

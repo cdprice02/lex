@@ -2,7 +2,7 @@
 
 use std::cmp::{Ordering, Reverse};
 
-use super::{Allowed, Endgame};
+use super::{Allowed, Endgame, PatternTable};
 
 /// A guess's place in the try order: floor, then candidates before outside guesses, then pool
 /// index. The index makes the order total, so any way of drawing it gives the same sequence.
@@ -39,22 +39,28 @@ pub(super) const SLACK: f64 = 1e-9;
 
 impl Endgame {
     /// Every allowed guess that may be tried, with its floor.
-    pub(super) fn floors(&self, set: &[u32], allowed: &Allowed, mass: f64) -> Vec<Reverse<Ranked>> {
+    pub(super) fn floors(
+        &self,
+        table: &PatternTable,
+        set: &[u32],
+        allowed: &Allowed,
+        mass: f64,
+    ) -> Vec<Reverse<Ranked>> {
         let mut keyed = Vec::with_capacity(set.len());
         let mut order = Vec::new();
-        let cols = self.columns(set);
+        let cols = Self::columns(table, set);
         let members: Vec<(usize, f64)> = cols.as_deref().map_or_else(Vec::new, |cols| {
             cols.iter()
                 .zip(set)
                 .map(|(&col, &answer)| (col, self.weight(answer)))
                 .collect()
         });
-        let mut groups = vec![(0.0, 0.0, false); self.table.set.len()];
+        let mut groups = vec![(0.0, 0.0, false); table.set.len()];
         let mut consider = |g: u32, in_set: bool| {
-            let row = cols.as_ref().and_then(|_| self.table.row_of(g));
+            let row = cols.as_ref().and_then(|_| table.row_of(g));
             let floor = row.map_or_else(
                 || {
-                    self.partition(cols.as_deref(), set, g, &mut keyed);
+                    self.partition(table, cols.as_deref(), set, g, &mut keyed);
                     self.floor(&keyed, g, in_set, mass)
                 },
                 |row| self.floor_from_ranks(&mut groups, &members, row, g, in_set, mass),

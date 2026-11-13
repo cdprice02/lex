@@ -262,8 +262,8 @@ impl Explainer {
         &self,
         set: &[u32],
         allowed: &Allowed,
-        base: &mut BasePolicy,
-        rollout: Option<&mut Rollout>,
+        base: &BasePolicy,
+        rollout: Option<&Rollout>,
     ) -> Option<Record> {
         let strategy = *base.strategy();
         let size = set.len();
@@ -320,8 +320,8 @@ impl Explainer {
         &self,
         set: &[u32],
         allowed: &Allowed,
-        base: &mut BasePolicy,
-        rollout: Option<&mut Rollout>,
+        base: &BasePolicy,
+        rollout: Option<&Rollout>,
         guess: u32,
     ) -> Listed {
         let size = set.len();

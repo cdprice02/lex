@@ -9,6 +9,7 @@ mod endgame;
 mod explain;
 mod game;
 mod guesser;
+mod memo;
 mod policy;
 mod pool_ops;
 mod rollout;

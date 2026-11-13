@@ -1,6 +1,5 @@
 //! The guesses a game position permits, including the hard-mode rule.
 
-use std::collections::HashMap;
 use std::fmt;
 
 use crate::correctness::{Code, LetterCounts, pattern_ordinal};
@@ -161,41 +160,9 @@ impl Allowed {
     }
 }
 
-/// Numbers each distinct allowed-guess list met so far, so a memo key stays small. Owned by the one
-/// memo whose keys it numbers (the Endgame's, the rollout's), so it lives and is cleared with it.
-#[derive(Debug, Default)]
-pub struct AllowedIds(HashMap<Vec<u32>, u32>);
-
-impl AllowedIds {
-    /// The memo id of `allowed`, or `None` when the Guess pool mode implies it: `Whole` and
-    /// `Candidates` are fixed by the mode and the candidate set, so only a `List` needs an id.
-    pub(crate) fn slot(&mut self, allowed: &Allowed) -> Option<u32> {
-        let Allowed::List(list) = allowed else {
-            return None;
-        };
-        if let Some(&id) = self.0.get(list) {
-            return Some(id);
-        }
-        let id = u32::try_from(self.0.len()).unwrap_or(u32::MAX);
-        self.0.insert(list.clone(), id);
-        Some(id)
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn lists_are_numbered_in_first_seen_order() {
-        let mut ids = AllowedIds::default();
-        let (a, b) = (Allowed::List(vec![1, 2]), Allowed::List(vec![3]));
-        assert_eq!(ids.slot(&a), Some(0));
-        assert_eq!(ids.slot(&b), Some(1));
-        assert_eq!(ids.slot(&a), Some(0));
-        assert_eq!(ids.slot(&Allowed::Whole), None);
-        assert_eq!(ids.slot(&Allowed::Candidates), None);
-    }
 
     fn letters(word: &str) -> [char; 5] {
         word.chars().collect::<Vec<_>>().try_into().unwrap()

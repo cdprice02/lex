@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 anyhow = { workspace = true }
+dashmap = { workspace = true }
 lex-data = { path = "../lex-data" }
 log = { workspace = true }
 strum = { workspace = true }
