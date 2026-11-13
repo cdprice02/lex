@@ -117,7 +117,7 @@ pub fn fetch_dict(lang: Language, data_dir: &Path) -> anyhow::Result<()> {
             hasher: Sha256::new(),
         };
         let words = read_dict(BufReader::new(MultiGzDecoder::new(&mut hashing)), iso)?;
-        Ok((words, crate::store::hex(&hashing.hasher.finalize())))
+        Ok((words, crate::header::hex(&hashing.hasher.finalize())))
     })
     .with_context(|| format!("fetching Wiktionary for {lang}"))?;
     let provenance = Provenance {
@@ -266,8 +266,8 @@ mod tests {
         };
         std::io::copy(&mut reader, &mut std::io::sink()).unwrap();
         assert_eq!(
-            crate::store::hex(&reader.hasher.finalize()),
-            crate::store::hex(&Sha256::digest(FIXTURE.as_bytes()))
+            crate::header::hex(&reader.hasher.finalize()),
+            crate::header::hex(&Sha256::digest(FIXTURE.as_bytes()))
         );
     }
 }

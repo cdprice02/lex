@@ -18,11 +18,12 @@ use sha2::{Digest, Sha256};
 
 use crate::data_dir::{DataDir, remove_if_present};
 use crate::error::LexDataError;
-use crate::header::{HEADER_LEN, Header, Kind};
+use crate::header::hex;
+use crate::header::{HEADER_LEN, Header, Kind, record_size};
 use crate::language::Language;
 use crate::le::array_at;
 use crate::ngrams::SNAPSHOT;
-use crate::store::{encode_records, hex};
+use crate::store::encode_records;
 use crate::wiktionary;
 
 /// Name of the file, last written, that makes a set of totals complete.
@@ -81,11 +82,6 @@ pub struct TotalsRecord {
     pub snapshot: String,
 }
 
-/// Size in bytes of one record of length `n`.
-const fn record_size(n: usize) -> usize {
-    n * std::mem::size_of::<u32>() + std::mem::size_of::<u64>()
-}
-
 /// Writes a complete set of totals for `lang`, all or nothing, replacing any set already there.
 /// Nothing is written for empty `by_length`.
 pub fn write(dir: &DataDir, lang: Language, by_length: &ByLength) -> anyhow::Result<()> {
@@ -103,7 +99,7 @@ pub fn write(dir: &DataDir, lang: Language, by_length: &ByLength) -> anyhow::Res
         .with_context(|| format!("creating a temporary directory in {}", root.display()))?;
     let mut files = BTreeMap::new();
     for (&n, words) in by_length.iter().filter(|(_, words)| !words.is_empty()) {
-        let records = encode_records(n, words);
+        let records = encode_records(words);
         let header = Header::for_kind(Kind::Totals, n, record_size(n), &records)?;
         let path = tmp.path().join(format!("{n}.bin"));
         let mut file = std::fs::File::create(&path)

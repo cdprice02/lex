@@ -20,6 +20,7 @@ pub mod progress;
 pub mod report;
 pub mod simulate;
 pub mod style;
+pub mod table;
 pub mod targets;
 pub mod tracks;
 pub mod verdict;

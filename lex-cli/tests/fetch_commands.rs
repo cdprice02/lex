@@ -8,19 +8,17 @@
 )]
 
 mod common;
-mod totals_common;
 
 use std::cell::RefCell;
 use std::path::Path;
 
-use clap::Parser;
 use clap::error::ErrorKind;
-use common::{seed_dict, seed_supported};
-use lex_cli::cli::{Cli, Command, CorpusCommand, DictCommand, ProfileCommand};
+use common::{parse, touch};
+use lex_cli::cli::{Command, CorpusCommand, DictCommand, ProfileCommand};
 use lex_cli::fetch::{Network, Online, Sinks, corpus_with, dict_with, profile_with};
+use lex_data::testing::{seed_dict, seed_supported, seed_totals};
 use lex_data::{DataDir, Language, Profile};
 use strum::VariantArray as _;
-use totals_common::seed_totals;
 
 /// Records what was downloaded and writes stand-in files in place of the network.
 #[derive(Default)]
@@ -85,11 +83,6 @@ struct Printed {
     warn: String,
 }
 
-/// Parses `args` after `lex` and returns the command.
-fn parse(args: &[&str]) -> Result<Command, clap::Error> {
-    Cli::try_parse_from(std::iter::once("lex").chain(args.iter().copied())).map(|cli| cli.command)
-}
-
 /// Runs `lex <group> <verb> <args> --data-dir <root>` over `net`.
 fn run(net: &Fake, root: &Path, group_verb: &[&str], args: &[&str]) -> Printed {
     let data = root.to_str().unwrap();
@@ -130,13 +123,6 @@ fn run(net: &Fake, root: &Path, group_verb: &[&str], args: &[&str]) -> Printed {
         out: String::from_utf8(out).unwrap(),
         warn: String::from_utf8(warn).unwrap(),
     }
-}
-
-/// Writes a stand-in file under `root`.
-fn touch(root: &Path, relative: &str) {
-    let path = root.join(relative);
-    std::fs::create_dir_all(path.parent().unwrap()).unwrap();
-    std::fs::write(path, b"x").unwrap();
 }
 
 const DICT: &[&str] = &["dict", "fetch"];

@@ -6,11 +6,9 @@
     reason = "`clippy.toml` exempts `#[test]` functions and `#[cfg(test)]` modules, not the plain helpers of an integration test, where a failed fixture should abort the run"
 )]
 
-mod common;
-
 use std::process::Command;
 
-use common::{seed_dict, seed_supported};
+use lex_data::testing::{seed_dict, seed_supported};
 use lex_data::{DataDir, Language};
 
 /// Runs `lex simulate -n 3` over seeded data with `extra` flags, stdout and stderr piped.

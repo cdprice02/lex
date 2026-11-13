@@ -30,6 +30,7 @@
           pkgs.cargo-llvm-lines
           pkgs.cargo-bloat
           pkgs.cargo-modules
+          pkgs.cargo-machete
           pkgs.cargo-pgo
         ]
         # BOLT rewrites ELF binaries only.

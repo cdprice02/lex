@@ -7,13 +7,13 @@
 use std::io::IsTerminal as _;
 
 use lex_core::{SOLVER_DIGEST, Strategy};
-use lex_data::{BookFilter, BookKey, BookRecord, BookStatus, DataDir};
+use lex_data::{BookFilter, BookKey, BookRecord, BookStatus};
 
 use crate::books;
 use crate::cli::{BookListArgs, BookShowArgs};
 use crate::config::{Game, Targets};
-use crate::dicts::{flag, render_rows, row};
 use crate::lists::Source;
+use crate::table::{flag, render_rows, row};
 
 /// `lex book list`: a row per stored book, then a footer of counts by status and total size.
 ///
@@ -26,7 +26,7 @@ pub fn list(args: &BookListArgs) -> anyhow::Result<()> {
         word_length: args.word_length,
         profile: args.profile,
     };
-    let mut records = DataDir::new(&args.data.data_dir).books(SOLVER_DIGEST, &filter);
+    let mut records = args.data.dir().books(SOLVER_DIGEST, &filter);
     if args.stale {
         records.retain(|r| r.status != BookStatus::Current);
     }
@@ -48,7 +48,7 @@ pub fn list(args: &BookListArgs) -> anyhow::Result<()> {
 /// If no book or more than one book has that id.
 pub fn show_id(args: &BookShowArgs) -> anyhow::Result<()> {
     let id = args.id.as_deref().unwrap_or_default();
-    let dir = DataDir::new(&args.common.data_dir);
+    let dir = args.common.data();
     let mut found: Vec<BookRecord> = dir
         .books(SOLVER_DIGEST, &BookFilter::default())
         .into_iter()
@@ -73,7 +73,7 @@ pub fn show_id(args: &BookShowArgs) -> anyhow::Result<()> {
 /// If the game's Corpus (or Profile lists) is not cached, or cannot be loaded. Never fetches.
 pub fn show_game<const N: usize>(args: &BookShowArgs) -> anyhow::Result<()> {
     let config = args.common.config(Targets::Full);
-    let dir = DataDir::new(&args.common.data_dir);
+    let dir = args.common.data();
     let lang = books::language(&config.game);
     if !dir.ngrams_path(lang, N).is_file() {
         anyhow::bail!(
@@ -286,6 +286,7 @@ fn size(bytes: u64, terminal: bool) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use lex_data::DataDir;
     use lex_data::{Language, StoredBook, StoredNode};
 
     fn key(digest: &str, pool: &str, temperature: &str) -> BookKey {

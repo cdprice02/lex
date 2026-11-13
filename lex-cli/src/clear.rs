@@ -4,10 +4,10 @@
 use std::path::PathBuf;
 
 use lex_core::SOLVER_DIGEST;
-use lex_data::{BookFilter, DataDir, Language, Profile};
+use lex_data::{BookFilter, Language, Profile};
 use strum::VariantArray;
 
-use crate::cli::{BookClearArgs, CorpusClearArgs, DictClearArgs, ProfileClearArgs};
+use crate::cli::{BookClearArgs, CorpusClearArgs, DictClearArgs, ProfileClearArgs, languages};
 
 /// What a `clear` removed, one path per line and a total.
 #[must_use]
@@ -27,11 +27,6 @@ fn report(removed: &[PathBuf]) {
     println!("{}", summary(removed));
 }
 
-/// The languages `--lang` names, or every language with `--all`.
-fn languages(lang: Option<Language>) -> Vec<Language> {
-    lang.map_or_else(|| Language::VARIANTS.to_vec(), |lang| vec![lang])
-}
-
 /// `lex dict clear`: the Dictionary, its language's Corpus caches at every length and their
 /// books, after warning that the next fetch changes what filters the Corpus.
 ///
@@ -39,7 +34,7 @@ fn languages(lang: Option<Language>) -> Vec<Language> {
 ///
 /// If a cache file cannot be removed.
 pub fn dict(args: &DictClearArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     eprintln!(
         "warning: the next fetch takes KAIKKI's current (rolling) Wiktionary extract, which can \
          change the Corpus and the Track snapshots of the language"
@@ -59,7 +54,7 @@ pub fn dict(args: &DictClearArgs) -> anyhow::Result<()> {
 ///
 /// If a cache file cannot be removed.
 pub fn corpus(args: &CorpusClearArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     let mut removed = Vec::new();
     if let Some(lang) = args.lang {
         removed.extend(dir.clear(lang, args.word_length)?);
@@ -85,7 +80,7 @@ pub fn corpus(args: &CorpusClearArgs) -> anyhow::Result<()> {
 ///
 /// If a cache file cannot be removed.
 pub fn profile(args: &ProfileClearArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     let mut removed = Vec::new();
     if let Some(profile) = args.profile {
         removed.extend(dir.clear_profile(profile)?);
@@ -105,7 +100,7 @@ pub fn profile(args: &ProfileClearArgs) -> anyhow::Result<()> {
 ///
 /// If a books directory cannot be removed.
 pub fn book(args: &BookClearArgs) -> anyhow::Result<()> {
-    let dir = DataDir::new(&args.data.data_dir);
+    let dir = args.data.dir();
     if args.stale {
         let filter = BookFilter {
             lang: args.lang,

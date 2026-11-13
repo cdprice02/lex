@@ -21,6 +21,8 @@ mod profile_list;
 mod profile_store;
 mod retry;
 mod store;
+#[cfg(feature = "test-support")]
+pub mod testing;
 mod totals;
 mod wiktionary;
 mod word_lookup;
